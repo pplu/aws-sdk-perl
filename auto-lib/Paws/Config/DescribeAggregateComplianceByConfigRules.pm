@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->DescribeAggregateComplianceByConfigRules(
       ConfigurationAggregatorName => 'MyConfigurationAggregatorName',
       Filters                     => {
-        AccountId      => 'MyAccountId',    # OPTIONAL
-        AwsRegion      => 'MyAwsRegion',    # min: 1, max: 64; OPTIONAL
+        AccountId      => 'MyAccountId',         # OPTIONAL
+        AwsRegion      => 'MyAwsRegion',         # min: 1, max: 64; OPTIONAL
         ComplianceType => 'COMPLIANT'
         , # values: COMPLIANT, NON_COMPLIANT, NOT_APPLICABLE, INSUFFICIENT_DATA; OPTIONAL
         ConfigRuleName => 'MyConfigRuleName',    # min: 1, max: 128; OPTIONAL

@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyString',
         },
         ...
-      ],                 # OPTIONAL
+      ],    # OPTIONAL
       MaxResults => 1,             # OPTIONAL
       NextToken  => 'MyString',    # OPTIONAL
       );

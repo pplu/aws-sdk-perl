@@ -39,13 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kafka = Paws->service('Kafka');
     my $CreateClusterResponse = $kafka->CreateCluster(
       BrokerNodeGroupInfo => {
-        ClientSubnets => [ 'My__string', ... ],
-        InstanceType  => 'My__stringMin5Max32',    # min: 5, max: 32
-        BrokerAZDistribution => 'DEFAULT',         # values: DEFAULT; OPTIONAL
-        SecurityGroups => [ 'My__string', ... ],
-        StorageInfo    => {
+        ClientSubnets        => [ 'My__string', ... ],
+        InstanceType         => 'My__stringMin5Max32',    # min: 5, max: 32
+        BrokerAZDistribution => 'DEFAULT',    # values: DEFAULT; OPTIONAL
+        SecurityGroups       => [ 'My__string', ... ],
+        StorageInfo          => {
           EbsStorageInfo => {
-            VolumeSize => 1,    # min: 1, max: 16384; OPTIONAL
+            VolumeSize => 1,                  # min: 1, max: 16384; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },
@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OpenMonitoring     => {
         Prometheus => {
           JmxExporter => {
-            EnabledInBroker => 1,         # OPTIONAL
+            EnabledInBroker => 1,    # OPTIONAL
 
           },    # OPTIONAL
           NodeExporter => {

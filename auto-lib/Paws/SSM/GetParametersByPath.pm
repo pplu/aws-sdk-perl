@@ -42,12 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Option => 'MyParameterStringQueryOption',  # min: 1, max: 10; OPTIONAL
           Values => [
             'MyParameterStringFilterValue', ...      # min: 1, max: 1024
-          ],                                         # min: 1, max: 50; OPTIONAL
+          ],    # min: 1, max: 50; OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
-      Recursive      => 1,                           # OPTIONAL
-      WithDecryption => 1,                           # OPTIONAL
+      ],    # OPTIONAL
+      Recursive      => 1,    # OPTIONAL
+      WithDecryption => 1,    # OPTIONAL
     );
 
     # Results:

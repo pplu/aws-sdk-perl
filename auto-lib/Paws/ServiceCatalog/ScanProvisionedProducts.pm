@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $servicecatalog->ScanProvisionedProducts(
       AcceptLanguage    => 'MyAcceptLanguage',    # OPTIONAL
       AccessLevelFilter => {
-        Key => 'Account',    # values: Account, Role, User; OPTIONAL
+        Key   => 'Account',    # values: Account, Role, User; OPTIONAL
         Value => 'MyAccessLevelFilterValue',    # OPTIONAL
       },    # OPTIONAL
       PageSize  => 1,                # OPTIONAL

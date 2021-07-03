@@ -42,21 +42,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileShareARN  => 'MyFileShareARN',
       AdminUserList => [
         'MyFileShareUser', ...    # min: 1, max: 64
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       DefaultStorageClass  => 'MyStorageClass',    # OPTIONAL
       GuessMIMETypeEnabled => 1,                   # OPTIONAL
       InvalidUserList      => [
         'MyFileShareUser', ...                     # min: 1, max: 64
-      ],                                           # OPTIONAL
-      KMSEncrypted  => 1,                          # OPTIONAL
-      KMSKey        => 'MyKMSKey',                 # OPTIONAL
-      ObjectACL     => 'private',                  # OPTIONAL
-      ReadOnly      => 1,                          # OPTIONAL
-      RequesterPays => 1,                          # OPTIONAL
-      SMBACLEnabled => 1,                          # OPTIONAL
+      ],    # OPTIONAL
+      KMSEncrypted  => 1,             # OPTIONAL
+      KMSKey        => 'MyKMSKey',    # OPTIONAL
+      ObjectACL     => 'private',     # OPTIONAL
+      ReadOnly      => 1,             # OPTIONAL
+      RequesterPays => 1,             # OPTIONAL
+      SMBACLEnabled => 1,             # OPTIONAL
       ValidUserList => [
-        'MyFileShareUser', ...                     # min: 1, max: 64
-      ],                                           # OPTIONAL
+        'MyFileShareUser', ...        # min: 1, max: 64
+      ],    # OPTIONAL
     );
 
     # Results:

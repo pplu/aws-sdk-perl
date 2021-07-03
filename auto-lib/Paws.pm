@@ -57,7 +57,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.43_01';
+our $VERSION = '0.44';
 
 use Carp;
 
@@ -1138,12 +1138,19 @@ leonerd for (between others)
 
 campus-explorer for contributing to test suite
 
-byterock for testing and fixing PinPoint
+byterock for:
+ - testing and fixing PinPoint
+ - standing up as comaint, and releasing 0.43
+ - improving S3 support
 
 torrentale for fixing QueryCaller to correctly signal empty arrays
 
-Jess Robinson and shadowcat.co.uk  for setting up ver 0.43
- 
+Jess Robinson and shadowcat.co.uk for:
+ - doing lots of comaint work
+ - working hard on new features
+
+shogo82148 for migrating our Travis pipelines to GitHub Actions (and 
+improving them)
 
 
 =cut

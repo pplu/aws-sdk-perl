@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $waf-regional = Paws->service('WAFRegional');
-    # To list a size constraint sets
-    # The following example returns an array of up to 100 size contraint match
-    # sets.
+# To list a size constraint sets
+# The following example returns an array of up to 100 size contraint match sets.
     my $ListSizeConstraintSetsResponse =
       $waf -regional->ListSizeConstraintSets( 'Limit' => 100 );
 

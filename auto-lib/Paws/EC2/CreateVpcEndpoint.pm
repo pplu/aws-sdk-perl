@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun            => 1,                               # OPTIONAL
       PolicyDocument    => 'MyString',                      # OPTIONAL
       PrivateDnsEnabled => 1,                               # OPTIONAL
-      RouteTableIds     => [ 'MyRouteTableId', ... ],       # OPTIONAL
+      RouteTableIds     => [ 'MyRouteTableId',    ... ],    # OPTIONAL
       SecurityGroupIds  => [ 'MySecurityGroupId', ... ],    # OPTIONAL
-      SubnetIds         => [ 'MySubnetId', ... ],           # OPTIONAL
+      SubnetIds         => [ 'MySubnetId',        ... ],    # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       VpcEndpointType => 'Interface',    # OPTIONAL
     );
 

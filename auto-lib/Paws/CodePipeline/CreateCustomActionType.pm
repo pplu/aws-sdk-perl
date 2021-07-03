@@ -50,16 +50,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Version                 => 'MyVersion',
       ConfigurationProperties => [
         {
-          Key      => 1,
-          Name     => 'MyActionConfigurationKey',    # min: 1, max: 50
-          Required => 1,
-          Secret   => 1,
+          Key         => 1,
+          Name        => 'MyActionConfigurationKey',    # min: 1, max: 50
+          Required    => 1,
+          Secret      => 1,
           Description => 'MyDescription',    # min: 1, max: 160; OPTIONAL
           Queryable   => 1,
-          Type => 'String',    # values: String, Number, Boolean; OPTIONAL
+          Type        => 'String',   # values: String, Number, Boolean; OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
+      ],    # OPTIONAL
       Settings => {
         EntityUrlTemplate    => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
         ExecutionUrlTemplate => 'MyUrlTemplate',   # min: 1, max: 2048; OPTIONAL
@@ -73,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

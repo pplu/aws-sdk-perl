@@ -44,36 +44,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'CORRECT_AUDIO', # values: CORRECT_AUDIO, MEASURE_ONLY; OPTIONAL
               CorrectionGateLevel => 1,        # min: -70; OPTIONAL
               LoudnessLogging     => 'LOG',    # values: LOG, DONT_LOG; OPTIONAL
-              PeakCalculation =>
+              PeakCalculation     =>
                 'TRUE_PEAK',    # values: TRUE_PEAK, NONE; OPTIONAL
               TargetLkfs => 1,  # OPTIONAL
             },    # OPTIONAL
-            AudioSourceName => 'My__string',
-            AudioType       => 1,              # max: 255; OPTIONAL
+            AudioSourceName  => 'My__string',
+            AudioType        => 1,              # max: 255; OPTIONAL
             AudioTypeControl =>
               'FOLLOW_INPUT',   # values: FOLLOW_INPUT, USE_CONFIGURED; OPTIONAL
             CodecSettings => {
               AacSettings => {
                 AudioDescriptionBroadcasterMix => 'BROADCASTER_MIXED_AD'
-                ,               # values: BROADCASTER_MIXED_AD, NORMAL; OPTIONAL
+                ,         # values: BROADCASTER_MIXED_AD, NORMAL; OPTIONAL
                 Bitrate      => 1,       # min: 6000, max: 1024000; OPTIONAL
                 CodecProfile => 'LC',    # values: LC, HEV1, HEV2; OPTIONAL
-                CodingMode => 'AD_RECEIVER_MIX'
+                CodingMode   => 'AD_RECEIVER_MIX'
                 , # values: AD_RECEIVER_MIX, CODING_MODE_1_0, CODING_MODE_1_1, CODING_MODE_2_0, CODING_MODE_5_1; OPTIONAL
                 RateControlMode => 'CBR',    # values: CBR, VBR; OPTIONAL
                 RawFormat  => 'LATM_LOAS',   # values: LATM_LOAS, NONE; OPTIONAL
                 SampleRate => 1,             # min: 8000, max: 96000; OPTIONAL
                 Specification => 'MPEG2',    # values: MPEG2, MPEG4; OPTIONAL
-                VbrQuality =>
+                VbrQuality    =>
                   'LOW',  # values: LOW, MEDIUM_LOW, MEDIUM_HIGH, HIGH; OPTIONAL
               },    # OPTIONAL
               Ac3Settings => {
-                Bitrate => 1,    # min: 64000, max: 640000; OPTIONAL
+                Bitrate       => 1,    # min: 64000, max: 640000; OPTIONAL
                 BitstreamMode => 'COMPLETE_MAIN'
                 , # values: COMPLETE_MAIN, COMMENTARY, DIALOGUE, EMERGENCY, HEARING_IMPAIRED, MUSIC_AND_EFFECTS, VISUALLY_IMPAIRED, VOICE_OVER; OPTIONAL
                 CodingMode => 'CODING_MODE_1_0'
                 , # values: CODING_MODE_1_0, CODING_MODE_1_1, CODING_MODE_2_0, CODING_MODE_3_2_LFE; OPTIONAL
-                Dialnorm => 1,    # min: 1, max: 31; OPTIONAL
+                Dialnorm                       => 1, # min: 1, max: 31; OPTIONAL
                 DynamicRangeCompressionProfile =>
                   'FILM_STANDARD',    # values: FILM_STANDARD, NONE; OPTIONAL
                 LfeFilter => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
@@ -89,9 +89,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Codec => 'AAC'
               , # values: AAC, MP2, MP3, WAV, AIFF, AC3, EAC3, EAC3_ATMOS, PASSTHROUGH; OPTIONAL
               Eac3AtmosSettings => {
-                Bitrate => 1,    # min: 384000, max: 768000; OPTIONAL
+                Bitrate       => 1,    # min: 384000, max: 768000; OPTIONAL
                 BitstreamMode =>
-                  'COMPLETE_MAIN',    # values: COMPLETE_MAIN; OPTIONAL
+                  'COMPLETE_MAIN',     # values: COMPLETE_MAIN; OPTIONAL
                 CodingMode =>
                   'CODING_MODE_9_1_6',    # values: CODING_MODE_9_1_6; OPTIONAL
                 DialogueIntelligence =>
@@ -108,7 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: LEQ_A, ITU_BS_1770_1, ITU_BS_1770_2, ITU_BS_1770_3, ITU_BS_1770_4; OPTIONAL
                 SampleRate      => 1,    # min: 48000, max: 48000; OPTIONAL
                 SpeechThreshold => 1,    # min: 1, max: 100; OPTIONAL
-                StereoDownmix => 'NOT_INDICATED'
+                StereoDownmix   => 'NOT_INDICATED'
                 ,    # values: NOT_INDICATED, STEREO, SURROUND, DPL2; OPTIONAL
                 SurroundExMode => 'NOT_INDICATED'
                 ,    # values: NOT_INDICATED, ENABLED, DISABLED; OPTIONAL
@@ -116,7 +116,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Eac3Settings => {
                 AttenuationControl =>
                   'ATTENUATE_3_DB',    # values: ATTENUATE_3_DB, NONE; OPTIONAL
-                Bitrate => 1,          # min: 64000, max: 640000; OPTIONAL
+                Bitrate       => 1,        # min: 64000, max: 640000; OPTIONAL
                 BitstreamMode => 'COMPLETE_MAIN'
                 , # values: COMPLETE_MAIN, COMMENTARY, EMERGENCY, HEARING_IMPAIRED, VISUALLY_IMPAIRED; OPTIONAL
                 CodingMode => 'CODING_MODE_1_0'
@@ -139,7 +139,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ,    # values: WHEN_POSSIBLE, NO_PASSTHROUGH; OPTIONAL
                 PhaseControl => 'SHIFT_90_DEGREES'
                 ,    # values: SHIFT_90_DEGREES, NO_SHIFT; OPTIONAL
-                SampleRate => 1,    # min: 48000, max: 48000; OPTIONAL
+                SampleRate    => 1,    # min: 48000, max: 48000; OPTIONAL
                 StereoDownmix => 'NOT_INDICATED'
                 ,    # values: NOT_INDICATED, LO_RO, LT_RT, DPL2; OPTIONAL
                 SurroundExMode => 'NOT_INDICATED'
@@ -177,10 +177,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   {
                     InputChannels => [
                       1, ...    # min: -60, max: 6
-                    ],          # OPTIONAL
+                    ],    # OPTIONAL
                   },
                   ...
-                ],              # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
               ChannelsIn  => 1,    # min: 1, max: 64; OPTIONAL
               ChannelsOut => 1,    # min: 1, max: 64; OPTIONAL
@@ -188,7 +188,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             StreamName => 'My__stringPatternWS',    # OPTIONAL
           },
           ...
-        ],                                          # OPTIONAL
+        ],    # OPTIONAL
         CaptionDescriptions => [
           {
             CustomLanguageCode  => 'My__stringPatternAZaZ23AZaZ',    # OPTIONAL
@@ -202,7 +202,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ,    # values: WHITE, BLACK, YELLOW, RED, GREEN, BLUE; OPTIONAL
                 FontOpacity    => 1,    # max: 255; OPTIONAL
                 FontResolution => 1,    # min: 96, max: 600; OPTIONAL
-                FontScript =>
+                FontScript     =>
                   'AUTOMATIC',    # values: AUTOMATIC, HANS, HANT; OPTIONAL
                 FontSize     => 1,        # max: 96; OPTIONAL
                 OutlineColor => 'BLACK'
@@ -230,7 +230,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ,    # values: WHITE, BLACK, YELLOW, RED, GREEN, BLUE; OPTIONAL
                 FontOpacity    => 1,    # max: 255; OPTIONAL
                 FontResolution => 1,    # min: 96, max: 600; OPTIONAL
-                FontScript =>
+                FontScript     =>
                   'AUTOMATIC',    # values: AUTOMATIC, HANS, HANT; OPTIONAL
                 FontSize     => 1,        # max: 96; OPTIONAL
                 OutlineColor => 'BLACK'
@@ -296,14 +296,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioFramesPerPes => 1,        # max: 2147483647; OPTIONAL
             AudioPids         => [
               1, ...                       # min: 32, max: 8182
-            ],                             # OPTIONAL
-            Bitrate        => 1,           # max: 2147483647; OPTIONAL
-            BufferModel    => 'MULTIPLEX', # values: MULTIPLEX, NONE; OPTIONAL
+            ],    # OPTIONAL
+            Bitrate        => 1,             # max: 2147483647; OPTIONAL
+            BufferModel    => 'MULTIPLEX',   # values: MULTIPLEX, NONE; OPTIONAL
             DvbNitSettings => {
-              NetworkId => 1,              # max: 65535; OPTIONAL
+              NetworkId   => 1,              # max: 65535; OPTIONAL
               NetworkName =>
-                'My__stringMin1Max256',    # min: 1, max: 256; OPTIONAL
-              NitInterval => 1,            # min: 25, max: 10000; OPTIONAL
+                'My__stringMin1Max256',      # min: 1, max: 256; OPTIONAL
+              NitInterval => 1,              # min: 25, max: 10000; OPTIONAL
             },    # OPTIONAL
             DvbSdtSettings => {
               OutputSdt => 'SDT_FOLLOW'
@@ -316,7 +316,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             DvbSubPids => [
               1, ...    # min: 32, max: 8182
-            ],          # OPTIONAL
+            ],    # OPTIONAL
             DvbTdtSettings => {
               TdtInterval => 1,    # min: 1000, max: 30000; OPTIONAL
             },    # OPTIONAL
@@ -333,7 +333,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NielsenId3           => 'INSERT', # values: INSERT, NONE; OPTIONAL
             NullPacketBitrate    => 1,        # OPTIONAL
             PatInterval          => 1,        # max: 1000; OPTIONAL
-            PcrControl => 'PCR_EVERY_PES_PACKET'
+            PcrControl           => 'PCR_EVERY_PES_PACKET'
             ,    # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
             PcrPid             => 1,        # min: 32, max: 8182
             PmtInterval        => 1,        # max: 1000; OPTIONAL
@@ -349,7 +349,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SegmentationMarkers => 'NONE'
             , # values: NONE, RAI_SEGSTART, RAI_ADAPT, PSI_SEGSTART, EBP, EBP_LEGACY; OPTIONAL
             SegmentationStyle => 'MAINTAIN_CADENCE'
-            ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
+            , # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
             SegmentationTime  => 1,    # OPTIONAL
             TimedMetadataPid  => 1,    # min: 32, max: 8182
             TransportStreamId => 1,    # max: 65535; OPTIONAL
@@ -359,10 +359,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AudioFramesPerPes => 1,    # max: 2147483647; OPTIONAL
             AudioPids         => [
               1, ...                   # min: 32, max: 8182
-            ],                         # OPTIONAL
-            NielsenId3  => 'INSERT',   # values: INSERT, NONE; OPTIONAL
-            PatInterval => 1,          # max: 1000; OPTIONAL
-            PcrControl => 'PCR_EVERY_PES_PACKET'
+            ],    # OPTIONAL
+            NielsenId3  => 'INSERT',       # values: INSERT, NONE; OPTIONAL
+            PatInterval => 1,              # max: 1000; OPTIONAL
+            PcrControl  => 'PCR_EVERY_PES_PACKET'
             ,    # values: PCR_EVERY_PES_PACKET, CONFIGURED_PCR_PERIOD; OPTIONAL
             PcrPid             => 1,    # min: 32, max: 8182
             PmtInterval        => 1,    # max: 1000; OPTIONAL
@@ -382,13 +382,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             CslgAtom => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
             Mpeg2FourCCControl => 'XDCAM',     # values: XDCAM, MPEG; OPTIONAL
             PaddingControl     => 'OMNEON',    # values: OMNEON, NONE; OPTIONAL
-            Reference =>
+            Reference          =>
               'SELF_CONTAINED',    # values: SELF_CONTAINED, EXTERNAL; OPTIONAL
           },    # OPTIONAL
           Mp4Settings => {
-            CslgAtom     => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
-            CttsVersion  => 1,            # max: 1; OPTIONAL
-            FreeSpaceBox => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
+            CslgAtom      => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
+            CttsVersion   => 1,            # max: 1; OPTIONAL
+            FreeSpaceBox  => 'INCLUDE',    # values: INCLUDE, EXCLUDE; OPTIONAL
             MoovPlacement => 'PROGRESSIVE_DOWNLOAD'
             ,    # values: PROGRESSIVE_DOWNLOAD, NORMAL; OPTIONAL
             Mp4MajorBrand => 'My__string',
@@ -437,16 +437,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               GopSizeUnits     => 'FRAMES',  # values: FRAMES, SECONDS; OPTIONAL
               HrdBufferInitialFillPercentage => 1,   # max: 100; OPTIONAL
               HrdBufferSize                  => 1,   # max: 1152000000; OPTIONAL
-              InterlaceMode => 'PROGRESSIVE'
+              InterlaceMode                  => 'PROGRESSIVE'
               , # values: PROGRESSIVE, TOP_FIELD, BOTTOM_FIELD, FOLLOW_TOP_FIELD, FOLLOW_BOTTOM_FIELD; OPTIONAL
               MaxBitrate   => 1,    # min: 1000, max: 1152000000; OPTIONAL
               MinIInterval => 1,    # max: 30; OPTIONAL
               NumberBFramesBetweenReferenceFrames => 1,    # max: 7; OPTIONAL
               NumberReferenceFrames => 1,    # min: 1, max: 6; OPTIONAL
-              ParControl => 'INITIALIZE_FROM_SOURCE'
+              ParControl            => 'INITIALIZE_FROM_SOURCE'
               ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-              ParDenominator => 1,    # min: 1, max: 2147483647; OPTIONAL
-              ParNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
+              ParDenominator     => 1,    # min: 1, max: 2147483647; OPTIONAL
+              ParNumerator       => 1,    # min: 1, max: 2147483647; OPTIONAL
               QualityTuningLevel => 'SINGLE_PASS'
               ,   # values: SINGLE_PASS, SINGLE_PASS_HQ, MULTI_PASS_HQ; OPTIONAL
               QvbrSettings => {
@@ -495,16 +495,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               GopSizeUnits     => 'FRAMES',  # values: FRAMES, SECONDS; OPTIONAL
               HrdBufferInitialFillPercentage => 1,   # max: 100; OPTIONAL
               HrdBufferSize                  => 1,   # max: 1466400000; OPTIONAL
-              InterlaceMode => 'PROGRESSIVE'
+              InterlaceMode                  => 'PROGRESSIVE'
               , # values: PROGRESSIVE, TOP_FIELD, BOTTOM_FIELD, FOLLOW_TOP_FIELD, FOLLOW_BOTTOM_FIELD; OPTIONAL
               MaxBitrate   => 1,    # min: 1000, max: 1466400000; OPTIONAL
               MinIInterval => 1,    # max: 30; OPTIONAL
               NumberBFramesBetweenReferenceFrames => 1,    # max: 7; OPTIONAL
               NumberReferenceFrames => 1,    # min: 1, max: 6; OPTIONAL
-              ParControl => 'INITIALIZE_FROM_SOURCE'
+              ParControl            => 'INITIALIZE_FROM_SOURCE'
               ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-              ParDenominator => 1,    # min: 1, max: 2147483647; OPTIONAL
-              ParNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
+              ParDenominator     => 1,    # min: 1, max: 2147483647; OPTIONAL
+              ParNumerator       => 1,    # min: 1, max: 2147483647; OPTIONAL
               QualityTuningLevel => 'SINGLE_PASS'
               ,   # values: SINGLE_PASS, SINGLE_PASS_HQ, MULTI_PASS_HQ; OPTIONAL
               QvbrSettings => {
@@ -533,7 +533,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Mpeg2Settings => {
               AdaptiveQuantization =>
                 'OFF',    # values: OFF, LOW, MEDIUM, HIGH; OPTIONAL
-              Bitrate => 1,    # min: 1000, max: 288000000; OPTIONAL
+              Bitrate    => 1,    # min: 1000, max: 288000000; OPTIONAL
               CodecLevel =>
                 'AUTO',    # values: AUTO, LOW, MAIN, HIGH1440, HIGH; OPTIONAL
               CodecProfile  => 'MAIN',     # values: MAIN, PROFILE_422; OPTIONAL
@@ -549,30 +549,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               GopSizeUnits => 'FRAMES',     # values: FRAMES, SECONDS; OPTIONAL
               HrdBufferInitialFillPercentage => 1,    # max: 100; OPTIONAL
               HrdBufferSize                  => 1,    # max: 47185920; OPTIONAL
-              InterlaceMode => 'PROGRESSIVE'
+              InterlaceMode                  => 'PROGRESSIVE'
               , # values: PROGRESSIVE, TOP_FIELD, BOTTOM_FIELD, FOLLOW_TOP_FIELD, FOLLOW_BOTTOM_FIELD; OPTIONAL
               IntraDcPrecision => 'AUTO'
               , # values: AUTO, INTRA_DC_PRECISION_8, INTRA_DC_PRECISION_9, INTRA_DC_PRECISION_10, INTRA_DC_PRECISION_11; OPTIONAL
               MaxBitrate   => 1,    # min: 1000, max: 300000000; OPTIONAL
               MinIInterval => 1,    # max: 30; OPTIONAL
               NumberBFramesBetweenReferenceFrames => 1,    # max: 7; OPTIONAL
-              ParControl => 'INITIALIZE_FROM_SOURCE'
+              ParControl                          => 'INITIALIZE_FROM_SOURCE'
               ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-              ParDenominator => 1,    # min: 1, max: 2147483647; OPTIONAL
-              ParNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
+              ParDenominator     => 1,    # min: 1, max: 2147483647; OPTIONAL
+              ParNumerator       => 1,    # min: 1, max: 2147483647; OPTIONAL
               QualityTuningLevel =>
                 'SINGLE_PASS',    # values: SINGLE_PASS, MULTI_PASS; OPTIONAL
-              RateControlMode => 'VBR',    # values: VBR, CBR; OPTIONAL
+              RateControlMode   => 'VBR',    # values: VBR, CBR; OPTIONAL
               SceneChangeDetect =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
-              SlowPal  => 'DISABLED',      # values: DISABLED, ENABLED; OPTIONAL
-              Softness => 1,               # max: 128; OPTIONAL
+                'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+              SlowPal  => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+              Softness => 1,             # max: 128; OPTIONAL
               SpatialAdaptiveQuantization =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
-              Syntax   => 'DEFAULT',       # values: DEFAULT, D_10; OPTIONAL
-              Telecine => 'NONE',          # values: NONE, SOFT, HARD; OPTIONAL
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
+              Syntax   => 'DEFAULT',     # values: DEFAULT, D_10; OPTIONAL
+              Telecine => 'NONE',        # values: NONE, SOFT, HARD; OPTIONAL
               TemporalAdaptiveQuantization =>
-                'DISABLED',                # values: DISABLED, ENABLED; OPTIONAL
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
             },    # OPTIONAL
             ProresSettings => {
               CodecProfile => 'APPLE_PRORES_422'
@@ -583,14 +583,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ,    # values: DUPLICATE_DROP, INTERPOLATE; OPTIONAL
               FramerateDenominator => 1,    # min: 1, max: 2147483647; OPTIONAL
               FramerateNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
-              InterlaceMode => 'PROGRESSIVE'
+              InterlaceMode        => 'PROGRESSIVE'
               , # values: PROGRESSIVE, TOP_FIELD, BOTTOM_FIELD, FOLLOW_TOP_FIELD, FOLLOW_BOTTOM_FIELD; OPTIONAL
               ParControl => 'INITIALIZE_FROM_SOURCE'
               ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
               ParDenominator => 1,    # min: 1, max: 2147483647; OPTIONAL
               ParNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
-              SlowPal  => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
-              Telecine => 'NONE',     # values: NONE, HARD; OPTIONAL
+              SlowPal  => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+              Telecine => 'NONE',        # values: NONE, HARD; OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           ColorMetadata => 'IGNORE',    # values: IGNORE, INSERT; OPTIONAL
@@ -612,7 +612,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RespondToAfd => 'NONE', # values: NONE, RESPOND, PASSTHROUGH; OPTIONAL
           ScalingBehavior =>
             'DEFAULT',            # values: DEFAULT, STRETCH_TO_OUTPUT; OPTIONAL
-          Sharpness => 1,         # max: 100; OPTIONAL
+          Sharpness         => 1, # max: 100; OPTIONAL
           TimecodeInsertion =>
             'DISABLED',           # values: DISABLED, PIC_TIMING_SEI; OPTIONAL
           VideoPreprocessors => {
@@ -658,22 +658,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ImageInserter => {
               InsertableImages => [
                 {
-                  Duration => 1,    # max: 2147483647; OPTIONAL
-                  FadeIn   => 1,    # max: 2147483647; OPTIONAL
-                  FadeOut  => 1,    # max: 2147483647; OPTIONAL
-                  Height   => 1,    # max: 2147483647; OPTIONAL
+                  Duration           => 1,    # max: 2147483647; OPTIONAL
+                  FadeIn             => 1,    # max: 2147483647; OPTIONAL
+                  FadeOut            => 1,    # max: 2147483647; OPTIONAL
+                  Height             => 1,    # max: 2147483647; OPTIONAL
                   ImageInserterInput =>
 'My__stringMin14PatternS3BmpBMPPngPNGTgaTGAHttpsBmpBMPPngPNGTgaTGA'
-                  ,                 # min: 14; OPTIONAL
-                  ImageX  => 1,     # max: 2147483647; OPTIONAL
-                  ImageY  => 1,     # max: 2147483647; OPTIONAL
-                  Layer   => 1,     # max: 99; OPTIONAL
-                  Opacity => 1,     # max: 100; OPTIONAL
+                  ,                           # min: 14; OPTIONAL
+                  ImageX    => 1,             # max: 2147483647; OPTIONAL
+                  ImageY    => 1,             # max: 2147483647; OPTIONAL
+                  Layer     => 1,             # max: 99; OPTIONAL
+                  Opacity   => 1,             # max: 100; OPTIONAL
                   StartTime => 'My__stringPattern01D20305D205D',    # OPTIONAL
-                  Width => 1,    # max: 2147483647; OPTIONAL
+                  Width     => 1,    # max: 2147483647; OPTIONAL
                 },
                 ...
-              ],                 # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             NoiseReducer => {
               Filter => 'BILATERAL'
@@ -693,7 +693,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },    # OPTIONAL
             TimecodeBurnin => {
-              FontSize => 1,             # min: 10, max: 48; OPTIONAL
+              FontSize => 1,                    # min: 10, max: 48; OPTIONAL
               Position => 'TOP_CENTER'
               , # values: TOP_CENTER, TOP_LEFT, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_CENTER, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM_CENTER, BOTTOM_RIGHT; OPTIONAL
               Prefix => 'My__stringPattern',    # OPTIONAL

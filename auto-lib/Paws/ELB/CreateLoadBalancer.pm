@@ -132,10 +132,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $DNSName = $CreateAccessPointOutput->DNSName;
 
-    # Returns a L<Paws::ELB::CreateAccessPointOutput> object.
-    # To create an internal load balancer
-    # This example creates an internal load balancer with an HTTP listener in a
-    # VPC.
+# Returns a L<Paws::ELB::CreateAccessPointOutput> object.
+# To create an internal load balancer
+# This example creates an internal load balancer with an HTTP listener in a VPC.
     my $CreateAccessPointOutput = $elasticloadbalancing->CreateLoadBalancer(
       'Listeners' => [
 

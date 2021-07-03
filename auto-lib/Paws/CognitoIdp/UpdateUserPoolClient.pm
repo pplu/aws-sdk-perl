@@ -47,11 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserPoolId        => 'MyUserPoolIdType',
       AllowedOAuthFlows => [
         'code', ...    # values: code, implicit, client_credentials
-      ],               # OPTIONAL
+      ],    # OPTIONAL
       AllowedOAuthFlowsUserPoolClient => 1,    # OPTIONAL
       AllowedOAuthScopes              => [
         'MyScopeType', ...                     # min: 1, max: 256
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       AnalyticsConfiguration => {
         ApplicationId  => 'MyHexStringType',
         ExternalId     => 'MyStringType',
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       CallbackURLs => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       ClientName         => 'MyClientNameType',     # OPTIONAL
       DefaultRedirectURI => 'MyRedirectUrlType',    # OPTIONAL
       ExplicitAuthFlows  => [
@@ -69,18 +69,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       LogoutURLs => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       PreventUserExistenceErrors => 'LEGACY',    # OPTIONAL
       ReadAttributes             => [
         'MyClientPermissionType', ...            # min: 1, max: 2048
-      ],                                         # OPTIONAL
-      RefreshTokenValidity       => 1,           # OPTIONAL
+      ],    # OPTIONAL
+      RefreshTokenValidity       => 1,    # OPTIONAL
       SupportedIdentityProviders => [
-        'MyProviderNameType', ...                # min: 1, max: 32
-      ],                                         # OPTIONAL
+        'MyProviderNameType', ...         # min: 1, max: 32
+      ],    # OPTIONAL
       WriteAttributes => [
-        'MyClientPermissionType', ...            # min: 1, max: 2048
-      ],                                         # OPTIONAL
+        'MyClientPermissionType', ...    # min: 1, max: 2048
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'LoadBalancerName' => 'my-load-balancer'
       );
 
-    # To create an HTTPS listener for a load balancer
-    # This example creates a listener for your load balancer at port 443 using
-    # the HTTPS protocol.
+  # To create an HTTPS listener for a load balancer
+  # This example creates a listener for your load balancer at port 443 using the
+  # HTTPS protocol.
     my $CreateLoadBalancerListenerOutput =
       $elasticloadbalancing->CreateLoadBalancerListeners(
       'Listeners' => [

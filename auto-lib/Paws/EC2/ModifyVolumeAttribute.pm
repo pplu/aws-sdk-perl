@@ -29,10 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To modify a volume attribute
-    # This example sets the ``autoEnableIo`` attribute of the volume with the ID
-    # ``vol-1234567890abcdef0`` to ``true``. If the command succeeds, no output
-    # is returned.
+  # To modify a volume attribute
+  # This example sets the ``autoEnableIo`` attribute of the volume with the ID
+  # ``vol-1234567890abcdef0`` to ``true``. If the command succeeds, no output is
+  # returned.
     $ec2->ModifyVolumeAttribute(
       'AutoEnableIO' => {
         'Value' => 1

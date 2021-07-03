@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Weight   => 1,             # min: 1, max: 100; OPTIONAL
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
       },
       VoiceConnectorId => 'MyNonEmptyString',
 

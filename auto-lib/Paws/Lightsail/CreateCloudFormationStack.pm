@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AvailabilityZone => 'Mystring',
           InstanceType     => 'MyNonEmptyString',
           PortInfoSource => 'DEFAULT', # values: DEFAULT, INSTANCE, NONE, CLOSED
-          SourceName => 'MyResourceName',
-          UserData   => 'Mystring',
+          SourceName     => 'MyResourceName',
+          UserData       => 'Mystring',
         },
         ...
       ],

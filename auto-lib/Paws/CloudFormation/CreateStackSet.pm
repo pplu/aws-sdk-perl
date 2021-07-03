@@ -54,24 +54,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionRoleName  => 'MyExecutionRoleName',     # OPTIONAL
       Parameters         => [
         {
-          ParameterKey     => 'MyParameterKey',        # OPTIONAL
-          ParameterValue   => 'MyParameterValue',      # OPTIONAL
-          ResolvedValue    => 'MyParameterValue',      # OPTIONAL
-          UsePreviousValue => 1,                       # OPTIONAL
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
+          ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
+          UsePreviousValue => 1,                     # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
-      PermissionModel => 'SERVICE_MANAGED',            # OPTIONAL
+      ],    # OPTIONAL
+      PermissionModel => 'SERVICE_MANAGED',    # OPTIONAL
       Tags            => [
         {
-          Key   => 'MyTagKey',                         # min: 1, max: 128
-          Value => 'MyTagValue',                       # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
-      ],                                               # OPTIONAL
-      TemplateBody => 'MyTemplateBody',                # OPTIONAL
-      TemplateURL  => 'MyTemplateURL',                 # OPTIONAL
+      ],    # OPTIONAL
+      TemplateBody => 'MyTemplateBody',    # OPTIONAL
+      TemplateURL  => 'MyTemplateURL',     # OPTIONAL
     );
 
     # Results:

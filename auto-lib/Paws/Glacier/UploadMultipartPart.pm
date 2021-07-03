@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'Body'      => 'part1',
       'Checksum'  => 'c06f7cd4baacb087002a99a5f48bf953',
       'Range'     => 'bytes 0-1048575/*',
-      'UploadId' =>
+      'UploadId'  =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',
       'VaultName' => 'examplevault'
     );

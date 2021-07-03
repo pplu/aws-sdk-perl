@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserPoolId      => 'MyUserPoolIdType',
       AttributesToGet => [
         'MyAttributeNameType', ...    # min: 1, max: 32
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       Filter          => 'MyUserFilterType',               # OPTIONAL
       Limit           => 1,                                # OPTIONAL
       PaginationToken => 'MySearchPaginationTokenType',    # OPTIONAL

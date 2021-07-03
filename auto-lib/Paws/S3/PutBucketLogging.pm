@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'FULL_CONTROL',    # values: FULL_CONTROL, READ, WRITE; OPTIONAL
             },
             ...
-          ],                       # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
       },
       ContentLength => 1,                 # OPTIONAL

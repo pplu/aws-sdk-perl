@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyEngineAttributeValue',    # max: 10000; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       EngineModel                => 'MyString',                  # OPTIONAL
       EngineVersion              => 'MyString',                  # OPTIONAL
       KeyPair                    => 'MyKeyPair',                 # OPTIONAL
@@ -74,10 +74,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PreferredMaintenanceWindow => 'MyTimeWindowDefinition',    # OPTIONAL
       SecurityGroupIds           => [
         'MyString', ...                                          # max: 10000
-      ],                                                         # OPTIONAL
+      ],    # OPTIONAL
       SubnetIds => [
-        'MyString', ...                                          # max: 10000
-      ],                                                         # OPTIONAL
+        'MyString', ...    # max: 10000
+      ],    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

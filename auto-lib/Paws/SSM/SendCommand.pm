@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         NotificationEvents => [
           'All',
           ...    # values: All, InProgress, Success, TimedOut, Cancelled, Failed
-        ],       # OPTIONAL
+        ],    # OPTIONAL
         NotificationType => 'Command',   # values: Command, Invocation; OPTIONAL
       },    # OPTIONAL
       OutputS3BucketName => 'MyS3BucketName',    # OPTIONAL
@@ -73,12 +73,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',         # OPTIONAL
       Targets        => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      TimeoutSeconds => 1,                       # OPTIONAL
+      ],    # OPTIONAL
+      TimeoutSeconds => 1,    # OPTIONAL
     );
 
     # Results:

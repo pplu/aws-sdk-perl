@@ -26,9 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-   # ListReceiptFilters
-   # The following example lists the IP address filters that are associated with
-   # an AWS account:
+# ListReceiptFilters
+# The following example lists the IP address filters that are associated with an
+# AWS account:
     my $ListReceiptFiltersResponse = $email->ListReceiptFilters();
 
     # Results:

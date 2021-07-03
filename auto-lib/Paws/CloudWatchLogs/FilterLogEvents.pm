@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LogStreamNamePrefix => 'MyLogStreamName',    # OPTIONAL
       LogStreamNames      => [
         'MyLogStreamName', ...                     # min: 1, max: 512
-      ],                                           # OPTIONAL
-      NextToken => 'MyNextToken',                  # OPTIONAL
-      StartTime => 1,                              # OPTIONAL
+      ],    # OPTIONAL
+      NextToken => 'MyNextToken',    # OPTIONAL
+      StartTime => 1,                # OPTIONAL
     );
 
     # Results:

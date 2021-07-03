@@ -39,21 +39,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key    => 'MyPatchOrchestratorFilterKey', # min: 1, max: 128; OPTIONAL
           Values => [
             'MyPatchOrchestratorFilterValue', ...    # min: 1, max: 256
-          ],                                         # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
-      MaxResults   => 1,                             # OPTIONAL
-      NextToken    => 'MyNextToken',                 # OPTIONAL
-      ResourceType => 'INSTANCE',                    # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults   => 1,                # OPTIONAL
+      NextToken    => 'MyNextToken',    # OPTIONAL
+      ResourceType => 'INSTANCE',       # OPTIONAL
       Targets      => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      WindowId => 'MyMaintenanceWindowId',       # OPTIONAL
+      ],    # OPTIONAL
+      WindowId => 'MyMaintenanceWindowId',    # OPTIONAL
       );
 
     # Results:

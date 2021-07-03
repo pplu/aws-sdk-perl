@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                   # OPTIONAL
-      Tags => { 'MyString' => 'MyString', },    # OPTIONAL
-      Value => 'MyString',                      # OPTIONAL
+      Tags  => { 'MyString' => 'MyString', },    # OPTIONAL
+      Value => 'MyString',                       # OPTIONAL
     );
 
     # Results:

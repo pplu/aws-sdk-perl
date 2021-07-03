@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ProductId         => 'MyProductId',            # max: 256; OPTIONAL
           },
           ...
-        ],                                                 # min: 1, max: 1
+        ],    # min: 1, max: 1
         SupportedContentTypes => [
-          'MyContentType', ...                             # max: 256
+          'MyContentType', ...    # max: 256
         ],
         SupportedRealtimeInferenceInstanceTypes => [
           'ml.t2.medium',
@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ModelDataUrl  => 'MyUrl',          # max: 1024; OPTIONAL
           },
           ...
-        ],                                     # min: 1, max: 1
+        ],    # min: 1, max: 1
 
       },    # OPTIONAL
       ValidationSpecification => {
@@ -89,8 +89,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 CompressionType => 'None',    # values: None, Gzip; OPTIONAL
-                ContentType => 'MyContentType',    # max: 256
-                SplitType =>
+                ContentType     => 'MyContentType',    # max: 256
+                SplitType       =>
                   'None',    # values: None, Line, RecordIO, TFRecord; OPTIONAL
               },
               TransformOutput => {
@@ -100,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KmsKeyId     => 'MyKmsKeyId',    # max: 2048; OPTIONAL
               },
               TransformResources => {
-                InstanceCount => 1,               # min: 1
+                InstanceCount => 1,                # min: 1
                 InstanceType  => 'ml.m4.xlarge'
                 , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
                 VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
@@ -117,8 +117,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # min: 1, max: 1
-        ValidationRole => 'MyRoleArn',         # min: 20, max: 2048
+        ],    # min: 1, max: 1
+        ValidationRole => 'MyRoleArn',    # min: 20, max: 2048
 
       },    # OPTIONAL
     );

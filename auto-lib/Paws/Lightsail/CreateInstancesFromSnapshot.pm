@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       AttachedDiskMapping => {
         'MyResourceName' => [
           {
@@ -60,18 +60,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-      },        # OPTIONAL
+      },    # OPTIONAL
       InstanceSnapshotName => 'MyResourceName',    # OPTIONAL
       KeyPairName          => 'MyResourceName',    # OPTIONAL
       RestoreDate          => 'Mystring',          # OPTIONAL
       SourceInstanceName   => 'Mystring',          # OPTIONAL
       Tags                 => [
         {
-          Key   => 'MyTagKey',                     # OPTIONAL
-          Value => 'MyTagValue',                   # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       UseLatestRestorableAutoSnapshot => 1,             # OPTIONAL
       UserData                        => 'Mystring',    # OPTIONAL
       );

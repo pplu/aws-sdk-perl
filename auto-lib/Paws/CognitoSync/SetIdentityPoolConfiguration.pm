@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $cognito -sync->SetIdentityPoolConfiguration(
       IdentityPoolId => 'MyIdentityPoolId',
       CognitoStreams => {
-        RoleArn    => 'MyAssumeRoleArn',    # min: 20, max: 2048; OPTIONAL
-        StreamName => 'MyStreamName',       # min: 1, max: 128; OPTIONAL
+        RoleArn         => 'MyAssumeRoleArn',    # min: 20, max: 2048; OPTIONAL
+        StreamName      => 'MyStreamName',       # min: 1, max: 128; OPTIONAL
         StreamingStatus => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
       },    # OPTIONAL
       PushSync => {
         ApplicationArns => [ 'MyApplicationArn', ... ],    # OPTIONAL
-        RoleArn => 'MyAssumeRoleArn',    # min: 20, max: 2048; OPTIONAL
+        RoleArn         => 'MyAssumeRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       );
 

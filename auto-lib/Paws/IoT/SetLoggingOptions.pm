@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iot = Paws->service('IoT');
     $iot->SetLoggingOptions(
       LoggingOptionsPayload => {
-        RoleArn => 'MyAwsArn',
+        RoleArn  => 'MyAwsArn',
         LogLevel =>
           'DEBUG',    # values: DEBUG, INFO, ERROR, WARN, DISABLED; OPTIONAL
       },

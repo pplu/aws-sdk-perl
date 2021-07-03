@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MembershipItemList => [
         {
           MemberId => 'MyNonEmptyString',
-          Role => 'Administrator',    # values: Administrator, Member; OPTIONAL
+          Role     => 'Administrator', # values: Administrator, Member; OPTIONAL
         },
         ...
       ],

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ArchiveCreationOutput = $glacier->CompleteMultipartUpload(
       'AccountId'   => '-',
       'ArchiveSize' => 3145728,
-      'Checksum' =>
+      'Checksum'    =>
         '9628195fcdbcbbe76cdde456d4646fa7de5f219fb39823836d81f0cc0e18aa67',
       'UploadId' =>
 '19gaRezEXAMPLES6Ry5YYdqthHOC_kGRCT03L9yetr220UmPtBYKk-OssZtLqyFu7sY1_lR7vgFuJV6NtcV5zpsJ',

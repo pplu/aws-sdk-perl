@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Source               => 'MyString',
         },
         ...
-      ],                                     # OPTIONAL
-      ResetAllParameters => 1,               # OPTIONAL
+      ],    # OPTIONAL
+      ResetAllParameters => 1,    # OPTIONAL
       );
 
     # Results:

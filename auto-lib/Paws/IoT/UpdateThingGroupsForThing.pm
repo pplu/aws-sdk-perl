@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OverrideDynamicGroups => 1,    # OPTIONAL
       ThingGroupsToAdd      => [
         'MyThingGroupName', ...      # min: 1, max: 128
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       ThingGroupsToRemove => [
-        'MyThingGroupName', ...      # min: 1, max: 128
-      ],                             # OPTIONAL
+        'MyThingGroupName', ...    # min: 1, max: 128
+      ],    # OPTIONAL
       ThingName => 'MyThingName',    # OPTIONAL
     );
 

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CertificateArn       => 'MyArn',                            # OPTIONAL
           CertificateName      => 'MyStringWithLengthBetween1And128', # OPTIONAL
           CertificateUploadDate => '1970-01-01T01:00:00',             # OPTIONAL
-          DomainNameStatus =>
+          DomainNameStatus      =>
             'AVAILABLE',    # values: AVAILABLE, UPDATING; OPTIONAL
           DomainNameStatusMessage => 'My__string',
           EndpointType   => 'REGIONAL',     # values: REGIONAL, EDGE; OPTIONAL
@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SecurityPolicy => 'TLS_1_0',      # values: TLS_1_0, TLS_1_2; OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

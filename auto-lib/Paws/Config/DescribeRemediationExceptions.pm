@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyStringWithCharLimit256',       # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

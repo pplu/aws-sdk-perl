@@ -33,29 +33,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $application-autoscaling = Paws->service('ApplicationAutoScaling');
-    # To register an ECS service as a scalable target
-    # This example registers a scalable target from an Amazon ECS service called
-    # web-app that is running on the default cluster, with a minimum desired
-    # count of 1 task and a maximum desired count of 10 tasks.
+  # To register an ECS service as a scalable target
+  # This example registers a scalable target from an Amazon ECS service called
+  # web-app that is running on the default cluster, with a minimum desired count
+  # of 1 task and a maximum desired count of 10 tasks.
     my $RegisterScalableTargetResponse =
       $application -autoscaling->RegisterScalableTarget(
       'MaxCapacity' => 10,
       'MinCapacity' => 1,
       'ResourceId'  => 'service/default/web-app',
-      'RoleARN' =>
+      'RoleARN'     =>
         'arn:aws:iam::012345678910:role/ApplicationAutoscalingECSRole',
       'ScalableDimension' => 'ecs:service:DesiredCount',
       'ServiceNamespace'  => 'ecs'
       );
 
-   # To register an EC2 Spot fleet as a scalable target
-   # This example registers a scalable target from an Amazon EC2 Spot fleet with
-   # a minimum target capacity of 1 and a maximum of 10.
+ # To register an EC2 Spot fleet as a scalable target
+ # This example registers a scalable target from an Amazon EC2 Spot fleet with a
+ # minimum target capacity of 1 and a maximum of 10.
     my $RegisterScalableTargetResponse =
       $application -autoscaling->RegisterScalableTarget(
       'MaxCapacity' => 10,
       'MinCapacity' => 1,
-      'ResourceId' =>
+      'ResourceId'  =>
         'spot-fleet-request/sfr-45e69d8a-be48-4539-bbf3-3464e99c50c3',
       'RoleARN' =>
         'arn:aws:iam::012345678910:role/ApplicationAutoscalingSpotRole',

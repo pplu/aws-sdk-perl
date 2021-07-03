@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.ecr = Paws->service('ECR');
-   # To obtain multiple images in a single request
-   # This example obtains information for an image with a specified image digest
-   # ID from the repository named ubuntu in the current account.
+# To obtain multiple images in a single request
+# This example obtains information for an image with a specified image digest ID
+# from the repository named ubuntu in the current account.
     my $BatchGetImageResponse = $api . ecr->BatchGetImage(
       'ImageIds' => [
 

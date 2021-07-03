@@ -41,13 +41,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateOTAUpdateResponse = $iot->CreateOTAUpdate(
       Files => [
         {
-          Attributes => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
+          Attributes  => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
           CodeSigning => {
-            AwsSignerJobId    => 'MySigningJobId',             # OPTIONAL
+            AwsSignerJobId    => 'MySigningJobId',              # OPTIONAL
             CustomCodeSigning => {
               CertificateChain => {
-                CertificateName => 'MyCertificateName',        # OPTIONAL
-                InlineDocument  => 'MyInlineDocument',         # OPTIONAL
+                CertificateName => 'MyCertificateName',    # OPTIONAL
+                InlineDocument  => 'MyInlineDocument',     # OPTIONAL
               },    # OPTIONAL
               HashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
               Signature     => {
@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               SigningProfileName      => 'MySigningProfileName',    # OPTIONAL
               SigningProfileParameter => {
-                CertificateArn => 'MyCertificateArn',               # OPTIONAL
+                CertificateArn          => 'MyCertificateArn',      # OPTIONAL
                 CertificatePathOnDevice =>
                   'MyCertificatePathOnDevice',                      # OPTIONAL
                 Platform => 'MyPlatform',                           # OPTIONAL
@@ -100,15 +100,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyOTAUpdateDescription',    # OPTIONAL
       Protocols   => [
         'MQTT', ...                               # values: MQTT, HTTP
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                    # OPTIONAL
-          Value => 'MyTagValue',                  # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
-      TargetSelection => 'CONTINUOUS',            # OPTIONAL
+      ],    # OPTIONAL
+      TargetSelection => 'CONTINUOUS',    # OPTIONAL
     );
 
     # Results:

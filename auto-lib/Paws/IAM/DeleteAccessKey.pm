@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To delete an access key for an IAM user
-    # The following command deletes one access key (access key ID and secret
-    # access key) assigned to the IAM user named Bob.
+ # To delete an access key for an IAM user
+ # The following command deletes one access key (access key ID and secret access
+ # key) assigned to the IAM user named Bob.
     $iam->DeleteAccessKey(
       'AccessKeyId' => 'AKIDPMS9RO4H3FEXAMPLE',
       'UserName'    => 'Bob'

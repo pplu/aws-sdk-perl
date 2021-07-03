@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To describe virtual tape(s) associated with gateway
-    # Returns a description of the specified Amazon Resource Name (ARN) of
-    # virtual tapes. If a TapeARN is not specified, returns a description of all
-    # virtual tapes.
+  # To describe virtual tape(s) associated with gateway
+  # Returns a description of the specified Amazon Resource Name (ARN) of virtual
+  # tapes. If a TapeARN is not specified, returns a description of all virtual
+  # tapes.
     my $DescribeTapesOutput = $storagegateway->DescribeTapes(
       'GatewayARN' =>
         'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',

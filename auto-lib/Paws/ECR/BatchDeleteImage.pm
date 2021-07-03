@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.ecr = Paws->service('ECR');
-    # To delete multiple images
-    # This example deletes images with the tags precise and trusty in a
-    # repository called ubuntu in the default registry for an account.
+  # To delete multiple images
+  # This example deletes images with the tags precise and trusty in a repository
+  # called ubuntu in the default registry for an account.
     my $BatchDeleteImageResponse = $api . ecr->BatchDeleteImage(
       'ImageIds' => [
 

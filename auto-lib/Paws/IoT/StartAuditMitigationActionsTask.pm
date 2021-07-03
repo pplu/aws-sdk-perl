@@ -36,18 +36,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AuditCheckToActionsMapping => {
         'MyAuditCheckName' => [
           'MyMitigationActionName', ...    # max: 128
-        ],                                 # , value: min: 1, max: 5
+        ],    # , value: min: 1, max: 5
       },
       ClientRequestToken => 'MyClientRequestToken',
       Target             => {
         AuditCheckToReasonCodeFilter => {
           'MyAuditCheckName' => [ 'MyReasonForNonComplianceCode', ... ]
-          ,                                # , value: min: 1, max: 25
+          ,    # , value: min: 1, max: 25
         },    # OPTIONAL
         AuditTaskId => 'MyAuditTaskId',    # min: 1, max: 40; OPTIONAL
         FindingIds  => [
           'MyFindingId', ...               # min: 1, max: 128
-        ],                                 # min: 1, max: 25; OPTIONAL
+        ],    # min: 1, max: 25; OPTIONAL
       },
       TaskId => 'MyAuditMitigationActionsTaskId',
 

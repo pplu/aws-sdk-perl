@@ -48,12 +48,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VpceId       => 'MyString',     # min: 1
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       AppstreamAgentVersion => 'MyAppstreamAgentVersion',    # OPTIONAL
       Description           => 'MyDescription',              # OPTIONAL
       DisplayName           => 'MyDisplayName',              # OPTIONAL
       DomainJoinInfo        => {
-        DirectoryName => 'MyDirectoryName',                  # OPTIONAL
+        DirectoryName                       => 'MyDirectoryName',    # OPTIONAL
         OrganizationalUnitDistinguishedName =>
           'MyOrganizationalUnitDistinguishedName',    # max: 2000; OPTIONAL
       },    # OPTIONAL
@@ -67,10 +67,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VpcConfig => {
         SecurityGroupIds => [
           'MyString', ...    # min: 1
-        ],                   # max: 5; OPTIONAL
+        ],    # max: 5; OPTIONAL
         SubnetIds => [
           'MyString', ...    # min: 1
-        ],                   # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

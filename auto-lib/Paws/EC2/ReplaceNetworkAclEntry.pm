@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To replace a network ACL entry
-    # This example replaces an entry for the specified network ACL. The new rule
-    # 100 allows ingress traffic from 203.0.113.12/24 on UDP port 53 (DNS) into
-    # any associated subnet.
+# To replace a network ACL entry
+# This example replaces an entry for the specified network ACL. The new rule 100
+# allows ingress traffic from 203.0.113.12/24 on UDP port 53 (DNS) into any
+# associated subnet.
     $ec2->ReplaceNetworkAclEntry(
       'CidrBlock'    => '203.0.113.12/24',
       'Egress'       => 0,

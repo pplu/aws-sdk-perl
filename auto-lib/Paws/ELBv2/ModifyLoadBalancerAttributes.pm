@@ -46,10 +46,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Attributes = $ModifyLoadBalancerAttributesOutput->Attributes;
 
-    # Returns a L<Paws::ELBv2::ModifyLoadBalancerAttributesOutput> object.
-    # To change the idle timeout
-    # This example changes the idle timeout value for the specified load
-    # balancer.
+  # Returns a L<Paws::ELBv2::ModifyLoadBalancerAttributesOutput> object.
+  # To change the idle timeout
+  # This example changes the idle timeout value for the specified load balancer.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
       'Attributes' => [
@@ -66,12 +65,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Attributes = $ModifyLoadBalancerAttributesOutput->Attributes;
 
-   # Returns a L<Paws::ELBv2::ModifyLoadBalancerAttributesOutput> object.
-   # To enable access logs
-   # This example enables access logs for the specified load balancer. Note that
-   # the S3 bucket must exist in the same region as the load balancer and must
-   # have a policy attached that grants access to the Elastic Load Balancing
-   # service.
+# Returns a L<Paws::ELBv2::ModifyLoadBalancerAttributesOutput> object.
+# To enable access logs
+# This example enables access logs for the specified load balancer. Note that
+# the S3 bucket must exist in the same region as the load balancer and must have
+# a policy attached that grants access to the Elastic Load Balancing service.
     my $ModifyLoadBalancerAttributesOutput =
       $elasticloadbalancing->ModifyLoadBalancerAttributes(
       'Attributes' => [

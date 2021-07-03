@@ -49,11 +49,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataCaptureConfig => {
         CaptureOptions => [
           {
-            CaptureMode => 'Input',       # values: Input, Output
+            CaptureMode => 'Input',    # values: Input, Output
 
           },
           ...
-        ],                                # min: 1, max: 2
+        ],    # min: 1, max: 2
         DestinationS3Uri          => 'MyDestinationS3Uri',    # max: 512
         InitialSamplingPercentage => 1,                       # max: 100
         CaptureContentTypeHeader  => {
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # min: 1, max: 10; OPTIONAL
           JsonContentTypes => [
             'MyJsonContentType', ...    # min: 1
-          ],                            # min: 1, max: 10; OPTIONAL
+          ],    # min: 1, max: 10; OPTIONAL
         },    # OPTIONAL
         EnableCapture => 1,               # OPTIONAL
         KmsKeyId      => 'MyKmsKeyId',    # max: 2048; OPTIONAL
@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

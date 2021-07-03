@@ -28,11 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-    # To describe all the addresses you've created for AWS Snowball
-    # This operation describes all the addresses that you've created for AWS
-    # Snowball. Calling this API in one of the US regions will return addresses
-    # from the list of all addresses associated with this account in all US
-    # regions.
+# To describe all the addresses you've created for AWS Snowball
+# This operation describes all the addresses that you've created for AWS
+# Snowball. Calling this API in one of the US regions will return addresses from
+# the list of all addresses associated with this account in all US regions.
     my $DescribeAddressesResult = $snowball->DescribeAddresses();
 
     # Results:

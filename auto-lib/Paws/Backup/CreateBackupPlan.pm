@@ -42,12 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 DestinationBackupVaultArn => 'MyARN',
                 Lifecycle                 => {
-                  DeleteAfterDays            => 1,            # OPTIONAL
-                  MoveToColdStorageAfterDays => 1,            # OPTIONAL
+                  DeleteAfterDays            => 1,    # OPTIONAL
+                  MoveToColdStorageAfterDays => 1,    # OPTIONAL
                 },    # OPTIONAL
               },
               ...
-            ],        # OPTIONAL
+            ],    # OPTIONAL
             Lifecycle => {
               DeleteAfterDays            => 1,    # OPTIONAL
               MoveToColdStorageAfterDays => 1,    # OPTIONAL
@@ -60,8 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
 
       },
-      BackupPlanTags   => { 'MyTagKey' => 'MyTagValue', },            # OPTIONAL
-      CreatorRequestId => 'Mystring',                                 # OPTIONAL
+      BackupPlanTags   => { 'MyTagKey' => 'MyTagValue', },    # OPTIONAL
+      CreatorRequestId => 'Mystring',                         # OPTIONAL
     );
 
     # Results:

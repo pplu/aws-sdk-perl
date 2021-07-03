@@ -30,9 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To associate a route table with a subnet
-    # This example associates the specified route table with the specified
-    # subnet.
+  # To associate a route table with a subnet
+  # This example associates the specified route table with the specified subnet.
     my $AssociateRouteTableResult = $ec2->AssociateRouteTable(
       'RouteTableId' => 'rtb-22574640',
       'SubnetId'     => 'subnet-9d4a7b6'

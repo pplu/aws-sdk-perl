@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ContactPrePassDurationSeconds  => 1,            # OPTIONAL
       DataflowEdges                  => [
         [ 'MyConfigArn', ... ], ...                   # min: 2, max: 2
-      ],                                              # OPTIONAL
+      ],    # OPTIONAL
       MinimumViableContactDurationSeconds => 1,                # OPTIONAL
       Name                                => 'MySafeName',     # OPTIONAL
       TrackingConfigArn                   => 'MyConfigArn',    # OPTIONAL

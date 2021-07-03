@@ -91,11 +91,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
                 },
                 ...
-              ],                                 # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             OnExit => {
               Events => [
@@ -148,11 +148,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
                 },
                 ...
-              ],                                 # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             OnInput => {
               Events => [
@@ -205,11 +205,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
                 },
                 ...
-              ],                                 # OPTIONAL
+              ],    # OPTIONAL
               TransitionEvents => [
                 {
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
@@ -262,14 +262,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                 },
                 ...
-              ],            # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
           },
           ...
-        ],        # min: 1
+        ],    # min: 1
 
       },
       DetectorModelName        => 'MyDetectorModelName',
@@ -284,7 +284,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

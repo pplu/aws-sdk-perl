@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         IncludeExecutionData => 1,    # OPTIONAL
         Level => 'ALL',               # values: ALL, ERROR, FATAL, OFF; OPTIONAL
       },    # OPTIONAL
@@ -54,8 +54,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
-      Type => 'STANDARD',           # OPTIONAL
+      ],    # OPTIONAL
+      Type => 'STANDARD',    # OPTIONAL
     );
 
     # Results:

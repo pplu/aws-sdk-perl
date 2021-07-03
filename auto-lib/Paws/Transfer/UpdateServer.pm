@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndpointDetails => {
         AddressAllocationIds => [ 'MyAddressAllocationId', ... ],    # OPTIONAL
         SubnetIds            => [ 'MySubnetId',            ... ],    # OPTIONAL
-        VpcEndpointId => 'MyVpcEndpointId',    # min: 22, max: 22; OPTIONAL
-        VpcId         => 'MyVpcId',            # OPTIONAL
+        VpcEndpointId        => 'MyVpcEndpointId',  # min: 22, max: 22; OPTIONAL
+        VpcId                => 'MyVpcId',          # OPTIONAL
       },    # OPTIONAL
       EndpointType            => 'PUBLIC',       # OPTIONAL
       HostKey                 => 'MyHostKey',    # OPTIONAL

@@ -40,20 +40,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       InstanceInformationFilterList => [
         {
           Key => 'InstanceIds'
           , # values: InstanceIds, AgentVersion, PingStatus, PlatformTypes, ActivationIds, IamRole, ResourceType, AssociationStatus
           ValueSet => [
             'MyInstanceInformationFilterValue', ...    # min: 1
-          ],                                           # min: 1, max: 100
+          ],    # min: 1, max: 100
 
         },
         ...
-      ],                                               # OPTIONAL
-      MaxResults => 1,                                 # OPTIONAL
-      NextToken  => 'MyNextToken',                     # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

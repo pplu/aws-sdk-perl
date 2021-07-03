@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->DescribeConfigurationAggregators(
       ConfigurationAggregatorNames => [
         'MyConfigurationAggregatorName', ...    # min: 1, max: 256
-      ],                                        # OPTIONAL
-      Limit     => 1,                           # OPTIONAL
-      NextToken => 'MyString',                  # OPTIONAL
+      ],    # OPTIONAL
+      Limit     => 1,             # OPTIONAL
+      NextToken => 'MyString',    # OPTIONAL
       );
 
     # Results:

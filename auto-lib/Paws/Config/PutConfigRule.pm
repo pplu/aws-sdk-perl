@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $config->PutConfigRule(
       ConfigRule => {
         Source => {
-          Owner => 'CUSTOM_LAMBDA',    # values: CUSTOM_LAMBDA, AWS
+          Owner            => 'CUSTOM_LAMBDA',    # values: CUSTOM_LAMBDA, AWS
           SourceIdentifier => 'MyStringWithCharLimit256',    # min: 1, max: 256
           SourceDetails    => [
             {
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyBaseResourceId',    # min: 1, max: 768; OPTIONAL
           ComplianceResourceTypes => [
             'MyStringWithCharLimit256', ...    # min: 1, max: 256
-          ],                                   # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           TagKey   => 'MyStringWithCharLimit128',   # min: 1, max: 128; OPTIONAL
           TagValue => 'MyStringWithCharLimit256',   # min: 1, max: 256
         },    # OPTIONAL
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

@@ -45,10 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value    => 'MyValue',               # min: 1, max: 140
           Synonyms => [
             'MyValue', ...                     # min: 1, max: 140
-          ],                                   # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       ParentSlotTypeSignature => 'MyCustomOrBuiltinSlotTypeName',    # OPTIONAL
       SlotTypeConfigurations  => [
         {
@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       ValueSelectionStrategy => 'ORIGINAL_VALUE',    # OPTIONAL
     );
 

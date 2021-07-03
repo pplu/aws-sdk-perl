@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Permission => 'ro',           # values: ro, rw; OPTIONAL
                 },
                 ...
-              ],                                # OPTIONAL
+              ],    # OPTIONAL
               Variables => { 'My__string' => 'My__string', },    # OPTIONAL
             },    # OPTIONAL
             ExecArgs   => 'My__string',
@@ -78,7 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

@@ -29,9 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To attach a permissions policy to an IAM role
-    # The following command adds a permissions policy to the role named
-    # Test-Role.
+  # To attach a permissions policy to an IAM role
+  # The following command adds a permissions policy to the role named Test-Role.
     $iam->PutRolePolicy(
       'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"s3:*","Resource":"*"}}',

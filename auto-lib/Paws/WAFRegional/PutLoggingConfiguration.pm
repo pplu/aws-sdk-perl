@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LoggingConfiguration => {
         LogDestinationConfigs => [
           'MyResourceArn', ...    # min: 1, max: 1224
-        ],                        # min: 1, max: 1
+        ],    # min: 1, max: 1
         ResourceArn    => 'MyResourceArn',    # min: 1, max: 1224
         RedactedFields => [
           {
@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Data => 'MyMatchFieldData',    # OPTIONAL
           },
           ...
-        ],                                 # OPTIONAL
+        ],    # OPTIONAL
       },
 
       );

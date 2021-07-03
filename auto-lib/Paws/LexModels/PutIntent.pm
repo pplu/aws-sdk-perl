@@ -46,24 +46,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConclusionStatement => {
         Messages => [
           {
-            Content => 'MyContentString',      # min: 1, max: 1000
+            Content     => 'MyContentString',    # min: 1, max: 1000
             ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
             GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 15
+        ],    # min: 1, max: 15
         ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       ConfirmationPrompt => {
         MaxAttempts => 1,    # min: 1, max: 5
         Messages    => [
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
+            Content     => 'MyContentString',    # min: 1, max: 1000
             ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
             GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 15
+        ],    # min: 1, max: 15
         ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion  => 1,                  # OPTIONAL
@@ -78,25 +78,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MaxAttempts => 1,    # min: 1, max: 5
           Messages    => [
             {
-              Content => 'MyContentString',    # min: 1, max: 1000
+              Content     => 'MyContentString',    # min: 1, max: 1000
               ContentType =>
                 'PlainText',    # values: PlainText, SSML, CustomPayload
               GroupNumber => 1, # min: 1, max: 5; OPTIONAL
             },
             ...
-          ],                    # min: 1, max: 15
+          ],    # min: 1, max: 15
           ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
         RejectionStatement => {
           Messages => [
             {
-              Content => 'MyContentString',    # min: 1, max: 1000
+              Content     => 'MyContentString',    # min: 1, max: 1000
               ContentType =>
                 'PlainText',    # values: PlainText, SSML, CustomPayload
               GroupNumber => 1, # min: 1, max: 5; OPTIONAL
             },
             ...
-          ],                    # min: 1, max: 15
+          ],    # min: 1, max: 15
           ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
         },
 
@@ -113,48 +113,48 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RejectionStatement    => {
         Messages => [
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
+            Content     => 'MyContentString',    # min: 1, max: 1000
             ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
             GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 15
+        ],    # min: 1, max: 15
         ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       SampleUtterances => [
         'MyUtterance', ...    # min: 1, max: 200
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       Slots => [
         {
-          Name           => 'MySlotName',       # min: 1, max: 100
-          SlotConstraint => 'Required',         # values: Required, Optional
-          Description    => 'MyDescription',    # max: 200
+          Name               => 'MySlotName',       # min: 1, max: 100
+          SlotConstraint     => 'Required',         # values: Required, Optional
+          Description        => 'MyDescription',    # max: 200
           ObfuscationSetting =>
             'NONE',    # values: NONE, DEFAULT_OBFUSCATION; OPTIONAL
           Priority         => 1,                  # max: 100; OPTIONAL
           ResponseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
           SampleUtterances => [
             'MyUtterance', ...                    # min: 1, max: 200
-          ],                                      # max: 10; OPTIONAL
+          ],    # max: 10; OPTIONAL
           SlotType =>
-            'MyCustomOrBuiltinSlotTypeName',      # min: 1, max: 100; OPTIONAL
-          SlotTypeVersion        => 'MyVersion',  # min: 1, max: 64; OPTIONAL
+            'MyCustomOrBuiltinSlotTypeName',    # min: 1, max: 100; OPTIONAL
+          SlotTypeVersion        => 'MyVersion',    # min: 1, max: 64; OPTIONAL
           ValueElicitationPrompt => {
-            MaxAttempts => 1,                     # min: 1, max: 5
+            MaxAttempts => 1,                       # min: 1, max: 5
             Messages    => [
               {
-                Content => 'MyContentString',     # min: 1, max: 1000
+                Content     => 'MyContentString',    # min: 1, max: 1000
                 ContentType =>
                   'PlainText',    # values: PlainText, SSML, CustomPayload
                 GroupNumber => 1, # min: 1, max: 5; OPTIONAL
               },
               ...
-            ],                    # min: 1, max: 15
+            ],    # min: 1, max: 15
             ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
           },
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

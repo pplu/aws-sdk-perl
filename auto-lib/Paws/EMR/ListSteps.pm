@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Marker    => 'MyMarker',      # OPTIONAL
       StepIds   => [
         'MyXmlString', ...          # max: 10280
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       StepStates => [
         'PENDING',
         ... # values: PENDING, CANCEL_PENDING, RUNNING, COMPLETED, CANCELLED, FAILED, INTERRUPTED

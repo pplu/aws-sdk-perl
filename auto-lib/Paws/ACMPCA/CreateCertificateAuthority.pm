@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         SigningAlgorithm => 'SHA256WITHECDSA'
         , # values: SHA256WITHECDSA, SHA384WITHECDSA, SHA512WITHECDSA, SHA256WITHRSA, SHA384WITHRSA, SHA512WITHRSA
         Subject => {
-          CommonName => 'MyString64',             # max: 64; OPTIONAL
-          Country    => 'MyCountryCodeString',    # OPTIONAL
+          CommonName => 'MyString64',                # max: 64; OPTIONAL
+          Country    => 'MyCountryCodeString',       # OPTIONAL
           DistinguishedNameQualifier =>
             'MyDistinguishedNameQualifierString',    # max: 64; OPTIONAL
           GenerationQualifier => 'MyString3',        # max: 3; OPTIONAL
@@ -73,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

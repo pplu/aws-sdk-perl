@@ -35,12 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name   => 'MyFilterName',    # min: 1, max: 64; OPTIONAL
           Values => [
             'MyFilterValue', ...       # min: 1, max: 64
-          ],                           # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
-      MaxResults => 1,                 # OPTIONAL
-      NextToken  => 'MyNextToken',     # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

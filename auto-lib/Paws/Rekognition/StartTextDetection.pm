@@ -44,14 +44,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RegionsOfInterest => [
           {
             BoundingBox => {
-              Height => 1.0,                           # OPTIONAL
-              Left   => 1.0,                           # OPTIONAL
-              Top    => 1.0,                           # OPTIONAL
-              Width  => 1.0,                           # OPTIONAL
+              Height => 1.0,    # OPTIONAL
+              Left   => 1.0,    # OPTIONAL
+              Top    => 1.0,    # OPTIONAL
+              Width  => 1.0,    # OPTIONAL
             },    # OPTIONAL
           },
           ...
-        ],        # max: 10; OPTIONAL
+        ],    # max: 10; OPTIONAL
         WordFilter => {
           MinBoundingBoxHeight => 1.0,    # max: 1; OPTIONAL
           MinBoundingBoxWidth  => 1.0,    # max: 1; OPTIONAL

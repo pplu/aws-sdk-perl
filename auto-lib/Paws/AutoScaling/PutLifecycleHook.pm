@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To create a lifecycle hook
     # This example creates a lifecycle hook.
     my $PutLifecycleHookAnswer = $autoscaling->PutLifecycleHook(
-      'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'LifecycleHookName'    => 'my-lifecycle-hook',
-      'LifecycleTransition'  => 'autoscaling:EC2_INSTANCE_LAUNCHING',
+      'AutoScalingGroupName'  => 'my-auto-scaling-group',
+      'LifecycleHookName'     => 'my-lifecycle-hook',
+      'LifecycleTransition'   => 'autoscaling:EC2_INSTANCE_LAUNCHING',
       'NotificationTargetARN' =>
         'arn:aws:sns:us-west-2:123456789012:my-sns-topic --role-arn',
       'RoleARN' => 'arn:aws:iam::123456789012:role/my-auto-scaling-role'

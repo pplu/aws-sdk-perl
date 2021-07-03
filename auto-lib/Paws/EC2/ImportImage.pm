@@ -62,11 +62,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },                                # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      DryRun     => 1,                      # OPTIONAL
-      Encrypted  => 1,                      # OPTIONAL
-      Hypervisor => 'MyString',             # OPTIONAL
-      KmsKeyId   => 'MyKmsKeyId',           # OPTIONAL
+      ],    # OPTIONAL
+      DryRun                => 1,                               # OPTIONAL
+      Encrypted             => 1,                               # OPTIONAL
+      Hypervisor            => 'MyString',                      # OPTIONAL
+      KmsKeyId              => 'MyKmsKeyId',                    # OPTIONAL
       LicenseSpecifications =>
         [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
       LicenseType => 'MyString',                                # OPTIONAL

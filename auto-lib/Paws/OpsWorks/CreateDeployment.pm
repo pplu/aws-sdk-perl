@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Args => { 'MyString' => [ 'MyString', ... ], },    # OPTIONAL
       },
       StackId     => 'MyString',
-      AppId       => 'MyString',                           # OPTIONAL
-      Comment     => 'MyString',                           # OPTIONAL
-      CustomJson  => 'MyString',                           # OPTIONAL
-      InstanceIds => [ 'MyString', ... ],                  # OPTIONAL
-      LayerIds    => [ 'MyString', ... ],                  # OPTIONAL
+      AppId       => 'MyString',             # OPTIONAL
+      Comment     => 'MyString',             # OPTIONAL
+      CustomJson  => 'MyString',             # OPTIONAL
+      InstanceIds => [ 'MyString', ... ],    # OPTIONAL
+      LayerIds    => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:

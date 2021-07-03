@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ReplicationJobId         => 'MyReplicationJobId',    # OPTIONAL
               ReplicationJobTerminated => 1,                       # OPTIONAL
               ServerId                 => 'MyServerId',            # OPTIONAL
-              ServerType =>
+              ServerType               =>
                 'VIRTUAL_MACHINE',    # values: VIRTUAL_MACHINE; OPTIONAL
               VmServer => {
                 VmManagerName => 'MyVmManagerName',    # OPTIONAL
@@ -61,17 +61,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],            # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # OPTIONAL
           Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

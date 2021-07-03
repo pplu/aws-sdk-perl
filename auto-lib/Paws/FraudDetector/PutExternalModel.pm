@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutExternalModelResult = $frauddetector->PutExternalModel(
       InputConfiguration => {
         IsOpaque         => 1,
-        CsvInputTemplate => 'Mystring',    # OPTIONAL
+        CsvInputTemplate => 'Mystring',     # OPTIONAL
         Format => 'TEXT_CSV',    # values: TEXT_CSV, APPLICATION_JSON; OPTIONAL
         JsonInputTemplate => 'Mystring',    # OPTIONAL
       },

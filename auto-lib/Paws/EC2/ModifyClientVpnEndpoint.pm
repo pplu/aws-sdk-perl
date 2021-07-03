@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DnsServers  => {
         CustomDnsServers => [
           'MyString', ...           # OPTIONAL
-        ],                          # OPTIONAL
-        Enabled => 1,               # OPTIONAL
+        ],    # OPTIONAL
+        Enabled => 1,    # OPTIONAL
       },    # OPTIONAL
       DryRun               => 1,             # OPTIONAL
       ServerCertificateArn => 'MyString',    # OPTIONAL

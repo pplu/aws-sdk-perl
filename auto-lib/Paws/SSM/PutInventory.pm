@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyAttributeValue',    # key: min: 1, max: 64, value: max: 4096
             },
             ...                        # max: 50
-          ],                           # max: 10000; OPTIONAL
+          ],    # max: 10000; OPTIONAL
           ContentHash => 'MyInventoryItemContentHash',    # max: 256; OPTIONAL
           Context     => {
             'MyAttributeName' =>

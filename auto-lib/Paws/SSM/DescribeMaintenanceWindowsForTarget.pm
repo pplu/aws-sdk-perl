@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceType => 'INSTANCE',
       Targets      => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
       ],
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyNextToken',               # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:

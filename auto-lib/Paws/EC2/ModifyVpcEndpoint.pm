@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyVpcEndpointResult = $ec2->ModifyVpcEndpoint(
       VpcEndpointId          => 'MyVpcEndpointId',
-      AddRouteTableIds       => [ 'MyRouteTableId', ... ],       # OPTIONAL
+      AddRouteTableIds       => [ 'MyRouteTableId',    ... ],    # OPTIONAL
       AddSecurityGroupIds    => [ 'MySecurityGroupId', ... ],    # OPTIONAL
-      AddSubnetIds           => [ 'MySubnetId', ... ],           # OPTIONAL
+      AddSubnetIds           => [ 'MySubnetId',        ... ],    # OPTIONAL
       DryRun                 => 1,                               # OPTIONAL
       PolicyDocument         => 'MyString',                      # OPTIONAL
       PrivateDnsEnabled      => 1,                               # OPTIONAL
-      RemoveRouteTableIds    => [ 'MyRouteTableId', ... ],       # OPTIONAL
+      RemoveRouteTableIds    => [ 'MyRouteTableId',    ... ],    # OPTIONAL
       RemoveSecurityGroupIds => [ 'MySecurityGroupId', ... ],    # OPTIONAL
-      RemoveSubnetIds        => [ 'MySubnetId', ... ],           # OPTIONAL
+      RemoveSubnetIds        => [ 'MySubnetId',        ... ],    # OPTIONAL
       ResetPolicy            => 1,                               # OPTIONAL
     );
 

@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateMultiplexResponse = $medialive->CreateMultiplex(
       AvailabilityZones => [ 'My__string', ... ],
       MultiplexSettings => {
-        TransportStreamBitrate => 1,    # min: 1000000, max: 100000000
-        TransportStreamId      => 1,    # max: 65535
+        TransportStreamBitrate              => 1, # min: 1000000, max: 100000000
+        TransportStreamId                   => 1, # max: 65535
         MaximumVideoBufferDelayMilliseconds =>
-          1,                            # min: 1000, max: 3000; OPTIONAL
+          1,    # min: 1000, max: 3000; OPTIONAL
         TransportStreamReservedBitrate => 1,    # max: 100000000; OPTIONAL
       },
       Name      => 'My__string',

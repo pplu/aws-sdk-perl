@@ -38,284 +38,284 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         CompanyName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ComplianceStatus => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         Confidence => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         CreatedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         Criticality => [
           {
-            Eq  => 1,                       # OPTIONAL
-            Gte => 1,                       # OPTIONAL
-            Lte => 1,                       # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         Description => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         FirstObservedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         GeneratorId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         Id => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         Keyword => [
           {
-            Value => 'MyNonEmptyString',      # OPTIONAL
+            Value => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         LastObservedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         MalwareName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         MalwarePath => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         MalwareState => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         MalwareType => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkDestinationDomain => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkDestinationIpV4 => [
           {
-            Cidr => 'MyNonEmptyString',       # OPTIONAL
+            Cidr => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkDestinationIpV6 => [
           {
-            Cidr => 'MyNonEmptyString',       # OPTIONAL
+            Cidr => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkDestinationPort => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkDirection => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkProtocol => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourceDomain => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourceIpV4 => [
           {
-            Cidr => 'MyNonEmptyString',       # OPTIONAL
+            Cidr => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourceIpV6 => [
           {
-            Cidr => 'MyNonEmptyString',       # OPTIONAL
+            Cidr => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourceMac => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourcePort => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NoteText => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         NoteUpdatedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         NoteUpdatedBy => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ProcessLaunchedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         ProcessName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ProcessParentPid => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ProcessPath => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ProcessPid => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ProcessTerminatedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         ProductArn => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ProductFields => [
           {
             Comparison => 'EQUALS',              # values: EQUALS; OPTIONAL
@@ -323,178 +323,178 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value      => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                       # OPTIONAL
+        ],    # OPTIONAL
         ProductName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         RecommendationText => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         RecordState => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         RelatedFindingsId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         RelatedFindingsProductArn => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceIamInstanceProfileArn => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceImageId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceIpV4Addresses => [
           {
-            Cidr => 'MyNonEmptyString',       # OPTIONAL
+            Cidr => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceIpV6Addresses => [
           {
-            Cidr => 'MyNonEmptyString',       # OPTIONAL
+            Cidr => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceKeyName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceLaunchedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceSubnetId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceType => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceVpcId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsIamAccessKeyCreatedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsIamAccessKeyStatus => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsIamAccessKeyUserName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsS3BucketOwnerId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsS3BucketOwnerName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerImageId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerImageName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerLaunchedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerName => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceDetailsOther => [
           {
             Comparison => 'EQUALS',              # values: EQUALS; OPTIONAL
@@ -502,28 +502,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value      => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                       # OPTIONAL
+        ],    # OPTIONAL
         ResourceId => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourcePartition => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceRegion => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ResourceTags => [
           {
             Comparison => 'EQUALS',              # values: EQUALS; OPTIONAL
@@ -531,115 +531,115 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value      => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                       # OPTIONAL
+        ],    # OPTIONAL
         ResourceType => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         SeverityLabel => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         SeverityNormalized => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         SeverityProduct => [
           {
-            Eq  => 1,                         # OPTIONAL
-            Gte => 1,                         # OPTIONAL
-            Lte => 1,                         # OPTIONAL
+            Eq  => 1,    # OPTIONAL
+            Gte => 1,    # OPTIONAL
+            Lte => 1,    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         SourceUrl => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorCategory => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorLastObservedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorSource => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorSourceUrl => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorType => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorValue => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         Title => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         Type => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         UpdatedAt => [
           {
             DateRange => {
-              Unit  => 'DAYS',                # values: DAYS; OPTIONAL
-              Value => 1,                     # OPTIONAL
+              Unit  => 'DAYS',    # values: DAYS; OPTIONAL
+              Value => 1,         # OPTIONAL
             },    # OPTIONAL
             End   => 'MyNonEmptyString',    # OPTIONAL
             Start => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                  # OPTIONAL
+        ],    # OPTIONAL
         UserDefinedFields => [
           {
             Comparison => 'EQUALS',              # values: EQUALS; OPTIONAL
@@ -647,25 +647,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value      => 'MyNonEmptyString',    # OPTIONAL
           },
           ...
-        ],                                       # OPTIONAL
+        ],    # OPTIONAL
         VerificationState => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         WorkflowState => [
           {
             Comparison => 'EQUALS',           # values: EQUALS, PREFIX; OPTIONAL
             Value      => 'MyNonEmptyString', # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
       },
       Note => {
-        Text      => 'MyNonEmptyString',      # OPTIONAL
-        UpdatedBy => 'MyNonEmptyString',      # OPTIONAL
+        Text      => 'MyNonEmptyString',    # OPTIONAL
+        UpdatedBy => 'MyNonEmptyString',    # OPTIONAL
 
       },    # OPTIONAL
       RecordState => 'ACTIVE',    # OPTIONAL

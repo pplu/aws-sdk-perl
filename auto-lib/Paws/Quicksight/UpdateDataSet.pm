@@ -48,13 +48,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SqlQuery      => 'MySqlQuery',         # min: 1, max: 65536
             Columns       => [
               {
-                Name => 'MyColumnName',            # min: 1, max: 128
+                Name => 'MyColumnName',    # min: 1, max: 128
                 Type => 'STRING'
                 , # values: STRING, INTEGER, DECIMAL, DATETIME, BIT, BOOLEAN, JSON
 
               },
               ...
-            ],    # min: 1, max: 2048
+            ],    # min: 1, max: 2048; OPTIONAL
           },    # OPTIONAL
           RelationalTable => {
             DataSourceArn => 'MyArn',
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048
+            ],    # min: 1, max: 2048; OPTIONAL
             Name   => 'MyRelationalTableName',      # min: 1, max: 64
             Schema => 'MyRelationalTableSchema',    # max: 64; OPTIONAL
           },    # OPTIONAL
@@ -80,13 +80,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 2048
+            ],    # min: 1, max: 2048; OPTIONAL
             UploadSettings => {
               ContainsHeader => 1,                # OPTIONAL
               Delimiter      => 'MyDelimiter',    # min: 1, max: 1; OPTIONAL
-              Format =>
+              Format         =>
                 'CSV',    # values: CSV, TSV, CLF, ELF, XLSX, JSON; OPTIONAL
-              StartFromRow => 1,    # min: 1; OPTIONAL
+              StartFromRow  => 1,    # min: 1; OPTIONAL
               TextQualifier =>
                 'DOUBLE_QUOTE',   # values: DOUBLE_QUOTE, SINGLE_QUOTE; OPTIONAL
             },    # OPTIONAL
@@ -98,14 +98,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           GeoSpatialColumnGroup => {
             Columns => [
               'MyColumnName', ...    # min: 1, max: 128
-            ],                       # min: 1, max: 16
+            ],    # min: 1, max: 16
             CountryCode => 'US',                   # values: US
             Name        => 'MyColumnGroupName',    # min: 1, max: 64
 
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       LogicalTableMap => {
         'MyLogicalTableId' => {
           Alias  => 'MyLogicalTableAlias',    # min: 1, max: 64
@@ -114,7 +114,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               LeftOperand  => 'MyLogicalTableId',    # min: 1, max: 64
               OnClause     => 'MyOnClause',          # min: 1, max: 512
               RightOperand => 'MyLogicalTableId',    # min: 1, max: 64
-              Type => 'INNER',    # values: INNER, OUTER, LEFT, RIGHT
+              Type         => 'INNER',    # values: INNER, OUTER, LEFT, RIGHT
 
             },    # OPTIONAL
             PhysicalTableId => 'MyPhysicalTableId',    # min: 1, max: 64
@@ -122,7 +122,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DataTransforms => [
             {
               CastColumnTypeOperation => {
-                ColumnName => 'MyColumnName',          # min: 1, max: 128
+                ColumnName    => 'MyColumnName',    # min: 1, max: 128
                 NewColumnType =>
                   'STRING',    # values: STRING, INTEGER, DECIMAL, DATETIME
                 Format => 'MyTypeCastFormat',    # max: 32; OPTIONAL
@@ -136,7 +136,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                   # min: 1, max: 128
+                ],    # min: 1, max: 128
 
               },    # OPTIONAL
               FilterOperation => {
@@ -165,7 +165,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # min: 1, max: 2048; OPTIONAL
+          ],    # min: 1, max: 2048; OPTIONAL
         },    # key: min: 1, max: 64
       },    # OPTIONAL
       RowLevelPermissionDataSet => {

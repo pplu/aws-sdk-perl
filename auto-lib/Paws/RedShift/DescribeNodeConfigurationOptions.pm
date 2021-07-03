@@ -42,14 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name => 'NodeType'
           , # values: NodeType, NumberOfNodes, EstimatedDiskUtilizationPercent, Mode; OPTIONAL
           Operator => 'eq',  # values: eq, lt, gt, le, ge, in, between; OPTIONAL
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Values   => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      Marker             => 'MyString',     # OPTIONAL
-      MaxRecords         => 1,              # OPTIONAL
-      OwnerAccount       => 'MyString',     # OPTIONAL
-      SnapshotIdentifier => 'MyString',     # OPTIONAL
+      ],    # OPTIONAL
+      Marker             => 'MyString',    # OPTIONAL
+      MaxRecords         => 1,             # OPTIONAL
+      OwnerAccount       => 'MyString',    # OPTIONAL
+      SnapshotIdentifier => 'MyString',    # OPTIONAL
       );
 
     # Results:

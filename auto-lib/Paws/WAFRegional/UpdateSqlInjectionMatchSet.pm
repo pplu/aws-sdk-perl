@@ -29,10 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $waf-regional = Paws->service('WAFRegional');
-    # To update a SQL injection match set
-    # The following example deletes a SqlInjectionMatchTuple object (filters) in
-    # a SQL injection match set with the ID
-    # example1ds3t-46da-4fdb-b8d5-abc321j569j5.
+ # To update a SQL injection match set
+ # The following example deletes a SqlInjectionMatchTuple object (filters) in a
+ # SQL injection match set with the ID example1ds3t-46da-4fdb-b8d5-abc321j569j5.
     my $UpdateSqlInjectionMatchSetResponse =
       $waf -regional->UpdateSqlInjectionMatchSet(
       'ChangeToken'            => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',

@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VpceId       => 'MyString',     # min: 1
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       ApplicationSettings => {
         Enabled       => 1,
         SettingsGroup => 'MySettingsGroup',    # max: 100; OPTIONAL
@@ -60,20 +60,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DisplayName             => 'MyDisplayName',    # OPTIONAL
       EmbedHostDomains        => [
         'MyEmbedHostDomain', ...                     # max: 128
-      ],                                             # OPTIONAL
-      FeedbackURL       => 'MyFeedbackURL',          # OPTIONAL
-      RedirectURL       => 'MyRedirectURL',          # OPTIONAL
+      ],    # OPTIONAL
+      FeedbackURL       => 'MyFeedbackURL',    # OPTIONAL
+      RedirectURL       => 'MyRedirectURL',    # OPTIONAL
       StorageConnectors => [
         {
           ConnectorType =>
             'HOMEFOLDERS',    # values: HOMEFOLDERS, GOOGLE_DRIVE, ONE_DRIVE
           Domains => [
             'MyDomain', ...    # min: 1, max: 64
-          ],                   # max: 10; OPTIONAL
+          ],    # max: 10; OPTIONAL
           ResourceIdentifier => 'MyResourceIdentifier',    # min: 1; OPTIONAL
         },
         ...
-      ],                                                   # OPTIONAL
+      ],    # OPTIONAL
       UserSettings => [
         {
           Action => 'CLIPBOARD_COPY_FROM_LOCAL_DEVICE'
@@ -82,7 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

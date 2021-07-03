@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SecretString       => 'MySecretStringType',          # OPTIONAL
       VersionStages      => [
         'MySecretVersionStageType', ...                    # min: 1, max: 256
-      ],                                                   # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

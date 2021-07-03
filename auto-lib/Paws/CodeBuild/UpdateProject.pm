@@ -78,13 +78,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Certificate          => 'MyString',    # OPTIONAL
         EnvironmentVariables => [
           {
-            Name  => 'MyNonEmptyString',       # min: 1
-            Value => 'MyString',               # OPTIONAL
+            Name  => 'MyNonEmptyString',    # min: 1
+            Value => 'MyString',            # OPTIONAL
             Type  => 'PLAINTEXT'
             ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
           },
           ...
-        ],       # OPTIONAL
+        ],    # OPTIONAL
         ImagePullCredentialsType =>
           'CODEBUILD',    # values: CODEBUILD, SERVICE_ROLE; OPTIONAL
         PrivilegedMode     => 1,    # OPTIONAL
@@ -103,12 +103,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Type         => 'EFS',         # values: EFS; OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       LogsConfig => {
         CloudWatchLogs => {
-          Status     => 'ENABLED',       # values: ENABLED, DISABLED
-          GroupName  => 'MyString',      # OPTIONAL
-          StreamName => 'MyString',      # OPTIONAL
+          Status     => 'ENABLED',     # values: ENABLED, DISABLED
+          GroupName  => 'MyString',    # OPTIONAL
+          StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
           Status             => 'ENABLED',     # values: ENABLED, DISABLED
@@ -119,7 +119,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       QueuedTimeoutInMinutes => 1,    # OPTIONAL
       SecondaryArtifacts     => [
         {
-          Type => 'CODEPIPELINE',     # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
           ArtifactIdentifier   => 'MyString', # OPTIONAL
           EncryptionDisabled   => 1,          # OPTIONAL
           Location             => 'MyString', # OPTIONAL
@@ -130,15 +130,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Path                 => 'MyString', # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       SecondarySourceVersions => [
         {
-          SourceIdentifier => 'MyString',     # OPTIONAL
-          SourceVersion    => 'MyString',     # OPTIONAL
+          SourceIdentifier => 'MyString',    # OPTIONAL
+          SourceVersion    => 'MyString',    # OPTIONAL
 
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       SecondarySources => [
         {
           Type => 'CODECOMMIT'
@@ -159,8 +159,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SourceIdentifier  => 'MyString',    # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
-      ServiceRole => 'MyNonEmptyString',      # OPTIONAL
+      ],    # OPTIONAL
+      ServiceRole => 'MyNonEmptyString',    # OPTIONAL
       Source      => {
         Type => 'CODECOMMIT'
         , # values: CODECOMMIT, CODEPIPELINE, GITHUB, S3, BITBUCKET, GITHUB_ENTERPRISE, NO_SOURCE
@@ -186,16 +186,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyValueInput',    # min: 1, max: 255; OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
-      TimeoutInMinutes => 1,          # OPTIONAL
+      ],    # OPTIONAL
+      TimeoutInMinutes => 1,    # OPTIONAL
       VpcConfig        => {
         SecurityGroupIds => [
-          'MyNonEmptyString', ...     # min: 1
-        ],                            # max: 5; OPTIONAL
+          'MyNonEmptyString', ...    # min: 1
+        ],    # max: 5; OPTIONAL
         Subnets => [
-          'MyNonEmptyString', ...     # min: 1
-        ],                            # max: 16; OPTIONAL
-        VpcId => 'MyNonEmptyString',  # min: 1
+          'MyNonEmptyString', ...    # min: 1
+        ],    # max: 16; OPTIONAL
+        VpcId => 'MyNonEmptyString',    # min: 1
       },    # OPTIONAL
     );
 

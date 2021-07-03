@@ -33,19 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeBackupsResponse = $fsx->DescribeBackups(
       BackupIds => [
         'MyBackupId', ...    # min: 12, max: 128
-      ],                     # OPTIONAL
+      ],    # OPTIONAL
       Filters => [
         {
           Name =>
             'file-system-id',    # values: file-system-id, backup-type; OPTIONAL
           Values => [
             'MyFilterValue', ...    # min: 1, max: 128
-          ],                        # max: 20; OPTIONAL
+          ],    # max: 20; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
-      MaxResults => 1,              # OPTIONAL
-      NextToken  => 'MyNextToken',  # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

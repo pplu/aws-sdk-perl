@@ -39,14 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ,    # min: 1, max: 16384; OPTIONAL
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       OnStart => [
         {
           Content => 'MyNotebookInstanceLifecycleConfigContent'
           ,    # min: 1, max: 16384; OPTIONAL
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

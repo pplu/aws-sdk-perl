@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'string',    # values: string, integer, float, timestamp; OPTIONAL
           },
           ...
-        ],                 # OPTIONAL
+        ],    # OPTIONAL
       },
       DataFrequency    => 'MyFrequency',    # OPTIONAL
       EncryptionConfig => {

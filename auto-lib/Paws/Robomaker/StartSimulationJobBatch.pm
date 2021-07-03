@@ -38,23 +38,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DataSources             => [
             {
               Name     => 'MyName',        # min: 1, max: 255
-              S3Bucket => 'MyS3Bucket',    # min: 3, max: 63; OPTIONAL
+              S3Bucket => 'MyS3Bucket',    # min: 3, max: 63
               S3Keys   => [
-                'MyS3Key', ...             # min: 1, max: 1024; OPTIONAL
-              ],                           # min: 1, max: 100
+                'MyS3Key', ...             # min: 1, max: 1024
+              ],    # min: 1, max: 100
 
             },
             ...
-          ],                               # min: 1, max: 5; OPTIONAL
-          FailureBehavior => 'Fail',       # values: Fail, Continue; OPTIONAL
-          IamRole         => 'MyIamRole',  # min: 1, max: 255; OPTIONAL
+          ],    # min: 1, max: 5; OPTIONAL
+          FailureBehavior => 'Fail',         # values: Fail, Continue; OPTIONAL
+          IamRole         => 'MyIamRole',    # min: 1, max: 255; OPTIONAL
           LoggingConfig   => {
             RecordAllRosTopics => 1,
 
-          },                               # OPTIONAL
+          },                                 # OPTIONAL
           OutputLocation => {
-            S3Bucket => 'MyS3Bucket',      # min: 3, max: 63; OPTIONAL
-            S3Prefix => 'MyS3Key',         # min: 1, max: 1024; OPTIONAL
+            S3Bucket => 'MyS3Bucket',        # min: 3, max: 63
+            S3Prefix => 'MyS3Key',           # min: 1, max: 1024
           },    # OPTIONAL
           RobotApplications => [
             {
@@ -74,16 +74,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EnableOnPublicIp => 1,    # OPTIONAL
                     },
                     ...
-                  ],                            # max: 10; OPTIONAL
+                  ],    # max: 10; OPTIONAL
                 },    # OPTIONAL
               },
               ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
             },
             ...
-          ],                                        # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
           SimulationApplications => [
             {
-              Application  => 'MyArn',              # min: 1, max: 1224
+              Application  => 'MyArn',    # min: 1, max: 1224
               LaunchConfig => {
                 LaunchFile           => 'MyCommand',    # min: 1, max: 1024
                 PackageName          => 'MyCommand',    # min: 1, max: 1024
@@ -99,13 +99,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       EnableOnPublicIp => 1,    # OPTIONAL
                     },
                     ...
-                  ],                            # max: 10; OPTIONAL
+                  ],    # max: 10; OPTIONAL
                 },    # OPTIONAL
               },
               ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
             },
             ...
-          ],                                        # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
           Tags => {
             'MyTagKey' => 'MyTagValue', # key: min: 1, max: 128, value: max: 256
           },    # max: 50; OPTIONAL
@@ -113,11 +113,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VpcConfig              => {
             Subnets => [
               'MyNonEmptyString', ...    # min: 1, max: 255
-            ],                           # min: 1, max: 16
-            AssignPublicIp => 1,         # OPTIONAL
+            ],    # min: 1, max: 16
+            AssignPublicIp => 1,    # OPTIONAL
             SecurityGroups => [
               'MyNonEmptyString', ...    # min: 1, max: 255
-            ],                           # min: 1, max: 5; OPTIONAL
+            ],    # min: 1, max: 5; OPTIONAL
           },    # OPTIONAL
         },
         ...

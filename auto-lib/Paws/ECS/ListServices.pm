@@ -31,9 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ecs = Paws->service('ECS');
-    # To list the services in a cluster
-    # This example lists the services running in the default cluster for an
-    # account.
+# To list the services in a cluster
+# This example lists the services running in the default cluster for an account.
     my $ListServicesResponse = $ecs->ListServices();
 
     # Results:

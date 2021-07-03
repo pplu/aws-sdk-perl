@@ -40,19 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       SecurityGroupIds   => [
         'MySecurityGroupId', ...                       # min: 11, max: 20
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       WindowsConfiguration => {
         ThroughputCapacity => 1,                  # min: 8, max: 2048
         ActiveDirectoryId  => 'MyDirectoryId',    # min: 12, max: 12; OPTIONAL
-        AutomaticBackupRetentionDays => 1,        # max: 35; OPTIONAL
-        CopyTagsToBackups            => 1,        # OPTIONAL
+        AutomaticBackupRetentionDays  => 1,       # max: 35; OPTIONAL
+        CopyTagsToBackups             => 1,       # OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                          # min: 5, max: 5; OPTIONAL
         DeploymentType =>
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         SelfManagedActiveDirectoryConfiguration => {
           DnsIps => [
             'MyIpAddress', ...                # min: 7, max: 15
-          ],                                  # min: 1, max: 2
+          ],    # min: 1, max: 2
           DomainName =>
             'MyActiveDirectoryFullyQualifiedName',    # min: 1, max: 255
           Password => 'MyDirectoryPassword',          # min: 1, max: 256

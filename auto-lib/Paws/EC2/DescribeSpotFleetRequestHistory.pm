@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe Spot fleet history
-    # This example returns the history for the specified Spot fleet starting at
-    # the specified time.
+ # To describe Spot fleet history
+ # This example returns the history for the specified Spot fleet starting at the
+ # specified time.
     my $DescribeSpotFleetRequestHistoryResponse =
       $ec2->DescribeSpotFleetRequestHistory(
       'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',

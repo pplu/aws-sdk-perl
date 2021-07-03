@@ -63,9 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description          => 'MyString',     # OPTIONAL
       DnsServers           => [
         'MyString', ...                       # OPTIONAL
-      ],                                      # OPTIONAL
-      DryRun            => 1,                 # OPTIONAL
-      SplitTunnel       => 1,                 # OPTIONAL
+      ],    # OPTIONAL
+      DryRun            => 1,    # OPTIONAL
+      SplitTunnel       => 1,    # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -76,12 +76,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value => 'MyString',    # OPTIONAL
             },
             ...
-          ],                          # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
-      TransportProtocol => 'tcp',     # OPTIONAL
-      VpnPort           => 1,         # OPTIONAL
+      ],    # OPTIONAL
+      TransportProtocol => 'tcp',    # OPTIONAL
+      VpnPort           => 1,        # OPTIONAL
     );
 
     # Results:

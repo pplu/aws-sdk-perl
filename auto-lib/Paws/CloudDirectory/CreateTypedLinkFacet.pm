@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Facet => {
         Attributes => [
           {
-            Name => 'MyAttributeName',    # min: 1, max: 230
+            Name             => 'MyAttributeName',    # min: 1, max: 230
             RequiredBehavior =>
               'REQUIRED_ALWAYS',    # values: REQUIRED_ALWAYS, NOT_REQUIRED
             Type => 'STRING'
@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyRuleKey' => {
                 Parameters =>
                   { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
-                ,                # OPTIONAL
+                ,    # OPTIONAL
                 Type => 'BINARY_LENGTH'
                 , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
               },    # key: min: 1, max: 64

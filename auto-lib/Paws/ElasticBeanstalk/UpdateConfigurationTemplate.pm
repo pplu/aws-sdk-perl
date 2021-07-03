@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
-    # To update a configuration template
-    # The following operation removes the configured CloudWatch custom health
-    # metrics configuration ConfigDocument from a saved configuration template
-    # named my-template:
+# To update a configuration template
+# The following operation removes the configured CloudWatch custom health
+# metrics configuration ConfigDocument from a saved configuration template named
+# my-template:
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->UpdateConfigurationTemplate(
       'ApplicationName' => 'my-app',

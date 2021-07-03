@@ -48,17 +48,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ActionsGuarded      => 'Accept'
           , # values: Accept, PreviewAndAccept, DiscoverPreviewAndAccept; OPTIONAL
           IntegerValues => [ 1, ... ],    # OPTIONAL
-          LocaleValues => [
+          LocaleValues  => [
             {
               Country     => 'MyCountryParameters',    # min: 2, max: 2
               Subdivision => 'MyCountryParameters',    # min: 2, max: 2
             },
             ...
-          ],                                           # OPTIONAL
-          RequiredToPreview => 1,                      # OPTIONAL
+          ],    # OPTIONAL
+          RequiredToPreview => 1,    # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

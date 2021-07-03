@@ -39,12 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime => '1970-01-01T01:00:00',    # OPTIONAL
       Filters => [
         {
-          Name => 'cluster-identifier',   # values: cluster-identifier, iam-role
+          Name   => 'cluster-identifier', # values: cluster-identifier, iam-role
           Values => [ 'MyString', ... ],
 
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       Marker              => 'MyString',               # OPTIONAL
       MaxRecords          => 1,                        # OPTIONAL
       ScheduledActionName => 'MyString',               # OPTIONAL

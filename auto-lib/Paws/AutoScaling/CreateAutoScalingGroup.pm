@@ -58,9 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'VPCZoneIdentifier'       => 'subnet-4176792c'
     );
 
-    # To create an Auto Scaling group with an attached load balancer
-    # This example creates an Auto Scaling group and attaches the specified
-    # Classic Load Balancer.
+ # To create an Auto Scaling group with an attached load balancer
+ # This example creates an Auto Scaling group and attaches the specified Classic
+ # Load Balancer.
     $autoscaling->CreateAutoScalingGroup(
       'AutoScalingGroupName'    => 'my-auto-scaling-group',
       'AvailabilityZones'       => ['us-west-2c'],
@@ -72,9 +72,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'MinSize'                 => 1
     );
 
-    # To create an Auto Scaling group with an attached target group
-    # This example creates an Auto Scaling group and attaches the specified
-    # target group.
+  # To create an Auto Scaling group with an attached target group
+  # This example creates an Auto Scaling group and attaches the specified target
+  # group.
     $autoscaling->CreateAutoScalingGroup(
       'AutoScalingGroupName'    => 'my-auto-scaling-group',
       'HealthCheckGracePeriod'  => 120,

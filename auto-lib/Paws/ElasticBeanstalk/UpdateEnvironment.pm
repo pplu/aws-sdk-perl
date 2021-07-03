@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
-    # To update an environment to a new version
-    # The following operation updates an environment named "my-env" to version
-    # "v2" of the application to which it belongs:
+ # To update an environment to a new version
+ # The following operation updates an environment named "my-env" to version "v2"
+ # of the application to which it belongs:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
       'EnvironmentName' => 'my-env',
       'VersionLabel'    => 'v2'
@@ -60,10 +60,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Tier              = $EnvironmentDescription->Tier;
     my $VersionLabel      = $EnvironmentDescription->VersionLabel;
 
-    # Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
-    # To configure option settings
-    # The following operation configures several options in the
-    # aws:elb:loadbalancer namespace:
+# Returns a L<Paws::ElasticBeanstalk::EnvironmentDescription> object.
+# To configure option settings
+# The following operation configures several options in the aws:elb:loadbalancer
+# namespace:
     my $EnvironmentDescription = $elasticbeanstalk->UpdateEnvironment(
       'EnvironmentName' => 'my-env',
       'OptionSettings'  => [

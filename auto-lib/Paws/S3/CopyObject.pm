@@ -69,21 +69,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $s3 = Paws->service('S3');
     my $CopyObjectOutput = $s3->CopyObject(
-      Bucket                      => 'MyBucketName',
-      CopySource                  => 'MyCopySource',
-      Key                         => 'MyObjectKey',
-      ACL                         => 'private',                    # OPTIONAL
-      CacheControl                => 'MyCacheControl',             # OPTIONAL
-      ContentDisposition          => 'MyContentDisposition',       # OPTIONAL
-      ContentEncoding             => 'MyContentEncoding',          # OPTIONAL
-      ContentLanguage             => 'MyContentLanguage',          # OPTIONAL
-      ContentType                 => 'MyContentType',              # OPTIONAL
-      CopySourceIfMatch           => 'MyCopySourceIfMatch',        # OPTIONAL
-      CopySourceIfModifiedSince   => '1970-01-01T01:00:00',        # OPTIONAL
-      CopySourceIfNoneMatch       => 'MyCopySourceIfNoneMatch',    # OPTIONAL
-      CopySourceIfUnmodifiedSince => '1970-01-01T01:00:00',        # OPTIONAL
+      Bucket                         => 'MyBucketName',
+      CopySource                     => 'MyCopySource',
+      Key                            => 'MyObjectKey',
+      ACL                            => 'private',                    # OPTIONAL
+      CacheControl                   => 'MyCacheControl',             # OPTIONAL
+      ContentDisposition             => 'MyContentDisposition',       # OPTIONAL
+      ContentEncoding                => 'MyContentEncoding',          # OPTIONAL
+      ContentLanguage                => 'MyContentLanguage',          # OPTIONAL
+      ContentType                    => 'MyContentType',              # OPTIONAL
+      CopySourceIfMatch              => 'MyCopySourceIfMatch',        # OPTIONAL
+      CopySourceIfModifiedSince      => '1970-01-01T01:00:00',        # OPTIONAL
+      CopySourceIfNoneMatch          => 'MyCopySourceIfNoneMatch',    # OPTIONAL
+      CopySourceIfUnmodifiedSince    => '1970-01-01T01:00:00',        # OPTIONAL
       CopySourceSSECustomerAlgorithm =>
-        'MyCopySourceSSECustomerAlgorithm',                        # OPTIONAL
+        'MyCopySourceSSECustomerAlgorithm',                           # OPTIONAL
       CopySourceSSECustomerKey    => 'MyCopySourceSSECustomerKey',    # OPTIONAL
       CopySourceSSECustomerKeyMD5 => 'MyCopySourceSSECustomerKeyMD5', # OPTIONAL
       Expires                     => '1970-01-01T01:00:00',           # OPTIONAL

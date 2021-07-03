@@ -31,22 +31,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LoggingConfiguration => {
         LogDestinationConfigs => [
           'MyResourceArn', ...    # min: 20, max: 2048
-        ],                        # min: 1, max: 100
+        ],    # min: 1, max: 100
         ResourceArn    => 'MyResourceArn',    # min: 20, max: 2048
         RedactedFields => [
           {
             AllQueryArguments => {
 
-            },                                # OPTIONAL
+            },    # OPTIONAL
             Body => {
 
-            },                                # OPTIONAL
+            },    # OPTIONAL
             Method => {
 
-            },                                # OPTIONAL
+            },    # OPTIONAL
             QueryString => {
 
-            },                                # OPTIONAL
+            },    # OPTIONAL
             SingleHeader => {
               Name => 'MyFieldToMatchData',    # min: 1, max: 64
 
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
       },
 
     );

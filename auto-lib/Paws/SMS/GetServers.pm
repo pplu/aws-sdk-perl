@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken           => 'MyNextToken',    # OPTIONAL
       VmServerAddressList => [
         {
-          VmId        => 'MyVmId',             # OPTIONAL
-          VmManagerId => 'MyVmManagerId',      # OPTIONAL
+          VmId        => 'MyVmId',           # OPTIONAL
+          VmManagerId => 'MyVmManagerId',    # OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

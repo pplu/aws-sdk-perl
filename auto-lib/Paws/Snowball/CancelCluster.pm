@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-    # To cancel a cluster job
-    # This operation cancels a cluster job. You can only cancel a cluster job
-    # while it's in the AwaitingQuorum status.
+ # To cancel a cluster job
+ # This operation cancels a cluster job. You can only cancel a cluster job while
+ # it's in the AwaitingQuorum status.
     my $CancelClusterResult = $snowball->CancelCluster(
       'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000' );
 

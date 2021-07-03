@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # SetIdentityDkimEnabled
-    # The following example configures Amazon SES to Easy DKIM-sign the email
-    # sent from an identity:
+  # SetIdentityDkimEnabled
+  # The following example configures Amazon SES to Easy DKIM-sign the email sent
+  # from an identity:
     my $SetIdentityDkimEnabledResponse = $email->SetIdentityDkimEnabled(
       'DkimEnabled' => 1,
       'Identity'    => 'user@example.com'

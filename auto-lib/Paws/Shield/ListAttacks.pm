@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken    => 'MyToken',    # OPTIONAL
       ResourceArns => [
         'MyResourceArn', ...        # min: 1, max: 2048
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       StartTime => {
         FromInclusive => '1970-01-01T01:00:00',    # OPTIONAL
         ToExclusive   => '1970-01-01T01:00:00',    # OPTIONAL

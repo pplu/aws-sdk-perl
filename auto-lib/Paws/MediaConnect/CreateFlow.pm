@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name   => 'My__string',
       Source => {
         Decryption => {
-          Algorithm => 'aes128',       # values: aes128, aes192, aes256
+          Algorithm => 'aes128',        # values: aes128, aes192, aes256
           RoleArn   => 'My__string',
           ConstantInitializationVector => 'My__string',
           DeviceId                     => 'My__string',
@@ -77,16 +77,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name => 'My__string',
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Outputs => [
         {
           Protocol => 'zixi-push'
-          ,     # values: zixi-push, rtp-fec, rtp, zixi-pull, rist; OPTIONAL
+          ,    # values: zixi-push, rtp-fec, rtp, zixi-pull, rist; OPTIONAL
           CidrAllowList => [ 'My__string', ... ],
           Description   => 'My__string',
           Destination   => 'My__string',
           Encryption    => {
-            Algorithm => 'aes128',       # values: aes128, aes192, aes256
+            Algorithm => 'aes128',        # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
@@ -104,7 +104,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamId         => 'My__string',
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

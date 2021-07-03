@@ -38,16 +38,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EntityType => 'MyEntityType',
       FilterList => [
         {
-          Name => 'MyFilterName',                   # min: 1, max: 255; OPTIONAL
+          Name      => 'MyFilterName',              # min: 1, max: 255; OPTIONAL
           ValueList => [ 'MyStringValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      MaxResults => 1,                              # OPTIONAL
-      NextToken  => 'MyNextToken',                  # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
       Sort       => {
-        SortBy    => 'MySortBy',     # min: 1, max: 255; OPTIONAL
-        SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
+        SortBy    => 'MySortBy',      # min: 1, max: 255; OPTIONAL
+        SortOrder => 'ASCENDING',     # values: ASCENDING, DESCENDING; OPTIONAL
       },    # OPTIONAL
     );
 

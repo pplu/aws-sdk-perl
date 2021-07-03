@@ -42,22 +42,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
       AddTags        => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Description => 'MyProductViewShortDescription',    # OPTIONAL
       Distributor => 'MyProductViewOwner',               # OPTIONAL
       Name        => 'MyProductViewName',                # OPTIONAL
       Owner       => 'MyProductViewOwner',               # OPTIONAL
       RemoveTags  => [
         'MyTagKey', ...                                  # min: 1, max: 128
-      ],                                                 # OPTIONAL
-      SupportDescription => 'MySupportDescription',      # OPTIONAL
-      SupportEmail       => 'MySupportEmail',            # OPTIONAL
-      SupportUrl         => 'MySupportUrl',              # OPTIONAL
+      ],    # OPTIONAL
+      SupportDescription => 'MySupportDescription',    # OPTIONAL
+      SupportEmail       => 'MySupportEmail',          # OPTIONAL
+      SupportUrl         => 'MySupportUrl',            # OPTIONAL
     );
 
     # Results:

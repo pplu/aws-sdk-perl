@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyStringWithLengthBetween0And1024',                          # OPTIONAL
       JwtConfiguration => {
         Audience => [ 'My__string', ... ],                            # OPTIONAL
-        Issuer => 'MyUriWithLengthBetween1And2048',
+        Issuer   => 'MyUriWithLengthBetween1And2048',
       },    # OPTIONAL
     );
 

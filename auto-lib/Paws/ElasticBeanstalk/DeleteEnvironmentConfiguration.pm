@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
-    # To delete a draft configuration
-    # The following operation deletes a draft configuration for an environment
-    # named my-env:
+# To delete a draft configuration
+# The following operation deletes a draft configuration for an environment named
+# my-env:
     $elasticbeanstalk->DeleteEnvironmentConfiguration(
       'ApplicationName' => 'my-app',
       'EnvironmentName' => 'my-env'

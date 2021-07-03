@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HomeDirectory         => 'MyHomeDirectory',    # OPTIONAL
       HomeDirectoryMappings => [
         {
-          Entry  => 'MyMapEntry',                    # max: 1024
-          Target => 'MyMapTarget',                   # max: 1024
+          Entry  => 'MyMapEntry',     # max: 1024
+          Target => 'MyMapTarget',    # max: 1024
 
         },
         ...
-      ],                                             # OPTIONAL
-      HomeDirectoryType => 'PATH',                   # OPTIONAL
-      Policy            => 'MyPolicy',               # OPTIONAL
-      Role              => 'MyRole',                 # OPTIONAL
+      ],    # OPTIONAL
+      HomeDirectoryType => 'PATH',        # OPTIONAL
+      Policy            => 'MyPolicy',    # OPTIONAL
+      Role              => 'MyRole',      # OPTIONAL
     );
 
     # Results:

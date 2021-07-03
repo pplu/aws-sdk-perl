@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RemoveFields           => [
         'packet-length',
         ...    # values: packet-length, description, virtual-network-id
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       SessionNumber         => 1,                            # OPTIONAL
       TrafficMirrorFilterId => 'MyTrafficMirrorFilterId',    # OPTIONAL
       TrafficMirrorTargetId => 'MyTrafficMirrorTargetId',    # OPTIONAL

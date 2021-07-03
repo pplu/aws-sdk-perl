@@ -44,23 +44,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken      => 'MyClientRequestToken',    # OPTIONAL
       DataSources             => [
         {
-          Name     => 'MyName',                             # min: 1, max: 255
-          S3Bucket => 'MyS3Bucket',                         # min: 3, max: 63
+          Name     => 'MyName',        # min: 1, max: 255
+          S3Bucket => 'MyS3Bucket',    # min: 3, max: 63
           S3Keys   => [
-            'MyS3Key', ...                                  # min: 1, max: 1024
-          ],                                                # min: 1, max: 100
+            'MyS3Key', ...             # min: 1, max: 1024
+          ],    # min: 1, max: 100
 
         },
         ...
-      ],                                                    # OPTIONAL
-      FailureBehavior => 'Fail',                            # OPTIONAL
+      ],    # OPTIONAL
+      FailureBehavior => 'Fail',    # OPTIONAL
       LoggingConfig   => {
         RecordAllRosTopics => 1,
 
-      },                                                    # OPTIONAL
+      },                            # OPTIONAL
       OutputLocation => {
-        S3Bucket => 'MyS3Bucket',                           # min: 3, max: 63
-        S3Prefix => 'MyS3Key',                              # min: 1, max: 1024
+        S3Bucket => 'MyS3Bucket',    # min: 3, max: 63
+        S3Prefix => 'MyS3Key',       # min: 1, max: 1024
       },    # OPTIONAL
       RobotApplications => [
         {
@@ -80,16 +80,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EnableOnPublicIp => 1,    # OPTIONAL
                 },
                 ...
-              ],                            # max: 10; OPTIONAL
+              ],    # max: 10; OPTIONAL
             },    # OPTIONAL
           },
           ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       SimulationApplications => [
         {
-          Application  => 'MyArn',              # min: 1, max: 1224
+          Application  => 'MyArn',    # min: 1, max: 1224
           LaunchConfig => {
             LaunchFile           => 'MyCommand',    # min: 1, max: 1024
             PackageName          => 'MyCommand',    # min: 1, max: 1024
@@ -105,24 +105,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   EnableOnPublicIp => 1,    # OPTIONAL
                 },
                 ...
-              ],                            # max: 10; OPTIONAL
+              ],    # max: 10; OPTIONAL
             },    # OPTIONAL
           },
           ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       VpcConfig => {
         Subnets => [
           'MyNonEmptyString', ...    # min: 1, max: 255
-        ],                           # min: 1, max: 16
-        AssignPublicIp => 1,         # OPTIONAL
+        ],    # min: 1, max: 16
+        AssignPublicIp => 1,    # OPTIONAL
         SecurityGroups => [
           'MyNonEmptyString', ...    # min: 1, max: 255
-        ],                           # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
       },    # OPTIONAL
     );
 

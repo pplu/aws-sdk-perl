@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ecs = Paws->service('ECS');
-    # To describe a cluster
-    # This example provides a description of the specified cluster in your
-    # default region.
+  # To describe a cluster
+  # This example provides a description of the specified cluster in your default
+  # region.
     my $DescribeClustersResponse =
       $ecs->DescribeClusters( 'Clusters' => ['default'] );
 

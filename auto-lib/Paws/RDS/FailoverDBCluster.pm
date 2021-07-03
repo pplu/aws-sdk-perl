@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To perform a failover for a DB cluster
-    # This example performs a failover for the specified DB cluster to the
-    # specified DB instance.
+# To perform a failover for a DB cluster
+# This example performs a failover for the specified DB cluster to the specified
+# DB instance.
     my $FailoverDBClusterResult = $rds->FailoverDBCluster(
       'DBClusterIdentifier'        => 'myaurorainstance-cluster',
       'TargetDBInstanceIdentifier' => 'myaurorareplica'

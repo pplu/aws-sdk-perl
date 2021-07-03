@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: S3BatchOperations_CSV_20180820, S3InventoryReport_CSV_20161130
           Fields => [
             'Ignore', ...    # values: Ignore, Bucket, Key, VersionId
-          ],                 # OPTIONAL
+          ],    # OPTIONAL
         },
 
       },
@@ -113,7 +113,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           CannedAccessControlList => 'private'
           , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
-          MetadataDirective => 'COPY',    # values: COPY, REPLACE; OPTIONAL
+          MetadataDirective       => 'COPY',   # values: COPY, REPLACE; OPTIONAL
           ModifiedSinceConstraint => '1970-01-01T01:00:00',    # OPTIONAL
           NewObjectMetadata       => {
             CacheControl => 'MyNonEmptyMaxLength1024String', # min: 1, max: 1024
@@ -128,8 +128,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ContentType => 'MyNonEmptyMaxLength1024String',  # min: 1, max: 1024
             HttpExpiresDate  => '1970-01-01T01:00:00',       # OPTIONAL
             RequesterCharged => 1,                           # OPTIONAL
-            SSEAlgorithm => 'AES256',    # values: AES256, KMS; OPTIONAL
-            UserMetadata => {
+            SSEAlgorithm     => 'AES256',    # values: AES256, KMS; OPTIONAL
+            UserMetadata     => {
               'MyNonEmptyMaxLength1024String' => 'MyMaxLength1024String'
               ,    # key: min: 1, max: 1024, value: max: 1024
             },    # max: 8192; OPTIONAL
@@ -141,12 +141,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                               # OPTIONAL
+          ],    # OPTIONAL
           ObjectLockLegalHoldStatus => 'OFF',    # values: OFF, ON; OPTIONAL
-          ObjectLockMode =>
+          ObjectLockMode            =>
             'COMPLIANCE',    # values: COMPLIANCE, GOVERNANCE; OPTIONAL
           ObjectLockRetainUntilDate => '1970-01-01T01:00:00',    # OPTIONAL
-          RedirectLocation =>
+          RedirectLocation          =>
             'MyNonEmptyMaxLength2048String',    # min: 1, max: 2048; OPTIONAL
           RequesterPays  => 1,                     # OPTIONAL
           SSEAwsKmsKeyId => 'MyKmsKeyArnString',   # min: 1, max: 2000; OPTIONAL
@@ -165,7 +165,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                               # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
       },
       Priority => 1,

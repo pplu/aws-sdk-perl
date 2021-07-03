@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Cidr => 'MyCIDR',    # OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
+      ],    # OPTIONAL
       AssociationId => 'MyDirectConnectGatewayAssociationId',    # OPTIONAL
       RemoveAllowedPrefixesToDirectConnectGateway => [
         {
           Cidr => 'MyCIDR',                                      # OPTIONAL
         },
         ...
-      ],                                                         # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

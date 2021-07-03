@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
-      FormatVersion => 'MyString',  # OPTIONAL
-      MaxResults    => 1,           # OPTIONAL
-      NextToken     => 'MyString',  # OPTIONAL
-      ServiceCode   => 'MyString',  # OPTIONAL
+      ],    # OPTIONAL
+      FormatVersion => 'MyString',    # OPTIONAL
+      MaxResults    => 1,             # OPTIONAL
+      NextToken     => 'MyString',    # OPTIONAL
+      ServiceCode   => 'MyString',    # OPTIONAL
     );
 
     # Results:

@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SyncShadow     => 1,              # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       Name => 'My__string',                         # OPTIONAL
       Tags => { 'My__string' => 'My__string', },    # OPTIONAL

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe Spot price history for Linux/UNIX (Amazon VPC)
-    # This example returns the Spot Price history for m1.xlarge, Linux/UNIX
-    # (Amazon VPC) instances for a particular day in January.
+ # To describe Spot price history for Linux/UNIX (Amazon VPC)
+ # This example returns the Spot Price history for m1.xlarge, Linux/UNIX (Amazon
+ # VPC) instances for a particular day in January.
     my $DescribeSpotPriceHistoryResult = $ec2->DescribeSpotPriceHistory(
       'EndTime'             => '2014-01-06T08:09:10',
       'InstanceTypes'       => ['m1.xlarge'],

@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To list grants that the specified principal can retire
-    # The following example lists the grants that the specified principal
-    # (identity) can retire.
+# To list grants that the specified principal can retire
+# The following example lists the grants that the specified principal (identity)
+# can retire.
     my $ListGrantsResponse = $kms->ListRetirableGrants(
       'RetiringPrincipal' => 'arn:aws:iam::111122223333:role/ExampleRole' );
 

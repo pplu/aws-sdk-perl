@@ -66,14 +66,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AttributeName => 'MyAttributeName',    # min: 1, max: 230; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       FilterTypedLink => {
         SchemaArn     => 'MyArn',
         TypedLinkName => 'MyTypedLinkName',
 
-      },                                         # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyNextToken',               # OPTIONAL
+      },    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:

@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RadiusSettings => {
         AuthenticationProtocol =>
           'PAP',    # values: PAP, CHAP, MS-CHAPv1, MS-CHAPv2; OPTIONAL
-        DisplayLabel => 'MyRadiusDisplayLabel',    # min: 1, max: 64; OPTIONAL
+        DisplayLabel  => 'MyRadiusDisplayLabel',    # min: 1, max: 64; OPTIONAL
         RadiusPort    => 1,    # min: 1025, max: 65535; OPTIONAL
         RadiusRetries => 1,    # max: 10; OPTIONAL
         RadiusServers => [
           'MyServer', ...      # min: 1, max: 256
-        ],                     # OPTIONAL
+        ],    # OPTIONAL
         RadiusTimeout   => 1,                       # min: 1, max: 20; OPTIONAL
         SharedSecret    => 'MyRadiusSharedSecret',  # min: 8, max: 512; OPTIONAL
         UseSameUsername => 1,                       # OPTIONAL

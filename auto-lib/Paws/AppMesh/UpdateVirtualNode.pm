@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 25; OPTIONAL
+        ],    # max: 25; OPTIONAL
         Listeners => [
           {
             PortMapping => {
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 1; OPTIONAL
+        ],    # max: 1; OPTIONAL
         Logging => {
           AccessLog => {
             File => {
@@ -76,13 +76,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ServiceName   => 'MyAwsCloudMapName',    # min: 1, max: 1024
             Attributes    => [
               {
-                Key => 'MyAwsCloudMapInstanceAttributeKey',   # min: 1, max: 255
+                Key   => 'MyAwsCloudMapInstanceAttributeKey', # min: 1, max: 255
                 Value =>
                   'MyAwsCloudMapInstanceAttributeValue',    # min: 1, max: 1024
 
               },
               ...
-            ],                                              # OPTIONAL
+            ],    # OPTIONAL
           },    # OPTIONAL
           Dns => {
             Hostname => 'MyHostname',

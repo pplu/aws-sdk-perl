@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OnPremConfig => {
         AgentArns => [
           'MyAgentArn', ...    # max: 128
-        ],                     # min: 1, max: 64
+        ],    # min: 1, max: 64
 
       },
       ServerHostname => 'MyServerHostname',
@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

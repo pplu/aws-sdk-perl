@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Condition => 'EQ',        # values: EQ, IN, BETWEEN; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
-      MaxResults => 1,              # OPTIONAL
-      NextToken  => 'MyNextToken',  # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

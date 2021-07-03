@@ -53,10 +53,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         SecurityGroups => [
           'MySecurityGroupId', ...    # max: 32
-        ],                            # max: 5; OPTIONAL
+        ],    # max: 5; OPTIONAL
         SharingSettings => {
           NotebookOutputOption =>
-            'Allowed',                # values: Allowed, Disabled; OPTIONAL
+            'Allowed',    # values: Allowed, Disabled; OPTIONAL
           S3KmsKeyId   => 'MyKmsKeyId',    # max: 2048; OPTIONAL
           S3OutputPath => 'MyS3Uri',       # max: 1024; OPTIONAL
         },    # OPTIONAL
@@ -76,12 +76,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HomeEfsFileSystemKmsKeyId => 'MyKmsKeyId',    # OPTIONAL
       Tags                      => [
         {
-          Key   => 'MyTagKey',                      # min: 1, max: 128
-          Value => 'MyTagValue',                    # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

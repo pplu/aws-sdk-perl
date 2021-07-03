@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CreatedBefore => '1970-01-01T01:00:00',    # OPTIONAL
       JobFlowIds    => [
         'MyXmlString', ...                       # max: 10280
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       JobFlowStates => [
         'STARTING',
         ... # values: STARTING, BOOTSTRAPPING, RUNNING, WAITING, SHUTTING_DOWN, TERMINATED, COMPLETED, FAILED

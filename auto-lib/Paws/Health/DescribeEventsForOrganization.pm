@@ -35,37 +35,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filter => {
         AwsAccountIds => [
           'MyaccountId', ...    # max: 12
-        ],                      # min: 1, max: 50; OPTIONAL
+        ],    # min: 1, max: 50; OPTIONAL
         EndTime => {
           From => '1970-01-01T01:00:00',    # OPTIONAL
           To   => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
         EntityArns => [
           'MyentityArn', ...    # max: 1600
-        ],                      # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
         EntityValues => [
           'MyentityValue', ...    # max: 256
-        ],                        # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
         EventStatusCodes => [
-          'open', ...             # values: open, closed, upcoming
-        ],                        # min: 1, max: 6; OPTIONAL
+          'open', ...    # values: open, closed, upcoming
+        ],    # min: 1, max: 6; OPTIONAL
         EventTypeCategories => [
           'issue',
           ... # values: issue, accountNotification, scheduledChange, investigationmin: 3, max: 255
         ],    # min: 1, max: 10; OPTIONAL
         EventTypeCodes => [
           'MyeventType', ...    # min: 3, max: 100
-        ],                      # min: 1, max: 10; OPTIONAL
+        ],    # min: 1, max: 10; OPTIONAL
         LastUpdatedTime => {
           From => '1970-01-01T01:00:00',    # OPTIONAL
           To   => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
         Regions => [
           'Myregion', ...    # min: 2, max: 25
-        ],                   # min: 1, max: 10; OPTIONAL
+        ],    # min: 1, max: 10; OPTIONAL
         Services => [
           'Myservice', ...    # min: 2, max: 30
-        ],                    # min: 1, max: 10; OPTIONAL
+        ],    # min: 1, max: 10; OPTIONAL
         StartTime => {
           From => '1970-01-01T01:00:00',    # OPTIONAL
           To   => '1970-01-01T01:00:00',    # OPTIONAL

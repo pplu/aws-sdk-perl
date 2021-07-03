@@ -57,34 +57,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TargetLocations => [
         {
-          Accounts => [ 'MyAccount', ... ],    # min: 1, max: 50; OPTIONAL
+          Accounts          => [ 'MyAccount', ... ], # min: 1, max: 50; OPTIONAL
           ExecutionRoleName =>
-            'MyExecutionRoleName',             # min: 1, max: 64; OPTIONAL
-          Regions => [ 'MyRegion', ... ],      # min: 1, max: 50; OPTIONAL
+            'MyExecutionRoleName',                   # min: 1, max: 64; OPTIONAL
+          Regions => [ 'MyRegion', ... ],            # min: 1, max: 50; OPTIONAL
           TargetLocationMaxConcurrency => 'MyMaxConcurrency',   # min: 1, max: 7
           TargetLocationMaxErrors      => 'MyMaxErrors',        # min: 1, max: 7
         },
         ...
-      ],                                                        # OPTIONAL
+      ],    # OPTIONAL
       TargetMaps => [
         {
           'MyTargetMapKey' => [
             'MyTargetMapValue', ...    # min: 1, max: 50
-          ],                           # key: min: 1, max: 50, value: max: 25
+          ],    # key: min: 1, max: 50, value: max: 25
         },
-        ...                            # min: 1, max: 20
-      ],                               # OPTIONAL
+        ...     # min: 1, max: 20
+      ],    # OPTIONAL
       TargetParameterName => 'MyAutomationParameterKey',    # OPTIONAL
       Targets             => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

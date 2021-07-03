@@ -155,14 +155,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Permissions => [
         {
-          Actions => [ 'MyString', ... ],    # min: 1, max: 16
-          Principal => 'MyPrincipal',        # min: 1, max: 256
+          Actions   => [ 'MyString', ... ],    # min: 1, max: 16
+          Principal => 'MyPrincipal',          # min: 1, max: 256
 
         },
         ...
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
       SslProperties => {
-        DisableSsl => 1,                     # OPTIONAL
+        DisableSsl => 1,    # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -171,11 +171,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VpcConnectionProperties => {
         VpcConnectionArn => 'MyArn',
 
-      },                            # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:

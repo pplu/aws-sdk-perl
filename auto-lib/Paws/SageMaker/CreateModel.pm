@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ModelPackageName => 'MyArnOrName',    # min: 1, max: 170; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
-      EnableNetworkIsolation => 1,              # OPTIONAL
+      ],    # OPTIONAL
+      EnableNetworkIsolation => 1,    # OPTIONAL
       PrimaryContainer       => {
         ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
         Environment       => {
@@ -69,14 +69,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VpcConfig => {
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # max: 32
-        ],                            # min: 1, max: 5
+        ],    # min: 1, max: 5
         Subnets => [
-          'MySubnetId', ...           # max: 32
-        ],                            # min: 1, max: 16
+          'MySubnetId', ...    # max: 32
+        ],    # min: 1, max: 16
 
       },    # OPTIONAL
     );

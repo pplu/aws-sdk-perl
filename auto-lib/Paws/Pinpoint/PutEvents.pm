@@ -55,17 +55,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Location       => {
                 City       => 'My__string',
                 Country    => 'My__string',
-                Latitude   => 1,
-                Longitude  => 1,
+                Latitude   => 1,              # OPTIONAL
+                Longitude  => 1,              # OPTIONAL
                 PostalCode => 'My__string',
                 Region     => 'My__string',
               },    # OPTIONAL
-              Metrics   => { 'My__string' => 1, },    # OPTIONAL
+              Metrics => {
+                'My__string' => 1,    # , value: OPTIONAL
+              },    # OPTIONAL
               OptOut    => 'My__string',
               RequestId => 'My__string',
               User      => {
                 UserAttributes => { 'My__string' => [ 'My__string', ... ], }
-                ,                                     # OPTIONAL
+                ,    # OPTIONAL
                 UserId => 'My__string',
               },    # OPTIONAL
             },
@@ -78,12 +80,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 AppVersionCode => 'My__string',
                 Attributes     => { 'My__string' => 'My__string', },  # OPTIONAL
                 ClientSdkVersion => 'My__string',
-                Metrics          => { 'My__string' => 1, },           # OPTIONAL
-                SdkName          => 'My__string',
-                Session          => {
+                Metrics          => {
+                  'My__string' => 1,    # , value: OPTIONAL
+                },    # OPTIONAL
+                SdkName => 'My__string',
+                Session => {
                   Id             => 'My__string',
                   StartTimestamp => 'My__string',
-                  Duration       => 1,                                # OPTIONAL
+                  Duration       => 1,              # OPTIONAL
                   StopTimestamp  => 'My__string',
                 },    # OPTIONAL
               },

@@ -83,13 +83,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          Name  => 'MyNonEmptyString',                           # min: 1
-          Value => 'MyString',                                   # OPTIONAL
+          Name  => 'MyNonEmptyString',    # min: 1
+          Value => 'MyString',            # OPTIONAL
           Type  => 'PLAINTEXT'
           ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       GitCloneDepthOverride       => 1,    # OPTIONAL
       GitSubmodulesConfigOverride => {
         FetchSubmodules => 1,              # OPTIONAL
@@ -132,7 +132,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Path                 => 'MyString', # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       SecondarySourcesOverride => [
         {
           Type => 'CODECOMMIT'
@@ -147,21 +147,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FetchSubmodules => 1,               # OPTIONAL
 
           },
-          InsecureSsl       => 1,               # OPTIONAL
-          Location          => 'MyString',      # OPTIONAL
-          ReportBuildStatus => 1,               # OPTIONAL
-          SourceIdentifier  => 'MyString',      # OPTIONAL
+          InsecureSsl       => 1,             # OPTIONAL
+          Location          => 'MyString',    # OPTIONAL
+          ReportBuildStatus => 1,             # OPTIONAL
+          SourceIdentifier  => 'MyString',    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       SecondarySourcesVersionOverride => [
         {
-          SourceIdentifier => 'MyString',       # OPTIONAL
-          SourceVersion    => 'MyString',       # OPTIONAL
+          SourceIdentifier => 'MyString',    # OPTIONAL
+          SourceVersion    => 'MyString',    # OPTIONAL
 
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       ServiceRoleOverride => 'MyNonEmptyString',    # OPTIONAL
       SourceAuthOverride  => {
         Type     => 'OAUTH',                        # values: OAUTH

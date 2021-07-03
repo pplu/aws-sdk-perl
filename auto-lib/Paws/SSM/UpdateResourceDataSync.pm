@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ,    # min: 1, max: 128; OPTIONAL
             },
             ...
-          ],       # min: 1, max: 1000; OPTIONAL
+          ],    # min: 1, max: 1000; OPTIONAL
         },    # OPTIONAL
         IncludeFutureRegions => 1,    # OPTIONAL
       },

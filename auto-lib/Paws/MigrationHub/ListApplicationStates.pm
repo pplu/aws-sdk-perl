@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListApplicationStatesResult = $mgh->ListApplicationStates(
       ApplicationIds => [
         'MyApplicationId', ...    # min: 1, max: 1600
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       MaxResults => 1,            # OPTIONAL
       NextToken  => 'MyToken',    # OPTIONAL
     );

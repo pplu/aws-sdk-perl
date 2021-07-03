@@ -130,13 +130,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DataPageSize      => 1,            # OPTIONAL
         DictPageSizeLimit => 1,            # OPTIONAL
         EnableStatistics  => 1,            # OPTIONAL
-        EncodingType =>
+        EncodingType      =>
           'plain',   # values: plain, plain-dictionary, rle-dictionary; OPTIONAL
         EncryptionMode => 'sse-s3',    # values: sse-s3, sse-kms; OPTIONAL
         ExternalTableDefinition       => 'MyString',
         IncludeOpForFullLoad          => 1,            # OPTIONAL
         ParquetTimestampInMillisecond => 1,            # OPTIONAL
-        ParquetVersion =>
+        ParquetVersion                =>
           'parquet-1-0',    # values: parquet-1-0, parquet-2-0; OPTIONAL
         RowGroupLength               => 1,            # OPTIONAL
         ServerSideEncryptionKmsKeyId => 'MyString',

@@ -47,10 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LaunchPermission => {
               UserGroups => [
                 'MyNonEmptyString', ...                # min: 1, max: 1024
-              ],                                       # OPTIONAL
+              ],    # OPTIONAL
               UserIds => [
-                'MyNonEmptyString', ...                # min: 1, max: 1024
-              ],                                       # OPTIONAL
+                'MyNonEmptyString', ...    # min: 1, max: 1024
+              ],    # OPTIONAL
             },    # OPTIONAL
             Name => 'MyAmiNameString',    # min: 1, max: 127; OPTIONAL
           },    # OPTIONAL

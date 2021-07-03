@@ -32,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SearchSystemTemplatesResponse = $iotthingsgraph->SearchSystemTemplates(
       Filters => [
         {
-          Name => 'FLOW_TEMPLATE_ID',    # values: FLOW_TEMPLATE_ID
+          Name  => 'FLOW_TEMPLATE_ID',    # values: FLOW_TEMPLATE_ID
           Value => [ 'MySystemTemplateFilterValue', ... ],
 
         },
         ...
-      ],                                 # OPTIONAL
-      MaxResults => 1,                   # OPTIONAL
-      NextToken  => 'MyNextToken',       # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

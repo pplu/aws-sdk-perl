@@ -42,17 +42,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyValueString',    # max: 1024; OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
-      MaxResults   => 1,               # OPTIONAL
-      NextToken    => 'MyToken',       # OPTIONAL
-      SearchText   => 'MyValueString', # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults   => 1,                  # OPTIONAL
+      NextToken    => 'MyToken',          # OPTIONAL
+      SearchText   => 'MyValueString',    # OPTIONAL
       SortCriteria => [
         {
           FieldName => 'MyValueString',    # max: 1024; OPTIONAL
           Sort      => 'ASC',              # values: ASC, DESC; OPTIONAL
         },
         ...
-      ],                                   # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

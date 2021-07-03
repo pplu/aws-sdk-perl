@@ -37,14 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         GlueVersion       => 'MyGlueVersionString', # min: 1, max: 255; OPTIONAL
         LastModifiedAfter => '1970-01-01T01:00:00', # OPTIONAL
         LastModifiedBefore => '1970-01-01T01:00:00',    # OPTIONAL
-        Name   => 'MyNameString',    # min: 1, max: 255; OPTIONAL
-        Schema => [
+        Name               => 'MyNameString',    # min: 1, max: 255; OPTIONAL
+        Schema             => [
           {
             DataType => 'MyColumnTypeString',    # max: 131072; OPTIONAL
             Name     => 'MyColumnNameString',    # min: 1, max: 1024; OPTIONAL
           },
           ...
-        ],                                       # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
         Status => 'NOT_READY',    # values: NOT_READY, READY, DELETING; OPTIONAL
         TransformType => 'FIND_MATCHES',    # values: FIND_MATCHES; OPTIONAL
       },    # OPTIONAL

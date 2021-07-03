@@ -41,17 +41,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyString' => {
               Contains => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
               Eq       => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
-              Exists => 1,                        # OPTIONAL
-              Neq => [ 'MyString', ... ],         # min: 1, max: 20; OPTIONAL
+              Exists   => 1,                      # OPTIONAL
+              Neq      => [ 'MyString', ... ],    # min: 1, max: 20; OPTIONAL
             },
           },
           RuleName => 'MyName',                   # min: 1, max: 255
 
         },
         ...
-      ],                                          # OPTIONAL
-      ClientToken => 'MyString',                  # OPTIONAL
-      Tags => { 'MyString' => 'MyString', },      # OPTIONAL
+      ],    # OPTIONAL
+      ClientToken => 'MyString',                       # OPTIONAL
+      Tags        => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:

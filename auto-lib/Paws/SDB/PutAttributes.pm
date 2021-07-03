@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName => 'MyString',
       ItemName   => 'MyString',
       Expected   => {
-        Exists => 1,               # OPTIONAL
+        Exists => 1,            # OPTIONAL
         Name   => 'MyString',
         Value  => 'MyString',
       },    # OPTIONAL

@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListNotebookInstanceLifecycleConfigsOutput =
       $api . sagemaker->ListNotebookInstanceLifecycleConfigs(
-      CreationTimeAfter      => '1970-01-01T01:00:00',    # OPTIONAL
-      CreationTimeBefore     => '1970-01-01T01:00:00',    # OPTIONAL
-      LastModifiedTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
-      LastModifiedTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
-      MaxResults             => 1,                        # OPTIONAL
-      NameContains =>
+      CreationTimeAfter      => '1970-01-01T01:00:00',      # OPTIONAL
+      CreationTimeBefore     => '1970-01-01T01:00:00',      # OPTIONAL
+      LastModifiedTimeAfter  => '1970-01-01T01:00:00',      # OPTIONAL
+      LastModifiedTimeBefore => '1970-01-01T01:00:00',      # OPTIONAL
+      MaxResults             => 1,                          # OPTIONAL
+      NameContains           =>
         'MyNotebookInstanceLifecycleConfigNameContains',    # OPTIONAL
       NextToken => 'MyNextToken',                           # OPTIONAL
       SortBy    => 'Name',                                  # OPTIONAL

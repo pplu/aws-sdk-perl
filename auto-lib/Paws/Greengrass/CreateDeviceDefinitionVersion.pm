@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CertificateArn => 'My__string',
           Id             => 'My__string',
           ThingArn       => 'My__string',
-          SyncShadow     => 1,               # OPTIONAL
+          SyncShadow     => 1,              # OPTIONAL
         },
         ...
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

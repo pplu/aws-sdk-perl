@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To add or remove access to a manual DB cluster snapshot
-    # The following example gives two AWS accounts access to a manual DB cluster
-    # snapshot and ensures that the DB cluster snapshot is private by removing
-    # the value "all".
+  # To add or remove access to a manual DB cluster snapshot
+  # The following example gives two AWS accounts access to a manual DB cluster
+  # snapshot and ensures that the DB cluster snapshot is private by removing the
+  # value "all".
     my $ModifyDBClusterSnapshotAttributeResult =
       $rds->ModifyDBClusterSnapshotAttribute(
       'AttributeName'               => 'restore',

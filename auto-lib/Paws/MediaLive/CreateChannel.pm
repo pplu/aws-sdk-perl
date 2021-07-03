@@ -48,10 +48,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ChannelId => 'My__stringMin1',       # min: 1; OPTIONAL
             },
             ...
-          ],                                       # OPTIONAL
+          ],    # OPTIONAL
           MultiplexSettings => {
-            MultiplexId => 'My__stringMin1',       # min: 1; OPTIONAL
-            ProgramName => 'My__stringMin1',       # min: 1; OPTIONAL
+            MultiplexId => 'My__stringMin1',    # min: 1; OPTIONAL
+            ProgramName => 'My__stringMin1',    # min: 1; OPTIONAL
           },    # OPTIONAL
           Settings => [
             {
@@ -61,10 +61,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Username      => 'My__string',    # OPTIONAL
             },
             ...
-          ],                                    # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       EncoderSettings => {
         AudioDescriptions => [
           {
@@ -102,7 +102,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: COMMENTARY, COMPLETE_MAIN, DIALOGUE, EMERGENCY, HEARING_IMPAIRED, MUSIC_AND_EFFECTS, VISUALLY_IMPAIRED, VOICE_OVER; OPTIONAL
                 CodingMode => 'CODING_MODE_1_0'
                 , # values: CODING_MODE_1_0, CODING_MODE_1_1, CODING_MODE_2_0, CODING_MODE_3_2_LFE; OPTIONAL
-                Dialnorm => 1,    # min: 1, max: 31; OPTIONAL
+                Dialnorm   => 1,    # min: 1, max: 31; OPTIONAL
                 DrcProfile =>
                   'FILM_STANDARD',    # values: FILM_STANDARD, NONE; OPTIONAL
                 LfeFilter => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
@@ -112,7 +112,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Eac3Settings => {
                 AttenuationControl =>
                   'ATTENUATE_3_DB',    # values: ATTENUATE_3_DB, NONE; OPTIONAL
-                Bitrate       => 1,             # OPTIONAL
+                Bitrate       => 1,                      # OPTIONAL
                 BitstreamMode => 'COMMENTARY'
                 , # values: COMMENTARY, COMPLETE_MAIN, EMERGENCY, HEARING_IMPAIRED, VISUALLY_IMPAIRED; OPTIONAL
                 CodingMode => 'CODING_MODE_1_0'
@@ -166,13 +166,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                     ...
                   ],
-                  OutputChannel => 1,       # max: 7; OPTIONAL
+                  OutputChannel => 1,    # max: 7
 
                 },
                 ...
               ],
-              ChannelsIn  => 1,             # min: 1, max: 16; OPTIONAL
-              ChannelsOut => 1,             # min: 1, max: 8; OPTIONAL
+              ChannelsIn  => 1,    # min: 1, max: 16; OPTIONAL
+              ChannelsOut => 1,    # min: 1, max: 8; OPTIONAL
             },    # OPTIONAL
             StreamName => 'My__string',    # OPTIONAL
           },
@@ -185,7 +185,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Destination => {
                   DestinationRefId => 'My__string',    # OPTIONAL
                 },
-                RolloverInterval => 1,                 # min: 1
+                RolloverInterval => 1,                 # min: 1; OPTIONAL
               },    # OPTIONAL
               FrameCaptureGroupSettings => {
                 Destination => {
@@ -199,27 +199,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 AdMarkers => [
                   'ADOBE', ...    # values: ADOBE, ELEMENTAL, ELEMENTAL_SCTE35
-                ],                # OPTIONAL
+                ],    # OPTIONAL
                 BaseUrlContent          => 'My__string',    # OPTIONAL
                 BaseUrlContent1         => 'My__string',    # OPTIONAL
                 BaseUrlManifest         => 'My__string',    # OPTIONAL
                 BaseUrlManifest1        => 'My__string',    # OPTIONAL
                 CaptionLanguageMappings => [
                   {
-                    CaptionChannel => 1,                    # min: 1, max: 4
-                    LanguageCode =>
+                    CaptionChannel => 1,       # min: 1, max: 4
+                    LanguageCode   =>
                       'My__stringMin3Max3',    # min: 3, max: 3; OPTIONAL
                     LanguageDescription => 'My__stringMin1',  # min: 1; OPTIONAL
 
                   },
                   ...
-                ],                                            # OPTIONAL
+                ],    # OPTIONAL
                 CaptionLanguageSetting =>
                   'INSERT',    # values: INSERT, NONE, OMIT; OPTIONAL
                 ClientCache => 'DISABLED', # values: DISABLED, ENABLED; OPTIONAL
                 CodecSpecification =>
                   'RFC_4281',    # values: RFC_4281, RFC_6381; OPTIONAL
-                ConstantIv         => 'My__stringMin32Max32', # min: 32, max: 32
+                ConstantIv =>
+                  'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                 DirectoryStructure => 'SINGLE_DIRECTORY'
                 ,  # values: SINGLE_DIRECTORY, SUBDIRECTORY_PER_STREAM; OPTIONAL
                 EncryptionType =>
@@ -228,7 +229,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   HlsAkamaiSettings => {
                     ConnectionRetryInterval => 1,    # OPTIONAL
                     FilecacheDuration       => 1,    # max: 600; OPTIONAL
-                    HttpTransferMode =>
+                    HttpTransferMode        =>
                       'CHUNKED',    # values: CHUNKED, NON_CHUNKED; OPTIONAL
                     NumRetries   => 1,               # OPTIONAL
                     RestartDelay => 1,               # max: 15
@@ -244,7 +245,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   HlsMediaStoreSettings => {
                     ConnectionRetryInterval => 1,    # OPTIONAL
                     FilecacheDuration       => 1,    # max: 600; OPTIONAL
-                    MediaStoreStorageClass =>
+                    MediaStoreStorageClass  =>
                       'TEMPORAL',    # values: TEMPORAL; OPTIONAL
                     NumRetries   => 1,    # OPTIONAL
                     RestartDelay => 1,    # max: 15
@@ -252,7 +253,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   HlsWebdavSettings => {
                     ConnectionRetryInterval => 1,    # OPTIONAL
                     FilecacheDuration       => 1,    # max: 600; OPTIONAL
-                    HttpTransferMode =>
+                    HttpTransferMode        =>
                       'CHUNKED',    # values: CHUNKED, NON_CHUNKED; OPTIONAL
                     NumRetries   => 1,    # OPTIONAL
                     RestartDelay => 1,    # max: 15
@@ -262,42 +263,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
                 IFrameOnlyPlaylists =>
                   'DISABLED',    # values: DISABLED, STANDARD; OPTIONAL
-                IndexNSegments => 1,    # min: 3; OPTIONAL
+                IndexNSegments  => 1,    # min: 3; OPTIONAL
                 InputLossAction =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
                 IvInManifest => 'EXCLUDE',  # values: EXCLUDE, INCLUDE; OPTIONAL
                 IvSource     => 'EXPLICIT'
                 ,    # values: EXPLICIT, FOLLOWS_SEGMENT_NUMBER; OPTIONAL
-                KeepSegments        => 1,               # min: 1
+                KeepSegments        => 1,               # min: 1; OPTIONAL
                 KeyFormat           => 'My__string',    # OPTIONAL
                 KeyFormatVersions   => 'My__string',    # OPTIONAL
                 KeyProviderSettings => {
                   StaticKeySettings => {
-                    StaticKeyValue => 'My__stringMin32Max32', # min: 32, max: 32
+                    StaticKeyValue =>
+                      'My__stringMin32Max32',    # min: 32, max: 32; OPTIONAL
                     KeyProviderServer => {
-                      Uri           => 'My__string',          # OPTIONAL
-                      PasswordParam => 'My__string',          # OPTIONAL
-                      Username      => 'My__string',          # OPTIONAL
+                      Uri           => 'My__string',    # OPTIONAL
+                      PasswordParam => 'My__string',    # OPTIONAL
+                      Username      => 'My__string',    # OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },    # OPTIONAL
-                ManifestCompression => 'GZIP',    # values: GZIP, NONE; OPTIONAL
+                ManifestCompression    => 'GZIP', # values: GZIP, NONE; OPTIONAL
                 ManifestDurationFormat =>
                   'FLOATING_POINT',  # values: FLOATING_POINT, INTEGER; OPTIONAL
                 MinSegmentLength => 1,         # OPTIONAL
                 Mode             => 'LIVE',    # values: LIVE, VOD; OPTIONAL
-                OutputSelection => 'MANIFESTS_AND_SEGMENTS'
+                OutputSelection  => 'MANIFESTS_AND_SEGMENTS'
                 ,    # values: MANIFESTS_AND_SEGMENTS, SEGMENTS_ONLY; OPTIONAL
                 ProgramDateTime =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 ProgramDateTimePeriod => 1,    # max: 3600; OPTIONAL
-                RedundantManifest =>
+                RedundantManifest     =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                SegmentLength    => 1,                         # min: 1
+                SegmentLength    => 1,                        # min: 1; OPTIONAL
                 SegmentationMode => 'USE_INPUT_SEGMENTATION'
                 , # values: USE_INPUT_SEGMENTATION, USE_SEGMENT_DURATION; OPTIONAL
-                SegmentsPerSubdirectory => 1,    # min: 1
-                StreamInfResolution =>
+                SegmentsPerSubdirectory => 1,    # min: 1; OPTIONAL
+                StreamInfResolution     =>
                   'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
                 TimedMetadataId3Frame =>
                   'NONE',       # values: NONE, PRIV, TDRL; OPTIONAL
@@ -327,8 +329,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 , # values: NO_EVENT_ID, USE_CONFIGURED, USE_TIMESTAMP; OPTIONAL
                 EventStopBehavior => 'NONE',  # values: NONE, SEND_EOS; OPTIONAL
                 FilecacheDuration => 1,       # OPTIONAL
-                FragmentLength    => 1,       # min: 1
-                InputLossAction =>
+                FragmentLength    => 1,       # min: 1; OPTIONAL
+                InputLossAction   =>
                   'EMIT_OUTPUT',   # values: EMIT_OUTPUT, PAUSE_OUTPUT; OPTIONAL
                 NumRetries       => 1,                         # OPTIONAL
                 RestartDelay     => 1,                         # OPTIONAL
@@ -375,7 +377,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'DROP',    # values: DROP, ENCODE_SILENCE; OPTIONAL
                         Arib =>
                           'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                        AribCaptionsPid => 'My__string',    # OPTIONAL
+                        AribCaptionsPid        => 'My__string',    # OPTIONAL
                         AribCaptionsPidControl =>
                           'AUTO',    # values: AUTO, USE_CONFIGURED; OPTIONAL
                         AudioBufferModel =>
@@ -384,12 +386,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         AudioPids         => 'My__string',    # OPTIONAL
                         AudioStreamType => 'ATSC', # values: ATSC, DVB; OPTIONAL
                         Bitrate         => 1,      # OPTIONAL
-                        BufferModel =>
+                        BufferModel     =>
                           'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
                         CcDescriptor =>
                           'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
                         DvbNitSettings => {
-                          NetworkId => 1,    # max: 65536
+                          NetworkId   => 1,            # max: 65536
                           NetworkName =>
                             'My__stringMin1Max256',    # min: 1, max: 256
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
@@ -412,21 +414,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
                         , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
                         EbpLookaheadMs => 1,    # max: 10000; OPTIONAL
-                        EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
+                        EbpPlacement   => 'VIDEO_AND_AUDIO_PIDS'
                         ,    # values: VIDEO_AND_AUDIO_PIDS, VIDEO_PID; OPTIONAL
-                        EcmPid => 'My__string',    # OPTIONAL
+                        EcmPid      => 'My__string',    # OPTIONAL
                         EsRateInPes =>
                           'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
-                        EtvPlatformPid => 'My__string',    # OPTIONAL
-                        EtvSignalPid   => 'My__string',    # OPTIONAL
-                        FragmentTime   => 1,               # OPTIONAL
+                        EtvPlatformPid => 'My__string',          # OPTIONAL
+                        EtvSignalPid   => 'My__string',          # OPTIONAL
+                        FragmentTime   => 1,                     # OPTIONAL
                         Klv => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
                         KlvDataPids        => 'My__string',      # OPTIONAL
                         NielsenId3Behavior => 'NO_PASSTHROUGH'
                         ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
                         NullPacketBitrate => 1,    # OPTIONAL
                         PatInterval       => 1,    # max: 1000; OPTIONAL
-                        PcrControl => 'CONFIGURED_PCR_PERIOD'
+                        PcrControl        => 'CONFIGURED_PCR_PERIOD'
                         , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
                         PcrPeriod   => 1,               # max: 500; OPTIONAL
                         PcrPid      => 'My__string',    # OPTIONAL
@@ -437,17 +439,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Scte27Pids => 'My__string', # OPTIONAL
                         Scte35Control =>
                           'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
-                        Scte35Pid           => 'My__string',    # OPTIONAL
+                        Scte35Pid           => 'My__string',        # OPTIONAL
                         SegmentationMarkers => 'EBP'
                         , # values: EBP, EBP_LEGACY, NONE, PSI_SEGSTART, RAI_ADAPT, RAI_SEGSTART; OPTIONAL
                         SegmentationStyle => 'MAINTAIN_CADENCE'
-                        ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
+                        , # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
                         SegmentationTime      => 1,                 # OPTIONAL
                         TimedMetadataBehavior => 'NO_PASSTHROUGH'
                         ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
-                        TimedMetadataPid => 'My__string',    # OPTIONAL
+                        TimedMetadataPid  => 'My__string',    # OPTIONAL
                         TransportStreamId => 1,    # max: 65535; OPTIONAL
-                        VideoPid => 'My__string',  # OPTIONAL
+                        VideoPid          => 'My__string',    # OPTIONAL
                       },    # OPTIONAL
                     },
                     Extension    => 'My__string',    # OPTIONAL
@@ -480,35 +482,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           NielsenId3Behavior => 'NO_PASSTHROUGH'
                           ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
                           PatInterval => 1,    # max: 1000; OPTIONAL
-                          PcrControl => 'CONFIGURED_PCR_PERIOD'
+                          PcrControl  => 'CONFIGURED_PCR_PERIOD'
                           , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
-                          PcrPeriod   => 1,               # max: 500; OPTIONAL
-                          PcrPid      => 'My__string',    # OPTIONAL
-                          PmtInterval => 1,               # max: 1000; OPTIONAL
-                          PmtPid      => 'My__string',    # OPTIONAL
-                          ProgramNum  => 1,               # max: 65535; OPTIONAL
+                          PcrPeriod      => 1,            # max: 500; OPTIONAL
+                          PcrPid         => 'My__string', # OPTIONAL
+                          PmtInterval    => 1,            # max: 1000; OPTIONAL
+                          PmtPid         => 'My__string', # OPTIONAL
+                          ProgramNum     => 1,            # max: 65535; OPTIONAL
                           Scte35Behavior => 'NO_PASSTHROUGH'
                           ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
                           Scte35Pid             => 'My__string',      # OPTIONAL
                           TimedMetadataBehavior => 'NO_PASSTHROUGH'
                           ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
-                          TimedMetadataPid => 'My__string',    # OPTIONAL
+                          TimedMetadataPid  => 'My__string',    # OPTIONAL
                           TransportStreamId => 1,    # max: 65535; OPTIONAL
-                          VideoPid => 'My__string',  # OPTIONAL
+                          VideoPid          => 'My__string',    # OPTIONAL
                         },
-                        AudioRenditionSets => 'My__string',    # OPTIONAL
+                        AudioRenditionSets => 'My__string',     # OPTIONAL
                       },    # OPTIONAL
                     },
                     H265PackagingType => 'HEV1',  # values: HEV1, HVC1; OPTIONAL
-                    NameModifier    => 'My__stringMin1',    # min: 1; OPTIONAL
-                    SegmentModifier => 'My__string',        # OPTIONAL
+                    NameModifier      => 'My__stringMin1',    # min: 1; OPTIONAL
+                    SegmentModifier   => 'My__string',        # OPTIONAL
                   },    # OPTIONAL
                   MediaPackageOutputSettings => {
 
                   },    # OPTIONAL
                   MsSmoothOutputSettings => {
                     H265PackagingType => 'HEV1',  # values: HEV1, HVC1; OPTIONAL
-                    NameModifier => 'My__string', # OPTIONAL
+                    NameModifier      => 'My__string',    # OPTIONAL
                   },    # OPTIONAL
                   MultiplexOutputSettings => {
                     Destination => {
@@ -522,7 +524,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                     CertificateMode => 'SELF_SIGNED'
                     ,    # values: SELF_SIGNED, VERIFY_AUTHENTICITY; OPTIONAL
-                    ConnectionRetryInterval => 1,    # min: 1
+                    ConnectionRetryInterval => 1,    # min: 1; OPTIONAL
                     NumRetries              => 1,    # OPTIONAL
                   },    # OPTIONAL
                   UdpOutputSettings => {
@@ -532,7 +534,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'DROP',    # values: DROP, ENCODE_SILENCE; OPTIONAL
                         Arib =>
                           'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                        AribCaptionsPid => 'My__string',    # OPTIONAL
+                        AribCaptionsPid        => 'My__string',    # OPTIONAL
                         AribCaptionsPidControl =>
                           'AUTO',    # values: AUTO, USE_CONFIGURED; OPTIONAL
                         AudioBufferModel =>
@@ -541,12 +543,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         AudioPids         => 'My__string',    # OPTIONAL
                         AudioStreamType => 'ATSC', # values: ATSC, DVB; OPTIONAL
                         Bitrate         => 1,      # OPTIONAL
-                        BufferModel =>
+                        BufferModel     =>
                           'MULTIPLEX',    # values: MULTIPLEX, NONE; OPTIONAL
                         CcDescriptor =>
                           'DISABLED',     # values: DISABLED, ENABLED; OPTIONAL
                         DvbNitSettings => {
-                          NetworkId => 1,    # max: 65536
+                          NetworkId   => 1,            # max: 65536
                           NetworkName =>
                             'My__stringMin1Max256',    # min: 1, max: 256
                           RepInterval => 1,    # min: 25, max: 10000; OPTIONAL
@@ -569,21 +571,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         EbpAudioInterval => 'VIDEO_AND_FIXED_INTERVALS'
                         , # values: VIDEO_AND_FIXED_INTERVALS, VIDEO_INTERVAL; OPTIONAL
                         EbpLookaheadMs => 1,    # max: 10000; OPTIONAL
-                        EbpPlacement => 'VIDEO_AND_AUDIO_PIDS'
+                        EbpPlacement   => 'VIDEO_AND_AUDIO_PIDS'
                         ,    # values: VIDEO_AND_AUDIO_PIDS, VIDEO_PID; OPTIONAL
-                        EcmPid => 'My__string',    # OPTIONAL
+                        EcmPid      => 'My__string',    # OPTIONAL
                         EsRateInPes =>
                           'EXCLUDE',    # values: EXCLUDE, INCLUDE; OPTIONAL
-                        EtvPlatformPid => 'My__string',    # OPTIONAL
-                        EtvSignalPid   => 'My__string',    # OPTIONAL
-                        FragmentTime   => 1,               # OPTIONAL
+                        EtvPlatformPid => 'My__string',          # OPTIONAL
+                        EtvSignalPid   => 'My__string',          # OPTIONAL
+                        FragmentTime   => 1,                     # OPTIONAL
                         Klv => 'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
                         KlvDataPids        => 'My__string',      # OPTIONAL
                         NielsenId3Behavior => 'NO_PASSTHROUGH'
                         ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
                         NullPacketBitrate => 1,    # OPTIONAL
                         PatInterval       => 1,    # max: 1000; OPTIONAL
-                        PcrControl => 'CONFIGURED_PCR_PERIOD'
+                        PcrControl        => 'CONFIGURED_PCR_PERIOD'
                         , # values: CONFIGURED_PCR_PERIOD, PCR_EVERY_PES_PACKET; OPTIONAL
                         PcrPeriod   => 1,               # max: 500; OPTIONAL
                         PcrPid      => 'My__string',    # OPTIONAL
@@ -594,17 +596,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Scte27Pids => 'My__string', # OPTIONAL
                         Scte35Control =>
                           'NONE',    # values: NONE, PASSTHROUGH; OPTIONAL
-                        Scte35Pid           => 'My__string',    # OPTIONAL
+                        Scte35Pid           => 'My__string',        # OPTIONAL
                         SegmentationMarkers => 'EBP'
                         , # values: EBP, EBP_LEGACY, NONE, PSI_SEGSTART, RAI_ADAPT, RAI_SEGSTART; OPTIONAL
                         SegmentationStyle => 'MAINTAIN_CADENCE'
-                        ,    # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
+                        , # values: MAINTAIN_CADENCE, RESET_CADENCE; OPTIONAL
                         SegmentationTime      => 1,                 # OPTIONAL
                         TimedMetadataBehavior => 'NO_PASSTHROUGH'
                         ,    # values: NO_PASSTHROUGH, PASSTHROUGH; OPTIONAL
-                        TimedMetadataPid => 'My__string',    # OPTIONAL
+                        TimedMetadataPid  => 'My__string',    # OPTIONAL
                         TransportStreamId => 1,    # max: 65535; OPTIONAL
-                        VideoPid => 'My__string',  # OPTIONAL
+                        VideoPid          => 'My__string',    # OPTIONAL
                       },    # OPTIONAL
                     },
                     Destination => {
@@ -613,7 +615,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     BufferMsec        => 1,    # max: 10000; OPTIONAL
                     FecOutputSettings => {
                       ColumnDepth => 1,        # min: 4, max: 20; OPTIONAL
-                      IncludeFec =>
+                      IncludeFec  =>
                         'COLUMN',    # values: COLUMN, COLUMN_AND_ROW; OPTIONAL
                       RowLength => 1,    # min: 1, max: 20; OPTIONAL
                     },    # OPTIONAL
@@ -621,10 +623,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 AudioDescriptionNames => [
                   'My__string', ...    # OPTIONAL
-                ],                     # OPTIONAL
+                ],    # OPTIONAL
                 CaptionDescriptionNames => [
                   'My__string', ...    # OPTIONAL
-                ],                     # OPTIONAL
+                ],    # OPTIONAL
                 OutputName =>
                   'My__stringMin1Max255',    # min: 1, max: 255; OPTIONAL
                 VideoDescriptionName => 'My__string',    # OPTIONAL
@@ -644,7 +646,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name          => 'My__string',    # OPTIONAL
             CodecSettings => {
               FrameCaptureSettings => {
-                CaptureInterval => 1,         # min: 1, max: 3600000
+                CaptureInterval      => 1,    # min: 1, max: 3600000
                 CaptureIntervalUnits =>
                   'MILLISECONDS',    # values: MILLISECONDS, SECONDS; OPTIONAL
               },    # OPTIONAL
@@ -667,35 +669,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },                       # OPTIONAL
                 },    # OPTIONAL
-                EntropyEncoding => 'CABAC',     # values: CABAC, CAVLC; OPTIONAL
+                EntropyEncoding => 'CABAC',   # values: CABAC, CAVLC; OPTIONAL
                 FixedAfd        => 'AFD_0000'
                 , # values: AFD_0000, AFD_0010, AFD_0011, AFD_0100, AFD_1000, AFD_1001, AFD_1010, AFD_1011, AFD_1101, AFD_1110, AFD_1111; OPTIONAL
                 FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
                 FramerateControl => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                FramerateDenominator => 1,    # min: 1
-                FramerateNumerator   => 1,    # min: 1
-                GopBReference =>
+                FramerateDenominator => 1,    # min: 1; OPTIONAL
+                FramerateNumerator   => 1,    # min: 1; OPTIONAL
+                GopBReference        =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                GopClosedCadence => 1,    # OPTIONAL
-                GopNumBFrames    => 1,    # max: 7; OPTIONAL
-                GopSize          => 1,    # OPTIONAL
-                GopSizeUnits => 'FRAMES', # values: FRAMES, SECONDS; OPTIONAL
-                Level => 'H264_LEVEL_1'
+                GopClosedCadence => 1,       # OPTIONAL
+                GopNumBFrames    => 1,       # max: 7
+                GopSize          => 1,       # OPTIONAL
+                GopSizeUnits => 'FRAMES',    # values: FRAMES, SECONDS; OPTIONAL
+                Level        => 'H264_LEVEL_1'
                 , # values: H264_LEVEL_1, H264_LEVEL_1_1, H264_LEVEL_1_2, H264_LEVEL_1_3, H264_LEVEL_2, H264_LEVEL_2_1, H264_LEVEL_2_2, H264_LEVEL_3, H264_LEVEL_3_1, H264_LEVEL_3_2, H264_LEVEL_4, H264_LEVEL_4_1, H264_LEVEL_4_2, H264_LEVEL_5, H264_LEVEL_5_1, H264_LEVEL_5_2, H264_LEVEL_AUTO; OPTIONAL
                 LookAheadRateControl =>
                   'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
-                MaxBitrate   => 1,    # min: 1000; OPTIONAL
-                MinIInterval => 1,    # max: 30; OPTIONAL
-                NumRefFrames => 1,    # min: 1, max: 6; OPTIONAL
-                ParControl => 'INITIALIZE_FROM_SOURCE'
+                MaxBitrate   => 1,             # min: 1000; OPTIONAL
+                MinIInterval => 1,             # max: 30; OPTIONAL
+                NumRefFrames => 1,             # min: 1, max: 6; OPTIONAL
+                ParControl   => 'INITIALIZE_FROM_SOURCE'
                 ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
-                ParDenominator => 1,           # min: 1
+                ParDenominator => 1,           # min: 1; OPTIONAL
                 ParNumerator   => 1,           # OPTIONAL
                 Profile        => 'BASELINE'
                 , # values: BASELINE, HIGH, HIGH_10BIT, HIGH_422, HIGH_422_10BIT, MAIN; OPTIONAL
                 QvbrQualityLevel => 1,    # min: 1, max: 10; OPTIONAL
-                RateControlMode =>
+                RateControlMode  =>
                   'CBR',    # values: CBR, MULTIPLEX, QVBR, VBR; OPTIONAL
                 ScanType =>
                   'INTERLACED',    # values: INTERLACED, PROGRESSIVE; OPTIONAL
@@ -712,14 +714,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               H265Settings => {
                 FramerateDenominator => 1,       # min: 1, max: 3003
-                FramerateNumerator   => 1,       # min: 1
+                FramerateNumerator   => 1,       # min: 1; OPTIONAL
                 AdaptiveQuantization => 'HIGH'
                 ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
                 AfdSignaling => 'AUTO',    # values: AUTO, FIXED, NONE; OPTIONAL
                 AlternativeTransferFunction =>
                   'INSERT',                # values: INSERT, OMIT; OPTIONAL
-                Bitrate => 1,    # min: 100000, max: 40000000; OPTIONAL
-                BufSize => 1,    # min: 100000, max: 80000000; OPTIONAL
+                Bitrate       => 1,    # min: 100000, max: 40000000; OPTIONAL
+                BufSize       => 1,    # min: 100000, max: 80000000; OPTIONAL
                 ColorMetadata => 'IGNORE',    # values: IGNORE, INSERT; OPTIONAL
                 ColorSpaceSettings => {
                   ColorSpacePassthroughSettings => {
@@ -741,35 +743,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 FlickerAq => 'DISABLED',   # values: DISABLED, ENABLED; OPTIONAL
                 GopClosedCadence => 1,     # OPTIONAL
                 GopSize          => 1,     # OPTIONAL
-                GopSizeUnits => 'FRAMES',  # values: FRAMES, SECONDS; OPTIONAL
-                Level => 'H265_LEVEL_1'
+                GopSizeUnits => 'FRAMES',    # values: FRAMES, SECONDS; OPTIONAL
+                Level        => 'H265_LEVEL_1'
                 , # values: H265_LEVEL_1, H265_LEVEL_2, H265_LEVEL_2_1, H265_LEVEL_3, H265_LEVEL_3_1, H265_LEVEL_4, H265_LEVEL_4_1, H265_LEVEL_5, H265_LEVEL_5_1, H265_LEVEL_5_2, H265_LEVEL_6, H265_LEVEL_6_1, H265_LEVEL_6_2, H265_LEVEL_AUTO; OPTIONAL
                 LookAheadRateControl =>
                   'HIGH',    # values: HIGH, LOW, MEDIUM; OPTIONAL
                 MaxBitrate     => 1,      # min: 100000, max: 40000000; OPTIONAL
                 MinIInterval   => 1,      # max: 30; OPTIONAL
-                ParDenominator => 1,      # min: 1
-                ParNumerator   => 1,      # min: 1
+                ParDenominator => 1,      # min: 1; OPTIONAL
+                ParNumerator   => 1,      # min: 1; OPTIONAL
                 Profile        => 'MAIN', # values: MAIN, MAIN_10BIT; OPTIONAL
                 QvbrQualityLevel => 1,    # min: 1, max: 10; OPTIONAL
-                RateControlMode =>
+                RateControlMode  =>
                   'CBR',    # values: CBR, MULTIPLEX, QVBR; OPTIONAL
                 ScanType => 'PROGRESSIVE',    # values: PROGRESSIVE; OPTIONAL
                 SceneChangeDetect =>
                   'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
-                Slices => 1,         # min: 1, max: 16; OPTIONAL
-                Tier   => 'HIGH',    # values: HIGH, MAIN; OPTIONAL
+                Slices            => 1,         # min: 1, max: 16; OPTIONAL
+                Tier              => 'HIGH',    # values: HIGH, MAIN; OPTIONAL
                 TimecodeInsertion =>
                   'DISABLED',    # values: DISABLED, PIC_TIMING_SEI; OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
-            Height => 1,    # OPTIONAL
+            Height       => 1,    # OPTIONAL
             RespondToAfd =>
-              'NONE',       # values: NONE, PASSTHROUGH, RESPOND; OPTIONAL
+              'NONE',             # values: NONE, PASSTHROUGH, RESPOND; OPTIONAL
             ScalingBehavior =>
-              'DEFAULT',    # values: DEFAULT, STRETCH_TO_OUTPUT; OPTIONAL
-            Sharpness => 1, # max: 100; OPTIONAL
-            Width     => 1, # OPTIONAL
+              'DEFAULT',          # values: DEFAULT, STRETCH_TO_OUTPUT; OPTIONAL
+            Sharpness => 1,       # max: 100; OPTIONAL
+            Width     => 1,       # OPTIONAL
           },
           ...
         ],
@@ -784,18 +786,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AvailConfiguration => {
           AvailSettings => {
             Scte35SpliceInsert => {
-              AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
+              AdAvailOffset          => 1,    # min: -1000, max: 1000; OPTIONAL
               NoRegionalBlackoutFlag =>
-                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
+                'FOLLOW',                     # values: FOLLOW, IGNORE; OPTIONAL
               WebDeliveryAllowedFlag =>
-                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
+                'FOLLOW',                     # values: FOLLOW, IGNORE; OPTIONAL
             },    # OPTIONAL
             Scte35TimeSignalApos => {
-              AdAvailOffset => 1,    # min: -1000, max: 1000; OPTIONAL
+              AdAvailOffset          => 1,    # min: -1000, max: 1000; OPTIONAL
               NoRegionalBlackoutFlag =>
-                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
+                'FOLLOW',                     # values: FOLLOW, IGNORE; OPTIONAL
               WebDeliveryAllowedFlag =>
-                'FOLLOW',            # values: FOLLOW, IGNORE; OPTIONAL
+                'FOLLOW',                     # values: FOLLOW, IGNORE; OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
@@ -813,7 +815,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Username      => 'My__string',    # OPTIONAL
           },    # OPTIONAL
           NetworkId => 'My__stringMin34Max34',    # min: 34, max: 34; OPTIONAL
-          State => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+          State     => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
         },    # OPTIONAL
         CaptionDescriptions => [
           {
@@ -912,15 +914,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LanguageDescription => 'My__string',    # OPTIONAL
           },
           ...
-        ],                                          # OPTIONAL
+        ],    # OPTIONAL
         GlobalConfiguration => {
           InitialAudioGain => 1,    # min: -60, max: 60; OPTIONAL
-          InputEndAction =>
+          InputEndAction   =>
             'NONE',    # values: NONE, SWITCH_AND_LOOP_INPUTS; OPTIONAL
           InputLossBehavior => {
-            BlackFrameMsec => 1,    # max: 1000000; OPTIONAL
+            BlackFrameMsec      => 1,    # max: 1000000; OPTIONAL
             InputLossImageColor =>
-              'My__stringMin6Max6',    # min: 6, max: 6; OPTIONAL
+              'My__stringMin6Max6',      # min: 6, max: 6; OPTIONAL
             InputLossImageSlate => {
               Uri           => 'My__string',    # OPTIONAL
               PasswordParam => 'My__string',    # OPTIONAL
@@ -937,7 +939,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'DISABLED',       # values: DISABLED, ENABLED; OPTIONAL
         },    # OPTIONAL
         NielsenConfiguration => {
-          DistributorId => 'My__string',    # OPTIONAL
+          DistributorId          => 'My__string',    # OPTIONAL
           NielsenPcmToId3Tagging =>
             'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
         },    # OPTIONAL
@@ -952,18 +954,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Name             => 'My__stringMin1',    # min: 1; OPTIONAL
                 SelectorSettings => {
                   AudioLanguageSelection => {
-                    LanguageCode => 'My__string',        # OPTIONAL
+                    LanguageCode            => 'My__string',    # OPTIONAL
                     LanguageSelectionPolicy =>
                       'LOOSE',    # values: LOOSE, STRICT; OPTIONAL
                   },    # OPTIONAL
                   AudioPidSelection => {
-                    Pid => 1,    # max: 8191; OPTIONAL
+                    Pid => 1,    # max: 8191
 
                   },    # OPTIONAL
                 },    # OPTIONAL
               },
               ...
-            ],        # OPTIONAL
+            ],    # OPTIONAL
             CaptionSelectors => [
               {
                 Name             => 'My__stringMin1',    # min: 1; OPTIONAL
@@ -973,7 +975,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },                                     # OPTIONAL
                   DvbSubSourceSettings => {
-                    Pid => 1,                            # min: 1
+                    Pid => 1,                            # min: 1; OPTIONAL
                   },    # OPTIONAL
                   EmbeddedSourceSettings => {
                     Convert608To708 =>
@@ -988,7 +990,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Source608ChannelNumber => 1,    # min: 1, max: 4
                   },    # OPTIONAL
                   Scte27SourceSettings => {
-                    Pid => 1,    # min: 1
+                    Pid => 1,    # min: 1; OPTIONAL
                   },    # OPTIONAL
                   TeletextSourceSettings => {
                     PageNumber => 'My__string',    # OPTIONAL
@@ -996,11 +998,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
               },
               ...
-            ],        # OPTIONAL
+            ],    # OPTIONAL
             DeblockFilter  => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
             DenoiseFilter  => 'DISABLED',  # values: DISABLED, ENABLED; OPTIONAL
             FilterStrength => 1,           # min: 1, max: 5; OPTIONAL
-            InputFilter => 'AUTO',    # values: AUTO, DISABLED, FORCED; OPTIONAL
+            InputFilter    => 'AUTO', # values: AUTO, DISABLED, FORCED; OPTIONAL
             NetworkInputSettings => {
               HlsInputSettings => {
                 Bandwidth      => 1,    # OPTIONAL
@@ -1018,7 +1020,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ColorSpaceUsage => 'FALLBACK', # values: FALLBACK, FORCE; OPTIONAL
               SelectorSettings => {
                 VideoSelectorPid => {
-                  Pid => 1,                  # max: 8191; OPTIONAL
+                  Pid => 1,                  # max: 8191
                 },    # OPTIONAL
                 VideoSelectorProgramId => {
                   ProgramId => 1,    # max: 65536
@@ -1028,7 +1030,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       InputSpecification => {
         Codec          => 'MPEG2',        # values: MPEG2, AVC, HEVC; OPTIONAL
         MaximumBitrate => 'MAX_10_MBPS'

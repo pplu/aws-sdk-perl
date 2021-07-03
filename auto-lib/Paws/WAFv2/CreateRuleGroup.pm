@@ -57,18 +57,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               FieldToMatch => {
                 AllQueryArguments => {
 
-                },                                     # OPTIONAL
+                },    # OPTIONAL
                 Body => {
 
-                },                                     # OPTIONAL
+                },    # OPTIONAL
                 Method => {
 
-                },                                     # OPTIONAL
+                },    # OPTIONAL
                 QueryString => {
 
-                },                                     # OPTIONAL
+                },    # OPTIONAL
                 SingleHeader => {
-                  Name => 'MyFieldToMatchData',        # min: 1, max: 64
+                  Name => 'MyFieldToMatchData',    # min: 1, max: 64
 
                 },    # OPTIONAL
                 SingleQueryArgument => {
@@ -112,7 +112,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                  # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             NotStatement => {
               Statement => <Statement>,
@@ -173,7 +173,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                   # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             SizeConstraintStatement => {
               ComparisonOperator => 'EQ',    # values: EQ, NE, LE, LT, GE, GT
@@ -316,7 +316,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -324,7 +324,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -43,9 +43,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Timeout               => 1,                 # min: 1; OPTIONAL
           },
           ...
-        ],                                              # OPTIONAL
-        Description => 'MyDescriptionString',           # max: 2048; OPTIONAL
-        Name        => 'MyNameString',                  # min: 1, max: 255
+        ],    # OPTIONAL
+        Description => 'MyDescriptionString',    # max: 2048; OPTIONAL
+        Name        => 'MyNameString',           # min: 1, max: 255
         Predicate   => {
           Conditions => [
             {

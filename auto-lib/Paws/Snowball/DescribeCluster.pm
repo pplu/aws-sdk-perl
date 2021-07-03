@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-    # To describe a cluster
-    # Returns information about a specific cluster including shipping
-    # information, cluster status, and other important metadata.
+  # To describe a cluster
+  # Returns information about a specific cluster including shipping information,
+  # cluster status, and other important metadata.
     my $DescribeClusterResult = $snowball->DescribeCluster(
       'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000' );
 

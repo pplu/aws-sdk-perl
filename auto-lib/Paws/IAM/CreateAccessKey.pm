@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To create an access key for an IAM user
-    # The following command creates an access key (access key ID and secret
-    # access key) for the IAM user named Bob.
+  # To create an access key for an IAM user
+  # The following command creates an access key (access key ID and secret access
+  # key) for the IAM user named Bob.
     my $CreateAccessKeyResponse = $iam->CreateAccessKey( 'UserName' => 'Bob' );
 
     # Results:

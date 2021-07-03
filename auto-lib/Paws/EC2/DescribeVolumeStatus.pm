@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $VolumeStatuses = $DescribeVolumeStatusResult->VolumeStatuses;
 
-    # Returns a L<Paws::EC2::DescribeVolumeStatusResult> object.
-    # To describe the status of impaired volumes
-    # This example describes the status for all volumes that are impaired. In
-    # this example output, there are no impaired volumes.
+  # Returns a L<Paws::EC2::DescribeVolumeStatusResult> object.
+  # To describe the status of impaired volumes
+  # This example describes the status for all volumes that are impaired. In this
+  # example output, there are no impaired volumes.
     my $DescribeVolumeStatusResult = $ec2->DescribeVolumeStatus(
       'Filters' => [
 

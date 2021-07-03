@@ -41,12 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImagePipelineArn               => 'MyImagePipelineArn',
       ImageRecipeArn                 => 'MyImageRecipeArn',
       InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
-      Description => 'MyNonEmptyString',    # OPTIONAL
-      DistributionConfigurationArn =>
-        'MyDistributionConfigurationArn',    # OPTIONAL
+      Description                    => 'MyNonEmptyString',    # OPTIONAL
+      DistributionConfigurationArn   =>
+        'MyDistributionConfigurationArn',                      # OPTIONAL
       ImageTestsConfiguration => {
-        ImageTestsEnabled => 1,              # OPTIONAL
-        TimeoutMinutes    => 1,              # min: 60, max: 1440; OPTIONAL
+        ImageTestsEnabled => 1,    # OPTIONAL
+        TimeoutMinutes    => 1,    # min: 60, max: 1440; OPTIONAL
       },    # OPTIONAL
       Schedule => {
         PipelineExecutionStartCondition => 'EXPRESSION_MATCH_ONLY'

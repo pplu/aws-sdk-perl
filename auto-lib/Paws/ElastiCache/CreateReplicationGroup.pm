@@ -78,28 +78,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Slots                    => 'MyString',
         },
         ...
-      ],                                                      # OPTIONAL
-      NotificationTopicArn       => 'MyString',               # OPTIONAL
-      NumCacheClusters           => 1,                        # OPTIONAL
-      NumNodeGroups              => 1,                        # OPTIONAL
-      Port                       => 1,                        # OPTIONAL
-      PreferredCacheClusterAZs   => [ 'MyString', ... ],      # OPTIONAL
-      PreferredMaintenanceWindow => 'MyString',               # OPTIONAL
-      PrimaryClusterId           => 'MyString',               # OPTIONAL
-      ReplicasPerNodeGroup       => 1,                        # OPTIONAL
-      SecurityGroupIds           => [ 'MyString', ... ],      # OPTIONAL
-      SnapshotArns               => [ 'MyString', ... ],      # OPTIONAL
-      SnapshotName               => 'MyString',               # OPTIONAL
-      SnapshotRetentionLimit     => 1,                        # OPTIONAL
-      SnapshotWindow             => 'MyString',               # OPTIONAL
+      ],    # OPTIONAL
+      NotificationTopicArn       => 'MyString',             # OPTIONAL
+      NumCacheClusters           => 1,                      # OPTIONAL
+      NumNodeGroups              => 1,                      # OPTIONAL
+      Port                       => 1,                      # OPTIONAL
+      PreferredCacheClusterAZs   => [ 'MyString', ... ],    # OPTIONAL
+      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
+      PrimaryClusterId           => 'MyString',             # OPTIONAL
+      ReplicasPerNodeGroup       => 1,                      # OPTIONAL
+      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotArns               => [ 'MyString', ... ],    # OPTIONAL
+      SnapshotName               => 'MyString',             # OPTIONAL
+      SnapshotRetentionLimit     => 1,                      # OPTIONAL
+      SnapshotWindow             => 'MyString',             # OPTIONAL
       Tags                       => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                      # OPTIONAL
-      TransitEncryptionEnabled => 1,                          # OPTIONAL
+      ],                                                    # OPTIONAL
+      TransitEncryptionEnabled => 1,                        # OPTIONAL
     );
 
     # Results:

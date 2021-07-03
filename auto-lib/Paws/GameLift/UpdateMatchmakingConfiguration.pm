@@ -50,16 +50,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description              => 'MyNonZeroAndMaxString',            # OPTIONAL
       GameProperties           => [
         {
-          Key   => 'MyGamePropertyKey',                               # max: 32
-          Value => 'MyGamePropertyValue',                             # max: 96
+          Key   => 'MyGamePropertyKey',      # max: 32
+          Value => 'MyGamePropertyValue',    # max: 96
 
         },
         ...
-      ],                                                              # OPTIONAL
-      GameSessionData      => 'MyGameSessionData',                    # OPTIONAL
+      ],    # OPTIONAL
+      GameSessionData      => 'MyGameSessionData',    # OPTIONAL
       GameSessionQueueArns => [
-        'MyArnStringModel', ...    # min: 1, max: 256
-      ],                           # OPTIONAL
+        'MyArnStringModel', ...                       # min: 1, max: 256
+      ],    # OPTIONAL
       NotificationTarget    => 'MySnsArnStringModel',         # OPTIONAL
       RequestTimeoutSeconds => 1,                             # OPTIONAL
       RuleSetName           => 'MyMatchmakingRuleSetName',    # OPTIONAL

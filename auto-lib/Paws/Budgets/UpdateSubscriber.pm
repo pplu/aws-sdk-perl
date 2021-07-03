@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
         Threshold         => 1,           # max: 1000000000
         NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
-        ThresholdType =>
+        ThresholdType     =>
           'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
       },
       OldSubscriber => {

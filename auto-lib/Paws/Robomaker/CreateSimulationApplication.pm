@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Version => 'Kinetic',    # values: Kinetic, Melodic, Dashing; OPTIONAL
       },
       SimulationSoftwareSuite => {
-        Name => 'Gazebo',        # values: Gazebo, RosbagPlay; OPTIONAL
+        Name    => 'Gazebo',     # values: Gazebo, RosbagPlay; OPTIONAL
         Version => 'MySimulationSoftwareSuiteVersionType',    # OPTIONAL
       },
       Sources => [

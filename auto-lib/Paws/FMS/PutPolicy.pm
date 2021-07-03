@@ -43,35 +43,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExcludeMap => {
           'ACCOUNT' => [
             'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
-          ],                                  # key: values: ACCOUNT
+          ],    # key: values: ACCOUNT
         },    # OPTIONAL
         IncludeMap => {
           'ACCOUNT' => [
             'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
-          ],                                  # key: values: ACCOUNT
+          ],    # key: values: ACCOUNT
         },    # OPTIONAL
-        PolicyId => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
+        PolicyId          => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
         PolicyUpdateToken =>
-          'MyPolicyUpdateToken',     # min: 1, max: 1024; OPTIONAL
+          'MyPolicyUpdateToken',              # min: 1, max: 1024; OPTIONAL
         ResourceTags => [
           {
             Key   => 'MyResourceTagKey',      # min: 1, max: 128
             Value => 'MyResourceTagValue',    # max: 256; OPTIONAL
           },
           ...
-        ],                                    # max: 8; OPTIONAL
+        ],    # max: 8; OPTIONAL
         ResourceTypeList => [
-          'MyResourceType', ...               # min: 1, max: 128
-        ],                                    # OPTIONAL
+          'MyResourceType', ...    # min: 1, max: 128
+        ],    # OPTIONAL
       },
       TagList => [
         {
-          Key   => 'MyTagKey',                # min: 1, max: 128
-          Value => 'MyTagValue',              # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken                    => 'MyClientToken',
       ImageRecipeArn                 => 'MyImageRecipeArn',
       InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
-      DistributionConfigurationArn =>
+      DistributionConfigurationArn   =>
         'MyDistributionConfigurationArn',    # OPTIONAL
       ImageTestsConfiguration => {
         ImageTestsEnabled => 1,              # OPTIONAL

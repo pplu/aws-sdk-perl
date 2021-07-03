@@ -39,28 +39,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateAuthorityArn => 'MyArn',                # OPTIONAL
       DomainValidationOptions => [
         {
-          DomainName       => 'MyDomainNameString',      # min: 1, max: 253
-          ValidationDomain => 'MyDomainNameString',      # min: 1, max: 253
+          DomainName       => 'MyDomainNameString',    # min: 1, max: 253
+          ValidationDomain => 'MyDomainNameString',    # min: 1, max: 253
 
         },
         ...
-      ],                                                 # OPTIONAL
-      IdempotencyToken => 'MyIdempotencyToken',          # OPTIONAL
+      ],    # OPTIONAL
+      IdempotencyToken => 'MyIdempotencyToken',    # OPTIONAL
       Options          => {
         CertificateTransparencyLoggingPreference =>
           'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
       },    # OPTIONAL
       SubjectAlternativeNames => [
         'MyDomainNameString', ...    # min: 1, max: 253
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',       # min: 1, max: 128
-          Value => 'MyTagValue',     # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                             # OPTIONAL
-      ValidationMethod => 'EMAIL',   # OPTIONAL
+      ],    # OPTIONAL
+      ValidationMethod => 'EMAIL',    # OPTIONAL
     );
 
     # Results:

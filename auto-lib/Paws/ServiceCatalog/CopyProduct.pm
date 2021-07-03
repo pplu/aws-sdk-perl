@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AcceptLanguage   => 'MyAcceptLanguage',     # OPTIONAL
       CopyOptions      => [
         'CopyTags', ...                           # values: CopyTags
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       SourceProvisioningArtifactIdentifiers => [
         {
           'Id' => 'MyProvisioningArtifactPropertyValue',    # key: values: Id
         },
         ...
-      ],                                                    # OPTIONAL
-      TargetProductId   => 'MyId',                          # OPTIONAL
-      TargetProductName => 'MyProductViewName',             # OPTIONAL
+      ],    # OPTIONAL
+      TargetProductId   => 'MyId',                 # OPTIONAL
+      TargetProductName => 'MyProductViewName',    # OPTIONAL
     );
 
     # Results:

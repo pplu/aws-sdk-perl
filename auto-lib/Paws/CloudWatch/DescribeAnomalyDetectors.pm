@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                  # OPTIONAL
-      MaxResults => 1,                    # OPTIONAL
-      MetricName => 'MyMetricName',       # OPTIONAL
-      Namespace  => 'MyNamespace',        # OPTIONAL
-      NextToken  => 'MyNextToken',        # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                 # OPTIONAL
+      MetricName => 'MyMetricName',    # OPTIONAL
+      Namespace  => 'MyNamespace',     # OPTIONAL
+      NextToken  => 'MyNextToken',     # OPTIONAL
     );
 
     # Results:

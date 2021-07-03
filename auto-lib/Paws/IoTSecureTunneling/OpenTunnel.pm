@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DestinationConfig => {
         Services => [
           'MyService', ...                     # min: 1, max: 8
-        ],                                     # min: 1, max: 1
-        ThingName => 'MyThingName',            # min: 1, max: 128
+        ],    # min: 1, max: 1
+        ThingName => 'MyThingName',    # min: 1, max: 128
 
       },    # OPTIONAL
       Tags => [
@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TimeoutConfig => {
         MaxLifetimeTimeoutMinutes => 1,    # min: 1, max: 720; OPTIONAL
       },    # OPTIONAL

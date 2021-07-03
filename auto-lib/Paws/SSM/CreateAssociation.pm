@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateAssociationResult = $ssm->CreateAssociation(
-      Name            => 'MyDocumentARN',
-      AssociationName => 'MyAssociationName',    # OPTIONAL
+      Name                          => 'MyDocumentARN',
+      AssociationName               => 'MyAssociationName',    # OPTIONAL
       AutomationTargetParameterName =>
-        'MyAutomationTargetParameterName',       # OPTIONAL
-      ComplianceSeverity => 'CRITICAL',          # OPTIONAL
-      DocumentVersion    => 'MyDocumentVersion', # OPTIONAL
-      InstanceId         => 'MyInstanceId',      # OPTIONAL
-      MaxConcurrency     => 'MyMaxConcurrency',  # OPTIONAL
-      MaxErrors          => 'MyMaxErrors',       # OPTIONAL
+        'MyAutomationTargetParameterName',                     # OPTIONAL
+      ComplianceSeverity => 'CRITICAL',                        # OPTIONAL
+      DocumentVersion    => 'MyDocumentVersion',               # OPTIONAL
+      InstanceId         => 'MyInstanceId',                    # OPTIONAL
+      MaxConcurrency     => 'MyMaxConcurrency',                # OPTIONAL
+      MaxErrors          => 'MyMaxErrors',                     # OPTIONAL
       OutputLocation     => {
         S3Location => {
           OutputS3BucketName => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
@@ -56,15 +56,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
       },    # OPTIONAL
       Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-      ,     # OPTIONAL
+      ,                                                # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
       Targets            => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

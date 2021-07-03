@@ -35,12 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientAffinity => 'NONE',              # OPTIONAL
       PortRanges     => [
         {
-          FromPort => 1,                     # min: 1, max: 65535; OPTIONAL
-          ToPort   => 1,                     # min: 1, max: 65535; OPTIONAL
+          FromPort => 1,    # min: 1, max: 65535; OPTIONAL
+          ToPort   => 1,    # min: 1, max: 65535; OPTIONAL
         },
         ...
-      ],                                     # OPTIONAL
-      Protocol => 'TCP',                     # OPTIONAL
+      ],    # OPTIONAL
+      Protocol => 'TCP',    # OPTIONAL
     );
 
     # Results:

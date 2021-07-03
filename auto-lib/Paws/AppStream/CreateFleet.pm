@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DisconnectTimeoutInSeconds => 1,                  # OPTIONAL
       DisplayName                => 'MyDisplayName',    # OPTIONAL
       DomainJoinInfo             => {
-        DirectoryName => 'MyDirectoryName',             # OPTIONAL
+        DirectoryName                       => 'MyDirectoryName',    # OPTIONAL
         OrganizationalUnitDistinguishedName =>
-          'MyOrganizationalUnitDistinguishedName',      # max: 2000; OPTIONAL
+          'MyOrganizationalUnitDistinguishedName',    # max: 2000; OPTIONAL
       },    # OPTIONAL
       EnableDefaultInternetAccess    => 1,              # OPTIONAL
       FleetType                      => 'ALWAYS_ON',    # OPTIONAL
@@ -70,10 +70,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VpcConfig => {
         SecurityGroupIds => [
           'MyString', ...    # min: 1
-        ],                   # max: 5; OPTIONAL
+        ],    # max: 5; OPTIONAL
         SubnetIds => [
           'MyString', ...    # min: 1
-        ],                   # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

@@ -56,14 +56,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description              => 'MyNonZeroAndMaxString',        # OPTIONAL
       GameProperties           => [
         {
-          Key   => 'MyGamePropertyKey',                           # max: 32
-          Value => 'MyGamePropertyValue',                         # max: 96
+          Key   => 'MyGamePropertyKey',      # max: 32
+          Value => 'MyGamePropertyValue',    # max: 96
 
         },
         ...
-      ],                                                          # OPTIONAL
-      GameSessionData    => 'MyGameSessionData',                  # OPTIONAL
-      NotificationTarget => 'MySnsArnStringModel',                # OPTIONAL
+      ],    # OPTIONAL
+      GameSessionData    => 'MyGameSessionData',      # OPTIONAL
+      NotificationTarget => 'MySnsArnStringModel',    # OPTIONAL
       Tags               => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

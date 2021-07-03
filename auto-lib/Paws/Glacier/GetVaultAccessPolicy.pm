@@ -29,9 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $glacier = Paws->service('Glacier');
-    # To  get the access-policy set on the vault
-    # The example retrieves the access-policy set on the vault named
-    # example-vault.
+ # To  get the access-policy set on the vault
+ # The example retrieves the access-policy set on the vault named example-vault.
     my $GetVaultAccessPolicyOutput = $glacier->GetVaultAccessPolicy(
       'AccountId' => '-',
       'VaultName' => 'example-vault'

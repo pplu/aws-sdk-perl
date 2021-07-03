@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceGroupId    => 'MyInstanceGroupId',    # OPTIONAL
       InstanceGroupTypes => [
         'MASTER', ...                               # values: MASTER, CORE, TASK
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       InstanceStates => [
         'AWAITING_FULFILLMENT',
         ... # values: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING, TERMINATED

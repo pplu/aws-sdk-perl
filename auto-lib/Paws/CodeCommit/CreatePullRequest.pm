@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],
       Title              => 'MyTitle',
-      ClientRequestToken => 'MyClientRequestToken',      # OPTIONAL
-      Description        => 'MyDescription',             # OPTIONAL
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
+      Description        => 'MyDescription',           # OPTIONAL
     );
 
     # Results:

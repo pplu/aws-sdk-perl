@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe a single attribute for your AWS account
-    # This example describes the supported-platforms attribute for your AWS
-    # account.
+# To describe a single attribute for your AWS account
+# This example describes the supported-platforms attribute for your AWS account.
     my $DescribeAccountAttributesResult = $ec2->DescribeAccountAttributes(
       'AttributeNames' => ['supported-platforms'] );
 

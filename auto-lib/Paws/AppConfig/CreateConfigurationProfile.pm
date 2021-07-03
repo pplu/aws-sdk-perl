@@ -46,11 +46,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Validators => [
         {
           Content => 'MyStringWithLengthBetween0And32768',    # max: 32768
-          Type => 'JSON_SCHEMA',    # values: JSON_SCHEMA, LAMBDA
+          Type    => 'JSON_SCHEMA',    # values: JSON_SCHEMA, LAMBDA
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

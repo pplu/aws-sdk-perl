@@ -37,21 +37,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $swf = Paws->service('SimpleWorkflow');
     $swf->RegisterWorkflowType(
-      Domain             => 'MyDomainName',
-      Name               => 'MyName',
-      Version            => 'MyVersion',
-      DefaultChildPolicy => 'TERMINATE',      # OPTIONAL
+      Domain                              => 'MyDomainName',
+      Name                                => 'MyName',
+      Version                             => 'MyVersion',
+      DefaultChildPolicy                  => 'TERMINATE',      # OPTIONAL
       DefaultExecutionStartToCloseTimeout =>
-        'MyDurationInSecondsOptional',        # OPTIONAL
-      DefaultLambdaRole => 'MyArn',           # OPTIONAL
+        'MyDurationInSecondsOptional',                         # OPTIONAL
+      DefaultLambdaRole => 'MyArn',                            # OPTIONAL
       DefaultTaskList   => {
-        Name => 'MyName',                     # min: 1, max: 256
+        Name => 'MyName',    # min: 1, max: 256
 
       },    # OPTIONAL
-      DefaultTaskPriority => 'MyTaskPriority',    # OPTIONAL
+      DefaultTaskPriority            => 'MyTaskPriority',    # OPTIONAL
       DefaultTaskStartToCloseTimeout =>
-        'MyDurationInSecondsOptional',            # OPTIONAL
-      Description => 'MyDescription',             # OPTIONAL
+        'MyDurationInSecondsOptional',                       # OPTIONAL
+      Description => 'MyDescription',                        # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

@@ -36,9 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # add-permission
-    # This example adds a permission for an S3 bucket to invoke a Lambda
-    # function.
+  # add-permission
+  # This example adds a permission for an S3 bucket to invoke a Lambda function.
     my $AddPermissionResponse = $lambda->AddPermission(
       'Action'        => 'lambda:InvokeFunction',
       'FunctionName'  => 'MyFunction',

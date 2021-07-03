@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ChannelId => 'My__stringMin1',    # min: 1; OPTIONAL
             },
             ...
-          ],                                    # OPTIONAL
+          ],    # OPTIONAL
           MultiplexSettings => {
             MultiplexId => 'My__stringMin1',    # min: 1; OPTIONAL
             ProgramName => 'My__stringMin1',    # min: 1; OPTIONAL
@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

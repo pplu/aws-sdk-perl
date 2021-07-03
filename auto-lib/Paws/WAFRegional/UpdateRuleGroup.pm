@@ -48,9 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                               # OPTIONAL
+            ],    # OPTIONAL
             OverrideAction => {
-              Type => 'NONE',                # values: NONE, COUNT
+              Type => 'NONE',    # values: NONE, COUNT
 
             },    # OPTIONAL
             Type => 'REGULAR',    # values: REGULAR, RATE_BASED, GROUP; OPTIONAL

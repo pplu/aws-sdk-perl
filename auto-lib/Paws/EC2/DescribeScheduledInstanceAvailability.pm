@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe an available schedule
-    # This example describes a schedule that occurs every week on Sunday,
-    # starting on the specified date. Note that the output contains a single
-    # schedule as an example.
+  # To describe an available schedule
+  # This example describes a schedule that occurs every week on Sunday, starting
+  # on the specified date. Note that the output contains a single schedule as an
+  # example.
     my $DescribeScheduledInstanceAvailabilityResult =
       $ec2->DescribeScheduledInstanceAvailability(
       'FirstSlotStartTimeRange' => {

@@ -56,22 +56,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description           => 'MyNonZeroAndMaxString',    # OPTIONAL
       EC2InboundPermissions => [
         {
-          FromPort => 1,                                   # min: 1, max: 60000
+          FromPort => 1,                    # min: 1, max: 60000
           IpRange  => 'MyNonBlankString',
-          Protocol => 'TCP',                               # values: TCP, UDP
-          ToPort   => 1,                                   # min: 1, max: 60000
+          Protocol => 'TCP',                # values: TCP, UDP
+          ToPort   => 1,                    # min: 1, max: 60000
 
         },
         ...
-      ],                                                   # OPTIONAL
-      FleetType       => 'ON_DEMAND',                      # OPTIONAL
-      InstanceRoleArn => 'MyNonEmptyString',               # OPTIONAL
+      ],    # OPTIONAL
+      FleetType       => 'ON_DEMAND',           # OPTIONAL
+      InstanceRoleArn => 'MyNonEmptyString',    # OPTIONAL
       LogPaths        => [
-        'MyNonZeroAndMaxString', ...                       # min: 1, max: 1024
-      ],                                                   # OPTIONAL
+        'MyNonZeroAndMaxString', ...            # min: 1, max: 1024
+      ],    # OPTIONAL
       MetricGroups => [
-        'MyMetricGroup', ...                               # min: 1, max: 255
-      ],                                                   # OPTIONAL
+        'MyMetricGroup', ...    # min: 1, max: 255
+      ],    # OPTIONAL
       NewGameSessionProtectionPolicy => 'NoProtection',             # OPTIONAL
       PeerVpcAwsAccountId            => 'MyNonZeroAndMaxString',    # OPTIONAL
       PeerVpcId                      => 'MyNonZeroAndMaxString',    # OPTIONAL
@@ -97,12 +97,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServerLaunchPath       => 'MyNonZeroAndMaxString',    # OPTIONAL
       Tags                   => [
         {
-          Key   => 'MyTagKey',                              # min: 1, max: 128
-          Value => 'MyTagValue',                            # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SourceRelationalDatabaseName   => 'MyResourceName',         # OPTIONAL
       Tags                           => [
         {
-          Key   => 'MyTagKey',                                    # OPTIONAL
-          Value => 'MyTagValue',                                  # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                                          # OPTIONAL
-      UseLatestRestorableTime => 1,                               # OPTIONAL
+      ],    # OPTIONAL
+      UseLatestRestorableTime => 1,    # OPTIONAL
       );
 
     # Results:

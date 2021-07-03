@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To list virtual MFA devices
-    # The following command lists the virtual MFA devices that have been
-    # configured for the current account.
+ # To list virtual MFA devices
+ # The following command lists the virtual MFA devices that have been configured
+ # for the current account.
     my $ListVirtualMFADevicesResponse = $iam->ListVirtualMFADevices();
 
     # Results:

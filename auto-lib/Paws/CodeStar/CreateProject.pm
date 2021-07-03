@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Destination => {
             CodeCommit => {
-              Name => 'MyRepositoryName',              # min: 1, max: 100
+              Name => 'MyRepositoryName',    # min: 1, max: 100
 
             },    # OPTIONAL
             GitHub => {
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               PrivateRepository => 1,
               Token             => 'MyGitHubPersonalToken',   # min: 1
               Type              => 'MyRepositoryType',
-              Description =>
+              Description       =>
                 'MyRepositoryDescription',    # min: 1, max: 1000; OPTIONAL
             },    # OPTIONAL
           },
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL

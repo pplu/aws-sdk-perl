@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
       },
       Filter => {
-        And => [ <Expression>, ... ],    # OPTIONAL
+        And            => [ <Expression>, ... ],    # OPTIONAL
         CostCategories => {
-          Key => 'MyCostCategoryName',     # min: 1, max: 255; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key    => 'MyCostCategoryName',           # min: 1, max: 255; OPTIONAL
+          Values => [ 'MyValue', ... ],             # OPTIONAL
         },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
@@ -52,20 +52,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key => 'MyTagKey',               # OPTIONAL
+          Key    => 'MyTagKey',            # OPTIONAL
           Values => [ 'MyValue', ... ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Granularity => 'DAILY',    # OPTIONAL
       GroupBy     => [
         {
-          Key => 'MyGroupDefinitionKey',    # OPTIONAL
+          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
           Type => 'DIMENSION', # values: DIMENSION, TAG, COST_CATEGORY; OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      Metrics => [ 'MyMetricName', ... ],    # OPTIONAL
-      NextPageToken => 'MyNextPageToken',    # OPTIONAL
+      ],    # OPTIONAL
+      Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
+      NextPageToken => 'MyNextPageToken',          # OPTIONAL
     );
 
     # Results:

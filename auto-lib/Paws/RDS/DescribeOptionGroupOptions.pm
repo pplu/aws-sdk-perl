@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To list information about DB option group options
-    # This example lists information for all option group options for the
-    # specified DB engine.
+ # To list information about DB option group options
+ # This example lists information for all option group options for the specified
+ # DB engine.
     my $OptionGroupOptionsMessage = $rds->DescribeOptionGroupOptions(
       'EngineName'         => 'mysql',
       'MajorEngineVersion' => 5.6

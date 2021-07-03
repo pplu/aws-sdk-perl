@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $glacier = Paws->service('Glacier');
-    # To initiate a multipart upload
-    # The example initiates a multipart upload to a vault named my-vault with a
-    # part size of 1 MiB (1024 x 1024 bytes) per file.
+# To initiate a multipart upload
+# The example initiates a multipart upload to a vault named my-vault with a part
+# size of 1 MiB (1024 x 1024 bytes) per file.
     my $InitiateMultipartUploadOutput = $glacier->InitiateMultipartUpload(
       'AccountId' => '-',
       'PartSize'  => 1048576,

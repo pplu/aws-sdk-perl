@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters => {
         Channels => [
           'VOICE', ...    # values: VOICE, CHAT
-        ],                # max: 1; OPTIONAL
+        ],    # max: 1; OPTIONAL
         Queues => [ 'MyQueueId', ... ],    # min: 1, max: 100; OPTIONAL
       },
       HistoricalMetrics => [
@@ -60,8 +60,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StartTime  => '1970-01-01T01:00:00',
       Groupings  => [
         'QUEUE',
-        ...                     # values: QUEUE, CHANNEL
-      ],                        # OPTIONAL
+        ...    # values: QUEUE, CHANNEL
+      ],    # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
     );

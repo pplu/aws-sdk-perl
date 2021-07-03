@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ShowAlternatives       => 1,           # OPTIONAL
         ShowSpeakerLabels      => 1,           # OPTIONAL
         VocabularyFilterMethod => 'remove',    # values: remove, mask; OPTIONAL
-        VocabularyFilterName =>
+        VocabularyFilterName   =>
           'MyVocabularyFilterName',            # min: 1, max: 200; OPTIONAL
         VocabularyName => 'MyVocabularyName',  # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL

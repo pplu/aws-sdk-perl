@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyFilterValue',    # max: 409600; OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       OverrideOptions => {
-        Atime          => 'NONE',      # values: NONE, BEST_EFFORT; OPTIONAL
-        BytesPerSecond => 1,           # min: -1; OPTIONAL
+        Atime          => 'NONE',    # values: NONE, BEST_EFFORT; OPTIONAL
+        BytesPerSecond => 1,         # min: -1; OPTIONAL
         Gid      => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         LogLevel => 'OFF',     # values: OFF, BASIC, TRANSFER; OPTIONAL
         Mtime    => 'NONE',    # values: NONE, PRESERVE; OPTIONAL
@@ -49,8 +49,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
-        TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
-        Uid => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
+        TaskQueueing         => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
+        Uid        => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
         VerifyMode => 'POINT_IN_TIME_CONSISTENT'
         , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
       },    # OPTIONAL

@@ -148,8 +148,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       },    # OPTIONAL
                     },    # OPTIONAL
                   },
-                  ...     # OPTIONAL
-                ],        # OPTIONAL
+                  ...
+                ],    # OPTIONAL
                 Operator => 'ALL',    # values: ALL, ANY; OPTIONAL
               },    # OPTIONAL
               EvaluationWaitTime => {
@@ -167,7 +167,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TemplateVersion => 'My__string',
             },    # OPTIONAL
             Holdout => {
-              Percentage   => 1,              # OPTIONAL
+              Percentage   => 1,
               NextActivity => 'My__string',
             },    # OPTIONAL
             MultiCondition => {
@@ -280,25 +280,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },
                       },    # OPTIONAL
                     },    # OPTIONAL
-                  },    # OPTIONAL
+                  },
                   NextActivity => 'My__string',
                 },
                 ...
-              ],        # OPTIONAL
+              ],    # OPTIONAL
               DefaultActivity    => 'My__string',
               EvaluationWaitTime => {
                 WaitFor   => 'My__string',
                 WaitUntil => 'My__string',
-              },        # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
             RandomSplit => {
               Branches => [
                 {
                   NextActivity => 'My__string',
-                  Percentage   => 1,              # OPTIONAL
+                  Percentage   => 1,
                 },
                 ...
-              ],                                  # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             Wait => {
               NextActivity => 'My__string',
@@ -312,9 +312,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CreationDate     => 'My__string',
         LastModifiedDate => 'My__string',
         Limits           => {
-          DailyCap           => 1,    # OPTIONAL
-          EndpointReentryCap => 1,    # OPTIONAL
-          MessagesPerSecond  => 1,    # OPTIONAL
+          DailyCap           => 1,
+          EndpointReentryCap => 1,
+          MessagesPerSecond  => 1,
         },    # OPTIONAL
         LocalTime => 1,    # OPTIONAL
         QuietTime => {

@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # CloneReceiptRuleSet
-    # The following example creates a receipt rule set by cloning an existing
-    # one:
+  # CloneReceiptRuleSet
+  # The following example creates a receipt rule set by cloning an existing one:
     my $CloneReceiptRuleSetResponse = $email->CloneReceiptRuleSet(
       'OriginalRuleSetName' => 'RuleSetToClone',
       'RuleSetName'         => 'RuleSetToCreate'

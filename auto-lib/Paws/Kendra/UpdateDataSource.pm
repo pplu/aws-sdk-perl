@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ColumnConfiguration => {
             ChangeDetectingColumns => [
               'MyColumnName', ...    # min: 1, max: 100
-            ],                       # min: 1, max: 5
+            ],    # min: 1, max: 5
             DocumentDataColumnName  => 'MyColumnName',    # min: 1, max: 100
             DocumentIdColumnName    => 'MyColumnName',    # min: 1, max: 100
             DocumentTitleColumnName => 'MyColumnName',    # min: 1, max: 100
@@ -49,19 +49,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 DataSourceFieldName =>
                   'MyDataSourceFieldName',                # min: 1, max: 100
-                IndexFieldName => 'MyIndexFieldName',     # min: 1, max: 30
+                IndexFieldName  => 'MyIndexFieldName',    # min: 1, max: 30
                 DateFieldFormat =>
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
           },
           ConnectionConfiguration => {
-            DatabaseHost => 'MyDatabaseHost',       # min: 1, max: 253
-            DatabaseName => 'MyDatabaseName',       # min: 1, max: 100
-            DatabasePort => 1,                      # min: 1, max: 65535
-            SecretArn    => 'MySecretArn',          # min: 1, max: 1284
-            TableName    => 'MyTableName',          # min: 1, max: 100
+            DatabaseHost => 'MyDatabaseHost',    # min: 1, max: 253
+            DatabaseName => 'MyDatabaseName',    # min: 1, max: 100
+            DatabasePort => 1,                   # min: 1, max: 65535
+            SecretArn    => 'MySecretArn',       # min: 1, max: 1284
+            TableName    => 'MyTableName',       # min: 1, max: 100
 
           },
           DatabaseEngineType => 'RDS_AURORA_MYSQL'
@@ -73,10 +73,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VpcConfiguration => {
             SecurityGroupIds => [
               'MyVpcSecurityGroupId', ...    # min: 1, max: 200
-            ],                               # min: 1, max: 10
+            ],    # min: 1, max: 10
             SubnetIds => [
-              'MySubnetId', ...              # min: 1, max: 200
-            ],                               # min: 1, max: 6
+              'MySubnetId', ...    # min: 1, max: 200
+            ],    # min: 1, max: 6
 
           },    # OPTIONAL
         },    # OPTIONAL
@@ -91,36 +91,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ExclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 50
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           InclusionPrefixes => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 50
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
         SharePointConfiguration => {
           SecretArn         => 'MySecretArn',        # min: 1, max: 1284
           SharePointVersion => 'SHAREPOINT_ONLINE',  # values: SHAREPOINT_ONLINE
           Urls              => [
             'MyUrl', ...                             # min: 1, max: 2048
-          ],                                         # min: 1, max: 100
+          ],    # min: 1, max: 100
           CrawlAttachments       => 1,                        # OPTIONAL
           DocumentTitleFieldName => 'MyDataSourceFieldName',  # min: 1, max: 100
           FieldMappings          => [
             {
               DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
               IndexFieldName      => 'MyIndexFieldName',      # min: 1, max: 30
-              DateFieldFormat =>
+              DateFieldFormat     =>
                 'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
             },
             ...
-          ],                                      # min: 1, max: 100; OPTIONAL
+          ],    # min: 1, max: 100; OPTIONAL
           VpcConfiguration => {
             SecurityGroupIds => [
-              'MyVpcSecurityGroupId', ...         # min: 1, max: 200
-            ],                                    # min: 1, max: 10
+              'MyVpcSecurityGroupId', ...    # min: 1, max: 200
+            ],    # min: 1, max: 10
             SubnetIds => [
-              'MySubnetId', ...                   # min: 1, max: 200
-            ],                                    # min: 1, max: 6
+              'MySubnetId', ...    # min: 1, max: 200
+            ],    # min: 1, max: 6
 
           },    # OPTIONAL
         },    # OPTIONAL

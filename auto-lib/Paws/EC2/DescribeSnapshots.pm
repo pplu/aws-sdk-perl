@@ -43,10 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $NextToken = $DescribeSnapshotsResult->NextToken;
     my $Snapshots = $DescribeSnapshotsResult->Snapshots;
 
-    # Returns a L<Paws::EC2::DescribeSnapshotsResult> object.
-    # To describe snapshots using filters
-    # This example describes all snapshots owned by the ID 012345678910 that are
-    # in the ``pending`` status.
+ # Returns a L<Paws::EC2::DescribeSnapshotsResult> object.
+ # To describe snapshots using filters
+ # This example describes all snapshots owned by the ID 012345678910 that are in
+ # the ``pending`` status.
     my $DescribeSnapshotsResult = $ec2->DescribeSnapshots(
       'Filters' => [
 

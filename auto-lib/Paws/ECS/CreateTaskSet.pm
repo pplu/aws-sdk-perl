@@ -50,10 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Weight           => 1,            # max: 1000; OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      ClientToken   => 'MyString',          # OPTIONAL
-      ExternalId    => 'MyString',          # OPTIONAL
-      LaunchType    => 'EC2',               # OPTIONAL
+      ],    # OPTIONAL
+      ClientToken   => 'MyString',    # OPTIONAL
+      ExternalId    => 'MyString',    # OPTIONAL
+      LaunchType    => 'EC2',         # OPTIONAL
       LoadBalancers => [
         {
           ContainerName    => 'MyString',
@@ -62,10 +62,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TargetGroupArn   => 'MyString',
         },
         ...
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
       NetworkConfiguration => {
         AwsvpcConfiguration => {
-          Subnets => [ 'MyString', ... ],
+          Subnets        => [ 'MyString', ... ],
           AssignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
           SecurityGroups => [ 'MyString', ... ],
         },    # OPTIONAL
@@ -83,14 +83,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RegistryArn   => 'MyString',
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',           # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',         # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

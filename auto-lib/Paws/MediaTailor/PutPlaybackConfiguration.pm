@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ContentSegmentUrlPrefix => 'My__string',
       },                                      # OPTIONAL
       DashConfiguration => {
-        MpdLocation => 'My__string',
+        MpdLocation        => 'My__string',
         OriginManifestType =>
           'SINGLE_PERIOD',    # values: SINGLE_PERIOD, MULTI_PERIOD; OPTIONAL
       },    # OPTIONAL
@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdDecisionServerUrl => 'My__string',
         MaxDurationSeconds  => 1,              # OPTIONAL
       },    # OPTIONAL
-      Name                            => 'My__string',    # OPTIONAL
-      PersonalizationThresholdSeconds => 1,               # OPTIONAL
-      SlateAdUrl                      => 'My__string',    # OPTIONAL
+      Name                            => 'My__string',               # OPTIONAL
+      PersonalizationThresholdSeconds => 1,                          # OPTIONAL
+      SlateAdUrl                      => 'My__string',               # OPTIONAL
       Tags                  => { 'My__string' => 'My__string', },    # OPTIONAL
       TranscodeProfileName  => 'My__string',                         # OPTIONAL
       VideoContentSourceUrl => 'My__string',                         # OPTIONAL

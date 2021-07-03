@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SingleMasterChannelEndpointConfiguration => {
         Protocols => [
           'WSS', ...    # values: WSS, HTTPS
-        ],              # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
         Role => 'MASTER',    # values: MASTER, VIEWER; OPTIONAL
       },    # OPTIONAL
       );

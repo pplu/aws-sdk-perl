@@ -32,8 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To list tags that have been added to a resource
     # Lists the tags that have been added to the specified resource.
     my $ListTagsForResourceOutput = $storagegateway->ListTagsForResource(
-      'Limit'  => 1,
-      'Marker' => 1,
+      'Limit'       => 1,
+      'Marker'      => 1,
       'ResourceARN' =>
         'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B'
     );

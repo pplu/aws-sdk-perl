@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key => 'Status'
           , # values: Status, CreatedBy, Source, Priority, Title, OpsItemId, CreatedTime, LastModifiedTime, OperationalData, OperationalDataKey, OperationalDataValue, ResourceId, AutomationId, Category, Severity
           Operator => 'Equal',  # values: Equal, Contains, GreaterThan, LessThan
-          Values => [ 'MyOpsItemFilterValue', ... ],
+          Values   => [ 'MyOpsItemFilterValue', ... ],
 
         },
         ...
-      ],                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

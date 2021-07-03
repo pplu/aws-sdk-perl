@@ -48,13 +48,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SecretHash     => 'MySecretHashType',    # OPTIONAL
       UserAttributes => [
         {
-          Name  => 'MyAttributeNameType',      # min: 1, max: 32
-          Value => 'MyAttributeValueType',     # max: 2048; OPTIONAL
+          Name  => 'MyAttributeNameType',     # min: 1, max: 32
+          Value => 'MyAttributeValueType',    # max: 2048; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       UserContextData => {
-        EncodedData => 'MyStringType',         # OPTIONAL
+        EncodedData => 'MyStringType',    # OPTIONAL
       },    # OPTIONAL
       ValidationData => [
         {
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyAttributeValueType',    # max: 2048; OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

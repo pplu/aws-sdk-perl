@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $glacier = Paws->service('Glacier');
-    # To abort a vault lock
-    # The example aborts the vault locking process if the vault lock is not in
-    # the Locked state for the vault named examplevault.
+  # To abort a vault lock
+  # The example aborts the vault locking process if the vault lock is not in the
+  # Locked state for the vault named examplevault.
     $glacier->AbortVaultLock(
       'AccountId' => '-',
       'VaultName' => 'examplevault'

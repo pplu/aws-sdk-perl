@@ -39,17 +39,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReplicationGroupId => 'MyString',
       NodeGroupsToRemove => [
         'MyAllowedNodeGroupId', ...    # min: 1, max: 4
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       NodeGroupsToRetain => [
         'MyAllowedNodeGroupId', ...    # min: 1, max: 4
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       ReshardingConfiguration => [
         {
-          NodeGroupId => 'MyAllowedNodeGroupId',                # min: 1, max: 4
+          NodeGroupId                => 'MyAllowedNodeGroupId', # min: 1, max: 4
           PreferredAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                                                        # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

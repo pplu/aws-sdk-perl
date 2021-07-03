@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Arn => 'MyString',                      # OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       OperationalData => {
         'MyOpsItemDataKey' => {
           Type =>
@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       OperationalDataToDelete => [
         'MyString', ...    # OPTIONAL
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
       Priority        => 1,    # OPTIONAL
       RelatedOpsItems => [
         {
@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       Severity => 'MyOpsItemSeverity',    # OPTIONAL
       Status   => 'Open',                 # OPTIONAL
       Title    => 'MyOpsItemTitle',       # OPTIONAL

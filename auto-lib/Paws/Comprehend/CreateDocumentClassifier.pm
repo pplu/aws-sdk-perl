@@ -57,15 +57,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VolumeKmsKeyId => 'MyKmsKeyId',    # OPTIONAL
       VpcConfig      => {
         SecurityGroupIds => [
           'MySecurityGroupId', ...       # min: 1, max: 32
-        ],                               # min: 1, max: 5
+        ],    # min: 1, max: 5
         Subnets => [
-          'MySubnetId', ...              # min: 1, max: 32
-        ],                               # min: 1, max: 16
+          'MySubnetId', ...    # min: 1, max: 32
+        ],    # min: 1, max: 16
 
       },    # OPTIONAL
       );

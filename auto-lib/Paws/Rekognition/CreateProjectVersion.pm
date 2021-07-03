@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         AutoCreate => 1,    # OPTIONAL
       },
       TrainingData => {
@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
       },
       VersionName => 'MyVersionName',
 

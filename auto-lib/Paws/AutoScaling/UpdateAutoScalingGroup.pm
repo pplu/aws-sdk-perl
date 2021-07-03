@@ -51,18 +51,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'LaunchConfigurationName' => 'new-launch-config'
     );
 
-    # To update the minimum and maximum size
-    # This example updates the minimum size and maximum size of the specified
-    # Auto Scaling group.
+  # To update the minimum and maximum size
+  # This example updates the minimum size and maximum size of the specified Auto
+  # Scaling group.
     $autoscaling->UpdateAutoScalingGroup(
       'AutoScalingGroupName' => 'my-auto-scaling-group',
       'MaxSize'              => 3,
       'MinSize'              => 1
     );
 
-    # To enable instance protection
-    # This example enables instance protection for the specified Auto Scaling
-    # group.
+# To enable instance protection
+# This example enables instance protection for the specified Auto Scaling group.
     $autoscaling->UpdateAutoScalingGroup(
       'AutoScalingGroupName'             => 'my-auto-scaling-group',
       'NewInstancesProtectedFromScaleIn' => 1

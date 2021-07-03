@@ -47,12 +47,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AbortStatement => {
         Messages => [
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
+            Content     => 'MyContentString',    # min: 1, max: 1000
             ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
             GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 15
+        ],    # min: 1, max: 15
         ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       Checksum            => 'MyString',    # OPTIONAL
@@ -60,12 +60,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         MaxAttempts => 1,                   # min: 1, max: 5
         Messages    => [
           {
-            Content => 'MyContentString',    # min: 1, max: 1000
+            Content     => 'MyContentString',    # min: 1, max: 1000
             ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
             GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 15
+        ],    # min: 1, max: 15
         ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
       },    # OPTIONAL
       CreateVersion           => 1,                  # OPTIONAL
@@ -74,14 +74,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdleSessionTTLInSeconds => 1,                  # OPTIONAL
       Intents                 => [
         {
-          IntentName    => 'MyIntentName',           # min: 1, max: 100
-          IntentVersion => 'MyVersion',              # min: 1, max: 64
+          IntentName    => 'MyIntentName',    # min: 1, max: 100
+          IntentVersion => 'MyVersion',       # min: 1, max: 64
 
         },
         ...
-      ],                                             # OPTIONAL
-      ProcessBehavior => 'SAVE',                     # OPTIONAL
-      VoiceId         => 'MyString',                 # OPTIONAL
+      ],    # OPTIONAL
+      ProcessBehavior => 'SAVE',        # OPTIONAL
+      VoiceId         => 'MyString',    # OPTIONAL
     );
 
     # Results:

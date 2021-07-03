@@ -43,19 +43,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'My__string',    # OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       InputSecurityGroups => [
-        'My__string', ...                # OPTIONAL
-      ],                                 # OPTIONAL
+        'My__string', ...    # OPTIONAL
+      ],    # OPTIONAL
       MediaConnectFlows => [
         {
-          FlowArn => 'My__string',       # OPTIONAL
+          FlowArn => 'My__string',    # OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
-      Name      => 'My__string',         # OPTIONAL
-      RequestId => 'My__string',         # OPTIONAL
-      RoleArn   => 'My__string',         # OPTIONAL
+      ],    # OPTIONAL
+      Name      => 'My__string',    # OPTIONAL
+      RequestId => 'My__string',    # OPTIONAL
+      RoleArn   => 'My__string',    # OPTIONAL
       Sources   => [
         {
           PasswordParam => 'My__string',    # OPTIONAL
@@ -63,9 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Username      => 'My__string',    # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
       Tags => {
-        'My__string' => 'My__string',       # key: OPTIONAL, value: OPTIONAL
+        'My__string' => 'My__string',    # key: OPTIONAL, value: OPTIONAL
       },    # OPTIONAL
       Type => 'UDP_PUSH',    # OPTIONAL
       Vpc  => {

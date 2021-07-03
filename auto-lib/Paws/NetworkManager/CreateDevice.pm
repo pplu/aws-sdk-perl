@@ -49,13 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SiteId       => 'MyString',       # OPTIONAL
       Tags         => [
         {
-          Key   => 'MyTagKey',          # OPTIONAL
-          Value => 'MyTagValue',        # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                # OPTIONAL
-      Type   => 'MyString',             # OPTIONAL
-      Vendor => 'MyString',             # OPTIONAL
+      ],    # OPTIONAL
+      Type   => 'MyString',    # OPTIONAL
+      Vendor => 'MyString',    # OPTIONAL
     );
 
     # Results:

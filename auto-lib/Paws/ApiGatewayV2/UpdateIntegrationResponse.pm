@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApiId                   => 'My__string',
       IntegrationId           => 'My__string',
       IntegrationResponseId   => 'My__string',
-      ContentHandlingStrategy => 'CONVERT_TO_BINARY',    # OPTIONAL
-      IntegrationResponseKey  => 'MySelectionKey',       # OPTIONAL
-      ResponseParameters =>
+      ContentHandlingStrategy => 'CONVERT_TO_BINARY',               # OPTIONAL
+      IntegrationResponseKey  => 'MySelectionKey',                  # OPTIONAL
+      ResponseParameters      =>
         { 'My__string' => 'MyStringWithLengthBetween1And512', },    # OPTIONAL
       ResponseTemplates =>
         { 'My__string' => 'MyStringWithLengthBetween0And32K', },    # OPTIONAL

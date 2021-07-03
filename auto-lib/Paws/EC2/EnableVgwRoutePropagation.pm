@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To enable route propagation
-    # This example enables the specified virtual private gateway to propagate
-    # static routes to the specified route table.
+# To enable route propagation
+# This example enables the specified virtual private gateway to propagate static
+# routes to the specified route table.
     $ec2->EnableVgwRoutePropagation(
       'GatewayId'    => 'vgw-9a4cacf3',
       'RouteTableId' => 'rtb-22574640'

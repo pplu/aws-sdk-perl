@@ -51,20 +51,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      IncludeMarketplace => 1,                      # OPTIONAL
-      InstanceTenancy    => 'default',              # OPTIONAL
-      InstanceType       => 't1.micro',             # OPTIONAL
-      MaxDuration        => 1,                      # OPTIONAL
-      MaxInstanceCount   => 1,                      # OPTIONAL
-      MaxResults         => 1,                      # OPTIONAL
-      MinDuration        => 1,                      # OPTIONAL
-      NextToken          => 'MyString',             # OPTIONAL
-      OfferingClass      => 'standard',             # OPTIONAL
-      OfferingType       => 'Heavy Utilization',    # OPTIONAL
-      ProductDescription => 'Linux/UNIX',           # OPTIONAL
+      ],    # OPTIONAL
+      IncludeMarketplace           => 1,                      # OPTIONAL
+      InstanceTenancy              => 'default',              # OPTIONAL
+      InstanceType                 => 't1.micro',             # OPTIONAL
+      MaxDuration                  => 1,                      # OPTIONAL
+      MaxInstanceCount             => 1,                      # OPTIONAL
+      MaxResults                   => 1,                      # OPTIONAL
+      MinDuration                  => 1,                      # OPTIONAL
+      NextToken                    => 'MyString',             # OPTIONAL
+      OfferingClass                => 'standard',             # OPTIONAL
+      OfferingType                 => 'Heavy Utilization',    # OPTIONAL
+      ProductDescription           => 'Linux/UNIX',           # OPTIONAL
       ReservedInstancesOfferingIds => [ 'MyReservedInstancesOfferingId', ... ]
-      ,                                             # OPTIONAL
+      ,                                                       # OPTIONAL
       );
 
     # Results:

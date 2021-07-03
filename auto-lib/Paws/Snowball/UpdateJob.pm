@@ -35,12 +35,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-   # To update a job
-   # This action allows you to update certain parameters for a job. Once the job
-   # changes to a different job state, usually within 60 minutes of the job
-   # being created, this action is no longer available.
+  # To update a job
+  # This action allows you to update certain parameters for a job. Once the job
+  # changes to a different job state, usually within 60 minutes of the job being
+  # created, this action is no longer available.
     my $UpdateJobResult = $snowball->UpdateJob(
-      'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
       'Description' =>
 'Upgraded to Edge, shipped to Finance Dept, and requested faster shipping speed - TS.',
       'JobId'                      => 'JID123e4567-e89b-12d3-a456-426655440000',

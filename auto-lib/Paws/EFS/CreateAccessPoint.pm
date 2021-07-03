@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Uid           => 1,    # max: 4294967295
         SecondaryGids => [
           1, ...               # max: 4294967295
-        ],                     # max: 16; OPTIONAL
+        ],    # max: 16; OPTIONAL
       },    # OPTIONAL
       RootDirectory => {
         CreationInfo => {
@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -26,9 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # DescribeActiveReceiptRuleSet
-    # The following example returns the metadata and receipt rules for the
-    # receipt rule set that is currently active:
+  # DescribeActiveReceiptRuleSet
+  # The following example returns the metadata and receipt rules for the receipt
+  # rule set that is currently active:
     my $DescribeActiveReceiptRuleSetResponse =
       $email->DescribeActiveReceiptRuleSet();
 

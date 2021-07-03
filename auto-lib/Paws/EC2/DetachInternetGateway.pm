@@ -29,9 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To detach an Internet gateway from a VPC
-    # This example detaches the specified Internet gateway from the specified
-    # VPC.
+  # To detach an Internet gateway from a VPC
+  # This example detaches the specified Internet gateway from the specified VPC.
     $ec2->DetachInternetGateway(
       'InternetGatewayId' => 'igw-c0a643a9',
       'VpcId'             => 'vpc-a01106c2'

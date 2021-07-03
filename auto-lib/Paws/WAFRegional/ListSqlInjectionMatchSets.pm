@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $waf-regional = Paws->service('WAFRegional');
-    # To list SQL injection match sets
-    # The following example returns an array of up to 100 SQL injection match
-    # sets.
+ # To list SQL injection match sets
+ # The following example returns an array of up to 100 SQL injection match sets.
     my $ListSqlInjectionMatchSetsResponse =
       $waf -regional->ListSqlInjectionMatchSets( 'Limit' => 100 );
 

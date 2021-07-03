@@ -43,10 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name   => 'MyAttachmentIdentifier',    # OPTIONAL
           Values => [
             'MyAttachmentsSourceValue', ...      # min: 1, max: 1024
-          ],                                     # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       DocumentFormat  => 'YAML',                     # OPTIONAL
       DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
       TargetType      => 'MyTargetType',             # OPTIONAL

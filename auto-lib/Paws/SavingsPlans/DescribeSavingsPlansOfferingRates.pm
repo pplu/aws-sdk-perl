@@ -46,28 +46,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyJsonSafeFilterValueString', ... ],    # OPTIONAL
         },
         ...
-      ],                                                       # OPTIONAL
-      MaxResults => 1,                                         # OPTIONAL
-      NextToken  => 'MyPaginationToken',                       # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyPaginationToken',    # OPTIONAL
       Operations => [
-        'MySavingsPlanRateOperation', ...                      # max: 255
-      ],                                                       # OPTIONAL
+        'MySavingsPlanRateOperation', ...    # max: 255
+      ],    # OPTIONAL
       Products => [
         'EC2', ...    # values: EC2, Fargate
-      ],              # OPTIONAL
-      SavingsPlanOfferingIds => [ 'MyUUID', ... ],    # OPTIONAL
+      ],    # OPTIONAL
+      SavingsPlanOfferingIds    => [ 'MyUUID', ... ],    # OPTIONAL
       SavingsPlanPaymentOptions => [
         'All Upfront', ...    # values: All Upfront, Partial Upfront, No Upfront
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       SavingsPlanTypes => [
-        'Compute', ...        # values: Compute, EC2Instance
-      ],                      # OPTIONAL
+        'Compute', ...    # values: Compute, EC2Instance
+      ],    # OPTIONAL
       ServiceCodes => [
-        'AmazonEC2', ...      # values: AmazonEC2, AmazonECS
-      ],                      # OPTIONAL
+        'AmazonEC2', ...    # values: AmazonEC2, AmazonECS
+      ],    # OPTIONAL
       UsageTypes => [
         'MySavingsPlanRateUsageType', ...    # max: 255
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

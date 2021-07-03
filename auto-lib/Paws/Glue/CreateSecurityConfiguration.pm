@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         S3Encryption => [
           {
-            KmsKeyArn => 'MyKmsKeyArn',    # OPTIONAL
+            KmsKeyArn        => 'MyKmsKeyArn',    # OPTIONAL
             S3EncryptionMode =>
               'DISABLED',    # values: DISABLED, SSE-KMS, SSE-S3; OPTIONAL
           },
           ...
-        ],                   # OPTIONAL
+        ],    # OPTIONAL
       },
       Name => 'MyNameString',
 

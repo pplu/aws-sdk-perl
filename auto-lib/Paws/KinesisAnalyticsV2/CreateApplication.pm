@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ApplicationSnapshotConfiguration => {
-          SnapshotsEnabled => 1,    # OPTIONAL
+          SnapshotsEnabled => 1,
 
         },    # OPTIONAL
         EnvironmentProperties => {
@@ -65,25 +65,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],        # max: 50
+          ],    # max: 50
 
         },    # OPTIONAL
         FlinkApplicationConfiguration => {
           CheckpointConfiguration => {
             ConfigurationType          => 'DEFAULT',   # values: DEFAULT, CUSTOM
             CheckpointInterval         => 1,           # min: 1; OPTIONAL
-            CheckpointingEnabled       => 1,           # OPTIONAL
+            CheckpointingEnabled       => 1,
             MinPauseBetweenCheckpoints => 1,           # OPTIONAL
           },    # OPTIONAL
           MonitoringConfiguration => {
             ConfigurationType => 'DEFAULT',    # values: DEFAULT, CUSTOM
-            LogLevel => 'INFO',    # values: INFO, WARN, ERROR, DEBUG; OPTIONAL
+            LogLevel     => 'INFO', # values: INFO, WARN, ERROR, DEBUG; OPTIONAL
             MetricsLevel => 'APPLICATION'
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
           ParallelismConfiguration => {
             ConfigurationType  => 'DEFAULT',    # values: DEFAULT, CUSTOM
-            AutoScalingEnabled => 1,            # OPTIONAL
+            AutoScalingEnabled => 1,
             Parallelism        => 1,            # min: 1; OPTIONAL
             ParallelismPerKPU  => 1,            # min: 1; OPTIONAL
           },    # OPTIONAL
@@ -99,13 +99,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],    # min: 1, max: 1000
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',             # values: JSON, CSV
+                  RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',         # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1
                       RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
 
                     },    # OPTIONAL
@@ -138,7 +138,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
           Outputs => [
             {
               DestinationSchema => {
@@ -160,7 +160,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
           ReferenceDataSources => [
             {
               ReferenceSchema => {
@@ -171,13 +171,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],    # min: 1, max: 1000
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',             # values: JSON, CSV
+                  RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',         # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1
                       RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
 
                     },    # OPTIONAL
@@ -196,7 +196,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         VpcConfigurations => [
           {
@@ -205,7 +205,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                                     # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       ApplicationDescription   => 'MyApplicationDescription',    # OPTIONAL
       CloudWatchLoggingOptions => [
@@ -214,14 +214,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

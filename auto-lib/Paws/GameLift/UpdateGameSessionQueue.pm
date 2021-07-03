@@ -37,15 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DestinationArn => 'MyArnStringModel',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       PlayerLatencyPolicies => [
         {
           MaximumIndividualPlayerLatencyMilliseconds => 1,    # OPTIONAL
           PolicyDurationSeconds                      => 1,    # OPTIONAL
         },
         ...
-      ],                                                      # OPTIONAL
-      TimeoutInSeconds => 1,                                  # OPTIONAL
+      ],    # OPTIONAL
+      TimeoutInSeconds => 1,    # OPTIONAL
     );
 
     # Results:

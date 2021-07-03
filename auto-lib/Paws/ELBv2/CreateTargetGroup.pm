@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELBv2');
-    # To create a target group
-    # This example creates a target group that you can use to route traffic to
-    # targets using HTTP on port 80. This target group uses the default health
-    # check configuration.
+# To create a target group
+# This example creates a target group that you can use to route traffic to
+# targets using HTTP on port 80. This target group uses the default health check
+# configuration.
     my $CreateTargetGroupOutput = $elasticloadbalancing->CreateTargetGroup(
       'Name'     => 'my-targets',
       'Port'     => 80,

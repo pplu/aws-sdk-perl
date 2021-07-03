@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults => 1,                   # OPTIONAL
       Names      => [
         'MyString', ...                  # min: 1
-      ],                                 # OPTIONAL
-      NextToken => 'MyString',           # OPTIONAL
-      Type      => 'PUBLIC',             # OPTIONAL
+      ],    # OPTIONAL
+      NextToken => 'MyString',    # OPTIONAL
+      Type      => 'PUBLIC',      # OPTIONAL
     );
 
     # Results:

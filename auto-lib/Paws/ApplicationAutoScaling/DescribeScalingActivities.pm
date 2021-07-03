@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $application-autoscaling = Paws->service('ApplicationAutoScaling');
-    # To describe scaling activities for a scalable target
-    # This example describes the scaling activities for an Amazon ECS service
-    # called web-app that is running in the default cluster.
+# To describe scaling activities for a scalable target
+# This example describes the scaling activities for an Amazon ECS service called
+# web-app that is running in the default cluster.
     my $DescribeScalingActivitiesResponse =
       $application -autoscaling->DescribeScalingActivities(
       'ResourceId'        => 'service/default/web-app',

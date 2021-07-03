@@ -37,13 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainConfigurationName => 'MyDomainConfigurationName',
       AuthorizerConfig        => {
         AllowAuthorizerOverride => 1,    # OPTIONAL
-        DefaultAuthorizerName =>
+        DefaultAuthorizerName   =>
           'MyAuthorizerName',            # min: 1, max: 128; OPTIONAL
       },    # OPTIONAL
       DomainName            => 'MyDomainName',    # OPTIONAL
       ServerCertificateArns => [
         'MyAcmCertificateArn', ...                # min: 1, max: 2048
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       ServiceType              => 'DATA',                   # OPTIONAL
       ValidationCertificateArn => 'MyAcmCertificateArn',    # OPTIONAL
     );

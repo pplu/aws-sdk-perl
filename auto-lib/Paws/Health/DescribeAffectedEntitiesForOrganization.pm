@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      Locale     => 'Mylocale',             # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MynextToken',          # OPTIONAL
+      Locale     => 'Mylocale',       # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MynextToken',    # OPTIONAL
       );
 
     # Results:

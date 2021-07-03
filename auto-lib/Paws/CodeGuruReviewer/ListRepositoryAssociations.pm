@@ -38,18 +38,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults => 1,    # OPTIONAL
       Names      => [
         'MyName', ...     # min: 1, max: 100
-      ],                  # OPTIONAL
+      ],    # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL
       Owners    => [
         'MyOwner', ...               # min: 1, max: 100
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       ProviderTypes => [
-        'CodeCommit', ...            # values: CodeCommit, GitHub
-      ],                             # OPTIONAL
+        'CodeCommit', ...    # values: CodeCommit, GitHub
+      ],    # OPTIONAL
       States => [
         'Associated',
         ...    # values: Associated, Associating, Failed, Disassociating
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

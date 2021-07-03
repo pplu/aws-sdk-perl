@@ -46,11 +46,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CognitoIdentityPoolId => 'MyCognitoIdentityPoolId',    # OPTIONAL
       PolicyNamesToAdd      => [
         'MyPolicyName', ...                                  # min: 1, max: 128
-      ],                                                     # OPTIONAL
+      ],    # OPTIONAL
       PolicyNamesToSkip => [
-        'MyPolicyName', ...                                  # min: 1, max: 128
-      ],                                                     # OPTIONAL
-      Principal => 'MyPrincipal',                            # OPTIONAL
+        'MyPolicyName', ...    # min: 1, max: 128
+      ],    # OPTIONAL
+      Principal => 'MyPrincipal',    # OPTIONAL
     );
 
     # Results:

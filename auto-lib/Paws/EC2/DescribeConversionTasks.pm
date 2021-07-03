@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeConversionTasksResult = $ec2->DescribeConversionTasks(
       ConversionTaskIds => [ 'MyConversionTaskId', ... ],    # OPTIONAL
-      DryRun => 1,                                           # OPTIONAL
+      DryRun            => 1,                                # OPTIONAL
     );
 
     # Results:

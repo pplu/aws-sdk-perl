@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $workspaces = Paws->service('WorkSpaces');
     my $DescribeWorkspacesConnectionStatusResult =
       $workspaces->DescribeWorkspacesConnectionStatus(
-      NextToken => 'MyPaginationToken',            # OPTIONAL
+      NextToken    => 'MyPaginationToken',         # OPTIONAL
       WorkspaceIds => [ 'MyWorkspaceId', ... ],    # OPTIONAL
       );
 

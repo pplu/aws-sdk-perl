@@ -76,14 +76,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             KmsKeyId            => 'MyString',
             SnapshotId          => 'MyString',
             VolumeSize          => 1,
-            VolumeType =>
+            VolumeType          =>
               'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
           },    # OPTIONAL
           NoDevice    => 'MyString',
           VirtualName => 'MyString',
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       CapacityReservationSpecification => {
         CapacityReservationPreference => 'open',  # values: open, none; OPTIONAL
         CapacityReservationTarget     => {
@@ -115,9 +115,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Count => 1,               # min: 1; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       HibernationOptions => {
-        Configured => 1,            # OPTIONAL
+        Configured => 1,    # OPTIONAL
       },    # OPTIONAL
       IamInstanceProfile => {
         Arn  => 'MyString',
@@ -128,10 +128,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InstanceMarketOptions             => {
         MarketType  => 'spot',    # values: spot; OPTIONAL
         SpotOptions => {
-          BlockDurationMinutes => 1,
+          BlockDurationMinutes         => 1,
           InstanceInterruptionBehavior =>
             'hibernate',          # values: hibernate, stop, terminate; OPTIONAL
-          MaxPrice => 'MyString',
+          MaxPrice         => 'MyString',
           SpotInstanceType =>
             'one-time',           # values: one-time, persistent; OPTIONAL
           ValidUntil => '1970-01-01T01:00:00',    # OPTIONAL
@@ -167,21 +167,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Groups                   => [ 'MySecurityGroupId', ... ],   # OPTIONAL
           InterfaceType            => 'MyString',
           Ipv6AddressCount         => 1,
-          Ipv6Addresses      => [ { Ipv6Address => 'MyString', }, ... ],
-          NetworkInterfaceId => 'MyString',
-          PrivateIpAddress   => 'MyString',
-          PrivateIpAddresses => [
+          Ipv6Addresses            => [ { Ipv6Address => 'MyString', }, ... ],
+          NetworkInterfaceId       => 'MyString',
+          PrivateIpAddress         => 'MyString',
+          PrivateIpAddresses       => [
             {
-              Primary          => 1,                                  # OPTIONAL
+              Primary          => 1,            # OPTIONAL
               PrivateIpAddress => 'MyString',
             },
             ...
-          ],                                                          # OPTIONAL
+          ],    # OPTIONAL
           SecondaryPrivateIpAddressCount => 1,
           SubnetId                       => 'MyString',
         },
         ...
-      ],                                                              # OPTIONAL
+      ],    # OPTIONAL
       Placement => {
         Affinity             => 'MyString',
         AvailabilityZone     => 'MyString',
@@ -194,7 +194,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PrivateIpAddress  => 'MyString',                        # OPTIONAL
       RamdiskId         => 'MyString',                        # OPTIONAL
-      SecurityGroupIds  => [ 'MySecurityGroupId', ... ],      # OPTIONAL
+      SecurityGroupIds  => [ 'MySecurityGroupId',   ... ],    # OPTIONAL
       SecurityGroups    => [ 'MySecurityGroupName', ... ],    # OPTIONAL
       SubnetId          => 'MyString',                        # OPTIONAL
       TagSpecifications => [
@@ -210,7 +210,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       UserData => 'MyString',    # OPTIONAL
     );
 

@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To promote a read replica
-    # This example promotes the specified read replica and sets its backup
-    # retention period and preferred backup window.
+# To promote a read replica
+# This example promotes the specified read replica and sets its backup retention
+# period and preferred backup window.
     my $PromoteReadReplicaResult = $rds->PromoteReadReplica(
       'BackupRetentionPeriod' => 1,
       'DBInstanceIdentifier'  => 'mydbreadreplica',

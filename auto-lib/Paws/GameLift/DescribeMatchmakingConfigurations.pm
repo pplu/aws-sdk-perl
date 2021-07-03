@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Limit => 1,    # OPTIONAL
       Names => [
         'MyMatchmakingConfigurationName', ...    # min: 1, max: 256
-      ],                                         # OPTIONAL
-      NextToken   => 'MyNonZeroAndMaxString',    # OPTIONAL
-      RuleSetName => 'MyMatchmakingRuleSetName', # OPTIONAL
+      ],    # OPTIONAL
+      NextToken   => 'MyNonZeroAndMaxString',       # OPTIONAL
+      RuleSetName => 'MyMatchmakingRuleSetName',    # OPTIONAL
       );
 
     # Results:

@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ServerSideTokenCheck => 1,                # OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       DeveloperProviderName => 'MyDeveloperProviderName',    # OPTIONAL
       IdentityPoolTags      => {
         'MyTagKeysType' =>
@@ -58,13 +58,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       OpenIdConnectProviderARNs => [
         'MyARNString', ...    # min: 20, max: 2048
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       SamlProviderARNs => [
         'MyARNString', ...    # min: 20, max: 2048
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       SupportedLoginProviders => {
         'MyIdentityProviderName' => 'MyIdentityProviderId'
-        ,                     # key: min: 1, max: 128, value: min: 1, max: 128
+        ,    # key: min: 1, max: 128, value: min: 1, max: 128
       },    # OPTIONAL
     );
 

@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           FilePath    => 'MyPath',
           FileContent => 'BlobFileContent',    # max: 6291456; OPTIONAL
-          FileMode =>
+          FileMode    =>
             'EXECUTABLE',    # values: EXECUTABLE, NORMAL, SYMLINK; OPTIONAL
           SourceFile => {
             FilePath => 'MyPath',
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       SetFileModes => [
         {
           FileMode =>
@@ -72,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                     # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

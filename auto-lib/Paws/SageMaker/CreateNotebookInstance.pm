@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       AdditionalCodeRepositories => [
         'MyCodeRepositoryNameOrUrl', ...    # min: 1, max: 1024
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
       DefaultCodeRepository => 'MyCodeRepositoryNameOrUrl',    # OPTIONAL
       DirectInternetAccess  => 'Enabled',                      # OPTIONAL
       KmsKeyId              => 'MyKmsKeyId',                   # OPTIONAL
@@ -58,8 +58,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RootAccess          => 'Enabled',                               # OPTIONAL
       SecurityGroupIds    => [
         'MySecurityGroupId', ...                                      # max: 32
-      ],                                                              # OPTIONAL
-      SubnetId => 'MySubnetId',                                       # OPTIONAL
+      ],    # OPTIONAL
+      SubnetId => 'MySubnetId',    # OPTIONAL
       Tags     => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -67,8 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
-      VolumeSizeInGB => 1,          # OPTIONAL
+      ],    # OPTIONAL
+      VolumeSizeInGB => 1,    # OPTIONAL
     );
 
     # Results:

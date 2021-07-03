@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyDimensionValue',    # min: 1, max: 255; OPTIONAL
         },
         ...
-      ],                                  # OPTIONAL
-      MetricName => 'MyMetricName',       # OPTIONAL
-      Namespace  => 'MyNamespace',        # OPTIONAL
-      NextToken  => 'MyNextToken',        # OPTIONAL
+      ],    # OPTIONAL
+      MetricName => 'MyMetricName',    # OPTIONAL
+      Namespace  => 'MyNamespace',     # OPTIONAL
+      NextToken  => 'MyNextToken',     # OPTIONAL
     );
 
     # Results:

@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To create an instance profile
-    # The following command changes IAM user Bob's password and sets the flag
-    # that required Bob to change the password the next time he signs in.
+  # To create an instance profile
+  # The following command changes IAM user Bob's password and sets the flag that
+  # required Bob to change the password the next time he signs in.
     my $CreateLoginProfileResponse = $iam->CreateLoginProfile(
       'Password'              => 'h]6EszR}vJ*m',
       'PasswordResetRequired' => 1,

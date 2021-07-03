@@ -38,23 +38,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DestinationArn => 'MyArnStringModel',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       PlayerLatencyPolicies => [
         {
           MaximumIndividualPlayerLatencyMilliseconds => 1,    # OPTIONAL
           PolicyDurationSeconds                      => 1,    # OPTIONAL
         },
         ...
-      ],                                                      # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                                # min: 1, max: 128
-          Value => 'MyTagValue',                              # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                      # OPTIONAL
-      TimeoutInSeconds => 1,                                  # OPTIONAL
+      ],    # OPTIONAL
+      TimeoutInSeconds => 1,    # OPTIONAL
     );
 
     # Results:

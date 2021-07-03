@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],
-          Id   => 'Myid',                             # min: 1, max: 1024
-          Name => 'Myid',                             # min: 1, max: 1024
+          Id   => 'Myid',    # min: 1, max: 1024
+          Name => 'Myid',    # min: 1, max: 1024
 
         },
         ...
@@ -58,19 +58,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],
-          Id => 'MyfieldNameString',                      # min: 1, max: 256
+          Id => 'MyfieldNameString',    # min: 1, max: 256
 
         },
         ...
-      ],                                                  # OPTIONAL
+      ],    # OPTIONAL
       ParameterValues => [
         {
-          Id          => 'MyfieldNameString',             # min: 1, max: 256
-          StringValue => 'MyfieldStringValue',            # max: 10240; OPTIONAL
+          Id          => 'MyfieldNameString',     # min: 1, max: 256
+          StringValue => 'MyfieldStringValue',    # max: 10240; OPTIONAL
 
         },
         ...
-      ],                                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -47,46 +47,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DatabaseName => 'MyNameString',    # min: 1, max: 255
             Tables       => [
               'MyNameString', ...              # min: 1, max: 255
-            ],                                 # min: 1
+            ],    # min: 1
 
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
         DynamoDBTargets => [
           {
-            Path => 'MyPath',                  # OPTIONAL
+            Path => 'MyPath',    # OPTIONAL
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
         JdbcTargets => [
           {
             ConnectionName => 'MyConnectionName',    # OPTIONAL
             Exclusions     => [
               'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+            ],    # OPTIONAL
+            Path => 'MyPath',    # OPTIONAL
           },
           ...
-        ],                                           # OPTIONAL
+        ],    # OPTIONAL
         S3Targets => [
           {
             Exclusions => [
-              'MyPath', ...                          # OPTIONAL
-            ],                                       # OPTIONAL
-            Path => 'MyPath',                        # OPTIONAL
+              'MyPath', ...    # OPTIONAL
+            ],    # OPTIONAL
+            Path => 'MyPath',    # OPTIONAL
           },
           ...
-        ],                                           # OPTIONAL
+        ],    # OPTIONAL
       },
       Classifiers => [
-        'MyNameString', ...                          # min: 1, max: 255
-      ],                                             # OPTIONAL
-      Configuration => 'MyCrawlerConfiguration',     # OPTIONAL
+        'MyNameString', ...    # min: 1, max: 255
+      ],    # OPTIONAL
+      Configuration                => 'MyCrawlerConfiguration',    # OPTIONAL
       CrawlerSecurityConfiguration =>
-        'MyCrawlerSecurityConfiguration',            # OPTIONAL
-      DatabaseName       => 'MyDatabaseName',        # OPTIONAL
-      Description        => 'MyDescriptionString',   # OPTIONAL
-      Schedule           => 'MyCronExpression',      # OPTIONAL
+        'MyCrawlerSecurityConfiguration',                          # OPTIONAL
+      DatabaseName       => 'MyDatabaseName',                      # OPTIONAL
+      Description        => 'MyDescriptionString',                 # OPTIONAL
+      Schedule           => 'MyCronExpression',                    # OPTIONAL
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL

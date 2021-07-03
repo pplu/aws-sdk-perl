@@ -38,10 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To create a route
-    # This example creates a route for the specified route table. The route
-    # matches all traffic (0.0.0.0/0) and routes it to the specified Internet
-    # gateway.
+ # To create a route
+ # This example creates a route for the specified route table. The route matches
+ # all traffic (0.0.0.0/0) and routes it to the specified Internet gateway.
     my $CreateRouteResult = $ec2->CreateRoute(
       'DestinationCidrBlock' => '0.0.0.0/0',
       'GatewayId'            => 'igw-c0a643a9',

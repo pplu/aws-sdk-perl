@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe snapshot attributes
-    # This example describes the ``createVolumePermission`` attribute on a
-    # snapshot with the snapshot ID of ``snap-066877671789bd71b``.
+ # To describe snapshot attributes
+ # This example describes the ``createVolumePermission`` attribute on a snapshot
+ # with the snapshot ID of ``snap-066877671789bd71b``.
     my $DescribeSnapshotAttributeResult = $ec2->DescribeSnapshotAttribute(
       'Attribute'  => 'createVolumePermission',
       'SnapshotId' => 'snap-066877671789bd71b'

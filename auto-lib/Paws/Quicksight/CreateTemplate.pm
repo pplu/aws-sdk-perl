@@ -58,20 +58,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyTemplateName',            # OPTIONAL
       Permissions => [
         {
-          Actions => [ 'MyString', ... ],         # min: 1, max: 16
-          Principal => 'MyPrincipal',             # min: 1, max: 256
+          Actions   => [ 'MyString', ... ],    # min: 1, max: 16
+          Principal => 'MyPrincipal',          # min: 1, max: 256
 
         },
         ...
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                    # min: 1, max: 128
-          Value => 'MyTagValue',                  # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       VersionDescription => 'MyVersionDescription',    # OPTIONAL
     );
 

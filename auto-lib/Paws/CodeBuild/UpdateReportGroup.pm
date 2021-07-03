@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Bucket             => 'MyNonEmptyString',    # min: 1
           EncryptionDisabled => 1,                     # OPTIONAL
           EncryptionKey      => 'MyNonEmptyString',    # min: 1
-          Packaging => 'ZIP',         # values: ZIP, NONE; OPTIONAL
-          Path      => 'MyString',    # OPTIONAL
+          Packaging          => 'ZIP',         # values: ZIP, NONE; OPTIONAL
+          Path               => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
     );

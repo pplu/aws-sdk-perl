@@ -39,15 +39,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableSelfService => 1,                 # OPTIONAL
       SubnetIds         => [
         'MySubnetId', ...                     # min: 15, max: 24
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                # min: 1, max: 127
-          Value => 'MyTagValue',              # max: 255; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 127
+          Value => 'MyTagValue',    # max: 255; OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
-      Tenancy => 'DEDICATED',                 # OPTIONAL
+      ],    # OPTIONAL
+      Tenancy => 'DEDICATED',    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

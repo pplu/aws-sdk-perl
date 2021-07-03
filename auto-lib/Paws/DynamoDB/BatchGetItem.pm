@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dynamodb = Paws->service('DynamoDB');
-    # To retrieve multiple items from a table
-    # This example reads multiple items from the Music table using a batch of
-    # three GetItem requests.  Only the AlbumTitle attribute is returned.
+ # To retrieve multiple items from a table
+ # This example reads multiple items from the Music table using a batch of three
+ # GetItem requests.  Only the AlbumTitle attribute is returned.
     my $BatchGetItemOutput = $dynamodb->BatchGetItem(
       'RequestItems' => {
         'Music' => {

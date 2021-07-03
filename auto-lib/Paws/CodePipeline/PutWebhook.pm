@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MatchEquals => 'MyMatchEquals',    # min: 1, max: 150; OPTIONAL
           },
           ...
-        ],                                     # max: 5
+        ],    # max: 5
         Name           => 'MyWebhookName',     # min: 1, max: 100
         TargetAction   => 'MyActionName',      # min: 1, max: 100
         TargetPipeline => 'MyPipelineName',    # min: 1, max: 100
@@ -52,12 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Tags => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -40,35 +40,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                    # max: 1; OPTIONAL
+        ],    # max: 1; OPTIONAL
         SsmlList => [
           {
-            Locale => 'en-US',                # values: en-US
-            Value  => 'MySsmlValue',          # max: 4096
+            Locale => 'en-US',          # values: en-US
+            Value  => 'MySsmlValue',    # max: 4096
 
           },
           ...
-        ],                                    # max: 1; OPTIONAL
+        ],    # max: 1; OPTIONAL
         TextList => [
           {
-            Locale => 'en-US',                # values: en-US
-            Value  => 'MyTextValue',          # max: 4096
+            Locale => 'en-US',          # values: en-US
+            Value  => 'MyTextValue',    # max: 4096
 
           },
           ...
-        ],                                    # max: 1; OPTIONAL
+        ],    # max: 1; OPTIONAL
       },
       RoomFilters => [
         {
-          Key    => 'MyFilterKey',            # min: 1, max: 500
+          Key    => 'MyFilterKey',    # min: 1, max: 500
           Values => [
-            'MyFilterValue', ...              # min: 1, max: 500
-          ],                                  # max: 50
+            'MyFilterValue', ...      # min: 1, max: 500
+          ],    # max: 50
 
         },
         ...
       ],
-      TimeToLiveInSeconds => 1,               # OPTIONAL
+      TimeToLiveInSeconds => 1,    # OPTIONAL
     );
 
     # Results:

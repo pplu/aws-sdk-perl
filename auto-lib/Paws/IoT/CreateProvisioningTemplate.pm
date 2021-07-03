@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Enabled             => 1,                          # OPTIONAL
       Tags                => [
         {
-          Key   => 'MyTagKey',                           # OPTIONAL
-          Value => 'MyTagValue',                         # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

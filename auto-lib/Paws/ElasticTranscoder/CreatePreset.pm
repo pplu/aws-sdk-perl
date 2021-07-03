@@ -80,19 +80,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         SizingPolicy       => 'MySizingPolicy',        # OPTIONAL
         Watermarks         => [
           {
-            HorizontalAlign  => 'MyHorizontalAlign',    # OPTIONAL
-            HorizontalOffset => 'MyPixelsOrPercent',    # OPTIONAL
-            Id        => 'MyPresetWatermarkId',    # min: 1, max: 40; OPTIONAL
-            MaxHeight => 'MyPixelsOrPercent',      # OPTIONAL
-            MaxWidth  => 'MyPixelsOrPercent',      # OPTIONAL
-            Opacity   => 'MyOpacity',              # OPTIONAL
+            HorizontalAlign  => 'MyHorizontalAlign',        # OPTIONAL
+            HorizontalOffset => 'MyPixelsOrPercent',        # OPTIONAL
+            Id             => 'MyPresetWatermarkId', # min: 1, max: 40; OPTIONAL
+            MaxHeight      => 'MyPixelsOrPercent',   # OPTIONAL
+            MaxWidth       => 'MyPixelsOrPercent',   # OPTIONAL
+            Opacity        => 'MyOpacity',           # OPTIONAL
             SizingPolicy   => 'MyWatermarkSizingPolicy',    # OPTIONAL
             Target         => 'MyTarget',                   # OPTIONAL
             VerticalAlign  => 'MyVerticalAlign',            # OPTIONAL
             VerticalOffset => 'MyPixelsOrPercent',          # OPTIONAL
           },
           ...
-        ],                                                  # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

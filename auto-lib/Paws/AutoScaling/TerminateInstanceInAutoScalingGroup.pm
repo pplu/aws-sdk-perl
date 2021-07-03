@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-   # To terminate an instance in an Auto Scaling group
-   # This example terminates the specified instance from the specified Auto
-   # Scaling group without updating the size of the group. Auto Scaling launches
-   # a replacement instance after the specified instance terminates.
+# To terminate an instance in an Auto Scaling group
+# This example terminates the specified instance from the specified Auto Scaling
+# group without updating the size of the group. Auto Scaling launches a
+# replacement instance after the specified instance terminates.
     my $ActivityType = $autoscaling->TerminateInstanceInAutoScalingGroup(
       'InstanceId'                     => 'i-93633f9b',
       'ShouldDecrementDesiredCapacity' => 0

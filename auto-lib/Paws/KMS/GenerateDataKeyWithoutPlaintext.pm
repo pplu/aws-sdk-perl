@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To generate an encrypted data key
-    # The following example generates an encrypted copy of a 256-bit symmetric
-    # data encryption key (data key). The data key is encrypted with the
-    # specified customer master key (CMK).
+ # To generate an encrypted data key
+ # The following example generates an encrypted copy of a 256-bit symmetric data
+ # encryption key (data key). The data key is encrypted with the specified
+ # customer master key (CMK).
     my $GenerateDataKeyWithoutPlaintextResponse =
       $kms->GenerateDataKeyWithoutPlaintext(
       'KeyId'   => 'alias/ExampleAlias',

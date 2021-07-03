@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RoutingRules => [
           {
             Redirect => {
-              HostName         => 'MyHostName',
-              HttpRedirectCode => 'MyHttpRedirectCode',    # OPTIONAL
-              Protocol => 'http',    # values: http, https; OPTIONAL
+              HostName             => 'MyHostName',
+              HttpRedirectCode     => 'MyHttpRedirectCode',        # OPTIONAL
+              Protocol             => 'http',    # values: http, https; OPTIONAL
               ReplaceKeyPrefixWith => 'MyReplaceKeyPrefixWith',    # OPTIONAL
               ReplaceKeyWith       => 'MyReplaceKeyWith',          # OPTIONAL
             },
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
       },
       ContentLength => 1,                 # OPTIONAL
       ContentMD5    => 'MyContentMD5',    # OPTIONAL

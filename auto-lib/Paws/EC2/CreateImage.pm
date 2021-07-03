@@ -45,14 +45,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             KmsKeyId            => 'MyString',
             SnapshotId          => 'MyString',
             VolumeSize          => 1,            # OPTIONAL
-            VolumeType =>
+            VolumeType          =>
               'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
           },    # OPTIONAL
           NoDevice    => 'MyString',
           VirtualName => 'MyString',
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Description => 'MyString',    # OPTIONAL
       DryRun      => 1,             # OPTIONAL
       NoReboot    => 1,             # OPTIONAL

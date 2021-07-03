@@ -50,11 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
                   Values => [
                     'MyPatchFilterValue', ...    # min: 1, max: 64
-                  ],                             # min: 1, max: 20
+                  ],    # min: 1, max: 20
 
                 },
                 ...
-              ],                                 # max: 4
+              ],    # max: 4
 
             },
             ApproveAfterDays => 1,                   # max: 100; OPTIONAL
@@ -64,12 +64,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             EnableNonSecurity => 1,    # OPTIONAL
           },
           ...
-        ],                             # max: 10
+        ],    # max: 10
 
       },    # OPTIONAL
       ApprovedPatches => [
         'MyPatchId', ...    # min: 1, max: 100
-      ],                    # OPTIONAL
+      ],    # OPTIONAL
       ApprovedPatchesComplianceLevel   => 'CRITICAL',                 # OPTIONAL
       ApprovedPatchesEnableNonSecurity => 1,                          # OPTIONAL
       Description                      => 'MyBaselineDescription',    # OPTIONAL
@@ -80,17 +80,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             , # values: PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, MSRC_SEVERITY, PATCH_ID, SECTION, PRIORITY, SEVERITY
             Values => [
               'MyPatchFilterValue', ...    # min: 1, max: 64
-            ],                             # min: 1, max: 20
+            ],    # min: 1, max: 20
 
           },
           ...
-        ],                                 # max: 4
+        ],    # max: 4
 
       },    # OPTIONAL
       Name            => 'MyBaselineName',    # OPTIONAL
       RejectedPatches => [
         'MyPatchId', ...                      # min: 1, max: 100
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       RejectedPatchesAction => 'ALLOW_AS_DEPENDENCY',    # OPTIONAL
       Replace               => 1,                        # OPTIONAL
       Sources               => [
@@ -99,11 +99,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name          => 'MyPatchSourceName',
           Products      => [
             'MyPatchSourceProduct', ...                     # min: 1, max: 128
-          ],                                                # min: 1, max: 20
+          ],    # min: 1, max: 20
 
         },
         ...
-      ],                                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

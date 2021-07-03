@@ -40,9 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults         => 1,                        # OPTIONAL
       NextToken          => 'MyNextToken',            # OPTIONAL
       ResourceIdentifier => {
-        Account         => 'MyAwsAccountId',     # min: 12, max: 12; OPTIONAL
-        CaCertificateId => 'MyCertificateId',    # min: 64, max: 64; OPTIONAL
-        ClientId        => 'MyClientId',         # OPTIONAL
+        Account               => 'MyAwsAccountId',  # min: 12, max: 12; OPTIONAL
+        CaCertificateId       => 'MyCertificateId', # min: 64, max: 64; OPTIONAL
+        ClientId              => 'MyClientId',      # OPTIONAL
         CognitoIdentityPoolId => 'MyCognitoIdentityPoolId',    # OPTIONAL
         DeviceCertificateId => 'MyCertificateId', # min: 64, max: 64; OPTIONAL
         IamRoleArn          => 'MyRoleArn',       # min: 20, max: 2048; OPTIONAL

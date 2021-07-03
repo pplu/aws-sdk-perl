@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To set or change the current account password policy
-    # The following command sets the password policy to require a minimum length
-    # of eight characters and to require one or more numbers in the password:
+ # To set or change the current account password policy
+ # The following command sets the password policy to require a minimum length of
+ # eight characters and to require one or more numbers in the password:
     $iam->UpdateAccountPasswordPolicy(
       'MinimumPasswordLength' => 8,
       'RequireNumbers'        => 1

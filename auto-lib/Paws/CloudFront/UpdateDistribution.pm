@@ -116,8 +116,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],    # OPTIONAL
               },    # OPTIONAL
               CustomOriginConfig => {
-                HTTPPort  => 1,
-                HTTPSPort => 1,
+                HTTPPort             => 1,
+                HTTPSPort            => 1,
                 OriginProtocolPolicy =>
                   'http-only',    # values: http-only, match-viewer, https-only
                 OriginKeepaliveTimeout => 1,
@@ -137,7 +137,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # min: 1
+          ],    # min: 1
           Quantity => 1,
 
         },
@@ -211,7 +211,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SmoothStreaming => 1,
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         CustomErrorResponses => {
           Quantity => 1,
@@ -241,7 +241,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               FailoverCriteria => {
                 StatusCodes => {
-                  Items => [ 1, ... ],     # min: 1
+                  Items    => [ 1, ... ],    # min: 1
                   Quantity => 1,
 
                 },
@@ -262,7 +262,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],          # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         PriceClass => 'PriceClass_100'
         ,     # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
@@ -270,7 +270,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           GeoRestriction => {
             Quantity        => 1,
             RestrictionType => 'blacklist', # values: blacklist, whitelist, none
-            Items => [ 'Mystring', ... ],   # OPTIONAL
+            Items           => [ 'Mystring', ... ],    # OPTIONAL
           },
 
         },    # OPTIONAL

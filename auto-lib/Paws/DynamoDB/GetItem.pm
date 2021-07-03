@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dynamodb = Paws->service('DynamoDB');
-    # To read an item from a table
-    # This example retrieves an item from the Music table. The table has a
-    # partition key and a sort key (Artist and SongTitle), so you must specify
-    # both of these attributes.
+# To read an item from a table
+# This example retrieves an item from the Music table. The table has a partition
+# key and a sort key (Artist and SongTitle), so you must specify both of these
+# attributes.
     my $GetItemOutput = $dynamodb->GetItem(
       'Key' => {
         'Artist' => {

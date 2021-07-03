@@ -45,13 +45,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               FileKeyUpdate   => 'MyFileKey',      # min: 1, max: 1024; OPTIONAL
               ObjectVersionUpdate => 'MyObjectVersion',    # OPTIONAL
             },    # OPTIONAL
-            TextContentUpdate => 'MyTextContent',    # max: 102400; OPTIONAL
+            TextContentUpdate    => 'MyTextContent',    # max: 102400; OPTIONAL
             ZipFileContentUpdate =>
-              'BlobZipFileContent',                  # max: 52428800; OPTIONAL
+              'BlobZipFileContent',    # max: 52428800; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         ApplicationSnapshotConfigurationUpdate => {
-          SnapshotsEnabledUpdate => 1,    # OPTIONAL
+          SnapshotsEnabledUpdate => 1,
 
         },    # OPTIONAL
         EnvironmentPropertyUpdates => {
@@ -65,14 +65,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],        # max: 50
+          ],    # max: 50
 
         },    # OPTIONAL
         FlinkApplicationConfigurationUpdate => {
           CheckpointConfigurationUpdate => {
             CheckpointIntervalUpdate   => 1,    # min: 1; OPTIONAL
-            CheckpointingEnabledUpdate => 1,    # OPTIONAL
-            ConfigurationTypeUpdate =>
+            CheckpointingEnabledUpdate => 1,
+            ConfigurationTypeUpdate    =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             MinPauseBetweenCheckpointsUpdate => 1,    # OPTIONAL
           },    # OPTIONAL
@@ -85,8 +85,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
           ParallelismConfigurationUpdate => {
-            AutoScalingEnabledUpdate => 1,    # OPTIONAL
-            ConfigurationTypeUpdate =>
+            AutoScalingEnabledUpdate => 1,
+            ConfigurationTypeUpdate  =>
               'DEFAULT',    # values: DEFAULT, CUSTOM; OPTIONAL
             ParallelismPerKPUUpdate => 1,    # min: 1; OPTIONAL
             ParallelismUpdate       => 1,    # min: 1; OPTIONAL
@@ -115,7 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],    # min: 1, max: 1000; OPTIONAL
                 RecordEncodingUpdate => 'MyRecordEncoding',    # OPTIONAL
                 RecordFormatUpdate   => {
                   RecordFormatType  => 'JSON',    # values: JSON, CSV
@@ -131,7 +131,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                     },    # OPTIONAL
                   },    # OPTIONAL
-                },
+                },    # OPTIONAL
               },    # OPTIONAL
               KinesisFirehoseInputUpdate => {
                 ResourceARNUpdate => 'MyResourceARN',    # min: 1, max: 2048
@@ -145,7 +145,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyInAppStreamName',    # min: 1, max: 32; OPTIONAL
             },
             ...
-          ],                            # OPTIONAL
+          ],    # OPTIONAL
           OutputUpdates => [
             {
               OutputId                => 'MyId',    # min: 1, max: 50
@@ -168,10 +168,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               NameUpdate => 'MyInAppStreamName',    # min: 1, max: 32; OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
           ReferenceDataSourceUpdates => [
             {
-              ReferenceId           => 'MyId',      # min: 1, max: 50
+              ReferenceId           => 'MyId',    # min: 1, max: 50
               ReferenceSchemaUpdate => {
                 RecordColumns => [
                   {
@@ -180,13 +180,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',    # OPTIONAL
                   },
                   ...
-                ],                                         # min: 1, max: 1000
+                ],    # min: 1, max: 1000; OPTIONAL
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',             # values: JSON, CSV
+                  RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',         # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1
                       RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
 
                     },    # OPTIONAL
@@ -195,7 +195,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                     },    # OPTIONAL
                   },    # OPTIONAL
-                },
+                },    # OPTIONAL
                 RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
               },    # OPTIONAL
               S3ReferenceDataSourceUpdate => {
@@ -205,35 +205,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TableNameUpdate => 'MyInAppTableName', # min: 1, max: 32; OPTIONAL
             },
             ...
-          ],                                         # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         VpcConfigurationUpdates => [
           {
-            VpcConfigurationId => 'MyId',    # min: 1, max: 50
+            VpcConfigurationId     => 'MyId',    # min: 1, max: 50
             SecurityGroupIdUpdates => [ 'MySecurityGroupId', ... ]
-            ,                                # min: 1, max: 5; OPTIONAL
+            ,                                    # min: 1, max: 5; OPTIONAL
             SubnetIdUpdates => [ 'MySubnetId', ... ]
-            ,                                # min: 1, max: 16; OPTIONAL
+            ,                                    # min: 1, max: 16; OPTIONAL
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       CloudWatchLoggingOptionUpdates => [
         {
-          CloudWatchLoggingOptionId => 'MyId',    # min: 1, max: 50
-          LogStreamARNUpdate => 'MyLogStreamARN', # min: 1, max: 2048; OPTIONAL
+          CloudWatchLoggingOptionId => 'MyId',     # min: 1, max: 50
+          LogStreamARNUpdate => 'MyLogStreamARN',  # min: 1, max: 2048; OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       RunConfigurationUpdate => {
         ApplicationRestoreConfiguration => {
           ApplicationRestoreType => 'SKIP_RESTORE_FROM_SNAPSHOT'
           , # values: SKIP_RESTORE_FROM_SNAPSHOT, RESTORE_FROM_LATEST_SNAPSHOT, RESTORE_FROM_CUSTOM_SNAPSHOT
           SnapshotName => 'MySnapshotName',    # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
-        FlinkRunConfiguration => {
-          AllowNonRestoredState => 1,    # OPTIONAL
-        },    # OPTIONAL
+        FlinkRunConfiguration => { AllowNonRestoredState => 1, },    # OPTIONAL
       },    # OPTIONAL
       ServiceExecutionRoleUpdate => 'MyRoleARN',    # OPTIONAL
     );

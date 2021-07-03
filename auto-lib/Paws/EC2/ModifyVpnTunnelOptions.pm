@@ -38,44 +38,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyString',    # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         Phase1DHGroupNumbers => [
           {
-            Value => 1,             # OPTIONAL
+            Value => 1,    # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         Phase1EncryptionAlgorithms => [
           {
             Value => 'MyString',    # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         Phase1IntegrityAlgorithms => [
           {
             Value => 'MyString',    # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
-        Phase1LifetimeSeconds => 1, # OPTIONAL
+        ],    # OPTIONAL
+        Phase1LifetimeSeconds => 1,    # OPTIONAL
         Phase2DHGroupNumbers  => [
           {
-            Value => 1,             # OPTIONAL
+            Value => 1,                # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         Phase2EncryptionAlgorithms => [
           {
             Value => 'MyString',    # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         Phase2IntegrityAlgorithms => [
           {
             Value => 'MyString',    # OPTIONAL
           },
           ...
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         Phase2LifetimeSeconds  => 1,             # OPTIONAL
         PreSharedKey           => 'MyString',    # OPTIONAL
         RekeyFuzzPercentage    => 1,             # OPTIONAL

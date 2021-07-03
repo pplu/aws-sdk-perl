@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To describe the bandwidth rate limits of a gateway
-    # Returns a value for a bandwidth rate limit if set. If not set, then only
-    # the gateway ARN is returned.
+  # To describe the bandwidth rate limits of a gateway
+  # Returns a value for a bandwidth rate limit if set. If not set, then only the
+  # gateway ARN is returned.
     my $DescribeBandwidthRateLimitOutput =
       $storagegateway->DescribeBandwidthRateLimit( 'GatewayARN' =>
         'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B' );

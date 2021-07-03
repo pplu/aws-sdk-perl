@@ -29,15 +29,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To update the bandwidth rate limits of a gateway
-    # Updates the bandwidth rate limits of a gateway. Both the upload and
-    # download bandwidth rate limit can be set, or either one of the two. If a
-    # new limit is not set, the existing rate limit remains.
+  # To update the bandwidth rate limits of a gateway
+  # Updates the bandwidth rate limits of a gateway. Both the upload and download
+  # bandwidth rate limit can be set, or either one of the two. If a new limit is
+  # not set, the existing rate limit remains.
     my $UpdateBandwidthRateLimitOutput =
       $storagegateway->UpdateBandwidthRateLimit(
       'AverageDownloadRateLimitInBitsPerSec' => 102400,
       'AverageUploadRateLimitInBitsPerSec'   => 51200,
-      'GatewayARN' =>
+      'GatewayARN'                           =>
         'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       );
 

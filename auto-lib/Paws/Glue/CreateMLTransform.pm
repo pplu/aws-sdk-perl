@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AccuracyCostTradeoff    => 1,             # max: 1; OPTIONAL
           EnforceProvidedLabels   => 1,             # OPTIONAL
           PrecisionRecallTradeoff => 1,             # max: 1; OPTIONAL
-          PrimaryKeyColumnName =>
+          PrimaryKeyColumnName    =>
             'MyColumnNameString',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
       },

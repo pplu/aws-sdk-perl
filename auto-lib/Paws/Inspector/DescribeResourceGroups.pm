@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-    # Describe resource groups
-    # Describes the resource groups that are specified by the ARNs of the
-    # resource groups.
+  # Describe resource groups
+  # Describes the resource groups that are specified by the ARNs of the resource
+  # groups.
     my $DescribeResourceGroupsResponse =
       $inspector->DescribeResourceGroups( 'ResourceGroupArns' =>
         ['arn:aws:inspector:us-west-2:123456789012:resourcegroup/0-PyGXopAI'] );

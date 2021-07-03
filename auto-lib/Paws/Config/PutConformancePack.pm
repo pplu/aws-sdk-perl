@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       DeliveryS3KeyPrefix => 'MyDeliveryS3KeyPrefix',    # OPTIONAL
       TemplateBody        => 'MyTemplateBody',           # OPTIONAL
       TemplateS3Uri       => 'MyTemplateS3Uri',          # OPTIONAL

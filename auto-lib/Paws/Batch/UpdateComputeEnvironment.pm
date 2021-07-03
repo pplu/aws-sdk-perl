@@ -31,9 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $batch = Paws->service('Batch');
-    # To update a compute environment
-    # This example disables the P2OnDemand compute environment so it can be
-    # deleted.
+# To update a compute environment
+# This example disables the P2OnDemand compute environment so it can be deleted.
     my $UpdateComputeEnvironmentResponse = $batch->UpdateComputeEnvironment(
       'ComputeEnvironment' => 'P2OnDemand',
       'State'              => 'DISABLED'

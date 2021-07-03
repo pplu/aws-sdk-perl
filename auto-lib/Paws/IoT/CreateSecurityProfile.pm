@@ -58,25 +58,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => {
               Cidrs => [
                 'MyCidr', ...    # min: 2, max: 43
-              ],                 # OPTIONAL
-              Count => 1,        # OPTIONAL
+              ],    # OPTIONAL
+              Count => 1,    # OPTIONAL
               Ports => [
-                1, ...           # max: 65535
-              ],                 # OPTIONAL
+                1, ...       # max: 65535
+              ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Metric => 'MyBehaviorMetric',
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       SecurityProfileDescription => 'MySecurityProfileDescription',   # OPTIONAL
       Tags                       => [
         {
-          Key   => 'MyTagKey',                                        # OPTIONAL
-          Value => 'MyTagValue',                                      # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                                              # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-        NamespaceId => 'MyResourceId',    # max: 64
+        NamespaceId   => 'MyResourceId',    # max: 64
         RoutingPolicy => 'MULTIVALUE',  # values: MULTIVALUE, WEIGHTED; OPTIONAL
       },    # OPTIONAL
       HealthCheckConfig => {

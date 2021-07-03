@@ -42,16 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FleetId                   => 'MyFleetId',                # OPTIONAL
       GameProperties            => [
         {
-          Key   => 'MyGamePropertyKey',                        # max: 32
-          Value => 'MyGamePropertyValue',                      # max: 96
+          Key   => 'MyGamePropertyKey',      # max: 32
+          Value => 'MyGamePropertyValue',    # max: 96
 
         },
         ...
-      ],                                                       # OPTIONAL
-      GameSessionData  => 'MyGameSessionData',                 # OPTIONAL
-      GameSessionId    => 'MyIdStringModel',                   # OPTIONAL
-      IdempotencyToken => 'MyIdStringModel',                   # OPTIONAL
-      Name             => 'MyNonZeroAndMaxString',             # OPTIONAL
+      ],    # OPTIONAL
+      GameSessionData  => 'MyGameSessionData',        # OPTIONAL
+      GameSessionId    => 'MyIdStringModel',          # OPTIONAL
+      IdempotencyToken => 'MyIdStringModel',          # OPTIONAL
+      Name             => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
 
     # Results:

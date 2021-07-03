@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-   # Add attributes to findings
-   # Assigns attributes (key and value pairs) to the findings that are specified
-   # by the ARNs of the findings.
+# Add attributes to findings
+# Assigns attributes (key and value pairs) to the findings that are specified by
+# the ARNs of the findings.
     my $AddAttributesToFindingsResponse = $inspector->AddAttributesToFindings(
       'Attributes' => [
 

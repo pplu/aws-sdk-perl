@@ -45,17 +45,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # min: 1
+        ],    # min: 1
 
       },    # OPTIONAL
       Description                => 'MyJobDescription',    # OPTIONAL
       JobExecutionsRolloutConfig => {
         ExponentialRate => {
-          BaseRatePerMinute    => 1,                       # min: 1, max: 1000
-          IncrementFactor      => 1,                       # min: 1, max: 5
+          BaseRatePerMinute    => 1,    # min: 1, max: 1000
+          IncrementFactor      => 1,    # min: 1, max: 5
           RateIncreaseCriteria => {
-            NumberOfNotifiedThings  => 1,                  # min: 1; OPTIONAL
-            NumberOfSucceededThings => 1,                  # min: 1; OPTIONAL
+            NumberOfNotifiedThings  => 1,    # min: 1; OPTIONAL
+            NumberOfSucceededThings => 1,    # min: 1; OPTIONAL
           },
 
         },    # OPTIONAL

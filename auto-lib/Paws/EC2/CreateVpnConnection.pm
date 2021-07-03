@@ -41,38 +41,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         StaticRoutesOnly   => 1,
         TunnelOptions      => [
           {
-            DPDTimeoutSeconds => 1,                              # OPTIONAL
-            IKEVersions => [ { Value => 'MyString', }, ... ],    # OPTIONAL
+            DPDTimeoutSeconds => 1,                                   # OPTIONAL
+            IKEVersions       => [ { Value => 'MyString', }, ... ],   # OPTIONAL
             Phase1DHGroupNumbers => [
               {
-                Value => 1,                                      # OPTIONAL
+                Value => 1,                                           # OPTIONAL
               },
               ...
-            ],                                                   # OPTIONAL
+            ],    # OPTIONAL
             Phase1EncryptionAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                    # OPTIONAL
+            ,                              # OPTIONAL
             Phase1IntegrityAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                    # OPTIONAL
-            Phase1LifetimeSeconds => 1,                          # OPTIONAL
+            ,                              # OPTIONAL
+            Phase1LifetimeSeconds => 1,    # OPTIONAL
             Phase2DHGroupNumbers  => [
               {
-                Value => 1,                                      # OPTIONAL
+                Value => 1,                # OPTIONAL
               },
               ...
-            ],                                                   # OPTIONAL
+            ],    # OPTIONAL
             Phase2EncryptionAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                    # OPTIONAL
+            ,                                       # OPTIONAL
             Phase2IntegrityAlgorithms => [ { Value => 'MyString', }, ... ]
-            ,                                                    # OPTIONAL
-            Phase2LifetimeSeconds  => 1,                         # OPTIONAL
+            ,                                       # OPTIONAL
+            Phase2LifetimeSeconds  => 1,            # OPTIONAL
             PreSharedKey           => 'MyString',
-            RekeyFuzzPercentage    => 1,                         # OPTIONAL
-            RekeyMarginTimeSeconds => 1,                         # OPTIONAL
-            ReplayWindowSize       => 1,                         # OPTIONAL
+            RekeyFuzzPercentage    => 1,            # OPTIONAL
+            RekeyMarginTimeSeconds => 1,            # OPTIONAL
+            ReplayWindowSize       => 1,            # OPTIONAL
             TunnelInsideCidr       => 'MyString',
           },
           ...
-        ],                                                       # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       TransitGatewayId => 'MyTransitGatewayId',    # OPTIONAL
       VpnGatewayId     => 'MyVpnGatewayId',        # OPTIONAL

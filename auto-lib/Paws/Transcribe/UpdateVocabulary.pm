@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       VocabularyName => 'MyVocabularyName',
       Phrases        => [
         'MyPhrase', ...    # max: 256
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
       VocabularyFileUri => 'MyUri',    # OPTIONAL
     );
 

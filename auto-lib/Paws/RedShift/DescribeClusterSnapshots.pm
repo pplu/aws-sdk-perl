@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SortOrder => 'ASC', # values: ASC, DESC; OPTIONAL
         },
         ...
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL
       TagKeys   => [ 'MyString', ... ],      # OPTIONAL
       TagValues => [ 'MyString', ... ],      # OPTIONAL

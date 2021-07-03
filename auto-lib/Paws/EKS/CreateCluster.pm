@@ -48,14 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Logging            => {
         ClusterLogging => [
           {
-            Enabled => 1,                                # OPTIONAL
+            Enabled => 1,    # OPTIONAL
             Types   => [
               'api',
               ... # values: api, audit, authenticator, controllerManager, scheduler
             ],    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256

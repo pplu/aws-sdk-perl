@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELBv2');
-    # To modify the health check configuration for a target group
-    # This example changes the configuration of the health checks used to
-    # evaluate the health of the targets for the specified target group.
+  # To modify the health check configuration for a target group
+  # This example changes the configuration of the health checks used to evaluate
+  # the health of the targets for the specified target group.
     my $ModifyTargetGroupOutput = $elasticloadbalancing->ModifyTargetGroup(
       'HealthCheckPort'     => 443,
       'HealthCheckProtocol' => 'HTTPS',
-      'TargetGroupArn' =>
+      'TargetGroupArn'      =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-https-targets/2453ed029918f21f'
     );
 

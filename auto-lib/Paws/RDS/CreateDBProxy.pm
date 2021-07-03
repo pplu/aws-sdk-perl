@@ -52,21 +52,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleArn      => 'MyString',
       VpcSubnetIds => [
         'MyString',
-        ...                             # OPTIONAL
+        ...    # OPTIONAL
       ],
-      DebugLogging      => 1,           # OPTIONAL
-      IdleClientTimeout => 1,           # OPTIONAL
-      RequireTLS        => 1,           # OPTIONAL
+      DebugLogging      => 1,    # OPTIONAL
+      IdleClientTimeout => 1,    # OPTIONAL
+      RequireTLS        => 1,    # OPTIONAL
       Tags              => [
         {
-          Key   => 'MyString',          # OPTIONAL
-          Value => 'MyString',          # OPTIONAL
+          Key   => 'MyString',    # OPTIONAL
+          Value => 'MyString',    # OPTIONAL
         },
         ...
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
       VpcSecurityGroupIds => [
-        'MyString', ...                 # OPTIONAL
-      ],                                # OPTIONAL
+        'MyString', ...    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

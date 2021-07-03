@@ -30,13 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeExportTasksResult = $ec2->DescribeExportTasks(
       ExportTaskIds => [ 'MyString', ... ],    # OPTIONAL
-      Filters => [
+      Filters       => [
         {
           Name   => 'MyString',
           Values => [ 'MyString', ... ],       # OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

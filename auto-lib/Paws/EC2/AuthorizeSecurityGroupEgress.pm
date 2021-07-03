@@ -50,21 +50,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Description => 'MyString',
             },
             ...
-          ],                                  # OPTIONAL
+          ],    # OPTIONAL
           Ipv6Ranges => [
             {
               CidrIpv6    => 'MyString',
               Description => 'MyString',
             },
             ...
-          ],                                  # OPTIONAL
+          ],    # OPTIONAL
           PrefixListIds => [
             {
               Description  => 'MyString',
               PrefixListId => 'MyString',
             },
             ...
-          ],                                  # OPTIONAL
+          ],    # OPTIONAL
           ToPort           => 1,
           UserIdGroupPairs => [
             {
@@ -80,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       IpProtocol                 => 'MyString',    # OPTIONAL
       SourceSecurityGroupName    => 'MyString',    # OPTIONAL
       SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL

@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           JmxExporter => {
             EnabledInBroker => 1,
 
-          },                                # OPTIONAL
+          },    # OPTIONAL
           NodeExporter => {
             EnabledInBroker => 1,
 
-          },                                # OPTIONAL
+          },    # OPTIONAL
         },
 
       },    # OPTIONAL

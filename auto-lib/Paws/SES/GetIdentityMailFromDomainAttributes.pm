@@ -27,9 +27,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # GetIdentityMailFromDomainAttributes
-    # The following example returns the custom MAIL FROM attributes for an
-    # identity:
+# GetIdentityMailFromDomainAttributes
+# The following example returns the custom MAIL FROM attributes for an identity:
     my $GetIdentityMailFromDomainAttributesResponse =
       $email->GetIdentityMailFromDomainAttributes(
       'Identities' => ['example.com'] );

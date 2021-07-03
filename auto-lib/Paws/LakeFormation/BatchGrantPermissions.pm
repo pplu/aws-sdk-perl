@@ -64,11 +64,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TableWithColumns => {
               ColumnNames => [
                 'MyNameString', ...    # min: 1, max: 255
-              ],                       # OPTIONAL
+              ],    # OPTIONAL
               ColumnWildcard => {
                 ExcludedColumnNames => [
                   'MyNameString', ...    # min: 1, max: 255
-                ],                       # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
               DatabaseName => 'MyNameString',    # min: 1, max: 255
               Name         => 'MyNameString',    # min: 1, max: 255

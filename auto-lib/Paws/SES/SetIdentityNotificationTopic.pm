@@ -29,10 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # SetIdentityNotificationTopic
-    # The following example sets the Amazon SNS topic to which Amazon SES will
-    # publish bounce, complaint, and/or delivery notifications for emails sent
-    # with the specified identity as the Source:
+ # SetIdentityNotificationTopic
+ # The following example sets the Amazon SNS topic to which Amazon SES will
+ # publish bounce, complaint, and/or delivery notifications for emails sent with
+ # the specified identity as the Source:
     my $SetIdentityNotificationTopicResponse =
       $email->SetIdentityNotificationTopic(
       'Identity'         => 'user@example.com',

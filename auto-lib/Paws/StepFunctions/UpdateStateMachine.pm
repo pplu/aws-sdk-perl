@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Destinations => [
           {
             CloudWatchLogsLogGroup => {
-              LogGroupArn => 'MyArn',            # min: 1, max: 256
+              LogGroupArn => 'MyArn',    # min: 1, max: 256
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         IncludeExecutionData => 1,    # OPTIONAL
         Level => 'ALL',               # values: ALL, ERROR, FATAL, OFF; OPTIONAL
       },    # OPTIONAL

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken  => 'MyNextToken',    # OPTIONAL
       States     => [
         'IN_PROGRESS', ...            # values: IN_PROGRESS, SUCCEEDED, FAILED
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

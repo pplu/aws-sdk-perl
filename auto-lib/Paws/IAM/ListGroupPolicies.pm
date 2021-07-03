@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-   # To list the in-line policies for an IAM group
-   # The following command lists the names of in-line policies that are embedded
-   # in the IAM group named Admins.
+# To list the in-line policies for an IAM group
+# The following command lists the names of in-line policies that are embedded in
+# the IAM group named Admins.
     my $ListGroupPoliciesResponse =
       $iam->ListGroupPolicies( 'GroupName' => 'Admins' );
 

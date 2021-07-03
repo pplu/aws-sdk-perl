@@ -48,17 +48,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       CustomImageName => 'MyResourceName',    # OPTIONAL
       KeyPairName     => 'MyResourceName',    # OPTIONAL
       Tags            => [
         {
-          Key   => 'MyTagKey',                # OPTIONAL
-          Value => 'MyTagValue',              # OPTIONAL
+          Key   => 'MyTagKey',      # OPTIONAL
+          Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
-      UserData => 'Mystring',                 # OPTIONAL
+      ],    # OPTIONAL
+      UserData => 'Mystring',    # OPTIONAL
     );
 
     # Results:

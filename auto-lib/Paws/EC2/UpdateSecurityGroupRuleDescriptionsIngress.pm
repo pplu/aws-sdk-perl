@@ -42,22 +42,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Description => 'MyString',    # OPTIONAL
             },
             ...
-          ],                                # OPTIONAL
+          ],    # OPTIONAL
           Ipv6Ranges => [
             {
               CidrIpv6    => 'MyString',    # OPTIONAL
               Description => 'MyString',    # OPTIONAL
             },
             ...
-          ],                                # OPTIONAL
+          ],    # OPTIONAL
           PrefixListIds => [
             {
               Description  => 'MyString',    # OPTIONAL
               PrefixListId => 'MyString',    # OPTIONAL
             },
             ...
-          ],                                 # OPTIONAL
-          ToPort           => 1,             # OPTIONAL
+          ],    # OPTIONAL
+          ToPort           => 1,    # OPTIONAL
           UserIdGroupPairs => [
             {
               Description            => 'MyString',    # OPTIONAL
@@ -69,13 +69,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               VpcPeeringConnectionId => 'MyString',    # OPTIONAL
             },
             ...
-          ],                                           # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
       ],
-      DryRun    => 1,                                  # OPTIONAL
-      GroupId   => 'MySecurityGroupId',                # OPTIONAL
-      GroupName => 'MySecurityGroupName',              # OPTIONAL
+      DryRun    => 1,                        # OPTIONAL
+      GroupId   => 'MySecurityGroupId',      # OPTIONAL
+      GroupName => 'MySecurityGroupName',    # OPTIONAL
       );
 
     # Results:

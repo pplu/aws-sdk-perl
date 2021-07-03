@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To confirm the product instance
-    # This example determines whether the specified product code is associated
-    # with the specified instance.
+ # To confirm the product instance
+ # This example determines whether the specified product code is associated with
+ # the specified instance.
     my $ConfirmProductInstanceResult = $ec2->ConfirmProductInstance(
       'InstanceId'  => 'i-1234567890abcdef0',
       'ProductCode' => '774F4FF8'

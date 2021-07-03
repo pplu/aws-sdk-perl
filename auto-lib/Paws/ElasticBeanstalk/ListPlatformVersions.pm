@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values   => [ 'MyPlatformFilterValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                                   # OPTIONAL
-      MaxRecords => 1,                                     # OPTIONAL
-      NextToken  => 'MyToken',                             # OPTIONAL
+      ],    # OPTIONAL
+      MaxRecords => 1,            # OPTIONAL
+      NextToken  => 'MyToken',    # OPTIONAL
     );
 
     # Results:

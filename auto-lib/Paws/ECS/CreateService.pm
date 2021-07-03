@@ -47,10 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ecs = Paws->service('ECS');
-    # To create a new service
-    # This example creates a service in your default region called
-    # ``ecs-simple-service``. The service uses the ``hello_world`` task
-    # definition and it maintains 10 copies of that task.
+  # To create a new service
+  # This example creates a service in your default region called
+  # ``ecs-simple-service``. The service uses the ``hello_world`` task definition
+  # and it maintains 10 copies of that task.
     my $CreateServiceResponse = $ecs->CreateService(
       'DesiredCount'   => 10,
       'ServiceName'    => 'ecs-simple-service',
@@ -60,12 +60,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $service = $CreateServiceResponse->service;
 
-    # Returns a L<Paws::ECS::CreateServiceResponse> object.
-    # To create a new service behind a load balancer
-    # This example creates a service in your default region called
-    # ``ecs-simple-service-elb``. The service uses the ``ecs-demo`` task
-    # definition and it maintains 10 copies of that task. You must reference an
-    # existing load balancer in the same region by its name.
+ # Returns a L<Paws::ECS::CreateServiceResponse> object.
+ # To create a new service behind a load balancer
+ # This example creates a service in your default region called
+ # ``ecs-simple-service-elb``. The service uses the ``ecs-demo`` task definition
+ # and it maintains 10 copies of that task. You must reference an existing load
+ # balancer in the same region by its name.
     my $CreateServiceResponse = $ecs->CreateService(
       'DesiredCount'  => 10,
       'LoadBalancers' => [

@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AwsRegions    => [ 'MyString', ... ],       # min: 1; OPTIONAL
         },
         ...
-      ],                                              # OPTIONAL
+      ],    # OPTIONAL
       OrganizationAggregationSource => {
         RoleArn       => 'MyString',
-        AllAwsRegions => 1,                           # OPTIONAL
-        AwsRegions    => [ 'MyString', ... ],         # min: 1; OPTIONAL
+        AllAwsRegions => 1,                      # OPTIONAL
+        AwsRegions    => [ 'MyString', ... ],    # min: 1; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

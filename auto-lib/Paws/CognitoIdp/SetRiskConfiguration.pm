@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         NotifyConfiguration => {
           SourceArn  => 'MyArnType',    # min: 20, max: 2048
           BlockEmail => {
-            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            Subject  => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
             HtmlBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
             TextBody =>
@@ -65,14 +65,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           From     => 'MyStringType',    # OPTIONAL
           MfaEmail => {
-            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            Subject  => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
             HtmlBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
             TextBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
           },    # OPTIONAL
           NoActionEmail => {
-            Subject => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
+            Subject  => 'MyEmailNotificationSubjectType',    # min: 1, max: 140
             HtmlBody =>
               'MyEmailNotificationBodyType',    # min: 6, max: 20000; OPTIONAL
             TextBody =>
@@ -89,15 +89,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         EventFilter => [
           'SIGN_IN', ...             # values: SIGN_IN, PASSWORD_CHANGE, SIGN_UP
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       RiskExceptionConfiguration => {
         BlockedIPRangeList => [
           'MyStringType', ...    # OPTIONAL
-        ],                       # max: 20; OPTIONAL
+        ],    # max: 20; OPTIONAL
         SkippedIPRangeList => [
           'MyStringType', ...    # OPTIONAL
-        ],                       # max: 20; OPTIONAL
+        ],    # max: 20; OPTIONAL
       },    # OPTIONAL
     );
 

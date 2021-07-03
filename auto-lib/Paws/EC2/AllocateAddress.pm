@@ -32,9 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To allocate an Elastic IP address for EC2-VPC
-    # This example allocates an Elastic IP address to use with an instance in a
-    # VPC.
+# To allocate an Elastic IP address for EC2-VPC
+# This example allocates an Elastic IP address to use with an instance in a VPC.
     my $AllocateAddressResult = $ec2->AllocateAddress( 'Domain' => 'vpc' );
 
     # Results:

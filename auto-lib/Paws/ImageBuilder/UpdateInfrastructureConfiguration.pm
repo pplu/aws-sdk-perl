@@ -43,18 +43,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken                    => 'MyClientToken',
       InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
       InstanceProfileName            => 'MyNonEmptyString',
-      Description   => 'MyNonEmptyString',           # OPTIONAL
-      InstanceTypes => [ 'MyInstanceType', ... ],    # OPTIONAL
-      KeyPair       => 'MyNonEmptyString',           # OPTIONAL
-      Logging       => {
+      Description                    => 'MyNonEmptyString',           # OPTIONAL
+      InstanceTypes                  => [ 'MyInstanceType', ... ],    # OPTIONAL
+      KeyPair                        => 'MyNonEmptyString',           # OPTIONAL
+      Logging                        => {
         S3Logs => {
-          S3BucketName => 'MyNonEmptyString',        # min: 1, max: 1024
-          S3KeyPrefix  => 'MyNonEmptyString',        # min: 1, max: 1024
+          S3BucketName => 'MyNonEmptyString',    # min: 1, max: 1024
+          S3KeyPrefix  => 'MyNonEmptyString',    # min: 1, max: 1024
         },    # OPTIONAL
       },    # OPTIONAL
       SecurityGroupIds => [
         'MyNonEmptyString', ...    # min: 1, max: 1024
-      ],                           # OPTIONAL
+      ],    # OPTIONAL
       SnsTopicArn                => 'MySnsTopicArn',       # OPTIONAL
       SubnetId                   => 'MyNonEmptyString',    # OPTIONAL
       TerminateInstanceOnFailure => 1,                     # OPTIONAL

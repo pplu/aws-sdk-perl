@@ -57,11 +57,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceRoleArn => 'MyServiceRole',              # OPTIONAL
       Targets        => [
         {
-          Key => 'MyTargetKey',                  # min: 1, max: 163; OPTIONAL
+          Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       TaskArn                  => 'MyMaintenanceWindowTaskArn',    # OPTIONAL
       TaskInvocationParameters => {
         Automation => {
@@ -116,7 +116,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyMaintenanceWindowTaskParameterName' => {
           Values => [
             'MyMaintenanceWindowTaskParameterValue', ...    # min: 1, max: 255
-          ],                                                # OPTIONAL
+          ],    # OPTIONAL
         },    # key: min: 1, max: 255
       },    # OPTIONAL
     );

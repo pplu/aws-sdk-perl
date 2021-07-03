@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           AggregatorType => 'MyOpsAggregatorType',   # min: 1, max: 20; OPTIONAL
           Aggregators    => <OpsAggregatorList>,
-          AttributeName => 'MyOpsDataAttributeName',    # OPTIONAL
-          Filters       => [
+          AttributeName  => 'MyOpsDataAttributeName',    # OPTIONAL
+          Filters        => [
             {
               Key    => 'MyOpsFilterKey',               # min: 1, max: 200
               Values => [ 'MyOpsFilterValue', ... ],    # min: 1, max: 40
@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # max: 5; OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Filters => [
         {
           Key    => 'MyOpsFilterKey',               # min: 1, max: 200
@@ -72,8 +72,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                      # OPTIONAL
-      SyncName => 'MyResourceDataSyncName',   # OPTIONAL
+      ],    # OPTIONAL
+      SyncName => 'MyResourceDataSyncName',    # OPTIONAL
     );
 
     # Results:

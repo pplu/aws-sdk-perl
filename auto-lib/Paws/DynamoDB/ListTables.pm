@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dynamodb = Paws->service('DynamoDB');
-    # To list tables
-    # This example lists all of the tables associated with the current AWS
-    # account and endpoint.
+  # To list tables
+  # This example lists all of the tables associated with the current AWS account
+  # and endpoint.
     my $ListTablesOutput = $dynamodb->ListTables();
 
     # Results:

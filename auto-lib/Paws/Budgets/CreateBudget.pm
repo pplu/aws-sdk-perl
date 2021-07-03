@@ -40,23 +40,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Amount => 'MyNumericValue',    # min: 1, max: 2147483647
           Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-        },
+        },    # OPTIONAL
         CalculatedSpend => {
           ActualSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },
+          },    # OPTIONAL
           ForecastedSpend => {
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },
+          },    # OPTIONAL
         },    # OPTIONAL
         CostFilters => {
           'MyGenericString' => [
             'MyGenericString', ...    # max: 2147483647
-          ],                          # key: max: 2147483647
+          ],    # key: max: 2147483647
         },    # OPTIONAL
         CostTypes => {
           IncludeCredit            => 1,    # OPTIONAL
@@ -77,7 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Amount => 'MyNumericValue',    # min: 1, max: 2147483647
             Unit   => 'MyUnitValue',       # min: 1, max: 2147483647
 
-          },    # key: max: 2147483647
+          },    # key: max: 2147483647, value: OPTIONAL
         },    # OPTIONAL
         TimePeriod => {
           End   => '1970-01-01T01:00:00',    # OPTIONAL
@@ -92,7 +92,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             NotificationType  => 'ACTUAL',    # values: ACTUAL, FORECASTED
             Threshold         => 1,           # max: 1000000000
             NotificationState => 'OK',        # values: OK, ALARM; OPTIONAL
-            ThresholdType =>
+            ThresholdType     =>
               'PERCENTAGE',    # values: PERCENTAGE, ABSOLUTE_VALUE; OPTIONAL
           },
           Subscribers => [
@@ -102,11 +102,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                       # min: 1, max: 11
+          ],    # min: 1, max: 11
 
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

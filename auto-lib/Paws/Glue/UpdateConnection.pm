@@ -40,13 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Description    => 'MyDescriptionString',    # max: 2048; OPTIONAL
         MatchCriteria  => [
           'MyNameString', ...                       # min: 1, max: 255
-        ],                                          # max: 10; OPTIONAL
+        ],    # max: 10; OPTIONAL
         PhysicalConnectionRequirements => {
           AvailabilityZone    => 'MyNameString',    # min: 1, max: 255
           SecurityGroupIdList => [
             'MyNameString', ...                     # min: 1, max: 255
-          ],                                        # max: 50; OPTIONAL
-          SubnetId => 'MyNameString',               # min: 1, max: 255
+          ],    # max: 50; OPTIONAL
+          SubnetId => 'MyNameString',    # min: 1, max: 255
         },    # OPTIONAL
       },
       Name      => 'MyNameString',

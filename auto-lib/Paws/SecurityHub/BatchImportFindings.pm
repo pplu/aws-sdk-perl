@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Name        => 'MyNonEmptyString',
                   ServiceRole => 'MyNonEmptyString',
                   Source      => {
-                    GitCloneDepth => 1,
+                    GitCloneDepth => 1,                    # OPTIONAL
                     InsecureSsl   => 1,                    # OPTIONAL
                     Location      => 'MyNonEmptyString',
                     Type          => 'MyNonEmptyString',
@@ -106,7 +106,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     AttachTime          => 'MyNonEmptyString',
                     AttachmentId        => 'MyNonEmptyString',
                     DeleteOnTermination => 1,                    # OPTIONAL
-                    DeviceIndex         => 1,
+                    DeviceIndex         => 1,                    # OPTIONAL
                     InstanceId          => 'MyNonEmptyString',
                     InstanceOwnerId     => 'MyNonEmptyString',
                     Status              => 'MyNonEmptyString',
@@ -126,16 +126,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   GroupName     => 'MyNonEmptyString',
                   IpPermissions => [
                     {
-                      FromPort   => 1,
+                      FromPort   => 1,                    # OPTIONAL
                       IpProtocol => 'MyNonEmptyString',
                       IpRanges   => [ { CidrIp => 'MyNonEmptyString', }, ... ]
-                      ,    # OPTIONAL
+                      ,                                   # OPTIONAL
                       Ipv6Ranges =>
                         [ { CidrIpv6 => 'MyNonEmptyString', }, ... ], # OPTIONAL
                       PrefixListIds =>
                         [ { PrefixListId => 'MyNonEmptyString', }, ... ]
                       ,                                               # OPTIONAL
-                      ToPort           => 1,
+                      ToPort           => 1,                          # OPTIONAL
                       UserIdGroupPairs => [
                         {
                           GroupId                => 'MyNonEmptyString',
@@ -149,19 +149,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ],                                              # OPTIONAL
                     },
                     ...
-                  ],                                                  # OPTIONAL
+                  ],    # OPTIONAL
                   IpPermissionsEgress => [
                     {
-                      FromPort   => 1,
+                      FromPort   => 1,                    # OPTIONAL
                       IpProtocol => 'MyNonEmptyString',
                       IpRanges   => [ { CidrIp => 'MyNonEmptyString', }, ... ]
-                      ,                                               # OPTIONAL
+                      ,                                   # OPTIONAL
                       Ipv6Ranges =>
                         [ { CidrIpv6 => 'MyNonEmptyString', }, ... ], # OPTIONAL
                       PrefixListIds =>
                         [ { PrefixListId => 'MyNonEmptyString', }, ... ]
                       ,                                               # OPTIONAL
-                      ToPort           => 1,
+                      ToPort           => 1,                          # OPTIONAL
                       UserIdGroupPairs => [
                         {
                           GroupId                => 'MyNonEmptyString',
@@ -175,7 +175,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       ],                                              # OPTIONAL
                     },
                     ...
-                  ],                                                  # OPTIONAL
+                  ],    # OPTIONAL
                   OwnerId => 'MyNonEmptyString',
                   VpcId   => 'MyNonEmptyString',
                 },    # OPTIONAL
@@ -231,7 +231,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   PrincipalId   => 'MyNonEmptyString',
                   PrincipalName => 'MyNonEmptyString',
                   PrincipalType => 'MyNonEmptyString',
-                  Status => 'Active',    # values: Active, Inactive; OPTIONAL
+                  Status   => 'Active',    # values: Active, Inactive; OPTIONAL
                   UserName => 'MyNonEmptyString',
                 },    # OPTIONAL
                 AwsIamRole => {
@@ -239,7 +239,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     'MyAwsIamRoleAssumeRolePolicyDocument'
                   ,    # min: 1, max: 131072; OPTIONAL
                   CreateDate         => 'MyNonEmptyString',
-                  MaxSessionDuration => 1,
+                  MaxSessionDuration => 1,                    # OPTIONAL
                   Path               => 'MyNonEmptyString',
                   RoleId             => 'MyNonEmptyString',
                   RoleName           => 'MyNonEmptyString',
@@ -277,16 +277,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Layers       => [
                     {
                       Arn      => 'MyNonEmptyString',
-                      CodeSize => 1,
+                      CodeSize => 1,                    # OPTIONAL
                     },
                     ...
                   ],    # OPTIONAL
                   MasterArn     => 'MyNonEmptyString',
-                  MemorySize    => 1,
+                  MemorySize    => 1,                                 # OPTIONAL
                   RevisionId    => 'MyNonEmptyString',
                   Role          => 'MyNonEmptyString',
                   Runtime       => 'MyNonEmptyString',
-                  Timeout       => 1,
+                  Timeout       => 1,                                 # OPTIONAL
                   TracingConfig => { Mode => 'MyNonEmptyString', },   # OPTIONAL
                   Version       => 'MyNonEmptyString',
                   VpcConfig     => {
@@ -314,21 +314,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   DBInstanceClass         => 'MyNonEmptyString',
                   DBInstanceIdentifier    => 'MyNonEmptyString',
                   DBName                  => 'MyNonEmptyString',
-                  DbInstancePort          => 1,
+                  DbInstancePort          => 1,                    # OPTIONAL
                   DbiResourceId           => 'MyNonEmptyString',
                   DeletionProtection      => 1,                    # OPTIONAL
                   Endpoint                => {
                     Address      => 'MyNonEmptyString',
                     HostedZoneId => 'MyNonEmptyString',
-                    Port         => 1,
-                  },                                               # OPTIONAL
-                  Engine        => 'MyNonEmptyString',
-                  EngineVersion => 'MyNonEmptyString',
-                  IAMDatabaseAuthenticationEnabled => 1,           # OPTIONAL
+                    Port         => 1,                             # OPTIONAL
+                  },    # OPTIONAL
+                  Engine                           => 'MyNonEmptyString',
+                  EngineVersion                    => 'MyNonEmptyString',
+                  IAMDatabaseAuthenticationEnabled => 1,      # OPTIONAL
                   InstanceCreateTime => 'MyNonEmptyString',
                   KmsKeyId           => 'MyNonEmptyString',
-                  PubliclyAccessible => 1,                         # OPTIONAL
-                  StorageEncrypted   => 1,                         # OPTIONAL
+                  PubliclyAccessible => 1,                    # OPTIONAL
+                  StorageEncrypted   => 1,                    # OPTIONAL
                   TdeCredentialArn   => 'MyNonEmptyString',
                   VpcSecurityGroups  => [
                     {
@@ -336,7 +336,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       VpcSecurityGroupId => 'MyNonEmptyString',
                     },
                     ...
-                  ],                                               # OPTIONAL
+                  ],                                          # OPTIONAL
                 },    # OPTIONAL
                 AwsS3Bucket => {
                   OwnerId   => 'MyNonEmptyString',
@@ -356,7 +356,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
                 AwsSqsQueue => {
                   DeadLetterTargetArn          => 'MyNonEmptyString',
-                  KmsDataKeyReusePeriodSeconds => 1,
+                  KmsDataKeyReusePeriodSeconds => 1,                  # OPTIONAL
                   KmsMasterKeyId               => 'MyNonEmptyString',
                   QueueName                    => 'MyNonEmptyString',
                 },    # OPTIONAL
@@ -370,12 +370,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         [ { RuleId => 'MyNonEmptyString', }, ... ],   # OPTIONAL
                       OverrideAction => { Type => 'MyNonEmptyString', }
                       ,                                               # OPTIONAL
-                      Priority => 1,
+                      Priority => 1,                                  # OPTIONAL
                       RuleId   => 'MyNonEmptyString',
                       Type     => 'MyNonEmptyString',
                     },
                     ...
-                  ],                                                  # OPTIONAL
+                  ],    # OPTIONAL
                   WebAclId => 'MyNonEmptyString',
                 },    # OPTIONAL
                 Container => {
@@ -388,26 +388,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ,     # OPTIONAL
               },    # OPTIONAL
               Partition => 'aws',    # values: aws, aws-cn, aws-us-gov; OPTIONAL
-              Region => 'MyNonEmptyString',
+              Region    => 'MyNonEmptyString',
               Tags => { 'MyNonEmptyString' => 'MyNonEmptyString', },  # OPTIONAL
             },
             ...
           ],
           SchemaVersion => 'MyNonEmptyString',
           Severity      => {
-            Normalized => 1,
-            Product    => 1,                                          # OPTIONAL
+            Normalized => 1,    # OPTIONAL
+            Product    => 1,    # OPTIONAL
           },
           Title      => 'MyNonEmptyString',
           Types      => [ 'MyNonEmptyString', ... ],
           UpdatedAt  => 'MyNonEmptyString',
           Compliance => {
-            RelatedRequirements => [ 'MyNonEmptyString', ... ],       # OPTIONAL
-            Status => 'PASSED'
+            RelatedRequirements => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+            Status              => 'PASSED'
             ,    # values: PASSED, WARNING, FAILED, NOT_AVAILABLE; OPTIONAL
           },    # OPTIONAL
-          Confidence      => 1,
-          Criticality     => 1,
+          Confidence      => 1,                    # OPTIONAL
+          Criticality     => 1,                    # OPTIONAL
           FirstObservedAt => 'MyNonEmptyString',
           LastObservedAt  => 'MyNonEmptyString',
           Malware         => [
@@ -425,14 +425,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DestinationDomain => 'MyNonEmptyString',
             DestinationIpV4   => 'MyNonEmptyString',
             DestinationIpV6   => 'MyNonEmptyString',
-            DestinationPort   => 1,
+            DestinationPort   => 1,                  # OPTIONAL
             Direction         => 'IN',               # values: IN, OUT; OPTIONAL
             Protocol          => 'MyNonEmptyString',
             SourceDomain      => 'MyNonEmptyString',
             SourceIpV4        => 'MyNonEmptyString',
             SourceIpV6        => 'MyNonEmptyString',
             SourceMac         => 'MyNonEmptyString',
-            SourcePort        => 1,
+            SourcePort        => 1,                  # OPTIONAL
           },    # OPTIONAL
           Note => {
             Text      => 'MyNonEmptyString',
@@ -443,13 +443,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Process => {
             LaunchedAt   => 'MyNonEmptyString',
             Name         => 'MyNonEmptyString',
-            ParentPid    => 1,
+            ParentPid    => 1,                    # OPTIONAL
             Path         => 'MyNonEmptyString',
-            Pid          => 1,
+            Pid          => 1,                    # OPTIONAL
             TerminatedAt => 'MyNonEmptyString',
           },    # OPTIONAL
           ProductFields => { 'MyNonEmptyString' => 'MyNonEmptyString', }
-          ,     # OPTIONAL
+          ,                               # OPTIONAL
           RecordState     => 'ACTIVE',    # values: ACTIVE, ARCHIVED; OPTIONAL
           RelatedFindings => [
             {

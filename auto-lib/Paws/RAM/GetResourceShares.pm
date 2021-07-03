@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceShareStatus => 'PENDING',              # OPTIONAL
       TagFilters          => [
         {
-          TagKey => 'MyTagKey',                      # OPTIONAL
-          TagValues => [ 'MyTagValue', ... ],        # OPTIONAL
+          TagKey    => 'MyTagKey',               # OPTIONAL
+          TagValues => [ 'MyTagValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

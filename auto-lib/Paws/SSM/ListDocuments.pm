@@ -33,23 +33,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListDocumentsResult = $ssm->ListDocuments(
       DocumentFilterList => [
         {
-          Key => 'Name',    # values: Name, Owner, PlatformTypes, DocumentType
+          Key   => 'Name',    # values: Name, Owner, PlatformTypes, DocumentType
           Value => 'MyDocumentFilterValue',    # min: 1
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Filters => [
         {
           Key    => 'MyDocumentKeyValuesFilterKey', # min: 1, max: 128; OPTIONAL
           Values => [
             'MyDocumentKeyValuesFilterValue', ...    # min: 1, max: 256
-          ],                                         # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
-      MaxResults => 1,                               # OPTIONAL
-      NextToken  => 'MyNextToken',                   # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

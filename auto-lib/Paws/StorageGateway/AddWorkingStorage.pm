@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To add storage on local disk
-    # Configures one or more gateway local disks as working storage for a
-    # gateway. (Working storage is also referred to as upload buffer.)
+  # To add storage on local disk
+  # Configures one or more gateway local disks as working storage for a gateway.
+  # (Working storage is also referred to as upload buffer.)
     my $AddWorkingStorageOutput = $storagegateway->AddWorkingStorage(
       'DiskIds' =>
         [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],

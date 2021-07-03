@@ -52,18 +52,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ContextKeyValues => [ 'MyContextKeyValueType', ... ],    # OPTIONAL
         },
         ...
-      ],                                                           # OPTIONAL
-      Marker                             => 'MymarkerType',        # OPTIONAL
-      MaxItems                           => 1,                     # OPTIONAL
+      ],    # OPTIONAL
+      Marker                             => 'MymarkerType',    # OPTIONAL
+      MaxItems                           => 1,                 # OPTIONAL
       PermissionsBoundaryPolicyInputList => [
         'MypolicyDocumentType', ...    # min: 1, max: 131072
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       PolicyInputList => [
         'MypolicyDocumentType', ...    # min: 1, max: 131072
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       ResourceArns => [
-        'MyResourceNameType', ...      # min: 1, max: 2048
-      ],                               # OPTIONAL
+        'MyResourceNameType', ...    # min: 1, max: 2048
+      ],    # OPTIONAL
       ResourceHandlingOption => 'MyResourceHandlingOptionType',    # OPTIONAL
       ResourceOwner          => 'MyResourceNameType',              # OPTIONAL
       ResourcePolicy         => 'MypolicyDocumentType',            # OPTIONAL

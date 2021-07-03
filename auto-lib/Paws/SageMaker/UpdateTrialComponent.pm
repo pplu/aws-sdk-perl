@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       InputArtifactsToRemove => [
         'MyTrialComponentKey256', ...    # max: 256
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       OutputArtifacts => {
         'MyTrialComponentKey64' => {
           Value     => 'MyTrialComponentArtifactValue',    # max: 2048
@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       OutputArtifactsToRemove => [
         'MyTrialComponentKey256', ...    # max: 256
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       Parameters => {
         'MyTrialComponentKey256' => {
           NumberValue => 1,                           # OPTIONAL
@@ -67,10 +67,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       ParametersToRemove => [
         'MyTrialComponentKey256', ...    # max: 256
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL
       Status    => {
-        Message => 'MyTrialComponentStatusMessage',    # max: 1024; OPTIONAL
+        Message       => 'MyTrialComponentStatusMessage',  # max: 1024; OPTIONAL
         PrimaryStatus =>
           'InProgress',    # values: InProgress, Completed, Failed; OPTIONAL
       },    # OPTIONAL

@@ -39,19 +39,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                        # min: 1, max: 200
+        ],    # min: 1, max: 200
 
       },
       InputName        => 'MyInputName',
       InputDescription => 'MyInputDescription',    # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',                     # min: 1, max: 128
-          Value => 'MyTagValue',                   # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

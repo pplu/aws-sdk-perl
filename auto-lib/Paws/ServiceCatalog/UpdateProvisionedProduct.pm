@@ -52,14 +52,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value            => 'MyParameterValue',  # max: 4096; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       ProvisioningPreferences => {
-        StackSetAccounts => [ 'MyAccountId', ... ],    # OPTIONAL
-        StackSetFailureToleranceCount => 1,            # OPTIONAL
+        StackSetAccounts                   => [ 'MyAccountId', ... ], # OPTIONAL
+        StackSetFailureToleranceCount      => 1,                      # OPTIONAL
         StackSetFailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         StackSetMaxConcurrencyCount        => 1,    # min: 1; OPTIONAL
         StackSetMaxConcurrencyPercentage   => 1,    # min: 1, max: 100; OPTIONAL
-        StackSetOperationType =>
+        StackSetOperationType              =>
           'CREATE',    # values: CREATE, UPDATE, DELETE; OPTIONAL
         StackSetRegions => [ 'MyRegion', ... ],    # OPTIONAL
       },    # OPTIONAL
@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

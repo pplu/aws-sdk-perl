@@ -74,11 +74,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $StackId = $UpdateStackOutput->StackId;
 
-   # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
-   # To update an AWS CloudFormation stack
-   # This example updates only the the specified parameter value for the
-   # specified stack. If you don't specify a parameter value, AWS CloudFormation
-   # uses the default value from the template.
+ # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
+ # To update an AWS CloudFormation stack
+ # This example updates only the the specified parameter value for the specified
+ # stack. If you don't specify a parameter value, AWS CloudFormation uses the
+ # default value from the template.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
       'NotificationARNs' => [
 

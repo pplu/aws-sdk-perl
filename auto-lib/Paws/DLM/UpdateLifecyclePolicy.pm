@@ -44,16 +44,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'EBS_SNAPSHOT_MANAGEMENT', # values: EBS_SNAPSHOT_MANAGEMENT; OPTIONAL
         ResourceTypes => [
           'VOLUME', ...              # values: VOLUME, INSTANCE
-        ],                           # min: 1, max: 1; OPTIONAL
+        ],    # min: 1, max: 1; OPTIONAL
         Schedules => [
           {
-            CopyTags   => 1,         # OPTIONAL
+            CopyTags   => 1,    # OPTIONAL
             CreateRule => {
-              Interval     => 1,          # min: 1; OPTIONAL
+              Interval     => 1,          # min: 1
               IntervalUnit => 'HOURS',    # values: HOURS
               Times        => [
                 'MyTime', ...             # min: 5, max: 5
-              ],                          # max: 1; OPTIONAL
+              ],    # max: 1; OPTIONAL
             },    # OPTIONAL
             CrossRegionCopyRules => [
               {
@@ -62,26 +62,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 CmkArn       => 'MyCmkArn',          # max: 2048; OPTIONAL
                 CopyTags     => 1,                   # OPTIONAL
                 RetainRule   => {
-                  Interval => 1,                     # min: 1; OPTIONAL
+                  Interval     => 1,                 # min: 1
                   IntervalUnit =>
                     'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
                 },    # OPTIONAL
               },
               ...
-            ],        # max: 3; OPTIONAL
+            ],    # max: 3; OPTIONAL
             FastRestoreRule => {
               AvailabilityZones => [
                 'MyAvailabilityZone', ...    # max: 16
-              ],                             # min: 1, max: 10
-              Count    => 1,                 # min: 1, max: 1000; OPTIONAL
-              Interval => 1,                 # min: 1; OPTIONAL
+              ],    # min: 1, max: 10
+              Count        => 1,    # min: 1, max: 1000; OPTIONAL
+              Interval     => 1,    # min: 1
               IntervalUnit =>
                 'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
             Name       => 'MyScheduleName',    # max: 500; OPTIONAL
             RetainRule => {
-              Count    => 1,                   # min: 1, max: 1000; OPTIONAL
-              Interval => 1,                   # min: 1; OPTIONAL
+              Count        => 1,               # min: 1, max: 1000; OPTIONAL
+              Interval     => 1,               # min: 1
               IntervalUnit =>
                 'DAYS',    # values: DAYS, WEEKS, MONTHS, YEARS; OPTIONAL
             },    # OPTIONAL
@@ -92,7 +92,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                          # max: 45; OPTIONAL
+            ],    # max: 45; OPTIONAL
             VariableTags => [
               {
                 Key   => 'MyString',    # max: 500
@@ -100,18 +100,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                          # max: 45; OPTIONAL
+            ],    # max: 45; OPTIONAL
           },
           ...
-        ],                              # min: 1, max: 1; OPTIONAL
+        ],    # min: 1, max: 1; OPTIONAL
         TargetTags => [
           {
-            Key   => 'MyString',        # max: 500
-            Value => 'MyString',        # max: 500
+            Key   => 'MyString',    # max: 500
+            Value => 'MyString',    # max: 500
 
           },
           ...
-        ],                              # min: 1, max: 50; OPTIONAL
+        ],    # min: 1, max: 50; OPTIONAL
       },    # OPTIONAL
       State => 'ENABLED',    # OPTIONAL
     );

@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To modify a snapshot attribute
-    # This example modifies snapshot ``snap-1234567890abcdef0`` to remove the
-    # create volume permission for a user with the account ID ``123456789012``.
-    # If the command succeeds, no output is returned.
+# To modify a snapshot attribute
+# This example modifies snapshot ``snap-1234567890abcdef0`` to remove the create
+# volume permission for a user with the account ID ``123456789012``. If the
+# command succeeds, no output is returned.
     $ec2->ModifySnapshotAttribute(
       'Attribute'     => 'createVolumePermission',
       'OperationType' => 'remove',

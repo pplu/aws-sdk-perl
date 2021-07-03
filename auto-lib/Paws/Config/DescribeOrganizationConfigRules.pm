@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken                   => 'MyString',    # OPTIONAL
       OrganizationConfigRuleNames => [
         'MyStringWithCharLimit64', ...              # min: 1, max: 64
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

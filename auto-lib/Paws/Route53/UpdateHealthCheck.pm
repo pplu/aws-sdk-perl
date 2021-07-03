@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       ChildHealthChecks => [
         'MyHealthCheckId', ...    # max: 64
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       Disabled                     => 1,                              # OPTIONAL
       EnableSNI                    => 1,                              # OPTIONAL
       FailureThreshold             => 1,                              # OPTIONAL

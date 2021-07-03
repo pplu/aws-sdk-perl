@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To attach a managed policy to an IAM group
-    # The following command attaches the AWS managed policy named ReadOnlyAccess
-    # to the IAM group named Finance.
+ # To attach a managed policy to an IAM group
+ # The following command attaches the AWS managed policy named ReadOnlyAccess to
+ # the IAM group named Finance.
     $iam->AttachGroupPolicy(
       'GroupName' => 'Finance',
       'PolicyArn' => 'arn:aws:iam::aws:policy/ReadOnlyAccess'

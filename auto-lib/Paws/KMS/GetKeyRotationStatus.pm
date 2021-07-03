@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To retrieve the rotation status for a customer master key (CMK)
-    # The following example retrieves the status of automatic annual rotation of
-    # the key material for the specified CMK.
+# To retrieve the rotation status for a customer master key (CMK)
+# The following example retrieves the status of automatic annual rotation of the
+# key material for the specified CMK.
     my $GetKeyRotationStatusResponse = $kms->GetKeyRotationStatus(
       'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 

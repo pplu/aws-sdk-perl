@@ -37,11 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name    => 'MyHostName',    # max: 255
           GlueIps => [
             'MyGlueIp', ...           # max: 45
-          ],                          # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
       ],
-      FIAuthKey => 'MyFIAuthKey',     # OPTIONAL
+      FIAuthKey => 'MyFIAuthKey',    # OPTIONAL
       );
 
     # Results:

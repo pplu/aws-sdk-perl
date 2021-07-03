@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # min: 1
+        ],    # min: 1
 
       },    # OPTIONAL
       Description                => 'MyJobDescription',       # OPTIONAL
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TargetSelection => 'CONTINUOUS',    # OPTIONAL
       TimeoutConfig   => {
         InProgressTimeoutInMinutes => 1,    # OPTIONAL

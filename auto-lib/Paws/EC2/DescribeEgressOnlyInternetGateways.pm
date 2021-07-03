@@ -33,18 +33,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $DescribeEgressOnlyInternetGatewaysResult =
       $ec2->DescribeEgressOnlyInternetGateways(
-      DryRun => 1,    # OPTIONAL
+      DryRun                       => 1,    # OPTIONAL
       EgressOnlyInternetGatewayIds => [ 'MyEgressOnlyInternetGatewayId', ... ]
-      ,               # OPTIONAL
+      ,                                     # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',             # OPTIONAL
+          Values => [
+            'MyString', ...                 # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
       );
 
     # Results:

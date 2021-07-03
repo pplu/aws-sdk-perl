@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeFileSystemsResponse = $fsx->DescribeFileSystems(
       FileSystemIds => [
         'MyFileSystemId', ...    # min: 11, max: 21
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
     );

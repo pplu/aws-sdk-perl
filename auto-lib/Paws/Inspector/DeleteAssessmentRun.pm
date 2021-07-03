@@ -27,9 +27,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-    # Delete assessment run
-    # Deletes the assessment run that is specified by the ARN of the assessment
-    # run.
+# Delete assessment run
+# Deletes the assessment run that is specified by the ARN of the assessment run.
     $inspector->DeleteAssessmentRun( 'AssessmentRunArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-it5r2S4T/run/0-11LMTAVe'
     );

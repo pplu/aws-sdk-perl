@@ -32,13 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PatchOperations => [
         {
           From => 'MyString',    # OPTIONAL
-          Op =>
+          Op   =>
             'add',    # values: add, remove, replace, move, copy, test; OPTIONAL
           Path  => 'MyString',    # OPTIONAL
           Value => 'MyString',    # OPTIONAL
         },
         ...
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

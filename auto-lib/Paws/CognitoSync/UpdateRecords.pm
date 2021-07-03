@@ -43,14 +43,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeviceId         => 'MyDeviceId',           # OPTIONAL
       RecordPatches    => [
         {
-          Key       => 'MyRecordKey',             # min: 1, max: 1024
-          Op        => 'replace',                 # values: replace, remove
-          SyncCount => 1,
+          Key                    => 'MyRecordKey',    # min: 1, max: 1024
+          Op                     => 'replace',        # values: replace, remove
+          SyncCount              => 1,
           DeviceLastModifiedDate => '1970-01-01T01:00:00',    # OPTIONAL
-          Value => 'MyRecordValue',    # max: 1048575; OPTIONAL
+          Value                  => 'MyRecordValue',    # max: 1048575; OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:
