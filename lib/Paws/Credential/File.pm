@@ -1,6 +1,6 @@
 package Paws::Credential::File;
   use Moose;
-  use Config::INI::Reader;
+  use Config::AWS qw/read_file/;
   use File::HomeDir;
   use JSON::MaybeXS qw/decode_json/;
   use Paws::Exception;
@@ -26,7 +26,7 @@ package Paws::Credential::File;
     my $self = shift;
     my $ini_file = $self->credentials_file;
     return {} if (not -e $ini_file);
-    my $ini = Config::INI::Reader->read_file($ini_file);
+    my $ini = read_file($ini_file);
     return $ini;
   });
 
