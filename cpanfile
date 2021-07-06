@@ -14,6 +14,9 @@ requires 'DateTime::Format::ISO8601';
 requires 'URL::Encode';
 requires 'URL::Encode::XS';
 requires 'URI::Template' => '0.23';
+# to support v5.10 we can't drag in a newer of this dependency that Config::INI wants
+# we don't use it directly.
+requires 'Mixin::Linewise' => '< 0.109';
 requires 'Config::INI';
 requires 'Digest::SHA';
 # For the paws CLI
