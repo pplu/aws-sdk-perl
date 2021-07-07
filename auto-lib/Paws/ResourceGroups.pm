@@ -528,6 +528,18 @@ To run this command, you must have the following permissions:
 
 C<resource-groups:ListGroupResources>
 
+=item *
+
+C<cloudformation:DescribeStacks>
+
+=item *
+
+C<cloudformation:ListStackResources>
+
+=item *
+
+C<tag:GetResources>
+
 =back
 
 
@@ -628,6 +640,18 @@ To run this command, you must have the following permissions:
 =item *
 
 C<resource-groups:SearchResources>
+
+=item *
+
+C<cloudformation:DescribeStacks>
+
+=item *
+
+C<cloudformation:ListStackResources>
+
+=item *
+
+C<tag:GetResources>
 
 =back
 
