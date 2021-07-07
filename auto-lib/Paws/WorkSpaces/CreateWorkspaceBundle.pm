@@ -101,7 +101,7 @@ The identifier of the image that is used to create the bundle.
 
 The tags associated with the bundle.
 
-To add tags at the same time that you're creating the bundle, you must
+To add tags at the same time when you're creating the bundle, you must
 create an IAM policy that grants your IAM user permissions to use
 C<workspaces:CreateTags>.
 

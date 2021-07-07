@@ -4,6 +4,7 @@ package Paws::WorkSpaces::WorkspaceAccessProperties;
   has DeviceTypeAndroid => (is => 'ro', isa => 'Str');
   has DeviceTypeChromeOs => (is => 'ro', isa => 'Str');
   has DeviceTypeIos => (is => 'ro', isa => 'Str');
+  has DeviceTypeLinux => (is => 'ro', isa => 'Str');
   has DeviceTypeOsx => (is => 'ro', isa => 'Str');
   has DeviceTypeWeb => (is => 'ro', isa => 'Str');
   has DeviceTypeWindows => (is => 'ro', isa => 'Str');
@@ -61,6 +62,12 @@ Indicates whether users can use Chromebooks to access their WorkSpaces.
 =head2 DeviceTypeIos => Str
 
 Indicates whether users can use iOS devices to access their WorkSpaces.
+
+
+=head2 DeviceTypeLinux => Str
+
+Indicates whether users can use Linux clients to access their
+WorkSpaces.
 
 
 =head2 DeviceTypeOsx => Str
