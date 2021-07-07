@@ -48,21 +48,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 
 =head2 IsLongTermPricingAutoRenew => Bool
 
-Specifies whether the current long term pricing type for the device
+Specifies whether the current long-term pricing type for the device
 should be renewed.
 
 
 
 =head2 B<REQUIRED> LongTermPricingType => Str
 
-The type of long term pricing option you want for the device - one year
-or three year long term pricing.
+The type of long-term pricing option you want for the device, either
+1-year or 3-year long-term pricing.
 
 Valid values are: C<"OneYear">, C<"ThreeYear">
 
 =head2 SnowballType => Str
 
-The type of AWS Snow Family device to use for the long term pricing
+The type of AWS Snow Family device to use for the long-term pricing
 job.
 
 Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">, C<"EDGE_S">, C<"SNC1_HDD">, C<"SNC1_SSD">

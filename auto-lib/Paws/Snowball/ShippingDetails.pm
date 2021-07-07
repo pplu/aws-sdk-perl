@@ -76,7 +76,7 @@ which typically takes less than a week, one way.
 
 =item *
 
-In India, Snow device are delivered in one to seven days.
+In India, Snow devices are delivered in one to seven days.
 
 =item *
 

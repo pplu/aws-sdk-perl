@@ -16,7 +16,7 @@ Paws::Snowball::CreateLongTermPricingResult
 
 =head2 LongTermPricingId => Str
 
-The ID of the long term pricing type for the device.
+The ID of the long-term pricing type for the device.
 
 
 =head2 _request_id => Str

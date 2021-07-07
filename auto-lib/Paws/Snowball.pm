@@ -382,6 +382,10 @@ the address is invalid or unsupported, then an exception is thrown.
 
 =item [Notification => L<Paws::Snowball::Notification>]
 
+=item [OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>]
+
+=item [RemoteManagement => Str]
+
 =item [TaxDocuments => L<Paws::Snowball::TaxDocuments>]
 
 
@@ -418,6 +422,10 @@ The cluster does not ship until these five node jobs have been created.
 
 =item [Notification => L<Paws::Snowball::Notification>]
 
+=item [OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>]
+
+=item [RemoteManagement => Str]
+
 =item [Resources => L<Paws::Snowball::JobResource>]
 
 =item [RoleARN => Str]
@@ -450,7 +458,7 @@ clustered jobs.
 The device capacity is optional.
 
 Availability of device types differ by AWS Region. For more information
-about region availability, see AWS Regional Services
+about Region availability, see AWS Regional Services
 (https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?p=ngi&loc=4).
 
 B<AWS Snow Family device types and their capacities.>
@@ -612,10 +620,10 @@ Each argument is described in detail in: L<Paws::Snowball::CreateLongTermPricing
 
 Returns: a L<Paws::Snowball::CreateLongTermPricingResult> instance
 
-Creates a job with long term usage option for a device. The long term
-usage is a one year or three year long term pricing type for the
-device. You are billed upfront and AWS give discounts for long term
-pricing. For detailed information see XXXXXXXX
+Creates a job with the long-term usage option for a device. The
+long-term usage is a 1-year or 3-year long-term pricing type for the
+device. You are billed upfront, and AWS provides discounts for
+long-term pricing.
 
 
 =head2 CreateReturnShippingLabel
@@ -927,7 +935,7 @@ Each argument is described in detail in: L<Paws::Snowball::ListLongTermPricing>
 
 Returns: a L<Paws::Snowball::ListLongTermPricingResult> instance
 
-Lists all long term pricing types.
+Lists all long-term pricing types.
 
 
 =head2 UpdateCluster
@@ -943,6 +951,8 @@ Lists all long term pricing types.
 =item [ForwardingAddressId => Str]
 
 =item [Notification => L<Paws::Snowball::Notification>]
+
+=item [OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>]
 
 =item [Resources => L<Paws::Snowball::JobResource>]
 
@@ -977,6 +987,8 @@ available.
 =item [ForwardingAddressId => Str]
 
 =item [Notification => L<Paws::Snowball::Notification>]
+
+=item [OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>]
 
 =item [Resources => L<Paws::Snowball::JobResource>]
 
@@ -1014,8 +1026,7 @@ Each argument is described in detail in: L<Paws::Snowball::UpdateJobShipmentStat
 
 Returns: a L<Paws::Snowball::UpdateJobShipmentStateResult> instance
 
-Updates the state when a the shipment states changes to a different
-state.
+Updates the state when a shipment state changes to a different state.
 
 
 =head2 UpdateLongTermPricing
@@ -1035,7 +1046,7 @@ Each argument is described in detail in: L<Paws::Snowball::UpdateLongTermPricing
 
 Returns: a L<Paws::Snowball::UpdateLongTermPricingResult> instance
 
-Updates the long term pricing type.
+Updates the long-term pricing type.
 
 
 

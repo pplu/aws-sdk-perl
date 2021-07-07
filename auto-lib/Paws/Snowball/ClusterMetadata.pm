@@ -10,6 +10,7 @@ package Paws::Snowball::ClusterMetadata;
   has JobType => (is => 'ro', isa => 'Str');
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
+  has OnDeviceServiceConfiguration => (is => 'ro', isa => 'Paws::Snowball::OnDeviceServiceConfiguration');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingOption => (is => 'ro', isa => 'Str');
@@ -101,6 +102,12 @@ API action in AWS Key Management Service (AWS KMS).
 
 The Amazon Simple Notification Service (Amazon SNS) notification
 settings for this cluster.
+
+
+=head2 OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>
+
+Represents metadata and configuration settings for services on an AWS
+Snow Family device.
 
 
 =head2 Resources => L<Paws::Snowball::JobResource>

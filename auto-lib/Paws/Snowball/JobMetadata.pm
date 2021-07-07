@@ -15,6 +15,8 @@ package Paws::Snowball::JobMetadata;
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has LongTermPricingId => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
+  has OnDeviceServiceConfiguration => (is => 'ro', isa => 'Paws::Snowball::OnDeviceServiceConfiguration');
+  has RemoteManagement => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingDetails => (is => 'ro', isa => 'Paws::Snowball::ShippingDetails');
@@ -137,7 +139,7 @@ API action in AWS KMS.
 
 =head2 LongTermPricingId => Str
 
-The ID of the long term pricing type for the device.
+The ID of the long-term pricing type for the device.
 
 
 =head2 Notification => L<Paws::Snowball::Notification>
@@ -146,6 +148,21 @@ The Amazon Simple Notification Service (Amazon SNS) notification
 settings associated with a specific job. The C<Notification> object is
 returned as a part of the response syntax of the C<DescribeJob> action
 in the C<JobMetadata> data type.
+
+
+=head2 OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>
+
+Represents metadata and configuration settings for services on an AWS
+Snow Family device.
+
+
+=head2 RemoteManagement => Str
+
+Allows you to securely operate and manage Snowcone devices remotely
+from outside of your internal network. When set to
+C<INSTALLED_AUTOSTART>, remote management will automatically be
+available when the device arrives at your location. Otherwise, you need
+to use the Snowball Client to manage the device.
 
 
 =head2 Resources => L<Paws::Snowball::JobResource>

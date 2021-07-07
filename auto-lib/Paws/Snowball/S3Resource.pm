@@ -3,6 +3,7 @@ package Paws::Snowball::S3Resource;
   use Moose;
   has BucketArn => (is => 'ro', isa => 'Str');
   has KeyRange => (is => 'ro', isa => 'Paws::Snowball::KeyRange');
+  has TargetOnDeviceServices => (is => 'ro', isa => 'ArrayRef[Paws::Snowball::TargetOnDeviceService]');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Snowball::S3Resource object:
 
-  $service_obj->Method(Att1 => { BucketArn => $value, ..., KeyRange => $value  });
+  $service_obj->Method(Att1 => { BucketArn => $value, ..., TargetOnDeviceServices => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,6 +56,13 @@ For export jobs, you can provide an optional C<KeyRange> within a
 specific Amazon S3 bucket. The length of the range is defined at job
 creation, and has either an inclusive C<BeginMarker>, an inclusive
 C<EndMarker>, or both. Ranges are UTF-8 binary sorted.
+
+
+=head2 TargetOnDeviceServices => ArrayRef[L<Paws::Snowball::TargetOnDeviceService>]
+
+Specifies the service or services on the Snow Family device that your
+transferred data will be exported from or imported into. AWS Snow
+Family supports Amazon S3 and NFS (Network File System).
 
 
 

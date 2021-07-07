@@ -43,21 +43,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 
 =head2 IsLongTermPricingAutoRenew => Bool
 
-If set to C<true>, specifies that the current long term pricing type
-for the device should be automatically renewed before the long term
+If set to C<true>, specifies that the current long-term pricing type
+for the device should be automatically renewed before the long-term
 pricing contract expires.
 
 
 
 =head2 B<REQUIRED> LongTermPricingId => Str
 
-The ID of the long term pricing type for the device.
+The ID of the long-term pricing type for the device.
 
 
 
 =head2 ReplacementJob => Str
 
-Specifies that a device that is ordered with long term pricing should
+Specifies that a device that is ordered with long-term pricing should
 be replaced with a new device.
 
 

@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 
 =head2 B<REQUIRED> JobId => Str
 
-The ID for a job that you want to create the return shipping label for.
-For example C<JID123e4567-e89b-12d3-a456-426655440000>.
+The ID for a job that you want to create the return shipping label for;
+for example, C<JID123e4567-e89b-12d3-a456-426655440000>.
 
 
 

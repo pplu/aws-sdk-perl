@@ -43,62 +43,62 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Snowball::L
 =head1 DESCRIPTION
 
 Each C<LongTermPricingListEntry> object contains information about a
-long term pricing type.
+long-term pricing type.
 
 =head1 ATTRIBUTES
 
 
 =head2 CurrentActiveJob => Str
 
-The current active jobs on the device the long term pricing type.
+The current active jobs on the device the long-term pricing type.
 
 
 =head2 IsLongTermPricingAutoRenew => Bool
 
-If set to C<true>, specifies that the current long term pricing type
-for the device should be automatically renewed before the long term
+If set to C<true>, specifies that the current long-term pricing type
+for the device should be automatically renewed before the long-term
 pricing contract expires.
 
 
 =head2 JobIds => ArrayRef[Str|Undef]
 
-The IDs of the jobs that are associated with a long term pricing type.
+The IDs of the jobs that are associated with a long-term pricing type.
 
 
 =head2 LongTermPricingEndDate => Str
 
-The end date the long term pricing contract.
+The end date the long-term pricing contract.
 
 
 =head2 LongTermPricingId => Str
 
-The ID of the long term pricing type for the device.
+The ID of the long-term pricing type for the device.
 
 
 =head2 LongTermPricingStartDate => Str
 
-The start date of the long term pricing contract.
+The start date of the long-term pricing contract.
 
 
 =head2 LongTermPricingStatus => Str
 
-The status of the long term pricing type.
+The status of the long-term pricing type.
 
 
 =head2 LongTermPricingType => Str
 
-The type of long term pricing that was selected for the device.
+The type of long-term pricing that was selected for the device.
 
 
 =head2 ReplacementJob => Str
 
-A new device that replaces a device that is ordered with long term
+A new device that replaces a device that is ordered with long-term
 pricing.
 
 
 =head2 SnowballType => Str
 
-The type of AWS Snow Family device associated with this long term
+The type of AWS Snow Family device associated with this long-term
 pricing job.
 
 

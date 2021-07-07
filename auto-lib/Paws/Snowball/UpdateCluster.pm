@@ -6,6 +6,7 @@ package Paws::Snowball::UpdateCluster;
   has Description => (is => 'ro', isa => 'Str');
   has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
+  has OnDeviceServiceConfiguration => (is => 'ro', isa => 'Paws::Snowball::OnDeviceServiceConfiguration');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingOption => (is => 'ro', isa => 'Str');
@@ -81,6 +82,14 @@ not supported in most regions.
 =head2 Notification => L<Paws::Snowball::Notification>
 
 The new or updated Notification object.
+
+
+
+=head2 OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>
+
+Specifies the service or services on the Snow Family device that your
+transferred data will be exported from or imported into. AWS Snow
+Family supports Amazon S3 and NFS (Network File System).
 
 
 

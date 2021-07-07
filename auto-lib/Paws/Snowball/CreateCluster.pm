@@ -7,6 +7,8 @@ package Paws::Snowball::CreateCluster;
   has JobType => (is => 'ro', isa => 'Str', required => 1);
   has KmsKeyARN => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
+  has OnDeviceServiceConfiguration => (is => 'ro', isa => 'Paws::Snowball::OnDeviceServiceConfiguration');
+  has RemoteManagement => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource', required => 1);
   has RoleARN => (is => 'ro', isa => 'Str', required => 1);
   has ShippingOption => (is => 'ro', isa => 'Str', required => 1);
@@ -129,6 +131,24 @@ settings for this cluster.
 
 
 
+=head2 OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>
+
+Specifies the service or services on the Snow Family device that your
+transferred data will be exported from or imported into. AWS Snow
+Family supports Amazon S3 and NFS (Network File System).
+
+
+
+=head2 RemoteManagement => Str
+
+Allows you to securely operate and manage Snow devices in a cluster
+remotely from outside of your internal network. When set to
+C<INSTALLED_AUTOSTART>, remote management will automatically be
+available when the device arrives at your location. Otherwise, you need
+to use the Snowball Client to manage the device.
+
+Valid values are: C<"INSTALLED_ONLY">, C<"INSTALLED_AUTOSTART">
+
 =head2 B<REQUIRED> Resources => L<Paws::Snowball::JobResource>
 
 The resources associated with the cluster job. These resources include
@@ -169,7 +189,7 @@ which typically takes less than a week, one way.
 
 =item *
 
-In India, Snow device are delivered in one to seven days.
+In India, Snow devices are delivered in one to seven days.
 
 =item *
 
@@ -194,7 +214,7 @@ which typically takes less than a week, one way.
 
 =item *
 
-In India, Snow device are delivered in one to seven days.
+In India, Snow devices are delivered in one to seven days.
 
 =item *
 
