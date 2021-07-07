@@ -134,9 +134,19 @@ package Paws::IoTWireless;
     my $call_object = $self->new_with_coercions('Paws::IoTWireless::GetDeviceProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetLogLevelsByResourceTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTWireless::GetLogLevelsByResourceTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPartnerAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTWireless::GetPartnerAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourceLogLevel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTWireless::GetResourceLogLevel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetServiceEndpoint {
@@ -229,6 +239,21 @@ package Paws::IoTWireless;
     my $call_object = $self->new_with_coercions('Paws::IoTWireless::ListWirelessGatewayTaskDefinitions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutResourceLogLevel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTWireless::PutResourceLogLevel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetAllResourceLogLevels {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTWireless::ResetAllResourceLogLevels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetResourceLogLevel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTWireless::ResetResourceLogLevel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SendDataToWirelessDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTWireless::SendDataToWirelessDevice', @_);
@@ -254,6 +279,11 @@ package Paws::IoTWireless;
     my $call_object = $self->new_with_coercions('Paws::IoTWireless::UpdateDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateLogLevelsByResourceTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTWireless::UpdateLogLevelsByResourceTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdatePartnerAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTWireless::UpdatePartnerAccount', @_);
@@ -272,7 +302,7 @@ package Paws::IoTWireless;
   
 
 
-  sub operations { qw/AssociateAwsAccountWithPartnerAccount AssociateWirelessDeviceWithThing AssociateWirelessGatewayWithCertificate AssociateWirelessGatewayWithThing CreateDestination CreateDeviceProfile CreateServiceProfile CreateWirelessDevice CreateWirelessGateway CreateWirelessGatewayTask CreateWirelessGatewayTaskDefinition DeleteDestination DeleteDeviceProfile DeleteServiceProfile DeleteWirelessDevice DeleteWirelessGateway DeleteWirelessGatewayTask DeleteWirelessGatewayTaskDefinition DisassociateAwsAccountFromPartnerAccount DisassociateWirelessDeviceFromThing DisassociateWirelessGatewayFromCertificate DisassociateWirelessGatewayFromThing GetDestination GetDeviceProfile GetPartnerAccount GetServiceEndpoint GetServiceProfile GetWirelessDevice GetWirelessDeviceStatistics GetWirelessGateway GetWirelessGatewayCertificate GetWirelessGatewayFirmwareInformation GetWirelessGatewayStatistics GetWirelessGatewayTask GetWirelessGatewayTaskDefinition ListDestinations ListDeviceProfiles ListPartnerAccounts ListServiceProfiles ListTagsForResource ListWirelessDevices ListWirelessGateways ListWirelessGatewayTaskDefinitions SendDataToWirelessDevice TagResource TestWirelessDevice UntagResource UpdateDestination UpdatePartnerAccount UpdateWirelessDevice UpdateWirelessGateway / }
+  sub operations { qw/AssociateAwsAccountWithPartnerAccount AssociateWirelessDeviceWithThing AssociateWirelessGatewayWithCertificate AssociateWirelessGatewayWithThing CreateDestination CreateDeviceProfile CreateServiceProfile CreateWirelessDevice CreateWirelessGateway CreateWirelessGatewayTask CreateWirelessGatewayTaskDefinition DeleteDestination DeleteDeviceProfile DeleteServiceProfile DeleteWirelessDevice DeleteWirelessGateway DeleteWirelessGatewayTask DeleteWirelessGatewayTaskDefinition DisassociateAwsAccountFromPartnerAccount DisassociateWirelessDeviceFromThing DisassociateWirelessGatewayFromCertificate DisassociateWirelessGatewayFromThing GetDestination GetDeviceProfile GetLogLevelsByResourceTypes GetPartnerAccount GetResourceLogLevel GetServiceEndpoint GetServiceProfile GetWirelessDevice GetWirelessDeviceStatistics GetWirelessGateway GetWirelessGatewayCertificate GetWirelessGatewayFirmwareInformation GetWirelessGatewayStatistics GetWirelessGatewayTask GetWirelessGatewayTaskDefinition ListDestinations ListDeviceProfiles ListPartnerAccounts ListServiceProfiles ListTagsForResource ListWirelessDevices ListWirelessGateways ListWirelessGatewayTaskDefinitions PutResourceLogLevel ResetAllResourceLogLevels ResetResourceLogLevel SendDataToWirelessDevice TagResource TestWirelessDevice UntagResource UpdateDestination UpdateLogLevelsByResourceTypes UpdatePartnerAccount UpdateWirelessDevice UpdateWirelessGateway / }
 
 1;
 
@@ -762,6 +792,22 @@ Returns: a L<Paws::IoTWireless::GetDeviceProfileResponse> instance
 Gets information about a device profile.
 
 
+=head2 GetLogLevelsByResourceTypes
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::IoTWireless::GetLogLevelsByResourceTypes>
+
+Returns: a L<Paws::IoTWireless::GetLogLevelsByResourceTypesResponse> instance
+
+Returns current default log-levels, or log levels by resource types,
+could be for wireless device log options or wireless gateway log
+options.
+
+
 =head2 GetPartnerAccount
 
 =over
@@ -779,6 +825,25 @@ Returns: a L<Paws::IoTWireless::GetPartnerAccountResponse> instance
 
 Gets information about a partner account. If C<PartnerAccountId> and
 C<PartnerType> are C<null>, returns all partner accounts.
+
+
+=head2 GetResourceLogLevel
+
+=over
+
+=item ResourceIdentifier => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTWireless::GetResourceLogLevel>
+
+Returns: a L<Paws::IoTWireless::GetResourceLogLevelResponse> instance
+
+Fetches the log-level override if any for a given resource-ID and
+resource-type, coulde be a wireless device or a wireless gateway.
 
 
 =head2 GetServiceEndpoint
@@ -1101,6 +1166,61 @@ List the wireless gateway tasks definitions registered to your AWS
 account.
 
 
+=head2 PutResourceLogLevel
+
+=over
+
+=item LogLevel => Str
+
+=item ResourceIdentifier => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTWireless::PutResourceLogLevel>
+
+Returns: a L<Paws::IoTWireless::PutResourceLogLevelResponse> instance
+
+Sets the log-level override for a resource-ID and resource-type, could
+be a wireless gateway or a wireless device.
+
+
+=head2 ResetAllResourceLogLevels
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::IoTWireless::ResetAllResourceLogLevels>
+
+Returns: a L<Paws::IoTWireless::ResetAllResourceLogLevelsResponse> instance
+
+Remove log-level overrides if any for all resources (both wireless
+devices and wireless gateways).
+
+
+=head2 ResetResourceLogLevel
+
+=over
+
+=item ResourceIdentifier => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTWireless::ResetResourceLogLevel>
+
+Returns: a L<Paws::IoTWireless::ResetResourceLogLevelResponse> instance
+
+Remove log-level override if any for a specific resource-ID and
+resource-type, could be a wireless device or a wireless gateway.
+
+
 =head2 SendDataToWirelessDevice
 
 =over
@@ -1198,6 +1318,28 @@ Each argument is described in detail in: L<Paws::IoTWireless::UpdateDestination>
 Returns: a L<Paws::IoTWireless::UpdateDestinationResponse> instance
 
 Updates properties of a destination.
+
+
+=head2 UpdateLogLevelsByResourceTypes
+
+=over
+
+=item [DefaultLogLevel => Str]
+
+=item [WirelessDeviceLogOptions => ArrayRef[L<Paws::IoTWireless::WirelessDeviceLogOption>]]
+
+=item [WirelessGatewayLogOptions => ArrayRef[L<Paws::IoTWireless::WirelessGatewayLogOption>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTWireless::UpdateLogLevelsByResourceTypes>
+
+Returns: a L<Paws::IoTWireless::UpdateLogLevelsByResourceTypesResponse> instance
+
+Set default log level, or log levels by resource types, could be for
+wireless device log options or wireless gateways log options. This is
+to control the log messages that will be displayed in CloudWatch.
 
 
 =head2 UpdatePartnerAccount
