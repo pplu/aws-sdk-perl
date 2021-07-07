@@ -33,8 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AlgorithmArn         = $DescribePredictorResponse->AlgorithmArn;
-    my $AutoMLAlgorithmArns  = $DescribePredictorResponse->AutoMLAlgorithmArns;
+    my $AlgorithmArn        = $DescribePredictorResponse->AlgorithmArn;
+    my $AutoMLAlgorithmArns = $DescribePredictorResponse->AutoMLAlgorithmArns;
+    my $AutoMLOverrideStrategy =
+      $DescribePredictorResponse->AutoMLOverrideStrategy;
     my $CreationTime         = $DescribePredictorResponse->CreationTime;
     my $DatasetImportJobArns = $DescribePredictorResponse->DatasetImportJobArns;
     my $EncryptionConfig     = $DescribePredictorResponse->EncryptionConfig;

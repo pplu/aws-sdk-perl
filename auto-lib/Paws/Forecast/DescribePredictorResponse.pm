@@ -3,6 +3,7 @@ package Paws::Forecast::DescribePredictorResponse;
   use Moose;
   has AlgorithmArn => (is => 'ro', isa => 'Str');
   has AutoMLAlgorithmArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AutoMLOverrideStrategy => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has DatasetImportJobArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EncryptionConfig => (is => 'ro', isa => 'Paws::Forecast::EncryptionConfig');
@@ -45,6 +46,15 @@ training.
 When C<PerformAutoML> is specified, the ARN of the chosen algorithm.
 
 
+=head2 AutoMLOverrideStrategy => Str
+
+The AutoML strategy used to train the predictor. Unless
+C<LatencyOptimized> is specified, the AutoML strategy optimizes
+predictor accuracy.
+
+This parameter is only valid for predictors trained using AutoML.
+
+Valid values are: C<"LatencyOptimized">
 =head2 CreationTime => Str
 
 When the model training task was created.

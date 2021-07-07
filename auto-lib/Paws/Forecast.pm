@@ -642,6 +642,8 @@ use the DescribeForecastExportJob operation.
 
 =item [AlgorithmArn => Str]
 
+=item [AutoMLOverrideStrategy => Str]
+
 =item [EncryptionConfig => L<Paws::Forecast::EncryptionConfig>]
 
 =item [EvaluationParameters => L<Paws::Forecast::EvaluationParameters>]

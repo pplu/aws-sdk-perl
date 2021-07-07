@@ -2,6 +2,7 @@
 package Paws::Forecast::CreatePredictor;
   use Moose;
   has AlgorithmArn => (is => 'ro', isa => 'Str');
+  has AutoMLOverrideStrategy => (is => 'ro', isa => 'Str');
   has EncryptionConfig => (is => 'ro', isa => 'Paws::Forecast::EncryptionConfig');
   has EvaluationParameters => (is => 'ro', isa => 'Paws::Forecast::EvaluationParameters');
   has FeaturizationConfig => (is => 'ro', isa => 'Paws::Forecast::FeaturizationConfig', required => 1);
@@ -74,11 +75,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],    # min: 1, max: 2; OPTIONAL
       },
-      PredictorName    => 'MyName',
-      AlgorithmArn     => 'MyArn',    # OPTIONAL
-      EncryptionConfig => {
-        KMSKeyArn => 'MyKMSKeyArn',    # max: 256
-        RoleArn   => 'MyArn',          # max: 256
+      PredictorName          => 'MyName',
+      AlgorithmArn           => 'MyArn',               # OPTIONAL
+      AutoMLOverrideStrategy => 'LatencyOptimized',    # OPTIONAL
+      EncryptionConfig       => {
+        KMSKeyArn => 'MyKMSKeyArn',                    # max: 256
+        RoleArn   => 'MyArn',                          # max: 256
 
       },    # OPTIONAL
       EvaluationParameters => {
@@ -183,6 +185,16 @@ C<arn:aws:forecast:::algorithm/Prophet>
 
 
 
+
+=head2 AutoMLOverrideStrategy => Str
+
+Used to overide the default AutoML strategy, which is to optimize
+predictor accuracy. To apply an AutoML strategy that minimizes training
+time, use C<LatencyOptimized>.
+
+This parameter is only valid for predictors trained using AutoML.
+
+Valid values are: C<"LatencyOptimized">
 
 =head2 EncryptionConfig => L<Paws::Forecast::EncryptionConfig>
 
