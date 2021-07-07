@@ -6,6 +6,7 @@ package Paws::ManagedBlockchain::Member;
   has Description => (is => 'ro', isa => 'Str');
   has FrameworkAttributes => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberFrameworkAttributes');
   has Id => (is => 'ro', isa => 'Str');
+  has KmsKeyArn => (is => 'ro', isa => 'Str');
   has LogPublishingConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberLogPublishingConfiguration');
   has Name => (is => 'ro', isa => 'Str');
   has NetworkId => (is => 'ro', isa => 'Str');
@@ -78,6 +79,15 @@ Managed Blockchain network uses.
 The unique identifier of the member.
 
 
+=head2 KmsKeyArn => Str
+
+The Amazon Resource Name (ARN) of the customer managed key in AWS Key
+Management Service (AWS KMS) that the member uses for encryption at
+rest. If the value of this parameter is C<"AWS Owned KMS Key">, the
+member uses an AWS owned KMS key for encryption. This parameter is
+inherited by the nodes that this member owns.
+
+
 =head2 LogPublishingConfiguration => L<Paws::ManagedBlockchain::MemberLogPublishingConfiguration>
 
 Configuration properties for logging events associated with a member.
@@ -115,6 +125,10 @@ creation failed.
 
 =item *
 
+C<UPDATING> - The member is in the process of being updated.
+
+=item *
+
 C<DELETING> - The member and all associated resources are in the
 process of being deleted. Either the AWS account that owns the member
 deleted it, or the member is being deleted as the result of an
@@ -126,6 +140,18 @@ C<DELETED> - The member can no longer participate on the network and
 all associated resources are deleted. Either the AWS account that owns
 the member deleted it, or the member is being deleted as the result of
 an C<APPROVED> C<PROPOSAL> to remove the member.
+
+=item *
+
+C<INACCESSIBLE_ENCRYPTION_KEY> - The member is impaired and might not
+function as expected because it cannot access the specified customer
+managed key in AWS KMS for encryption at rest. Either the KMS key was
+disabled or deleted, or the grants on the key were revoked.
+
+The effect of disabling or deleting a key, or revoking a grant is not
+immediate. The member resource might take some time to find that the
+key is inaccessible. When a resource is in this state, we recommend
+deleting and recreating the resource.
 
 =back
 

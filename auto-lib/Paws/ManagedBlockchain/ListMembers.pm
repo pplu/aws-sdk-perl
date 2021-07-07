@@ -92,7 +92,7 @@ retrieve.
 An optional status specifier. If provided, only members currently in
 this status are listed.
 
-Valid values are: C<"CREATING">, C<"AVAILABLE">, C<"CREATE_FAILED">, C<"UPDATING">, C<"DELETING">, C<"DELETED">
+Valid values are: C<"CREATING">, C<"AVAILABLE">, C<"CREATE_FAILED">, C<"UPDATING">, C<"DELETING">, C<"DELETED">, C<"INACCESSIBLE_ENCRYPTION_KEY">
 
 
 =head1 SEE ALSO

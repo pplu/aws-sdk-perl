@@ -7,6 +7,7 @@ package Paws::ManagedBlockchain::Node;
   has FrameworkAttributes => (is => 'ro', isa => 'Paws::ManagedBlockchain::NodeFrameworkAttributes');
   has Id => (is => 'ro', isa => 'Str');
   has InstanceType => (is => 'ro', isa => 'Str');
+  has KmsKeyArn => (is => 'ro', isa => 'Str');
   has LogPublishingConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::NodeLogPublishingConfiguration');
   has MemberId => (is => 'ro', isa => 'Str');
   has NetworkId => (is => 'ro', isa => 'Str');
@@ -83,6 +84,17 @@ The unique identifier of the node.
 The instance type of the node.
 
 
+=head2 KmsKeyArn => Str
+
+The Amazon Resource Name (ARN) of the customer managed key in AWS Key
+Management Service (AWS KMS) that the node uses for encryption at rest.
+If the value of this parameter is C<"AWS Owned KMS Key">, the node uses
+an AWS owned KMS key for encryption. The node inherits this parameter
+from the member that it belongs to.
+
+Applies only to Hyperledger Fabric.
+
+
 =head2 LogPublishingConfiguration => L<Paws::ManagedBlockchain::NodeLogPublishingConfiguration>
 
 Configuration properties for logging events associated with a peer node
@@ -112,6 +124,61 @@ Applies only to Hyperledger Fabric.
 =head2 Status => Str
 
 The status of the node.
+
+=over
+
+=item *
+
+C<CREATING> - The AWS account is in the process of creating a node.
+
+=item *
+
+C<AVAILABLE> - The node has been created and can participate in the
+network.
+
+=item *
+
+C<UNHEALTHY> - The node is impaired and might not function as expected.
+Amazon Managed Blockchain automatically finds nodes in this state and
+tries to recover them. If a node is recoverable, it returns to
+C<AVAILABLE>. Otherwise, it moves to C<FAILED> status.
+
+=item *
+
+C<CREATE_FAILED> - The AWS account attempted to create a node and
+creation failed.
+
+=item *
+
+C<UPDATING> - The node is in the process of being updated.
+
+=item *
+
+C<DELETING> - The node is in the process of being deleted.
+
+=item *
+
+C<DELETED> - The node can no longer participate on the network.
+
+=item *
+
+C<FAILED> - The node is no longer functional, cannot be recovered, and
+must be deleted.
+
+=item *
+
+C<INACCESSIBLE_ENCRYPTION_KEY> - The node is impaired and might not
+function as expected because it cannot access the specified customer
+managed key in AWS KMS for encryption at rest. Either the KMS key was
+disabled or deleted, or the grants on the key were revoked.
+
+The effect of disabling or deleting a key, or revoking a grant is not
+immediate. The node resource might take some time to find that the key
+is inaccessible. When a resource is in this state, we recommend
+deleting and recreating the resource.
+
+=back
+
 
 
 =head2 Tags => L<Paws::ManagedBlockchain::OutputTagMap>

@@ -102,6 +102,10 @@ creation failed.
 
 =item *
 
+C<UPDATING> - The member is in the process of being updated.
+
+=item *
+
 C<DELETING> - The member and all associated resources are in the
 process of being deleted. Either the AWS account that owns the member
 deleted it, or the member is being deleted as the result of an
@@ -113,6 +117,19 @@ C<DELETED> - The member can no longer participate on the network and
 all associated resources are deleted. Either the AWS account that owns
 the member deleted it, or the member is being deleted as the result of
 an C<APPROVED> C<PROPOSAL> to remove the member.
+
+=item *
+
+C<INACCESSIBLE_ENCRYPTION_KEY> - The member is impaired and might not
+function as expected because it cannot access the specified customer
+managed key in AWS Key Management Service (AWS KMS) for encryption at
+rest. Either the KMS key was disabled or deleted, or the grants on the
+key were revoked.
+
+The effect of disabling or deleting a key, or revoking a grant is not
+immediate. The member resource might take some time to find that the
+key is inaccessible. When a resource is in this state, we recommend
+deleting and recreating the resource.
 
 =back
 

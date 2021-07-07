@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         Name        => 'MyNetworkMemberNameString',    # min: 1, max: 64
         Description => 'MyDescriptionString',          # max: 128; OPTIONAL
+        KmsKeyArn   => 'MyArnString',    # min: 1, max: 1011; OPTIONAL
         LogPublishingConfiguration => {
           Fabric => {
             CaLogs => {
