@@ -55,6 +55,7 @@
  - New API: IVS
  - New API: IoTDeviceAdvisor
  - New API: SSOIdentityStore
+ - New API: Proton
 
 0.43 06 Apr 2021
  - First Community driven release (thanks BYTEROCK)
