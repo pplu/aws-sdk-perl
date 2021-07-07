@@ -9,6 +9,7 @@ package Paws::CognitoIdp::CreateUserPoolClient;
   has CallbackURLs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientName => (is => 'ro', isa => 'Str', required => 1);
   has DefaultRedirectURI => (is => 'ro', isa => 'Str');
+  has EnableTokenRevocation => (is => 'ro', isa => 'Bool');
   has ExplicitAuthFlows => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has GenerateSecret => (is => 'ro', isa => 'Bool');
   has IdTokenValidity => (is => 'ro', isa => 'Int');
@@ -66,8 +67,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CallbackURLs => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
       ],    # OPTIONAL
-      DefaultRedirectURI => 'MyRedirectUrlType',    # OPTIONAL
-      ExplicitAuthFlows  => [
+      DefaultRedirectURI    => 'MyRedirectUrlType',    # OPTIONAL
+      EnableTokenRevocation => 1,                      # OPTIONAL
+      ExplicitAuthFlows     => [
         'ADMIN_NO_SRP_AUTH',
         ... # values: ADMIN_NO_SRP_AUTH, CUSTOM_AUTH_FLOW_ONLY, USER_PASSWORD_AUTH, ALLOW_ADMIN_USER_PASSWORD_AUTH, ALLOW_CUSTOM_AUTH, ALLOW_USER_PASSWORD_AUTH, ALLOW_USER_SRP_AUTH, ALLOW_REFRESH_TOKEN_AUTH
       ],    # OPTIONAL
@@ -227,6 +229,17 @@ Amazon Cognito requires HTTPS over HTTP except for http://localhost for
 testing purposes only.
 
 App callback URLs such as myapp://example are also supported.
+
+
+
+=head2 EnableTokenRevocation => Bool
+
+Enables or disables token revocation. For more information about
+revoking tokens, see RevokeToken
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_RevokeToken.html).
+
+If you don't include this parameter, token revocation is automatically
+enabled for the new user pool client.
 
 
 

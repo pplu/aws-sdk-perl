@@ -191,10 +191,6 @@ oidc_issuer key>
 jwks_uri I<if not available from discovery URL specified by oidc_issuer
 key>
 
-=item *
-
-authorize_scopes
-
 =back
 
 =item *
