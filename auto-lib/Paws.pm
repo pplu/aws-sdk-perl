@@ -717,6 +717,8 @@ L<Paws::Pricing>
 
 L<Paws::Prometheus>
 
+L<Paws::Proton>
+
 L<Paws::QLDB>
 
 L<Paws::QLDBSession>
