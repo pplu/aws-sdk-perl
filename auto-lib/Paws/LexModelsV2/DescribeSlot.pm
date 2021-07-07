@@ -42,17 +42,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $BotId               = $DescribeSlotResponse->BotId;
-    my $BotVersion          = $DescribeSlotResponse->BotVersion;
-    my $CreationDateTime    = $DescribeSlotResponse->CreationDateTime;
-    my $Description         = $DescribeSlotResponse->Description;
-    my $IntentId            = $DescribeSlotResponse->IntentId;
-    my $LastUpdatedDateTime = $DescribeSlotResponse->LastUpdatedDateTime;
-    my $LocaleId            = $DescribeSlotResponse->LocaleId;
-    my $ObfuscationSetting  = $DescribeSlotResponse->ObfuscationSetting;
-    my $SlotId              = $DescribeSlotResponse->SlotId;
-    my $SlotName            = $DescribeSlotResponse->SlotName;
-    my $SlotTypeId          = $DescribeSlotResponse->SlotTypeId;
+    my $BotId                 = $DescribeSlotResponse->BotId;
+    my $BotVersion            = $DescribeSlotResponse->BotVersion;
+    my $CreationDateTime      = $DescribeSlotResponse->CreationDateTime;
+    my $Description           = $DescribeSlotResponse->Description;
+    my $IntentId              = $DescribeSlotResponse->IntentId;
+    my $LastUpdatedDateTime   = $DescribeSlotResponse->LastUpdatedDateTime;
+    my $LocaleId              = $DescribeSlotResponse->LocaleId;
+    my $MultipleValuesSetting = $DescribeSlotResponse->MultipleValuesSetting;
+    my $ObfuscationSetting    = $DescribeSlotResponse->ObfuscationSetting;
+    my $SlotId                = $DescribeSlotResponse->SlotId;
+    my $SlotName              = $DescribeSlotResponse->SlotName;
+    my $SlotTypeId            = $DescribeSlotResponse->SlotTypeId;
     my $ValueElicitationSetting =
       $DescribeSlotResponse->ValueElicitationSetting;
 

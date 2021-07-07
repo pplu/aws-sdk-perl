@@ -636,7 +636,7 @@ Adds a new resource policy statement to a bot or bot alias. If a
 resource policy exists, the statement is added to the current resource
 policy. If a policy doesn't exist, a new policy is created.
 
-You can create a resource policy statement that allows cross-account
+You can't create a resource policy statement that allows cross-account
 access.
 
 
@@ -659,6 +659,8 @@ access.
 =item ValueElicitationSetting => L<Paws::LexModelsV2::SlotValueElicitationSetting>
 
 =item [Description => Str]
+
+=item [MultipleValuesSetting => L<Paws::LexModelsV2::MultipleValuesSetting>]
 
 =item [ObfuscationSetting => L<Paws::LexModelsV2::ObfuscationSetting>]
 
@@ -1617,7 +1619,12 @@ Each argument is described in detail in: L<Paws::LexModelsV2::UpdateExport>
 
 Returns: a L<Paws::LexModelsV2::UpdateExportResponse> instance
 
-Updates the password used to encrypt an export zip archive.
+Updates the password used to protect an export zip archive.
+
+The password is not required. If you don't supply a password, Amazon
+Lex generates a zip file that is not protected by a password. This is
+the archive that is available at the pre-signed S3 URL provided by the
+operation.
 
 
 =head2 UpdateIntent
@@ -1708,6 +1715,8 @@ one. If the policy doesn't exist, Amazon Lex returns an exception.
 =item ValueElicitationSetting => L<Paws::LexModelsV2::SlotValueElicitationSetting>
 
 =item [Description => Str]
+
+=item [MultipleValuesSetting => L<Paws::LexModelsV2::MultipleValuesSetting>]
 
 =item [ObfuscationSetting => L<Paws::LexModelsV2::ObfuscationSetting>]
 

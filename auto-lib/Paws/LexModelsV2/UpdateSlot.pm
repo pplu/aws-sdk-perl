@@ -6,6 +6,7 @@ package Paws::LexModelsV2::UpdateSlot;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has IntentId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'intentId', required => 1);
   has LocaleId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'localeId', required => 1);
+  has MultipleValuesSetting => (is => 'ro', isa => 'Paws::LexModelsV2::MultipleValuesSetting', traits => ['NameInRequest'], request_name => 'multipleValuesSetting');
   has ObfuscationSetting => (is => 'ro', isa => 'Paws::LexModelsV2::ObfuscationSetting', traits => ['NameInRequest'], request_name => 'obfuscationSetting');
   has SlotId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'slotId', required => 1);
   has SlotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotName', required => 1);
@@ -333,7 +334,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
       },
-      Description        => 'MyDescription',    # OPTIONAL
+      Description           => 'MyDescription',    # OPTIONAL
+      MultipleValuesSetting => {
+        AllowMultipleValues => 1,                  # OPTIONAL
+      },    # OPTIONAL
       ObfuscationSetting => {
         ObfuscationSettingType => 'None',    # values: None, DefaultObfuscation
 
@@ -348,6 +352,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IntentId                = $UpdateSlotResponse->IntentId;
     my $LastUpdatedDateTime     = $UpdateSlotResponse->LastUpdatedDateTime;
     my $LocaleId                = $UpdateSlotResponse->LocaleId;
+    my $MultipleValuesSetting   = $UpdateSlotResponse->MultipleValuesSetting;
     my $ObfuscationSetting      = $UpdateSlotResponse->ObfuscationSetting;
     my $SlotId                  = $UpdateSlotResponse->SlotId;
     my $SlotName                = $UpdateSlotResponse->SlotName;
@@ -392,6 +397,18 @@ The identifier of the language and locale that contains the slot. The
 string must match one of the supported locales. For more information,
 see Supported languages
 (https://docs.aws.amazon.com/lexv2/latest/dg/how-languages.html).
+
+
+
+=head2 MultipleValuesSetting => L<Paws::LexModelsV2::MultipleValuesSetting>
+
+Determines whether the slot accepts multiple values in one response.
+Multiple value slots are only available in the en-US locale. If you set
+this value to C<true> in any other locale, Amazon Lex throws a
+C<ValidationException>.
+
+If the C<multipleValuesSetting> is not set, the default value is
+C<false>.
 
 
 

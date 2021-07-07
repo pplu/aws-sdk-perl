@@ -7,6 +7,7 @@ package Paws::LexModelsV2::CreateSlotResponse;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has IntentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'intentId');
   has LocaleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'localeId');
+  has MultipleValuesSetting => (is => 'ro', isa => 'Paws::LexModelsV2::MultipleValuesSetting', traits => ['NameInRequest'], request_name => 'multipleValuesSetting');
   has ObfuscationSetting => (is => 'ro', isa => 'Paws::LexModelsV2::ObfuscationSetting', traits => ['NameInRequest'], request_name => 'obfuscationSetting');
   has SlotId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotId');
   has SlotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotName');
@@ -53,6 +54,11 @@ The unique identifier of the intent associated with the slot.
 =head2 LocaleId => Str
 
 The language and local specified for the slot.
+
+
+=head2 MultipleValuesSetting => L<Paws::LexModelsV2::MultipleValuesSetting>
+
+Indicates whether the slot returns multiple values in one response.
 
 
 =head2 ObfuscationSetting => L<Paws::LexModelsV2::ObfuscationSetting>

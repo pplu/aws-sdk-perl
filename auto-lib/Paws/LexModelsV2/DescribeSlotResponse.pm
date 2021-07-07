@@ -8,6 +8,7 @@ package Paws::LexModelsV2::DescribeSlotResponse;
   has IntentId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'intentId');
   has LastUpdatedDateTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDateTime');
   has LocaleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'localeId');
+  has MultipleValuesSetting => (is => 'ro', isa => 'Paws::LexModelsV2::MultipleValuesSetting', traits => ['NameInRequest'], request_name => 'multipleValuesSetting');
   has ObfuscationSetting => (is => 'ro', isa => 'Paws::LexModelsV2::ObfuscationSetting', traits => ['NameInRequest'], request_name => 'obfuscationSetting');
   has SlotId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotId');
   has SlotName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'slotName');
@@ -59,6 +60,15 @@ A timestamp of the date and time that the slot was last updated.
 =head2 LocaleId => Str
 
 The language and locale specified for the slot.
+
+
+=head2 MultipleValuesSetting => L<Paws::LexModelsV2::MultipleValuesSetting>
+
+Indicates whether the slot accepts multiple values in a single
+utterance.
+
+If the C<multipleValuesSetting> is not set, the default value is
+C<false>.
 
 
 =head2 ObfuscationSetting => L<Paws::LexModelsV2::ObfuscationSetting>
