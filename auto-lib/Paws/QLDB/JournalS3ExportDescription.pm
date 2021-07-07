@@ -40,9 +40,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::QLDB::Journ
 
 =head1 DESCRIPTION
 
-The information about a journal export job, including the ledger name,
-export ID, when it was created, current status, and its start and end
-time export parameters.
+Information about a journal export job, including the ledger name,
+export ID, creation time, current status, and the parameters of the
+original export creation request.
 
 =head1 ATTRIBUTES
 
@@ -62,7 +62,8 @@ created. (Epoch time format is the number of seconds elapsed since
 
 =head2 B<REQUIRED> ExportId => Str
 
-The unique ID of the journal export job.
+The UUID (represented in Base62-encoded text) of the journal export
+job.
 
 
 =head2 B<REQUIRED> InclusiveStartTime => Str

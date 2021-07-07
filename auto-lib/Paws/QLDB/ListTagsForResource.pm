@@ -46,8 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qld
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) for which you want to list the tags. For
-example:
+The Amazon Resource Name (ARN) for which to list the tags. For example:
 
 C<arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger>
 

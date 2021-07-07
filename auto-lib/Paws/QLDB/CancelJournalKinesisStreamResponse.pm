@@ -17,7 +17,7 @@ Paws::QLDB::CancelJournalKinesisStreamResponse
 
 =head2 StreamId => Str
 
-The unique ID that QLDB assigns to each QLDB journal stream.
+The UUID (Base62-encoded text) of the canceled QLDB journal stream.
 
 
 =head2 _request_id => Str

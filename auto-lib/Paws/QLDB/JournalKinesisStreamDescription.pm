@@ -43,9 +43,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::QLDB::Journ
 
 =head1 DESCRIPTION
 
-The information about an Amazon QLDB journal stream, including the
-Amazon Resource Name (ARN), stream name, creation time, current status,
-and the parameters of your original stream creation request.
+Information about an Amazon QLDB journal stream, including the Amazon
+Resource Name (ARN), stream name, creation time, current status, and
+the parameters of the original stream creation request.
 
 =head1 ATTRIBUTES
 
@@ -85,7 +85,7 @@ data.
 =head2 B<REQUIRED> KinesisConfiguration => L<Paws::QLDB::KinesisConfiguration>
 
 The configuration settings of the Amazon Kinesis Data Streams
-destination for your QLDB journal stream.
+destination for a QLDB journal stream.
 
 
 =head2 B<REQUIRED> LedgerName => Str
@@ -107,7 +107,8 @@ The current state of the QLDB journal stream.
 
 =head2 B<REQUIRED> StreamId => Str
 
-The unique ID that QLDB assigns to each QLDB journal stream.
+The UUID (represented in Base62-encoded text) of the QLDB journal
+stream.
 
 
 =head2 B<REQUIRED> StreamName => Str

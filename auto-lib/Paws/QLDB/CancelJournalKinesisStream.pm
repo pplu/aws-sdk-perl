@@ -54,7 +54,8 @@ The name of the ledger.
 
 =head2 B<REQUIRED> StreamId => Str
 
-The unique ID that QLDB assigns to each QLDB journal stream.
+The UUID (represented in Base62-encoded text) of the QLDB journal
+stream to be canceled.
 
 
 

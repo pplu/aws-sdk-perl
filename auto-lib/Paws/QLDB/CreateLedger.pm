@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreationDateTime   = $CreateLedgerResponse->CreationDateTime;
     my $DeletionProtection = $CreateLedgerResponse->DeletionProtection;
     my $Name               = $CreateLedgerResponse->Name;
+    my $PermissionsMode    = $CreateLedgerResponse->PermissionsMode;
     my $State              = $CreateLedgerResponse->State;
 
     # Returns a L<Paws::QLDB::CreateLedgerResponse> object.
@@ -62,10 +63,8 @@ provided on ledger creation, this feature is enabled (C<true>) by
 default.
 
 If deletion protection is enabled, you must first disable it before you
-can delete the ledger using the QLDB API or the AWS Command Line
-Interface (AWS CLI). You can disable it by calling the C<UpdateLedger>
-operation to set the flag to C<false>. The QLDB console disables
-deletion protection for you when you use it to delete a ledger.
+can delete the ledger. You can disable it by calling the
+C<UpdateLedger> operation to set the flag to C<false>.
 
 
 
@@ -84,8 +83,41 @@ in the I<Amazon QLDB Developer Guide>.
 =head2 B<REQUIRED> PermissionsMode => Str
 
 The permissions mode to assign to the ledger that you want to create.
+This parameter can have one of the following values:
 
-Valid values are: C<"ALLOW_ALL">
+=over
+
+=item *
+
+C<ALLOW_ALL>: A legacy permissions mode that enables access control
+with API-level granularity for ledgers.
+
+This mode allows users who have the C<SendCommand> API permission for
+this ledger to run all PartiQL commands (hence, C<ALLOW_ALL>) on any
+tables in the specified ledger. This mode disregards any table-level or
+command-level IAM permissions policies that you create for the ledger.
+
+=item *
+
+C<STANDARD>: (I<Recommended>) A permissions mode that enables access
+control with finer granularity for ledgers, tables, and PartiQL
+commands.
+
+By default, this mode denies all user requests to run any PartiQL
+commands on any tables in this ledger. To allow PartiQL commands to
+run, you must create IAM permissions policies for specific table
+resources and PartiQL actions, in addition to the C<SendCommand> API
+permission for the ledger. For information, see Getting started with
+the standard permissions mode
+(https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-standard-mode.html)
+in the I<Amazon QLDB Developer Guide>.
+
+=back
+
+We strongly recommend using the C<STANDARD> permissions mode to
+maximize the security of your ledger data.
+
+Valid values are: C<"ALLOW_ALL">, C<"STANDARD">
 
 =head2 Tags => L<Paws::QLDB::Tags>
 

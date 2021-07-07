@@ -109,10 +109,15 @@ package Paws::QLDB;
     my $call_object = $self->new_with_coercions('Paws::QLDB::UpdateLedger', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateLedgerPermissionsMode {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::QLDB::UpdateLedgerPermissionsMode', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CancelJournalKinesisStream CreateLedger DeleteLedger DescribeJournalKinesisStream DescribeJournalS3Export DescribeLedger ExportJournalToS3 GetBlock GetDigest GetRevision ListJournalKinesisStreamsForLedger ListJournalS3Exports ListJournalS3ExportsForLedger ListLedgers ListTagsForResource StreamJournalToKinesis TagResource UntagResource UpdateLedger / }
+  sub operations { qw/CancelJournalKinesisStream CreateLedger DeleteLedger DescribeJournalKinesisStream DescribeJournalS3Export DescribeLedger ExportJournalToS3 GetBlock GetDigest GetRevision ListJournalKinesisStreamsForLedger ListJournalS3Exports ListJournalS3ExportsForLedger ListLedgers ListTagsForResource StreamJournalToKinesis TagResource UntagResource UpdateLedger UpdateLedgerPermissionsMode / }
 
 1;
 
@@ -189,7 +194,7 @@ Each argument is described in detail in: L<Paws::QLDB::CreateLedger>
 
 Returns: a L<Paws::QLDB::CreateLedgerResponse> instance
 
-Creates a new ledger in your AWS account.
+Creates a new ledger in your AWS account in the current Region.
 
 
 =head2 DeleteLedger
@@ -208,10 +213,8 @@ Returns: nothing
 Deletes a ledger and all of its contents. This action is irreversible.
 
 If deletion protection is enabled, you must first disable it before you
-can delete the ledger using the QLDB API or the AWS Command Line
-Interface (AWS CLI). You can disable it by calling the C<UpdateLedger>
-operation to set the flag to C<false>. The QLDB console disables
-deletion protection for you when you use it to delete a ledger.
+can delete the ledger. You can disable it by calling the
+C<UpdateLedger> operation to set the flag to C<false>.
 
 
 =head2 DescribeJournalKinesisStream
@@ -231,8 +234,13 @@ Returns: a L<Paws::QLDB::DescribeJournalKinesisStreamResponse> instance
 
 Returns detailed information about a given Amazon QLDB journal stream.
 The output includes the Amazon Resource Name (ARN), stream name,
-current status, creation time, and the parameters of your original
+current status, creation time, and the parameters of the original
 stream creation request.
+
+This action does not return any expired journal streams. For more
+information, see Expiration for terminal streams
+(https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration)
+in the I<Amazon QLDB Developer Guide>.
 
 
 =head2 DescribeJournalS3Export
@@ -251,11 +259,11 @@ Each argument is described in detail in: L<Paws::QLDB::DescribeJournalS3Export>
 Returns: a L<Paws::QLDB::DescribeJournalS3ExportResponse> instance
 
 Returns information about a journal export job, including the ledger
-name, export ID, when it was created, current status, and its start and
-end time export parameters.
+name, export ID, creation time, current status, and the parameters of
+the original export creation request.
 
 This action does not return any expired export jobs. For more
-information, see Export Job Expiration
+information, see Export job expiration
 (https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 in the I<Amazon QLDB Developer Guide>.
 
@@ -418,6 +426,11 @@ Returns an array of all Amazon QLDB journal stream descriptors for a
 given ledger. The output of each stream descriptor includes the same
 details that are returned by C<DescribeJournalKinesisStream>.
 
+This action does not return any expired journal streams. For more
+information, see Expiration for terminal streams
+(https://docs.aws.amazon.com/qldb/latest/developerguide/streams.create.html#streams.create.states.expiration)
+in the I<Amazon QLDB Developer Guide>.
+
 This action returns a maximum of C<MaxResults> items. It is paginated
 so that you can retrieve all the items by calling
 C<ListJournalKinesisStreamsForLedger> multiple times.
@@ -446,7 +459,7 @@ so that you can retrieve all the items by calling
 C<ListJournalS3Exports> multiple times.
 
 This action does not return any expired export jobs. For more
-information, see Export Job Expiration
+information, see Export job expiration
 (https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 in the I<Amazon QLDB Developer Guide>.
 
@@ -476,7 +489,7 @@ so that you can retrieve all the items by calling
 C<ListJournalS3ExportsForLedger> multiple times.
 
 This action does not return any expired export jobs. For more
-information, see Export Job Expiration
+information, see Export job expiration
 (https://docs.aws.amazon.com/qldb/latest/developerguide/export-journal.request.html#export-journal.request.expiration)
 in the I<Amazon QLDB Developer Guide>.
 
@@ -606,6 +619,31 @@ Each argument is described in detail in: L<Paws::QLDB::UpdateLedger>
 Returns: a L<Paws::QLDB::UpdateLedgerResponse> instance
 
 Updates properties on a ledger.
+
+
+=head2 UpdateLedgerPermissionsMode
+
+=over
+
+=item Name => Str
+
+=item PermissionsMode => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::QLDB::UpdateLedgerPermissionsMode>
+
+Returns: a L<Paws::QLDB::UpdateLedgerPermissionsModeResponse> instance
+
+Updates the permissions mode of a ledger.
+
+Before you switch to the C<STANDARD> permissions mode, you must first
+create all required IAM policies and table tags to avoid disruption to
+your users. To learn more, see Migrating to the standard permissions
+mode
+(https://docs.aws.amazon.com/qldb/latest/developerguide/ledger-management.basics.html#ledger-mgmt.basics.update-permissions.migrating)
+in the I<Amazon QLDB Developer Guide>.
 
 
 

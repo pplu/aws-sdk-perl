@@ -17,7 +17,8 @@ Paws::QLDB::StreamJournalToKinesisResponse
 
 =head2 StreamId => Str
 
-The unique ID that QLDB assigns to each QLDB journal stream.
+The UUID (represented in Base62-encoded text) that QLDB assigns to each
+QLDB journal stream.
 
 
 =head2 _request_id => Str

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::QLDB::Kines
 =head1 DESCRIPTION
 
 The configuration settings of the Amazon Kinesis Data Streams
-destination for your Amazon QLDB journal stream.
+destination for an Amazon QLDB journal stream.
 
 =head1 ATTRIBUTES
 
@@ -43,14 +43,20 @@ destination for your Amazon QLDB journal stream.
 =head2 AggregationEnabled => Bool
 
 Enables QLDB to publish multiple data records in a single Kinesis Data
-Streams record. To learn more, see KPL Key Concepts
+Streams record, increasing the number of records sent per API call.
+
+I<This option is enabled by default.> Record aggregation has important
+implications for processing records and requires de-aggregation in your
+stream consumer. To learn more, see KPL Key Concepts
 (https://docs.aws.amazon.com/streams/latest/dev/kinesis-kpl-concepts.html)
+and Consumer De-aggregation
+(https://docs.aws.amazon.com/streams/latest/dev/kinesis-kpl-consumer-deaggregation.html)
 in the I<Amazon Kinesis Data Streams Developer Guide>.
 
 
 =head2 B<REQUIRED> StreamArn => Str
 
-The Amazon Resource Name (ARN) of the Kinesis data stream resource.
+The Amazon Resource Name (ARN) of the Kinesis Data Streams resource.
 
 
 

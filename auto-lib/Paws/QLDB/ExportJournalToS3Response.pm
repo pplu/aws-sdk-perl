@@ -17,7 +17,8 @@ Paws::QLDB::ExportJournalToS3Response
 
 =head2 B<REQUIRED> ExportId => Str
 
-The unique ID that QLDB assigns to each journal export job.
+The UUID (represented in Base62-encoded text) that QLDB assigns to each
+journal export job.
 
 To describe your export request and check the status of the job, you
 can use C<ExportId> to call C<DescribeJournalS3Export>.

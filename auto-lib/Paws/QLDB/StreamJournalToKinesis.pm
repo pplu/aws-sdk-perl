@@ -68,7 +68,7 @@ cancel it.
 
 The C<ExclusiveEndTime> must be in C<ISO 8601> date and time format and
 in Universal Coordinated Time (UTC). For example:
-C<2019-06-13T21:36:34Z>
+C<2019-06-13T21:36:34Z>.
 
 
 
@@ -76,7 +76,7 @@ C<2019-06-13T21:36:34Z>
 
 The inclusive start date and time from which to start streaming journal
 data. This parameter must be in C<ISO 8601> date and time format and in
-Universal Coordinated Time (UTC). For example: C<2019-06-13T21:36:34Z>
+Universal Coordinated Time (UTC). For example: C<2019-06-13T21:36:34Z>.
 
 The C<InclusiveStartTime> cannot be in the future and must be before
 C<ExclusiveEndTime>.

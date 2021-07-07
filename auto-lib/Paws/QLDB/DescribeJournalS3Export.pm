@@ -48,7 +48,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qld
 
 =head2 B<REQUIRED> ExportId => Str
 
-The unique ID of the journal export job that you want to describe.
+The UUID (represented in Base62-encoded text) of the journal export job
+to describe.
 
 
 
