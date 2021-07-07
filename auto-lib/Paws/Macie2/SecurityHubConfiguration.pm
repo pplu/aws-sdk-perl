@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Sec
 =head1 DESCRIPTION
 
 Specifies configuration settings that determine which findings are
-published to AWS Security Hub automatically. For information about how
+published to Security Hub automatically. For information about how
 Macie publishes findings to Security Hub, see Amazon Macie integration
 with Security Hub
 (https://docs.aws.amazon.com/macie/latest/user/securityhub-integration.html)
@@ -46,17 +46,17 @@ in the I<Amazon Macie User Guide>.
 
 =head2 B<REQUIRED> PublishClassificationFindings => Bool
 
-Specifies whether to publish sensitive data findings to AWS Security
-Hub. If you set this value to true, Amazon Macie automatically
-publishes all sensitive data findings that weren't suppressed by a
-findings filter. The default value is false.
+Specifies whether to publish sensitive data findings to Security Hub.
+If you set this value to true, Amazon Macie automatically publishes all
+sensitive data findings that weren't suppressed by a findings filter.
+The default value is false.
 
 
 =head2 B<REQUIRED> PublishPolicyFindings => Bool
 
-Specifies whether to publish policy findings to AWS Security Hub. If
-you set this value to true, Amazon Macie automatically publishes all
-new and updated policy findings that weren't suppressed by a findings
+Specifies whether to publish policy findings to Security Hub. If you
+set this value to true, Amazon Macie automatically publishes all new
+and updated policy findings that weren't suppressed by a findings
 filter. The default value is true.
 
 

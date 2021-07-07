@@ -43,7 +43,8 @@ processed.
 
 =head2 AccountId => Str
 
-The AWS account ID for the account that the request applies to.
+The Amazon Web Services account ID for the account that the request
+applies to.
 
 
 =head2 ErrorCode => Str

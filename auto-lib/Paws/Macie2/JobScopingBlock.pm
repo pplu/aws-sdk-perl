@@ -42,9 +42,10 @@ job.
 
 =head2 And => ArrayRef[L<Paws::Macie2::JobScopeTerm>]
 
-An array of conditions, one for each condition that determines which
-objects to include or exclude from the job. If you specify more than
-one condition, Amazon Macie uses AND logic to join the conditions.
+An array of conditions, one for each property- or tag-based condition
+that determines which objects to include or exclude from the job. If
+you specify more than one condition, Amazon Macie uses AND logic to
+join the conditions.
 
 
 

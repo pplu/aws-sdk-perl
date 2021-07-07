@@ -36,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Rep
 =head1 DESCRIPTION
 
 Provides information about settings that define whether one or more
-objects in an S3 bucket are replicated to S3 buckets for other AWS
-accounts and, if so, which accounts.
+objects in an S3 bucket are replicated to S3 buckets for other Amazon
+Web Services accounts and, if so, which accounts.
 
 =head1 ATTRIBUTES
 
@@ -51,14 +51,15 @@ objects to any destination.
 =head2 ReplicatedExternally => Bool
 
 Specifies whether the bucket is configured to replicate one or more
-objects to an AWS account that isn't part of the same Amazon Macie
-organization.
+objects to an Amazon Web Services account that isn't part of the same
+Amazon Macie organization.
 
 
 =head2 ReplicationAccounts => ArrayRef[Str|Undef]
 
-An array of AWS account IDs, one for each AWS account that the bucket
-is configured to replicate one or more objects to.
+An array of Amazon Web Services account IDs, one for each Amazon Web
+Services account that the bucket is configured to replicate one or more
+objects to.
 
 
 

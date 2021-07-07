@@ -44,7 +44,8 @@ was received by an account.
 
 =head2 AccountId => Str
 
-The AWS account ID for the account that sent the invitation.
+The Amazon Web Services account ID for the account that sent the
+invitation.
 
 
 =head2 InvitationId => Str

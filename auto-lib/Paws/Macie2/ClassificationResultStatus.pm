@@ -47,20 +47,19 @@ The status of the finding. Possible values are:
 
 =item *
 
-COMPLETE - Amazon Macie successfully completed its analysis of the
+COMPLETE - Amazon Macie successfully completed its analysis of the S3
 object that the finding applies to.
 
 =item *
 
-PARTIAL - Macie analyzed only a subset of the data in the object that
-the finding applies to. For example, the object is an archive file that
-contains files in an unsupported format.
+PARTIAL - Macie analyzed only a subset of the data in the S3 object
+that the finding applies to. For example, the object is an archive file
+that contains files in an unsupported format.
 
 =item *
 
-SKIPPED - Macie wasn't able to analyze the object that the finding
-applies to. For example, the object is a malformed file or a file that
-uses an unsupported format.
+SKIPPED - Macie wasn't able to analyze the S3 object that the finding
+applies to. For example, the object is a file in an unsupported format.
 
 =back
 

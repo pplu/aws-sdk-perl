@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Sea
 =head1 DESCRIPTION
 
 Specifies criteria for sorting the results of a query for information
-about AWS resources that Amazon Macie monitors and analyzes.
+about Amazon Web Services resources that Amazon Macie monitors and
+analyzes.
 
 =head1 ATTRIBUTES
 

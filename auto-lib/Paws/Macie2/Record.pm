@@ -35,28 +35,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Rec
 =head1 DESCRIPTION
 
 Specifies the location of an occurrence of sensitive data in an Apache
-Avro object container or Apache Parquet file.
+Avro object container, Apache Parquet file, JSON file, or JSON Lines
+file.
 
 =head1 ATTRIBUTES
 
 
 =head2 JsonPath => Str
 
-The path, as a JSONPath expression, to the field in the record that
-contains the data. If Amazon Macie detects sensitive data in the name
-of any element in the path, Macie omits this field.
+The path, as a JSONPath expression, to the sensitive data. For an Avro
+object container or Parquet file, this is the path to the field in the
+record (recordIndex) that contains the data. For a JSON or JSON Lines
+file, this is the path to the field or array that contains the data. If
+the data is a value in an array, the path also indicates which value
+contains the data.
 
-If the name of an element exceeds 20 characters, Macie truncates the
-name by removing characters from the beginning of the name. If the
-resulting full path exceeds 250 characters, Macie also truncates the
-path, starting with the first element in the path, until the path
-contains 250 or fewer characters.
+If Amazon Macie detects sensitive data in the name of any element in
+the path, Macie omits this field. If the name of an element exceeds 20
+characters, Macie truncates the name by removing characters from the
+beginning of the name. If the resulting full path exceeds 250
+characters, Macie also truncates the path, starting with the first
+element in the path, until the path contains 250 or fewer characters.
 
 
 =head2 RecordIndex => Int
 
-The record index, starting from 0, for the record that contains the
-data.
+For an Avro object container or Parquet file, the record index,
+starting from 0, for the record that contains the sensitive data. For a
+JSON Lines file, the line index, starting from 0, for the line that
+contains the sensitive data. This value is always 0 for JSON files.
 
 
 

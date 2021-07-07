@@ -50,8 +50,8 @@ the finding.
 
 =head2 ApiServiceName => Str
 
-The URL of the AWS service that provides the operation, for example:
-s3.amazonaws.com.
+The URL of the Amazon Web Service that provides the operation, for
+example: s3.amazonaws.com.
 
 
 =head2 FirstSeen => Str

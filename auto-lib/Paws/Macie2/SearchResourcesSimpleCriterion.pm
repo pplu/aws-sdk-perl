@@ -35,8 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Sea
 
 =head1 DESCRIPTION
 
-Specifies a property-based filter condition that determines which AWS
-resources are included or excluded from the query results.
+Specifies a property-based filter condition that determines which
+Amazon Web Services resources are included or excluded from the query
+results.
 
 =head1 ATTRIBUTES
 
@@ -62,8 +63,8 @@ Valid values for each supported property (key) are:
 
 =item *
 
-ACCOUNT_ID - A string that represents the unique identifier for the AWS
-account that owns the resource.
+ACCOUNT_ID - A string that represents the unique identifier for the
+Amazon Web Services account that owns the resource.
 
 =item *
 

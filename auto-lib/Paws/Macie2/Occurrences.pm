@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Occ
 
 =head1 DESCRIPTION
 
-Provides the location of 1-15 occurrences of sensitive data that was
+Specifies the location of 1-15 occurrences of sensitive data that was
 detected by managed data identifiers or a custom data identifier and
 produced a sensitive data finding.
 
@@ -47,21 +47,24 @@ produced a sensitive data finding.
 =head2 Cells => ArrayRef[L<Paws::Macie2::Cell>]
 
 An array of objects, one for each occurrence of sensitive data in a
-Microsoft Excel workbook, CSV file, or TSV file. Each object specifies
-the cell or field that contains the data. This value is null for all
-other types of files.
+Microsoft Excel workbook, CSV file, or TSV file. This value is null for
+all other types of files.
+
+Each Cell object specifies a cell or field that contains the sensitive
+data.
 
 
 =head2 LineRanges => ArrayRef[L<Paws::Macie2::Range>]
 
 An array of objects, one for each occurrence of sensitive data in a
-Microsoft Word document or non-binary text file, such as an HTML, JSON,
-TXT, or XML file. Each object specifies the line that contains the
-data, and the position of the data on that line.
+non-binary text file, such as an HTML, TXT, or XML file. Each Range
+object specifies a line or inclusive range of lines that contains the
+sensitive data, and the position of the data on the specified line or
+lines.
 
 This value is often null for file types that are supported by Cell,
-Page, or Record objects. Exceptions are the locations of data in:
-unstructured sections of an otherwise structured file, such as a
+Page, or Record objects. Exceptions are the location of sensitive data
+in: unstructured sections of an otherwise structured file, such as a
 comment in a file; a malformed file that Amazon Macie analyzes as plain
 text; and, a CSV or TSV file that has any column names that contain
 sensitive data.
@@ -69,29 +72,30 @@ sensitive data.
 
 =head2 OffsetRanges => ArrayRef[L<Paws::Macie2::Range>]
 
-An array of objects, one for each occurrence of sensitive data in a
-binary text file. Each object specifies the position of the data
-relative to the beginning of the file.
-
-This value is typically null. For binary text files, Amazon Macie adds
-location data to a lineRanges.Range or Page object, depending on the
-file type.
+Reserved for future use.
 
 
 =head2 Pages => ArrayRef[L<Paws::Macie2::Page>]
 
 An array of objects, one for each occurrence of sensitive data in an
-Adobe Portable Document Format file. Each object specifies the page
-that contains the data, and the position of the data on that page. This
-value is null for all other types of files.
+Adobe Portable Document Format file. This value is null for all other
+types of files.
+
+Each Page object specifies a page that contains the sensitive data.
 
 
 =head2 Records => ArrayRef[L<Paws::Macie2::Record>]
 
 An array of objects, one for each occurrence of sensitive data in an
-Apache Avro object container or Apache Parquet file. Each object
-specifies the record index and the path to the field in the record that
-contains the data. This value is null for all other types of files.
+Apache Avro object container, Apache Parquet file, JSON file, or JSON
+Lines file. This value is null for all other types of files.
+
+For an Avro object container or Parquet file, each Record object
+specifies a record index and the path to a field in a record that
+contains the sensitive data. For a JSON or JSON Lines file, each Record
+object specifies the path to a field or array that contains the
+sensitive data. For a JSON Lines file, it also specifies the index of
+the line that contains the data.
 
 
 

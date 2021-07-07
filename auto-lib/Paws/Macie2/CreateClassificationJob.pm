@@ -109,8 +109,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SimpleScopeTerm => {
                   Comparator => 'EQ'
                   , # values: EQ, GT, GTE, LT, LTE, NE, CONTAINS, STARTS_WITH; OPTIONAL
-                  Key => 'BUCKET_CREATION_DATE'
-                  , # values: BUCKET_CREATION_DATE, OBJECT_EXTENSION, OBJECT_LAST_MODIFIED_DATE, OBJECT_SIZE, TAG, OBJECT_KEY; OPTIONAL
+                  Key => 'OBJECT_EXTENSION'
+                  , # values: OBJECT_EXTENSION, OBJECT_LAST_MODIFIED_DATE, OBJECT_SIZE, OBJECT_KEY; OPTIONAL
                   Values => [ 'My__string', ... ],    # OPTIONAL
                 },    # OPTIONAL
                 TagScopeTerm => {
@@ -136,8 +136,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SimpleScopeTerm => {
                   Comparator => 'EQ'
                   , # values: EQ, GT, GTE, LT, LTE, NE, CONTAINS, STARTS_WITH; OPTIONAL
-                  Key => 'BUCKET_CREATION_DATE'
-                  , # values: BUCKET_CREATION_DATE, OBJECT_EXTENSION, OBJECT_LAST_MODIFIED_DATE, OBJECT_SIZE, TAG, OBJECT_KEY; OPTIONAL
+                  Key => 'OBJECT_EXTENSION'
+                  , # values: OBJECT_EXTENSION, OBJECT_LAST_MODIFIED_DATE, OBJECT_SIZE, OBJECT_KEY; OPTIONAL
                   Values => [ 'My__string', ... ],    # OPTIONAL
                 },    # OPTIONAL
                 TagScopeTerm => {

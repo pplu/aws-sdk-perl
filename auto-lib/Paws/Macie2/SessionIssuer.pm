@@ -45,8 +45,8 @@ credentials that were issued to an entity.
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that owns the entity that was
-used to get the credentials.
+The unique identifier for the Amazon Web Services account that owns the
+entity that was used to get the credentials.
 
 
 =head2 Arn => Str

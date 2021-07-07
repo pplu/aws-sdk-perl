@@ -43,8 +43,8 @@ object is included or excluded from a classification job.
 
 =head2 Comparator => Str
 
-The operator to use in the condition. Valid operators for each
-supported property (key) are:
+The operator to use in the condition. Valid values for each supported
+property (key) are:
 
 =over
 
@@ -64,10 +64,6 @@ OBJECT_LAST_MODIFIED_DATE - Any operator except CONTAINS
 
 OBJECT_SIZE - Any operator except CONTAINS
 
-=item *
-
-TAG - EQ (equals) or NE (not equals)
-
 =back
 
 
@@ -81,8 +77,8 @@ The object property to use in the condition.
 
 An array that lists the values to use in the condition. If the value
 for the key property is OBJECT_EXTENSION or OBJECT_KEY, this array can
-specify multiple values and Amazon Macie uses an OR operator to join
-the values. Otherwise, this array can specify only one value.
+specify multiple values and Amazon Macie uses OR logic to join the
+values. Otherwise, this array can specify only one value.
 
 Valid values for each supported property (key) are:
 
@@ -110,12 +106,6 @@ latest. For example: 2020-09-28T14:31:13Z
 
 OBJECT_SIZE - An integer that represents the storage size (in bytes) of
 an object.
-
-=item *
-
-TAG - A string that represents a tag key for an object. For advanced
-options, use a TagScopeTerm object instead of a SimpleScopeTerm object
-to define a tag-based condition for the job.
 
 =back
 

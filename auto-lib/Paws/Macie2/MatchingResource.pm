@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Mat
 
 =head1 DESCRIPTION
 
-Provides statistical data and other information about an AWS resource
-that Amazon Macie monitors and analyzes.
+Provides statistical data and other information about an Amazon Web
+Services resource that Amazon Macie monitors and analyzes.
 
 =head1 ATTRIBUTES
 

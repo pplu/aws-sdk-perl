@@ -37,27 +37,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Tag
 =head1 DESCRIPTION
 
 Specifies a tag-based condition that determines whether an S3 object is
-included or excluded from a classification job. Tag keys and values are
-case sensitive. Also, Amazon Macie doesn't support use of partial
-values or wildcard characters in tag-based conditions.
+included or excluded from a classification job.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comparator => Str
 
-The operator to use in the condition. Valid operators are EQ (equals)
-or NE (not equals).
+The operator to use in the condition. Valid values are EQ (equals) or
+NE (not equals).
 
 
 =head2 Key => Str
 
-The tag key to use in the condition.
+The object property to use in the condition. The only valid value is
+TAG.
 
 
 =head2 TagValues => ArrayRef[L<Paws::Macie2::TagValuePair>]
 
-The tag keys or tag key and value pairs to use in the condition.
+The tag keys or tag key and value pairs to use in the condition. To
+specify only tag keys in a condition, specify the keys in this array
+and set the value for each associated tag value to an empty string.
 
 
 =head2 Target => Str

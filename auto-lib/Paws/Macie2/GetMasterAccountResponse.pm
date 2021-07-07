@@ -17,10 +17,10 @@ Paws::Macie2::GetMasterAccountResponse
 
 =head2 Master => L<Paws::Macie2::Invitation>
 
-(Deprecated) The AWS account ID for the administrator account. If the
-accounts are associated by a Macie membership invitation, this object
-also provides details about the invitation that was sent to establish
-the relationship between the accounts.
+(Deprecated) The Amazon Web Services account ID for the administrator
+account. If the accounts are associated by a Macie membership
+invitation, this object also provides details about the invitation that
+was sent to establish the relationship between the accounts.
 
 
 =head2 _request_id => Str

@@ -43,13 +43,13 @@ job. Exclude conditions take precedence over include conditions.
 
 =head2 Excludes => L<Paws::Macie2::JobScopingBlock>
 
-The property- or tag-based conditions that determine which objects to
+The property- and tag-based conditions that determine which objects to
 exclude from the analysis.
 
 
 =head2 Includes => L<Paws::Macie2::JobScopingBlock>
 
-The property- or tag-based conditions that determine which objects to
+The property- and tag-based conditions that determine which objects to
 include in the analysis.
 
 

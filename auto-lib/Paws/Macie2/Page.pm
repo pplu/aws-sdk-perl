@@ -43,19 +43,17 @@ Portable Document Format file.
 
 =head2 LineRange => L<Paws::Macie2::Range>
 
-The line that contains the data, and the position of the data on that
-line.
+Reserved for future use.
 
 
 =head2 OffsetRange => L<Paws::Macie2::Range>
 
-The position of the data on the page, relative to the beginning of the
-page.
+Reserved for future use.
 
 
 =head2 PageNumber => Int
 
-The page number of the page that contains the data.
+The page number of the page that contains the sensitive data.
 
 
 

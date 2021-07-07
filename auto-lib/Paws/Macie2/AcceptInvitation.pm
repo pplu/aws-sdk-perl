@@ -44,7 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 AdministratorAccountId => Str
 
-The AWS account ID for the account that sent the invitation.
+The Amazon Web Services account ID for the account that sent the
+invitation.
 
 
 
@@ -56,8 +57,8 @@ The unique identifier for the invitation to accept.
 
 =head2 MasterAccount => Str
 
-(Deprecated) The AWS account ID for the account that sent the
-invitation. This property has been replaced by the
+(Deprecated) The Amazon Web Services account ID for the account that
+sent the invitation. This property has been replaced by the
 administratorAccountId property and is retained only for backward
 compatibility.
 

@@ -35,16 +35,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Use
 
 =head1 DESCRIPTION
 
-Provides information about an AWS account and entity that performed an
-action on an affected resource. The action was performed using the
-credentials for your AWS account.
+Provides information about an Amazon Web Services account and entity
+that performed an action on an affected resource. The action was
+performed using the credentials for your Amazon Web Services account.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account.
+The unique identifier for the Amazon Web Services account.
 
 
 =head2 Arn => Str

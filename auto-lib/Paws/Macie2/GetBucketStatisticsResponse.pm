@@ -54,8 +54,8 @@ buckets.
 
 =head2 BucketCountBySharedAccessType => L<Paws::Macie2::BucketCountBySharedAccessType>
 
-The total number of buckets that are or aren't shared with another AWS
-account.
+The total number of buckets that are or aren't shared with another
+Amazon Web Services account.
 
 
 =head2 ClassifiableObjectCount => Int

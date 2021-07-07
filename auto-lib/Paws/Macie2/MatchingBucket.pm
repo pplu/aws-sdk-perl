@@ -51,7 +51,8 @@ Amazon Macie monitors and analyzes.
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that owns the bucket.
+The unique identifier for the Amazon Web Services account that owns the
+bucket.
 
 
 =head2 BucketName => Str

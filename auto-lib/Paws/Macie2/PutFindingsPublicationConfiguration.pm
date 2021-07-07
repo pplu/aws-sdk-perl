@@ -55,7 +55,7 @@ idempotency of the request.
 =head2 SecurityHubConfiguration => L<Paws::Macie2::SecurityHubConfiguration>
 
 The configuration settings that determine which findings to publish to
-AWS Security Hub.
+Security Hub.
 
 
 

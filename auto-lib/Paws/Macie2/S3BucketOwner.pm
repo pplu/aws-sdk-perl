@@ -46,7 +46,7 @@ The display name of the user who owns the bucket.
 
 =head2 Id => Str
 
-The AWS account ID for the user who owns the bucket.
+The Amazon Web Services account ID for the user who owns the bucket.
 
 
 

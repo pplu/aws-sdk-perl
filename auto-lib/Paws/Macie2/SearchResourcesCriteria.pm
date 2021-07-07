@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Sea
 =head1 DESCRIPTION
 
 Specifies a property- or tag-based filter condition for including or
-excluding AWS resources from the query results.
+excluding Amazon Web Services resources from the query results.
 
 =head1 ATTRIBUTES
 

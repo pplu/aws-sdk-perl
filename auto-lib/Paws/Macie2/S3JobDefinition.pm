@@ -57,11 +57,11 @@ bucketDefinitions array, not both.
 
 =head2 BucketDefinitions => ArrayRef[L<Paws::Macie2::S3BucketDefinitionForJob>]
 
-An array of objects, one for each AWS account that owns specific S3
-buckets to analyze. Each object specifies the account ID for an account
-and one or more buckets to analyze for that account. A job's definition
-can contain a bucketDefinitions array or a bucketCriteria object, not
-both.
+An array of objects, one for each Amazon Web Services account that owns
+specific S3 buckets to analyze. Each object specifies the account ID
+for an account and one or more buckets to analyze for that account. A
+job's definition can contain a bucketDefinitions array or a
+bucketCriteria object, not both.
 
 
 =head2 Scoping => L<Paws::Macie2::Scoping>

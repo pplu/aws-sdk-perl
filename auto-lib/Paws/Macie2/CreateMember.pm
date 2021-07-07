@@ -51,8 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 B<REQUIRED> Account => L<Paws::Macie2::AccountDetail>
 
-The details for the account to associate with the administrator
-account.
+The details of the account to associate with the administrator account.
 
 
 

@@ -888,8 +888,8 @@ Each argument is described in detail in: L<Paws::Macie2::DescribeOrganizationCon
 
 Returns: a L<Paws::Macie2::DescribeOrganizationConfigurationResponse> instance
 
-Retrieves the Amazon Macie configuration settings for an AWS
-organization.
+Retrieves the Amazon Macie configuration settings for an Amazon Web
+Services organization.
 
 
 =head2 DisableMacie
@@ -921,7 +921,7 @@ Each argument is described in detail in: L<Paws::Macie2::DisableOrganizationAdmi
 Returns: a L<Paws::Macie2::DisableOrganizationAdminAccountResponse> instance
 
 Disables an account as the delegated Amazon Macie administrator account
-for an AWS organization.
+for an Amazon Web Services organization.
 
 
 =head2 DisassociateFromAdministratorAccount
@@ -1010,7 +1010,7 @@ Each argument is described in detail in: L<Paws::Macie2::EnableOrganizationAdmin
 Returns: a L<Paws::Macie2::EnableOrganizationAdminAccountResponse> instance
 
 Designates an account as the delegated Amazon Macie administrator
-account for an AWS organization.
+account for an Amazon Web Services organization.
 
 
 =head2 GetAdministratorAccount
@@ -1121,7 +1121,7 @@ Each argument is described in detail in: L<Paws::Macie2::GetFindingsPublicationC
 
 Returns: a L<Paws::Macie2::GetFindingsPublicationConfigurationResponse> instance
 
-Retrieves the configuration settings for publishing findings to AWS
+Retrieves the configuration settings for publishing findings to
 Security Hub.
 
 
@@ -1391,7 +1391,7 @@ Each argument is described in detail in: L<Paws::Macie2::ListOrganizationAdminAc
 Returns: a L<Paws::Macie2::ListOrganizationAdminAccountsResponse> instance
 
 Retrieves information about the delegated Amazon Macie administrator
-account for an AWS organization.
+account for an Amazon Web Services organization.
 
 
 =head2 ListTagsForResource
@@ -1444,8 +1444,8 @@ Each argument is described in detail in: L<Paws::Macie2::PutFindingsPublicationC
 
 Returns: a L<Paws::Macie2::PutFindingsPublicationConfigurationResponse> instance
 
-Updates the configuration settings for publishing findings to AWS
-Security Hub.
+Updates the configuration settings for publishing findings to Security
+Hub.
 
 
 =head2 SearchResources
@@ -1467,8 +1467,8 @@ Each argument is described in detail in: L<Paws::Macie2::SearchResources>
 
 Returns: a L<Paws::Macie2::SearchResourcesResponse> instance
 
-Retrieves (queries) statistical data and other information about AWS
-resources that Amazon Macie monitors and analyzes.
+Retrieves (queries) statistical data and other information about Amazon
+Web Services resources that Amazon Macie monitors and analyzes.
 
 
 =head2 TagResource
@@ -1560,6 +1560,8 @@ Changes the status of a classification job.
 
 =item [Action => Str]
 
+=item [ClientToken => Str]
+
 =item [Description => Str]
 
 =item [FindingCriteria => L<Paws::Macie2::FindingCriteria>]
@@ -1629,8 +1631,8 @@ Each argument is described in detail in: L<Paws::Macie2::UpdateOrganizationConfi
 
 Returns: a L<Paws::Macie2::UpdateOrganizationConfigurationResponse> instance
 
-Updates the Amazon Macie configuration settings for an AWS
-organization.
+Updates the Amazon Macie configuration settings for an Amazon Web
+Services organization.
 
 
 

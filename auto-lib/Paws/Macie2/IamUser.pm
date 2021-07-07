@@ -36,16 +36,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Iam
 
 =head1 DESCRIPTION
 
-Provides information about an AWS Identity and Access Management (IAM)
-user who performed an action on an affected resource.
+Provides information about an Identity and Access Management (IAM) user
+who performed an action on an affected resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that's associated with the
-IAM user who performed the action.
+The unique identifier for the Amazon Web Services account that's
+associated with the IAM user who performed the action.
 
 
 =head2 Arn => Str

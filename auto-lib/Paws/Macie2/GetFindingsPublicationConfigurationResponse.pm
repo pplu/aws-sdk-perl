@@ -18,7 +18,7 @@ Paws::Macie2::GetFindingsPublicationConfigurationResponse
 =head2 SecurityHubConfiguration => L<Paws::Macie2::SecurityHubConfiguration>
 
 The configuration settings that determine which findings are published
-to AWS Security Hub.
+to Security Hub.
 
 
 =head2 _request_id => Str

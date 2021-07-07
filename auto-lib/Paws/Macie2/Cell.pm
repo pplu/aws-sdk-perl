@@ -45,28 +45,26 @@ Microsoft Excel workbook, CSV file, or TSV file.
 =head2 CellReference => Str
 
 The location of the cell, as an absolute cell reference, that contains
-the data. For example, Sheet2!C5 for cell C5 on Sheet2 in a Microsoft
-Excel workbook. This value is null for CSV and TSV files.
+the sensitive data, for example Sheet2!C5 for cell C5 on Sheet2 in a
+Microsoft Excel workbook. This value is null for CSV and TSV files.
 
 
 =head2 Column => Int
 
-The column number of the column that contains the data. For a Microsoft
-Excel workbook, this value correlates to the alphabetical character(s)
-for a column identifier. For example, 1 for column A, 2 for column B,
-and so on.
+The column number of the column that contains the sensitive data. For a
+Microsoft Excel workbook, this value correlates to the alphabetical
+character(s) for a column identifier, for example: 1 for column A, 2
+for column B, and so on.
 
 
 =head2 ColumnName => Str
 
-The name of the column that contains the data, if available. This value
-is also null if Amazon Macie detects sensitive data in the name of any
-column in the file.
+The name of the column that contains the sensitive data, if available.
 
 
 =head2 Row => Int
 
-The row number of the row that contains the data.
+The row number of the row that contains the sensitive data.
 
 
 

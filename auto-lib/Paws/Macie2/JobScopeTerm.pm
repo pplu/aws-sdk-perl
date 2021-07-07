@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Job
 =head1 DESCRIPTION
 
 Specifies a property- or tag-based condition that defines criteria for
-including or excluding S3 objects from a classification job.
+including or excluding S3 objects from a classification job. A
+JobScopeTerm object can contain only one simpleScopeTerm object or one
+tagScopeTerm object.
 
 =head1 ATTRIBUTES
 

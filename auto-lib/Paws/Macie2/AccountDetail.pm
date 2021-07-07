@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Acc
 
 =head1 DESCRIPTION
 
-Specifies details for an account to associate with an Amazon Macie
+Specifies the details of an account to associate with an Amazon Macie
 administrator account.
 
 =head1 ATTRIBUTES
@@ -42,7 +42,7 @@ administrator account.
 
 =head2 B<REQUIRED> AccountId => Str
 
-The AWS account ID for the account.
+The Amazon Web Services account ID for the account.
 
 
 =head2 B<REQUIRED> Email => Str

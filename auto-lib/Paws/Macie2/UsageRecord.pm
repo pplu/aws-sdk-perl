@@ -42,7 +42,8 @@ Provides quota and aggregated usage data for an Amazon Macie account.
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that the data applies to.
+The unique identifier for the Amazon Web Services account that the data
+applies to.
 
 
 =head2 FreeTrialStartDate => Str

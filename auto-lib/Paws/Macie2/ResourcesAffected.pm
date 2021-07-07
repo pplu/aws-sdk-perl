@@ -41,14 +41,12 @@ Provides information about the resources that a finding applies to.
 
 =head2 S3Bucket => L<Paws::Macie2::S3Bucket>
 
-An array of objects, one for each S3 bucket that the finding applies
-to. Each object provides a set of metadata about an affected S3 bucket.
+The details of the S3 bucket that the finding applies to.
 
 
 =head2 S3Object => L<Paws::Macie2::S3Object>
 
-An array of objects, one for each S3 object that the finding applies
-to. Each object provides a set of metadata about an affected S3 object.
+The details of the S3 object that the finding applies to.
 
 
 

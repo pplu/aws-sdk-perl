@@ -64,7 +64,7 @@ finding.
 
 =head2 Result => L<Paws::Macie2::ClassificationResult>
 
-The status and other details for the finding.
+The status and other details of the finding.
 
 
 

@@ -67,29 +67,17 @@ Valid values for each supported field are:
 
 =item *
 
-accountId - The unique identifier for an AWS account.
-
-=back
-
-=over
+accountId - The unique identifier for an Amazon Web Services account.
 
 =item *
 
 freeTrialStartDate - The date and time, in UTC and extended ISO 8601
 format, when the free trial started for an account.
 
-=back
-
-=over
-
 =item *
 
 serviceLimit - A Boolean (true or false) value that indicates whether
 an account has reached its monthly quota.
-
-=back
-
-=over
 
 =item *
 

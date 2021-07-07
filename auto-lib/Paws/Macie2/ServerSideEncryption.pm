@@ -51,9 +51,9 @@ is NONE.
 =head2 KmsMasterKeyId => Str
 
 The Amazon Resource Name (ARN) or unique identifier (key ID) for the
-AWS Key Management Service (AWS KMS) customer master key (CMK) that's
-used to encrypt data in the bucket or the object. If an AWS KMS CMK
-isn't used, this value is null.
+Key Management Service (KMS) customer master key (CMK) that's used to
+encrypt data in the bucket or the object. If an KMS CMK isn't used,
+this value is null.
 
 
 

@@ -43,7 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 =head2 B<REQUIRED> AutoEnable => Bool
 
 Specifies whether to enable Amazon Macie automatically for each
-account, when the account is added to the AWS organization.
+account, when the account is added to the Amazon Web Services
+organization.
 
 
 

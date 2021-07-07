@@ -48,42 +48,42 @@ entity that performed an action on an affected resource.
 =head2 AssumedRole => L<Paws::Macie2::AssumedRole>
 
 If the action was performed with temporary security credentials that
-were obtained using the AssumeRole operation of the AWS Security Token
-Service (AWS STS) API, the identifiers, session context, and other
-details about the identity.
+were obtained using the AssumeRole operation of the Security Token
+Service (STS) API, the identifiers, session context, and other details
+about the identity.
 
 
 =head2 AwsAccount => L<Paws::Macie2::AwsAccount>
 
-If the action was performed using the credentials for another AWS
-account, the details of that account.
+If the action was performed using the credentials for another Amazon
+Web Services account, the details of that account.
 
 
 =head2 AwsService => L<Paws::Macie2::AwsService>
 
-If the action was performed by an AWS account that belongs to an AWS
-service, the name of the service.
+If the action was performed by an Amazon Web Services account that
+belongs to an Amazon Web Service, the name of the service.
 
 
 =head2 FederatedUser => L<Paws::Macie2::FederatedUser>
 
 If the action was performed with temporary security credentials that
-were obtained using the GetFederationToken operation of the AWS
-Security Token Service (AWS STS) API, the identifiers, session context,
-and other details about the identity.
+were obtained using the GetFederationToken operation of the Security
+Token Service (STS) API, the identifiers, session context, and other
+details about the identity.
 
 
 =head2 IamUser => L<Paws::Macie2::IamUser>
 
-If the action was performed using the credentials for an AWS Identity
-and Access Management (IAM) user, the name and other details about the
+If the action was performed using the credentials for an Identity and
+Access Management (IAM) user, the name and other details about the
 user.
 
 
 =head2 Root => L<Paws::Macie2::UserIdentityRoot>
 
-If the action was performed using the credentials for your AWS account,
-the details of your account.
+If the action was performed using the credentials for your Amazon Web
+Services account, the details of your account.
 
 
 =head2 Type => Str

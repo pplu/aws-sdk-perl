@@ -42,7 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 B<REQUIRED> AdminAccountId => Str
 
-The AWS account ID of the delegated Amazon Macie administrator account.
+The Amazon Web Services account ID of the delegated Amazon Macie
+administrator account.
 
 
 

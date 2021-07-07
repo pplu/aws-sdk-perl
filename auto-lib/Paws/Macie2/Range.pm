@@ -35,69 +35,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Ran
 
 =head1 DESCRIPTION
 
-Provides details about the location of an occurrence of sensitive data
-in an Adobe Portable Document Format file, Microsoft Word document, or
-non-binary text file.
+Specifies the location of an occurrence of sensitive data in a
+non-binary text file, such as an HTML, TXT, or XML file.
 
 =head1 ATTRIBUTES
 
 
 =head2 End => Int
 
-Possible values are:
-
-=over
-
-=item *
-
-In an Occurrences.lineRanges array, the number of lines from the
-beginning of the file to the end of the sensitive data.
-
-=item *
-
-In an Occurrences.offsetRanges array, the number of characters from the
-beginning of the file to the end of the sensitive data.
-
-=item *
-
-In a Page object, the number of lines (lineRange) or characters
-(offsetRange) from the beginning of the page to the end of the
+The number of lines from the beginning of the file to the end of the
 sensitive data.
-
-=back
-
 
 
 =head2 Start => Int
 
-Possible values are:
-
-=over
-
-=item *
-
-In an Occurrences.lineRanges array, the number of lines from the
-beginning of the file to the beginning of the sensitive data.
-
-=item *
-
-In an Occurrences.offsetRanges array, the number of characters from the
-beginning of the file to the beginning of the sensitive data.
-
-=item *
-
-In a Page object, the number of lines (lineRange) or characters
-(offsetRange) from the beginning of the page to the beginning of the
-sensitive data.
-
-=back
-
+The number of lines from the beginning of the file to the beginning of
+the sensitive data.
 
 
 =head2 StartColumn => Int
 
-The column number for the column that contains the data, if the file
-contains structured data.
+The number of characters, with spaces and starting from 1, from the
+beginning of the first line that contains the sensitive data (start) to
+the beginning of the sensitive data.
 
 
 

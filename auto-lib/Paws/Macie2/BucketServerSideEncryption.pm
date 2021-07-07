@@ -46,10 +46,10 @@ in the I<Amazon Simple Storage Service User Guide>.
 =head2 KmsMasterKeyId => Str
 
 The Amazon Resource Name (ARN) or unique identifier (key ID) for the
-AWS Key Management Service (AWS KMS) customer master key (CMK) that's
-used by default to encrypt objects that are added to the bucket. This
-value is null if the bucket uses an Amazon S3 managed key to encrypt
-new objects or the bucket doesn't encrypt new objects by default.
+Key Management Service (KMS) customer master key (CMK) that's used by
+default to encrypt objects that are added to the bucket. This value is
+null if the bucket uses an Amazon S3 managed key to encrypt new objects
+or the bucket doesn't encrypt new objects by default.
 
 
 =head2 Type => Str
@@ -66,9 +66,9 @@ use Amazon S3 managed encryption (SSE-S3).
 
 =item *
 
-aws:kms - New objects are encrypted with an AWS KMS CMK, specified by
-the kmsMasterKeyId property, and use AWS managed AWS KMS encryption
-(AWS-KMS) or customer managed AWS KMS encryption (SSE-KMS).
+aws:kms - New objects are encrypted with an KMS CMK, specified by the
+kmsMasterKeyId property, and use Amazon Web Services managed KMS
+encryption (AWS-KMS) or customer managed KMS encryption (SSE-KMS).
 
 =item *
 

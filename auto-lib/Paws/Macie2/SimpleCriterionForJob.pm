@@ -62,8 +62,8 @@ Valid values for each supported property (key) are:
 
 =item *
 
-ACCOUNT_ID - A string that represents the unique identifier for the AWS
-account that owns the bucket.
+ACCOUNT_ID - A string that represents the unique identifier for the
+Amazon Web Services account that owns the bucket.
 
 =item *
 

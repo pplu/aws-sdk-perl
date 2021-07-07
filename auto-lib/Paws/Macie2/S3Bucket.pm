@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::S3B
 
 =head1 DESCRIPTION
 
-Provides information about an S3 bucket that a finding applies to.
+Provides information about the S3 bucket that a finding applies to.
 
 =head1 ATTRIBUTES
 
@@ -101,7 +101,8 @@ The name of the bucket.
 
 =head2 Owner => L<Paws::Macie2::S3BucketOwner>
 
-The display name and AWS account ID for the user who owns the bucket.
+The display name and Amazon Web Services account ID for the user who
+owns the bucket.
 
 
 =head2 PublicAccess => L<Paws::Macie2::BucketPublicAccess>

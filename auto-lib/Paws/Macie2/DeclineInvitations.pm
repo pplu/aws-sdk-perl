@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
-An array that lists AWS account IDs, one for each account that sent an
-invitation to decline.
+An array that lists Amazon Web Services account IDs, one for each
+account that sent an invitation to decline.
 
 
 

@@ -52,8 +52,8 @@ idempotency of the request.
 =head2 FindingPublishingFrequency => Str
 
 Specifies how often to publish updates to policy findings for the
-account. This includes publishing updates to AWS Security Hub and
-Amazon EventBridge (formerly called Amazon CloudWatch Events).
+account. This includes publishing updates to Security Hub and Amazon
+EventBridge (formerly called Amazon CloudWatch Events).
 
 Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">
 

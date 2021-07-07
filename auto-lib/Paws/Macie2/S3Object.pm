@@ -44,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::S3O
 
 =head1 DESCRIPTION
 
-Provides information about an S3 object that a finding applies to.
+Provides information about the S3 object that a finding applies to.
 
 =head1 ATTRIBUTES
 

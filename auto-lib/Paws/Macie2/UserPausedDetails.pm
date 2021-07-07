@@ -54,8 +54,8 @@ job run will expire and be cancelled if you don't resume it first.
 
 =head2 JobImminentExpirationHealthEventArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Health event that Amazon
-Macie sent to notify you of the job or job run's pending expiration and
+The Amazon Resource Name (ARN) of the Health event that Amazon Macie
+sent to notify you of the job or job run's pending expiration and
 cancellation. This value is null if a job has been paused for less than
 23 days.
 

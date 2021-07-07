@@ -33,15 +33,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Aws
 
 =head1 DESCRIPTION
 
-Provides information about an AWS service that performed an action on
-an affected resource.
+Provides information about an Amazon Web Service that performed an
+action on an affected resource.
 
 =head1 ATTRIBUTES
 
 
 =head2 InvokedBy => Str
 
-The name of the AWS service that performed the action.
+The name of the Amazon Web Service that performed the action.
 
 
 

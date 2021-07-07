@@ -57,13 +57,14 @@ Provides the details of a finding.
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that the finding applies to.
-This is typically the account that owns the affected resource.
+The unique identifier for the Amazon Web Services account that the
+finding applies to. This is typically the account that owns the
+affected resource.
 
 
 =head2 Archived => Bool
 
-Specifies whether the finding is archived.
+Specifies whether the finding is archived (suppressed).
 
 
 =head2 Category => Str
@@ -106,7 +107,8 @@ finding.
 
 =head2 Partition => Str
 
-The AWS partition that Amazon Macie created the finding in.
+The Amazon Web Services partition that Amazon Macie created the finding
+in.
 
 
 =head2 PolicyDetails => L<Paws::Macie2::PolicyDetails>
@@ -117,7 +119,8 @@ data finding.
 
 =head2 Region => Str
 
-The AWS Region that Amazon Macie created the finding in.
+The Amazon Web Services Region that Amazon Macie created the finding
+in.
 
 
 =head2 ResourcesAffected => L<Paws::Macie2::ResourcesAffected>

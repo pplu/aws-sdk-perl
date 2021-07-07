@@ -49,12 +49,12 @@ Macie administrator account.
 
 =head2 AccountId => Str
 
-The AWS account ID for the account.
+The Amazon Web Services account ID for the account.
 
 
 =head2 AdministratorAccountId => Str
 
-The AWS account ID for the administrator account.
+The Amazon Web Services account ID for the administrator account.
 
 
 =head2 Arn => Str
@@ -76,9 +76,9 @@ null if a Macie invitation hasn't been sent to the account.
 
 =head2 MasterAccountId => Str
 
-(Deprecated) The AWS account ID for the administrator account. This
-property has been replaced by the administratorAccountId property and
-is retained only for backward compatibility.
+(Deprecated) The Amazon Web Services account ID for the administrator
+account. This property has been replaced by the administratorAccountId
+property and is retained only for backward compatibility.
 
 
 =head2 RelationshipStatus => Str

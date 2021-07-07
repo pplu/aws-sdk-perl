@@ -41,8 +41,8 @@ apply to an S3 bucket.
 
 =head2 BlockPublicAccess => L<Paws::Macie2::BlockPublicAccess>
 
-The block public access settings for the AWS account that owns the
-bucket.
+The block public access settings for the Amazon Web Services account
+that owns the bucket.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::Macie2::UpdateFindingsFilter;
   use Moose;
   has Action => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'action');
+  has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has FindingCriteria => (is => 'ro', isa => 'Paws::Macie2::FindingCriteria', traits => ['NameInRequest'], request_name => 'findingCriteria');
   has Id => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'id', required => 1);
@@ -36,6 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateFindingsFilterResponse = $macie2->UpdateFindingsFilter(
       Id              => 'My__string',
       Action          => 'ARCHIVE',       # OPTIONAL
+      ClientToken     => 'My__string',    # OPTIONAL
       Description     => 'My__string',    # OPTIONAL
       FindingCriteria => {
         Criterion => {
@@ -74,6 +76,13 @@ archive) the findings; and, NOOP, don't perform any action on the
 findings.
 
 Valid values are: C<"ARCHIVE">, C<"NOOP">
+
+=head2 ClientToken => Str
+
+A unique, case-sensitive token that you provide to ensure the
+idempotency of the request.
+
+
 
 =head2 Description => Str
 

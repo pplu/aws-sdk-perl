@@ -34,16 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::S3B
 
 =head1 DESCRIPTION
 
-Specifies an AWS account that owns S3 buckets for a classification job
-to analyze, and one or more specific buckets to analyze for that
-account.
+Specifies an Amazon Web Services account that owns S3 buckets for a
+classification job to analyze, and one or more specific buckets to
+analyze for that account.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountId => Str
 
-The unique identifier for the AWS account that owns the buckets.
+The unique identifier for the Amazon Web Services account that owns the
+buckets.
 
 
 =head2 B<REQUIRED> Buckets => ArrayRef[Str|Undef]

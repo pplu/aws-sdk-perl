@@ -62,7 +62,8 @@ analyzes.
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that owns the bucket.
+The unique identifier for the Amazon Web Services account that owns the
+bucket.
 
 
 =head2 AllowsUnencryptedObjectUploads => Str
@@ -168,13 +169,14 @@ provides information about those settings.
 
 =head2 Region => Str
 
-The AWS Region that hosts the bucket.
+The Amazon Web Services Region that hosts the bucket.
 
 
 =head2 ReplicationDetails => L<Paws::Macie2::ReplicationDetails>
 
 Specifies whether the bucket is configured to replicate one or more
-objects to buckets for other AWS accounts and, if so, which accounts.
+objects to buckets for other Amazon Web Services accounts and, if so,
+which accounts.
 
 
 =head2 ServerSideEncryption => L<Paws::Macie2::BucketServerSideEncryption>
@@ -185,24 +187,25 @@ so, the type of server-side encryption that's used.
 
 =head2 SharedAccess => Str
 
-Specifies whether the bucket is shared with another AWS account.
-Possible values are:
+Specifies whether the bucket is shared with another Amazon Web Services
+account. Possible values are:
 
 =over
 
 =item *
 
-EXTERNAL - The bucket is shared with an AWS account that isn't part of
-the same Amazon Macie organization.
+EXTERNAL - The bucket is shared with an Amazon Web Services account
+that isn't part of the same Amazon Macie organization.
 
 =item *
 
-INTERNAL - The bucket is shared with an AWS account that's part of the
-same Amazon Macie organization.
+INTERNAL - The bucket is shared with an Amazon Web Services account
+that's part of the same Amazon Macie organization.
 
 =item *
 
-NOT_SHARED - The bucket isn't shared with other AWS accounts.
+NOT_SHARED - The bucket isn't shared with other Amazon Web Services
+accounts.
 
 =item *
 

@@ -66,7 +66,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account.
+The unique identifier for the Amazon Web Services account.
 
 
 

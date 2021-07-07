@@ -40,20 +40,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie2::Fed
 Provides information about an identity that performed an action on an
 affected resource by using temporary security credentials. The
 credentials were obtained using the GetFederationToken operation of the
-AWS Security Token Service (AWS STS) API.
+Security Token Service (STS) API.
 
 =head1 ATTRIBUTES
 
 
 =head2 AccessKeyId => Str
 
-The AWS access key ID that identifies the credentials.
+The Amazon Web Services access key ID that identifies the credentials.
 
 
 =head2 AccountId => Str
 
-The unique identifier for the AWS account that owns the entity that was
-used to get the credentials.
+The unique identifier for the Amazon Web Services account that owns the
+entity that was used to get the credentials.
 
 
 =head2 Arn => Str
