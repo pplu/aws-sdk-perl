@@ -7,6 +7,9 @@ use Getopt::Long;
 use Data::Printer;
 use Data::Dumper;
 use Cwd;
+
+use Parallel::ForkManager;
+
 use lib 'builder-lib';
 
 use Paws::API::Builder::Paws;
@@ -28,21 +31,65 @@ my $p = Paws::API::Builder::Paws->new(
   (@files > 0) ? (boto_service_files => \@files) : (),
 );
 
-$p->process if ($gen_paws_pm);
-
-exit 0 if (not $gen_docu_links and not $gen_classes);
+my $pm = Parallel::ForkManager->new($ENV{MAX_PROCESSES} || 16);
 
 my @failures;
-foreach my $file_info (values %{ $p->boto_file_information }) {
-  print "Processing $file_info->{ file }\n" if ($gen_docu_links or $gen_classes);
-  eval {
-    my $builder = $p->get_builder_for($file_info->{ service });
-    $builder->write_documentation_file if ($gen_docu_links);
-    $builder->process_api if ($gen_classes);
-  };
-  if ($@) { warn $@; push @failures, "$file_info->{ file } $@\n" }
+$pm->run_on_finish(
+  sub {
+    my ($pid, $exit_code, $ident, $exit_signal, $core_dump, $data) = @_;
+
+    my $fail;
+    if ($exit_code) {
+      $fail = "$ident: process failed";
+    } elsif (defined $data) {
+      $fail = "$ident: " . $data->[0];
+    }
+    push @failures, $fail if ($fail);
+  }
+);
+
+if ($gen_paws_pm) {
+  $pm->start_child(
+    "Paws.pm",
+    sub {
+      print "Processing Paws.pm\n";
+      eval {
+        my $p = Paws::API::Builder::Paws->new(
+          template_path => [ getcwd() . "/templates" ]
+        );
+        $p->process;
+      };
+      my $ret = $@ ? ["$@"] : undef;
+      return $ret;
+    }
+  );
 }
 
-print "Summary of fails:\n" if @failures;
-print @failures;
+if ($gen_docu_links || $gen_classes) {
+  foreach my $file_info (values %{ $p->boto_file_information }) {
+    $pm->start_child(
+      $file_info->{ file },
+      sub {
+        print "Processing $file_info->{ file }\n";
+        eval {
+	  my $builder = $p->get_builder_for($file_info->{ service });
+          $builder->write_documentation_file if ($gen_docu_links);
+          $builder->process_api if ($gen_classes);
+        };
+        my $ret = $@ ? ["$@"] : undef;
+        return $ret;
+      }
+    );
+  }
+}
 
+$pm->wait_all_children;
+
+if (@failures) {
+  print "Summary of fails:\n" if @failures;
+  for my $l (@failures) {
+    print $l;
+    print "\n" unless ($l =~ /\n$/);
+  }
+  exit(1) if ($gen_classes);
+}
