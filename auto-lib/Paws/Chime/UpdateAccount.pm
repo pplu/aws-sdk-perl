@@ -2,6 +2,7 @@
 package Paws::Chime::UpdateAccount;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'accountId', required => 1);
+  has DefaultLicense => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -30,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $chime = Paws->service('Chime');
     my $UpdateAccountResponse = $chime->UpdateAccount(
-      AccountId => 'MyNonEmptyString',
-      Name      => 'MyAccountName',      # OPTIONAL
+      AccountId      => 'MyNonEmptyString',
+      DefaultLicense => 'Basic',              # OPTIONAL
+      Name           => 'MyAccountName',      # OPTIONAL
     );
 
     # Results:
@@ -50,6 +52,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 The Amazon Chime account ID.
 
 
+
+=head2 DefaultLicense => Str
+
+The default license applied when you add users to an Amazon Chime
+account.
+
+Valid values are: C<"Basic">, C<"Plus">, C<"Pro">, C<"ProTrial">
 
 =head2 Name => Str
 

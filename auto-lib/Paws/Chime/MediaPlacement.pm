@@ -3,6 +3,7 @@ package Paws::Chime::MediaPlacement;
   use Moose;
   has AudioFallbackUrl => (is => 'ro', isa => 'Str');
   has AudioHostUrl => (is => 'ro', isa => 'Str');
+  has EventIngestionUrl => (is => 'ro', isa => 'Str');
   has ScreenDataUrl => (is => 'ro', isa => 'Str');
   has ScreenSharingUrl => (is => 'ro', isa => 'Str');
   has ScreenViewingUrl => (is => 'ro', isa => 'Str');
@@ -53,6 +54,11 @@ The audio fallback URL.
 =head2 AudioHostUrl => Str
 
 The audio host URL.
+
+
+=head2 EventIngestionUrl => Str
+
+The event ingestion URL.
 
 
 =head2 ScreenDataUrl => Str

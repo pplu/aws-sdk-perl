@@ -904,6 +904,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateSipMediaApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateSipMediaApplicationCall {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateSipMediaApplicationCall', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSipRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateSipRule', @_);
@@ -978,7 +983,7 @@ package Paws::Chime;
   }
 
 
-  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser AssociateSigninDelegateGroupsWithAccount BatchCreateAttendee BatchCreateChannelMembership BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAppInstance CreateAppInstanceAdmin CreateAppInstanceUser CreateAttendee CreateBot CreateChannel CreateChannelBan CreateChannelMembership CreateChannelModerator CreateMeeting CreateMeetingDialOut CreateMeetingWithAttendees CreatePhoneNumberOrder CreateProxySession CreateRoom CreateRoomMembership CreateSipMediaApplication CreateSipMediaApplicationCall CreateSipRule CreateUser CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAppInstance DeleteAppInstanceAdmin DeleteAppInstanceStreamingConfigurations DeleteAppInstanceUser DeleteAttendee DeleteChannel DeleteChannelBan DeleteChannelMembership DeleteChannelMessage DeleteChannelModerator DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteProxySession DeleteRoom DeleteRoomMembership DeleteSipMediaApplication DeleteSipRule DeleteVoiceConnector DeleteVoiceConnectorEmergencyCallingConfiguration DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorProxy DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DescribeAppInstance DescribeAppInstanceAdmin DescribeAppInstanceUser DescribeChannel DescribeChannelBan DescribeChannelMembership DescribeChannelMembershipForAppInstanceUser DescribeChannelModeratedByAppInstanceUser DescribeChannelModerator DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup DisassociateSigninDelegateGroupsFromAccount GetAccount GetAccountSettings GetAppInstanceRetentionSettings GetAppInstanceStreamingConfigurations GetAttendee GetBot GetChannelMessage GetEventsConfiguration GetGlobalSettings GetMeeting GetMessagingSessionEndpoint GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetProxySession GetRetentionSettings GetRoom GetSipMediaApplication GetSipMediaApplicationLoggingConfiguration GetSipRule GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorEmergencyCallingConfiguration GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorProxy GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAppInstanceAdmins ListAppInstances ListAppInstanceUsers ListAttendees ListAttendeeTags ListBots ListChannelBans ListChannelMemberships ListChannelMembershipsForAppInstanceUser ListChannelMessages ListChannelModerators ListChannels ListChannelsModeratedByAppInstanceUser ListMeetings ListMeetingTags ListPhoneNumberOrders ListPhoneNumbers ListProxySessions ListRoomMemberships ListRooms ListSipMediaApplications ListSipRules ListSupportedPhoneNumberCountries ListTagsForResource ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutAppInstanceRetentionSettings PutAppInstanceStreamingConfigurations PutEventsConfiguration PutRetentionSettings PutSipMediaApplicationLoggingConfiguration PutVoiceConnectorEmergencyCallingConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorProxy PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RedactChannelMessage RedactConversationMessage RedactRoomMessage RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers SendChannelMessage TagAttendee TagMeeting TagResource UntagAttendee UntagMeeting UntagResource UpdateAccount UpdateAccountSettings UpdateAppInstance UpdateAppInstanceUser UpdateBot UpdateChannel UpdateChannelMessage UpdateChannelReadMarker UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateProxySession UpdateRoom UpdateRoomMembership UpdateSipMediaApplication UpdateSipRule UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
+  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser AssociateSigninDelegateGroupsWithAccount BatchCreateAttendee BatchCreateChannelMembership BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAppInstance CreateAppInstanceAdmin CreateAppInstanceUser CreateAttendee CreateBot CreateChannel CreateChannelBan CreateChannelMembership CreateChannelModerator CreateMeeting CreateMeetingDialOut CreateMeetingWithAttendees CreatePhoneNumberOrder CreateProxySession CreateRoom CreateRoomMembership CreateSipMediaApplication CreateSipMediaApplicationCall CreateSipRule CreateUser CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAppInstance DeleteAppInstanceAdmin DeleteAppInstanceStreamingConfigurations DeleteAppInstanceUser DeleteAttendee DeleteChannel DeleteChannelBan DeleteChannelMembership DeleteChannelMessage DeleteChannelModerator DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteProxySession DeleteRoom DeleteRoomMembership DeleteSipMediaApplication DeleteSipRule DeleteVoiceConnector DeleteVoiceConnectorEmergencyCallingConfiguration DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorProxy DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DescribeAppInstance DescribeAppInstanceAdmin DescribeAppInstanceUser DescribeChannel DescribeChannelBan DescribeChannelMembership DescribeChannelMembershipForAppInstanceUser DescribeChannelModeratedByAppInstanceUser DescribeChannelModerator DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup DisassociateSigninDelegateGroupsFromAccount GetAccount GetAccountSettings GetAppInstanceRetentionSettings GetAppInstanceStreamingConfigurations GetAttendee GetBot GetChannelMessage GetEventsConfiguration GetGlobalSettings GetMeeting GetMessagingSessionEndpoint GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetProxySession GetRetentionSettings GetRoom GetSipMediaApplication GetSipMediaApplicationLoggingConfiguration GetSipRule GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorEmergencyCallingConfiguration GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorProxy GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAppInstanceAdmins ListAppInstances ListAppInstanceUsers ListAttendees ListAttendeeTags ListBots ListChannelBans ListChannelMemberships ListChannelMembershipsForAppInstanceUser ListChannelMessages ListChannelModerators ListChannels ListChannelsModeratedByAppInstanceUser ListMeetings ListMeetingTags ListPhoneNumberOrders ListPhoneNumbers ListProxySessions ListRoomMemberships ListRooms ListSipMediaApplications ListSipRules ListSupportedPhoneNumberCountries ListTagsForResource ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutAppInstanceRetentionSettings PutAppInstanceStreamingConfigurations PutEventsConfiguration PutRetentionSettings PutSipMediaApplicationLoggingConfiguration PutVoiceConnectorEmergencyCallingConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorProxy PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RedactChannelMessage RedactConversationMessage RedactRoomMessage RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers SendChannelMessage TagAttendee TagMeeting TagResource UntagAttendee UntagMeeting UntagResource UpdateAccount UpdateAccountSettings UpdateAppInstance UpdateAppInstanceUser UpdateBot UpdateChannel UpdateChannelMessage UpdateChannelReadMarker UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateProxySession UpdateRoom UpdateRoomMembership UpdateSipMediaApplication UpdateSipMediaApplicationCall UpdateSipRule UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
 
 1;
 
@@ -1290,7 +1295,7 @@ C<EnterpriseLWA> accounts can be unsuspended using this action. For
 more information about different account types, see Managing Your
 Amazon Chime Accounts
 (https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
-in the I<Amazon Chime Administration Guide>.
+in the account types, in the I<Amazon Chime Administration Guide>.
 
 Previously suspended users who are unsuspended using this action are
 returned to C<Registered> status. Users who are not previously
@@ -1315,10 +1320,10 @@ attribute at a time for each C<UpdatePhoneNumberRequestItem>. For
 example, you can update the product type or the calling name.
 
 For toll-free numbers, you cannot use the Amazon Chime Business Calling
-product type. For numbers outside the US, you must use the Amazon Chime
-SIP Media Application Dial-In product type.
+product type. For numbers outside the U.S., you must use the Amazon
+Chime SIP Media Application Dial-In product type.
 
-Updates to outbound calling names can take 72 hours to complete.
+Updates to outbound calling names can take up to 72 hours to complete.
 Pending updates to outbound calling names must be complete before you
 can request another update.
 
@@ -1787,7 +1792,7 @@ Returns: a L<Paws::Chime::CreatePhoneNumberOrderResponse> instance
 
 Creates an order for phone numbers to be provisioned. For toll-free
 numbers, you cannot use the Amazon Chime Business Calling product type.
-For numbers outside the US, you must use the Amazon Chime SIP Media
+For numbers outside the U.S., you must use the Amazon Chime SIP Media
 Application Dial-In product type.
 
 
@@ -3112,7 +3117,7 @@ Gets the retention settings for the specified Amazon Chime Enterprise
 account. For more information about retention settings, see Managing
 Chat Retention Policies
 (https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html) in
-the I<Amazon Chime Administration Guide> .
+the I<Amazon Chime Administration Guide>.
 
 
 =head2 GetRoom
@@ -3274,7 +3279,7 @@ Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorGroup>
 Returns: a L<Paws::Chime::GetVoiceConnectorGroupResponse> instance
 
 Retrieves details for the specified Amazon Chime Voice Connector group,
-such as timestamps,name, and associated C<VoiceConnectorItems> .
+such as timestamps,name, and associated C<VoiceConnectorItems>.
 
 
 =head2 GetVoiceConnectorLoggingConfiguration
@@ -3509,7 +3514,7 @@ Returns: a L<Paws::Chime::ListAttendeesResponse> instance
 Lists the attendees for the specified Amazon Chime SDK meeting. For
 more information about the Amazon Chime SDK, see Using the Amazon Chime
 SDK (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
-the I<Amazon Chime Developer Guide> .
+the I<Amazon Chime Developer Guide>.
 
 
 =head2 ListAttendeeTags
@@ -3785,7 +3790,7 @@ Returns: a L<Paws::Chime::ListMeetingsResponse> instance
 Lists up to 100 active Amazon Chime SDK meetings. For more information
 about the Amazon Chime SDK, see Using the Amazon Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
-I<Amazon Chime Developer Guide> .
+I<Amazon Chime Developer Guide>.
 
 
 =head2 ListMeetingTags
@@ -4173,14 +4178,14 @@ account. We recommend using AWS CloudTrail to monitor usage of this API
 for your account. For more information, see Logging Amazon Chime API
 Calls with AWS CloudTrail
 (https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html) in the
-I<Amazon Chime Administration Guide> .
+I<Amazon Chime Administration Guide>.
 
 To turn off existing retention settings, remove the number of days from
 the corresponding B<RetentionDays> field in the B<RetentionSettings>
 object. For more information about retention settings, see Managing
 Chat Retention Policies
 (https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html) in
-the I<Amazon Chime Administration Guide> .
+the I<Amazon Chime Administration Guide>.
 
 
 =head2 PutSipMediaApplicationLoggingConfiguration
@@ -4667,6 +4672,8 @@ resource.
 
 =item AccountId => Str
 
+=item [DefaultLicense => Str]
+
 =item [Name => Str]
 
 
@@ -4677,7 +4684,8 @@ Each argument is described in detail in: L<Paws::Chime::UpdateAccount>
 Returns: a L<Paws::Chime::UpdateAccountResponse> instance
 
 Updates account details for the specified Amazon Chime account.
-Currently, only account name updates are supported for this action.
+Currently, only account name and default license updates are supported
+for this action.
 
 
 =head2 UpdateAccountSettings
@@ -5002,6 +5010,28 @@ Each argument is described in detail in: L<Paws::Chime::UpdateSipMediaApplicatio
 Returns: a L<Paws::Chime::UpdateSipMediaApplicationResponse> instance
 
 Updates the details of the specified SIP media application.
+
+
+=head2 UpdateSipMediaApplicationCall
+
+=over
+
+=item Arguments => L<Paws::Chime::SMAUpdateCallArgumentsMap>
+
+=item SipMediaApplicationId => Str
+
+=item TransactionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateSipMediaApplicationCall>
+
+Returns: a L<Paws::Chime::UpdateSipMediaApplicationCallResponse> instance
+
+Allows you to trigger a Lambda function at any time while a call is
+active, and replace the current actions with new actions returned by
+the invocation.
 
 
 =head2 UpdateSipRule
