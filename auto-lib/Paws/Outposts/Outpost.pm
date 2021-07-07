@@ -9,6 +9,7 @@ package Paws::Outposts::Outpost;
   has OutpostArn => (is => 'ro', isa => 'Str');
   has OutpostId => (is => 'ro', isa => 'Str');
   has OwnerId => (is => 'ro', isa => 'Str');
+  has SiteArn => (is => 'ro', isa => 'Str');
   has SiteId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Outposts::TagMap');
 
@@ -83,6 +84,11 @@ Information about an Outpost.
 
 
 =head2 OwnerId => Str
+
+
+
+
+=head2 SiteArn => Str
 
 
 

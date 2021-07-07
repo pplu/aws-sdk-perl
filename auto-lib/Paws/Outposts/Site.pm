@@ -4,6 +4,7 @@ package Paws::Outposts::Site;
   has AccountId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has SiteArn => (is => 'ro', isa => 'Str');
   has SiteId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Outposts::TagMap');
 
@@ -53,6 +54,11 @@ Information about a site.
 
 
 =head2 Name => Str
+
+
+
+
+=head2 SiteArn => Str
 
 
 
