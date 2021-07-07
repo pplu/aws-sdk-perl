@@ -99,9 +99,9 @@ minutes). The default is 0 seconds (disabled).
 =item *
 
 C<stickiness.app_cookie.cookie_name> - Indicates the name of the
-application-based cookie. Names that start with the following names are
-not allowed: C<AWSALB>, C<AWSALBAPP>, and C<AWSALBTG>. They're reserved
-for use by the load balancer.
+application-based cookie. Names that start with the following prefixes
+are not allowed: C<AWSALB>, C<AWSALBAPP>, and C<AWSALBTG>; they're
+reserved for use by the load balancer.
 
 =item *
 

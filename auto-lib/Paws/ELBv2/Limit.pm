@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Limi
 
 =head1 DESCRIPTION
 
-Information about an Elastic Load Balancing resource limit for your AWS
-account.
+Information about an Elastic Load Balancing resource limit for your
+Amazon Web Services account.
 
 =head1 ATTRIBUTES
 

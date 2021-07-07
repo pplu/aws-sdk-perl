@@ -92,8 +92,8 @@ targets.
 [HTTP1 or HTTP2 protocol version] The ping path. The default is /.
 
 [GRPC protocol version] The path of a custom health check method with
-the format /package.service/method. The default is
-/AWS.ALB/healthcheck.
+the format /package.service/method. The default is /Amazon Web
+Services.ALB/healthcheck.
 
 
 

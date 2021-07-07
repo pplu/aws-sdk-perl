@@ -114,8 +114,8 @@ characters and hyphens.
 
 C<waf.fail_open.enabled> - Indicates whether to allow a WAF-enabled
 load balancer to route requests to targets if it is unable to forward
-the request to AWS WAF. The value is C<true> or C<false>. The default
-is C<false>.
+the request to Amazon Web Services WAF. The value is C<true> or
+C<false>. The default is C<false>.
 
 =back
 
