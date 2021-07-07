@@ -669,8 +669,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MILLISECONDS',    # values: MILLISECONDS, SECONDS; OPTIONAL
               },    # OPTIONAL
               H264Settings => {
-                AdaptiveQuantization => 'HIGH'
-                ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
+                AdaptiveQuantization => 'AUTO'
+                ,  # values: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
                 AfdSignaling  => 'AUTO',   # values: AUTO, FIXED, NONE; OPTIONAL
                 Bitrate       => 1,        # min: 1000; OPTIONAL
                 BufFillPct    => 1,        # max: 100; OPTIONAL
@@ -745,8 +745,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               H265Settings => {
                 FramerateDenominator => 1,       # min: 1, max: 3003
                 FramerateNumerator   => 1,       # min: 1; OPTIONAL
-                AdaptiveQuantization => 'HIGH'
-                ,    # values: HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
+                AdaptiveQuantization => 'AUTO'
+                ,  # values: AUTO, HIGH, HIGHER, LOW, MAX, MEDIUM, OFF; OPTIONAL
                 AfdSignaling => 'AUTO',    # values: AUTO, FIXED, NONE; OPTIONAL
                 AlternativeTransferFunction =>
                   'INSERT',                # values: INSERT, OMIT; OPTIONAL
@@ -1100,7 +1100,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },    # OPTIONAL
                   DvbSubSourceSettings => {
-                    Pid => 1,    # min: 1; OPTIONAL
+                    OcrLanguage =>
+                      'DEU',    # values: DEU, ENG, FRA, NLD, POR, SPA; OPTIONAL
+                    Pid => 1,   # min: 1; OPTIONAL
                   },    # OPTIONAL
                   EmbeddedSourceSettings => {
                     Convert608To708 =>
@@ -1115,7 +1117,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Source608ChannelNumber => 1,    # min: 1, max: 4
                   },    # OPTIONAL
                   Scte27SourceSettings => {
-                    Pid => 1,    # min: 1; OPTIONAL
+                    OcrLanguage =>
+                      'DEU',    # values: DEU, ENG, FRA, NLD, POR, SPA; OPTIONAL
+                    Pid => 1,   # min: 1; OPTIONAL
                   },    # OPTIONAL
                   TeletextSourceSettings => {
                     OutputRectangle => {
@@ -1141,6 +1145,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 BufferSegments => 1,    # OPTIONAL
                 Retries        => 1,    # OPTIONAL
                 RetryInterval  => 1,    # OPTIONAL
+                Scte35Source   =>
+                  'MANIFEST',           # values: MANIFEST, SEGMENTS; OPTIONAL
               },    # OPTIONAL
               ServerValidation => 'CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME'
               , # values: CHECK_CRYPTOGRAPHY_AND_VALIDATE_NAME, CHECK_CRYPTOGRAPHY_ONLY; OPTIONAL
