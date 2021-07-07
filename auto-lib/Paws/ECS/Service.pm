@@ -143,9 +143,8 @@ task has first started.
 
 =head2 LaunchType => Str
 
-The launch type on which your service is running. If no value is
-specified, it will default to C<EC2>. Valid values include C<EC2> and
-C<FARGATE>. For more information, see Amazon ECS Launch Types
+The infrastructure on which your service is running. For more
+information, see Amazon ECS launch types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 

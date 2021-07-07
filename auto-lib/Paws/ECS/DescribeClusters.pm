@@ -56,53 +56,16 @@ assumed.
 
 =head2 Include => ArrayRef[Str|Undef]
 
-Whether to include additional information about your clusters in the
-response. If this field is omitted, the attachments, statistics, and
-tags are not included.
+Whether to include additional information about the clusters in the
+response. If this field is omitted, this information isn't included.
 
 If C<ATTACHMENTS> is specified, the attachments for the container
 instances or tasks within the cluster are included.
 
 If C<SETTINGS> is specified, the settings for the cluster are included.
 
-If C<STATISTICS> is specified, the following additional information,
-separated by launch type, is included:
-
-=over
-
-=item *
-
-runningEC2TasksCount
-
-=item *
-
-runningFargateTasksCount
-
-=item *
-
-pendingEC2TasksCount
-
-=item *
-
-pendingFargateTasksCount
-
-=item *
-
-activeEC2ServiceCount
-
-=item *
-
-activeFargateServiceCount
-
-=item *
-
-drainingEC2ServiceCount
-
-=item *
-
-drainingFargateServiceCount
-
-=back
+If C<STATISTICS> is specified, the task and service count is included,
+separated by launch type.
 
 If C<TAGS> is specified, the metadata tags associated with the cluster
 are included.

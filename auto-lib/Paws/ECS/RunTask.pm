@@ -114,23 +114,31 @@ family:my-family-name).
 
 =head2 LaunchType => Str
 
-The launch type on which to run your task. The accepted values are
-C<FARGATE> and C<EC2>. For more information, see Amazon ECS Launch
-Types
+The infrastructure on which to run your standalone task. For more
+information, see Amazon ECS launch types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-When a value of C<FARGATE> is specified, your tasks are launched on AWS
-Fargate On-Demand infrastructure. To use Fargate Spot, you must use a
-capacity provider strategy with the C<FARGATE_SPOT> capacity provider.
+The C<FARGATE> launch type runs your tasks on AWS Fargate On-Demand
+infrastructure.
 
-When a value of C<EC2> is specified, your tasks are launched on Amazon
-EC2 instances registered to your cluster.
+Fargate Spot infrastructure is available for use but a capacity
+provider strategy must be used. For more information, see AWS Fargate
+capacity providers
+(https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html)
+in the I<Amazon ECS User Guide for AWS Fargate>.
 
-If a C<launchType> is specified, the C<capacityProviderStrategy>
-parameter must be omitted.
+The C<EC2> launch type runs your tasks on Amazon EC2 instances
+registered to your cluster.
 
-Valid values are: C<"EC2">, C<"FARGATE">
+The C<EXTERNAL> launch type runs your tasks on your on-premise server
+or virtual machine (VM) capacity registered to your cluster.
+
+A task can use either a launch type or a capacity provider strategy. If
+a C<launchType> is specified, the C<capacityProviderStrategy> parameter
+must be omitted.
+
+Valid values are: C<"EC2">, C<"FARGATE">, C<"EXTERNAL">
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 

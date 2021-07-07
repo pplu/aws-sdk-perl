@@ -1105,9 +1105,8 @@ Each argument is described in detail in: L<Paws::ECS::DescribeContainerInstances
 
 Returns: a L<Paws::ECS::DescribeContainerInstancesResponse> instance
 
-Describes Amazon Elastic Container Service container instances. Returns
-metadata about registered and remaining resources on each container
-instance requested.
+Describes one or more container instances. Returns metadata about each
+container instance requested.
 
 
 =head2 DescribeServices
@@ -1372,7 +1371,8 @@ Each argument is described in detail in: L<Paws::ECS::ListServices>
 
 Returns: a L<Paws::ECS::ListServicesResponse> instance
 
-Lists the services that are running in a specified cluster.
+Returns a list of services. You can filter the results by cluster,
+launch type, and scheduling strategy.
 
 
 =head2 ListTagsForResource
@@ -1475,10 +1475,9 @@ Each argument is described in detail in: L<Paws::ECS::ListTasks>
 
 Returns: a L<Paws::ECS::ListTasksResponse> instance
 
-Returns a list of tasks for a specified cluster. You can filter the
-results by family name, by a particular container instance, or by the
-desired status of the task with the C<family>, C<containerInstance>,
-and C<desiredStatus> parameters.
+Returns a list of tasks. You can filter the results by cluster, task
+definition family, container instance, launch type, what IAM principal
+started the task, or by the desired status of the task.
 
 Recently stopped tasks might appear in the returned results. Currently,
 stopped tasks appear in the returned results for at least one hour.

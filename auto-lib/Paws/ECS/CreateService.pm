@@ -182,23 +182,31 @@ stopping them before they have time to come up.
 
 =head2 LaunchType => Str
 
-The launch type on which to run your service. The accepted values are
-C<FARGATE> and C<EC2>. For more information, see Amazon ECS launch
-types
+The infrastructure on which to run your service. For more information,
+see Amazon ECS launch types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-When a value of C<FARGATE> is specified, your tasks are launched on AWS
-Fargate On-Demand infrastructure. To use Fargate Spot, you must use a
-capacity provider strategy with the C<FARGATE_SPOT> capacity provider.
+The C<FARGATE> launch type runs your tasks on AWS Fargate On-Demand
+infrastructure.
 
-When a value of C<EC2> is specified, your tasks are launched on Amazon
-EC2 instances registered to your cluster.
+Fargate Spot infrastructure is available for use but a capacity
+provider strategy must be used. For more information, see AWS Fargate
+capacity providers
+(https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-capacity-providers.html)
+in the I<Amazon ECS User Guide for AWS Fargate>.
 
+The C<EC2> launch type runs your tasks on Amazon EC2 instances
+registered to your cluster.
+
+The C<EXTERNAL> launch type runs your tasks on your on-premise server
+or virtual machine (VM) capacity registered to your cluster.
+
+A service can use either a launch type or a capacity provider strategy.
 If a C<launchType> is specified, the C<capacityProviderStrategy>
 parameter must be omitted.
 
-Valid values are: C<"EC2">, C<"FARGATE">
+Valid values are: C<"EC2">, C<"FARGATE">, C<"EXTERNAL">
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 

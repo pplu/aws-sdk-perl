@@ -169,7 +169,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 If a C<launchType> is specified, the C<capacityProviderStrategy>
 parameter must be omitted.
 
-Valid values are: C<"EC2">, C<"FARGATE">
+Valid values are: C<"EC2">, C<"FARGATE">, C<"EXTERNAL">
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
