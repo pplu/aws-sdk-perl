@@ -37,7 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MWAA::Loggi
 
 =head1 DESCRIPTION
 
-The Logging Configuration of your Amazon MWAA environment.
+Defines the Apache Airflow logs to send to CloudWatch Logs:
+C<DagProcessingLogs>, C<SchedulerLogs>, C<TaskLogs>, C<WebserverLogs>,
+C<WorkerLogs>.
 
 =head1 ATTRIBUTES
 

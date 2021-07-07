@@ -17,7 +17,7 @@ Paws::MWAA::GetEnvironmentOutput
 
 =head2 Environment => L<Paws::MWAA::Environment>
 
-A JSON blob with environment details.
+An object containing all available details about the environment.
 
 
 =head2 _request_id => Str

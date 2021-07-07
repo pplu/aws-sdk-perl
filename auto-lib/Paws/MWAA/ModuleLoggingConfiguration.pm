@@ -35,27 +35,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MWAA::Modul
 
 =head1 DESCRIPTION
 
-A JSON blob that provides configuration to use for logging with respect
-to the various Apache Airflow services: DagProcessingLogs,
-SchedulerLogs, TaskLogs, WebserverLogs, and WorkerLogs.
+Defines the type of logs to send for the Apache Airflow log type (e.g.
+C<DagProcessingLogs>). Valid values: C<CloudWatchLogGroupArn>,
+C<Enabled>, C<LogLevel>.
 
 =head1 ATTRIBUTES
 
 
 =head2 CloudWatchLogGroupArn => Str
 
-Provides the ARN for the CloudWatch group where the logs will be
-published.
+The Amazon Resource Name (ARN) for the CloudWatch Logs group where the
+Apache Airflow log type (e.g. C<DagProcessingLogs>) is published. For
+example,
+C<arn:aws:logs:us-east-1:123456789012:log-group:airflow-MyMWAAEnvironment-MwaaEnvironment-DAGProcessing:*>.
 
 
 =head2 Enabled => Bool
 
-Defines that the logging module is enabled.
+Indicates whether to enable the Apache Airflow log type (e.g.
+C<DagProcessingLogs>) in CloudWatch Logs.
 
 
 =head2 LogLevel => Str
 
-Defines the log level, which can be CRITICAL, ERROR, WARNING, or INFO.
+Defines the Apache Airflow logs to send for the log type (e.g.
+C<DagProcessingLogs>) to CloudWatch Logs. Valid values: C<CRITICAL>,
+C<ERROR>, C<WARNING>, C<INFO>.
 
 
 

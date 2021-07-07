@@ -17,7 +17,8 @@ Paws::MWAA::CreateEnvironmentOutput
 
 =head2 Arn => Str
 
-The resulting Amazon MWAA envirnonment ARN.
+The Amazon Resource Name (ARN) returned in the response for the
+environment.
 
 
 =head2 _request_id => Str

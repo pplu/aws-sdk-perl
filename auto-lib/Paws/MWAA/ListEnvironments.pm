@@ -48,13 +48,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/air
 
 =head2 MaxResults => Int
 
-The maximum results when listing MWAA environments.
+The maximum number of results to retrieve per page. For example, C<5>
+environments per page.
 
 
 
 =head2 NextToken => Str
 
-The Next Token when listing MWAA environments.
+Retrieves the next page of the results.
 
 
 

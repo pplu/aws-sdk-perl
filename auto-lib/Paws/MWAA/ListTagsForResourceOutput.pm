@@ -17,7 +17,9 @@ Paws::MWAA::ListTagsForResourceOutput
 
 =head2 Tags => L<Paws::MWAA::TagMap>
 
-The tags of the MWAA environments.
+The key-value tag pairs associated to your environment. To learn more,
+see Tagging AWS resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 =head2 _request_id => Str

@@ -187,6 +187,8 @@ Create a CLI token to use Airflow CLI.
 
 =item [RequirementsS3Path => Str]
 
+=item [Schedulers => Int]
+
 =item [Tags => L<Paws::MWAA::TagMap>]
 
 =item [WebserverAccessMode => Str]
@@ -200,7 +202,8 @@ Each argument is described in detail in: L<Paws::MWAA::CreateEnvironment>
 
 Returns: a L<Paws::MWAA::CreateEnvironmentOutput> instance
 
-JSON blob that describes the environment to create.
+Creates an Amazon Managed Workflows for Apache Airflow (MWAA)
+environment.
 
 
 =head2 CreateWebLoginToken
@@ -233,7 +236,8 @@ Each argument is described in detail in: L<Paws::MWAA::DeleteEnvironment>
 
 Returns: a L<Paws::MWAA::DeleteEnvironmentOutput> instance
 
-Delete an existing environment.
+Deletes an Amazon Managed Workflows for Apache Airflow (MWAA)
+environment.
 
 
 =head2 GetEnvironment
@@ -249,7 +253,8 @@ Each argument is described in detail in: L<Paws::MWAA::GetEnvironment>
 
 Returns: a L<Paws::MWAA::GetEnvironmentOutput> instance
 
-Get details of an existing environment.
+Retrieves the details of an Amazon Managed Workflows for Apache Airflow
+(MWAA) environment.
 
 
 =head2 ListEnvironments
@@ -267,7 +272,8 @@ Each argument is described in detail in: L<Paws::MWAA::ListEnvironments>
 
 Returns: a L<Paws::MWAA::ListEnvironmentsOutput> instance
 
-List Amazon MWAA Environments.
+Lists the Amazon Managed Workflows for Apache Airflow (MWAA)
+environments.
 
 
 =head2 ListTagsForResource
@@ -283,7 +289,9 @@ Each argument is described in detail in: L<Paws::MWAA::ListTagsForResource>
 
 Returns: a L<Paws::MWAA::ListTagsForResourceOutput> instance
 
-List the tags for MWAA environments.
+Lists the key-value tag pairs associated to the Amazon Managed
+Workflows for Apache Airflow (MWAA) environment. For example,
+C<"Environment": "Staging">.
 
 
 =head2 PublishMetrics
@@ -320,7 +328,8 @@ Each argument is described in detail in: L<Paws::MWAA::TagResource>
 
 Returns: a L<Paws::MWAA::TagResourceOutput> instance
 
-Add tag to the MWAA environments.
+Associates key-value tag pairs to your Amazon Managed Workflows for
+Apache Airflow (MWAA) environment.
 
 
 =head2 UntagResource
@@ -338,7 +347,9 @@ Each argument is described in detail in: L<Paws::MWAA::UntagResource>
 
 Returns: a L<Paws::MWAA::UntagResourceOutput> instance
 
-Remove a tag from the MWAA environments.
+Removes key-value tag pairs associated to your Amazon Managed Workflows
+for Apache Airflow (MWAA) environment. For example, C<"Environment":
+"Staging">.
 
 
 =head2 UpdateEnvironment
@@ -373,6 +384,8 @@ Remove a tag from the MWAA environments.
 
 =item [RequirementsS3Path => Str]
 
+=item [Schedulers => Int]
+
 =item [SourceBucketArn => Str]
 
 =item [WebserverAccessMode => Str]
@@ -386,7 +399,8 @@ Each argument is described in detail in: L<Paws::MWAA::UpdateEnvironment>
 
 Returns: a L<Paws::MWAA::UpdateEnvironmentOutput> instance
 
-Update an MWAA environment.
+Updates an Amazon Managed Workflows for Apache Airflow (MWAA)
+environment.
 
 
 

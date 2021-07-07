@@ -45,13 +45,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/air
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The tag resource ARN of the MWAA environments.
+The Amazon Resource Name (ARN) of the Amazon MWAA environment. For
+example,
+C<arn:aws:airflow:us-east-1:123456789012:environment/MyMWAAEnvironment>.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The tag resource key of the MWAA environments.
+The key-value tag pair you want to remove. For example,
+C<"Environment": "Staging">.
 
 
 

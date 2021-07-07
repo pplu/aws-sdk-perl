@@ -35,24 +35,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MWAA::LastU
 
 =head1 DESCRIPTION
 
-Last update information for the environment.
+The status of the last update on the environment, and any errors that
+were encountered.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreatedAt => Str
 
-Time that last update occurred.
+The day and time of the last update on the environment.
 
 
 =head2 Error => L<Paws::MWAA::UpdateError>
 
-Error string of last update, if applicable.
+The error that was encountered during the last update of the
+environment.
 
 
 =head2 Status => Str
 
-Status of last update of SUCCESS, FAILED, CREATING, DELETING.
+The status of the last update on the environment. Valid values:
+C<SUCCESS>, C<PENDING>, C<FAILED>.
 
 
 

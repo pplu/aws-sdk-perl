@@ -19,6 +19,7 @@ package Paws::MWAA::Environment;
   has PluginsS3Path => (is => 'ro', isa => 'Str');
   has RequirementsS3ObjectVersion => (is => 'ro', isa => 'Str');
   has RequirementsS3Path => (is => 'ro', isa => 'Str');
+  has Schedulers => (is => 'ro', isa => 'Int');
   has ServiceRoleArn => (is => 'ro', isa => 'Str');
   has SourceBucketArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -57,49 +58,62 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MWAA::Envir
 
 =head1 DESCRIPTION
 
-An Amazon MWAA environment.
+The Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 
 =head1 ATTRIBUTES
 
 
 =head2 AirflowConfigurationOptions => L<Paws::MWAA::AirflowConfigurationOptions>
 
-The Airflow Configuration Options of the Amazon MWAA Environment.
+A list of key-value pairs containing the Apache Airflow configuration
+options attached to your environment. To learn more, see Apache Airflow
+configuration options
+(https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
 
 
 =head2 AirflowVersion => Str
 
-The AirflowV ersion of the Amazon MWAA Environment.
+The Apache Airflow version on your environment. For example,
+C<v1.10.12>.
 
 
 =head2 Arn => Str
 
-The ARN of the Amazon MWAA Environment.
+The Amazon Resource Name (ARN) of the Amazon MWAA environment.
 
 
 =head2 CreatedAt => Str
 
-The Created At date of the Amazon MWAA Environment.
+The day and time the environment was created.
 
 
 =head2 DagS3Path => Str
 
-The Dags S3 Path of the Amazon MWAA Environment.
+The relative path to the DAGs folder on your Amazon S3 bucket. For
+example, C<dags>. To learn more, see Adding or updating DAGs
+(https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
 
 
 =head2 EnvironmentClass => Str
 
-The Environment Class (size) of the Amazon MWAA Environment.
+The environment class type. Valid values: C<mw1.small>, C<mw1.medium>,
+C<mw1.large>. To learn more, see Amazon MWAA environment class
+(https://docs.aws.amazon.com/mwaa/latest/userguide/environment-class.html).
 
 
 =head2 ExecutionRoleArn => Str
 
-The Execution Role ARN of the Amazon MWAA Environment.
+The Amazon Resource Name (ARN) of the execution role in IAM that allows
+MWAA to access AWS resources in your environment. For example,
+C<arn:aws:iam::123456789:role/my-execution-role>. To learn more, see
+Amazon MWAA Execution role
+(https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-create-role.html).
 
 
 =head2 KmsKey => Str
 
-The Kms Key of the Amazon MWAA Environment.
+The Key Management Service (KMS) encryption key used to encrypt the
+data in your environment.
 
 
 =head2 LastUpdate => L<Paws::MWAA::LastUpdate>
@@ -109,22 +123,27 @@ The Kms Key of the Amazon MWAA Environment.
 
 =head2 LoggingConfiguration => L<Paws::MWAA::LoggingConfiguration>
 
-The Logging Configuration of the Amazon MWAA Environment.
+The Apache Airflow logs being sent to CloudWatch Logs:
+C<DagProcessingLogs>, C<SchedulerLogs>, C<TaskLogs>, C<WebserverLogs>,
+C<WorkerLogs>.
 
 
 =head2 MaxWorkers => Int
 
-The maximum number of workers to run in your Amazon MWAA Environment.
+The maximum number of workers that run in your environment. For
+example, C<20>.
 
 
 =head2 MinWorkers => Int
 
-The minimum number of workers to run in your Amazon MWAA Environment.
+The minimum number of workers that run in your environment. For
+example, C<2>.
 
 
 =head2 Name => Str
 
-The name of the Amazon MWAA Environment.
+The name of the Amazon MWAA environment. For example,
+C<MyMWAAEnvironment>.
 
 
 =head2 NetworkConfiguration => L<Paws::MWAA::NetworkConfiguration>
@@ -134,59 +153,136 @@ The name of the Amazon MWAA Environment.
 
 =head2 PluginsS3ObjectVersion => Str
 
-The Plugins.zip S3 Object Version of the Amazon MWAA Environment.
+The version of the plugins.zip file on your Amazon S3 bucket. To learn
+more, see Installing custom plugins
+(https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
 
 
 =head2 PluginsS3Path => Str
 
-The Plugins.zip S3 Path of the Amazon MWAA Environment.
+The relative path to the C<plugins.zip> file on your Amazon S3 bucket.
+For example, C<plugins.zip>. To learn more, see Installing custom
+plugins
+(https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-import-plugins.html).
 
 
 =head2 RequirementsS3ObjectVersion => Str
 
-The Requirements.txt file S3 Object Version of the Amazon MWAA
-Environment.
+The version of the requirements.txt file on your Amazon S3 bucket. To
+learn more, see Installing Python dependencies
+(https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
 
 
 =head2 RequirementsS3Path => Str
 
-The Requirement.txt S3 Path of the Amazon MWAA Environment.
+The relative path to the C<requirements.txt> file on your Amazon S3
+bucket. For example, C<requirements.txt>. To learn more, see Installing
+Python dependencies
+(https://docs.aws.amazon.com/mwaa/latest/userguide/working-dags-dependencies.html).
+
+
+=head2 Schedulers => Int
+
+The number of Apache Airflow schedulers that run in your Amazon MWAA
+environment.
 
 
 =head2 ServiceRoleArn => Str
 
-The Service Role ARN of the Amazon MWAA Environment.
+The Amazon Resource Name (ARN) for the service-linked role of the
+environment. To learn more, see Amazon MWAA Service-linked role
+(https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-slr.html).
 
 
 =head2 SourceBucketArn => Str
 
-The Source S3 Bucket ARN of the Amazon MWAA Environment.
+The Amazon Resource Name (ARN) of the Amazon S3 bucket where your DAG
+code and supporting files are stored. For example,
+C<arn:aws:s3:::my-airflow-bucket-unique-name>. To learn more, see
+Create an Amazon S3 bucket for Amazon MWAA
+(https://docs.aws.amazon.com/mwaa/latest/userguide/mwaa-s3-bucket.html).
 
 
 =head2 Status => Str
 
-The status of the Amazon MWAA Environment.
+The status of the Amazon MWAA environment. Valid values:
+
+=over
+
+=item *
+
+C<CREATING> - Indicates the request to create the environment is in
+progress.
+
+=item *
+
+C<CREATE_FAILED> - Indicates the request to create the environment
+failed, and the environment could not be created.
+
+=item *
+
+C<AVAILABLE> - Indicates the request was successful and the environment
+is ready to use.
+
+=item *
+
+C<UPDATING> - Indicates the request to update the environment is in
+progress.
+
+=item *
+
+C<DELETING> - Indicates the request to delete the environment is in
+progress.
+
+=item *
+
+C<DELETED> - Indicates the request to delete the environment is
+complete, and the environment has been deleted.
+
+=item *
+
+C<UNAVAILABLE> - Indicates the request failed, but the environment was
+unable to rollback and is not in a stable state.
+
+=item *
+
+C<UPDATE_FAILED> - Indicates the request to update the environment
+failed, and the environment has rolled back successfully and is ready
+to use.
+
+=back
+
+We recommend reviewing our troubleshooting guide for a list of common
+errors and their solutions. To learn more, see Amazon MWAA
+troubleshooting
+(https://docs.aws.amazon.com/mwaa/latest/userguide/troubleshooting.html).
 
 
 =head2 Tags => L<Paws::MWAA::TagMap>
 
-The Tags of the Amazon MWAA Environment.
+The key-value tag pairs associated to your environment. For example,
+C<"Environment": "Staging">. To learn more, see Tagging AWS resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 =head2 WebserverAccessMode => Str
 
-The Webserver Access Mode of the Amazon MWAA Environment (public or
-private only).
+The Apache Airflow I<Web server> access mode. To learn more, see Apache
+Airflow access modes
+(https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-networking.html).
 
 
 =head2 WebserverUrl => Str
 
-The Webserver URL of the Amazon MWAA Environment.
+The Apache Airflow I<Web server> host name for the Amazon MWAA
+environment. To learn more, see Accessing the Apache Airflow UI
+(https://docs.aws.amazon.com/mwaa/latest/userguide/access-airflow-ui.html).
 
 
 =head2 WeeklyMaintenanceWindowStart => Str
 
-The Weekly Maintenance Window Start of the Amazon MWAA Environment.
+The day and time of the week that weekly maintenance updates are
+scheduled. For example: C<TUE:03:30>.
 
 
 

@@ -34,22 +34,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MWAA::Netwo
 
 =head1 DESCRIPTION
 
-Provide the security group and subnet IDs for the workers and
-scheduler.
+The VPC networking components used to secure and enable network traffic
+between the AWS resources for your environment. To learn more, see
+About networking on Amazon MWAA
+(https://docs.aws.amazon.com/mwaa/latest/userguide/networking-about.html).
 
 =head1 ATTRIBUTES
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
-A JSON list of 1 or more security groups IDs by name, in the same VPC
-as the subnets.
+A list of 1 or more security group IDs. Accepts up to 5 security group
+IDs. A security group must be attached to the same VPC as the subnets.
+To learn more, see Security in your VPC on Amazon MWAA
+(https://docs.aws.amazon.com/mwaa/latest/userguide/vpc-security.html).
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-Provide a JSON list of 2 subnet IDs by name. These must be private
-subnets, in the same VPC, in two different availability zones.
+A list of 2 subnet IDs. B<Required> to create an environment. Must be
+private subnets in two different availability zones. A subnet must be
+attached to the same VPC as the security group.
 
 
 
