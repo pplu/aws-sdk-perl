@@ -4,6 +4,7 @@ package Paws::RAM::GetResourceShares;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
+  has PermissionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'permissionArn');
   has ResourceOwner => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceOwner', required => 1);
   has ResourceShareArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'resourceShareArns');
   has ResourceShareStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceShareStatus');
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults          => 1,                      # OPTIONAL
       Name                => 'MyString',             # OPTIONAL
       NextToken           => 'MyString',             # OPTIONAL
+      PermissionArn       => 'MyString',             # OPTIONAL
       ResourceShareArns   => [ 'MyString', ... ],    # OPTIONAL
       ResourceShareStatus => 'PENDING',              # OPTIONAL
       TagFilters          => [
@@ -82,6 +84,13 @@ The token for the next page of results.
 
 
 
+=head2 PermissionArn => Str
+
+The Amazon Resource Name (ARN) of the AWS RAM permission that is
+associated with the resource share.
+
+
+
 =head2 B<REQUIRED> ResourceOwner => Str
 
 The type of owner.
@@ -90,7 +99,7 @@ Valid values are: C<"SELF">, C<"OTHER-ACCOUNTS">
 
 =head2 ResourceShareArns => ArrayRef[Str|Undef]
 
-The Amazon Resource Names (ARN) of the resource shares.
+The ARNs of the resource shares.
 
 
 

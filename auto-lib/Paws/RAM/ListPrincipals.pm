@@ -111,8 +111,7 @@ C<network-firewall:FirewallPolicy> |
 C<network-firewall:StatefulRuleGroup> |
 C<network-firewall:StatelessRuleGroup> | C<outposts:Outpost> |
 C<resource-groups:Group> | C<rds:Cluster> |
-C<route53resolver:FirewallRuleGroup>
-|C<route53resolver:ResolverQueryLogConfig> |
+C<route53resolver:ResolverQueryLogConfig> |
 C<route53resolver:ResolverRule>
 
 

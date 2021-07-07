@@ -4,6 +4,7 @@ package Paws::RAM::ResourceSharePermissionDetail;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has DefaultVersion => (is => 'ro', isa => 'Bool', request_name => 'defaultVersion', traits => ['NameInRequest']);
+  has IsResourceTypeDefault => (is => 'ro', isa => 'Bool', request_name => 'isResourceTypeDefault', traits => ['NameInRequest']);
   has LastUpdatedTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Permission => (is => 'ro', isa => 'Str', request_name => 'permission', traits => ['NameInRequest']);
@@ -57,8 +58,14 @@ The date and time when the permission was created.
 
 =head2 DefaultVersion => Bool
 
-The identifier for the version of the permission that is set as the
-default version.
+Specifies whether the version of the permission is set to the default
+version for this permission.
+
+
+=head2 IsResourceTypeDefault => Bool
+
+Specifies whether the version of the permission is set to the default
+version for this resource type.
 
 
 =head2 LastUpdatedTime => Str

@@ -369,6 +369,8 @@ and resources.
 
 =item [ClientToken => Str]
 
+=item [PermissionVersion => Int]
+
 =item [Replace => Bool]
 
 
@@ -574,7 +576,7 @@ Each argument is described in detail in: L<Paws::RAM::GetResourceShareInvitation
 
 Returns: a L<Paws::RAM::GetResourceShareInvitationsResponse> instance
 
-Gets the invitations for resource sharing that you've received.
+Gets the invitations that you have received for resource shares.
 
 
 =head2 GetResourceShares
@@ -588,6 +590,8 @@ Gets the invitations for resource sharing that you've received.
 =item [Name => Str]
 
 =item [NextToken => Str]
+
+=item [PermissionArn => Str]
 
 =item [ResourceShareArns => ArrayRef[Str|Undef]]
 
@@ -897,9 +901,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RAM::GetResourceShareInvitationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, PermissionArn => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
 
-=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, PermissionArn => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

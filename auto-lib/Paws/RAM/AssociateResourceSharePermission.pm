@@ -3,6 +3,7 @@ package Paws::RAM::AssociateResourceSharePermission;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has PermissionArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'permissionArn', required => 1);
+  has PermissionVersion => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'permissionVersion');
   has Replace => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'replace');
   has ResourceShareArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceShareArn', required => 1);
 
@@ -33,10 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ram = Paws->service('RAM');
     my $AssociateResourceSharePermissionResponse =
       $ram->AssociateResourceSharePermission(
-      PermissionArn    => 'MyString',
-      ResourceShareArn => 'MyString',
-      ClientToken      => 'MyString',    # OPTIONAL
-      Replace          => 1,             # OPTIONAL
+      PermissionArn     => 'MyString',
+      ResourceShareArn  => 'MyString',
+      ClientToken       => 'MyString',    # OPTIONAL
+      PermissionVersion => 1,             # OPTIONAL
+      Replace           => 1,             # OPTIONAL
       );
 
     # Results:
@@ -60,7 +62,15 @@ idempotency of the request.
 
 =head2 B<REQUIRED> PermissionArn => Str
 
-The ARN of the AWS RAM permission to associate with the resource share.
+The Amazon Resource Name (ARN) of the AWS RAM permissions to associate
+with the resource share.
+
+
+
+=head2 PermissionVersion => Int
+
+The version of the AWS RAM permissions to associate with the resource
+share.
 
 
 
