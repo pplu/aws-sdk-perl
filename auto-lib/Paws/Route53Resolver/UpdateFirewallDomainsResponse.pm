@@ -19,7 +19,7 @@ Paws::Route53Resolver::UpdateFirewallDomainsResponse
 
 =head2 Id => Str
 
-The Id of the firewall domain list that DNS Firewall just updated.
+The ID of the firewall domain list that DNS Firewall just updated.
 
 
 =head2 Name => Str

@@ -80,7 +80,7 @@ format and Coordinated Universal Time (UTC).
 
 A unique string that you specified when you created the Resolver rule.
 C<CreatorRequestId> identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.
+to be retried without the risk of running the operation twice.
 
 
 =head2 DomainName => Str
@@ -140,7 +140,7 @@ C<RECURSIVE> for C<RuleType>.
 
 =head2 ShareStatus => Str
 
-Whether the rules is shared and, if so, whether the current account is
+Whether the rule is shared and, if so, whether the current account is
 sharing the rule with another account, or another account is sharing
 the rule with the current account.
 

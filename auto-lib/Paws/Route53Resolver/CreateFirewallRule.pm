@@ -73,7 +73,7 @@ C<ALLOW> - Permit the request to go through.
 
 =item *
 
-C<ALERT> - Permit the request and send metrics and log to Cloud Watch.
+C<ALERT> - Permit the request and send metrics and logs to Cloud Watch.
 
 =item *
 
@@ -121,7 +121,7 @@ C<OVERRIDE>.
 =head2 BlockResponse => Str
 
 The way that you want DNS Firewall to block the request, used with the
-rule aciton setting C<BLOCK>.
+rule action setting C<BLOCK>.
 
 =over
 
@@ -150,9 +150,9 @@ Valid values are: C<"NODATA">, C<"NXDOMAIN">, C<"OVERRIDE">
 =head2 B<REQUIRED> CreatorRequestId => Str
 
 A unique string that identifies the request and that allows you to
-retry failed requests without the risk of executing the operation
-twice. C<CreatorRequestId> can be any unique string, for example, a
-date/time stamp.
+retry failed requests without the risk of running the operation twice.
+C<CreatorRequestId> can be any unique string, for example, a date/time
+stamp.
 
 
 

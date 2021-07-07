@@ -45,7 +45,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-An association between a firewall rul group and a VPC, which enables
+An association between a firewall rule group and a VPC, which enables
 DNS filtering for the VPC.
 
 =head1 ATTRIBUTES
@@ -65,7 +65,7 @@ and Coordinated Universal Time (UTC).
 =head2 CreatorRequestId => Str
 
 A unique string defined by you to identify the request. This allows you
-to retry failed requests without the risk of executing the operation
+to retry failed requests without the risk of running the operation
 twice. This can be any unique string, for example, a timestamp.
 
 

@@ -57,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 B<REQUIRED> CreatorRequestId => Str
 
 A unique string defined by you to identify the request. This allows you
-to retry failed requests without the risk of executing the operation
+to retry failed requests without the risk of running the operation
 twice. This can be any unique string, for example, a timestamp.
 
 

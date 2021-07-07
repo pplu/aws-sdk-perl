@@ -54,7 +54,7 @@ The Amazon Resource Name (ARN) of the firewall domain list metadata.
 =head2 CreatorRequestId => Str
 
 A unique string defined by you to identify the request. This allows you
-to retry failed requests without the risk of executing the operation
+to retry failed requests without the risk of running the operation
 twice. This can be any unique string, for example, a timestamp.
 
 

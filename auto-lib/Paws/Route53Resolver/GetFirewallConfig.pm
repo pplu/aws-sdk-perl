@@ -45,8 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the Amazon virtual private cloud (VPC) that the configuration
-is for.
+The ID of the VPC from Amazon VPC that the configuration is for.
 
 
 

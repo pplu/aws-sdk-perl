@@ -74,8 +74,8 @@ The name of the rule group association.
 
 The setting that determines the processing order of the rule group
 among the rule groups that you associate with the specified VPC. DNS
-Firewall filters VPC traffic starting from rule group with the lowest
-numeric priority setting.
+Firewall filters VPC traffic starting from the rule group with the
+lowest numeric priority setting.
 
 You must specify a unique priority for each rule group that you
 associate with a single VPC. To make it easier to insert rule groups

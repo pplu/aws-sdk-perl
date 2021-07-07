@@ -53,7 +53,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 B<REQUIRED> DomainFileUrl => Str
 
 The fully qualified URL or URI of the file stored in Amazon Simple
-Storage Service (S3) that contains the list of domains to import.
+Storage Service (Amazon S3) that contains the list of domains to
+import.
 
 The file must be in an S3 bucket that's in the same Region as your DNS
 Firewall. The file must be a text file and must contain a single domain

@@ -74,8 +74,7 @@ Valid values are: C<"ENABLED">, C<"DISABLED">
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the Amazon virtual private cloud (VPC) that the configuration
-is for.
+The ID of the VPC that the configuration is for.
 
 
 

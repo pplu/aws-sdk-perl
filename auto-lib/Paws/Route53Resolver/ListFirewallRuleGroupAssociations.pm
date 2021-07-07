@@ -91,8 +91,8 @@ for the prior request in your next request.
 
 The setting that determines the processing order of the rule group
 among the rule groups that are associated with a single VPC. DNS
-Firewall filters VPC traffic starting from rule group with the lowest
-numeric priority setting.
+Firewall filters VPC traffic starting from the rule group with the
+lowest numeric priority setting.
 
 
 

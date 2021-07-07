@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 =head1 DESCRIPTION
 
 Configuration of the firewall behavior provided by DNS Firewall for a
-single Amazon virtual private cloud (VPC).
+single VPC from Amazon Virtual Private Cloud (Amazon VPC).
 
 =head1 ATTRIBUTES
 
@@ -69,7 +69,7 @@ Firewall rule group association.
 
 =head2 Id => Str
 
-The Id of the firewall configuration.
+The ID of the firewall configuration.
 
 
 =head2 OwnerId => Str

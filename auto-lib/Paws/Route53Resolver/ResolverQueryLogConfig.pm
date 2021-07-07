@@ -77,7 +77,7 @@ Unix time format and Coordinated Universal Time (UTC).
 
 A unique string that identifies the request that created the query
 logging configuration. The C<CreatorRequestId> allows failed requests
-to be retried without the risk of executing the operation twice.
+to be retried without the risk of running the operation twice.
 
 
 =head2 DestinationArn => Str

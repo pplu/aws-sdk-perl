@@ -19,7 +19,7 @@ Paws::Route53Resolver::ListFirewallDomainsResponse
 
 A list of the domains in the firewall domain list.
 
-This might be a parital list of the domains that you've defined in the
+This might be a partial list of the domains that you've defined in the
 domain list. For information, see C<MaxResults>.
 
 

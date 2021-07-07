@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-High level information about a list of firewall domains for use in a
+High-level information about a list of firewall domains for use in a
 FirewallRule. This is returned by GetFirewallDomainList.
 
 To retrieve the domains that are defined for this domain list, call
@@ -65,7 +65,7 @@ and Coordinated Universal Time (UTC).
 =head2 CreatorRequestId => Str
 
 A unique string defined by you to identify the request. This allows you
-to retry failed requests without the risk of executing the operation
+to retry failed requests without the risk of running the operation
 twice. This can be any unique string, for example, a timestamp.
 
 

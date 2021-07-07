@@ -18,7 +18,7 @@ Paws::Route53Resolver::ListFirewallConfigsResponse
 =head2 FirewallConfigs => ArrayRef[L<Paws::Route53Resolver::FirewallConfig>]
 
 The configurations for the firewall behavior provided by DNS Firewall
-for Amazon virtual private clouds (VPC).
+for VPCs from Amazon Virtual Private Cloud (Amazon VPC).
 
 
 =head2 NextToken => Str

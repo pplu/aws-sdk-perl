@@ -671,8 +671,9 @@ Paws::Route53Resolver - Perl Interface to AWS Amazon Route 53 Resolver
 When you create a VPC using Amazon VPC, you automatically get DNS
 resolution within the VPC from Route 53 Resolver. By default, Resolver
 answers DNS queries for VPC domain names such as domain names for EC2
-instances or ELB load balancers. Resolver performs recursive lookups
-against public name servers for all other domain names.
+instances or Elastic Load Balancing load balancers. Resolver performs
+recursive lookups against public name servers for all other domain
+names.
 
 You can also configure DNS resolution between your VPC and your network
 over a Direct Connect or VPN connection:
@@ -705,7 +706,7 @@ Network
 (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network)
 in the I<Amazon Route 53 Developer Guide>.
 
-Like Amazon VPC, Resolver is regional. In each region where you have
+Like Amazon VPC, Resolver is Regional. In each Region where you have
 VPCs, you can choose whether to forward queries from your VPCs to your
 network (outbound queries), from your network to your VPCs (inbound
 queries), or both.
@@ -1204,9 +1205,9 @@ Returns: a L<Paws::Route53Resolver::DisassociateResolverQueryLogConfigResponse> 
 Disassociates a VPC from a query logging configuration.
 
 Before you can delete a query logging configuration, you must first
-disassociate all VPCs from the configuration. If you used Resource
-Access Manager (RAM) to share a query logging configuration with other
-accounts, VPCs can be disassociated from the configuration in the
+disassociate all VPCs from the configuration. If you used AWS Resource
+Access Manager (AWS RAM) to share a query logging configuration with
+other accounts, VPCs can be disassociated from the configuration in the
 following ways:
 
 =over
@@ -1261,7 +1262,8 @@ Each argument is described in detail in: L<Paws::Route53Resolver::GetFirewallCon
 Returns: a L<Paws::Route53Resolver::GetFirewallConfigResponse> instance
 
 Retrieves the configuration of the firewall behavior provided by DNS
-Firewall for a single Amazon virtual private cloud (VPC).
+Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon
+VPC).
 
 
 =head2 GetFirewallDomainList
@@ -1330,7 +1332,7 @@ Returns: a L<Paws::Route53Resolver::GetFirewallRuleGroupPolicyResponse> instance
 
 Returns the AWS Identity and Access Management (AWS IAM) policy for
 sharing the specified rule group. You can use the policy to share the
-rule group using AWS Resource Access Manager (RAM).
+rule group using AWS Resource Access Manager (AWS RAM).
 
 
 =head2 GetResolverDnssecConfig
@@ -1864,7 +1866,7 @@ Returns: a L<Paws::Route53Resolver::PutFirewallRuleGroupPolicyResponse> instance
 
 Attaches an AWS Identity and Access Management (AWS IAM) policy for
 sharing the rule group. You can use the policy to share the rule group
-using AWS Resource Access Manager (RAM).
+using AWS Resource Access Manager (AWS RAM).
 
 
 =head2 PutResolverQueryLogConfigPolicy
@@ -1960,7 +1962,8 @@ Each argument is described in detail in: L<Paws::Route53Resolver::UpdateFirewall
 Returns: a L<Paws::Route53Resolver::UpdateFirewallConfigResponse> instance
 
 Updates the configuration of the firewall behavior provided by DNS
-Firewall for a single Amazon virtual private cloud (VPC).
+Firewall for a single VPC from Amazon Virtual Private Cloud (Amazon
+VPC).
 
 
 =head2 UpdateFirewallDomains
