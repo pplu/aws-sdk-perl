@@ -64,6 +64,12 @@ subscription filter, for same-account delivery.
 A logical destination (specified using an ARN) belonging to a different
 account, for cross-account delivery.
 
+If you are setting up a cross-account subscription, the destination
+must have an IAM policy associated with it that allows the sender to
+send logs to the destination. For more information, see
+PutDestinationPolicy
+(https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_PutDestinationPolicy.html).
+
 =item *
 
 An Amazon Kinesis Firehose delivery stream belonging to the same
@@ -91,10 +97,9 @@ Valid values are: C<"Random">, C<"ByLogStream">
 =head2 B<REQUIRED> FilterName => Str
 
 A name for the subscription filter. If you are updating an existing
-filter, you must specify the correct name in C<filterName>. Otherwise,
-the call fails because you cannot associate a second filter with a log
-group. To find the name of the filter currently associated with a log
-group, use DescribeSubscriptionFilters
+filter, you must specify the correct name in C<filterName>. To find the
+name of the filter currently associated with a log group, use
+DescribeSubscriptionFilters
 (https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeSubscriptionFilters.html).
 
 

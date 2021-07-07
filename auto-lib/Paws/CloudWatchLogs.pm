@@ -467,10 +467,10 @@ Paws::CloudWatchLogs - Perl Interface to AWS Amazon CloudWatch Logs
 =head1 DESCRIPTION
 
 You can use Amazon CloudWatch Logs to monitor, store, and access your
-log files from EC2 instances, AWS CloudTrail, or other sources. You can
-then retrieve the associated log data from CloudWatch Logs using the
-CloudWatch console, CloudWatch Logs commands in the AWS CLI, CloudWatch
-Logs API, or CloudWatch Logs SDK.
+log files from EC2 instances, AWS CloudTrail, and other sources. You
+can then retrieve the associated log data from CloudWatch Logs using
+the CloudWatch console, CloudWatch Logs commands in the AWS CLI,
+CloudWatch Logs API, or CloudWatch Logs SDK.
 
 You can use CloudWatch Logs to:
 
@@ -1357,6 +1357,11 @@ destination. An access policy is an IAM policy document
 that is used to authorize claims to register a subscription filter
 against a given destination.
 
+If multiple AWS accounts are sending logs to this destination, each
+sender account must be listed separately in the policy. The policy does
+not support specifying C<*> as the Principal or the use of the
+C<aws:PrincipalOrgId> global key.
+
 
 =head2 PutLogEvents
 
@@ -1462,6 +1467,24 @@ metric data from log events ingested through PutLogEvents
 
 The maximum number of metric filters that can be associated with a log
 group is 100.
+
+When you create a metric filter, you can also optionally assign a unit
+and dimensions to the metric that is created.
+
+Metrics extracted from log events are charged as custom metrics. To
+prevent unexpected high charges, do not specify high-cardinality fields
+such as C<IPAddress> or C<requestID> as dimensions. Each different
+value found for a dimension is treated as a separate metric and accrues
+charges as a separate custom metric.
+
+To help prevent accidental high charges, Amazon disables a metric
+filter if it generates 1000 different name/value pairs for the
+dimensions that you have specified within a certain amount of time.
+
+You can also set up a billing alarm to alert you if your charges are
+higher than expected. For more information, see Creating a Billing
+Alarm to Monitor Your Estimated AWS Charges
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
 
 
 =head2 PutQueryDefinition
@@ -1597,10 +1620,9 @@ subscription filter, for same-account delivery.
 
 =back
 
-There can only be one subscription filter associated with a log group.
-If you are updating an existing filter, you must specify the correct
-name in C<filterName>. Otherwise, the call fails because you cannot
-associate a second filter with a log group.
+Each log group can have up to two subscription filters associated with
+it. If you are updating an existing filter, you must specify the
+correct name in C<filterName>.
 
 To perform a C<PutSubscriptionFilter> operation, you must also have the
 C<iam:PassRole> permission.

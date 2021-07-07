@@ -53,8 +53,8 @@ The name of the log group to search.
 =head2 Time => Int
 
 The time to set as the center of the query. If you specify C<time>, the
-8 minutes before and 8 minutes after this time are searched. If you
-omit C<time>, the past 15 minutes are queried.
+15 minutes before this time are queries. If you omit C<time> the 8
+minutes before and 8 minutes after this time are searched.
 
 The C<time> value is specified as epoch time, the number of seconds
 since January 1, 1970, 00:00:00 UTC.

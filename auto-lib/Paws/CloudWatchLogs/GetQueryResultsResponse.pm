@@ -44,7 +44,7 @@ Queries time out after 15 minutes of execution. To avoid having your
 queries time out, reduce the time range being searched or partition
 your query into a number of queries.
 
-Valid values are: C<"Scheduled">, C<"Running">, C<"Complete">, C<"Failed">, C<"Cancelled">
+Valid values are: C<"Scheduled">, C<"Running">, C<"Complete">, C<"Failed">, C<"Cancelled">, C<"Timeout">, C<"Unknown">
 =head2 _request_id => Str
 
 

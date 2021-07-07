@@ -141,9 +141,6 @@ The start of the time range, expressed as the number of milliseconds
 after Jan 1, 1970 00:00:00 UTC. Events with a timestamp before this
 time are not returned.
 
-If you omit C<startTime> and C<endTime> the most recent log events are
-retrieved, to up 1 MB or 10,000 log events.
-
 
 
 
