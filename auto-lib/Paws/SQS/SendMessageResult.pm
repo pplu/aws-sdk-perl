@@ -50,7 +50,7 @@ the MD5 digest.
 An attribute containing the C<MessageId> of the message sent to the
 queue. For more information, see Queue and Message Identifiers
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 SequenceNumber => Str

@@ -71,9 +71,9 @@ are accepted: alphanumeric characters, hyphens(-), and underscores (_).
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Amazon SQS Message Attributes
+For more information, see Amazon SQS message attributes
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 B<REQUIRED> MessageBody => Str
@@ -89,9 +89,9 @@ The token used for deduplication of messages within a 5-minute minimum
 deduplication interval. If a message with a particular
 C<MessageDeduplicationId> is sent successfully, subsequent messages
 with the same C<MessageDeduplicationId> are accepted successfully but
-aren't delivered. For more information, see Exactly-Once Processing
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-in the I<Amazon Simple Queue Service Developer Guide>.
+aren't delivered. For more information, see Exactly-once processing
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
+in the I<Amazon SQS Developer Guide>.
 
 =over
 
@@ -158,7 +158,7 @@ C<A-Z>, C<0-9>) and punctuation
 For best practices of using C<MessageDeduplicationId>, see Using the
 MessageDeduplicationId Property
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 MessageGroupId => Str
@@ -196,7 +196,7 @@ C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
@@ -213,7 +213,7 @@ consists of a C<Name>, C<Type>, and C<Value>.
 
 Currently, the only supported message system attribute is
 C<AWSTraceHeader>. Its type must be C<String> and its value must be a
-correctly formatted AWS X-Ray trace header string.
+correctly formatted X-Ray trace header string.
 
 =item *
 

@@ -81,7 +81,7 @@ message has been received across all queues but not deleted.
 
 =item *
 
-C<AWSTraceHeader> E<ndash> Returns the AWS X-Ray trace header string.
+C<AWSTraceHeader> E<ndash> Returns the X-Ray trace header string.
 
 =item *
 
@@ -224,7 +224,7 @@ C<ReceiveRequestAttemptId> return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it resets
 the visibility timeout. For more information, see Visibility Timeout
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 If a caller of the C<ReceiveMessage> action still processes messages
 when the visibility timeout expires and messages become visible,
@@ -261,7 +261,7 @@ C<A-Z>, C<0-9>) and punctuation
 For best practices of using C<ReceiveRequestAttemptId>, see Using the
 ReceiveRequestAttemptId Request Parameter
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 

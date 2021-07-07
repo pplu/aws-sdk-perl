@@ -51,6 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sqs
 
 A list of attributes for which to retrieve information.
 
+The C<AttributeName.N> parameter is optional, but if you don't specify
+values for this parameter, the request returns empty results.
+
 In the future, new attributes might be added. If you write code that
 calls this action, we recommend that you structure your code so that it
 can handle new attributes gracefully.
@@ -139,7 +142,7 @@ the dead-letter queue functionality of the source queue as a JSON
 object. For more information about the redrive policy and dead-letter
 queues, see Using Amazon SQS Dead-Letter Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =over
 
@@ -164,7 +167,7 @@ C<VisibilityTimeout> E<ndash> Returns the visibility timeout for the
 queue. For more information about the visibility timeout, see
 Visibility Timeout
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =back
 
@@ -175,17 +178,17 @@ The following attributes apply only to server-side-encryption
 
 =item *
 
-C<KmsMasterKeyId> E<ndash> Returns the ID of an AWS-managed customer
-master key (CMK) for Amazon SQS or a custom CMK. For more information,
-see Key Terms
+C<KmsMasterKeyId> E<ndash> Returns the ID of an Amazon Web Services
+managed customer master key (CMK) for Amazon SQS or a custom CMK. For
+more information, see Key Terms
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-sse-key-terms).
 
 =item *
 
 C<KmsDataKeyReusePeriodSeconds> E<ndash> Returns the length of time, in
 seconds, for which Amazon SQS can reuse a data key to encrypt or
-decrypt messages before calling AWS KMS again. For more information,
-see How Does the Data Key Reuse Period Work?
+decrypt messages before calling KMS again. For more information, see
+How Does the Data Key Reuse Period Work?
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
 
 =back
@@ -198,9 +201,9 @@ The following attributes apply only to FIFO (first-in-first-out) queues
 =item *
 
 C<FifoQueue> E<ndash> Returns information about whether the queue is
-FIFO. For more information, see FIFO Queue Logic
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-understanding-logic)
-in the I<Amazon Simple Queue Service Developer Guide>.
+FIFO. For more information, see FIFO queue logic
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html)
+in the I<Amazon SQS Developer Guide>.
 
 To determine whether a queue is FIFO
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
@@ -210,22 +213,14 @@ you can check whether C<QueueName> ends with the C<.fifo> suffix.
 
 C<ContentBasedDeduplication> E<ndash> Returns whether content-based
 deduplication is enabled for the queue. For more information, see
-Exactly-Once Processing
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-in the I<Amazon Simple Queue Service Developer Guide>.
+Exactly-once processing
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
+in the I<Amazon SQS Developer Guide>.
 
 =back
 
-B<Preview: High throughput for FIFO queues>
-
-B<High throughput for Amazon SQS FIFO queues is in preview release and
-is subject to change.> This feature provides a high number of
-transactions per second (TPS) for messages in FIFO queues. For
-information on throughput quotas, see Quotas related to messages
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
-
-This preview includes two new attributes:
+The following attributes apply only to high throughput for FIFO queues
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html):
 
 =over
 
@@ -260,35 +255,12 @@ Set C<FifoThroughputLimit> to C<perMessageGroupId>.
 =back
 
 If you set these attributes to anything other than the values shown for
-enabling high throughput, standard throughput is in effect and
+enabling high throughput, normal throughput is in effect and
 deduplication occurs as specified.
 
-This preview is available in the following AWS Regions:
-
-=over
-
-=item *
-
-US East (Ohio); us-east-2
-
-=item *
-
-US East (N. Virginia); us-east-1
-
-=item *
-
-US West (Oregon); us-west-2
-
-=item *
-
-Europe (Ireland); eu-west-1
-
-=back
-
-For more information about high throughput for FIFO queues, see
-Preview: High throughput for FIFO queues
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/high-throughput-fifo.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+For information on throughput quotas, see Quotas related to messages
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/quotas-messages.html)
+in the I<Amazon SQS Developer Guide>.
 
 
 

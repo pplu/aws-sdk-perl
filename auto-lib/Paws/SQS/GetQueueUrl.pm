@@ -56,7 +56,7 @@ Queue URLs and names are case-sensitive.
 
 =head2 QueueOwnerAWSAccountId => Str
 
-The AWS account ID of the account that created the queue.
+The account ID of the account that created the queue.
 
 
 
