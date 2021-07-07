@@ -191,16 +191,16 @@ information, see Programming Model
 =head2 ImageConfig => L<Paws::Lambda::ImageConfig>
 
 Container image configuration values
-(https://docs.aws.amazon.com/lambda/latest/dg/images-parms.html) that
-override the values in the container image Dockerfile.
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html#configuration-images-settings)
+that override the values in the container image Dockerfile.
 
 
 
 =head2 KMSKeyArn => Str
 
-The ARN of the AWS Key Management Service (AWS KMS) key that's used to
-encrypt your function's environment variables. If it's not provided,
-AWS Lambda uses a default service key.
+The ARN of the Amazon Web Services Key Management Service (KMS) key
+that's used to encrypt your function's environment variables. If it's
+not provided, Lambda uses a default service key.
 
 
 
@@ -215,9 +215,11 @@ its ARN, including the version.
 
 =head2 MemorySize => Int
 
-The amount of memory available to the function at runtime. Increasing
-the function's memory also increases its CPU allocation. The default
-value is 128 MB. The value can be any multiple of 1 MB.
+The amount of memory available to the function
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html)
+at runtime. Increasing the function memory also increases its CPU
+allocation. The default value is 128 MB. The value can be any multiple
+of 1 MB.
 
 
 
@@ -260,22 +262,25 @@ the function.
 
 The amount of time that Lambda allows a function to run before stopping
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.
+For additional information, see Lambda execution environment
+(https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html).
 
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfig>
 
 Set C<Mode> to C<Active> to sample and trace a subset of incoming
-requests with AWS X-Ray.
+requests with X-Ray
+(https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
 
 
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfig>
 
-For network connectivity to AWS resources in a VPC, specify a list of
-security groups and subnets in the VPC. When you connect a function to
-a VPC, it can only access resources and the internet through that VPC.
-For more information, see VPC Settings
+For network connectivity to Amazon Web Services resources in a VPC,
+specify a list of security groups and subnets in the VPC. When you
+connect a function to a VPC, it can only access resources and the
+internet through that VPC. For more information, see VPC Settings
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 
 

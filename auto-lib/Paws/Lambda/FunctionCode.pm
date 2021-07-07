@@ -46,13 +46,15 @@ specify the URI of a container image.
 
 =head2 ImageUri => Str
 
-URI of a container image in the Amazon ECR registry.
+URI of a container image
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-images.html) in
+the Amazon ECR registry.
 
 
 =head2 S3Bucket => Str
 
-An Amazon S3 bucket in the same AWS Region as your function. The bucket
-can be in a different AWS account.
+An Amazon S3 bucket in the same Amazon Web Services Region as your
+function. The bucket can be in a different Amazon Web Services account.
 
 
 =head2 S3Key => Str
@@ -68,8 +70,9 @@ use.
 
 =head2 ZipFile => Str
 
-The base64-encoded contents of the deployment package. AWS SDK and AWS
-CLI clients handle the encoding for you.
+The base64-encoded contents of the deployment package. Amazon Web
+Services SDK and Amazon Web Services CLI clients handle the encoding
+for you.
 
 
 

@@ -33,8 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Cod
 
 =head1 DESCRIPTION
 
-Code signing configuration policies specifies the validation failure
-action for signature mismatch or expiry.
+Code signing configuration policies
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html#config-codesigning-policies)
+specify the validation failure action for signature mismatch or expiry.
 
 =head1 ATTRIBUTES
 

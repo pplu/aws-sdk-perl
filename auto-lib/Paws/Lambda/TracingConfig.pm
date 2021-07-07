@@ -33,8 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Tra
 
 =head1 DESCRIPTION
 
-The function's AWS X-Ray tracing configuration. To sample and record
-incoming requests, set C<Mode> to C<Active>.
+The function's X-Ray
+(https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html)
+tracing configuration. To sample and record incoming requests, set
+C<Mode> to C<Active>.
 
 =head1 ATTRIBUTES
 

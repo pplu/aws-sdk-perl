@@ -120,9 +120,9 @@ function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> Principal => Str
 
-The AWS service or account that invokes the function. If you specify a
-service, use C<SourceArn> or C<SourceAccount> to limit who can invoke
-the function through that service.
+The Amazon Web Services service or account that invokes the function.
+If you specify a service, use C<SourceArn> or C<SourceAccount> to limit
+who can invoke the function through that service.
 
 
 
@@ -152,8 +152,9 @@ by its owner and recreated by another account.
 
 =head2 SourceArn => Str
 
-For AWS services, the ARN of the AWS resource that invokes the
-function. For example, an Amazon S3 bucket or Amazon SNS topic.
+For Amazon Web Services services, the ARN of the Amazon Web Services
+resource that invokes the function. For example, an Amazon S3 bucket or
+Amazon SNS topic.
 
 
 

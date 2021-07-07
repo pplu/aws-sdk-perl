@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Fil
 =head1 DESCRIPTION
 
 Details about the connection between a Lambda function and an Amazon
-EFS file system.
+EFS file system
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html).
 
 =head1 ATTRIBUTES
 

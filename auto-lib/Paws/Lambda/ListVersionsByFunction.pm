@@ -84,7 +84,9 @@ retrieve the next page of results.
 
 =head2 MaxItems => Int
 
-The maximum number of versions to return.
+The maximum number of versions to return. Note that
+C<ListVersionsByFunction> returns a maximum of 50 items in each
+response, even if you set the number higher.
 
 
 

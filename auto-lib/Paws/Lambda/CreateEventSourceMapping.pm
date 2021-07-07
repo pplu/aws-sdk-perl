@@ -106,14 +106,14 @@ B<Self-Managed Apache Kafka> - Default 100. Max 10,000.
 
 =head2 BisectBatchOnFunctionError => Bool
 
-(Streams) If the function returns an error, split the batch in two and
-retry.
+(Streams only) If the function returns an error, split the batch in two
+and retry.
 
 
 
 =head2 DestinationConfig => L<Paws::Lambda::DestinationConfig>
 
-(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+(Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.
 
 
@@ -187,8 +187,8 @@ the function name, it's limited to 64 characters in length.
 
 =head2 FunctionResponseTypes => ArrayRef[Str|Undef]
 
-(Streams) A list of current response type enums applied to the event
-source mapping.
+(Streams only) A list of current response type enums applied to the
+event source mapping.
 
 
 
@@ -201,22 +201,22 @@ records before invoking the function, in seconds.
 
 =head2 MaximumRecordAgeInSeconds => Int
 
-(Streams) Discard records older than the specified age. The default
-value is infinite (-1).
+(Streams only) Discard records older than the specified age. The
+default value is infinite (-1).
 
 
 
 =head2 MaximumRetryAttempts => Int
 
-(Streams) Discard records after the specified number of retries. The
-default value is infinite (-1). When set to infinite (-1), failed
+(Streams only) Discard records after the specified number of retries.
+The default value is infinite (-1). When set to infinite (-1), failed
 records will be retried until the record expires.
 
 
 
 =head2 ParallelizationFactor => Int
 
-(Streams) The number of batches to process from each shard
+(Streams only) The number of batches to process from each shard
 concurrently.
 
 
@@ -263,8 +263,8 @@ The name of the Kafka topic.
 
 =head2 TumblingWindowInSeconds => Int
 
-(Streams) The duration in seconds of a processing window. The range is
-between 1 second up to 900 seconds.
+(Streams only) The duration in seconds of a processing window. The
+range is between 1 second up to 900 seconds.
 
 
 

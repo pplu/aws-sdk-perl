@@ -67,12 +67,14 @@ The function's description.
 
 =head2 Environment => L<Paws::Lambda::EnvironmentResponse>
 
-The function's environment variables.
+The function's environment variables
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
 
 
 =head2 FileSystemConfigs => ArrayRef[L<Paws::Lambda::FileSystemConfig>]
 
-Connection settings for an Amazon EFS file system.
+Connection settings for an Amazon EFS file system
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-filesystem.html).
 
 
 =head2 FunctionArn => Str
@@ -197,7 +199,7 @@ before stopping it.
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfigResponse>
 
-The function's AWS X-Ray tracing configuration.
+The function's X-Ray tracing configuration.
 
 
 =head2 Version => Str

@@ -75,6 +75,11 @@ C<SASL_SCRAM_512_AUTH> - The Secrets Manager ARN of your secret key
 used for SASL SCRAM-512 authentication of your Self-Managed Apache
 Kafka brokers.
 
+=item *
+
+C<VIRTUAL_HOST> - The name of the virtual host in your RabbitMQ broker.
+Lambda will use this host as the event source.
+
 =back
 
 

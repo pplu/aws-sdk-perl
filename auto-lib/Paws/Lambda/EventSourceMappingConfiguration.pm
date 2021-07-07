@@ -43,13 +43,13 @@ The maximum number of items to retrieve in a single batch.
 
 =head2 BisectBatchOnFunctionError => Bool
 
-(Streams) If the function returns an error, split the batch in two and
-retry. The default value is false.
+(Streams only) If the function returns an error, split the batch in two
+and retry. The default value is false.
 
 
 =head2 DestinationConfig => L<Paws::Lambda::DestinationConfig>
 
-(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+(Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.
 
 
@@ -65,8 +65,8 @@ The ARN of the Lambda function.
 
 =head2 FunctionResponseTypes => ArrayRef[Str|Undef]
 
-(Streams) A list of current response type enums applied to the event
-source mapping.
+(Streams only) A list of current response type enums applied to the
+event source mapping.
 
 
 =head2 LastModified => Str
@@ -77,7 +77,7 @@ changed.
 
 =head2 LastProcessingResult => Str
 
-The result of the last AWS Lambda invocation of your Lambda function.
+The result of the last Lambda invocation of your Lambda function.
 
 
 =head2 MaximumBatchingWindowInSeconds => Int
@@ -89,21 +89,22 @@ zero.
 
 =head2 MaximumRecordAgeInSeconds => Int
 
-(Streams) Discard records older than the specified age. The default
-value is infinite (-1). When set to infinite (-1), failed records are
-retried until the record expires.
+(Streams only) Discard records older than the specified age. The
+default value is -1, which sets the maximum age to infinite. When the
+value is set to infinite, Lambda never discards old records.
 
 
 =head2 MaximumRetryAttempts => Int
 
-(Streams) Discard records after the specified number of retries. The
-default value is infinite (-1). When set to infinite (-1), failed
-records are retried until the record expires.
+(Streams only) Discard records after the specified number of retries.
+The default value is -1, which sets the maximum number of retries to
+infinite. When MaximumRetryAttempts is infinite, Lambda retries failed
+records until the record expires in the event source.
 
 
 =head2 ParallelizationFactor => Int
 
-(Streams) The number of batches to process from each shard
+(Streams only) The number of batches to process from each shard
 concurrently. The default value is 1.
 
 
@@ -156,8 +157,8 @@ The name of the Kafka topic.
 
 =head2 TumblingWindowInSeconds => Int
 
-(Streams) The duration in seconds of a processing window. The range is
-between 1 second up to 900 seconds.
+(Streams only) The duration in seconds of a processing window. The
+range is between 1 second up to 900 seconds.
 
 
 =head2 UUID => Str

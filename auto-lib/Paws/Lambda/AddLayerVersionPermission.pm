@@ -79,7 +79,11 @@ specified organization.
 
 =head2 B<REQUIRED> Principal => Str
 
-An account ID, or C<*> to grant permission to all AWS accounts.
+An account ID, or C<*> to grant layer usage permission to all accounts
+in an organization, or all Amazon Web Services accounts (if
+C<organizationId> is not specified). For the last case, make sure that
+you really do want all Amazon Web Services accounts to have usage
+permission to this layer.
 
 
 

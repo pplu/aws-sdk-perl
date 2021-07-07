@@ -38,7 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Cod
 
 =head1 DESCRIPTION
 
-Details about a Code signing configuration.
+Details about a Code signing configuration
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html).
 
 =head1 ATTRIBUTES
 
