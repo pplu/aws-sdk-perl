@@ -188,7 +188,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         WhitelistCidr    => 'My__string',
       },    # OPTIONAL
       SourceFailoverConfig => {
+        FailoverMode   => 'MERGE',      # values: MERGE, FAILOVER; OPTIONAL
         RecoveryWindow => 1,            # OPTIONAL
+        SourcePriority => { PrimarySource => 'My__string', },    # OPTIONAL
         State          => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
       },    # OPTIONAL
       Sources => [
