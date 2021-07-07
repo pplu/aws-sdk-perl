@@ -163,7 +163,7 @@ Valid values are: C<"ssml">, C<"text">
 
 Voice ID to use for the synthesis.
 
-Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Camila">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kevin">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Lupe">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Olivia">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
+Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Camila">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Gabrielle">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kevin">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Lupe">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Olivia">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
 
 
 =head1 SEE ALSO
