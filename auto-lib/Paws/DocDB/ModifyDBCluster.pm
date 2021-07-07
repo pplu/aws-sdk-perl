@@ -154,9 +154,7 @@ clusters from being accidentally deleted.
 =head2 EngineVersion => Str
 
 The version number of the database engine to which you want to upgrade.
-Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless the C<ApplyImmediately>
-parameter is set to C<true>.
+Modifying engine version is not supported on Amazon DocumentDB.
 
 
 
@@ -214,7 +212,7 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Region.
 
 Constraints:
 
@@ -249,8 +247,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Region, occurring on a random day of the week.
 
 Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 

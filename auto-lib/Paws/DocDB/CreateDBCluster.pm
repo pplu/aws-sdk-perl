@@ -10,9 +10,10 @@ package Paws::DocDB::CreateDBCluster;
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUsername => (is => 'ro', isa => 'Str');
+  has MasterUserPassword => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
@@ -48,29 +49,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDBClusterResult = $rds->CreateDBCluster(
       DBClusterIdentifier         => 'MyString',
       Engine                      => 'MyString',
-      MasterUserPassword          => 'MyString',
-      MasterUsername              => 'MyString',
-      AvailabilityZones           => [ 'MyString', ... ],    # OPTIONAL
-      BackupRetentionPeriod       => 1,                      # OPTIONAL
-      DBClusterParameterGroupName => 'MyString',             # OPTIONAL
-      DBSubnetGroupName           => 'MyString',             # OPTIONAL
-      DeletionProtection          => 1,                      # OPTIONAL
-      EnableCloudwatchLogsExports => [ 'MyString', ... ],    # OPTIONAL
-      EngineVersion               => 'MyString',             # OPTIONAL
-      KmsKeyId                    => 'MyString',             # OPTIONAL
-      Port                        => 1,                      # OPTIONAL
-      PreSignedUrl                => 'MyString',             # OPTIONAL
-      PreferredBackupWindow       => 'MyString',             # OPTIONAL
-      PreferredMaintenanceWindow  => 'MyString',             # OPTIONAL
-      StorageEncrypted            => 1,                      # OPTIONAL
+      AvailabilityZones           => [ 'MyString', ... ],            # OPTIONAL
+      BackupRetentionPeriod       => 1,                              # OPTIONAL
+      DBClusterParameterGroupName => 'MyString',                     # OPTIONAL
+      DBSubnetGroupName           => 'MyString',                     # OPTIONAL
+      DeletionProtection          => 1,                              # OPTIONAL
+      EnableCloudwatchLogsExports => [ 'MyString', ... ],            # OPTIONAL
+      EngineVersion               => 'MyString',                     # OPTIONAL
+      GlobalClusterIdentifier     => 'MyGlobalClusterIdentifier',    # OPTIONAL
+      KmsKeyId                    => 'MyString',                     # OPTIONAL
+      MasterUserPassword          => 'MyString',                     # OPTIONAL
+      MasterUsername              => 'MyString',                     # OPTIONAL
+      Port                        => 1,                              # OPTIONAL
+      PreSignedUrl                => 'MyString',                     # OPTIONAL
+      PreferredBackupWindow       => 'MyString',                     # OPTIONAL
+      PreferredMaintenanceWindow  => 'MyString',                     # OPTIONAL
+      StorageEncrypted            => 1,                              # OPTIONAL
       Tags                        => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                     # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],            # OPTIONAL
+      ],                                                             # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                    # OPTIONAL
     );
 
     # Results:
@@ -184,22 +186,28 @@ Valid values: C<docdb>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine to use. The --engine-version
-will default to the latest major engine version. For production
-workloads, we recommend explicitly declaring this parameter with the
-intended major engine version.
+The version number of the database engine to use. The
+C<--engine-version> will default to the latest major engine version.
+For production workloads, we recommend explicitly declaring this
+parameter with the intended major engine version.
+
+
+
+=head2 GlobalClusterIdentifier => Str
+
+The cluster identifier of the new global cluster.
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for an encrypted cluster.
+The KMS key identifier for an encrypted cluster.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the
-AWS KMS encryption key. If you are creating a cluster using the same
-AWS account that owns the AWS KMS encryption key that is used to
-encrypt the new cluster, you can use the AWS KMS key alias instead of
-the ARN for the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are creating a cluster using the same account
+that owns the KMS encryption key that is used to encrypt the new
+cluster, you can use the KMS key alias instead of the ARN for the KMS
+encryption key.
 
 If an encryption key is not specified in C<KmsKeyId>:
 
@@ -212,12 +220,12 @@ your default encryption key.
 
 =back
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
+KMS creates the default encryption key for your account. Your account
+has a different default encryption key for each Regions.
 
 
 
-=head2 B<REQUIRED> MasterUsername => Str
+=head2 MasterUsername => Str
 
 The name of the master user for the cluster.
 
@@ -242,7 +250,7 @@ Cannot be a reserved word for the chosen database engine.
 
 
 
-=head2 B<REQUIRED> MasterUserPassword => Str
+=head2 MasterUserPassword => Str
 
 The password for the master database user. This password can contain
 any printable ASCII character except forward slash (/), double quote
@@ -266,7 +274,7 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Region.
 
 Constraints:
 
@@ -301,8 +309,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Region, occurring on a random day of the week.
 
 Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 

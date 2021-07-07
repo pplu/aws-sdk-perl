@@ -79,7 +79,7 @@ parameter to C<db-instance>. If this value is not specified, all events
 are returned.
 
 Valid values: C<db-instance>, C<db-parameter-group>,
-C<db-security-group>, C<db-snapshot>
+C<db-security-group>
 
 
 

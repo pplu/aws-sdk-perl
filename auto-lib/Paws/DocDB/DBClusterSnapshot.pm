@@ -94,7 +94,7 @@ Provides the version of the database engine for this cluster snapshot.
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is C<true>, the AWS KMS key identifier for the
+If C<StorageEncrypted> is C<true>, the KMS key identifier for the
 encrypted cluster snapshot.
 
 

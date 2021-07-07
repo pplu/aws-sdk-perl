@@ -123,19 +123,19 @@ CloudWatch Logs.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted cluster
-from an encrypted cluster.
+The KMS key identifier to use when restoring an encrypted cluster from
+an encrypted cluster.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the
-AWS KMS encryption key. If you are restoring a cluster with the same
-AWS account that owns the AWS KMS encryption key used to encrypt the
-new cluster, then you can use the AWS KMS key alias instead of the ARN
-for the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a cluster with the same account
+that owns the KMS encryption key used to encrypt the new cluster, then
+you can use the KMS key alias instead of the ARN for the KMS encryption
+key.
 
 You can restore to a new cluster and encrypt the new cluster with an
-AWS KMS key that is different from the AWS KMS key used to encrypt the
-source cluster. The new DB cluster is encrypted with the AWS KMS key
-identified by the C<KmsKeyId> parameter.
+KMS key that is different from the KMS key used to encrypt the source
+cluster. The new DB cluster is encrypted with the KMS key identified by
+the C<KmsKeyId> parameter.
 
 If you do not specify a value for the C<KmsKeyId> parameter, then the
 following occurs:
@@ -145,7 +145,7 @@ following occurs:
 =item *
 
 If the cluster is encrypted, then the restored cluster is encrypted
-using the AWS KMS key that was used to encrypt the source cluster.
+using the KMS key that was used to encrypt the source cluster.
 
 =item *
 

@@ -49,8 +49,8 @@ Detailed information about an event to which you have subscribed.
 
 =head2 CustomerAwsId => Str
 
-The AWS customer account that is associated with the Amazon DocumentDB
-event notification subscription.
+The Amazon Web Services customer account that is associated with the
+Amazon DocumentDB event notification subscription.
 
 
 =head2 CustSubscriptionId => Str

@@ -87,6 +87,11 @@ package Paws::DocDB;
     my $call_object = $self->new_with_coercions('Paws::DocDB::CreateEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::CreateGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDBCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DeleteDBCluster', @_);
@@ -115,6 +120,11 @@ package Paws::DocDB;
   sub DeleteEventSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DeleteEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::DeleteGlobalCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCertificates {
@@ -182,6 +192,11 @@ package Paws::DocDB;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeEventSubscriptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGlobalClusters {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeGlobalClusters', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeOrderableDBInstanceOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DocDB::DescribeOrderableDBInstanceOptions', @_);
@@ -232,9 +247,19 @@ package Paws::DocDB;
     my $call_object = $self->new_with_coercions('Paws::DocDB::ModifyEventSubscription', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::ModifyGlobalCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootDBInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DocDB::RebootDBInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveFromGlobalCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DocDB::RemoveFromGlobalCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveSourceIdentifierFromSubscription {
@@ -503,6 +528,29 @@ package Paws::DocDB;
 
     return undef
   }
+  sub DescribeAllGlobalClusters {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGlobalClusters(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeGlobalClusters(@_, Marker => $next_result->Marker);
+        push @{ $result->GlobalClusters }, @{ $next_result->GlobalClusters };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
+        $result = $self->DescribeGlobalClusters(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'GlobalClusters') foreach (@{ $result->GlobalClusters });
+    }
+
+    return undef
+  }
   sub DescribeAllOrderableDBInstanceOptions {
     my $self = shift;
 
@@ -551,7 +599,7 @@ package Paws::DocDB;
   }
 
 
-  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup CreateEventSubscription DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DeleteEventSubscription DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup ModifyEventSubscription RebootDBInstance RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
+  sub operations { qw/AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBSubnetGroup CreateEventSubscription CreateGlobalCluster DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBSubnetGroup DeleteEventSubscription DeleteGlobalCluster DescribeCertificates DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeGlobalClusters DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBSubnetGroup ModifyEventSubscription ModifyGlobalCluster RebootDBInstance RemoveFromGlobalCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
 
 1;
 
@@ -622,8 +670,8 @@ Returns: nothing
 
 Adds metadata tags to an Amazon DocumentDB resource. You can use these
 tags with cost allocation reporting to track costs that are associated
-with Amazon DocumentDB resources. or in a C<Condition> statement in an
-AWS Identity and Access Management (IAM) policy for Amazon DocumentDB.
+with Amazon DocumentDB resources or in a C<Condition> statement in an
+Identity and Access Management (IAM) policy for Amazon DocumentDB.
 
 
 =head2 ApplyPendingMaintenanceAction
@@ -697,7 +745,7 @@ Copies a snapshot of a cluster.
 To copy a cluster snapshot from a shared manual cluster snapshot,
 C<SourceDBClusterSnapshotIdentifier> must be the Amazon Resource Name
 (ARN) of the shared cluster snapshot. You can only copy a shared DB
-cluster snapshot, whether encrypted or not, in the same AWS Region.
+cluster snapshot, whether encrypted or not, in the same Region.
 
 To cancel the copy operation after it is in progress, delete the target
 cluster snapshot identified by C<TargetDBClusterSnapshotIdentifier>
@@ -711,10 +759,6 @@ while that cluster snapshot is in the I<copying> status.
 =item DBClusterIdentifier => Str
 
 =item Engine => Str
-
-=item MasterUsername => Str
-
-=item MasterUserPassword => Str
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
 
@@ -730,7 +774,13 @@ while that cluster snapshot is in the I<copying> status.
 
 =item [EngineVersion => Str]
 
+=item [GlobalClusterIdentifier => Str]
+
 =item [KmsKeyId => Str]
+
+=item [MasterUsername => Str]
+
+=item [MasterUserPassword => Str]
 
 =item [Port => Int]
 
@@ -869,7 +919,7 @@ Each argument is described in detail in: L<Paws::DocDB::CreateDBSubnetGroup>
 Returns: a L<Paws::DocDB::CreateDBSubnetGroupResult> instance
 
 Creates a new subnet group. subnet groups must contain at least one
-subnet in at least two Availability Zones in the AWS Region.
+subnet in at least two Availability Zones in the Region.
 
 
 =head2 CreateEventSubscription
@@ -921,6 +971,46 @@ type for all your Amazon DocumentDB sources. If you do not specify
 either the C<SourceType> or the C<SourceIdentifier>, you are notified
 of events generated from all Amazon DocumentDB sources belonging to
 your customer account.
+
+
+=head2 CreateGlobalCluster
+
+=over
+
+=item GlobalClusterIdentifier => Str
+
+=item [DatabaseName => Str]
+
+=item [DeletionProtection => Bool]
+
+=item [Engine => Str]
+
+=item [EngineVersion => Str]
+
+=item [SourceDBClusterIdentifier => Str]
+
+=item [StorageEncrypted => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::CreateGlobalCluster>
+
+Returns: a L<Paws::DocDB::CreateGlobalClusterResult> instance
+
+Creates an Amazon DocumentDB global cluster that can span multiple
+multiple Regions. The global cluster contains one primary cluster with
+read-write capability, and up-to give read-only secondary clusters.
+Global clusters uses storage-based fast replication across regions with
+latencies less than one second, using dedicated infrastructure with no
+impact to your workloadE<rsquo>s performance.
+
+You can create a global cluster that is initially empty, and then add a
+primary and a secondary to it. Or you can specify an existing cluster
+during the create operation, and this cluster becomes the primary of
+the global cluster.
+
+This action only applies to Amazon DocumentDB clusters.
 
 
 =head2 DeleteDBCluster
@@ -1033,6 +1123,26 @@ Returns: a L<Paws::DocDB::DeleteEventSubscriptionResult> instance
 Deletes an Amazon DocumentDB event notification subscription.
 
 
+=head2 DeleteGlobalCluster
+
+=over
+
+=item GlobalClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::DeleteGlobalCluster>
+
+Returns: a L<Paws::DocDB::DeleteGlobalClusterResult> instance
+
+Deletes a global cluster. The primary and secondary clusters must
+already be detached or deleted before attempting to delete a global
+cluster.
+
+This action only applies to Amazon DocumentDB clusters.
+
+
 =head2 DescribeCertificates
 
 =over
@@ -1053,7 +1163,7 @@ Each argument is described in detail in: L<Paws::DocDB::DescribeCertificates>
 Returns: a L<Paws::DocDB::CertificateMessage> instance
 
 Returns a list of certificate authority (CA) certificates provided by
-Amazon DocumentDB for this AWS account.
+Amazon DocumentDB for this account.
 
 
 =head2 DescribeDBClusterParameterGroups
@@ -1148,12 +1258,12 @@ Returns: a L<Paws::DocDB::DescribeDBClusterSnapshotAttributesResult> instance
 Returns a list of cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
 
-When you share snapshots with other AWS accounts,
+When you share snapshots with other accounts,
 C<DescribeDBClusterSnapshotAttributes> returns the C<restore> attribute
-and a list of IDs for the AWS accounts that are authorized to copy or
+and a list of IDs for the accounts that are authorized to copy or
 restore the manual cluster snapshot. If C<all> is included in the list
 of values for the C<restore> attribute, then the manual cluster
-snapshot is public and can be copied or restored by all AWS accounts.
+snapshot is public and can be copied or restored by all accounts.
 
 
 =head2 DescribeDBClusterSnapshots
@@ -1372,6 +1482,31 @@ If you specify a C<SubscriptionName>, lists the description for that
 subscription.
 
 
+=head2 DescribeGlobalClusters
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DocDB::Filter>]]
+
+=item [GlobalClusterIdentifier => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::DescribeGlobalClusters>
+
+Returns: a L<Paws::DocDB::GlobalClustersMessage> instance
+
+Returns information about Amazon DocumentDB global clusters. This API
+supports pagination.
+
+This action only applies to Amazon DocumentDB clusters.
+
+
 =head2 DescribeOrderableDBInstanceOptions
 
 =over
@@ -1566,19 +1701,19 @@ Each argument is described in detail in: L<Paws::DocDB::ModifyDBClusterSnapshotA
 Returns: a L<Paws::DocDB::ModifyDBClusterSnapshotAttributeResult> instance
 
 Adds an attribute and values to, or removes an attribute and values
-from, a manual DB cluster snapshot.
+from, a manual cluster snapshot.
 
-To share a manual cluster snapshot with other AWS accounts, specify
+To share a manual cluster snapshot with other accounts, specify
 C<restore> as the C<AttributeName>, and use the C<ValuesToAdd>
-parameter to add a list of IDs of the AWS accounts that are authorized
-to restore the manual cluster snapshot. Use the value C<all> to make
-the manual cluster snapshot public, which means that it can be copied
-or restored by all AWS accounts. Do not add the C<all> value for any
-manual DB cluster snapshots that contain private information that you
-don't want available to all AWS accounts. If a manual cluster snapshot
-is encrypted, it can be shared, but only by specifying a list of
-authorized AWS account IDs for the C<ValuesToAdd> parameter. You can't
-use C<all> as a value for that parameter in this case.
+parameter to add a list of IDs of the accounts that are authorized to
+restore the manual cluster snapshot. Use the value C<all> to make the
+manual cluster snapshot public, which means that it can be copied or
+restored by all accounts. Do not add the C<all> value for any manual
+cluster snapshots that contain private information that you don't want
+available to all accounts. If a manual cluster snapshot is encrypted,
+it can be shared, but only by specifying a list of authorized account
+IDs for the C<ValuesToAdd> parameter. You can't use C<all> as a value
+for that parameter in this case.
 
 
 =head2 ModifyDBInstance
@@ -1631,7 +1766,7 @@ Each argument is described in detail in: L<Paws::DocDB::ModifyDBSubnetGroup>
 Returns: a L<Paws::DocDB::ModifyDBSubnetGroupResult> instance
 
 Modifies an existing subnet group. subnet groups must contain at least
-one subnet in at least two Availability Zones in the AWS Region.
+one subnet in at least two Availability Zones in the Region.
 
 
 =head2 ModifyEventSubscription
@@ -1658,6 +1793,31 @@ Returns: a L<Paws::DocDB::ModifyEventSubscriptionResult> instance
 Modifies an existing Amazon DocumentDB event notification subscription.
 
 
+=head2 ModifyGlobalCluster
+
+=over
+
+=item GlobalClusterIdentifier => Str
+
+=item [DeletionProtection => Bool]
+
+=item [NewGlobalClusterIdentifier => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::ModifyGlobalCluster>
+
+Returns: a L<Paws::DocDB::ModifyGlobalClusterResult> instance
+
+Modify a setting for an Amazon DocumentDB global cluster. You can
+change one or more configuration parameters (for example: deletion
+protection), or the global cluster identifier by specifying these
+parameters and the new values in the request.
+
+This action only applies to Amazon DocumentDB clusters.
+
+
 =head2 RebootDBInstance
 
 =over
@@ -1681,6 +1841,29 @@ reboot the instance for the changes to take effect.
 Rebooting an instance restarts the database engine service. Rebooting
 an instance results in a momentary outage, during which the instance
 status is set to I<rebooting>.
+
+
+=head2 RemoveFromGlobalCluster
+
+=over
+
+=item DbClusterIdentifier => Str
+
+=item GlobalClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DocDB::RemoveFromGlobalCluster>
+
+Returns: a L<Paws::DocDB::RemoveFromGlobalClusterResult> instance
+
+Detaches an Amazon DocumentDB secondary cluster from a global cluster.
+The cluster becomes a standalone cluster with read-write capability
+instead of being read-only and receiving data from a primary in a
+different region.
+
+This action only applies to Amazon DocumentDB clusters.
 
 
 =head2 RemoveSourceIdentifierFromSubscription
@@ -1997,6 +2180,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - EventSubscriptionsList, passing the object as the first parameter, and the string 'EventSubscriptionsList' as the second parameter 
 
 If not, it will return a a L<Paws::DocDB::EventSubscriptionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllGlobalClusters(sub { },[Filters => ArrayRef[L<Paws::DocDB::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllGlobalClusters([Filters => ArrayRef[L<Paws::DocDB::Filter>], GlobalClusterIdentifier => Str, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GlobalClusters, passing the object as the first parameter, and the string 'GlobalClusters' as the second parameter 
+
+If not, it will return a a L<Paws::DocDB::GlobalClustersMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllOrderableDBInstanceOptions(sub { },Engine => Str, [DBInstanceClass => Str, EngineVersion => Str, Filters => ArrayRef[L<Paws::DocDB::Filter>], LicenseModel => Str, Marker => Str, MaxRecords => Int, Vpc => Bool])

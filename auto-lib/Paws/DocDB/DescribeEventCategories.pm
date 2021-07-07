@@ -63,7 +63,7 @@ This parameter is not currently supported.
 The type of source that is generating the events.
 
 Valid values: C<db-instance>, C<db-parameter-group>,
-C<db-security-group>, C<db-snapshot>
+C<db-security-group>
 
 
 

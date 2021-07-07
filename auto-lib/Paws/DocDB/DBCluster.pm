@@ -27,6 +27,8 @@ package Paws::DocDB::DBCluster;
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
   has ReaderEndpoint => (is => 'ro', isa => 'Str');
+  has ReadReplicaIdentifiers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ReadReplicaIdentifier', traits => ['NameInRequest']);
+  has ReplicationSourceIdentifier => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
@@ -68,10 +70,10 @@ Detailed information about a cluster.
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::DocDB::DBClusterRole>]
 
-Provides a list of the AWS Identity and Access Management (IAM) roles
-that are associated with the cluster. IAM roles that are associated
-with a cluster grant permission for the cluster to access other AWS
-services on your behalf.
+Provides a list of the Identity and Access Management (IAM) roles that
+are associated with the cluster. (IAM) roles that are associated with a
+cluster grant permission for the cluster to access other Amazon Web
+Services services on your behalf.
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
@@ -115,9 +117,9 @@ Specifies the name of the cluster parameter group for the cluster.
 
 =head2 DbClusterResourceId => Str
 
-The AWS Region-unique, immutable identifier for the cluster. This
-identifier is found in AWS CloudTrail log entries whenever the AWS KMS
-key for the cluster is accessed.
+The Region-unique, immutable identifier for the cluster. This
+identifier is found in CloudTrail log entries whenever the KMS key for
+the cluster is accessed.
 
 
 =head2 DBSubnetGroup => Str
@@ -171,7 +173,7 @@ zone.
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is C<true>, the AWS KMS key identifier for the
+If C<StorageEncrypted> is C<true>, the KMS key identifier for the
 encrypted cluster.
 
 
@@ -230,6 +232,18 @@ connected to is promoted to be the primary instance, your connection is
 dropped. To continue sending your read workload to other Amazon
 DocumentDB replicas in the cluster, you can then reconnect to the
 reader endpoint.
+
+
+=head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]
+
+Contains one or more identifiers of the secondary clusters that are
+associated with this cluster.
+
+
+=head2 ReplicationSourceIdentifier => Str
+
+Contains the identifier of the source cluster if this cluster is a
+secondary cluster.
 
 
 =head2 Status => Str

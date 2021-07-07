@@ -117,15 +117,15 @@ This parameter is not currently supported.
 =head2 IncludePublic => Bool
 
 Set to C<true> to include manual cluster snapshots that are public and
-can be copied or restored by any AWS account, and otherwise C<false>.
-The default is C<false>.
+can be copied or restored by any account, and otherwise C<false>. The
+default is C<false>.
 
 
 
 =head2 IncludeShared => Bool
 
 Set to C<true> to include shared manual cluster snapshots from other
-AWS accounts that this AWS account has been given permission to copy or
+accounts that this account has been given permission to copy or
 restore, and otherwise C<false>. The default is C<false>.
 
 
@@ -161,17 +161,17 @@ the following values:
 =item *
 
 C<automated> - Return all cluster snapshots that Amazon DocumentDB has
-automatically created for your AWS account.
+automatically created for your account.
 
 =item *
 
 C<manual> - Return all cluster snapshots that you have manually created
-for your AWS account.
+for your account.
 
 =item *
 
 C<shared> - Return all manual cluster snapshots that have been shared
-to your AWS account.
+to your account.
 
 =item *
 
@@ -184,7 +184,7 @@ If you don't specify a C<SnapshotType> value, then both automated and
 manual cluster snapshots are returned. You can include shared cluster
 snapshots with these results by setting the C<IncludeShared> parameter
 to C<true>. You can include public cluster snapshots with these results
-by setting the C<IncludePublic> parameter to C<true>.
+by setting theC<IncludePublic> parameter to C<true>.
 
 The C<IncludeShared> and C<IncludePublic> parameters don't apply for
 C<SnapshotType> values of C<manual> or C<automated>. The
