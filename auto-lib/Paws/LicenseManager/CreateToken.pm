@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $license-manager = Paws->service('LicenseManager');
     my $CreateTokenResponse = $license -manager->CreateToken(
-      ClientToken      => 'MyIdempotencyToken',
+      ClientToken      => 'MyClientToken',
       LicenseArn       => 'MyArn',
-      ExpirationInDays => 1,                      # OPTIONAL
+      ExpirationInDays => 1,                 # OPTIONAL
       RoleArns         => [
-        'MyArn', ...                              # max: 2048
+        'MyArn', ...                         # max: 2048
       ],    # OPTIONAL
       TokenProperties => [ 'MyString', ... ],    # OPTIONAL
     );

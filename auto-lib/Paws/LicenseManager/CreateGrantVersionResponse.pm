@@ -25,7 +25,7 @@ Grant ARN.
 
 Grant status.
 
-Valid values are: C<"PENDING_WORKFLOW">, C<"PENDING_ACCEPT">, C<"REJECTED">, C<"ACTIVE">, C<"FAILED_WORKFLOW">, C<"DELETED">, C<"PENDING_DELETE">, C<"DISABLED">
+Valid values are: C<"PENDING_WORKFLOW">, C<"PENDING_ACCEPT">, C<"REJECTED">, C<"ACTIVE">, C<"FAILED_WORKFLOW">, C<"DELETED">, C<"PENDING_DELETE">, C<"DISABLED">, C<"WORKFLOW_COMPLETED">
 =head2 Version => Str
 
 New version of the grant.

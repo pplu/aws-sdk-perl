@@ -528,6 +528,8 @@ license entitlements with specific AWS accounts.
 
 =item [Status => Str]
 
+=item [StatusReason => Str]
+
 
 =back
 
@@ -716,6 +718,8 @@ specified license.
 =item GrantArn => Str
 
 =item Version => Str
+
+=item [StatusReason => Str]
 
 
 =back

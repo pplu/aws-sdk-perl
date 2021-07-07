@@ -7,6 +7,7 @@ package Paws::LicenseManager::CreateGrantVersion;
   has GrantName => (is => 'ro', isa => 'Str');
   has SourceVersion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has StatusReason => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,15 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $license-manager = Paws->service('LicenseManager');
     my $CreateGrantVersionResponse = $license -manager->CreateGrantVersion(
-      ClientToken       => 'MyString',
+      ClientToken       => 'MyClientToken',
       GrantArn          => 'MyArn',
       AllowedOperations => [
         'CreateGrant',
         ... # values: CreateGrant, CheckoutLicense, CheckoutBorrowLicense, CheckInLicense, ExtendConsumptionLicense, ListPurchasedLicenses, CreateToken
       ],    # OPTIONAL
-      GrantName     => 'MyString',            # OPTIONAL
-      SourceVersion => 'MyString',            # OPTIONAL
-      Status        => 'PENDING_WORKFLOW',    # OPTIONAL
+      GrantName     => 'MyString',                 # OPTIONAL
+      SourceVersion => 'MyString',                 # OPTIONAL
+      Status        => 'PENDING_WORKFLOW',         # OPTIONAL
+      StatusReason  => 'MyStatusReasonMessage',    # OPTIONAL
     );
 
     # Results:
@@ -92,7 +94,13 @@ Current version of the grant.
 
 Grant status.
 
-Valid values are: C<"PENDING_WORKFLOW">, C<"PENDING_ACCEPT">, C<"REJECTED">, C<"ACTIVE">, C<"FAILED_WORKFLOW">, C<"DELETED">, C<"PENDING_DELETE">, C<"DISABLED">
+Valid values are: C<"PENDING_WORKFLOW">, C<"PENDING_ACCEPT">, C<"REJECTED">, C<"ACTIVE">, C<"FAILED_WORKFLOW">, C<"DELETED">, C<"PENDING_DELETE">, C<"DISABLED">, C<"WORKFLOW_COMPLETED">
+
+=head2 StatusReason => Str
+
+
+
+
 
 
 =head1 SEE ALSO

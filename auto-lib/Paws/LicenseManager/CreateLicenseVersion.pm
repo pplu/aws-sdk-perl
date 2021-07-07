@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $license-manager = Paws->service('LicenseManager');
     my $CreateLicenseVersionResponse = $license -manager->CreateLicenseVersion(
-      ClientToken              => 'MyString',
+      ClientToken              => 'MyClientToken',
       ConsumptionConfiguration => {
         BorrowConfiguration => {
           AllowEarlyCheckIn      => 1,

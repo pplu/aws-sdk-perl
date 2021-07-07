@@ -2,6 +2,7 @@
 package Paws::LicenseManager::DeleteGrant;
   use Moose;
   has GrantArn => (is => 'ro', isa => 'Str', required => 1);
+  has StatusReason => (is => 'ro', isa => 'Str');
   has Version => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -29,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $license-manager = Paws->service('LicenseManager');
     my $DeleteGrantResponse = $license -manager->DeleteGrant(
-      GrantArn => 'MyArn',
-      Version  => 'MyString',
-
+      GrantArn     => 'MyArn',
+      Version      => 'MyString',
+      StatusReason => 'MyStatusReasonMessage',    # OPTIONAL
     );
 
     # Results:
@@ -50,6 +51,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lic
 =head2 B<REQUIRED> GrantArn => Str
 
 Amazon Resource Name (ARN) of the grant.
+
+
+
+=head2 StatusReason => Str
+
+
 
 
 

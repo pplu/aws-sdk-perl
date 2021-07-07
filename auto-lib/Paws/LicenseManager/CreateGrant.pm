@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'CreateGrant',
         ... # values: CreateGrant, CheckoutLicense, CheckoutBorrowLicense, CheckInLicense, ExtendConsumptionLicense, ListPurchasedLicenses, CreateToken
       ],
-      ClientToken => 'MyString',
+      ClientToken => 'MyClientToken',
       GrantName   => 'MyString',
       HomeRegion  => 'MyString',
       LicenseArn  => 'MyArn',

@@ -3,6 +3,7 @@ package Paws::LicenseManager::ReceivedMetadata;
   use Moose;
   has AllowedOperations => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ReceivedStatus => (is => 'ro', isa => 'Str');
+  has ReceivedStatusReason => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::LicenseManager::ReceivedMetadata object:
 
-  $service_obj->Method(Att1 => { AllowedOperations => $value, ..., ReceivedStatus => $value  });
+  $service_obj->Method(Att1 => { AllowedOperations => $value, ..., ReceivedStatusReason => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,6 +48,11 @@ Allowed operations.
 =head2 ReceivedStatus => Str
 
 Received status.
+
+
+=head2 ReceivedStatusReason => Str
+
+
 
 
 
