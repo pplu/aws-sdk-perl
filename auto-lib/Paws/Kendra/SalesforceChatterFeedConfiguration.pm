@@ -51,7 +51,7 @@ the content to index. Typically this is the C<Body> column.
 =head2 DocumentTitleFieldName => Str
 
 The name of the column in the Salesforce FeedItem table that contains
-the title of the document. This is typically the C<Title> collumn.
+the title of the document. This is typically the C<Title> column.
 
 
 =head2 FieldMappings => ArrayRef[L<Paws::Kendra::DataSourceToIndexFieldMapping>]

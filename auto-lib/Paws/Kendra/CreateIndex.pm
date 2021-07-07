@@ -111,6 +111,10 @@ databases. Once you set the edition for an index, it can't be changed.
 The C<Edition> parameter is optional. If you don't supply a value, the
 default is C<ENTERPRISE_EDITION>.
 
+For more information on quota limits for enterprise and developer
+editions, see Quotas
+(https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+
 Valid values are: C<"DEVELOPER_EDITION">, C<"ENTERPRISE_EDITION">
 
 =head2 B<REQUIRED> Name => Str

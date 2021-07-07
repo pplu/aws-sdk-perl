@@ -427,10 +427,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },    # OPTIONAL
         SharePointConfiguration => {
-          SecretArn         => 'MySecretArn',        # min: 1, max: 1284
-          SharePointVersion => 'SHAREPOINT_ONLINE',  # values: SHAREPOINT_ONLINE
-          Urls              => [
-            'MyUrl', ...                             # min: 1, max: 2048
+          SecretArn         => 'MySecretArn',      # min: 1, max: 1284
+          SharePointVersion => 'SHAREPOINT_2013'
+          ,    # values: SHAREPOINT_2013, SHAREPOINT_2016, SHAREPOINT_ONLINE
+          Urls => [
+            'MyUrl', ...    # min: 1, max: 2048
           ],    # min: 1, max: 100
           CrawlAttachments       => 1,                        # OPTIONAL
           DisableLocalGroups     => 1,                        # OPTIONAL
@@ -452,6 +453,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
           ],    # max: 100; OPTIONAL
+          SslCertificateS3Path => {
+            Bucket => 'MyS3BucketName',    # min: 3, max: 63
+            Key    => 'MyS3ObjectKey',     # min: 1, max: 1024
+
+          },    # OPTIONAL
           UseChangeLog     => 1,    # OPTIONAL
           VpcConfiguration => {
             SecurityGroupIds => [
@@ -462,6 +468,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],    # min: 1, max: 6
 
           },    # OPTIONAL
+        },    # OPTIONAL
+        WebCrawlerConfiguration => {
+          Urls => {
+            SeedUrlConfiguration => {
+              SeedUrls => [
+                'MySeedUrl', ...    # min: 1, max: 2048
+              ],    # max: 100
+              WebCrawlerMode => 'HOST_ONLY'
+              ,     # values: HOST_ONLY, SUBDOMAINS, EVERYTHING; OPTIONAL
+            },    # OPTIONAL
+            SiteMapsConfiguration => {
+              SiteMaps => [
+                'MySiteMap', ...    # min: 1, max: 2048
+              ],    # max: 3
+
+            },    # OPTIONAL
+          },
+          AuthenticationConfiguration => {
+            BasicAuthentication => [
+              {
+                Credentials => 'MySecretArn',    # min: 1, max: 1284
+                Host        => 'MyHost',         # min: 1, max: 253
+                Port        => 1,                # min: 1, max: 65535
+
+              },
+              ...
+            ],    # max: 10; OPTIONAL
+          },    # OPTIONAL
+          CrawlDepth                       => 1,    # max: 10; OPTIONAL
+          MaxContentSizePerPageInMegaBytes =>
+            1.0,    # min: 1e-06, max: 50; OPTIONAL
+          MaxLinksPerPage           => 1,    # min: 1, max: 1000; OPTIONAL
+          MaxUrlsPerMinuteCrawlRate => 1,    # min: 1, max: 300; OPTIONAL
+          ProxyConfiguration        => {
+            Host        => 'MyHost',         # min: 1, max: 253
+            Port        => 1,                # min: 1, max: 65535
+            Credentials => 'MySecretArn',    # min: 1, max: 1284
+          },    # OPTIONAL
+          UrlExclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],    # max: 100; OPTIONAL
+          UrlInclusionPatterns => [
+            'MyDataSourceInclusionsExclusionsStringsMember',
+            ...    # min: 1, max: 150
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Description => 'MyDescription',     # OPTIONAL
@@ -568,7 +620,7 @@ to resources.
 
 The type of repository that contains the data source.
 
-Valid values are: C<"S3">, C<"SHAREPOINT">, C<"DATABASE">, C<"SALESFORCE">, C<"ONEDRIVE">, C<"SERVICENOW">, C<"CUSTOM">, C<"CONFLUENCE">, C<"GOOGLEDRIVE">
+Valid values are: C<"S3">, C<"SHAREPOINT">, C<"DATABASE">, C<"SALESFORCE">, C<"ONEDRIVE">, C<"SERVICENOW">, C<"CUSTOM">, C<"CONFLUENCE">, C<"GOOGLEDRIVE">, C<"WEBCRAWLER">
 
 
 =head1 SEE ALSO

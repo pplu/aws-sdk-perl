@@ -2,7 +2,7 @@
 package Paws::Kendra::DataSourceSyncJobMetricTarget;
   use Moose;
   has DataSourceId => (is => 'ro', isa => 'Str', required => 1);
-  has DataSourceSyncJobId => (is => 'ro', isa => 'Str', required => 1);
+  has DataSourceSyncJobId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -44,9 +44,17 @@ Maps a particular data source sync job to a particular data source.
 The ID of the data source that is running the sync job.
 
 
-=head2 B<REQUIRED> DataSourceSyncJobId => Str
+=head2 DataSourceSyncJobId => Str
 
 The ID of the sync job that is running on the data source.
+
+If the ID of a sync job is not provided and there is a sync job
+running, then the ID of this sync job is used and metrics are generated
+for this sync job.
+
+If the ID of a sync job is not provided and there is no sync job
+running, then no metrics are generated and documents are
+indexed/deleted at the index level without sync job metrics included.
 
 
 

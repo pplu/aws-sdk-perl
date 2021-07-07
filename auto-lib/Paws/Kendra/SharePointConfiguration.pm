@@ -9,6 +9,7 @@ package Paws::Kendra::SharePointConfiguration;
   has InclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecretArn => (is => 'ro', isa => 'Str', required => 1);
   has SharePointVersion => (is => 'ro', isa => 'Str', required => 1);
+  has SslCertificateS3Path => (is => 'ro', isa => 'Paws::Kendra::S3Path');
   has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has UseChangeLog => (is => 'ro', isa => 'Bool');
   has VpcConfiguration => (is => 'ro', isa => 'Paws::Kendra::DataSourceVpcConfiguration');
@@ -115,6 +116,11 @@ in the I<AWS Secrets Manager> user guide.
 
 The version of Microsoft SharePoint that you are using as a data
 source.
+
+
+=head2 SslCertificateS3Path => L<Paws::Kendra::S3Path>
+
+
 
 
 =head2 B<REQUIRED> Urls => ArrayRef[Str|Undef]

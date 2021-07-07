@@ -9,6 +9,7 @@ package Paws::Kendra::DataSourceConfiguration;
   has SalesforceConfiguration => (is => 'ro', isa => 'Paws::Kendra::SalesforceConfiguration');
   has ServiceNowConfiguration => (is => 'ro', isa => 'Paws::Kendra::ServiceNowConfiguration');
   has SharePointConfiguration => (is => 'ro', isa => 'Paws::Kendra::SharePointConfiguration');
+  has WebCrawlerConfiguration => (is => 'ro', isa => 'Paws::Kendra::WebCrawlerConfiguration');
 
 1;
 
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kendra::DataSourceConfiguration object:
 
-  $service_obj->Method(Att1 => { ConfluenceConfiguration => $value, ..., SharePointConfiguration => $value  });
+  $service_obj->Method(Att1 => { ConfluenceConfiguration => $value, ..., WebCrawlerConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -90,6 +91,11 @@ instances.
 
 Provides information necessary to create a data source connector for a
 Microsoft SharePoint site.
+
+
+=head2 WebCrawlerConfiguration => L<Paws::Kendra::WebCrawlerConfiguration>
+
+
 
 
 

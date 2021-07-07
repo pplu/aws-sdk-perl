@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       IndexId                       => 'MyIndexId',
       DataSourceSyncJobMetricTarget => {
-        DataSourceId        => 'MyDataSourceId',           # min: 1, max: 100
-        DataSourceSyncJobId => 'MyDataSourceSyncJobId',    # min: 1, max: 100
-
+        DataSourceId        => 'MyDataSourceId',    # min: 1, max: 100
+        DataSourceSyncJobId =>
+          'MyDataSourceSyncJobId',                  # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
     );
 

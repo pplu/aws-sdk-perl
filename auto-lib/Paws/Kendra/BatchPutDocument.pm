@@ -89,6 +89,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ken
 
 One or more documents to add to the index.
 
+Documents can include custom attributes. For example, 'DataSourceId'
+and 'DataSourceSyncJobId' are custom attributes that provide
+information on the synchronization of documents running on a data
+source. Note, 'DataSourceSyncJobId' could be an optional custom
+attribute as Amazon Kendra will use the ID of a running sync job.
+
 Documents have the following file size limits.
 
 =over

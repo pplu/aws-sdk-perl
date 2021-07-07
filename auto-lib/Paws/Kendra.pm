@@ -20,9 +20,19 @@ package Paws::Kendra;
     my $call_object = $self->new_with_coercions('Paws::Kendra::BatchDeleteDocument', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetDocumentStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::BatchGetDocumentStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchPutDocument {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kendra::BatchPutDocument', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ClearQuerySuggestions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::ClearQuerySuggestions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDataSource {
@@ -38,6 +48,11 @@ package Paws::Kendra;
   sub CreateIndex {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kendra::CreateIndex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateQuerySuggestionsBlockList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::CreateQuerySuggestionsBlockList', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateThesaurus {
@@ -60,6 +75,11 @@ package Paws::Kendra;
     my $call_object = $self->new_with_coercions('Paws::Kendra::DeleteIndex', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteQuerySuggestionsBlockList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::DeleteQuerySuggestionsBlockList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteThesaurus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kendra::DeleteThesaurus', @_);
@@ -80,9 +100,24 @@ package Paws::Kendra;
     my $call_object = $self->new_with_coercions('Paws::Kendra::DescribeIndex', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeQuerySuggestionsBlockList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::DescribeQuerySuggestionsBlockList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeQuerySuggestionsConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::DescribeQuerySuggestionsConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeThesaurus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kendra::DescribeThesaurus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetQuerySuggestions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::GetQuerySuggestions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDataSources {
@@ -103,6 +138,11 @@ package Paws::Kendra;
   sub ListIndices {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kendra::ListIndices', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListQuerySuggestionsBlockLists {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::ListQuerySuggestionsBlockLists', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -155,6 +195,16 @@ package Paws::Kendra;
     my $call_object = $self->new_with_coercions('Paws::Kendra::UpdateIndex', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateQuerySuggestionsBlockList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::UpdateQuerySuggestionsBlockList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateQuerySuggestionsConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kendra::UpdateQuerySuggestionsConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateThesaurus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kendra::UpdateThesaurus', @_);
@@ -163,7 +213,7 @@ package Paws::Kendra;
   
 
 
-  sub operations { qw/BatchDeleteDocument BatchPutDocument CreateDataSource CreateFaq CreateIndex CreateThesaurus DeleteDataSource DeleteFaq DeleteIndex DeleteThesaurus DescribeDataSource DescribeFaq DescribeIndex DescribeThesaurus ListDataSources ListDataSourceSyncJobs ListFaqs ListIndices ListTagsForResource ListThesauri Query StartDataSourceSyncJob StopDataSourceSyncJob SubmitFeedback TagResource UntagResource UpdateDataSource UpdateIndex UpdateThesaurus / }
+  sub operations { qw/BatchDeleteDocument BatchGetDocumentStatus BatchPutDocument ClearQuerySuggestions CreateDataSource CreateFaq CreateIndex CreateQuerySuggestionsBlockList CreateThesaurus DeleteDataSource DeleteFaq DeleteIndex DeleteQuerySuggestionsBlockList DeleteThesaurus DescribeDataSource DescribeFaq DescribeIndex DescribeQuerySuggestionsBlockList DescribeQuerySuggestionsConfig DescribeThesaurus GetQuerySuggestions ListDataSources ListDataSourceSyncJobs ListFaqs ListIndices ListQuerySuggestionsBlockLists ListTagsForResource ListThesauri Query StartDataSourceSyncJob StopDataSourceSyncJob SubmitFeedback TagResource UntagResource UpdateDataSource UpdateIndex UpdateQuerySuggestionsBlockList UpdateQuerySuggestionsConfig UpdateThesaurus / }
 
 1;
 
@@ -223,6 +273,38 @@ the deletion by using AWS CloudWatch. Any error messages related to the
 processing of the batch are sent to you CloudWatch log.
 
 
+=head2 BatchGetDocumentStatus
+
+=over
+
+=item DocumentInfoList => ArrayRef[L<Paws::Kendra::DocumentInfo>]
+
+=item IndexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::BatchGetDocumentStatus>
+
+Returns: a L<Paws::Kendra::BatchGetDocumentStatusResponse> instance
+
+Returns the indexing status for one or more documents submitted with
+the BatchPutDocument
+(https://docs.aws.amazon.com/kendra/latest/dg/API_BatchPutDocument.html)
+operation.
+
+When you use the C<BatchPutDocument> operation, documents are indexed
+asynchronously. You can use the C<BatchGetDocumentStatus> operation to
+get the current status of a list of documents so that you can determine
+if they have been successfully indexed.
+
+You can also use the C<BatchGetDocumentStatus> operation to check the
+status of the BatchDeleteDocument
+(https://docs.aws.amazon.com/kendra/latest/dg/API_BatchDeleteDocument.html)
+operation. When a document is deleted from the index, Amazon Kendra
+returns C<NOT_FOUND> as the status.
+
+
 =head2 BatchPutDocument
 
 =over
@@ -251,6 +333,28 @@ list to the documents added to the index.
 The documents are indexed asynchronously. You can see the progress of
 the batch using AWS CloudWatch. Any error messages related to
 processing the batch are sent to your AWS CloudWatch log.
+
+
+=head2 ClearQuerySuggestions
+
+=over
+
+=item IndexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::ClearQuerySuggestions>
+
+Returns: nothing
+
+Clears existing query suggestions from an index.
+
+This deletes existing suggestions only, not the queries in the query
+log. After you clear suggestions, Amazon Kendra learns new suggestions
+based on new queries added to the query log from the time you cleared
+suggestions. If you do not see any new suggestions, then please allow
+Amazon Kendra to collect enough queries to learn new suggestions.
 
 
 =head2 CreateDataSource
@@ -364,6 +468,45 @@ C<BatchPutDocument> operation or using one of the supported data
 sources.
 
 
+=head2 CreateQuerySuggestionsBlockList
+
+=over
+
+=item IndexId => Str
+
+=item Name => Str
+
+=item RoleArn => Str
+
+=item SourceS3Path => L<Paws::Kendra::S3Path>
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::Kendra::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::CreateQuerySuggestionsBlockList>
+
+Returns: a L<Paws::Kendra::CreateQuerySuggestionsBlockListResponse> instance
+
+Creates a block list to exlcude certain queries from suggestions.
+
+Any query that contains words or phrases specified in the block list is
+blocked or filtered out from being shown as a suggestion.
+
+You need to provide the file location of your block list text file in
+your S3 bucket. In your text file, enter each block word or phrase on a
+separate line.
+
+For information on the current quota limits for block lists, see Quotas
+for Amazon Kendra
+(https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
+
+
 =head2 CreateThesaurus
 
 =over
@@ -453,6 +596,28 @@ the C<Status> field returned by a call to the C<DescribeIndex>
 operation is set to C<DELETING>.
 
 
+=head2 DeleteQuerySuggestionsBlockList
+
+=over
+
+=item Id => Str
+
+=item IndexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::DeleteQuerySuggestionsBlockList>
+
+Returns: nothing
+
+Deletes a block list used for query suggestions for an index.
+
+A deleted block list might not take effect right away. Amazon Kendra
+needs to refresh the entire suggestions list to add back the queries
+that were previously blocked.
+
+
 =head2 DeleteThesaurus
 
 =over
@@ -523,6 +688,46 @@ Returns: a L<Paws::Kendra::DescribeIndexResponse> instance
 Describes an existing Amazon Kendra index
 
 
+=head2 DescribeQuerySuggestionsBlockList
+
+=over
+
+=item Id => Str
+
+=item IndexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::DescribeQuerySuggestionsBlockList>
+
+Returns: a L<Paws::Kendra::DescribeQuerySuggestionsBlockListResponse> instance
+
+Describes a block list used for query suggestions for an index.
+
+This is used to check the current settings that are applied to a block
+list.
+
+
+=head2 DescribeQuerySuggestionsConfig
+
+=over
+
+=item IndexId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::DescribeQuerySuggestionsConfig>
+
+Returns: a L<Paws::Kendra::DescribeQuerySuggestionsConfigResponse> instance
+
+Describes the settings of query suggestions for an index.
+
+This is used to check the current settings applied to query
+suggestions.
+
+
 =head2 DescribeThesaurus
 
 =over
@@ -539,6 +744,26 @@ Each argument is described in detail in: L<Paws::Kendra::DescribeThesaurus>
 Returns: a L<Paws::Kendra::DescribeThesaurusResponse> instance
 
 Describes an existing Amazon Kendra thesaurus.
+
+
+=head2 GetQuerySuggestions
+
+=over
+
+=item IndexId => Str
+
+=item QueryText => Str
+
+=item [MaxSuggestionsCount => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::GetQuerySuggestions>
+
+Returns: a L<Paws::Kendra::GetQuerySuggestionsResponse> instance
+
+Fetches the queries that are suggested to your users.
 
 
 =head2 ListDataSources
@@ -623,6 +848,30 @@ Each argument is described in detail in: L<Paws::Kendra::ListIndices>
 Returns: a L<Paws::Kendra::ListIndicesResponse> instance
 
 Lists the Amazon Kendra indexes that you have created.
+
+
+=head2 ListQuerySuggestionsBlockLists
+
+=over
+
+=item IndexId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::ListQuerySuggestionsBlockLists>
+
+Returns: a L<Paws::Kendra::ListQuerySuggestionsBlockListsResponse> instance
+
+Lists the block lists used for query suggestions for an index.
+
+For information on the current quota limits for block lists, see Quotas
+for Amazon Kendra
+(https://docs.aws.amazon.com/kendra/latest/dg/quotas.html).
 
 
 =head2 ListTagsForResource
@@ -886,6 +1135,81 @@ Each argument is described in detail in: L<Paws::Kendra::UpdateIndex>
 Returns: nothing
 
 Updates an existing Amazon Kendra index.
+
+
+=head2 UpdateQuerySuggestionsBlockList
+
+=over
+
+=item Id => Str
+
+=item IndexId => Str
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [RoleArn => Str]
+
+=item [SourceS3Path => L<Paws::Kendra::S3Path>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::UpdateQuerySuggestionsBlockList>
+
+Returns: nothing
+
+Updates a block list used for query suggestions for an index.
+
+Updates to a block list might not take effect right away. Amazon Kendra
+needs to refresh the entire suggestions list to apply any updates to
+the block list. Other changes not related to the block list apply
+immediately.
+
+If a block list is updating, then you need to wait for the first update
+to finish before submitting another update.
+
+Amazon Kendra supports partial updates, so you only need to provide the
+fields you want to update.
+
+
+=head2 UpdateQuerySuggestionsConfig
+
+=over
+
+=item IndexId => Str
+
+=item [IncludeQueriesWithoutUserInformation => Bool]
+
+=item [MinimumNumberOfQueryingUsers => Int]
+
+=item [MinimumQueryCount => Int]
+
+=item [Mode => Str]
+
+=item [QueryLogLookBackWindowInDays => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kendra::UpdateQuerySuggestionsConfig>
+
+Returns: nothing
+
+Updates the settings of query suggestions for an index.
+
+Amazon Kendra supports partial updates, so you only need to provide the
+fields you want to update.
+
+If an update is currently processing (i.e. 'happening'), you need to
+wait for the update to finish before making another update.
+
+Updates to query suggestions settings might not take effect right away.
+The time for your updated settings to take effect depends on the
+updates made and the number of search queries in your index.
+
+You can still enable/disable query suggestions at any time.
 
 
 =head2 UpdateThesaurus
