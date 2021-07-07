@@ -51,8 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 B<REQUIRED> Arn => Str
 
 Requests the tags associated with a particular Amazon Resource Name
-(ARN). An ARN is an identifier for a specific AWS resource, such as a
-server, user, or role.
+(ARN). An ARN is an identifier for a specific Amazon Web Services
+resource, such as a server, user, or role.
 
 
 

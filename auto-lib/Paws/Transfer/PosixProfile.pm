@@ -35,24 +35,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::P
 
 =head1 DESCRIPTION
 
-This class has no description
+The full POSIX identity, including user ID (C<Uid>), group ID (C<Gid>),
+and any secondary groups IDs (C<SecondaryGids>), that controls your
+users' access to your Amazon EFS file systems. The POSIX permissions
+that are set on files and directories in your file system determine the
+level of access your users get when transferring files into and out of
+your Amazon EFS file systems.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Gid => Int
 
-
+The POSIX group ID used for all EFS operations by this user.
 
 
 =head2 SecondaryGids => ArrayRef[Int]
 
-
+The secondary POSIX group IDs used for all EFS operations by this user.
 
 
 =head2 B<REQUIRED> Uid => Int
 
-
+The POSIX user ID used for all EFS operations by this user.
 
 
 

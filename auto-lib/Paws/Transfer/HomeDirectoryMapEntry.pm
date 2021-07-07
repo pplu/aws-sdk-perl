@@ -37,12 +37,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::H
 Represents an object that contains entries and targets for
 C<HomeDirectoryMappings>.
 
+The following is an C<Entry> and C<Target> pair example for C<chroot>.
+
+C<[ { "Entry:": "/", "Target": "/bucket_name/home/mydirectory" } ]>
+
+If the target of a logical directory entry does not exist in Amazon S3
+or EFS, the entry is ignored. As a workaround, you can use the Amazon
+S3 API or EFS API to create 0 byte objects as place holders for your
+directory. If using the CLI, use the C<s3api> or C<efsapi> call instead
+of C<s3> or C<efs> so you can use the put-object operation. For
+example, you use the following: C<aws s3api put-object --bucket
+bucketname --key path/to/folder/>. Make sure that the end of the key
+name ends in a C</> for it to be considered a folder.
+
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Entry => Str
 
-Represents an entry and a target for C<HomeDirectoryMappings>.
+Represents an entry for C<HomeDirectoryMappings>.
 
 
 =head2 B<REQUIRED> Target => Str

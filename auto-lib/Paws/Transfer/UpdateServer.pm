@@ -7,6 +7,7 @@ package Paws::Transfer::UpdateServer;
   has HostKey => (is => 'ro', isa => 'Str');
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has LoggingRole => (is => 'ro', isa => 'Str');
+  has ProtocolDetails => (is => 'ro', isa => 'Paws::Transfer::ProtocolDetails');
   has Protocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecurityPolicyName => (is => 'ro', isa => 'Str');
   has ServerId => (is => 'ro', isa => 'Str', required => 1);
@@ -50,12 +51,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndpointType            => 'PUBLIC',       # OPTIONAL
       HostKey                 => 'MyHostKey',    # OPTIONAL
       IdentityProviderDetails => {
+        DirectoryId    => 'MyDirectoryId',       # min: 12, max: 12; OPTIONAL
         InvocationRole => 'MyRole',              # min: 20, max: 2048; OPTIONAL
         Url            => 'MyUrl',               # max: 255; OPTIONAL
       },    # OPTIONAL
-      LoggingRole => 'MyNullableRole',    # OPTIONAL
-      Protocols   => [
-        'SFTP', ...                       # values: SFTP, FTP, FTPS
+      LoggingRole     => 'MyNullableRole',    # OPTIONAL
+      ProtocolDetails => {
+        PassiveIp => 'MyPassiveIp',           # max: 15; OPTIONAL
+      },    # OPTIONAL
+      Protocols => [
+        'SFTP', ...    # values: SFTP, FTP, FTPS
       ],    # OPTIONAL
       SecurityPolicyName => 'MySecurityPolicyName',    # OPTIONAL
     );
@@ -73,22 +78,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 Certificate => Str
 
-The Amazon Resource Name (ARN) of the AWS Certificate Manager (ACM)
-certificate. Required when C<Protocols> is set to C<FTPS>.
+The Amazon Resource Name (ARN) of the Amazon Web ServicesCertificate
+Manager (ACM) certificate. Required when C<Protocols> is set to
+C<FTPS>.
 
 To request a new public certificate, see Request a public certificate
 (https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-public.html)
-in the I< AWS Certificate Manager User Guide>.
+in the I< Amazon Web ServicesCertificate Manager User Guide>.
 
 To import an existing certificate into ACM, see Importing certificates
 into ACM
 (https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html)
-in the I< AWS Certificate Manager User Guide>.
+in the I< Amazon Web ServicesCertificate Manager User Guide>.
 
 To request a private certificate to use FTPS through private IP
 addresses, see Request a private certificate
 (https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-request-private.html)
-in the I< AWS Certificate Manager User Guide>.
+in the I< Amazon Web ServicesCertificate Manager User Guide>.
 
 Certificates with the following cryptographic algorithms and key sizes
 are supported:
@@ -125,19 +131,32 @@ with FQDN or IP address specified and information about the issuer.
 =head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
 
 The virtual private cloud (VPC) endpoint settings that are configured
-for your server. With a VPC endpoint, you can restrict access to your
-server to resources only within your VPC. To control incoming internet
-traffic, you will need to associate one or more Elastic IP addresses
-with your server's endpoint.
+for your server. When you host your endpoint within your VPC, you can
+make it accessible only to resources within your VPC, or you can attach
+Elastic IP addresses and make it accessible to clients over the
+internet. Your VPC's default security groups are automatically assigned
+to your endpoint.
 
 
 
 =head2 EndpointType => Str
 
-The type of endpoint that you want your server to connect to. You can
-choose to connect to the public internet or a VPC endpoint. With a VPC
-endpoint, you can restrict access to your server and resources only
-within your VPC.
+The type of endpoint that you want your server to use. You can choose
+to make your server's endpoint publicly accessible (PUBLIC) or host it
+inside your VPC. With an endpoint that is hosted in a VPC, you can
+restrict access to your server and resources only within your VPC or
+choose to make it internet facing by attaching Elastic IP addresses
+directly to it.
+
+After May 19, 2021, you won't be able to create a server using
+C<EndpointType=VPC_ENDPOINT> in your Amazon Web Servicesaccount if your
+account hasn't already done so before May 19, 2021. If you have already
+created servers with C<EndpointType=VPC_ENDPOINT> in your Amazon Web
+Servicesaccount on or before May 19, 2021, you will not be affected.
+After this date, use C<EndpointType>=C<VPC>.
+
+For more information, see
+https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint.
 
 It is recommended that you use C<VPC> as the C<EndpointType>. With this
 endpoint type, you have the option to directly associate up to three
@@ -160,7 +179,7 @@ changing a server's host key can be disruptive.
 For more information, see Change the host key for your SFTP-enabled
 server
 (https://docs.aws.amazon.com/transfer/latest/userguide/edit-server-config.html#configuring-servers-change-host-key)
-in the I<AWS Transfer Family User Guide>.
+in the I<Amazon Web ServicesTransfer Family User Guide>.
 
 
 
@@ -173,9 +192,20 @@ customer's authentication API method.
 
 =head2 LoggingRole => Str
 
-Changes the AWS Identity and Access Management (IAM) role that allows
-Amazon S3 events to be logged in Amazon CloudWatch, turning logging on
-or off.
+Specifies the Amazon Resource Name (ARN) of the Amazon Web Services
+Identity and Access Management (IAM) role that allows a server to turn
+on Amazon CloudWatch logging for Amazon S3 or Amazon EFS events. When
+set, user activity can be viewed in your CloudWatch logs.
+
+
+
+=head2 ProtocolDetails => L<Paws::Transfer::ProtocolDetails>
+
+The protocol settings that are configured for your server.
+
+Use the C<PassiveIp> parameter to indicate passive mode (for FTP and
+FTPS protocols). Enter a single dotted-quad IPv4 address, such as the
+external IP address of a firewall, router, or load balancer.
 
 
 
@@ -202,13 +232,13 @@ File Transfer Protocol (FTP): Unencrypted file transfer
 
 =back
 
-If you select C<FTPS>, you must choose a certificate stored in AWS
-Certificate Manager (ACM) which will be used to identify your server
-when clients connect to it over FTPS.
+If you select C<FTPS>, you must choose a certificate stored in Amazon
+Web ServicesCertificate Manager (ACM) which will be used to identify
+your server when clients connect to it over FTPS.
 
 If C<Protocol> includes either C<FTP> or C<FTPS>, then the
 C<EndpointType> must be C<VPC> and the C<IdentityProviderType> must be
-C<API_GATEWAY>.
+C<AWS_DIRECTORY_SERVICE> or C<API_GATEWAY>.
 
 If C<Protocol> includes C<FTP>, then C<AddressAllocationIds> cannot be
 associated.

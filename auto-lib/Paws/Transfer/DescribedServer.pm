@@ -10,6 +10,7 @@ package Paws::Transfer::DescribedServer;
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
+  has ProtocolDetails => (is => 'ro', isa => 'Paws::Transfer::ProtocolDetails');
   has Protocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecurityPolicyName => (is => 'ro', isa => 'Str');
   has ServerId => (is => 'ro', isa => 'Str');
@@ -60,19 +61,24 @@ Specifies the unique Amazon Resource Name (ARN) of the server.
 
 =head2 Certificate => Str
 
-Specifies the ARN of the AWS Certificate Manager (ACM) certificate.
-Required when C<Protocols> is set to C<FTPS>.
+Specifies the ARN of the Amazon Web ServicesCertificate Manager (ACM)
+certificate. Required when C<Protocols> is set to C<FTPS>.
 
 
 =head2 Domain => Str
 
-
+Specifies the domain of the storage system that is used for file
+transfers.
 
 
 =head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
 
-Specifies the virtual private cloud (VPC) endpoint settings that you
-configured for your server.
+The virtual private cloud (VPC) endpoint settings that are configured
+for your server. When you host your endpoint within your VPC, you can
+make it accessible only to resources within your VPC, or you can attach
+Elastic IP addresses and make it accessible to clients over the
+internet. Your VPC's default security groups are automatically assigned
+to your endpoint.
 
 
 =head2 EndpointType => Str
@@ -93,24 +99,42 @@ my-new-server-key> command.
 
 Specifies information to call a customer-supplied authentication API.
 This field is not populated when the C<IdentityProviderType> of a
-server is C<SERVICE_MANAGED>.
+server is C<AWS_DIRECTORY_SERVICE> or C<SERVICE_MANAGED>.
 
 
 =head2 IdentityProviderType => Str
 
-Specifies the mode of authentication method enabled for this service. A
-value of C<SERVICE_MANAGED> means that you are using this server to
-store and access user credentials within the service. A value of
-C<API_GATEWAY> indicates that you have integrated an API Gateway
-endpoint that will be invoked for authenticating your user into the
-service.
+Specifies the mode of authentication for a server. The default value is
+C<SERVICE_MANAGED>, which allows you to store and access user
+credentials within the Amazon Web Services Transfer Family service.
+
+Use C<AWS_DIRECTORY_SERVICE> to provide access to Active Directory
+groups in Amazon Web Services Managed Active Directory or Microsoft
+Active Directory in your on-premises environment or in Amazon Web
+Services using AD Connectors. This option also requires you to provide
+a Directory ID using the C<IdentityProviderDetails> parameter.
+
+Use the C<API_GATEWAY> value to integrate with an identity provider of
+your choosing. The C<API_GATEWAY> setting requires you to provide an
+API Gateway endpoint URL to call for authentication using the
+C<IdentityProviderDetails> parameter.
 
 
 =head2 LoggingRole => Str
 
-Specifies the AWS Identity and Access Management (IAM) role that allows
-a server to turn on Amazon CloudWatch logging for Amazon S3 events.
-When set, user activity can be viewed in your CloudWatch logs.
+Specifies the Amazon Resource Name (ARN) of the Amazon Web Services
+Identity and Access Management (IAM) role that allows a server to turn
+on Amazon CloudWatch logging for Amazon S3 or Amazon EFS events. When
+set, user activity can be viewed in your CloudWatch logs.
+
+
+=head2 ProtocolDetails => L<Paws::Transfer::ProtocolDetails>
+
+The protocol settings that are configured for your server.
+
+Use the C<PassiveIp> parameter to indicate passive mode. Enter a single
+dotted-quad IPv4 address, such as the external IP address of a
+firewall, router, or load balancer.
 
 
 =head2 Protocols => ArrayRef[Str|Undef]

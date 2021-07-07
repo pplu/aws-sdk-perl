@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> Arn => Str
 
-An Amazon Resource Name (ARN) for a specific AWS resource, such as a
-server, user, or role.
+An Amazon Resource Name (ARN) for a specific Amazon Web Services
+resource, such as a server, user, or role.
 
 
 

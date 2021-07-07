@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 B<REQUIRED> Arn => Str
 
 The value of the resource that will have the tag removed. An Amazon
-Resource Name (ARN) is an identifier for a specific AWS resource, such
-as a server, user, or role.
+Resource Name (ARN) is an identifier for a specific Amazon Web Services
+resource, such as a server, user, or role.
 
 
 

@@ -54,7 +54,8 @@ listed.
 
 =head2 Domain => Str
 
-
+Specifies the domain of the storage system that is used for file
+transfers.
 
 
 =head2 EndpointType => Str
@@ -66,16 +67,28 @@ accessible over the public internet.
 
 =head2 IdentityProviderType => Str
 
-Specifies the authentication method used to validate a user for a
-server that was specified. This can include Secure Shell (SSH), user
-name and password combinations, or your own custom authentication
-method. Valid values include C<SERVICE_MANAGED> or C<API_GATEWAY>.
+Specifies the mode of authentication for a server. The default value is
+C<SERVICE_MANAGED>, which allows you to store and access user
+credentials within the Amazon Web Services Transfer Family service.
+
+Use C<AWS_DIRECTORY_SERVICE> to provide access to Active Directory
+groups in Amazon Web Services Managed Active Directory or Microsoft
+Active Directory in your on-premises environment or in Amazon Web
+Services using AD Connectors. This option also requires you to provide
+a Directory ID using the C<IdentityProviderDetails> parameter.
+
+Use the C<API_GATEWAY> value to integrate with an identity provider of
+your choosing. The C<API_GATEWAY> setting requires you to provide an
+API Gateway endpoint URL to call for authentication using the
+C<IdentityProviderDetails> parameter.
 
 
 =head2 LoggingRole => Str
 
-Specifies the AWS Identity and Access Management (IAM) role that allows
-a server to turn on Amazon CloudWatch logging.
+Specifies the Amazon Resource Name (ARN) of the Amazon Web Services
+Identity and Access Management (IAM) role that allows a server to turn
+on Amazon CloudWatch logging for Amazon S3 or Amazon EFS events. When
+set, user activity can be viewed in your CloudWatch logs.
 
 
 =head2 ServerId => Str

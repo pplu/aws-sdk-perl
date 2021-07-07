@@ -86,36 +86,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 The landing directory (folder) for a user when they log in to the
 server using the client.
 
-An example is I< C<your-Amazon-S3-bucket-nameE<gt>/home/username> >.
+A C<HomeDirectory> example is C</bucket_name/home/mydirectory>.
 
 
 
 =head2 HomeDirectoryMappings => ArrayRef[L<Paws::Transfer::HomeDirectoryMapEntry>]
 
-Logical directory mappings that specify what Amazon S3 paths and keys
-should be visible to your user and how you want to make them visible.
-You will need to specify the "C<Entry>" and "C<Target>" pair, where
+Logical directory mappings that specify what Amazon S3 or Amazon EFS
+paths and keys should be visible to your user and how you want to make
+them visible. You must specify the C<Entry> and C<Target> pair, where
 C<Entry> shows how the path is made visible and C<Target> is the actual
-Amazon S3 path. If you only specify a target, it will be displayed as
-is. You will need to also make sure that your IAM role provides access
-to paths in C<Target>. The following is an example.
+Amazon S3 or Amazon EFS path. If you only specify a target, it is
+displayed as is. You also must ensure that your Amazon Web Services
+Identity and Access Management (IAM) role provides access to paths in
+C<Target>. This value can only be set when C<HomeDirectoryType> is set
+to I<LOGICAL>.
 
-C<'[ "/bucket2/documentation", { "Entry": "your-personal-report.pdf",
-"Target": "/bucket3/customized-reports/${transfer:UserName}.pdf" } ]'>
+The following is an C<Entry> and C<Target> pair example.
+
+C<[ { "Entry": "your-personal-report.pdf", "Target":
+"/bucket3/customized-reports/${transfer:UserName}.pdf" } ]>
 
 In most cases, you can use this value instead of the scope-down policy
-to lock your user down to the designated home directory ("chroot"). To
-do this, you can set C<Entry> to '/' and set C<Target> to the
+to lock your user down to the designated home directory ("C<chroot>").
+To do this, you can set C<Entry> to C</> and set C<Target> to the
 HomeDirectory parameter value.
 
-If the target of a logical directory entry does not exist in Amazon S3,
-the entry will be ignored. As a workaround, you can use the Amazon S3
-API to create 0 byte objects as place holders for your directory. If
-using the CLI, use the C<s3api> call instead of C<s3> so you can use
-the put-object operation. For example, you use the following: C<aws
-s3api put-object --bucket bucketname --key path/to/folder/>. Make sure
-that the end of the key name ends in a '/' for it to be considered a
-folder.
+The following is an C<Entry> and C<Target> pair example for C<chroot>.
+
+C<[ { "Entry:": "/", "Target": "/bucket_name/home/mydirectory" } ]>
+
+If the target of a logical directory entry does not exist in Amazon S3
+or EFS, the entry is ignored. As a workaround, you can use the Amazon
+S3 API or EFS API to create 0 byte objects as place holders for your
+directory. If using the CLI, use the C<s3api> or C<efsapi> call instead
+of C<s3> or C<efs> so you can use the put-object operation. For
+example, you use the following: C<aws s3api put-object --bucket
+bucketname --key path/to/folder/>. Make sure that the end of the key
+name ends in a C</> for it to be considered a folder.
 
 
 
@@ -123,46 +131,57 @@ folder.
 
 The type of landing directory (folder) you want your users' home
 directory to be when they log into the server. If you set it to
-C<PATH>, the user will see the absolute Amazon S3 bucket paths as is in
-their file transfer protocol clients. If you set it C<LOGICAL>, you
-will need to provide mappings in the C<HomeDirectoryMappings> for how
-you want to make Amazon S3 paths visible to your users.
+C<PATH>, the user will see the absolute Amazon S3 bucket or EFS paths
+as is in their file transfer protocol clients. If you set it
+C<LOGICAL>, you will need to provide mappings in the
+C<HomeDirectoryMappings> for how you want to make Amazon S3 or EFS
+paths visible to your users.
 
 Valid values are: C<"PATH">, C<"LOGICAL">
 
 =head2 Policy => Str
 
-A scope-down policy for your user so you can use the same IAM role
+A scope-down policy for your user so that you can use the same IAM role
 across multiple users. This policy scopes down user access to portions
 of their Amazon S3 bucket. Variables that you can use inside this
 policy include C<${Transfer:UserName}>, C<${Transfer:HomeDirectory}>,
 and C<${Transfer:HomeBucket}>.
 
-For scope-down policies, AWS Transfer Family stores the policy as a
-JSON blob, instead of the Amazon Resource Name (ARN) of the policy. You
-save the policy as a JSON blob and pass it in the C<Policy> argument.
+This only applies when domain of ServerId is S3. EFS does not use scope
+down policy.
 
-For an example of a scope-down policy, see Creating a scope-down policy
-(https://docs.aws.amazon.com/transfer/latest/userguide/users.html#users-policies-scope-down).
+For scope-down policies, Amazon Web Services Transfer Family stores the
+policy as a JSON blob, instead of the Amazon Resource Name (ARN) of the
+policy. You save the policy as a JSON blob and pass it in the C<Policy>
+argument.
+
+For an example of a scope-down policy, see Example scope-down policy
+(https://docs.aws.amazon.com/transfer/latest/userguide/scope-down-policy.html).
 
 For more information, see AssumeRole
 (https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
-in the I<AWS Security Token Service API Reference>.
+in the I<Amazon Web Services Security Token Service API Reference>.
 
 
 
 =head2 PosixProfile => L<Paws::Transfer::PosixProfile>
 
-
+Specifies the full POSIX identity, including user ID (C<Uid>), group ID
+(C<Gid>), and any secondary groups IDs (C<SecondaryGids>), that
+controls your users' access to your Amazon EFS file systems. The POSIX
+permissions that are set on files and directories in Amazon EFS
+determine the level of access your users get when transferring files
+into and out of your Amazon EFS file systems.
 
 
 
 =head2 B<REQUIRED> Role => Str
 
-The IAM role that controls your users' access to your Amazon S3 bucket.
-The policies attached to this role will determine the level of access
-you want to provide your users when transferring files into and out of
-your Amazon S3 bucket or buckets. The IAM role should also contain a
+Specifies the Amazon Resource Name (ARN) of the IAM role that controls
+your users' access to your Amazon S3 bucket or EFS file system. The
+policies attached to this role determine the level of access that you
+want to provide your users when transferring files into and out of your
+Amazon S3 bucket or EFS file system. The IAM role should also contain a
 trust relationship that allows the server to access your resources when
 servicing your users' transfer requests.
 

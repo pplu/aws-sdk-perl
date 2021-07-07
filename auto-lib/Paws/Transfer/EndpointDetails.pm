@@ -41,7 +41,17 @@ The virtual private cloud (VPC) endpoint settings that are configured
 for your file transfer protocol-enabled server. With a VPC endpoint,
 you can restrict access to your server and resources only within your
 VPC. To control incoming internet traffic, invoke the C<UpdateServer>
-API and attach an Elastic IP to your server's endpoint.
+API and attach an Elastic IP address to your server's endpoint.
+
+After May 19, 2021, you won't be able to create a server using
+C<EndpointType=VPC_ENDPOINT> in your Amazon Web Servicesaccount if your
+account hasn't already done so before May 19, 2021. If you have already
+created servers with C<EndpointType=VPC_ENDPOINT> in your Amazon Web
+Servicesaccount on or before May 19, 2021, you will not be affected.
+After this date, use C<EndpointType>=C<VPC>.
+
+For more information, see
+https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint.
 
 =head1 ATTRIBUTES
 
@@ -62,9 +72,14 @@ server's endpoint.
 
 This property can only be set when C<EndpointType> is set to C<VPC>.
 
-You can only edit the C<SecurityGroupIds> property in the
-C<UpdateServer> API and only if you are changing the C<EndpointType>
-from C<PUBLIC> or C<VPC_ENDPOINT> to C<VPC>.
+You can edit the C<SecurityGroupIds> property in the UpdateServer
+(https://docs.aws.amazon.com/transfer/latest/userguide/API_UpdateServer.html)
+API only if you are changing the C<EndpointType> from C<PUBLIC> or
+C<VPC_ENDPOINT> to C<VPC>. To change security groups associated with
+your server's VPC endpoint after creation, use the Amazon EC2
+ModifyVpcEndpoint
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpoint.html)
+API.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
@@ -81,6 +96,9 @@ The ID of the VPC endpoint.
 
 This property can only be set when C<EndpointType> is set to
 C<VPC_ENDPOINT>.
+
+For more information, see
+https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint.
 
 
 =head2 VpcId => Str

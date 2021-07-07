@@ -1,19 +1,19 @@
 
-package Paws::Transfer::UpdateUser;
+package Paws::Transfer::CreateAccess;
   use Moose;
+  has ExternalId => (is => 'ro', isa => 'Str', required => 1);
   has HomeDirectory => (is => 'ro', isa => 'Str');
   has HomeDirectoryMappings => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::HomeDirectoryMapEntry]');
   has HomeDirectoryType => (is => 'ro', isa => 'Str');
   has Policy => (is => 'ro', isa => 'Str');
   has PosixProfile => (is => 'ro', isa => 'Paws::Transfer::PosixProfile');
-  has Role => (is => 'ro', isa => 'Str');
+  has Role => (is => 'ro', isa => 'Str', required => 1);
   has ServerId => (is => 'ro', isa => 'Str', required => 1);
-  has UserName => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
 
-  class_has _api_call => (isa => 'Str', is => 'ro', default => 'UpdateUser');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::UpdateUserResponse');
+  class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateAccess');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::Transfer::CreateAccessResponse');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -21,22 +21,23 @@ package Paws::Transfer::UpdateUser;
 
 =head1 NAME
 
-Paws::Transfer::UpdateUser - Arguments for method UpdateUser on L<Paws::Transfer>
+Paws::Transfer::CreateAccess - Arguments for method CreateAccess on L<Paws::Transfer>
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method UpdateUser on the
+This class represents the parameters used for calling the method CreateAccess on the
 L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
-as arguments to method UpdateUser.
+as arguments to method CreateAccess.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to UpdateUser.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateAccess.
 
 =head1 SYNOPSIS
 
     my $transfer = Paws->service('Transfer');
-    my $UpdateUserResponse = $transfer->UpdateUser(
+    my $CreateAccessResponse = $transfer->CreateAccess(
+      ExternalId            => 'MyExternalId',
+      Role                  => 'MyRole',
       ServerId              => 'MyServerId',
-      UserName              => 'MyUserName',
       HomeDirectory         => 'MyHomeDirectory',    # OPTIONAL
       HomeDirectoryMappings => [
         {
@@ -55,19 +56,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           1, ...                          # max: 4294967295
         ],    # max: 16; OPTIONAL
       },    # OPTIONAL
-      Role => 'MyRole',    # OPTIONAL
     );
 
     # Results:
-    my $ServerId = $UpdateUserResponse->ServerId;
-    my $UserName = $UpdateUserResponse->UserName;
+    my $ExternalId = $CreateAccessResponse->ExternalId;
+    my $ServerId   = $CreateAccessResponse->ServerId;
 
-    # Returns a L<Paws::Transfer::UpdateUserResponse> object.
+    # Returns a L<Paws::Transfer::CreateAccessResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
-For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transfer/UpdateUser>
+For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/transfer/CreateAccess>
 
 =head1 ATTRIBUTES
+
+
+=head2 B<REQUIRED> ExternalId => Str
+
+A unique identifier that is required to identify specific groups within
+your directory. The users of the group that you associate have access
+to your Amazon S3 or Amazon EFS resources over the enabled protocols
+using Amazon Web Services Transfer Family. If you know the group name,
+you can view the SID values by running the following command using
+Windows PowerShell.
+
+C<Get-ADGroup -Filter {samAccountName -like "I<YourGroupName>*"}
+-Properties * | Select SamAccountName,ObjectSid>
+
+In that command, replace I<YourGroupName> with the name of your Active
+Directory group.
+
+The regex used to validate this parameter is a string of characters
+consisting of uppercase and lowercase alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@:/-
+
 
 
 =head2 HomeDirectory => Str
@@ -98,8 +120,8 @@ C<[ { "Entry": "your-personal-report.pdf", "Target":
 
 In most cases, you can use this value instead of the scope-down policy
 to lock down your user to the designated home directory ("C<chroot>").
-To do this, you can set C<Entry> to '/' and set C<Target> to the
-HomeDirectory parameter value.
+To do this, you can set C<Entry> to C</> and set C<Target> to the
+C<HomeDirectory> parameter value.
 
 The following is an C<Entry> and C<Target> pair example for C<chroot>.
 
@@ -139,13 +161,13 @@ and C<${Transfer:HomeBucket}>.
 This only applies when domain of C<ServerId> is S3. Amazon EFS does not
 use scope-down policies.
 
-For scope-down policies, Amazon Web ServicesTransfer Family stores the
+For scope-down policies, Amazon Web Services Transfer Family stores the
 policy as a JSON blob, instead of the Amazon Resource Name (ARN) of the
 policy. You save the policy as a JSON blob and pass it in the C<Policy>
 argument.
 
-For an example of a scope-down policy, see Creating a scope-down policy
-(https://docs.aws.amazon.com/transfer/latest/userguide/users.html#users-policies-scope-down).
+For an example of a scope-down policy, see Example scope-down policy
+(https://docs.aws.amazon.com/transfer/latest/userguide/scope-down-policy.html).
 
 For more information, see AssumeRole
 (https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRole.html)
@@ -155,16 +177,11 @@ in the I<Amazon Web Services Security Token Service API Reference>.
 
 =head2 PosixProfile => L<Paws::Transfer::PosixProfile>
 
-Specifies the full POSIX identity, including user ID (C<Uid>), group ID
-(C<Gid>), and any secondary groups IDs (C<SecondaryGids>), that
-controls your users' access to your Amazon Elastic File Systems (Amazon
-EFS). The POSIX permissions that are set on files and directories in
-your file system determines the level of access your users get when
-transferring files into and out of your Amazon EFS file systems.
 
 
 
-=head2 Role => Str
+
+=head2 B<REQUIRED> Role => Str
 
 Specifies the Amazon Resource Name (ARN) of the IAM role that controls
 your users' access to your Amazon S3 bucket or EFS file system. The
@@ -178,26 +195,15 @@ servicing your users' transfer requests.
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for a server instance that the user
-account is assigned to.
-
-
-
-=head2 B<REQUIRED> UserName => Str
-
-A unique string that identifies a user and is associated with a server
-as specified by the C<ServerId>. This user name must be a minimum of 3
-and a maximum of 100 characters long. The following are valid
-characters: a-z, A-Z, 0-9, underscore '_', hyphen '-', period '.', and
-at sign '@'. The user name can't start with a hyphen, period, or at
-sign.
+A system-assigned unique identifier for a server instance. This is the
+specific server that you added your user to.
 
 
 
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method UpdateUser in L<Paws::Transfer>
+This class forms part of L<Paws>, documenting arguments for method CreateAccess in L<Paws::Transfer>
 
 =head1 BUGS and CONTRIBUTIONS
 
