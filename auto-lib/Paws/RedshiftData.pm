@@ -343,6 +343,8 @@ method.
 
 =item [DbUser => Str]
 
+=item [Parameters => ArrayRef[L<Paws::RedshiftData::SqlParameter>]]
+
 =item [SecretArn => Str]
 
 =item [StatementName => Str]

@@ -4,6 +4,7 @@ package Paws::RedshiftData::ExecuteStatement;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Database => (is => 'ro', isa => 'Str');
   has DbUser => (is => 'ro', isa => 'Str');
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::RedshiftData::SqlParameter]');
   has SecretArn => (is => 'ro', isa => 'Str');
   has Sql => (is => 'ro', isa => 'Str', required => 1);
   has StatementName => (is => 'ro', isa => 'Str');
@@ -36,11 +37,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ExecuteStatementOutput = $redshift -data->ExecuteStatement(
       ClusterIdentifier => 'MyLocation',
       Sql               => 'MyStatementString',
-      Database          => 'MyString',                 # OPTIONAL
-      DbUser            => 'MyString',                 # OPTIONAL
-      SecretArn         => 'MySecretArn',              # OPTIONAL
-      StatementName     => 'MyStatementNameString',    # OPTIONAL
-      WithEvent         => 1,                          # OPTIONAL
+      Database          => 'MyString',            # OPTIONAL
+      DbUser            => 'MyString',            # OPTIONAL
+      Parameters        => [
+        {
+          Name  => 'MyParameterName',
+          Value => 'MyParameterValue',            # min: 1
+
+        },
+        ...
+      ],    # OPTIONAL
+      SecretArn     => 'MySecretArn',              # OPTIONAL
+      StatementName => 'MyStatementNameString',    # OPTIONAL
+      WithEvent     => 1,                          # OPTIONAL
     );
 
     # Results:
@@ -77,6 +86,12 @@ authenticating using temporary credentials.
 
 The database user name. This parameter is required when authenticating
 using temporary credentials.
+
+
+
+=head2 Parameters => ArrayRef[L<Paws::RedshiftData::SqlParameter>]
+
+The parameters for the SQL statement.
 
 
 

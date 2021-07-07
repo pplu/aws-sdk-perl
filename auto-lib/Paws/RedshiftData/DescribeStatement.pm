@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Error             = $DescribeStatementResponse->Error;
     my $HasResultSet      = $DescribeStatementResponse->HasResultSet;
     my $Id                = $DescribeStatementResponse->Id;
+    my $QueryParameters   = $DescribeStatementResponse->QueryParameters;
     my $QueryString       = $DescribeStatementResponse->QueryString;
     my $RedshiftPid       = $DescribeStatementResponse->RedshiftPid;
     my $RedshiftQueryId   = $DescribeStatementResponse->RedshiftQueryId;
