@@ -6,6 +6,7 @@ package Paws::CostExplorer::TargetInstance;
   has EstimatedMonthlyCost => (is => 'ro', isa => 'Str');
   has EstimatedMonthlySavings => (is => 'ro', isa => 'Str');
   has ExpectedResourceUtilization => (is => 'ro', isa => 'Paws::CostExplorer::ResourceUtilization');
+  has PlatformDifferences => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ResourceDetails => (is => 'ro', isa => 'Paws::CostExplorer::ResourceDetails');
 
 1;
@@ -68,6 +69,13 @@ Estimated savings resulting from modification, on a monthly basis.
 =head2 ExpectedResourceUtilization => L<Paws::CostExplorer::ResourceUtilization>
 
 Expected utilization metrics for target instance type.
+
+
+=head2 PlatformDifferences => ArrayRef[Str|Undef]
+
+Explains the actions you might need to take in order to successfully
+migrate your workloads from the current instance type to the
+recommended instance type.
 
 
 =head2 ResourceDetails => L<Paws::CostExplorer::ResourceDetails>
