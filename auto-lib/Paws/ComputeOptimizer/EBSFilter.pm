@@ -35,9 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComputeOpti
 =head1 DESCRIPTION
 
 Describes a filter that returns a more specific list of Amazon Elastic
-Block Store (Amazon EBS) volume recommendations.
+Block Store (Amazon EBS) volume recommendations. Use this filter with
+the C<GetEBSVolumeRecommendations> action.
 
-This filter is used with the C<GetEBSVolumeRecommendations> action.
+You can use C<LambdaFunctionRecommendationFilter> with the
+C<GetLambdaFunctionRecommendations> action, C<JobFilter> with the
+C<DescribeRecommendationExportJobs> action, and C<Filter> with the
+C<GetAutoScalingGroupRecommendations> and
+C<GetEC2InstanceRecommendations> actions.
 
 =head1 ATTRIBUTES
 
@@ -47,7 +52,7 @@ This filter is used with the C<GetEBSVolumeRecommendations> action.
 The name of the filter.
 
 Specify C<Finding> to return recommendations with a specific finding
-classification (e.g., C<Optimized>).
+classification (e.g., C<NotOptimized>).
 
 
 =head2 Values => ArrayRef[Str|Undef]

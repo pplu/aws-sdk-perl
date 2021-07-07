@@ -59,7 +59,7 @@ volume.
 
 =head2 Finding => Str
 
-The finding classification for the volume.
+The finding classification of the volume.
 
 Findings for volumes include:
 

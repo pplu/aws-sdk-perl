@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutoScalingGroupArns => [ 'MyAutoScalingGroupArn', ... ],    # OPTIONAL
       Filters              => [
         {
-          Name =>
-            'Finding',    # values: Finding, RecommendationSourceType; OPTIONAL
+          Name => 'Finding'
+          , # values: Finding, FindingReasonCodes, RecommendationSourceType; OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...

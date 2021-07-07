@@ -35,7 +35,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComputeOpti
 =head1 DESCRIPTION
 
 Describes a filter that returns a more specific list of AWS Lambda
-function recommendations.
+function recommendations. Use this filter with the
+C<GetLambdaFunctionRecommendations> action.
+
+You can use C<EBSFilter> with the C<GetEBSVolumeRecommendations>
+action, C<JobFilter> with the C<DescribeRecommendationExportJobs>
+action, and C<Filter> with the C<GetAutoScalingGroupRecommendations>
+and C<GetEC2InstanceRecommendations> actions.
 
 =head1 ATTRIBUTES
 
@@ -62,13 +68,13 @@ you specify for the C<name> parameter:
 
 =item *
 
-Specify C<Optimized>, C<NotOptimized>, or C<Unavailable> if you
-specified the C<name> parameter as C<Finding>.
+Specify C<Optimized>, C<NotOptimized>, or C<Unavailable> if you specify
+the C<name> parameter as C<Finding>.
 
 =item *
 
 Specify C<MemoryOverprovisioned>, C<MemoryUnderprovisioned>,
-C<InsufficientData>, or C<Inconclusive> if you specified the C<name>
+C<InsufficientData>, or C<Inconclusive> if you specify the C<name>
 parameter as C<FindingReasonCode>.
 
 =back

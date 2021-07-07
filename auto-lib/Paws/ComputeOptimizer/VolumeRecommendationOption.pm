@@ -50,11 +50,14 @@ An array of objects that describe a volume configuration.
 
 The performance risk of the volume recommendation option.
 
-Performance risk is the likelihood of the recommended volume type not
+Performance risk is the likelihood of the recommended volume type
 meeting the performance requirement of your workload.
 
-The lowest performance risk is categorized as C<0>, and the highest as
-C<5>.
+The value ranges from C<0> to C<5>, with C<0> meaning that the
+recommended resource is predicted to always provide enough hardware
+capability. The higher the performance risk is, the more likely you
+should validate whether the recommendation will meet the performance
+requirements of your workload before migrating your resource.
 
 
 =head2 Rank => Int

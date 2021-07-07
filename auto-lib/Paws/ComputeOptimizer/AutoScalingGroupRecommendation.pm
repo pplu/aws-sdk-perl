@@ -69,7 +69,7 @@ Scaling group.
 
 =head2 Finding => Str
 
-The finding classification for the Auto Scaling group.
+The finding classification of the Auto Scaling group.
 
 Findings for Auto Scaling groups include:
 

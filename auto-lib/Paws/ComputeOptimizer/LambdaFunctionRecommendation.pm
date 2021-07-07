@@ -60,7 +60,7 @@ The amount of memory, in MB, that's allocated to the current function.
 
 =head2 Finding => Str
 
-The finding classification for the function.
+The finding classification of the function.
 
 Findings for functions include:
 
@@ -107,7 +107,7 @@ The reason for the finding classification of the function.
 Functions that have a finding classification of C<Optimized> don't have
 a finding reason code.
 
-Reason codes include:
+Finding reason codes for functions include:
 
 =over
 

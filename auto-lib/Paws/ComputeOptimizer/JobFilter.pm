@@ -35,10 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComputeOpti
 =head1 DESCRIPTION
 
 Describes a filter that returns a more specific list of recommendation
-export jobs.
+export jobs. Use this filter with the
+C<DescribeRecommendationExportJobs> action.
 
-This filter is used with the C<DescribeRecommendationExportJobs>
-action.
+You can use C<EBSFilter> with the C<GetEBSVolumeRecommendations>
+action, C<LambdaFunctionRecommendationFilter> with the
+C<GetLambdaFunctionRecommendations> action, and C<Filter> with the
+C<GetAutoScalingGroupRecommendations> and
+C<GetEC2InstanceRecommendations> actions.
 
 =head1 ATTRIBUTES
 
@@ -65,14 +69,14 @@ you specify for the C<name> parameter:
 
 =item *
 
-Specify C<Ec2Instance> or C<AutoScalingGroup> if you specified the
+Specify C<Ec2Instance> or C<AutoScalingGroup> if you specify the
 C<name> parameter as C<ResourceType>. There is no filter for EBS
 volumes because volume recommendations cannot be exported at this time.
 
 =item *
 
 Specify C<Queued>, C<InProgress>, C<Complete>, or C<Failed> if you
-specified the C<name> parameter as C<JobStatus>.
+specify the C<name> parameter as C<JobStatus>.
 
 =back
 
