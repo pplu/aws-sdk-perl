@@ -917,7 +917,11 @@ in the I<AWS IoT SiteWise User Guide>.
 
 =item RoleArn => Str
 
+=item [Alarms => L<Paws::IoTSiteWise::Alarms>]
+
 =item [ClientToken => Str]
+
+=item [NotificationSenderEmail => Str]
 
 =item [PortalAuthMode => Str]
 
@@ -2090,7 +2094,11 @@ gateway, use DescribeGateway
 
 =item RoleArn => Str
 
+=item [Alarms => L<Paws::IoTSiteWise::Alarms>]
+
 =item [ClientToken => Str]
+
+=item [NotificationSenderEmail => Str]
 
 =item [PortalDescription => Str]
 

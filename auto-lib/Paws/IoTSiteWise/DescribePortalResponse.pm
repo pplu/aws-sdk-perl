@@ -1,6 +1,8 @@
 
 package Paws::IoTSiteWise::DescribePortalResponse;
   use Moose;
+  has Alarms => (is => 'ro', isa => 'Paws::IoTSiteWise::Alarms', traits => ['NameInRequest'], request_name => 'alarms');
+  has NotificationSenderEmail => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'notificationSenderEmail');
   has PortalArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portalArn', required => 1);
   has PortalAuthMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portalAuthMode');
   has PortalClientId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portalClientId', required => 1);
@@ -25,6 +27,17 @@ package Paws::IoTSiteWise::DescribePortalResponse;
 Paws::IoTSiteWise::DescribePortalResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 Alarms => L<Paws::IoTSiteWise::Alarms>
+
+Contains the configuration information of an alarm created in a AWS IoT
+SiteWise Monitor portal.
+
+
+=head2 NotificationSenderEmail => Str
+
+The email address that sends alarm notifications.
 
 
 =head2 B<REQUIRED> PortalArn => Str

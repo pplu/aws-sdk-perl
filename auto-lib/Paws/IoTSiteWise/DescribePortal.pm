@@ -34,6 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Alarms = $DescribePortalResponse->Alarms;
+    my $NotificationSenderEmail =
+      $DescribePortalResponse->NotificationSenderEmail;
     my $PortalArn            = $DescribePortalResponse->PortalArn;
     my $PortalAuthMode       = $DescribePortalResponse->PortalAuthMode;
     my $PortalClientId       = $DescribePortalResponse->PortalClientId;

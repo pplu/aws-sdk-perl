@@ -1,7 +1,9 @@
 
 package Paws::IoTSiteWise::CreatePortal;
   use Moose;
+  has Alarms => (is => 'ro', isa => 'Paws::IoTSiteWise::Alarms', traits => ['NameInRequest'], request_name => 'alarms');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
+  has NotificationSenderEmail => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'notificationSenderEmail');
   has PortalAuthMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portalAuthMode');
   has PortalContactEmail => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portalContactEmail', required => 1);
   has PortalDescription => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portalDescription');
@@ -36,15 +38,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotsitewise = Paws->service('IoTSiteWise');
     my $CreatePortalResponse = $iotsitewise->CreatePortal(
-      PortalContactEmail  => 'MyEmail',
-      PortalName          => 'MyName',
-      RoleArn             => 'MyARN',
-      ClientToken         => 'MyClientToken',    # OPTIONAL
-      PortalAuthMode      => 'IAM',              # OPTIONAL
-      PortalDescription   => 'MyDescription',    # OPTIONAL
-      PortalLogoImageFile => {
-        Data => 'BlobImageFileData',             # min: 1, max: 1500000
-        Type => 'PNG',                           # values: PNG
+      PortalContactEmail => 'MyEmail',
+      PortalName         => 'MyName',
+      RoleArn            => 'MyARN',
+      Alarms             => {
+        AlarmRoleArn          => 'MyARN',    # min: 1, max: 1600
+        NotificationLambdaArn => 'MyARN',    # min: 1, max: 1600
+      },    # OPTIONAL
+      ClientToken             => 'MyClientToken',    # OPTIONAL
+      NotificationSenderEmail => 'MyEmail',          # OPTIONAL
+      PortalAuthMode          => 'IAM',              # OPTIONAL
+      PortalDescription       => 'MyDescription',    # OPTIONAL
+      PortalLogoImageFile     => {
+        Data => 'BlobImageFileData',                 # min: 1, max: 1500000
+        Type => 'PNG',                               # values: PNG
 
       },    # OPTIONAL
       Tags => {
@@ -67,11 +74,30 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
+=head2 Alarms => L<Paws::IoTSiteWise::Alarms>
+
+Contains the configuration information of an alarm created in an AWS
+IoT SiteWise Monitor portal. You can use the alarm to monitor an asset
+property and get notified when the asset property value is outside a
+specified range. For more information, see .
+
+
+
 =head2 ClientToken => Str
 
 A unique case-sensitive identifier that you can provide to ensure the
 idempotency of the request. Don't reuse this client token if a new
 idempotent request is required.
+
+
+
+=head2 NotificationSenderEmail => Str
+
+The email address that sends alarm notifications.
+
+If you use the AWS IoT Events managed AWS Lambda function to manage
+your emails, you must verify the sender email address in Amazon SES
+(https://docs.aws.amazon.com/ses/latest/DeveloperGuide/verify-email-addresses.html).
 
 
 
