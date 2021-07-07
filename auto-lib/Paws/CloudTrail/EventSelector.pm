@@ -56,10 +56,11 @@ trail.
 =head2 DataResources => ArrayRef[L<Paws::CloudTrail::DataResource>]
 
 CloudTrail supports data event logging for Amazon S3 objects and AWS
-Lambda functions. You can specify up to 250 resources for an individual
-event selector, but the total number of data resources cannot exceed
-250 across all event selectors in a trail. This limit does not apply if
-you configure resource logging for all data events.
+Lambda functions with basic event selectors. You can specify up to 250
+resources for an individual event selector, but the total number of
+data resources cannot exceed 250 across all event selectors in a trail.
+This limit does not apply if you configure resource logging for all
+data events.
 
 For more information, see Data Events
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events)

@@ -92,10 +92,12 @@ and the value must be C<Management> or C<Data>.
 
 B<C<resources.type> > - This eld is required. C<resources.type> can
 only use the C<Equals> operator, and the value can be one of the
-following: C<AWS::S3::Object>, C<AWS::Lambda::Function>, or
-C<AWS::S3Outposts::Object>. You can have only one C<resources.type> eld
-per selector. To log data events on more than one resource type, add
-another selector.
+following: C<AWS::S3::Object>, C<AWS::Lambda::Function>,
+C<AWS::DynamoDB::Table>, C<AWS::S3Outposts::Object>,
+C<AWS::ManagedBlockchain::Node>, or
+C<AWS::S3ObjectLambda::AccessPoint>. You can have only one
+C<resources.type> eld per selector. To log data events on more than one
+resource type, add another selector.
 
 =item *
 
@@ -103,7 +105,11 @@ B<C<resources.ARN> > - You can use any operator with resources.ARN, but
 if you use C<Equals> or C<NotEquals>, the value must exactly match the
 ARN of a valid resource of the type you've specied in the template as
 the value of resources.type. For example, if resources.type equals
-C<AWS::S3::Object>, the ARN must be in one of the following formats.
+C<AWS::S3::Object>, the ARN must be in one of the following formats. To
+log all data events for all objects in a specific S3 bucket, use the
+C<StartsWith> operator, and include only the bucket ARN as the matching
+value.
+
 The trailing slash is intentional; do not exclude it.
 
 =over
@@ -130,6 +136,18 @@ C<arn:partition:lambda:region:account_ID:function:function_name>
 
 =back
 
+When resources.type equals C<AWS::DynamoDB::Table>, and the operator is
+set to C<Equals> or C<NotEquals>, the ARN must be in the following
+format:
+
+=over
+
+=item *
+
+C<arn:partition:dynamodb:region:account_ID:table:table_name>
+
+=back
+
 When C<resources.type> equals C<AWS::S3Outposts::Object>, and the
 operator is set to C<Equals> or C<NotEquals>, the ARN must be in the
 following format:
@@ -139,6 +157,30 @@ following format:
 =item *
 
 C<arn:partition:s3-outposts:region:E<gt>account_ID:object_path>
+
+=back
+
+When C<resources.type> equals C<AWS::ManagedBlockchain::Node>, and the
+operator is set to C<Equals> or C<NotEquals>, the ARN must be in the
+following format:
+
+=over
+
+=item *
+
+C<arn:partition:managedblockchain:region:account_ID:nodes/node_ID>
+
+=back
+
+When C<resources.type> equals C<AWS::S3ObjectLambda::AccessPoint>, and
+the operator is set to C<Equals> or C<NotEquals>, the ARN must be in
+the following format:
+
+=over
+
+=item *
+
+C<arn:partition:s3-object-lambda:region:account_ID:accesspoint/access_point_name>
 
 =back
 
