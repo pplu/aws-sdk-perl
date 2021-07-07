@@ -2,6 +2,7 @@
 package Paws::DAX::CreateCluster;
   use Moose;
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ClusterEndpointEncryptionType => (is => 'ro', isa => 'Str');
   has ClusterName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -40,28 +41,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $dax = Paws->service('DAX');
     my $CreateClusterResponse = $dax->CreateCluster(
-      ClusterName                => 'MyString',
-      IamRoleArn                 => 'MyString',
-      NodeType                   => 'MyString',
-      ReplicationFactor          => 1,
-      AvailabilityZones          => [ 'MyString', ... ],    # OPTIONAL
-      Description                => 'MyString',             # OPTIONAL
-      NotificationTopicArn       => 'MyString',             # OPTIONAL
-      ParameterGroupName         => 'MyString',             # OPTIONAL
-      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
-      SSESpecification           => {
+      ClusterName                   => 'MyString',
+      IamRoleArn                    => 'MyString',
+      NodeType                      => 'MyString',
+      ReplicationFactor             => 1,
+      AvailabilityZones             => [ 'MyString', ... ],    # OPTIONAL
+      ClusterEndpointEncryptionType => 'NONE',                 # OPTIONAL
+      Description                   => 'MyString',             # OPTIONAL
+      NotificationTopicArn          => 'MyString',             # OPTIONAL
+      ParameterGroupName            => 'MyString',             # OPTIONAL
+      PreferredMaintenanceWindow    => 'MyString',             # OPTIONAL
+      SSESpecification              => {
         Enabled => 1,
 
-      },                                                    # OPTIONAL
-      SecurityGroupIds => [ 'MyString', ... ],              # OPTIONAL
-      SubnetGroupName  => 'MyString',                       # OPTIONAL
+      },                                                       # OPTIONAL
+      SecurityGroupIds => [ 'MyString', ... ],                 # OPTIONAL
+      SubnetGroupName  => 'MyString',                          # OPTIONAL
       Tags             => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                    # OPTIONAL
+      ],                                                       # OPTIONAL
     );
 
     # Results:
@@ -84,6 +86,26 @@ this parameter, DAX will spread the nodes across Availability Zones for
 the highest availability.
 
 
+
+=head2 ClusterEndpointEncryptionType => Str
+
+The type of encryption the cluster's endpoint should support. Values
+are:
+
+=over
+
+=item *
+
+C<NONE> for no encryption
+
+=item *
+
+C<TLS> for Transport Layer Security
+
+=back
+
+
+Valid values are: C<"NONE">, C<"TLS">
 
 =head2 B<REQUIRED> ClusterName => Str
 
