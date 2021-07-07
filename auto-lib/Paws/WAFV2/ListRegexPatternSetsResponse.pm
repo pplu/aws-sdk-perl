@@ -19,9 +19,9 @@ Paws::WAFV2::ListRegexPatternSetsResponse
 
 When you request a list of objects with a C<Limit> setting, if the
 number of objects that are still available for retrieval exceeds the
-limit, AWS WAF returns a C<NextMarker> value in the response. To
-retrieve the next batch of objects, provide the marker from the prior
-call in your next request.
+limit, WAF returns a C<NextMarker> value in the response. To retrieve
+the next batch of objects, provide the marker from the prior call in
+your next request.
 
 
 =head2 RegexPatternSets => ArrayRef[L<Paws::WAFV2::RegexPatternSetSummary>]

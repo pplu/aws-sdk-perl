@@ -41,8 +41,8 @@ set in this statement. To create an IP set, see CreateIPSet.
 
 Each IP set rule statement references an IP set. You create and
 maintain the set independent of your rules. This allows you to use the
-single set in multiple rules. When you update the referenced set, AWS
-WAF automatically updates all rules that reference it.
+single set in multiple rules. When you update the referenced set, WAF
+automatically updates all rules that reference it.
 
 =head1 ATTRIBUTES
 
@@ -60,8 +60,8 @@ you specify, instead of using the IP address that's reported by the web
 request origin. Commonly, this is the X-Forwarded-For (XFF) header, but
 you can specify any header name.
 
-If the specified header isn't present in the request, AWS WAF doesn't
-apply the rule to the web request at all.
+If the specified header isn't present in the request, WAF doesn't apply
+the rule to the web request at all.
 
 
 

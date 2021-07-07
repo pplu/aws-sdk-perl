@@ -47,14 +47,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 =head2 ResourceType => Str
 
 Used for web ACLs that are scoped for regional applications. A regional
-application can be an Application Load Balancer (ALB), an API Gateway
-REST API, or an AppSync GraphQL API.
+application can be an Application Load Balancer (ALB), an Amazon API
+Gateway REST API, or an AppSync GraphQL API.
 
 Valid values are: C<"APPLICATION_LOAD_BALANCER">, C<"API_GATEWAY">, C<"APPSYNC">
 
 =head2 B<REQUIRED> WebACLArn => Str
 
-The Amazon Resource Name (ARN) of the Web ACL.
+The Amazon Resource Name (ARN) of the web ACL.
 
 
 

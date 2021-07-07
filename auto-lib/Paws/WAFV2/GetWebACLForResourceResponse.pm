@@ -16,8 +16,8 @@ Paws::WAFV2::GetWebACLForResourceResponse
 
 =head2 WebACL => L<Paws::WAFV2::WebACL>
 
-The Web ACL that is associated with the resource. If there is no
-associated resource, AWS WAF returns a null Web ACL.
+The web ACL that is associated with the resource. If there is no
+associated resource, WAF returns a null web ACL.
 
 
 =head2 _request_id => Str

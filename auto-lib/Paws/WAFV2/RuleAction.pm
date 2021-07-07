@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Rule
 
 =head1 DESCRIPTION
 
-The action that AWS WAF should take on a web request when it matches a
+The action that WAF should take on a web request when it matches a
 rule's statement. Settings at the web ACL level can override the rule
 action setting.
 
@@ -44,17 +44,17 @@ action setting.
 
 =head2 Allow => L<Paws::WAFV2::AllowAction>
 
-Instructs AWS WAF to allow the web request.
+Instructs WAF to allow the web request.
 
 
 =head2 Block => L<Paws::WAFV2::BlockAction>
 
-Instructs AWS WAF to block the web request.
+Instructs WAF to block the web request.
 
 
 =head2 Count => L<Paws::WAFV2::CountAction>
 
-Instructs AWS WAF to count the web request and allow it.
+Instructs WAF to count the web request and allow it.
 
 
 

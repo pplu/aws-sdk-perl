@@ -108,7 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -214,7 +214,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -276,7 +276,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -326,7 +326,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -376,7 +376,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -487,17 +487,16 @@ The web ACL capacity units (WCUs) required for this rule group.
 
 When you create your own rule group, you define this, and you cannot
 change it after creation. When you add or modify the rules in a rule
-group, AWS WAF enforces this limit. You can check the capacity for a
-set of rules using CheckCapacity.
+group, WAF enforces this limit. You can check the capacity for a set of
+rules using CheckCapacity.
 
-AWS WAF uses WCUs to calculate and control the operating resources that
-are used to run your rules, rule groups, and web ACLs. AWS WAF
-calculates capacity differently for each rule type, to reflect the
-relative cost of each rule. Simple rules that cost little to run use
-fewer WCUs than more complex rules that use more processing power. Rule
-group capacity is fixed at creation, which helps users plan their web
-ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
-1,500.
+WAF uses WCUs to calculate and control the operating resources that are
+used to run your rules, rule groups, and web ACLs. WAF calculates
+capacity differently for each rule type, to reflect the relative cost
+of each rule. Simple rules that cost little to run use fewer WCUs than
+more complex rules that use more processing power. Rule group capacity
+is fixed at creation, which helps users plan their web ACL WCU usage
+when they use a rule group. The WCU limit for web ACLs is 1,500.
 
 
 
@@ -509,15 +508,15 @@ request. You define these for the rule group, and then use them in the
 rules that you define in the rule group.
 
 For information about customizing web requests and responses, see
-Customizing web requests and responses in AWS WAF
+Customizing web requests and responses in WAF
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-in the AWS WAF Developer Guide
+in the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 For information about the limits on count and size for custom request
-and response settings, see AWS WAF quotas
+and response settings, see WAF quotas
 (https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in
-the AWS WAF Developer Guide
+the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 
@@ -539,16 +538,17 @@ after you create it.
 
 The Rule statements used to identify the web requests that you want to
 allow, block, or count. Each rule includes one top-level statement that
-AWS WAF uses to identify matching web requests, and parameters that
-govern how AWS WAF handles them.
+WAF uses to identify matching web requests, and parameters that govern
+how WAF handles them.
 
 
 
 =head2 B<REQUIRED> Scope => Str
 
-Specifies whether this is for an AWS CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+Specifies whether this is for an Amazon CloudFront distribution or for
+a regional application. A regional application can be an Application
+Load Balancer (ALB), an Amazon API Gateway REST API, or an AppSync
+GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

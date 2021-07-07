@@ -34,21 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Fire
 
 =head1 DESCRIPTION
 
-The processing guidance for an AWS Firewall Manager rule. This is like
-a regular rule Statement, but it can only contain a rule group
-reference.
+The processing guidance for an Firewall Manager rule. This is like a
+regular rule Statement, but it can only contain a rule group reference.
 
 =head1 ATTRIBUTES
 
 
 =head2 ManagedRuleGroupStatement => L<Paws::WAFV2::ManagedRuleGroupStatement>
 
+A rule statement used to run the rules that are defined in a managed
+rule group. To use this, provide the vendor name and the name of the
+rule group in this statement. You can retrieve the required names by
+calling ListAvailableManagedRuleGroups.
 
+You cannot nest a C<ManagedRuleGroupStatement>, for example for use
+inside a C<NotStatement> or C<OrStatement>. It can only be referenced
+as a top-level statement within a rule.
 
 
 =head2 RuleGroupReferenceStatement => L<Paws::WAFV2::RuleGroupReferenceStatement>
 
+A rule statement used to run the rules that are defined in a RuleGroup.
+To use this, create a rule group with your rules, then provide the ARN
+of the rule group in this statement.
 
+You cannot nest a C<RuleGroupReferenceStatement>, for example for use
+inside a C<NotStatement> or C<OrStatement>. It can only be referenced
+as a top-level statement within a rule.
 
 
 

@@ -35,20 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::XssM
 =head1 DESCRIPTION
 
 A rule statement that defines a cross-site scripting (XSS) match search
-for AWS WAF to apply to web requests. XSS attacks are those where the
+for WAF to apply to web requests. XSS attacks are those where the
 attacker uses vulnerabilities in a benign website as a vehicle to
 inject malicious client-site scripts into other legitimate web
 browsers. The XSS match statement provides the location in requests
-that you want AWS WAF to search and text transformations to use on the
-search area before AWS WAF searches for character sequences that are
-likely to be malicious strings.
+that you want WAF to search and text transformations to use on the
+search area before WAF searches for character sequences that are likely
+to be malicious strings.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAFV2::FieldToMatch>
 
-The part of a web request that you want AWS WAF to inspect. For more
+The part of a web request that you want WAF to inspect. For more
 information, see FieldToMatch.
 
 
@@ -56,10 +56,10 @@ information, see FieldToMatch.
 
 Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass detection. If you
-specify one or more transformations in a rule statement, AWS WAF
-performs all transformations on the content of the request component
-identified by C<FieldToMatch>, starting from the lowest priority
-setting, before inspecting the content for a match.
+specify one or more transformations in a rule statement, WAF performs
+all transformations on the content of the request component identified
+by C<FieldToMatch>, starting from the lowest priority setting, before
+inspecting the content for a match.
 
 
 

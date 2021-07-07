@@ -44,11 +44,10 @@ in CustomResponse and CustomRequestHandling.
 
 The name of the custom header.
 
-For custom request header insertion, when AWS WAF inserts the header
-into the request, it prefixes this name C<x-amzn-waf->, to avoid
-confusion with the headers that are already in the request. For
-example, for the header name C<sample>, AWS WAF inserts the header
-C<x-amzn-waf-sample>.
+For custom request header insertion, when WAF inserts the header into
+the request, it prefixes this name C<x-amzn-waf->, to avoid confusion
+with the headers that are already in the request. For example, for the
+header name C<sample>, WAF inserts the header C<x-amzn-waf-sample>.
 
 
 =head2 B<REQUIRED> Value => Str

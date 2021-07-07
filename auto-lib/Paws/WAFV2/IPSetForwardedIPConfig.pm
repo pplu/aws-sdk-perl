@@ -40,8 +40,8 @@ you specify, instead of using the IP address that's reported by the web
 request origin. Commonly, this is the X-Forwarded-For (XFF) header, but
 you can specify any header name.
 
-If the specified header isn't present in the request, AWS WAF doesn't
-apply the rule to the web request at all.
+If the specified header isn't present in the request, WAF doesn't apply
+the rule to the web request at all.
 
 This configuration is used only for IPSetReferenceStatement. For
 GeoMatchStatement and RateBasedStatement, use ForwardedIPConfig
@@ -55,8 +55,8 @@ instead.
 The match status to assign to the web request if the request doesn't
 have a valid IP address in the specified position.
 
-If the specified header isn't present in the request, AWS WAF doesn't
-apply the rule to the web request at all.
+If the specified header isn't present in the request, WAF doesn't apply
+the rule to the web request at all.
 
 You can specify the following fallback behaviors:
 
@@ -64,8 +64,8 @@ You can specify the following fallback behaviors:
 
 =item *
 
-C<MATCH> - Treat the web request as matching the rule statement. AWS
-WAF applies the rule action to the request.
+C<MATCH> - Treat the web request as matching the rule statement. WAF
+applies the rule action to the request.
 
 =item *
 
@@ -80,8 +80,8 @@ C<NO_MATCH> - Treat the web request as not matching the rule statement.
 The name of the HTTP header to use for the IP address. For example, to
 use the X-Forwarded-For (XFF) header, set this to C<X-Forwarded-For>.
 
-If the specified header isn't present in the request, AWS WAF doesn't
-apply the rule to the web request at all.
+If the specified header isn't present in the request, WAF doesn't apply
+the rule to the web request at all.
 
 
 =head2 B<REQUIRED> Position => Str
@@ -109,7 +109,7 @@ header.
 =item *
 
 ANY - Inspect all IP addresses in the header for a match. If the header
-contains more than 10 IP addresses, AWS WAF inspects the last 10.
+contains more than 10 IP addresses, WAF inspects the last 10.
 
 =back
 

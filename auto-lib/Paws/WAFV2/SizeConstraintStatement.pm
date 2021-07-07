@@ -42,11 +42,10 @@ request component, using a comparison operator, such as greater than
 constraint statement to look for query strings that are longer than 100
 bytes.
 
-If you configure AWS WAF to inspect the request body, AWS WAF inspects
-only the first 8192 bytes (8 KB). If the request body for your web
-requests never exceeds 8192 bytes, you can create a size constraint
-condition and block requests that have a request body greater than 8192
-bytes.
+If you configure WAF to inspect the request body, WAF inspects only the
+first 8192 bytes (8 KB). If the request body for your web requests
+never exceeds 8192 bytes, you can create a size constraint condition
+and block requests that have a request body greater than 8192 bytes.
 
 If you choose URI for the value of Part of the request to filter on,
 the slash (/) in the URI counts as one character. For example, the URI
@@ -62,7 +61,7 @@ The operator to use to compare the request part to the size setting.
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAFV2::FieldToMatch>
 
-The part of a web request that you want AWS WAF to inspect. For more
+The part of a web request that you want WAF to inspect. For more
 information, see FieldToMatch.
 
 
@@ -76,10 +75,10 @@ transformations.
 
 Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass detection. If you
-specify one or more transformations in a rule statement, AWS WAF
-performs all transformations on the content of the request component
-identified by C<FieldToMatch>, starting from the lowest priority
-setting, before inspecting the content for a match.
+specify one or more transformations in a rule statement, WAF performs
+all transformations on the content of the request component identified
+by C<FieldToMatch>, starting from the lowest priority setting, before
+inspecting the content for a match.
 
 
 

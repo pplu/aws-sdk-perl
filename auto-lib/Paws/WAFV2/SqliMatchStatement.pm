@@ -39,16 +39,16 @@ effort to extract data from your database. To allow or block web
 requests that appear to contain malicious SQL code, create one or more
 SQL injection match conditions. An SQL injection match condition
 identifies the part of web requests, such as the URI or the query
-string, that you want AWS WAF to inspect. Later in the process, when
-you create a web ACL, you specify whether to allow or block requests
-that appear to contain malicious SQL code.
+string, that you want WAF to inspect. Later in the process, when you
+create a web ACL, you specify whether to allow or block requests that
+appear to contain malicious SQL code.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAFV2::FieldToMatch>
 
-The part of a web request that you want AWS WAF to inspect. For more
+The part of a web request that you want WAF to inspect. For more
 information, see FieldToMatch.
 
 
@@ -56,10 +56,10 @@ information, see FieldToMatch.
 
 Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass detection. If you
-specify one or more transformations in a rule statement, AWS WAF
-performs all transformations on the content of the request component
-identified by C<FieldToMatch>, starting from the lowest priority
-setting, before inspecting the content for a match.
+specify one or more transformations in a rule statement, WAF performs
+all transformations on the content of the request component identified
+by C<FieldToMatch>, starting from the lowest priority setting, before
+inspecting the content for a match.
 
 
 

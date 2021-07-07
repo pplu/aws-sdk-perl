@@ -34,21 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Defa
 
 =head1 DESCRIPTION
 
-In a WebACL, this is the action that you want AWS WAF to perform when a
-web request doesn't match any of the rules in the C<WebACL>. The
-default action must be a terminating action, so you can't use count.
+In a WebACL, this is the action that you want WAF to perform when a web
+request doesn't match any of the rules in the C<WebACL>. The default
+action must be a terminating action, so you can't use count.
 
 =head1 ATTRIBUTES
 
 
 =head2 Allow => L<Paws::WAFV2::AllowAction>
 
-Specifies that AWS WAF should allow requests by default.
+Specifies that WAF should allow requests by default.
 
 
 =head2 Block => L<Paws::WAFV2::BlockAction>
 
-Specifies that AWS WAF should block requests by default.
+Specifies that WAF should block requests by default.
 
 
 

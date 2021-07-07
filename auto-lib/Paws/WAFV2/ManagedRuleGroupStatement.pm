@@ -41,7 +41,7 @@ rule group. To use this, provide the vendor name and the name of the
 rule group in this statement. You can retrieve the required names by
 calling ListAvailableManagedRuleGroups.
 
-You can't nest a C<ManagedRuleGroupStatement>, for example for use
+You cannot nest a C<ManagedRuleGroupStatement>, for example for use
 inside a C<NotStatement> or C<OrStatement>. It can only be referenced
 as a top-level statement within a rule.
 
@@ -63,7 +63,11 @@ name, to identify the rule group.
 
 =head2 ScopeDownStatement => L<Paws::WAFV2::Statement>
 
-
+An optional nested statement that narrows the scope of the web requests
+that are evaluated by the managed rule group. Requests are only
+evaluated by the rule group if they match the scope-down statement. You
+can use any nestable Statement in the scope-down statement, and you can
+nest statements at any level, the same as you can for a rule statement.
 
 
 =head2 B<REQUIRED> VendorName => Str

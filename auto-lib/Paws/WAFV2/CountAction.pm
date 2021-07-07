@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Coun
 
 =head1 DESCRIPTION
 
-Specifies that AWS WAF should count the request. Optionally defines
+Specifies that WAF should count the request. Optionally defines
 additional custom handling for the request.
 
 This is used in the context of other settings, for example to specify
@@ -47,9 +47,9 @@ values for RuleAction and web ACL DefaultAction.
 Defines custom handling for the web request.
 
 For information about customizing web requests and responses, see
-Customizing web requests and responses in AWS WAF
+Customizing web requests and responses in WAF
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-in the AWS WAF Developer Guide
+in the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 

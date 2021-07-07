@@ -44,24 +44,23 @@ collection.
 =head2 B<REQUIRED> CloudWatchMetricsEnabled => Bool
 
 A boolean indicating whether the associated resource sends metrics to
-CloudWatch. For the list of available metrics, see AWS WAF Metrics
+Amazon CloudWatch. For the list of available metrics, see WAF Metrics
 (https://docs.aws.amazon.com/waf/latest/developerguide/monitoring-cloudwatch.html#waf-metrics).
 
 
 =head2 B<REQUIRED> MetricName => Str
 
-A name of the CloudWatch metric. The name can contain only the
+A name of the Amazon CloudWatch metric. The name can contain only the
 characters: A-Z, a-z, 0-9, - (hyphen), and _ (underscore). The name can
 be from one to 128 characters long. It can't contain whitespace or
-metric names reserved for AWS WAF, for example "All" and
-"Default_Action."
+metric names reserved for WAF, for example "All" and "Default_Action."
 
 
 =head2 B<REQUIRED> SampledRequestsEnabled => Bool
 
-A boolean indicating whether AWS WAF should store a sampling of the web
+A boolean indicating whether WAF should store a sampling of the web
 requests that match the rules. You can view the sampled requests
-through the AWS WAF console.
+through the WAF console.
 
 
 

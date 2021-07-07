@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::AllQ
 
 All query arguments of a web request.
 
-This is used only to indicate the web request component for AWS WAF to
+This is used only to indicate the web request component for WAF to
 inspect, in the FieldToMatch specification.
 
 =head1 ATTRIBUTES

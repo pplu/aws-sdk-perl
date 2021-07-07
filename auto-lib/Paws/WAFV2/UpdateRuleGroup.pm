@@ -109,7 +109,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -215,7 +215,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -277,7 +277,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -327,7 +327,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -377,7 +377,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 {
                   Priority => 1,
                   Type     => 'NONE'
-                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE
+                  , # values: NONE, COMPRESS_WHITE_SPACE, HTML_ENTITY_DECODE, LOWERCASE, CMD_LINE, URL_DECODE, BASE64_DECODE, HEX_DECODE, MD5, REPLACE_COMMENTS, ESCAPE_SEQ_DECODE, SQL_HEX_DECODE, CSS_DECODE, JS_DECODE, NORMALIZE_PATH, NORMALIZE_PATH_WIN, REMOVE_NULLS, REPLACE_NULLS, BASE64_DECODE_EXT, URL_DECODE_UNI, UTF8_TO_UNICODE
 
                 },
                 ...
@@ -482,15 +482,15 @@ request. You define these for the rule group, and then use them in the
 rules that you define in the rule group.
 
 For information about customizing web requests and responses, see
-Customizing web requests and responses in AWS WAF
+Customizing web requests and responses in WAF
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-in the AWS WAF Developer Guide
+in the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 For information about the limits on count and size for custom request
-and response settings, see AWS WAF quotas
+and response settings, see WAF quotas
 (https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in
-the AWS WAF Developer Guide
+the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 
@@ -511,14 +511,14 @@ like update and delete.
 
 =head2 B<REQUIRED> LockToken => Str
 
-A token used for optimistic locking. AWS WAF returns a token to your
-get and list requests, to mark the state of the entity at the time of
-the request. To make changes to the entity associated with the token,
-you provide the token to operations like update and delete. AWS WAF
-uses the token to ensure that no changes have been made to the entity
-since you last retrieved it. If a change has been made, the update
-fails with a C<WAFOptimisticLockException>. If this happens, perform
-another get, and use the new token returned by that operation.
+A token used for optimistic locking. WAF returns a token to your get
+and list requests, to mark the state of the entity at the time of the
+request. To make changes to the entity associated with the token, you
+provide the token to operations like update and delete. WAF uses the
+token to ensure that no changes have been made to the entity since you
+last retrieved it. If a change has been made, the update fails with a
+C<WAFOptimisticLockException>. If this happens, perform another get,
+and use the new token returned by that operation.
 
 
 
@@ -533,16 +533,17 @@ after you create it.
 
 The Rule statements used to identify the web requests that you want to
 allow, block, or count. Each rule includes one top-level statement that
-AWS WAF uses to identify matching web requests, and parameters that
-govern how AWS WAF handles them.
+WAF uses to identify matching web requests, and parameters that govern
+how WAF handles them.
 
 
 
 =head2 B<REQUIRED> Scope => Str
 
-Specifies whether this is for an AWS CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+Specifies whether this is for an Amazon CloudFront distribution or for
+a regional application. A regional application can be an Application
+Load Balancer (ALB), an Amazon API Gateway REST API, or an AppSync
+GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

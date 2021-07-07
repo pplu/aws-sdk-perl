@@ -43,36 +43,39 @@ attackers use in web requests in an effort to bypass detection.
 =head2 B<REQUIRED> Priority => Int
 
 Sets the relative processing order for multiple transformations that
-are defined for a rule statement. AWS WAF processes all
-transformations, from lowest priority to highest, before inspecting the
-transformed content. The priorities don't need to be consecutive, but
-they must all be different.
+are defined for a rule statement. WAF processes all transformations,
+from lowest priority to highest, before inspecting the transformed
+content. The priorities don't need to be consecutive, but they must all
+be different.
 
 
 =head2 B<REQUIRED> Type => Str
 
 You can specify the following transformation types:
 
-B<CMD_LINE>
+B<BASE64_DECODE> - Decode a C<Base64>-encoded string.
 
-When you're concerned that attackers are injecting an operating system
-command line command and using unusual formatting to disguise some or
-all of the command, use this option to perform the following
-transformations:
+B<BASE64_DECODE_EXT> - Decode a C<Base64>-encoded string, but use a
+forgiving implementation that ignores characters that aren't valid.
+
+B<CMD_LINE> - Command-line transformations. These are helpful in
+reducing effectiveness of attackers who inject an operating system
+command-line command and use unusual formatting to disguise some or all
+of the command.
 
 =over
 
 =item *
 
-Delete the following characters: \ " ' ^
+Delete the following characters: C<\ " ' ^>
 
 =item *
 
-Delete spaces before the following characters: / (
+Delete spaces before the following characters: C</ (>
 
 =item *
 
-Replace the following characters with a space: , ;
+Replace the following characters with a space: C<, ;>
 
 =item *
 
@@ -84,45 +87,57 @@ Convert uppercase letters (A-Z) to lowercase (a-z)
 
 =back
 
-B<COMPRESS_WHITE_SPACE>
-
-Use this option to replace the following characters with a space
+B<COMPRESS_WHITE_SPACE> - Replace these characters with a space
 character (decimal 32):
 
 =over
 
 =item *
 
-\f, formfeed, decimal 12
+C<\f>, formfeed, decimal 12
 
 =item *
 
-\t, tab, decimal 9
+C<\t>, tab, decimal 9
 
 =item *
 
-\n, newline, decimal 10
+C<\n>, newline, decimal 10
 
 =item *
 
-\r, carriage return, decimal 13
+C<\r>, carriage return, decimal 13
 
 =item *
 
-\v, vertical tab, decimal 11
+C<\v>, vertical tab, decimal 11
 
 =item *
 
-non-breaking space, decimal 160
+Non-breaking space, decimal 160
 
 =back
 
 C<COMPRESS_WHITE_SPACE> also replaces multiple spaces with one space.
 
-B<HTML_ENTITY_DECODE>
+B<CSS_DECODE> - Decode characters that were encoded using CSS 2.x
+escape rules C<syndata.html#characters>. This function uses up to two
+bytes in the decoding process, so it can help to uncover ASCII
+characters that were encoded using CSS encoding that wouldnE<rsquo>t
+typically be encoded. It's also useful in countering evasion, which is
+a combination of a backslash and non-hexadecimal characters. For
+example, C<ja\vascript> for javascript.
 
-Use this option to replace HTML-encoded characters with unencoded
-characters. C<HTML_ENTITY_DECODE> performs the following operations:
+B<ESCAPE_SEQ_DECODE> - Decode the following ANSI C escape sequences:
+C<\a>, C<\b>, C<\f>, C<\n>, C<\r>, C<\t>, C<\v>, C<\\>, C<\?>, C<\'>,
+C<\">, C<\xHH> (hexadecimal), C<\0OOO> (octal). Encodings that aren't
+valid remain in the output.
+
+B<HEX_DECODE> - Decode a string of hexadecimal characters into a
+binary.
+
+B<HTML_ENTITY_DECODE> - Replace HTML-encoded characters with unencoded
+characters. C<HTML_ENTITY_DECODE> performs these operations:
 
 =over
 
@@ -154,17 +169,53 @@ C<(ampersand)(hash)nnnn;>, with the corresponding characters
 
 =back
 
-B<LOWERCASE>
+B<JS_DECODE> - Decode JavaScript escape sequences. If a C<\> C<u>
+C<HHHH> code is in the full-width ASCII code range of C<FF01-FF5E>,
+then the higher byte is used to detect and adjust the lower byte. If
+not, only the lower byte is used and the higher byte is zeroed, causing
+a possible loss of information.
 
-Use this option to convert uppercase letters (A-Z) to lowercase (a-z).
+B<LOWERCASE> - Convert uppercase letters (A-Z) to lowercase (a-z).
 
-B<URL_DECODE>
+B<MD5> - Calculate an MD5 hash from the data in the input. The computed
+hash is in a raw binary form.
 
-Use this option to decode a URL-encoded value.
+B<NONE> - Specify C<NONE> if you don't want any text transformations.
 
-B<NONE>
+B<NORMALIZE_PATH> - Remove multiple slashes, directory self-references,
+and directory back-references that are not at the beginning of the
+input from an input string.
 
-Specify C<NONE> if you don't want any text transformations.
+B<NORMALIZE_PATH_WIN> - This is the same as C<NORMALIZE_PATH>, but
+first converts backslash characters to forward slashes.
+
+B<REMOVE_NULLS> - Remove all C<NULL> bytes from the input.
+
+B<REPLACE_COMMENTS> - Replace each occurrence of a C-style comment
+(C</* ... */>) with a single space. Multiple consecutive occurrences
+are not compressed. Unterminated comments are also replaced with a
+space (ASCII 0x20). However, a standalone termination of a comment
+(C<*/>) is not acted upon.
+
+B<REPLACE_NULLS> - Replace NULL bytes in the input with space
+characters (ASCII C<0x20>).
+
+B<SQL_HEX_DECODE> - Decode the following ANSI C escape sequences:
+C<\a>, C<\b>, C<\f>, C<\n>, C<\r>, C<\t>, C<\v>, C<\\>, C<\?>, C<\'>,
+C<\">, C<\xHH> (hexadecimal), C<\0OOO> (octal). Encodings that aren't
+valid remain in the output.
+
+B<URL_DECODE> - Decode a URL-encoded value.
+
+B<URL_DECODE_UNI> - Like C<URL_DECODE>, but with support for
+Microsoft-specific C<%u> encoding. If the code is in the full-width
+ASCII code range of C<FF01-FF5E>, the higher byte is used to detect and
+adjust the lower byte. Otherwise, only the lower byte is used and the
+higher byte is zeroed.
+
+B<UTF8_TO_UNICODE> - Convert all UTF-8 character sequences to Unicode.
+This helps input normalization, and minimizing false-positives and
+false-negatives for non-English languages.
 
 
 

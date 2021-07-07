@@ -39,13 +39,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::IPSe
 =head1 DESCRIPTION
 
 Contains one or more IP addresses or blocks of IP addresses specified
-in Classless Inter-Domain Routing (CIDR) notation. AWS WAF supports all
+in Classless Inter-Domain Routing (CIDR) notation. WAF supports all
 IPv4 and IPv6 CIDR ranges except for /0. For information about CIDR
 notation, see the Wikipedia entry Classless Inter-Domain Routing
 (https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
-AWS WAF assigns an ARN to each C<IPSet> that you create. To use an IP
-set in a rule, you provide the ARN to the Rule statement
+WAF assigns an ARN to each C<IPSet> that you create. To use an IP set
+in a rule, you provide the ARN to the Rule statement
 IPSetReferenceStatement.
 
 =head1 ATTRIBUTES
@@ -55,7 +55,7 @@ IPSetReferenceStatement.
 
 Contains an array of strings that specify one or more IP addresses or
 blocks of IP addresses in Classless Inter-Domain Routing (CIDR)
-notation. AWS WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
+notation. WAF supports all IPv4 and IPv6 CIDR ranges except for /0.
 
 Examples:
 
@@ -63,24 +63,24 @@ Examples:
 
 =item *
 
-To configure AWS WAF to allow, block, or count requests that originated
+To configure WAF to allow, block, or count requests that originated
 from the IP address 192.0.2.44, specify C<192.0.2.44/32>.
 
 =item *
 
-To configure AWS WAF to allow, block, or count requests that originated
+To configure WAF to allow, block, or count requests that originated
 from IP addresses from 192.0.2.0 to 192.0.2.255, specify
 C<192.0.2.0/24>.
 
 =item *
 
-To configure AWS WAF to allow, block, or count requests that originated
+To configure WAF to allow, block, or count requests that originated
 from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
 C<1111:0000:0000:0000:0000:0000:0000:0111/128>.
 
 =item *
 
-To configure AWS WAF to allow, block, or count requests that originated
+To configure WAF to allow, block, or count requests that originated
 from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 C<1111:0000:0000:0000:0000:0000:0000:0000/64>.

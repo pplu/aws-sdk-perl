@@ -32,11 +32,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::All 
 
 =head1 DESCRIPTION
 
-Inspect all of the elements that AWS WAF has parsed and extracted from
-the web request JSON body that are within the JsonBody C<MatchScope>.
-This is used with the FieldToMatch option C<JsonBody>.
+Inspect all of the elements that WAF has parsed and extracted from the
+web request JSON body that are within the JsonBody C<MatchScope>. This
+is used with the FieldToMatch option C<JsonBody>.
 
-This is used only to indicate the web request component for AWS WAF to
+This is used only to indicate the web request component for WAF to
 inspect, in the FieldToMatch specification.
 
 =head1 ATTRIBUTES

@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Fiel
 
 =head1 DESCRIPTION
 
-The part of a web request that you want AWS WAF to inspect. Include the
+The part of a web request that you want WAF to inspect. Include the
 single C<FieldToMatch> type that you want to inspect, with additional
 specifications as needed, according to the type. You specify a single
 request component in C<FieldToMatch> for each rule statement that
@@ -63,12 +63,12 @@ contains any additional data that you want to send to your web server
 as the HTTP request body, such as data from a form.
 
 Note that only the first 8 KB (8192 bytes) of the request body are
-forwarded to AWS WAF for inspection by the underlying host service. If
-you don't need to inspect more than 8 KB, you can guarantee that you
-don't allow additional bytes in by combining a statement that inspects
-the body of the web request, such as ByteMatchStatement or
+forwarded to WAF for inspection by the underlying host service. If you
+don't need to inspect more than 8 KB, you can guarantee that you don't
+allow additional bytes in by combining a statement that inspects the
+body of the web request, such as ByteMatchStatement or
 RegexPatternSetReferenceStatement, with a SizeConstraintStatement that
-enforces an 8 KB size limit on the body of the request. AWS WAF doesn't
+enforces an 8 KB size limit on the body of the request. WAF doesn't
 support inspecting the entire contents of web requests whose bodies
 exceed the 8 KB limit.
 
@@ -81,12 +81,12 @@ additional data that you want to send to your web server as the HTTP
 request body, such as data from a form.
 
 Note that only the first 8 KB (8192 bytes) of the request body are
-forwarded to AWS WAF for inspection by the underlying host service. If
-you don't need to inspect more than 8 KB, you can guarantee that you
-don't allow additional bytes in by combining a statement that inspects
-the body of the web request, such as ByteMatchStatement or
+forwarded to WAF for inspection by the underlying host service. If you
+don't need to inspect more than 8 KB, you can guarantee that you don't
+allow additional bytes in by combining a statement that inspects the
+body of the web request, such as ByteMatchStatement or
 RegexPatternSetReferenceStatement, with a SizeConstraintStatement that
-enforces an 8 KB size limit on the body of the request. AWS WAF doesn't
+enforces an 8 KB size limit on the body of the request. WAF doesn't
 support inspecting the entire contents of web requests whose bodies
 exceed the 8 KB limit.
 
@@ -118,7 +118,7 @@ Inspect a single query argument. Provide the name of the query argument
 to inspect, such as I<UserName> or I<SalesRegion>. The name can be up
 to 30 characters long and isn't case sensitive.
 
-This is used only to indicate the web request component for AWS WAF to
+This is used only to indicate the web request component for WAF to
 inspect, in the FieldToMatch specification.
 
 Example JSON: C<"SingleQueryArgument": { "Name": "myArgument" }>

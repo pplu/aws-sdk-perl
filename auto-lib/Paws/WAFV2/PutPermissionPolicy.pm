@@ -65,7 +65,7 @@ C<Effect> must specify C<Allow>.
 =item *
 
 C<Action> must specify C<wafv2:CreateWebACL>, C<wafv2:UpdateWebACL>,
-and C<wafv2:PutFirewallManagerRuleGroups>. AWS WAF rejects any extra
+and C<wafv2:PutFirewallManagerRuleGroups>. WAF rejects any extra
 actions or wildcard actions in the policy.
 
 =item *

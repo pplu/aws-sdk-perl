@@ -52,31 +52,31 @@ The Amazon Resource Name (ARN) of the entity.
 
 =head2 Description => Str
 
-A description of the Web ACL that helps with identification.
+A description of the web ACL that helps with identification.
 
 
 =head2 Id => Str
 
-The unique identifier for the Web ACL. This ID is returned in the
+The unique identifier for the web ACL. This ID is returned in the
 responses to create and list commands. You provide it to operations
 like update and delete.
 
 
 =head2 LockToken => Str
 
-A token used for optimistic locking. AWS WAF returns a token to your
-get and list requests, to mark the state of the entity at the time of
-the request. To make changes to the entity associated with the token,
-you provide the token to operations like update and delete. AWS WAF
-uses the token to ensure that no changes have been made to the entity
-since you last retrieved it. If a change has been made, the update
-fails with a C<WAFOptimisticLockException>. If this happens, perform
-another get, and use the new token returned by that operation.
+A token used for optimistic locking. WAF returns a token to your get
+and list requests, to mark the state of the entity at the time of the
+request. To make changes to the entity associated with the token, you
+provide the token to operations like update and delete. WAF uses the
+token to ensure that no changes have been made to the entity since you
+last retrieved it. If a change has been made, the update fails with a
+C<WAFOptimisticLockException>. If this happens, perform another get,
+and use the new token returned by that operation.
 
 
 =head2 Name => Str
 
-The name of the Web ACL. You cannot change the name of a Web ACL after
+The name of the web ACL. You cannot change the name of a web ACL after
 you create it.
 
 

@@ -37,16 +37,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Fire
 
 =head1 DESCRIPTION
 
-A rule group that's defined for an AWS Firewall Manager WAF policy.
+A rule group that's defined for an Firewall Manager WAF policy.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FirewallManagerStatement => L<Paws::WAFV2::FirewallManagerStatement>
 
-The processing guidance for an AWS Firewall Manager rule. This is like
-a regular rule Statement, but it can only contain a rule group
-reference.
+The processing guidance for an Firewall Manager rule. This is like a
+regular rule Statement, but it can only contain a rule group reference.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -57,21 +56,45 @@ after you create it.
 
 =head2 B<REQUIRED> OverrideAction => L<Paws::WAFV2::OverrideAction>
 
+The override action to apply to the rules in a rule group. Used only
+for rule statements that reference a rule group, like
+C<RuleGroupReferenceStatement> and C<ManagedRuleGroupStatement>.
+
+Set the override action to none to leave the rule actions in effect.
+Set it to count to only count matches, regardless of the rule action
+settings.
+
+In a Rule, you must specify either this C<OverrideAction> setting or
+the rule C<Action> setting, but not both:
+
+=over
+
+=item *
+
+If the rule statement references a rule group, use this override action
+setting and not the action setting.
+
+=item *
+
+If the rule statement does not reference a rule group, use the rule
+action setting and not this rule override action setting.
+
+=back
 
 
 
 =head2 B<REQUIRED> Priority => Int
 
 If you define more than one rule group in the first or last Firewall
-Manager rule groups, AWS WAF evaluates each request against the rule
-groups in order, starting from the lowest priority setting. The
-priorities don't need to be consecutive, but they must all be
-different.
+Manager rule groups, WAF evaluates each request against the rule groups
+in order, starting from the lowest priority setting. The priorities
+don't need to be consecutive, but they must all be different.
 
 
 =head2 B<REQUIRED> VisibilityConfig => L<Paws::WAFV2::VisibilityConfig>
 
-
+Defines and enables Amazon CloudWatch metrics and web request sample
+collection.
 
 
 

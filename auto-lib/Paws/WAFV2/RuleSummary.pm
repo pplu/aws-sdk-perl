@@ -45,7 +45,9 @@ a Rule.
 
 =head2 Action => L<Paws::WAFV2::RuleAction>
 
-
+The action that WAF should take on a web request when it matches a
+rule's statement. Settings at the web ACL level can override the rule
+action setting.
 
 
 =head2 Name => Str

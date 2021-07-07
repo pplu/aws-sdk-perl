@@ -45,8 +45,7 @@ set. To create a regex pattern set, see CreateRegexPatternSet.
 Each regex pattern set rule statement references a regex pattern set.
 You create and maintain the set independent of your rules. This allows
 you to use the single set in multiple rules. When you update the
-referenced set, AWS WAF automatically updates all rules that reference
-it.
+referenced set, WAF automatically updates all rules that reference it.
 
 =head1 ATTRIBUTES
 
@@ -59,7 +58,7 @@ statement references.
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAFV2::FieldToMatch>
 
-The part of a web request that you want AWS WAF to inspect. For more
+The part of a web request that you want WAF to inspect. For more
 information, see FieldToMatch.
 
 
@@ -67,10 +66,10 @@ information, see FieldToMatch.
 
 Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass detection. If you
-specify one or more transformations in a rule statement, AWS WAF
-performs all transformations on the content of the request component
-identified by C<FieldToMatch>, starting from the lowest priority
-setting, before inspecting the content for a match.
+specify one or more transformations in a rule statement, WAF performs
+all transformations on the content of the request component identified
+by C<FieldToMatch>, starting from the lowest priority setting, before
+inspecting the content for a match.
 
 
 

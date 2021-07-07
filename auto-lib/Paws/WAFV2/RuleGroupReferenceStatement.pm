@@ -53,7 +53,7 @@ The Amazon Resource Name (ARN) of the entity.
 =head2 ExcludedRules => ArrayRef[L<Paws::WAFV2::ExcludedRule>]
 
 The names of rules that are in the referenced rule group, but that you
-want AWS WAF to exclude from processing for this rule statement.
+want WAF to exclude from processing for this rule statement.
 
 
 

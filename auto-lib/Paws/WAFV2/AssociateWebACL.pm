@@ -56,7 +56,7 @@ C<arn:aws:elasticloadbalancing:I<region>:I<account-id>:loadbalancer/app/I<load-b
 
 =item *
 
-For an API Gateway REST API:
+For an Amazon API Gateway REST API:
 C<arn:aws:apigateway:I<region>::/restapis/I<api-id>/stages/I<stage-name>>
 
 =item *
@@ -71,7 +71,7 @@ C<arn:aws:appsync:I<region>:I<account-id>:apis/I<GraphQLApiId>>
 
 =head2 B<REQUIRED> WebACLArn => Str
 
-The Amazon Resource Name (ARN) of the Web ACL that you want to
+The Amazon Resource Name (ARN) of the web ACL that you want to
 associate with the resource.
 
 

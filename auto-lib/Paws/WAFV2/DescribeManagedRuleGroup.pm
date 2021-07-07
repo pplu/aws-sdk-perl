@@ -60,9 +60,10 @@ name, to identify the rule group.
 
 =head2 B<REQUIRED> Scope => Str
 
-Specifies whether this is for an AWS CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+Specifies whether this is for an Amazon CloudFront distribution or for
+a regional application. A regional application can be an Application
+Load Balancer (ALB), an Amazon API Gateway REST API, or an AppSync
+GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

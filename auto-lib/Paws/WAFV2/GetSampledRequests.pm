@@ -59,10 +59,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 
 =head2 B<REQUIRED> MaxItems => Int
 
-The number of requests that you want AWS WAF to return from among the
-first 5,000 requests that your AWS resource received during the time
-range. If your resource received fewer requests than the value of
-C<MaxItems>, C<GetSampledRequests> returns information about all of
+The number of requests that you want WAF to return from among the first
+5,000 requests that your Amazon Web Services resource received during
+the time range. If your resource received fewer requests than the value
+of C<MaxItems>, C<GetSampledRequests> returns information about all of
 them.
 
 
@@ -76,9 +76,10 @@ want a sample of requests.
 
 =head2 B<REQUIRED> Scope => Str
 
-Specifies whether this is for an AWS CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+Specifies whether this is for an Amazon CloudFront distribution or for
+a regional application. A regional application can be an Application
+Load Balancer (ALB), an Amazon API Gateway REST API, or an AppSync
+GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:
@@ -107,7 +108,7 @@ You must specify the times in Coordinated Universal Time (UTC) format.
 UTC format includes the special designator, C<Z>. For example,
 C<"2016-09-27T14:50Z">. You can specify any time range in the previous
 three hours. If you specify a start time that's earlier than three
-hours ago, AWS WAF sets it to three hours ago.
+hours ago, WAF sets it to three hours ago.
 
 
 

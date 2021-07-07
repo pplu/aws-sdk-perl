@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Bloc
 
 =head1 DESCRIPTION
 
-Specifies that AWS WAF should block the request and optionally defines
+Specifies that WAF should block the request and optionally defines
 additional custom handling for the response to the web request.
 
 This is used in the context of other settings, for example to specify
@@ -47,9 +47,9 @@ values for RuleAction and web ACL DefaultAction.
 Defines a custom response for the web request.
 
 For information about customizing web requests and responses, see
-Customizing web requests and responses in AWS WAF
+Customizing web requests and responses in WAF
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-in the AWS WAF Developer Guide
+in the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 

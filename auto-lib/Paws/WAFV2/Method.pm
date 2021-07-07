@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Meth
 The HTTP method of a web request. The method indicates the type of
 operation that the request is asking the origin to perform.
 
-This is used only to indicate the web request component for AWS WAF to
+This is used only to indicate the web request component for WAF to
 inspect, in the FieldToMatch specification.
 
 =head1 ATTRIBUTES

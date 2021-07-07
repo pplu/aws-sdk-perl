@@ -60,7 +60,7 @@ The Amazon Resource Name (ARN) of the entity.
 =head2 AvailableLabels => ArrayRef[L<Paws::WAFV2::LabelSummary>]
 
 The labels that one or more rules in this rule group add to matching
-web ACLs. These labels are defined in the C<RuleLabels> for a Rule.
+web requests. These labels are defined in the C<RuleLabels> for a Rule.
 
 
 =head2 B<REQUIRED> Capacity => Int
@@ -69,17 +69,16 @@ The web ACL capacity units (WCUs) required for this rule group.
 
 When you create your own rule group, you define this, and you cannot
 change it after creation. When you add or modify the rules in a rule
-group, AWS WAF enforces this limit. You can check the capacity for a
-set of rules using CheckCapacity.
+group, WAF enforces this limit. You can check the capacity for a set of
+rules using CheckCapacity.
 
-AWS WAF uses WCUs to calculate and control the operating resources that
-are used to run your rules, rule groups, and web ACLs. AWS WAF
-calculates capacity differently for each rule type, to reflect the
-relative cost of each rule. Simple rules that cost little to run use
-fewer WCUs than more complex rules that use more processing power. Rule
-group capacity is fixed at creation, which helps users plan their web
-ACL WCU usage when they use a rule group. The WCU limit for web ACLs is
-1,500.
+WAF uses WCUs to calculate and control the operating resources that are
+used to run your rules, rule groups, and web ACLs. WAF calculates
+capacity differently for each rule type, to reflect the relative cost
+of each rule. Simple rules that cost little to run use fewer WCUs than
+more complex rules that use more processing power. Rule group capacity
+is fixed at creation, which helps users plan their web ACL WCU usage
+when they use a rule group. The WCU limit for web ACLs is 1,500.
 
 
 =head2 ConsumedLabels => ArrayRef[L<Paws::WAFV2::LabelSummary>]
@@ -98,15 +97,15 @@ request. You define these for the rule group, and then use them in the
 rules that you define in the rule group.
 
 For information about customizing web requests and responses, see
-Customizing web requests and responses in AWS WAF
+Customizing web requests and responses in WAF
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-in the AWS WAF Developer Guide
+in the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 For information about the limits on count and size for custom request
-and response settings, see AWS WAF quotas
+and response settings, see WAF quotas
 (https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in
-the AWS WAF Developer Guide
+the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 
@@ -138,7 +137,7 @@ C<awswaf:E<lt>account IDE<gt>:rulegroup:E<lt>rule group nameE<gt>:>
 
 =item *
 
-When a rule with a label matches a web request, AWS WAF adds the fully
+When a rule with a label matches a web request, WAF adds the fully
 qualified label to the request. A fully qualified label is made up of
 the label namespace from the rule group or web ACL where the rule is
 defined and the label from the rule, separated by a colon:
@@ -159,8 +158,8 @@ after you create it.
 
 The Rule statements used to identify the web requests that you want to
 allow, block, or count. Each rule includes one top-level statement that
-AWS WAF uses to identify matching web requests, and parameters that
-govern how AWS WAF handles them.
+WAF uses to identify matching web requests, and parameters that govern
+how WAF handles them.
 
 
 =head2 B<REQUIRED> VisibilityConfig => L<Paws::WAFV2::VisibilityConfig>

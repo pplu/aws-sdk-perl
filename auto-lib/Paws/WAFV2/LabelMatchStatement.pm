@@ -44,8 +44,8 @@ qualified label name that had been added to the web request. Fully
 qualified labels have a prefix, optional namespaces, and label name.
 The prefix identifies the rule group or web ACL context of the rule
 that added the label. If you do not provide the fully qualified name in
-your label match string, AWS WAF performs the search for labels that
-were added in the same context as the label match statement.
+your label match string, WAF performs the search for labels that were
+added in the same context as the label match statement.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ were added in the same context as the label match statement.
 =head2 B<REQUIRED> Key => Str
 
 The string to match against. The setting you provide for this depends
-on the match statement's C<Scope> settings:
+on the match statement's C<Scope> setting:
 
 =over
 

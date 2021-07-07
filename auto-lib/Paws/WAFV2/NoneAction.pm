@@ -32,9 +32,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::None
 
 =head1 DESCRIPTION
 
-Specifies that AWS WAF should do nothing. This is generally used to try
-out a rule without performing any actions. You set the
-C<OverrideAction> on the Rule.
+Specifies that WAF should do nothing. This is generally used to try out
+a rule without performing any actions. You set the C<OverrideAction> on
+the Rule.
 
 This is used in the context of other settings, for example to specify
 values for RuleAction and web ACL DefaultAction.

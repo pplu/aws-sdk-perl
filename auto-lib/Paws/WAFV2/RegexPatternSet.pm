@@ -39,8 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Rege
 
 Contains one or more regular expressions.
 
-AWS WAF assigns an ARN to each C<RegexPatternSet> that you create. To
-use a set in a rule, you provide the ARN to the Rule statement
+WAF assigns an ARN to each C<RegexPatternSet> that you create. To use a
+set in a rule, you provide the ARN to the Rule statement
 RegexPatternSetReferenceStatement.
 
 =head1 ATTRIBUTES

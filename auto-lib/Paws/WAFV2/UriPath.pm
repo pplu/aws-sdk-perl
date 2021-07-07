@@ -33,10 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::UriP
 =head1 DESCRIPTION
 
 The path component of the URI of a web request. This is the part of a
-web request that identifies a resource, for example,
+web request that identifies a resource. For example,
 C</images/daily-ad.jpg>.
 
-This is used only to indicate the web request component for AWS WAF to
+This is used only to indicate the web request component for WAF to
 inspect, in the FieldToMatch specification.
 
 =head1 ATTRIBUTES

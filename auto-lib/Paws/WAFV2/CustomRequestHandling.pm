@@ -38,9 +38,9 @@ request. You can add custom request handling for the rule actions allow
 and count.
 
 For information about customizing web requests and responses, see
-Customizing web requests and responses in AWS WAF
+Customizing web requests and responses in WAF
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-custom-request-response.html)
-in the AWS WAF Developer Guide
+in the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 =head1 ATTRIBUTES
@@ -52,9 +52,9 @@ The HTTP headers to insert into the request. Duplicate header names are
 not allowed.
 
 For information about the limits on count and size for custom request
-and response settings, see AWS WAF quotas
+and response settings, see WAF quotas
 (https://docs.aws.amazon.com/waf/latest/developerguide/limits.html) in
-the AWS WAF Developer Guide
+the WAF Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 
 

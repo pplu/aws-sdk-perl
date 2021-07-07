@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Time
 =head1 DESCRIPTION
 
 In a GetSampledRequests request, the C<StartTime> and C<EndTime>
-objects specify the time range for which you want AWS WAF to return a
+objects specify the time range for which you want WAF to return a
 sample of web requests.
 
 You must specify the times in Coordinated Universal Time (UTC) format.
@@ -44,12 +44,12 @@ C<"2016-09-27T14:50Z">. You can specify any time range in the previous
 three hours.
 
 In a GetSampledRequests response, the C<StartTime> and C<EndTime>
-objects specify the time range for which AWS WAF actually returned a
-sample of web requests. AWS WAF gets the specified number of requests
-from among the first 5,000 requests that your AWS resource receives
-during the specified time period. If your resource receives more than
-5,000 requests during that period, AWS WAF stops sampling after the
-5,000th request. In that case, C<EndTime> is the time that AWS WAF
+objects specify the time range for which WAF actually returned a sample
+of web requests. WAF gets the specified number of requests from among
+the first 5,000 requests that your Amazon Web Services resource
+receives during the specified time period. If your resource receives
+more than 5,000 requests during that period, WAF stops sampling after
+the 5,000th request. In that case, C<EndTime> is the time that WAF
 received the 5,000th request.
 
 =head1 ATTRIBUTES
@@ -58,21 +58,21 @@ received the 5,000th request.
 =head2 B<REQUIRED> EndTime => Str
 
 The end of the time range from which you want C<GetSampledRequests> to
-return a sample of the requests that your AWS resource received. You
-must specify the times in Coordinated Universal Time (UTC) format. UTC
-format includes the special designator, C<Z>. For example,
-C<"2016-09-27T14:50Z">. You can specify any time range in the previous
-three hours.
+return a sample of the requests that your Amazon Web Services resource
+received. You must specify the times in Coordinated Universal Time
+(UTC) format. UTC format includes the special designator, C<Z>. For
+example, C<"2016-09-27T14:50Z">. You can specify any time range in the
+previous three hours.
 
 
 =head2 B<REQUIRED> StartTime => Str
 
 The beginning of the time range from which you want
-C<GetSampledRequests> to return a sample of the requests that your AWS
-resource received. You must specify the times in Coordinated Universal
-Time (UTC) format. UTC format includes the special designator, C<Z>.
-For example, C<"2016-09-27T14:50Z">. You can specify any time range in
-the previous three hours.
+C<GetSampledRequests> to return a sample of the requests that your
+Amazon Web Services resource received. You must specify the times in
+Coordinated Universal Time (UTC) format. UTC format includes the
+special designator, C<Z>. For example, C<"2016-09-27T14:50Z">. You can
+specify any time range in the previous three hours.
 
 
 

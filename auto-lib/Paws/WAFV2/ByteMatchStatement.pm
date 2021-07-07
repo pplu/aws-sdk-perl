@@ -36,25 +36,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Byte
 
 =head1 DESCRIPTION
 
-A rule statement that defines a string match search for AWS WAF to
-apply to web requests. The byte match statement provides the bytes to
-search for, the location in requests that you want AWS WAF to search,
-and other settings. The bytes to search for are typically a string that
-corresponds with ASCII characters. In the AWS WAF console and the
-developer guide, this is refered to as a string match statement.
+A rule statement that defines a string match search for WAF to apply to
+web requests. The byte match statement provides the bytes to search
+for, the location in requests that you want WAF to search, and other
+settings. The bytes to search for are typically a string that
+corresponds with ASCII characters. In the WAF console and the developer
+guide, this is refered to as a string match statement.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> FieldToMatch => L<Paws::WAFV2::FieldToMatch>
 
-The part of a web request that you want AWS WAF to inspect. For more
+The part of a web request that you want WAF to inspect. For more
 information, see FieldToMatch.
 
 
 =head2 B<REQUIRED> PositionalConstraint => Str
 
-The area within the portion of a web request that you want AWS WAF to
+The area within the portion of a web request that you want WAF to
 search for C<SearchString>. Valid values include the following:
 
 B<CONTAINS>
@@ -105,8 +105,8 @@ part of the web request.
 
 =head2 B<REQUIRED> SearchString => Str
 
-A string value that you want AWS WAF to search for. AWS WAF searches
-only in the part of web requests that you designate for inspection in
+A string value that you want WAF to search for. WAF searches only in
+the part of web requests that you designate for inspection in
 FieldToMatch. The maximum length of the value is 50 bytes.
 
 Valid values depend on the component that you specify for inspection in
@@ -116,20 +116,20 @@ C<FieldToMatch>:
 
 =item *
 
-C<Method>: The HTTP method that you want AWS WAF to search for. This
+C<Method>: The HTTP method that you want WAF to search for. This
 indicates the type of operation specified in the request.
 
 =item *
 
-C<UriPath>: The value that you want AWS WAF to search for in the URI
-path, for example, C</images/daily-ad.jpg>.
+C<UriPath>: The value that you want WAF to search for in the URI path,
+for example, C</images/daily-ad.jpg>.
 
 =back
 
 If C<SearchString> includes alphabetic characters A-Z and a-z, note
 that the value is case sensitive.
 
-B<If you're using the AWS WAF API>
+B<If you're using the WAF API>
 
 Specify a base64-encoded version of the value. The maximum length of
 the value before you base64-encode it is 50 bytes.
@@ -140,20 +140,20 @@ header for the value C<BadBot>, you base64-encode C<BadBot> using MIME
 base64-encoding and include the resulting value, C<QmFkQm90>, in the
 value of C<SearchString>.
 
-B<If you're using the AWS CLI or one of the AWS SDKs>
+B<If you're using the CLI or one of the Amazon Web Services SDKs>
 
-The value that you want AWS WAF to search for. The SDK automatically
-base64 encodes the value.
+The value that you want WAF to search for. The SDK automatically base64
+encodes the value.
 
 
 =head2 B<REQUIRED> TextTransformations => ArrayRef[L<Paws::WAFV2::TextTransformation>]
 
 Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass detection. If you
-specify one or more transformations in a rule statement, AWS WAF
-performs all transformations on the content of the request component
-identified by C<FieldToMatch>, starting from the lowest priority
-setting, before inspecting the content for a match.
+specify one or more transformations in a rule statement, WAF performs
+all transformations on the content of the request component identified
+by C<FieldToMatch>, starting from the lowest priority setting, before
+inspecting the content for a match.
 
 
 

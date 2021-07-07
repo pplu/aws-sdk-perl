@@ -41,16 +41,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Rule
 
 A single rule, which you can use in a WebACL or RuleGroup to identify
 web requests that you want to allow, block, or count. Each rule
-includes one top-level Statement that AWS WAF uses to identify matching
-web requests, and parameters that govern how AWS WAF handles them.
+includes one top-level Statement that WAF uses to identify matching web
+requests, and parameters that govern how WAF handles them.
 
 =head1 ATTRIBUTES
 
 
 =head2 Action => L<Paws::WAFV2::RuleAction>
 
-The action that AWS WAF should take on a web request when it matches
-the rule statement. Settings at the web ACL level can override the rule
+The action that WAF should take on a web request when it matches the
+rule statement. Settings at the web ACL level can override the rule
 action setting.
 
 This is used only for rules whose statements do not reference a rule
@@ -113,9 +113,9 @@ action setting and not this rule override action setting.
 
 =head2 B<REQUIRED> Priority => Int
 
-If you define more than one C<Rule> in a C<WebACL>, AWS WAF evaluates
-each request against the C<Rules> in order based on the value of
-C<Priority>. AWS WAF processes rules with lower priority first. The
+If you define more than one C<Rule> in a C<WebACL>, WAF evaluates each
+request against the C<Rules> in order based on the value of
+C<Priority>. WAF processes rules with lower priority first. The
 priorities don't need to be consecutive, but they must all be
 different.
 
@@ -123,10 +123,9 @@ different.
 =head2 RuleLabels => ArrayRef[L<Paws::WAFV2::Label>]
 
 Labels to apply to web requests that match the rule match statement.
-AWS WAF applies fully qualified labels to matching web requests. A
-fully qualified label is the concatenation of a label namespace and a
-rule label. The rule's rule group or web ACL defines the label
-namespace.
+WAF applies fully qualified labels to matching web requests. A fully
+qualified label is the concatenation of a label namespace and a rule
+label. The rule's rule group or web ACL defines the label namespace.
 
 Rules that run after this rule in the web ACL can match against these
 labels using a C<LabelMatchStatement>.
@@ -161,7 +160,7 @@ For example, C<myLabelName> or C<nameSpace1:nameSpace2:myLabelName>.
 
 =head2 B<REQUIRED> Statement => L<Paws::WAFV2::Statement>
 
-The AWS WAF processing statement for the rule, for example
+The WAF processing statement for the rule, for example
 ByteMatchStatement or SizeConstraintStatement.
 
 

@@ -42,8 +42,8 @@ that you specify on the number of requests in any 5-minute time span.
 You can use this to put a temporary block on requests from an IP
 address that is sending excessive requests.
 
-When the rule action triggers, AWS WAF blocks additional requests from
-the IP address until the request rate falls below the limit.
+When the rule action triggers, WAF blocks additional requests from the
+IP address until the request rate falls below the limit.
 
 You can optionally nest another statement inside the rate-based
 statement, to narrow the scope of the rule so that it only counts
@@ -109,8 +109,8 @@ you specify, instead of using the IP address that's reported by the web
 request origin. Commonly, this is the X-Forwarded-For (XFF) header, but
 you can specify any header name.
 
-If the specified header isn't present in the request, AWS WAF doesn't
-apply the rule to the web request at all.
+If the specified header isn't present in the request, WAF doesn't apply
+the rule to the web request at all.
 
 This is required if C<AggregateKeyType> is set to C<FORWARDED_IP>.
 
@@ -124,10 +124,12 @@ is applied only to the requests that match the statement.
 
 =head2 ScopeDownStatement => L<Paws::WAFV2::Statement>
 
-An optional nested statement that narrows the scope of the rate-based
-statement to matching web requests. This can be any nestable statement,
-and you can nest statements at any level below this scope-down
-statement.
+An optional nested statement that narrows the scope of the web requests
+that are evaluated by the rate-based statement. Requests are only
+tracked by the rate-based statement if they match the scope-down
+statement. You can use any nestable Statement in the scope-down
+statement, and you can nest statements at any level, the same as you
+can for a rule statement.
 
 
 

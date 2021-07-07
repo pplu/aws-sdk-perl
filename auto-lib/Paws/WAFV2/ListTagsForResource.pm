@@ -49,10 +49,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 
 =head2 Limit => Int
 
-The maximum number of objects that you want AWS WAF to return for this
-request. If more objects are available, in the response, AWS WAF
-provides a C<NextMarker> value that you can use in a subsequent call to
-get the next batch of objects.
+The maximum number of objects that you want WAF to return for this
+request. If more objects are available, in the response, WAF provides a
+C<NextMarker> value that you can use in a subsequent call to get the
+next batch of objects.
 
 
 
@@ -60,9 +60,9 @@ get the next batch of objects.
 
 When you request a list of objects with a C<Limit> setting, if the
 number of objects that are still available for retrieval exceeds the
-limit, AWS WAF returns a C<NextMarker> value in the response. To
-retrieve the next batch of objects, provide the marker from the prior
-call in your next request.
+limit, WAF returns a C<NextMarker> value in the response. To retrieve
+the next batch of objects, provide the marker from the prior call in
+your next request.
 
 
 

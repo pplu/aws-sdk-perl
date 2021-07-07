@@ -54,7 +54,7 @@ C<arn:aws:elasticloadbalancing:I<region>:I<account-id>:loadbalancer/app/I<load-b
 
 =item *
 
-For an API Gateway REST API:
+For an Amazon API Gateway REST API:
 C<arn:aws:apigateway:I<region>::/restapis/I<api-id>/stages/I<stage-name>>
 
 =item *

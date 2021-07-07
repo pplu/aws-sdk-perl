@@ -38,10 +38,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Logg
 =head1 DESCRIPTION
 
 Defines an association between Amazon Kinesis Data Firehose
-destinations and a web ACL resource, for logging from AWS WAF. As part
-of the association, you can specify parts of the standard logging
-fields to keep out of the logs and you can specify filters so that you
-log only a subset of the logging records.
+destinations and a web ACL resource, for logging from WAF. As part of
+the association, you can specify parts of the standard logging fields
+to keep out of the logs and you can specify filters so that you log
+only a subset of the logging records.
 
 =head1 ATTRIBUTES
 
@@ -62,9 +62,9 @@ evaluation.
 
 =head2 ManagedByFirewallManager => Bool
 
-Indicates whether the logging configuration was created by AWS Firewall
-Manager, as part of an AWS WAF policy configuration. If true, only
-Firewall Manager can modify or delete the configuration.
+Indicates whether the logging configuration was created by Firewall
+Manager, as part of an WAF policy configuration. If true, only Firewall
+Manager can modify or delete the configuration.
 
 
 =head2 RedactedFields => ArrayRef[L<Paws::WAFV2::FieldToMatch>]

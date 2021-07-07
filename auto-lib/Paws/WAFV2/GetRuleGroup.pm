@@ -1,9 +1,10 @@
 
 package Paws::WAFV2::GetRuleGroup;
   use Moose;
-  has Id => (is => 'ro', isa => 'Str', required => 1);
-  has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Scope => (is => 'ro', isa => 'Str', required => 1);
+  has ARN => (is => 'ro', isa => 'Str');
+  has Id => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
+  has Scope => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $wafv2 = Paws->service('WAFV2');
     my $GetRuleGroupResponse = $wafv2->GetRuleGroup(
-      Id    => 'MyEntityId',
-      Name  => 'MyEntityName',
-      Scope => 'CLOUDFRONT',
-
+      ARN   => 'MyResourceArn',    # OPTIONAL
+      Id    => 'MyEntityId',       # OPTIONAL
+      Name  => 'MyEntityName',     # OPTIONAL
+      Scope => 'CLOUDFRONT',       # OPTIONAL
     );
 
     # Results:
@@ -48,7 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 ARN => Str
+
+The Amazon Resource Name (ARN) of the entity.
+
+
+
+=head2 Id => Str
 
 A unique identifier for the rule group. This ID is returned in the
 responses to create and list commands. You provide it to operations
@@ -56,18 +63,19 @@ like update and delete.
 
 
 
-=head2 B<REQUIRED> Name => Str
+=head2 Name => Str
 
 The name of the rule group. You cannot change the name of a rule group
 after you create it.
 
 
 
-=head2 B<REQUIRED> Scope => Str
+=head2 Scope => Str
 
-Specifies whether this is for an AWS CloudFront distribution or for a
-regional application. A regional application can be an Application Load
-Balancer (ALB), an API Gateway REST API, or an AppSync GraphQL API.
+Specifies whether this is for an Amazon CloudFront distribution or for
+a regional application. A regional application can be an Application
+Load Balancer (ALB), an Amazon API Gateway REST API, or an AppSync
+GraphQL API.
 
 To work with CloudFront, you must also specify the Region US East (N.
 Virginia) as follows:

@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Sing
 One of the headers in a web request, identified by name, for example,
 C<User-Agent> or C<Referer>. This setting isn't case sensitive.
 
-This is used only to indicate the web request component for AWS WAF to
+This is used only to indicate the web request component for WAF to
 inspect, in the FieldToMatch specification.
 
 =head1 ATTRIBUTES

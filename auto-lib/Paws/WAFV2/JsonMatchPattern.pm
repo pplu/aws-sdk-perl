@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFV2::Json
 
 =head1 DESCRIPTION
 
-The patterns to look for in the JSON body. AWS WAF inspects the results
-of these pattern matches against the rule inspection criteria. This is
+The patterns to look for in the JSON body. WAF inspects the results of
+these pattern matches against the rule inspection criteria. This is
 used with the FieldToMatch option C<JsonBody>.
 
 =head1 ATTRIBUTES
