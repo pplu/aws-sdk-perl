@@ -14,6 +14,16 @@ package Paws::GreengrassV2;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub BatchAssociateClientDeviceWithCoreDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GreengrassV2::BatchAssociateClientDeviceWithCoreDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDisassociateClientDeviceFromCoreDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GreengrassV2::BatchDisassociateClientDeviceFromCoreDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GreengrassV2::CancelDeployment', @_);
@@ -62,6 +72,11 @@ package Paws::GreengrassV2;
   sub GetDeployment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GreengrassV2::GetDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListClientDevicesAssociatedWithCoreDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GreengrassV2::ListClientDevicesAssociatedWithCoreDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListComponents {
@@ -115,6 +130,29 @@ package Paws::GreengrassV2;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllClientDevicesAssociatedWithCoreDevice {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListClientDevicesAssociatedWithCoreDevice(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListClientDevicesAssociatedWithCoreDevice(@_, nextToken => $next_result->nextToken);
+        push @{ $result->associatedClientDevices }, @{ $next_result->associatedClientDevices };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'associatedClientDevices') foreach (@{ $result->associatedClientDevices });
+        $result = $self->ListClientDevicesAssociatedWithCoreDevice(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'associatedClientDevices') foreach (@{ $result->associatedClientDevices });
+    }
+
+    return undef
+  }
   sub ListAllComponents {
     my $self = shift;
 
@@ -255,7 +293,7 @@ package Paws::GreengrassV2;
   }
 
 
-  sub operations { qw/CancelDeployment CreateComponentVersion CreateDeployment DeleteComponent DeleteCoreDevice DescribeComponent GetComponent GetComponentVersionArtifact GetCoreDevice GetDeployment ListComponents ListComponentVersions ListCoreDevices ListDeployments ListEffectiveDeployments ListInstalledComponents ListTagsForResource ResolveComponentCandidates TagResource UntagResource / }
+  sub operations { qw/BatchAssociateClientDeviceWithCoreDevice BatchDisassociateClientDeviceFromCoreDevice CancelDeployment CreateComponentVersion CreateDeployment DeleteComponent DeleteCoreDevice DescribeComponent GetComponent GetComponentVersionArtifact GetCoreDevice GetDeployment ListClientDevicesAssociatedWithCoreDevice ListComponents ListComponentVersions ListCoreDevices ListDeployments ListEffectiveDeployments ListInstalledComponents ListTagsForResource ResolveComponentCandidates TagResource UntagResource / }
 
 1;
 
@@ -306,6 +344,60 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/greengrass/>
 
 
 =head1 METHODS
+
+=head2 BatchAssociateClientDeviceWithCoreDevice
+
+=over
+
+=item CoreDeviceThingName => Str
+
+=item [Entries => ArrayRef[L<Paws::GreengrassV2::AssociateClientDeviceWithCoreDeviceEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GreengrassV2::BatchAssociateClientDeviceWithCoreDevice>
+
+Returns: a L<Paws::GreengrassV2::BatchAssociateClientDeviceWithCoreDeviceResponse> instance
+
+Associate a list of client devices with a core device. Use this API
+operation to specify which client devices can discover a core device
+through cloud discovery. With cloud discovery, client devices connect
+to AWS IoT Greengrass to retrieve associated core devices' connectivity
+information and certificates. For more information, see Configure cloud
+discovery
+(https://docs.aws.amazon.com/greengrass/v2/developerguide/configure-cloud-discovery.html)
+in the I<AWS IoT Greengrass V2 Developer Guide>.
+
+Client devices are local IoT devices that connect to and communicate
+with an AWS IoT Greengrass core device over MQTT. You can connect
+client devices to a core device to sync MQTT messages and data to AWS
+IoT Core and interact with client devices in AWS IoT Greengrass
+components. For more information, see Interact with local IoT devices
+(https://docs.aws.amazon.com/greengrass/v2/developerguide/interact-with-local-iot-devices.html)
+in the I<AWS IoT Greengrass V2 Developer Guide>.
+
+
+=head2 BatchDisassociateClientDeviceFromCoreDevice
+
+=over
+
+=item CoreDeviceThingName => Str
+
+=item [Entries => ArrayRef[L<Paws::GreengrassV2::DisassociateClientDeviceFromCoreDeviceEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GreengrassV2::BatchDisassociateClientDeviceFromCoreDevice>
+
+Returns: a L<Paws::GreengrassV2::BatchDisassociateClientDeviceFromCoreDeviceResponse> instance
+
+Disassociate a list of client devices from a core device. After you
+disassociate a client device from a core device, the client device
+won't be able to use cloud discovery to retrieve the core device's
+connectivity information and certificates.
+
 
 =head2 CancelDeployment
 
@@ -588,6 +680,27 @@ Gets a deployment. Deployments define the components that run on AWS
 IoT Greengrass core devices.
 
 
+=head2 ListClientDevicesAssociatedWithCoreDevice
+
+=over
+
+=item CoreDeviceThingName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GreengrassV2::ListClientDevicesAssociatedWithCoreDevice>
+
+Returns: a L<Paws::GreengrassV2::ListClientDevicesAssociatedWithCoreDeviceResponse> instance
+
+Retrieves a paginated list of client devices that are associated with a
+core device.
+
+
 =head2 ListComponents
 
 =over
@@ -626,7 +739,8 @@ Each argument is described in detail in: L<Paws::GreengrassV2::ListComponentVers
 
 Returns: a L<Paws::GreengrassV2::ListComponentVersionsResponse> instance
 
-Retrieves a paginated list of all versions for a component.
+Retrieves a paginated list of all versions for a component. Greater
+versions are listed first.
 
 
 =head2 ListCoreDevices
@@ -811,6 +925,18 @@ Removes a tag from an AWS IoT Greengrass resource.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllClientDevicesAssociatedWithCoreDevice(sub { },CoreDeviceThingName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllClientDevicesAssociatedWithCoreDevice(CoreDeviceThingName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - associatedClientDevices, passing the object as the first parameter, and the string 'associatedClientDevices' as the second parameter 
+
+If not, it will return a a L<Paws::GreengrassV2::ListClientDevicesAssociatedWithCoreDeviceResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllComponents(sub { },[MaxResults => Int, NextToken => Str, Scope => Str])
 
