@@ -637,6 +637,8 @@ in the I<Amazon EKS User Guide>.
 
 =item [Taints => ArrayRef[L<Paws::EKS::Taint>]]
 
+=item [UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>]
+
 =item [Version => Str]
 
 
@@ -1243,6 +1245,8 @@ version.
 =item [ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>]
 
 =item [Taints => L<Paws::EKS::UpdateTaintsPayload>]
+
+=item [UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>]
 
 
 =back

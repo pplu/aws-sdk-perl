@@ -22,6 +22,7 @@ package Paws::EKS::Nodegroup;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has Taints => (is => 'ro', isa => 'ArrayRef[Paws::EKS::Taint]', request_name => 'taints', traits => ['NameInRequest']);
+  has UpdateConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupUpdateConfig', request_name => 'updateConfig', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 
 1;
@@ -197,6 +198,11 @@ The Kubernetes taints to be applied to the nodes in the node group when
 they are created. Effect is one of C<NoSchedule>, C<PreferNoSchedule>,
 or C<NoExecute>. Kubernetes taints can be used together with
 tolerations to control how workloads are scheduled to your nodes.
+
+
+=head2 UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>
+
+
 
 
 =head2 Version => Str

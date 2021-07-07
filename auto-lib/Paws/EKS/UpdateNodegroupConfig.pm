@@ -7,6 +7,7 @@ package Paws::EKS::UpdateNodegroupConfig;
   has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodegroupName', required => 1);
   has ScalingConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupScalingConfig', traits => ['NameInRequest'], request_name => 'scalingConfig');
   has Taints => (is => 'ro', isa => 'Paws::EKS::UpdateTaintsPayload', traits => ['NameInRequest'], request_name => 'taints');
+  has UpdateConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupUpdateConfig', traits => ['NameInRequest'], request_name => 'updateConfig');
 
   use MooseX::ClassAttribute;
 
@@ -69,6 +70,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],    # OPTIONAL
       },    # OPTIONAL
+      UpdateConfig => {
+        MaxUnavailable           => 1,    # min: 1; OPTIONAL
+        MaxUnavailablePercentage => 1,    # min: 1, max: 100; OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -120,6 +125,12 @@ update.
 
 The Kubernetes taints to be applied to the nodes in the node group
 after the update.
+
+
+
+=head2 UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>
+
+
 
 
 

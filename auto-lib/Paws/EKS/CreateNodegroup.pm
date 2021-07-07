@@ -17,6 +17,7 @@ package Paws::EKS::CreateNodegroup;
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subnets', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Taints => (is => 'ro', isa => 'ArrayRef[Paws::EKS::Taint]', traits => ['NameInRequest'], request_name => 'taints');
+  has UpdateConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupUpdateConfig', traits => ['NameInRequest'], request_name => 'updateConfig');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
 
   use MooseX::ClassAttribute;
@@ -85,6 +86,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      UpdateConfig => {
+        MaxUnavailable           => 1,    # min: 1; OPTIONAL
+        MaxUnavailablePercentage => 1,    # min: 1, max: 100; OPTIONAL
+      },    # OPTIONAL
       Version => 'MyString',    # OPTIONAL
     );
 
@@ -271,6 +276,12 @@ instances or subnets.
 =head2 Taints => ArrayRef[L<Paws::EKS::Taint>]
 
 The Kubernetes taints to be applied to the nodes in the node group.
+
+
+
+=head2 UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>
+
+
 
 
 
