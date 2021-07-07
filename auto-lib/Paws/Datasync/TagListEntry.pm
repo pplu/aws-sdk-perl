@@ -36,7 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::T
 
 Represents a single entry in a list of AWS resource tags.
 C<TagListEntry> returns an array that contains a list of tasks when the
-ListTagsForResource operation is called.
+ListTagsForResource
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_ListTagsForResource.html)
+operation is called.
 
 =head1 ATTRIBUTES
 

@@ -40,7 +40,7 @@ internet.
 Valid values are: C<"PUBLIC">, C<"PRIVATE_LINK">, C<"FIPS">
 =head2 LastConnectionTime => Str
 
-The time that the agent last connected to DataSyc.
+The time that the agent last connected to DataSync.
 
 
 =head2 Name => Str

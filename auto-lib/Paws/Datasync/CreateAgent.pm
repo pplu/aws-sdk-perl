@@ -90,7 +90,8 @@ that is used to identify the agent in the console.
 =head2 SecurityGroupArns => ArrayRef[Str|Undef]
 
 The ARNs of the security groups used to protect your data transfer task
-subnets. See CreateAgentRequest$SubnetArns.
+subnets. See SecurityGroupArns
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_Ec2Config.html#DataSync-Type-Ec2Config-SecurityGroupArns).
 
 
 

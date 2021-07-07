@@ -526,8 +526,9 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationObjectS
 Returns: a L<Paws::Datasync::CreateLocationObjectStorageResponse> instance
 
 Creates an endpoint for a self-managed object storage bucket. For more
-information about self-managed object storage locations, see
-create-object-location.
+information about self-managed object storage locations, see Creating a
+location for object storage
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html).
 
 
 =head2 CreateLocationS3
@@ -777,7 +778,8 @@ Returns: a L<Paws::Datasync::DescribeLocationObjectStorageResponse> instance
 
 Returns metadata about a self-managed object storage server location.
 For more information about self-managed object storage locations, see
-create-object-location.
+Creating a location for object storage
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html).
 
 
 =head2 DescribeLocationS3
@@ -1063,7 +1065,8 @@ Returns: a L<Paws::Datasync::UpdateLocationNfsResponse> instance
 
 Updates some of the parameters of a previously created location for
 Network File System (NFS) access. For information about creating an NFS
-location, see create-nfs-location.
+location, see Creating a location for NFS
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html).
 
 
 =head2 UpdateLocationObjectStorage
@@ -1093,8 +1096,9 @@ Returns: a L<Paws::Datasync::UpdateLocationObjectStorageResponse> instance
 
 Updates some of the parameters of a previously created location for
 self-managed object storage server access. For information about
-creating a self-managed object storage location, see
-create-object-location.
+creating a self-managed object storage location, see Creating a
+location for object storage
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html).
 
 
 =head2 UpdateLocationSmb
@@ -1124,7 +1128,8 @@ Returns: a L<Paws::Datasync::UpdateLocationSmbResponse> instance
 
 Updates some of the parameters of a previously created location for
 Server Message Block (SMB) file system access. For information about
-creating an SMB location, see create-smb-location.
+creating an SMB location, see Creating a location for SMB
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html).
 
 
 =head2 UpdateTask

@@ -54,7 +54,8 @@ C<ListTasks>.
 
 The operator that is used to compare filter values (for example,
 C<Equals> or C<Contains>). For more about API filtering operators, see
-query-resources.
+API filters for ListTasks and ListLocations
+(https://docs.aws.amazon.com/datasync/latest/userguide/query-resources.html).
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]

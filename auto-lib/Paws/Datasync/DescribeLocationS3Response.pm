@@ -23,7 +23,9 @@ Paws::Datasync::DescribeLocationS3Response
 
 If you are using DataSync on an AWS Outpost, the Amazon Resource Name
 (ARNs) of the EC2 agents deployed on your Outpost. For more information
-about launching a DataSync agent on an AWS Outpost, see outposts-agent.
+about launching a DataSync agent on an AWS Outpost, see Deploy your
+DataSync agent on AWS Outposts
+(https://docs.aws.amazon.com/datasync/latest/userguide/deploy-agents.html#outposts-agent).
 
 
 =head2 CreationTime => Str
@@ -53,7 +55,9 @@ this location is used as a task destination. For more information about
 S3 storage classes, see Amazon S3 Storage Classes
 (http://aws.amazon.com/s3/storage-classes/). Some storage classes have
 behaviors that can affect your S3 storage cost. For detailed
-information, see using-storage-classes.
+information, see Considerations when working with S3 storage classes in
+DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes).
 
 Valid values are: C<"STANDARD">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 =head2 _request_id => Str

@@ -57,10 +57,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
-        TaskQueueing         => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
-        TransferMode         => 'CHANGED', # values: CHANGED, ALL; OPTIONAL
-        Uid        => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
-        VerifyMode => 'POINT_IN_TIME_CONSISTENT'
+        SecurityDescriptorCopyFlags =>
+          'NONE',    # values: NONE, OWNER_DACL, OWNER_DACL_SACL; OPTIONAL
+        TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+        TransferMode => 'CHANGED',    # values: CHANGED, ALL; OPTIONAL
+        Uid          => 'NONE',  # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
+        VerifyMode   => 'POINT_IN_TIME_CONSISTENT'
         , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
       },    # OPTIONAL
       Schedule => {
@@ -126,7 +128,9 @@ verification, and so on.
 
 For each individual task execution, you can override these options by
 specifying the C<OverrideOptions> before starting the task execution.
-For more information, see the operation.
+For more information, see the StartTaskExecution
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_StartTaskExecution.html)
+operation.
 
 
 
@@ -134,7 +138,8 @@ For more information, see the operation.
 
 Specifies a schedule used to periodically transfer files from a source
 to a destination location. The schedule should be specified in UTC
-time. For more information, see task-scheduling.
+time. For more information, see Scheduling your task
+(https://docs.aws.amazon.com/datasync/latest/userguide/task-scheduling.html).
 
 
 

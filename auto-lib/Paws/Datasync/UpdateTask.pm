@@ -54,10 +54,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PosixPermissions     => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
         PreserveDeletedFiles => 'PRESERVE', # values: PRESERVE, REMOVE; OPTIONAL
         PreserveDevices      => 'NONE',     # values: NONE, PRESERVE; OPTIONAL
-        TaskQueueing         => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
-        TransferMode         => 'CHANGED', # values: CHANGED, ALL; OPTIONAL
-        Uid        => 'NONE',    # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
-        VerifyMode => 'POINT_IN_TIME_CONSISTENT'
+        SecurityDescriptorCopyFlags =>
+          'NONE',    # values: NONE, OWNER_DACL, OWNER_DACL_SACL; OPTIONAL
+        TaskQueueing => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+        TransferMode => 'CHANGED',    # values: CHANGED, ALL; OPTIONAL
+        Uid          => 'NONE',  # values: NONE, INT_VALUE, NAME, BOTH; OPTIONAL
+        VerifyMode   => 'POINT_IN_TIME_CONSISTENT'
         , # values: POINT_IN_TIME_CONSISTENT, ONLY_FILES_TRANSFERRED, NONE; OPTIONAL
       },    # OPTIONAL
       Schedule => {
@@ -106,7 +108,8 @@ Specifies a schedule used to periodically transfer files from a source
 to a destination location. You can configure your task to execute
 hourly, daily, weekly or on specific days of the week. You control when
 in the day or hour you want the task to execute. The time you specify
-is UTC time. For more information, see task-scheduling.
+is UTC time. For more information, see Scheduling your task
+(https://docs.aws.amazon.com/datasync/latest/userguide/task-scheduling.html).
 
 
 
