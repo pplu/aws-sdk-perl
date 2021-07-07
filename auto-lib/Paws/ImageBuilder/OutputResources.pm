@@ -41,7 +41,7 @@ The resources produced by this image.
 
 =head2 Amis => ArrayRef[L<Paws::ImageBuilder::Ami>]
 
-The EC2 AMIs created by this image.
+The Amazon EC2 AMIs created by this image.
 
 
 =head2 Containers => ArrayRef[L<Paws::ImageBuilder::Container>]

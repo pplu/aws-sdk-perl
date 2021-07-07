@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-The infrastructure used when building EC2 AMIs.
+The infrastructure used when building Amazon EC2 AMIs.
 
 =head1 ATTRIBUTES
 

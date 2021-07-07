@@ -290,11 +290,11 @@ Paws::ImageBuilder - Perl Interface to AWS EC2 Image Builder
 
 =head1 DESCRIPTION
 
-EC2 Image Builder is a fully managed AWS service that makes it easier
-to automate the creation, management, and deployment of customized,
-secure, and up-to-date "golden" server images that are pre-installed
-and pre-configured with software and settings to meet specific IT
-standards.
+EC2 Image Builder is a fully managed Amazon Web Services service that
+makes it easier to automate the creation, management, and deployment of
+customized, secure, and up-to-date "golden" server images that are
+pre-installed and pre-configured with software and settings to meet
+specific IT standards.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder-2019-12-02>
 
@@ -514,6 +514,8 @@ the creation and distribution of images.
 =item ParentImage => Str
 
 =item SemanticVersion => Str
+
+=item [AdditionalInstanceConfiguration => L<Paws::ImageBuilder::AdditionalInstanceConfiguration>]
 
 =item [BlockDeviceMappings => ArrayRef[L<Paws::ImageBuilder::InstanceBlockDeviceMapping>]]
 
@@ -1030,7 +1032,7 @@ Each argument is described in detail in: L<Paws::ImageBuilder::ListImagePackages
 Returns: a L<Paws::ImageBuilder::ListImagePackagesResponse> instance
 
 List the Packages that are associated with an Image Build Version, as
-determined by AWS Systems Manager Inventory at build time.
+determined by Amazon EC2 Systems Manager Inventory at build time.
 
 
 =head2 ListImagePipelineImages

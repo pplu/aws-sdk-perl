@@ -61,8 +61,8 @@ The KMS key identifier used to encrypt the distributed image.
 
 =head2 LaunchPermission => L<Paws::ImageBuilder::LaunchPermissionConfiguration>
 
-Launch permissions can be used to configure which AWS accounts can use
-the AMI to launch instances.
+Launch permissions can be used to configure which accounts can use the
+AMI to launch instances.
 
 
 =head2 Name => Str

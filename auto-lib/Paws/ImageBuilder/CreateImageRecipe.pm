@@ -1,6 +1,7 @@
 
 package Paws::ImageBuilder::CreateImageRecipe;
   use Moose;
+  has AdditionalInstanceConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::AdditionalInstanceConfiguration', traits => ['NameInRequest'], request_name => 'additionalInstanceConfiguration');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::InstanceBlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'blockDeviceMappings');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken', required => 1);
   has Components => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::ComponentConfiguration]', traits => ['NameInRequest'], request_name => 'components', required => 1);
@@ -41,13 +42,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Components  => [
         {
           ComponentArn => 'MyComponentVersionArnOrBuildVersionArn',
+          Parameters   => [
+            {
+              Name  => 'MyComponentParameterName',    # min: 1, max: 256
+              Value => [
+                'MyComponentParameterValue', ...      # min: 1
+              ],
 
+            },
+            ...
+          ],    # min: 1; OPTIONAL
         },
         ...
       ],
-      Name                => 'MyResourceName',
-      ParentImage         => 'MyNonEmptyString',
-      SemanticVersion     => 'MyVersionNumber',
+      Name                            => 'MyResourceName',
+      ParentImage                     => 'MyNonEmptyString',
+      SemanticVersion                 => 'MyVersionNumber',
+      AdditionalInstanceConfiguration => {
+        SystemsManagerAgent => {
+          UninstallAfterBuild => 1,    # OPTIONAL
+        },    # OPTIONAL
+        UserDataOverride => 'MyUserDataOverride', # min: 1, max: 21847; OPTIONAL
+      },    # OPTIONAL
       BlockDeviceMappings => [
         {
           DeviceName => 'MyNonEmptyString',    # min: 1, max: 1024
@@ -84,6 +100,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder/CreateImageRecipe>
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalInstanceConfiguration => L<Paws::ImageBuilder::AdditionalInstanceConfiguration>
+
+Specify additional settings and launch scripts for your build
+instances.
+
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::ImageBuilder::InstanceBlockDeviceMapping>]
@@ -143,7 +166,7 @@ The tags of the image recipe.
 
 =head2 WorkingDirectory => Str
 
-The working directory to be used during build and test workflows.
+The working directory used during build and test workflows.
 
 
 

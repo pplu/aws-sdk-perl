@@ -48,7 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Components  => [
         {
           ComponentArn => 'MyComponentVersionArnOrBuildVersionArn',
+          Parameters   => [
+            {
+              Name  => 'MyComponentParameterName',    # min: 1, max: 256
+              Value => [
+                'MyComponentParameterValue', ...      # min: 1
+              ],
 
+            },
+            ...
+          ],    # min: 1; OPTIONAL
         },
         ...
       ],
@@ -141,8 +150,8 @@ blob.
 
 =head2 DockerfileTemplateUri => Str
 
-The S3 URI for the Dockerfile that will be used to build your container
-image.
+The Amazon S3 URI for the Dockerfile that will be used to build your
+container image.
 
 
 

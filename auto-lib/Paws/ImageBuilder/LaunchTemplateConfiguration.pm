@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-Identifies an EC2 launch template to use for a specific account.
+Identifies an Amazon EC2 launch template to use for a specific account.
 
 =head1 ATTRIBUTES
 
@@ -47,13 +47,13 @@ The account ID that this configuration applies to.
 
 =head2 B<REQUIRED> LaunchTemplateId => Str
 
-Identifies the EC2 launch template to use.
+Identifies the Amazon EC2 launch template to use.
 
 
 =head2 SetDefaultVersion => Bool
 
-Set the specified EC2 launch template as the default launch template
-for the specified account.
+Set the specified Amazon EC2 launch template as the default launch
+template for the specified account.
 
 
 

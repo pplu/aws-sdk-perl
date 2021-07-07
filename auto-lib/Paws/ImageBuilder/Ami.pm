@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-Details of an EC2 AMI.
+Details of an Amazon EC2 AMI.
 
 =head1 ATTRIBUTES
 
@@ -50,23 +50,23 @@ The account ID of the owner of the AMI.
 
 =head2 Description => Str
 
-The description of the EC2 AMI. Minimum and maximum length are in
-characters.
+The description of the Amazon EC2 AMI. Minimum and maximum length are
+in characters.
 
 
 =head2 Image => Str
 
-The AMI ID of the EC2 AMI.
+The AMI ID of the Amazon EC2 AMI.
 
 
 =head2 Name => Str
 
-The name of the EC2 AMI.
+The name of the Amazon EC2 AMI.
 
 
 =head2 Region => Str
 
-The AWS Region of the EC2 AMI.
+The Region of the Amazon EC2 AMI.
 
 
 =head2 State => L<Paws::ImageBuilder::ImageState>

@@ -10,6 +10,7 @@ package Paws::ImageBuilder::Component;
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::ComponentParameterDetail]', request_name => 'parameters', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
   has SupportedOsVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedOsVersions', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
@@ -94,6 +95,12 @@ The name of the component.
 =head2 Owner => Str
 
 The owner of the component.
+
+
+=head2 Parameters => ArrayRef[L<Paws::ImageBuilder::ComponentParameterDetail>]
+
+Contains parameter details for each of the parameters that are defined
+for the component.
 
 
 =head2 Platform => Str

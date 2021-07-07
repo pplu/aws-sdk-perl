@@ -84,7 +84,7 @@ The instance types of the infrastructure configuration.
 
 =head2 KeyPair => Str
 
-The EC2 key pair of the infrastructure configuration.
+The Amazon EC2 key pair of the infrastructure configuration.
 
 
 =head2 Logging => L<Paws::ImageBuilder::Logging>
