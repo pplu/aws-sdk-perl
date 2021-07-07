@@ -2,6 +2,7 @@
 package Paws::MediaTailor::AccessConfiguration;
   use Moose;
   has AccessType => (is => 'ro', isa => 'Str');
+  has SecretsManagerAccessTokenConfiguration => (is => 'ro', isa => 'Paws::MediaTailor::SecretsManagerAccessTokenConfiguration');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaTailor::AccessConfiguration object:
 
-  $service_obj->Method(Att1 => { AccessType => $value, ..., AccessType => $value  });
+  $service_obj->Method(Att1 => { AccessType => $value, ..., SecretsManagerAccessTokenConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -66,6 +67,11 @@ packaging configurations.
 E<bull> The caller of the API must have s3:GetObject IAM permissions to
 read all top level manifests referenced by your MediaTailor VodSource
 packaging configurations.
+
+
+=head2 SecretsManagerAccessTokenConfiguration => L<Paws::MediaTailor::SecretsManagerAccessTokenConfiguration>
+
+AWS Secrets Manager access token configuration parameters.
 
 
 

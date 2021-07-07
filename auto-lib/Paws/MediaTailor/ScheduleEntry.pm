@@ -6,6 +6,7 @@ package Paws::MediaTailor::ScheduleEntry;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
   has ChannelName => (is => 'ro', isa => 'Str', required => 1);
   has ProgramName => (is => 'ro', isa => 'Str', required => 1);
+  has ScheduleAdBreaks => (is => 'ro', isa => 'ArrayRef[Paws::MediaTailor::ScheduleAdBreak]');
   has SourceLocationName => (is => 'ro', isa => 'Str', required => 1);
   has VodSourceName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -67,6 +68,11 @@ The name of the channel that uses this schedule.
 =head2 B<REQUIRED> ProgramName => Str
 
 The name of the program.
+
+
+=head2 ScheduleAdBreaks => ArrayRef[L<Paws::MediaTailor::ScheduleAdBreak>]
+
+The schedule's ad break properties.
 
 
 =head2 B<REQUIRED> SourceLocationName => Str

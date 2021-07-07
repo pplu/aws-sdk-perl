@@ -38,7 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       SourceLocationName  => 'My__string',
       AccessConfiguration => {
-        AccessType => 'S3_SIGV4',    # values: S3_SIGV4; OPTIONAL
+        AccessType =>
+          'S3_SIGV4', # values: S3_SIGV4, SECRETS_MANAGER_ACCESS_TOKEN; OPTIONAL
+        SecretsManagerAccessTokenConfiguration => {
+          HeaderName      => 'My__string',
+          SecretArn       => 'My__string',
+          SecretStringKey => 'My__string',
+        },            # OPTIONAL
       },    # OPTIONAL
       DefaultSegmentDeliveryConfiguration => { BaseUrl => 'My__string', }
       ,     # OPTIONAL
