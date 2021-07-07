@@ -482,6 +482,8 @@ query) or a C<containerAction> (executing a containerized application).
 
 =item DatastoreName => Str
 
+=item [DatastorePartitions => L<Paws::IoTAnalytics::DatastorePartitions>]
+
 =item [DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>]
 
 =item [FileFormatConfiguration => L<Paws::IoTAnalytics::FileFormatConfiguration>]
@@ -497,7 +499,9 @@ Each argument is described in detail in: L<Paws::IoTAnalytics::CreateDatastore>
 
 Returns: a L<Paws::IoTAnalytics::CreateDatastoreResponse> instance
 
-Creates a data store, which is a repository for messages.
+Creates a data store, which is a repository for messages. Only data
+stores that are used to save pipeline data can be configured with
+C<ParquetConfiguration>.
 
 
 =head2 CreatePipeline

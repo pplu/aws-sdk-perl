@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::Datastore;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
+  has DatastorePartitions => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastorePartitions', request_name => 'datastorePartitions', traits => ['NameInRequest']);
   has FileFormatConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::FileFormatConfiguration', request_name => 'fileFormatConfiguration', traits => ['NameInRequest']);
   has LastMessageArrivalTime => (is => 'ro', isa => 'Str', request_name => 'lastMessageArrivalTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
@@ -54,6 +55,11 @@ The ARN of the data store.
 =head2 CreationTime => Str
 
 When the data store was created.
+
+
+=head2 DatastorePartitions => L<Paws::IoTAnalytics::DatastorePartitions>
+
+Contains information about the partitions in a data store.
 
 
 =head2 FileFormatConfiguration => L<Paws::IoTAnalytics::FileFormatConfiguration>

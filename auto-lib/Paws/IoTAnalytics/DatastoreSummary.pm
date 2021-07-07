@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::DatastoreSummary;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has DatastoreName => (is => 'ro', isa => 'Str', request_name => 'datastoreName', traits => ['NameInRequest']);
+  has DatastorePartitions => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastorePartitions', request_name => 'datastorePartitions', traits => ['NameInRequest']);
   has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorageSummary', request_name => 'datastoreStorage', traits => ['NameInRequest']);
   has FileFormatType => (is => 'ro', isa => 'Str', request_name => 'fileFormatType', traits => ['NameInRequest']);
   has LastMessageArrivalTime => (is => 'ro', isa => 'Str', request_name => 'lastMessageArrivalTime', traits => ['NameInRequest']);
@@ -52,6 +53,11 @@ When the data store was created.
 =head2 DatastoreName => Str
 
 The name of the data store.
+
+
+=head2 DatastorePartitions => L<Paws::IoTAnalytics::DatastorePartitions>
+
+Contains information about the partitions in a data store.
 
 
 =head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorageSummary>

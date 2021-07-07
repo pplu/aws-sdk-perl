@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::CreateDatastore;
   use Moose;
   has DatastoreName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datastoreName', required => 1);
+  has DatastorePartitions => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastorePartitions', traits => ['NameInRequest'], request_name => 'datastorePartitions');
   has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', traits => ['NameInRequest'], request_name => 'datastoreStorage');
   has FileFormatConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::FileFormatConfiguration', traits => ['NameInRequest'], request_name => 'fileFormatConfiguration');
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
@@ -33,7 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $CreateDatastoreResponse = $iotanalytics->CreateDatastore(
-      DatastoreName    => 'MyDatastoreName',
+      DatastoreName       => 'MyDatastoreName',
+      DatastorePartitions => {
+        Partitions => [
+          {
+            AttributePartition => {
+              AttributeName => 'MyPartitionAttributeName',    # min: 1, max: 128
+
+            },    # OPTIONAL
+            TimestampPartition => {
+              AttributeName   => 'MyPartitionAttributeName',  # min: 1, max: 128
+              TimestampFormat =>
+                'MyTimestampFormat',    # min: 1, max: 50; OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],    # max: 25; OPTIONAL
+      },    # OPTIONAL
       DatastoreStorage => {
         CustomerManagedS3 => {
           Bucket    => 'MyBucketName',     # min: 3, max: 255
@@ -91,6 +108,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 B<REQUIRED> DatastoreName => Str
 
 The name of the data store.
+
+
+
+=head2 DatastorePartitions => L<Paws::IoTAnalytics::DatastorePartitions>
+
+Contains information about the partitions in a data store.
 
 
 
