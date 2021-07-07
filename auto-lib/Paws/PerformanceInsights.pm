@@ -20,6 +20,11 @@ package Paws::PerformanceInsights;
     my $call_object = $self->new_with_coercions('Paws::PerformanceInsights::DescribeDimensionKeys', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDimensionKeyDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PerformanceInsights::GetDimensionKeyDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetResourceMetrics {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::PerformanceInsights::GetResourceMetrics', @_);
@@ -28,7 +33,7 @@ package Paws::PerformanceInsights;
   
 
 
-  sub operations { qw/DescribeDimensionKeys GetResourceMetrics / }
+  sub operations { qw/DescribeDimensionKeys GetDimensionKeyDetails GetResourceMetrics / }
 
 1;
 
@@ -137,6 +142,35 @@ metric.
 Each response element returns a maximum of 500 bytes. For larger
 elements, such as SQL statements, only the first 500 bytes are
 returned.
+
+
+=head2 GetDimensionKeyDetails
+
+=over
+
+=item Group => Str
+
+=item GroupIdentifier => Str
+
+=item Identifier => Str
+
+=item ServiceType => Str
+
+=item [RequestedDimensions => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PerformanceInsights::GetDimensionKeyDetails>
+
+Returns: a L<Paws::PerformanceInsights::GetDimensionKeyDetailsResponse> instance
+
+Get the attributes of the specified dimension group for a DB instance
+or data source. For example, if you specify a SQL ID,
+C<GetDimensionKeyDetails> retrieves the full text of the dimension
+C<db.sql.statement> associated with this ID. This operation is useful
+because C<GetResourceMetrics> and C<DescribeDimensionKeys> don't
+support retrieval of large SQL statement text.
 
 
 =head2 GetResourceMetrics

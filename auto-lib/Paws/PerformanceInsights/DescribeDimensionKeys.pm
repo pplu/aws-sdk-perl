@@ -40,21 +40,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeDimensionKeysResponse = $pi->DescribeDimensionKeys(
       EndTime => '1970-01-01T01:00:00',
       GroupBy => {
-        Group      => 'MyString',
-        Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
-        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
+        Group      => 'MyRequestString',    # max: 256
+        Dimensions => [
+          'MyRequestString', ...            # max: 256
+        ],    # min: 1, max: 10; OPTIONAL
+        Limit => 1,    # min: 1, max: 10; OPTIONAL
       },
-      Identifier  => 'MyString',
-      Metric      => 'MyString',
+      Identifier  => 'MyRequestString',
+      Metric      => 'MyRequestString',
       ServiceType => 'RDS',
       StartTime   => '1970-01-01T01:00:00',
-      Filter      => { 'MyString' => 'MyString', },    # OPTIONAL
-      MaxResults  => 1,                                # OPTIONAL
-      NextToken   => 'MyString',                       # OPTIONAL
+      Filter      => {
+        'MyRequestString' => 'MyRequestString', # key: max: 256, value: max: 256
+      },    # OPTIONAL
+      MaxResults  => 1,                # OPTIONAL
+      NextToken   => 'MyNextToken',    # OPTIONAL
       PartitionBy => {
-        Group      => 'MyString',
-        Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
-        Limit      => 1,                      # min: 1, max: 10; OPTIONAL
+        Group      => 'MyRequestString',    # max: 256
+        Dimensions => [
+          'MyRequestString', ...            # max: 256
+        ],    # min: 1, max: 10; OPTIONAL
+        Limit => 1,    # min: 1, max: 10; OPTIONAL
       },    # OPTIONAL
       PeriodInSeconds => 1,    # OPTIONAL
     );

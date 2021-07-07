@@ -36,15 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $pi = Paws->service('PerformanceInsights');
     my $GetResourceMetricsResponse = $pi->GetResourceMetrics(
       EndTime       => '1970-01-01T01:00:00',
-      Identifier    => 'MyString',
+      Identifier    => 'MyRequestString',
       MetricQueries => [
         {
-          Metric  => 'MyString',
-          Filter  => { 'MyString' => 'MyString', },    # OPTIONAL
+          Metric => 'MyRequestString',    # max: 256
+          Filter => {
+            'MyRequestString' =>
+              'MyRequestString',          # key: max: 256, value: max: 256
+          },    # OPTIONAL
           GroupBy => {
-            Group      => 'MyString',
-            Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
-            Limit      => 1,                      # min: 1, max: 10; OPTIONAL
+            Group      => 'MyRequestString',    # max: 256
+            Dimensions => [
+              'MyRequestString', ...            # max: 256
+            ],    # min: 1, max: 10; OPTIONAL
+            Limit => 1,    # min: 1, max: 10; OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -52,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceType     => 'RDS',
       StartTime       => '1970-01-01T01:00:00',
       MaxResults      => 1,                       # OPTIONAL
-      NextToken       => 'MyString',              # OPTIONAL
+      NextToken       => 'MyNextToken',           # OPTIONAL
       PeriodInSeconds => 1,                       # OPTIONAL
     );
 
