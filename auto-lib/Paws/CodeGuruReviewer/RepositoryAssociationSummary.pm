@@ -88,7 +88,8 @@ The name of the repository association.
 The owner of the repository. For an AWS CodeCommit repository, this is
 the AWS account ID of the account that owns the repository. For a
 GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the
-username for the account that owns the repository.
+username for the account that owns the repository. For an S3
+repository, it can be the username or AWS account ID.
 
 
 =head2 ProviderType => Str

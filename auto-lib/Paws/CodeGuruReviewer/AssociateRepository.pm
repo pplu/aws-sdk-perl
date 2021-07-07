@@ -49,6 +49,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Owner         => 'MyOwner',            # min: 1, max: 100
 
         },    # OPTIONAL
+        S3Bucket => {
+          BucketName => 'MyS3BucketName',    # min: 3, max: 63
+          Name       => 'MyName',            # min: 1, max: 100
+
+        },    # OPTIONAL
       },
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       KMSKeyDetails      => {

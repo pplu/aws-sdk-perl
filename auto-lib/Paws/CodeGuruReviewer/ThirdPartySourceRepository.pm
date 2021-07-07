@@ -60,7 +60,8 @@ The name of the third party source repository.
 
 The owner of the repository. For a GitHub, GitHub Enterprise, or
 Bitbucket repository, this is the username for the account that owns
-the repository.
+the repository. For an S3 repository, this can be the username or AWS
+account ID.
 
 
 

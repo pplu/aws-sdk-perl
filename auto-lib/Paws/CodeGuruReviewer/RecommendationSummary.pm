@@ -4,6 +4,7 @@ package Paws::CodeGuruReviewer::RecommendationSummary;
   has Description => (is => 'ro', isa => 'Str');
   has EndLine => (is => 'ro', isa => 'Int');
   has FilePath => (is => 'ro', isa => 'Str');
+  has RecommendationCategory => (is => 'ro', isa => 'Str');
   has RecommendationId => (is => 'ro', isa => 'Str');
   has StartLine => (is => 'ro', isa => 'Int');
 
@@ -58,6 +59,11 @@ values are the same.
 =head2 FilePath => Str
 
 Name of the file on which a recommendation is provided.
+
+
+=head2 RecommendationCategory => Str
+
+The type of a recommendation.
 
 
 =head2 RecommendationId => Str

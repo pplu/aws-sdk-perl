@@ -4,6 +4,7 @@ package Paws::CodeGuruReviewer::Repository;
   has Bitbucket => (is => 'ro', isa => 'Paws::CodeGuruReviewer::ThirdPartySourceRepository');
   has CodeCommit => (is => 'ro', isa => 'Paws::CodeGuruReviewer::CodeCommitRepository');
   has GitHubEnterpriseServer => (is => 'ro', isa => 'Paws::CodeGuruReviewer::ThirdPartySourceRepository');
+  has S3Bucket => (is => 'ro', isa => 'Paws::CodeGuruReviewer::S3Repository');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodeGuruReviewer::Repository object:
 
-  $service_obj->Method(Att1 => { Bitbucket => $value, ..., GitHubEnterpriseServer => $value  });
+  $service_obj->Method(Att1 => { Bitbucket => $value, ..., S3Bucket => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,6 +57,11 @@ Information about an AWS CodeCommit repository.
 =head2 GitHubEnterpriseServer => L<Paws::CodeGuruReviewer::ThirdPartySourceRepository>
 
 Information about a GitHub Enterprise Server repository.
+
+
+=head2 S3Bucket => L<Paws::CodeGuruReviewer::S3Repository>
+
+
 
 
 

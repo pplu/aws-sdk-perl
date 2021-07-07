@@ -141,8 +141,8 @@ Paws::CodeGuruReviewer - Perl Interface to AWS Amazon CodeGuru Reviewer
 This section provides documentation for the Amazon CodeGuru Reviewer
 API operations. CodeGuru Reviewer is a service that uses program
 analysis and machine learning to detect potential defects that are
-difficult for developers to find and recommendations to address them in
-your Java and Python code.
+difficult for developers to find and recommends fixes in your Java and
+Python code.
 
 By proactively detecting and providing recommendations for addressing
 code defects and implementing best practices, CodeGuru Reviewer
@@ -192,8 +192,8 @@ CodeGuru Reviewer
 (https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html)
 in the I<Amazon CodeGuru Reviewer User Guide.>
 
-If you associate a CodeCommit repository, it must be in the same AWS
-Region and AWS account where its CodeGuru Reviewer code reviews are
+If you associate a CodeCommit or S3 repository, it must be in the same
+AWS Region and AWS account where its CodeGuru Reviewer code reviews are
 configured.
 
 Bitbucket and GitHub Enterprise Server repositories are managed by AWS
@@ -233,8 +233,7 @@ Use to create a code review with a C<CodeReviewType>
 (https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html)
 of C<RepositoryAnalysis>. This type of code review analyzes all code
 under a specified branch in an associated repository. C<PullRequest>
-code reviews are automatically triggered by a pull request so cannot be
-created using this method.
+code reviews are automatically triggered by a pull request.
 
 
 =head2 DescribeCodeReview

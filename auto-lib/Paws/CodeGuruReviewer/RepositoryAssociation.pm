@@ -10,6 +10,7 @@ package Paws::CodeGuruReviewer::RepositoryAssociation;
   has Name => (is => 'ro', isa => 'Str');
   has Owner => (is => 'ro', isa => 'Str');
   has ProviderType => (is => 'ro', isa => 'Str');
+  has S3RepositoryDetails => (is => 'ro', isa => 'Paws::CodeGuruReviewer::S3RepositoryDetails');
   has State => (is => 'ro', isa => 'Str');
   has StateReason => (is => 'ro', isa => 'Str');
 
@@ -114,12 +115,18 @@ The name of the repository.
 The owner of the repository. For an AWS CodeCommit repository, this is
 the AWS account ID of the account that owns the repository. For a
 GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the
-username for the account that owns the repository.
+username for the account that owns the repository. For an S3
+repository, it can be the username or AWS account ID.
 
 
 =head2 ProviderType => Str
 
 The provider type of the repository association.
+
+
+=head2 S3RepositoryDetails => L<Paws::CodeGuruReviewer::S3RepositoryDetails>
+
+
 
 
 =head2 State => Str

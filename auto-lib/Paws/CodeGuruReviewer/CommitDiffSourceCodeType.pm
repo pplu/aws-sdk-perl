@@ -2,6 +2,7 @@
 package Paws::CodeGuruReviewer::CommitDiffSourceCodeType;
   use Moose;
   has DestinationCommit => (is => 'ro', isa => 'Str');
+  has MergeBaseCommit => (is => 'ro', isa => 'Str');
   has SourceCommit => (is => 'ro', isa => 'Str');
 
 1;
@@ -37,19 +38,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruRev
 A type of C<SourceCodeType>
 (https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_SourceCodeType)
 that specifies the commit diff for a pull request on an associated
-repository.
+repository. The C<SourceCommit> and C<DestinationCommit> fields are
+required to do a pull request code review.
 
 =head1 ATTRIBUTES
 
 
 =head2 DestinationCommit => Str
 
-The SHA of the destination commit used to generate a commit diff.
+The SHA of the destination commit used to generate a commit diff. This
+field is required for a pull request code review.
+
+
+=head2 MergeBaseCommit => Str
+
+The SHA of the merge base of a commit.
 
 
 =head2 SourceCommit => Str
 
-The SHA of the source commit used to generate a commit diff.
+The SHA of the source commit used to generate a commit diff. This field
+is required for a pull request code review.
 
 
 

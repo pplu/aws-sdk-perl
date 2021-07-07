@@ -39,10 +39,49 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RepositoryHead => {
             BranchName => 'MyBranchName',    # min: 1, max: 256
 
-          },
+          },    # OPTIONAL
+          SourceCodeType => {
+            BranchDiff => {
+              DestinationBranchName => 'MyBranchName',    # min: 1, max: 256
+              SourceBranchName      => 'MyBranchName',    # min: 1, max: 256
 
+            },    # OPTIONAL
+            CommitDiff => {
+              DestinationCommit => 'MyCommitId',    # min: 6, max: 64; OPTIONAL
+              MergeBaseCommit   => 'MyCommitId',    # min: 6, max: 64; OPTIONAL
+              SourceCommit      => 'MyCommitId',    # min: 6, max: 64; OPTIONAL
+            },    # OPTIONAL
+            RepositoryHead => {
+              BranchName => 'MyBranchName',    # min: 1, max: 256
+
+            },    # OPTIONAL
+            RequestMetadata => {
+              EventInfo => {
+                Name  => 'MyEventName',     # min: 1, max: 32; OPTIONAL
+                State => 'MyEventState',    # min: 1, max: 32; OPTIONAL
+              },    # OPTIONAL
+              RequestId  => 'MyRequestId',    # min: 1, max: 64; OPTIONAL
+              Requester  => 'MyRequester',    # min: 1, max: 100; OPTIONAL
+              VendorName =>
+                'GitHub',    # values: GitHub, GitLab, NativeS3; OPTIONAL
+            },    # OPTIONAL
+            S3BucketRepository => {
+              Name    => 'MyName',    # min: 1, max: 100
+              Details => {
+                BucketName    => 'MyS3BucketName',   # min: 3, max: 63; OPTIONAL
+                CodeArtifacts => {
+                  SourceCodeArtifactsObjectKey =>
+                    'MySourceCodeArtifactsObjectKey',    # min: 1, max: 1024
+                  BuildArtifactsObjectKey =>
+                    'MyBuildArtifactsObjectKey',   # min: 1, max: 1024; OPTIONAL
+                },    # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
         },
-
+        AnalysisTypes => [
+          'Security', ...    # values: Security, CodeQuality
+        ],    # OPTIONAL
       },
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
     );

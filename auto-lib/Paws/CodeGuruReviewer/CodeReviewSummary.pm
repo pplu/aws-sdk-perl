@@ -10,6 +10,7 @@ package Paws::CodeGuruReviewer::CodeReviewSummary;
   has ProviderType => (is => 'ro', isa => 'Str');
   has PullRequestId => (is => 'ro', isa => 'Str');
   has RepositoryName => (is => 'ro', isa => 'Str');
+  has SourceCodeType => (is => 'ro', isa => 'Paws::CodeGuruReviewer::SourceCodeType');
   has State => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 
@@ -82,7 +83,8 @@ The name of the code review.
 The owner of the repository. For an AWS CodeCommit repository, this is
 the AWS account ID of the account that owns the repository. For a
 GitHub, GitHub Enterprise Server, or Bitbucket repository, this is the
-username for the account that owns the repository.
+username for the account that owns the repository. For an S3
+repository, it can be the username or AWS account ID.
 
 
 =head2 ProviderType => Str
@@ -98,6 +100,11 @@ The pull request ID for the code review.
 =head2 RepositoryName => Str
 
 The name of the repository.
+
+
+=head2 SourceCodeType => L<Paws::CodeGuruReviewer::SourceCodeType>
+
+
 
 
 =head2 State => Str

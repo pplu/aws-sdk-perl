@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       ProviderTypes => [
         'CodeCommit',
-        ...    # values: CodeCommit, GitHub, Bitbucket, GitHubEnterpriseServer
+        ... # values: CodeCommit, GitHub, Bitbucket, GitHubEnterpriseServer, S3Bucket
       ],    # OPTIONAL
       States => [
         'Associated',
