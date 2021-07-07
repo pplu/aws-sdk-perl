@@ -66,11 +66,11 @@ environment has last been used.
 
 =head2 ClientRequestToken => Str
 
-A unique, case-sensitive string that helps AWS Cloud9 to ensure this
+A unique, case-sensitive string that helps Cloud9 to ensure this
 operation completes no more than one time.
 
 For more information, see Client Tokens
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
 in the I<Amazon EC2 API Reference>.
 
 
@@ -79,12 +79,12 @@ in the I<Amazon EC2 API Reference>.
 
 The connection type used for connecting to an Amazon EC2 environment.
 Valid values are C<CONNECT_SSH> (default) and C<CONNECT_SSM> (connected
-through AWS Systems Manager).
+through Amazon EC2 Systems Manager).
 
-For more information, see Accessing no-ingress EC2 instances with AWS
-Systems Manager
+For more information, see Accessing no-ingress EC2 instances with
+Amazon EC2 Systems Manager
 (https://docs.aws.amazon.com/cloud9/latest/user-guide/ec2-ssm.html) in
-the I<AWS Cloud9 User Guide>.
+the I<Cloud9 User Guide>.
 
 Valid values are: C<"CONNECT_SSH">, C<"CONNECT_SSM">
 
@@ -98,10 +98,12 @@ The description of the environment to create.
 
 The identifier for the Amazon Machine Image (AMI) that's used to create
 the EC2 instance. To choose an AMI for the instance, you must specify a
-valid AMI alias or a valid AWS Systems Manager (SSM) path.
+valid AMI alias or a valid Amazon EC2 Systems Manager (SSM) path.
 
 The default AMI is used if the parameter isn't explicitly assigned a
-value in the request.
+value in the request. Because Amazon Linux AMI has ended standard
+support as of December 31, 2020, we recommend you choose Amazon Linux
+2, which includes long term support through 2023.
 
 B<AMI aliases>
 
@@ -156,29 +158,30 @@ C<t2.micro>).
 
 The name of the environment to create.
 
-This name is visible to other AWS IAM users in the same AWS account.
+This name is visible to other IAM users in the same Amazon Web Services
+account.
 
 
 
 =head2 OwnerArn => Str
 
 The Amazon Resource Name (ARN) of the environment owner. This ARN can
-be the ARN of any AWS IAM principal. If this value is not specified,
-the ARN defaults to this environment's creator.
+be the ARN of any IAM principal. If this value is not specified, the
+ARN defaults to this environment's creator.
 
 
 
 =head2 SubnetId => Str
 
-The ID of the subnet in Amazon VPC that AWS Cloud9 will use to
-communicate with the Amazon EC2 instance.
+The ID of the subnet in Amazon VPC that Cloud9 will use to communicate
+with the Amazon EC2 instance.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::Cloud9::Tag>]
 
-An array of key-value pairs that will be associated with the new AWS
-Cloud9 development environment.
+An array of key-value pairs that will be associated with the new Cloud9
+development environment.
 
 
 

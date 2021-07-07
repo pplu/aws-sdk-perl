@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Cloud9::Env
 
 =head1 DESCRIPTION
 
-Information about an environment member for an AWS Cloud9 development
+Information about an environment member for an Cloud9 development
 environment.
 
 =head1 ATTRIBUTES
@@ -84,8 +84,8 @@ The Amazon Resource Name (ARN) of the environment member.
 
 =head2 B<REQUIRED> UserId => Str
 
-The user ID in AWS Identity and Access Management (AWS IAM) of the
-environment member.
+The user ID in Identity and Access Management (IAM) of the environment
+member.
 
 
 

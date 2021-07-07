@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Cloud9::Env
 
 =head1 DESCRIPTION
 
-Information about an AWS Cloud9 development environment.
+Information about an Cloud9 development environment.
 
 =head1 ATTRIBUTES
 
@@ -74,8 +74,8 @@ The state of the environment in its creation or deletion lifecycle.
 
 =head2 ManagedCredentialsStatus => Str
 
-Describes the status of AWS managed temporary credentials for the AWS
-Cloud9 environment. Available values are:
+Describes the status of Amazon Web Services managed temporary
+credentials for the Cloud9 environment. Available values are:
 
 =over
 

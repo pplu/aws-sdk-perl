@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Cloud9::Env
 =head1 DESCRIPTION
 
 Information about the current creation or deletion lifecycle state of
-an AWS Cloud9 development environment.
+an Cloud9 development environment.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +44,7 @@ an AWS Cloud9 development environment.
 =head2 FailureResource => Str
 
 If the environment failed to delete, the Amazon Resource Name (ARN) of
-the related AWS resource.
+the related Amazon Web Services resource.
 
 
 =head2 Reason => Str

@@ -34,12 +34,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Cloud9::Tag
 
 =head1 DESCRIPTION
 
-Metadata that is associated with AWS resources. In particular, a
-name-value pair that can be associated with an AWS Cloud9 development
-environment. There are two types of tags: I<user tags> and I<system
-tags>. A user tag is created by the user. A system tag is automatically
-created by AWS services. A system tag is prefixed with "aws:" and
-cannot be modified by the user.
+Metadata that is associated with Amazon Web Services resources. In
+particular, a name-value pair that can be associated with an Cloud9
+development environment. There are two types of tags: I<user tags> and
+I<system tags>. A user tag is created by the user. A system tag is
+automatically created by Amazon Web Services services. A system tag is
+prefixed with C<"aws:"> and cannot be modified by the user.
 
 =head1 ATTRIBUTES
 
