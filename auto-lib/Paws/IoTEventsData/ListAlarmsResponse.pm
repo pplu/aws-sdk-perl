@@ -1,7 +1,7 @@
 
-package Paws::IoTEventsData::ListDetectorsResponse;
+package Paws::IoTEventsData::ListAlarmsResponse;
   use Moose;
-  has DetectorSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::DetectorSummary]', traits => ['NameInRequest'], request_name => 'detectorSummaries');
+  has AlarmSummaries => (is => 'ro', isa => 'ArrayRef[Paws::IoTEventsData::AlarmSummary]', traits => ['NameInRequest'], request_name => 'alarmSummaries');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -11,14 +11,14 @@ package Paws::IoTEventsData::ListDetectorsResponse;
 
 =head1 NAME
 
-Paws::IoTEventsData::ListDetectorsResponse
+Paws::IoTEventsData::ListAlarmsResponse
 
 =head1 ATTRIBUTES
 
 
-=head2 DetectorSummaries => ArrayRef[L<Paws::IoTEventsData::DetectorSummary>]
+=head2 AlarmSummaries => ArrayRef[L<Paws::IoTEventsData::AlarmSummary>]
 
-A list of summary information about the detectors (instances).
+A list that summarizes each alarm.
 
 
 =head2 NextToken => Str

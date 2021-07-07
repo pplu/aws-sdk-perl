@@ -42,12 +42,12 @@ Contains information about the errors encountered.
 
 =head2 ErrorCode => Str
 
-The code associated with the error.
+The error code.
 
 
 =head2 ErrorMessage => Str
 
-More information about the error.
+A message that describes the error.
 
 
 =head2 MessageId => Str
