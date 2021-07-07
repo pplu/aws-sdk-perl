@@ -1,6 +1,7 @@
 
 package Paws::EC2::ModifySpotFleetRequest;
   use Moose;
+  has Context => (is => 'ro', isa => 'Str');
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'excessCapacityTerminationPolicy' );
   has LaunchTemplateConfigs => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateConfig]', traits => ['NameInRequest'], request_name => 'LaunchTemplateConfig' );
   has OnDemandTargetCapacity => (is => 'ro', isa => 'Int');
@@ -61,6 +62,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifySpotFleetRequest>
 
 =head1 ATTRIBUTES
+
+
+=head2 Context => Str
+
+Reserved.
+
 
 
 =head2 ExcessCapacityTerminationPolicy => Str

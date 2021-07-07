@@ -44,7 +44,7 @@ The ARN of the resource group.
 
 =head2 OwnerId => Str
 
-The ID of the AWS account that owns the resource group.
+The ID of the account that owns the resource group.
 
 
 

@@ -202,9 +202,9 @@ with a PV instance can make it unreachable.
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
 Changes the instance's user data to the specified value. If you are
-using an AWS SDK or command line tool, base64-encoding is performed for
-you, and you can load the text from a file. Otherwise, you must provide
-base64-encoded text.
+using an Amazon Web Services SDK or command line tool, base64-encoding
+is performed for you, and you can load the text from a file. Otherwise,
+you must provide base64-encoded text.
 
 
 

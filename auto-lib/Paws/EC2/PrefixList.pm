@@ -40,7 +40,7 @@ This class has no description
 
 =head2 Cidrs => ArrayRef[Str|Undef]
 
-The IP address range of the AWS service.
+The IP address range of the Amazon Web Service.
 
 
 =head2 PrefixListId => Str

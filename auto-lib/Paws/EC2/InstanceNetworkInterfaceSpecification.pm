@@ -57,8 +57,8 @@ interface.
 
 You can only assign a carrier IP address to a network interface that is
 in a subnet in a Wavelength Zone. For more information about carrier IP
-addresses, see Carrier IP addresses in the AWS Wavelength Developer
-Guide.
+addresses, see Carrier IP addresses in the Amazon Web Services
+Wavelength Developer Guide.
 
 
 =head2 AssociatePublicIpAddress => Bool
@@ -107,9 +107,6 @@ To create an Elastic Fabric Adapter (EFA), specify C<efa>. For more
 information, see Elastic Fabric Adapter
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html) in the
 I<Amazon Elastic Compute Cloud User Guide>.
-
-If you are not creating an EFA, specify C<interface> or omit this
-parameter.
 
 Valid values: C<interface> | C<efa>
 

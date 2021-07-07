@@ -1,5 +1,6 @@
 package Paws::EC2::NatGateway;
   use Moose;
+  has ConnectivityType => (is => 'ro', isa => 'Str', request_name => 'connectivityType', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has DeleteTime => (is => 'ro', isa => 'Str', request_name => 'deleteTime', traits => ['NameInRequest']);
   has FailureCode => (is => 'ro', isa => 'Str', request_name => 'failureCode', traits => ['NameInRequest']);
@@ -30,20 +31,26 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::NatGateway object:
 
-  $service_obj->Method(Att1 => { CreateTime => $value, ..., VpcId => $value  });
+  $service_obj->Method(Att1 => { ConnectivityType => $value, ..., VpcId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::NatGateway object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->CreateTime
+  $result->Att1->ConnectivityType
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 ConnectivityType => Str
+
+Indicates whether the NAT gateway supports public or private
+connectivity.
 
 
 =head2 CreateTime => Str

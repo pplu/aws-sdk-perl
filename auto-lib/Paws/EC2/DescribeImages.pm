@@ -5,6 +5,7 @@ package Paws::EC2::DescribeImages;
   has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ImageId' );
+  has IncludeDeprecated => (is => 'ro', isa => 'Bool');
   has Owners => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'Owner' );
 
   use MooseX::ClassAttribute;
@@ -231,6 +232,18 @@ C<hvm>).
 The image IDs.
 
 Default: Describes all images available to you.
+
+
+
+=head2 IncludeDeprecated => Bool
+
+If C<true>, all deprecated AMIs are included in the response. If
+C<false>, no deprecated AMIs are included in the response. If no value
+is specified, the default value is C<false>.
+
+If you are the AMI owner, all deprecated AMIs appear in the response
+regardless of the value (C<true> or C<false>) that you set for this
+parameter.
 
 
 

@@ -121,6 +121,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateTransitGatewayRouteTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateTrunkInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateTrunkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateVpcCidrBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateVpcCidrBlock', @_);
@@ -1361,6 +1366,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayVpcAttachments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTrunkInterfaceAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTrunkInterfaceAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeVolumeAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeVolumeAttribute', @_);
@@ -1481,6 +1491,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableFastSnapshotRestores', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableImageDeprecation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableImageDeprecation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableSerialConsoleAccess {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableSerialConsoleAccess', @_);
@@ -1546,6 +1561,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTransitGatewayRouteTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateTrunkInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTrunkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateVpcCidrBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateVpcCidrBlock', @_);
@@ -1559,6 +1579,11 @@ package Paws::EC2;
   sub EnableFastSnapshotRestores {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableFastSnapshotRestores', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableImageDeprecation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableImageDeprecation', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableSerialConsoleAccess {
@@ -4566,7 +4591,7 @@ package Paws::EC2;
   }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayMulticastDomainAssociations AcceptTransitGatewayPeeringAttachment AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateEnclaveCertificateIamRole AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayMulticastDomain AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCarrierGateway CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateLocalGatewayRoute CreateLocalGatewayRouteTableVpcAssociation CreateManagedPrefixList CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInsightsPath CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReplaceRootVolumeTask CreateReservedInstancesListing CreateRestoreImageTask CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateStoreImageTask CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayConnect CreateTransitGatewayConnectPeer CreateTransitGatewayMulticastDomain CreateTransitGatewayPeeringAttachment CreateTransitGatewayPrefixListReference CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCarrierGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteLocalGatewayRoute DeleteLocalGatewayRouteTableVpcAssociation DeleteManagedPrefixList DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInsightsAnalysis DeleteNetworkInsightsPath DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayConnect DeleteTransitGatewayConnectPeer DeleteTransitGatewayMulticastDomain DeleteTransitGatewayPeeringAttachment DeleteTransitGatewayPrefixListReference DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DeregisterInstanceEventNotificationAttributes DeregisterTransitGatewayMulticastGroupMembers DeregisterTransitGatewayMulticastGroupSources DescribeAccountAttributes DescribeAddresses DescribeAddressesAttribute DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeCarrierGateways DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeCoipPools DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFastSnapshotRestores DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstanceEventNotificationAttributes DescribeInstances DescribeInstanceStatus DescribeInstanceTypeOfferings DescribeInstanceTypes DescribeInternetGateways DescribeIpv6Pools DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeLocalGatewayRouteTables DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations DescribeLocalGatewayRouteTableVpcAssociations DescribeLocalGateways DescribeLocalGatewayVirtualInterfaceGroups DescribeLocalGatewayVirtualInterfaces DescribeManagedPrefixLists DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInsightsAnalyses DescribeNetworkInsightsPaths DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReplaceRootVolumeTasks DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeStoreImageTasks DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayConnectPeers DescribeTransitGatewayConnects DescribeTransitGatewayMulticastDomains DescribeTransitGatewayPeeringAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableFastSnapshotRestores DisableSerialConsoleAccess DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateEnclaveCertificateIamRole DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayMulticastDomain DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableFastSnapshotRestores EnableSerialConsoleAccess EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetAssociatedEnclaveCertificateIamRoles GetAssociatedIpv6PoolCidrs GetCapacityReservationUsage GetCoipPoolUsage GetConsoleOutput GetConsoleScreenshot GetDefaultCreditSpecification GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetFlowLogsIntegrationTemplate GetGroupsForCapacityReservation GetHostReservationPurchasePreview GetLaunchTemplateData GetManagedPrefixListAssociations GetManagedPrefixListEntries GetPasswordData GetReservedInstancesExchangeQuote GetSerialConsoleAccessStatus GetTransitGatewayAttachmentPropagations GetTransitGatewayMulticastDomainAssociations GetTransitGatewayPrefixListReferences GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyAddressAttribute ModifyAvailabilityZoneGroup ModifyCapacityReservation ModifyClientVpnEndpoint ModifyDefaultCreditSpecification ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstanceMetadataOptions ModifyInstancePlacement ModifyLaunchTemplate ModifyManagedPrefixList ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGateway ModifyTransitGatewayPrefixListReference ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnConnectionOptions ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RegisterInstanceEventNotificationAttributes RegisterTransitGatewayMulticastGroupMembers RegisterTransitGatewayMulticastGroupSources RejectTransitGatewayMulticastDomainAssociations RejectTransitGatewayPeeringAttachment RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetAddressAttribute ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RestoreManagedPrefixListVersion RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchLocalGatewayRoutes SearchTransitGatewayMulticastGroups SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StartNetworkInsightsAnalysis StartVpcEndpointServicePrivateDnsVerification StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayMulticastDomainAssociations AcceptTransitGatewayPeeringAttachment AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateEnclaveCertificateIamRole AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayMulticastDomain AssociateTransitGatewayRouteTable AssociateTrunkInterface AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCarrierGateway CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateLocalGatewayRoute CreateLocalGatewayRouteTableVpcAssociation CreateManagedPrefixList CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInsightsPath CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReplaceRootVolumeTask CreateReservedInstancesListing CreateRestoreImageTask CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateStoreImageTask CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayConnect CreateTransitGatewayConnectPeer CreateTransitGatewayMulticastDomain CreateTransitGatewayPeeringAttachment CreateTransitGatewayPrefixListReference CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCarrierGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteLocalGatewayRoute DeleteLocalGatewayRouteTableVpcAssociation DeleteManagedPrefixList DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInsightsAnalysis DeleteNetworkInsightsPath DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayConnect DeleteTransitGatewayConnectPeer DeleteTransitGatewayMulticastDomain DeleteTransitGatewayPeeringAttachment DeleteTransitGatewayPrefixListReference DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DeregisterInstanceEventNotificationAttributes DeregisterTransitGatewayMulticastGroupMembers DeregisterTransitGatewayMulticastGroupSources DescribeAccountAttributes DescribeAddresses DescribeAddressesAttribute DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeCarrierGateways DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeCoipPools DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFastSnapshotRestores DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstanceEventNotificationAttributes DescribeInstances DescribeInstanceStatus DescribeInstanceTypeOfferings DescribeInstanceTypes DescribeInternetGateways DescribeIpv6Pools DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeLocalGatewayRouteTables DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations DescribeLocalGatewayRouteTableVpcAssociations DescribeLocalGateways DescribeLocalGatewayVirtualInterfaceGroups DescribeLocalGatewayVirtualInterfaces DescribeManagedPrefixLists DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInsightsAnalyses DescribeNetworkInsightsPaths DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReplaceRootVolumeTasks DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeStoreImageTasks DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayConnectPeers DescribeTransitGatewayConnects DescribeTransitGatewayMulticastDomains DescribeTransitGatewayPeeringAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeTrunkInterfaceAssociations DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableFastSnapshotRestores DisableImageDeprecation DisableSerialConsoleAccess DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateEnclaveCertificateIamRole DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayMulticastDomain DisassociateTransitGatewayRouteTable DisassociateTrunkInterface DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableFastSnapshotRestores EnableImageDeprecation EnableSerialConsoleAccess EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetAssociatedEnclaveCertificateIamRoles GetAssociatedIpv6PoolCidrs GetCapacityReservationUsage GetCoipPoolUsage GetConsoleOutput GetConsoleScreenshot GetDefaultCreditSpecification GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetFlowLogsIntegrationTemplate GetGroupsForCapacityReservation GetHostReservationPurchasePreview GetLaunchTemplateData GetManagedPrefixListAssociations GetManagedPrefixListEntries GetPasswordData GetReservedInstancesExchangeQuote GetSerialConsoleAccessStatus GetTransitGatewayAttachmentPropagations GetTransitGatewayMulticastDomainAssociations GetTransitGatewayPrefixListReferences GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyAddressAttribute ModifyAvailabilityZoneGroup ModifyCapacityReservation ModifyClientVpnEndpoint ModifyDefaultCreditSpecification ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstanceMetadataOptions ModifyInstancePlacement ModifyLaunchTemplate ModifyManagedPrefixList ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGateway ModifyTransitGatewayPrefixListReference ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnConnectionOptions ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RegisterInstanceEventNotificationAttributes RegisterTransitGatewayMulticastGroupMembers RegisterTransitGatewayMulticastGroupSources RejectTransitGatewayMulticastDomainAssociations RejectTransitGatewayPeeringAttachment RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetAddressAttribute ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RestoreManagedPrefixListVersion RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchLocalGatewayRoutes SearchTransitGatewayMulticastGroups SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StartNetworkInsightsAnalysis StartVpcEndpointServicePrivateDnsVerification StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -4786,19 +4811,22 @@ Each argument is described in detail in: L<Paws::EC2::AdvertiseByoipCidr>
 Returns: a L<Paws::EC2::AdvertiseByoipCidrResult> instance
 
 Advertises an IPv4 or IPv6 address range that is provisioned for use
-with your AWS resources through bring your own IP addresses (BYOIP).
+with your Amazon Web Services resources through bring your own IP
+addresses (BYOIP).
 
 You can perform this operation at most once every 10 seconds, even if
 you specify different address ranges each time.
 
 We recommend that you stop advertising the BYOIP CIDR from other
-locations when you advertise it from AWS. To minimize down time, you
-can configure your AWS resources to use an address from a BYOIP CIDR
-before it is advertised, and then simultaneously stop advertising it
-from the current location and start advertising it through AWS.
+locations when you advertise it from Amazon Web Services. To minimize
+down time, you can configure your Amazon Web Services resources to use
+an address from a BYOIP CIDR before it is advertised, and then
+simultaneously stop advertising it from the current location and start
+advertising it through Amazon Web Services.
 
 It can take a few minutes before traffic to the specified addresses
-starts routing to AWS because of BGP propagation delays.
+starts routing to Amazon Web Services because of BGP propagation
+delays.
 
 To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
 
@@ -4828,24 +4856,24 @@ Each argument is described in detail in: L<Paws::EC2::AllocateAddress>
 
 Returns: a L<Paws::EC2::AllocateAddressResult> instance
 
-Allocates an Elastic IP address to your AWS account. After you allocate
-the Elastic IP address you can associate it with an instance or network
+Allocates an Elastic IP address to your account. After you allocate the
+Elastic IP address you can associate it with an instance or network
 interface. After you release an Elastic IP address, it is released to
-the IP address pool and can be allocated to a different AWS account.
+the IP address pool and can be allocated to a different account.
 
 You can allocate an Elastic IP address from an address pool owned by
-AWS or from an address pool created from a public IPv4 address range
-that you have brought to AWS for use with your AWS resources using
-bring your own IP addresses (BYOIP). For more information, see Bring
-Your Own IP Addresses (BYOIP)
+Amazon Web Services or from an address pool created from a public IPv4
+address range that you have brought to Amazon Web Services for use with
+your Amazon Web Services resources using bring your own IP addresses
+(BYOIP). For more information, see Bring Your Own IP Addresses (BYOIP)
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 [EC2-VPC] If you release an Elastic IP address, you might be able to
 recover it. You cannot recover an Elastic IP address that you released
-after it is allocated to another AWS account. You cannot recover an
-Elastic IP address for EC2-Classic. To attempt to recover an Elastic IP
-address that you released, specify it in this operation.
+after it is allocated to another account. You cannot recover an Elastic
+IP address for EC2-Classic. To attempt to recover an Elastic IP address
+that you released, specify it in this operation.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. By default, you can allocate 5 Elastic IP addresses for
@@ -5279,6 +5307,42 @@ Returns: a L<Paws::EC2::AssociateTransitGatewayRouteTableResult> instance
 
 Associates the specified attachment with the specified transit gateway
 route table. You can associate only one route table with an attachment.
+
+
+=head2 AssociateTrunkInterface
+
+=over
+
+=item BranchInterfaceId => Str
+
+=item TrunkInterfaceId => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [GreKey => Int]
+
+=item [VlanId => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AssociateTrunkInterface>
+
+Returns: a L<Paws::EC2::AssociateTrunkInterfaceResult> instance
+
+Associates a branch network interface with a trunk network interface.
+
+Before you create the association, run the create-network-interface
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html)
+command and set C<--interface-type> to C<trunk>. You must also create a
+network interface for each branch network interface that you want to
+associate with the trunk network interface.
+
+For more information, see Network interface trunking
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/eni-trunking.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 AssociateVpcCidrBlock
@@ -6027,6 +6091,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [InstanceMatchCriteria => Str]
 
+=item [OutpostArn => Str]
+
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 =item [Tenancy => Str]
@@ -6409,6 +6475,8 @@ instance.
 =item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
 
 =item [ClientToken => Str]
+
+=item [Context => Str]
 
 =item [DryRun => Bool]
 
@@ -6817,11 +6885,13 @@ maximum number of entries cannot be changed later.
 
 =over
 
-=item AllocationId => Str
-
 =item SubnetId => Str
 
+=item [AllocationId => Str]
+
 =item [ClientToken => Str]
+
+=item [ConnectivityType => Str]
 
 =item [DryRun => Bool]
 
@@ -6834,11 +6904,21 @@ Each argument is described in detail in: L<Paws::EC2::CreateNatGateway>
 
 Returns: a L<Paws::EC2::CreateNatGatewayResult> instance
 
-Creates a NAT gateway in the specified public subnet. This action
-creates a network interface in the specified subnet with a private IP
-address from the IP address range of the subnet. Internet-bound traffic
-from a private subnet can be routed to the NAT gateway, therefore
-enabling instances in the private subnet to connect to the internet.
+Creates a NAT gateway in the specified subnet. This action creates a
+network interface in the specified subnet with a private IP address
+from the IP address range of the subnet. You can create either a public
+NAT gateway or a private NAT gateway.
+
+With a public NAT gateway, internet-bound traffic from a private subnet
+can be routed to the NAT gateway, so that instances in a private subnet
+can connect to the internet.
+
+With a private NAT gateway, private communication is routed across VPCs
+and on-premises networks through a transit gateway or virtual private
+gateway. Common use cases include running large workloads behind a
+small pool of allowlisted IPv4 addresses, preserving private IPv4
+addresses, and communicating between overlapping networks.
+
 For more information, see NAT Gateways
 (https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
@@ -6965,6 +7045,8 @@ For more information, see What is Reachability Analyzer
 
 =item SubnetId => Str
 
+=item [ClientToken => Str]
+
 =item [Description => Str]
 
 =item [DryRun => Bool]
@@ -7021,11 +7103,11 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterfacePerm
 
 Returns: a L<Paws::EC2::CreateNetworkInterfacePermissionResult> instance
 
-Grants an AWS-authorized account permission to attach the specified
-network interface to an instance in their account.
+Grants an Amazon Web Services-authorized account permission to attach
+the specified network interface to an instance in their account.
 
-You can grant permission to a single AWS account only, and only one
-account at a time.
+You can grant permission to a single account only, and only one account
+at a time.
 
 
 =head2 CreatePlacementGroup
@@ -7452,8 +7534,8 @@ Each argument is described in detail in: L<Paws::EC2::CreateSpotDatafeedSubscrip
 Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 
 Creates a data feed for Spot Instances, enabling you to view Spot
-Instance usage logs. You can create one data feed per AWS account. For
-more information, see Spot Instance data feed
+Instance usage logs. You can create one data feed per account. For more
+information, see Spot Instance data feed
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -8792,10 +8874,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNatGateway>
 
 Returns: a L<Paws::EC2::DeleteNatGatewayResult> instance
 
-Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
-its Elastic IP address, but does not release the address from your
-account. Deleting a NAT gateway does not delete any NAT gateway routes
-in your route tables.
+Deletes the specified NAT gateway. Deleting a public NAT gateway
+disassociates its Elastic IP address, but does not release the address
+from your account. Deleting a NAT gateway does not delete any NAT
+gateway routes in your route tables.
 
 
 =head2 DeleteNetworkAcl
@@ -9629,8 +9711,8 @@ Each argument is described in detail in: L<Paws::EC2::DeprovisionByoipCidr>
 Returns: a L<Paws::EC2::DeprovisionByoipCidrResult> instance
 
 Releases the specified address range that you provisioned for use with
-your AWS resources through bring your own IP addresses (BYOIP) and
-deletes the corresponding address pool.
+your Amazon Web Services resources through bring your own IP addresses
+(BYOIP) and deletes the corresponding address pool.
 
 Before you can release an address range, you must stop advertising it
 using WithdrawByoipCidr and you must not have any IP addresses
@@ -9977,7 +10059,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeCapacityReservatio
 Returns: a L<Paws::EC2::DescribeCapacityReservationsResult> instance
 
 Describes one or more of your Capacity Reservations. The results
-describe only the Capacity Reservations in the AWS Region that you're
+describe only the Capacity Reservations in the Region that you're
 currently using.
 
 
@@ -10763,6 +10845,8 @@ only one attribute at a time.
 
 =item [ImageIds => ArrayRef[Str|Undef]]
 
+=item [IncludeDeprecated => Bool]
+
 =item [Owners => ArrayRef[Str|Undef]]
 
 
@@ -10782,7 +10866,8 @@ have explicit launch permissions.
 Recently deregistered images appear in the returned results for a short
 interval and then return empty results. After all instances that
 reference a deregistered AMI are terminated, specifying the ID of the
-image results in an error indicating that the AMI ID cannot be found.
+image will eventually return an error indicating that the AMI ID cannot
+be found.
 
 
 =head2 DescribeImportImageTasks
@@ -11391,7 +11476,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeManagedPrefixLists
 
 Returns: a L<Paws::EC2::DescribeManagedPrefixListsResult> instance
 
-Describes your managed prefix lists and any AWS-managed prefix lists.
+Describes your managed prefix lists and any Amazon Web Services-managed
+prefix lists.
 
 To view the entries for your prefix list, use
 GetManagedPrefixListEntries.
@@ -11643,9 +11729,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribePrefixLists>
 
 Returns: a L<Paws::EC2::DescribePrefixListsResult> instance
 
-Describes available AWS services in a prefix list format, which
-includes the prefix list name and prefix list ID of the service and the
-IP address range for the service.
+Describes available Amazon Web Services services in a prefix list
+format, which includes the prefix list name and prefix list ID of the
+service and the IP address range for the service.
 
 We recommend that you use DescribeManagedPrefixLists instead.
 
@@ -12772,6 +12858,30 @@ Describes one or more VPC attachments. By default, all VPC attachments
 are described. Alternatively, you can filter the results.
 
 
+=head2 DescribeTrunkInterfaceAssociations
+
+=over
+
+=item [AssociationIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTrunkInterfaceAssociations>
+
+Returns: a L<Paws::EC2::DescribeTrunkInterfaceAssociationsResult> instance
+
+Describes one or more network interface trunk associations.
+
+
 =head2 DescribeVolumeAttribute
 
 =over
@@ -13432,6 +13542,28 @@ Disables fast snapshot restores for the specified snapshots in the
 specified Availability Zones.
 
 
+=head2 DisableImageDeprecation
+
+=over
+
+=item ImageId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisableImageDeprecation>
+
+Returns: a L<Paws::EC2::DisableImageDeprecationResult> instance
+
+Cancels the deprecation of the specified AMI.
+
+For more information, see Deprecate an AMI
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 DisableSerialConsoleAccess
 
 =over
@@ -13740,6 +13872,27 @@ Returns: a L<Paws::EC2::DisassociateTransitGatewayRouteTableResult> instance
 Disassociates a resource attachment from a transit gateway route table.
 
 
+=head2 DisassociateTrunkInterface
+
+=over
+
+=item AssociationId => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateTrunkInterface>
+
+Returns: a L<Paws::EC2::DisassociateTrunkInterfaceResult> instance
+
+Removes an association between a branch network interface with a trunk
+network interface.
+
+
 =head2 DisassociateVpcCidrBlock
 
 =over
@@ -13825,6 +13978,31 @@ use DisableFastSnapshotRestores.
 
 For more information, see Amazon EBS fast snapshot restore
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 EnableImageDeprecation
+
+=over
+
+=item DeprecateAt => Str
+
+=item ImageId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::EnableImageDeprecation>
+
+Returns: a L<Paws::EC2::EnableImageDeprecationResult> instance
+
+Enables deprecation of the specified AMI at the specified date and
+time.
+
+For more information, see Deprecate an AMI
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -14132,9 +14310,9 @@ Returns: a L<Paws::EC2::GetCapacityReservationUsageResult> instance
 
 Gets usage information about a Capacity Reservation. If the Capacity
 Reservation is shared, it shows usage information for the Capacity
-Reservation owner and each AWS account that is currently using the
-shared capacity. If the Capacity Reservation is not shared, it shows
-only the Capacity Reservation owner's usage.
+Reservation owner and each account that is currently using the shared
+capacity. If the Capacity Reservation is not shared, it shows only the
+Capacity Reservation owner's usage.
 
 
 =head2 GetCoipPoolUsage
@@ -15022,12 +15200,12 @@ Returns: a L<Paws::EC2::ModifyDefaultCreditSpecificationResult> instance
 
 Modifies the default credit option for CPU usage of burstable
 performance instances. The default credit option is set at the account
-level per AWS Region, and is specified per instance family. All new
+level per Region, and is specified per instance family. All new
 burstable performance instances in the account launch using the default
 credit option.
 
 C<ModifyDefaultCreditSpecification> is an asynchronous operation, which
-works at an AWS Region level and modifies the credit option for each
+works at an Region level and modifies the credit option for each
 Availability Zone. All zones in a Region are updated within five
 minutes. But if instances are launched during this operation, they
 might not get the new credit option until the zone is updated. To
@@ -15077,6 +15255,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =over
 
 =item FleetId => Str
+
+=item [Context => Str]
 
 =item [DryRun => Bool]
 
@@ -15724,6 +15904,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =over
 
 =item SpotFleetRequestId => Str
+
+=item [Context => Str]
 
 =item [ExcessCapacityTerminationPolicy => Str]
 
@@ -16543,6 +16725,8 @@ platform to the EC2-Classic platform.
 
 =item [DryRun => Bool]
 
+=item [MultiRegion => Bool]
+
 =item [PoolTagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 =item [PubliclyAdvertisable => Bool]
@@ -16554,16 +16738,16 @@ Each argument is described in detail in: L<Paws::EC2::ProvisionByoipCidr>
 
 Returns: a L<Paws::EC2::ProvisionByoipCidrResult> instance
 
-Provisions an IPv4 or IPv6 address range for use with your AWS
-resources through bring your own IP addresses (BYOIP) and creates a
-corresponding address pool. After the address range is provisioned, it
-is ready to be advertised using AdvertiseByoipCidr.
+Provisions an IPv4 or IPv6 address range for use with your Amazon Web
+Services resources through bring your own IP addresses (BYOIP) and
+creates a corresponding address pool. After the address range is
+provisioned, it is ready to be advertised using AdvertiseByoipCidr.
 
-AWS verifies that you own the address range and are authorized to
-advertise it. You must ensure that the address range is registered to
-you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and
-14618 to advertise the address range. For more information, see Bring
-Your Own IP Addresses (BYOIP)
+Amazon Web Services verifies that you own the address range and are
+authorized to advertise it. You must ensure that the address range is
+registered to you and that you created an RPKI ROA to authorize Amazon
+ASNs 16509 and 14618 to advertise the address range. For more
+information, see Bring your own IP addresses (BYOIP)
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -17041,7 +17225,7 @@ After releasing an Elastic IP address, it is released to the IP address
 pool. Be sure to update your DNS records and any servers or devices
 that communicate with the address. If you attempt to release an Elastic
 IP address that you already released, you'll get an C<AuthFailure>
-error if the address is already allocated to another AWS account.
+error if the address is already allocated to another account.
 
 [EC2-VPC] After you release an Elastic IP address for use in a VPC, you
 might be able to recover it. For more information, see AllocateAddress.
@@ -18069,13 +18253,8 @@ resources are released and you are not billed for instance usage.
 However, your root partition Amazon EBS volume remains and continues to
 persist your data, and you are charged for Amazon EBS volume usage. You
 can restart your instance at any time. Every time you start your
-Windows instance, Amazon EC2 charges you for a full instance hour. If
-you stop and restart your Windows instance, a new instance hour begins
-and Amazon EC2 charges you for another full instance hour even if you
-are still within the same 60-minute period when it was stopped. Every
-time you start your Linux instance, Amazon EC2 charges a one-minute
-minimum for instance usage, and thereafter charges per second for
-instance usage.
+instance, Amazon EC2 charges a one-minute minimum for instance usage,
+and thereafter charges per second for instance usage.
 
 Before stopping an instance, make sure it is in a state from which it
 can be restarted. Stopping an instance does not preserve data stored in
@@ -18175,13 +18354,9 @@ the I<Amazon EC2 User Guide>.
 We don't charge usage for a stopped instance, or data transfer fees;
 however, your root partition Amazon EBS volume remains and continues to
 persist your data, and you are charged for Amazon EBS volume usage.
-Every time you start your Windows instance, Amazon EC2 charges you for
-a full instance hour. If you stop and restart your Windows instance, a
-new instance hour begins and Amazon EC2 charges you for another full
-instance hour even if you are still within the same 60-minute period
-when it was stopped. Every time you start your Linux instance, Amazon
-EC2 charges a one-minute minimum for instance usage, and thereafter
-charges per second for instance usage.
+Every time you start your instance, Amazon EC2 charges a one-minute
+minimum for instance usage, and thereafter charges per second for
+instance usage.
 
 You can't stop or hibernate instance store-backed instances. You can't
 use the Stop action to hibernate Spot Instances, but you can specify
@@ -18262,6 +18437,66 @@ you terminate an instance more than once, each call succeeds.
 If you specify multiple instances and the request fails (for example,
 because of a single incorrect instance ID), none of the instances are
 terminated.
+
+If you terminate multiple instances across multiple Availability Zones,
+and one or more of the specified instances are enabled for termination
+protection, the request fails with the following results:
+
+=over
+
+=item *
+
+The specified instances that are in the same Availability Zone as the
+protected instance are not terminated.
+
+=item *
+
+The specified instances that are in different Availability Zones, where
+no other specified instances are protected, are successfully
+terminated.
+
+=back
+
+For example, say you have the following instances:
+
+=over
+
+=item *
+
+Instance A: C<us-east-1a>; Not protected
+
+=item *
+
+Instance B: C<us-east-1a>; Not protected
+
+=item *
+
+Instance C: C<us-east-1b>; Protected
+
+=item *
+
+Instance D: C<us-east-1b>; not protected
+
+=back
+
+If you attempt to terminate all of these instances in the same request,
+the request reports failure with the following results:
+
+=over
+
+=item *
+
+Instance A and Instance B are successfully terminated because none of
+the specified instances in C<us-east-1a> are enabled for termination
+protection.
+
+=item *
+
+Instance C and Instance D fail to terminate because at least one of the
+specified instances in C<us-east-1b> (Instance C) is enabled for
+termination protection.
+
+=back
 
 Terminated instances remain visible after termination (for
 approximately one hour).
@@ -18424,7 +18659,7 @@ You can perform this operation at most once every 10 seconds, even if
 you specify different address ranges each time.
 
 It can take a few minutes before traffic to the specified addresses
-stops routing to AWS because of BGP propagation delays.
+stops routing to Amazon Web Services because of BGP propagation delays.
 
 
 

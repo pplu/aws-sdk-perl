@@ -38,8 +38,8 @@ This class has no description
 
 =head2 Enabled => Bool
 
-To enable the instance for AWS Nitro Enclaves, set this parameter to
-C<true>.
+To enable the instance for Amazon Web Services Nitro Enclaves, set this
+parameter to C<true>.
 
 
 

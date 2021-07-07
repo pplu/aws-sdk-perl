@@ -51,7 +51,7 @@ A description of the address pool.
 
 The name of the location from which the address pool is advertised. A
 network border group is a unique set of Availability Zones or Local
-Zones from where AWS advertises public IP addresses.
+Zones from where Amazon Web Services advertises public IP addresses.
 
 
 =head2 PoolAddressRanges => ArrayRef[L<Paws::EC2::PublicIpv4PoolRange>]

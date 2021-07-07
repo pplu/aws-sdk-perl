@@ -121,7 +121,8 @@ if any.
 =item *
 
 C<network-border-group> - A unique set of Availability Zones, Local
-Zones, or Wavelength Zones from where AWS advertises IP addresses.
+Zones, or Wavelength Zones from where Amazon Web Services advertises IP
+addresses.
 
 =item *
 
@@ -130,7 +131,7 @@ that the address is associated with, if any.
 
 =item *
 
-C<network-interface-owner-id> - The AWS account ID of the owner.
+C<network-interface-owner-id> - The account ID of the owner.
 
 =item *
 

@@ -101,7 +101,7 @@ The ID of the network interface.
 
 =head2 NetworkInterfaceOwnerId => Str
 
-The ID of the AWS account that owns the network interface.
+The ID of the account that owns the network interface.
 
 
 =head2 PrivateIpAddress => Str

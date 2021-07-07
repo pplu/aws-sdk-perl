@@ -38,8 +38,9 @@ This class has no description
 
 =head2 Enabled => Bool
 
-If this parameter is set to C<true>, the instance is enabled for AWS
-Nitro Enclaves; otherwise, it is not enabled for AWS Nitro Enclaves.
+If this parameter is set to C<true>, the instance is enabled for Amazon
+Web Services Nitro Enclaves; otherwise, it is not enabled for Amazon
+Web Services Nitro Enclaves.
 
 
 

@@ -55,9 +55,9 @@ terminates.
 You can't specify an Availability Zone group or a launch group if you
 specify a duration.
 
-New accounts or accounts with no previous billing history with AWS are
-not eligible for Spot Instances with a defined duration (also known as
-Spot blocks).
+New accounts or accounts with no previous billing history with Amazon
+Web Services are not eligible for Spot Instances with a defined
+duration (also known as Spot blocks).
 
 
 =head2 InstanceInterruptionBehavior => Str

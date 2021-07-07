@@ -1,8 +1,9 @@
 
 package Paws::EC2::CreateNatGateway;
   use Moose;
-  has AllocationId => (is => 'ro', isa => 'Str', required => 1);
+  has AllocationId => (is => 'ro', isa => 'Str');
   has ClientToken => (is => 'ro', isa => 'Str');
+  has ConnectivityType => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
   has SubnetId => (is => 'ro', isa => 'Str', required => 1);
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
@@ -51,11 +52,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> AllocationId => Str
+=head2 AllocationId => Str
 
-The allocation ID of an Elastic IP address to associate with the NAT
-gateway. If the Elastic IP address is associated with another resource,
-you must first disassociate it.
+[Public NAT gateways only] The allocation ID of an Elastic IP address
+to associate with the NAT gateway. You cannot specify an Elastic IP
+address with a private NAT gateway. If the Elastic IP address is
+associated with another resource, you must first disassociate it.
 
 
 
@@ -69,6 +71,13 @@ Idempotency
 Constraint: Maximum 64 ASCII characters.
 
 
+
+=head2 ConnectivityType => Str
+
+Indicates whether the NAT gateway supports public or private
+connectivity. The default is public connectivity.
+
+Valid values are: C<"private">, C<"public">
 
 =head2 DryRun => Bool
 

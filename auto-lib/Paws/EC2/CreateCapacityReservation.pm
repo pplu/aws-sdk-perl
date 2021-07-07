@@ -13,6 +13,7 @@ package Paws::EC2::CreateCapacityReservation;
   has InstanceMatchCriteria => (is => 'ro', isa => 'Str');
   has InstancePlatform => (is => 'ro', isa => 'Str', required => 1);
   has InstanceType => (is => 'ro', isa => 'Str', required => 1);
+  has OutpostArn => (is => 'ro', isa => 'Str');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]');
   has Tenancy => (is => 'ro', isa => 'Str');
 
@@ -53,6 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndDateType           => 'unlimited',              # OPTIONAL
       EphemeralStorage      => 1,                        # OPTIONAL
       InstanceMatchCriteria => 'open',                   # OPTIONAL
+      OutpostArn            => 'MyOutpostArn',           # OPTIONAL
       TagSpecifications     => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -220,6 +222,13 @@ in the I<Amazon EC2 User Guide>.
 
 
 
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost on which to create the
+Capacity Reservation.
+
+
+
 =head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
 
 The tags to apply to the Capacity Reservation during launch.
@@ -236,12 +245,12 @@ Reservation can have one of the following tenancy settings:
 =item *
 
 C<default> - The Capacity Reservation is created on hardware that is
-shared with other AWS accounts.
+shared with other accounts.
 
 =item *
 
 C<dedicated> - The Capacity Reservation is created on single-tenant
-hardware that is dedicated to a single AWS account.
+hardware that is dedicated to a single account.
 
 =back
 

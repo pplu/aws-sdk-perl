@@ -2,6 +2,7 @@ package Paws::EC2::FleetData;
   use Moose;
   has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has Context => (is => 'ro', isa => 'Str', request_name => 'context', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has Errors => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DescribeFleetError]', request_name => 'errorSet', traits => ['NameInRequest']);
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
@@ -73,6 +74,11 @@ Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraints: Maximum 64 ASCII characters
+
+
+=head2 Context => Str
+
+Reserved.
 
 
 =head2 CreateTime => Str

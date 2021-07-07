@@ -174,7 +174,7 @@ C<network-interface-id> - The ID of the network interface.
 
 =item *
 
-C<owner-id> - The AWS account ID of the network interface owner.
+C<owner-id> - The account ID of the network interface owner.
 
 =item *
 
@@ -188,13 +188,13 @@ C<private-dns-name> - The private DNS name of the network interface
 
 =item *
 
-C<requester-id> - The alias or AWS account ID of the principal or
-service that created the network interface.
+C<requester-id> - The alias or account ID of the principal or service
+that created the network interface.
 
 =item *
 
 C<requester-managed> - Indicates whether the network interface is being
-managed by an AWS service (for example, AWS Management Console, Auto
+managed by an Amazon Web Service (for example, Management Console, Auto
 Scaling, and so on).
 
 =item *

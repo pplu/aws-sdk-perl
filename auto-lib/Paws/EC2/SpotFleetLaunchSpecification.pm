@@ -130,7 +130,7 @@ The placement information.
 The ID of the RAM disk. Some kernels require additional drivers at
 launch. Check the kernel requirements for information about whether you
 need to specify a RAM disk. To find kernel requirements, refer to the
-AWS Resource Center and search for the kernel ID.
+Amazon Web Services Resource Center and search for the kernel ID.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]

@@ -85,8 +85,8 @@ The instance type on which the Reserved Instance can be used.
 =head2 Marketplace => Bool
 
 Indicates whether the offering is available through the Reserved
-Instance Marketplace (resale) or AWS. If it's a Reserved Instance
-Marketplace offering, this is C<true>.
+Instance Marketplace (resale) or Amazon Web Services. If it's a
+Reserved Instance Marketplace offering, this is C<true>.
 
 
 =head2 OfferingClass => Str

@@ -2,6 +2,7 @@ package Paws::EC2::SpotFleetRequestConfigData;
   use Moose;
   has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has Context => (is => 'ro', isa => 'Str', request_name => 'context', traits => ['NameInRequest']);
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
   has FulfilledCapacity => (is => 'ro', isa => 'Num', request_name => 'fulfilledCapacity', traits => ['NameInRequest']);
   has IamFleetRole => (is => 'ro', isa => 'Str', request_name => 'iamFleetRole', traits => ['NameInRequest'], required => 1);
@@ -93,6 +94,11 @@ For more information, see Ensuring Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 
+=head2 Context => Str
+
+Reserved.
+
+
 =head2 ExcessCapacityTerminationPolicy => Str
 
 Indicates whether running Spot Instances should be terminated if you
@@ -108,7 +114,7 @@ target capacity. You cannot set this value.
 
 =head2 B<REQUIRED> IamFleetRole => Str
 
-The Amazon Resource Name (ARN) of an AWS Identity and Access Management
+The Amazon Resource Name (ARN) of an Identity and Access Management
 (IAM) role that grants the Spot Fleet the permission to request,
 launch, terminate, and tag instances on your behalf. For more
 information, see Spot Fleet prerequisites
@@ -134,6 +140,16 @@ capacity. Valid only when Spot B<AllocationStrategy> is set to
 C<lowest-price>. Spot Fleet selects the cheapest Spot pools and evenly
 allocates your target Spot capacity across the number of Spot pools
 that you specify.
+
+Note that Spot Fleet attempts to draw Spot Instances from the number of
+pools that you specify on a best effort basis. If a pool runs out of
+Spot capacity before fulfilling your target capacity, Spot Fleet will
+continue to fulfill your request by drawing from the next cheapest
+pool. To ensure that your target capacity is met, you might receive
+Spot Instances from more than the number of pools that you specified.
+Similarly, if most of the pools have no Spot capacity, you might
+receive your full target capacity from fewer than the number of pools
+that you specified.
 
 
 =head2 LaunchSpecifications => ArrayRef[L<Paws::EC2::SpotFleetLaunchSpecification>]

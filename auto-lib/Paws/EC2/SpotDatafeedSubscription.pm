@@ -53,7 +53,7 @@ The fault codes for the Spot Instance request, if any.
 
 =head2 OwnerId => Str
 
-The AWS account ID of the account.
+The account ID of the account.
 
 
 =head2 Prefix => Str

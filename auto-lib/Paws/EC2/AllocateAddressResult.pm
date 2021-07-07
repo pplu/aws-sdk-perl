@@ -24,8 +24,8 @@ Paws::EC2::AllocateAddressResult
 
 =head2 AllocationId => Str
 
-[EC2-VPC] The ID that AWS assigns to represent the allocation of the
-Elastic IP address for use with instances in a VPC.
+[EC2-VPC] The ID that Amazon Web Services assigns to represent the
+allocation of the Elastic IP address for use with instances in a VPC.
 
 
 =head2 CarrierIp => Str

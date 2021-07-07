@@ -88,8 +88,7 @@ Reservation reserves capacity.
 
 =item *
 
-C<owner-id> - The ID of the AWS account that owns the Capacity
-Reservation.
+C<owner-id> - The ID of the account that owns the Capacity Reservation.
 
 =item *
 
@@ -116,14 +115,19 @@ Capacity Reservation can have one of the following tenancy settings:
 =item *
 
 C<default> - The Capacity Reservation is created on hardware that is
-shared with other AWS accounts.
+shared with other accounts.
 
 =item *
 
 C<dedicated> - The Capacity Reservation is created on single-tenant
-hardware that is dedicated to a single AWS account.
+hardware that is dedicated to a single account.
 
 =back
+
+=item *
+
+C<outpost-arn> - The Amazon Resource Name (ARN) of the Outpost on which
+the Capacity Reservation was created.
 
 =item *
 

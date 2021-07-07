@@ -71,7 +71,7 @@ The ID of the instance.
 
 =head2 InstanceOwnerId => Str
 
-The AWS account ID of the owner of the instance.
+The account ID of the owner of the instance.
 
 
 =head2 NetworkCardIndex => Int

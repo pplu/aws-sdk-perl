@@ -5,6 +5,7 @@ package Paws::EC2::ProvisionByoipCidr;
   has CidrAuthorizationContext => (is => 'ro', isa => 'Paws::EC2::CidrAuthorizationContext');
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool');
+  has MultiRegion => (is => 'ro', isa => 'Bool');
   has PoolTagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'PoolTagSpecification' );
   has PubliclyAdvertisable => (is => 'ro', isa => 'Bool');
 
@@ -41,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Description           => 'MyString',    # OPTIONAL
       DryRun                => 1,             # OPTIONAL
+      MultiRegion           => 1,             # OPTIONAL
       PoolTagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -98,6 +100,12 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 MultiRegion => Bool
+
+Reserved.
 
 
 

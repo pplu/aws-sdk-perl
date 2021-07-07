@@ -50,7 +50,7 @@ The instance type (for example, C<m3.medium>) of the running instance.
 
 =head2 OwnerId => Str
 
-The ID of the AWS account that owns the instance.
+The ID of the account that owns the instance.
 
 
 

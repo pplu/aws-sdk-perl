@@ -20,7 +20,7 @@ Paws::EC2::CreateFleetResult
 =head2 Errors => ArrayRef[L<Paws::EC2::CreateFleetError>]
 
 Information about the instances that could not be launched by the
-fleet. Valid only when B<Type> is set to C<instant>.
+fleet. Supported only for fleets of type C<instant>.
 
 
 =head2 FleetId => Str
@@ -30,8 +30,8 @@ The ID of the EC2 Fleet.
 
 =head2 Instances => ArrayRef[L<Paws::EC2::CreateFleetInstance>]
 
-Information about the instances that were launched by the fleet. Valid
-only when B<Type> is set to C<instant>.
+Information about the instances that were launched by the fleet.
+Supported only for fleets of type C<instant>.
 
 
 =head2 _request_id => Str

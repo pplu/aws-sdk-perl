@@ -109,7 +109,7 @@ The Amazon Resource Name (ARN) of the Outpost.
 
 =head2 OwnerId => Str
 
-The AWS account ID of the owner of the network interface.
+The account ID of the owner of the network interface.
 
 
 =head2 PrivateDnsName => Str
@@ -129,13 +129,14 @@ The private IPv4 addresses associated with the network interface.
 
 =head2 RequesterId => Str
 
-The alias or AWS account ID of the principal or service that created
-the network interface.
+The alias or account ID of the principal or service that created the
+network interface.
 
 
 =head2 RequesterManaged => Bool
 
-Indicates whether the network interface is being managed by AWS.
+Indicates whether the network interface is being managed by Amazon Web
+Services.
 
 
 =head2 SourceDestCheck => Bool

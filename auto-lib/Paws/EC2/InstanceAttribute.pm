@@ -53,8 +53,8 @@ Indicates whether enhanced networking with ENA is enabled.
 
 =head2 EnclaveOptions => L<Paws::EC2::EnclaveOptions>
 
-To enable the instance for AWS Nitro Enclaves, set this parameter to
-C<true>; otherwise, set it to C<false>.
+To enable the instance for Amazon Web Services Nitro Enclaves, set this
+parameter to C<true>; otherwise, set it to C<false>.
 
 
 =head2 Groups => ArrayRef[L<Paws::EC2::GroupIdentifier>]

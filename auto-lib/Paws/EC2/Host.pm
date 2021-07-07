@@ -131,7 +131,7 @@ resource group; otherwise, it is not.
 
 =head2 OwnerId => Str
 
-The ID of the AWS account that owns the Dedicated Host.
+The ID of the account that owns the Dedicated Host.
 
 
 =head2 ReleaseTime => Str

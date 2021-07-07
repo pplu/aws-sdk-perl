@@ -56,9 +56,7 @@ This class has no description
 
 =head2 ActualBlockHourlyPrice => Str
 
-If you specified a duration and your Spot Instance request was
-fulfilled, this is the fixed hourly price in effect for the Spot
-Instance while it runs.
+Deprecated.
 
 
 =head2 AvailabilityZoneGroup => Str
@@ -70,7 +68,7 @@ in the same Availability Zone.
 
 =head2 BlockDurationMinutes => Int
 
-The duration for the Spot Instance, in minutes.
+Deprecated.
 
 
 =head2 CreateTime => Str

@@ -372,7 +372,7 @@ interface.
 =item *
 
 C<network-interface.requester-managed> - Indicates whether the network
-interface is being managed by AWS.
+interface is being managed by Amazon Web Services.
 
 =item *
 
@@ -403,7 +403,7 @@ C<outpost-arn> - The Amazon Resource Name (ARN) of the Outpost.
 
 =item *
 
-C<owner-id> - The AWS account ID of the instance owner.
+C<owner-id> - The account ID of the instance owner.
 
 =item *
 
@@ -451,8 +451,7 @@ instance). Similar to the state-reason-code filter.
 =item *
 
 C<requester-id> - The ID of the entity that launched the instance on
-your behalf (for example, AWS Management Console, Auto Scaling, and so
-on).
+your behalf (for example, Management Console, Auto Scaling, and so on).
 
 =item *
 

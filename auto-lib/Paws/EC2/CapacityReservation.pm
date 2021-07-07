@@ -13,6 +13,7 @@ package Paws::EC2::CapacityReservation;
   has InstanceMatchCriteria => (is => 'ro', isa => 'Str', request_name => 'instanceMatchCriteria', traits => ['NameInRequest']);
   has InstancePlatform => (is => 'ro', isa => 'Str', request_name => 'instancePlatform', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has StartDate => (is => 'ro', isa => 'Str', request_name => 'startDate', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
@@ -166,9 +167,15 @@ The type of instance for which the Capacity Reservation reserves
 capacity.
 
 
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost on which the Capacity
+Reservation was created.
+
+
 =head2 OwnerId => Str
 
-The ID of the AWS account that owns the Capacity Reservation.
+The ID of the account that owns the Capacity Reservation.
 
 
 =head2 StartDate => Str
@@ -230,12 +237,12 @@ Reservation can have one of the following tenancy settings:
 =item *
 
 C<default> - The Capacity Reservation is created on hardware that is
-shared with other AWS accounts.
+shared with other accounts.
 
 =item *
 
 C<dedicated> - The Capacity Reservation is created on single-tenant
-hardware that is dedicated to a single AWS account.
+hardware that is dedicated to a single account.
 
 =back
 

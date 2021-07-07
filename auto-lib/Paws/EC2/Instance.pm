@@ -154,7 +154,8 @@ Specifies whether enhanced networking with ENA is enabled.
 
 =head2 EnclaveOptions => L<Paws::EC2::EnclaveOptions>
 
-Indicates whether the instance is enabled for AWS Nitro Enclaves.
+Indicates whether the instance is enabled for Amazon Web Services Nitro
+Enclaves.
 
 
 =head2 HibernationOptions => L<Paws::EC2::HibernationOptions>
