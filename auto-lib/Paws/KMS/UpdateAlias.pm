@@ -65,7 +65,7 @@ the new target CMK must be the same type as the current target CMK
 (both symmetric or both asymmetric) and they must have the same key
 usage.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

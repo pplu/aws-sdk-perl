@@ -51,9 +51,9 @@ New description for the CMK.
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Updates the description of the specified customer master key (CMK).
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

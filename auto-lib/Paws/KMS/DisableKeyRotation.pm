@@ -50,7 +50,7 @@ CMKs with imported key material
 or CMKs in a custom key store
 (https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

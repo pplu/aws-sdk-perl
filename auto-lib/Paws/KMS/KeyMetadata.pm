@@ -16,7 +16,10 @@ package Paws::KMS::KeyMetadata;
   has KeyManager => (is => 'ro', isa => 'Str');
   has KeyState => (is => 'ro', isa => 'Str');
   has KeyUsage => (is => 'ro', isa => 'Str');
+  has MultiRegion => (is => 'ro', isa => 'Bool');
+  has MultiRegionConfiguration => (is => 'ro', isa => 'Paws::KMS::MultiRegionConfiguration');
   has Origin => (is => 'ro', isa => 'Str');
+  has PendingDeletionWindowInDays => (is => 'ro', isa => 'Int');
   has SigningAlgorithms => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ValidTo => (is => 'ro', isa => 'Str');
 
@@ -101,8 +104,14 @@ created in a custom key store.
 
 =head2 DeletionDate => Str
 
-The date and time after which AWS KMS deletes the CMK. This value is
-present only when C<KeyState> is C<PendingDeletion>.
+The date and time after which AWS KMS deletes this CMK. This value is
+present only when the CMK is scheduled for deletion, that is, when its
+C<KeyState> is C<PendingDeletion>.
+
+When the primary key in a multi-Region key is scheduled for deletion
+but still has replica keys, its key state is C<PendingReplicaDeletion>
+and the length of its waiting period is displayed in the
+C<PendingDeletionWindowInDays> field.
 
 
 =head2 Description => Str
@@ -121,7 +130,7 @@ this value is true, otherwise it is false.
 The encryption algorithms that the CMK supports. You cannot use the CMK
 with other encryption algorithms within AWS KMS.
 
-This field appears only when the C<KeyUsage> of the CMK is
+This value is present only when the C<KeyUsage> of the CMK is
 C<ENCRYPT_DECRYPT>.
 
 
@@ -162,6 +171,47 @@ The cryptographic operations
 for which you can use the CMK.
 
 
+=head2 MultiRegion => Bool
+
+Indicates whether the CMK is a multi-Region (C<True>) or regional
+(C<False>) key. This value is C<True> for multi-Region primary and
+replica CMKs and C<False> for regional CMKs.
+
+For more information about multi-Region keys, see Using multi-Region
+keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+
+=head2 MultiRegionConfiguration => L<Paws::KMS::MultiRegionConfiguration>
+
+Lists the primary and replica CMKs in same multi-Region CMK. This field
+is present only when the value of the C<MultiRegion> field is C<True>.
+
+For more information about any listed CMK, use the DescribeKey
+operation.
+
+=over
+
+=item *
+
+C<MultiRegionKeyType> indicates whether the CMK is a C<PRIMARY> or
+C<REPLICA> key.
+
+=item *
+
+C<PrimaryKey> displays the key ARN and Region of the primary key. This
+field displays the current CMK if it is the primary key.
+
+=item *
+
+C<ReplicaKeys> displays the key ARNs and Regions of all replica keys.
+This field includes the current CMK if it is a replica key.
+
+=back
+
+
+
 =head2 Origin => Str
 
 The source of the CMK's key material. When this value is C<AWS_KMS>,
@@ -170,6 +220,26 @@ key material was imported from your existing key management
 infrastructure or the CMK lacks key material. When this value is
 C<AWS_CLOUDHSM>, the key material was created in the AWS CloudHSM
 cluster associated with a custom key store.
+
+
+=head2 PendingDeletionWindowInDays => Int
+
+The waiting period before the primary key in a multi-Region key is
+deleted. This waiting period begins when the last of its replica keys
+is deleted. This value is present only when the C<KeyState> of the CMK
+is C<PendingReplicaDeletion>. That indicates that the CMK is the
+primary key in a multi-Region key, it is scheduled for deletion, and it
+still has existing replica keys.
+
+When a regional CMK or a replica key in a multi-Region key is scheduled
+for deletion, its deletion date is displayed in the C<DeletionDate>
+field. However, when the primary key in a multi-Region key is scheduled
+for deletion, its waiting period doesn't begin until all of its replica
+keys are deleted. This value displays that waiting period. When the
+last replica key in the multi-Region key is deleted, the C<KeyState> of
+the scheduled primary key changes from C<PendingReplicaDeletion> to
+C<PendingDeletion> and the deletion date appears in the C<DeletionDate>
+field.
 
 
 =head2 SigningAlgorithms => ArrayRef[Str|Undef]

@@ -69,7 +69,7 @@ For help finding the key ID and ARN, see Finding the Key ID and ARN
 (https://docs.aws.amazon.com/kms/latest/developerguide/viewing-keys.html#find-cmk-id-arn)
 in the I<AWS Key Management Service Developer Guide>.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

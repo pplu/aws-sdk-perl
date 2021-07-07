@@ -43,11 +43,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 =head2 B<REQUIRED> KeyId => Str
 
 Identifies a symmetric customer master key (CMK). You cannot enable
-automatic rotation of asymmetric CMKs, CMKs with imported key material,
+automatic rotation of asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#asymmetric-cmks),
+CMKs with imported key material
+(https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
 or CMKs in a custom key store
 (https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+To enable or disable automatic rotation of a set of related
+multi-Region keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html#mrk-replica-key),
+set the property on the primary key.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

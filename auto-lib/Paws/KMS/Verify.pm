@@ -60,7 +60,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 A list of grant tokens.
 
-For more information, see Grant Tokens
+Use a grant token when your permission to call this operation comes
+from a new grant that has not yet achieved I<eventual consistency>. For
+more information, see Grant token
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -73,10 +75,9 @@ signature. This must be the same CMK that was used to generate the
 signature. If you specify a different CMK, the signature verification
 fails.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">. To specify a CMK in a different AWS account, you must use
-the key ARN or alias ARN.
+To specify a CMK, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with C<"alias/">. To specify a CMK
+in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 

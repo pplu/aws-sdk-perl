@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 GrantId => Str
 
-Unique identifier of the grant to retire. The grant ID is returned in
-the response to a C<CreateGrant> operation.
+Identifies the grant to retire. To get the grant ID, use CreateGrant,
+ListGrants, or ListRetirableGrants.
 
 =over
 
@@ -64,13 +64,22 @@ Grant ID Example -
 
 =head2 GrantToken => Str
 
-Token that identifies the grant to be retired.
+Identifies the grant to be retired. You can use a grant token to
+identify a new grant even before it has achieved eventual consistency.
+
+Only the CreateGrant operation returns a grant token. For details, see
+Grant token
+(https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token)
+and Eventual consistency
+(https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-eventual-consistency)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 
 =head2 KeyId => Str
 
-The Amazon Resource Name (ARN) of the CMK associated with the grant.
+The key ARN CMK associated with the grant. To find the key ARN, use the
+ListKeys operation.
 
 For example:
 C<arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab>

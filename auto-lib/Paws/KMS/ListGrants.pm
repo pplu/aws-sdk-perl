@@ -67,8 +67,8 @@ uniquely identifies the grant.
 Returns only grants for the specified customer master key (CMK). This
 parameter is required.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
-specify a CMK in a different AWS account, you must use the key ARN.
+Specify the key ID or key ARN of the CMK. To specify a CMK in a
+different AWS account, you must use the key ARN.
 
 For example:
 

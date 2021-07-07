@@ -53,7 +53,7 @@ CMK in your AWS account.
 This parameter is optional. If you omit it, C<ListAliases> returns all
 aliases in the account and Region.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

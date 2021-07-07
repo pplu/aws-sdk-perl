@@ -45,17 +45,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> GrantId => Str
 
-Identifier of the grant to be revoked.
+Identifies the grant to revoke. To get the grant ID, use CreateGrant,
+ListGrants, or ListRetirableGrants.
 
 
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key associated with the
-grant.
+A unique identifier for the customer master key (CMK) associated with
+the grant. To get the key ID and key ARN for a CMK, use ListKeys or
+DescribeKey.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
-specify a CMK in a different AWS account, you must use the key ARN.
+Specify the key ID or key ARN of the CMK. To specify a CMK in a
+different AWS account, you must use the key ARN.
 
 For example:
 

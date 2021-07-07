@@ -81,7 +81,7 @@ material. The CMK's C<Origin> must be C<EXTERNAL>. This must be the
 same CMK specified in the C<KeyID> parameter of the corresponding
 GetParametersForImport request.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

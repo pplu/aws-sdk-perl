@@ -92,7 +92,11 @@ in the I<AWS Key Management Service Developer Guide>.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens
+Use a grant token when your permission to call this operation comes
+from a newly created grant that has not yet achieved eventual
+consistency. Use a grant token when your permission to call this
+operation comes from a new grant that has not yet achieved I<eventual
+consistency>. For more information, see Grant token
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -110,10 +114,9 @@ from metadata that it adds to the symmetric ciphertext blob. However,
 it is always recommended as a best practice. This practice ensures that
 you use the CMK that you intend.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">. To specify a CMK in a different AWS account, you must use
-the key ARN or alias ARN.
+To specify a CMK, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with C<"alias/">. To specify a CMK
+in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
