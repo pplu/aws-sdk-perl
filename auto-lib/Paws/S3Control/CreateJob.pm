@@ -115,6 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],    # OPTIONAL
+          BucketKeyEnabled        => 1,                        # OPTIONAL
           CannedAccessControlList => 'private'
           , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
           MetadataDirective       => 'COPY',   # values: COPY, REPLACE; OPTIONAL

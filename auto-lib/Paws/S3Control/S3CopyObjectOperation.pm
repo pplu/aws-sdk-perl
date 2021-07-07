@@ -2,6 +2,7 @@
 package Paws::S3Control::S3CopyObjectOperation;
   use Moose;
   has AccessControlGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Grant]');
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool');
   has CannedAccessControlList => (is => 'ro', isa => 'Str');
   has MetadataDirective => (is => 'ro', isa => 'Str');
   has ModifiedSinceConstraint => (is => 'ro', isa => 'Str');
@@ -60,6 +61,17 @@ operation, see PUT Object - Copy
 =head2 AccessControlGrants => ArrayRef[L<Paws::S3Control::S3Grant>]
 
 
+
+
+=head2 BucketKeyEnabled => Bool
+
+Specifies whether Amazon S3 should use an S3 Bucket Key for object
+encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
+this header to C<true> causes Amazon S3 to use an S3 Bucket Key for
+object encryption with SSE-KMS.
+
+Specifying this header with an I<object> action doesnE<rsquo>t affect
+I<bucket-level> settings for S3 Bucket Key.
 
 
 =head2 CannedAccessControlList => Str
