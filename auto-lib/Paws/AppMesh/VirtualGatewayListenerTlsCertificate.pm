@@ -43,7 +43,7 @@ certificate.
 
 =head2 Acm => L<Paws::AppMesh::VirtualGatewayListenerTlsAcmCertificate>
 
-A reference to an object that represents an AWS Certicate Manager (ACM)
+A reference to an object that represents an Certificate Manager
 certificate.
 
 

@@ -42,7 +42,8 @@ Layer Security (TLS) validation context trust.
 
 =head2 File => L<Paws::AppMesh::VirtualGatewayTlsValidationContextFileTrust>
 
-
+An object that represents a Transport Layer Security (TLS) validation
+context trust for a local file.
 
 
 =head2 Sds => L<Paws::AppMesh::VirtualGatewayTlsValidationContextSdsTrust>

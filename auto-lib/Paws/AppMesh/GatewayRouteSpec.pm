@@ -4,6 +4,7 @@ package Paws::AppMesh::GatewayRouteSpec;
   has GrpcRoute => (is => 'ro', isa => 'Paws::AppMesh::GrpcGatewayRoute', request_name => 'grpcRoute', traits => ['NameInRequest']);
   has Http2Route => (is => 'ro', isa => 'Paws::AppMesh::HttpGatewayRoute', request_name => 'http2Route', traits => ['NameInRequest']);
   has HttpRoute => (is => 'ro', isa => 'Paws::AppMesh::HttpGatewayRoute', request_name => 'httpRoute', traits => ['NameInRequest']);
+  has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::GatewayRouteSpec object:
 
-  $service_obj->Method(Att1 => { GrpcRoute => $value, ..., HttpRoute => $value  });
+  $service_obj->Method(Att1 => { GrpcRoute => $value, ..., Priority => $value  });
 
 =head3 Results returned from an API call
 
@@ -54,6 +55,11 @@ An object that represents the specification of an HTTP/2 gateway route.
 =head2 HttpRoute => L<Paws::AppMesh::HttpGatewayRoute>
 
 An object that represents the specification of an HTTP gateway route.
+
+
+=head2 Priority => Int
+
+The ordering of the gateway routes spec.
 
 
 

@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Aw
 
 =head1 DESCRIPTION
 
-An object that represents the AWS Cloud Map attribute information for
-your virtual node.
+An object that represents the Cloud Map attribute information for your
+virtual node.
 
 AWS Cloud Map is not available in the eu-south-1 Region.
 
@@ -44,16 +44,14 @@ AWS Cloud Map is not available in the eu-south-1 Region.
 
 =head2 B<REQUIRED> Key => Str
 
-The name of an AWS Cloud Map service instance attribute key. Any AWS
-Cloud Map service instance that contains the specified key and value is
-returned.
+The name of an Cloud Map service instance attribute key. Any Cloud Map
+service instance that contains the specified key and value is returned.
 
 
 =head2 B<REQUIRED> Value => Str
 
-The value of an AWS Cloud Map service instance attribute key. Any AWS
-Cloud Map service instance that contains the specified key and value is
-returned.
+The value of an Cloud Map service instance attribute key. Any Cloud Map
+service instance that contains the specified key and value is returned.
 
 
 

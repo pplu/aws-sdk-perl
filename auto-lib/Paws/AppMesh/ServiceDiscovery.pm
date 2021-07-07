@@ -42,7 +42,7 @@ virtual node.
 
 =head2 AwsCloudMap => L<Paws::AppMesh::AwsCloudMapServiceDiscovery>
 
-Specifies any AWS Cloud Map information for the virtual node.
+Specifies any Cloud Map information for the virtual node.
 
 
 =head2 Dns => L<Paws::AppMesh::DnsServiceDiscovery>

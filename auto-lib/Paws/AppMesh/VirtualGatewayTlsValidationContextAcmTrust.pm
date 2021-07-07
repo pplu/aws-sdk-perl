@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 =head1 DESCRIPTION
 
 An object that represents a Transport Layer Security (TLS) validation
-context trust for an AWS Certicate Manager (ACM) certificate.
+context trust for an Certificate Manager certificate.
 
 =head1 ATTRIBUTES
 

@@ -419,14 +419,15 @@ Paws::AppMesh - Perl Interface to AWS AWS App Mesh
 
 =head1 DESCRIPTION
 
-AWS App Mesh is a service mesh based on the Envoy proxy that makes it
-easy to monitor and control microservices. App Mesh standardizes how
-your microservices communicate, giving you end-to-end visibility and
-helping to ensure high availability for your applications.
+App Mesh is a service mesh based on the Envoy proxy that makes it easy
+to monitor and control microservices. App Mesh standardizes how your
+microservices communicate, giving you end-to-end visibility and helping
+to ensure high availability for your applications.
 
 App Mesh gives you consistent visibility and network traffic controls
-for every microservice in an application. You can use App Mesh with AWS
-Fargate, Amazon ECS, Amazon EKS, Kubernetes on AWS, and Amazon EC2.
+for every microservice in an application. You can use App Mesh with
+Amazon Web Services Fargate, Amazon ECS, Amazon EKS, Kubernetes on
+Amazon Web Services, and Amazon EC2.
 
 App Mesh supports microservice applications that use service discovery
 naming for their components. For more information about service
@@ -628,12 +629,10 @@ C<APPMESH_RESOURCE_ARN> when Envoy is referring to itself in metrics
 and traces. You can override this behavior by setting the
 C<APPMESH_RESOURCE_CLUSTER> environment variable with your own name.
 
-AWS Cloud Map is not available in the eu-south-1 Region.
-
 For more information about virtual nodes, see Virtual nodes
 (https://docs.aws.amazon.com/app-mesh/latest/userguide/virtual_nodes.html).
 You must be using C<1.15.0> or later of the Envoy image when setting
-these variables. For more information about App Mesh Envoy variables,
+these variables. For more information aboutApp Mesh Envoy variables,
 see Envoy image
 (https://docs.aws.amazon.com/app-mesh/latest/userguide/envoy.html) in
 the AWS App Mesh User Guide.

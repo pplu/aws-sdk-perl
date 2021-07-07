@@ -112,7 +112,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           Match => {
-            Prefix  => 'MyString',
             Headers => [
               {
                 Name   => 'MyHeaderName',    # min: 1, max: 50
@@ -133,6 +132,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],    # min: 1, max: 10; OPTIONAL
             Method => 'GET'
             , # values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH; OPTIONAL
+            Path => {
+              Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              Regex => 'MyHttpPathRegex',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            Prefix          => 'MyString',    # OPTIONAL
+            QueryParameters => [
+              {
+                Name  => 'MyQueryParameterName',
+                Match => {
+                  Exact => 'MyString',    # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
             Scheme => 'http',    # values: http, https; OPTIONAL
           },
           RetryPolicy => {
@@ -172,7 +185,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           Match => {
-            Prefix  => 'MyString',
             Headers => [
               {
                 Name   => 'MyHeaderName',    # min: 1, max: 50
@@ -193,6 +205,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],    # min: 1, max: 10; OPTIONAL
             Method => 'GET'
             , # values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH; OPTIONAL
+            Path => {
+              Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              Regex => 'MyHttpPathRegex',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            Prefix          => 'MyString',    # OPTIONAL
+            QueryParameters => [
+              {
+                Name  => 'MyQueryParameterName',
+                Match => {
+                  Exact => 'MyString',    # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
             Scheme => 'http',    # values: http, https; OPTIONAL
           },
           RetryPolicy => {

@@ -35,10 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Aw
 
 =head1 DESCRIPTION
 
-An object that represents the AWS Cloud Map service discovery
-information for your virtual node.
+An object that represents the Cloud Map service discovery information
+for your virtual node.
 
-AWS Cloud Map is not available in the eu-south-1 Region.
+Cloud Map is not available in the eu-south-1 Region.
 
 =head1 ATTRIBUTES
 
@@ -53,12 +53,12 @@ key/value pairs will be returned.
 
 =head2 B<REQUIRED> NamespaceName => Str
 
-The name of the AWS Cloud Map namespace to use.
+The name of the Cloud Map namespace to use.
 
 
 =head2 B<REQUIRED> ServiceName => Str
 
-The name of the AWS Cloud Map service to use.
+The name of the Cloud Map service to use.
 
 
 

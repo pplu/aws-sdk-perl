@@ -43,7 +43,7 @@ An object that represents timeouts for different protocols.
 
 =head2 Grpc => L<Paws::AppMesh::GrpcTimeout>
 
-
+An object that represents types of timeouts.
 
 
 =head2 Http => L<Paws::AppMesh::HttpTimeout>

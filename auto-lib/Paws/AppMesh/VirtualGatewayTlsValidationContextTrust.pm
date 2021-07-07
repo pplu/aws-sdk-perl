@@ -44,8 +44,7 @@ context trust.
 =head2 Acm => L<Paws::AppMesh::VirtualGatewayTlsValidationContextAcmTrust>
 
 A reference to an object that represents a Transport Layer Security
-(TLS) validation context trust for an AWS Certicate Manager (ACM)
-certificate.
+(TLS) validation context trust for an Certificate Manager certificate.
 
 
 =head2 File => L<Paws::AppMesh::VirtualGatewayTlsValidationContextFileTrust>

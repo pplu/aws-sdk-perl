@@ -47,9 +47,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
 
             },
-
+            Rewrite => {
+              Hostname => {
+                DefaultTargetHostname =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
           },
           Match => {
+            Hostname => {
+              Exact  => 'MyExactHostName',     # min: 1, max: 253; OPTIONAL
+              Suffix => 'MySuffixHostname',    # min: 1, max: 253; OPTIONAL
+            },    # OPTIONAL
+            Metadata => [
+              {
+                Name   => 'MyHeaderName',    # min: 1, max: 50
+                Invert => 1,                 # OPTIONAL
+                Match  => {
+                  Exact  => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Prefix => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Range  => {
+                    End   => 1,
+                    Start => 1,
+
+                  },                            # OPTIONAL
+                  Regex  => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Suffix => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
             ServiceName => 'MyServiceName',    # OPTIONAL
           },
 
@@ -63,11 +90,61 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
 
             },
-
+            Rewrite => {
+              Hostname => {
+                DefaultTargetHostname =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+              },    # OPTIONAL
+              Path => {
+                Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              },    # OPTIONAL
+              Prefix => {
+                DefaultPrefix =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+                Value =>
+                  'MyHttpGatewayRoutePrefix',    # min: 1, max: 255; OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
           },
           Match => {
-            Prefix => 'MyString',
+            Headers => [
+              {
+                Name   => 'MyHeaderName',    # min: 1, max: 50
+                Invert => 1,                 # OPTIONAL
+                Match  => {
+                  Exact  => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Prefix => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Range  => {
+                    End   => 1,
+                    Start => 1,
 
+                  },                            # OPTIONAL
+                  Regex  => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Suffix => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
+            Hostname => {
+              Exact  => 'MyExactHostName',     # min: 1, max: 253; OPTIONAL
+              Suffix => 'MySuffixHostname',    # min: 1, max: 253; OPTIONAL
+            },    # OPTIONAL
+            Method => 'GET'
+            , # values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH; OPTIONAL
+            Path => {
+              Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              Regex => 'MyHttpPathRegex',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            Prefix          => 'MyString',    # OPTIONAL
+            QueryParameters => [
+              {
+                Name  => 'MyQueryParameterName',
+                Match => {
+                  Exact => 'MyString',    # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
           },
 
         },    # OPTIONAL
@@ -80,14 +157,65 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
 
             },
-
+            Rewrite => {
+              Hostname => {
+                DefaultTargetHostname =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+              },    # OPTIONAL
+              Path => {
+                Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              },    # OPTIONAL
+              Prefix => {
+                DefaultPrefix =>
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+                Value =>
+                  'MyHttpGatewayRoutePrefix',    # min: 1, max: 255; OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
           },
           Match => {
-            Prefix => 'MyString',
+            Headers => [
+              {
+                Name   => 'MyHeaderName',    # min: 1, max: 50
+                Invert => 1,                 # OPTIONAL
+                Match  => {
+                  Exact  => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Prefix => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Range  => {
+                    End   => 1,
+                    Start => 1,
 
+                  },                            # OPTIONAL
+                  Regex  => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                  Suffix => 'MyHeaderMatch',    # min: 1, max: 255; OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
+            Hostname => {
+              Exact  => 'MyExactHostName',     # min: 1, max: 253; OPTIONAL
+              Suffix => 'MySuffixHostname',    # min: 1, max: 253; OPTIONAL
+            },    # OPTIONAL
+            Method => 'GET'
+            , # values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH; OPTIONAL
+            Path => {
+              Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              Regex => 'MyHttpPathRegex',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            Prefix          => 'MyString',    # OPTIONAL
+            QueryParameters => [
+              {
+                Name  => 'MyQueryParameterName',
+                Match => {
+                  Exact => 'MyString',    # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
           },
 
         },    # OPTIONAL
+        Priority => 1,    # max: 1000; OPTIONAL
       },
       VirtualGatewayName => 'MyResourceName',
       ClientToken        => 'MyString',         # OPTIONAL

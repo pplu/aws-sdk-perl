@@ -42,7 +42,10 @@ Layer Security (TLS) certificate.
 
 =head2 File => L<Paws::AppMesh::VirtualGatewayListenerTlsFileCertificate>
 
-
+An object that represents a local file certificate. The certificate
+must meet specific requirements and you must have proxy authorization
+enabled. For more information, see Transport Layer Security (TLS)
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/tls.html).
 
 
 =head2 Sds => L<Paws::AppMesh::VirtualGatewayListenerTlsSdsCertificate>

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 An object that represents the virtual gateway's listener's Secret
 Discovery Service certificate.The proxy must be configured with a local
-SDS provider via a Unix Domain Socket. See App Mesh TLS documentation
+SDS provider via a Unix Domain Socket. See App MeshTLS documentation
 (https://docs.aws.amazon.com/app-mesh/latest/userguide/tls.html) for
 more info.
 

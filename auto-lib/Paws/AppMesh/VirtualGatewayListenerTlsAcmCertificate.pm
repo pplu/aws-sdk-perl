@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Vi
 
 =head1 DESCRIPTION
 
-An object that represents an AWS Certicate Manager (ACM) certificate.
+An object that represents an Certificate Manager certificate.
 
 =head1 ATTRIBUTES
 
