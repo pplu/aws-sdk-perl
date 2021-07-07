@@ -11,6 +11,7 @@ package Paws::IoT::Job;
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', request_name => 'jobExecutionsRolloutConfig', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
   has JobProcessDetails => (is => 'ro', isa => 'Paws::IoT::JobProcessDetails', request_name => 'jobProcessDetails', traits => ['NameInRequest']);
+  has JobTemplateArn => (is => 'ro', isa => 'Str', request_name => 'jobTemplateArn', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has NamespaceId => (is => 'ro', isa => 'Str', request_name => 'namespaceId', traits => ['NameInRequest']);
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', request_name => 'presignedUrlConfig', traits => ['NameInRequest']);
@@ -105,6 +106,11 @@ The unique identifier you assigned to this job when it was created.
 =head2 JobProcessDetails => L<Paws::IoT::JobProcessDetails>
 
 Details about the job process.
+
+
+=head2 JobTemplateArn => Str
+
+The ARN of the job template used to create the job.
 
 
 =head2 LastUpdatedAt => Str

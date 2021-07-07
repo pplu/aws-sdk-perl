@@ -139,6 +139,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateJobTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateJobTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateKeysAndCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateKeysAndCertificate', @_);
@@ -282,6 +287,11 @@ package Paws::IoT;
   sub DeleteJobExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteJobExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteJobTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteJobTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteMitigationAction {
@@ -467,6 +477,11 @@ package Paws::IoT;
   sub DescribeJobExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeJobExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeJobTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeJobTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMitigationAction {
@@ -732,6 +747,11 @@ package Paws::IoT;
   sub ListJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListJobTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListJobTemplates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListMitigationActions {
@@ -2328,7 +2348,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelDetectMitigationActionsTask CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuditSuppression CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateCustomMetric CreateDimension CreateDomainConfiguration CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateProvisioningClaim CreateProvisioningTemplate CreateProvisioningTemplateVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuditSuppression DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteCustomMetric DeleteDimension DeleteDomainConfiguration DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteProvisioningTemplate DeleteProvisioningTemplateVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditSuppression DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeCustomMetric DescribeDefaultAuthorizer DescribeDetectMitigationActionsTask DescribeDimension DescribeDomainConfiguration DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeProvisioningTemplate DescribeProvisioningTemplateVersion DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetBehaviorModelTrainingSummaries GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditSuppressions ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListCustomMetrics ListDetectMitigationActionsExecutions ListDetectMitigationActionsTasks ListDimensions ListDomainConfigurations ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListProvisioningTemplates ListProvisioningTemplateVersions ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterCertificateWithoutCA RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartDetectMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuditSuppression UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateCustomMetric UpdateDimension UpdateDomainConfiguration UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateProvisioningTemplate UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelDetectMitigationActionsTask CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuditSuppression CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateCustomMetric CreateDimension CreateDomainConfiguration CreateDynamicThingGroup CreateJob CreateJobTemplate CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateProvisioningClaim CreateProvisioningTemplate CreateProvisioningTemplateVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuditSuppression DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteCustomMetric DeleteDimension DeleteDomainConfiguration DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteJobTemplate DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteProvisioningTemplate DeleteProvisioningTemplateVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditSuppression DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeCustomMetric DescribeDefaultAuthorizer DescribeDetectMitigationActionsTask DescribeDimension DescribeDomainConfiguration DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeJobTemplate DescribeMitigationAction DescribeProvisioningTemplate DescribeProvisioningTemplateVersion DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetBehaviorModelTrainingSummaries GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditSuppressions ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListCustomMetrics ListDetectMitigationActionsExecutions ListDetectMitigationActionsTasks ListDimensions ListDomainConfigurations ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListJobTemplates ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListProvisioningTemplates ListProvisioningTemplateVersions ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterCertificateWithoutCA RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartDetectMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuditSuppression UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateCustomMetric UpdateDimension UpdateDomainConfiguration UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateProvisioningTemplate UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -2950,9 +2970,6 @@ Returns: a L<Paws::IoT::CreateDomainConfigurationResponse> instance
 
 Creates a domain configuration.
 
-The domain configuration feature is in public preview and is subject to
-change.
-
 
 =head2 CreateDynamicThingGroup
 
@@ -2998,6 +3015,8 @@ Creates a dynamic thing group.
 
 =item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
 
+=item [JobTemplateArn => Str]
+
 =item [NamespaceId => Str]
 
 =item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
@@ -3016,6 +3035,40 @@ Each argument is described in detail in: L<Paws::IoT::CreateJob>
 Returns: a L<Paws::IoT::CreateJobResponse> instance
 
 Creates a job.
+
+
+=head2 CreateJobTemplate
+
+=over
+
+=item Description => Str
+
+=item JobTemplateId => Str
+
+=item [AbortConfig => L<Paws::IoT::AbortConfig>]
+
+=item [Document => Str]
+
+=item [DocumentSource => Str]
+
+=item [JobArn => Str]
+
+=item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
+
+=item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateJobTemplate>
+
+Returns: a L<Paws::IoT::CreateJobTemplateResponse> instance
+
+Creates a job template.
 
 
 =head2 CreateKeysAndCertificate
@@ -3606,9 +3659,6 @@ Returns: a L<Paws::IoT::DeleteDomainConfigurationResponse> instance
 
 Deletes the specified domain configuration.
 
-The domain configuration feature is in public preview and is subject to
-change.
-
 
 =head2 DeleteDynamicThingGroup
 
@@ -3679,6 +3729,22 @@ Each argument is described in detail in: L<Paws::IoT::DeleteJobExecution>
 Returns: nothing
 
 Deletes a job execution.
+
+
+=head2 DeleteJobTemplate
+
+=over
+
+=item JobTemplateId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteJobTemplate>
+
+Returns: nothing
+
+Deletes the specified job template.
 
 
 =head2 DeleteMitigationAction
@@ -4235,9 +4301,6 @@ Returns: a L<Paws::IoT::DescribeDomainConfigurationResponse> instance
 
 Gets summary information about a domain configuration.
 
-The domain configuration feature is in public preview and is subject to
-change.
-
 
 =head2 DescribeEndpoint
 
@@ -4319,6 +4382,22 @@ Each argument is described in detail in: L<Paws::IoT::DescribeJobExecution>
 Returns: a L<Paws::IoT::DescribeJobExecutionResponse> instance
 
 Describes a job execution.
+
+
+=head2 DescribeJobTemplate
+
+=over
+
+=item JobTemplateId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeJobTemplate>
+
+Returns: a L<Paws::IoT::DescribeJobTemplateResponse> instance
+
+Returns information about a job template.
 
 
 =head2 DescribeMitigationAction
@@ -5296,9 +5375,6 @@ Returns: a L<Paws::IoT::ListDomainConfigurationsResponse> instance
 Gets a list of domain configurations for the user. This list is sorted
 alphabetically by domain configuration name.
 
-The domain configuration feature is in public preview and is subject to
-change.
-
 
 =head2 ListIndices
 
@@ -5390,6 +5466,24 @@ Each argument is described in detail in: L<Paws::IoT::ListJobs>
 Returns: a L<Paws::IoT::ListJobsResponse> instance
 
 Lists jobs.
+
+
+=head2 ListJobTemplates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListJobTemplates>
+
+Returns: a L<Paws::IoT::ListJobTemplatesResponse> instance
+
+Returns a list of job templates.
 
 
 =head2 ListMitigationActions
@@ -6808,9 +6902,6 @@ Returns: a L<Paws::IoT::UpdateDomainConfigurationResponse> instance
 
 Updates values stored in the domain configuration. Domain
 configurations for default endpoints can't be updated.
-
-The domain configuration feature is in public preview and is subject to
-change.
 
 
 =head2 UpdateDynamicThingGroup

@@ -51,7 +51,8 @@ The name of the policy to attach.
 
 The identity
 (https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html)
-to which the policy is attached.
+to which the policy is attached. For example, a thing group or a
+certificate.
 
 
 

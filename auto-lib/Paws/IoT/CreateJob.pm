@@ -7,6 +7,7 @@ package Paws::IoT::CreateJob;
   has DocumentSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'documentSource');
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'jobExecutionsRolloutConfig');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  has JobTemplateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobTemplateArn');
   has NamespaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'namespaceId');
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', traits => ['NameInRequest'], request_name => 'presignedUrlConfig');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
@@ -70,12 +71,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
+        MaximumPerMinute => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
-      NamespaceId        => 'MyNamespaceId',    # OPTIONAL
+      JobTemplateArn     => 'MyJobTemplateArn',    # OPTIONAL
+      NamespaceId        => 'MyNamespaceId',       # OPTIONAL
       PresignedUrlConfig => {
-        ExpiresInSec => 1,                      # min: 60, max: 3600; OPTIONAL
-        RoleArn      => 'MyRoleArn',            # min: 20, max: 2048; OPTIONAL
+        ExpiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
+        RoleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -117,7 +119,15 @@ A short text description of the job.
 
 =head2 Document => Str
 
-The job document.
+The job document. Required if you don't specify a value for
+C<documentSource>.
+
+
+
+=head2 DocumentSource => Str
+
+An S3 link to the job document. Required if you don't specify a value
+for C<document>.
 
 If the job document resides in an S3 bucket, you must use a placeholder
 link when specifying the document.
@@ -128,12 +138,6 @@ C<${aws:iot:s3-presigned-url:https://s3.amazonaws.com/I<bucket>/I<key>}>
 
 where I<bucket> is your bucket name and I<key> is the object in the
 bucket to which you are linking.
-
-
-
-=head2 DocumentSource => Str
-
-An S3 link to the job document.
 
 
 
@@ -148,6 +152,12 @@ Allows you to create a staged rollout of the job.
 A job identifier which must be unique for your AWS account. We
 recommend using a UUID. Alpha-numeric characters, "-" and "_" are valid
 for use here.
+
+
+
+=head2 JobTemplateArn => Str
+
+The ARN of the job template used to create the job.
 
 
 
