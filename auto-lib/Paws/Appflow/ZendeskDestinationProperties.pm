@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Appflow::Ze
 
 =head1 DESCRIPTION
 
-This class has no description
+The properties that are applied when Zendesk is used as a destination.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ This class has no description
 
 =head2 B<REQUIRED> Object => Str
 
-
+The object specified in the Zendesk flow destination.
 
 
 =head2 WriteOperationType => Str

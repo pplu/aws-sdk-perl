@@ -95,7 +95,7 @@ The properties required to query Upsolver.
 
 =head2 Zendesk => L<Paws::Appflow::ZendeskDestinationProperties>
 
-
+The properties required to query Zendesk.
 
 
 

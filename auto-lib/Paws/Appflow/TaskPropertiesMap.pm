@@ -9,6 +9,7 @@ package Paws::Appflow::TaskPropertiesMap;
   has CONCAT_FORMAT => (is => 'ro', isa => 'Str');
   has DATA_TYPE => (is => 'ro', isa => 'Str');
   has DESTINATION_DATA_TYPE => (is => 'ro', isa => 'Str');
+  has EXCLUDE_SOURCE_FIELDS_LIST => (is => 'ro', isa => 'Str');
   has LOWER_BOUND => (is => 'ro', isa => 'Str');
   has MASK_LENGTH => (is => 'ro', isa => 'Str');
   has MASK_VALUE => (is => 'ro', isa => 'Str');
@@ -62,6 +63,9 @@ This class has no description
 
 
 =head2 DESTINATION_DATA_TYPE => Str
+
+
+=head2 EXCLUDE_SOURCE_FIELDS_LIST => Str
 
 
 =head2 LOWER_BOUND => Str

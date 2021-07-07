@@ -156,7 +156,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyString', ...    # max: 2048
           ],
           TaskType => 'Arithmetic'
-          ,   # values: Arithmetic, Filter, Map, Mask, Merge, Truncate, Validate
+          , # values: Arithmetic, Filter, Map, Map_all, Mask, Merge, Truncate, Validate
           ConnectorOperator => {
             Amplitude => 'BETWEEN',     # values: BETWEEN; OPTIONAL
             Datadog   => 'PROJECTION'
@@ -189,7 +189,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DestinationField => 'MyDestinationField',    # max: 256; OPTIONAL
           TaskProperties   => {
             'VALUE' => 'MyProperty'
-            , # key: values: VALUE, VALUES, DATA_TYPE, UPPER_BOUND, LOWER_BOUND, SOURCE_DATA_TYPE, DESTINATION_DATA_TYPE, VALIDATION_ACTION, MASK_VALUE, MASK_LENGTH, TRUNCATE_LENGTH, MATH_OPERATION_FIELDS_ORDER, CONCAT_FORMAT, SUBFIELD_CATEGORY_MAP, value: max: 2048
+            , # key: values: VALUE, VALUES, DATA_TYPE, UPPER_BOUND, LOWER_BOUND, SOURCE_DATA_TYPE, DESTINATION_DATA_TYPE, VALIDATION_ACTION, MASK_VALUE, MASK_LENGTH, TRUNCATE_LENGTH, MATH_OPERATION_FIELDS_ORDER, CONCAT_FORMAT, SUBFIELD_CATEGORY_MAP, EXCLUDE_SOURCE_FIELDS_LIST, value: max: 2048
           },    # OPTIONAL
         },
         ...
