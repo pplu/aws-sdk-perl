@@ -98,8 +98,8 @@ The report group is in the process of being deleted.
 
 A list of tag key and value pairs associated with this report group.
 
-These tags are available for use by AWS services that support AWS
-CodeBuild report group tags.
+These tags are available for use by Amazon Web Services services that
+support CodeBuild report group tags.
 
 
 =head2 Type => Str

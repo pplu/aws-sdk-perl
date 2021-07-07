@@ -17,7 +17,7 @@ Paws::CodeBuild::UpdateWebhookOutput
 =head2 Webhook => L<Paws::CodeBuild::Webhook>
 
 Information about a repository's webhook that is associated with a
-project in AWS CodeBuild.
+project in CodeBuild.
 
 
 =head2 _request_id => Str

@@ -50,10 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateProjectOutput = $codebuild->UpdateProject(
       Name      => 'MyNonEmptyString',
       Artifacts => {
-        Type => 'CODEPIPELINE',        # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        ArtifactIdentifier => 'MyString',    # OPTIONAL
-        BucketOwnerAccess  => 'NONE',  # values: NONE, READ_ONLY, FULL; OPTIONAL
-        EncryptionDisabled => 1,       # OPTIONAL
+        Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        ArtifactIdentifier   => 'MyString',   # OPTIONAL
+        EncryptionDisabled   => 1,            # OPTIONAL
         Location             => 'MyString',   # OPTIONAL
         Name                 => 'MyString',   # OPTIONAL
         NamespaceType        => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
@@ -126,8 +125,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
-          Status            => 'ENABLED',      # values: ENABLED, DISABLED
-          BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
+          Status             => 'ENABLED',     # values: ENABLED, DISABLED
           EncryptionDisabled => 1,             # OPTIONAL
           Location           => 'MyString',    # OPTIONAL
         },    # OPTIONAL
@@ -135,9 +133,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       QueuedTimeoutInMinutes => 1,    # OPTIONAL
       SecondaryArtifacts     => [
         {
-          Type => 'CODEPIPELINE',      # values: CODEPIPELINE, S3, NO_ARTIFACTS
-          ArtifactIdentifier => 'MyString',    # OPTIONAL
-          BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
+          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          ArtifactIdentifier   => 'MyString', # OPTIONAL
           EncryptionDisabled   => 1,          # OPTIONAL
           Location             => 'MyString', # OPTIONAL
           Name                 => 'MyString', # OPTIONAL
@@ -283,8 +280,8 @@ A new or replacement description of the build project.
 
 =head2 EncryptionKey => Str
 
-The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the build output artifacts.
+The Key Management Service customer master key (CMK) to be used for
+encrypting the build output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
@@ -314,7 +311,7 @@ of a file system created using Amazon Elastic File System.
 =head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
 
 Information about logs for the build project. A project can create logs
-in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+in CloudWatch Logs, logs in an S3 bucket, or both.
 
 
 
@@ -355,9 +352,9 @@ take over these C<secondarySourceVersions> (at the project level).
 
 =head2 ServiceRole => Str
 
-The replacement ARN of the AWS Identity and Access Management (IAM)
-role that enables AWS CodeBuild to interact with dependent AWS services
-on behalf of the AWS account.
+The replacement ARN of the Identity and Access Management role that
+enables CodeBuild to interact with dependent Amazon Web Services
+services on behalf of the Amazon Web Services account.
 
 
 
@@ -377,7 +374,7 @@ specified, the latest version is used. If specified, it must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 
@@ -407,7 +404,7 @@ takes precedence over this C<sourceVersion> (at the project level).
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 
@@ -416,14 +413,14 @@ in the I<AWS CodeBuild User Guide>.
 An updated list of tag key and value pairs associated with this build
 project.
 
-These tags are available for use by AWS services that support AWS
-CodeBuild build project tags.
+These tags are available for use by Amazon Web Services services that
+support CodeBuild build project tags.
 
 
 
 =head2 TimeoutInMinutes => Int
 
-The replacement value in minutes, from 5 to 480 (8 hours), for AWS
+The replacement value in minutes, from 5 to 480 (8 hours), for
 CodeBuild to wait before timing out any related build that did not get
 marked as completed.
 
@@ -431,7 +428,7 @@ marked as completed.
 
 =head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
 
-VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+VpcConfig enables CodeBuild to access resources in an Amazon VPC.
 
 
 

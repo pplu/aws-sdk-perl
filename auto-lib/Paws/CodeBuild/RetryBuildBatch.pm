@@ -58,7 +58,7 @@ A unique, case sensitive identifier you provide to ensure the
 idempotency of the C<RetryBuildBatch> request. The token is included in
 the C<RetryBuildBatch> request and is valid for five minutes. If you
 repeat the C<RetryBuildBatch> request with the same token, but change a
-parameter, AWS CodeBuild returns a parameter mismatch error.
+parameter, CodeBuild returns a parameter mismatch error.
 
 
 

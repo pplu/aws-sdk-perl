@@ -55,7 +55,7 @@ specified, must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 
@@ -82,7 +82,7 @@ input ZIP file to use.
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 

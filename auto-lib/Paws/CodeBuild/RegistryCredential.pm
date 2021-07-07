@@ -49,8 +49,8 @@ images cannot be curated or an Amazon ECR image.
 
 =back
 
-For more information, see Private Registry with AWS Secrets Manager
-Sample for AWS CodeBuild
+For more information, see Private Registry with Secrets Manager Sample
+for CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-private-registry.html).
 
 =head1 ATTRIBUTES
@@ -58,17 +58,17 @@ Sample for AWS CodeBuild
 
 =head2 B<REQUIRED> Credential => Str
 
-The Amazon Resource Name (ARN) or name of credentials created using AWS
+The Amazon Resource Name (ARN) or name of credentials created using
 Secrets Manager.
 
 The C<credential> can use the name of the credentials only if they
-exist in your current AWS Region.
+exist in your current Region.
 
 
 =head2 B<REQUIRED> CredentialProvider => Str
 
 The service that created the credentials to access a private Docker
-registry. The valid value, SECRETS_MANAGER, is for AWS Secrets Manager.
+registry. The valid value, SECRETS_MANAGER, is for Secrets Manager.
 
 
 

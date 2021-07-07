@@ -542,18 +542,16 @@ Paws::CodeBuild - Perl Interface to AWS AWS CodeBuild
 
 =head1 DESCRIPTION
 
-AWS CodeBuild
-
-AWS CodeBuild is a fully managed build service in the cloud. AWS
-CodeBuild compiles your source code, runs unit tests, and produces
-artifacts that are ready to deploy. AWS CodeBuild eliminates the need
-to provision, manage, and scale your own build servers. It provides
-prepackaged build environments for the most popular programming
-languages and build tools, such as Apache Maven, Gradle, and more. You
-can also fully customize build environments in AWS CodeBuild to use
-your own build tools. AWS CodeBuild scales automatically to meet peak
-build requests. You pay only for the build time you consume. For more
-information about AWS CodeBuild, see the I< AWS CodeBuild User Guide
+CodeBuild is a fully managed build service in the cloud. CodeBuild
+compiles your source code, runs unit tests, and produces artifacts that
+are ready to deploy. CodeBuild eliminates the need to provision,
+manage, and scale your own build servers. It provides prepackaged build
+environments for the most popular programming languages and build
+tools, such as Apache Maven, Gradle, and more. You can also fully
+customize build environments in CodeBuild to use your own build tools.
+CodeBuild scales automatically to meet peak build requests. You pay
+only for the build time you consume. For more information about
+CodeBuild, see the I< CodeBuild User Guide
 (https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html).>
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06>
@@ -755,19 +753,19 @@ Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 
 Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
 
-For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-start rebuilding the source code every time a code change is pushed to
-the repository.
+For an existing CodeBuild build project that has its source code stored
+in a GitHub or Bitbucket repository, enables CodeBuild to start
+rebuilding the source code every time a code change is pushed to the
+repository.
 
-If you enable webhooks for an AWS CodeBuild project, and the project is
-used as a build step in AWS CodePipeline, then two identical builds are
+If you enable webhooks for an CodeBuild project, and the project is
+used as a build step in CodePipeline, then two identical builds are
 created for each commit. One build is triggered through webhooks, and
-one through AWS CodePipeline. Because billing is on a per-build basis,
-you are billed for both builds. Therefore, if you are using AWS
-CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
-In the AWS CodeBuild console, clear the Webhook box. For more
-information, see step 5 in Change a Build Project's Settings
+one through CodePipeline. Because billing is on a per-build basis, you
+are billed for both builds. Therefore, if you are using CodePipeline,
+we recommend that you disable webhooks in CodeBuild. In the CodeBuild
+console, clear the Webhook box. For more information, see step 5 in
+Change a Build Project's Settings
 (https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
 
 
@@ -885,10 +883,9 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
 
 Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
 
-For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-rebuilding the source code every time a code change is pushed to the
-repository.
+For an existing CodeBuild build project that has its source code stored
+in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding
+the source code every time a code change is pushed to the repository.
 
 
 =head2 DescribeCodeCoverages
@@ -999,9 +996,9 @@ Each argument is described in detail in: L<Paws::CodeBuild::ImportSourceCredenti
 
 Returns: a L<Paws::CodeBuild::ImportSourceCredentialsOutput> instance
 
-Imports the source repository credentials for an AWS CodeBuild project
-that has its source code stored in a GitHub, GitHub Enterprise, or
-Bitbucket repository.
+Imports the source repository credentials for an CodeBuild project that
+has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
+repository.
 
 
 =head2 InvalidateProjectCache
@@ -1117,7 +1114,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListCuratedEnvironme
 
 Returns: a L<Paws::CodeBuild::ListCuratedEnvironmentImagesOutput> instance
 
-Gets information about Docker images that are managed by AWS CodeBuild.
+Gets information about Docker images that are managed by CodeBuild.
 
 
 =head2 ListProjects
@@ -1160,7 +1157,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListReportGroups>
 
 Returns: a L<Paws::CodeBuild::ListReportGroupsOutput> instance
 
-Gets a list ARNs for the report groups in the current AWS account.
+Gets a list ARNs for the report groups in the current Amazon Web
+Services account.
 
 
 =head2 ListReports
@@ -1182,7 +1180,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListReports>
 
 Returns: a L<Paws::CodeBuild::ListReportsOutput> instance
 
-Returns a list of ARNs for the reports in the current AWS account.
+Returns a list of ARNs for the reports in the current Amazon Web
+Services account.
 
 
 =head2 ListReportsForReportGroup
@@ -1228,8 +1227,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListSharedProjects>
 
 Returns: a L<Paws::CodeBuild::ListSharedProjectsOutput> instance
 
-Gets a list of projects that are shared with other AWS accounts or
-users.
+Gets a list of projects that are shared with other Amazon Web Services
+accounts or users.
 
 
 =head2 ListSharedReportGroups
@@ -1251,8 +1250,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListSharedReportGrou
 
 Returns: a L<Paws::CodeBuild::ListSharedReportGroupsOutput> instance
 
-Gets a list of report groups that are shared with other AWS accounts or
-users.
+Gets a list of report groups that are shared with other Amazon Web
+Services accounts or users.
 
 
 =head2 ListSourceCredentials
@@ -1608,7 +1607,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateWebhook>
 
 Returns: a L<Paws::CodeBuild::UpdateWebhookOutput> instance
 
-Updates the webhook associated with an AWS CodeBuild build project.
+Updates the webhook associated with an CodeBuild build project.
 
 If you use Bitbucket for your repository, C<rotateSecret> is ignored.
 

@@ -60,10 +60,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildOutput = $codebuild->StartBuild(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        Type => 'CODEPIPELINE',        # values: CODEPIPELINE, S3, NO_ARTIFACTS
-        ArtifactIdentifier => 'MyString',    # OPTIONAL
-        BucketOwnerAccess  => 'NONE',  # values: NONE, READ_ONLY, FULL; OPTIONAL
-        EncryptionDisabled => 1,       # OPTIONAL
+        Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        ArtifactIdentifier   => 'MyString',   # OPTIONAL
+        EncryptionDisabled   => 1,            # OPTIONAL
         Location             => 'MyString',   # OPTIONAL
         Name                 => 'MyString',   # OPTIONAL
         NamespaceType        => 'NONE',       # values: NONE, BUILD_ID; OPTIONAL
@@ -114,8 +113,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
-          Status            => 'ENABLED',      # values: ENABLED, DISABLED
-          BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
+          Status             => 'ENABLED',     # values: ENABLED, DISABLED
           EncryptionDisabled => 1,             # OPTIONAL
           Location           => 'MyString',    # OPTIONAL
         },    # OPTIONAL
@@ -130,9 +128,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReportBuildStatusOverride  => 1,    # OPTIONAL
       SecondaryArtifactsOverride => [
         {
-          Type => 'CODEPIPELINE',      # values: CODEPIPELINE, S3, NO_ARTIFACTS
-          ArtifactIdentifier => 'MyString',    # OPTIONAL
-          BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
+          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          ArtifactIdentifier   => 'MyString', # OPTIONAL
           EncryptionDisabled   => 1,          # OPTIONAL
           Location             => 'MyString', # OPTIONAL
           Name                 => 'MyString', # OPTIONAL
@@ -213,8 +210,8 @@ latest one already defined in the build project.
 If this value is set, it can be either an inline buildspec definition,
 the path to an alternate buildspec file relative to the value of the
 built-in C<CODEBUILD_SRC_DIR> environment variable, or the path to an
-S3 bucket. The bucket must be in the same AWS Region as the build
-project. Specify the buildspec file using its ARN (for example,
+S3 bucket. The bucket must be in the same Region as the build project.
+Specify the buildspec file using its ARN (for example,
 C<arn:aws:s3:::my-codebuild-sample2/buildspec.yml>). If this value is
 not provided or is set to an empty string, the source code must contain
 a buildspec file in its root directory. For more information, see
@@ -262,9 +259,9 @@ information, see Viewing a running build in Session Manager
 
 =head2 EncryptionKeyOverride => Str
 
-The AWS Key Management Service (AWS KMS) customer master key (CMK) that
-overrides the one specified in the build project. The CMK key encrypts
-the build output artifacts.
+The Key Management Service customer master key (CMK) that overrides the
+one specified in the build project. The CMK key encrypts the build
+output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
@@ -300,7 +297,7 @@ in the build project.
 =head2 GitSubmodulesConfigOverride => L<Paws::CodeBuild::GitSubmodulesConfig>
 
 Information about the Git submodules configuration for this build of an
-AWS CodeBuild build project.
+CodeBuild build project.
 
 
 
@@ -309,7 +306,7 @@ AWS CodeBuild build project.
 A unique, case sensitive identifier you provide to ensure the
 idempotency of the StartBuild request. The token is included in the
 StartBuild request and is valid for 5 minutes. If you repeat the
-StartBuild request with the same token, but change a parameter, AWS
+StartBuild request with the same token, but change a parameter,
 CodeBuild returns a parameter mismatch error.
 
 
@@ -323,26 +320,26 @@ the build project.
 
 =head2 ImagePullCredentialsTypeOverride => Str
 
-The type of credentials AWS CodeBuild uses to pull images in your
-build. There are two valid values:
+The type of credentials CodeBuild uses to pull images in your build.
+There are two valid values:
 
 =over
 
 =item CODEBUILD
 
-Specifies that AWS CodeBuild uses its own credentials. This requires
-that you modify your ECR repository policy to trust AWS CodeBuild's
-service principal.
+Specifies that CodeBuild uses its own credentials. This requires that
+you modify your ECR repository policy to trust CodeBuild's service
+principal.
 
 =item SERVICE_ROLE
 
-Specifies that AWS CodeBuild uses your build project's service role.
+Specifies that CodeBuild uses your build project's service role.
 
 =back
 
 When using a cross-account or private registry image, you must use
-C<SERVICE_ROLE> credentials. When using an AWS CodeBuild curated image,
-you must use C<CODEBUILD> credentials.
+C<SERVICE_ROLE> credentials. When using an CodeBuild curated image, you
+must use C<CODEBUILD> credentials.
 
 Valid values are: C<"CODEBUILD">, C<"SERVICE_ROLE">
 
@@ -370,7 +367,7 @@ Enable this flag to override privileged mode in the build project.
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the AWS CodeBuild build project to start running a build.
+The name of the CodeBuild build project to start running a build.
 
 
 
@@ -399,7 +396,7 @@ associated with the source provider must have write access to the repo.
 If the user does not have write access, the build status cannot be
 updated. For more information, see Source provider access
 (https://docs.aws.amazon.com/codebuild/latest/userguide/access-tokens.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 The status of a build triggered by a webhook is always reported to your
 source provider.
@@ -463,7 +460,7 @@ depends on the source provider:
 
 =over
 
-=item AWS CodeCommit
+=item CodeCommit
 
 The commit ID, branch, or Git tag to use.
 
@@ -495,7 +492,7 @@ C<sourceVersion> (at the build level) takes precedence.
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 

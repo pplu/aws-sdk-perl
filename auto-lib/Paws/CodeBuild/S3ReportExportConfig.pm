@@ -51,9 +51,10 @@ The name of the S3 bucket where the raw data of a report are exported.
 
 =head2 BucketOwner => Str
 
-The AWS account identifier of the owner of the Amazon S3 bucket. This
-allows report data to be exported to an Amazon S3 bucket that is owned
-by an account other than the account running the build.
+The Amazon Web Services account identifier of the owner of the Amazon
+S3 bucket. This allows report data to be exported to an Amazon S3
+bucket that is owned by an account other than the account running the
+build.
 
 
 =head2 EncryptionDisabled => Bool
@@ -75,13 +76,13 @@ The type of build output artifact to create. Valid values include:
 
 =item *
 
-C<NONE>: AWS CodeBuild creates the raw data in the output bucket. This
-is the default if packaging is not specified.
+C<NONE>: CodeBuild creates the raw data in the output bucket. This is
+the default if packaging is not specified.
 
 =item *
 
-C<ZIP>: AWS CodeBuild creates a ZIP file with the raw data in the
-output bucket.
+C<ZIP>: CodeBuild creates a ZIP file with the raw data in the output
+bucket.
 
 =back
 

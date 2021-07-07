@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the AWS CodeBuild project.
+The name of the CodeBuild project.
 
 
 

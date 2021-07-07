@@ -35,33 +35,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about Amazon CloudWatch Logs for a build project.
+Information about CloudWatch Logs for a build project.
 
 =head1 ATTRIBUTES
 
 
 =head2 GroupName => Str
 
-The group name of the logs in Amazon CloudWatch Logs. For more
-information, see Working with Log Groups and Log Streams
+The group name of the logs in CloudWatch Logs. For more information,
+see Working with Log Groups and Log Streams
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
 
 
 =head2 B<REQUIRED> Status => Str
 
-The current status of the logs in Amazon CloudWatch Logs for a build
-project. Valid values are:
+The current status of the logs in CloudWatch Logs for a build project.
+Valid values are:
 
 =over
 
 =item *
 
-C<ENABLED>: Amazon CloudWatch Logs are enabled for this build project.
+C<ENABLED>: CloudWatch Logs are enabled for this build project.
 
 =item *
 
-C<DISABLED>: Amazon CloudWatch Logs are not enabled for this build
-project.
+C<DISABLED>: CloudWatch Logs are not enabled for this build project.
 
 =back
 
@@ -69,7 +68,7 @@ project.
 
 =head2 StreamName => Str
 
-The prefix of the stream name of the Amazon CloudWatch Logs. For more
+The prefix of the stream name of the CloudWatch Logs. For more
 information, see Working with Log Groups and Log Streams
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html).
 

@@ -34,10 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about the authorization settings for AWS CodeBuild to
-access the source code to be built.
+Information about the authorization settings for CodeBuild to access
+the source code to be built.
 
-This information is for the AWS CodeBuild console's use only. Your code
+This information is for the CodeBuild console's use only. Your code
 should not get or set this information directly.
 
 =head1 ATTRIBUTES

@@ -149,8 +149,8 @@ Contains information about the debug session for this build.
 
 =head2 EncryptionKey => Str
 
-The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the build output artifacts.
+The Key Management Service customer master key (CMK) to be used for
+encrypting the build output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
@@ -174,12 +174,12 @@ Information about the build environment for this build.
 
 A list of exported environment variables for this build.
 
-Exported environment variables are used in conjunction with AWS
+Exported environment variables are used in conjunction with
 CodePipeline to export environment variables from the current build
 stage to subsequent stages in the pipeline. For more information, see
 Working with variables
 (https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-variables.html)
-in the I<AWS CodePipeline User Guide>.
+in the I<CodePipeline User Guide>.
 
 
 =head2 FileSystemLocations => ArrayRef[L<Paws::CodeBuild::ProjectFileSystemLocation>]
@@ -203,17 +203,17 @@ The entity that started the build. Valid values include:
 
 =item *
 
-If AWS CodePipeline started the build, the pipeline's name (for
-example, C<codepipeline/my-demo-pipeline>).
+If CodePipeline started the build, the pipeline's name (for example,
+C<codepipeline/my-demo-pipeline>).
 
 =item *
 
-If an AWS Identity and Access Management (IAM) user started the build,
-the user's name (for example, C<MyUserName>).
+If an Identity and Access Management user started the build, the user's
+name (for example, C<MyUserName>).
 
 =item *
 
-If the Jenkins plugin for AWS CodeBuild started the build, the string
+If the Jenkins plugin for CodeBuild started the build, the string
 C<CodeBuild-Jenkins-Plugin>.
 
 =back
@@ -222,7 +222,7 @@ C<CodeBuild-Jenkins-Plugin>.
 
 =head2 Logs => L<Paws::CodeBuild::LogsLocation>
 
-Information about the build's logs in Amazon CloudWatch Logs.
+Information about the build's logs in CloudWatch Logs.
 
 
 =head2 NetworkInterface => L<Paws::CodeBuild::NetworkInterface>
@@ -238,7 +238,7 @@ information about any current build phase that is not yet complete.
 
 =head2 ProjectName => Str
 
-The name of the AWS CodeBuild project.
+The name of the CodeBuild project.
 
 
 =head2 QueuedTimeoutInMinutes => Int
@@ -260,12 +260,12 @@ An identifier for the version of this build's source code.
 
 =item *
 
-For AWS CodeCommit, GitHub, GitHub Enterprise, and BitBucket, the
-commit ID.
+For CodeCommit, GitHub, GitHub Enterprise, and BitBucket, the commit
+ID.
 
 =item *
 
-For AWS CodePipeline, the source revision provided by AWS CodePipeline.
+For CodePipeline, the source revision provided by CodePipeline.
 
 =item *
 
@@ -294,7 +294,7 @@ C<ProjectSourceVersion> must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 
@@ -339,7 +339,7 @@ C<sourceVersion> (at the build level) takes precedence.
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 =head2 StartTime => Str
@@ -349,13 +349,13 @@ When the build process started, expressed in Unix time format.
 
 =head2 TimeoutInMinutes => Int
 
-How long, in minutes, for AWS CodeBuild to wait before timing out this
+How long, in minutes, for CodeBuild to wait before timing out this
 build if it does not get marked as completed.
 
 
 =head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
 
-If your AWS CodeBuild project accesses resources in an Amazon VPC, you
+If your CodeBuild project accesses resources in an Amazon VPC, you
 provide this parameter that identifies the VPC ID and the list of
 security group IDs and subnet IDs. The security groups and subnets must
 belong to the same VPC. You must provide at least one security group

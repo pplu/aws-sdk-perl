@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about logs for a build project. These can be logs in Amazon
+Information about logs for a build project. These can be logs in
 CloudWatch Logs, built in a specified S3 bucket, or both.
 
 =head1 ATTRIBUTES
@@ -42,8 +42,8 @@ CloudWatch Logs, built in a specified S3 bucket, or both.
 
 =head2 CloudWatchLogs => L<Paws::CodeBuild::CloudWatchLogsConfig>
 
-Information about Amazon CloudWatch Logs for a build project. Amazon
-CloudWatch Logs are enabled by default.
+Information about CloudWatch Logs for a build project. CloudWatch Logs
+are enabled by default.
 
 
 =head2 S3Logs => L<Paws::CodeBuild::S3LogsConfig>

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 =head1 DESCRIPTION
 
 A set of Docker images that are related by platform and are managed by
-AWS CodeBuild.
+CodeBuild.
 
 =head1 ATTRIBUTES
 

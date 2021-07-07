@@ -17,7 +17,7 @@ Paws::CodeBuild::CreateWebhookOutput
 =head2 Webhook => L<Paws::CodeBuild::Webhook>
 
 Information about a webhook that connects repository events to a build
-project in AWS CodeBuild.
+project in CodeBuild.
 
 
 =head2 _request_id => Str

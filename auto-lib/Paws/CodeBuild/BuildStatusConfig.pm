@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Contains information that defines how the AWS CodeBuild build project
+Contains information that defines how the CodeBuild build project
 reports the build status to the source provider.
 
 =head1 ATTRIBUTES

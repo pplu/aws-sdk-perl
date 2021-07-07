@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about the Git submodules configuration for an AWS CodeBuild
+Information about the Git submodules configuration for an CodeBuild
 build project.
 
 =head1 ATTRIBUTES
@@ -41,8 +41,7 @@ build project.
 
 =head2 B<REQUIRED> FetchSubmodules => Bool
 
-Set to true to fetch Git submodules for your AWS CodeBuild build
-project.
+Set to true to fetch Git submodules for your CodeBuild build project.
 
 
 

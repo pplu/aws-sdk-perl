@@ -2,7 +2,6 @@
 package Paws::CodeBuild::ProjectArtifacts;
   use Moose;
   has ArtifactIdentifier => (is => 'ro', isa => 'Str', request_name => 'artifactIdentifier', traits => ['NameInRequest']);
-  has BucketOwnerAccess => (is => 'ro', isa => 'Str', request_name => 'bucketOwnerAccess', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has Location => (is => 'ro', isa => 'Str', request_name => 'location', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -52,11 +51,6 @@ Information about the build output artifacts for the build project.
 An identifier for this artifact definition.
 
 
-=head2 BucketOwnerAccess => Str
-
-
-
-
 =head2 EncryptionDisabled => Bool
 
 Set to true if you do not want your output artifacts encrypted. This
@@ -72,9 +66,9 @@ Information about the build output artifact location:
 
 =item *
 
-If C<type> is set to C<CODEPIPELINE>, AWS CodePipeline ignores this
-value if specified. This is because AWS CodePipeline manages its build
-output locations instead of AWS CodeBuild.
+If C<type> is set to C<CODEPIPELINE>, CodePipeline ignores this value
+if specified. This is because CodePipeline manages its build output
+locations instead of CodeBuild.
 
 =item *
 
@@ -91,16 +85,16 @@ If C<type> is set to C<S3>, this is the name of the output bucket.
 
 =head2 Name => Str
 
-Along with C<path> and C<namespaceType>, the pattern that AWS CodeBuild
+Along with C<path> and C<namespaceType>, the pattern that CodeBuild
 uses to name and store the output artifact:
 
 =over
 
 =item *
 
-If C<type> is set to C<CODEPIPELINE>, AWS CodePipeline ignores this
-value if specified. This is because AWS CodePipeline manages its build
-output names instead of AWS CodeBuild.
+If C<type> is set to C<CODEPIPELINE>, CodePipeline ignores this value
+if specified. This is because CodePipeline manages its build output
+names instead of CodeBuild.
 
 =item *
 
@@ -143,16 +137,16 @@ stored in C<MyArtifacts/E<lt>build-IDE<gt>>.
 
 =head2 NamespaceType => Str
 
-Along with C<path> and C<name>, the pattern that AWS CodeBuild uses to
+Along with C<path> and C<name>, the pattern that CodeBuild uses to
 determine the name and location to store the output artifact:
 
 =over
 
 =item *
 
-If C<type> is set to C<CODEPIPELINE>, AWS CodePipeline ignores this
-value if specified. This is because AWS CodePipeline manages its build
-output names instead of AWS CodeBuild.
+If C<type> is set to C<CODEPIPELINE>, CodePipeline ignores this value
+if specified. This is because CodePipeline manages its build output
+names instead of CodeBuild.
 
 =item *
 
@@ -201,9 +195,9 @@ The type of build output artifact to create:
 
 =item *
 
-If C<type> is set to C<CODEPIPELINE>, AWS CodePipeline ignores this
-value if specified. This is because AWS CodePipeline manages its build
-output artifacts instead of AWS CodeBuild.
+If C<type> is set to C<CODEPIPELINE>, CodePipeline ignores this value
+if specified. This is because CodePipeline manages its build output
+artifacts instead of CodeBuild.
 
 =item *
 
@@ -218,14 +212,13 @@ If C<type> is set to C<S3>, valid values include:
 
 =item *
 
-C<NONE>: AWS CodeBuild creates in the output bucket a folder that
-contains the build output. This is the default if C<packaging> is not
-specified.
+C<NONE>: CodeBuild creates in the output bucket a folder that contains
+the build output. This is the default if C<packaging> is not specified.
 
 =item *
 
-C<ZIP>: AWS CodeBuild creates in the output bucket a ZIP file that
-contains the build output.
+C<ZIP>: CodeBuild creates in the output bucket a ZIP file that contains
+the build output.
 
 =back
 
@@ -235,16 +228,16 @@ contains the build output.
 
 =head2 Path => Str
 
-Along with C<namespaceType> and C<name>, the pattern that AWS CodeBuild
+Along with C<namespaceType> and C<name>, the pattern that CodeBuild
 uses to name and store the output artifact:
 
 =over
 
 =item *
 
-If C<type> is set to C<CODEPIPELINE>, AWS CodePipeline ignores this
-value if specified. This is because AWS CodePipeline manages its build
-output names instead of AWS CodeBuild.
+If C<type> is set to C<CODEPIPELINE>, CodePipeline ignores this value
+if specified. This is because CodePipeline manages its build output
+names instead of CodeBuild.
 
 =item *
 
@@ -273,7 +266,7 @@ The type of build output artifact. Valid values include:
 =item *
 
 C<CODEPIPELINE>: The build project has build output generated through
-AWS CodePipeline.
+CodePipeline.
 
 The C<CODEPIPELINE> type is not supported for C<secondaryArtifacts>.
 

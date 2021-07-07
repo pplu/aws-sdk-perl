@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about the VPC configuration that AWS CodeBuild accesses.
+Information about the VPC configuration that CodeBuild accesses.
 
 =head1 ATTRIBUTES
 

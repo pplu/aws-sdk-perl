@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 =head1 DESCRIPTION
 
 Information about a webhook that connects repository events to a build
-project in AWS CodeBuild.
+project in CodeBuild.
 
 =head1 ATTRIBUTES
 
@@ -80,7 +80,7 @@ was modified.
 
 =head2 PayloadUrl => Str
 
-The AWS CodeBuild endpoint where webhook events are sent.
+The CodeBuild endpoint where webhook events are sent.
 
 
 =head2 Secret => Str

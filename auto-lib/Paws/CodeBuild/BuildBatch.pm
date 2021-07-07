@@ -134,8 +134,8 @@ Batch session debugging is not supported for matrix batch builds.
 
 =head2 EncryptionKey => Str
 
-The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the batch build output artifacts.
+The Key Management Service customer master key (CMK) to be used for
+encrypting the batch build output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
@@ -176,17 +176,17 @@ The entity that started the batch build. Valid values include:
 
 =item *
 
-If AWS CodePipeline started the build, the pipeline's name (for
-example, C<codepipeline/my-demo-pipeline>).
+If CodePipeline started the build, the pipeline's name (for example,
+C<codepipeline/my-demo-pipeline>).
 
 =item *
 
-If an AWS Identity and Access Management (IAM) user started the build,
-the user's name.
+If an Identity and Access Management user started the build, the user's
+name.
 
 =item *
 
-If the Jenkins plugin for AWS CodeBuild started the build, the string
+If the Jenkins plugin for CodeBuild started the build, the string
 C<CodeBuild-Jenkins-Plugin>.
 
 =back
@@ -224,12 +224,12 @@ code.
 
 =item *
 
-For AWS CodeCommit, GitHub, GitHub Enterprise, and BitBucket, the
-commit ID.
+For CodeCommit, GitHub, GitHub Enterprise, and BitBucket, the commit
+ID.
 
 =item *
 
-For AWS CodePipeline, the source revision provided by AWS CodePipeline.
+For CodePipeline, the source revision provided by CodePipeline.
 
 =item *
 
@@ -260,7 +260,7 @@ C<ProjectSourceVersion> must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 

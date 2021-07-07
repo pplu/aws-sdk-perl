@@ -44,7 +44,7 @@ Specifies restrictions for the batch build.
 An array of strings that specify the compute types that are allowed for
 the batch build. See Build environment compute types
 (https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
-in the I<AWS CodeBuild User Guide> for these values.
+in the I<CodeBuild User Guide> for these values.
 
 
 =head2 MaximumBuildsAllowed => Int

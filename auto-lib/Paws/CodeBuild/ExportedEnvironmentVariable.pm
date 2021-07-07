@@ -36,12 +36,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 Contains information about an exported environment variable.
 
-Exported environment variables are used in conjunction with AWS
+Exported environment variables are used in conjunction with
 CodePipeline to export environment variables from the current build
 stage to subsequent stages in the pipeline. For more information, see
 Working with variables
 (https://docs.aws.amazon.com/codepipeline/latest/userguide/actions-variables.html)
-in the I<AWS CodePipeline User Guide>.
+in the I<CodePipeline User Guide>.
 
 During a build, the value of a variable is available starting with the
 C<install> phase. It can be updated between the start of the C<install>

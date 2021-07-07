@@ -60,7 +60,7 @@ next token that is returned, until no more next tokens are returned.
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the AWS CodeBuild project.
+The name of the CodeBuild project.
 
 
 
