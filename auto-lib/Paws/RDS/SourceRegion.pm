@@ -36,31 +36,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Source
 
 =head1 DESCRIPTION
 
-Contains an AWS Region name as the result of a successful call to the
-C<DescribeSourceRegions> action.
+Contains an Amazon Web Services Region name as the result of a
+successful call to the C<DescribeSourceRegions> action.
 
 =head1 ATTRIBUTES
 
 
 =head2 Endpoint => Str
 
-The endpoint for the source AWS Region endpoint.
+The endpoint for the source Amazon Web Services Region endpoint.
 
 
 =head2 RegionName => Str
 
-The name of the source AWS Region.
+The name of the source Amazon Web Services Region.
 
 
 =head2 Status => Str
 
-The status of the source AWS Region.
+The status of the source Amazon Web Services Region.
 
 
 =head2 SupportsDBInstanceAutomatedBackupsReplication => Bool
 
-Whether the source AWS Region supports replicating automated backups to
-the current AWS Region.
+Whether the source Amazon Web Services Region supports replicating
+automated backups to the current Amazon Web Services Region.
 
 
 

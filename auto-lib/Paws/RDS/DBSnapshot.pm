@@ -89,7 +89,7 @@ snapshot was created from.
 =head2 DbiResourceId => Str
 
 The identifier for the source DB instance, which can't be changed and
-which is unique to an AWS Region.
+which is unique to an Amazon Web Services Region.
 
 
 =head2 DBSnapshotArn => Str
@@ -119,8 +119,8 @@ Specifies the version of the database engine.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled, and otherwise false.
 
 
 =head2 InstanceCreateTime => Str
@@ -137,11 +137,12 @@ DB instance at the time of the snapshot.
 
 =head2 KmsKeyId => Str
 
-If C<Encrypted> is true, the AWS KMS key identifier for the encrypted
-DB snapshot.
+If C<Encrypted> is true, the Amazon Web Services KMS key identifier for
+the encrypted DB snapshot.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LicenseModel => Str
@@ -196,7 +197,8 @@ cross-region copy.
 
 =head2 SourceRegion => Str
 
-The AWS Region that the DB snapshot was created in or copied from.
+The Amazon Web Services Region that the DB snapshot was created in or
+copied from.
 
 
 =head2 Status => Str

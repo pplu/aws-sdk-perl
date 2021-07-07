@@ -114,17 +114,18 @@ snapshot.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled, and otherwise false.
 
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is true, the AWS KMS key identifier for the
-encrypted DB cluster snapshot.
+If C<StorageEncrypted> is true, the Amazon Web Services KMS key
+identifier for the encrypted DB cluster snapshot.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LicenseModel => Str

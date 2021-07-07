@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Accoun
 
 =head1 DESCRIPTION
 
-Describes a quota for an AWS account.
+Describes a quota for an Amazon Web Services account.
 
 The following are account quotas:
 
@@ -68,11 +68,11 @@ count of nondefault DB cluster parameter groups in the account.
 
 =item *
 
-C<DBClusterRoles> - The number of associated AWS Identity and Access
-Management (IAM) roles per DB cluster. The used value is the highest
-number of associated IAM roles for a DB cluster in the account. Other
-DB clusters in the account might have a lower number of associated IAM
-roles.
+C<DBClusterRoles> - The number of associated Amazon Web Services
+Identity and Access Management (IAM) roles per DB cluster. The used
+value is the highest number of associated IAM roles for a DB cluster in
+the account. Other DB clusters in the account might have a lower number
+of associated IAM roles.
 
 =item *
 
@@ -168,7 +168,7 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 AccountQuotaName => Str
 
-The name of the Amazon RDS quota for this AWS account.
+The name of the Amazon RDS quota for this Amazon Web Services account.
 
 
 =head2 Max => Int

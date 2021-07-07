@@ -71,7 +71,7 @@ database).
 Identifier of the secondary Aurora DB cluster that you want to promote
 to primary for the Aurora global database (GlobalCluster.) Use the
 Amazon Resource Name (ARN) for the identifier so that Aurora can locate
-the cluster in its AWS Region.
+the cluster in its Amazon Web Services Region.
 
 
 

@@ -62,7 +62,7 @@ parameter to retrieve available offerings for the Local Zones in the
 group.
 
 Omit this parameter to show the available offerings in the specified
-AWS Region.
+Amazon Web Services Region.
 
 
 
@@ -107,15 +107,15 @@ C<oracle-ee>
 
 =item *
 
+C<oracle-ee-cdb>
+
+=item *
+
 C<oracle-se2>
 
 =item *
 
-C<oracle-se1>
-
-=item *
-
-C<oracle-se>
+C<oracle-se2-cdb>
 
 =item *
 

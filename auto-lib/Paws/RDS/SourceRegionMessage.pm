@@ -25,9 +25,9 @@ marker, up to the value specified by C<MaxRecords>.
 
 =head2 SourceRegions => ArrayRef[L<Paws::RDS::SourceRegion>]
 
-A list of SourceRegion instances that contains each source AWS Region
-that the current AWS Region can get a read replica or a DB snapshot
-from.
+A list of SourceRegion instances that contains each source Amazon Web
+Services Region that the current Amazon Web Services Region can get a
+read replica or a DB snapshot from.
 
 
 =head2 _request_id => Str

@@ -56,13 +56,82 @@ associated with one and only one DB parameter group family, and can be
 applied only to a DB instance running a database engine and engine
 version compatible with that DB parameter group family.
 
-To list all of the available parameter group families, use the
-following command:
+To list all of the available parameter group families for a DB engine,
+use the following command:
 
 C<aws rds describe-db-engine-versions --query
-"DBEngineVersions[].DBParameterGroupFamily">
+"DBEngineVersions[].DBParameterGroupFamily" --engine E<lt>engineE<gt>>
+
+For example, to list all of the available parameter group families for
+the MySQL DB engine, use the following command:
+
+C<aws rds describe-db-engine-versions --query
+"DBEngineVersions[].DBParameterGroupFamily" --engine mysql>
 
 The output contains duplicates.
+
+The following are the valid DB engine values:
+
+=over
+
+=item *
+
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
+
+=item *
+
+C<aurora-postgresql>
+
+=item *
+
+C<mariadb>
+
+=item *
+
+C<mysql>
+
+=item *
+
+C<oracle-ee>
+
+=item *
+
+C<oracle-ee-cdb>
+
+=item *
+
+C<oracle-se2>
+
+=item *
+
+C<oracle-se2-cdb>
+
+=item *
+
+C<postgres>
+
+=item *
+
+C<sqlserver-ee>
+
+=item *
+
+C<sqlserver-se>
+
+=item *
+
+C<sqlserver-ex>
+
+=item *
+
+C<sqlserver-web>
+
+=back
+
 
 
 

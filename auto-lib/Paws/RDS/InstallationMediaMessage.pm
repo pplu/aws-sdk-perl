@@ -18,7 +18,8 @@ Paws::RDS::InstallationMediaMessage
 
 =head2 InstallationMedia => ArrayRef[L<Paws::RDS::InstallationMedia>]
 
-The list of InstallationMedia objects for the AWS account.
+The list of InstallationMedia objects for the Amazon Web Services
+account.
 
 
 =head2 Marker => Str

@@ -75,7 +75,7 @@ Constraints: Minimum 20, maximum 100.
 
 =head2 RegionName => Str
 
-The source AWS Region name. For example, C<us-east-1>.
+The source Amazon Web Services Region name. For example, C<us-east-1>.
 
 Constraints:
 
@@ -83,7 +83,7 @@ Constraints:
 
 =item *
 
-Must specify a valid AWS Region name.
+Must specify a valid Amazon Web Services Region name.
 
 =back
 

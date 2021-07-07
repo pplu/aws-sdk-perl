@@ -89,10 +89,10 @@ The authorization mechanism that the proxy uses.
 =head2 B<REQUIRED> DBProxyName => Str
 
 The identifier for the proxy. This name must be unique for all proxies
-owned by your AWS account in the specified AWS Region. An identifier
-must begin with a letter and must contain only ASCII letters, digits,
-and hyphens; it can't end with a hyphen or contain two consecutive
-hyphens.
+owned by your Amazon Web Services account in the specified Amazon Web
+Services Region. An identifier must begin with a letter and must
+contain only ASCII letters, digits, and hyphens; it can't end with a
+hyphen or contain two consecutive hyphens.
 
 
 
@@ -136,7 +136,7 @@ this setting, you can enforce encrypted TLS connections to the proxy.
 =head2 B<REQUIRED> RoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
-access secrets in AWS Secrets Manager.
+access secrets in Amazon Web Services Secrets Manager.
 
 
 

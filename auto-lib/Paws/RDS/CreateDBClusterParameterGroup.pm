@@ -85,6 +85,39 @@ B<Aurora PostgreSQL>
 
 Example: C<aurora-postgresql9.6>
 
+To list all of the available parameter group families for a DB engine,
+use the following command:
+
+C<aws rds describe-db-engine-versions --query
+"DBEngineVersions[].DBParameterGroupFamily" --engine E<lt>engineE<gt>>
+
+For example, to list all of the available parameter group families for
+the Aurora PostgreSQL DB engine, use the following command:
+
+C<aws rds describe-db-engine-versions --query
+"DBEngineVersions[].DBParameterGroupFamily" --engine aurora-postgresql>
+
+The output contains duplicates.
+
+The following are the valid DB engine values:
+
+=over
+
+=item *
+
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
+
+=item *
+
+C<aurora-postgresql>
+
+=back
+
+
 
 
 =head2 B<REQUIRED> Description => Str

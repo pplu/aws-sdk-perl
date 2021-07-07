@@ -11,11 +11,13 @@ package Paws::RDS::RestoreDBClusterToPointInTime;
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
+  has EngineMode => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has OptionGroupName => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RestoreToTime => (is => 'ro', isa => 'Str');
   has RestoreType => (is => 'ro', isa => 'Str');
+  has ScalingConfiguration => (is => 'ro', isa => 'Paws::RDS::ScalingConfiguration');
   has SourceDBClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]');
   has UseLatestRestorableTime => (is => 'ro', isa => 'Bool');
@@ -206,9 +208,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
 For more information, see IAM Database Authentication
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
@@ -216,19 +218,32 @@ in the I<Amazon Aurora User Guide.>
 
 
 
+=head2 EngineMode => Str
+
+The engine mode of the new cluster. Specify C<provisioned> or
+C<serverless>, depending on the type of the cluster you are creating.
+You can create an Aurora Serverless clone from a provisioned cluster,
+or a provisioned clone from an Aurora Serverless cluster. To create a
+clone that is an Aurora Serverless cluster, the original cluster must
+be an Aurora Serverless cluster or an encrypted provisioned cluster.
+
+
+
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted DB
-cluster from an encrypted DB cluster.
+The Amazon Web Services KMS key identifier to use when restoring an
+encrypted DB cluster from an encrypted DB cluster.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK). To use a CMK in a
-different AWS account, specify the key ARN or alias ARN.
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK). To use a CMK in a different Amazon Web Services
+account, specify the key ARN or alias ARN.
 
 You can restore to a new DB cluster and encrypt the new DB cluster with
-a AWS KMS CMK that is different than the AWS KMS key used to encrypt
-the source DB cluster. The new DB cluster is encrypted with the AWS KMS
-CMK identified by the C<KmsKeyId> parameter.
+a Amazon Web Services KMS CMK that is different than the Amazon Web
+Services KMS key used to encrypt the source DB cluster. The new DB
+cluster is encrypted with the Amazon Web Services KMS CMK identified by
+the C<KmsKeyId> parameter.
 
 If you don't specify a value for the C<KmsKeyId> parameter, then the
 following occurs:
@@ -238,8 +253,8 @@ following occurs:
 =item *
 
 If the DB cluster is encrypted, then the restored DB cluster is
-encrypted using the AWS KMS CMK that was used to encrypt the source DB
-cluster.
+encrypted using the Amazon Web Services KMS CMK that was used to
+encrypt the source DB cluster.
 
 =item *
 
@@ -328,6 +343,13 @@ of the source DB cluster is earlier than 1.11.
 
 If you don't specify a C<RestoreType> value, then the new DB cluster is
 restored as a full copy of the source DB cluster.
+
+
+
+=head2 ScalingConfiguration => L<Paws::RDS::ScalingConfiguration>
+
+For DB clusters in C<serverless> DB engine mode, the scaling properties
+of the DB cluster.
 
 
 

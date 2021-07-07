@@ -40,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Certif
 
 =head1 DESCRIPTION
 
-A CA certificate for an AWS account.
+A CA certificate for an Amazon Web Services account.
 
 =head1 ATTRIBUTES
 

@@ -92,8 +92,8 @@ The database engine version.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-Whether mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled.
+Whether mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled.
 
 
 =head2 Iops => Int

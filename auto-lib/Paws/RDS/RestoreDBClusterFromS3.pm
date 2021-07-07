@@ -278,9 +278,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
 For more information, see IAM Database Authentication
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
@@ -333,16 +333,18 @@ Example: C<9.6.3>, C<10.7>
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for an encrypted DB cluster.
+The Amazon Web Services KMS key identifier for an encrypted DB cluster.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK). To use a CMK in a
-different AWS account, specify the key ARN or alias ARN.
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK). To use a CMK in a different Amazon Web Services
+account, specify the key ARN or alias ARN.
 
 If the StorageEncrypted parameter is enabled, and you do not specify a
 value for the C<KmsKeyId> parameter, then Amazon RDS will use your
-default CMK. There is a default CMK for your AWS account. Your AWS
-account has a different default CMK for each AWS Region.
+default CMK. There is a default CMK for your Amazon Web Services
+account. Your Amazon Web Services account has a different default CMK
+for each Amazon Web Services Region.
 
 
 
@@ -407,8 +409,8 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To view the time blocks available,
-see Backup window
+block of time for each Amazon Web Services Region. To view the time
+blocks available, see Backup window
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 in the I<Amazon Aurora User Guide.>
 
@@ -445,9 +447,9 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see Adjusting the Preferred
-Maintenance Window
+block of time for each Amazon Web Services Region, occurring on a
+random day of the week. To see the time blocks available, see Adjusting
+the Preferred Maintenance Window
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 
@@ -466,9 +468,9 @@ the Amazon Aurora DB cluster.
 
 =head2 B<REQUIRED> S3IngestionRoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that authorizes Amazon RDS to access the Amazon
-S3 bucket on your behalf.
+The Amazon Resource Name (ARN) of the Amazon Web Services Identity and
+Access Management (IAM) role that authorizes Amazon RDS to access the
+Amazon S3 bucket on your behalf.
 
 
 

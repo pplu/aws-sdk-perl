@@ -59,9 +59,10 @@ The retention period for the replicated automated backups.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for encryption of the replicated automated
-backups. The KMS key ID is the Amazon Resource Name (ARN) for the KMS
-encryption key in the destination AWS Region, for example,
+The Amazon Web Services KMS key identifier for encryption of the
+replicated automated backups. The KMS key ID is the Amazon Resource
+Name (ARN) for the KMS encryption key in the destination Amazon Web
+Services Region, for example,
 C<arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE>.
 
 
@@ -70,9 +71,10 @@ C<arn:aws:kms:us-east-1:123456789012:key/AKIAIOSFODNN7EXAMPLE>.
 
 A URL that contains a Signature Version 4 signed request for the
 StartDBInstanceAutomatedBackupsReplication action to be called in the
-AWS Region of the source DB instance. The presigned URL must be a valid
-request for the StartDBInstanceAutomatedBackupsReplication API action
-that can be executed in the AWS Region that contains the source DB
+Amazon Web Services Region of the source DB instance. The presigned URL
+must be a valid request for the
+StartDBInstanceAutomatedBackupsReplication API action that can be
+executed in the Amazon Web Services Region that contains the source DB
 instance.
 
 

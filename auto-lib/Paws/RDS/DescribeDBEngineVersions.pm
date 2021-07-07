@@ -111,15 +111,15 @@ C<oracle-ee>
 
 =item *
 
+C<oracle-ee-cdb>
+
+=item *
+
 C<oracle-se2>
 
 =item *
 
-C<oracle-se1>
-
-=item *
-
-C<oracle-se>
+C<oracle-se2-cdb>
 
 =item *
 

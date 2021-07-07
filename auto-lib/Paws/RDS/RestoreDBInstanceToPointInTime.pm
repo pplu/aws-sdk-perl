@@ -113,9 +113,9 @@ copied.
 
 The compute and memory capacity of the Amazon RDS DB instance, for
 example, C<db.m4.large>. Not all DB instance classes are available in
-all AWS Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see DB Instance
-Class
+all Amazon Web Services Regions, or for all database engines. For the
+full list of DB instance classes, and availability for your engine, see
+DB Instance Class
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
@@ -226,21 +226,21 @@ CoIP can provide lower latency for connections to the DB instance from
 outside of its virtual private cloud (VPC) on your local network.
 
 For more information about RDS on Outposts, see Working with Amazon RDS
-on AWS Outposts
+on Amazon Web Services Outposts
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 in the I<Amazon RDS User Guide>.
 
 For more information about CoIPs, see Customer-owned IP addresses
 (https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-in the I<AWS Outposts User Guide>.
+in the I<Amazon Web Services Outposts User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
 For more information about IAM database authentication, see IAM
 Database Authentication for MySQL and PostgreSQL
@@ -275,15 +275,15 @@ C<oracle-ee>
 
 =item *
 
+C<oracle-ee-cdb>
+
+=item *
+
 C<oracle-se2>
 
 =item *
 
-C<oracle-se1>
-
-=item *
-
-C<oracle-se>
+C<oracle-se2-cdb>
 
 =item *
 

@@ -89,7 +89,8 @@ The Amazon Resource Name (ARN) representing the target group.
 =head2 TargetGroupName => Str
 
 The identifier for the target group. This name must be unique for all
-target groups owned by your AWS account in the specified AWS Region.
+target groups owned by your Amazon Web Services account in the
+specified Amazon Web Services Region.
 
 
 =head2 UpdatedDate => Str

@@ -73,8 +73,8 @@ Specifies the allocated storage size in gibibytes (GiB).
 =head2 AvailabilityZone => Str
 
 The Availability Zone that the automated backup was created in. For
-information on AWS Regions and Availability Zones, see Regions and
-Availability Zones
+information on Amazon Web Services Regions and Availability Zones, see
+Regions and Availability Zones
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
 
 
@@ -95,8 +95,8 @@ The Amazon Resource Name (ARN) for the replicated automated backups.
 
 =head2 DBInstanceAutomatedBackupsReplications => ArrayRef[L<Paws::RDS::DBInstanceAutomatedBackupsReplication>]
 
-The list of replications to different AWS Regions associated with the
-automated backup.
+The list of replications to different Amazon Web Services Regions
+associated with the automated backup.
 
 
 =head2 DBInstanceIdentifier => Str
@@ -108,7 +108,7 @@ automated backup.
 =head2 DbiResourceId => Str
 
 The identifier for the source DB instance, which can't be changed and
-which is unique to an AWS Region.
+which is unique to an Amazon Web Services Region.
 
 
 =head2 Encrypted => Bool
@@ -128,8 +128,8 @@ The version of the database engine for the automated backup.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled, and otherwise false.
 
 
 =head2 InstanceCreateTime => Str
@@ -144,10 +144,11 @@ The IOPS (I/O operations per second) value for the automated backup.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key ID for an automated backup.
+The Amazon Web Services KMS key ID for an automated backup.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LicenseModel => Str
@@ -177,7 +178,7 @@ Valid Values: C<1150-65535>
 
 =head2 Region => Str
 
-The AWS Region associated with the automated backup.
+The Amazon Web Services Region associated with the automated backup.
 
 
 =head2 RestoreWindow => L<Paws::RDS::RestoreWindow>

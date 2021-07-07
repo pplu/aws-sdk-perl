@@ -57,8 +57,8 @@ The identifier of the subnet.
 If the subnet is associated with an Outpost, this value specifies the
 Outpost.
 
-For more information about RDS on Outposts, see Amazon RDS on AWS
-Outposts
+For more information about RDS on Outposts, see Amazon RDS on Amazon
+Web Services Outposts
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 in the I<Amazon RDS User Guide.>
 

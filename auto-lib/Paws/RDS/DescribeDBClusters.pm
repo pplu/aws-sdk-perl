@@ -84,7 +84,8 @@ about the DB clusters identified by these ARNs.
 =head2 IncludeShared => Bool
 
 Optional Boolean parameter that specifies whether the output includes
-information about clusters shared from other AWS accounts.
+information about clusters shared from other Amazon Web Services
+accounts.
 
 
 

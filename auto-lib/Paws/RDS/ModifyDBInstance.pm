@@ -156,7 +156,8 @@ enabled auto patching for that engine version.
 
 =head2 AwsBackupRecoveryPointArn => Str
 
-The Amazon Resource Name (ARN) of the recovery point in AWS Backup.
+The Amazon Resource Name (ARN) of the recovery point in Amazon Web
+Services Backup.
 
 
 
@@ -280,9 +281,10 @@ cluster setting. For more information, see C<ModifyDBCluster>.
 =head2 DBInstanceClass => Str
 
 The new compute and memory capacity of the DB instance, for example,
-C<db.m4.large>. Not all DB instance classes are available in all AWS
-Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see DB Instance Class
+C<db.m4.large>. Not all DB instance classes are available in all Amazon
+Web Services Regions, or for all database engines. For the full list of
+DB instance classes, and availability for your engine, see DB Instance
+Class
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
@@ -460,24 +462,25 @@ CoIP can provide lower latency for connections to the DB instance from
 outside of its virtual private cloud (VPC) on your local network.
 
 For more information about RDS on Outposts, see Working with Amazon RDS
-on AWS Outposts
+on Amazon Web Services Outposts
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 in the I<Amazon RDS User Guide>.
 
 For more information about CoIPs, see Customer-owned IP addresses
 (https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
-in the I<AWS Outposts User Guide>.
+in the I<Amazon Web Services Outposts User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
-This setting doesn't apply to Amazon Aurora. Mapping AWS IAM accounts
-to database accounts is managed by the DB cluster.
+This setting doesn't apply to Amazon Aurora. Mapping Amazon Web
+Services IAM accounts to database accounts is managed by the DB
+cluster.
 
 For more information about IAM database authentication, see IAM
 Database Authentication for MySQL and PostgreSQL
@@ -705,15 +708,17 @@ be removed from a DB instance once it is associated with a DB instance
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-The AWS KMS key identifier for encryption of Performance Insights data.
+The Amazon Web Services KMS key identifier for encryption of
+Performance Insights data.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
-Amazon RDS uses your default CMK. There is a default CMK for your AWS
-account. Your AWS account has a different default CMK for each AWS
-Region.
+Amazon RDS uses your default CMK. There is a default CMK for your
+Amazon Web Services account. Your Amazon Web Services account has a
+different default CMK for each Amazon Web Services Region.
 
 
 
@@ -731,8 +736,8 @@ automated backups are enabled, as determined by the
 C<BackupRetentionPeriod> parameter. Changing this parameter doesn't
 result in an outage and the change is asynchronously applied as soon as
 possible. The default is a 30-minute window selected at random from an
-8-hour block of time for each AWS Region. For more information, see
-Backup window
+8-hour block of time for each Amazon Web Services Region. For more
+information, see Backup window
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
 in the I<Amazon RDS User Guide.>
 

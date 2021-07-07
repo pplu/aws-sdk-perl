@@ -57,8 +57,8 @@ to log in as a specific database user.
 
 =head2 IAMAuth => Str
 
-Whether to require or disallow AWS Identity and Access Management (IAM)
-authentication for connections to the proxy.
+Whether to require or disallow Amazon Web Services Identity and Access
+Management (IAM) authentication for connections to the proxy.
 
 
 =head2 SecretArn => Str

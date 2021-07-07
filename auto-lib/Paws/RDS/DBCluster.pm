@@ -104,11 +104,12 @@ activity stream.
 
 =head2 ActivityStreamKmsKeyId => Str
 
-The AWS KMS key identifier used for encrypting messages in the database
-activity stream.
+The Amazon Web Services KMS key identifier used for encrypting messages
+in the database activity stream.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 ActivityStreamMode => Str
@@ -133,10 +134,10 @@ size isn't fixed, but instead automatically adjusts as needed.
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
 
-Provides a list of the AWS Identity and Access Management (IAM) roles
-that are associated with the DB cluster. IAM roles that are associated
-with a DB cluster grant permission for the DB cluster to access other
-AWS services on your behalf.
+Provides a list of the Amazon Web Services Identity and Access
+Management (IAM) roles that are associated with the DB cluster. IAM
+roles that are associated with a DB cluster grant permission for the DB
+cluster to access other Amazon Web Services on your behalf.
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
@@ -200,7 +201,7 @@ the DB cluster.
 =head2 CrossAccountClone => Bool
 
 Specifies whether the DB cluster is a clone of a DB cluster owned by a
-different AWS account.
+different Amazon Web Services account.
 
 
 =head2 CustomEndpoints => ArrayRef[Str|Undef]
@@ -244,9 +245,10 @@ cluster.
 
 =head2 DbClusterResourceId => Str
 
-The AWS Region-unique, immutable identifier for the DB cluster. This
-identifier is found in AWS CloudTrail log entries whenever the AWS KMS
-CMK for the DB cluster is accessed.
+The Amazon Web Services Region-unique, immutable identifier for the DB
+cluster. This identifier is found in Amazon Web Services CloudTrail log
+entries whenever the Amazon Web Services KMS CMK for the DB cluster is
+accessed.
 
 
 =head2 DBSubnetGroup => Str
@@ -354,17 +356,19 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-A value that indicates whether the mapping of AWS Identity and Access
-Management (IAM) accounts to database accounts is enabled.
+A value that indicates whether the mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts is
+enabled.
 
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is enabled, the AWS KMS key identifier for the
-encrypted DB cluster.
+If C<StorageEncrypted> is enabled, the Amazon Web Services KMS key
+identifier for the encrypted DB cluster.
 
-The AWS KMS key identifier is the key ARN, key ID, alias ARN, or alias
-name for the AWS KMS customer master key (CMK).
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LatestRestorableTime => Str

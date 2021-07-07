@@ -18,7 +18,8 @@ Paws::RDS::CustomAvailabilityZoneMessage
 
 =head2 CustomAvailabilityZones => ArrayRef[L<Paws::RDS::CustomAvailabilityZone>]
 
-The list of CustomAvailabilityZone objects for the AWS account.
+The list of CustomAvailabilityZone objects for the Amazon Web Services
+account.
 
 
 =head2 Marker => Str

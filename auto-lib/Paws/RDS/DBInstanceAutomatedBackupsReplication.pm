@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
 =head1 DESCRIPTION
 
-Automated backups of a DB instance replicated to another AWS Region.
-They consist of system backups, transaction logs, and database instance
-properties.
+Automated backups of a DB instance replicated to another Amazon Web
+Services Region. They consist of system backups, transaction logs, and
+database instance properties.
 
 =head1 ATTRIBUTES
 

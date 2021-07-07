@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::VpnDet
 =head1 DESCRIPTION
 
 Information about the virtual private network (VPN) between the VMware
-vSphere cluster and the AWS website.
+vSphere cluster and the Amazon Web Services website.
 
 For more information about RDS on VMware, see the RDS on VMware User
 Guide.
@@ -50,8 +50,8 @@ Guide.
 
 =head2 VpnGatewayIp => Str
 
-The IP address of network traffic from AWS to your on-premises data
-center.
+The IP address of network traffic from Amazon Web Services to your
+on-premises data center.
 
 
 =head2 VpnId => Str

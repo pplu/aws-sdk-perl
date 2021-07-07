@@ -66,7 +66,7 @@ The status of the custom AZ.
 =head2 VpnDetails => L<Paws::RDS::VpnDetails>
 
 Information about the virtual private network (VPN) between the VMware
-vSphere cluster and the AWS website.
+vSphere cluster and the Amazon Web Services website.
 
 
 

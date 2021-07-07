@@ -18,6 +18,7 @@ package Paws::RDS::OrderableDBInstanceOption;
   has OutpostCapable => (is => 'ro', isa => 'Bool');
   has ReadReplicaCapable => (is => 'ro', isa => 'Bool');
   has StorageType => (is => 'ro', isa => 'Str');
+  has SupportedActivityStreamModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportedEngineModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SupportsEnhancedMonitoring => (is => 'ro', isa => 'Bool');
   has SupportsGlobalDatabases => (is => 'ro', isa => 'Bool');
@@ -142,8 +143,8 @@ Indicates whether a DB instance is Multi-AZ capable.
 
 Whether a DB instance supports RDS on Outposts.
 
-For more information about RDS on Outposts, see Amazon RDS on AWS
-Outposts
+For more information about RDS on Outposts, see Amazon RDS on Amazon
+Web Services Outposts
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 in the I<Amazon RDS User Guide.>
 
@@ -156,6 +157,14 @@ Indicates whether a DB instance can have a read replica.
 =head2 StorageType => Str
 
 Indicates the storage type for a DB instance.
+
+
+=head2 SupportedActivityStreamModes => ArrayRef[Str|Undef]
+
+The list of supported modes for Database Activity Streams. Aurora
+PostgreSQL returns the value C<[sync, async]>. Aurora MySQL and RDS for
+Oracle return C<[async]> only. If Database Activity Streams isn't
+supported, the return value is an empty list.
 
 
 =head2 SupportedEngineModes => ArrayRef[Str|Undef]

@@ -56,8 +56,8 @@ The database engine version.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-A value that indicates whether mapping of AWS Identity and Access
-Management (IAM) accounts to database accounts is enabled.
+A value that indicates whether mapping of Amazon Web Services Identity
+and Access Management (IAM) accounts to database accounts is enabled.
 
 
 =head2 MasterUserPassword => Str

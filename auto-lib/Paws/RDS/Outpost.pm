@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Outpos
 
 A data type that represents an Outpost.
 
-For more information about RDS on Outposts, see Amazon RDS on AWS
-Outposts
+For more information about RDS on Outposts, see Amazon RDS on Amazon
+Web Services Outposts
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
 in the I<Amazon RDS User Guide.>
 

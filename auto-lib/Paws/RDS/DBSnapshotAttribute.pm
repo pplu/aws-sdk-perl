@@ -36,9 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBSnap
 
 Contains the name and values of a manual DB snapshot attribute
 
-Manual DB snapshot attributes are used to authorize other AWS accounts
-to restore a manual DB snapshot. For more information, see the
-C<ModifyDBSnapshotAttribute> API.
+Manual DB snapshot attributes are used to authorize other Amazon Web
+Services accounts to restore a manual DB snapshot. For more
+information, see the C<ModifyDBSnapshotAttribute> API.
 
 =head1 ATTRIBUTES
 
@@ -47,9 +47,10 @@ C<ModifyDBSnapshotAttribute> API.
 
 The name of the manual DB snapshot attribute.
 
-The attribute named C<restore> refers to the list of AWS accounts that
-have permission to copy or restore the manual DB cluster snapshot. For
-more information, see the C<ModifyDBSnapshotAttribute> API action.
+The attribute named C<restore> refers to the list of Amazon Web
+Services accounts that have permission to copy or restore the manual DB
+cluster snapshot. For more information, see the
+C<ModifyDBSnapshotAttribute> API action.
 
 
 =head2 AttributeValues => ArrayRef[Str|Undef]
@@ -57,10 +58,10 @@ more information, see the C<ModifyDBSnapshotAttribute> API action.
 The value or values for the manual DB snapshot attribute.
 
 If the C<AttributeName> field is set to C<restore>, then this element
-returns a list of IDs of the AWS accounts that are authorized to copy
-or restore the manual DB snapshot. If a value of C<all> is in the list,
-then the manual DB snapshot is public and available for any AWS account
-to copy or restore.
+returns a list of IDs of the Amazon Web Services accounts that are
+authorized to copy or restore the manual DB snapshot. If a value of
+C<all> is in the list, then the manual DB snapshot is public and
+available for any Amazon Web Services account to copy or restore.
 
 
 

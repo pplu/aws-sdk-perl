@@ -74,7 +74,8 @@ The Amazon Resource Name (ARN) for the proxy.
 =head2 DBProxyName => Str
 
 The identifier for the proxy. This name must be unique for all proxies
-owned by your AWS account in the specified AWS Region.
+owned by your Amazon Web Services account in the specified Amazon Web
+Services Region.
 
 
 =head2 DebugLogging => Bool

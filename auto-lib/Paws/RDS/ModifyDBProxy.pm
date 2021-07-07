@@ -117,7 +117,7 @@ doesn't use TLS.
 =head2 RoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role that the proxy uses to
-access secrets in AWS Secrets Manager.
+access secrets in Amazon Web Services Secrets Manager.
 
 
 

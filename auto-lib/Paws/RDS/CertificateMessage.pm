@@ -18,7 +18,7 @@ Paws::RDS::CertificateMessage
 
 =head2 Certificates => ArrayRef[L<Paws::RDS::Certificate>]
 
-The list of C<Certificate> objects for the AWS account.
+The list of C<Certificate> objects for the Amazon Web Services account.
 
 
 =head2 Marker => Str

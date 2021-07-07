@@ -57,7 +57,7 @@ C<arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE>.
 =head2 DbiResourceId => Str
 
 The identifier for the source DB instance, which can't be changed and
-which is unique to an AWS Region.
+which is unique to an Amazon Web Services Region.
 
 
 

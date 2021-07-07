@@ -61,6 +61,20 @@ The name of the DB cluster parameter group to modify.
 
 A list of parameters in the DB cluster parameter group to modify.
 
+Valid Values (for the application method): C<immediate |
+pending-reboot>
+
+You can use the C<immediate> value with dynamic parameters only. You
+can use the C<pending-reboot> value for both dynamic and static
+parameters.
+
+When the application method is C<immediate>, changes to dynamic
+parameters are applied immediately to the DB clusters associated with
+the parameter group. When the application method is C<pending-reboot>,
+changes to dynamic and static parameters are applied after a reboot
+without failover to the DB clusters associated with the parameter
+group.
+
 
 
 
