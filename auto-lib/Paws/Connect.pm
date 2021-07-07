@@ -19,6 +19,11 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::AssociateApprovedOrigin', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateBot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::AssociateBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateInstanceStorageConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::AssociateInstanceStorageConfig', @_);
@@ -184,6 +189,11 @@ package Paws::Connect;
     my $call_object = $self->new_with_coercions('Paws::Connect::DisassociateApprovedOrigin', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateBot {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::DisassociateBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateInstanceStorageConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::DisassociateInstanceStorageConfig', @_);
@@ -237,6 +247,11 @@ package Paws::Connect;
   sub ListApprovedOrigins {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Connect::ListApprovedOrigins', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBots {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Connect::ListBots', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListContactFlows {
@@ -552,6 +567,29 @@ package Paws::Connect;
         $result = $self->ListApprovedOrigins(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Origins') foreach (@{ $result->Origins });
+    }
+
+    return undef
+  }
+  sub ListAllBots {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBots(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListBots(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LexBots }, @{ $next_result->LexBots };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LexBots') foreach (@{ $result->LexBots });
+        $result = $self->ListBots(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LexBots') foreach (@{ $result->LexBots });
     }
 
     return undef
@@ -1018,7 +1056,7 @@ package Paws::Connect;
   }
 
 
-  sub operations { qw/AssociateApprovedOrigin AssociateInstanceStorageConfig AssociateLambdaFunction AssociateLexBot AssociateQueueQuickConnects AssociateRoutingProfileQueues AssociateSecurityKey CreateContactFlow CreateInstance CreateIntegrationAssociation CreateQueue CreateQuickConnect CreateRoutingProfile CreateUseCase CreateUser CreateUserHierarchyGroup DeleteInstance DeleteIntegrationAssociation DeleteQuickConnect DeleteUseCase DeleteUser DeleteUserHierarchyGroup DescribeContactFlow DescribeHoursOfOperation DescribeInstance DescribeInstanceAttribute DescribeInstanceStorageConfig DescribeQueue DescribeQuickConnect DescribeRoutingProfile DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure DisassociateApprovedOrigin DisassociateInstanceStorageConfig DisassociateLambdaFunction DisassociateLexBot DisassociateQueueQuickConnects DisassociateRoutingProfileQueues DisassociateSecurityKey GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListApprovedOrigins ListContactFlows ListHoursOfOperations ListInstanceAttributes ListInstances ListInstanceStorageConfigs ListIntegrationAssociations ListLambdaFunctions ListLexBots ListPhoneNumbers ListPrompts ListQueueQuickConnects ListQueues ListQuickConnects ListRoutingProfileQueues ListRoutingProfiles ListSecurityKeys ListSecurityProfiles ListTagsForResource ListUseCases ListUserHierarchyGroups ListUsers ResumeContactRecording StartChatContact StartContactRecording StartOutboundVoiceContact StartTaskContact StopContact StopContactRecording SuspendContactRecording TagResource UntagResource UpdateContactAttributes UpdateContactFlowContent UpdateContactFlowName UpdateInstanceAttribute UpdateInstanceStorageConfig UpdateQueueHoursOfOperation UpdateQueueMaxContacts UpdateQueueName UpdateQueueOutboundCallerConfig UpdateQueueStatus UpdateQuickConnectConfig UpdateQuickConnectName UpdateRoutingProfileConcurrency UpdateRoutingProfileDefaultOutboundQueue UpdateRoutingProfileName UpdateRoutingProfileQueues UpdateUserHierarchy UpdateUserHierarchyGroupName UpdateUserHierarchyStructure UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
+  sub operations { qw/AssociateApprovedOrigin AssociateBot AssociateInstanceStorageConfig AssociateLambdaFunction AssociateLexBot AssociateQueueQuickConnects AssociateRoutingProfileQueues AssociateSecurityKey CreateContactFlow CreateInstance CreateIntegrationAssociation CreateQueue CreateQuickConnect CreateRoutingProfile CreateUseCase CreateUser CreateUserHierarchyGroup DeleteInstance DeleteIntegrationAssociation DeleteQuickConnect DeleteUseCase DeleteUser DeleteUserHierarchyGroup DescribeContactFlow DescribeHoursOfOperation DescribeInstance DescribeInstanceAttribute DescribeInstanceStorageConfig DescribeQueue DescribeQuickConnect DescribeRoutingProfile DescribeUser DescribeUserHierarchyGroup DescribeUserHierarchyStructure DisassociateApprovedOrigin DisassociateBot DisassociateInstanceStorageConfig DisassociateLambdaFunction DisassociateLexBot DisassociateQueueQuickConnects DisassociateRoutingProfileQueues DisassociateSecurityKey GetContactAttributes GetCurrentMetricData GetFederationToken GetMetricData ListApprovedOrigins ListBots ListContactFlows ListHoursOfOperations ListInstanceAttributes ListInstances ListInstanceStorageConfigs ListIntegrationAssociations ListLambdaFunctions ListLexBots ListPhoneNumbers ListPrompts ListQueueQuickConnects ListQueues ListQuickConnects ListRoutingProfileQueues ListRoutingProfiles ListSecurityKeys ListSecurityProfiles ListTagsForResource ListUseCases ListUserHierarchyGroups ListUsers ResumeContactRecording StartChatContact StartContactRecording StartOutboundVoiceContact StartTaskContact StopContact StopContactRecording SuspendContactRecording TagResource UntagResource UpdateContactAttributes UpdateContactFlowContent UpdateContactFlowName UpdateInstanceAttribute UpdateInstanceStorageConfig UpdateQueueHoursOfOperation UpdateQueueMaxContacts UpdateQueueName UpdateQueueOutboundCallerConfig UpdateQueueStatus UpdateQuickConnectConfig UpdateQuickConnectName UpdateRoutingProfileConcurrency UpdateRoutingProfileDefaultOutboundQueue UpdateRoutingProfileName UpdateRoutingProfileQueues UpdateUserHierarchy UpdateUserHierarchyGroupName UpdateUserHierarchyStructure UpdateUserIdentityInfo UpdateUserPhoneConfig UpdateUserRoutingProfile UpdateUserSecurityProfiles / }
 
 1;
 
@@ -1093,6 +1131,30 @@ This API is in preview release for Amazon Connect and is subject to
 change.
 
 Associates an approved origin to an Amazon Connect instance.
+
+
+=head2 AssociateBot
+
+=over
+
+=item InstanceId => Str
+
+=item [LexBot => L<Paws::Connect::LexBot>]
+
+=item [LexV2Bot => L<Paws::Connect::LexV2Bot>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::AssociateBot>
+
+Returns: nothing
+
+This API is in preview release for Amazon Connect and is subject to
+change.
+
+Allows the specified Amazon Connect instance to access the specified
+Amazon Lex or Amazon Lex V2 bot.
 
 
 =head2 AssociateInstanceStorageConfig
@@ -1384,9 +1446,6 @@ Each argument is described in detail in: L<Paws::Connect::CreateQuickConnect>
 
 Returns: a L<Paws::Connect::CreateQuickConnectResponse> instance
 
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Creates a quick connect for the specified Amazon Connect instance.
 
 
@@ -1557,9 +1616,6 @@ The association must not have any use cases associated with it.
 Each argument is described in detail in: L<Paws::Connect::DeleteQuickConnect>
 
 Returns: nothing
-
-This API is in preview release for Amazon Connect and is subject to
-change.
 
 Deletes a quick connect.
 
@@ -1776,9 +1832,6 @@ Each argument is described in detail in: L<Paws::Connect::DescribeQuickConnect>
 
 Returns: a L<Paws::Connect::DescribeQuickConnectResponse> instance
 
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Describes the quick connect.
 
 
@@ -1875,6 +1928,30 @@ This API is in preview release for Amazon Connect and is subject to
 change.
 
 Revokes access to integrated applications from Amazon Connect.
+
+
+=head2 DisassociateBot
+
+=over
+
+=item InstanceId => Str
+
+=item [LexBot => L<Paws::Connect::LexBot>]
+
+=item [LexV2Bot => L<Paws::Connect::LexV2Bot>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::DisassociateBot>
+
+Returns: nothing
+
+This API is in preview release for Amazon Connect and is subject to
+change.
+
+Revokes authorization from the specified instance to access the
+specified Amazon Lex or Amazon Lex V2 bot.
 
 
 =head2 DisassociateInstanceStorageConfig
@@ -2140,6 +2217,32 @@ change.
 
 Returns a paginated list of all approved origins associated with the
 instance.
+
+
+=head2 ListBots
+
+=over
+
+=item InstanceId => Str
+
+=item LexVersion => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Connect::ListBots>
+
+Returns: a L<Paws::Connect::ListBotsResponse> instance
+
+This API is in preview release for Amazon Connect and is subject to
+change.
+
+For the specified version of Amazon Lex, returns a paginated list of
+all the Amazon Lex bots currently associated with the instance.
 
 
 =head2 ListContactFlows
@@ -2467,9 +2570,6 @@ in the I<Amazon Connect Administrator Guide>.
 Each argument is described in detail in: L<Paws::Connect::ListQuickConnects>
 
 Returns: a L<Paws::Connect::ListQuickConnectsResponse> instance
-
-This API is in preview release for Amazon Connect and is subject to
-change.
 
 Provides information about the quick connects for the specified Amazon
 Connect instance.
@@ -3253,9 +3353,6 @@ Each argument is described in detail in: L<Paws::Connect::UpdateQuickConnectConf
 
 Returns: nothing
 
-This API is in preview release for Amazon Connect and is subject to
-change.
-
 Updates the configuration settings for the specified quick connect.
 
 
@@ -3277,9 +3374,6 @@ Updates the configuration settings for the specified quick connect.
 Each argument is described in detail in: L<Paws::Connect::UpdateQuickConnectName>
 
 Returns: nothing
-
-This API is in preview release for Amazon Connect and is subject to
-change.
 
 Updates the name and description of a quick connect. The request
 accepts the following data in JSON format. At least C<Name> or
@@ -3549,6 +3643,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Origins, passing the object as the first parameter, and the string 'Origins' as the second parameter 
 
 If not, it will return a a L<Paws::Connect::ListApprovedOriginsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBots(sub { },InstanceId => Str, LexVersion => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllBots(InstanceId => Str, LexVersion => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LexBots, passing the object as the first parameter, and the string 'LexBots' as the second parameter 
+
+If not, it will return a a L<Paws::Connect::ListBotsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllContactFlows(sub { },InstanceId => Str, [ContactFlowTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])

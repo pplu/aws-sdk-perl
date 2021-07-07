@@ -75,7 +75,6 @@ underscore characters.
 A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. The token is valid for 7 days after
 creation. If a contact is already started, the contact ID is returned.
-If the contact is disconnected, a new contact is started.
 
 
 
@@ -100,7 +99,8 @@ The phone number of the customer, in E.164 format.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 

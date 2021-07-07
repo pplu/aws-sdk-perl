@@ -51,7 +51,7 @@ The number of contacts an agent can have on a channel simultaneously.
 
 Valid Range for C<VOICE>: Minimum value of 1. Maximum value of 1.
 
-Valid Range for C<CHAT>: Minimum value of 1. Maximum value of 5.
+Valid Range for C<CHAT>: Minimum value of 1. Maximum value of 10.
 
 Valid Range for C<TASK>: Minimum value of 1. Maximum value of 10.
 

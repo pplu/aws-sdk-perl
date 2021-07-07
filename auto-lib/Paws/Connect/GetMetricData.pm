@@ -123,6 +123,9 @@ description of each metric, see Historical Metrics Definitions
 (https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html)
 in the I<Amazon Connect Administrator Guide>.
 
+This API does not support a contacts incoming metric (there's no
+CONTACTS_INCOMING metric missing from the documented list).
+
 =over
 
 =item ABANDON_TIME
@@ -288,7 +291,8 @@ Threshold: For C<ThresholdValue>, enter any whole number from 1 to
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 

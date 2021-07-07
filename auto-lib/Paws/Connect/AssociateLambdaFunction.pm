@@ -50,7 +50,8 @@ associated. Maximum number of characters allowed is 140.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 

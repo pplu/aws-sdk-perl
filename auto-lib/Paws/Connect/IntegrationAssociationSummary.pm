@@ -47,7 +47,8 @@ Contains summary information about the associated AppIntegrations.
 
 =head2 InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 =head2 IntegrationArn => Str

@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $connect->UpdateQuickConnectName(
       InstanceId     => 'MyInstanceId',
       QuickConnectId => 'MyQuickConnectId',
-      Description    => 'MyQuickConnectDescription',    # OPTIONAL
-      Name           => 'MyQuickConnectName',           # OPTIONAL
+      Description    => 'MyUpdateQuickConnectDescription',    # OPTIONAL
+      Name           => 'MyQuickConnectName',                 # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -52,7 +52,8 @@ The description of the quick connect.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 
