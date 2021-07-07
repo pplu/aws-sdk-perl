@@ -68,8 +68,8 @@ for 29.97 fps.
 =head2 SourceFile => Str
 
 External caption file used for loading captions. Accepted file
-extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', 'xml', 'smi', and
-'vtt'.
+extensions are 'scc', 'ttml', 'dfxp', 'stl', 'srt', 'xml', 'smi',
+'webvtt', and 'vtt'.
 
 
 =head2 TimeDelta => Int

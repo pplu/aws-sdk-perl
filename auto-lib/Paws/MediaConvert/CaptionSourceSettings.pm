@@ -8,6 +8,7 @@ package Paws::MediaConvert::CaptionSourceSettings;
   has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
   has TeletextSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TeletextSourceSettings', request_name => 'teletextSourceSettings', traits => ['NameInRequest']);
   has TrackSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::TrackSourceSettings', request_name => 'trackSourceSettings', traits => ['NameInRequest']);
+  has WebvttHlsSourceSettings => (is => 'ro', isa => 'Paws::MediaConvert::WebvttHlsSourceSettings', request_name => 'webvttHlsSourceSettings', traits => ['NameInRequest']);
 
 1;
 
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::CaptionSourceSettings object:
 
-  $service_obj->Method(Att1 => { AncillarySourceSettings => $value, ..., TrackSourceSettings => $value  });
+  $service_obj->Method(Att1 => { AncillarySourceSettings => $value, ..., WebvttHlsSourceSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -87,6 +88,19 @@ Settings specific to caption sources that are specified by track
 number. Currently, this is only IMSC captions in an IMF package. If
 your caption source is IMSC 1.1 in a separate xml file, use
 FileSourceSettings instead of TrackSourceSettings.
+
+
+=head2 WebvttHlsSourceSettings => L<Paws::MediaConvert::WebvttHlsSourceSettings>
+
+Settings specific to WebVTT sources in HLS alternative rendition group.
+Specify the properties (renditionGroupId, renditionName or
+renditionLanguageCode) to identify the unique subtitle track among the
+alternative rendition groups present in the HLS manifest. If no unique
+track is found, or multiple tracks match the specified properties, the
+job fails. If there is only one subtitle track in the rendition group,
+the settings can be left empty and the default subtitle track will be
+chosen. If your caption source is a sidecar file, use
+FileSourceSettings instead of WebvttHlsSourceSettings.
 
 
 

@@ -97,17 +97,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Codec => 'AAC'
               , # values: AAC, MP2, MP3, WAV, AIFF, AC3, EAC3, EAC3_ATMOS, VORBIS, OPUS, PASSTHROUGH; OPTIONAL
               Eac3AtmosSettings => {
-                Bitrate       => 1,    # min: 384000, max: 768000; OPTIONAL
+                Bitrate       => 1,    # min: 384000, max: 1024000; OPTIONAL
                 BitstreamMode =>
                   'COMPLETE_MAIN',     # values: COMPLETE_MAIN; OPTIONAL
-                CodingMode =>
-                  'CODING_MODE_9_1_6',    # values: CODING_MODE_9_1_6; OPTIONAL
+                CodingMode => 'CODING_MODE_AUTO'
+                , # values: CODING_MODE_AUTO, CODING_MODE_5_1_4, CODING_MODE_7_1_4, CODING_MODE_9_1_6; OPTIONAL
                 DialogueIntelligence =>
-                  'ENABLED',              # values: ENABLED, DISABLED; OPTIONAL
+                  'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
+                DownmixControl => 'SPECIFIED'
+                ,    # values: SPECIFIED, INITIALIZE_FROM_SOURCE; OPTIONAL
                 DynamicRangeCompressionLine => 'NONE'
                 , # values: NONE, FILM_STANDARD, FILM_LIGHT, MUSIC_STANDARD, MUSIC_LIGHT, SPEECH; OPTIONAL
                 DynamicRangeCompressionRf => 'NONE'
                 , # values: NONE, FILM_STANDARD, FILM_LIGHT, MUSIC_STANDARD, MUSIC_LIGHT, SPEECH; OPTIONAL
+                DynamicRangeControl => 'SPECIFIED'
+                ,    # values: SPECIFIED, INITIALIZE_FROM_SOURCE; OPTIONAL
                 LoRoCenterMixLevel   => 1,        # OPTIONAL
                 LoRoSurroundMixLevel => 1,        # OPTIONAL
                 LtRtCenterMixLevel   => 1,        # OPTIONAL
@@ -115,7 +119,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MeteringMode         => 'LEQ_A'
                 , # values: LEQ_A, ITU_BS_1770_1, ITU_BS_1770_2, ITU_BS_1770_3, ITU_BS_1770_4; OPTIONAL
                 SampleRate      => 1,    # min: 48000, max: 48000; OPTIONAL
-                SpeechThreshold => 1,    # min: 1, max: 100; OPTIONAL
+                SpeechThreshold => 1,    # max: 100; OPTIONAL
                 StereoDownmix   => 'NOT_INDICATED'
                 ,    # values: NOT_INDICATED, STEREO, SURROUND, DPL2; OPTIONAL
                 SurroundExMode => 'NOT_INDICATED'
@@ -452,7 +456,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MxfSettings => {
             AfdSignaling =>
               'NO_COPY',    # values: NO_COPY, COPY_FROM_VIDEO; OPTIONAL
-            Profile => 'D_10',    # values: D_10, XDCAM, OP1A; OPTIONAL
+            Profile => 'D_10',    # values: D_10, XDCAM, OP1A, XAVC; OPTIONAL
+            XavcProfileSettings => {
+              DurationMode => 'ALLOW_ANY_DURATION'
+              , # values: ALLOW_ANY_DURATION, DROP_FRAMES_FOR_COMPLIANCE; OPTIONAL
+              MaxAncDataSize => 1,    # max: 2147483647; OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         VideoDescription => {
@@ -501,7 +510,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Telecine => 'NONE',        # values: NONE, HARD; OPTIONAL
             },    # OPTIONAL
             Codec => 'AV1'
-            , # values: AV1, AVC_INTRA, FRAME_CAPTURE, H_264, H_265, MPEG2, PRORES, VC3, VP8, VP9; OPTIONAL
+            , # values: AV1, AVC_INTRA, FRAME_CAPTURE, H_264, H_265, MPEG2, PRORES, VC3, VP8, VP9, XAVC; OPTIONAL
             FrameCaptureSettings => {
               FramerateDenominator => 1,    # min: 1, max: 2147483647; OPTIONAL
               FramerateNumerator   => 1,    # min: 1, max: 2147483647; OPTIONAL
@@ -677,8 +686,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
             },    # OPTIONAL
             ProresSettings => {
+              ChromaSampling => 'PRESERVE_444_SAMPLING'
+              ,    # values: PRESERVE_444_SAMPLING, SUBSAMPLE_TO_422; OPTIONAL
               CodecProfile => 'APPLE_PRORES_422'
-              , # values: APPLE_PRORES_422, APPLE_PRORES_422_HQ, APPLE_PRORES_422_LT, APPLE_PRORES_422_PROXY; OPTIONAL
+              , # values: APPLE_PRORES_422, APPLE_PRORES_422_HQ, APPLE_PRORES_422_LT, APPLE_PRORES_422_PROXY, APPLE_PRORES_4444, APPLE_PRORES_4444_XQ; OPTIONAL
               FramerateControl => 'INITIALIZE_FROM_SOURCE'
               ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
               FramerateConversionAlgorithm => 'DUPLICATE_DROP'
@@ -750,6 +761,67 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MULTI_PASS',    # values: MULTI_PASS, MULTI_PASS_HQ; OPTIONAL
               RateControlMode => 'VBR',    # values: VBR; OPTIONAL
             },    # OPTIONAL
+            XavcSettings => {
+              AdaptiveQuantization => 'OFF'
+              ,    # values: OFF, AUTO, LOW, MEDIUM, HIGH, HIGHER, MAX; OPTIONAL
+              EntropyEncoding  => 'AUTO', # values: AUTO, CABAC, CAVLC; OPTIONAL
+              FramerateControl => 'INITIALIZE_FROM_SOURCE'
+              ,    # values: INITIALIZE_FROM_SOURCE, SPECIFIED; OPTIONAL
+              FramerateConversionAlgorithm => 'DUPLICATE_DROP'
+              ,    # values: DUPLICATE_DROP, INTERPOLATE, FRAMEFORMER; OPTIONAL
+              FramerateDenominator => 1,    # min: 1, max: 1001; OPTIONAL
+              FramerateNumerator   => 1,    # min: 24, max: 60000; OPTIONAL
+              Profile              => 'XAVC_HD_INTRA_CBG'
+              , # values: XAVC_HD_INTRA_CBG, XAVC_4K_INTRA_CBG, XAVC_4K_INTRA_VBR, XAVC_HD, XAVC_4K; OPTIONAL
+              SlowPal  => 'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+              Softness => 1,             # max: 128; OPTIONAL
+              SpatialAdaptiveQuantization =>
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
+              TemporalAdaptiveQuantization =>
+                'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
+              Xavc4kIntraCbgProfileSettings => {
+                XavcClass => 'CLASS_100'
+                ,    # values: CLASS_100, CLASS_300, CLASS_480; OPTIONAL
+              },    # OPTIONAL
+              Xavc4kIntraVbrProfileSettings => {
+                XavcClass => 'CLASS_100'
+                ,    # values: CLASS_100, CLASS_300, CLASS_480; OPTIONAL
+              },    # OPTIONAL
+              Xavc4kProfileSettings => {
+                BitrateClass => 'BITRATE_CLASS_100'
+                , # values: BITRATE_CLASS_100, BITRATE_CLASS_140, BITRATE_CLASS_200; OPTIONAL
+                CodecProfile => 'HIGH',    # values: HIGH, HIGH_422; OPTIONAL
+                FlickerAdaptiveQuantization =>
+                  'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
+                GopBReference =>
+                  'DISABLED',              # values: DISABLED, ENABLED; OPTIONAL
+                GopClosedCadence   => 1,             # max: 2147483647; OPTIONAL
+                HrdBufferSize      => 1,             # max: 1152000000; OPTIONAL
+                QualityTuningLevel => 'SINGLE_PASS'
+                , # values: SINGLE_PASS, SINGLE_PASS_HQ, MULTI_PASS_HQ; OPTIONAL
+                Slices => 1,    # min: 8, max: 12; OPTIONAL
+              },    # OPTIONAL
+              XavcHdIntraCbgProfileSettings => {
+                XavcClass =>
+                  'CLASS_50', # values: CLASS_50, CLASS_100, CLASS_200; OPTIONAL
+              },    # OPTIONAL
+              XavcHdProfileSettings => {
+                BitrateClass => 'BITRATE_CLASS_25'
+                , # values: BITRATE_CLASS_25, BITRATE_CLASS_35, BITRATE_CLASS_50; OPTIONAL
+                FlickerAdaptiveQuantization =>
+                  'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+                GopBReference =>
+                  'DISABLED',    # values: DISABLED, ENABLED; OPTIONAL
+                GopClosedCadence => 1,              # max: 2147483647; OPTIONAL
+                HrdBufferSize    => 1,              # max: 1152000000; OPTIONAL
+                InterlaceMode    => 'PROGRESSIVE'
+                , # values: PROGRESSIVE, TOP_FIELD, BOTTOM_FIELD, FOLLOW_TOP_FIELD, FOLLOW_BOTTOM_FIELD; OPTIONAL
+                QualityTuningLevel => 'SINGLE_PASS'
+                , # values: SINGLE_PASS, SINGLE_PASS_HQ, MULTI_PASS_HQ; OPTIONAL
+                Slices   => 1,         # min: 4, max: 12; OPTIONAL
+                Telecine => 'NONE',    # values: NONE, HARD; OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
           },    # OPTIONAL
           ColorMetadata => 'IGNORE',    # values: IGNORE, INSERT; OPTIONAL
           Crop          => {
@@ -793,8 +865,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 WhitePointX               => 1,    # max: 50000; OPTIONAL
                 WhitePointY               => 1,    # max: 50000; OPTIONAL
               },    # OPTIONAL
-              Hue        => 1,    # min: -180, max: 180; OPTIONAL
-              Saturation => 1,    # min: 1, max: 100; OPTIONAL
+              Hue                   => 1,    # min: -180, max: 180; OPTIONAL
+              SampleRangeConversion => 'LIMITED_RANGE_SQUEEZE'
+              ,                  # values: LIMITED_RANGE_SQUEEZE, NONE; OPTIONAL
+              Saturation => 1,   # min: 1, max: 100; OPTIONAL
             },    # OPTIONAL
             Deinterlacer => {
               Algorithm => 'INTERPOLATE'
@@ -812,6 +886,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               L6Mode => 'PASSTHROUGH'
               ,     # values: PASSTHROUGH, RECALCULATE, SPECIFY; OPTIONAL
               Profile => 'PROFILE_5',    # values: PROFILE_5; OPTIONAL
+            },    # OPTIONAL
+            Hdr10Plus => {
+              MasteringMonitorNits => 1,    # max: 4000; OPTIONAL
+              TargetMonitorNits    => 1,    # max: 4000; OPTIONAL
             },    # OPTIONAL
             ImageInserter => {
               InsertableImages => [

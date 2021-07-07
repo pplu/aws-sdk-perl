@@ -3,6 +3,7 @@ package Paws::MediaConvert::MxfSettings;
   use Moose;
   has AfdSignaling => (is => 'ro', isa => 'Str', request_name => 'afdSignaling', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
+  has XavcProfileSettings => (is => 'ro', isa => 'Paws::MediaConvert::MxfXavcProfileSettings', request_name => 'xavcProfileSettings', traits => ['NameInRequest']);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::MxfSettings object:
 
-  $service_obj->Method(Att1 => { AfdSignaling => $value, ..., Profile => $value  });
+  $service_obj->Method(Att1 => { AfdSignaling => $value, ..., XavcProfileSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,6 +62,12 @@ see
 https://docs.aws.amazon.com/mediaconvert/latest/ug/codecs-supported-with-each-mxf-profile.html.
 For more information about the automatic selection behavior, see
 https://docs.aws.amazon.com/mediaconvert/latest/ug/default-automatic-selection-of-mxf-profiles.html.
+
+
+=head2 XavcProfileSettings => L<Paws::MediaConvert::MxfXavcProfileSettings>
+
+Specify the XAVC profile settings for MXF outputs when you set your MXF
+profile to XAVC.
 
 
 

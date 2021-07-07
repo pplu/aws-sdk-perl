@@ -9,6 +9,7 @@ package Paws::MediaConvert::DashIsoGroupSettings;
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::DashIsoEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
   has HbbtvCompliance => (is => 'ro', isa => 'Str', request_name => 'hbbtvCompliance', traits => ['NameInRequest']);
+  has ImageBasedTrickPlay => (is => 'ro', isa => 'Str', request_name => 'imageBasedTrickPlay', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
   has MpdProfile => (is => 'ro', isa => 'Str', request_name => 'mpdProfile', traits => ['NameInRequest']);
@@ -119,6 +120,20 @@ the creation of many output files as in other output types.
 =head2 HbbtvCompliance => Str
 
 Supports HbbTV specification as indicated
+
+
+=head2 ImageBasedTrickPlay => Str
+
+Specify whether MediaConvert generates images for trick play. Keep the
+default value, None (NONE), to not generate any images. Choose
+Thumbnail (THUMBNAIL) to generate tiled thumbnails. Choose Thumbnail
+and full frame (THUMBNAIL_AND_FULLFRAME) to generate tiled thumbnails
+and full-resolution images of single frames. MediaConvert adds an entry
+in the .mpd manifest for each set of images that you generate. A common
+application for these images is Roku trick mode. The thumbnails and
+full-frame images that MediaConvert creates with this feature are
+compatible with this Roku specification:
+https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
 
 
 =head2 MinBufferTime => Int

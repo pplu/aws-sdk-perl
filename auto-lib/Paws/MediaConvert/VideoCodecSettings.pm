@@ -12,6 +12,7 @@ package Paws::MediaConvert::VideoCodecSettings;
   has Vc3Settings => (is => 'ro', isa => 'Paws::MediaConvert::Vc3Settings', request_name => 'vc3Settings', traits => ['NameInRequest']);
   has Vp8Settings => (is => 'ro', isa => 'Paws::MediaConvert::Vp8Settings', request_name => 'vp8Settings', traits => ['NameInRequest']);
   has Vp9Settings => (is => 'ro', isa => 'Paws::MediaConvert::Vp9Settings', request_name => 'vp9Settings', traits => ['NameInRequest']);
+  has XavcSettings => (is => 'ro', isa => 'Paws::MediaConvert::XavcSettings', request_name => 'xavcSettings', traits => ['NameInRequest']);
 
 1;
 
@@ -32,7 +33,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::VideoCodecSettings object:
 
-  $service_obj->Method(Att1 => { Av1Settings => $value, ..., Vp9Settings => $value  });
+  $service_obj->Method(Att1 => { Av1Settings => $value, ..., XavcSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -51,7 +52,7 @@ corresponding settings object. The following lists the codec enum,
 settings object pairs. * AV1, Av1Settings * AVC_INTRA, AvcIntraSettings
 * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265,
 H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings * VC3,
-Vc3Settings * VP8, Vp8Settings * VP9, Vp9Settings
+Vc3Settings * VP8, Vp8Settings * VP9, Vp9Settings * XAVC, XavcSettings
 
 =head1 ATTRIBUTES
 
@@ -123,6 +124,12 @@ Required when you set (Codec) under
 
 Required when you set (Codec) under
 (VideoDescription)E<gt>(CodecSettings) to the value VP9.
+
+
+=head2 XavcSettings => L<Paws::MediaConvert::XavcSettings>
+
+Required when you set (Codec) under
+(VideoDescription)E<gt>(CodecSettings) to the value XAVC.
 
 
 

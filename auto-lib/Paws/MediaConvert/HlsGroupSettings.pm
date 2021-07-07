@@ -13,6 +13,7 @@ package Paws::MediaConvert::HlsGroupSettings;
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::HlsEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
+  has ImageBasedTrickPlay => (is => 'ro', isa => 'Str', request_name => 'imageBasedTrickPlay', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
@@ -154,6 +155,21 @@ Indicates whether segments should be placed in subdirectories.
 =head2 Encryption => L<Paws::MediaConvert::HlsEncryptionSettings>
 
 DRM settings.
+
+
+=head2 ImageBasedTrickPlay => Str
+
+Specify whether MediaConvert generates images for trick play. Keep the
+default value, None (NONE), to not generate any images. Choose
+Thumbnail (THUMBNAIL) to generate tiled thumbnails. Choose Thumbnail
+and full frame (THUMBNAIL_AND_FULLFRAME) to generate tiled thumbnails
+and full-resolution images of single frames. MediaConvert creates a
+child manifest for each set of images that you generate and adds
+corresponding entries to the parent manifest. A common application for
+these images is Roku trick mode. The thumbnails and full-frame images
+that MediaConvert creates with this feature are compatible with this
+Roku specification:
+https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
 
 
 =head2 ManifestCompression => Str

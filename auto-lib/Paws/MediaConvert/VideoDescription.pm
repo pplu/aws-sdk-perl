@@ -83,7 +83,7 @@ corresponding settings object. The following lists the codec enum,
 settings object pairs. * AV1, Av1Settings * AVC_INTRA, AvcIntraSettings
 * FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265,
 H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings * VC3,
-Vc3Settings * VP8, Vp8Settings * VP9, Vp9Settings
+Vc3Settings * VP8, Vp8Settings * VP9, Vp9Settings * XAVC, XavcSettings
 
 
 =head2 ColorMetadata => Str

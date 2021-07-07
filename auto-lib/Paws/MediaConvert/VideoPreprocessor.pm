@@ -4,6 +4,7 @@ package Paws::MediaConvert::VideoPreprocessor;
   has ColorCorrector => (is => 'ro', isa => 'Paws::MediaConvert::ColorCorrector', request_name => 'colorCorrector', traits => ['NameInRequest']);
   has Deinterlacer => (is => 'ro', isa => 'Paws::MediaConvert::Deinterlacer', request_name => 'deinterlacer', traits => ['NameInRequest']);
   has DolbyVision => (is => 'ro', isa => 'Paws::MediaConvert::DolbyVision', request_name => 'dolbyVision', traits => ['NameInRequest']);
+  has Hdr10Plus => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Plus', request_name => 'hdr10Plus', traits => ['NameInRequest']);
   has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has NoiseReducer => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducer', request_name => 'noiseReducer', traits => ['NameInRequest']);
   has PartnerWatermarking => (is => 'ro', isa => 'Paws::MediaConvert::PartnerWatermarking', request_name => 'partnerWatermarking', traits => ['NameInRequest']);
@@ -64,6 +65,12 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-scan-type.html.
 
 Enable Dolby Vision feature to produce Dolby Vision compatible video
 output.
+
+
+=head2 Hdr10Plus => L<Paws::MediaConvert::Hdr10Plus>
+
+Enable HDR10+ analyis and metadata injection. Compatible with HEVC
+only.
 
 
 =head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>

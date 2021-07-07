@@ -4,6 +4,7 @@ package Paws::MediaConvert::AudioSelector;
   has CustomLanguageCode => (is => 'ro', isa => 'Str', request_name => 'customLanguageCode', traits => ['NameInRequest']);
   has DefaultSelection => (is => 'ro', isa => 'Str', request_name => 'defaultSelection', traits => ['NameInRequest']);
   has ExternalAudioFileInput => (is => 'ro', isa => 'Str', request_name => 'externalAudioFileInput', traits => ['NameInRequest']);
+  has HlsRenditionGroupSettings => (is => 'ro', isa => 'Paws::MediaConvert::HlsRenditionGroupSettings', request_name => 'hlsRenditionGroupSettings', traits => ['NameInRequest']);
   has LanguageCode => (is => 'ro', isa => 'Str', request_name => 'languageCode', traits => ['NameInRequest']);
   has Offset => (is => 'ro', isa => 'Int', request_name => 'offset', traits => ['NameInRequest']);
   has Pids => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'pids', traits => ['NameInRequest']);
@@ -66,6 +67,19 @@ have no audio.
 =head2 ExternalAudioFileInput => Str
 
 Specifies audio data from an external file source.
+
+
+=head2 HlsRenditionGroupSettings => L<Paws::MediaConvert::HlsRenditionGroupSettings>
+
+Settings specific to audio sources in an HLS alternate rendition group.
+Specify the properties (renditionGroupId, renditionName or
+renditionLanguageCode) to identify the unique audio track among the
+alternative rendition groups present in the HLS manifest. If no unique
+track is found, or multiple tracks match the properties provided, the
+job fails. If no properties in hlsRenditionGroupSettings are specified,
+the default audio track within the video segment is chosen. If there is
+no audio within video segment, the alternative audio with DEFAULT=YES
+is chosen instead.
 
 
 =head2 LanguageCode => Str

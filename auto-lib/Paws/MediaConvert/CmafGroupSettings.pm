@@ -9,6 +9,7 @@ package Paws::MediaConvert::CmafGroupSettings;
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::CmafEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
   has FragmentLength => (is => 'ro', isa => 'Int', request_name => 'fragmentLength', traits => ['NameInRequest']);
+  has ImageBasedTrickPlay => (is => 'ro', isa => 'Str', request_name => 'imageBasedTrickPlay', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinBufferTime => (is => 'ro', isa => 'Int', request_name => 'minBufferTime', traits => ['NameInRequest']);
@@ -121,6 +122,24 @@ the next keyframe after this number of seconds, so actual fragment
 length may be longer. When Emit Single File is checked, the
 fragmentation is internal to a single output file and it does not cause
 the creation of many output files as in other output types.
+
+
+=head2 ImageBasedTrickPlay => Str
+
+Specify whether MediaConvert generates images for trick play. Keep the
+default value, None (NONE), to not generate any images. Choose
+Thumbnail (THUMBNAIL) to generate tiled thumbnails. Choose Thumbnail
+and full frame (THUMBNAIL_AND_FULLFRAME) to generate tiled thumbnails
+and full-resolution images of single frames. When you enable Write HLS
+manifest (WriteHlsManifest), MediaConvert creates a child manifest for
+each set of images that you generate and adds corresponding entries to
+the parent manifest. When you enable Write DASH manifest
+(WriteDashManifest), MediaConvert adds an entry in the .mpd manifest
+for each set of images that you generate. A common application for
+these images is Roku trick mode. The thumbnails and full-frame images
+that MediaConvert creates with this feature are compatible with this
+Roku specification:
+https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
 
 
 =head2 ManifestCompression => Str
