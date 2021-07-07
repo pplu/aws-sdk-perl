@@ -115,19 +115,19 @@ JDBC connection on the client. The default is false.
 =item *
 
 C<CUSTOM_JDBC_CERT> - An Amazon S3 location specifying the customer's
-root certificate. AWS Glue uses this root certificate to validate the
+root certificate. Glue uses this root certificate to validate the
 customerE<rsquo>s certificate when connecting to the customer database.
-AWS Glue only handles X.509 certificates. The certificate provided must
-be DER-encoded and supplied in Base64 encoding PEM format.
+Glue only handles X.509 certificates. The certificate provided must be
+DER-encoded and supplied in Base64 encoding PEM format.
 
 =item *
 
-C<SKIP_CUSTOM_JDBC_CERT_VALIDATION> - By default, this is C<false>. AWS
+C<SKIP_CUSTOM_JDBC_CERT_VALIDATION> - By default, this is C<false>.
 Glue validates the Signature algorithm and Subject Public Key Algorithm
 for the customer certificate. The only permitted algorithms for the
 Signature algorithm are SHA256withRSA, SHA384withRSA or SHA512withRSA.
 For the Subject Public Key Algorithm, the key length must be at least
-2048. You can set the value of this property to C<true> to skip AWS
+2048. You can set the value of this property to C<true> to skip
 GlueE<rsquo>s validation of the customer certificate.
 
 =item *
@@ -162,7 +162,7 @@ C<KAFKA_CUSTOM_CERT> - The Amazon S3 URL for the private CA cert file
 =item *
 
 C<KAFKA_SKIP_CUSTOM_CERT_VALIDATION> - Whether to skip the validation
-of the CA cert file or not. AWS Glue validates for three algorithms:
+of the CA cert file or not. Glue validates for three algorithms:
 SHA256withRSA, SHA384withRSA and SHA512withRSA. Default value is
 "false".
 
@@ -205,14 +205,14 @@ Kafka server side key (Optional).
 =item *
 
 C<ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD> - The encrypted version of
-the Kafka client keystore password (if the user has the AWS Glue
-encrypt passwords setting selected).
+the Kafka client keystore password (if the user has the Glue encrypt
+passwords setting selected).
 
 =item *
 
 C<ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD> - The encrypted version of the
-Kafka client key password (if the user has the AWS Glue encrypt
-passwords setting selected).
+Kafka client key password (if the user has the Glue encrypt passwords
+setting selected).
 
 =back
 

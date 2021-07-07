@@ -128,10 +128,10 @@ supported.
 =head2 GlueVersion => Str
 
 Glue version determines the versions of Apache Spark and Python that
-AWS Glue supports. The Python version indicates the version supported
-for running your ETL scripts on development endpoints.
+Glue supports. The Python version indicates the version supported for
+running your ETL scripts on development endpoints.
 
-For more information about the available AWS Glue versions and
+For more information about the available Glue versions and
 corresponding Spark and Python versions, see Glue version
 (https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
 developer guide.
@@ -148,7 +148,7 @@ defaults to Python 2.
 
 =head2 NumberOfNodes => Int
 
-The number of AWS Glue Data Processing Units (DPUs) to allocate to this
+The number of Glue Data Processing Units (DPUs) to allocate to this
 C<DevEndpoint>.
 
 
@@ -215,8 +215,8 @@ The subnet ID for the new C<DevEndpoint> to use.
 =head2 Tags => L<Paws::Glue::TagsMap>
 
 The tags to use with this DevEndpoint. You may use tags to limit access
-to the DevEndpoint. For more information about tags in AWS Glue, see
-AWS Tags in AWS Glue
+to the DevEndpoint. For more information about tags in Glue, see Amazon
+Web Services Tags in Glue
 (https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
 developer guide.
 

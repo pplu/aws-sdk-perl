@@ -64,7 +64,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partitions in question reside. If
-none is provided, the AWS account ID is used by default.
+none is provided, the Amazon Web Services account ID is used by
+default.
 
 
 
@@ -188,7 +189,7 @@ C<decimal>
 
 =back
 
-If an invalid type is encountered, an exception is thrown.
+If an type is encountered that is not valid, an exception is thrown.
 
 The following list shows the valid operators on each type. When you
 define a crawler, the C<partitionKey> type is created as a C<STRING>,

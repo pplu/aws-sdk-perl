@@ -57,7 +57,7 @@ DISABLED: encryption is disabled
 
 =item *
 
-SSEKMS: use of server-side encryption with AWS Key Management Service
+SSEKMS: use of server-side encryption with Key Management Service
 (SSE-KMS) for user data stored in Amazon S3.
 
 =back

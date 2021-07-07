@@ -67,14 +67,6 @@ Valid arguments are:
 
 C<"--enable-glue-datacatalog": "">
 
-=item *
-
-C<"GLUE_PYTHON_VERSION": "3">
-
-=item *
-
-C<"GLUE_PYTHON_VERSION": "2">
-
 =back
 
 You can specify a version of Python support for development endpoints

@@ -44,7 +44,7 @@ Specifies data stores to crawl.
 
 =head2 CatalogTargets => ArrayRef[L<Paws::Glue::CatalogTarget>]
 
-Specifies AWS Glue Data Catalog targets.
+Specifies Glue Data Catalog targets.
 
 
 =head2 DynamoDBTargets => ArrayRef[L<Paws::Glue::DynamoDBTarget>]

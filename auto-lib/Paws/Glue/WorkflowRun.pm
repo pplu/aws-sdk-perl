@@ -62,13 +62,13 @@ starting the workflow run. Currently the only error message is
 
 =head2 Graph => L<Paws::Glue::WorkflowGraph>
 
-The graph representing all the AWS Glue components that belong to the
+The graph representing all the Glue components that belong to the
 workflow as nodes and directed connections between them as edges.
 
 
 =head2 Name => Str
 
-Name of the workflow that was executed.
+Name of the workflow that was run.
 
 
 =head2 PreviousRunId => Str

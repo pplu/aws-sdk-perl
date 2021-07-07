@@ -66,12 +66,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 This field is deprecated. Use C<MaxCapacity> instead.
 
-The number of AWS Glue data processing units (DPUs) to allocate to this
+The number of Glue data processing units (DPUs) to allocate to this
 JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU
 is a relative measure of processing power that consists of 4 vCPUs of
-compute capacity and 16 GB of memory. For more information, see the AWS
-Glue pricing page
-(https://docs.aws.amazon.com/https:/aws.amazon.com/glue/pricing/).
+compute capacity and 16 GB of memory. For more information, see the
+Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
 
@@ -81,15 +80,15 @@ The job arguments specifically for this run. For this job run, they
 replace the default arguments set in the job definition itself.
 
 You can specify arguments here that your own job-execution script
-consumes, as well as arguments that AWS Glue itself consumes.
+consumes, as well as arguments that Glue itself consumes.
 
 For information about how to specify and consume your own Job
-arguments, see the Calling AWS Glue APIs in Python
+arguments, see the Calling Glue APIs in Python
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
-For information about the key-value pairs that AWS Glue consumes to set
-up your job, see the Special Parameters Used by AWS Glue
+For information about the key-value pairs that Glue consumes to set up
+your job, see the Special Parameters Used by Glue
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
@@ -109,11 +108,11 @@ The ID of a previous C<JobRun> to retry.
 
 =head2 MaxCapacity => Num
 
-The number of AWS Glue data processing units (DPUs) that can be
-allocated when this job runs. A DPU is a relative measure of processing
-power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
-For more information, see the AWS Glue pricing page
-(https://docs.aws.amazon.com/https:/aws.amazon.com/glue/pricing/).
+The number of Glue data processing units (DPUs) that can be allocated
+when this job runs. A DPU is a relative measure of processing power
+that consists of 4 vCPUs of compute capacity and 16 GB of memory. For
+more information, see the Glue pricing page
+(https://aws.amazon.com/glue/pricing/).
 
 Do not set C<Max Capacity> if using C<WorkerType> and
 C<NumberOfWorkers>.

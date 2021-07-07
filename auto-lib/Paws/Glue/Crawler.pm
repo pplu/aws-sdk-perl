@@ -53,8 +53,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Crawl
 
 Specifies a crawler program that examines a data source and uses
 classifiers to try to determine its schema. If successful, the crawler
-records metadata concerning the data source in the AWS Glue Data
-Catalog.
+records metadata concerning the data source in the Glue Data Catalog.
 
 =head1 ATTRIBUTES
 
@@ -69,8 +68,8 @@ associated with the crawler.
 
 Crawler configuration information. This versioned JSON string allows
 users to specify aspects of a crawler's behavior. For more information,
-see Configuring a Crawler
-(https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+see Include and Exclude Patterns
+(https://docs.aws.amazon.com/glue/latest/dg/define-crawler.html#crawler-data-stores-exclude).
 
 
 =head2 CrawlElapsedTime => Int

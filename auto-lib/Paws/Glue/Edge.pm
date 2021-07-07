@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Edge 
 
 =head1 DESCRIPTION
 
-An edge represents a directed connection between two AWS Glue
-components that are part of the workflow the edge belongs to.
+An edge represents a directed connection between two Glue components
+that are part of the workflow the edge belongs to.
 
 =head1 ATTRIBUTES
 

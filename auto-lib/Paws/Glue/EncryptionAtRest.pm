@@ -46,7 +46,7 @@ The encryption-at-rest mode for encrypting Data Catalog data.
 
 =head2 SseAwsKmsKeyId => Str
 
-The ID of the AWS KMS key to use for encryption at rest.
+The ID of the KMS key to use for encryption at rest.
 
 
 

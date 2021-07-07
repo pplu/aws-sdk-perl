@@ -76,14 +76,14 @@ Amazon Virtual Private Cloud environment (Amazon VPC).
 =item *
 
 C<MARKETPLACE> - Uses configuration settings contained in a connector
-purchased from AWS Marketplace to read from and write to data stores
-that are not natively supported by AWS Glue.
+purchased from Marketplace to read from and write to data stores that
+are not natively supported by Glue.
 
 =item *
 
 C<CUSTOM> - Uses configuration settings contained in a custom connector
 to read from and write to data stores that are not natively supported
-by AWS Glue.
+by Glue.
 
 =back
 

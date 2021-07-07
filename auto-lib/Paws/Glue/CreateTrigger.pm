@@ -134,8 +134,8 @@ created. True is not supported for C<ON_DEMAND> triggers.
 =head2 Tags => L<Paws::Glue::TagsMap>
 
 The tags to use with this trigger. You may use tags to limit access to
-the trigger. For more information about tags in AWS Glue, see AWS Tags
-in AWS Glue
+the trigger. For more information about tags in Glue, see Amazon Web
+Services Tags in Glue
 (https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
 developer guide.
 

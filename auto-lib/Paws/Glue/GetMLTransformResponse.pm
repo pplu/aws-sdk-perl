@@ -49,17 +49,17 @@ The latest evaluation metrics.
 
 =head2 GlueVersion => Str
 
-This value determines which version of AWS Glue this machine learning
+This value determines which version of Glue this machine learning
 transform is compatible with. Glue 1.0 is recommended for most
 customers. If the value is not set, the Glue compatibility defaults to
-Glue 0.9. For more information, see AWS Glue Versions
+Glue 0.9. For more information, see Glue Versions
 (https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
 in the developer guide.
 
 
 =head2 InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
 
-A list of AWS Glue table definitions used by the transform.
+A list of Glue table definitions used by the transform.
 
 
 =head2 LabelCount => Int
@@ -74,11 +74,11 @@ The date and time when the transform was last modified.
 
 =head2 MaxCapacity => Num
 
-The number of AWS Glue data processing units (DPUs) that are allocated
-to task runs for this transform. You can allocate from 2 to 100 DPUs;
-the default is 10. A DPU is a relative measure of processing power that
+The number of Glue data processing units (DPUs) that are allocated to
+task runs for this transform. You can allocate from 2 to 100 DPUs; the
+default is 10. A DPU is a relative measure of processing power that
 consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
-information, see the AWS Glue pricing page
+information, see the Glue pricing page
 (https://aws.amazon.com/glue/pricing/).
 
 When the C<WorkerType> field is set to a value other than C<Standard>,

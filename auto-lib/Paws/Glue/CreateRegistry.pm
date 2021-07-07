@@ -68,8 +68,8 @@ mark. No whitespace.
 
 =head2 Tags => L<Paws::Glue::TagsMap>
 
-AWS tags that contain a key value pair and may be searched by console,
-command line, or API.
+Amazon Web Services tags that contain a key value pair and may be
+searched by console, command line, or API.
 
 
 

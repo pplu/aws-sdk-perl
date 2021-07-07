@@ -143,10 +143,10 @@ Valid values are: C<"NONE">, C<"DISABLED">, C<"BACKWARD">, C<"BACKWARD_ALL">, C<
 
 =head2 B<REQUIRED> DataFormat => Str
 
-The data format of the schema definition. Currently only C<AVRO> is
-supported.
+The data format of the schema definition. Currently C<AVRO> and C<JSON>
+are supported.
 
-Valid values are: C<"AVRO">
+Valid values are: C<"AVRO">, C<"JSON">
 
 =head2 Description => Str
 
@@ -181,9 +181,9 @@ mark. No whitespace.
 
 =head2 Tags => L<Paws::Glue::TagsMap>
 
-AWS tags that contain a key value pair and may be searched by console,
-command line, or API. If specified, follows the AWS tags-on-create
-pattern.
+Amazon Web Services tags that contain a key value pair and may be
+searched by console, command line, or API. If specified, follows the
+Amazon Web Services tags-on-create pattern.
 
 
 

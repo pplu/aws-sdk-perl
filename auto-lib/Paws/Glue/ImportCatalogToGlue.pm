@@ -39,8 +39,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 CatalogId => Str
 
-The ID of the catalog to import. Currently, this should be the AWS
-account ID.
+The ID of the catalog to import. Currently, this should be the Amazon
+Web Services account ID.
 
 
 

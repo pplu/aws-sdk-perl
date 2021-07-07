@@ -34,10 +34,10 @@ The schema compatibility mode.
 Valid values are: C<"NONE">, C<"DISABLED">, C<"BACKWARD">, C<"BACKWARD_ALL">, C<"FORWARD">, C<"FORWARD_ALL">, C<"FULL">, C<"FULL_ALL">
 =head2 DataFormat => Str
 
-The data format of the schema definition. Currently only C<AVRO> is
-supported.
+The data format of the schema definition. Currently C<AVRO> and C<JSON>
+are supported.
 
-Valid values are: C<"AVRO">
+Valid values are: C<"AVRO">, C<"JSON">
 =head2 Description => Str
 
 A description of the schema if specified when created.

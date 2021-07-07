@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Segme
 =head1 DESCRIPTION
 
 Defines a non-overlapping region of a table's partitions, allowing
-multiple requests to be executed in parallel.
+multiple requests to be run in parallel.
 
 =head1 ATTRIBUTES
 

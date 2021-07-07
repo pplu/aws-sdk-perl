@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Workf
 =head1 DESCRIPTION
 
 A workflow graph represents the complete workflow containing all the
-AWS Glue components present in the workflow and all the directed
+Glue components present in the workflow and all the directed
 connections between them.
 
 =head1 ATTRIBUTES
@@ -49,8 +49,8 @@ the workflow.
 
 =head2 Nodes => ArrayRef[L<Paws::Glue::Node>]
 
-A list of the the AWS Glue components belong to the workflow
-represented as nodes.
+A list of the the Glue components belong to the workflow represented as
+nodes.
 
 
 

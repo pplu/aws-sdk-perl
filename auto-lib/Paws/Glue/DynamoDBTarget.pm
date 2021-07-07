@@ -58,9 +58,9 @@ defaults to C<true>.
 
 =head2 ScanRate => Num
 
-The percentage of the configured read capacity units to use by the AWS
-Glue crawler. Read capacity units is a term defined by DynamoDB, and is
-a numeric value that acts as rate limiter for the number of reads that
+The percentage of the configured read capacity units to use by the Glue
+crawler. Read capacity units is a term defined by DynamoDB, and is a
+numeric value that acts as rate limiter for the number of reads that
 can be performed on that table per second.
 
 The valid values are null or a value between 0.1 to 1.5. A null value

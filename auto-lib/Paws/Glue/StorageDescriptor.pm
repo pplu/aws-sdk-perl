@@ -97,8 +97,7 @@ The user-supplied properties in key-value form.
 
 =head2 SchemaReference => L<Paws::Glue::SchemaReference>
 
-An object that references a schema stored in the AWS Glue Schema
-Registry.
+An object that references a schema stored in the Glue Schema Registry.
 
 When creating a table, you can pass an empty list of columns for the
 schema, and instead use a schema reference.

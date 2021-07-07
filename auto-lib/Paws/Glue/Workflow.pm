@@ -40,8 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Workf
 
 =head1 DESCRIPTION
 
-A workflow represents a flow in which AWS Glue components should be
-executed to complete a logical task.
+A workflow represents a flow in which Glue components should be run to
+complete a logical task.
 
 =head1 ATTRIBUTES
 
@@ -64,7 +64,7 @@ A description of the workflow.
 
 =head2 Graph => L<Paws::Glue::WorkflowGraph>
 
-The graph representing all the AWS Glue components that belong to the
+The graph representing all the Glue components that belong to the
 workflow as nodes and directed connections between them as edges.
 
 

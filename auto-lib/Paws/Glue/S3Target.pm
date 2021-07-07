@@ -4,6 +4,7 @@ package Paws::Glue::S3Target;
   has ConnectionName => (is => 'ro', isa => 'Str');
   has Exclusions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Path => (is => 'ro', isa => 'Str');
+  has SampleSize => (is => 'ro', isa => 'Int');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::S3Target object:
 
-  $service_obj->Method(Att1 => { ConnectionName => $value, ..., Path => $value  });
+  $service_obj->Method(Att1 => { ConnectionName => $value, ..., SampleSize => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,6 +58,13 @@ information, see Catalog Tables with a Crawler
 =head2 Path => Str
 
 The path to the Amazon S3 target.
+
+
+=head2 SampleSize => Int
+
+Sets the number of files in each leaf folder to be crawled when
+crawling sample files in a dataset. If not set, all the files are
+crawled. A valid value is an integer between 1 and 249.
 
 
 

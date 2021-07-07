@@ -44,7 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the function to be deleted is located.
-If none is supplied, the AWS account ID is used by default.
+If none is supplied, the Amazon Web Services account ID is used by
+default.
 
 
 

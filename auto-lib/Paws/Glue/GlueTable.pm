@@ -36,30 +36,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::GlueT
 
 =head1 DESCRIPTION
 
-The database and table in the AWS Glue Data Catalog that is used for
-input or output data.
+The database and table in the Glue Data Catalog that is used for input
+or output data.
 
 =head1 ATTRIBUTES
 
 
 =head2 CatalogId => Str
 
-A unique identifier for the AWS Glue Data Catalog.
+A unique identifier for the Glue Data Catalog.
 
 
 =head2 ConnectionName => Str
 
-The name of the connection to the AWS Glue Data Catalog.
+The name of the connection to the Glue Data Catalog.
 
 
 =head2 B<REQUIRED> DatabaseName => Str
 
-A database name in the AWS Glue Data Catalog.
+A database name in the Glue Data Catalog.
 
 
 =head2 B<REQUIRED> TableName => Str
 
-A table name in the AWS Glue Data Catalog.
+A table name in the Glue Data Catalog.
 
 
 

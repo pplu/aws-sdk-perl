@@ -49,15 +49,15 @@ The job arguments used when this trigger fires. For this job run, they
 replace the default arguments set in the job definition itself.
 
 You can specify arguments here that your own job-execution script
-consumes, as well as arguments that AWS Glue itself consumes.
+consumes, as well as arguments that Glue itself consumes.
 
 For information about how to specify and consume your own Job
-arguments, see the Calling AWS Glue APIs in Python
+arguments, see the Calling Glue APIs in Python
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
-For information about the key-value pairs that AWS Glue consumes to set
-up your job, see the Special Parameters Used by AWS Glue
+For information about the key-value pairs that Glue consumes to set up
+your job, see the Special Parameters Used by Glue
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
@@ -69,7 +69,7 @@ The name of the crawler to be used with this action.
 
 =head2 JobName => Str
 
-The name of a job to be executed.
+The name of a job to be run.
 
 
 =head2 NotificationProperty => L<Paws::Glue::NotificationProperty>

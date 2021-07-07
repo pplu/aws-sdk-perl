@@ -53,7 +53,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partition in question resides. If
-none is provided, the AWS account ID is used by default.
+none is provided, the Amazon Web Services account ID is used by
+default.
 
 
 

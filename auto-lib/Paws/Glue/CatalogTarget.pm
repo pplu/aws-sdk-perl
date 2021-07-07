@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Catal
 
 =head1 DESCRIPTION
 
-Specifies an AWS Glue Data Catalog target.
+Specifies an Glue Data Catalog target.
 
 =head1 ATTRIBUTES
 

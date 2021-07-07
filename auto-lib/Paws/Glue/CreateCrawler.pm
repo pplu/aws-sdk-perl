@@ -86,7 +86,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Exclusions     => [
               'MyPath', ...                          # OPTIONAL
             ],    # OPTIONAL
-            Path => 'MyPath',    # OPTIONAL
+            Path       => 'MyPath',    # OPTIONAL
+            SampleSize => 1,           # OPTIONAL
           },
           ...
         ],    # OPTIONAL
@@ -151,7 +152,7 @@ crawler.
 
 =head2 DatabaseName => Str
 
-The AWS Glue database where results are written, such as:
+The Glue database where results are written, such as:
 C<arn:aws:daylight:us-east-1::database/sometable/*>.
 
 
@@ -213,8 +214,8 @@ The table prefix used for catalog tables that are created.
 =head2 Tags => L<Paws::Glue::TagsMap>
 
 The tags to use with this crawler request. You may use tags to limit
-access to the crawler. For more information about tags in AWS Glue, see
-AWS Tags in AWS Glue
+access to the crawler. For more information about tags in Glue, see
+Amazon Web Services Tags in Glue
 (https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
 developer guide.
 

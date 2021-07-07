@@ -84,8 +84,7 @@ A description of the table.
 
 =head2 IsRegisteredWithLakeFormation => Bool
 
-Indicates whether the table has been registered with AWS Lake
-Formation.
+Indicates whether the table has been registered with Lake Formation.
 
 
 =head2 LastAccessTime => Str

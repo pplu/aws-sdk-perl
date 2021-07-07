@@ -107,7 +107,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Exclusions     => [
               'MyPath', ...                          # OPTIONAL
             ],    # OPTIONAL
-            Path => 'MyPath',    # OPTIONAL
+            Path       => 'MyPath',    # OPTIONAL
+            SampleSize => 1,           # OPTIONAL
           },
           ...
         ],    # OPTIONAL
@@ -147,7 +148,7 @@ crawler.
 
 =head2 DatabaseName => Str
 
-The AWS Glue database where results are stored, such as:
+The Glue database where results are stored, such as:
 C<arn:aws:daylight:us-east-1::database/sometable/*>.
 
 

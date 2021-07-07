@@ -58,10 +58,10 @@ The time and date before which the transforms were created.
 
 =head2 GlueVersion => Str
 
-This value determines which version of AWS Glue this machine learning
+This value determines which version of Glue this machine learning
 transform is compatible with. Glue 1.0 is recommended for most
 customers. If the value is not set, the Glue compatibility defaults to
-Glue 0.9. For more information, see AWS Glue Versions
+Glue 0.9. For more information, see Glue Versions
 (https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
 in the developer guide.
 

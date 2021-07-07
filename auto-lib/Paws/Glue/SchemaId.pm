@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Schem
 
 =head1 DESCRIPTION
 
-The unique ID of the schema in the AWS Glue schema registry.
+The unique ID of the schema in the Glue schema registry.
 
 =head1 ATTRIBUTES
 

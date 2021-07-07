@@ -118,8 +118,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 CatalogId => Str
 
-The AWS account ID of the catalog in which the partition is to be
-created.
+The Amazon Web Services account ID of the catalog in which the
+partition is to be created.
 
 
 

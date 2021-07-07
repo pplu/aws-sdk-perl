@@ -38,10 +38,10 @@ The date and time the schema was created.
 
 =head2 DataFormat => Str
 
-The data format of the schema definition. Currently only C<AVRO> is
-supported.
+The data format of the schema definition. Currently C<AVRO> and C<JSON>
+are supported.
 
-Valid values are: C<"AVRO">
+Valid values are: C<"AVRO">, C<"JSON">
 =head2 Description => Str
 
 A description of schema if specified when created

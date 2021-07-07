@@ -35,8 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Schem
 
 =head1 DESCRIPTION
 
-An object that references a schema stored in the AWS Glue Schema
-Registry.
+An object that references a schema stored in the Glue Schema Registry.
 
 =head1 ATTRIBUTES
 

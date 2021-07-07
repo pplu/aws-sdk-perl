@@ -47,7 +47,7 @@ The hash value returned when this policy was set.
 
 =head2 ResourceArn => Str
 
-The ARN of the AWS Glue resource for the resource policy to be deleted.
+The ARN of the Glue resource for the resource policy to be deleted.
 
 
 
