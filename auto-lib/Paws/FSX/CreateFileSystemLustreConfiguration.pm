@@ -5,6 +5,7 @@ package Paws::FSX::CreateFileSystemLustreConfiguration;
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
+  has DataCompressionType => (is => 'ro', isa => 'Str');
   has DeploymentType => (is => 'ro', isa => 'Str');
   has DriveCacheType => (is => 'ro', isa => 'Str');
   has ExportPath => (is => 'ro', isa => 'Str');
@@ -109,6 +110,28 @@ For more information, see Working with backups
 =head2 DailyAutomaticBackupStartTime => Str
 
 
+
+
+=head2 DataCompressionType => Str
+
+Sets the data compression configuration for the file system.
+C<DataCompressionType> can have the following values:
+
+=over
+
+=item *
+
+C<NONE> - (Default) Data compression is turned off when the file system
+is created.
+
+=item *
+
+C<LZ4> - Data compression is turned on with the LZ4 algorithm.
+
+=back
+
+For more information, see Lustre data compression
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-compression.html).
 
 
 =head2 DeploymentType => Str

@@ -3,6 +3,7 @@ package Paws::FSX::WindowsFileSystemConfiguration;
   use Moose;
   has ActiveDirectoryId => (is => 'ro', isa => 'Str');
   has Aliases => (is => 'ro', isa => 'ArrayRef[Paws::FSX::Alias]');
+  has AuditLogConfiguration => (is => 'ro', isa => 'Paws::FSX::WindowsAuditLogConfiguration');
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
@@ -59,6 +60,13 @@ that the file system is joined to.
 =head2 Aliases => ArrayRef[L<Paws::FSX::Alias>]
 
 
+
+
+=head2 AuditLogConfiguration => L<Paws::FSX::WindowsAuditLogConfiguration>
+
+The configuration that Amazon FSx for Windows File Server uses to audit
+and log user accesses of files, folders, and file shares on the Amazon
+FSx for Windows File Server file system.
 
 
 =head2 AutomaticBackupRetentionDays => Int

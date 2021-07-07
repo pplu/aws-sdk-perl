@@ -39,10 +39,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
+        DataCompressionType        => 'NONE',  # values: NONE, LZ4; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
       StorageCapacity      => 1,    # OPTIONAL
       WindowsConfiguration => {
+        AuditLogConfiguration => {
+          FileAccessAuditLogLevel => 'DISABLED'
+          ,  # values: DISABLED, SUCCESS_ONLY, FAILURE_ONLY, SUCCESS_AND_FAILURE
+          FileShareAccessAuditLogLevel => 'DISABLED'
+          ,  # values: DISABLED, SUCCESS_ONLY, FAILURE_ONLY, SUCCESS_AND_FAILURE
+          AuditLogDestination => 'MyGeneralARN',   # min: 8, max: 1024; OPTIONAL
+        },    # OPTIONAL
         AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                       # min: 5, max: 5; OPTIONAL

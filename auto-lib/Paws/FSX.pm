@@ -331,9 +331,9 @@ the backup copy is created in the same Region where the request is sent
 from (in-Region copy).
 
 For more information on creating backup copies, see Copying backups
-(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/copy-backups.html)
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html#copy-backups)
 in the I<Amazon FSx for Windows User Guide> and Copying backups
-(https://docs.aws.amazon.com/fsx/latest/LustreGuide/copy-backups.html)
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html#copy-backups)
 in the I<Amazon FSx for Lustre User Guide>.
 
 
@@ -985,6 +985,10 @@ following properties:
 
 =item *
 
+AuditLogConfiguration
+
+=item *
+
 AutomaticBackupRetentionDays
 
 =item *
@@ -1025,6 +1029,10 @@ AutomaticBackupRetentionDays
 =item *
 
 DailyAutomaticBackupStartTime
+
+=item *
+
+DataCompressionType
 
 =item *
 

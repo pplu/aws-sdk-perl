@@ -48,7 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CopyTagsToBackups             => 1,    # OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
-        DeploymentType =>
+        DataCompressionType => 'NONE',         # values: NONE, LZ4; OPTIONAL
+        DeploymentType      =>
           'SCRATCH_1',    # values: SCRATCH_1, SCRATCH_2, PERSISTENT_1; OPTIONAL
         DriveCacheType => 'NONE',             # values: NONE, READ; OPTIONAL
         ExportPath     => 'MyArchivePath',    # min: 3, max: 4357; OPTIONAL
@@ -75,6 +76,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Aliases            => [
           'MyAlternateDNSName', ...               # min: 4, max: 253
         ],    # max: 50; OPTIONAL
+        AuditLogConfiguration => {
+          FileAccessAuditLogLevel => 'DISABLED'
+          ,  # values: DISABLED, SUCCESS_ONLY, FAILURE_ONLY, SUCCESS_AND_FAILURE
+          FileShareAccessAuditLogLevel => 'DISABLED'
+          ,  # values: DISABLED, SUCCESS_ONLY, FAILURE_ONLY, SUCCESS_AND_FAILURE
+          AuditLogDestination => 'MyGeneralARN',   # min: 8, max: 1024; OPTIONAL
+        },    # OPTIONAL
         AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
         CopyTagsToBackups             => 1,    # OPTIONAL
         DailyAutomaticBackupStartTime =>

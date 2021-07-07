@@ -3,6 +3,7 @@ package Paws::FSX::CreateFileSystemWindowsConfiguration;
   use Moose;
   has ActiveDirectoryId => (is => 'ro', isa => 'Str');
   has Aliases => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AuditLogConfiguration => (is => 'ro', isa => 'Paws::FSX::WindowsAuditLogCreateConfiguration');
   has AutomaticBackupRetentionDays => (is => 'ro', isa => 'Int');
   has CopyTagsToBackups => (is => 'ro', isa => 'Bool');
   has DailyAutomaticBackupStartTime => (is => 'ro', isa => 'Str');
@@ -101,6 +102,13 @@ For DNS alias names, Amazon FSx stores alphabetic characters as
 lowercase letters (a-z), regardless of how you specify them: as
 uppercase letters, lowercase letters, or the corresponding letters in
 escape codes.
+
+
+=head2 AuditLogConfiguration => L<Paws::FSX::WindowsAuditLogCreateConfiguration>
+
+The configuration that Amazon FSx for Windows File Server uses to audit
+and log user accesses of files, folders, and file shares on the Amazon
+FSx for Windows File Server file system.
 
 
 =head2 AutomaticBackupRetentionDays => Int
