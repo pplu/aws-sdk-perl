@@ -39,7 +39,7 @@ The name of the device.
 
 The status of the device.
 
-Valid values are: C<"ONLINE">, C<"OFFLINE">
+Valid values are: C<"ONLINE">, C<"OFFLINE">, C<"RETIRED">
 =head2 B<REQUIRED> DeviceType => Str
 
 The type of the device.

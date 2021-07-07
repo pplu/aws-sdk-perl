@@ -50,7 +50,7 @@ tags.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-pecify the keys for the tags to remove from the resource.
+Specify the keys for the tags to remove from the resource.
 
 
 
