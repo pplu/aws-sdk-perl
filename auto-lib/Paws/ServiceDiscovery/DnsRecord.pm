@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 =head1 DESCRIPTION
 
 A complex type that contains information about the Route 53 DNS records
-that you want AWS Cloud Map to create when you register an instance.
+that you want Cloud Map to create when you register an instance.
 
 =head1 ATTRIBUTES
 
@@ -46,8 +46,9 @@ The amount of time, in seconds, that you want DNS resolvers to cache
 the settings for this record.
 
 Alias records don't include a TTL because Route 53 uses the TTL for the
-AWS resource that an alias record routes traffic to. If you include the
-C<AWS_ALIAS_DNS_NAME> attribute when you submit a RegisterInstance
+Amazon Web Services resource that an alias record routes traffic to. If
+you include the C<AWS_ALIAS_DNS_NAME> attribute when you submit a
+RegisterInstance
 (https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html)
 request, the C<TTL> value is ignored. Always specify a TTL for the
 service; you can use a service to register instances that create either
@@ -84,7 +85,7 @@ B<C<CNAME>>
 
 =back
 
-If you want AWS Cloud Map to create a Route 53 alias record when you
+If you want Cloud Map to create a Route 53 alias record when you
 register an instance, specify C<A> or C<AAAA> for C<Type>.
 
 You specify other settings, such as the IP address for C<A> and C<AAAA>
@@ -193,7 +194,7 @@ If you specify settings for an C<SRV> record, note the following:
 =item *
 
 If you specify values for C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>,
-or both in the C<RegisterInstance> request, AWS Cloud Map automatically
+or both in the C<RegisterInstance> request, Cloud Map automatically
 creates C<A> and/or C<AAAA> records that have the same name as the
 value of C<service-hostname> in the C<SRV> record. You can ignore these
 records.

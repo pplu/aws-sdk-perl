@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-A complex type that contains information that is specific to the
+A complex type that contains information that's specific to the
 namespace type.
 
 =head1 ATTRIBUTES
@@ -43,7 +43,7 @@ namespace type.
 =head2 DnsProperties => L<Paws::ServiceDiscovery::DnsProperties>
 
 A complex type that contains the ID for the Route 53 hosted zone that
-AWS Cloud Map creates when you create a namespace.
+Cloud Map creates when you create a namespace.
 
 
 =head2 HttpProperties => L<Paws::ServiceDiscovery::HttpProperties>

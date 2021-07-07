@@ -58,22 +58,46 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 HealthStatus => Str
 
-The health status of the instances that you want to discover.
+The health status of the instances that you want to discover. This
+parameter is ignored for services that don't have a health check
+configured, and all instances are returned.
 
-Valid values are: C<"HEALTHY">, C<"UNHEALTHY">, C<"ALL">
+=over
+
+=item HEALTHY
+
+Returns healthy instances.
+
+=item UNHEALTHY
+
+Returns unhealthy instances.
+
+=item ALL
+
+Returns all instances.
+
+=item HEALTHY_OR_ELSE_ALL
+
+Returns healthy instances, unless none are reporting a healthy state.
+In that case, return all instances. This is also called failing open.
+
+=back
+
+
+Valid values are: C<"HEALTHY">, C<"UNHEALTHY">, C<"ALL">, C<"HEALTHY_OR_ELSE_ALL">
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want AWS Cloud Map to return
-in the response to a C<DiscoverInstances> request. If you don't specify
-a value for C<MaxResults>, AWS Cloud Map returns up to 100 instances.
+The maximum number of instances that you want Cloud Map to return in
+the response to a C<DiscoverInstances> request. If you don't specify a
+value for C<MaxResults>, Cloud Map returns up to 100 instances.
 
 
 
 =head2 B<REQUIRED> NamespaceName => Str
 
-The C<HttpName> name of the namespace, found in the C<HttpProperties>
-member of the C<Properties> member of the namespace.
+The C<HttpName> name of the namespace. It's found in the
+C<HttpProperties> member of the C<Properties> member of the namespace.
 
 
 
@@ -81,16 +105,17 @@ member of the C<Properties> member of the namespace.
 
 Opportunistic filters to scope the results based on custom attributes.
 If there are instances that match both the filters specified in both
-the C<QueryParameters> parameter and this parameter, they are returned.
-Otherwise, these filters are ignored and only instances that match the
-filters specified in the C<QueryParameters> parameter are returned.
+the C<QueryParameters> parameter and this parameter, all of these
+instances are returned. Otherwise, the filters are ignored, and only
+instances that match the filters that are specified in the
+C<QueryParameters> parameter are returned.
 
 
 
 =head2 QueryParameters => L<Paws::ServiceDiscovery::Attributes>
 
 Filters to scope the results based on custom attributes for the
-instance. For example, C<{version=v1, az=1a}>. Only instances that
+instance (for example, C<{version=v1, az=1a}>). Only instances that
 match all the specified key-value pairs are returned.
 
 

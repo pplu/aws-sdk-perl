@@ -4,6 +4,7 @@ package Paws::ServiceDiscovery::CreatePrivateDnsNamespace;
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Properties => (is => 'ro', isa => 'Paws::ServiceDiscovery::PrivateDnsNamespaceProperties');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::Tag]');
   has Vpc => (is => 'ro', isa => 'Str', required => 1);
 
@@ -37,7 +38,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Vpc              => 'MyResourceId',
       CreatorRequestId => 'MyResourceId',             # OPTIONAL
       Description      => 'MyResourceDescription',    # OPTIONAL
-      Tags             => [
+      Properties       => {
+        DnsProperties => {
+          SOA => {
+            TTL => 1,    # max: 2147483647
+
+          },
+
+        },
+
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256
@@ -63,7 +74,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 A unique string that identifies the request and that allows failed
 C<CreatePrivateDnsNamespace> requests to be retried without the risk of
 running the operation twice. C<CreatorRequestId> can be any unique
-string, for example, a date/timestamp.
+string (for example, a date/timestamp).
 
 
 
@@ -76,8 +87,14 @@ A description for the namespace.
 =head2 B<REQUIRED> Name => Str
 
 The name that you want to assign to this namespace. When you create a
-private DNS namespace, AWS Cloud Map automatically creates an Amazon
-Route 53 private hosted zone that has the same name as the namespace.
+private DNS namespace, Cloud Map automatically creates an Amazon Route
+53 private hosted zone that has the same name as the namespace.
+
+
+
+=head2 Properties => L<Paws::ServiceDiscovery::PrivateDnsNamespaceProperties>
+
+Properties for the private DNS namespace.
 
 
 

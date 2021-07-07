@@ -47,8 +47,8 @@ A complex type that contains information about a namespace.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
-namespace when you create it.
+The Amazon Resource Name (ARN) that Cloud Map assigns to the namespace
+when you create it.
 
 
 =head2 CreateDate => Str
@@ -68,7 +68,7 @@ The ID of the namespace.
 
 =head2 Name => Str
 
-The name of the namespace. When you create a namespace, AWS Cloud Map
+The name of the namespace. When you create a namespace, Cloud Map
 automatically creates a Route 53 hosted zone that has the same name as
 the namespace.
 

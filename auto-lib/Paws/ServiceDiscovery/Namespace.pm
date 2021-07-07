@@ -48,8 +48,8 @@ A complex type that contains information about a specified namespace.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
-namespace when you create it.
+The Amazon Resource Name (ARN) that Cloud Map assigns to the namespace
+when you create it.
 
 
 =head2 CreateDate => Str
@@ -101,8 +101,8 @@ depends on the value that you specify:
 
 =item HTTP
 
-Instances can be discovered only programmatically, using the AWS Cloud
-Map C<DiscoverInstances> API.
+Instances can be discovered only programmatically, using the Cloud Map
+C<DiscoverInstances> API.
 
 =item DNS_PUBLIC
 

@@ -2,6 +2,7 @@
 package Paws::ServiceDiscovery::DnsProperties;
   use Moose;
   has HostedZoneId => (is => 'ro', isa => 'Str');
+  has SOA => (is => 'ro', isa => 'Paws::ServiceDiscovery::SOA');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceDiscovery::DnsProperties object:
 
-  $service_obj->Method(Att1 => { HostedZoneId => $value, ..., HostedZoneId => $value  });
+  $service_obj->Method(Att1 => { HostedZoneId => $value, ..., SOA => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,15 +35,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 =head1 DESCRIPTION
 
 A complex type that contains the ID for the Route 53 hosted zone that
-AWS Cloud Map creates when you create a namespace.
+Cloud Map creates when you create a namespace.
 
 =head1 ATTRIBUTES
 
 
 =head2 HostedZoneId => Str
 
-The ID for the Route 53 hosted zone that AWS Cloud Map creates when you
+The ID for the Route 53 hosted zone that Cloud Map creates when you
 create a namespace.
+
+
+=head2 SOA => L<Paws::ServiceDiscovery::SOA>
+
+Start of Authority (SOA) record for the hosted zone.
 
 
 

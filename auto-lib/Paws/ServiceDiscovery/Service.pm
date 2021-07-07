@@ -51,8 +51,8 @@ A complex type that contains information about the specified service.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
-service when you create it.
+The Amazon Resource Name (ARN) that Cloud Map assigns to the service
+when you create it.
 
 
 =head2 CreateDate => Str
@@ -67,8 +67,8 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 
 A unique string that identifies the request and that allows failed
 requests to be retried without the risk of running the operation twice.
-C<CreatorRequestId> can be any unique string, for example, a
-date/timestamp.
+C<CreatorRequestId> can be any unique string (for example, a
+date/timestamp).
 
 
 =head2 Description => Str
@@ -79,15 +79,15 @@ The description of the service.
 =head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
 A complex type that contains information about the Route 53 DNS records
-that you want AWS Cloud Map to create when you register an instance.
+that you want Cloud Map to create when you register an instance.
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
 I<Public DNS and HTTP namespaces only.> A complex type that contains
 settings for an optional health check. If you specify settings for a
-health check, AWS Cloud Map associates the health check with the
-records that you specify in C<DnsConfig>.
+health check, Cloud Map associates the health check with the records
+that you specify in C<DnsConfig>.
 
 For information about the charges for health checks, see Amazon Route
 53 Pricing (http://aws.amazon.com/route53/pricing/).
@@ -104,15 +104,15 @@ C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
 
 =head2 Id => Str
 
-The ID that AWS Cloud Map assigned to the service when you created it.
+The ID that Cloud Map assigned to the service when you created it.
 
 
 =head2 InstanceCount => Int
 
 The number of instances that are currently associated with the service.
-Instances that were previously associated with the service but that
-have been deleted are not included in the count. The count might not
-reflect pending registrations and deregistrations.
+Instances that were previously associated with the service but that are
+deleted aren't included in the count. The count might not reflect
+pending registrations and deregistrations.
 
 
 =head2 Name => Str

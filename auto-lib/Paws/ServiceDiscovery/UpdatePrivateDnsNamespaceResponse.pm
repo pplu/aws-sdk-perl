@@ -1,5 +1,5 @@
 
-package Paws::ServiceDiscovery::DeregisterInstanceResponse;
+package Paws::ServiceDiscovery::UpdatePrivateDnsNamespaceResponse;
   use Moose;
   has OperationId => (is => 'ro', isa => 'Str');
 
@@ -9,7 +9,7 @@ package Paws::ServiceDiscovery::DeregisterInstanceResponse;
 
 =head1 NAME
 
-Paws::ServiceDiscovery::DeregisterInstanceResponse
+Paws::ServiceDiscovery::UpdatePrivateDnsNamespaceResponse
 
 =head1 ATTRIBUTES
 

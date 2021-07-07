@@ -120,9 +120,24 @@ package Paws::ServiceDiscovery;
     my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateHttpNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UpdateHttpNamespace', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateInstanceCustomHealthStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UpdateInstanceCustomHealthStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePrivateDnsNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UpdatePrivateDnsNamespace', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePublicDnsNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceDiscovery::UpdatePublicDnsNamespace', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateService {
@@ -225,7 +240,7 @@ package Paws::ServiceDiscovery;
   }
 
 
-  sub operations { qw/CreateHttpNamespace CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance DiscoverInstances GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices ListTagsForResource RegisterInstance TagResource UntagResource UpdateInstanceCustomHealthStatus UpdateService / }
+  sub operations { qw/CreateHttpNamespace CreatePrivateDnsNamespace CreatePublicDnsNamespace CreateService DeleteNamespace DeleteService DeregisterInstance DiscoverInstances GetInstance GetInstancesHealthStatus GetNamespace GetOperation GetService ListInstances ListNamespaces ListOperations ListServices ListTagsForResource RegisterInstance TagResource UntagResource UpdateHttpNamespace UpdateInstanceCustomHealthStatus UpdatePrivateDnsNamespace UpdatePublicDnsNamespace UpdateService / }
 
 1;
 
@@ -253,14 +268,16 @@ Paws::ServiceDiscovery - Perl Interface to AWS AWS Cloud Map
 
 =head1 DESCRIPTION
 
-With AWS Cloud Map, you can configure public DNS, private DNS, or HTTP
+Cloud Map
+
+With Cloud Map, you can configure public DNS, private DNS, or HTTP
 namespaces that your microservice applications run in. When an instance
-becomes available, you can call the AWS Cloud Map API to register the
-instance with AWS Cloud Map. For public or private DNS namespaces, AWS
-Cloud Map automatically creates DNS records and an optional health
-check. Clients that submit public or private DNS queries, or HTTP
-requests, for the service receive an answer that contains up to eight
-healthy records.
+becomes available, you can call the Cloud Map API to register the
+instance with Cloud Map. For public or private DNS namespaces, Cloud
+Map automatically creates DNS records and an optional health check.
+Clients that submit public or private DNS queries, or HTTP requests,
+for the service receive an answer that contains up to eight healthy
+records.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicediscovery-2017-03-14>
 
@@ -286,14 +303,14 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::CreateHttpNam
 
 Returns: a L<Paws::ServiceDiscovery::CreateHttpNamespaceResponse> instance
 
-Creates an HTTP namespace. Service instances that you register using an
-HTTP namespace can be discovered using a C<DiscoverInstances> request
-but can't be discovered using DNS.
+Creates an HTTP namespace. Service instances registered using an HTTP
+namespace can be discovered using a C<DiscoverInstances> request but
+can't be discovered using DNS.
 
 For the current quota on the number of namespaces that you can create
-using the same AWS account, see AWS Cloud Map quotas
+using the same account, see Cloud Map quotas
 (https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
-in the I<AWS Cloud Map Developer Guide>.
+in the I<Cloud Map Developer Guide>.
 
 
 =head2 CreatePrivateDnsNamespace
@@ -308,6 +325,8 @@ in the I<AWS Cloud Map Developer Guide>.
 
 =item [Description => Str]
 
+=item [Properties => L<Paws::ServiceDiscovery::PrivateDnsNamespaceProperties>]
+
 =item [Tags => ArrayRef[L<Paws::ServiceDiscovery::Tag>]]
 
 
@@ -321,11 +340,13 @@ Creates a private namespace based on DNS, which is visible only inside
 a specified Amazon VPC. The namespace defines your service naming
 scheme. For example, if you name your namespace C<example.com> and name
 your service C<backend>, the resulting DNS name for the service is
-C<backend.example.com>. For the current quota on the number of
-namespaces that you can create using the same AWS account, see AWS
-Cloud Map Limits
+C<backend.example.com>. Service instances that are registered using a
+private DNS namespace can be discovered using either a
+C<DiscoverInstances> request or using DNS. For the current quota on the
+number of namespaces that you can create using the same account, see
+Cloud Map quotas
 (https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
-in the I<AWS Cloud Map Developer Guide>.
+in the I<Cloud Map Developer Guide>.
 
 
 =head2 CreatePublicDnsNamespace
@@ -337,6 +358,8 @@ in the I<AWS Cloud Map Developer Guide>.
 =item [CreatorRequestId => Str]
 
 =item [Description => Str]
+
+=item [Properties => L<Paws::ServiceDiscovery::PublicDnsNamespaceProperties>]
 
 =item [Tags => ArrayRef[L<Paws::ServiceDiscovery::Tag>]]
 
@@ -351,11 +374,12 @@ Creates a public namespace based on DNS, which is visible on the
 internet. The namespace defines your service naming scheme. For
 example, if you name your namespace C<example.com> and name your
 service C<backend>, the resulting DNS name for the service is
-C<backend.example.com>. For the current quota on the number of
-namespaces that you can create using the same AWS account, see AWS
-Cloud Map Limits
+C<backend.example.com>. You can discover instances that were registered
+with a public DNS namespace by using either a C<DiscoverInstances>
+request or using DNS. For the current quota on the number of namespaces
+that you can create using the same account, see Cloud Map quotas
 (https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
-in the I<AWS Cloud Map Developer Guide>.
+in the I<Cloud Map Developer Guide>.
 
 
 =head2 CreateService
@@ -387,8 +411,8 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::CreateService
 
 Returns: a L<Paws::ServiceDiscovery::CreateServiceResponse> instance
 
-Creates a service, which defines the configuration for the following
-entities:
+Creates a service. This action defines the configuration for the
+following entities:
 
 =over
 
@@ -429,14 +453,14 @@ Optionally, a health check
 
 After you create the service, you can submit a RegisterInstance
 (https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html)
-request, and AWS Cloud Map uses the values in the configuration to
-create the specified entities.
+request, and Cloud Map uses the values in the configuration to create
+the specified entities.
 
 For the current quota on the number of instances that you can register
-using the same namespace and using the same service, see AWS Cloud Map
-Limits
+using the same namespace and using the same service, see Cloud Map
+quotas
 (https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
-in the I<AWS Cloud Map Developer Guide>.
+in the I<Cloud Map Developer Guide>.
 
 
 =head2 DeleteNamespace
@@ -489,7 +513,7 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::DeregisterIns
 Returns: a L<Paws::ServiceDiscovery::DeregisterInstanceResponse> instance
 
 Deletes the Amazon Route 53 DNS records and health check, if any, that
-AWS Cloud Map created for the specified instance.
+Cloud Map created for the specified instance.
 
 
 =head2 DiscoverInstances
@@ -562,7 +586,7 @@ Gets the current health status (C<Healthy>, C<Unhealthy>, or
 C<Unknown>) of one or more instances that are associated with a
 specified service.
 
-There is a brief delay between when you register an instance and when
+There's a brief delay between when you register an instance and when
 the health status for the instance is available.
 
 
@@ -658,7 +682,7 @@ Each argument is described in detail in: L<Paws::ServiceDiscovery::ListNamespace
 Returns: a L<Paws::ServiceDiscovery::ListNamespacesResponse> instance
 
 Lists summary information about the namespaces that were created by the
-current AWS account.
+current account.
 
 
 =head2 ListOperations
@@ -745,8 +769,8 @@ submit a C<RegisterInstance> request, the following occurs:
 
 =item *
 
-For each DNS record that you define in the service that is specified by
-C<ServiceId>, a record is created or updated in the hosted zone that is
+For each DNS record that you define in the service that's specified by
+C<ServiceId>, a record is created or updated in the hosted zone that's
 associated with the corresponding namespace.
 
 =item *
@@ -767,7 +791,7 @@ another request and specify the same service ID and instance ID.
 For more information, see CreateService
 (https://docs.aws.amazon.com/cloud-map/latest/api/API_CreateService.html).
 
-When AWS Cloud Map receives a DNS query for the specified DNS name, it
+When Cloud Map receives a DNS query for the specified DNS name, it
 returns the applicable value:
 
 =over
@@ -789,10 +813,10 @@ records
 =back
 
 For the current quota on the number of instances that you can register
-using the same namespace and using the same service, see AWS Cloud Map
-Limits
+using the same namespace and using the same service, see Cloud Map
+quotas
 (https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html)
-in the I<AWS Cloud Map Developer Guide>.
+in the I<Cloud Map Developer Guide>.
 
 
 =head2 TagResource
@@ -831,6 +855,26 @@ Returns: a L<Paws::ServiceDiscovery::UntagResourceResponse> instance
 Removes one or more tags from the specified resource.
 
 
+=head2 UpdateHttpNamespace
+
+=over
+
+=item Id => Str
+
+=item Namespace => L<Paws::ServiceDiscovery::HttpNamespaceChange>
+
+=item [UpdaterRequestId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdateHttpNamespace>
+
+Returns: a L<Paws::ServiceDiscovery::UpdateHttpNamespaceResponse> instance
+
+Updates an HTTP namespace.
+
+
 =head2 UpdateInstanceCustomHealthStatus
 
 =over
@@ -859,6 +903,46 @@ C<HealthCheckConfig>.
 
 For more information, see HealthCheckCustomConfig
 (https://docs.aws.amazon.com/cloud-map/latest/api/API_HealthCheckCustomConfig.html).
+
+
+=head2 UpdatePrivateDnsNamespace
+
+=over
+
+=item Id => Str
+
+=item Namespace => L<Paws::ServiceDiscovery::PrivateDnsNamespaceChange>
+
+=item [UpdaterRequestId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdatePrivateDnsNamespace>
+
+Returns: a L<Paws::ServiceDiscovery::UpdatePrivateDnsNamespaceResponse> instance
+
+Updates a private DNS namespace.
+
+
+=head2 UpdatePublicDnsNamespace
+
+=over
+
+=item Id => Str
+
+=item Namespace => L<Paws::ServiceDiscovery::PublicDnsNamespaceChange>
+
+=item [UpdaterRequestId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceDiscovery::UpdatePublicDnsNamespace>
+
+Returns: a L<Paws::ServiceDiscovery::UpdatePublicDnsNamespaceResponse> instance
+
+Updates a public DNS namespace.
 
 
 =head2 UpdateService
@@ -911,7 +995,7 @@ service.
 
 =back
 
-When you update settings for a service, AWS Cloud Map also updates the
+When you update settings for a service, Cloud Map also updates the
 corresponding settings in all the records and health checks that were
 created by using the specified service.
 

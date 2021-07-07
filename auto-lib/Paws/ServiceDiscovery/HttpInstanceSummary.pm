@@ -67,8 +67,8 @@ request.
 
 C<C< C< >>>
 
-The C<HttpName> name of the namespace, found in the C<HttpProperties>
-member of the C<Properties> member of the namespace.
+The C<HttpName> name of the namespace. It's found in the
+C<HttpProperties> member of the C<Properties> member of the namespace.
 
 
 =head2 ServiceName => Str

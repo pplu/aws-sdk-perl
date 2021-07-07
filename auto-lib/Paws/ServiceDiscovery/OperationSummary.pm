@@ -60,7 +60,7 @@ request.
 
 =item *
 
-B<PENDING>: AWS Cloud Map is performing the operation.
+B<PENDING>: Cloud Map is performing the operation.
 
 =item *
 

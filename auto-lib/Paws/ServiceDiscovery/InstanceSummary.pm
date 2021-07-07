@@ -48,7 +48,7 @@ A string map that contains the following information:
 
 =item *
 
-The attributes that are associate with the instance.
+The attributes that are associated with the instance.
 
 =item *
 
@@ -63,7 +63,7 @@ Supported attribute keys include the following:
 =item AWS_ALIAS_DNS_NAME
 
 For an alias record that routes traffic to an Elastic Load Balancing
-load balancer, the DNS name that is associated with the load balancer.
+load balancer, the DNS name that's associated with the load balancer.
 
 =item AWS_EC2_INSTANCE_ID (HTTP namespaces only)
 
@@ -83,18 +83,18 @@ is C<HEALTHY>.
 =item AWS_INSTANCE_CNAME
 
 For a C<CNAME> record, the domain name that Route 53 returns in
-response to DNS queries, for example, C<example.com>.
+response to DNS queries (for example, C<example.com>).
 
 =item AWS_INSTANCE_IPV4
 
 For an C<A> record, the IPv4 address that Route 53 returns in response
-to DNS queries, for example, C<192.0.2.44>.
+to DNS queries (for example, C<192.0.2.44>).
 
 =item AWS_INSTANCE_IPV6
 
 For an C<AAAA> record, the IPv6 address that Route 53 returns in
-response to DNS queries, for example,
-C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+response to DNS queries (for example,
+C<2001:0db8:85a3:0000:0000:abcd:0001:2345>).
 
 =item AWS_INSTANCE_PORT
 

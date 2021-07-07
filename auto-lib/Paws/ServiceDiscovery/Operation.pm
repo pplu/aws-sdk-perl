@@ -111,11 +111,12 @@ The status of the operation. Values include the following:
 
 =item SUBMITTED
 
-This is the initial state immediately after you submit a request.
+This is the initial state that occurs immediately after you submit a
+request.
 
 =item PENDING
 
-AWS Cloud Map is performing the operation.
+Cloud Map is performing the operation.
 
 =item SUCCESS
 
@@ -131,7 +132,7 @@ The operation failed. For the failure reason, see C<ErrorMessage>.
 
 =head2 Targets => L<Paws::ServiceDiscovery::OperationTargetsMap>
 
-The name of the target entity that is associated with the operation:
+The name of the target entity that's associated with the operation:
 
 =over
 
@@ -153,7 +154,7 @@ The instance ID is returned in the C<ResourceId> property.
 
 =head2 Type => Str
 
-The name of the operation that is associated with the specified ID.
+The name of the operation that's associated with the specified ID.
 
 
 =head2 UpdateDate => Str

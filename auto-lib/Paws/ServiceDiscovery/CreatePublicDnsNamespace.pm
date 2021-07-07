@@ -4,6 +4,7 @@ package Paws::ServiceDiscovery::CreatePublicDnsNamespace;
   has CreatorRequestId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Properties => (is => 'ro', isa => 'Paws::ServiceDiscovery::PublicDnsNamespaceProperties');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceDiscovery::Tag]');
 
   use MooseX::ClassAttribute;
@@ -35,7 +36,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name             => 'MyNamespaceNamePublic',
       CreatorRequestId => 'MyResourceId',             # OPTIONAL
       Description      => 'MyResourceDescription',    # OPTIONAL
-      Tags             => [
+      Properties       => {
+        DnsProperties => {
+          SOA => {
+            TTL => 1,    # max: 2147483647
+
+          },
+
+        },
+
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256
@@ -61,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 A unique string that identifies the request and that allows failed
 C<CreatePublicDnsNamespace> requests to be retried without the risk of
 running the operation twice. C<CreatorRequestId> can be any unique
-string, for example, a date/timestamp.
+string (for example, a date/timestamp).
 
 
 
@@ -74,6 +85,12 @@ A description for the namespace.
 =head2 B<REQUIRED> Name => Str
 
 The name that you want to assign to this namespace.
+
+
+
+=head2 Properties => L<Paws::ServiceDiscovery::PublicDnsNamespaceProperties>
+
+Properties for the public DNS namespace.
 
 
 

@@ -68,9 +68,9 @@ filters to be returned by C<ListServices>.
 
 =head2 MaxResults => Int
 
-The maximum number of services that you want AWS Cloud Map to return in
-the response to a C<ListServices> request. If you don't specify a value
-for C<MaxResults>, AWS Cloud Map returns up to 100 services.
+The maximum number of services that you want Cloud Map to return in the
+response to a C<ListServices> request. If you don't specify a value for
+C<MaxResults>, Cloud Map returns up to 100 services.
 
 
 
@@ -82,8 +82,8 @@ If the response contains C<NextToken>, submit another C<ListServices>
 request to get the next group of results. Specify the value of
 C<NextToken> from the previous response in the next request.
 
-AWS Cloud Map gets C<MaxResults> services and then filters them based
-on the specified criteria. It's possible that no services in the first
+Cloud Map gets C<MaxResults> services and then filters them based on
+the specified criteria. It's possible that no services in the first
 C<MaxResults> services matched the specified criteria but that
 subsequent groups of C<MaxResults> services do contain services that
 match the criteria.

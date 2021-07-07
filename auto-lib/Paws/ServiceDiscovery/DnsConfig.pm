@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 =head1 DESCRIPTION
 
 A complex type that contains information about the Amazon Route 53 DNS
-records that you want AWS Cloud Map to create when you register an
+records that you want Cloud Map to create when you register an
 instance.
 
 =head1 ATTRIBUTES
@@ -45,8 +45,7 @@ instance.
 =head2 B<REQUIRED> DnsRecords => ArrayRef[L<Paws::ServiceDiscovery::DnsRecord>]
 
 An array that contains one C<DnsRecord> object for each Route 53 DNS
-record that you want AWS Cloud Map to create when you register an
-instance.
+record that you want Cloud Map to create when you register an instance.
 
 
 =head2 NamespaceId => Str
@@ -57,8 +56,8 @@ The ID of the namespace to use for DNS configuration.
 =head2 RoutingPolicy => Str
 
 The routing policy that you want to apply to all Route 53 DNS records
-that AWS Cloud Map creates when you register an instance and specify
-this service.
+that Cloud Map creates when you register an instance and specify this
+service.
 
 If you want to use this service to register instances that create alias
 records, specify C<WEIGHTED> for the routing policy.

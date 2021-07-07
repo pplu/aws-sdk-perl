@@ -74,9 +74,9 @@ Supported attribute keys include the following:
 
 =item AWS_ALIAS_DNS_NAME
 
-If you want AWS Cloud Map to create an Amazon Route 53 alias record
-that routes traffic to an Elastic Load Balancing load balancer, specify
-the DNS name that is associated with the load balancer. For information
+If you want Cloud Map to create an Amazon Route 53 alias record that
+routes traffic to an Elastic Load Balancing load balancer, specify the
+DNS name that's associated with the load balancer. For information
 about how to get the DNS name, see "DNSName" in the topic AliasTarget
 (https://docs.aws.amazon.com/Route53/latest/APIReference/API_AliasTarget.html)
 in the I<Route 53 API Reference>.
@@ -87,26 +87,26 @@ Note the following:
 
 =item *
 
-The configuration for the service that is specified by C<ServiceId>
-must include settings for an C<A> record, an C<AAAA> record, or both.
+The configuration for the service that's specified by C<ServiceId> must
+include settings for an C<A> record, an C<AAAA> record, or both.
 
 =item *
 
-In the service that is specified by C<ServiceId>, the value of
+In the service that's specified by C<ServiceId>, the value of
 C<RoutingPolicy> must be C<WEIGHTED>.
 
 =item *
 
-If the service that is specified by C<ServiceId> includes
-C<HealthCheckConfig> settings, AWS Cloud Map will create the Route 53
+If the service that's specified by C<ServiceId> includes
+C<HealthCheckConfig> settings, Cloud Map will create the Route 53
 health check, but it doesn't associate the health check with the alias
 record.
 
 =item *
 
 Auto naming currently doesn't support creating alias records that route
-traffic to AWS resources other than Elastic Load Balancing load
-balancers.
+traffic to Amazon Web Services resources other than Elastic Load
+Balancing load balancers.
 
 =item *
 
@@ -135,8 +135,8 @@ is C<HEALTHY>.
 =item AWS_INSTANCE_CNAME
 
 If the service configuration includes a C<CNAME> record, the domain
-name that you want Route 53 to return in response to DNS queries, for
-example, C<example.com>.
+name that you want Route 53 to return in response to DNS queries (for
+example, C<example.com>).
 
 This value is required if the service specified by C<ServiceId>
 includes settings for an C<CNAME> record.
@@ -144,8 +144,8 @@ includes settings for an C<CNAME> record.
 =item AWS_INSTANCE_IPV4
 
 If the service configuration includes an C<A> record, the IPv4 address
-that you want Route 53 to return in response to DNS queries, for
-example, C<192.0.2.44>.
+that you want Route 53 to return in response to DNS queries (for
+example, C<192.0.2.44>).
 
 This value is required if the service specified by C<ServiceId>
 includes settings for an C<A> record. If the service includes settings
@@ -155,8 +155,8 @@ C<AWS_INSTANCE_IPV4>, C<AWS_INSTANCE_IPV6>, or both.
 =item AWS_INSTANCE_IPV6
 
 If the service configuration includes an C<AAAA> record, the IPv6
-address that you want Route 53 to return in response to DNS queries,
-for example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>.
+address that you want Route 53 to return in response to DNS queries
+(for example, C<2001:0db8:85a3:0000:0000:abcd:0001:2345>).
 
 This value is required if the service specified by C<ServiceId>
 includes settings for an C<AAAA> record. If the service includes
@@ -194,8 +194,8 @@ C<RegisterInstance> requests to be retried without the risk of
 executing the operation twice. You must use a unique
 C<CreatorRequestId> string every time you submit a C<RegisterInstance>
 request if you're registering additional instances for the same
-namespace and service. C<CreatorRequestId> can be any unique string,
-for example, a date/time stamp.
+namespace and service. C<CreatorRequestId> can be any unique string
+(for example, a date/time stamp).
 
 
 
@@ -208,7 +208,7 @@ following:
 
 =item *
 
-If the service that is specified by C<ServiceId> includes settings for
+If the service that's specified by C<ServiceId> includes settings for
 an C<SRV> record, the value of C<InstanceId> is automatically included
 as part of the value for the C<SRV> record. For more information, see
 DnsRecord E<gt> Type
@@ -220,15 +220,15 @@ You can use this value to update an existing instance.
 
 =item *
 
-To register a new instance, you must specify a value that is unique
+To register a new instance, you must specify a value that's unique
 among instances that you register by using the same service.
 
 =item *
 
-If you specify an existing C<InstanceId> and C<ServiceId>, AWS Cloud
-Map updates the existing DNS records, if any. If there's also an
-existing health check, AWS Cloud Map deletes the old health check and
-creates a new one.
+If you specify an existing C<InstanceId> and C<ServiceId>, Cloud Map
+updates the existing DNS records, if any. If there's also an existing
+health check, Cloud Map deletes the old health check and creates a new
+one.
 
 The health check isn't deleted immediately, so it will still appear for
 a while if you submit a C<ListHealthChecks> request, for example.
