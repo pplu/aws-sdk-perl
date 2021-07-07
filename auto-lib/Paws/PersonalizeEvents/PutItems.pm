@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Items      => [
         {
           ItemId     => 'MyStringType',        # min: 1, max: 256
-          Properties => 'MyItemProperties',    # min: 1, max: 4096; OPTIONAL
+          Properties => 'MyItemProperties',    # min: 1, max: 24262; OPTIONAL
         },
         ...
       ],
