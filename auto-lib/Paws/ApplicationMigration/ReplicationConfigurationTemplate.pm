@@ -64,7 +64,7 @@ Valid values are: C<"GP2">, C<"ST1">
 
 Replication Configuration template EBS encryption.
 
-Valid values are: C<"NONE">, C<"DEFAULT">, C<"CUSTOM">
+Valid values are: C<"DEFAULT">, C<"CUSTOM">
 =head2 EbsEncryptionKeyArn => Str
 
 Replication Configuration template EBS encryption key ARN.

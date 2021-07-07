@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CreatePublicIP                      => 1,
       DataPlaneRouting                    => 'PRIVATE_IP',
       DefaultLargeStagingDiskType         => 'GP2',
-      EbsEncryption                       => 'NONE',
+      EbsEncryption                       => 'DEFAULT',
       ReplicationServerInstanceType       => 'MyEC2InstanceType',
       ReplicationServersSecurityGroupsIDs => [
         'MySecurityGroupID', ...    # max: 255
@@ -137,7 +137,7 @@ Valid values are: C<"GP2">, C<"ST1">
 Request to configure EBS enryption during Replication Settings template
 creation.
 
-Valid values are: C<"NONE">, C<"DEFAULT">, C<"CUSTOM">
+Valid values are: C<"DEFAULT">, C<"CUSTOM">
 
 =head2 EbsEncryptionKeyArn => Str
 

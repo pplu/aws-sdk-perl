@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CreatePublicIP                => 1,                         # OPTIONAL
       DataPlaneRouting              => 'PRIVATE_IP',              # OPTIONAL
       DefaultLargeStagingDiskType   => 'GP2',                     # OPTIONAL
-      EbsEncryption                 => 'NONE',                    # OPTIONAL
+      EbsEncryption                 => 'DEFAULT',                 # OPTIONAL
       EbsEncryptionKeyArn           => 'MyARN',                   # OPTIONAL
       Name                          => 'MySmallBoundedString',    # OPTIONAL
       ReplicatedDisks               => [
@@ -139,7 +139,7 @@ Valid values are: C<"GP2">, C<"ST1">
 
 Update replication configuration EBS encryption request.
 
-Valid values are: C<"NONE">, C<"DEFAULT">, C<"CUSTOM">
+Valid values are: C<"DEFAULT">, C<"CUSTOM">
 
 =head2 EbsEncryptionKeyArn => Str
 
