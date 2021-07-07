@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url       => 'My__string',
 
           },
-
+          ConstantInitializationVector => 'My__string',
         },    # OPTIONAL
         IncludeEncoderConfigurationInSegments => 1,    # OPTIONAL
         SegmentDurationSeconds                => 1,    # OPTIONAL
