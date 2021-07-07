@@ -5,6 +5,7 @@ package Paws::CloudFormation::ListTypeVersions;
   has DeprecatedStatus => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has PublisherId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
 
@@ -33,12 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $ListTypeVersionsOutput = $cloudformation->ListTypeVersions(
-      Arn              => 'MyPrivateTypeArn',    # OPTIONAL
-      DeprecatedStatus => 'LIVE',                # OPTIONAL
-      MaxResults       => 1,                     # OPTIONAL
-      NextToken        => 'MyNextToken',         # OPTIONAL
-      Type             => 'RESOURCE',            # OPTIONAL
-      TypeName         => 'MyTypeName',          # OPTIONAL
+      Arn              => 'MyTypeArn',        # OPTIONAL
+      DeprecatedStatus => 'LIVE',             # OPTIONAL
+      MaxResults       => 1,                  # OPTIONAL
+      NextToken        => 'MyNextToken',      # OPTIONAL
+      PublisherId      => 'MyPublisherId',    # OPTIONAL
+      Type             => 'RESOURCE',         # OPTIONAL
+      TypeName         => 'MyTypeName',       # OPTIONAL
     );
 
     # Results:
@@ -106,6 +108,14 @@ token. To retrieve the next set of results, call this action again and
 assign that token to the request object's C<NextToken> parameter. If
 there are no remaining results, the previous response object's
 C<NextToken> parameter is set to C<null>.
+
+
+
+=head2 PublisherId => Str
+
+The publisher ID of the extension publisher.
+
+Extensions published by Amazon are not assigned a publisher ID.
 
 
 

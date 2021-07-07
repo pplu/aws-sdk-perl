@@ -58,6 +58,8 @@ the operation in any subsequent Regions.
 Conditional: You must specify either C<FailureToleranceCount> or
 C<FailureTolerancePercentage> (but not both).
 
+By default, C<0> is specified.
+
 
 =head2 FailureTolerancePercentage => Int
 
@@ -71,6 +73,8 @@ percentage, AWS CloudFormation rounds I<down> to the next whole number.
 
 Conditional: You must specify either C<FailureToleranceCount> or
 C<FailureTolerancePercentage>, but not both.
+
+By default, C<0> is specified.
 
 
 =head2 MaxConcurrentCount => Int
@@ -87,6 +91,8 @@ throttling.
 
 Conditional: You must specify either C<MaxConcurrentCount> or
 C<MaxConcurrentPercentage>, but not both.
+
+By default, C<1> is specified.
 
 
 =head2 MaxConcurrentPercentage => Int
@@ -106,6 +112,8 @@ throttling.
 
 Conditional: You must specify either C<MaxConcurrentCount> or
 C<MaxConcurrentPercentage>, but not both.
+
+By default, C<1> is specified.
 
 
 =head2 RegionConcurrencyType => Str

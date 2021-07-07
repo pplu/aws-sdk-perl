@@ -69,15 +69,23 @@ multiple times.
 =head2 ExecutionRoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role for CloudFormation to
-assume when invoking the extension. If your extension calls AWS APIs in
-any of its handlers, you must create an I< IAM execution role
+assume when invoking the extension.
+
+For CloudFormation to assume the specified execution role, the role
+must contain a trust relationship with the CloudFormation service
+principle (C<resources.cloudformation.amazonaws.com>). For more
+information on adding trust relationships, see Modifying a role trust
+policy in the I<AWS Identity and Access Management User Guide>.
+
+If your extension calls AWS APIs in any of its handlers, you must
+create an I< IAM execution role
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html) > that
 includes the necessary permissions to call those AWS APIs, and
 provision that execution role in your account. When CloudFormation
-needs to invoke the extension handler, CloudFormation assumes this
+needs to invoke the resource type handler, CloudFormation assumes this
 execution role to create a temporary session token, which it then
-passes to the extension handler, thereby supplying your extension with
-the appropriate credentials.
+passes to the resource type handler, thereby supplying your resource
+type with the appropriate credentials.
 
 
 
@@ -117,8 +125,19 @@ Valid values are: C<"RESOURCE">, C<"MODULE">
 
 The name of the extension being registered.
 
-We recommend that extension names adhere to the following pattern:
-I<company_or_organization>::I<service>::I<type>.
+We recommend that extension names adhere to the following patterns:
+
+=over
+
+=item *
+
+For resource types, I<company_or_organization>::I<service>::I<type>.
+
+=item *
+
+For modules, I<company_or_organization>::I<service>::I<type>::MODULE.
+
+=back
 
 The following organization namespaces are reserved and cannot be used
 in your extension names:
