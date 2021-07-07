@@ -123,6 +123,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CustomCname      => 'MyString253',       # max: 253; OPTIONAL
           ExpirationInDays => 1,                   # min: 1, max: 5000; OPTIONAL
           S3BucketName     => 'MyString3To255',    # min: 3, max: 255; OPTIONAL
+          S3ObjectAcl      => 'PUBLIC_READ'
+          ,    # values: PUBLIC_READ, BUCKET_OWNER_FULL_CONTROL; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Tags => [
@@ -179,12 +181,12 @@ handling CA keys.
 
 Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 
-Note: AWS Region ap-northeast-3 supports only
-FIPS_140_2_LEVEL_2_OR_HIGHER. You must explicitly specify this
-parameter and value when creating a CA in that Region. Specifying a
-different value (or no value) results in an C<InvalidArgsException>
-with the message "A certificate authority cannot be created in this
-region with the specified security standard."
+Note: C<FIPS_140_2_LEVEL_3_OR_HIGHER> is not supported in Region
+ap-northeast-3. When creating a CA in the ap-northeast-3, you must
+provide C<FIPS_140_2_LEVEL_2_OR_HIGHER> as the argument for
+C<KeyStorageSecurityStandard>. Failure to do this results in an
+C<InvalidArgsException> with the message, "A certificate authority
+cannot be created in this region with the specified security standard."
 
 Valid values are: C<"FIPS_140_2_LEVEL_2_OR_HIGHER">, C<"FIPS_140_2_LEVEL_3_OR_HIGHER">
 

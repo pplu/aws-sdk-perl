@@ -37,6 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CustomCname      => 'MyString253',       # max: 253; OPTIONAL
           ExpirationInDays => 1,                   # min: 1, max: 5000; OPTIONAL
           S3BucketName     => 'MyString3To255',    # min: 3, max: 255; OPTIONAL
+          S3ObjectAcl      => 'PUBLIC_READ'
+          ,    # values: PUBLIC_READ, BUCKET_OWNER_FULL_CONTROL; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Status => 'CREATING',    # OPTIONAL
