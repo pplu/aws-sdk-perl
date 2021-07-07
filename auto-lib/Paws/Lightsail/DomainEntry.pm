@@ -71,19 +71,24 @@ in the API response. It is now deprecated.
 
 =head2 Target => Str
 
-The target AWS name server (e.g., C<ns-111.awsdns-22.com.>).
+The target IP address (e.g., C<192.0.2.0>), or AWS name server (e.g.,
+C<ns-111.awsdns-22.com.>).
 
 For Lightsail load balancers, the value looks like
 C<ab1234c56789c6b86aba6fb203d443bc-123456789.us-east-2.elb.amazonaws.com>.
+For Lightsail distributions, the value looks like
+C<exampled1182ne.cloudfront.net>. For Lightsail container services, the
+value looks like
+C<container-service-1.example23scljs.us-west-2.cs.amazonlightsail.com>.
 Be sure to also set C<isAlias> to C<true> when setting up an A record
-for a load balancer.
+for a Lightsail load balancer, distribution, or container service.
 
 
 =head2 Type => Str
 
-The type of domain entry, such as address (A), canonical name (CNAME),
-mail exchanger (MX), name server (NS), start of authority (SOA),
-service locator (SRV), or text (TXT).
+The type of domain entry, such as address for IPv4 (A), address for
+IPv6 (AAAA), canonical name (CNAME), mail exchanger (MX), name server
+(NS), start of authority (SOA), service locator (SRV), or text (TXT).
 
 The following domain entry types can be used:
 
@@ -92,6 +97,10 @@ The following domain entry types can be used:
 =item *
 
 C<A>
+
+=item *
+
+C<AAAA>
 
 =item *
 
