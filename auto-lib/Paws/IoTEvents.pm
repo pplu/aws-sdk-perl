@@ -14,6 +14,11 @@ package Paws::IoTEvents;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub CreateAlarmModel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::CreateAlarmModel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDetectorModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::CreateDetectorModel', @_);
@@ -24,6 +29,11 @@ package Paws::IoTEvents;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::CreateInput', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAlarmModel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::DeleteAlarmModel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDetectorModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::DeleteDetectorModel', @_);
@@ -32,6 +42,11 @@ package Paws::IoTEvents;
   sub DeleteInput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::DeleteInput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAlarmModel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::DescribeAlarmModel', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDetectorModel {
@@ -59,6 +74,16 @@ package Paws::IoTEvents;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::GetDetectorModelAnalysisResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAlarmModels {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::ListAlarmModels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAlarmModelVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::ListAlarmModelVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDetectorModels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::ListDetectorModels', @_);
@@ -67,6 +92,11 @@ package Paws::IoTEvents;
   sub ListDetectorModelVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::ListDetectorModelVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListInputRoutings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::ListInputRoutings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListInputs {
@@ -99,6 +129,11 @@ package Paws::IoTEvents;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateAlarmModel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoTEvents::UpdateAlarmModel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateDetectorModel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoTEvents::UpdateDetectorModel', @_);
@@ -112,7 +147,7 @@ package Paws::IoTEvents;
   
 
 
-  sub operations { qw/CreateDetectorModel CreateInput DeleteDetectorModel DeleteInput DescribeDetectorModel DescribeDetectorModelAnalysis DescribeInput DescribeLoggingOptions GetDetectorModelAnalysisResults ListDetectorModels ListDetectorModelVersions ListInputs ListTagsForResource PutLoggingOptions StartDetectorModelAnalysis TagResource UntagResource UpdateDetectorModel UpdateInput / }
+  sub operations { qw/CreateAlarmModel CreateDetectorModel CreateInput DeleteAlarmModel DeleteDetectorModel DeleteInput DescribeAlarmModel DescribeDetectorModel DescribeDetectorModelAnalysis DescribeInput DescribeLoggingOptions GetDetectorModelAnalysisResults ListAlarmModels ListAlarmModelVersions ListDetectorModels ListDetectorModelVersions ListInputRoutings ListInputs ListTagsForResource PutLoggingOptions StartDetectorModelAnalysis TagResource UntagResource UpdateAlarmModel UpdateDetectorModel UpdateInput / }
 
 1;
 
@@ -149,6 +184,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 
 =head1 METHODS
+
+=head2 CreateAlarmModel
+
+=over
+
+=item AlarmModelName => Str
+
+=item AlarmRule => L<Paws::IoTEvents::AlarmRule>
+
+=item RoleArn => Str
+
+=item [AlarmCapabilities => L<Paws::IoTEvents::AlarmCapabilities>]
+
+=item [AlarmEventActions => L<Paws::IoTEvents::AlarmEventActions>]
+
+=item [AlarmModelDescription => Str]
+
+=item [AlarmNotification => L<Paws::IoTEvents::AlarmNotification>]
+
+=item [Key => Str]
+
+=item [Severity => Int]
+
+=item [Tags => ArrayRef[L<Paws::IoTEvents::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::CreateAlarmModel>
+
+Returns: a L<Paws::IoTEvents::CreateAlarmModelResponse> instance
+
+Creates an alarm model to monitor an AWS IoT Events input attribute.
+You can use the alarm to get notified when the value is outside a
+specified range. For more information, see Create an alarm model
+(https://docs.aws.amazon.com/iotevents/latest/developerguide/create-alarms.html)
+in the I<AWS IoT Events Developer Guide>.
+
 
 =head2 CreateDetectorModel
 
@@ -200,6 +273,23 @@ Returns: a L<Paws::IoTEvents::CreateInputResponse> instance
 Creates an input.
 
 
+=head2 DeleteAlarmModel
+
+=over
+
+=item AlarmModelName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::DeleteAlarmModel>
+
+Returns: a L<Paws::IoTEvents::DeleteAlarmModelResponse> instance
+
+Deletes an alarm model. Any alarm instances that were created based on
+this alarm model are also deleted. This action can't be undone.
+
+
 =head2 DeleteDetectorModel
 
 =over
@@ -231,6 +321,26 @@ Each argument is described in detail in: L<Paws::IoTEvents::DeleteInput>
 Returns: a L<Paws::IoTEvents::DeleteInputResponse> instance
 
 Deletes an input.
+
+
+=head2 DescribeAlarmModel
+
+=over
+
+=item AlarmModelName => Str
+
+=item [AlarmModelVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::DescribeAlarmModel>
+
+Returns: a L<Paws::IoTEvents::DescribeAlarmModelResponse> instance
+
+Retrieves information about an alarm model. If you don't specify a
+value for the C<alarmModelVersion> parameter, the latest version is
+returned.
 
 
 =head2 DescribeDetectorModel
@@ -265,7 +375,10 @@ Each argument is described in detail in: L<Paws::IoTEvents::DescribeDetectorMode
 
 Returns: a L<Paws::IoTEvents::DescribeDetectorModelAnalysisResponse> instance
 
-Retrieves execution information about a detector model analysis
+Retrieves runtime information about a detector model analysis.
+
+After AWS IoT Events starts analyzing your detector model, you have up
+to 24 hours to retrieve the analysis results.
 
 
 =head2 DescribeInput
@@ -317,6 +430,49 @@ Returns: a L<Paws::IoTEvents::GetDetectorModelAnalysisResultsResponse> instance
 
 Retrieves one or more analysis results of the detector model.
 
+After AWS IoT Events starts analyzing your detector model, you have up
+to 24 hours to retrieve the analysis results.
+
+
+=head2 ListAlarmModels
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::ListAlarmModels>
+
+Returns: a L<Paws::IoTEvents::ListAlarmModelsResponse> instance
+
+Lists the alarm models that you created. The operation returns only the
+metadata associated with each alarm model.
+
+
+=head2 ListAlarmModelVersions
+
+=over
+
+=item AlarmModelName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::ListAlarmModelVersions>
+
+Returns: a L<Paws::IoTEvents::ListAlarmModelVersionsResponse> instance
+
+Lists all the versions of an alarm model. The operation returns only
+the metadata associated with each alarm model version.
+
 
 =head2 ListDetectorModels
 
@@ -356,6 +512,26 @@ Returns: a L<Paws::IoTEvents::ListDetectorModelVersionsResponse> instance
 
 Lists all the versions of a detector model. Only the metadata
 associated with each detector model version is returned.
+
+
+=head2 ListInputRoutings
+
+=over
+
+=item InputIdentifier => L<Paws::IoTEvents::InputIdentifier>
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::ListInputRoutings>
+
+Returns: a L<Paws::IoTEvents::ListInputRoutingsResponse> instance
+
+Lists one or more input routings.
 
 
 =head2 ListInputs
@@ -428,7 +604,7 @@ Each argument is described in detail in: L<Paws::IoTEvents::StartDetectorModelAn
 Returns: a L<Paws::IoTEvents::StartDetectorModelAnalysisResponse> instance
 
 Performs an analysis of your detector model. For more information, see
-Running detector model analyses
+Troubleshooting a detector model
 (https://docs.aws.amazon.com/iotevents/latest/developerguide/iotevents-analyze-api.html)
 in the I<AWS IoT Events Developer Guide>.
 
@@ -468,6 +644,38 @@ Each argument is described in detail in: L<Paws::IoTEvents::UntagResource>
 Returns: a L<Paws::IoTEvents::UntagResourceResponse> instance
 
 Removes the given tags (metadata) from the resource.
+
+
+=head2 UpdateAlarmModel
+
+=over
+
+=item AlarmModelName => Str
+
+=item AlarmRule => L<Paws::IoTEvents::AlarmRule>
+
+=item RoleArn => Str
+
+=item [AlarmCapabilities => L<Paws::IoTEvents::AlarmCapabilities>]
+
+=item [AlarmEventActions => L<Paws::IoTEvents::AlarmEventActions>]
+
+=item [AlarmModelDescription => Str]
+
+=item [AlarmNotification => L<Paws::IoTEvents::AlarmNotification>]
+
+=item [Severity => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoTEvents::UpdateAlarmModel>
+
+Returns: a L<Paws::IoTEvents::UpdateAlarmModelResponse> instance
+
+Updates an alarm model. Any alarms that were created based on the
+previous version are deleted and then created again as new data
+arrives.
 
 
 =head2 UpdateDetectorModel

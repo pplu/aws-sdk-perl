@@ -29,7 +29,7 @@ process can take several minutes to complete.
 
 =item *
 
-C<COMPLETE> - AWS IoT Events finished analyzing your detector model .
+C<COMPLETE> - AWS IoT Events finished analyzing your detector model.
 
 =item *
 

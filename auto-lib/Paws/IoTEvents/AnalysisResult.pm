@@ -43,24 +43,24 @@ Contains the result of the analysis.
 
 =head2 Level => Str
 
-The severity level of the analysis result. Analysis results fall into
-three general categories based on the severity level:
+The severity level of the analysis result. Based on the severity level,
+analysis results fall into three general categories:
 
 =over
 
 =item *
 
-C<INFO> - An information result informs you about a significant field
-in your detector model. This type of result usually doesn't require
+C<INFO> - An information result tells you about a significant field in
+your detector model. This type of result usually doesn't require
 immediate action.
 
 =item *
 
 C<WARNING> - A warning result draws special attention to fields that
-are potentially damaging to your detector model. We recommend that you
-review warnings and take necessary actions before you use your detetor
-model in production environments. Otherwise, the detector model may not
-fully function as expected.
+might cause issues for your detector model. We recommend that you
+review warnings and take necessary actions before you use your detector
+model in production environments. Otherwise, the detector model might
+not work as expected.
 
 =item *
 
@@ -97,8 +97,9 @@ actions that work with other AWS services in a supported AWS Region.
 
 =item *
 
-C<service-limits> - Resources or operations can't exceed service
-limits. Update your detector model or request a limit adjust.
+C<service-limits> - Resources or API operations can't exceed service
+quotas (also known as limits). Update your detector model or request a
+quota increase.
 
 =item *
 

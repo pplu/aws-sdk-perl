@@ -5,7 +5,7 @@ package Paws::IoTEvents::IotSiteWiseAction;
   has EntryId => (is => 'ro', isa => 'Str', request_name => 'entryId', traits => ['NameInRequest']);
   has PropertyAlias => (is => 'ro', isa => 'Str', request_name => 'propertyAlias', traits => ['NameInRequest']);
   has PropertyId => (is => 'ro', isa => 'Str', request_name => 'propertyId', traits => ['NameInRequest']);
-  has PropertyValue => (is => 'ro', isa => 'Paws::IoTEvents::AssetPropertyValue', request_name => 'propertyValue', traits => ['NameInRequest'], required => 1);
+  has PropertyValue => (is => 'ro', isa => 'Paws::IoTEvents::AssetPropertyValue', request_name => 'propertyValue', traits => ['NameInRequest']);
 
 1;
 
@@ -108,7 +108,7 @@ The alias of the asset property.
 The ID of the asset property.
 
 
-=head2 B<REQUIRED> PropertyValue => L<Paws::IoTEvents::AssetPropertyValue>
+=head2 PropertyValue => L<Paws::IoTEvents::AssetPropertyValue>
 
 The value to send to the asset property. This value contains timestamp,
 quality, and value (TQV) information.

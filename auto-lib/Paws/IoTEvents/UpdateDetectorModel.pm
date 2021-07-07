@@ -90,7 +90,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },    # OPTIONAL
                       },    # OPTIONAL
                       IotSiteWise => {
+                        AssetId       => 'MyAssetId',                 # OPTIONAL
+                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
+                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
+                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
                         PropertyValue => {
+                          Quality   => 'MyAssetPropertyQuality',      # OPTIONAL
+                          Timestamp => {
+                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
+                            OffsetInNanos =>
+                              'MyAssetPropertyOffsetInNanos',         # OPTIONAL
+                          },    # OPTIONAL
                           Value => {
                             BooleanValue =>
                               'MyAssetPropertyBooleanValue',    # OPTIONAL
@@ -100,18 +110,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                               'MyAssetPropertyIntegerValue',    # OPTIONAL
                             StringValue =>
                               'MyAssetPropertyStringValue',     # OPTIONAL
-                          },
-                          Quality   => 'MyAssetPropertyQuality',    # OPTIONAL
-                          Timestamp => {
-                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
-                            OffsetInNanos =>
-                              'MyAssetPropertyOffsetInNanos',       # OPTIONAL
                           },    # OPTIONAL
-                        },
-                        AssetId       => 'MyAssetId',                 # OPTIONAL
-                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
-                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
-                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
+                        },    # OPTIONAL
                       },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
@@ -223,7 +223,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },    # OPTIONAL
                       },    # OPTIONAL
                       IotSiteWise => {
+                        AssetId       => 'MyAssetId',                 # OPTIONAL
+                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
+                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
+                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
                         PropertyValue => {
+                          Quality   => 'MyAssetPropertyQuality',      # OPTIONAL
+                          Timestamp => {
+                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
+                            OffsetInNanos =>
+                              'MyAssetPropertyOffsetInNanos',         # OPTIONAL
+                          },    # OPTIONAL
                           Value => {
                             BooleanValue =>
                               'MyAssetPropertyBooleanValue',    # OPTIONAL
@@ -233,18 +243,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                               'MyAssetPropertyIntegerValue',    # OPTIONAL
                             StringValue =>
                               'MyAssetPropertyStringValue',     # OPTIONAL
-                          },
-                          Quality   => 'MyAssetPropertyQuality',    # OPTIONAL
-                          Timestamp => {
-                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
-                            OffsetInNanos =>
-                              'MyAssetPropertyOffsetInNanos',       # OPTIONAL
                           },    # OPTIONAL
-                        },
-                        AssetId       => 'MyAssetId',                 # OPTIONAL
-                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
-                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
-                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
+                        },    # OPTIONAL
                       },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
@@ -356,7 +356,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },    # OPTIONAL
                       },    # OPTIONAL
                       IotSiteWise => {
+                        AssetId       => 'MyAssetId',                 # OPTIONAL
+                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
+                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
+                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
                         PropertyValue => {
+                          Quality   => 'MyAssetPropertyQuality',      # OPTIONAL
+                          Timestamp => {
+                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
+                            OffsetInNanos =>
+                              'MyAssetPropertyOffsetInNanos',         # OPTIONAL
+                          },    # OPTIONAL
                           Value => {
                             BooleanValue =>
                               'MyAssetPropertyBooleanValue',    # OPTIONAL
@@ -366,18 +376,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                               'MyAssetPropertyIntegerValue',    # OPTIONAL
                             StringValue =>
                               'MyAssetPropertyStringValue',     # OPTIONAL
-                          },
-                          Quality   => 'MyAssetPropertyQuality',    # OPTIONAL
-                          Timestamp => {
-                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
-                            OffsetInNanos =>
-                              'MyAssetPropertyOffsetInNanos',       # OPTIONAL
                           },    # OPTIONAL
-                        },
-                        AssetId       => 'MyAssetId',                 # OPTIONAL
-                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
-                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
-                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
+                        },    # OPTIONAL
                       },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
@@ -489,7 +489,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         },    # OPTIONAL
                       },    # OPTIONAL
                       IotSiteWise => {
+                        AssetId       => 'MyAssetId',                 # OPTIONAL
+                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
+                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
+                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
                         PropertyValue => {
+                          Quality   => 'MyAssetPropertyQuality',      # OPTIONAL
+                          Timestamp => {
+                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
+                            OffsetInNanos =>
+                              'MyAssetPropertyOffsetInNanos',         # OPTIONAL
+                          },    # OPTIONAL
                           Value => {
                             BooleanValue =>
                               'MyAssetPropertyBooleanValue',    # OPTIONAL
@@ -499,18 +509,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                               'MyAssetPropertyIntegerValue',    # OPTIONAL
                             StringValue =>
                               'MyAssetPropertyStringValue',     # OPTIONAL
-                          },
-                          Quality   => 'MyAssetPropertyQuality',    # OPTIONAL
-                          Timestamp => {
-                            TimeInSeconds => 'MyAssetPropertyTimeInSeconds',
-                            OffsetInNanos =>
-                              'MyAssetPropertyOffsetInNanos',       # OPTIONAL
                           },    # OPTIONAL
-                        },
-                        AssetId       => 'MyAssetId',                 # OPTIONAL
-                        EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
-                        PropertyAlias => 'MyAssetPropertyAlias',      # OPTIONAL
-                        PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
+                        },    # OPTIONAL
                       },    # OPTIONAL
                       IotTopicPublish => {
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128

@@ -3,7 +3,7 @@ package Paws::IoTEvents::AssetPropertyValue;
   use Moose;
   has Quality => (is => 'ro', isa => 'Str', request_name => 'quality', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Paws::IoTEvents::AssetPropertyTimestamp', request_name => 'timestamp', traits => ['NameInRequest']);
-  has Value => (is => 'ro', isa => 'Paws::IoTEvents::AssetPropertyVariant', request_name => 'value', traits => ['NameInRequest'], required => 1);
+  has Value => (is => 'ro', isa => 'Paws::IoTEvents::AssetPropertyVariant', request_name => 'value', traits => ['NameInRequest']);
 
 1;
 
@@ -80,7 +80,7 @@ The timestamp associated with the asset property value. The default is
 the current event time.
 
 
-=head2 B<REQUIRED> Value => L<Paws::IoTEvents::AssetPropertyVariant>
+=head2 Value => L<Paws::IoTEvents::AssetPropertyVariant>
 
 The value to send to an asset property.
 
