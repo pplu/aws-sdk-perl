@@ -62,8 +62,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdempotencyToken => 'MyIdempotencyToken',    # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 255; OPTIONAL
-          Value => 'MyTagValue',    # min: 1, max: 255; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
       ],    # OPTIONAL
