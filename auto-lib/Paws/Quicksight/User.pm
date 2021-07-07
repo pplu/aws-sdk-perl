@@ -5,6 +5,9 @@ package Paws::Quicksight::User;
   has Arn => (is => 'ro', isa => 'Str');
   has CustomPermissionsName => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str');
+  has ExternalLoginFederationProviderType => (is => 'ro', isa => 'Str');
+  has ExternalLoginFederationProviderUrl => (is => 'ro', isa => 'Str');
+  has ExternalLoginId => (is => 'ro', isa => 'Str');
   has IdentityType => (is => 'ro', isa => 'Str');
   has PrincipalId => (is => 'ro', isa => 'Str');
   has Role => (is => 'ro', isa => 'Str');
@@ -65,6 +68,37 @@ The custom permissions profile associated with this user.
 =head2 Email => Str
 
 The user's email address.
+
+
+=head2 ExternalLoginFederationProviderType => Str
+
+The type of supported external login provider that provides identity to
+let the user federate into Amazon QuickSight with an associated IAM
+role. The type can be one of the following.
+
+=over
+
+=item *
+
+C<COGNITO>: Amazon Cognito. The provider URL is
+cognito-identity.amazonaws.com.
+
+=item *
+
+C<CUSTOM_OIDC>: Custom OpenID Connect (OIDC) provider.
+
+=back
+
+
+
+=head2 ExternalLoginFederationProviderUrl => Str
+
+The URL of the external login provider.
+
+
+=head2 ExternalLoginId => Str
+
+The identity ID for the user in the external login provider.
 
 
 =head2 IdentityType => Str

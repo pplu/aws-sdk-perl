@@ -44,6 +44,16 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateDataSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFolderMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateFolderMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateGroup', @_);
@@ -112,6 +122,16 @@ package Paws::Quicksight;
   sub DeleteDataSource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteDataSource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFolderMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteFolderMembership', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteGroup {
@@ -214,6 +234,21 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeDataSourcePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFolderPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeFolderPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFolderResolvedPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeFolderResolvedPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeGroup', @_);
@@ -302,6 +337,16 @@ package Paws::Quicksight;
   sub ListDataSources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::ListDataSources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFolderMembers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListFolderMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFolders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListFolders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGroupMemberships {
@@ -399,6 +444,11 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::SearchDashboards', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SearchFolders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::SearchFolders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::TagResource', @_);
@@ -462,6 +512,16 @@ package Paws::Quicksight;
   sub UpdateDataSourcePermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateDataSourcePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateFolderPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateFolderPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGroup {
@@ -834,7 +894,7 @@ package Paws::Quicksight;
   }
 
 
-  sub operations { qw/CancelIngestion CreateAccountCustomization CreateAnalysis CreateDashboard CreateDataSet CreateDataSource CreateGroup CreateGroupMembership CreateIAMPolicyAssignment CreateIngestion CreateNamespace CreateTemplate CreateTemplateAlias CreateTheme CreateThemeAlias DeleteAccountCustomization DeleteAnalysis DeleteDashboard DeleteDataSet DeleteDataSource DeleteGroup DeleteGroupMembership DeleteIAMPolicyAssignment DeleteNamespace DeleteTemplate DeleteTemplateAlias DeleteTheme DeleteThemeAlias DeleteUser DeleteUserByPrincipalId DescribeAccountCustomization DescribeAccountSettings DescribeAnalysis DescribeAnalysisPermissions DescribeDashboard DescribeDashboardPermissions DescribeDataSet DescribeDataSetPermissions DescribeDataSource DescribeDataSourcePermissions DescribeGroup DescribeIAMPolicyAssignment DescribeIngestion DescribeNamespace DescribeTemplate DescribeTemplateAlias DescribeTemplatePermissions DescribeTheme DescribeThemeAlias DescribeThemePermissions DescribeUser GetDashboardEmbedUrl GetSessionEmbedUrl ListAnalyses ListDashboards ListDashboardVersions ListDataSets ListDataSources ListGroupMemberships ListGroups ListIAMPolicyAssignments ListIAMPolicyAssignmentsForUser ListIngestions ListNamespaces ListTagsForResource ListTemplateAliases ListTemplates ListTemplateVersions ListThemeAliases ListThemes ListThemeVersions ListUserGroups ListUsers RegisterUser RestoreAnalysis SearchAnalyses SearchDashboards TagResource UntagResource UpdateAccountCustomization UpdateAccountSettings UpdateAnalysis UpdateAnalysisPermissions UpdateDashboard UpdateDashboardPermissions UpdateDashboardPublishedVersion UpdateDataSet UpdateDataSetPermissions UpdateDataSource UpdateDataSourcePermissions UpdateGroup UpdateIAMPolicyAssignment UpdateTemplate UpdateTemplateAlias UpdateTemplatePermissions UpdateTheme UpdateThemeAlias UpdateThemePermissions UpdateUser / }
+  sub operations { qw/CancelIngestion CreateAccountCustomization CreateAnalysis CreateDashboard CreateDataSet CreateDataSource CreateFolder CreateFolderMembership CreateGroup CreateGroupMembership CreateIAMPolicyAssignment CreateIngestion CreateNamespace CreateTemplate CreateTemplateAlias CreateTheme CreateThemeAlias DeleteAccountCustomization DeleteAnalysis DeleteDashboard DeleteDataSet DeleteDataSource DeleteFolder DeleteFolderMembership DeleteGroup DeleteGroupMembership DeleteIAMPolicyAssignment DeleteNamespace DeleteTemplate DeleteTemplateAlias DeleteTheme DeleteThemeAlias DeleteUser DeleteUserByPrincipalId DescribeAccountCustomization DescribeAccountSettings DescribeAnalysis DescribeAnalysisPermissions DescribeDashboard DescribeDashboardPermissions DescribeDataSet DescribeDataSetPermissions DescribeDataSource DescribeDataSourcePermissions DescribeFolder DescribeFolderPermissions DescribeFolderResolvedPermissions DescribeGroup DescribeIAMPolicyAssignment DescribeIngestion DescribeNamespace DescribeTemplate DescribeTemplateAlias DescribeTemplatePermissions DescribeTheme DescribeThemeAlias DescribeThemePermissions DescribeUser GetDashboardEmbedUrl GetSessionEmbedUrl ListAnalyses ListDashboards ListDashboardVersions ListDataSets ListDataSources ListFolderMembers ListFolders ListGroupMemberships ListGroups ListIAMPolicyAssignments ListIAMPolicyAssignmentsForUser ListIngestions ListNamespaces ListTagsForResource ListTemplateAliases ListTemplates ListTemplateVersions ListThemeAliases ListThemes ListThemeVersions ListUserGroups ListUsers RegisterUser RestoreAnalysis SearchAnalyses SearchDashboards SearchFolders TagResource UntagResource UpdateAccountCustomization UpdateAccountSettings UpdateAnalysis UpdateAnalysisPermissions UpdateDashboard UpdateDashboardPermissions UpdateDashboardPublishedVersion UpdateDataSet UpdateDataSetPermissions UpdateDataSource UpdateDataSourcePermissions UpdateFolder UpdateFolderPermissions UpdateGroup UpdateIAMPolicyAssignment UpdateTemplate UpdateTemplateAlias UpdateTemplatePermissions UpdateTheme UpdateThemeAlias UpdateThemePermissions UpdateUser / }
 
 1;
 
@@ -1079,6 +1139,56 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateDataSource>
 Returns: a L<Paws::Quicksight::CreateDataSourceResponse> instance
 
 Creates a data source.
+
+
+=head2 CreateFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item [FolderType => Str]
+
+=item [Name => Str]
+
+=item [ParentFolderArn => Str]
+
+=item [Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateFolder>
+
+Returns: a L<Paws::Quicksight::CreateFolderResponse> instance
+
+Creates an empty shared folder.
+
+
+=head2 CreateFolderMembership
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item MemberId => Str
+
+=item MemberType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateFolderMembership>
+
+Returns: a L<Paws::Quicksight::CreateFolderMembershipResponse> instance
+
+Adds an asset, such as a dashboard, analysis, or dataset into a folder.
 
 
 =head2 CreateGroup
@@ -1449,6 +1559,47 @@ Returns: a L<Paws::Quicksight::DeleteDataSourceResponse> instance
 
 Deletes the data source permanently. This operation breaks all the
 datasets that reference the deleted data source.
+
+
+=head2 DeleteFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteFolder>
+
+Returns: a L<Paws::Quicksight::DeleteFolderResponse> instance
+
+Deletes an empty folder.
+
+
+=head2 DeleteFolderMembership
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item MemberId => Str
+
+=item MemberType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteFolderMembership>
+
+Returns: a L<Paws::Quicksight::DeleteFolderMembershipResponse> instance
+
+Removes an asset, such as a dashboard, analysis, or dataset, from a
+folder.
 
 
 =head2 DeleteGroup
@@ -1921,6 +2072,62 @@ Returns: a L<Paws::Quicksight::DescribeDataSourcePermissionsResponse> instance
 Describes the resource permissions for a data source.
 
 
+=head2 DescribeFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeFolder>
+
+Returns: a L<Paws::Quicksight::DescribeFolderResponse> instance
+
+Describes a folder.
+
+
+=head2 DescribeFolderPermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeFolderPermissions>
+
+Returns: a L<Paws::Quicksight::DescribeFolderPermissionsResponse> instance
+
+Describes permissions for a folder.
+
+
+=head2 DescribeFolderResolvedPermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeFolderResolvedPermissions>
+
+Returns: a L<Paws::Quicksight::DescribeFolderResolvedPermissionsResponse> instance
+
+Describes the folder resolved permissions. Permissions consists of both
+folder direct permissions and the inherited permissions from the
+ancestor folders.
+
+
 =head2 DescribeGroup
 
 =over
@@ -2362,6 +2569,49 @@ Lists data sources in current AWS Region that belong to this AWS
 account.
 
 
+=head2 ListFolderMembers
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListFolderMembers>
+
+Returns: a L<Paws::Quicksight::ListFolderMembersResponse> instance
+
+List all assets (C<DASHBOARD>, C<ANALYSIS>, and C<DATASET>) in a
+folder.
+
+
+=head2 ListFolders
+
+=over
+
+=item AwsAccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListFolders>
+
+Returns: a L<Paws::Quicksight::ListFoldersResponse> instance
+
+Lists all folders in an account.
+
+
 =head2 ListGroupMemberships
 
 =over
@@ -2709,7 +2959,13 @@ account.
 
 =item UserRole => Str
 
+=item [CustomFederationProviderUrl => Str]
+
 =item [CustomPermissionsName => Str]
+
+=item [ExternalLoginFederationProviderType => Str]
+
+=item [ExternalLoginId => Str]
 
 =item [IamArn => Str]
 
@@ -2789,6 +3045,28 @@ Each argument is described in detail in: L<Paws::Quicksight::SearchDashboards>
 Returns: a L<Paws::Quicksight::SearchDashboardsResponse> instance
 
 Searches for dashboards that belong to a user.
+
+
+=head2 SearchFolders
+
+=over
+
+=item AwsAccountId => Str
+
+=item Filters => ArrayRef[L<Paws::Quicksight::FolderSearchFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::SearchFolders>
+
+Returns: a L<Paws::Quicksight::SearchFoldersResponse> instance
+
+Searches the subfolders in a folder.
 
 
 =head2 TagResource
@@ -3135,6 +3413,48 @@ Returns: a L<Paws::Quicksight::UpdateDataSourcePermissionsResponse> instance
 Updates the permissions to a data source.
 
 
+=head2 UpdateFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateFolder>
+
+Returns: a L<Paws::Quicksight::UpdateFolderResponse> instance
+
+Updates the name of a folder.
+
+
+=head2 UpdateFolderPermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item [GrantPermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [RevokePermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateFolderPermissions>
+
+Returns: a L<Paws::Quicksight::UpdateFolderPermissionsResponse> instance
+
+Updates permissions of a folder.
+
+
 =head2 UpdateGroup
 
 =over
@@ -3429,7 +3749,13 @@ To specify no permissions, omit the permissions list.
 
 =item UserName => Str
 
+=item [CustomFederationProviderUrl => Str]
+
 =item [CustomPermissionsName => Str]
+
+=item [ExternalLoginFederationProviderType => Str]
+
+=item [ExternalLoginId => Str]
 
 =item [UnapplyCustomPermissions => Bool]
 
