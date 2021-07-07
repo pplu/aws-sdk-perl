@@ -13,6 +13,7 @@ package Paws::SageMaker::DescribeEdgePackagingJobResponse;
   has ModelSignature => (is => 'ro', isa => 'Str');
   has ModelVersion => (is => 'ro', isa => 'Str');
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::EdgeOutputConfig');
+  has PresetDeploymentOutput => (is => 'ro', isa => 'Paws::SageMaker::EdgePresetDeploymentOutput');
   has ResourceKey => (is => 'ro', isa => 'Str');
   has RoleArn => (is => 'ro', isa => 'Str');
 
@@ -86,6 +87,11 @@ The version of the model.
 =head2 OutputConfig => L<Paws::SageMaker::EdgeOutputConfig>
 
 The output configuration for the edge packaging job.
+
+
+=head2 PresetDeploymentOutput => L<Paws::SageMaker::EdgePresetDeploymentOutput>
+
+The output of a SageMaker Edge Manager deployable resource.
 
 
 =head2 ResourceKey => Str

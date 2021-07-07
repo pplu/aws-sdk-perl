@@ -45,6 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeCompilationJobResponse->CompilationStartTime;
     my $CreationTime      = $DescribeCompilationJobResponse->CreationTime;
     my $FailureReason     = $DescribeCompilationJobResponse->FailureReason;
+    my $InferenceImage    = $DescribeCompilationJobResponse->InferenceImage;
     my $InputConfig       = $DescribeCompilationJobResponse->InputConfig;
     my $LastModifiedTime  = $DescribeCompilationJobResponse->LastModifiedTime;
     my $ModelArtifacts    = $DescribeCompilationJobResponse->ModelArtifacts;
@@ -52,6 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $OutputConfig      = $DescribeCompilationJobResponse->OutputConfig;
     my $RoleArn           = $DescribeCompilationJobResponse->RoleArn;
     my $StoppingCondition = $DescribeCompilationJobResponse->StoppingCondition;
+    my $VpcConfig         = $DescribeCompilationJobResponse->VpcConfig;
 
     # Returns a L<Paws::SageMaker::DescribeCompilationJobResponse> object.
 

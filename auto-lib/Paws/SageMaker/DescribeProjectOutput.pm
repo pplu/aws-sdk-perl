@@ -65,7 +65,7 @@ Information about a provisioned service catalog product.
 =head2 B<REQUIRED> ServiceCatalogProvisioningDetails => L<Paws::SageMaker::ServiceCatalogProvisioningDetails>
 
 Information used to provision a service catalog product. For
-information, see What is AWS Service Catalog
+information, see What is Amazon Web Services Service Catalog
 (https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html).
 
 

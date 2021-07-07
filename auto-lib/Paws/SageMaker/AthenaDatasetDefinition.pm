@@ -57,8 +57,9 @@ Configuration for Athena Dataset Definition input.
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt data generated from an Athena query execution.
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt data generated from an
+Athena query execution.
 
 
 =head2 OutputCompression => Str

@@ -74,8 +74,8 @@ An object containing information about the output file.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) execution role for the flow definition.
+The Amazon Resource Name (ARN) of the Amazon Web Services Identity and
+Access Management (IAM) execution role for the flow definition.
 
 
 =head2 _request_id => Str

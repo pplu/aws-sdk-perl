@@ -43,8 +43,9 @@ configuration for C<OfflineStore>.
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (KMS) key ID of the key used to encrypt
-any objects written into the C<OfflineStore> S3 location.
+The Amazon Web Services Key Management Service (KMS) key ID of the key
+used to encrypt any objects written into the C<OfflineStore> S3
+location.
 
 The IAM C<roleARN> that is passed as a parameter to
 C<CreateFeatureGroup> must have below permissions to the C<KmsKeyId>:

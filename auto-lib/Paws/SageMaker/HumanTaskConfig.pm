@@ -1357,7 +1357,7 @@ hours (43,200 seconds). The default is 6 hours (21,600 seconds).
 
 If you choose a private or vendor workforce, the default value is 10
 days (864,000 seconds). For most users, the maximum is also 10 days. If
-you want to change this limit, contact AWS Support.
+you want to change this limit, contact Amazon Web Services Support.
 
 =back
 
@@ -1402,7 +1402,7 @@ For 3D point cloud
 and video frame
 (https://docs.aws.amazon.com/sagemaker/latest/dg/sms-video.html)
 labeling jobs, the maximum is 7 days (604,800 seconds). If you want to
-change these limits, contact AWS Support.
+change these limits, contact Amazon Web Services Support.
 
 =back
 

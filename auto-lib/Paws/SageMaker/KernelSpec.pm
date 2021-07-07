@@ -46,7 +46,8 @@ The display name of the kernel.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the kernel.
+The name of the Jupyter kernel in the image. This value is case
+sensitive.
 
 
 

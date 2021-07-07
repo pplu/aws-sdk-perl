@@ -90,8 +90,8 @@ search on the tags.
 
 =head2 B<REQUIRED> TrialName => Str
 
-The name of the trial. The name must be unique in your AWS account and
-is not case-sensitive.
+The name of the trial. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.
 
 
 

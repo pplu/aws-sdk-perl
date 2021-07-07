@@ -99,8 +99,8 @@ This member is deprecated and replaced with C<KmsKeyId>.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS customer managed CMK used to encrypt the EFS volume
-attached to the domain.
+The Amazon Web Services KMS customer managed CMK used to encrypt the
+EFS volume attached to the domain.
 
 
 =head2 LastModifiedTime => Str

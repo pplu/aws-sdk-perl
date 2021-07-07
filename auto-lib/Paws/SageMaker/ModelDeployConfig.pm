@@ -44,7 +44,7 @@ Autopilot model deployment.
 
 Set to C<True> to automatically generate an endpoint name for a
 one-click Autopilot model deployment; set to C<False> otherwise. The
-default value is C<True>.
+default value is C<False>.
 
 If you set C<AutoGenerateEndpointName> to C<True>, do not specify the
 C<EndpointName>; otherwise a 400 error is thrown.

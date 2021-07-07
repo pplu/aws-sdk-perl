@@ -37,7 +37,7 @@ The Amazon Resource Name (ARN) of the model bias job.
 =head2 B<REQUIRED> JobDefinitionName => Str
 
 The name of the bias job definition. The name must be unique within an
-AWS Region in the AWS account.
+Amazon Web Services Region in the Amazon Web Services account.
 
 
 =head2 B<REQUIRED> JobResources => L<Paws::SageMaker::MonitoringResources>
@@ -73,8 +73,8 @@ Networking options for a model bias job.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that has read permission to the input data
+The Amazon Resource Name (ARN) of the Amazon Web Services Identity and
+Access Management (IAM) role that has read permission to the input data
 location and write permission to the output data location in Amazon S3.
 
 

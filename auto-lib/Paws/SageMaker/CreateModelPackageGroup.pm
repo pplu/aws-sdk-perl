@@ -70,9 +70,9 @@ The name of the model group.
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
 A list of key value pairs associated with the model group. For more
-information, see Tagging AWS resources
+information, see Tagging Amazon Web Services resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
-I<AWS General Reference Guide>.
+I<Amazon Web Services General Reference Guide>.
 
 
 

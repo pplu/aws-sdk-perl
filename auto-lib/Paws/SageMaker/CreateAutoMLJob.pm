@@ -160,10 +160,6 @@ Autopilot model deployment.
 Provides information about encryption and the Amazon S3 output path
 needed to store artifacts from an AutoML job. Format(s) supported: CSV.
 
-E<lt>paraE<gt>Specifies whether to automatically deploy the best &ATP;
-model to an endpoint and the name of that endpoint if deployed
-automatically.E<lt>/paraE<gt>
-
 
 
 =head2 ProblemType => Str
@@ -179,10 +175,6 @@ Valid values are: C<"BinaryClassification">, C<"MulticlassClassification">, C<"R
 =head2 B<REQUIRED> RoleArn => Str
 
 The ARN of the role that is used to access the data.
-
-E<lt>paraE<gt>Specifies whether to automatically deploy the best &ATP;
-model to an endpoint and the name of that endpoint if deployed
-automatically.E<lt>/paraE<gt>
 
 
 

@@ -104,9 +104,9 @@ production variant is a model.
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
 A list of the tags associated with the endpoint. For more information,
-see Tagging AWS resources
+see Tagging Amazon Web Services resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
-I<AWS General Reference Guide>.
+I<Amazon Web Services General Reference Guide>.
 
 
 

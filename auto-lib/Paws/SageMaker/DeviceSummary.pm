@@ -67,8 +67,8 @@ The unique identifier of the device.
 
 =head2 IotThingName => Str
 
-The AWS Internet of Things (IoT) object thing name associated with the
-device..
+The Amazon Web Services Internet of Things (IoT) object thing name
+associated with the device..
 
 
 =head2 LatestHeartbeat => Str

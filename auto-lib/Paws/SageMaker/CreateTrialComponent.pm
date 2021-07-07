@@ -169,8 +169,8 @@ to search on the tags.
 
 =head2 B<REQUIRED> TrialComponentName => Str
 
-The name of the component. The name must be unique in your AWS account
-and is not case-sensitive.
+The name of the component. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.
 
 
 

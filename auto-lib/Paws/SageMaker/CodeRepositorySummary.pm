@@ -60,8 +60,8 @@ The date and time that the Git repository was created.
 =head2 GitConfig => L<Paws::SageMaker::GitConfig>
 
 Configuration details for the Git repository, including the URL where
-it is located and the ARN of the AWS Secrets Manager secret that
-contains the credentials used to access the repository.
+it is located and the ARN of the Amazon Web Services Secrets Manager
+secret that contains the credentials used to access the repository.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str

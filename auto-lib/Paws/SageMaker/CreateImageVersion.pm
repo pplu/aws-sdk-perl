@@ -60,8 +60,9 @@ or [@digest]E<gt>>
 
 =head2 B<REQUIRED> ClientToken => Str
 
-A unique ID. If not specified, the AWS CLI and AWS SDKs, such as the
-SDK for Python (Boto3), add a unique value to the call.
+A unique ID. If not specified, the Amazon Web Services CLI and Amazon
+Web Services SDKs, such as the SDK for Python (Boto3), add a unique
+value to the call.
 
 
 

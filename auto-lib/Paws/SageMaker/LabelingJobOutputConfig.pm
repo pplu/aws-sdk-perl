@@ -42,17 +42,17 @@ Output configuration information for a labeling job.
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service ID of the key used to encrypt the output
-data, if any.
+The Amazon Web Services Key Management Service ID of the key used to
+encrypt the output data, if any.
 
 If you provide your own KMS key ID, you must add the required
 permissions to your KMS key described in Encrypt Output Data and
-Storage Volume with AWS KMS
+Storage Volume with Amazon Web Services KMS
 (https://docs.aws.amazon.com/sagemaker/latest/dg/sms-security-permission.html#sms-security-kms-permissions).
 
 If you don't provide a KMS key ID, Amazon SageMaker uses the default
-AWS KMS key for Amazon S3 for your role's account to encrypt your
-output data.
+Amazon Web Services KMS key for Amazon S3 for your role's account to
+encrypt your output data.
 
 If you use a bucket policy with an C<s3:PutObject> permission that only
 allows objects with server-side encryption, set the condition key of

@@ -52,9 +52,9 @@ The default is C<Disabled>.
 
 =head2 S3KmsKeyId => Str
 
-When C<NotebookOutputOption> is C<Allowed>, the AWS Key Management
-Service (KMS) encryption key ID used to encrypt the notebook cell
-output in the Amazon S3 bucket.
+When C<NotebookOutputOption> is C<Allowed>, the Amazon Web Services Key
+Management Service (KMS) encryption key ID used to encrypt the notebook
+cell output in the Amazon S3 bucket.
 
 
 =head2 S3OutputPath => Str

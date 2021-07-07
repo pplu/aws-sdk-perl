@@ -51,8 +51,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ModelSignature   = $DescribeEdgePackagingJobResponse->ModelSignature;
     my $ModelVersion     = $DescribeEdgePackagingJobResponse->ModelVersion;
     my $OutputConfig     = $DescribeEdgePackagingJobResponse->OutputConfig;
-    my $ResourceKey      = $DescribeEdgePackagingJobResponse->ResourceKey;
-    my $RoleArn          = $DescribeEdgePackagingJobResponse->RoleArn;
+    my $PresetDeploymentOutput =
+      $DescribeEdgePackagingJobResponse->PresetDeploymentOutput;
+    my $ResourceKey = $DescribeEdgePackagingJobResponse->ResourceKey;
+    my $RoleArn     = $DescribeEdgePackagingJobResponse->RoleArn;
 
     # Returns a L<Paws::SageMaker::DescribeEdgePackagingJobResponse> object.
 

@@ -215,10 +215,14 @@ For example: C<{"precision_mode": "FP32", "output_names":
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt data on the storage volume after compilation job. If you
-don't provide a KMS key ID, Amazon SageMaker uses the default KMS key
-for Amazon S3 for your role's account
+The Amazon Web Services Key Management Service key (Amazon Web Services
+KMS) that Amazon SageMaker uses to encrypt your output models with
+Amazon S3 server-side encryption after compilation job. If you don't
+provide a KMS key ID, Amazon SageMaker uses the default KMS key for
+Amazon S3 for your role's account. For more information, see
+KMS-Managed Encryption Keys
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
+in the I<Amazon Simple Storage Service Developer Guide.>
 
 The KmsKeyId can be any of the following formats:
 

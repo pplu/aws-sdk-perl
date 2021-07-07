@@ -71,7 +71,8 @@ The configured number of workers per data object.
 
 =head2 B<REQUIRED> WorkRequesterAccountId => Str
 
-The AWS account ID of the account used to start the labeling job.
+The Amazon Web Services account ID of the account used to start the
+labeling job.
 
 
 

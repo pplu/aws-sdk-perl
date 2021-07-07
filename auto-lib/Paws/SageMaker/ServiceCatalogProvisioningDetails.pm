@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 Details that you specify to provision a service catalog product. For
-information about service catalog, see .What is AWS Service Catalog
+information about service catalog, see .What is Amazon Web Services
+Service Catalog
 (https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html).
 
 =head1 ATTRIBUTES

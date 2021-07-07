@@ -41,8 +41,8 @@ Provide an C<OfflineStoreConfig> in a request to C<CreateFeatureGroup>
 to create an C<OfflineStore>.
 
 To encrypt an C<OfflineStore> using at rest data encryption, specify
-AWS Key Management Service (KMS) key ID, or C<KMSKeyId>, in
-C<S3StorageConfig>.
+Amazon Web Services Key Management Service (KMS) key ID, or
+C<KMSKeyId>, in C<S3StorageConfig>.
 
 =head1 ATTRIBUTES
 
@@ -55,8 +55,8 @@ C<OfflineStore> is created.
 
 =head2 DisableGlueTableCreation => Bool
 
-Set to C<True> to disable the automatic creation of an AWS Glue table
-when configuring an C<OfflineStore>.
+Set to C<True> to disable the automatic creation of an Amazon Web
+Services Glue table when configuring an C<OfflineStore>.
 
 
 =head2 B<REQUIRED> S3StorageConfig => L<Paws::SageMaker::S3StorageConfig>

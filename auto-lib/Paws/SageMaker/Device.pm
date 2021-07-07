@@ -52,7 +52,7 @@ The name of the device.
 
 =head2 IotThingName => Str
 
-AWS Internet of Things (IoT) object name.
+Amazon Web Services Internet of Things (IoT) object name.
 
 
 

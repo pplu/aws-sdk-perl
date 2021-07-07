@@ -17,7 +17,8 @@ Paws::SageMaker::ListModelPackageGroupsOutput
 
 =head2 B<REQUIRED> ModelPackageGroupSummaryList => ArrayRef[L<Paws::SageMaker::ModelPackageGroupSummary>]
 
-A list of summaries of the model groups in your AWS account.
+A list of summaries of the model groups in your Amazon Web Services
+account.
 
 
 =head2 NextToken => Str

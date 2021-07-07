@@ -39,10 +39,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Identifies a model that you want to host and the resources to deploy
-for hosting it. If you are deploying multiple models, tell Amazon
-SageMaker how to distribute traffic among the models by specifying
-variant weights.
+Identifies a model that you want to host and the resources chosen to
+deploy for hosting it. If you are deploying multiple models, tell
+Amazon SageMaker how to distribute traffic among the models by
+specifying variant weights.
 
 =head1 ATTRIBUTES
 

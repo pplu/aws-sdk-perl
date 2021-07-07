@@ -41,10 +41,11 @@ Configuration for uploading output from the processing container.
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt the processing job output. C<KmsKeyId> can be an ID of a KMS
-key, ARN of a KMS key, alias of a KMS key, or alias of a KMS key. The
-C<KmsKeyId> is applied to all outputs.
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt the processing job
+output. C<KmsKeyId> can be an ID of a KMS key, ARN of a KMS key, alias
+of a KMS key, or alias of a KMS key. The C<KmsKeyId> is applied to all
+outputs.
 
 
 =head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::SageMaker::ProcessingOutput>]

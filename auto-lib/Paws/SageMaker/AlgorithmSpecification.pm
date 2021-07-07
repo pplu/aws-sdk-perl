@@ -52,9 +52,9 @@ Algorithms with Amazon SageMaker
 =head2 AlgorithmName => Str
 
 The name of the algorithm resource to use for the training job. This
-must be an algorithm resource that you created or subscribe to on AWS
-Marketplace. If you specify a value for this parameter, you can't
-specify a value for C<TrainingImage>.
+must be an algorithm resource that you created or subscribe to on
+Amazon Web Services Marketplace. If you specify a value for this
+parameter, you can't specify a value for C<TrainingImage>.
 
 
 =head2 EnableSageMakerMetricsTimeSeries => Bool

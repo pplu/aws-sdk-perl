@@ -304,16 +304,17 @@ Configures the information required to perform automated data labeling.
 
 The name of the labeling job. This name is used to identify the job in
 a list of labeling jobs. Labeling job names must be unique within an
-AWS account and region. C<LabelingJobName> is not case sensitive. For
-example, Example-job and example-job are considered the same labeling
-job name by Ground Truth.
+Amazon Web Services account and region. C<LabelingJobName> is not case
+sensitive. For example, Example-job and example-job are considered the
+same labeling job name by Ground Truth.
 
 
 
 =head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::LabelingJobOutputConfig>
 
-The location of the output data and the AWS Key Management Service key
-ID for the key used to encrypt the output data, if any.
+The location of the output data and the Amazon Web Services Key
+Management Service key ID for the key used to encrypt the output data,
+if any.
 
 
 
@@ -339,7 +340,7 @@ conditions to control the cost of data labeling.
 An array of key/value pairs. For more information, see Using Cost
 Allocation Tags
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+in the I<Amazon Web Services Billing and Cost Management User Guide>.
 
 
 

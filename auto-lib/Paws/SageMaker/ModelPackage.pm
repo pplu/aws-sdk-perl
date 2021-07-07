@@ -64,10 +64,10 @@ A description provided when the model approval is set.
 
 =head2 CertifyForMarketplace => Bool
 
-Whether the model package is to be certified to be listed on AWS
-Marketplace. For information about listing model packages on AWS
-Marketplace, see List Your Algorithm or Model Package on AWS
-Marketplace
+Whether the model package is to be certified to be listed on Amazon Web
+Services Marketplace. For information about listing model packages on
+Amazon Web Services Marketplace, see List Your Algorithm or Model
+Package on Amazon Web Services Marketplace
 (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-mkt-list.html).
 
 
@@ -198,9 +198,9 @@ The version number of a versioned model.
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
 A list of the tags associated with the model package. For more
-information, see Tagging AWS resources
+information, see Tagging Amazon Web Services resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
-I<AWS General Reference Guide>.
+I<Amazon Web Services General Reference Guide>.
 
 
 =head2 ValidationSpecification => L<Paws::SageMaker::ModelPackageValidationSpecification>

@@ -77,8 +77,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> ActionName => Str
 
-The name of the action. Must be unique to your account in an AWS
-Region.
+The name of the action. Must be unique to your account in an Amazon Web
+Services Region.
 
 
 

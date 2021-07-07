@@ -64,7 +64,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> JobDefinitionName => Str
 
 The name of the model bias job definition. The name must be unique
-within an AWS Region in the AWS account.
+within an Amazon Web Services Region in the Amazon Web Services
+account.
 
 
 

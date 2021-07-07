@@ -3,6 +3,7 @@ package Paws::SageMaker::CreateDeviceFleet;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DeviceFleetName => (is => 'ro', isa => 'Str', required => 1);
+  has EnableIotRoleAlias => (is => 'ro', isa => 'Bool');
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::EdgeOutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
@@ -34,12 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $api . sagemaker->CreateDeviceFleet(
       DeviceFleetName => 'MyEntityName',
       OutputConfig    => {
-        S3OutputLocation => 'MyS3Uri',       # max: 1024
-        KmsKeyId         => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        S3OutputLocation       => 'MyS3Uri',       # max: 1024
+        KmsKeyId               => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        PresetDeploymentConfig => 'MyString',      # OPTIONAL
+        PresetDeploymentType   =>
+          'GreengrassV2Component',    # values: GreengrassV2Component; OPTIONAL
       },
-      Description => 'MyDeviceFleetDescription',    # OPTIONAL
-      RoleArn     => 'MyRoleArn',                   # OPTIONAL
-      Tags        => [
+      Description        => 'MyDeviceFleetDescription',    # OPTIONAL
+      EnableIotRoleAlias => 1,                             # OPTIONAL
+      RoleArn            => 'MyRoleArn',                   # OPTIONAL
+      Tags               => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256
@@ -67,6 +72,17 @@ The name of the fleet that the device belongs to.
 
 
 
+=head2 EnableIotRoleAlias => Bool
+
+Whether to create an Amazon Web Services IoT Role Alias during device
+fleet creation. The name of the role alias generated will match this
+pattern: "SageMakerEdge-{DeviceFleetName}".
+
+For example, if your device fleet is called "demo-fleet", the name of
+the role alias will be "SageMakerEdge-demo-fleet".
+
+
+
 =head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::EdgeOutputConfig>
 
 The output configuration for storing sample data collected by the
@@ -76,8 +92,8 @@ fleet.
 
 =head2 RoleArn => Str
 
-The Amazon Resource Name (ARN) that has access to AWS Internet of
-Things (IoT).
+The Amazon Resource Name (ARN) that has access to Amazon Web Services
+Internet of Things (IoT).
 
 
 

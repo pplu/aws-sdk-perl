@@ -45,12 +45,13 @@ the model image is hosted requires authentication.
 
 =head2 B<REQUIRED> RepositoryCredentialsProviderArn => Str
 
-The Amazon Resource Name (ARN) of an AWS Lambda function that provides
-credentials to authenticate to the private Docker registry where your
-model image is hosted. For information about how to create an AWS
-Lambda function, see Create a Lambda function with the console
+The Amazon Resource Name (ARN) of an Amazon Web Services Lambda
+function that provides credentials to authenticate to the private
+Docker registry where your model image is hosted. For information about
+how to create an Amazon Web Services Lambda function, see Create a
+Lambda function with the console
 (https://docs.aws.amazon.com/lambda/latest/dg/getting-started-create-function.html)
-in the I<AWS Lambda Developer Guide>.
+in the I<Amazon Web Services Lambda Developer Guide>.
 
 
 

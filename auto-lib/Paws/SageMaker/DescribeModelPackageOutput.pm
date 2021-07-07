@@ -39,7 +39,8 @@ A description provided for the model approval.
 
 =head2 CertifyForMarketplace => Bool
 
-Whether the model package is certified for listing on AWS Marketplace.
+Whether the model package is certified for listing on Amazon Web
+Services Marketplace.
 
 
 =head2 CreatedBy => L<Paws::SageMaker::UserContext>

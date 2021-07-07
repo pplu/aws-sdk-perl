@@ -153,8 +153,9 @@ The date and time that the labeling job was last updated.
 
 =head2 B<REQUIRED> OutputConfig => L<Paws::SageMaker::LabelingJobOutputConfig>
 
-The location of the job's output data and the AWS Key Management
-Service key ID for the key used to encrypt the output data, if any.
+The location of the job's output data and the Amazon Web Services Key
+Management Service key ID for the key used to encrypt the output data,
+if any.
 
 
 =head2 B<REQUIRED> RoleArn => Str
@@ -171,9 +172,10 @@ conditions are met, the job is automatically stopped.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see Tagging AWS Resources
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 

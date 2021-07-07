@@ -224,8 +224,8 @@ C<InternalServerError>.
 
 =head2 RoleArn => Str
 
-The AWS Identity and Access Management (IAM) role configured for the
-training job.
+The Amazon Web Services Identity and Access Management (IAM) role
+configured for the training job.
 
 
 =head2 B<REQUIRED> SecondaryStatus => Str

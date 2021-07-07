@@ -41,10 +41,10 @@ repository is updated.
 
 =head2 SecretArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Secrets Manager secret that
-contains the credentials used to access the git repository. The secret
-must have a staging label of C<AWSCURRENT> and must be in the following
-format:
+The Amazon Resource Name (ARN) of the Amazon Web Services Secrets
+Manager secret that contains the credentials used to access the git
+repository. The secret must have a staging label of C<AWSCURRENT> and
+must be in the following format:
 
 C<{"username": I<UserName>, "password": I<Password>}>
 

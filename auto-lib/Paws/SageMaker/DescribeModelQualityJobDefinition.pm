@@ -65,7 +65,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> JobDefinitionName => Str
 
 The name of the model quality job. The name must be unique within an
-AWS Region in the AWS account.
+Amazon Web Services Region in the Amazon Web Services account.
 
 
 

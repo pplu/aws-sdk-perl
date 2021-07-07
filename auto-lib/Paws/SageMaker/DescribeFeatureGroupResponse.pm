@@ -97,8 +97,8 @@ A token to resume pagination of the list of C<Features>
 =head2 OfflineStoreConfig => L<Paws::SageMaker::OfflineStoreConfig>
 
 The configuration of the C<OfflineStore>, inducing the S3 location of
-the C<OfflineStore>, AWS Glue or AWS Hive data catalogue
-configurations, and the security configuration.
+the C<OfflineStore>, Amazon Web Services Glue or Amazon Web Services
+Hive data catalogue configurations, and the security configuration.
 
 
 =head2 OfflineStoreStatus => L<Paws::SageMaker::OfflineStoreStatus>

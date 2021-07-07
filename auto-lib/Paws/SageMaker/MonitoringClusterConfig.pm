@@ -55,9 +55,10 @@ The ML compute instance type for the processing job.
 
 =head2 VolumeKmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt data on the storage volume attached to the ML compute
-instance(s) that run the model monitoring job.
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt data on the storage
+volume attached to the ML compute instance(s) that run the model
+monitoring job.
 
 
 =head2 B<REQUIRED> VolumeSizeInGB => Int

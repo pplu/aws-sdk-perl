@@ -55,10 +55,10 @@ The name of the Git repository to update.
 =head2 GitConfig => L<Paws::SageMaker::GitConfigForUpdate>
 
 The configuration of the git repository, including the URL and the
-Amazon Resource Name (ARN) of the AWS Secrets Manager secret that
-contains the credentials used to access the repository. The secret must
-have a staging label of C<AWSCURRENT> and must be in the following
-format:
+Amazon Resource Name (ARN) of the Amazon Web Services Secrets Manager
+secret that contains the credentials used to access the repository. The
+secret must have a staging label of C<AWSCURRENT> and must be in the
+following format:
 
 C<{"username": I<UserName>, "password": I<Password>}>
 

@@ -124,7 +124,7 @@ For more information, see Resource Tag
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html)
 and Using Cost Allocation Tags
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I< AWS Billing and Cost Management User Guide>.
+in the I< Amazon Web Services Billing and Cost Management User Guide>.
 
 
 

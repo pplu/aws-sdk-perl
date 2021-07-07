@@ -42,17 +42,18 @@ inference.
 
 =head2 VolumeKmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt data on the storage volume attached to the ML compute
-instance(s) that run the training and inference jobs used for automated
-data labeling.
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt data on the storage
+volume attached to the ML compute instance(s) that run the training and
+inference jobs used for automated data labeling.
 
 You can only specify a C<VolumeKmsKeyId> when you create a labeling job
 with automated data labeling enabled using the API operation
-C<CreateLabelingJob>. You cannot specify an AWS KMS customer managed
-CMK to encrypt the storage volume used for automated data labeling
-model training and inference when you create a labeling job using the
-console. To learn more, see Output Data and Storage Volume Encryption
+C<CreateLabelingJob>. You cannot specify an Amazon Web Services KMS
+customer managed CMK to encrypt the storage volume used for automated
+data labeling model training and inference when you create a labeling
+job using the console. To learn more, see Output Data and Storage
+Volume Encryption
 (https://docs.aws.amazon.com/sagemaker/latest/dg/sms-security.html).
 
 The C<VolumeKmsKeyId> can be any of the following formats:

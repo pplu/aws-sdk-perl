@@ -43,9 +43,7 @@ allowed to generate.
 
 =head2 MaxAutoMLJobRuntimeInSeconds => Int
 
-The maximum time, in seconds, an AutoML job is allowed to wait for a
-trial to complete. It must be equal to or greater than
-C<MaxRuntimePerTrainingJobInSeconds>.
+The maximum runtime, in seconds, an AutoML job has to complete.
 
 
 =head2 MaxCandidates => Int
@@ -55,7 +53,8 @@ The maximum number of times a training job is allowed to run.
 
 =head2 MaxRuntimePerTrainingJobInSeconds => Int
 
-The maximum time, in seconds, a job is allowed to run.
+The maximum time, in seconds, a training job is allowed to run as part
+of an AutoML job.
 
 
 

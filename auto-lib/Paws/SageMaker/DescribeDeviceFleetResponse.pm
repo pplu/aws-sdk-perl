@@ -43,8 +43,8 @@ The name of the fleet.
 
 =head2 IotRoleAlias => Str
 
-The Amazon Resource Name (ARN) alias created in AWS Internet of Things
-(IoT).
+The Amazon Resource Name (ARN) alias created in Amazon Web Services
+Internet of Things (IoT).
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
@@ -59,8 +59,8 @@ The output configuration for storing sampled data.
 
 =head2 RoleArn => Str
 
-The Amazon Resource Name (ARN) that has access to AWS Internet of
-Things (IoT).
+The Amazon Resource Name (ARN) that has access to Amazon Web Services
+Internet of Things (IoT).
 
 
 =head2 _request_id => Str

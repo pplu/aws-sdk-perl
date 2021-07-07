@@ -3,6 +3,7 @@ package Paws::SageMaker::PipelineExecution;
   use Moose;
   has CreatedBy => (is => 'ro', isa => 'Paws::SageMaker::UserContext');
   has CreationTime => (is => 'ro', isa => 'Str');
+  has FailureReason => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Paws::SageMaker::UserContext');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has PipelineArn => (is => 'ro', isa => 'Str');
@@ -10,6 +11,7 @@ package Paws::SageMaker::PipelineExecution;
   has PipelineExecutionDescription => (is => 'ro', isa => 'Str');
   has PipelineExecutionDisplayName => (is => 'ro', isa => 'Str');
   has PipelineExecutionStatus => (is => 'ro', isa => 'Str');
+  has PipelineExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::PipelineExperimentConfig');
   has PipelineParameters => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Parameter]');
 
 1;
@@ -57,6 +59,11 @@ An execution of a pipeline.
 The creation time of the pipeline execution.
 
 
+=head2 FailureReason => Str
+
+If the execution failed, a message describing why.
+
+
 =head2 LastModifiedBy => L<Paws::SageMaker::UserContext>
 
 
@@ -90,6 +97,11 @@ The display name of the pipeline execution.
 =head2 PipelineExecutionStatus => Str
 
 The status of the pipeline status.
+
+
+=head2 PipelineExperimentConfig => L<Paws::SageMaker::PipelineExperimentConfig>
+
+
 
 
 =head2 PipelineParameters => ArrayRef[L<Paws::SageMaker::Parameter>]

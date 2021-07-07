@@ -3,6 +3,7 @@ package Paws::SageMaker::UpdateDeviceFleet;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DeviceFleetName => (is => 'ro', isa => 'Str', required => 1);
+  has EnableIotRoleAlias => (is => 'ro', isa => 'Bool');
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::EdgeOutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str');
 
@@ -33,11 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $api . sagemaker->UpdateDeviceFleet(
       DeviceFleetName => 'MyEntityName',
       OutputConfig    => {
-        S3OutputLocation => 'MyS3Uri',       # max: 1024
-        KmsKeyId         => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        S3OutputLocation       => 'MyS3Uri',       # max: 1024
+        KmsKeyId               => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        PresetDeploymentConfig => 'MyString',      # OPTIONAL
+        PresetDeploymentType   =>
+          'GreengrassV2Component',    # values: GreengrassV2Component; OPTIONAL
       },
-      Description => 'MyDeviceFleetDescription',    # OPTIONAL
-      RoleArn     => 'MyRoleArn',                   # OPTIONAL
+      Description        => 'MyDeviceFleetDescription',    # OPTIONAL
+      EnableIotRoleAlias => 1,                             # OPTIONAL
+      RoleArn            => 'MyRoleArn',                   # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -55,6 +60,17 @@ Description of the fleet.
 =head2 B<REQUIRED> DeviceFleetName => Str
 
 The name of the fleet.
+
+
+
+=head2 EnableIotRoleAlias => Bool
+
+Whether to create an Amazon Web Services IoT Role Alias during device
+fleet creation. The name of the role alias generated will match this
+pattern: "SageMakerEdge-{DeviceFleetName}".
+
+For example, if your device fleet is called "demo-fleet", the name of
+the role alias will be "SageMakerEdge-demo-fleet".
 
 
 

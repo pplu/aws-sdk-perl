@@ -36,7 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 Specifies an algorithm that was used to create the model package. The
 algorithm must be either an algorithm resource in your Amazon SageMaker
-account or an algorithm in AWS Marketplace that you are subscribed to.
+account or an algorithm in Amazon Web Services Marketplace that you are
+subscribed to.
 
 =head1 ATTRIBUTES
 
@@ -45,7 +46,8 @@ account or an algorithm in AWS Marketplace that you are subscribed to.
 
 The name of an algorithm that was used to create the model package. The
 algorithm must be either an algorithm resource in your Amazon SageMaker
-account or an algorithm in AWS Marketplace that you are subscribed to.
+account or an algorithm in Amazon Web Services Marketplace that you are
+subscribed to.
 
 
 =head2 ModelDataUrl => Str

@@ -37,7 +37,7 @@ The Amazon Resource Name (ARN) of the model quality job.
 =head2 B<REQUIRED> JobDefinitionName => Str
 
 The name of the quality job definition. The name must be unique within
-an AWS Region in the AWS account.
+an Amazon Web Services Region in the Amazon Web Services account.
 
 
 =head2 B<REQUIRED> JobResources => L<Paws::SageMaker::MonitoringResources>

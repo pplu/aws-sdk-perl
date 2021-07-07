@@ -37,8 +37,8 @@ The date and time that the repository was created.
 
 Configuration details about the repository, including the URL where the
 repository is located, the default branch, and the Amazon Resource Name
-(ARN) of the AWS Secrets Manager secret that contains the credentials
-used to access the repository.
+(ARN) of the Amazon Web Services Secrets Manager secret that contains
+the credentials used to access the repository.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str

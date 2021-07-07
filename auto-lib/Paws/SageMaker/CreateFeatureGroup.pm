@@ -147,8 +147,8 @@ You can create up to 2,500 C<FeatureDefinition>s per C<FeatureGroup>.
 
 =head2 B<REQUIRED> FeatureGroupName => Str
 
-The name of the C<FeatureGroup>. The name must be unique within an AWS
-Region in an AWS account. The name:
+The name of the C<FeatureGroup>. The name must be unique within an
+Amazon Web Services Region in an Amazon Web Services account. The name:
 
 =over
 
@@ -180,7 +180,8 @@ C<OfflineStore>.
 
 =item *
 
-A configuration for an AWS Glue or AWS Hive data cataolgue.
+A configuration for an Amazon Web Services Glue or Amazon Web Services
+Hive data cataolgue.
 
 =item *
 
@@ -199,8 +200,8 @@ You can turn the C<OnlineStore> on or off by specifying C<True> for the
 C<EnableOnlineStore> flag in C<OnlineStoreConfig>; the default value is
 C<False>.
 
-You can also include an AWS KMS key ID (C<KMSKeyId>) for at-rest
-encryption of the C<OnlineStore>.
+You can also include an Amazon Web Services KMS key ID (C<KMSKeyId>)
+for at-rest encryption of the C<OnlineStore>.
 
 
 

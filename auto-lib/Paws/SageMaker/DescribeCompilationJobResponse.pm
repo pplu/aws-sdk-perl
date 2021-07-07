@@ -8,6 +8,7 @@ package Paws::SageMaker::DescribeCompilationJobResponse;
   has CompilationStartTime => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has FailureReason => (is => 'ro', isa => 'Str', required => 1);
+  has InferenceImage => (is => 'ro', isa => 'Str');
   has InputConfig => (is => 'ro', isa => 'Paws::SageMaker::InputConfig', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has ModelArtifacts => (is => 'ro', isa => 'Paws::SageMaker::ModelArtifacts', required => 1);
@@ -15,6 +16,7 @@ package Paws::SageMaker::DescribeCompilationJobResponse;
   has OutputConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputConfig', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
+  has VpcConfig => (is => 'ro', isa => 'Paws::SageMaker::NeoVpcConfig');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -72,6 +74,12 @@ The time that the model compilation job was created.
 If a model compilation job failed, the reason it failed.
 
 
+=head2 InferenceImage => Str
+
+The inference image to use when compiling a model. Specify an image
+only if the target device is a cloud instance.
+
+
 =head2 B<REQUIRED> InputConfig => L<Paws::SageMaker::InputConfig>
 
 Information about the location in Amazon S3 of the input model
@@ -114,6 +122,15 @@ assumes to perform the model compilation job.
 Specifies a limit to how long a model compilation job can run. When the
 job reaches the time limit, Amazon SageMaker ends the compilation job.
 Use this API to cap model training costs.
+
+
+=head2 VpcConfig => L<Paws::SageMaker::NeoVpcConfig>
+
+A VpcConfig object that specifies the VPC that you want your
+compilation job to connect to. Control access to your models by
+configuring the VPC. For more information, see Protect Compilation Jobs
+by Using an Amazon Virtual Private Cloud
+(https://docs.aws.amazon.com/sagemaker/latest/dg/neo-vpc.html).
 
 
 =head2 _request_id => Str

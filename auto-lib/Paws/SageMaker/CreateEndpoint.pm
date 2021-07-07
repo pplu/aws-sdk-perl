@@ -62,17 +62,19 @@ CreateEndpointConfig.
 
 =head2 B<REQUIRED> EndpointName => Str
 
-The name of the endpoint.The name must be unique within an AWS Region
-in your AWS account. The name is case-insensitive in C<CreateEndpoint>,
-but the case is preserved and must be matched in .
+The name of the endpoint.The name must be unique within an Amazon Web
+Services Region in your Amazon Web Services account. The name is
+case-insensitive in C<CreateEndpoint>, but the case is preserved and
+must be matched in .
 
 
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see Tagging AWS Resources
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 

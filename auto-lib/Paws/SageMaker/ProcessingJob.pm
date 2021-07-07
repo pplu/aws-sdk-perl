@@ -171,7 +171,7 @@ The ARN of the role used to create the processing job.
 An array of key-value pairs. For more information, see Using Cost
 Allocation Tags
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-whatURL)
-in the I<AWS Billing and Cost Management User Guide>.
+in the I<Amazon Web Services Billing and Cost Management User Guide>.
 
 
 =head2 TrainingJobArn => Str

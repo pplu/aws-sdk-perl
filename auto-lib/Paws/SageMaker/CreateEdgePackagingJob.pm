@@ -40,11 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ModelName            => 'MyEntityName',
       ModelVersion         => 'MyEdgeVersion',
       OutputConfig         => {
-        S3OutputLocation => 'MyS3Uri',       # max: 1024
-        KmsKeyId         => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        S3OutputLocation       => 'MyS3Uri',       # max: 1024
+        KmsKeyId               => 'MyKmsKeyId',    # max: 2048; OPTIONAL
+        PresetDeploymentConfig => 'MyString',      # OPTIONAL
+        PresetDeploymentType   =>
+          'GreengrassV2Component',    # values: GreengrassV2Component; OPTIONAL
       },
       RoleArn     => 'MyRoleArn',
-      ResourceKey => 'MyKmsKeyId',           # OPTIONAL
+      ResourceKey => 'MyKmsKeyId',    # OPTIONAL
       Tags        => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128

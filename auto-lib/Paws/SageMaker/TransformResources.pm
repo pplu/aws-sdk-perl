@@ -52,15 +52,30 @@ value is C<1>.
 
 The ML compute instance type for the transform job. If you are using
 built-in algorithms to transform moderately sized datasets, we
-recommend using ml.m4.xlarge or C<ml.m5.large> instance types.
+recommend using ml.m4.xlarge or C<ml.m5.large>instance types.
 
 
 =head2 VolumeKmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt model data on the storage volume attached to the ML compute
-instance(s) that run the batch transform job. The C<VolumeKmsKeyId> can
-be any of the following formats:
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt model data on the
+storage volume attached to the ML compute instance(s) that run the
+batch transform job.
+
+Certain Nitro-based instances include local storage, dependent on the
+instance type. Local storage volumes are encrypted using a hardware
+module on the instance. You can't request a C<VolumeKmsKeyId> when
+using an instance type with local storage.
+
+For a list of instance types that support local instance storage, see
+Instance Store Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html#instance-store-volumes).
+
+For more information about local instance storage encryption, see SSD
+Instance Store Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ssd-instance-store.html).
+
+The C<VolumeKmsKeyId> can be any of the following formats:
 
 =over
 

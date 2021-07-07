@@ -169,9 +169,10 @@ This member is deprecated and replaced with C<KmsKeyId>.
 
 =head2 KmsKeyId => Str
 
-SageMaker uses AWS KMS to encrypt the EFS volume attached to the domain
-with an AWS managed customer master key (CMK) by default. For more
-control, specify a customer managed CMK.
+SageMaker uses Amazon Web Services KMS to encrypt the EFS volume
+attached to the domain with an Amazon Web Services managed customer
+master key (CMK) by default. For more control, specify a customer
+managed CMK.
 
 
 

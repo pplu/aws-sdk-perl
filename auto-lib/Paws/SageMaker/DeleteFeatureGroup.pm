@@ -41,7 +41,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> FeatureGroupName => Str
 
 The name of the C<FeatureGroup> you want to delete. The name must be
-unique within an AWS Region in an AWS account.
+unique within an Amazon Web Services Region in an Amazon Web Services
+account.
 
 
 

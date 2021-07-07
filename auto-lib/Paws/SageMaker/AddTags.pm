@@ -60,9 +60,10 @@ The Amazon Resource Name (ARN) of the resource that you want to tag.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see Tagging AWS Resources
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 

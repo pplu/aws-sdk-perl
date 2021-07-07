@@ -46,12 +46,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Image             => 'MyContainerImage',       # max: 255
             ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
-            ImageDigest       => 'MyImageDigest',          # max: 72; OPTIONAL
-            ModelDataUrl      => 'MyUrl',                  # max: 1024; OPTIONAL
-            ProductId         => 'MyProductId',            # max: 256; OPTIONAL
+            Environment       => {
+              'MyEnvironmentKey' =>
+                'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
+            },    # max: 16; OPTIONAL
+            ImageDigest  => 'MyImageDigest',    # max: 72; OPTIONAL
+            ModelDataUrl => 'MyUrl',            # max: 1024; OPTIONAL
+            ProductId    => 'MyProductId',      # max: 256; OPTIONAL
           },
           ...
-        ],    # min: 1, max: 1
+        ],    # min: 1, max: 5
         SupportedContentTypes => [
           'MyContentType', ...    # max: 256
         ],
@@ -64,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],    # OPTIONAL
         SupportedTransformInstanceTypes => [
           'ml.m4.xlarge',
-          ... # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
+          ... # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge
         ],    # min: 1; OPTIONAL
       },    # OPTIONAL
       MetadataProperties => {
@@ -164,7 +168,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TransformResources => {
                 InstanceCount => 1,                # min: 1
                 InstanceType  => 'ml.m4.xlarge'
-                , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
+                , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge
                 VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
               },
               BatchStrategy =>
@@ -198,7 +202,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 CertifyForMarketplace => Bool
 
-Whether to certify the model package for listing on AWS Marketplace.
+Whether to certify the model package for listing on Amazon Web Services
+Marketplace.
 
 This parameter is optional for unversioned models, and does not apply
 to versioned models.
@@ -296,9 +301,9 @@ Details about the algorithm that was used to create the model package.
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
 A list of key value pairs associated with the model. For more
-information, see Tagging AWS resources
+information, see Tagging Amazon Web Services resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
-I<AWS General Reference Guide>.
+I<Amazon Web Services General Reference Guide>.
 
 
 

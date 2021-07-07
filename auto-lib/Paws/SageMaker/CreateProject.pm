@@ -82,7 +82,8 @@ The name of the project.
 =head2 B<REQUIRED> ServiceCatalogProvisioningDetails => L<Paws::SageMaker::ServiceCatalogProvisioningDetails>
 
 The product ID and provisioning artifact ID to provision a service
-catalog. For information, see What is AWS Service Catalog
+catalog. For information, see What is Amazon Web Services Service
+Catalog
 (https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html).
 
 
@@ -90,10 +91,10 @@ catalog. For information, see What is AWS Service Catalog
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
 An array of key-value pairs that you want to use to organize and track
-your AWS resource costs. For more information, see Tagging AWS
-resources
+your Amazon Web Services resource costs. For more information, see
+Tagging Amazon Web Services resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
-I<AWS General Reference Guide>.
+I<Amazon Web Services General Reference Guide>.
 
 
 

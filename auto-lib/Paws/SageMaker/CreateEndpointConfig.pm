@@ -108,9 +108,9 @@ CreateEndpoint request.
 
 =head2 KmsKeyId => Str
 
-The Amazon Resource Name (ARN) of a AWS Key Management Service key that
-Amazon SageMaker uses to encrypt data on the storage volume attached to
-the ML compute instance that hosts the endpoint.
+The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
+Service key that Amazon SageMaker uses to encrypt data on the storage
+volume attached to the ML compute instance that hosts the endpoint.
 
 The KmsKeyId can be any of the following formats:
 
@@ -138,8 +138,8 @@ C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
 
 The KMS key policy must grant permission to the IAM role that you
 specify in your C<CreateEndpoint>, C<UpdateEndpoint> requests. For more
-information, refer to the AWS Key Management Service section Using Key
-Policies in AWS KMS
+information, refer to the Amazon Web Services Key Management Service
+section Using Key Policies in Amazon Web Services KMS
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
 
 Certain Nitro-based instances include local storage, dependent on the
@@ -171,9 +171,10 @@ want to host at this endpoint.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see Tagging AWS Resources
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
 (https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 

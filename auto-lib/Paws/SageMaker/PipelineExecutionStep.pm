@@ -62,7 +62,7 @@ step failed its execution.
 
 =head2 Metadata => L<Paws::SageMaker::PipelineExecutionStepMetadata>
 
-The metadata for the step execution.
+Metadata for the step execution.
 
 
 =head2 StartTime => Str

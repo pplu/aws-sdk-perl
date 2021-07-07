@@ -39,7 +39,7 @@ Defines a training job and a batch transform job that Amazon SageMaker
 runs to validate your algorithm.
 
 The data provided in the validation profile is made available to your
-buyers on AWS Marketplace.
+buyers on Amazon Web Services Marketplace.
 
 =head1 ATTRIBUTES
 

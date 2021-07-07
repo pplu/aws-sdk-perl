@@ -47,9 +47,10 @@ The Amazon S3 bucket to send the core dump to.
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt the core dump data at rest using Amazon S3 server-side
-encryption. The C<KmsKeyId> can be any of the following formats:
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt the core dump data at
+rest using Amazon S3 server-side encryption. The C<KmsKeyId> can be any
+of the following formats:
 
 =over
 
@@ -93,9 +94,9 @@ in the I<Amazon Simple Storage Service Developer Guide.>
 
 The KMS key policy must grant permission to the IAM role that you
 specify in your C<CreateEndpoint> and C<UpdateEndpoint> requests. For
-more information, see Using Key Policies in AWS KMS
+more information, see Using Key Policies in Amazon Web Services KMS
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
-in the I<AWS Key Management Service Developer Guide>.
+in the I<Amazon Web Services Key Management Service Developer Guide>.
 
 
 

@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 A key value pair used when you provision a project as a service catalog
-product. For information, see What is AWS Service Catalog
+product. For information, see What is Amazon Web Services Service
+Catalog
 (https://docs.aws.amazon.com/servicecatalog/latest/adminguide/introduction.html).
 
 =head1 ATTRIBUTES

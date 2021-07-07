@@ -34,10 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Use this to specify the AWS Key Management Service (KMS) Key ID, or
-C<KMSKeyId>, for at rest data encryption. You can turn C<OnlineStore>
-on or off by specifying the C<EnableOnlineStore> flag at General
-Assembly; the default value is C<False>.
+Use this to specify the Amazon Web Services Key Management Service
+(KMS) Key ID, or C<KMSKeyId>, for at rest data encryption. You can turn
+C<OnlineStore> on or off by specifying the C<EnableOnlineStore> flag at
+General Assembly; the default value is C<False>.
 
 =head1 ATTRIBUTES
 

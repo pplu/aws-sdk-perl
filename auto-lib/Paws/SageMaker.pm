@@ -990,6 +990,16 @@ package Paws::SageMaker;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::Search', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendPipelineExecutionStepFailure {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::SendPipelineExecutionStepFailure', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendPipelineExecutionStepSuccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMaker::SendPipelineExecutionStepSuccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartMonitoringSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMaker::StartMonitoringSchedule', @_);
@@ -2402,7 +2412,7 @@ package Paws::SageMaker;
   }
 
 
-  sub operations { qw/AddAssociation AddTags AssociateTrialComponent CreateAction CreateAlgorithm CreateApp CreateAppImageConfig CreateArtifact CreateAutoMLJob CreateCodeRepository CreateCompilationJob CreateContext CreateDataQualityJobDefinition CreateDeviceFleet CreateDomain CreateEdgePackagingJob CreateEndpoint CreateEndpointConfig CreateExperiment CreateFeatureGroup CreateFlowDefinition CreateHumanTaskUi CreateHyperParameterTuningJob CreateImage CreateImageVersion CreateLabelingJob CreateModel CreateModelBiasJobDefinition CreateModelExplainabilityJobDefinition CreateModelPackage CreateModelPackageGroup CreateModelQualityJobDefinition CreateMonitoringSchedule CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePipeline CreatePresignedDomainUrl CreatePresignedNotebookInstanceUrl CreateProcessingJob CreateProject CreateTrainingJob CreateTransformJob CreateTrial CreateTrialComponent CreateUserProfile CreateWorkforce CreateWorkteam DeleteAction DeleteAlgorithm DeleteApp DeleteAppImageConfig DeleteArtifact DeleteAssociation DeleteCodeRepository DeleteContext DeleteDataQualityJobDefinition DeleteDeviceFleet DeleteDomain DeleteEndpoint DeleteEndpointConfig DeleteExperiment DeleteFeatureGroup DeleteFlowDefinition DeleteHumanTaskUi DeleteImage DeleteImageVersion DeleteModel DeleteModelBiasJobDefinition DeleteModelExplainabilityJobDefinition DeleteModelPackage DeleteModelPackageGroup DeleteModelPackageGroupPolicy DeleteModelQualityJobDefinition DeleteMonitoringSchedule DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeletePipeline DeleteProject DeleteTags DeleteTrial DeleteTrialComponent DeleteUserProfile DeleteWorkforce DeleteWorkteam DeregisterDevices DescribeAction DescribeAlgorithm DescribeApp DescribeAppImageConfig DescribeArtifact DescribeAutoMLJob DescribeCodeRepository DescribeCompilationJob DescribeContext DescribeDataQualityJobDefinition DescribeDevice DescribeDeviceFleet DescribeDomain DescribeEdgePackagingJob DescribeEndpoint DescribeEndpointConfig DescribeExperiment DescribeFeatureGroup DescribeFlowDefinition DescribeHumanTaskUi DescribeHyperParameterTuningJob DescribeImage DescribeImageVersion DescribeLabelingJob DescribeModel DescribeModelBiasJobDefinition DescribeModelExplainabilityJobDefinition DescribeModelPackage DescribeModelPackageGroup DescribeModelQualityJobDefinition DescribeMonitoringSchedule DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribePipeline DescribePipelineDefinitionForExecution DescribePipelineExecution DescribeProcessingJob DescribeProject DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeTrial DescribeTrialComponent DescribeUserProfile DescribeWorkforce DescribeWorkteam DisableSagemakerServicecatalogPortfolio DisassociateTrialComponent EnableSagemakerServicecatalogPortfolio GetDeviceFleetReport GetModelPackageGroupPolicy GetSagemakerServicecatalogPortfolioStatus GetSearchSuggestions ListActions ListAlgorithms ListAppImageConfigs ListApps ListArtifacts ListAssociations ListAutoMLJobs ListCandidatesForAutoMLJob ListCodeRepositories ListCompilationJobs ListContexts ListDataQualityJobDefinitions ListDeviceFleets ListDevices ListDomains ListEdgePackagingJobs ListEndpointConfigs ListEndpoints ListExperiments ListFeatureGroups ListFlowDefinitions ListHumanTaskUis ListHyperParameterTuningJobs ListImages ListImageVersions ListLabelingJobs ListLabelingJobsForWorkteam ListModelBiasJobDefinitions ListModelExplainabilityJobDefinitions ListModelPackageGroups ListModelPackages ListModelQualityJobDefinitions ListModels ListMonitoringExecutions ListMonitoringSchedules ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListPipelineExecutions ListPipelineExecutionSteps ListPipelineParametersForExecution ListPipelines ListProcessingJobs ListProjects ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListTrialComponents ListTrials ListUserProfiles ListWorkforces ListWorkteams PutModelPackageGroupPolicy RegisterDevices RenderUiTemplate Search StartMonitoringSchedule StartNotebookInstance StartPipelineExecution StopAutoMLJob StopCompilationJob StopEdgePackagingJob StopHyperParameterTuningJob StopLabelingJob StopMonitoringSchedule StopNotebookInstance StopPipelineExecution StopProcessingJob StopTrainingJob StopTransformJob UpdateAction UpdateAppImageConfig UpdateArtifact UpdateCodeRepository UpdateContext UpdateDeviceFleet UpdateDevices UpdateDomain UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateExperiment UpdateImage UpdateModelPackage UpdateMonitoringSchedule UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdatePipeline UpdatePipelineExecution UpdateTrainingJob UpdateTrial UpdateTrialComponent UpdateUserProfile UpdateWorkforce UpdateWorkteam / }
+  sub operations { qw/AddAssociation AddTags AssociateTrialComponent CreateAction CreateAlgorithm CreateApp CreateAppImageConfig CreateArtifact CreateAutoMLJob CreateCodeRepository CreateCompilationJob CreateContext CreateDataQualityJobDefinition CreateDeviceFleet CreateDomain CreateEdgePackagingJob CreateEndpoint CreateEndpointConfig CreateExperiment CreateFeatureGroup CreateFlowDefinition CreateHumanTaskUi CreateHyperParameterTuningJob CreateImage CreateImageVersion CreateLabelingJob CreateModel CreateModelBiasJobDefinition CreateModelExplainabilityJobDefinition CreateModelPackage CreateModelPackageGroup CreateModelQualityJobDefinition CreateMonitoringSchedule CreateNotebookInstance CreateNotebookInstanceLifecycleConfig CreatePipeline CreatePresignedDomainUrl CreatePresignedNotebookInstanceUrl CreateProcessingJob CreateProject CreateTrainingJob CreateTransformJob CreateTrial CreateTrialComponent CreateUserProfile CreateWorkforce CreateWorkteam DeleteAction DeleteAlgorithm DeleteApp DeleteAppImageConfig DeleteArtifact DeleteAssociation DeleteCodeRepository DeleteContext DeleteDataQualityJobDefinition DeleteDeviceFleet DeleteDomain DeleteEndpoint DeleteEndpointConfig DeleteExperiment DeleteFeatureGroup DeleteFlowDefinition DeleteHumanTaskUi DeleteImage DeleteImageVersion DeleteModel DeleteModelBiasJobDefinition DeleteModelExplainabilityJobDefinition DeleteModelPackage DeleteModelPackageGroup DeleteModelPackageGroupPolicy DeleteModelQualityJobDefinition DeleteMonitoringSchedule DeleteNotebookInstance DeleteNotebookInstanceLifecycleConfig DeletePipeline DeleteProject DeleteTags DeleteTrial DeleteTrialComponent DeleteUserProfile DeleteWorkforce DeleteWorkteam DeregisterDevices DescribeAction DescribeAlgorithm DescribeApp DescribeAppImageConfig DescribeArtifact DescribeAutoMLJob DescribeCodeRepository DescribeCompilationJob DescribeContext DescribeDataQualityJobDefinition DescribeDevice DescribeDeviceFleet DescribeDomain DescribeEdgePackagingJob DescribeEndpoint DescribeEndpointConfig DescribeExperiment DescribeFeatureGroup DescribeFlowDefinition DescribeHumanTaskUi DescribeHyperParameterTuningJob DescribeImage DescribeImageVersion DescribeLabelingJob DescribeModel DescribeModelBiasJobDefinition DescribeModelExplainabilityJobDefinition DescribeModelPackage DescribeModelPackageGroup DescribeModelQualityJobDefinition DescribeMonitoringSchedule DescribeNotebookInstance DescribeNotebookInstanceLifecycleConfig DescribePipeline DescribePipelineDefinitionForExecution DescribePipelineExecution DescribeProcessingJob DescribeProject DescribeSubscribedWorkteam DescribeTrainingJob DescribeTransformJob DescribeTrial DescribeTrialComponent DescribeUserProfile DescribeWorkforce DescribeWorkteam DisableSagemakerServicecatalogPortfolio DisassociateTrialComponent EnableSagemakerServicecatalogPortfolio GetDeviceFleetReport GetModelPackageGroupPolicy GetSagemakerServicecatalogPortfolioStatus GetSearchSuggestions ListActions ListAlgorithms ListAppImageConfigs ListApps ListArtifacts ListAssociations ListAutoMLJobs ListCandidatesForAutoMLJob ListCodeRepositories ListCompilationJobs ListContexts ListDataQualityJobDefinitions ListDeviceFleets ListDevices ListDomains ListEdgePackagingJobs ListEndpointConfigs ListEndpoints ListExperiments ListFeatureGroups ListFlowDefinitions ListHumanTaskUis ListHyperParameterTuningJobs ListImages ListImageVersions ListLabelingJobs ListLabelingJobsForWorkteam ListModelBiasJobDefinitions ListModelExplainabilityJobDefinitions ListModelPackageGroups ListModelPackages ListModelQualityJobDefinitions ListModels ListMonitoringExecutions ListMonitoringSchedules ListNotebookInstanceLifecycleConfigs ListNotebookInstances ListPipelineExecutions ListPipelineExecutionSteps ListPipelineParametersForExecution ListPipelines ListProcessingJobs ListProjects ListSubscribedWorkteams ListTags ListTrainingJobs ListTrainingJobsForHyperParameterTuningJob ListTransformJobs ListTrialComponents ListTrials ListUserProfiles ListWorkforces ListWorkteams PutModelPackageGroupPolicy RegisterDevices RenderUiTemplate Search SendPipelineExecutionStepFailure SendPipelineExecutionStepSuccess StartMonitoringSchedule StartNotebookInstance StartPipelineExecution StopAutoMLJob StopCompilationJob StopEdgePackagingJob StopHyperParameterTuningJob StopLabelingJob StopMonitoringSchedule StopNotebookInstance StopPipelineExecution StopProcessingJob StopTrainingJob StopTransformJob UpdateAction UpdateAppImageConfig UpdateArtifact UpdateCodeRepository UpdateContext UpdateDeviceFleet UpdateDevices UpdateDomain UpdateEndpoint UpdateEndpointWeightsAndCapacities UpdateExperiment UpdateImage UpdateModelPackage UpdateMonitoringSchedule UpdateNotebookInstance UpdateNotebookInstanceLifecycleConfig UpdatePipeline UpdatePipelineExecution UpdateTrainingJob UpdateTrial UpdateTrialComponent UpdateUserProfile UpdateWorkforce UpdateWorkteam / }
 
 1;
 
@@ -2501,7 +2511,7 @@ jobs, work teams, endpoint configurations, and endpoints.
 
 Each tag consists of a key and an optional value. Tag keys must be
 unique per resource. For more information about tags, see For more
-information, see AWS Tagging Strategies
+information, see Amazon Web Services Tagging Strategies
 (https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
 
 Tags that you add to a hyperparameter tuning job by calling this API
@@ -2609,7 +2619,7 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateAlgorithm>
 Returns: a L<Paws::SageMaker::CreateAlgorithmOutput> instance
 
 Create a machine learning algorithm that you can use in Amazon
-SageMaker and list in the AWS Marketplace.
+SageMaker and list in the Amazon Web Services Marketplace.
 
 
 =head2 CreateApp
@@ -2766,7 +2776,7 @@ can be associated with more than one notebook instance, and it persists
 independently from the lifecycle of any notebook instances it is
 associated with.
 
-The repository can be hosted either in AWS CodeCommit
+The repository can be hosted either in Amazon Web Services CodeCommit
 (https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository.
 
@@ -2787,6 +2797,8 @@ or in any other Git repository.
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
 
+=item [VpcConfig => L<Paws::SageMaker::NeoVpcConfig>]
+
 
 =back
 
@@ -2800,8 +2812,8 @@ Simple Storage Service (Amazon S3) bucket that you specify.
 
 If you choose to host your model using Amazon SageMaker hosting
 services, you can use the resulting model artifacts as part of the
-model. You can also use the artifacts with AWS IoT Greengrass. In that
-case, deploy them as an ML resource.
+model. You can also use the artifacts with Amazon Web Services IoT
+Greengrass. In that case, deploy them as an ML resource.
 
 In the request body, you provide the following:
 
@@ -2918,6 +2930,8 @@ For information about model monitor, see Amazon SageMaker Model Monitor
 
 =item [Description => Str]
 
+=item [EnableIotRoleAlias => Bool]
+
 =item [RoleArn => Str]
 
 =item [Tags => ArrayRef[L<Paws::SageMaker::Tag>]]
@@ -2964,9 +2978,9 @@ Returns: a L<Paws::SageMaker::CreateDomainResponse> instance
 Creates a C<Domain> used by Amazon SageMaker Studio. A domain consists
 of an associated Amazon Elastic File System (EFS) volume, a list of
 authorized users, and a variety of security, application, policy, and
-Amazon Virtual Private Cloud (VPC) configurations. An AWS account is
-limited to one domain per region. Users within a domain can share
-notebook files and other artifacts with each other.
+Amazon Virtual Private Cloud (VPC) configurations. An Amazon Web
+Services account is limited to one domain per region. Users within a
+domain can share notebook files and other artifacts with each other.
 
 B<EFS storage>
 
@@ -2975,11 +2989,11 @@ the users within the domain. Each user receives a private home
 directory within the EFS volume for notebooks, Git repositories, and
 data files.
 
-SageMaker uses the AWS Key Management Service (AWS KMS) to encrypt the
-EFS volume attached to the domain with an AWS managed customer master
-key (CMK) by default. For more control, you can specify a customer
-managed CMK. For more information, see Protect Data at Rest Using
-Encryption
+SageMaker uses the Amazon Web Services Key Management Service (Amazon
+Web Services KMS) to encrypt the EFS volume attached to the domain with
+an Amazon Web Services managed customer master key (CMK) by default.
+For more control, you can specify a customer managed CMK. For more
+information, see Protect Data at Rest Using Encryption
 (https://docs.aws.amazon.com/sagemaker/latest/dg/encryption-at-rest.html).
 
 B<VPC configuration>
@@ -3010,6 +3024,10 @@ endpoint to the SageMaker API and runtime or a NAT gateway and your
 security groups allow outbound connections.
 
 =back
+
+NFS traffic over TCP on port 2049 needs to be allowed in both inbound
+and outbound rules in order to launch a SageMaker Studio app
+successfully.
 
 For more information, see Connect SageMaker Studio Notebooks to
 Resources in a VPC
@@ -3075,7 +3093,7 @@ Use this API to deploy models using Amazon SageMaker hosting services.
 
 For an example that calls this method when deploying a model to Amazon
 SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-Hosting Services (AWS SDK for Python (Boto 3)).
+Hosting Services (Amazon Web Services SDK for Python (Boto 3)).
 (https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto)
 
 You must not delete an C<EndpointConfig> that is in use by an endpoint
@@ -3083,8 +3101,8 @@ that is live or while the C<UpdateEndpoint> or C<CreateEndpoint>
 operations are being performed on the endpoint. To update an endpoint,
 you must create a new C<EndpointConfig>.
 
-The endpoint name must be unique within an AWS Region in your AWS
-account.
+The endpoint name must be unique within an Amazon Web Services Region
+in your Amazon Web Services account.
 
 When it receives the request, Amazon SageMaker creates the endpoint,
 launches the resources (ML compute instances), and deploys the model(s)
@@ -3110,14 +3128,16 @@ inferences. To check the status of an endpoint, use the
 DescribeEndpoint API.
 
 If any of the models hosted at this endpoint get model data from an
-Amazon S3 location, Amazon SageMaker uses AWS Security Token Service to
-download model artifacts from the S3 path you provided. AWS STS is
-activated in your IAM user account by default. If you previously
-deactivated AWS STS for a region, you need to reactivate AWS STS for
-that region. For more information, see Activating and Deactivating AWS
-STS in an AWS Region
+Amazon S3 location, Amazon SageMaker uses Amazon Web Services Security
+Token Service to download model artifacts from the S3 path you
+provided. Amazon Web Services STS is activated in your IAM user account
+by default. If you previously deactivated Amazon Web Services STS for a
+region, you need to reactivate Amazon Web Services STS for that region.
+For more information, see Activating and Deactivating Amazon Web
+Services STS in an Amazon Web Services Region
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_enable-regions.html)
-in the I<AWS Identity and Access Management User Guide>.
+in the I<Amazon Web Services Identity and Access Management User
+Guide>.
 
 To add the IAM role policies for using this API operation, go to the
 IAM console (https://console.aws.amazon.com/iam/), and choose Roles in
@@ -3200,7 +3220,7 @@ model B.
 
 For an example that calls this method when deploying a model to Amazon
 SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-Hosting Services (AWS SDK for Python (Boto 3)).
+Hosting Services (Amazon Web Services SDK for Python (Boto 3)).
 (https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto)
 
 When you call CreateEndpoint, a load call is made to DynamoDB to verify
@@ -3248,8 +3268,8 @@ the remaining inputs constant.
 
 When you use SageMaker Studio or the SageMaker Python SDK, all
 experiments, trials, and trial components are automatically tracked,
-logged, and indexed. When you use the AWS SDK for Python (Boto), you
-must use the logging APIs provided by the SDK.
+logged, and indexed. When you use the Amazon Web Services SDK for
+Python (Boto), you must use the logging APIs provided by the SDK.
 
 You can add tags to experiments, trials, trial components and then use
 the Search API to search for the tags.
@@ -3300,9 +3320,9 @@ The C<FeatureGroup> defines the schema and features contained in the
 FeatureGroup. A C<FeatureGroup> definition is composed of a list of
 C<Features>, a C<RecordIdentifierFeatureName>, an
 C<EventTimeFeatureName> and configurations for its C<OnlineStore> and
-C<OfflineStore>. Check AWS service quotas
+C<OfflineStore>. Check Amazon Web Services service quotas
 (https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
-to see the C<FeatureGroup>s quota for your AWS account.
+to see the C<FeatureGroup>s quota for your Amazon Web Services account.
 
 You must include at least one of C<OnlineStoreConfig> and
 C<OfflineStoreConfig> to create a C<FeatureGroup>.
@@ -3486,8 +3506,8 @@ is required.
 
 =item *
 
-One or more vendors that you select from the AWS Marketplace. Vendors
-provide expertise in specific areas.
+One or more vendors that you select from the Amazon Web Services
+Marketplace. Vendors provide expertise in specific areas.
 
 =item *
 
@@ -3568,7 +3588,7 @@ containers that you defined for the model in the hosting environment.
 
 For an example that calls this method when deploying a model to Amazon
 SageMaker hosting services, see Deploy the Model to Amazon SageMaker
-Hosting Services (AWS SDK for Python (Boto 3)).
+Hosting Services (Amazon Web Services SDK for Python (Boto 3)).
 (https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html#ex1-deploy-model-boto)
 
 To run a batch transform using your model, you start a job with the
@@ -3583,8 +3603,8 @@ In the request, you also provide an IAM role that Amazon SageMaker can
 assume to access model artifacts and docker image for deployment on ML
 compute hosting instances or for batch transform jobs. In addition, you
 also use the IAM role to manage permissions the inference code needs.
-For example, if the inference code access any other AWS resources, you
-grant necessary permissions via this role.
+For example, if the inference code access any other Amazon Web Services
+resources, you grant necessary permissions via this role.
 
 
 =head2 CreateModelBiasJobDefinition
@@ -3691,15 +3711,17 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateModelPackage>
 Returns: a L<Paws::SageMaker::CreateModelPackageOutput> instance
 
 Creates a model package that you can use to create Amazon SageMaker
-models or list on AWS Marketplace, or a versioned model that is part of
-a model group. Buyers can subscribe to model packages listed on AWS
-Marketplace to create models in Amazon SageMaker.
+models or list on Amazon Web Services Marketplace, or a versioned model
+that is part of a model group. Buyers can subscribe to model packages
+listed on Amazon Web Services Marketplace to create models in Amazon
+SageMaker.
 
 To create a model package by specifying a Docker container that
 contains your inference code and the Amazon S3 location of your model
 artifacts, provide values for C<InferenceSpecification>. To create a
 model from an algorithm resource that you created or subscribed to in
-AWS Marketplace, provide a value for C<SourceAlgorithmSpecification>.
+Amazon Web Services Marketplace, provide a value for
+C<SourceAlgorithmSpecification>.
 
 There are two types of model packages:
 
@@ -3981,10 +4003,24 @@ associated with the Domain's Amazon Elastic File System (EFS) volume.
 This operation can only be called when the authentication mode equals
 IAM.
 
+The IAM role or user used to call this API defines the permissions to
+access the app. Once the presigned URL is created, no additional
+permission is required to access this URL. IAM authorization policies
+for this API are also enforced for every HTTP request and WebSocket
+frame that attempts to connect to the app.
+
+You can restrict access to this API and to the URL that it returns to a
+list of IP addresses, Amazon VPCs or Amazon VPC Endpoints that you
+specify. For more information, see Connect to SageMaker Studio Through
+an Interface VPC Endpoint
+(https://docs.aws.amazon.com/sagemaker/latest/dg/studio-interface-endpoint.html)
+.
+
 The URL that you get from a call to C<CreatePresignedDomainUrl> has a
 default timeout of 5 minutes. You can configure this value using
 C<ExpiresInSeconds>. If you try to use the URL after the timeout limit
-expires, you are directed to the AWS console sign-in page.
+expires, you are directed to the Amazon Web Services console sign-in
+page.
 
 
 =head2 CreatePresignedNotebookInstanceUrl
@@ -4024,8 +4060,8 @@ Instance by IP Address
 
 The URL that you get from a call to CreatePresignedNotebookInstanceUrl
 is valid only for 5 minutes. If you try to use the URL after the
-5-minute limit expires, you are directed to the AWS console sign-in
-page.
+5-minute limit expires, you are directed to the Amazon Web Services
+console sign-in page.
 
 
 =head2 CreateProcessingJob
@@ -4274,13 +4310,15 @@ In the request body, you provide the following:
 =item *
 
 C<TransformJobName> - Identifies the transform job. The name must be
-unique within an AWS Region in an AWS account.
+unique within an Amazon Web Services Region in an Amazon Web Services
+account.
 
 =item *
 
 C<ModelName> - Identifies the model to use. C<ModelName> must be the
-name of an existing Amazon SageMaker model in the same AWS Region and
-AWS account. For information on creating a model, see CreateModel.
+name of an existing Amazon SageMaker model in the same Amazon Web
+Services Region and Amazon Web Services account. For information on
+creating a model, see CreateModel.
 
 =item *
 
@@ -4331,8 +4369,8 @@ single SageMaker I<experiment>.
 
 When you use SageMaker Studio or the SageMaker Python SDK, all
 experiments, trials, and trial components are automatically tracked,
-logged, and indexed. When you use the AWS SDK for Python (Boto), you
-must use the logging APIs provided by the SDK.
+logged, and indexed. When you use the Amazon Web Services SDK for
+Python (Boto), you must use the logging APIs provided by the SDK.
 
 You can add tags to a trial and then use the Search API to search for
 the tags.
@@ -4382,17 +4420,11 @@ transform jobs.
 
 When you use SageMaker Studio or the SageMaker Python SDK, all
 experiments, trials, and trial components are automatically tracked,
-logged, and indexed. When you use the AWS SDK for Python (Boto), you
-must use the logging APIs provided by the SDK.
+logged, and indexed. When you use the Amazon Web Services SDK for
+Python (Boto), you must use the logging APIs provided by the SDK.
 
 You can add tags to a trial component and then use the Search API to
 search for the tags.
-
-C<CreateTrialComponent> can only be invoked from within an SageMaker
-managed environment. This includes SageMaker training jobs, processing
-jobs, transform jobs, and SageMaker notebooks. A call to
-C<CreateTrialComponent> from outside one of these environments results
-in an error.
 
 
 =head2 CreateUserProfile
@@ -4450,12 +4482,14 @@ Each argument is described in detail in: L<Paws::SageMaker::CreateWorkforce>
 Returns: a L<Paws::SageMaker::CreateWorkforceResponse> instance
 
 Use this operation to create a workforce. This operation will return an
-error if a workforce already exists in the AWS Region that you specify.
-You can only create one workforce in each AWS Region per AWS account.
+error if a workforce already exists in the Amazon Web Services Region
+that you specify. You can only create one workforce in each Amazon Web
+Services Region per Amazon Web Services account.
 
-If you want to create a new workforce in an AWS Region where a
-workforce already exists, use the API operation to delete the existing
-workforce and then use C<CreateWorkforce> to create a new workforce.
+If you want to create a new workforce in an Amazon Web Services Region
+where a workforce already exists, use the API operation to delete the
+existing workforce and then use C<CreateWorkforce> to create a new
+workforce.
 
 To create a private workforce using Amazon Cognito, you must specify a
 Cognito user pool in C<CognitoConfig>. You can also create an Amazon
@@ -4775,9 +4809,9 @@ Delete the C<FeatureGroup> and any data that was written to the
 C<OnlineStore> of the C<FeatureGroup>. Data cannot be accessed from the
 C<OnlineStore> immediately after C<DeleteFeatureGroup> is called.
 
-Data written into the C<OfflineStore> will not be deleted. The AWS Glue
-database and tables that are automatically created for your
-C<OfflineStore> are not deleted.
+Data written into the C<OfflineStore> will not be deleted. The Amazon
+Web Services Glue database and tables that are automatically created
+for your C<OfflineStore> are not deleted.
 
 
 =head2 DeleteFlowDefinition
@@ -4867,7 +4901,7 @@ Each argument is described in detail in: L<Paws::SageMaker::DeleteModel>
 Returns: nothing
 
 Deletes a model. The C<DeleteModel> API deletes only the model entry
-that was created in Amazon SageMaker when you called the CreateModel
+that was created in Amazon SageMaker when you called the C<CreateModel>
 API. It does not delete model artifacts, inference code, or the IAM
 role that you specified when creating the model.
 
@@ -4920,8 +4954,9 @@ Returns: nothing
 Deletes a model package.
 
 A model package is used to create Amazon SageMaker models or list on
-AWS Marketplace. Buyers can subscribe to model packages listed on AWS
-Marketplace to create models in Amazon SageMaker.
+Amazon Web Services Marketplace. Buyers can subscribe to model packages
+listed on Amazon Web Services Marketplace to create models in Amazon
+SageMaker.
 
 
 =head2 DeleteModelPackageGroup
@@ -5165,9 +5200,9 @@ Returns: a L<Paws::SageMaker::DeleteWorkforceResponse> instance
 
 Use this operation to delete a workforce.
 
-If you want to create a new workforce in an AWS Region where a
-workforce already exists, use this operation to delete the existing
-workforce and then use to create a new workforce.
+If you want to create a new workforce in an Amazon Web Services Region
+where a workforce already exists, use this operation to delete the
+existing workforce and then use to create a new workforce.
 
 If a private workforce contains one or more work teams, you must use
 the operation to delete all work teams before you delete the workforce.
@@ -5679,10 +5714,11 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeModelPackage
 Returns: a L<Paws::SageMaker::DescribeModelPackageOutput> instance
 
 Returns a description of the specified model package, which is used to
-create Amazon SageMaker models or list them on AWS Marketplace.
+create Amazon SageMaker models or list them on Amazon Web Services
+Marketplace.
 
 To create models in Amazon SageMaker, buyers can subscribe to model
-packages listed on AWS Marketplace.
+packages listed on Amazon Web Services Marketplace.
 
 
 =head2 DescribeModelPackageGroup
@@ -5863,7 +5899,8 @@ Each argument is described in detail in: L<Paws::SageMaker::DescribeSubscribedWo
 Returns: a L<Paws::SageMaker::DescribeSubscribedWorkteamResponse> instance
 
 Gets information about a work team provided by a vendor. It returns
-details about the subscription with a vendor in the AWS Marketplace.
+details about the subscription with a vendor in the Amazon Web Services
+Marketplace.
 
 
 =head2 DescribeTrainingJob
@@ -6086,7 +6123,8 @@ Gets a resource policy that manages access for a model group. For
 information about resource policies, see Identity-based policies and
 resource-based policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)
-in the I<AWS Identity and Access Management User Guide.>.
+in the I<Amazon Web Services Identity and Access Management User
+Guide.>.
 
 
 =head2 GetSagemakerServicecatalogPortfolioStatus
@@ -7034,7 +7072,7 @@ Each argument is described in detail in: L<Paws::SageMaker::ListModelPackageGrou
 
 Returns: a L<Paws::SageMaker::ListModelPackageGroupsOutput> instance
 
-Gets a list of the model groups in your AWS account.
+Gets a list of the model groups in your Amazon Web Services account.
 
 
 =head2 ListModelPackages
@@ -7127,7 +7165,7 @@ Each argument is described in detail in: L<Paws::SageMaker::ListModels>
 
 Returns: a L<Paws::SageMaker::ListModelsOutput> instance
 
-Lists models created with the CreateModel API.
+Lists models created with the C<CreateModel> API.
 
 
 =head2 ListMonitoringExecutions
@@ -7285,7 +7323,7 @@ Each argument is described in detail in: L<Paws::SageMaker::ListNotebookInstance
 Returns: a L<Paws::SageMaker::ListNotebookInstancesOutput> instance
 
 Returns a list of the Amazon SageMaker notebook instances in the
-requester's account in an AWS Region.
+requester's account in an Amazon Web Services Region.
 
 
 =head2 ListPipelineExecutions
@@ -7445,7 +7483,7 @@ Each argument is described in detail in: L<Paws::SageMaker::ListProjects>
 
 Returns: a L<Paws::SageMaker::ListProjectsOutput> instance
 
-Gets a list of the projects in an AWS account.
+Gets a list of the projects in an Amazon Web Services account.
 
 
 =head2 ListSubscribedWorkteams
@@ -7465,9 +7503,9 @@ Each argument is described in detail in: L<Paws::SageMaker::ListSubscribedWorkte
 
 Returns: a L<Paws::SageMaker::ListSubscribedWorkteamsResponse> instance
 
-Gets a list of the work teams that you are subscribed to in the AWS
-Marketplace. The list may be empty if no work team satisfies the filter
-specified in the C<NameContains> parameter.
+Gets a list of the work teams that you are subscribed to in the Amazon
+Web Services Marketplace. The list may be empty if no work team
+satisfies the filter specified in the C<NameContains> parameter.
 
 
 =head2 ListTags
@@ -7538,7 +7576,8 @@ C<InProgress>, are selected (sorted according to the creation time,
 from the most current to the oldest). Next, those with a status of
 C<InProgress> are returned.
 
-You can quickly test the API using the following AWS CLI code.
+You can quickly test the API using the following Amazon Web Services
+CLI code.
 
 C<aws sagemaker list-training-jobs --max-results 100 --status-equals
 InProgress>
@@ -7739,9 +7778,9 @@ Each argument is described in detail in: L<Paws::SageMaker::ListWorkforces>
 
 Returns: a L<Paws::SageMaker::ListWorkforcesResponse> instance
 
-Use this operation to list all private and vendor workforces in an AWS
-Region. Note that you can only have one private workforce per AWS
-Region.
+Use this operation to list all private and vendor workforces in an
+Amazon Web Services Region. Note that you can only have one private
+workforce per Amazon Web Services Region.
 
 
 =head2 ListWorkteams
@@ -7789,7 +7828,8 @@ Adds a resouce policy to control access to a model group. For
 information about resoure policies, see Identity-based policies and
 resource-based policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html)
-in the I<AWS Identity and Access Management User Guide.>.
+in the I<Amazon Web Services Identity and Access Management User
+Guide.>.
 
 
 =head2 RegisterDevices
@@ -7865,6 +7905,52 @@ ascending or descending order.
 
 You can query against the following value types: numeric, text,
 Boolean, and timestamp.
+
+
+=head2 SendPipelineExecutionStepFailure
+
+=over
+
+=item CallbackToken => Str
+
+=item [ClientRequestToken => Str]
+
+=item [FailureReason => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::SendPipelineExecutionStepFailure>
+
+Returns: a L<Paws::SageMaker::SendPipelineExecutionStepFailureResponse> instance
+
+Notifies the pipeline that the execution of a callback step failed,
+along with a message describing why. When a callback step is run, the
+pipeline generates a callback token and includes the token in a message
+sent to Amazon Simple Queue Service (Amazon SQS).
+
+
+=head2 SendPipelineExecutionStepSuccess
+
+=over
+
+=item CallbackToken => Str
+
+=item [ClientRequestToken => Str]
+
+=item [OutputParameters => ArrayRef[L<Paws::SageMaker::OutputParameter>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMaker::SendPipelineExecutionStepSuccess>
+
+Returns: a L<Paws::SageMaker::SendPipelineExecutionStepSuccessResponse> instance
+
+Notifies the pipeline that the execution of a callback step succeeded
+and provides a list of the step's output parameters. When a callback
+step is run, the pipeline generates a callback token and includes the
+token in a message sent to Amazon Simple Queue Service (Amazon SQS).
 
 
 =head2 StartMonitoringSchedule
@@ -8087,6 +8173,20 @@ Returns: a L<Paws::SageMaker::StopPipelineExecutionResponse> instance
 
 Stops a pipeline execution.
 
+A pipeline execution won't stop while a callback step is running. When
+you call C<StopPipelineExecution> on a pipeline execution with a
+running callback step, SageMaker Pipelines sends an additional Amazon
+SQS message to the specified SQS queue. The body of the SQS message
+contains a "Status" field which is set to "Stopping".
+
+You should add logic to your Amazon SQS message consumer to take any
+needed action (for example, resource cleanup) upon receipt of the
+message followed by a call to C<SendPipelineExecutionStepSuccess> or
+C<SendPipelineExecutionStepFailure>.
+
+Only when SageMaker Pipelines receives one of these calls will it stop
+the pipeline execution.
+
 
 =head2 StopProcessingJob
 
@@ -8262,6 +8362,8 @@ Updates a context.
 =item OutputConfig => L<Paws::SageMaker::EdgeOutputConfig>
 
 =item [Description => Str]
+
+=item [EnableIotRoleAlias => Bool]
 
 =item [RoleArn => Str]
 
