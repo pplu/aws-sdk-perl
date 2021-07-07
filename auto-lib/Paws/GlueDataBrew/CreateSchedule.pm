@@ -58,7 +58,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 The date or dates and time or times when the jobs are to be run. For
 more information, see Cron expressions
 (https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html) in the
-I<AWS Glue DataBrew Developer Guide>.
+I<Glue DataBrew Developer Guide>.
 
 
 

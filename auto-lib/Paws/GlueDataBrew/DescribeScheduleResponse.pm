@@ -38,7 +38,7 @@ The identifier (user name) of the user who created the schedule.
 The date or dates and time or times when the jobs are to be run for the
 schedule. For more information, see Cron expressions
 (https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html) in the
-I<AWS Glue DataBrew Developer Guide>.
+I<Glue DataBrew Developer Guide>.
 
 
 =head2 JobNames => ArrayRef[Str|Undef]

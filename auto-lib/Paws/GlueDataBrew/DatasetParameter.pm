@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 =head1 DESCRIPTION
 
 Represents a dataset paramater that defines type and conditions for a
-parameter in the S3 path of the dataset.
+parameter in the Amazon S3 path of the dataset.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +46,7 @@ parameter in the S3 path of the dataset.
 =head2 CreateColumn => Bool
 
 Optional boolean value that defines whether the captured value of this
-parameter should be loaded as an additional column in the dataset.
+parameter should be used to create a new column in a dataset.
 
 
 =head2 DatetimeOptions => L<Paws::GlueDataBrew::DatetimeOptions>
@@ -63,7 +63,7 @@ criteria to the parameter.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the parameter that is used in the dataset's S3 path.
+The name of the parameter that is used in the dataset's Amazon S3 path.
 
 
 =head2 B<REQUIRED> Type => Str

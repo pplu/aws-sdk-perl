@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 
 =head1 DESCRIPTION
 
-Represents information on how DataBrew can find data, in either the AWS
+Represents information on how DataBrew can find data, in either the
 Glue Data Catalog or Amazon S3.
 
 =head1 ATTRIBUTES
@@ -48,7 +48,7 @@ Connection information for dataset input files stored in a database.
 
 =head2 DataCatalogInputDefinition => L<Paws::GlueDataBrew::DataCatalogInputDefinition>
 
-The AWS Glue Data Catalog parameters for the data.
+The Glue Data Catalog parameters for the data.
 
 
 =head2 S3InputDefinition => L<Paws::GlueDataBrew::S3Location>

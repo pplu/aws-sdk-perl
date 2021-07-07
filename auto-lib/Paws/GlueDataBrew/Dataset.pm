@@ -52,7 +52,7 @@ Represents a dataset that can be processed by DataBrew.
 
 =head2 AccountId => Str
 
-The ID of the AWS account that owns the dataset.
+The ID of the Amazon Web Services account that owns the dataset.
 
 
 =head2 CreateDate => Str
@@ -67,7 +67,8 @@ The Amazon Resource Name (ARN) of the user who created the dataset.
 
 =head2 Format => Str
 
-The file format of a dataset that is created from an S3 file or folder.
+The file format of a dataset that is created from an Amazon S3 file or
+folder.
 
 
 =head2 FormatOptions => L<Paws::GlueDataBrew::FormatOptions>
@@ -78,8 +79,8 @@ dataset.
 
 =head2 B<REQUIRED> Input => L<Paws::GlueDataBrew::Input>
 
-Information on how DataBrew can find the dataset, in either the AWS
-Glue Data Catalog or Amazon S3.
+Information on how DataBrew can find the dataset, in either the Glue
+Data Catalog or Amazon S3.
 
 
 =head2 LastModifiedBy => Str
@@ -100,8 +101,8 @@ The unique name of the dataset.
 
 =head2 PathOptions => L<Paws::GlueDataBrew::PathOptions>
 
-A set of options that defines how DataBrew interprets an S3 path of the
-dataset.
+A set of options that defines how DataBrew interprets an Amazon S3 path
+of the dataset.
 
 
 =head2 ResourceArn => Str
@@ -111,8 +112,8 @@ The unique Amazon Resource Name (ARN) for the dataset.
 
 =head2 Source => Str
 
-The location of the data for the dataset, either Amazon S3 or the AWS
-Glue Data Catalog.
+The location of the data for the dataset, either Amazon S3 or the Glue
+Data Catalog.
 
 
 =head2 Tags => L<Paws::GlueDataBrew::TagMap>

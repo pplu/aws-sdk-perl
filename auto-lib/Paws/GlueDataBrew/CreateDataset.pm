@@ -131,7 +131,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 Format => Str
 
-The file format of a dataset that is created from an S3 file or folder.
+The file format of a dataset that is created from an Amazon S3 file or
+folder.
 
 Valid values are: C<"CSV">, C<"JSON">, C<"PARQUET">, C<"EXCEL">
 
@@ -156,8 +157,8 @@ alphanumeric (A-Z, a-z, 0-9), hyphen (-), period (.), and space.
 
 =head2 PathOptions => L<Paws::GlueDataBrew::PathOptions>
 
-A set of options that defines how DataBrew interprets an S3 path of the
-dataset.
+A set of options that defines how DataBrew interprets an Amazon S3 path
+of the dataset.
 
 
 

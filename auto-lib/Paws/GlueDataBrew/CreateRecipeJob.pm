@@ -1,6 +1,7 @@
 
 package Paws::GlueDataBrew::CreateRecipeJob;
   use Moose;
+  has DataCatalogOutputs => (is => 'ro', isa => 'ArrayRef[Paws::GlueDataBrew::DataCatalogOutput]');
   has DatasetName => (is => 'ro', isa => 'Str');
   has EncryptionKeyArn => (is => 'ro', isa => 'Str');
   has EncryptionMode => (is => 'ro', isa => 'Str');
@@ -8,7 +9,7 @@ package Paws::GlueDataBrew::CreateRecipeJob;
   has MaxCapacity => (is => 'ro', isa => 'Int');
   has MaxRetries => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::GlueDataBrew::Output]', required => 1);
+  has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::GlueDataBrew::Output]');
   has ProjectName => (is => 'ro', isa => 'Str');
   has RecipeReference => (is => 'ro', isa => 'Paws::GlueDataBrew::RecipeReference');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -41,13 +42,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $databrew = Paws->service('GlueDataBrew');
     my $CreateRecipeJobResponse = $databrew->CreateRecipeJob(
-      Name    => 'MyJobName',
-      Outputs => [
+      Name               => 'MyJobName',
+      RoleArn            => 'MyArn',
+      DataCatalogOutputs => [
+        {
+          DatabaseName    => 'MyDatabaseName',    # min: 1, max: 255
+          TableName       => 'MyTableName',       # min: 1, max: 255
+          CatalogId       => 'MyCatalogId',       # min: 1, max: 255; OPTIONAL
+          DatabaseOptions => {
+            TableName     => 'MyDatabaseTableName',    # min: 1, max: 255
+            TempDirectory => {
+              Bucket => 'MyBucket',    # min: 3, max: 63
+              Key    => 'MyKey',       # min: 1, max: 1280; OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          Overwrite => 1,    # OPTIONAL
+          S3Options => {
+            Location => {
+              Bucket => 'MyBucket',    # min: 3, max: 63
+              Key    => 'MyKey',       # min: 1, max: 1280; OPTIONAL
+            },    # OPTIONAL
+
+          },    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      DatasetName      => 'MyDatasetName',         # OPTIONAL
+      EncryptionKeyArn => 'MyEncryptionKeyArn',    # OPTIONAL
+      EncryptionMode   => 'SSE-KMS',               # OPTIONAL
+      LogSubscription  => 'ENABLE',                # OPTIONAL
+      MaxCapacity      => 1,                       # OPTIONAL
+      MaxRetries       => 1,                       # OPTIONAL
+      Outputs          => [
         {
           Location => {
             Bucket => 'MyBucket',    # min: 3, max: 63
             Key    => 'MyKey',       # min: 1, max: 1280; OPTIONAL
-          },
+          },    # OPTIONAL
           CompressionFormat => 'GZIP'
           , # values: GZIP, LZ4, SNAPPY, BZIP2, DEFLATE, LZO, BROTLI, ZSTD, ZLIB; OPTIONAL
           Format => 'CSV'
@@ -63,18 +94,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # max: 200; OPTIONAL
         },
         ...
-      ],
-      RoleArn          => 'MyArn',
-      DatasetName      => 'MyDatasetName',         # OPTIONAL
-      EncryptionKeyArn => 'MyEncryptionKeyArn',    # OPTIONAL
-      EncryptionMode   => 'SSE-KMS',               # OPTIONAL
-      LogSubscription  => 'ENABLE',                # OPTIONAL
-      MaxCapacity      => 1,                       # OPTIONAL
-      MaxRetries       => 1,                       # OPTIONAL
-      ProjectName      => 'MyProjectName',         # OPTIONAL
-      RecipeReference  => {
-        Name          => 'MyRecipeName',           # min: 1, max: 255
-        RecipeVersion => 'MyRecipeVersion',        # min: 1, max: 16; OPTIONAL
+      ],    # OPTIONAL
+      ProjectName     => 'MyProjectName',    # OPTIONAL
+      RecipeReference => {
+        Name          => 'MyRecipeName',       # min: 1, max: 255
+        RecipeVersion => 'MyRecipeVersion',    # min: 1, max: 16; OPTIONAL
       },    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
@@ -91,6 +115,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/databrew/CreateRecipeJob>
 
 =head1 ATTRIBUTES
+
+
+=head2 DataCatalogOutputs => ArrayRef[L<Paws::GlueDataBrew::DataCatalogOutput>]
+
+One or more artifacts that represent the AWS Glue Data Catalog output
+from running the job.
+
 
 
 =head2 DatasetName => Str
@@ -114,7 +145,7 @@ The encryption mode for the job, which can be one of the following:
 
 =item *
 
-C<SSE-KMS> - Server-side encryption with keys managed by AWS KMS.
+C<SSE-KMS> - Server-side encryption with keys managed by KMS.
 
 =item *
 
@@ -152,7 +183,7 @@ A unique name for the job. Valid characters are alphanumeric (A-Z, a-z,
 
 
 
-=head2 B<REQUIRED> Outputs => ArrayRef[L<Paws::GlueDataBrew::Output>]
+=head2 Outputs => ArrayRef[L<Paws::GlueDataBrew::Output>]
 
 One or more artifacts that represent the output from running the job.
 
@@ -173,8 +204,8 @@ and a dataset to associate with the recipe.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role to be assumed when DataBrew runs the job.
+The Amazon Resource Name (ARN) of the Identity and Access Management
+(IAM) role to be assumed when DataBrew runs the job.
 
 
 

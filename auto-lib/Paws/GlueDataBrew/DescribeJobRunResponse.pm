@@ -3,6 +3,7 @@ package Paws::GlueDataBrew::DescribeJobRunResponse;
   use Moose;
   has Attempt => (is => 'ro', isa => 'Int');
   has CompletedOn => (is => 'ro', isa => 'Str');
+  has DataCatalogOutputs => (is => 'ro', isa => 'ArrayRef[Paws::GlueDataBrew::DataCatalogOutput]');
   has DatasetName => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has ExecutionTime => (is => 'ro', isa => 'Int');
@@ -37,6 +38,12 @@ The number of times that DataBrew has attempted to run the job.
 =head2 CompletedOn => Str
 
 The date and time when the job completed processing.
+
+
+=head2 DataCatalogOutputs => ArrayRef[L<Paws::GlueDataBrew::DataCatalogOutput>]
+
+One or more artifacts that represent the AWS Glue Data Catalog output
+from running the job.
 
 
 =head2 DatasetName => Str

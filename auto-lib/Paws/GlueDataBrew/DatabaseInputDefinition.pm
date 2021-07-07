@@ -47,7 +47,7 @@ The table within the target database.
 
 =head2 B<REQUIRED> GlueConnectionName => Str
 
-The AWS Glue Connection that stores the connection information for the
+The Glue Connection that stores the connection information for the
 target database.
 
 

@@ -42,7 +42,7 @@ DataBrew can read input data, or write output from a job.
 
 =head2 B<REQUIRED> Bucket => Str
 
-The S3 bucket name.
+The Amazon S3 bucket name.
 
 
 =head2 Key => Str

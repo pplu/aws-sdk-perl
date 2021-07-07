@@ -80,8 +80,8 @@ The Amazon Resource Name (ARN) of the project.
 
 =head2 RoleArn => Str
 
-The ARN of the AWS Identity and Access Management (IAM) role to be
-assumed when DataBrew runs the job.
+The ARN of the Identity and Access Management (IAM) role to be assumed
+when DataBrew runs the job.
 
 
 =head2 Sample => L<Paws::GlueDataBrew::Sample>

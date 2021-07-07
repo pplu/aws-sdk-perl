@@ -79,8 +79,8 @@ The name of an existing recipe to associate with the project.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role to be assumed for this request.
+The Amazon Resource Name (ARN) of the Identity and Access Management
+(IAM) role to be assumed for this request.
 
 
 

@@ -53,7 +53,7 @@ performed.
 A specific condition to apply to a recipe action. For more information,
 see Recipe structure
 (https://docs.aws.amazon.com/databrew/latest/dg/recipes.html#recipes.structure)
-in the I<AWS Glue DataBrew Developer Guide>.
+in the I<Glue DataBrew Developer Guide>.
 
 
 =head2 B<REQUIRED> TargetColumn => Str

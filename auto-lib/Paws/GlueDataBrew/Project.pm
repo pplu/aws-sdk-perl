@@ -53,7 +53,7 @@ Represents all of the attributes of a DataBrew project.
 
 =head2 AccountId => Str
 
-The ID of the AWS account that owns the project.
+The ID of the Amazon Web Services account that owns the project.
 
 
 =head2 CreateDate => Str

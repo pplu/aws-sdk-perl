@@ -34,7 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 
 =head1 DESCRIPTION
 
-Represents a structure for defining parameter conditions.
+Represents a structure for defining parameter conditions. Supported
+conditions are described here: Supported conditions for dynamic
+datasets
+(https://docs-aws.amazon.com/databrew/latest/dg/datasets.multiple-files.html#conditions.for.dynamic.datasets)
+in the I<Glue DataBrew Developer Guide>.
 
 =head1 ATTRIBUTES
 

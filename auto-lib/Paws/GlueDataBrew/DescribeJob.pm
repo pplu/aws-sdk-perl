@@ -34,26 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreateDate       = $DescribeJobResponse->CreateDate;
-    my $CreatedBy        = $DescribeJobResponse->CreatedBy;
-    my $DatasetName      = $DescribeJobResponse->DatasetName;
-    my $EncryptionKeyArn = $DescribeJobResponse->EncryptionKeyArn;
-    my $EncryptionMode   = $DescribeJobResponse->EncryptionMode;
-    my $JobSample        = $DescribeJobResponse->JobSample;
-    my $LastModifiedBy   = $DescribeJobResponse->LastModifiedBy;
-    my $LastModifiedDate = $DescribeJobResponse->LastModifiedDate;
-    my $LogSubscription  = $DescribeJobResponse->LogSubscription;
-    my $MaxCapacity      = $DescribeJobResponse->MaxCapacity;
-    my $MaxRetries       = $DescribeJobResponse->MaxRetries;
-    my $Name             = $DescribeJobResponse->Name;
-    my $Outputs          = $DescribeJobResponse->Outputs;
-    my $ProjectName      = $DescribeJobResponse->ProjectName;
-    my $RecipeReference  = $DescribeJobResponse->RecipeReference;
-    my $ResourceArn      = $DescribeJobResponse->ResourceArn;
-    my $RoleArn          = $DescribeJobResponse->RoleArn;
-    my $Tags             = $DescribeJobResponse->Tags;
-    my $Timeout          = $DescribeJobResponse->Timeout;
-    my $Type             = $DescribeJobResponse->Type;
+    my $CreateDate         = $DescribeJobResponse->CreateDate;
+    my $CreatedBy          = $DescribeJobResponse->CreatedBy;
+    my $DataCatalogOutputs = $DescribeJobResponse->DataCatalogOutputs;
+    my $DatasetName        = $DescribeJobResponse->DatasetName;
+    my $EncryptionKeyArn   = $DescribeJobResponse->EncryptionKeyArn;
+    my $EncryptionMode     = $DescribeJobResponse->EncryptionMode;
+    my $JobSample          = $DescribeJobResponse->JobSample;
+    my $LastModifiedBy     = $DescribeJobResponse->LastModifiedBy;
+    my $LastModifiedDate   = $DescribeJobResponse->LastModifiedDate;
+    my $LogSubscription    = $DescribeJobResponse->LogSubscription;
+    my $MaxCapacity        = $DescribeJobResponse->MaxCapacity;
+    my $MaxRetries         = $DescribeJobResponse->MaxRetries;
+    my $Name               = $DescribeJobResponse->Name;
+    my $Outputs            = $DescribeJobResponse->Outputs;
+    my $ProjectName        = $DescribeJobResponse->ProjectName;
+    my $RecipeReference    = $DescribeJobResponse->RecipeReference;
+    my $ResourceArn        = $DescribeJobResponse->ResourceArn;
+    my $RoleArn            = $DescribeJobResponse->RoleArn;
+    my $Tags               = $DescribeJobResponse->Tags;
+    my $Timeout            = $DescribeJobResponse->Timeout;
+    my $Type               = $DescribeJobResponse->Type;
 
     # Returns a L<Paws::GlueDataBrew::DescribeJobResponse> object.
 

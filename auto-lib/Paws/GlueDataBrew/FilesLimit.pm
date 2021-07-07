@@ -35,29 +35,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 
 =head1 DESCRIPTION
 
-Represents a limit imposed on number of S3 files that should be
-selected for a dataset from a connected S3 path.
+Represents a limit imposed on number of Amazon S3 files that should be
+selected for a dataset from a connected Amazon S3 path.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> MaxFiles => Int
 
-The number of S3 files to select.
+The number of Amazon S3 files to select.
 
 
 =head2 Order => Str
 
-A criteria to use for S3 files sorting before their selection. By
-default uses DESCENDING order, i.e. most recent files are selected
+A criteria to use for Amazon S3 files sorting before their selection.
+By default uses DESCENDING order, i.e. most recent files are selected
 first. Anotherpossible value is ASCENDING.
 
 
 =head2 OrderedBy => Str
 
-A criteria to use for S3 files sorting before their selection. By
-default uses LAST_MODIFIED_DATE as a sorting criteria. Currently it's
-the only allowed value.
+A criteria to use for Amazon S3 files sorting before their selection.
+By default uses LAST_MODIFIED_DATE as a sorting criteria. Currently
+it's the only allowed value.
 
 
 

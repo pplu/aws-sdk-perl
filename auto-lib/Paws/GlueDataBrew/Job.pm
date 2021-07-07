@@ -4,6 +4,7 @@ package Paws::GlueDataBrew::Job;
   has AccountId => (is => 'ro', isa => 'Str');
   has CreateDate => (is => 'ro', isa => 'Str');
   has CreatedBy => (is => 'ro', isa => 'Str');
+  has DataCatalogOutputs => (is => 'ro', isa => 'ArrayRef[Paws::GlueDataBrew::DataCatalogOutput]');
   has DatasetName => (is => 'ro', isa => 'Str');
   has EncryptionKeyArn => (is => 'ro', isa => 'Str');
   has EncryptionMode => (is => 'ro', isa => 'Str');
@@ -60,7 +61,7 @@ Represents all of the attributes of a DataBrew job.
 
 =head2 AccountId => Str
 
-The ID of the AWS account that owns the job.
+The ID of the Amazon Web Services account that owns the job.
 
 
 =head2 CreateDate => Str
@@ -71,6 +72,12 @@ The date and time that the job was created.
 =head2 CreatedBy => Str
 
 The Amazon Resource Name (ARN) of the user who created the job.
+
+
+=head2 DataCatalogOutputs => ArrayRef[L<Paws::GlueDataBrew::DataCatalogOutput>]
+
+One or more artifacts that represent the AWS Glue Data Catalog output
+from running the job.
 
 
 =head2 DatasetName => Str
@@ -94,7 +101,7 @@ The encryption mode for the job, which can be one of the following:
 
 =item *
 
-C<SSE-KMS> - Server-side encryption with keys managed by AWS KMS.
+C<SSE-KMS> - Server-side encryption with keys managed by KMS.
 
 =item *
 

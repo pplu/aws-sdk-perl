@@ -82,7 +82,7 @@ The encryption mode for the job, which can be one of the following:
 
 =item *
 
-C<SSE-KMS> - Server-side encryption with keys managed by AWS KMS.
+C<SSE-KMS> - Server-side encryption with keys managed by KMS.
 
 =item *
 
@@ -137,8 +137,8 @@ The name of the job to be updated.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role to be assumed when DataBrew runs the job.
+The Amazon Resource Name (ARN) of the Identity and Access Management
+(IAM) role to be assumed when DataBrew runs the job.
 
 
 

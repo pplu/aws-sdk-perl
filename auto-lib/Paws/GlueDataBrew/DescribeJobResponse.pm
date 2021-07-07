@@ -3,6 +3,7 @@ package Paws::GlueDataBrew::DescribeJobResponse;
   use Moose;
   has CreateDate => (is => 'ro', isa => 'Str');
   has CreatedBy => (is => 'ro', isa => 'Str');
+  has DataCatalogOutputs => (is => 'ro', isa => 'ArrayRef[Paws::GlueDataBrew::DataCatalogOutput]');
   has DatasetName => (is => 'ro', isa => 'Str');
   has EncryptionKeyArn => (is => 'ro', isa => 'Str');
   has EncryptionMode => (is => 'ro', isa => 'Str');
@@ -45,6 +46,12 @@ The identifier (user name) of the user associated with the creation of
 the job.
 
 
+=head2 DataCatalogOutputs => ArrayRef[L<Paws::GlueDataBrew::DataCatalogOutput>]
+
+One or more artifacts that represent the AWS Glue Data Catalog output
+from running the job.
+
+
 =head2 DatasetName => Str
 
 The dataset that the job acts upon.
@@ -64,7 +71,7 @@ The encryption mode for the job, which can be one of the following:
 
 =item *
 
-C<SSE-KMS> - Server-side encryption with keys managed by AWS KMS.
+C<SSE-KMS> - Server-side encryption with keys managed by KMS.
 
 =item *
 
@@ -133,8 +140,8 @@ The Amazon Resource Name (ARN) of the job.
 
 =head2 RoleArn => Str
 
-The ARN of the AWS Identity and Access Management (IAM) role to be
-assumed when DataBrew runs the job.
+The ARN of the Identity and Access Management (IAM) role to be assumed
+when DataBrew runs the job.
 
 
 =head2 Tags => L<Paws::GlueDataBrew::TagMap>

@@ -49,7 +49,7 @@ Represents one or more dates and times when a job is to run.
 
 =head2 AccountId => Str
 
-The ID of the AWS account that owns the schedule.
+The ID of the Amazon Web Services account that owns the schedule.
 
 
 =head2 CreateDate => Str
@@ -67,7 +67,7 @@ The Amazon Resource Name (ARN) of the user who created the schedule.
 The dates and times when the job is to run. For more information, see
 Cron expressions
 (https://docs.aws.amazon.com/databrew/latest/dg/jobs.cron.html) in the
-I<AWS Glue DataBrew Developer Guide>.
+I<Glue DataBrew Developer Guide>.
 
 
 =head2 JobNames => ArrayRef[Str|Undef]

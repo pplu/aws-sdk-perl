@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 =head1 DESCRIPTION
 
 Represents additional options for correct interpretation of datetime
-parameters used in the S3 path of a dataset.
+parameters used in the Amazon S3 path of a dataset.
 
 =head1 ATTRIBUTES
 
@@ -44,9 +44,9 @@ parameters used in the S3 path of a dataset.
 =head2 B<REQUIRED> Format => Str
 
 Required option, that defines the datetime format used for a date
-parameter in the S3 path. Should use only supported datetime specifiers
-and separation characters, all litera a-z or A-Z character should be
-escaped with single quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".
+parameter in the Amazon S3 path. Should use only supported datetime
+specifiers and separation characters, all literal a-z or A-Z characters
+should be escaped with single quotes. E.g. "MM.dd.yyyy-'at'-HH:mm".
 
 
 =head2 LocaleCode => Str
@@ -58,8 +58,8 @@ interpretation of some date formats.
 =head2 TimezoneOffset => Str
 
 Optional value for a timezone offset of the datetime parameter value in
-the S3 path. Shouldn't be used if Format for this parameter includes
-timezone fields. If no offset specified, UTC is assumed.
+the Amazon S3 path. Shouldn't be used if Format for this parameter
+includes timezone fields. If no offset specified, UTC is assumed.
 
 
 

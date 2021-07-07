@@ -401,7 +401,7 @@ Paws::GlueDataBrew - Perl Interface to AWS AWS Glue DataBrew
 
 =head1 DESCRIPTION
 
-AWS Glue DataBrew is a visual, cloud-scale data-preparation service.
+Glue DataBrew is a visual, cloud-scale data-preparation service.
 DataBrew simplifies data preparation tasks, targeting data issues that
 are hard to spot and time-consuming to fix. DataBrew empowers users of
 all technical levels to visualize the data and perform one-click data
@@ -601,9 +601,9 @@ Creates a new DataBrew recipe.
 
 =item Name => Str
 
-=item Outputs => ArrayRef[L<Paws::GlueDataBrew::Output>]
-
 =item RoleArn => Str
+
+=item [DataCatalogOutputs => ArrayRef[L<Paws::GlueDataBrew::DataCatalogOutput>]]
 
 =item [DatasetName => Str]
 
@@ -616,6 +616,8 @@ Creates a new DataBrew recipe.
 =item [MaxCapacity => Int]
 
 =item [MaxRetries => Int]
+
+=item [Outputs => ArrayRef[L<Paws::GlueDataBrew::Output>]]
 
 =item [ProjectName => Str]
 
@@ -633,7 +635,7 @@ Each argument is described in detail in: L<Paws::GlueDataBrew::CreateRecipeJob>
 Returns: a L<Paws::GlueDataBrew::CreateRecipeJobResponse> instance
 
 Creates a new job to transform input data, using steps defined in an
-existing AWS Glue DataBrew recipe
+existing Glue DataBrew recipe
 
 
 =head2 CreateSchedule
@@ -1237,9 +1239,9 @@ recipe.
 
 =item Name => Str
 
-=item Outputs => ArrayRef[L<Paws::GlueDataBrew::Output>]
-
 =item RoleArn => Str
+
+=item [DataCatalogOutputs => ArrayRef[L<Paws::GlueDataBrew::DataCatalogOutput>]]
 
 =item [EncryptionKeyArn => Str]
 
@@ -1250,6 +1252,8 @@ recipe.
 =item [MaxCapacity => Int]
 
 =item [MaxRetries => Int]
+
+=item [Outputs => ArrayRef[L<Paws::GlueDataBrew::Output>]]
 
 =item [Timeout => Int]
 

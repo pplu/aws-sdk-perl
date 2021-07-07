@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 
 =head1 DESCRIPTION
 
-A structure that map names of parameters used in the S3 path of a
-dataset to their definitions. A definition includes parameter type and
-conditions.
+A structure that map names of parameters used in the Amazon S3 path of
+a dataset to their definitions. A definition includes parameter type
+and conditions.
 
 =head1 ATTRIBUTES
 

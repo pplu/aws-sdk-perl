@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 
 Represents a transformation and associated parameters that are used to
 apply a change to a DataBrew dataset. For more information, see Recipe
-structure
-(https://docs.aws.amazon.com/databrew/latest/dg/recipe-structure.html)
-and Recipe actions reference
+actions reference
 (https://docs.aws.amazon.com/databrew/latest/dg/recipe-actions-reference.html).
 
 =head1 ATTRIBUTES

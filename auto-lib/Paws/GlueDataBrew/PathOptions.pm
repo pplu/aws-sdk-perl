@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GlueDataBre
 =head1 DESCRIPTION
 
 Represents a set of options that define how DataBrew selects files for
-a given S3 path in a dataset.
+a given Amazon S3 path in a dataset.
 
 =head1 ATTRIBUTES
 
@@ -49,14 +49,14 @@ should be selected.
 
 =head2 LastModifiedDateCondition => L<Paws::GlueDataBrew::FilterExpression>
 
-If provided, this structure defines a date range for matching S3
-objects based on their LastModifiedDate attribute in S3.
+If provided, this structure defines a date range for matching Amazon S3
+objects based on their LastModifiedDate attribute in Amazon S3.
 
 
 =head2 Parameters => L<Paws::GlueDataBrew::PathParametersMap>
 
-A structure that maps names of parameters used in the S3 path of a
-dataset to their definitions.
+A structure that maps names of parameters used in the Amazon S3 path of
+a dataset to their definitions.
 
 
 
