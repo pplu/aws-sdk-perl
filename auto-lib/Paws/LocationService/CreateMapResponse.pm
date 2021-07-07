@@ -33,8 +33,7 @@ to specify a resource across all AWS.
 
 =item *
 
-Format example:
-C<arn:partition:service:region:account-id:resource-type:resource-id>
+Format example: C<arn:aws:geo:region:account-id:maps/ExampleMap>
 
 =back
 

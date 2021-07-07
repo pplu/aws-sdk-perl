@@ -41,6 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MapArn        = $DescribeMapResponse->MapArn;
     my $MapName       = $DescribeMapResponse->MapName;
     my $PricingPlan   = $DescribeMapResponse->PricingPlan;
+    my $Tags          = $DescribeMapResponse->Tags;
     my $UpdateTime    = $DescribeMapResponse->UpdateTime;
 
     # Returns a L<Paws::LocationService::DescribeMapResponse> object.

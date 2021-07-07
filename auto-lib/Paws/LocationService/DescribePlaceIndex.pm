@@ -42,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IndexArn    = $DescribePlaceIndexResponse->IndexArn;
     my $IndexName   = $DescribePlaceIndexResponse->IndexName;
     my $PricingPlan = $DescribePlaceIndexResponse->PricingPlan;
+    my $Tags        = $DescribePlaceIndexResponse->Tags;
     my $UpdateTime  = $DescribePlaceIndexResponse->UpdateTime;
 
     # Returns a L<Paws::LocationService::DescribePlaceIndexResponse> object.
@@ -54,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/geo
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name of the Place index resource.
+The name of the place index resource.
 
 
 

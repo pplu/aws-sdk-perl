@@ -71,8 +71,7 @@ see the Amazon Location Service pricing page
 
 =head2 PricingPlanDataSource => Str
 
-The data source selected for the geofence collection and associated
-pricing plan.
+The specified data provider for the geofence collection.
 
 
 =head2 B<REQUIRED> UpdateTime => Str

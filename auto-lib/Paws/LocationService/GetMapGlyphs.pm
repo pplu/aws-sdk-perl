@@ -59,8 +59,9 @@ preference.. For example, C<Noto Sans, Arial Unicode>.
 =head2 B<REQUIRED> FontUnicodeRange => Str
 
 A Unicode range of characters to download glyphs for. Each response
-will contain 256 characters. For example, 0-255 includes all characters
-from range C<U+0000> to C<00FF>. Must be aligned to multiples of 256.
+will contain 256 characters. For example, 0E<ndash>255 includes all
+characters from range C<U+0000> to C<00FF>. Must be aligned to
+multiples of 256.
 
 
 

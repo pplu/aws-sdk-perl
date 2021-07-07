@@ -5,6 +5,7 @@ package Paws::LocationService::CreateMap;
   has Description => (is => 'ro', isa => 'Str');
   has MapName => (is => 'ro', isa => 'Str', required => 1);
   has PricingPlan => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::LocationService::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -39,6 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MapName     => 'MyResourceName',
       PricingPlan => 'RequestBasedUsage',
       Description => 'MyResourceDescription',    # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -101,6 +105,44 @@ see the Amazon Location Service pricing page
 (https://aws.amazon.com/location/pricing/).
 
 Valid values are: C<"RequestBasedUsage">, C<"MobileAssetTracking">, C<"MobileAssetManagement">
+
+=head2 Tags => L<Paws::LocationService::TagMap>
+
+Applies one or more tags to the map resource. A tag is a key-value pair
+helps manage, identify, search, and filter your resources by labelling
+them.
+
+Format: C<"key" : "value">
+
+Restrictions:
+
+=over
+
+=item *
+
+Maximum 50 tags per resource
+
+=item *
+
+Each resource tag must be unique with a maximum of one value.
+
+=item *
+
+Maximum key length: 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length: 256 Unicode characters in UTF-8
+
+=item *
+
+Can use alphanumeric characters (AE<ndash>Z, aE<ndash>z, 0E<ndash>9),
+and the following characters: + - = . _ : / @.
+
+=back
+
+
+
 
 
 =head1 SEE ALSO

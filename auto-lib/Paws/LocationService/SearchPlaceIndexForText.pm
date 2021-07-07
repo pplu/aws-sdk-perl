@@ -138,7 +138,7 @@ characters: C<AUS>.
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name of the Place index resource you want to use for the search.
+The name of the place index resource you want to use for the search.
 
 
 

@@ -8,6 +8,7 @@ package Paws::LocationService::DescribePlaceIndexResponse;
   has IndexArn => (is => 'ro', isa => 'Str', required => 1);
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has PricingPlan => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::LocationService::TagMap');
   has UpdateTime => (is => 'ro', isa => 'Str', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -24,7 +25,7 @@ Paws::LocationService::DescribePlaceIndexResponse
 
 =head2 B<REQUIRED> CreateTime => Str
 
-The timestamp for when the Place index resource was created in ISO 8601
+The timestamp for when the place index resource was created in ISO 8601
 (https://www.iso.org/iso-8601-date-and-time-format.html) format:
 C<YYYY-MM-DDThh:mm:ss.sssZ>.
 
@@ -58,32 +59,47 @@ The specified data storage option for requesting Places.
 
 =head2 B<REQUIRED> Description => Str
 
-The optional description for the Place index resource.
+The optional description for the place index resource.
 
 
 =head2 B<REQUIRED> IndexArn => Str
 
-The Amazon Resource Name (ARN) for the Place index resource. Used when
-you need to specify a resource across all AWS.
+The Amazon Resource Name (ARN) for the place index resource. Used to
+specify a resource across all AWS.
+
+=over
+
+=item *
+
+Format example:
+C<arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex>
+
+=back
+
 
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name of the Place index resource being described.
+The name of the place index resource being described.
 
 
 =head2 B<REQUIRED> PricingPlan => Str
 
-The pricing plan selected for the specified Place index resource.
+The pricing plan selected for the specified place index resource.
 
 For additional details and restrictions on each pricing plan option,
 see the Amazon Location Service pricing page
 (https://aws.amazon.com/location/pricing/).
 
 Valid values are: C<"RequestBasedUsage">, C<"MobileAssetTracking">, C<"MobileAssetManagement">
+=head2 Tags => L<Paws::LocationService::TagMap>
+
+Tags associated with place index resource.
+
+
 =head2 B<REQUIRED> UpdateTime => Str
 
-The timestamp for when the Place index resource was last updated in ISO
+The timestamp for when the place index resource was last updated in ISO
 8601 (https://www.iso.org/iso-8601-date-and-time-format.html) format:
 C<YYYY-MM-DDThh:mm:ss.sssZ>.
 

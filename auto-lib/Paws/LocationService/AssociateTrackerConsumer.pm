@@ -52,7 +52,7 @@ resource across all AWS.
 =item *
 
 Format example:
-C<arn:partition:service:region:account-id:resource-type:resource-id>
+C<arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollectionConsumer>
 
 =back
 

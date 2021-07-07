@@ -5,8 +5,10 @@ package Paws::LocationService::DescribeGeofenceCollectionResponse;
   has CollectionName => (is => 'ro', isa => 'Str', required => 1);
   has CreateTime => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has PricingPlan => (is => 'ro', isa => 'Str', required => 1);
   has PricingPlanDataSource => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::LocationService::TagMap');
   has UpdateTime => (is => 'ro', isa => 'Str', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -26,6 +28,16 @@ Paws::LocationService::DescribeGeofenceCollectionResponse
 The Amazon Resource Name (ARN) for the geofence collection resource.
 Used when you need to specify a resource across all AWS.
 
+=over
+
+=item *
+
+Format example:
+C<arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection>
+
+=back
+
+
 
 =head2 B<REQUIRED> CollectionName => Str
 
@@ -44,6 +56,13 @@ C<YYYY-MM-DDThh:mm:ss.sssZ>
 The optional description for the geofence collection.
 
 
+=head2 KmsKeyId => Str
+
+A key identifier for an AWS KMS customer managed key
+(https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html)
+assigned to the Amazon Location resource
+
+
 =head2 B<REQUIRED> PricingPlan => Str
 
 The pricing plan selected for the specified geofence collection.
@@ -55,8 +74,12 @@ see the Amazon Location Service pricing page
 Valid values are: C<"RequestBasedUsage">, C<"MobileAssetTracking">, C<"MobileAssetManagement">
 =head2 PricingPlanDataSource => Str
 
-The data source selected for the geofence collection and associated
-pricing plan.
+The specified data provider for the geofence collection.
+
+
+=head2 Tags => L<Paws::LocationService::TagMap>
+
+Displays the key, value pairs of tags associated with this resource.
 
 
 =head2 B<REQUIRED> UpdateTime => Str

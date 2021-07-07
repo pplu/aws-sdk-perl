@@ -22,6 +22,16 @@ Paws::LocationService::CreateGeofenceCollectionResponse
 The Amazon Resource Name (ARN) for the geofence collection resource.
 Used when you need to specify a resource across all AWS.
 
+=over
+
+=item *
+
+Format example:
+C<arn:aws:geo:region:account-id:geofence-collection/ExampleGeofenceCollection>
+
+=back
+
+
 
 =head2 B<REQUIRED> CollectionName => Str
 

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LocationSer
 
 Contains the geofence geometry details.
 
-Amazon Location does not currently support polygons with holes,
+Amazon Location doesn't currently support polygons with holes,
 multipolygons, polygons that are wound clockwise, or that cross the
 antimeridian.
 

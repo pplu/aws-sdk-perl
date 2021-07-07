@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LocationSer
 =head1 DESCRIPTION
 
 Specifies a single point of interest, or Place as a result of a search
-query obtained from a dataset configured in the Place index Resource.
+query obtained from a dataset configured in the place index resource.
 
 =head1 ATTRIBUTES
 

@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/geo
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name of the Place index resource you want to use for the search.
+The name of the place index resource you want to use for the search.
 
 
 

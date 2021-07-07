@@ -42,9 +42,10 @@ Specifies the map tile style selected from an available provider.
 
 Specifies the map style selected from an available data provider.
 
-Valid styles: C<VectorEsriStreets>, C<VectorEsriTopographic>,
-C<VectorEsriNavigation>, C<VectorEsriDarkGrayCanvas>,
-C<VectorEsriLightGrayCanvas>, C<VectorHereBerlin>.
+Valid styles: C<RasterEsriImagery>, C<VectorEsriStreets>,
+C<VectorEsriTopographic>, C<VectorEsriNavigation>,
+C<VectorEsriDarkGrayCanvas>, C<VectorEsriLightGrayCanvas>,
+C<VectorHereBerlin>.
 
 When using HERE as your data provider, and selecting the Style
 C<VectorHereBerlin>, you may not use HERE Maps for Asset Management.

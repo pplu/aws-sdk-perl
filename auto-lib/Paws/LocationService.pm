@@ -19,6 +19,11 @@ package Paws::LocationService;
     my $call_object = $self->new_with_coercions('Paws::LocationService::AssociateTrackerConsumer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchDeleteDevicePositionHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::BatchDeleteDevicePositionHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchDeleteGeofence {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::BatchDeleteGeofence', @_);
@@ -44,6 +49,11 @@ package Paws::LocationService;
     my $call_object = $self->new_with_coercions('Paws::LocationService::BatchUpdateDevicePosition', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CalculateRoute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::CalculateRoute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateGeofenceCollection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::CreateGeofenceCollection', @_);
@@ -57,6 +67,11 @@ package Paws::LocationService;
   sub CreatePlaceIndex {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::CreatePlaceIndex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRouteCalculator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::CreateRouteCalculator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateTracker {
@@ -79,6 +94,11 @@ package Paws::LocationService;
     my $call_object = $self->new_with_coercions('Paws::LocationService::DeletePlaceIndex', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRouteCalculator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::DeleteRouteCalculator', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTracker {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::DeleteTracker', @_);
@@ -97,6 +117,11 @@ package Paws::LocationService;
   sub DescribePlaceIndex {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::DescribePlaceIndex', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRouteCalculator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::DescribeRouteCalculator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTracker {
@@ -144,6 +169,11 @@ package Paws::LocationService;
     my $call_object = $self->new_with_coercions('Paws::LocationService::GetMapTile', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListDevicePositions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::ListDevicePositions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListGeofenceCollections {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::ListGeofenceCollections', @_);
@@ -162,6 +192,16 @@ package Paws::LocationService;
   sub ListPlaceIndexes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::LocationService::ListPlaceIndexes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRouteCalculators {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::ListRouteCalculators', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTrackerConsumers {
@@ -189,6 +229,16 @@ package Paws::LocationService;
     my $call_object = $self->new_with_coercions('Paws::LocationService::SearchPlaceIndexForText', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::LocationService::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub GetAllDevicePositionHistory {
     my $self = shift;
@@ -209,6 +259,29 @@ package Paws::LocationService;
         $result = $self->GetDevicePositionHistory(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'DevicePositions') foreach (@{ $result->DevicePositions });
+    }
+
+    return undef
+  }
+  sub ListAllDevicePositions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDevicePositions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDevicePositions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Entries }, @{ $next_result->Entries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Entries') foreach (@{ $result->Entries });
+        $result = $self->ListDevicePositions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Entries') foreach (@{ $result->Entries });
     }
 
     return undef
@@ -305,6 +378,29 @@ package Paws::LocationService;
 
     return undef
   }
+  sub ListAllRouteCalculators {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListRouteCalculators(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListRouteCalculators(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Entries }, @{ $next_result->Entries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Entries') foreach (@{ $result->Entries });
+        $result = $self->ListRouteCalculators(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Entries') foreach (@{ $result->Entries });
+    }
+
+    return undef
+  }
   sub ListAllTrackerConsumers {
     my $self = shift;
 
@@ -353,7 +449,7 @@ package Paws::LocationService;
   }
 
 
-  sub operations { qw/AssociateTrackerConsumer BatchDeleteGeofence BatchEvaluateGeofences BatchGetDevicePosition BatchPutGeofence BatchUpdateDevicePosition CreateGeofenceCollection CreateMap CreatePlaceIndex CreateTracker DeleteGeofenceCollection DeleteMap DeletePlaceIndex DeleteTracker DescribeGeofenceCollection DescribeMap DescribePlaceIndex DescribeTracker DisassociateTrackerConsumer GetDevicePosition GetDevicePositionHistory GetGeofence GetMapGlyphs GetMapSprites GetMapStyleDescriptor GetMapTile ListGeofenceCollections ListGeofences ListMaps ListPlaceIndexes ListTrackerConsumers ListTrackers PutGeofence SearchPlaceIndexForPosition SearchPlaceIndexForText / }
+  sub operations { qw/AssociateTrackerConsumer BatchDeleteDevicePositionHistory BatchDeleteGeofence BatchEvaluateGeofences BatchGetDevicePosition BatchPutGeofence BatchUpdateDevicePosition CalculateRoute CreateGeofenceCollection CreateMap CreatePlaceIndex CreateRouteCalculator CreateTracker DeleteGeofenceCollection DeleteMap DeletePlaceIndex DeleteRouteCalculator DeleteTracker DescribeGeofenceCollection DescribeMap DescribePlaceIndex DescribeRouteCalculator DescribeTracker DisassociateTrackerConsumer GetDevicePosition GetDevicePositionHistory GetGeofence GetMapGlyphs GetMapSprites GetMapStyleDescriptor GetMapTile ListDevicePositions ListGeofenceCollections ListGeofences ListMaps ListPlaceIndexes ListRouteCalculators ListTagsForResource ListTrackerConsumers ListTrackers PutGeofence SearchPlaceIndexForPosition SearchPlaceIndexForText TagResource UntagResource / }
 
 1;
 
@@ -381,8 +477,8 @@ Paws::LocationService - Perl Interface to AWS Amazon Location Service
 
 =head1 DESCRIPTION
 
-Suite of geospatial services including Maps, Places, Tracking, and
-Geofencing
+Suite of geospatial services including Maps, Places, Routes, Tracking,
+and Geofencing
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/geo-2020-11-19>
 
@@ -413,6 +509,25 @@ creating associations between a tracker resource in one account and a
 geofence collection in another account.
 
 
+=head2 BatchDeleteDevicePositionHistory
+
+=over
+
+=item DeviceIds => ArrayRef[Str|Undef]
+
+=item TrackerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::BatchDeleteDevicePositionHistory>
+
+Returns: a L<Paws::LocationService::BatchDeleteDevicePositionHistoryResponse> instance
+
+Deletes the position history of one or more devices from a tracker
+resource.
+
+
 =head2 BatchDeleteGeofence
 
 =over
@@ -430,8 +545,7 @@ Returns: a L<Paws::LocationService::BatchDeleteGeofenceResponse> instance
 
 Deletes a batch of geofences from a geofence collection.
 
-This action deletes the resource permanently. You can't undo this
-action.
+This operation deletes the resource permanently.
 
 
 =head2 BatchEvaluateGeofences
@@ -492,7 +606,8 @@ Each argument is described in detail in: L<Paws::LocationService::BatchPutGeofen
 Returns: a L<Paws::LocationService::BatchPutGeofenceResponse> instance
 
 A batch request for storing geofence geometries into a given geofence
-collection.
+collection, or updates the geometry of an existing geofence if a
+geofence ID is included in the request.
 
 
 =head2 BatchUpdateDevicePosition
@@ -515,8 +630,78 @@ resource. Amazon Location uses the data when reporting the last known
 device position and position history.
 
 Only one position update is stored per sample time. Location data is
-sampled at a fixed rate of one position per 30-second interval, and
-retained for one year before it is deleted.
+sampled at a fixed rate of one position per 30-second interval and
+retained for 30 days before it's deleted.
+
+
+=head2 CalculateRoute
+
+=over
+
+=item CalculatorName => Str
+
+=item DeparturePosition => ArrayRef[Num]
+
+=item DestinationPosition => ArrayRef[Num]
+
+=item [CarModeOptions => L<Paws::LocationService::CalculateRouteCarModeOptions>]
+
+=item [DepartNow => Bool]
+
+=item [DepartureTime => Str]
+
+=item [DistanceUnit => Str]
+
+=item [IncludeLegGeometry => Bool]
+
+=item [TravelMode => Str]
+
+=item [TruckModeOptions => L<Paws::LocationService::CalculateRouteTruckModeOptions>]
+
+=item [WaypointPositions => ArrayRef[ArrayRef[Num]]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::CalculateRoute>
+
+Returns: a L<Paws::LocationService::CalculateRouteResponse> instance
+
+Calculates a route
+(https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html)
+given the following required parameters: C<DeparturePostiton> and
+C<DestinationPosition>. Requires that you first create aroute
+calculator resource
+(https://docs.aws.amazon.com/location-routes/latest/APIReference/API_CreateRouteCalculator.html)
+
+By default, a request that doesn't specify a departure time uses the
+best time of day to travel with the best traffic conditions when
+calculating the route.
+
+Additional options include:
+
+=over
+
+=item *
+
+Specifying a departure time
+(https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html#departure-time)
+using either C<DepartureTime> or C<DepartureNow>. This calculates a
+route based on predictive traffic data at the given time.
+
+You can't specify both C<DepartureTime> and C<DepartureNow> in a single
+request. Specifying both parameters returns an error message.
+
+=item *
+
+Specifying a travel mode
+(https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html#travel-mode)
+using TravelMode. This lets you specify additional route preference
+such as C<CarModeOptions> if traveling by C<Car>, or
+C<TruckModeOptions> if traveling by C<Truck>.
+
+=back
+
 
 
 =head2 CreateGeofenceCollection
@@ -529,7 +714,11 @@ retained for one year before it is deleted.
 
 =item [Description => Str]
 
+=item [KmsKeyId => Str]
+
 =item [PricingPlanDataSource => Str]
+
+=item [Tags => L<Paws::LocationService::TagMap>]
 
 
 =back
@@ -553,6 +742,8 @@ Creates a geofence collection, which manages and stores geofences.
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::LocationService::TagMap>]
+
 
 =back
 
@@ -562,12 +753,6 @@ Returns: a L<Paws::LocationService::CreateMapResponse> instance
 
 Creates a map resource in your AWS account, which provides map tiles of
 different styles sourced from global location data providers.
-
-By using Maps, you agree that AWS may transmit your API queries to your
-selected third party provider for processing, which may be outside the
-AWS region you are currently using. For more information, see the AWS
-Service Terms (https://aws.amazon.com/service-terms/) for Amazon
-Location Service.
 
 
 =head2 CreatePlaceIndex
@@ -584,6 +769,8 @@ Location Service.
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::LocationService::TagMap>]
+
 
 =back
 
@@ -591,17 +778,36 @@ Each argument is described in detail in: L<Paws::LocationService::CreatePlaceInd
 
 Returns: a L<Paws::LocationService::CreatePlaceIndexResponse> instance
 
-Creates a Place index resource in your AWS account, which supports
-Places functions with geospatial data sourced from your chosen data
-provider.
+Creates a place index resource in your AWS account, which supports
+functions with geospatial data sourced from your chosen data provider.
 
-By using Places, you agree that AWS may transmit your API queries to
-your selected third party provider for processing, which may be outside
-the AWS region you are currently using.
 
-Because of licensing limitations, you may not use HERE to store results
-for locations in Japan. For more information, see the AWS Service Terms
-(https://aws.amazon.com/service-terms/) for Amazon Location Service.
+=head2 CreateRouteCalculator
+
+=over
+
+=item CalculatorName => Str
+
+=item DataSource => Str
+
+=item PricingPlan => Str
+
+=item [Description => Str]
+
+=item [Tags => L<Paws::LocationService::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::CreateRouteCalculator>
+
+Returns: a L<Paws::LocationService::CreateRouteCalculatorResponse> instance
+
+Creates a route calculator resource in your AWS account.
+
+You can send requests to a route calculator resource to estimate travel
+time, distance, and get directions. A route calculator sources traffic
+and road network data from your chosen data provider.
 
 
 =head2 CreateTracker
@@ -614,7 +820,11 @@ for locations in Japan. For more information, see the AWS Service Terms
 
 =item [Description => Str]
 
+=item [KmsKeyId => Str]
+
 =item [PricingPlanDataSource => Str]
+
+=item [Tags => L<Paws::LocationService::TagMap>]
 
 
 =back
@@ -642,9 +852,9 @@ Returns: a L<Paws::LocationService::DeleteGeofenceCollectionResponse> instance
 
 Deletes a geofence collection from your AWS account.
 
-This action deletes the resource permanently. You can't undo this
-action. If the geofence collection is the target of a tracker resource,
-the devices will no longer be monitored.
+This operation deletes the resource permanently. If the geofence
+collection is the target of a tracker resource, the devices will no
+longer be monitored.
 
 
 =head2 DeleteMap
@@ -662,9 +872,8 @@ Returns: a L<Paws::LocationService::DeleteMapResponse> instance
 
 Deletes a map resource from your AWS account.
 
-This action deletes the resource permanently. You cannot undo this
-action. If the map is being used in an application, the map may not
-render.
+This operation deletes the resource permanently. If the map is being
+used in an application, the map may not render.
 
 
 =head2 DeletePlaceIndex
@@ -680,10 +889,27 @@ Each argument is described in detail in: L<Paws::LocationService::DeletePlaceInd
 
 Returns: a L<Paws::LocationService::DeletePlaceIndexResponse> instance
 
-Deletes a Place index resource from your AWS account.
+Deletes a place index resource from your AWS account.
 
-This action deletes the resource permanently. You cannot undo this
-action.
+This operation deletes the resource permanently.
+
+
+=head2 DeleteRouteCalculator
+
+=over
+
+=item CalculatorName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::DeleteRouteCalculator>
+
+Returns: a L<Paws::LocationService::DeleteRouteCalculatorResponse> instance
+
+Deletes a route calculator resource from your AWS account.
+
+This operation deletes the resource permanently.
 
 
 =head2 DeleteTracker
@@ -701,10 +927,9 @@ Returns: a L<Paws::LocationService::DeleteTrackerResponse> instance
 
 Deletes a tracker resource from your AWS account.
 
-This action deletes the resource permanently. You can't undo this
-action. If the tracker resource is in use, you may encounter an error.
-Make sure that the target resource is not a dependency for your
-applications.
+This operation deletes the resource permanently. If the tracker
+resource is in use, you may encounter an error. Make sure that the
+target resource isn't a dependency for your applications.
 
 
 =head2 DescribeGeofenceCollection
@@ -752,7 +977,23 @@ Each argument is described in detail in: L<Paws::LocationService::DescribePlaceI
 
 Returns: a L<Paws::LocationService::DescribePlaceIndexResponse> instance
 
-Retrieves the Place index resource details.
+Retrieves the place index resource details.
+
+
+=head2 DescribeRouteCalculator
+
+=over
+
+=item CalculatorName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::DescribeRouteCalculator>
+
+Returns: a L<Paws::LocationService::DescribeRouteCalculatorResponse> instance
+
+Retrieves the route calculator resource details.
 
 
 =head2 DescribeTracker
@@ -811,7 +1052,7 @@ Returns: a L<Paws::LocationService::GetDevicePositionResponse> instance
 
 Retrieves a device's most recent position according to its sample time.
 
-Device positions are deleted after one year.
+Device positions are deleted after 30 days.
 
 
 =head2 GetDevicePositionHistory
@@ -838,7 +1079,7 @@ Returns: a L<Paws::LocationService::GetDevicePositionHistoryResponse> instance
 Retrieves the device position history from a tracker resource within a
 specified range of time.
 
-Device positions are deleted after 1 year.
+Device positions are deleted after 30 days.
 
 
 =head2 GetGeofence
@@ -940,13 +1181,33 @@ Each argument is described in detail in: L<Paws::LocationService::GetMapTile>
 Returns: a L<Paws::LocationService::GetMapTileResponse> instance
 
 Retrieves a vector data tile from the map resource. Map tiles are used
-by clients to render a map. They are addressed using a grid arrangement
+by clients to render a map. they're addressed using a grid arrangement
 with an X coordinate, Y coordinate, and Z (zoom) level.
 
 The origin (0, 0) is the top left of the map. Increasing the zoom level
 by 1 doubles both the X and Y dimensions, so a tile containing data for
 the entire world at (0/0/0) will be split into 4 tiles at zoom 1
 (1/0/0, 1/0/1, 1/1/0, 1/1/1).
+
+
+=head2 ListDevicePositions
+
+=over
+
+=item TrackerName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::ListDevicePositions>
+
+Returns: a L<Paws::LocationService::ListDevicePositionsResponse> instance
+
+Lists the latest device positions for requested devices.
 
 
 =head2 ListGeofenceCollections
@@ -1018,7 +1279,41 @@ Each argument is described in detail in: L<Paws::LocationService::ListPlaceIndex
 
 Returns: a L<Paws::LocationService::ListPlaceIndexesResponse> instance
 
-Lists Place index resources in your AWS account.
+Lists place index resources in your AWS account.
+
+
+=head2 ListRouteCalculators
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::ListRouteCalculators>
+
+Returns: a L<Paws::LocationService::ListRouteCalculatorsResponse> instance
+
+Lists route calculator resources in your AWS account.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::ListTagsForResource>
+
+Returns: a L<Paws::LocationService::ListTagsForResourceResponse> instance
+
+Returns the tags for the specified Amazon Location Service resource.
 
 
 =head2 ListTrackerConsumers
@@ -1103,14 +1398,6 @@ Reverse geocodes a given coordinate and returns a legible address.
 Allows you to search for Places or points of interest near a given
 position.
 
-By using Places, you agree that AWS may transmit your API queries to
-your selected third party provider for processing, which may be outside
-the AWS region you are currently using.
-
-Because of licensing limitations, you may not use HERE to store results
-for locations in Japan. For more information, see the AWS Service Terms
-(https://aws.amazon.com/service-terms/) for Amazon Location Service.
-
 
 =head2 SearchPlaceIndexForText
 
@@ -1145,15 +1432,45 @@ You can search for places near a given position using C<BiasPosition>,
 or filter results within a bounding box using C<FilterBBox>. Providing
 both parameters simultaneously returns an error.
 
-By using Places, you agree that AWS may transmit your API queries to
-your selected third party provider for processing, which may be outside
-the AWS region you are currently using.
 
-Also, when using HERE as your data provider, you may not (a) use HERE
-Places for Asset Management, or (b) select the C<Storage> option for
-the C<IntendedUse> parameter when requesting Places in Japan. For more
-information, see the AWS Service Terms
-(https://aws.amazon.com/service-terms/) for Amazon Location Service.
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::LocationService::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::TagResource>
+
+Returns: a L<Paws::LocationService::TagResourceResponse> instance
+
+Assigns one or more tags (key-value pairs) to the specified Amazon
+Location Service resource.
+
+ <p>Tags can help you organize and categorize your resources. You can also use them to scope user permissions, by granting a user permission to access or change only resources with certain tag values.</p> <p>Tags don't have any semantic meaning to AWS and are interpreted strictly as strings of characters.</p> <p>You can use the <code>TagResource</code> action with an Amazon Location Service resource that already has tags. If you specify a new tag key for the resource, this tag is appended to the tags already associated with the resource. If you specify a tag key that is already associated with the resource, the new tag value that you specify replaces the previous value for that tag. </p> <p>You can associate as many as 50 tags with a resource.</p>
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::LocationService::UntagResource>
+
+Returns: a L<Paws::LocationService::UntagResourceResponse> instance
+
+Removes one or more tags from the specified Amazon Location Service
+resource.
 
 
 
@@ -1172,6 +1489,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DevicePositions, passing the object as the first parameter, and the string 'DevicePositions' as the second parameter 
 
 If not, it will return a a L<Paws::LocationService::GetDevicePositionHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDevicePositions(sub { },TrackerName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDevicePositions(TrackerName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Entries, passing the object as the first parameter, and the string 'Entries' as the second parameter 
+
+If not, it will return a a L<Paws::LocationService::ListDevicePositionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllGeofenceCollections(sub { },[MaxResults => Int, NextToken => Str])
@@ -1220,6 +1549,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Entries, passing the object as the first parameter, and the string 'Entries' as the second parameter 
 
 If not, it will return a a L<Paws::LocationService::ListPlaceIndexesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllRouteCalculators(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllRouteCalculators([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Entries, passing the object as the first parameter, and the string 'Entries' as the second parameter 
+
+If not, it will return a a L<Paws::LocationService::ListRouteCalculatorsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllTrackerConsumers(sub { },TrackerName => Str, [MaxResults => Int, NextToken => Str])

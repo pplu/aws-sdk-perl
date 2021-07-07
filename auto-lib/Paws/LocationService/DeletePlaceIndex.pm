@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/geo
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name of the Place index resource to be deleted.
+The name of the place index resource to be deleted.
 
 
 

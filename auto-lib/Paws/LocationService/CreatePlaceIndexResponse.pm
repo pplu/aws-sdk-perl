@@ -19,20 +19,30 @@ Paws::LocationService::CreatePlaceIndexResponse
 
 =head2 B<REQUIRED> CreateTime => Str
 
-The timestamp for when the Place index resource was created in ISO 8601
+The timestamp for when the place index resource was created in ISO 8601
 (https://www.iso.org/iso-8601-date-and-time-format.html) format:
 C<YYYY-MM-DDThh:mm:ss.sssZ>.
 
 
 =head2 B<REQUIRED> IndexArn => Str
 
-The Amazon Resource Name (ARN) for the Place index resource. Used when
-you need to specify a resource across all AWS.
+The Amazon Resource Name (ARN) for the place index resource. Used to
+specify a resource across all AWS.
+
+=over
+
+=item *
+
+Format example:
+C<arn:aws:geo:region:account-id:place-index/ExamplePlaceIndex>
+
+=back
+
 
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name for the Place index resource.
+The name for the place index resource.
 
 
 =head2 _request_id => Str

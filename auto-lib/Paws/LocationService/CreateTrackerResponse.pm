@@ -29,6 +29,15 @@ C<YYYY-MM-DDThh:mm:ss.sssZ>.
 The Amazon Resource Name (ARN) for the tracker resource. Used when you
 need to specify a resource across all AWS.
 
+=over
+
+=item *
+
+Format example: C<arn:aws:geo:region:account-id:tracker/ExampleTracker>
+
+=back
+
+
 
 =head2 B<REQUIRED> TrackerName => Str
 

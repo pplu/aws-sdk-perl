@@ -6,6 +6,7 @@ package Paws::LocationService::CreatePlaceIndex;
   has Description => (is => 'ro', isa => 'Str');
   has IndexName => (is => 'ro', isa => 'Str', required => 1);
   has PricingPlan => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::LocationService::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -40,6 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IntendedUse => 'SingleUse',    # values: SingleUse, Storage; OPTIONAL
       },    # OPTIONAL
       Description => 'MyResourceDescription',    # OPTIONAL
+      Tags        => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -74,6 +78,13 @@ C<Esri>
 
 C<Here>
 
+Place index resources using HERE as a data provider can't be used to
+store
+(https://docs.aws.amazon.com/location-places/latest/APIReference/API_DataSourceConfiguration.html)
+results for locations in Japan. For more information, see the AWS
+Service Terms (https://aws.amazon.com/service-terms/) for Amazon
+Location Service.
+
 =back
 
 For additional details on data providers, see the Amazon Location
@@ -90,13 +101,13 @@ Specifies the data storage option for requesting Places.
 
 =head2 Description => Str
 
-The optional description for the Place index resource.
+The optional description for the place index resource.
 
 
 
 =head2 B<REQUIRED> IndexName => Str
 
-The name of the Place index resource.
+The name of the place index resource.
 
 Requirements:
 
@@ -104,12 +115,12 @@ Requirements:
 
 =item *
 
-Contain only alphanumeric characters (A-Z, a-z, 0-9) , hyphens (-),
-periods (.), and underscores (_).
+Contain only alphanumeric characters (AE<ndash>Z, aE<ndash>z,
+0E<ndash>9), hyphens (-), periods (.), and underscores (_).
 
 =item *
 
-Must be a unique Place index resource name.
+Must be a unique place index resource name.
 
 =item *
 
@@ -122,13 +133,51 @@ No spaces allowed. For example, C<ExamplePlaceIndex>.
 
 =head2 B<REQUIRED> PricingPlan => Str
 
-Specifies the pricing plan for your Place index resource.
+Specifies the pricing plan for your place index resource.
 
 For additional details and restrictions on each pricing plan option,
 see the Amazon Location Service pricing page
 (https://aws.amazon.com/location/pricing/).
 
 Valid values are: C<"RequestBasedUsage">, C<"MobileAssetTracking">, C<"MobileAssetManagement">
+
+=head2 Tags => L<Paws::LocationService::TagMap>
+
+Applies one or more tags to the place index resource. A tag is a
+key-value pair helps manage, identify, search, and filter your
+resources by labelling them.
+
+Format: C<"key" : "value">
+
+Restrictions:
+
+=over
+
+=item *
+
+Maximum 50 tags per resource
+
+=item *
+
+Each resource tag must be unique with a maximum of one value.
+
+=item *
+
+Maximum key length: 128 Unicode characters in UTF-8
+
+=item *
+
+Maximum value length: 256 Unicode characters in UTF-8
+
+=item *
+
+Can use alphanumeric characters (AE<ndash>Z, aE<ndash>z, 0E<ndash>9),
+and the following characters: + - = . _ : / @.
+
+=back
+
+
+
 
 
 =head1 SEE ALSO

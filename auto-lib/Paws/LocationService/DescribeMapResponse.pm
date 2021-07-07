@@ -8,6 +8,7 @@ package Paws::LocationService::DescribeMapResponse;
   has MapArn => (is => 'ro', isa => 'Str', required => 1);
   has MapName => (is => 'ro', isa => 'Str', required => 1);
   has PricingPlan => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::LocationService::TagMap');
   has UpdateTime => (is => 'ro', isa => 'Str', required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -49,6 +50,15 @@ The optional description for the map resource.
 The Amazon Resource Name (ARN) for the map resource. Used when you need
 to specify a resource across all AWS.
 
+=over
+
+=item *
+
+Format example: C<arn:aws:geo:region:account-id:maps/ExampleMap>
+
+=back
+
+
 
 =head2 B<REQUIRED> MapName => Str
 
@@ -62,6 +72,11 @@ The pricing plan selected for the specified map resource.
  <p>For additional details and restrictions on each pricing plan option, see the <a href="https://aws.amazon.com/location/pricing/">Amazon Location Service pricing page</a>.</p>
 
 Valid values are: C<"RequestBasedUsage">, C<"MobileAssetTracking">, C<"MobileAssetManagement">
+=head2 Tags => L<Paws::LocationService::TagMap>
+
+Tags associated with the map resource.
+
+
 =head2 B<REQUIRED> UpdateTime => Str
 
 The timestamp for when the map resource was last update in ISO 8601

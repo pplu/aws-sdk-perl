@@ -36,8 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $CreateTime            = $DescribeTrackerResponse->CreateTime;
     my $Description           = $DescribeTrackerResponse->Description;
+    my $KmsKeyId              = $DescribeTrackerResponse->KmsKeyId;
     my $PricingPlan           = $DescribeTrackerResponse->PricingPlan;
     my $PricingPlanDataSource = $DescribeTrackerResponse->PricingPlanDataSource;
+    my $Tags                  = $DescribeTrackerResponse->Tags;
     my $TrackerArn            = $DescribeTrackerResponse->TrackerArn;
     my $TrackerName           = $DescribeTrackerResponse->TrackerName;
     my $UpdateTime            = $DescribeTrackerResponse->UpdateTime;

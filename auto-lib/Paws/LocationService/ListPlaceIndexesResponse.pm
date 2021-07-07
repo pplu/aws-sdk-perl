@@ -18,7 +18,7 @@ Paws::LocationService::ListPlaceIndexesResponse
 
 =head2 B<REQUIRED> Entries => ArrayRef[L<Paws::LocationService::ListPlaceIndexesResponseEntry>]
 
-Lists the Place index resources that exist in your AWS account
+Lists the place index resources that exist in your AWS account
 
 
 =head2 NextToken => Str

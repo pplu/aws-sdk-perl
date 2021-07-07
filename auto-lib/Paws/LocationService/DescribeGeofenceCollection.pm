@@ -38,9 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CollectionName = $DescribeGeofenceCollectionResponse->CollectionName;
     my $CreateTime     = $DescribeGeofenceCollectionResponse->CreateTime;
     my $Description    = $DescribeGeofenceCollectionResponse->Description;
+    my $KmsKeyId       = $DescribeGeofenceCollectionResponse->KmsKeyId;
     my $PricingPlan    = $DescribeGeofenceCollectionResponse->PricingPlan;
     my $PricingPlanDataSource =
       $DescribeGeofenceCollectionResponse->PricingPlanDataSource;
+    my $Tags       = $DescribeGeofenceCollectionResponse->Tags;
     my $UpdateTime = $DescribeGeofenceCollectionResponse->UpdateTime;
 
 # Returns a L<Paws::LocationService::DescribeGeofenceCollectionResponse> object.

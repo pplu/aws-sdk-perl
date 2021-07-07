@@ -66,8 +66,7 @@ see the Amazon Location Service pricing page
 
 =head2 PricingPlanDataSource => Str
 
-The data source selected for the tracker resource and associated
-pricing plan.
+The specified data provider for the tracker resource.
 
 
 =head2 B<REQUIRED> TrackerName => Str
