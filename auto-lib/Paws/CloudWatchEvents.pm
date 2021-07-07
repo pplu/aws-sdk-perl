@@ -744,6 +744,10 @@ RemoveTargets.
 When you delete a rule, incoming events might continue to match to the
 deleted rule. Allow a short period of time for changes to take effect.
 
+If you call delete rule multiple times for the same rule, all calls
+will succeed. When you call delete rule for a non-existent custom
+eventbus, C<ResourceNotFoundException> is returned.
+
 Managed rules are rules created and managed by another AWS service on
 your behalf. These rules are created by those other AWS services to
 support functionality in those services. You can delete these rules
@@ -1425,27 +1429,48 @@ You can configure the following as targets for Events:
 
 =item *
 
-EC2 instances
+API destination
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-api-destinations.html)
 
 =item *
 
-SSM Run Command
+Amazon API Gateway REST API endpoints
 
 =item *
 
-SSM Automation
+API Gateway
 
 =item *
 
-AWS Lambda functions
+AWS Batch job queue
 
 =item *
 
-Data streams in Amazon Kinesis Data Streams
+CloudWatch Logs group
 
 =item *
 
-Data delivery streams in Amazon Kinesis Data Firehose
+CodeBuild project
+
+=item *
+
+CodePineline
+
+=item *
+
+Amazon EC2 C<CreateSnapshot> API call
+
+=item *
+
+Amazon EC2 C<RebootInstances> API call
+
+=item *
+
+Amazon EC2 C<StopInstances> API call
+
+=item *
+
+Amazon EC2 C<TerminateInstances> API call
 
 =item *
 
@@ -1453,51 +1478,55 @@ Amazon ECS tasks
 
 =item *
 
-AWS Step Functions state machines
+Event bus in a different AWS account or Region.
+
+You can use an event bus in the US East (N. Virginia) us-east-1, US
+West (Oregon) us-west-2, or Europe (Ireland) eu-west-1 Regions as a
+target for a rule.
 
 =item *
 
-AWS Batch jobs
+Firehose delivery stream (Kinesis Data Firehose)
 
 =item *
 
-AWS CodeBuild projects
+Inspector assessment template (Amazon Inspector)
 
 =item *
 
-Pipelines in AWS CodePipeline
+Kinesis stream (Kinesis Data Stream)
 
 =item *
 
-Amazon Inspector assessment templates
+AWS Lambda function
 
 =item *
 
-Amazon SNS topics
+Redshift clusters (Data API statement execution)
 
 =item *
 
-Amazon SQS queues, including FIFO queues
+Amazon SNS topic
 
 =item *
 
-The default event bus of another AWS account
+Amazon SQS queues (includes FIFO queues
 
 =item *
 
-Amazon API Gateway REST APIs
+SSM Automation
 
 =item *
 
-Redshift Clusters to invoke Data API ExecuteStatement on
+SSM OpsItem
 
 =item *
 
-Custom/SaaS HTTPS APIs via EventBridge API Destinations
+SSM Run Command
 
 =item *
 
-Amazon SageMaker Model Building Pipelines
+Step Functions state machines
 
 =back
 
@@ -1758,7 +1787,7 @@ Each argument is described in detail in: L<Paws::CloudWatchEvents::UntagResource
 Returns: a L<Paws::CloudWatchEvents::UntagResourceResponse> instance
 
 Removes one or more tags from the specified EventBridge resource. In
-Amazon EventBridge (CloudWatch Events, rules and event buses can be
+Amazon EventBridge (CloudWatch Events), rules and event buses can be
 tagged.
 
 

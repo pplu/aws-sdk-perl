@@ -49,7 +49,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Arn => 'MyResourceArn',    # min: 1, max: 1600; OPTIONAL
           },    # OPTIONAL
           EcsParameters => {
-            TaskDefinitionArn    => 'MyArn',    # min: 1, max: 1600
+            TaskDefinitionArn        => 'MyArn',    # min: 1, max: 1600
+            CapacityProviderStrategy => [
+              {
+                CapacityProvider => 'MyCapacityProvider',    # min: 1, max: 255
+                Base             => 1,    # max: 100000; OPTIONAL
+                Weight           => 1,    # max: 1000; OPTIONAL
+              },
+              ...
+            ],    # max: 6; OPTIONAL
+            EnableECSManagedTags => 1,          # OPTIONAL
+            EnableExecuteCommand => 1,          # OPTIONAL
             Group                => 'MyString',
             LaunchType           => 'EC2',      # values: EC2, FARGATE; OPTIONAL
             NetworkConfiguration => {
@@ -60,8 +70,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 SecurityGroups => [ 'MyString', ... ],
               },    # OPTIONAL
             },    # OPTIONAL
+            PlacementConstraints => [
+              {
+                Expression =>
+                  'MyPlacementConstraintExpression',    # max: 2000; OPTIONAL
+                Type => 'distinctInstance'
+                ,    # values: distinctInstance, memberOf; OPTIONAL
+              },
+              ...
+            ],    # max: 10; OPTIONAL
+            PlacementStrategy => [
+              {
+                Field => 'MyPlacementStrategyField',    # max: 255; OPTIONAL
+                Type  => 'random',   # values: random, spread, binpack; OPTIONAL
+              },
+              ...
+            ],    # max: 5; OPTIONAL
             PlatformVersion => 'MyString',
-            TaskCount       => 1,            # min: 1; OPTIONAL
+            PropagateTags   =>
+              'TASK_DEFINITION',    # values: TASK_DEFINITION; OPTIONAL
+            ReferenceId => 'MyReferenceId',    # max: 1024; OPTIONAL
+            Tags        => [
+              {
+                Key   => 'MyTagKey',      # min: 1, max: 128
+                Value => 'MyTagValue',    # max: 256
+
+              },
+              ...
+            ],    # OPTIONAL
+            TaskCount => 1,    # min: 1; OPTIONAL
           },    # OPTIONAL
           HttpParameters => {
             HeaderParameters => {
