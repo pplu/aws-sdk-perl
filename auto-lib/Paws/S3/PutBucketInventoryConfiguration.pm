@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         OptionalFields => [
           'Size',
-          ... # values: Size, LastModifiedDate, StorageClass, ETag, IsMultipartUploaded, ReplicationStatus, EncryptionStatus, ObjectLockRetainUntilDate, ObjectLockMode, ObjectLockLegalHoldStatus, IntelligentTieringAccessTier
+          ... # values: Size, LastModifiedDate, StorageClass, ETag, IsMultipartUploaded, ReplicationStatus, EncryptionStatus, ObjectLockRetainUntilDate, ObjectLockMode, ObjectLockLegalHoldStatus, IntelligentTieringAccessTier, BucketKeyStatus
         ],    # OPTIONAL
       },
       ContentLength       => 1,                # OPTIONAL
