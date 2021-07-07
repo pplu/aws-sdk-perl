@@ -102,7 +102,7 @@ Systems Manager validates the parameter value is in the required
 format, such as C<ami-12345abcdeEXAMPLE>, and that the specified AMI is
 available in your AWS account. For more information, see Native
 parameter support for Amazon Machine Image IDs
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-ec2-aliases.html)
 in the I<AWS Systems Manager User Guide>.
 
 

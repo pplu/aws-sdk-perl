@@ -126,7 +126,7 @@ The tags, or metadata, that have been applied to the document.
 The target type which defines the kinds of resources the document can
 run on. For example, /AWS::EC2::Instance. For a list of valid resource
 types, see AWS resource and property types reference
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
 
 

@@ -216,7 +216,7 @@ following value: /AWS::EC2::Instance. If you specify a value of '/' the
 document can run on all types of resources. If you don't specify a
 value, the document can't run on any resources. For a list of valid
 resource types, see AWS resource and property types reference
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
 
 

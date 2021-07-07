@@ -75,7 +75,7 @@ The C<SyncSource> AWS Regions included in the resource data sync.
 
 The type of data source for the resource data sync. C<SourceType> is
 either C<AwsOrganizations> (if an organization is present in AWS
-Organizations) or C<singleAccountMultiRegions>.
+Organizations) or C<SingleAccountMultiRegions>.
 
 
 

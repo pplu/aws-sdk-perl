@@ -142,7 +142,7 @@ C<aws ssm list-documents --filters Key=Name,Values=Te>
 You can also use the C<TargetType> AWS-provided key. For a list of
 valid resource type values that can be used with this key, see AWS
 resource and property types reference
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
 
 If you specify more than two keys, only documents that are identified

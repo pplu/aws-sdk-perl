@@ -71,7 +71,7 @@ The command against which this invocation was requested.
 
 =head2 CommandPlugins => ArrayRef[L<Paws::SSM::CommandPlugin>]
 
-
+Plugins processed by the command.
 
 
 =head2 Comment => Str

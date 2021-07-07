@@ -46,12 +46,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 B<REQUIRED> SettingId => Str
 
 The Amazon Resource Name (ARN) of the service setting to reset. The
-setting ID can be C</ssm/automation/customer-script-log-destination>,
-C</ssm/automation/customer-script-log-group-name>,
-C</ssm/parameter-store/default-parameter-tier>,
-C</ssm/parameter-store/high-throughput-enabled>, or
-C</ssm/managed-instance/activation-tier>. For example,
-C<arn:aws:ssm:us-east-1:111122223333:servicesetting/ssm/parameter-store/high-throughput-enabled>.
+setting ID can be one of the following.
+
+=over
+
+=item *
+
+C</ssm/automation/customer-script-log-destination>
+
+=item *
+
+C</ssm/automation/customer-script-log-group-name>
+
+=item *
+
+C</ssm/documents/console/public-sharing-permission>
+
+=item *
+
+C</ssm/parameter-store/default-parameter-tier>
+
+=item *
+
+C</ssm/parameter-store/high-throughput-enabled>
+
+=item *
+
+C</ssm/managed-instance/activation-tier>
+
+=back
+
 
 
 

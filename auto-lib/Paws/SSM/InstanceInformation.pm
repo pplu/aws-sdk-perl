@@ -89,10 +89,10 @@ on-premises Systems Manager managed instance. This call does not return
 the IAM role for EC2 instances. To retrieve the IAM role for an EC2
 instance, use the Amazon EC2 C<DescribeInstances> action. For
 information, see DescribeInstances
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
 in the I<Amazon EC2 API Reference> or describe-instances
-(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)
-in the I<AWS CLI Command Reference>.
+(https://docs.aws.amazon.com/cli/latest/ec2/describe-instances.html) in
+the I<AWS CLI Command Reference>.
 
 
 =head2 InstanceId => Str
@@ -139,15 +139,15 @@ CreateActivation command. It is applied to the managed instance by
 specifying the Activation Code and Activation ID when you install SSM
 Agent on the instance, as explained in Install SSM Agent for a hybrid
 environment (Linux)
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html)
 and Install SSM Agent for a hybrid environment (Windows)
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html).
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html).
 To retrieve the Name tag of an EC2 instance, use the Amazon EC2
 C<DescribeInstances> action. For information, see DescribeInstances
-(http://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
 in the I<Amazon EC2 API Reference> or describe-instances
-(http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-instances.html)
-in the I<AWS CLI Command Reference>.
+(https://docs.aws.amazon.com/cli/latest/ec2/describe-instances.html) in
+the I<AWS CLI Command Reference>.
 
 
 =head2 PingStatus => Str

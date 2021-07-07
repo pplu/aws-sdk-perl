@@ -59,6 +59,10 @@ C</ssm/automation/customer-script-log-group-name>
 
 =item *
 
+C</ssm/documents/console/public-sharing-permission>
+
+=item *
+
 C</ssm/parameter-store/default-parameter-tier>
 
 =item *
@@ -105,6 +109,9 @@ the setting value can be CloudWatch.
 
 For the C</ssm/automation/customer-script-log-group-name> setting ID,
 the setting value can be the name of a CloudWatch Logs log group.
+
+For the C</ssm/documents/console/public-sharing-permission> setting ID,
+the setting value can be Enable or Disable.
 
 
 
