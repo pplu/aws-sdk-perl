@@ -329,7 +329,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CloudFrontDefaultCertificate => 1,            # OPTIONAL
           IAMCertificateId             => 'Mystring',
           MinimumProtocolVersion       => 'SSLv3'
-          , # values: SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018, TLSv1.2_2019; OPTIONAL
+          , # values: SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018, TLSv1.2_2019, TLSv1.2_2021; OPTIONAL
           SSLSupportMethod =>
             'sni-only',    # values: sni-only, vip, static-ip; OPTIONAL
         },    # OPTIONAL

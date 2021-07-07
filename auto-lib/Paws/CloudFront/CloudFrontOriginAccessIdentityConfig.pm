@@ -64,8 +64,8 @@ C<CloudFrontOriginAccessIdentityAlreadyExists> error.
 
 =head2 B<REQUIRED> Comment => Str
 
-An optional comment to describe the origin access identity. The comment
-cannot be longer than 128 characters.
+A comment to describe the origin access identity. The comment cannot be
+longer than 128 characters.
 
 
 
