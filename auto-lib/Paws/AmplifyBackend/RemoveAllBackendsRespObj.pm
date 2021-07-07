@@ -49,7 +49,7 @@ The app ID.
 
 =head2 Error => Str
 
-If the request failed, this is the returned error.
+If the request fails, this error is returned.
 
 
 =head2 JobId => Str

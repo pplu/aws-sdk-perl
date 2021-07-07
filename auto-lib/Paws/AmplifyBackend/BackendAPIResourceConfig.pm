@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-The resource configuration for the data model, configured as a part of
-the Amplify project.
+The resource config for the data model, configured as a part of the
+Amplify project.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ models.
 =head2 ApiName => Str
 
 The API name used to interact with the data model, configured as a part
-of the Amplify project.
+of the amplify project.
 
 
 =head2 ConflictResolution => L<Paws::AmplifyBackend::BackendAPIConflictResolution>

@@ -64,12 +64,12 @@ from your Amplify app.
 
 =head2 RedirectSignInURIs => ArrayRef[Str|Undef]
 
-Redirect URLs that OAuth uses when a user signs in to an Amplify app.
+Redirect URLs used by OAuth when a user signs in to an Amplify app.
 
 
 =head2 RedirectSignOutURIs => ArrayRef[Str|Undef]
 
-Redirect URLs that OAuth uses when a user signs out of an Amplify app.
+Redirect URLs used by OAuth when a user signs out of an Amplify app.
 
 
 =head2 SocialProviderSettings => L<Paws::AmplifyBackend::SocialProviderSettings>

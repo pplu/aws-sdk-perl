@@ -43,7 +43,7 @@ Amplify app.
 
 =head2 DeliveryMethod => Str
 
-Describes which method to use (either SMS or email) to deliver messages
+Describes which mode to use (either SMS or email) to deliver messages
 to app users that want to recover their password.
 
 

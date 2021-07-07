@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-Describes whether to apply multi-factor authentication (MFA) policies
-for your Amazon Cognito user pool that's configured as a part of your
+Describes whether multi-factor authentication policies should be
+applied for your Amazon Cognito user pool configured as a part of your
 Amplify project.
 
 =head1 ATTRIBUTES
@@ -43,8 +43,8 @@ Amplify project.
 
 =head2 B<REQUIRED> MFAMode => Str
 
-Describes whether MFA should be [ON, OFF, or OPTIONAL] for
-authentication in your Amplify project.
+Describes whether MFA should be [ON, OFF, OPTIONAL] for authentication
+in your Amplify project.
 
 
 =head2 Settings => L<Paws::AmplifyBackend::Settings>

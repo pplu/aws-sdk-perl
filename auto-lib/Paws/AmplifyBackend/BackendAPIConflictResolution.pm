@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-Describes the conflict resolution configuration for the data model
+Describes the conflict resolution configuration for your data model
 configured in your Amplify project.
 
 =head1 ATTRIBUTES

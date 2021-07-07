@@ -43,7 +43,7 @@ The request object for this operation.
 
 =head2 AwsCognitoIdentityPoolId => Str
 
-The Amazon Cognito identity pool ID used for Amplify Admin UI login
+The Amazon Cognito identity pool ID used for the Amplify Admin UI login
 authorization.
 
 

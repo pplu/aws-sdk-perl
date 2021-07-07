@@ -18,7 +18,7 @@ Paws::AmplifyBackend::GetBackendAPIModelsResponse
 
 =head2 Models => Str
 
-Stringified JSON of the DataStore model.
+Stringified JSON of the datastore model.
 
 
 =head2 Status => Str

@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-An error that is returned when a limit of a specific type is exceeded.
+An error that is returned when a limit of a specific type has been
+exceeded.
 
 =head1 ATTRIBUTES
 
@@ -46,7 +47,7 @@ The type of limit that was exceeded.
 
 =head2 Message => Str
 
-An error message to inform that the request failed.
+An error message to inform that the request has failed.
 
 
 

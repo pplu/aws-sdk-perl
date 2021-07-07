@@ -17,7 +17,7 @@ Paws::AmplifyBackend::RemoveBackendConfigResponse
 
 =head2 Error => Str
 
-If the request failed, this is the returned error.
+If the request fails, this error is returned.
 
 
 =head2 _request_id => Str

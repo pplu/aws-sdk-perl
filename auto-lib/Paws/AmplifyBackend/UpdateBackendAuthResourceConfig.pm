@@ -51,7 +51,7 @@ resource in your Amplify project.
 =head2 IdentityPoolConfigs => L<Paws::AmplifyBackend::UpdateBackendAuthIdentityPoolConfig>
 
 Describes the authorization configuration for the Amazon Cognito
-identity pool, provisioned as a part of the auth resource in your
+identity pool, provisioned as a part of your auth resource in the
 Amplify project.
 
 
@@ -64,7 +64,7 @@ resource in your Amplify project.
 =head2 B<REQUIRED> UserPoolConfigs => L<Paws::AmplifyBackend::UpdateBackendAuthUserPoolConfig>
 
 Describes the authentication configuration for the Amazon Cognito user
-pool, provisioned as a part of the auth resource in your Amplify
+pool, provisioned as a part of your auth resource in the Amplify
 project.
 
 

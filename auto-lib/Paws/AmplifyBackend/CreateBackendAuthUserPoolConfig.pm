@@ -53,8 +53,8 @@ pool, configured as a part of your Amplify project.
 
 =head2 Mfa => L<Paws::AmplifyBackend::CreateBackendAuthMFAConfig>
 
-Describes whether to apply multi-factor authentication (MFA) policies
-for your Amazon Cognito user pool that's configured as a part of your
+Describes whether multi-factor authentication policies should be
+applied for your Amazon Cognito user pool configured as a part of your
 Amplify project.
 
 
@@ -72,14 +72,13 @@ configured as a part of your Amplify project.
 
 =head2 B<REQUIRED> RequiredSignUpAttributes => ArrayRef[Str|Undef]
 
-The required attributes to sign up new users in the Amazon Cognito user
-pool.
+The required attributes to sign up new users in the user pool.
 
 
 =head2 B<REQUIRED> SignInMethod => Str
 
-Describes the sign-in methods that your Amplify app users to log in
-using the Amazon Cognito user pool that's configured as a part of your
+Describes the sign-in methods that your Amplify app users use to log in
+using the Amazon Cognito user pool, configured as a part of your
 Amplify project.
 
 

@@ -99,6 +99,11 @@ package Paws::AmplifyBackend;
     my $call_object = $self->new_with_coercions('Paws::AmplifyBackend::GetToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportBackendAuth {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AmplifyBackend::ImportBackendAuth', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListBackendJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AmplifyBackend::ListBackendJobs', @_);
@@ -160,7 +165,7 @@ package Paws::AmplifyBackend;
   }
 
 
-  sub operations { qw/CloneBackend CreateBackend CreateBackendAPI CreateBackendAuth CreateBackendConfig CreateToken DeleteBackend DeleteBackendAPI DeleteBackendAuth DeleteToken GenerateBackendAPIModels GetBackend GetBackendAPI GetBackendAPIModels GetBackendAuth GetBackendJob GetToken ListBackendJobs RemoveAllBackends RemoveBackendConfig UpdateBackendAPI UpdateBackendAuth UpdateBackendConfig UpdateBackendJob / }
+  sub operations { qw/CloneBackend CreateBackend CreateBackendAPI CreateBackendAuth CreateBackendConfig CreateToken DeleteBackend DeleteBackendAPI DeleteBackendAuth DeleteToken GenerateBackendAPIModels GetBackend GetBackendAPI GetBackendAPIModels GetBackendAuth GetBackendJob GetToken ImportBackendAuth ListBackendJobs RemoveAllBackends RemoveBackendConfig UpdateBackendAPI UpdateBackendAuth UpdateBackendConfig UpdateBackendJob / }
 
 1;
 
@@ -494,7 +499,7 @@ Each argument is described in detail in: L<Paws::AmplifyBackend::GetBackendAuth>
 
 Returns: a L<Paws::AmplifyBackend::GetBackendAuthResponse> instance
 
-Gets backend auth details.
+Gets a backend auth details.
 
 
 =head2 GetBackendJob
@@ -533,6 +538,32 @@ Each argument is described in detail in: L<Paws::AmplifyBackend::GetToken>
 Returns: a L<Paws::AmplifyBackend::GetTokenResponse> instance
 
 Gets the challenge token based on the given appId and sessionId.
+
+
+=head2 ImportBackendAuth
+
+=over
+
+=item AppId => Str
+
+=item BackendEnvironmentName => Str
+
+=item NativeClientId => Str
+
+=item UserPoolId => Str
+
+=item WebClientId => Str
+
+=item [IdentityPoolId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AmplifyBackend::ImportBackendAuth>
+
+Returns: a L<Paws::AmplifyBackend::ImportBackendAuthResponse> instance
+
+Imports an existing backend authentication resource.
 
 
 =head2 ListBackendJobs
@@ -594,8 +625,7 @@ Each argument is described in detail in: L<Paws::AmplifyBackend::RemoveBackendCo
 
 Returns: a L<Paws::AmplifyBackend::RemoveBackendConfigResponse> instance
 
-Removes the AWS resources that are required to access the Amplify Admin
-UI.
+Removes the AWS resources required to access the Amplify Admin UI.
 
 
 =head2 UpdateBackendAPI
@@ -657,8 +687,7 @@ Each argument is described in detail in: L<Paws::AmplifyBackend::UpdateBackendCo
 
 Returns: a L<Paws::AmplifyBackend::UpdateBackendConfigResponse> instance
 
-Updates the AWS resources that are required to access the Amplify Admin
-UI.
+Updates the AWS resources required to access the Amplify Admin UI.
 
 
 =head2 UpdateBackendJob

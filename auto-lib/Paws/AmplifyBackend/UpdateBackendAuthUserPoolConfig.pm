@@ -36,8 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-Describes the Amazon Cognito user pool configuration to configure the
-authorization resource for your Amplify project on an update.
+Describes the Amazon Cognito user pool configuration for the
+authorization resource to be configured for your Amplify project on an
+update.
 
 =head1 ATTRIBUTES
 
@@ -50,8 +51,8 @@ configured as a part of your Amplify project.
 
 =head2 Mfa => L<Paws::AmplifyBackend::UpdateBackendAuthMFAConfig>
 
-Describes whether to apply multi-factor authentication (MFA) policies
-for your Amazon Cognito user pool that's configured as a part of your
+Describes whether multi-factor authentication policies should be
+applied for your Amazon Cognito user pool configured as a part of your
 Amplify project.
 
 

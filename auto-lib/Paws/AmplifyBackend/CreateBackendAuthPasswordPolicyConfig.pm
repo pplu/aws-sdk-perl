@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-The password policy configuration for the backend of your Amplify
+The password policy configuration for the backend to your Amplify
 project.
 
 =head1 ATTRIBUTES

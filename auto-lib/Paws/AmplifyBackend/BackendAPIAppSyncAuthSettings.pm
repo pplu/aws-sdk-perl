@@ -48,19 +48,19 @@ your Amplify project.
 
 =head2 CognitoUserPoolId => Str
 
-The Amazon Cognito user pool ID, if Amazon Cognito is used as an
+The Amazon Cognito user pool ID, if Amazon Cognito was used as an
 authentication setting to access your data models.
 
 
 =head2 Description => Str
 
-The API key description for API_KEY, if it is used as an authentication
-mechanism to access your data models.
+The API key description for API_KEY, if it was used as an
+authentication mechanism to access your data models.
 
 
 =head2 ExpirationTime => Num
 
-The API key expiration time for API_KEY, if it is used as an
+The API key expiration time for API_KEY, if it was used as an
 authentication mechanism to access your data models.
 
 
@@ -71,8 +71,8 @@ The expiry time for the OpenID authentication mechanism.
 
 =head2 OpenIDClientId => Str
 
-The clientID for openID, if openID is used as an authentication setting
-to access your data models.
+The clientID for openID, if openID was used as an authentication
+setting to access your data models.
 
 
 =head2 OpenIDIatTTL => Str
@@ -82,13 +82,13 @@ The expiry time for the OpenID authentication mechanism.
 
 =head2 OpenIDIssueURL => Str
 
-The openID issuer URL, if openID is used as an authentication setting
+The openID issuer URL, if openID was used as an authentication setting
 to access your data models.
 
 
 =head2 OpenIDProviderName => Str
 
-The openID provider name, if openID is used as an authentication
+The OpenID provider name, if OpenID was used as an authentication
 mechanism to access your data models.
 
 

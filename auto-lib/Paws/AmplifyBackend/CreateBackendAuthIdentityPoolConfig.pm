@@ -42,7 +42,7 @@ configured as a part of your Amplify project.
 
 =head2 B<REQUIRED> IdentityPoolName => Str
 
-Name of the identity pool used for authorization.
+Name of the Amazon Cognito identity pool used for authorization.
 
 
 =head2 B<REQUIRED> UnauthenticatedLogin => Bool

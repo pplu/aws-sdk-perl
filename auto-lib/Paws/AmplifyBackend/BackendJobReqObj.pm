@@ -41,7 +41,7 @@ The request object for this operation.
 
 =head2 Operation => Str
 
-Filters the list of response objects to include only those with the
+Filters the list of response objects to only include those with the
 specified operation name.
 
 

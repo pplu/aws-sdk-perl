@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AmplifyBack
 
 =head1 DESCRIPTION
 
-Describes the password policy for your Amazon Cognito user pool that's
+Describes the password policy for your Amazon Cognito user pool
 configured as a part of your Amplify project.
 
 =head1 ATTRIBUTES
@@ -42,8 +42,8 @@ configured as a part of your Amplify project.
 
 =head2 AdditionalConstraints => ArrayRef[Str|Undef]
 
-Describes additional constrains on the password requirements to sign in
-to the auth resource, configured as a part of your Amplify project.
+Describes additional constraints on password requirements to sign in to
+the auth resource, configured as a part of your Amplify project.
 
 
 =head2 MinimumLength => Num

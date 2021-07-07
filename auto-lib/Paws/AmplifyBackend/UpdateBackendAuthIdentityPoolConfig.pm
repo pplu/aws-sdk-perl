@@ -42,7 +42,7 @@ Amplify project.
 
 =head2 UnauthenticatedLogin => Bool
 
-A Boolean value that you can set to allow or disallow guest-level
+A boolean value which can be set to allow or disallow guest-level
 authorization into your Amplify app.
 
 

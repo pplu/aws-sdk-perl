@@ -42,13 +42,13 @@ your app users to sign in using OAuth.
 
 =head2 ClientId => Str
 
-Describes the client_id that can be obtained from the third-party
+Describes the client_id which can be obtained from the third-party
 social federation provider.
 
 
 =head2 ClientSecret => Str
 
-Describes the client_secret that can be obtained from third-party
+Describes the client_secret which can be obtained from third-party
 social federation providers.
 
 

@@ -79,7 +79,7 @@ The ID for the job.
 
 =head2 Operation => Str
 
-Filters the list of response objects to include only those with the
+Filters the list of response objects to only include those with the
 specified operation name.
 
 

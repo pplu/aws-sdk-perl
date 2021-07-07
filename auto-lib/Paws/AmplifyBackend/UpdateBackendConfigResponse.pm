@@ -30,7 +30,7 @@ The app ID for the backend manager.
 
 =head2 Error => Str
 
-If the request failed, this is the returned error.
+If the request fails, this error is returned.
 
 
 =head2 LoginAuthConfig => L<Paws::AmplifyBackend::LoginAuthConfigReqObj>

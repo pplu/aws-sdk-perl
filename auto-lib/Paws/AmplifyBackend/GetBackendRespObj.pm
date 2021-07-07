@@ -45,8 +45,7 @@ The response object for this operation.
 
 =head2 AmplifyMetaConfig => Str
 
-A stringified version of the current configurations for your Amplify
-project.
+A stringified version of the current configs for your Amplify project.
 
 
 =head2 B<REQUIRED> AppId => Str

@@ -56,8 +56,8 @@ from your Amplify app.
 
 =head2 B<REQUIRED> OAuthScopes => ArrayRef[Str|Undef]
 
-List of OAuth-related flows that allow your app users to authenticate
-from your Amplify app.
+List of OAuth-related flows used to allow your app users to
+authenticate from your Amplify app.
 
 
 =head2 B<REQUIRED> RedirectSignInURIs => ArrayRef[Str|Undef]
@@ -67,13 +67,12 @@ The redirected URI for signing in to your Amplify app.
 
 =head2 B<REQUIRED> RedirectSignOutURIs => ArrayRef[Str|Undef]
 
-Redirect URLs that OAuth uses when a user signs out of an Amplify app.
+Redirect URLs used by OAuth when a user signs out of an Amplify app.
 
 
 =head2 SocialProviderSettings => L<Paws::AmplifyBackend::SocialProviderSettings>
 
-The settings for using social identity providers for access to your
-Amplify app.
+The settings for using social providers to access your Amplify app.
 
 
 
