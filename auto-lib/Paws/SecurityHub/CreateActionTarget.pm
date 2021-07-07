@@ -56,13 +56,14 @@ The description for the custom action target.
 
 =head2 B<REQUIRED> Id => Str
 
-The ID for the custom action target.
+The ID for the custom action target. Can contain up to 20 alphanumeric
+characters.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the custom action target.
+The name of the custom action target. Can contain up to 20 characters.
 
 
 

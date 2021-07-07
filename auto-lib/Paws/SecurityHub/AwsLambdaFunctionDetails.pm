@@ -114,7 +114,7 @@ For Lambda@Edge functions, the ARN of the master function.
 
 =head2 MemorySize => Int
 
-The memory that's allocated to the function.
+The memory that is allocated to the function.
 
 
 =head2 RevisionId => Str

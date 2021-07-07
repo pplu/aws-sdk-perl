@@ -48,8 +48,7 @@ The name of the feature associated with the IAM)role.
 
 =head2 RoleArn => Str
 
-The Amazon Resource Name (ARN) of the IAM role that is associated with
-the DB instance.
+The ARN of the IAM role that is associated with the DB instance.
 
 
 =head2 Status => Str

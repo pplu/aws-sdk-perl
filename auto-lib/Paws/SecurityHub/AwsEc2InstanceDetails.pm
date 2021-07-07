@@ -7,6 +7,7 @@ package Paws::SecurityHub::AwsEc2InstanceDetails;
   has IpV6Addresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchedAt => (is => 'ro', isa => 'Str');
+  has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::SecurityHub::AwsEc2InstanceNetworkInterfacesDetails]');
   has SubnetId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -41,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The details of an Amazon EC2 instance.
+The details of an EC2 instance.
 
 =head1 ATTRIBUTES
 
@@ -79,6 +80,13 @@ Uses the C<date-time> format specified in RFC 3339 section 5.6,
 Internet Date/Time Format
 (https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
 contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
+
+
+=head2 NetworkInterfaces => ArrayRef[L<Paws::SecurityHub::AwsEc2InstanceNetworkInterfacesDetails>]
+
+The identifiers of the network interfaces for the EC2 instance. The
+details for each network interface are in a corresponding
+C<AwsEc2NetworkInterfacesDetails> object.
 
 
 =head2 SubnetId => Str

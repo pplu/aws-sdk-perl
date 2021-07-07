@@ -263,6 +263,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                   ApiGatewayManaged    => 1,                    # OPTIONAL
                   AutoDeploy           => 1,                    # OPTIONAL
+                  ClientCertificateId  => 'MyNonEmptyString',
                   CreatedDate          => 'MyNonEmptyString',
                   DefaultRouteSettings => {
                     DataTraceEnabled       => 1,                    # OPTIONAL
@@ -592,13 +593,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 AwsEc2Instance => {
                   IamInstanceProfileArn => 'MyNonEmptyString',
                   ImageId               => 'MyNonEmptyString',
-                  IpV4Addresses => [ 'MyNonEmptyString', ... ],    # OPTIONAL
-                  IpV6Addresses => [ 'MyNonEmptyString', ... ],    # OPTIONAL
-                  KeyName       => 'MyNonEmptyString',
-                  LaunchedAt    => 'MyNonEmptyString',
-                  SubnetId      => 'MyNonEmptyString',
-                  Type          => 'MyNonEmptyString',
-                  VpcId         => 'MyNonEmptyString',
+                  IpV4Addresses     => [ 'MyNonEmptyString', ... ],   # OPTIONAL
+                  IpV6Addresses     => [ 'MyNonEmptyString', ... ],   # OPTIONAL
+                  KeyName           => 'MyNonEmptyString',
+                  LaunchedAt        => 'MyNonEmptyString',
+                  NetworkInterfaces =>
+                    [ { NetworkInterfaceId => 'MyNonEmptyString', }, ... ]
+                  ,                                                   # OPTIONAL
+                  SubnetId => 'MyNonEmptyString',
+                  Type     => 'MyNonEmptyString',
+                  VpcId    => 'MyNonEmptyString',
                 },    # OPTIONAL
                 AwsEc2NetworkAcl => {
                   Associations => [
@@ -781,6 +785,268 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   ],    # OPTIONAL
                   State => 'MyNonEmptyString',
                 },    # OPTIONAL
+                AwsEcsCluster => {
+                  CapacityProviders => [ 'MyNonEmptyString', ... ],   # OPTIONAL
+                  ClusterSettings   => [
+                    {
+                      Name  => 'MyNonEmptyString',
+                      Value => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],                                                  # OPTIONAL
+                  Configuration => {
+                    ExecuteCommandConfiguration => {
+                      KmsKeyId         => 'MyNonEmptyString',
+                      LogConfiguration => {
+                        CloudWatchEncryptionEnabled => 1,    # OPTIONAL
+                        CloudWatchLogGroupName => 'MyNonEmptyString',
+                        S3BucketName           => 'MyNonEmptyString',
+                        S3EncryptionEnabled    => 1,                  # OPTIONAL
+                        S3KeyPrefix            => 'MyNonEmptyString',
+                      },    # OPTIONAL
+                      Logging => 'MyNonEmptyString',
+                    },    # OPTIONAL
+                  },    # OPTIONAL
+                  DefaultCapacityProviderStrategy => [
+                    {
+                      Base             => 1,                    # OPTIONAL
+                      CapacityProvider => 'MyNonEmptyString',
+                      Weight           => 1,                    # OPTIONAL
+                    },
+                    ...
+                  ],    # OPTIONAL
+                },    # OPTIONAL
+                AwsEcsTaskDefinition => {
+                  ContainerDefinitions => [
+                    {
+                      Command   => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+                      Cpu       => 1,                              # OPTIONAL
+                      DependsOn => [
+                        {
+                          Condition     => 'MyNonEmptyString',
+                          ContainerName => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                                           # OPTIONAL
+                      DisableNetworking => 1,                         # OPTIONAL
+                      DnsSearchDomains  => [ 'MyNonEmptyString', ... ]
+                      ,                                               # OPTIONAL
+                      DnsServers   => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+                      DockerLabels =>
+                        { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                      ,                                               # OPTIONAL
+                      DockerSecurityOptions => [ 'MyNonEmptyString', ... ]
+                      ,                                               # OPTIONAL
+                      EntryPoint  => [ 'MyNonEmptyString', ... ],     # OPTIONAL
+                      Environment => [
+                        {
+                          Name  => 'MyNonEmptyString',
+                          Value => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                                              # OPTIONAL
+                      EnvironmentFiles => [
+                        {
+                          Type  => 'MyNonEmptyString',
+                          Value => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                                              # OPTIONAL
+                      Essential  => 1,                                # OPTIONAL
+                      ExtraHosts => [
+                        {
+                          Hostname  => 'MyNonEmptyString',
+                          IpAddress => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                                              # OPTIONAL
+                      FirelensConfiguration => {
+                        Options => { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                        ,                                             # OPTIONAL
+                        Type => 'MyNonEmptyString',
+                      },    # OPTIONAL
+                      HealthCheck => {
+                        Command     => [ 'MyNonEmptyString', ... ],   # OPTIONAL
+                        Interval    => 1,                             # OPTIONAL
+                        Retries     => 1,                             # OPTIONAL
+                        StartPeriod => 1,                             # OPTIONAL
+                        Timeout     => 1,                             # OPTIONAL
+                      },    # OPTIONAL
+                      Hostname        => 'MyNonEmptyString',
+                      Image           => 'MyNonEmptyString',
+                      Interactive     => 1,                           # OPTIONAL
+                      Links           => [ 'MyNonEmptyString', ... ], # OPTIONAL
+                      LinuxParameters => {
+                        Capabilities => {
+                          Add  => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+                          Drop => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+                        },    # OPTIONAL
+                        Devices => [
+                          {
+                            ContainerPath => 'MyNonEmptyString',
+                            HostPath      => 'MyNonEmptyString',
+                            Permissions   => [ 'MyNonEmptyString', ... ]
+                            ,    # OPTIONAL
+                          },
+                          ...
+                        ],    # OPTIONAL
+                        InitProcessEnabled => 1,    # OPTIONAL
+                        MaxSwap            => 1,    # OPTIONAL
+                        SharedMemorySize   => 1,    # OPTIONAL
+                        Swappiness         => 1,    # OPTIONAL
+                        Tmpfs              => [
+                          {
+                            ContainerPath => 'MyNonEmptyString',
+                            MountOptions  => [ 'MyNonEmptyString', ... ]
+                            ,             # OPTIONAL
+                            Size => 1,    # OPTIONAL
+                          },
+                          ...
+                        ],    # OPTIONAL
+                      },    # OPTIONAL
+                      LogConfiguration => {
+                        LogDriver => 'MyNonEmptyString',
+                        Options => { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                        ,    # OPTIONAL
+                        SecretOptions => [
+                          {
+                            Name      => 'MyNonEmptyString',
+                            ValueFrom => 'MyNonEmptyString',
+                          },
+                          ...
+                        ],    # OPTIONAL
+                      },    # OPTIONAL
+                      Memory            => 1,    # OPTIONAL
+                      MemoryReservation => 1,    # OPTIONAL
+                      MountPoints       => [
+                        {
+                          ContainerPath => 'MyNonEmptyString',
+                          ReadOnly      => 1,                    # OPTIONAL
+                          SourceVolume  => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],    # OPTIONAL
+                      Name         => 'MyNonEmptyString',
+                      PortMappings => [
+                        {
+                          ContainerPort => 1,                    # OPTIONAL
+                          HostPort      => 1,                    # OPTIONAL
+                          Protocol      => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],    # OPTIONAL
+                      Privileged             => 1,    # OPTIONAL
+                      PseudoTerminal         => 1,    # OPTIONAL
+                      ReadonlyRootFilesystem => 1,    # OPTIONAL
+                      RepositoryCredentials  =>
+                        { CredentialsParameter => 'MyNonEmptyString', }
+                      ,                               # OPTIONAL
+                      ResourceRequirements => [
+                        {
+                          Type  => 'MyNonEmptyString',
+                          Value => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                              # OPTIONAL
+                      Secrets => [
+                        {
+                          Name      => 'MyNonEmptyString',
+                          ValueFrom => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                              # OPTIONAL
+                      StartTimeout   => 1,            # OPTIONAL
+                      StopTimeout    => 1,            # OPTIONAL
+                      SystemControls => [
+                        {
+                          Namespace => 'MyNonEmptyString',
+                          Value     => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],                              # OPTIONAL
+                      Ulimits => [
+                        {
+                          HardLimit => 1,                    # OPTIONAL
+                          Name      => 'MyNonEmptyString',
+                          SoftLimit => 1,                    # OPTIONAL
+                        },
+                        ...
+                      ],    # OPTIONAL
+                      User        => 'MyNonEmptyString',
+                      VolumesFrom => [
+                        {
+                          ReadOnly        => 1,                    # OPTIONAL
+                          SourceContainer => 'MyNonEmptyString',
+                        },
+                        ...
+                      ],    # OPTIONAL
+                      WorkingDirectory => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  Cpu                   => 'MyNonEmptyString',
+                  ExecutionRoleArn      => 'MyNonEmptyString',
+                  Family                => 'MyNonEmptyString',
+                  InferenceAccelerators => [
+                    {
+                      DeviceName => 'MyNonEmptyString',
+                      DeviceType => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  IpcMode              => 'MyNonEmptyString',
+                  Memory               => 'MyNonEmptyString',
+                  NetworkMode          => 'MyNonEmptyString',
+                  PidMode              => 'MyNonEmptyString',
+                  PlacementConstraints => [
+                    {
+                      Expression => 'MyNonEmptyString',
+                      Type       => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                  ProxyConfiguration => {
+                    ContainerName                => 'MyNonEmptyString',
+                    ProxyConfigurationProperties => [
+                      {
+                        Name  => 'MyNonEmptyString',
+                        Value => 'MyNonEmptyString',
+                      },
+                      ...
+                    ],    # OPTIONAL
+                    Type => 'MyNonEmptyString',
+                  },    # OPTIONAL
+                  RequiresCompatibilities => [ 'MyNonEmptyString', ... ]
+                  ,     # OPTIONAL
+                  TaskRoleArn => 'MyNonEmptyString',
+                  Volumes     => [
+                    {
+                      DockerVolumeConfiguration => {
+                        Autoprovision => 1,                    # OPTIONAL
+                        Driver        => 'MyNonEmptyString',
+                        DriverOpts    =>
+                          { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                        ,                                      # OPTIONAL
+                        Labels => { 'MyNonEmptyString' => 'MyNonEmptyString', }
+                        ,                                      # OPTIONAL
+                        Scope => 'MyNonEmptyString',
+                      },    # OPTIONAL
+                      EfsVolumeConfiguration => {
+                        AuthorizationConfig => {
+                          AccessPointId => 'MyNonEmptyString',
+                          Iam           => 'MyNonEmptyString',
+                        },    # OPTIONAL
+                        FilesystemId          => 'MyNonEmptyString',
+                        RootDirectory         => 'MyNonEmptyString',
+                        TransitEncryption     => 'MyNonEmptyString',
+                        TransitEncryptionPort => 1,                   # OPTIONAL
+                      },    # OPTIONAL
+                      Host => { SourcePath => 'MyNonEmptyString', },  # OPTIONAL
+                      Name => 'MyNonEmptyString',
+                    },
+                    ...
+                  ],    # OPTIONAL
+                },    # OPTIONAL
                 AwsElasticBeanstalkEnvironment => {
                   ApplicationName  => 'MyNonEmptyString',
                   Cname            => 'MyNonEmptyString',
@@ -833,8 +1099,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Endpoint  => 'MyNonEmptyString',
                   Endpoints => { 'MyNonEmptyString' => 'MyNonEmptyString', }
                   ,     # OPTIONAL
+                  LogPublishingOptions => {
+                    IndexSlowLogs => {
+                      CloudWatchLogsLogGroupArn => 'MyNonEmptyString',
+                      Enabled                   => 1,                 # OPTIONAL
+                    },    # OPTIONAL
+                    SearchSlowLogs => {
+                      CloudWatchLogsLogGroupArn => 'MyNonEmptyString',
+                      Enabled                   => 1,                 # OPTIONAL
+                    },    # OPTIONAL
+                  },    # OPTIONAL
                   NodeToNodeEncryptionOptions => {
                     Enabled => 1,    # OPTIONAL
+                  },    # OPTIONAL
+                  ServiceSoftwareOptions => {
+                    AutomatedUpdateDate => 'MyNonEmptyString',
+                    Cancellable         => 1,                    # OPTIONAL
+                    CurrentVersion      => 'MyNonEmptyString',
+                    Description         => 'MyNonEmptyString',
+                    NewVersion          => 'MyNonEmptyString',
+                    UpdateAvailable     => 1,                    # OPTIONAL
+                    UpdateStatus        => 'MyNonEmptyString',
                   },    # OPTIONAL
                   VPCOptions => {
                     AvailabilityZones => [ 'MyNonEmptyString', ... ], # OPTIONAL
@@ -1549,6 +1834,59 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   RestrictPublicBuckets => 1,    # OPTIONAL
                 },    # OPTIONAL
                 AwsS3Bucket => {
+                  BucketLifecycleConfiguration => {
+                    Rules => [
+                      {
+                        AbortIncompleteMultipartUpload => {
+                          DaysAfterInitiation => 1,    # OPTIONAL
+                        },    # OPTIONAL
+                        ExpirationDate   => 'MyNonEmptyString',
+                        ExpirationInDays => 1,                    # OPTIONAL
+                        ExpiredObjectDeleteMarker => 1,           # OPTIONAL
+                        Filter                    => {
+                          Predicate => {
+                            Operands => [
+                              {
+                                Prefix => 'MyNonEmptyString',
+                                Tag    => {
+                                  Key   => 'MyNonEmptyString',
+                                  Value => 'MyNonEmptyString',
+                                },    # OPTIONAL
+                                Type => 'MyNonEmptyString',
+                              },
+                              ...
+                            ],    # OPTIONAL
+                            Prefix => 'MyNonEmptyString',
+                            Tag    => {
+                              Key   => 'MyNonEmptyString',
+                              Value => 'MyNonEmptyString',
+                            },    # OPTIONAL
+                            Type => 'MyNonEmptyString',
+                          },    # OPTIONAL
+                        },    # OPTIONAL
+                        ID                                => 'MyNonEmptyString',
+                        NoncurrentVersionExpirationInDays => 1,    # OPTIONAL
+                        NoncurrentVersionTransitions      => [
+                          {
+                            Days         => 1,                     # OPTIONAL
+                            StorageClass => 'MyNonEmptyString',
+                          },
+                          ...
+                        ],    # OPTIONAL
+                        Prefix      => 'MyNonEmptyString',
+                        Status      => 'MyNonEmptyString',
+                        Transitions => [
+                          {
+                            Date         => 'MyNonEmptyString',
+                            Days         => 1,                    # OPTIONAL
+                            StorageClass => 'MyNonEmptyString',
+                          },
+                          ...
+                        ],    # OPTIONAL
+                      },
+                      ...
+                    ],    # OPTIONAL
+                  },    # OPTIONAL
                   CreatedAt                      => 'MyNonEmptyString',
                   OwnerId                        => 'MyNonEmptyString',
                   OwnerName                      => 'MyNonEmptyString',

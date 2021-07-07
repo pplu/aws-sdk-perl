@@ -19,6 +19,8 @@ package Paws::SecurityHub::ResourceDetails;
   has AwsEc2Subnet => (is => 'ro', isa => 'Paws::SecurityHub::AwsEc2SubnetDetails');
   has AwsEc2Volume => (is => 'ro', isa => 'Paws::SecurityHub::AwsEc2VolumeDetails');
   has AwsEc2Vpc => (is => 'ro', isa => 'Paws::SecurityHub::AwsEc2VpcDetails');
+  has AwsEcsCluster => (is => 'ro', isa => 'Paws::SecurityHub::AwsEcsClusterDetails');
+  has AwsEcsTaskDefinition => (is => 'ro', isa => 'Paws::SecurityHub::AwsEcsTaskDefinitionDetails');
   has AwsElasticBeanstalkEnvironment => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticBeanstalkEnvironmentDetails');
   has AwsElasticsearchDomain => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainDetails');
   has AwsElbLoadBalancer => (is => 'ro', isa => 'Paws::SecurityHub::AwsElbLoadBalancerDetails');
@@ -151,7 +153,7 @@ Details about an Elastic IP address.
 
 =head2 AwsEc2Instance => L<Paws::SecurityHub::AwsEc2InstanceDetails>
 
-Details about an Amazon EC2 instance related to a finding.
+Details about an EC2 instance related to a finding.
 
 
 =head2 AwsEc2NetworkAcl => L<Paws::SecurityHub::AwsEc2NetworkAclDetails>
@@ -182,6 +184,18 @@ Details for an EC2 volume.
 =head2 AwsEc2Vpc => L<Paws::SecurityHub::AwsEc2VpcDetails>
 
 Details for an EC2 VPC.
+
+
+=head2 AwsEcsCluster => L<Paws::SecurityHub::AwsEcsClusterDetails>
+
+Details about an ECS cluster.
+
+
+=head2 AwsEcsTaskDefinition => L<Paws::SecurityHub::AwsEcsTaskDefinitionDetails>
+
+Details about a task definition. A task definition describes the
+container and volume definitions of an Amazon Elastic Container Service
+task.
 
 
 =head2 AwsElasticBeanstalkEnvironment => L<Paws::SecurityHub::AwsElasticBeanstalkEnvironmentDetails>

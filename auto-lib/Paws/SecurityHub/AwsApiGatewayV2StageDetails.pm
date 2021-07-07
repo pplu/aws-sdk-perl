@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsApiGatewayV2StageDetails;
   has AccessLogSettings => (is => 'ro', isa => 'Paws::SecurityHub::AwsApiGatewayAccessLogSettings');
   has ApiGatewayManaged => (is => 'ro', isa => 'Bool');
   has AutoDeploy => (is => 'ro', isa => 'Bool');
+  has ClientCertificateId => (is => 'ro', isa => 'Str');
   has CreatedDate => (is => 'ro', isa => 'Str');
   has DefaultRouteSettings => (is => 'ro', isa => 'Paws::SecurityHub::AwsApiGatewayV2RouteSettings');
   has DeploymentId => (is => 'ro', isa => 'Str');
@@ -63,6 +64,12 @@ Indicates whether the stage is managed by API Gateway.
 
 Indicates whether updates to an API automatically trigger a new
 deployment.
+
+
+=head2 ClientCertificateId => Str
+
+The identifier of a client certificate for a stage. Supported only for
+WebSocket API calls.
 
 
 =head2 CreatedDate => Str

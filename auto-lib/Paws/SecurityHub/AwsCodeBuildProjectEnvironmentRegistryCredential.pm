@@ -41,8 +41,7 @@ The credentials for access to a private registry.
 
 =head2 Credential => Str
 
-The Amazon Resource Name (ARN) or name of credentials created using AWS
-Secrets Manager.
+The ARN or name of credentials created using AWS Secrets Manager.
 
 The credential can use the name of the credentials only if they exist
 in your current AWS Region.

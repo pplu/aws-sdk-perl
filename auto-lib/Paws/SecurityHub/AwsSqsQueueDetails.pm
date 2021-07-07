@@ -43,8 +43,8 @@ Data about a queue.
 
 =head2 DeadLetterTargetArn => Str
 
-The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon
-SQS moves messages after the value of C<maxReceiveCount> is exceeded.
+The ARN of the dead-letter queue to which Amazon SQS moves messages
+after the value of C<maxReceiveCount> is exceeded.
 
 
 =head2 KmsDataKeyReusePeriodSeconds => Int
