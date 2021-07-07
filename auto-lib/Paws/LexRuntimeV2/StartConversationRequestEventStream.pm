@@ -38,34 +38,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-Represents a stream of events between your application and Amazon Lex.
+Represents a stream of events between your application and Amazon Lex
+V2.
 
 =head1 ATTRIBUTES
 
 
 =head2 AudioInputEvent => L<Paws::LexRuntimeV2::AudioInputEvent>
 
-Speech audio sent from your client application to Amazon Lex. Audio
-starts accumulating when Amazon Lex identifies a voice and continues
+Speech audio sent from your client application to Amazon Lex V2. Audio
+starts accumulating when Amazon Lex V2 identifies a voice and continues
 until a natural pause in the speech is found before processing.
 
 
 =head2 ConfigurationEvent => L<Paws::LexRuntimeV2::ConfigurationEvent>
 
 Configuration information sent from your client application to Amazon
-Lex
+Lex V2
 
 
 =head2 DisconnectionEvent => L<Paws::LexRuntimeV2::DisconnectionEvent>
 
-Event sent from the client application to indicate to Amazon Lex that
-the conversation is over.
+Event sent from the client application to indicate to Amazon Lex V2
+that the conversation is over.
 
 
 =head2 DTMFInputEvent => L<Paws::LexRuntimeV2::DTMFInputEvent>
 
-DTMF information sent to Amazon Lex by your application. Amazon Lex
-accumulates the DMTF information from when the user sends the first
+DTMF information sent to Amazon Lex V2 by your application. Amazon Lex
+V2 accumulates the DMTF information from when the user sends the first
 character and ends
 
 =over
@@ -81,7 +82,7 @@ when there's a digit that is the configured end character.
 
 =item *
 
-when Amazon Lex accumulates characters equal to the maximum DTMF
+when Amazon Lex V2 accumulates characters equal to the maximum DTMF
 character configuration.
 
 =back
@@ -90,14 +91,14 @@ character configuration.
 
 =head2 PlaybackCompletionEvent => L<Paws::LexRuntimeV2::PlaybackCompletionEvent>
 
-Event sent from the client application to Amazon Lex to indicate that
-it has finished playing audio and that Amazon Lex should start
+Event sent from the client application to Amazon Lex V2 to indicate
+that it has finished playing audio and that Amazon Lex V2 should start
 listening for user input.
 
 
 =head2 TextInputEvent => L<Paws::LexRuntimeV2::TextInputEvent>
 
-Text sent from your client application to Amazon Lex. Each
+Text sent from your client application to Amazon Lex V2. Each
 C<TextInputEvent> is processed individually.
 
 

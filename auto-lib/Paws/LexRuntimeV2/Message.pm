@@ -2,7 +2,7 @@
 package Paws::LexRuntimeV2::Message;
   use Moose;
   has Content => (is => 'ro', isa => 'Str', request_name => 'content', traits => ['NameInRequest']);
-  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest']);
+  has ContentType => (is => 'ro', isa => 'Str', request_name => 'contentType', traits => ['NameInRequest'], required => 1);
   has ImageResponseCard => (is => 'ro', isa => 'Paws::LexRuntimeV2::ImageResponseCard', request_name => 'imageResponseCard', traits => ['NameInRequest']);
 
 1;
@@ -45,7 +45,7 @@ Container for text that is returned to the customer..
 The text of the message.
 
 
-=head2 ContentType => Str
+=head2 B<REQUIRED> ContentType => Str
 
 Indicates the type of response.
 

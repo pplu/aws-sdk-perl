@@ -46,7 +46,7 @@ The text that is displayed on the button.
 
 =head2 B<REQUIRED> Value => Str
 
-The value returned to Amazon Lex when a user chooses the button.
+The value returned to Amazon Lex V2 when a user chooses the button.
 
 
 

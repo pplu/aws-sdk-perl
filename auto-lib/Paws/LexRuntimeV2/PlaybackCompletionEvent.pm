@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-Event sent from the client application to Amazon Lex to indicate that
-playback of audio is complete and that Amazon Lex should start
+Event sent from the client application to Amazon Lex V2 to indicate
+that playback of audio is complete and that Amazon Lex V2 should start
 processing the user's input.
 
 =head1 ATTRIBUTES
@@ -44,7 +44,7 @@ processing the user's input.
 =head2 ClientTimestampMillis => Int
 
 A timestamp set by the client of the date and time that the event was
-sent to Amazon Lex.
+sent to Amazon Lex V2.
 
 
 =head2 EventId => Str

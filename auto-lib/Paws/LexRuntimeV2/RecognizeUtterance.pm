@@ -96,10 +96,13 @@ The locale where the session is in use.
 =head2 RequestAttributes => Str
 
 Request-specific information passed between the client application and
-Amazon Lex
+Amazon Lex V2
 
 The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes for prefix C<x-amz-lex:>.
+
+The C<requestAttributes> field must be compressed using gzip and then
+base64 encoded before sending to Amazon Lex V2.
 
 
 
@@ -162,23 +165,23 @@ text/plain; charset=utf-8
 
 =head2 ResponseContentType => Str
 
-The message that Amazon Lex returns in the response can be either text
-or speech based on the C<responseContentType> value.
+The message that Amazon Lex V2 returns in the response can be either
+text or speech based on the C<responseContentType> value.
 
 =over
 
 =item *
 
-If the value is C<text/plain;charset=utf-8>, Amazon Lex returns text in
-the response.
+If the value is C<text/plain;charset=utf-8>, Amazon Lex V2 returns text
+in the response.
 
 =item *
 
-If the value begins with C<audio/>, Amazon Lex returns speech in the
-response. Amazon Lex uses Amazon Polly to generate the speech using the
-configuration that you specified in the C<requestContentType>
+If the value begins with C<audio/>, Amazon Lex V2 returns speech in the
+response. Amazon Lex V2 uses Amazon Polly to generate the speech using
+the configuration that you specified in the C<requestContentType>
 parameter. For example, if you specify C<audio/mpeg> as the value,
-Amazon Lex returns speech in the MPEG format.
+Amazon Lex V2 returns speech in the MPEG format.
 
 =item *
 
@@ -228,8 +231,11 @@ The identifier of the session in use.
 
 Sets the state of the session with the user. You can use this to set
 the current intent, attributes, context, and dialog action. Use the
-dialog action to determine the next step that Amazon Lex should use in
-the conversation with the user.
+dialog action to determine the next step that Amazon Lex V2 should use
+in the conversation with the user.
+
+The C<sessionState> field must be compressed using gzip and then base64
+encoded before sending to Amazon Lex V2.
 
 
 

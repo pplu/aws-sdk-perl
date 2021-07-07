@@ -143,7 +143,7 @@ Returns session information for a specified bot, alias, and user.
 For example, you can use this operation to retrieve session information
 for a user that has left a long-running session in use.
 
-If the bot, alias, or session identifier doesn't exist, Amazon Lex
+If the bot, alias, or session identifier doesn't exist, Amazon Lex V2
 returns a C<BadRequestException>. If the locale doesn't exist or is not
 enabled for the alias, you receive a C<BadRequestException>.
 
@@ -176,8 +176,8 @@ Each argument is described in detail in: L<Paws::LexRuntimeV2::PutSession>
 Returns: a L<Paws::LexRuntimeV2::PutSessionResponse> instance
 
 Creates a new session or modifies an existing session with an Amazon
-Lex bot. Use this operation to enable your application to set the state
-of the bot.
+Lex V2 bot. Use this operation to enable your application to set the
+state of the bot.
 
 
 =head2 RecognizeText
@@ -205,12 +205,13 @@ Each argument is described in detail in: L<Paws::LexRuntimeV2::RecognizeText>
 
 Returns: a L<Paws::LexRuntimeV2::RecognizeTextResponse> instance
 
-Sends user input to Amazon Lex. Client applications use this API to
-send requests to Amazon Lex at runtime. Amazon Lex then interprets the
-user input using the machine learning model that it build for the bot.
+Sends user input to Amazon Lex V2. Client applications use this API to
+send requests to Amazon Lex V2 at runtime. Amazon Lex V2 then
+interprets the user input using the machine learning model that it
+build for the bot.
 
-In response, Amazon Lex returns the next message to convey to the user
-and an optional response card to display.
+In response, Amazon Lex V2 returns the next message to convey to the
+user and an optional response card to display.
 
 
 =head2 RecognizeUtterance
@@ -242,10 +243,57 @@ Each argument is described in detail in: L<Paws::LexRuntimeV2::RecognizeUtteranc
 
 Returns: a L<Paws::LexRuntimeV2::RecognizeUtteranceResponse> instance
 
-Sends user input to Amazon Lex. You can send text or speech. Clients
-use this API to send text and audio requests to Amazon Lex at runtime.
-Amazon Lex interprets the user input using the machine learning model
-built for the bot.
+Sends user input to Amazon Lex V2. You can send text or speech. Clients
+use this API to send text and audio requests to Amazon Lex V2 at
+runtime. Amazon Lex V2 interprets the user input using the machine
+learning model built for the bot.
+
+The following request fields must be compressed with gzip and then
+base64 encoded before you send them to Amazon Lex V2.
+
+=over
+
+=item *
+
+requestAttributes
+
+=item *
+
+sessionState
+
+=back
+
+The following response fields are compressed using gzip and then base64
+encoded by Amazon Lex V2. Before you can use these fields, you must
+decode and decompress them.
+
+=over
+
+=item *
+
+inputTranscript
+
+=item *
+
+interpretations
+
+=item *
+
+messages
+
+=item *
+
+requestAttributes
+
+=item *
+
+sessionState
+
+=back
+
+The example contains a Java application that compresses and encodes a
+Java object to send to Amazon Lex V2, and a second that decodes and
+decompresses a response from Amazon Lex V2.
 
 
 =head2 StartConversation
@@ -273,9 +321,36 @@ Returns: a L<Paws::LexRuntimeV2::StartConversationResponse> instance
 
 Starts an HTTP/2 bidirectional event stream that enables you to send
 audio, text, or DTMF input in real time. After your application starts
-a conversation, users send input to Amazon Lex as a stream of events.
-Amazon Lex processes the incoming events and responds with streaming
-text or audio events.
+a conversation, users send input to Amazon Lex V2 as a stream of
+events. Amazon Lex V2 processes the incoming events and responds with
+streaming text or audio events.
+
+Audio input must be in the following format: C<audio/lpcm
+sample-rate=8000 sample-size-bits=16 channel-count=1;
+is-big-endian=false>.
+
+The C<StartConversation> operation is supported only in the following
+SDKs:
+
+=over
+
+=item *
+
+AWS SDK for C++
+(https://docs.aws.amazon.com/goto/SdkForCpp/runtime.lex.v2-2020-08-07/StartConversation)
+
+=item *
+
+AWS SDK for Java V2
+(https://docs.aws.amazon.com/goto/SdkForJavaV2/runtime.lex.v2-2020-08-07/StartConversation)
+
+=item *
+
+AWS SDK for Ruby V3
+(https://docs.aws.amazon.com/goto/SdkForRubyV3/runtime.lex.v2-2020-08-07/StartConversation)
+
+=back
+
 
 
 

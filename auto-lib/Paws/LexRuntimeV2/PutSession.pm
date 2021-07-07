@@ -43,16 +43,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SessionState => {
         ActiveContexts => [
           {
+            ContextAttributes => {
+              'MyParameterName' =>
+                'MyText',    # key: min: 1, max: 100, value: min: 1, max: 1024
+            },    # max: 10
             Name       => 'MyActiveContextName',    # min: 1, max: 100
             TimeToLive => {
               TimeToLiveInSeconds => 1,             # min: 5, max: 86400
               TurnsToLive         => 1,             # min: 1, max: 20
 
             },
-            ContextAttributes => {
-              'MyParameterName' =>
-                'MyText',    # key: min: 1, max: 100, value: min: 1, max: 1024
-            },    # max: 10; OPTIONAL
+
           },
           ...
         ],    # max: 20; OPTIONAL
@@ -67,6 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Confirmed',    # values: Confirmed, Denied, None; OPTIONAL
           Slots => {
             'MyNonEmptyString' => {
+              Shape => 'Scalar',    # values: Scalar, List; OPTIONAL
               Value => {
                 InterpretedValue => 'MyNonEmptyString',    # min: 1; OPTIONAL
                 OriginalValue    => 'MyNonEmptyString',    # min: 1; OPTIONAL
@@ -74,6 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyNonEmptyString', ...                  # min: 1; OPTIONAL
                 ],    # OPTIONAL
               },    # OPTIONAL
+              Values => [ <Slot>, ... ],    # OPTIONAL
             },    # key: min: 1; OPTIONAL
           },    # OPTIONAL
           State => 'Failed'
@@ -86,9 +89,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Messages => [
         {
-          Content     => 'MyText',         # min: 1, max: 1024
           ContentType => 'CustomPayload'
-          , # values: CustomPayload, ImageResponseCard, PlainText, SSML; OPTIONAL
+          ,    # values: CustomPayload, ImageResponseCard, PlainText, SSML
+          Content           => 'MyText',    # min: 1, max: 1024
           ImageResponseCard => {
             Title   => 'MyAttachmentTitle',    # min: 1, max: 250
             Buttons => [
@@ -154,8 +157,8 @@ that they are defined in the list.
 
 =head2 RequestAttributes => L<Paws::LexRuntimeV2::StringMap>
 
-Request-specific information passed between Amazon Lex and the client
-application.
+Request-specific information passed between Amazon Lex V2 and the
+client application.
 
 The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes with the prefix C<x-amz-lex:>.
@@ -164,15 +167,15 @@ create any request attributes with the prefix C<x-amz-lex:>.
 
 =head2 ResponseContentType => Str
 
-The message that Amazon Lex returns in the response can be either text
-or speech depending on the value of this parameter.
+The message that Amazon Lex V2 returns in the response can be either
+text or speech depending on the value of this parameter.
 
 =over
 
 =item *
 
-If the value is C<text/plain; charset=utf-8>, Amazon Lex returns text
-in the response.
+If the value is C<text/plain; charset=utf-8>, Amazon Lex V2 returns
+text in the response.
 
 =back
 
@@ -189,8 +192,8 @@ The identifier of the session that receives the session data.
 
 Sets the state of the session with the user. You can use this to set
 the current intent, attributes, context, and dialog action. Use the
-dialog action to determine the next step that Amazon Lex should use in
-the conversation with the user.
+dialog action to determine the next step that Amazon Lex V2 should use
+in the conversation with the user.
 
 
 

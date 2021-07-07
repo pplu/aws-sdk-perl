@@ -37,27 +37,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-The state of the user's session with Amazon Lex.
+The state of the user's session with Amazon Lex V2.
 
 =head1 ATTRIBUTES
 
 
 =head2 ActiveContexts => ArrayRef[L<Paws::LexRuntimeV2::ActiveContext>]
 
-One or more contexts that indicate to Amazon Lex the context of a
-request. When a context is active, Amazon Lex considers intents with
+One or more contexts that indicate to Amazon Lex V2 the context of a
+request. When a context is active, Amazon Lex V2 considers intents with
 the matching context as a trigger as the next intent in a session.
 
 
 =head2 DialogAction => L<Paws::LexRuntimeV2::DialogAction>
 
-The next step that Amazon Lex should take in the conversation with a
+The next step that Amazon Lex V2 should take in the conversation with a
 user.
 
 
 =head2 Intent => L<Paws::LexRuntimeV2::Intent>
 
-The active intent that Amazon Lex is processing.
+The active intent that Amazon Lex V2 is processing.
 
 
 =head2 OriginatingRequestId => Str
@@ -69,7 +69,7 @@ The active intent that Amazon Lex is processing.
 
 Map of key/value pairs representing session-specific context
 information. It contains application information passed between Amazon
-Lex and a client application.
+Lex V2 and a client application.
 
 
 

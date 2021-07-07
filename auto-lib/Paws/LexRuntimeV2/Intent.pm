@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-The current intent that Amazon Lex is attempting to fulfill.
+The current intent that Amazon Lex V2 is attempting to fulfill.
 
 =head1 ATTRIBUTES
 

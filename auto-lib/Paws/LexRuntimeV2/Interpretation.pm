@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-An intent that Amazon Lex determined might satisfy the user's
+An intent that Amazon Lex V2 determined might satisfy the user's
 utterance. The intents are ordered by the confidence score.
 
 =head1 ATTRIBUTES
@@ -49,7 +49,7 @@ are ordered by the confidence score.
 
 =head2 NluConfidence => L<Paws::LexRuntimeV2::ConfidenceScore>
 
-Determines the threshold where Amazon Lex will insert the
+Determines the threshold where Amazon Lex V2 will insert the
 C<AMAZON.FallbackIntent>, C<AMAZON.KendraSearchIntent>, or both when
 returning alternative intents in a response. C<AMAZON.FallbackIntent>
 and C<AMAZON.KendraSearchIntent> are only inserted if they are

@@ -18,7 +18,7 @@ Paws::LexRuntimeV2::StartConversationResponse
 
 =head2 ResponseEventStream => L<Paws::LexRuntimeV2::StartConversationResponseEventStream>
 
-Represents the stream of events from Amazon Lex to your application.
+Represents the stream of events from Amazon Lex V2 to your application.
 The events are encoded as HTTP/2 data frames.
 
 

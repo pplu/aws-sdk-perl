@@ -33,15 +33,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-Provides a score that indicates the confidence that Amazon Lex has that
-an intent is the one that satisfies the user's intent.
+Provides a score that indicates the confidence that Amazon Lex V2 has
+that an intent is the one that satisfies the user's intent.
 
 =head1 ATTRIBUTES
 
 
 =head2 Score => Num
 
-A score that indicates how confident Amazon Lex is that an intent
+A score that indicates how confident Amazon Lex V2 is that an intent
 satisfies the user's intent. Ranges between 0.00 and 1.00. Higher
 scores indicate higher confidence.
 

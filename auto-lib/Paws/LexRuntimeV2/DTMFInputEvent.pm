@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 A DTMF character sent from the client application. DTMF characters are
 typically sent from a phone keypad to represent numbers. For example,
-you can have Amazon Lex process a credit card number input from a
+you can have Amazon Lex V2 process a credit card number input from a
 phone.
 
 =head1 ATTRIBUTES
@@ -46,7 +46,7 @@ phone.
 =head2 ClientTimestampMillis => Int
 
 A timestamp set by the client of the date and time that the event was
-sent to Amazon Lex.
+sent to Amazon Lex V2.
 
 
 =head2 EventId => Str

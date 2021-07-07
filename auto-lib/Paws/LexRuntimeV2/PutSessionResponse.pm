@@ -43,8 +43,8 @@ or the order that the messages are defined in the bot.
 =head2 RequestAttributes => Str
 
 Request-specific information passed between the client application and
-Amazon Lex. These are the same as the C<requestAttribute> parameter in
-the call to the C<PutSession> operation.
+Amazon Lex V2. These are the same as the C<requestAttribute> parameter
+in the call to the C<PutSession> operation.
 
 
 =head2 SessionId => Str

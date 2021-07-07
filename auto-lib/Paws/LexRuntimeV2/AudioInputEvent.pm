@@ -37,10 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 =head1 DESCRIPTION
 
 Represents a chunk of audio sent from the client application to Amazon
-Lex. The audio is all or part of an utterance from the user.
+Lex V2. The audio is all or part of an utterance from the user.
 
-Amazon Lex accumulates audio chunks until it recognizes a natural pause
-in speech before processing the input.
+Amazon Lex V2 accumulates audio chunks until it recognizes a natural
+pause in speech before processing the input.
 
 =head1 ATTRIBUTES
 
@@ -53,7 +53,7 @@ An encoded stream of audio.
 =head2 ClientTimestampMillis => Int
 
 A timestamp set by the client of the date and time that the event was
-sent to Amazon Lex.
+sent to Amazon Lex V2.
 
 
 =head2 B<REQUIRED> ContentType => Str

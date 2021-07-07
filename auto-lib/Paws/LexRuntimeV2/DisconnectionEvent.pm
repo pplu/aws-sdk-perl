@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-A notification from the client that it is disconnecting from Amazon
-Lex. Sending a C<DisconnectionEvent> event is optional, but can help
+A notification from the client that it is disconnecting from Amazon Lex
+V2. Sending a C<DisconnectionEvent> event is optional, but can help
 identify a conversation in logs.
 
 =head1 ATTRIBUTES
@@ -44,7 +44,7 @@ identify a conversation in logs.
 =head2 ClientTimestampMillis => Int
 
 A timestamp set by the client of the date and time that the event was
-sent to Amazon Lex.
+sent to Amazon Lex V2.
 
 
 =head2 EventId => Str

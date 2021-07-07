@@ -55,16 +55,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SessionState => {
             ActiveContexts => [
               {
+                ContextAttributes => {
+                  'MyParameterName' =>
+                    'MyText',  # key: min: 1, max: 100, value: min: 1, max: 1024
+                },    # max: 10
                 Name       => 'MyActiveContextName',    # min: 1, max: 100
                 TimeToLive => {
                   TimeToLiveInSeconds => 1,             # min: 5, max: 86400
                   TurnsToLive         => 1,             # min: 1, max: 20
 
                 },
-                ContextAttributes => {
-                  'MyParameterName' =>
-                    'MyText',  # key: min: 1, max: 100, value: min: 1, max: 1024
-                },    # max: 10; OPTIONAL
+
               },
               ...
             ],    # max: 20; OPTIONAL
@@ -79,6 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'Confirmed',    # values: Confirmed, Denied, None; OPTIONAL
               Slots => {
                 'MyNonEmptyString' => {
+                  Shape => 'Scalar',    # values: Scalar, List; OPTIONAL
                   Value => {
                     InterpretedValue => 'MyNonEmptyString',    # min: 1
                     OriginalValue    => 'MyNonEmptyString',    # min: 1
@@ -86,6 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       'MyNonEmptyString', ...                  # min: 1
                     ],    # OPTIONAL
                   },    # OPTIONAL
+                  Values => [ <Slot>, ... ],    # OPTIONAL
                 },    # key: min: 1
               },    # OPTIONAL
               State => 'Failed'
@@ -98,9 +101,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           WelcomeMessages => [
             {
-              Content     => 'MyText',         # min: 1, max: 1024
               ContentType => 'CustomPayload'
-              , # values: CustomPayload, ImageResponseCard, PlainText, SSML; OPTIONAL
+              ,    # values: CustomPayload, ImageResponseCard, PlainText, SSML
+              Content           => 'MyText',    # min: 1, max: 1024
               ImageResponseCard => {
                 Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                 Buttons => [
@@ -166,7 +169,7 @@ The identifier of the bot to process the request.
 
 =head2 ConversationMode => Str
 
-The conversation type that you are using the Amazon Lex. If the
+The conversation type that you are using the Amazon Lex V2. If the
 conversation mode is C<AUDIO> you can send both audio and DTMF
 information. If the mode is C<TEXT> you can only send text.
 
@@ -180,7 +183,7 @@ The locale where the session is in use.
 
 =head2 B<REQUIRED> RequestEventStream => L<Paws::LexRuntimeV2::StartConversationRequestEventStream>
 
-Represents the stream of events to Amazon Lex from your application.
+Represents the stream of events to Amazon Lex V2 from your application.
 The events are encoded as HTTP/2 data frames.
 
 

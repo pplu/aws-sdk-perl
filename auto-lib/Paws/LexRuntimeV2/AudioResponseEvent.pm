@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-An event sent from Amazon Lex to your client application containing
+An event sent from Amazon Lex V2 to your client application containing
 audio to play to the user.
 
 =head1 ATTRIBUTES
@@ -54,9 +54,10 @@ configure in the C<contentType> field of the C<ConfigurationEvent>.
 
 =head2 EventId => Str
 
-A unique identifier of the event sent by Amazon Lex. The identifier is
-in the form C<RESPONSE-N>, where N is a number starting with one and
-incremented for each event sent by Amazon Lex in the current session.
+A unique identifier of the event sent by Amazon Lex V2. The identifier
+is in the form C<RESPONSE-N>, where N is a number starting with one and
+incremented for each event sent by Amazon Lex V2 in the current
+session.
 
 
 

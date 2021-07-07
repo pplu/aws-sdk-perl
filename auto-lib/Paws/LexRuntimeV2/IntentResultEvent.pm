@@ -39,16 +39,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 =head1 DESCRIPTION
 
 Contains the current state of the conversation between the client
-application and Amazon Lex.
+application and Amazon Lex V2.
 
 =head1 ATTRIBUTES
 
 
 =head2 EventId => Str
 
-A unique identifier of the event sent by Amazon Lex. The identifier is
-in the form C<RESPONSE-N>, where N is a number starting with one and
-incremented for each event sent by Amazon Lex in the current session.
+A unique identifier of the event sent by Amazon Lex V2. The identifier
+is in the form C<RESPONSE-N>, where N is a number starting with one and
+incremented for each event sent by Amazon Lex V2 in the current
+session.
 
 
 =head2 InputMode => Str
@@ -58,13 +59,13 @@ Indicates whether the input to the operation was text or speech.
 
 =head2 Interpretations => ArrayRef[L<Paws::LexRuntimeV2::Interpretation>]
 
-A list of intents that Amazon Lex determined might satisfy the user's
-utterance.
+A list of intents that Amazon Lex V2 determined might satisfy the
+user's utterance.
 
 Each interpretation includes the intent, a score that indicates how
-confident Amazon Lex is that the interpretation is the correct one, and
-an optional sentiment response that indicates the sentiment expressed
-in the utterance.
+confident Amazon Lex V2 is that the interpretation is the correct one,
+and an optional sentiment response that indicates the sentiment
+expressed in the utterance.
 
 
 =head2 RequestAttributes => L<Paws::LexRuntimeV2::StringMap>

@@ -46,7 +46,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-Represents a stream of events between Amazon Lex and your application.
+Represents a stream of events between Amazon Lex V2 and your
+application.
 
 =head1 ATTRIBUTES
 
@@ -71,7 +72,7 @@ not have permission to access the C<StartConversation> operation.
 =head2 ConflictException => L<Paws::LexRuntimeV2::ConflictException>
 
 Exception thrown when two clients are using the same AWS account,
-Amazon Lex bot, and session ID.
+Amazon Lex V2 bot, and session ID.
 
 
 =head2 DependencyFailedException => L<Paws::LexRuntimeV2::DependencyFailedException>
@@ -86,13 +87,13 @@ Amazon Lex bot, and session ID.
 
 =head2 IntentResultEvent => L<Paws::LexRuntimeV2::IntentResultEvent>
 
-Event sent from Amazon Lex to the client application containing the
-current state of the conversation between the user and Amazon Lex.
+Event sent from Amazon Lex V2 to the client application containing the
+current state of the conversation between the user and Amazon Lex V2.
 
 
 =head2 InternalServerException => L<Paws::LexRuntimeV2::InternalServerException>
 
-An error occurred with Amazon Lex.
+An error occurred with Amazon Lex V2.
 
 
 =head2 PlaybackInterruptionEvent => L<Paws::LexRuntimeV2::PlaybackInterruptionEvent>

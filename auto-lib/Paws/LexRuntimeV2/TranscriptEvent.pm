@@ -34,17 +34,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-Event sent from Amazon Lex to your client application that contains a
-transcript of voice audio.
+Event sent from Amazon Lex V2 to your client application that contains
+a transcript of voice audio.
 
 =head1 ATTRIBUTES
 
 
 =head2 EventId => Str
 
-A unique identifier of the event sent by Amazon Lex. The identifier is
-in the form C<RESPONSE-N>, where N is a number starting with one and
-incremented for each event sent by Amazon Lex in the current session.
+A unique identifier of the event sent by Amazon Lex V2. The identifier
+is in the form C<RESPONSE-N>, where N is a number starting with one and
+incremented for each event sent by Amazon Lex V2 in the current
+session.
 
 
 =head2 Transcript => Str

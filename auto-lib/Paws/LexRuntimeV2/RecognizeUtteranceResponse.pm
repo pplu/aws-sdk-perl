@@ -27,13 +27,13 @@ Paws::LexRuntimeV2::RecognizeUtteranceResponse
 =head2 AudioStream => Str
 
 The prompt or statement to send to the user. This is based on the bot
-configuration and context. For example, if Amazon Lex did not
+configuration and context. For example, if Amazon Lex V2 did not
 understand the user intent, it sends the C<clarificationPrompt>
 configured for the bot. If the intent requires confirmation before
 taking the fulfillment action, it sends the C<confirmationPrompt>.
 Another example: Suppose that the Lambda function successfully
 fulfilled the intent, and sent a message to convey to the user. Then
-Amazon Lex sends that message in the response.
+Amazon Lex V2 sends that message in the response.
 
 
 =head2 ContentType => Str
@@ -53,19 +53,29 @@ The text used to process the request.
 If the input was an audio stream, the C<inputTranscript> field contains
 the text extracted from the audio stream. This is the text that is
 actually processed to recognize intents and slot values. You can use
-this information to determine if Amazon Lex is correctly processing the
-audio that you send.
+this information to determine if Amazon Lex V2 is correctly processing
+the audio that you send.
+
+The C<inputTranscript> field is compressed with gzip and then base64
+encoded. Before you can use the contents of the field, you must decode
+and decompress the contents. See the example for a simple function to
+decode and decompress the contents.
 
 
 =head2 Interpretations => Str
 
-A list of intents that Amazon Lex determined might satisfy the user's
-utterance.
+A list of intents that Amazon Lex V2 determined might satisfy the
+user's utterance.
 
 Each interpretation includes the intent, a score that indicates how
-confident Amazon Lex is that the interpretation is the correct one, and
-an optional sentiment response that indicates the sentiment expressed
-in the utterance.
+confident Amazon Lex V2 is that the interpretation is the correct one,
+and an optional sentiment response that indicates the sentiment
+expressed in the utterance.
+
+The C<interpretations> field is compressed with gzip and then base64
+encoded. Before you can use the contents of the field, you must decode
+and decompress the contents. See the example for a simple function to
+decode and decompress the contents.
 
 
 =head2 Messages => Str
@@ -74,10 +84,19 @@ A list of messages that were last sent to the user. The messages are
 ordered based on the order that you returned the messages from your
 Lambda function or the order that the messages are defined in the bot.
 
+The C<messages> field is compressed with gzip and then base64 encoded.
+Before you can use the contents of the field, you must decode and
+decompress the contents. See the example for a simple function to
+decode and decompress the contents.
+
 
 =head2 RequestAttributes => Str
 
 The attributes sent in the request.
+
+The C<requestAttributes> field is compressed with gzip and then base64
+encoded. Before you can use the contents of the field, you must decode
+and decompress the contents.
 
 
 =head2 SessionId => Str
@@ -92,6 +111,11 @@ bot.
 
 Use this to determine the progress of the conversation and what the
 next action might be.
+
+The C<sessionState> field is compressed with gzip and then base64
+encoded. Before you can use the contents of the field, you must decode
+and decompress the contents. See the example for a simple function to
+decode and decompress the contents.
 
 
 =head2 _request_id => Str

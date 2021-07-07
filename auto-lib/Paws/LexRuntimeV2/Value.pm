@@ -42,10 +42,10 @@ The value of a slot.
 
 =head2 B<REQUIRED> InterpretedValue => Str
 
-The value that Amazon Lex determines for the slot. The actual value
+The value that Amazon Lex V2 determines for the slot. The actual value
 depends on the setting of the value selection strategy for the bot. You
 can choose to use the value entered by the user, or you can have Amazon
-Lex choose the first value in the C<resolvedValues> list.
+Lex V2 choose the first value in the C<resolvedValues> list.
 
 
 =head2 OriginalValue => Str

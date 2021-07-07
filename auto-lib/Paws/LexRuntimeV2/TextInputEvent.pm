@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-The event sent from your client application to Amazon Lex with text
+The event sent from your client application to Amazon Lex V2 with text
 input from the user.
 
 =head1 ATTRIBUTES
@@ -44,7 +44,7 @@ input from the user.
 =head2 ClientTimestampMillis => Int
 
 A timestamp set by the client of the date and time that the event was
-sent to Amazon Lex.
+sent to Amazon Lex V2.
 
 
 =head2 EventId => Str
@@ -55,7 +55,7 @@ use this to identify events in logs.
 
 =head2 B<REQUIRED> Text => Str
 
-The text from the user. Amazon Lex processes this as a complete
+The text from the user. Amazon Lex V2 processes this as a complete
 statement.
 
 

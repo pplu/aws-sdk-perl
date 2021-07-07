@@ -46,16 +46,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SessionState => {
         ActiveContexts => [
           {
+            ContextAttributes => {
+              'MyParameterName' =>
+                'MyText',    # key: min: 1, max: 100, value: min: 1, max: 1024
+            },    # max: 10
             Name       => 'MyActiveContextName',    # min: 1, max: 100
             TimeToLive => {
               TimeToLiveInSeconds => 1,             # min: 5, max: 86400
               TurnsToLive         => 1,             # min: 1, max: 20
 
             },
-            ContextAttributes => {
-              'MyParameterName' =>
-                'MyText',    # key: min: 1, max: 100, value: min: 1, max: 1024
-            },    # max: 10; OPTIONAL
+
           },
           ...
         ],    # max: 20; OPTIONAL
@@ -70,6 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'Confirmed',    # values: Confirmed, Denied, None; OPTIONAL
           Slots => {
             'MyNonEmptyString' => {
+              Shape => 'Scalar',    # values: Scalar, List; OPTIONAL
               Value => {
                 InterpretedValue => 'MyNonEmptyString',    # min: 1
                 OriginalValue    => 'MyNonEmptyString',    # min: 1
@@ -77,6 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyNonEmptyString', ...                  # min: 1
                 ],    # OPTIONAL
               },    # OPTIONAL
+              Values => [ <Slot>, ... ],    # OPTIONAL
             },    # key: min: 1
           },    # OPTIONAL
           State => 'Failed'
@@ -125,7 +128,7 @@ The locale where the session is in use.
 =head2 RequestAttributes => L<Paws::LexRuntimeV2::StringMap>
 
 Request-specific information passed between the client application and
-Amazon Lex
+Amazon Lex V2
 
 The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes with the prefix C<x-amz-lex:>.
@@ -146,7 +149,7 @@ The current state of the dialog between the user and the bot.
 
 =head2 B<REQUIRED> Text => Str
 
-The text that the user entered. Amazon Lex interprets this text.
+The text that the user entered. Amazon Lex V2 interprets this text.
 
 
 

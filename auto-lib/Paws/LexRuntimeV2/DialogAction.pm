@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-The next action that Amazon Lex should take.
+The next action that Amazon Lex V2 should take.
 
 =head1 ATTRIBUTES
 
@@ -65,7 +65,7 @@ complete and ready to be fulfilled. This is a yes/no question such as
 
 =item *
 
-C<Delegate> - The next action is determined by Amazon Lex.
+C<Delegate> - The next action is determined by Amazon Lex V2.
 
 =item *
 

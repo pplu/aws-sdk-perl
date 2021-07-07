@@ -39,9 +39,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LexRuntimeV
 
 =head1 DESCRIPTION
 
-The initial event sent from the application to Amazon Lex to configure
-the conversation, including session and request attributes and the
-response content type.
+The initial event sent from the application to Amazon Lex V2 to
+configure the conversation, including session and request attributes
+and the response content type.
 
 =head1 ATTRIBUTES
 
@@ -49,14 +49,14 @@ response content type.
 =head2 ClientTimestampMillis => Int
 
 A timestamp set by the client of the date and time that the event was
-sent to Amazon Lex.
+sent to Amazon Lex V2.
 
 
 =head2 DisablePlayback => Bool
 
-Determines whether Amazon Lex should send audio responses to the client
-application. When this parameter if C<false>, the client application
-needs to create responses for the user.
+Determines whether Amazon Lex V2 should send audio responses to the
+client application. When this parameter if C<false>, the client
+application needs to create responses for the user.
 
 
 =head2 EventId => Str
@@ -68,7 +68,7 @@ use this to identify events in logs.
 =head2 RequestAttributes => L<Paws::LexRuntimeV2::StringMap>
 
 Request-specific information passed between the client application and
-Amazon Lex.
+Amazon Lex V2.
 
 The namespace C<x-amz-lex:> is reserved for special attributes. Don't
 create any request attributes for prefix C<x-amz-lex:>.
@@ -76,23 +76,23 @@ create any request attributes for prefix C<x-amz-lex:>.
 
 =head2 B<REQUIRED> ResponseContentType => Str
 
-The message that Amazon Lex returns in the response can be either text
-or speech based on the C<responseContentType> value.
+The message that Amazon Lex V2 returns in the response can be either
+text or speech based on the C<responseContentType> value.
 
 =over
 
 =item *
 
-If the value is C<text/plain;charset=utf-8>, Amazon Lex returns text in
-the response.
+If the value is C<text/plain;charset=utf-8>, Amazon Lex V2 returns text
+in the response.
 
 =item *
 
-If the value begins with C<audio/>, Amazon Lex returns speech in the
-response. Amazon Lex uses Amazon Polly to generate the speech using the
-configuration that you specified in the C<requestContentType>
+If the value begins with C<audio/>, Amazon Lex V2 returns speech in the
+response. Amazon Lex V2 uses Amazon Polly to generate the speech using
+the configuration that you specified in the C<requestContentType>
 parameter. For example, if you specify C<audio/mpeg> as the value,
-Amazon Lex returns speech in the MPEG format.
+Amazon Lex V2 returns speech in the MPEG format.
 
 =item *
 

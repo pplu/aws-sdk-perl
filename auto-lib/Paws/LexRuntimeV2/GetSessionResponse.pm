@@ -20,13 +20,13 @@ Paws::LexRuntimeV2::GetSessionResponse
 
 =head2 Interpretations => ArrayRef[L<Paws::LexRuntimeV2::Interpretation>]
 
-A list of intents that Amazon Lex determined might satisfy the user's
-utterance.
+A list of intents that Amazon Lex V2 determined might satisfy the
+user's utterance.
 
 Each interpretation includes the intent, a score that indicates how
-confident Amazon Lex is that the interpretation is the correct one, and
-an optional sentiment response that indicates the sentiment expressed
-in the utterance.
+confident Amazon Lex V2 is that the interpretation is the correct one,
+and an optional sentiment response that indicates the sentiment
+expressed in the utterance.
 
 
 =head2 Messages => ArrayRef[L<Paws::LexRuntimeV2::Message>]
