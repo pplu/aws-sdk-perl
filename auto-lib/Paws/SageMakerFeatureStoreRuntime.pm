@@ -14,6 +14,11 @@ package Paws::SageMakerFeatureStoreRuntime;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub BatchGetRecord {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SageMakerFeatureStoreRuntime::BatchGetRecord', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRecord {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SageMakerFeatureStoreRuntime::DeleteRecord', @_);
@@ -32,7 +37,7 @@ package Paws::SageMakerFeatureStoreRuntime;
   
 
 
-  sub operations { qw/DeleteRecord GetRecord PutRecord / }
+  sub operations { qw/BatchGetRecord DeleteRecord GetRecord PutRecord / }
 
 1;
 
@@ -96,6 +101,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fea
 
 
 =head1 METHODS
+
+=head2 BatchGetRecord
+
+=over
+
+=item Identifiers => ArrayRef[L<Paws::SageMakerFeatureStoreRuntime::BatchGetRecordIdentifier>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SageMakerFeatureStoreRuntime::BatchGetRecord>
+
+Returns: a L<Paws::SageMakerFeatureStoreRuntime::BatchGetRecordResponse> instance
+
+Retrieves a batch of C<Records> from a C<FeatureGroup>.
+
 
 =head2 DeleteRecord
 
