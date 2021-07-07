@@ -50,6 +50,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 The launch configuration names. If you omit this parameter, all launch
 configurations are described.
 
+Array Members: Maximum number of 50 items.
+
 
 
 =head2 MaxRecords => Int

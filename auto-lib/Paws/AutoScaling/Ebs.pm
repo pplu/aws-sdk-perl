@@ -5,6 +5,7 @@ package Paws::AutoScaling::Ebs;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has Iops => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
+  has Throughput => (is => 'ro', isa => 'Int');
   has VolumeSize => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
 
@@ -63,16 +64,17 @@ If you are creating a volume from a snapshot, you cannot specify an
 encryption value. Volumes that are created from encrypted snapshots are
 automatically encrypted, and volumes that are created from unencrypted
 snapshots are automatically unencrypted. By default, encrypted
-snapshots use the AWS managed CMK that is used for EBS encryption, but
-you can specify a custom CMK when you create the snapshot. The ability
-to encrypt a snapshot during copying also allows you to apply a new CMK
-to an already-encrypted snapshot. Volumes restored from the resulting
-copy are only accessible using the new CMK.
+snapshots use the Amazon Web Services managed CMK that is used for EBS
+encryption, but you can specify a custom CMK when you create the
+snapshot. The ability to encrypt a snapshot during copying also allows
+you to apply a new CMK to an already-encrypted snapshot. Volumes
+restored from the resulting copy are only accessible using the new CMK.
 
 Enabling encryption by default
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default)
-results in all EBS volumes being encrypted with the AWS managed CMK or
-a customer managed CMK, whether or not the snapshot was encrypted.
+results in all EBS volumes being encrypted with the Amazon Web Services
+managed CMK or a customer managed CMK, whether or not the snapshot was
+encrypted.
 
 For more information, see Using Encryption with EBS-Backed AMIs
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html)
@@ -84,14 +86,34 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 Iops => Int
 
-The number of I/O operations per second (IOPS) to provision for the
-volume. The maximum ratio of IOPS to volume size (in GiB) is 50:1. For
-more information, see Amazon EBS Volume Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+The number of input/output (I/O) operations per second (IOPS) to
+provision for the volume. For C<gp3> and C<io1> volumes, this
+represents the number of IOPS that are provisioned for the volume. For
+C<gp2> volumes, this represents the baseline performance of the volume
+and the rate at which the volume accumulates I/O credits for bursting.
 
-Required when the volume type is C<io1>. (Not used with C<standard>,
-C<gp2>, C<st1>, or C<sc1> volumes.)
+The following are the supported values for each volume type:
+
+=over
+
+=item *
+
+C<gp3>: 3,000-16,000 IOPS
+
+=item *
+
+C<io1>: 100-64,000 IOPS
+
+=back
+
+For C<io1> volumes, we guarantee 64,000 IOPS only for Instances built
+on the Nitro System
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
+Other instance families guarantee performance up to 32,000 IOPS.
+
+C<Iops> is supported when the volume type is C<gp3> or C<io1> and
+required only when the volume type is C<io1>. (Not used with
+C<standard>, C<gp2>, C<st1>, or C<sc1> volumes.)
 
 
 =head2 SnapshotId => Str
@@ -101,33 +123,48 @@ The snapshot ID of the volume to use.
 You must specify either a C<VolumeSize> or a C<SnapshotId>.
 
 
+=head2 Throughput => Int
+
+The throughput (MiBps) to provision for a C<gp3> volume.
+
+
 =head2 VolumeSize => Int
 
-The volume size, in Gibibytes (GiB).
+The volume size, in GiBs. The following are the supported volumes sizes
+for each volume type:
 
-This can be a number from 1-1,024 for C<standard>, 4-16,384 for C<io1>,
-1-16,384 for C<gp2>, and 500-16,384 for C<st1> and C<sc1>. If you
-specify a snapshot, the volume size must be equal to or larger than the
-snapshot size.
+=over
 
-Default: If you create a volume from a snapshot and you don't specify a
-volume size, the default is the snapshot size.
+=item *
 
-You must specify either a C<VolumeSize> or a C<SnapshotId>. If you
+C<gp2> and C<gp3>: 1-16,384
+
+=item *
+
+C<io1>: 4-16,384
+
+=item *
+
+C<st1> and C<sc1>: 125-16,384
+
+=item *
+
+C<standard>: 1-1,024
+
+=back
+
+You must specify either a C<SnapshotId> or a C<VolumeSize>. If you
 specify both C<SnapshotId> and C<VolumeSize>, the volume size must be
 equal or greater than the size of the snapshot.
 
 
 =head2 VolumeType => Str
 
-The volume type, which can be C<standard> for Magnetic, C<io1> for
-Provisioned IOPS SSD, C<gp2> for General Purpose SSD, C<st1> for
-Throughput Optimized HDD, or C<sc1> for Cold HDD. For more information,
-see Amazon EBS Volume Types
+The volume type. For more information, see Amazon EBS Volume Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
-Valid Values: C<standard> | C<io1> | C<gp2> | C<st1> | C<sc1>
+Valid Values: C<standard> | C<io1> | C<gp2> | C<st1> | C<sc1> | C<gp3>
 
 
 

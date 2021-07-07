@@ -71,8 +71,10 @@ from a previous call.)
 
 The names of one or more policies. If you omit this parameter, all
 policies are described. If a group name is provided, the results are
-limited to that group. This list is limited to 50 items. If you specify
-an unknown policy name, it is ignored with no error.
+limited to that group. If you specify an unknown policy name, it is
+ignored with no error.
+
+Array Members: Maximum number of 50 items.
 
 
 

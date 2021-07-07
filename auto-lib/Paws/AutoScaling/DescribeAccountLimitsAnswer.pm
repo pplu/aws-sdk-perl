@@ -20,24 +20,24 @@ Paws::AutoScaling::DescribeAccountLimitsAnswer
 
 =head2 MaxNumberOfAutoScalingGroups => Int
 
-The maximum number of groups allowed for your AWS account. The default
-is 200 groups per AWS Region.
+The maximum number of groups allowed for your account. The default is
+200 groups per Region.
 
 
 =head2 MaxNumberOfLaunchConfigurations => Int
 
-The maximum number of launch configurations allowed for your AWS
-account. The default is 200 launch configurations per AWS Region.
+The maximum number of launch configurations allowed for your account.
+The default is 200 launch configurations per Region.
 
 
 =head2 NumberOfAutoScalingGroups => Int
 
-The current number of groups for your AWS account.
+The current number of groups for your account.
 
 
 =head2 NumberOfLaunchConfigurations => Int
 
-The current number of launch configurations for your AWS account.
+The current number of launch configurations for your account.
 
 
 =head2 _request_id => Str

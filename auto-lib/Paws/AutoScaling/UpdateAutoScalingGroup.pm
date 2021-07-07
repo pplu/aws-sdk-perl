@@ -4,6 +4,7 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CapacityRebalance => (is => 'ro', isa => 'Bool');
+  has Context => (is => 'ro', isa => 'Str');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
@@ -96,6 +97,12 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 
+=head2 Context => Str
+
+Reserved.
+
+
+
 =head2 DefaultCooldown => Int
 
 The amount of time, in seconds, after a scaling activity completes
@@ -133,7 +140,7 @@ Conditional: Required if you are adding an C<ELB> health check.
 =head2 HealthCheckType => Str
 
 The service to use for the health checks. The valid values are C<EC2>
-and C<ELB>. If you configure an Auto Scaling group to use ELB health
+and C<ELB>. If you configure an Auto Scaling group to use C<ELB> health
 checks, it considers the instance unhealthy if it fails either the EC2
 status checks or the load balancer health checks.
 
@@ -223,8 +230,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 =head2 ServiceLinkedRoleARN => Str
 
 The Amazon Resource Name (ARN) of the service-linked role that the Auto
-Scaling group uses to call other AWS services on your behalf. For more
-information, see Service-linked roles
+Scaling group uses to call other Amazon Web Services on your behalf.
+For more information, see Service-linked roles
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 

@@ -79,10 +79,11 @@ from a previous call.)
 
 =head2 ScheduledActionNames => ArrayRef[Str|Undef]
 
-The names of one or more scheduled actions. You can specify up to 50
-actions. If you omit this parameter, all scheduled actions are
-described. If you specify an unknown scheduled action, it is ignored
-with no error.
+The names of one or more scheduled actions. If you omit this parameter,
+all scheduled actions are described. If you specify an unknown
+scheduled action, it is ignored with no error.
+
+Array Members: Maximum number of 50 actions.
 
 
 

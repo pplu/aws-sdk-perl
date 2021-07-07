@@ -5,6 +5,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has CapacityRebalance => (is => 'ro', isa => 'Bool');
+  has Context => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
   has DefaultCooldown => (is => 'ro', isa => 'Int', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
@@ -87,6 +88,11 @@ One or more Availability Zones for the group.
 Indicates whether Capacity Rebalancing is enabled.
 
 
+=head2 Context => Str
+
+Reserved.
+
+
 =head2 B<REQUIRED> CreatedTime => Str
 
 The date and time the group was created.
@@ -117,7 +123,7 @@ service.
 =head2 B<REQUIRED> HealthCheckType => Str
 
 The service to use for the health checks. The valid values are C<EC2>
-and C<ELB>. If you configure an Auto Scaling group to use ELB health
+and C<ELB>. If you configure an Auto Scaling group to use C<ELB> health
 checks, it considers the instance unhealthy if it fails either the EC2
 status checks or the load balancer health checks.
 
@@ -186,7 +192,7 @@ policy.
 =head2 ServiceLinkedRoleARN => Str
 
 The Amazon Resource Name (ARN) of the service-linked role that the Auto
-Scaling group uses to call other AWS services on your behalf.
+Scaling group uses to call other Amazon Web Services on your behalf.
 
 
 =head2 Status => Str

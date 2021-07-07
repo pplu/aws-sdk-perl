@@ -50,11 +50,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 ActivityIds => ArrayRef[Str|Undef]
 
-The activity IDs of the desired scaling activities. You can specify up
-to 50 IDs. If you omit this parameter, all activities for the past six
-weeks are described. If unknown activities are requested, they are
-ignored with no error. If you specify an Auto Scaling group, the
-results are limited to that group.
+The activity IDs of the desired scaling activities. If you omit this
+parameter, all activities for the past six weeks are described. If
+unknown activities are requested, they are ignored with no error. If
+you specify an Auto Scaling group, the results are limited to that
+group.
+
+Array Members: Maximum number of 50 IDs.
 
 
 

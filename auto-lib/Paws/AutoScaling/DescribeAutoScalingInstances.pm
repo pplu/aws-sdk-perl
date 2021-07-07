@@ -47,9 +47,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-The IDs of the instances. You can specify up to C<MaxRecords> IDs. If
-you omit this parameter, all Auto Scaling instances are described. If
-you specify an ID that does not exist, it is ignored with no error.
+The IDs of the instances. If you omit this parameter, all Auto Scaling
+instances are described. If you specify an ID that does not exist, it
+is ignored with no error.
+
+Array Members: Maximum number of 50 items.
 
 
 

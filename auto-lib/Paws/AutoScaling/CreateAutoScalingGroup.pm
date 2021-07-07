@@ -4,6 +4,7 @@ package Paws::AutoScaling::CreateAutoScalingGroup;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CapacityRebalance => (is => 'ro', isa => 'Bool');
+  has Context => (is => 'ro', isa => 'Str');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
@@ -160,6 +161,12 @@ After launching a new instance, it then terminates an old instance. For
 more information, see Amazon EC2 Auto Scaling Capacity Rebalancing
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+
+=head2 Context => Str
+
+Reserved.
 
 
 
@@ -348,9 +355,9 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 =head2 ServiceLinkedRoleARN => Str
 
 The Amazon Resource Name (ARN) of the service-linked role that the Auto
-Scaling group uses to call other AWS services on your behalf. By
+Scaling group uses to call other Amazon Web Services on your behalf. By
 default, Amazon EC2 Auto Scaling uses a service-linked role named
-AWSServiceRoleForAutoScaling, which it creates if it does not exist.
+C<AWSServiceRoleForAutoScaling>, which it creates if it does not exist.
 For more information, see Service-linked roles
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
