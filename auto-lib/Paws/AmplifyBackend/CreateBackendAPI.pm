@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               OpenIDProviderName => 'My__string',
             },    # OPTIONAL
           },
-          ...     # OPTIONAL
-        ],        # OPTIONAL
+          ...
+        ],    # OPTIONAL
         ApiName            => 'My__string',
         ConflictResolution => {
           ResolutionStrategy => 'OPTIMISTIC_CONCURRENCY'
@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             OpenIDIssueURL     => 'My__string',
             OpenIDProviderName => 'My__string',
           },    # OPTIONAL
-        },    # OPTIONAL
+        },
         Service         => 'My__string',
         TransformSchema => 'My__string',
       },

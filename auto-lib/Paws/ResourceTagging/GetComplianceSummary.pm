@@ -36,21 +36,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetComplianceSummaryOutput = $tagging->GetComplianceSummary(
       GroupBy => [
         'TARGET_ID', ...    # values: TARGET_ID, REGION, RESOURCE_TYPE
-      ],                    # OPTIONAL
+      ],    # OPTIONAL
       MaxResults      => 1,                      # OPTIONAL
       PaginationToken => 'MyPaginationToken',    # OPTIONAL
       RegionFilters   => [
         'MyRegion', ...                          # min: 1, max: 256
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       ResourceTypeFilters => [
-        'MyAmazonResourceType', ...              # max: 256
-      ],                                         # OPTIONAL
+        'MyAmazonResourceType', ...    # max: 256
+      ],    # OPTIONAL
       TagKeyFilters => [
-        'MyTagKey', ...                          # min: 1, max: 128
-      ],                                         # OPTIONAL
+        'MyTagKey', ...    # min: 1, max: 128
+      ],    # OPTIONAL
       TargetIdFilters => [
-        'MyTargetId', ...                        # min: 6, max: 68
-      ],                                         # OPTIONAL
+        'MyTargetId', ...    # min: 6, max: 68
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -101,10 +101,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
@@ -116,10 +116,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RoleARN          => 'MyRoleARN',                # min: 1, max: 512
           SecurityGroupIds => [
             'MyNonEmptyStringWithoutWhitespace', ...      # min: 1, max: 1024
-          ],                                              # min: 1, max: 5
+          ],    # min: 1, max: 5
           SubnetIds => [
-            'MyNonEmptyStringWithoutWhitespace', ...      # min: 1, max: 1024
-          ],                                              # min: 1, max: 16
+            'MyNonEmptyStringWithoutWhitespace', ...    # min: 1, max: 1024
+          ],    # min: 1, max: 16
 
         },    # OPTIONAL
       },    # OPTIONAL
@@ -144,7 +144,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               HiveJsonSerDe => {
                 TimestampFormats => [
                   'MyNonEmptyString', ...    # min: 1, max: 1024
-                ],                           # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
               OpenXJsonSerDe => {
                 CaseInsensitive         => 1,    # OPTIONAL
@@ -162,7 +162,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 BlockSizeBytes     => 1,    # min: 67108864; OPTIONAL
                 BloomFilterColumns => [
                   'MyNonEmptyStringWithoutWhitespace', ...   # min: 1, max: 1024
-                ],                                           # OPTIONAL
+                ],    # OPTIONAL
                 BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL
                 Compression => 'NONE',    # values: NONE, ZLIB, SNAPPY; OPTIONAL
                 DictionaryKeyThreshold => 1,    # max: 1; OPTIONAL
@@ -174,7 +174,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               ParquetSerDe => {
                 BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
-                Compression =>
+                Compression    =>
                   'UNCOMPRESSED', # values: UNCOMPRESSED, GZIP, SNAPPY; OPTIONAL
                 EnableDictionaryCompression => 1,     # OPTIONAL
                 MaxPaddingBytes             => 1,     # OPTIONAL
@@ -219,10 +219,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         S3BackupConfiguration => {
           BucketARN      => 'MyBucketARN',    # min: 1, max: 2048
@@ -305,10 +305,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RequestConfiguration => {
           CommonAttributes => [
@@ -324,9 +324,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
         },    # OPTIONAL
-        RoleARN => 'MyRoleARN',    # min: 1, max: 512
+        RoleARN      => 'MyRoleARN',    # min: 1, max: 512
         S3BackupMode =>
-          'FailedDataOnly',        # values: FailedDataOnly, AllData; OPTIONAL
+          'FailedDataOnly',    # values: FailedDataOnly, AllData; OPTIONAL
       },    # OPTIONAL
       KinesisStreamSourceConfiguration => {
         KinesisStreamARN => 'MyKinesisStreamARN',    # min: 1, max: 512
@@ -387,10 +387,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
@@ -495,10 +495,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
@@ -512,7 +512,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       DeliveryS3Bucket    => 'MyDeliveryS3Bucket',       # OPTIONAL
       DeliveryS3KeyPrefix => 'MyDeliveryS3KeyPrefix',    # OPTIONAL
       ExcludedAccounts    => [ 'MyAccountId', ... ],     # OPTIONAL

@@ -32,12 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $devicefarm = Paws->service('DeviceFarm');
     my $UpdateVPCEConfigurationResult = $devicefarm->UpdateVPCEConfiguration(
-      Arn            => 'MyAmazonResourceName',
-      ServiceDnsName => 'MyServiceDnsName',       # OPTIONAL
+      Arn                          => 'MyAmazonResourceName',
+      ServiceDnsName               => 'MyServiceDnsName',       # OPTIONAL
       VpceConfigurationDescription =>
-        'MyVPCEConfigurationDescription',         # OPTIONAL
-      VpceConfigurationName => 'MyVPCEConfigurationName',    # OPTIONAL
-      VpceServiceName       => 'MyVPCEServiceName',          # OPTIONAL
+        'MyVPCEConfigurationDescription',                       # OPTIONAL
+      VpceConfigurationName => 'MyVPCEConfigurationName',       # OPTIONAL
+      VpceServiceName       => 'MyVPCEServiceName',             # OPTIONAL
     );
 
     # Results:

@@ -51,39 +51,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           Demographic => {
             AppVersion => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
             Channel => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
             DeviceType => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
             Make => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
             Model => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
             Platform => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Location => {
             Country => {
-              Values => [ 'My__string', ... ],
+              Values        => [ 'My__string', ... ],
               DimensionType =>
                 'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
             },    # OPTIONAL
@@ -134,39 +134,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                   Demographic => {
                     AppVersion => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
                     Channel => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
                     DeviceType => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
                     Make => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
                     Model => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
                     Platform => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
                   },    # OPTIONAL
                   Location => {
                     Country => {
-                      Values => [ 'My__string', ... ],
+                      Values        => [ 'My__string', ... ],
                       DimensionType =>
                         'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                     },    # OPTIONAL
@@ -195,20 +195,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },
                 ...     # OPTIONAL
-              ],        # OPTIONAL
+              ],    # OPTIONAL
               SourceSegments => [
                 {
                   Id      => 'My__string',
                   Version => 1,              # OPTIONAL
                 },
                 ...
-              ],                             # OPTIONAL
-              SourceType => 'ALL',           # values: ALL, ANY, NONE; OPTIONAL
-              Type       => 'ALL',           # values: ALL, ANY, NONE; OPTIONAL
+              ],    # OPTIONAL
+              SourceType => 'ALL',    # values: ALL, ANY, NONE; OPTIONAL
+              Type       => 'ALL',    # values: ALL, ANY, NONE; OPTIONAL
             },
             ...
-          ],                                 # OPTIONAL
-          Include => 'ALL',                  # values: ALL, ANY, NONE; OPTIONAL
+          ],    # OPTIONAL
+          Include => 'ALL',    # values: ALL, ANY, NONE; OPTIONAL
         },    # OPTIONAL
         Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       },

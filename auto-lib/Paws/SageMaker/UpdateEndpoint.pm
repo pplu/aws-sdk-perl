@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DeploymentConfig   => {
         BlueGreenUpdatePolicy => {
           TrafficRoutingConfiguration => {
-            Type => 'ALL_AT_ONCE',    # values: ALL_AT_ONCE, CANARY
+            Type => 'ALL_AT_ONCE',         # values: ALL_AT_ONCE, CANARY
             WaitIntervalInSeconds => 1,    # max: 3600
             CanarySize            => {
               Type =>
@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               AlarmName => 'MyAlarmName',    # min: 1, max: 255; OPTIONAL
             },
             ...
-          ],                                 # min: 1, max: 10; OPTIONAL
+          ],    # min: 1, max: 10; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       ExcludeRetainedVariantProperties => [
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       RetainAllVariantProperties => 1,    # OPTIONAL
     );
 

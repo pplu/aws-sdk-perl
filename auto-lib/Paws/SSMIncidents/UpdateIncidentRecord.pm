@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChatChannel => {
         ChatbotSns => [
           'MySnsArn', ...    # max: 1000
-        ],                   # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
         Empty => {
 
-        },                   # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       ClientToken         => 'MyClientToken',    # OPTIONAL
       Impact              => 1,                  # OPTIONAL
@@ -52,10 +52,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SnsTopicArn => 'MyArn',                # max: 1000
         },
         ...
-      ],                                         # OPTIONAL
-      Status  => 'OPEN',                         # OPTIONAL
-      Summary => 'MyIncidentSummary',            # OPTIONAL
-      Title   => 'MyIncidentTitle',              # OPTIONAL
+      ],    # OPTIONAL
+      Status  => 'OPEN',                 # OPTIONAL
+      Summary => 'MyIncidentSummary',    # OPTIONAL
+      Title   => 'MyIncidentTitle',      # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

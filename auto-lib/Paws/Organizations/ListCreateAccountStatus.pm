@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAccountStatuses =
       $ListCreateAccountStatusResponse->CreateAccountStatuses;
 
-    # Returns a L<Paws::Organizations::ListCreateAccountStatusResponse> object.
-    # To get a list of all account creation requests made in the organization
-    # The following example shows a user requesting a list of only the
-    # in-progress account creation requests made for the current organization:
+  # Returns a L<Paws::Organizations::ListCreateAccountStatusResponse> object.
+  # To get a list of all account creation requests made in the organization
+  # The following example shows a user requesting a list of only the in-progress
+  # account creation requests made for the current organization:
     my $ListCreateAccountStatusResponse =
       $organizations->ListCreateAccountStatus( 'States' => ['IN_PROGRESS'] );
 

@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dynamodb = Paws->service('DynamoDB');
-   # To query an item
-   # This example queries items in the Music table. The table has a partition
-   # key and sort key (Artist and SongTitle), but this query only specifies the
-   # partition key value. It returns song titles by the artist named "No One You
-   # Know".
+  # To query an item
+  # This example queries items in the Music table. The table has a partition key
+  # and sort key (Artist and SongTitle), but this query only specifies the
+  # partition key value. It returns song titles by the artist named "No One You
+  # Know".
     my $QueryOutput = $dynamodb->Query(
       'ExpressionAttributeValues' => {
         ':v1' => {

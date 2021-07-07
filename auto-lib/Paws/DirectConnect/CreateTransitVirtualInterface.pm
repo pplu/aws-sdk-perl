@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyTagValue',    # max: 256; OPTIONAL
           },
           ...
-        ],                            # min: 1; OPTIONAL
+        ],    # min: 1; OPTIONAL
         VirtualInterfaceName => 'MyVirtualInterfaceName',    # OPTIONAL
         Vlan                 => 1,                           # OPTIONAL
       },

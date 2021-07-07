@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OpsMetadataArn => 'MyOpsMetadataArn',
       KeysToDelete   => [
         'MyMetadataKey', ...    # min: 1, max: 256
-      ],                        # OPTIONAL
+      ],    # OPTIONAL
       MetadataToUpdate => {
         'MyMetadataKey' => {
           Value => 'MyMetadataValueString',    # min: 1, max: 4096; OPTIONAL

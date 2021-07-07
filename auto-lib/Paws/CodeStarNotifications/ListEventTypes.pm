@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListEventTypesResult = $codestar -notifications->ListEventTypes(
       Filters => [
         {
-          Name => 'RESOURCE_TYPE',    # values: RESOURCE_TYPE, SERVICE_NAME
+          Name  => 'RESOURCE_TYPE',    # values: RESOURCE_TYPE, SERVICE_NAME
           Value => 'MyListEventTypesFilterValue',
 
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
     );

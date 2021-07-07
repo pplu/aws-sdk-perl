@@ -50,11 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Values => [ 'MyString', ... ],    # OPTIONAL
               },
               ...
-            ],                                    # OPTIONAL
-            Values => [ 'MyString', ... ],        # OPTIONAL
+            ],    # OPTIONAL
+            Values => [ 'MyString', ... ],    # OPTIONAL
           },
           ...
-        ],                                        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       HITLayoutId         => 'MyEntityId',    # OPTIONAL
       HITLayoutParameters => [
@@ -76,11 +76,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Values => [ 'MyString', ... ],    # OPTIONAL
               },
               ...
-            ],                                    # OPTIONAL
-            Values => [ 'MyString', ... ],        # OPTIONAL
+            ],    # OPTIONAL
+            Values => [ 'MyString', ... ],    # OPTIONAL
           },
           ...
-        ],                                        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       MaxAssignments      => 1,                       # OPTIONAL
       Question            => 'MyString',              # OPTIONAL

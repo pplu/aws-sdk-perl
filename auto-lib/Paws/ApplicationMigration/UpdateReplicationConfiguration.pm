@@ -54,21 +54,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                          => 'MySmallBoundedString',    # OPTIONAL
       ReplicatedDisks               => [
         {
-          DeviceName => 'MyBoundedString',    # max: 256; OPTIONAL
-          Iops       => 1,
-          IsBootDisk => 1,
+          DeviceName      => 'MyBoundedString',    # max: 256; OPTIONAL
+          Iops            => 1,
+          IsBootDisk      => 1,
           StagingDiskType =>
             'AUTO',    # values: AUTO, GP2, IO1, SC1, ST1, STANDARD; OPTIONAL
         },
         ...
-      ],               # OPTIONAL
+      ],    # OPTIONAL
       ReplicationServerInstanceType       => 'MyEC2InstanceType',    # OPTIONAL
       ReplicationServersSecurityGroupsIDs => [
         'MySecurityGroupID', ...                                     # max: 255
-      ],                                                             # OPTIONAL
-      StagingAreaSubnetId => 'MySubnetID',                           # OPTIONAL
+      ],    # OPTIONAL
+      StagingAreaSubnetId => 'MySubnetID',    # OPTIONAL
       StagingAreaTags     => {
-        'MyTagKey' => 'MyTagValue',    # key: max: 256, value: max: 256
+        'MyTagKey' => 'MyTagValue',           # key: max: 256, value: max: 256
       },    # OPTIONAL
       UseDedicatedReplicationServer => 1,    # OPTIONAL
     );

@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             [ 1, ... ], ...    # min: 2, max: 2
           ],
           ...                  # min: 4
-        ],                     # min: 1; OPTIONAL
+        ],    # min: 1; OPTIONAL
       },
 
     );

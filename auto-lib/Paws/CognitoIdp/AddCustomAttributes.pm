@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           AttributeDataType =>
             'String',    # values: String, Number, DateTime, Boolean; OPTIONAL
-          DeveloperOnlyAttribute => 1,    # OPTIONAL
-          Mutable                => 1,    # OPTIONAL
+          DeveloperOnlyAttribute => 1,            # OPTIONAL
+          Mutable                => 1,            # OPTIONAL
           Name => 'MyCustomAttributeNameType',    # min: 1, max: 20; OPTIONAL
           NumberAttributeConstraints => {
             MaxValue => 'MyStringType',           # OPTIONAL

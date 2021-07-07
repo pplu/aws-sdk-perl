@@ -69,10 +69,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
@@ -101,7 +101,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # max: 1024; OPTIONAL
           Prefix            => 'MyPrefix',               # max: 1024; OPTIONAL
-          RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+          RoleARN           => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
         TypeName => 'MyElasticsearchTypeName',    # max: 100; OPTIONAL
       },    # OPTIONAL
@@ -125,7 +125,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               HiveJsonSerDe => {
                 TimestampFormats => [
                   'MyNonEmptyString', ...    # min: 1, max: 1024
-                ],                           # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
               OpenXJsonSerDe => {
                 CaseInsensitive         => 1,    # OPTIONAL
@@ -143,7 +143,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 BlockSizeBytes     => 1,    # min: 67108864; OPTIONAL
                 BloomFilterColumns => [
                   'MyNonEmptyStringWithoutWhitespace', ...   # min: 1, max: 1024
-                ],                                           # OPTIONAL
+                ],    # OPTIONAL
                 BloomFilterFalsePositiveProbability => 1,    # max: 1; OPTIONAL
                 Compression => 'NONE',    # values: NONE, ZLIB, SNAPPY; OPTIONAL
                 DictionaryKeyThreshold => 1,    # max: 1; OPTIONAL
@@ -155,7 +155,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               ParquetSerDe => {
                 BlockSizeBytes => 1,    # min: 67108864; OPTIONAL
-                Compression =>
+                Compression    =>
                   'UNCOMPRESSED', # values: UNCOMPRESSED, GZIP, SNAPPY; OPTIONAL
                 EnableDictionaryCompression => 1,     # OPTIONAL
                 MaxPaddingBytes             => 1,     # OPTIONAL
@@ -200,10 +200,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RoleARN        => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         S3BackupMode   => 'Disabled',     # values: Disabled, Enabled; OPTIONAL
@@ -230,7 +230,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # max: 1024; OPTIONAL
           Prefix            => 'MyPrefix',               # max: 1024; OPTIONAL
-          RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+          RoleARN           => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       HttpEndpointDestinationUpdate => {
@@ -262,10 +262,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RequestConfiguration => {
           CommonAttributes => [
@@ -281,9 +281,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
         },    # OPTIONAL
-        RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+        RoleARN      => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         S3BackupMode =>
-          'FailedDataOnly',        # values: FailedDataOnly, AllData; OPTIONAL
+          'FailedDataOnly',    # values: FailedDataOnly, AllData; OPTIONAL
         S3Update => {
           BucketARN      => 'MyBucketARN',    # min: 1, max: 2048; OPTIONAL
           BufferingHints => {
@@ -307,7 +307,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # max: 1024; OPTIONAL
           Prefix            => 'MyPrefix',               # max: 1024; OPTIONAL
-          RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+          RoleARN           => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       RedshiftDestinationUpdate => {
@@ -337,10 +337,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
@@ -370,7 +370,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # max: 1024; OPTIONAL
           Prefix            => 'MyPrefix',               # max: 1024; OPTIONAL
-          RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+          RoleARN           => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
         S3Update => {
           BucketARN      => 'MyBucketARN',    # min: 1, max: 2048; OPTIONAL
@@ -395,7 +395,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # max: 1024; OPTIONAL
           Prefix            => 'MyPrefix',               # max: 1024; OPTIONAL
-          RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+          RoleARN           => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
         Username => 'MyUsername',    # min: 1, max: 512; OPTIONAL
       },    # OPTIONAL
@@ -447,10 +447,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                    # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         RetryOptions => {
           DurationInSeconds => 1,    # max: 7200; OPTIONAL
@@ -480,7 +480,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           ErrorOutputPrefix => 'MyErrorOutputPrefix',    # max: 1024; OPTIONAL
           Prefix            => 'MyPrefix',               # max: 1024; OPTIONAL
-          RoleARN => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
+          RoleARN           => 'MyRoleARN',    # min: 1, max: 512; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
     );

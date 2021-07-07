@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GroupDesc => 'MyIpGroupDesc',    # OPTIONAL
       Tags      => [
         {
-          Key   => 'MyTagKey',         # min: 1, max: 127
-          Value => 'MyTagValue',       # max: 255; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 127
+          Value => 'MyTagValue',    # max: 255; OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       UserRules => [
         {
           IpRule   => 'MyIpRule',        # OPTIONAL
           RuleDesc => 'MyIpRuleDesc',    # OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

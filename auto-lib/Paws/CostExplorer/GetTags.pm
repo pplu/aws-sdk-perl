@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Values => [
             'MyValue', ...    # max: 1024
-          ],                  # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Values => [
             'MyValue', ...    # max: 1024
-          ],                  # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
@@ -72,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Values => [
             'MyValue', ...    # max: 1024
-          ],                  # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       MaxResults    => 1,                    # OPTIONAL
@@ -80,12 +80,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SearchString  => 'MySearchString',     # OPTIONAL
       SortBy        => [
         {
-          Key => 'MySortDefinitionKey',      # max: 1024
+          Key       => 'MySortDefinitionKey',    # max: 1024
           SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
-      TagKey => 'MyTagKey',            # OPTIONAL
+      ],    # OPTIONAL
+      TagKey => 'MyTagKey',    # OPTIONAL
     );
 
     # Results:

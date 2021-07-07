@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 RetiringPrincipal => 'MyRetiringPrincipal',    # OPTIONAL
               },
               ...
-            ],                                                 # OPTIONAL
+            ],    # OPTIONAL
             KeyPolicies => { 'MyPolicyName' => 'MyKmsKeyPolicy', },   # OPTIONAL
           },    # OPTIONAL
           S3Bucket => {
@@ -91,7 +91,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],       # OPTIONAL
+            ],    # OPTIONAL
             BucketPolicy            => 'MyS3BucketPolicy',    # OPTIONAL
             BucketPublicAccessBlock => {
               IgnorePublicAcls      => 1,

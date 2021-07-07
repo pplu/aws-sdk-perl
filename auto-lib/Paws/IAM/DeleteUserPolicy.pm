@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To remove a policy from an IAM user
-    # The following delete-user-policy command removes the specified policy from
-    # the IAM user named Juan:
+# To remove a policy from an IAM user
+# The following delete-user-policy command removes the specified policy from the
+# IAM user named Juan:
     $iam->DeleteUserPolicy(
       'PolicyName' => 'ExamplePolicy',
       'UserName'   => 'Juan'

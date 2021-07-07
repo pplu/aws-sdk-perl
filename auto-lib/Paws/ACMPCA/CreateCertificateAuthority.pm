@@ -58,21 +58,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         CsrExtensions => {
           KeyUsage => {
-            CRLSign          => 1,                          # OPTIONAL
-            DataEncipherment => 1,                          # OPTIONAL
-            DecipherOnly     => 1,                          # OPTIONAL
-            DigitalSignature => 1,                          # OPTIONAL
-            EncipherOnly     => 1,                          # OPTIONAL
-            KeyAgreement     => 1,                          # OPTIONAL
-            KeyCertSign      => 1,                          # OPTIONAL
-            KeyEncipherment  => 1,                          # OPTIONAL
-            NonRepudiation   => 1,                          # OPTIONAL
+            CRLSign          => 1,    # OPTIONAL
+            DataEncipherment => 1,    # OPTIONAL
+            DecipherOnly     => 1,    # OPTIONAL
+            DigitalSignature => 1,    # OPTIONAL
+            EncipherOnly     => 1,    # OPTIONAL
+            KeyAgreement     => 1,    # OPTIONAL
+            KeyCertSign      => 1,    # OPTIONAL
+            KeyEncipherment  => 1,    # OPTIONAL
+            NonRepudiation   => 1,    # OPTIONAL
           },    # OPTIONAL
           SubjectInformationAccess => [
             {
               AccessLocation => {
                 DirectoryName => {
-                  CommonName => 'MyString64',    # max: 64; OPTIONAL
+                  CommonName => 'MyString64',         # max: 64; OPTIONAL
                   Country => 'MyCountryCodeString',   # min: 2, max: 2; OPTIONAL
                   DistinguishedNameQualifier =>
                     'MyASN1PrintableString64',        # max: 64; OPTIONAL
@@ -84,35 +84,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   OrganizationalUnit  => 'MyString64',     # max: 64; OPTIONAL
                   Pseudonym           => 'MyString128',    # max: 128; OPTIONAL
                   SerialNumber => 'MyASN1PrintableString64', # max: 64; OPTIONAL
-                  State   => 'MyString128',    # max: 128; OPTIONAL
-                  Surname => 'MyString40',     # max: 40; OPTIONAL
-                  Title   => 'MyString64',     # max: 64; OPTIONAL
+                  State        => 'MyString128',    # max: 128; OPTIONAL
+                  Surname      => 'MyString40',     # max: 40; OPTIONAL
+                  Title        => 'MyString64',     # max: 64; OPTIONAL
                 },
-                DnsName      => 'MyString253',    # max: 253; OPTIONAL
+                DnsName      => 'MyString253',      # max: 253; OPTIONAL
                 EdiPartyName => {
-                  PartyName    => 'MyString256',    # max: 256; OPTIONAL
-                  NameAssigner => 'MyString256',    # max: 256; OPTIONAL
+                  PartyName    => 'MyString256',    # max: 256
+                  NameAssigner => 'MyString256',    # max: 256
                 },    # OPTIONAL
                 IpAddress => 'MyString39',    # max: 39; OPTIONAL
                 OtherName => {
-                  TypeId => 'MyCustomObjectIdentifier',    # max: 64; OPTIONAL
-                  Value  => 'MyString256',                 # max: 256; OPTIONAL
+                  TypeId => 'MyCustomObjectIdentifier',    # max: 64
+                  Value  => 'MyString256',                 # max: 256
 
                 },    # OPTIONAL
-                RegisteredId => 'MyCustomObjectIdentifier', # max: 64; OPTIONAL
-                Rfc822Name   => 'MyString256',              # max: 256; OPTIONAL
+                RegisteredId => 'MyCustomObjectIdentifier',    # max: 64
+                Rfc822Name   => 'MyString256',                 # max: 256
                 UniformResourceIdentifier => 'MyString253', # max: 253; OPTIONAL
               },
               AccessMethod => {
                 AccessMethodType => 'CA_REPOSITORY'
                 , # values: CA_REPOSITORY, RESOURCE_PKI_MANIFEST, RESOURCE_PKI_NOTIFY; OPTIONAL
-                CustomObjectIdentifier =>
-                  'MyCustomObjectIdentifier',    # max: 64; OPTIONAL
+                CustomObjectIdentifier => 'MyCustomObjectIdentifier',  # max: 64
               },
 
             },
             ...
-          ],                                     # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
       },
       CertificateAuthorityType   => 'ROOT',
@@ -132,7 +131,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Marker   => 'MyMarker',    # OPTIONAL
       TapeARNs => [
         'MyTapeARN', ...         # min: 50, max: 500
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

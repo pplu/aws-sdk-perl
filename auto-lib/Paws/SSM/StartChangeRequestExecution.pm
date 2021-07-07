@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Parameters      => {
             'MyAutomationParameterKey' => [
               'MyAutomationParameterValue', ...      # min: 1, max: 512
-            ],    # key: min: 1, max: 50; OPTIONAL, value: max: 50
+            ],    # key: min: 1, max: 50, value: max: 50
           },    # min: 1, max: 200; OPTIONAL
           TargetLocations => [
             {
@@ -61,16 +61,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyMaxErrors',                     # min: 1, max: 7; OPTIONAL
             },
             ...
-          ],                                       # min: 1, max: 100; OPTIONAL
-          TargetParameterName =>
-            'MyAutomationParameterKey',            # min: 1, max: 50; OPTIONAL
-          Targets => [
+          ],    # min: 1, max: 100; OPTIONAL
+          TargetParameterName => 'MyAutomationParameterKey',   # min: 1, max: 50
+          Targets             => [
             {
               Key    => 'MyTargetKey',              # min: 1, max: 163; OPTIONAL
               Values => [ 'MyTargetValue', ... ],   # max: 50; OPTIONAL
             },
             ...
-          ],                                        # max: 5; OPTIONAL
+          ],    # max: 5; OPTIONAL
         },
         ...
       ],
@@ -81,18 +80,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters        => {
         'MyAutomationParameterKey' => [
           'MyAutomationParameterValue', ...           # min: 1, max: 512
-        ],    # key: min: 1, max: 50; OPTIONAL, value: max: 50
+        ],    # key: min: 1, max: 50, value: max: 50
       },    # OPTIONAL
       ScheduledEndTime => '1970-01-01T01:00:00',    # OPTIONAL
       ScheduledTime    => '1970-01-01T01:00:00',    # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',                      # min: 1, max: 128
-          Value => 'MyTagValue',                    # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

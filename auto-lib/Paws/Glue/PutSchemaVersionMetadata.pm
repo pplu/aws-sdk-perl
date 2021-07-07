@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SchemaId => {
         RegistryName =>
           'MySchemaRegistryNameString',             # min: 1, max: 255; OPTIONAL
-        SchemaArn => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
+        SchemaArn  => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
         SchemaName => 'MySchemaRegistryNameString', # min: 1, max: 255; OPTIONAL
       },    # OPTIONAL
       SchemaVersionId     => 'MySchemaVersionIdString',    # OPTIONAL

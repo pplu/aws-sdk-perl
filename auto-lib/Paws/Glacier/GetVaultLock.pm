@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $glacier = Paws->service('Glacier');
-    # To retrieve vault lock-policy related attributes that are set on a vault
-    # The example retrieves the attributes from the lock-policy subresource set
-    # on the vault named examplevault.
+  # To retrieve vault lock-policy related attributes that are set on a vault
+  # The example retrieves the attributes from the lock-policy subresource set on
+  # the vault named examplevault.
     my $GetVaultLockOutput = $glacier->GetVaultLock(
       'AccountId' => '-',
       'VaultName' => 'examplevault'

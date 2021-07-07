@@ -44,15 +44,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Paths              => [
         'MyDataRepositoryTaskPath', ...                # max: 4096
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                         # min: 1, max: 128
-          Value => 'MyTagValue',                       # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

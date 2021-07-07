@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $codebuild = Paws->service('CodeBuild');
-    # To get information about builds
-    # The following example gets information about builds with the specified
-    # build IDs.
+  # To get information about builds
+  # The following example gets information about builds with the specified build
+  # IDs.
     my $BatchGetBuildsOutput = $codebuild->BatchGetBuilds(
       'Ids' => [
         'codebuild-demo-project:9b0ac37f-d19e-4254-9079-f47e9a389eEX',

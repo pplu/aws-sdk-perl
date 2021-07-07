@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $api.sagemaker = Paws->service('SageMaker');
     my $StartPipelineExecutionResponse =
       $api . sagemaker->StartPipelineExecution(
-      ClientRequestToken => 'MyIdempotencyToken',
-      PipelineName       => 'MyPipelineName',
+      ClientRequestToken           => 'MyIdempotencyToken',
+      PipelineName                 => 'MyPipelineName',
       PipelineExecutionDescription =>
         'MyPipelineExecutionDescription',    # OPTIONAL
       PipelineExecutionDisplayName => 'MyPipelineExecutionName',    # OPTIONAL
@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

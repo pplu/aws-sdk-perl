@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-   # To list information about events
-   # This example lists information for all backup-related events for the
-   # specified DB instance for the past 7 days (7 days * 24 hours * 60 minutes =
-   # 10,080 minutes).
+# To list information about events
+# This example lists information for all backup-related events for the specified
+# DB instance for the past 7 days (7 days * 24 hours * 60 minutes = 10,080
+# minutes).
     my $EventsMessage = $rds->DescribeEvents(
       'Duration'         => 10080,
       'EventCategories'  => ['backup'],

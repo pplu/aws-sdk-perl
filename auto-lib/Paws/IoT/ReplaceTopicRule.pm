@@ -55,15 +55,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MetricTimestamp => 'MyString',
             },    # OPTIONAL
             DynamoDB => {
-              HashKeyField => 'MyHashKeyField',
-              HashKeyValue => 'MyHashKeyValue',
-              RoleArn      => 'MyAwsArn',
-              TableName    => 'MyTableName',
-              HashKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+              HashKeyField  => 'MyHashKeyField',
+              HashKeyValue  => 'MyHashKeyValue',
+              RoleArn       => 'MyAwsArn',
+              TableName     => 'MyTableName',
+              HashKeyType   => 'STRING',    # values: STRING, NUMBER; OPTIONAL
               Operation     => 'MyDynamoOperation',    # OPTIONAL
               PayloadField  => 'MyPayloadField',       # OPTIONAL
               RangeKeyField => 'MyRangeKeyField',      # OPTIONAL
-              RangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+              RangeKeyType  => 'STRING',    # values: STRING, NUMBER; OPTIONAL
               RangeKeyValue => 'MyRangeKeyValue',    # OPTIONAL
             },    # OPTIONAL
             DynamoDBv2 => {
@@ -96,7 +96,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   ServiceName   => 'MyServiceName',
                   SigningRegion => 'MySigningRegion',
 
-                },                # OPTIONAL
+                },    # OPTIONAL
               },    # OPTIONAL
               ConfirmationUrl => 'MyUrl',    # max: 2000
               Headers         => [
@@ -106,7 +106,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                              # max: 100; OPTIONAL
+              ],    # max: 100; OPTIONAL
             },    # OPTIONAL
             IotAnalytics => {
               BatchMode   => 1,                  # OPTIONAL
@@ -133,7 +133,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Value => {
                         BooleanValue =>
                           'MyAssetPropertyBooleanValue',     # OPTIONAL
-                        DoubleValue => 'MyAssetPropertyDoubleValue',  # OPTIONAL
+                        DoubleValue  => 'MyAssetPropertyDoubleValue', # OPTIONAL
                         IntegerValue =>
                           'MyAssetPropertyIntegerValue',              # OPTIONAL
                         StringValue => 'MyAssetPropertyStringValue'
@@ -142,14 +142,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Quality => 'MyAssetPropertyQuality',    # OPTIONAL
                     },
                     ...
-                  ],                                          # min: 1
+                  ],    # min: 1
                   AssetId       => 'MyAssetId',               # OPTIONAL
                   EntryId       => 'MyAssetPropertyEntryId',  # OPTIONAL
                   PropertyAlias => 'MyAssetPropertyAlias',    # min: 1; OPTIONAL
                   PropertyId    => 'MyAssetPropertyId',       # OPTIONAL
                 },
                 ...
-              ],                                              # min: 1
+              ],    # min: 1
               RoleArn => 'MyAwsArn',
 
             },    # OPTIONAL
@@ -221,7 +221,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 10
+        ],    # max: 10
         Sql              => 'MySQL',
         AwsIotSqlVersion => 'MyAwsIotSqlVersion',    # OPTIONAL
         Description      => 'MyDescription',         # OPTIONAL
@@ -232,12 +232,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             StateReason => 'MyStateReason',
             StateValue  => 'MyStateValue',
 
-          },                                         # OPTIONAL
+          },    # OPTIONAL
           CloudwatchLogs => {
             LogGroupName => 'MyLogGroupName',
             RoleArn      => 'MyAwsArn',
 
-          },                                         # OPTIONAL
+          },    # OPTIONAL
           CloudwatchMetric => {
             MetricName      => 'MyString',
             MetricNamespace => 'MyString',
@@ -245,17 +245,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MetricValue     => 'MyString',
             RoleArn         => 'MyAwsArn',
             MetricTimestamp => 'MyString',
-          },                                         # OPTIONAL
+          },    # OPTIONAL
           DynamoDB => {
-            HashKeyField => 'MyHashKeyField',
-            HashKeyValue => 'MyHashKeyValue',
-            RoleArn      => 'MyAwsArn',
-            TableName    => 'MyTableName',
-            HashKeyType  => 'STRING',         # values: STRING, NUMBER; OPTIONAL
+            HashKeyField  => 'MyHashKeyField',
+            HashKeyValue  => 'MyHashKeyValue',
+            RoleArn       => 'MyAwsArn',
+            TableName     => 'MyTableName',
+            HashKeyType   => 'STRING',        # values: STRING, NUMBER; OPTIONAL
             Operation     => 'MyDynamoOperation',    # OPTIONAL
             PayloadField  => 'MyPayloadField',       # OPTIONAL
             RangeKeyField => 'MyRangeKeyField',      # OPTIONAL
-            RangeKeyType => 'STRING',    # values: STRING, NUMBER; OPTIONAL
+            RangeKeyType  => 'STRING',    # values: STRING, NUMBER; OPTIONAL
             RangeKeyValue => 'MyRangeKeyValue',    # OPTIONAL
           },    # OPTIONAL
           DynamoDBv2 => {
@@ -288,7 +288,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ServiceName   => 'MyServiceName',
                 SigningRegion => 'MySigningRegion',
 
-              },                # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
             ConfirmationUrl => 'MyUrl',    # max: 2000
             Headers         => [
@@ -298,7 +298,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                              # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
           },    # OPTIONAL
           IotAnalytics => {
             BatchMode   => 1,                  # OPTIONAL
@@ -332,14 +332,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Quality => 'MyAssetPropertyQuality',    # OPTIONAL
                   },
                   ...
-                ],                                          # min: 1
-                AssetId       => 'MyAssetId',               # OPTIONAL
-                EntryId       => 'MyAssetPropertyEntryId',  # OPTIONAL
-                PropertyAlias => 'MyAssetPropertyAlias',    # min: 1; OPTIONAL
-                PropertyId    => 'MyAssetPropertyId',       # OPTIONAL
+                ],    # min: 1
+                AssetId       => 'MyAssetId',                 # OPTIONAL
+                EntryId       => 'MyAssetPropertyEntryId',    # OPTIONAL
+                PropertyAlias => 'MyAssetPropertyAlias',      # min: 1; OPTIONAL
+                PropertyId    => 'MyAssetPropertyId',         # OPTIONAL
               },
               ...
-            ],                                              # min: 1
+            ],    # min: 1
             RoleArn => 'MyAwsArn',
 
           },    # OPTIONAL

@@ -51,13 +51,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                        # OPTIONAL
+          ],    # OPTIONAL
         },
         Name    => 'Mystring',
         Comment => 'Mystring',
       },
       Id      => 'Mystring',
-      IfMatch => 'Mystring',                        # OPTIONAL
+      IfMatch => 'Mystring',    # OPTIONAL
       );
 
     # Results:

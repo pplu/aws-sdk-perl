@@ -44,18 +44,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               IntegerValues => [ 1, ... ],      # max: 100; OPTIONAL
               StringValues  => [
                 'MyStringListMemberString', ...    # max: 1000
-              ],                                   # max: 100; OPTIONAL
+              ],    # max: 100; OPTIONAL
             },    # OPTIONAL
           },
           Key => 'MyFilterKeyString',    # max: 50
 
         },
         ...
-      ],                                 # OPTIONAL
-      MaxResults => 1,                   # OPTIONAL
-      NextToken  => 'MyNextToken',       # OPTIONAL
-      SortBy     => 'EVENT_TIME',        # OPTIONAL
-      SortOrder  => 'ASCENDING',         # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
+      SortBy     => 'EVENT_TIME',     # OPTIONAL
+      SortOrder  => 'ASCENDING',      # OPTIONAL
     );
 
     # Results:

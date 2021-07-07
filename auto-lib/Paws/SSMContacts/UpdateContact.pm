@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Plan        => {
         Stages => [
           {
-            DurationInMinutes => 1,        # max: 30
+            DurationInMinutes => 1,    # max: 30
             Targets           => [
               {
                 ChannelTargetInfo => {

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To describe virtual tape library (VTL) devices of a single gateway
-    # Returns a description of virtual tape library (VTL) devices for the
-    # specified gateway.
+ # To describe virtual tape library (VTL) devices of a single gateway
+ # Returns a description of virtual tape library (VTL) devices for the specified
+ # gateway.
     my $DescribeVTLDevicesOutput = $storagegateway->DescribeVTLDevices(
       'GatewayARN' =>
         'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B',

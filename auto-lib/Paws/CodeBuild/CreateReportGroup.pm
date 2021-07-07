@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           BucketOwner        => 'MyString',            # OPTIONAL
           EncryptionDisabled => 1,                     # OPTIONAL
           EncryptionKey      => 'MyNonEmptyString',    # min: 1; OPTIONAL
-          Packaging => 'ZIP',         # values: ZIP, NONE; OPTIONAL
-          Path      => 'MyString',    # OPTIONAL
+          Packaging          => 'ZIP',         # values: ZIP, NONE; OPTIONAL
+          Path               => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },
       Name => 'MyReportGroupName',
@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyValueInput',    # max: 255; OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

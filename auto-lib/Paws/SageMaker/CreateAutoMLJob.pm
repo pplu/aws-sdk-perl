@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           TargetAttributeName => 'MyTargetAttributeName',    # min: 1
-          CompressionType => 'None',    # values: None, Gzip; OPTIONAL
+          CompressionType     => 'None',    # values: None, Gzip; OPTIONAL
         },
         ...
       ],
@@ -70,10 +70,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VpcConfig      => {
             SecurityGroupIds => [
               'MySecurityGroupId', ...                   # max: 32
-            ],                                           # min: 1, max: 5
+            ],    # min: 1, max: 5
             Subnets => [
-              'MySubnetId', ...                          # max: 32
-            ],                                           # min: 1, max: 16
+              'MySubnetId', ...    # max: 32
+            ],    # min: 1, max: 16
 
           },    # OPTIONAL
         },    # OPTIONAL
@@ -90,12 +90,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProblemType => 'BinaryClassification',    # OPTIONAL
       Tags        => [
         {
-          Key   => 'MyTagKey',                  # min: 1, max: 128
-          Value => 'MyTagValue',                # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

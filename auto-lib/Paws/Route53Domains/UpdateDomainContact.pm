@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         Fax              => 'MyContactNumber',    # max: 30; OPTIONAL
         FirstName        => 'MyContactName',      # max: 255; OPTIONAL
         LastName         => 'MyContactName',      # max: 255; OPTIONAL
@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         Fax              => 'MyContactNumber',    # max: 30; OPTIONAL
         FirstName        => 'MyContactName',      # max: 255; OPTIONAL
         LastName         => 'MyContactName',      # max: 255; OPTIONAL
@@ -101,7 +101,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         Fax              => 'MyContactNumber',    # max: 30; OPTIONAL
         FirstName        => 'MyContactName',      # max: 255; OPTIONAL
         LastName         => 'MyContactName',      # max: 255; OPTIONAL

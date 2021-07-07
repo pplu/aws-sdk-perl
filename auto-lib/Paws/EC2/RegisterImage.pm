@@ -48,14 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DeviceName => 'MyString',
           Ebs        => {
-            DeleteOnTermination => 1,                # OPTIONAL
-            Encrypted           => 1,                # OPTIONAL
-            Iops                => 1,                # OPTIONAL
+            DeleteOnTermination => 1,            # OPTIONAL
+            Encrypted           => 1,            # OPTIONAL
+            Iops                => 1,            # OPTIONAL
             KmsKeyId            => 'MyString',
             OutpostArn          => 'MyString',
             SnapshotId          => 'MyString',
-            Throughput          => 1,                # OPTIONAL
-            VolumeSize          => 1,                # OPTIONAL
+            Throughput          => 1,            # OPTIONAL
+            VolumeSize          => 1,            # OPTIONAL
             VolumeType          => 'standard'
             ,    # values: standard, io1, io2, gp2, sc1, st1, gp3; OPTIONAL
           },    # OPTIONAL
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VirtualName => 'MyString',
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       BootMode           => 'legacy-bios',    # OPTIONAL
       Description        => 'MyString',       # OPTIONAL
       DryRun             => 1,                # OPTIONAL

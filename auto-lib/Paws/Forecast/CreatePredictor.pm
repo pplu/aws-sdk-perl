@@ -54,31 +54,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # min: 1, max: 20; OPTIONAL
               },
               ...
-            ],        # min: 1, max: 1; OPTIONAL
+            ],    # min: 1, max: 1; OPTIONAL
           },
           ...
-        ],            # min: 1, max: 50; OPTIONAL
+        ],    # min: 1, max: 50; OPTIONAL
         ForecastDimensions => [
           'MyName', ...    # min: 1, max: 63
-        ],                 # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
       },
       ForecastHorizon => 1,
       InputDataConfig => {
         DatasetGroupArn       => 'MyArn',    # max: 256
         SupplementaryFeatures => [
           {
-            Name  => 'MyName',               # min: 1, max: 63
-            Value => 'MyValue',              # max: 256
+            Name  => 'MyName',     # min: 1, max: 63
+            Value => 'MyValue',    # max: 256
 
           },
           ...
-        ],                                   # min: 1, max: 2; OPTIONAL
+        ],    # min: 1, max: 2; OPTIONAL
       },
       PredictorName    => 'MyName',
-      AlgorithmArn     => 'MyArn',           # OPTIONAL
+      AlgorithmArn     => 'MyArn',    # OPTIONAL
       EncryptionConfig => {
-        KMSKeyArn => 'MyKMSKeyArn',          # max: 256
-        RoleArn   => 'MyArn',                # max: 256
+        KMSKeyArn => 'MyKMSKeyArn',    # max: 256
+        RoleArn   => 'MyArn',          # max: 256
 
       },    # OPTIONAL
       EvaluationParameters => {
@@ -90,19 +90,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ParameterRanges => {
           CategoricalParameterRanges => [
             {
-              Name   => 'MyName',                    # min: 1, max: 63
+              Name   => 'MyName',    # min: 1, max: 63
               Values => [
-                'MyValue', ...                       # max: 256
-              ],                                     # min: 1, max: 20
+                'MyValue', ...       # max: 256
+              ],    # min: 1, max: 20
 
             },
             ...
-          ],                                         # min: 1, max: 20; OPTIONAL
+          ],    # min: 1, max: 20; OPTIONAL
           ContinuousParameterRanges => [
             {
               MaxValue    => 1,
               MinValue    => 1,
-              Name        => 'MyName',               # min: 1, max: 63
+              Name        => 'MyName',    # min: 1, max: 63
               ScalingType => 'Auto'
               , # values: Auto, Linear, Logarithmic, ReverseLogarithmic; OPTIONAL
             },
@@ -129,7 +129,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TrainingParameters => {
         'MyParameterKey' => 'MyParameterValue', # key: max: 256, value: max: 256
       },    # OPTIONAL

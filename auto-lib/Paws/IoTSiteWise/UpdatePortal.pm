@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PortalDescription  => 'MyDescription',    # OPTIONAL
       PortalLogoImage    => {
         File => {
-          Data => 'BlobImageFileData',          # min: 1, max: 1500000
-          Type => 'PNG',                        # values: PNG
+          Data => 'BlobImageFileData',    # min: 1, max: 1500000
+          Type => 'PNG',                  # values: PNG
 
         },    # OPTIONAL
         Id => 'MyID',    # min: 36, max: 36

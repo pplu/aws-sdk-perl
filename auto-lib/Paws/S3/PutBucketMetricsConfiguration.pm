@@ -50,15 +50,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value => 'MyValue',
 
               },
-              ...                          # OPTIONAL
-            ],                             # OPTIONAL
+              ...
+            ],    # OPTIONAL
           },    # OPTIONAL
           Prefix => 'MyPrefix',    # OPTIONAL
           Tag    => {
             Key   => 'MyObjectKey',    # min: 1
             Value => 'MyValue',
 
-          },    # OPTIONAL
+          },
         },    # OPTIONAL
       },
       ContentLength       => 1,                # OPTIONAL

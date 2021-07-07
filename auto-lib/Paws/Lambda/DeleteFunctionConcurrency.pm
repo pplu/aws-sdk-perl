@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To remove the reserved concurrent execution limit from a function
-    # The following example deletes the reserved concurrent execution limit from
-    # a function named my-function.
+  # To remove the reserved concurrent execution limit from a function
+  # The following example deletes the reserved concurrent execution limit from a
+  # function named my-function.
     $lambda->DeleteFunctionConcurrency( 'FunctionName' => 'my-function' );
 
 

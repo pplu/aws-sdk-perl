@@ -83,7 +83,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       MinLatency             => 1,                                    # OPTIONAL
       Port                   => 1,                                    # OPTIONAL
       Protocol               => 'zixi-push',                          # OPTIONAL

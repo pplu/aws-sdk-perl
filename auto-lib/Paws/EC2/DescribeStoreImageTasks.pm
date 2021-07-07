@@ -35,14 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun  => 1,    # OPTIONAL
       Filters => [
         {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],    # OPTIONAL
+          Name   => 'MyString',    # OPTIONAL
+          Values => [
+            'MyString', ...        # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
-      ImageIds   => [ 'MyImageId', ... ],   # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyString',             # OPTIONAL
+      ],    # OPTIONAL
+      ImageIds   => [ 'MyImageId', ... ],    # OPTIONAL
+      MaxResults => 1,                       # OPTIONAL
+      NextToken  => 'MyString',              # OPTIONAL
     );
 
     # Results:

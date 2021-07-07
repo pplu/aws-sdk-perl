@@ -38,14 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       DefaultProcessOwners => [
         {
-          RoleArn => 'MyIamArn',    # min: 20, max: 2048; OPTIONAL
+          RoleArn  => 'MyIamArn',    # min: 20, max: 2048; OPTIONAL
           RoleType =>
             'PROCESS_OWNER',   # values: PROCESS_OWNER, RESOURCE_OWNER; OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      KmsKey   => 'MyKmsKey',  # OPTIONAL
-      SnsTopic => 'MySnsArn',  # OPTIONAL
+      ],    # OPTIONAL
+      KmsKey   => 'MyKmsKey',    # OPTIONAL
+      SnsTopic => 'MySnsArn',    # OPTIONAL
     );
 
     # Results:

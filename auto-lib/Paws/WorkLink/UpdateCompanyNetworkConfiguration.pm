@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $worklink->UpdateCompanyNetworkConfiguration(
       FleetArn         => 'MyFleetArn',
       SecurityGroupIds => [ 'MySecurityGroupId', ... ],
-      SubnetIds        => [ 'MySubnetId', ... ],
+      SubnetIds        => [ 'MySubnetId',        ... ],
       VpcId            => 'MyVpcId',
 
       );

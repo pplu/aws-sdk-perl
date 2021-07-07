@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TagKey    => 'MyLFTagKey',    # min: 1, max: 128
           TagValues => [
             'MyLFTagValue', ...         # max: 256
-          ],                            # min: 1, max: 50
+          ],    # min: 1, max: 50
 
         },
         ...

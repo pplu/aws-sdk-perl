@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    # Set request payment configuration on a bucket.
-    # The following example sets request payment configuration on a bucket so
-    # that person requesting the download is charged.
+  # Set request payment configuration on a bucket.
+  # The following example sets request payment configuration on a bucket so that
+  # person requesting the download is charged.
     $s3->PutBucketRequestPayment(
       'Bucket'                      => 'examplebucket',
       'RequestPaymentConfiguration' => {

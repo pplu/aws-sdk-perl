@@ -48,16 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ComputerAttributes => [
             {
               Name => 'MyActiveDirectoryComputerAttributeName'
-              ,                                   # min: 1, max: 40; OPTIONAL
+              ,    # min: 1, max: 40; OPTIONAL
               Value => 'MyActiveDirectoryComputerAttributeValue'
-              ,                                   # min: 1, max: 64; OPTIONAL
+              ,    # min: 1, max: 64; OPTIONAL
             },
             ...
-          ],                                      # max: 50; OPTIONAL
-          DirectoryId => 'MyDirectoryId',         # OPTIONAL
+          ],    # max: 50; OPTIONAL
+          DirectoryId                         => 'MyDirectoryId',    # OPTIONAL
           OrganizationalUnitDistinguishedName =>
             'MyActiveDirectoryOrganizationalUnitDistinguishedName'
-          ,                                       # min: 1, max: 2000; OPTIONAL
+          ,    # min: 1, max: 2000; OPTIONAL
         },    # OPTIONAL
         ComputeFarmConfiguration => {
           ActiveDirectoryUser => 'My__string',
@@ -78,21 +78,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           LaunchProfileProtocolVersion =>
             'MyLaunchProfileProtocolVersion',    # max: 10; OPTIONAL
-          Platform => 'LINUX',    # values: LINUX, WINDOWS; OPTIONAL
+          Platform   => 'LINUX',    # values: LINUX, WINDOWS; OPTIONAL
           RunContext => 'SYSTEM_INITIALIZATION'
           ,    # values: SYSTEM_INITIALIZATION, USER_INITIALIZATION; OPTIONAL
           Script => 'MyStudioComponentInitializationScriptContent'
           ,    # min: 1, max: 5120; OPTIONAL
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       ScriptParameters => [
         {
           Key   => 'MyScriptParameterKey',      # min: 1, max: 64; OPTIONAL
           Value => 'MyScriptParameterValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       Subtype => 'AWS_MANAGED_MICROSOFT_AD',           # OPTIONAL
       Tags    => { 'My__string' => 'My__string', },    # OPTIONAL
     );

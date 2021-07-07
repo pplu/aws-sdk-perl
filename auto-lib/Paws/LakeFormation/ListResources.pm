@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StringValueList => [ 'MyStringValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                                  # OPTIONAL
-      MaxResults => 1,                                    # OPTIONAL
-      NextToken  => 'MyToken',                            # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,            # OPTIONAL
+      NextToken  => 'MyToken',    # OPTIONAL
     );
 
     # Results:

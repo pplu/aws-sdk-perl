@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To remove tags from a resource
-    # This example removes the specified tag associated with the specified DB
-    # option group.
+# To remove tags from a resource
+# This example removes the specified tag associated with the specified DB option
+# group.
     $rds->RemoveTagsFromResource(
       'ResourceName' => 'arn:aws:rds:us-east-1:992648334831:og:mydboptiongroup',
       'TagKeys'      => ['MyKey']

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HITId              => 'MyEntityId',
       AssignmentStatuses => [
         'Submitted', ...    # values: Submitted, Approved, Rejected
-      ],                    # OPTIONAL
+      ],    # OPTIONAL
       MaxResults => 1,                      # OPTIONAL
       NextToken  => 'MyPaginationToken',    # OPTIONAL
       );

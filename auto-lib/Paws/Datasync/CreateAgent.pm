@@ -37,18 +37,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AgentName         => 'MyTagValue',        # OPTIONAL
       SecurityGroupArns => [
         'MyEc2SecurityGroupArn', ...            # max: 128
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       SubnetArns => [
-        'MyEc2SubnetArn', ...                   # max: 128
-      ],                                        # OPTIONAL
+        'MyEc2SubnetArn', ...    # max: 128
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                  # min: 1, max: 256
-          Value => 'MyTagValue',                # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 256
+          Value => 'MyTagValue',    # min: 1, max: 256
         },
         ...
-      ],                                        # OPTIONAL
-      VpcEndpointId => 'MyVpcEndpointId',       # OPTIONAL
+      ],    # OPTIONAL
+      VpcEndpointId => 'MyVpcEndpointId',    # OPTIONAL
     );
 
     # Results:

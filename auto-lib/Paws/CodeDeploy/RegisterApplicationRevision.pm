@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RevisionType =>
           'S3',    # values: S3, GitHub, String, AppSpecContent; OPTIONAL
         S3Location => {
-          Bucket => 'MyS3Bucket',    # OPTIONAL
+          Bucket     => 'MyS3Bucket',     # OPTIONAL
           BundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
           ETag       => 'MyETag',  # OPTIONAL
           Key        => 'MyS3Key', # OPTIONAL
-          Version => 'MyVersionId',    # OPTIONAL
+          Version    => 'MyVersionId',    # OPTIONAL
         },    # OPTIONAL
         String => {
           Content => 'MyRawStringContent',    # OPTIONAL

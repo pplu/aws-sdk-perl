@@ -48,12 +48,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },                                          # OPTIONAL
         KinesisVideoStreamConfig => {
           EncryptionConfig => {
-            EncryptionType => 'KMS',                # values: KMS
-            KeyId          => 'MyKeyId',            # min: 1, max: 128
+            EncryptionType => 'KMS',        # values: KMS
+            KeyId          => 'MyKeyId',    # min: 1, max: 128
 
           },
-          Prefix               => 'MyPrefix',       # min: 1, max: 128
-          RetentionPeriodHours => 1,                # max: 87600
+          Prefix               => 'MyPrefix',    # min: 1, max: 128
+          RetentionPeriodHours => 1,             # max: 87600
 
         },    # OPTIONAL
         S3Config => {

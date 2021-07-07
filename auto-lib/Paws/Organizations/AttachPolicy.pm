@@ -28,18 +28,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-   # To attach a policy to an OU
-   # The following example shows how to attach a service control policy (SCP) to
-   # an OU:
+# To attach a policy to an OU
+# The following example shows how to attach a service control policy (SCP) to an
+# OU:
 
     $organizations->AttachPolicy(
       'PolicyId' => 'p-examplepolicyid111',
       'TargetId' => 'ou-examplerootid111-exampleouid111'
     );
 
-   # To attach a policy to an account
-   # The following example shows how to attach a service control policy (SCP) to
-   # an account:
+# To attach a policy to an account
+# The following example shows how to attach a service control policy (SCP) to an
+# account:
 
     $organizations->AttachPolicy(
       'PolicyId' => 'p-examplepolicyid111',

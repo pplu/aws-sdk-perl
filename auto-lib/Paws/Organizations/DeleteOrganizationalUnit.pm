@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To delete an organization unit
-    # The following example shows how to delete an OU. The example assumes that
-    # you previously removed all accounts and other OUs from the OU:
+ # To delete an organization unit
+ # The following example shows how to delete an OU. The example assumes that you
+ # previously removed all accounts and other OUs from the OU:
 
     $organizations->DeleteOrganizationalUnit(
       'OrganizationalUnitId' => 'ou-examplerootid111-exampleouid111' );

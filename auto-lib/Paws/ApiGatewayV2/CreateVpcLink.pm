@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateVpcLinkResponse = $apigateway->CreateVpcLink(
       Name             => 'MyStringWithLengthBetween1And128',
       SubnetIds        => [ 'My__string', ... ],
-      SecurityGroupIds => [ 'My__string', ... ],                # OPTIONAL
+      SecurityGroupIds => [ 'My__string', ... ],    # OPTIONAL
       Tags => { 'My__string' => 'MyStringWithLengthBetween1And1600', }
-      ,                                                         # OPTIONAL
+      ,                                             # OPTIONAL
     );
 
     # Results:

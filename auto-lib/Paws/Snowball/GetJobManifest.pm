@@ -27,25 +27,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-   # To get the manifest for a job you've created for AWS Snowball
-   # Returns a link to an Amazon S3 presigned URL for the manifest file
-   # associated with the specified JobId value. You can access the manifest file
-   # for up to 60 minutes after this request has been made. To access the
-   # manifest file after 60 minutes have passed, you'll have to make another
-   # call to the GetJobManifest action.
-   #
-   # The manifest is an encrypted file that you can download after your job
-   # enters the WithCustomer status. The manifest is decrypted by using the
-   # UnlockCode code value, when you pass both values to the Snowball through
-   # the Snowball client when the client is started for the first time.
-   #
-   # As a best practice, we recommend that you don't save a copy of an
-   # UnlockCode value in the same location as the manifest file for that job.
-   # Saving these separately helps prevent unauthorized parties from gaining
-   # access to the Snowball associated with that job.
-   #
-   # The credentials of a given job, including its manifest file and unlock
-   # code, expire 90 days after the job is created.
+# To get the manifest for a job you've created for AWS Snowball
+# Returns a link to an Amazon S3 presigned URL for the manifest file associated
+# with the specified JobId value. You can access the manifest file for up to 60
+# minutes after this request has been made. To access the manifest file after 60
+# minutes have passed, you'll have to make another call to the GetJobManifest
+# action.
+#
+# The manifest is an encrypted file that you can download after your job enters
+# the WithCustomer status. The manifest is decrypted by using the UnlockCode
+# code value, when you pass both values to the Snowball through the Snowball
+# client when the client is started for the first time.
+#
+# As a best practice, we recommend that you don't save a copy of an UnlockCode
+# value in the same location as the manifest file for that job. Saving these
+# separately helps prevent unauthorized parties from gaining access to the
+# Snowball associated with that job.
+#
+# The credentials of a given job, including its manifest file and unlock code,
+# expire 90 days after the job is created.
     my $GetJobManifestResult = $snowball->GetJobManifest(
       'JobId' => 'JID123e4567-e89b-12d3-a456-426655440000' );
 

@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters                  => [
         {
           AllowedValues => 'MyString',
-          ApplyMethod =>
+          ApplyMethod   =>
             'immediate',    # values: immediate, pending-reboot; OPTIONAL
           ApplyType            => 'MyString',
           DataType             => 'MyString',

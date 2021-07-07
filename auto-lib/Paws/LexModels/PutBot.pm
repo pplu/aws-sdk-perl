@@ -43,77 +43,74 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    # To create a bot
-    # This example shows how to create a bot for ordering pizzas.
-    my $PutBotResponse = $models . lex->PutBot(
-      'AbortStatement' => {
-        'Messages' => [
-
-          {
-              'Content' => 'I don' t understand . Can you try again
-            ? ',
-' ContentType ' => ' PlainText '
-},
-
+# To create a bot
+# This example shows how to create a bot for ordering pizzas.
+my $PutBotResponse = $models.lex->PutBot(
+'AbortStatement' => 
 {
-' Content ' => ' I'm sorry, I don't understand . ',
-' ContentType ' => ' PlainText '
-}
-]
-},
-' ChildDirected ' => 1,
-' ClarificationPrompt ' => 
-{
-' MaxAttempts ' => 1,
-' Messages ' => 
+'Messages' => 
 [
 
 {
-' Content ' => ' I'm sorry,
-            I didn't hear that . Can you repeate what you just said
-                ? ',
-' ContentType ' => ' PlainText '
+'Content' => 'I don't understand. Can you try again?',
+'ContentType' => 'PlainText'
 },
 
 {
-' Content ' => ' Can you say that again
-                  ? ',
-' ContentType ' => ' PlainText '
+'Content' => 'I'm sorry, I don't understand.',
+'ContentType' => 'PlainText'
 }
 ]
 },
-' Description ' => ' Orders a pizza from a local pizzeria . ',
-' IdleSessionTTLInSeconds ' => 300,
-' Intents ' => 
+'ChildDirected' => 1,
+'ClarificationPrompt' => 
+{
+'MaxAttempts' => 1,
+'Messages' => 
 [
 
 {
-' IntentName ' => ' DocOrderPizza ',
-' IntentVersion ' => '$LATEST'
-              }
-            ],
-            'Locale'          => 'en-US',
-            'Name'            => 'DocOrderPizzaBot',
-            'ProcessBehavior' => 'SAVE'
-          );
+'Content' => 'I'm sorry, I didn't hear that. Can you repeate what you just said?',
+'ContentType' => 'PlainText'
+},
 
-          # Results:
-          my $abortStatement      = $PutBotResponse->abortStatement;
-          my $checksum            = $PutBotResponse->checksum;
-          my $childDirected       = $PutBotResponse->childDirected;
-          my $clarificationPrompt = $PutBotResponse->clarificationPrompt;
-          my $createdDate         = $PutBotResponse->createdDate;
-          my $description         = $PutBotResponse->description;
-          my $idleSessionTTLInSeconds =
-            $PutBotResponse->idleSessionTTLInSeconds;
-          my $intents         = $PutBotResponse->intents;
-          my $lastUpdatedDate = $PutBotResponse->lastUpdatedDate;
-          my $locale          = $PutBotResponse->locale;
-          my $name            = $PutBotResponse->name;
-          my $status          = $PutBotResponse->status;
-          my $version         = $PutBotResponse->version;
+{
+'Content' => 'Can you say that again?',
+'ContentType' => 'PlainText'
+}
+]
+},
+'Description' => 'Orders a pizza from a local pizzeria.',
+'IdleSessionTTLInSeconds' => 300,
+'Intents' => 
+[
 
-          # Returns a L<Paws::LexModels::PutBotResponse> object.
+{
+'IntentName' => 'DocOrderPizza',
+'IntentVersion' => '$LATEST'
+}
+],
+'Locale' => 'en-US',
+'Name' => 'DocOrderPizzaBot',
+'ProcessBehavior' => 'SAVE'
+);
+
+# Results:
+my $abortStatement = $PutBotResponse->abortStatement;
+my $checksum = $PutBotResponse->checksum;
+my $childDirected = $PutBotResponse->childDirected;
+my $clarificationPrompt = $PutBotResponse->clarificationPrompt;
+my $createdDate = $PutBotResponse->createdDate;
+my $description = $PutBotResponse->description;
+my $idleSessionTTLInSeconds = $PutBotResponse->idleSessionTTLInSeconds;
+my $intents = $PutBotResponse->intents;
+my $lastUpdatedDate = $PutBotResponse->lastUpdatedDate;
+my $locale = $PutBotResponse->locale;
+my $name = $PutBotResponse->name;
+my $status = $PutBotResponse->status;
+my $version = $PutBotResponse->version;
+
+# Returns a L<Paws::LexModels::PutBotResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutBot>

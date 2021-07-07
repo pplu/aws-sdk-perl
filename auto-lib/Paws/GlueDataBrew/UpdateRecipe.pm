@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Steps       => [
         {
           Action => {
-            Operation  => 'MyOperation',       # min: 1, max: 128
+            Operation  => 'MyOperation',    # min: 1, max: 128
             Parameters => {
               'MyParameterName' => 'MyParameterValue'
               ,    # key: min: 1, max: 128, value: min: 1, max: 12288
@@ -49,10 +49,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value        => 'MyConditionValue',    # max: 1024; OPTIONAL
             },
             ...
-          ],                                         # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

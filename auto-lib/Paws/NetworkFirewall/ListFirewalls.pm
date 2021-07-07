@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken  => 'MyPaginationToken',    # OPTIONAL
       VpcIds     => [
         'MyVpcId', ...                      # min: 1, max: 128
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

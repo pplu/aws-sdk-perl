@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             AwsSignerJobId    => 'MySigningJobId',              # OPTIONAL
             CustomCodeSigning => {
               CertificateChain => {
-                CertificateName => 'MyCertificateName',         # OPTIONAL
-                InlineDocument  => 'MyInlineDocument',          # OPTIONAL
+                CertificateName => 'MyCertificateName',    # OPTIONAL
+                InlineDocument  => 'MyInlineDocument',     # OPTIONAL
               },    # OPTIONAL
               HashAlgorithm => 'MyHashAlgorithm',    # OPTIONAL
               Signature     => {
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               SigningProfileName      => 'MySigningProfileName',    # OPTIONAL
               SigningProfileParameter => {
-                CertificateArn => 'MyCertificateArn',               # OPTIONAL
+                CertificateArn          => 'MyCertificateArn',      # OPTIONAL
                 CertificatePathOnDevice =>
                   'MyCertificatePathOnDevice',                      # OPTIONAL
                 Platform => 'MyPlatform',                           # OPTIONAL
@@ -104,7 +104,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # min: 1
+        ],    # min: 1
 
       },    # OPTIONAL
       AwsJobExecutionsRolloutConfig => {
@@ -128,15 +128,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyOTAUpdateDescription',    # OPTIONAL
       Protocols   => [
         'MQTT', ...                               # values: MQTT, HTTP
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                    # min: 1, max: 128
-          Value => 'MyTagValue',                  # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
-      TargetSelection => 'CONTINUOUS',            # OPTIONAL
+      ],    # OPTIONAL
+      TargetSelection => 'CONTINUOUS',    # OPTIONAL
     );
 
     # Results:

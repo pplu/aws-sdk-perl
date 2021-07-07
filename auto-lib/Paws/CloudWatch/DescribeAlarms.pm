@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AlarmNamePrefix => 'MyAlarmNamePrefix',    # OPTIONAL
       AlarmNames      => [
         'MyAlarmName', ...                       # min: 1, max: 255
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       AlarmTypes => [
         'CompositeAlarm', ...    # values: CompositeAlarm, MetricAlarm
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       ChildrenOfAlarmName => 'MyAlarmName',    # OPTIONAL
       MaxRecords          => 1,                # OPTIONAL
       NextToken           => 'MyNextToken',    # OPTIONAL

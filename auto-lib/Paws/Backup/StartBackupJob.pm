@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IamRoleArn      => 'MyIAMRoleArn',
       ResourceArn     => 'MyARN',
       BackupOptions   => { 'MyBackupOptionKey' => 'MyBackupOptionValue', }
-      ,    # OPTIONAL
+      ,                                       # OPTIONAL
       CompleteWindowMinutes => 1,             # OPTIONAL
       IdempotencyToken      => 'Mystring',    # OPTIONAL
       Lifecycle             => {

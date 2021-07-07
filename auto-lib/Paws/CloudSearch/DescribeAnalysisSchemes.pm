@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainName          => 'MyDomainName',
       AnalysisSchemeNames => [
         'MyStandardName', ...    # min: 1, max: 64
-      ],                         # OPTIONAL
-      Deployed => 1,             # OPTIONAL
+      ],    # OPTIONAL
+      Deployed => 1,    # OPTIONAL
     );
 
     # Results:

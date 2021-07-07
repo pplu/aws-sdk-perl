@@ -39,11 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                  # max: 25
+            ],    # max: 25
 
           },
           ...
-        ],                                      # max: 1
+        ],    # max: 1
 
       },
 

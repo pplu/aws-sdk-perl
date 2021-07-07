@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key =>
             'ResourceType',   # values: ResourceType, AssociationId, ResourceUri
           Operator => 'Equal',    # values: Equal
-          Values => [ 'MyOpsItemRelatedItemsFilterValue', ... ],
+          Values   => [ 'MyOpsItemRelatedItemsFilterValue', ... ],
 
         },
         ...
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyString',       # OPTIONAL
       OpsItemId  => 'MyOpsItemId',    # OPTIONAL

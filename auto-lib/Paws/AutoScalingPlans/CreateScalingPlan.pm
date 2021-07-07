@@ -37,16 +37,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key    => 'MyXmlStringMaxLen128',       # min: 1, max: 128; OPTIONAL
             Values => [
               'MyXmlStringMaxLen256', ...           # min: 1, max: 256
-            ],                                      # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
-        ],                                          # OPTIONAL
+        ],    # OPTIONAL
       },
       ScalingInstructions => [
         {
-          MaxCapacity => 1,
-          MinCapacity => 1,
-          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
+          MaxCapacity       => 1,
+          MinCapacity       => 1,
+          ResourceId        => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
           ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
           , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
           ServiceNamespace =>
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CustomizedLoadMetricSpecification => {
             MetricName => 'MyMetricName',
             Namespace  => 'MyMetricNamespace',
-            Statistic =>
+            Statistic  =>
               'Average',   # values: Average, Minimum, Maximum, SampleCount, Sum
             Dimensions => [
               {

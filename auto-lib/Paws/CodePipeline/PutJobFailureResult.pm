@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codepipeline = Paws->service('CodePipeline');
     $codepipeline->PutJobFailureResult(
       FailureDetails => {
-        Message => 'MyMessage',    # min: 1, max: 5000
+        Message => 'MyMessage',                    # min: 1, max: 5000
         Type    => 'JobFailed'
         , # values: JobFailed, ConfigurationError, PermissionError, RevisionOutOfSync, RevisionUnavailable, SystemUnavailable
         ExternalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL

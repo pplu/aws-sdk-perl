@@ -63,9 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'VPCZoneIdentifier'   => 'subnet-057fa0918fEXAMPLE'
     );
 
-    # To create an Auto Scaling group with an attached target group
-    # This example creates an Auto Scaling group and attaches the specified
-    # target group.
+  # To create an Auto Scaling group with an attached target group
+  # This example creates an Auto Scaling group and attaches the specified target
+  # group.
     $autoscaling->CreateAutoScalingGroup(
       'AutoScalingGroupName'   => 'my-auto-scaling-group',
       'HealthCheckGracePeriod' => 300,
@@ -82,10 +82,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'VPCZoneIdentifier' => 'subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE'
     );
 
-    # To create an Auto Scaling group with a mixed instances policy
-    # This example creates an Auto Scaling group with a mixed instances policy.
-    # It specifies the c5.large, c5a.large, and c6g.large instance types and
-    # defines a different launch template for the c6g.large instance type.
+ # To create an Auto Scaling group with a mixed instances policy
+ # This example creates an Auto Scaling group with a mixed instances policy. It
+ # specifies the c5.large, c5a.large, and c6g.large instance types and defines a
+ # different launch template for the c6g.large instance type.
     $autoscaling->CreateAutoScalingGroup(
       'AutoScalingGroupName' => 'my-asg',
       'DesiredCapacity'      => 3,

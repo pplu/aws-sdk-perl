@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeFleetsResult = $appstream2->DescribeFleets(
       Names => [
         'MyString', ...    # min: 1
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
       NextToken => 'MyString',    # OPTIONAL
     );
 

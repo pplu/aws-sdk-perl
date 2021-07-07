@@ -54,15 +54,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LambdaRole => 'MyArn',              # min: 1, max: 1600; OPTIONAL
             TagList    => [
               'MyTag', ...                      # max: 256
-            ],                                  # max: 5; OPTIONAL
+            ],    # max: 5; OPTIONAL
             TaskList => {
-              Name => 'MyName',                 # min: 1, max: 256
+              Name => 'MyName',    # min: 1, max: 256
 
             },    # OPTIONAL
-            TaskPriority => 'MyTaskPriority',    # OPTIONAL
+            TaskPriority            => 'MyTaskPriority',    # OPTIONAL
             TaskStartToCloseTimeout =>
-              'MyDurationInSecondsOptional',     # max: 8; OPTIONAL
-            WorkflowTypeVersion => 'MyVersion',  # min: 1, max: 64; OPTIONAL
+              'MyDurationInSecondsOptional',                # max: 8; OPTIONAL
+            WorkflowTypeVersion => 'MyVersion',    # min: 1, max: 64; OPTIONAL
           },    # OPTIONAL
           FailWorkflowExecutionDecisionAttributes => {
             Details => 'MyData',             # max: 32768; OPTIONAL
@@ -88,10 +88,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Version => 'MyVersion',          # min: 1, max: 64; OPTIONAL
 
             },
-            Control => 'MyData',               # max: 32768; OPTIONAL
+            Control          => 'MyData',       # max: 32768; OPTIONAL
             HeartbeatTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            Input => 'MyData',                  # max: 32768; OPTIONAL
+            Input                  => 'MyData', # max: 32768; OPTIONAL
             ScheduleToCloseTimeout =>
               'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
             ScheduleToStartTimeout =>
@@ -105,12 +105,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TaskPriority => 'MyTaskPriority',    # OPTIONAL
           },    # OPTIONAL
           ScheduleLambdaFunctionDecisionAttributes => {
-            Id      => 'MyFunctionId',       # min: 1, max: 256
-            Name    => 'MyFunctionName',     # min: 1, max: 64
-            Control => 'MyData',             # max: 32768; OPTIONAL
-            Input   => 'MyFunctionInput',    # max: 32768; OPTIONAL
+            Id                  => 'MyFunctionId',       # min: 1, max: 256
+            Name                => 'MyFunctionName',     # min: 1, max: 64
+            Control             => 'MyData',             # max: 32768; OPTIONAL
+            Input               => 'MyFunctionInput',    # max: 32768; OPTIONAL
             StartToCloseTimeout =>
-              'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
+              'MyDurationInSecondsOptional',             # max: 8; OPTIONAL
           },    # OPTIONAL
           SignalExternalWorkflowExecutionDecisionAttributes => {
             SignalName => 'MySignalName',               # min: 1, max: 256
@@ -128,21 +128,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ChildPolicy => 'TERMINATE'
             ,    # values: TERMINATE, REQUEST_CANCEL, ABANDON; OPTIONAL
-            Control => 'MyData',    # max: 32768; OPTIONAL
+            Control                      => 'MyData',    # max: 32768; OPTIONAL
             ExecutionStartToCloseTimeout =>
-              'MyDurationInSecondsOptional',    # max: 8; OPTIONAL
-            Input      => 'MyData',             # max: 32768; OPTIONAL
-            LambdaRole => 'MyArn',              # min: 1, max: 1600; OPTIONAL
+              'MyDurationInSecondsOptional',             # max: 8; OPTIONAL
+            Input      => 'MyData',    # max: 32768; OPTIONAL
+            LambdaRole => 'MyArn',     # min: 1, max: 1600; OPTIONAL
             TagList    => [
-              'MyTag', ...                      # max: 256
-            ],                                  # max: 5; OPTIONAL
+              'MyTag', ...             # max: 256
+            ],    # max: 5; OPTIONAL
             TaskList => {
-              Name => 'MyName',                 # min: 1, max: 256
+              Name => 'MyName',    # min: 1, max: 256
 
             },    # OPTIONAL
-            TaskPriority => 'MyTaskPriority',    # OPTIONAL
+            TaskPriority            => 'MyTaskPriority',    # OPTIONAL
             TaskStartToCloseTimeout =>
-              'MyDurationInSecondsOptional',     # max: 8; OPTIONAL
+              'MyDurationInSecondsOptional',                # max: 8; OPTIONAL
           },    # OPTIONAL
           StartTimerDecisionAttributes => {
             StartToFireTimeout => 'MyDurationInSeconds',  # min: 1, max: 8
@@ -151,7 +151,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       ExecutionContext => 'MyData',    # OPTIONAL
     );
 

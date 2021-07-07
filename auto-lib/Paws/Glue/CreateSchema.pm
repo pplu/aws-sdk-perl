@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Compatibility => 'NONE',                         # OPTIONAL
       Description   => 'MyDescriptionString',          # OPTIONAL
       RegistryId    => {
-        RegistryArn => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
+        RegistryArn  => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
         RegistryName => 'MySchemaRegistryNameString',    # min: 1, max: 255
       },    # OPTIONAL
       SchemaDefinition => 'MySchemaDefinitionString',    # OPTIONAL

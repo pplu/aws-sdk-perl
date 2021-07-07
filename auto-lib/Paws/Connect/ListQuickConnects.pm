@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken         => 'MyNextToken',    # OPTIONAL
       QuickConnectTypes => [
         'USER', ...                          # values: USER, QUEUE, PHONE_NUMBER
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

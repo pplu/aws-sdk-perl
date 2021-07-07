@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To cancel virtual tape archiving
-    # Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after
-    # the archiving process is initiated.
+ # To cancel virtual tape archiving
+ # Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the
+ # archiving process is initiated.
     my $CancelArchivalOutput = $storagegateway->CancelArchival(
       'GatewayARN' =>
         'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B',

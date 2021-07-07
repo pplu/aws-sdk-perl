@@ -44,16 +44,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyDirectoryName',
       Password    => 'MyConnectPassword',
       Size        => 'Small',
-      Description => 'MyDescription',                # OPTIONAL
-      ShortName   => 'MyDirectoryShortName',         # OPTIONAL
+      Description => 'MyDescription',           # OPTIONAL
+      ShortName   => 'MyDirectoryShortName',    # OPTIONAL
       Tags        => [
         {
-          Key   => 'MyTagKey',                       # min: 1, max: 128
-          Value => 'MyTagValue',                     # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                             # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

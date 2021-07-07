@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Limit => 1,    # OPTIONAL
       Names => [
         'MyGameSessionQueueNameOrArn', ...    # min: 1, max: 256
-      ],                                      # OPTIONAL
-      NextToken => 'MyNonZeroAndMaxString',   # OPTIONAL
+      ],    # OPTIONAL
+      NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
 
     # Results:

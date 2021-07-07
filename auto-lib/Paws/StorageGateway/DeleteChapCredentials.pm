@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To delete CHAP credentials
-    # Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for
-    # a specified iSCSI target and initiator pair.
+  # To delete CHAP credentials
+  # Deletes Challenge-Handshake Authentication Protocol (CHAP) credentials for a
+  # specified iSCSI target and initiator pair.
     my $DeleteChapCredentialsOutput = $storagegateway->DeleteChapCredentials(
       'InitiatorName' =>
         'iqn.1991-05.com.microsoft:computername.domain.example.com',

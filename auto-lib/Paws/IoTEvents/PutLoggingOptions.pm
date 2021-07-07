@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DetectorDebugOptions => [
           {
             DetectorModelName => 'MyDetectorModelName',    # min: 1, max: 128
-            KeyValue => 'MyKeyValue',    # min: 1, max: 128; OPTIONAL
+            KeyValue          => 'MyKeyValue',    # min: 1, max: 128; OPTIONAL
           },
           ...
-        ],                               # min: 1; OPTIONAL
+        ],    # min: 1; OPTIONAL
       },
 
     );

@@ -55,16 +55,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ArchitecturalDesign => 'MyWorkloadArchitecturalDesign',    # OPTIONAL
       AwsRegions          => [
         'MyAwsRegion', ...                                       # max: 100
-      ],                                                         # OPTIONAL
-      Industry      => 'MyWorkloadIndustry',                     # OPTIONAL
-      IndustryType  => 'MyWorkloadIndustryType',                 # OPTIONAL
+      ],    # OPTIONAL
+      Industry      => 'MyWorkloadIndustry',        # OPTIONAL
+      IndustryType  => 'MyWorkloadIndustryType',    # OPTIONAL
       NonAwsRegions => [
-        'MyWorkloadNonAwsRegion', ...    # min: 3, max: 25
-      ],                                 # OPTIONAL
-      Notes            => 'MyNotes',     # OPTIONAL
+        'MyWorkloadNonAwsRegion', ...               # min: 3, max: 25
+      ],    # OPTIONAL
+      Notes            => 'MyNotes',    # OPTIONAL
       PillarPriorities => [
-        'MyPillarId', ...                # min: 1, max: 64
-      ],                                 # OPTIONAL
+        'MyPillarId', ...               # min: 1, max: 64
+      ],    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL

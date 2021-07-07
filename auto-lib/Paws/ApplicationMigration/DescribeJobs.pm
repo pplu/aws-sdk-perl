@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FromDate => 'MyISO8601DatetimeString',    # min: 19, max: 32; OPTIONAL
         JobIDs   => [
           'MyJobID', ...                          # min: 24, max: 24
-        ],                                        # max: 1000; OPTIONAL
-        ToDate => 'MyISO8601DatetimeString',      # min: 19, max: 32; OPTIONAL
+        ],    # max: 1000; OPTIONAL
+        ToDate => 'MyISO8601DatetimeString',    # min: 19, max: 32; OPTIONAL
       },
-      MaxResults => 1,                            # OPTIONAL
-      NextToken  => 'MyPaginationToken',          # OPTIONAL
+      MaxResults => 1,                          # OPTIONAL
+      NextToken  => 'MyPaginationToken',        # OPTIONAL
     );
 
     # Results:

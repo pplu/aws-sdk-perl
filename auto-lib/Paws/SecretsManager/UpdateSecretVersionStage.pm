@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    # To add a staging label attached to a version of a secret
-    # The following example shows you how to add a staging label to a version of
-    # a secret. You can review the results by running the operation
-    # ListSecretVersionIds and viewing the VersionStages response field for the
-    # affected version.
+  # To add a staging label attached to a version of a secret
+  # The following example shows you how to add a staging label to a version of a
+  # secret. You can review the results by running the operation
+  # ListSecretVersionIds and viewing the VersionStages response field for the
+  # affected version.
     my $UpdateSecretVersionStageResponse =
       $secretsmanager->UpdateSecretVersionStage(
       'MoveToVersionId' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ARN  = $UpdateSecretVersionStageResponse->ARN;
     my $Name = $UpdateSecretVersionStageResponse->Name;
 
-   # Returns a L<Paws::SecretsManager::UpdateSecretVersionStageResponse> object.
-   # To delete a staging label attached to a version of a secret
-   # The following example shows you how to delete a staging label that is
-   # attached to a version of a secret. You can review the results by running
-   # the operation ListSecretVersionIds and viewing the VersionStages response
-   # field for the affected version.
+# Returns a L<Paws::SecretsManager::UpdateSecretVersionStageResponse> object.
+# To delete a staging label attached to a version of a secret
+# The following example shows you how to delete a staging label that is attached
+# to a version of a secret. You can review the results by running the operation
+# ListSecretVersionIds and viewing the VersionStages response field for the
+# affected version.
     my $UpdateSecretVersionStageResponse =
       $secretsmanager->UpdateSecretVersionStage(
       'RemoveFromVersionId' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
@@ -63,12 +63,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ARN  = $UpdateSecretVersionStageResponse->ARN;
     my $Name = $UpdateSecretVersionStageResponse->Name;
 
-   # Returns a L<Paws::SecretsManager::UpdateSecretVersionStageResponse> object.
-   # To move a staging label from one version of a secret to another
-   # The following example shows you how to move a staging label that is
-   # attached to one version of a secret to a different version. You can review
-   # the results by running the operation ListSecretVersionIds and viewing the
-   # VersionStages response field for the affected version.
+ # Returns a L<Paws::SecretsManager::UpdateSecretVersionStageResponse> object.
+ # To move a staging label from one version of a secret to another
+ # The following example shows you how to move a staging label that is attached
+ # to one version of a secret to a different version. You can review the results
+ # by running the operation ListSecretVersionIds and viewing the VersionStages
+ # response field for the affected version.
     my $UpdateSecretVersionStageResponse =
       $secretsmanager->UpdateSecretVersionStage(
       'MoveToVersionId'     => 'EXAMPLE2-90ab-cdef-fedc-ba987SECRET2',

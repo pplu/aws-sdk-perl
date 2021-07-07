@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PolicySourceArn => 'MyarnType',
       PolicyInputList => [
         'MypolicyDocumentType', ...    # min: 1, max: 131072
-      ],                               # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

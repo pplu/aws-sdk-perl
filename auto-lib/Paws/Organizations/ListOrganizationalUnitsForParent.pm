@@ -29,9 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To retrieve a list of all of the child OUs in a parent root or OU
-    # The following example shows how to get a list of OUs in a specified
-    # root:/n/n
+ # To retrieve a list of all of the child OUs in a parent root or OU
+ # The following example shows how to get a list of OUs in a specified root:/n/n
     my $ListOrganizationalUnitsForParentResponse =
       $organizations->ListOrganizationalUnitsForParent(
       'ParentId' => 'r-examplerootid111' );

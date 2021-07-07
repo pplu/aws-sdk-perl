@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FlowArn       => 'My__string',
       VpcInterfaces => [
         {
-          Name             => 'My__string',
-          RoleArn          => 'My__string',
-          SecurityGroupIds => [ 'My__string', ... ],
-          SubnetId         => 'My__string',
+          Name                 => 'My__string',
+          RoleArn              => 'My__string',
+          SecurityGroupIds     => [ 'My__string', ... ],
+          SubnetId             => 'My__string',
           NetworkInterfaceType => 'ena',    # values: ena, efa; OPTIONAL
         },
         ...

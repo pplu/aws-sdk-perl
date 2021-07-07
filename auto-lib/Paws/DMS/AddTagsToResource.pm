@@ -28,11 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    # Add tags to resource
-    # Adds metadata tags to an AWS DMS resource, including replication instance,
-    # endpoint, security group, and migration task. These tags can also be used
-    # with cost allocation reporting to track cost associated with AWS DMS
-    # resources, or used in a Condition statement in an IAM policy for AWS DMS.
+# Add tags to resource
+# Adds metadata tags to an AWS DMS resource, including replication instance,
+# endpoint, security group, and migration task. These tags can also be used with
+# cost allocation reporting to track cost associated with AWS DMS resources, or
+# used in a Condition statement in an IAM policy for AWS DMS.
     my $AddTagsToResourceResponse = $dms->AddTagsToResource(
       'ResourceArn' =>
 'arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E',

@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Id                => 'MyDocumentId',    # min: 1, max: 2048
           AccessControlList => [
             {
-              Access => 'ALLOW',                  # values: ALLOW, DENY
-              Name   => 'MyPrincipalName',        # min: 1, max: 200
-              Type   => 'USER',                   # values: USER, GROUP
+              Access => 'ALLOW',              # values: ALLOW, DENY
+              Name   => 'MyPrincipalName',    # min: 1, max: 200
+              Type   => 'USER',               # values: USER, GROUP
 
             },
             ...
-          ],                                      # OPTIONAL
+          ],    # OPTIONAL
           Attributes => [
             {
               Key   => 'MyDocumentAttributeKey',    # min: 1, max: 200
@@ -50,15 +50,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 LongValue       => 1,                        # OPTIONAL
                 StringListValue => [
                   'MyString', ...                            # min: 1, max: 2048
-                ],                                           # OPTIONAL
+                ],    # OPTIONAL
                 StringValue => 'MyDocumentAttributeStringValue'
-                ,    # min: 1, max: 2048; OPTIONAL
+                ,     # min: 1, max: 2048; OPTIONAL
               },
 
             },
             ...
-          ],         # OPTIONAL
-          Blob => 'BlobBlob',    # OPTIONAL
+          ],    # OPTIONAL
+          Blob        => 'BlobBlob',    # OPTIONAL
           ContentType =>
             'PDF',    # values: PDF, HTML, MS_WORD, PLAIN_TEXT, PPT; OPTIONAL
           S3Path => {

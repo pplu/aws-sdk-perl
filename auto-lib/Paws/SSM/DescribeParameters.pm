@@ -36,23 +36,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key    => 'Name',    # values: Name, Type, KeyId
           Values => [
             'MyParametersFilterValue', ...    # min: 1, max: 1024
-          ],                                  # min: 1, max: 50
+          ],    # min: 1, max: 50
 
         },
         ...
-      ],                                      # OPTIONAL
-      MaxResults       => 1,                  # OPTIONAL
-      NextToken        => 'MyNextToken',      # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults       => 1,                # OPTIONAL
+      NextToken        => 'MyNextToken',    # OPTIONAL
       ParameterFilters => [
         {
           Key    => 'MyParameterStringFilterKey',    # min: 1, max: 132
           Option => 'MyParameterStringQueryOption',  # min: 1, max: 10; OPTIONAL
           Values => [
             'MyParameterStringFilterValue', ...      # min: 1, max: 1024
-          ],                                         # min: 1, max: 50; OPTIONAL
+          ],    # min: 1, max: 50; OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

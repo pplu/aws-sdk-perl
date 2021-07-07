@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELB');
-    # To detach a load balancer from a subnet
-    # This example detaches the specified load balancer from the specified
-    # subnet.
+  # To detach a load balancer from a subnet
+  # This example detaches the specified load balancer from the specified subnet.
     my $DetachLoadBalancerFromSubnetsOutput =
       $elasticloadbalancing->DetachLoadBalancerFromSubnets(
       'LoadBalancerName' => 'my-load-balancer',

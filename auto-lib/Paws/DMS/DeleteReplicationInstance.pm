@@ -27,10 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    # Delete Replication Instance
-    # Deletes the specified replication instance. You must delete any migration
-    # tasks that are associated with the replication instance before you can
-    # delete it.
+ # Delete Replication Instance
+ # Deletes the specified replication instance. You must delete any migration
+ # tasks that are associated with the replication instance before you can delete
+ # it.
 
     my $DeleteReplicationInstanceResponse =
       $dms->DeleteReplicationInstance( 'ReplicationInstanceArn' =>

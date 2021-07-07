@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Fabric => {
             CaLogs => {
               Cloudwatch => {
-                Enabled => 1,                          # OPTIONAL
+                Enabled => 1,    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL

@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                                 # max: 10
+          ],    # max: 10
 
         },    # OPTIONAL
         PromptSpecification => {
@@ -68,12 +68,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                   Buttons => [
                     {
-                      Text  => 'MyButtonText',       # min: 1, max: 50
-                      Value => 'MyButtonValue',      # min: 1, max: 50
+                      Text  => 'MyButtonText',     # min: 1, max: 50
+                      Value => 'MyButtonValue',    # min: 1, max: 50
 
                     },
                     ...
-                  ],                                 # max: 5; OPTIONAL
+                  ],    # max: 5; OPTIONAL
                   ImageUrl => 'MyAttachmentUrl',    # min: 1, max: 250; OPTIONAL
                   Subtitle => 'MyAttachmentTitle',  # min: 1, max: 250
                 },    # OPTIONAL
@@ -96,12 +96,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                     Buttons => [
                       {
-                        Text  => 'MyButtonText',       # min: 1, max: 50
-                        Value => 'MyButtonValue',      # min: 1, max: 50
+                        Text  => 'MyButtonText',     # min: 1, max: 50
+                        Value => 'MyButtonValue',    # min: 1, max: 50
 
                       },
                       ...
-                    ],                                 # max: 5; OPTIONAL
+                    ],    # max: 5; OPTIONAL
                     ImageUrl => 'MyAttachmentUrl',  # min: 1, max: 250; OPTIONAL
                     Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
                   },    # OPTIONAL
@@ -115,10 +115,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },
                 ...
-              ],        # max: 2; OPTIONAL
+              ],    # max: 2; OPTIONAL
             },
             ...
-          ],            # min: 1, max: 5
+          ],    # min: 1, max: 5
           AllowInterrupt => 1,    # OPTIONAL
         },    # OPTIONAL
         SampleUtterances => [
@@ -141,12 +141,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                     Buttons => [
                       {
-                        Text  => 'MyButtonText',       # min: 1, max: 50
-                        Value => 'MyButtonValue',      # min: 1, max: 50
+                        Text  => 'MyButtonText',     # min: 1, max: 50
+                        Value => 'MyButtonValue',    # min: 1, max: 50
 
                       },
                       ...
-                    ],                                 # max: 5; OPTIONAL
+                    ],    # max: 5; OPTIONAL
                     ImageUrl => 'MyAttachmentUrl',  # min: 1, max: 250; OPTIONAL
                     Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
                   },    # OPTIONAL
@@ -169,12 +169,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                       Buttons => [
                         {
-                          Text  => 'MyButtonText',       # min: 1, max: 50
-                          Value => 'MyButtonValue',      # min: 1, max: 50
+                          Text  => 'MyButtonText',     # min: 1, max: 50
+                          Value => 'MyButtonValue',    # min: 1, max: 50
 
                         },
                         ...
-                      ],                                 # max: 5; OPTIONAL
+                      ],    # max: 5; OPTIONAL
                       ImageUrl =>
                         'MyAttachmentUrl',    # min: 1, max: 250; OPTIONAL
                       Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
@@ -189,10 +189,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                   },
                   ...
-                ],        # max: 2; OPTIONAL
+                ],    # max: 2; OPTIONAL
               },
               ...
-            ],            # min: 1, max: 5
+            ],    # min: 1, max: 5
             AllowInterrupt => 1,    # OPTIONAL
           },
           WaitingResponse => {
@@ -207,12 +207,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                     Buttons => [
                       {
-                        Text  => 'MyButtonText',       # min: 1, max: 50
-                        Value => 'MyButtonValue',      # min: 1, max: 50
+                        Text  => 'MyButtonText',     # min: 1, max: 50
+                        Value => 'MyButtonValue',    # min: 1, max: 50
 
                       },
                       ...
-                    ],                                 # max: 5; OPTIONAL
+                    ],    # max: 5; OPTIONAL
                     ImageUrl => 'MyAttachmentUrl',  # min: 1, max: 250; OPTIONAL
                     Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
                   },    # OPTIONAL
@@ -235,12 +235,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                       Buttons => [
                         {
-                          Text  => 'MyButtonText',       # min: 1, max: 50
-                          Value => 'MyButtonValue',      # min: 1, max: 50
+                          Text  => 'MyButtonText',     # min: 1, max: 50
+                          Value => 'MyButtonValue',    # min: 1, max: 50
 
                         },
                         ...
-                      ],                                 # max: 5; OPTIONAL
+                      ],    # max: 5; OPTIONAL
                       ImageUrl =>
                         'MyAttachmentUrl',    # min: 1, max: 250; OPTIONAL
                       Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
@@ -255,10 +255,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                   },
                   ...
-                ],        # max: 2; OPTIONAL
+                ],    # max: 2; OPTIONAL
               },
               ...
-            ],            # min: 1, max: 5
+            ],    # min: 1, max: 5
             AllowInterrupt => 1,    # OPTIONAL
           },
           StillWaitingResponse => {
@@ -274,12 +274,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                     Buttons => [
                       {
-                        Text  => 'MyButtonText',       # min: 1, max: 50
-                        Value => 'MyButtonValue',      # min: 1, max: 50
+                        Text  => 'MyButtonText',     # min: 1, max: 50
+                        Value => 'MyButtonValue',    # min: 1, max: 50
 
                       },
                       ...
-                    ],                                 # max: 5; OPTIONAL
+                    ],    # max: 5; OPTIONAL
                     ImageUrl => 'MyAttachmentUrl',  # min: 1, max: 250; OPTIONAL
                     Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
                   },    # OPTIONAL
@@ -302,12 +302,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                       Buttons => [
                         {
-                          Text  => 'MyButtonText',       # min: 1, max: 50
-                          Value => 'MyButtonValue',      # min: 1, max: 50
+                          Text  => 'MyButtonText',     # min: 1, max: 50
+                          Value => 'MyButtonValue',    # min: 1, max: 50
 
                         },
                         ...
-                      ],                                 # max: 5; OPTIONAL
+                      ],    # max: 5; OPTIONAL
                       ImageUrl =>
                         'MyAttachmentUrl',    # min: 1, max: 250; OPTIONAL
                       Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
@@ -322,10 +322,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                   },
                   ...
-                ],        # max: 2; OPTIONAL
+                ],    # max: 2; OPTIONAL
               },
               ...
-            ],            # min: 1, max: 5
+            ],    # min: 1, max: 5
             TimeoutInSeconds => 1,    # min: 1, max: 900
             AllowInterrupt   => 1,    # OPTIONAL
           },    # OPTIONAL

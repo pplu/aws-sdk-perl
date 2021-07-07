@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # encrypt data with the specified customer master key (CMK).
     my $CreateGrantResponse = $kms->CreateGrant(
       'GranteePrincipal' => 'arn:aws:iam::111122223333:role/ExampleRole',
-      'KeyId' =>
+      'KeyId'            =>
 'arn:aws:kms:us-east-2:444455556666:key/1234abcd-12ab-34cd-56ef-1234567890ab',
       'Operations' => [ 'Encrypt', 'Decrypt' ]
     );

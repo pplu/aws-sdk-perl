@@ -96,7 +96,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IncludeEncoderConfigurationInSegments => 1,    # OPTIONAL
         PeriodTriggers                        => [
           'ADS', ...                                   # values: ADS
-        ],                                             # OPTIONAL
+        ],    # OPTIONAL
         SegmentDurationSeconds => 1,                       # OPTIONAL
         SegmentTemplateFormat  => 'NUMBER_WITH_TIMELINE'
         , # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE, NUMBER_WITH_DURATION; OPTIONAL

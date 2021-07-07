@@ -29,9 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To reset the sourceDestCheck attribute
-    # This example resets the sourceDestCheck attribute for the specified
-    # instance.
+ # To reset the sourceDestCheck attribute
+ # This example resets the sourceDestCheck attribute for the specified instance.
     $ec2->ResetInstanceAttribute(
       'Attribute'  => 'sourceDestCheck',
       'InstanceId' => 'i-1234567890abcdef0'

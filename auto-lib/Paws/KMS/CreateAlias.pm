@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To create an alias
-    # The following example creates an alias for the specified customer master
-    # key (CMK).
+  # To create an alias
+  # The following example creates an alias for the specified customer master key
+  # (CMK).
     $kms->CreateAlias(
       'AliasName'   => 'alias/ExampleAlias',
       'TargetKeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab'

@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           OidcMemberDefinition => {
             Groups => [
               'MyGroup', ...    # min: 1, max: 63
-            ],                  # min: 1, max: 10
+            ],    # min: 1, max: 10
 
           },    # OPTIONAL
         },
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       WorkforceName => 'MyWorkforceName',    # OPTIONAL
     );
 

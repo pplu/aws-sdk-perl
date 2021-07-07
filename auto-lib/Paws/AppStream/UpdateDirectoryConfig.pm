@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DirectoryName                        => 'MyDirectoryName',
       OrganizationalUnitDistinguishedNames => [
         'MyOrganizationalUnitDistinguishedName', ...    # max: 2000
-      ],                                                # OPTIONAL
+      ],    # OPTIONAL
       ServiceAccountCredentials => {
-        AccountName     => 'MyAccountName',             # min: 1
-        AccountPassword => 'MyAccountPassword',         # min: 1, max: 127
+        AccountName     => 'MyAccountName',        # min: 1
+        AccountPassword => 'MyAccountPassword',    # min: 1, max: 127
 
       },    # OPTIONAL
     );

@@ -38,15 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CallAs       => 'SELF',             # OPTIONAL
       Filters      => [
         {
-          Name => 'DETAILED_STATUS',      # values: DETAILED_STATUS; OPTIONAL
+          Name   => 'DETAILED_STATUS',    # values: DETAILED_STATUS; OPTIONAL
           Values => 'MyStackInstanceFilterValues',   # min: 6, max: 10; OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
-      MaxResults           => 1,                     # OPTIONAL
-      NextToken            => 'MyNextToken',         # OPTIONAL
-      StackInstanceAccount => 'MyAccount',           # OPTIONAL
-      StackInstanceRegion  => 'MyRegion',            # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults           => 1,                # OPTIONAL
+      NextToken            => 'MyNextToken',    # OPTIONAL
+      StackInstanceAccount => 'MyAccount',      # OPTIONAL
+      StackInstanceRegion  => 'MyRegion',       # OPTIONAL
     );
 
     # Results:

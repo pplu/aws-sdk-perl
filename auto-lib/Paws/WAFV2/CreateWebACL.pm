@@ -45,15 +45,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                         # min: 1; OPTIONAL
+            ],    # min: 1
 
           },    # OPTIONAL
         },    # OPTIONAL
         Block => {
           CustomResponse => {
-            ResponseCode => 1,    # min: 200, max: 600
+            ResponseCode          => 1,    # min: 200, max: 600
             CustomResponseBodyKey =>
-              'MyEntityName',     # min: 1, max: 128; OPTIONAL
+              'MyEntityName',              # min: 1, max: 128; OPTIONAL
             ResponseHeaders => [
               {
                 Name  => 'MyCustomHTTPHeaderName',     # min: 1, max: 64
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                         # min: 1; OPTIONAL
+            ],    # min: 1
           },    # OPTIONAL
         },    # OPTIONAL
       },
@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       CustomResponseBodies => {
         'MyEntityName' => {
-          Content => 'MyResponseContent',              # min: 1, max: 10240
+          Content     => 'MyResponseContent',    # min: 1, max: 10240
           ContentType =>
             'TEXT_PLAIN',    # values: TEXT_PLAIN, TEXT_HTML, APPLICATION_JSON
 
@@ -95,18 +95,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               FieldToMatch => {
                 AllQueryArguments => {
 
-                },                             # OPTIONAL
+                },    # OPTIONAL
                 Body => {
 
-                },                             # OPTIONAL
+                },    # OPTIONAL
                 JsonBody => {
                   MatchPattern => {
                     All => {
 
-                    },                         # OPTIONAL
+                    },    # OPTIONAL
                     IncludedPaths => [
                       'MyJsonPointerPath', ...    # min: 1, max: 512
-                    ],                            # min: 1; OPTIONAL
+                    ],    # min: 1; OPTIONAL
                   },
                   MatchScope              => 'ALL',    # values: ALL, KEY, VALUE
                   InvalidFallbackBehavior => 'MATCH'
@@ -160,7 +160,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               IPSetForwardedIPConfig => {
                 FallbackBehavior => 'MATCH',    # values: MATCH, NO_MATCH
                 HeaderName => 'MyForwardedIPHeaderName',    # min: 1, max: 255
-                Position => 'FIRST',    # values: FIRST, LAST, ANY
+                Position   => 'FIRST',    # values: FIRST, LAST, ANY
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -178,7 +178,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                  # OPTIONAL
+              ],    # OPTIONAL
               ScopeDownStatement => <Statement>,
             },    # OPTIONAL
             NotStatement => {
@@ -212,10 +212,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   MatchPattern => {
                     All => {
 
-                    },                            # OPTIONAL
+                    },    # OPTIONAL
                     IncludedPaths => [
                       'MyJsonPointerPath', ...    # min: 1, max: 512
-                    ],                            # min: 1; OPTIONAL
+                    ],    # min: 1; OPTIONAL
                   },
                   MatchScope              => 'ALL',    # values: ALL, KEY, VALUE
                   InvalidFallbackBehavior => 'MATCH'
@@ -258,7 +258,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                   # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             SizeConstraintStatement => {
               ComparisonOperator => 'EQ',    # values: EQ, NE, LE, LT, GE, GT
@@ -273,10 +273,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   MatchPattern => {
                     All => {
 
-                    },                       # OPTIONAL
+                    },    # OPTIONAL
                     IncludedPaths => [
                       'MyJsonPointerPath', ...    # min: 1, max: 512
-                    ],                            # min: 1; OPTIONAL
+                    ],    # min: 1; OPTIONAL
                   },
                   MatchScope              => 'ALL',    # values: ALL, KEY, VALUE
                   InvalidFallbackBehavior => 'MATCH'
@@ -327,7 +327,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                     IncludedPaths => [
                       'MyJsonPointerPath', ...    # min: 1, max: 512
-                    ],                            # min: 1; OPTIONAL
+                    ],    # min: 1; OPTIONAL
                   },
                   MatchScope              => 'ALL',    # values: ALL, KEY, VALUE
                   InvalidFallbackBehavior => 'MATCH'
@@ -377,7 +377,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                     IncludedPaths => [
                       'MyJsonPointerPath', ...    # min: 1, max: 512
-                    ],                            # min: 1; OPTIONAL
+                    ],    # min: 1; OPTIONAL
                   },
                   MatchScope              => 'ALL',    # values: ALL, KEY, VALUE
                   InvalidFallbackBehavior => 'MATCH'
@@ -429,15 +429,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                         # min: 1; OPTIONAL
+                ],    # min: 1
 
               },    # OPTIONAL
             },    # OPTIONAL
             Block => {
               CustomResponse => {
-                ResponseCode => 1,    # min: 200, max: 600
+                ResponseCode          => 1,    # min: 200, max: 600
                 CustomResponseBodyKey =>
-                  'MyEntityName',     # min: 1, max: 128; OPTIONAL
+                  'MyEntityName',              # min: 1, max: 128; OPTIONAL
                 ResponseHeaders => [
                   {
                     Name  => 'MyCustomHTTPHeaderName',     # min: 1, max: 64
@@ -445,7 +445,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                         # min: 1; OPTIONAL
+                ],    # min: 1
               },    # OPTIONAL
             },    # OPTIONAL
             Count => {
@@ -457,7 +457,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                         # min: 1; OPTIONAL
+                ],    # min: 1
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -472,7 +472,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                         # min: 1; OPTIONAL
+                ],    # min: 1
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -486,18 +486,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                            # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',          # min: 1, max: 128
-          Value => 'MyTagValue',        # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

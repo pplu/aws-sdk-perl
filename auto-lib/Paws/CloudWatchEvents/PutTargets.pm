@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             JobDefinition   => 'MyString',
             JobName         => 'MyString',
             ArrayProperties => {
-              Size => 1,                       # OPTIONAL
+              Size => 1,    # OPTIONAL
             },    # OPTIONAL
             RetryStrategy => {
               Attempts => 1,    # OPTIONAL
@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LaunchType           => 'EC2',      # values: EC2, FARGATE; OPTIONAL
             NetworkConfiguration => {
               AwsvpcConfiguration => {
-                Subnets => [ 'MyString', ... ],
+                Subnets        => [ 'MyString', ... ],
                 AssignPublicIp =>
                   'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
                 SecurityGroups => [ 'MyString', ... ],
@@ -87,13 +87,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           RedshiftDataParameters => {
-            Database => 'MyDatabase',    # min: 1, max: 64
-            Sql      => 'MySql',         # min: 1, max: 100000
-            DbUser   => 'MyDbUser',      # min: 1, max: 128; OPTIONAL
+            Database         => 'MyDatabase',    # min: 1, max: 64
+            Sql              => 'MySql',         # min: 1, max: 100000
+            DbUser           => 'MyDbUser',      # min: 1, max: 128; OPTIONAL
             SecretManagerArn =>
-              'MyRedshiftSecretManagerArn',    # min: 1, max: 1600; OPTIONAL
-            StatementName => 'MyStatementName',    # min: 1, max: 500; OPTIONAL
-            WithEvent     => 1,                    # OPTIONAL
+              'MyRedshiftSecretManagerArn',      # min: 1, max: 1600; OPTIONAL
+            StatementName => 'MyStatementName',  # min: 1, max: 500; OPTIONAL
+            WithEvent     => 1,                  # OPTIONAL
           },    # OPTIONAL
           RetryPolicy => {
             MaximumEventAgeInSeconds => 1,    # min: 60, max: 86400; OPTIONAL
@@ -106,11 +106,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Key    => 'MyRunCommandTargetKey',    # min: 1, max: 128
                 Values => [
                   'MyRunCommandTargetValue', ...      # min: 1, max: 256
-                ],                                    # min: 1, max: 50
+                ],    # min: 1, max: 50
 
               },
               ...
-            ],                                        # min: 1, max: 5
+            ],    # min: 1, max: 5
 
           },    # OPTIONAL
           SageMakerPipelineParameters => {

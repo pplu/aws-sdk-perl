@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutoCreate        => 1,            # OPTIONAL
       DbGroups          => [
         'MyString', ...                  # max: 2147483647
-      ],                                 # OPTIONAL
-      DbName          => 'MyString',     # OPTIONAL
-      DurationSeconds => 1,              # OPTIONAL
+      ],    # OPTIONAL
+      DbName          => 'MyString',    # OPTIONAL
+      DurationSeconds => 1,             # OPTIONAL
     );
 
     # Results:

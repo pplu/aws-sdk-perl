@@ -42,13 +42,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Create replication task
     # Creates a replication task using the specified parameters.
     my $CreateReplicationTaskResponse = $dms->CreateReplicationTask(
-      'CdcStartTime'  => '2016-12-14T18:25:43Z',
-      'MigrationType' => 'full-load',
+      'CdcStartTime'           => '2016-12-14T18:25:43Z',
+      'MigrationType'          => 'full-load',
       'ReplicationInstanceArn' =>
         'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ',
       'ReplicationTaskIdentifier' => 'task1',
       'ReplicationTaskSettings'   => '',
-      'SourceEndpointArn' =>
+      'SourceEndpointArn'         =>
 'arn:aws:dms:us-east-1:123456789012:endpoint:ZW5UAN6P4E77EC7YWHK4RZZ3BE',
       'TableMappings' => 'file://mappingfile.json',
       'Tags'          => [

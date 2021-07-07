@@ -73,10 +73,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $NetworkInterfaceId =
       $DescribeNetworkInterfaceAttributeResult->NetworkInterfaceId;
 
-    # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
-    # To describe the sourceDestCheck attribute of a network interface
-    # This example describes the sourceDestCheck attribute of the specified
-    # network interface.
+ # Returns a L<Paws::EC2::DescribeNetworkInterfaceAttributeResult> object.
+ # To describe the sourceDestCheck attribute of a network interface
+ # This example describes the sourceDestCheck attribute of the specified network
+ # interface.
     my $DescribeNetworkInterfaceAttributeResult =
       $ec2->DescribeNetworkInterfaceAttribute(
       'Attribute'          => 'sourceDestCheck',

@@ -42,16 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Operator => 'CO',               # values: CO, EQ
           Values   => [
             'MyFilterValue', ...          # min: 1, max: 100
-          ],                              # min: 1, max: 1
+          ],    # min: 1, max: 1
 
         },
         ...
-      ],                                  # OPTIONAL
-      MaxResults => 1,                    # OPTIONAL
-      NextToken  => 'MyNextToken',        # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
       SortBy     => {
-        Attribute => 'BotLocaleName',     # values: BotLocaleName
-        Order     => 'Ascending',         # values: Ascending, Descending
+        Attribute => 'BotLocaleName',    # values: BotLocaleName
+        Order     => 'Ascending',        # values: Ascending, Descending
 
       },    # OPTIONAL
     );

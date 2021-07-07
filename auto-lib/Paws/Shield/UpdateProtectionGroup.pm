@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProtectionGroupId => 'MyProtectionGroupId',
       Members           => [
         'MyResourceArn', ...    # min: 1, max: 2048
-      ],                        # OPTIONAL
+      ],    # OPTIONAL
       ResourceType => 'CLOUDFRONT_DISTRIBUTION',    # OPTIONAL
     );
 

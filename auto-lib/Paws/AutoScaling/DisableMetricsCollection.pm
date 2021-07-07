@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To disable metrics collection for an Auto Scaling group
-    # This example disables collecting data for the GroupDesiredCapacity metric
-    # for the specified Auto Scaling group.
+ # To disable metrics collection for an Auto Scaling group
+ # This example disables collecting data for the GroupDesiredCapacity metric for
+ # the specified Auto Scaling group.
     $autoscaling->DisableMetricsCollection(
       'AutoScalingGroupName' => 'my-auto-scaling-group',
       'Metrics'              => ['GroupDesiredCapacity']

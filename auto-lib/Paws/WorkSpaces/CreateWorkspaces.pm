@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value => 'MyTagValue',    # max: 255; OPTIONAL
             },
             ...
-          ],                            # OPTIONAL
+          ],    # OPTIONAL
           UserVolumeEncryptionEnabled => 1,                          # OPTIONAL
           VolumeEncryptionKey         => 'MyVolumeEncryptionKey',    # OPTIONAL
           WorkspaceProperties         => {

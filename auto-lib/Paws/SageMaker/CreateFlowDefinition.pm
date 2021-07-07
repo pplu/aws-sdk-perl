@@ -51,12 +51,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TaskAvailabilityLifetimeInSeconds => 1,  # min: 1, max: 864000; OPTIONAL
         TaskKeywords                      => [
           'MyFlowDefinitionTaskKeyword', ...     # min: 1, max: 30
-        ],                                       # min: 1, max: 5; OPTIONAL
-        TaskTimeLimitInSeconds => 1,             # min: 30, max: 28800; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
+        TaskTimeLimitInSeconds => 1,    # min: 30, max: 28800; OPTIONAL
       },
       OutputConfig => {
-        S3OutputPath => 'MyS3Uri',               # max: 1024
-        KmsKeyId     => 'MyKmsKeyId',            # max: 2048; OPTIONAL
+        S3OutputPath => 'MyS3Uri',       # max: 1024
+        KmsKeyId     => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
       RoleArn                   => 'MyRoleArn',
       HumanLoopActivationConfig => {
@@ -80,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

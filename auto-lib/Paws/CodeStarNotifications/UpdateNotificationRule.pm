@@ -39,16 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DetailType   => 'BASIC',                   # OPTIONAL
       EventTypeIds => [
         'MyEventTypeId', ...                     # min: 1, max: 200
-      ],                                         # OPTIONAL
-      Name    => 'MyNotificationRuleName',       # OPTIONAL
-      Status  => 'ENABLED',                      # OPTIONAL
+      ],    # OPTIONAL
+      Name    => 'MyNotificationRuleName',    # OPTIONAL
+      Status  => 'ENABLED',                   # OPTIONAL
       Targets => [
         {
           TargetAddress => 'MyTargetAddress',    # min: 1, max: 320; OPTIONAL
           TargetType    => 'MyTargetType',       # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

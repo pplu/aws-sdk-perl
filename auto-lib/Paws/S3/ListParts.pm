@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # To list parts of a multipart upload.
    # The following example lists parts uploaded for a specific multipart upload.
     my $ListPartsOutput = $s3->ListParts(
-      'Bucket' => 'examplebucket',
-      'Key'    => 'bigobject',
+      'Bucket'   => 'examplebucket',
+      'Key'      => 'bigobject',
       'UploadId' =>
 'example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--'
     );

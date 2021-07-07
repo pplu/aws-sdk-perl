@@ -79,12 +79,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],                                  # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
-      MinLatency       => 1,                  # OPTIONAL
-      Protocol         => 'zixi-push',        # OPTIONAL
-      StreamId         => 'My__string',       # OPTIONAL
-      VpcInterfaceName => 'My__string',       # OPTIONAL
-      WhitelistCidr    => 'My__string',       # OPTIONAL
+      ],    # OPTIONAL
+      MinLatency       => 1,               # OPTIONAL
+      Protocol         => 'zixi-push',     # OPTIONAL
+      StreamId         => 'My__string',    # OPTIONAL
+      VpcInterfaceName => 'My__string',    # OPTIONAL
+      WhitelistCidr    => 'My__string',    # OPTIONAL
     );
 
     # Results:

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateExperimentTemplateResponse = $fis->CreateExperimentTemplate(
       Actions => {
         'MyExperimentTemplateActionName' => {
-          ActionId => 'MyActionId',    # max: 128
+          ActionId    => 'MyActionId',                  # max: 128
           Description =>
             'MyExperimentTemplateActionDescription',    # max: 512; OPTIONAL
           Parameters => {
@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           StartAfter => [
             'MyExperimentTemplateActionStartAfter', ...    # max: 64
-          ],                                               # OPTIONAL
+          ],    # OPTIONAL
           Targets => {
             'MyExperimentTemplateActionTargetName' =>
               'MyExperimentTemplateTargetName',   # key: max: 64, value: max: 64
@@ -80,10 +80,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                                       # OPTIONAL
+          ],    # OPTIONAL
           ResourceArns => [
             'MyResourceArn', ...    # min: 20, max: 2048
-          ],                        # max: 5; OPTIONAL
+          ],    # max: 5; OPTIONAL
           ResourceTags => {
             'MyTagKey' => 'MyTagValue',    # key: max: 128, value: max: 256
           },    # max: 50

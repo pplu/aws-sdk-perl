@@ -40,16 +40,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Key    => 'MyXmlStringMaxLen128',       # min: 1, max: 128; OPTIONAL
             Values => [
               'MyXmlStringMaxLen256', ...           # min: 1, max: 256
-            ],                                      # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
-        ],                                          # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       ScalingInstructions => [
         {
-          MaxCapacity => 1,
-          MinCapacity => 1,
-          ResourceId  => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
+          MaxCapacity       => 1,
+          MinCapacity       => 1,
+          ResourceId        => 'MyResourceIdMaxLen1600',    # min: 1, max: 1600
           ScalableDimension => 'autoscaling:autoScalingGroup:DesiredCapacity'
           , # values: autoscaling:autoScalingGroup:DesiredCapacity, ecs:service:DesiredCount, ec2:spot-fleet-request:TargetCapacity, rds:cluster:ReadReplicaCount, dynamodb:table:ReadCapacityUnits, dynamodb:table:WriteCapacityUnits, dynamodb:index:ReadCapacityUnits, dynamodb:index:WriteCapacityUnits
           ServiceNamespace =>
@@ -88,7 +88,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CustomizedLoadMetricSpecification => {
             MetricName => 'MyMetricName',
             Namespace  => 'MyMetricNamespace',
-            Statistic =>
+            Statistic  =>
               'Average',   # values: Average, Minimum, Maximum, SampleCount, Sum
             Dimensions => [
               {
@@ -117,7 +117,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ScheduledActionBufferTime => 1,    # OPTIONAL
         },
         ...
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

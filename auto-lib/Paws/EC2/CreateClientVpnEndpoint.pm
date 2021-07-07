@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyString',    # OPTIONAL
       DnsServers  => [
         'MyString', ...             # OPTIONAL
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       DryRun            => 1,                               # OPTIONAL
       SecurityGroupIds  => [ 'MySecurityGroupId', ... ],    # OPTIONAL
       SelfServicePortal => 'enabled',                       # OPTIONAL
@@ -90,13 +90,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value => 'MyString',    # OPTIONAL
             },
             ...
-          ],                          # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
-      TransportProtocol => 'tcp',     # OPTIONAL
-      VpcId             => 'MyVpcId', # OPTIONAL
-      VpnPort           => 1,         # OPTIONAL
+      ],    # OPTIONAL
+      TransportProtocol => 'tcp',        # OPTIONAL
+      VpcId             => 'MyVpcId',    # OPTIONAL
+      VpnPort           => 1,            # OPTIONAL
     );
 
     # Results:

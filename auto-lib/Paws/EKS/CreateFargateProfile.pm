@@ -45,8 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Namespace => 'MyString',
         },
         ...
-      ],                                                 # OPTIONAL
-      Subnets => [ 'MyString', ... ],                    # OPTIONAL
+      ],    # OPTIONAL
+      Subnets => [ 'MyString', ... ],    # OPTIONAL
       Tags    => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL

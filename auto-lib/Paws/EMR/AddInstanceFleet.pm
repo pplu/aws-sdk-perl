@@ -34,35 +34,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InstanceFleetType   => 'MASTER',    # values: MASTER, CORE, TASK
         InstanceTypeConfigs => [
           {
-            InstanceType => 'MyInstanceType',          # min: 1, max: 256
-            BidPrice     => 'MyXmlStringMaxLen256',    # max: 256
-            BidPriceAsPercentageOfOnDemandPrice => 1,  # OPTIONAL
+            InstanceType => 'MyInstanceType',            # min: 1, max: 256
+            BidPrice     => 'MyXmlStringMaxLen256',      # max: 256
+            BidPriceAsPercentageOfOnDemandPrice => 1,    # OPTIONAL
             Configurations                      => [
               {
-                Classification => 'MyString',
+                Classification => 'MyString',            # OPTIONAL
                 Configurations => <ConfigurationList>,
-                Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
+                Properties     => {
+                  'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+                },    # OPTIONAL
               },
               ...
-            ],                                                      # OPTIONAL
+            ],    # OPTIONAL
             EbsConfiguration => {
               EbsBlockDeviceConfigs => [
                 {
                   VolumeSpecification => {
                     SizeInGB   => 1,
-                    VolumeType => 'MyString',
+                    VolumeType => 'MyString',    # OPTIONAL
                     Iops       => 1,
                   },
                   VolumesPerInstance => 1,
                 },
                 ...
-              ],                                                    # OPTIONAL
-              EbsOptimized => 1,                                    # OPTIONAL
+              ],    # OPTIONAL
+              EbsOptimized => 1,    # OPTIONAL
             },    # OPTIONAL
             WeightedCapacity => 1,    # OPTIONAL
           },
           ...
-        ],                            # OPTIONAL
+        ],    # OPTIONAL
         LaunchSpecifications => {
           OnDemandSpecification => {
             AllocationStrategy         => 'lowest-price', # values: lowest-price
@@ -79,7 +81,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TimeoutAction => 'SWITCH_TO_ON_DEMAND'
             ,    # values: SWITCH_TO_ON_DEMAND, TERMINATE_CLUSTER
             TimeoutDurationMinutes => 1,    # OPTIONAL
-            AllocationStrategy =>
+            AllocationStrategy     =>
               'capacity-optimized',    # values: capacity-optimized; OPTIONAL
             BlockDurationMinutes => 1, # OPTIONAL
           },    # OPTIONAL

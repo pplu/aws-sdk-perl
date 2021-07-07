@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Settings => {
               MfaTypes => [
                 'SMS', ...       # values: SMS, TOTP
-              ],                 # OPTIONAL
+              ],    # OPTIONAL
               SmsMessage => 'My__string',
             },    # OPTIONAL
           },    # OPTIONAL
@@ -63,21 +63,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'PHONE',
               ... # values: PHONE, EMAIL, OPENID, PROFILE, AWS_COGNITO_SIGNIN_USER_ADMIN
             ],    # OPTIONAL
-            RedirectSignInURIs  => [ 'My__string', ... ],    # OPTIONAL
-            RedirectSignOutURIs => [ 'My__string', ... ],    # OPTIONAL
+            RedirectSignInURIs     => [ 'My__string', ... ],    # OPTIONAL
+            RedirectSignOutURIs    => [ 'My__string', ... ],    # OPTIONAL
             SocialProviderSettings => {
               Facebook => {
                 ClientId     => 'My__string',
                 ClientSecret => 'My__string',
-              },                                             # OPTIONAL
+              },                                                # OPTIONAL
               Google => {
                 ClientId     => 'My__string',
                 ClientSecret => 'My__string',
-              },                                             # OPTIONAL
+              },                                                # OPTIONAL
               LoginWithAmazon => {
                 ClientId     => 'My__string',
                 ClientSecret => 'My__string',
-              },                                             # OPTIONAL
+              },                                                # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           PasswordPolicy => {

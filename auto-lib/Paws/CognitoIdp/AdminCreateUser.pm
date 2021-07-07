@@ -41,24 +41,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientMetadata => { 'MyStringType' => 'MyStringType', },    # OPTIONAL
       DesiredDeliveryMediums => [
         'SMS', ...    # values: SMS, EMAIL
-      ],              # OPTIONAL
+      ],    # OPTIONAL
       ForceAliasCreation => 1,                   # OPTIONAL
       MessageAction      => 'RESEND',            # OPTIONAL
       TemporaryPassword  => 'MyPasswordType',    # OPTIONAL
       UserAttributes     => [
         {
-          Name  => 'MyAttributeNameType',        # min: 1, max: 32
-          Value => 'MyAttributeValueType',       # max: 2048; OPTIONAL
+          Name  => 'MyAttributeNameType',     # min: 1, max: 32
+          Value => 'MyAttributeValueType',    # max: 2048; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       ValidationData => [
         {
-          Name  => 'MyAttributeNameType',        # min: 1, max: 32
-          Value => 'MyAttributeValueType',       # max: 2048; OPTIONAL
+          Name  => 'MyAttributeNameType',     # min: 1, max: 32
+          Value => 'MyAttributeValueType',    # max: 2048; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

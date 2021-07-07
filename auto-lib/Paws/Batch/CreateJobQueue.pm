@@ -52,11 +52,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $jobQueueArn  = $CreateJobQueueResponse->jobQueueArn;
     my $jobQueueName = $CreateJobQueueResponse->jobQueueName;
 
-    # Returns a L<Paws::Batch::CreateJobQueueResponse> object.
-    # To create a job queue with multiple compute environments
-    # This example creates a job queue called HighPriority that uses the
-    # C4OnDemand compute environment with an order of 1 and the M4Spot compute
-    # environment with an order of 2.
+# Returns a L<Paws::Batch::CreateJobQueueResponse> object.
+# To create a job queue with multiple compute environments
+# This example creates a job queue called HighPriority that uses the C4OnDemand
+# compute environment with an order of 1 and the M4Spot compute environment with
+# an order of 2.
     my $CreateJobQueueResponse = $batch->CreateJobQueue(
       'ComputeEnvironmentOrder' => [
 

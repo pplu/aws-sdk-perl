@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExpirationInDays => 1,                      # OPTIONAL
       RoleArns         => [
         'MyArn', ...                              # max: 2048
-      ],                                          # OPTIONAL
-      TokenProperties => [ 'MyString', ... ],     # OPTIONAL
+      ],    # OPTIONAL
+      TokenProperties => [ 'MyString', ... ],    # OPTIONAL
     );
 
     # Results:

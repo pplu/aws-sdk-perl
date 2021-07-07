@@ -51,9 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       }
     );
 
-    # To enable enhanced networking
-    # This example enables enhanced networking for the specified stopped
-    # instance.
+  # To enable enhanced networking
+  # This example enables enhanced networking for the specified stopped instance.
     $ec2->ModifyInstanceAttribute(
       'EnaSupport' => {
         'Value' => 1

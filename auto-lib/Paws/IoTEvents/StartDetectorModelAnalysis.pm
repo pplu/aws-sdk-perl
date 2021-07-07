@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Operation    => 'MyDynamoOperation',    # OPTIONAL
                         Payload      => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         PayloadField  => 'MyDynamoKeyField',
@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TableName => 'MyDynamoTableName',
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -73,7 +73,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DeliveryStreamName => 'MyDeliveryStreamName',
                         Payload            => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         Separator => 'MyFirehoseSeparator',    # OPTIONAL
@@ -82,7 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         InputName => 'MyInputName',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -114,7 +114,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -123,7 +123,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'MyAmazonResourceName',    # min: 1, max: 2048
                         Payload => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -132,13 +132,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },    # OPTIONAL
                       SetTimer => {
-                        TimerName => 'MyTimerName',    # min: 1, max: 128
+                        TimerName          => 'MyTimerName',  # min: 1, max: 128
                         DurationExpression =>
-                          'MyVariableValue',           # min: 1, max: 1024
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         Seconds => 1,    # min: 1, max: 31622400; OPTIONAL
                       },    # OPTIONAL
                       SetVariable => {
-                        Value        => 'MyVariableValue',   # min: 1, max: 1024
+                        Value =>
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         VariableName => 'MyVariableName',    # min: 1, max: 128
 
                       },    # OPTIONAL
@@ -146,7 +147,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -154,18 +155,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         QueueUrl => 'MyQueueUrl',
                         Payload  => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         UseBase64 => 1,    # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
                 },
                 ...
-              ],                                 # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             OnExit => {
               Events => [
@@ -185,7 +186,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Operation    => 'MyDynamoOperation',    # OPTIONAL
                         Payload      => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         PayloadField  => 'MyDynamoKeyField',
@@ -197,7 +198,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TableName => 'MyDynamoTableName',
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -205,7 +206,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DeliveryStreamName => 'MyDeliveryStreamName',
                         Payload            => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         Separator => 'MyFirehoseSeparator',    # OPTIONAL
@@ -214,7 +215,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         InputName => 'MyInputName',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -246,7 +247,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -255,7 +256,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'MyAmazonResourceName',    # min: 1, max: 2048
                         Payload => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -264,13 +265,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },    # OPTIONAL
                       SetTimer => {
-                        TimerName => 'MyTimerName',    # min: 1, max: 128
+                        TimerName          => 'MyTimerName',  # min: 1, max: 128
                         DurationExpression =>
-                          'MyVariableValue',           # min: 1, max: 1024
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         Seconds => 1,    # min: 1, max: 31622400; OPTIONAL
                       },    # OPTIONAL
                       SetVariable => {
-                        Value        => 'MyVariableValue',   # min: 1, max: 1024
+                        Value =>
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         VariableName => 'MyVariableName',    # min: 1, max: 128
 
                       },    # OPTIONAL
@@ -278,7 +280,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -286,18 +288,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         QueueUrl => 'MyQueueUrl',
                         Payload  => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         UseBase64 => 1,    # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
                 },
                 ...
-              ],                                 # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             OnInput => {
               Events => [
@@ -317,7 +319,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Operation    => 'MyDynamoOperation',    # OPTIONAL
                         Payload      => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         PayloadField  => 'MyDynamoKeyField',
@@ -329,7 +331,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TableName => 'MyDynamoTableName',
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -337,7 +339,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DeliveryStreamName => 'MyDeliveryStreamName',
                         Payload            => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         Separator => 'MyFirehoseSeparator',    # OPTIONAL
@@ -346,7 +348,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         InputName => 'MyInputName',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -378,7 +380,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -387,7 +389,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'MyAmazonResourceName',    # min: 1, max: 2048
                         Payload => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -396,13 +398,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },    # OPTIONAL
                       SetTimer => {
-                        TimerName => 'MyTimerName',    # min: 1, max: 128
+                        TimerName          => 'MyTimerName',  # min: 1, max: 128
                         DurationExpression =>
-                          'MyVariableValue',           # min: 1, max: 1024
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         Seconds => 1,    # min: 1, max: 31622400; OPTIONAL
                       },    # OPTIONAL
                       SetVariable => {
-                        Value        => 'MyVariableValue',   # min: 1, max: 1024
+                        Value =>
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         VariableName => 'MyVariableName',    # min: 1, max: 128
 
                       },    # OPTIONAL
@@ -410,7 +413,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -418,18 +421,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         QueueUrl => 'MyQueueUrl',
                         Payload  => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         UseBase64 => 1,    # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
                 },
                 ...
-              ],                                 # OPTIONAL
+              ],    # OPTIONAL
               TransitionEvents => [
                 {
                   Condition => 'MyCondition',    # max: 512; OPTIONAL
@@ -449,7 +452,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         Operation    => 'MyDynamoOperation',    # OPTIONAL
                         Payload      => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         PayloadField  => 'MyDynamoKeyField',
@@ -461,7 +464,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TableName => 'MyDynamoTableName',
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -469,7 +472,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         DeliveryStreamName => 'MyDeliveryStreamName',
                         Payload            => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         Separator => 'MyFirehoseSeparator',    # OPTIONAL
@@ -478,7 +481,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         InputName => 'MyInputName',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -510,7 +513,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         MqttTopic => 'MyMQTTTopic',    # min: 1, max: 128
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -519,7 +522,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'MyAmazonResourceName',    # min: 1, max: 2048
                         Payload => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -528,13 +531,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },    # OPTIONAL
                       SetTimer => {
-                        TimerName => 'MyTimerName',    # min: 1, max: 128
+                        TimerName          => 'MyTimerName',  # min: 1, max: 128
                         DurationExpression =>
-                          'MyVariableValue',           # min: 1, max: 1024
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         Seconds => 1,    # min: 1, max: 31622400; OPTIONAL
                       },    # OPTIONAL
                       SetVariable => {
-                        Value        => 'MyVariableValue',   # min: 1, max: 1024
+                        Value =>
+                          'MyVariableValue',    # min: 1, max: 1024; OPTIONAL
                         VariableName => 'MyVariableName',    # min: 1, max: 128
 
                       },    # OPTIONAL
@@ -542,7 +546,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         TargetArn => 'MyAmazonResourceName', # min: 1, max: 2048
                         Payload   => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                       },    # OPTIONAL
@@ -550,21 +554,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         QueueUrl => 'MyQueueUrl',
                         Payload  => {
                           ContentExpression => 'MyContentExpression',   # min: 1
-                          Type => 'STRING',    # values: STRING, JSON
+                          Type              => 'STRING',  # values: STRING, JSON
 
                         },    # OPTIONAL
                         UseBase64 => 1,    # OPTIONAL
                       },    # OPTIONAL
                     },
                     ...
-                  ],        # OPTIONAL
+                  ],    # OPTIONAL
                 },
                 ...
-              ],            # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
           },
           ...
-        ],        # min: 1
+        ],    # min: 1
 
       },
 

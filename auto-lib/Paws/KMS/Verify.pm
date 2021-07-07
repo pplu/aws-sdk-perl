@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SigningAlgorithm => 'RSASSA_PSS_SHA_256',
       GrantTokens      => [
         'MyGrantTokenType', ...    # min: 1, max: 8192
-      ],                           # OPTIONAL
-      MessageType => 'RAW',        # OPTIONAL
+      ],    # OPTIONAL
+      MessageType => 'RAW',    # OPTIONAL
     );
 
     # Results:

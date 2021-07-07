@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $api.sagemaker = Paws->service('SageMaker');
     my $UpdatePipelineExecutionResponse =
       $api . sagemaker->UpdatePipelineExecution(
-      PipelineExecutionArn => 'MyPipelineExecutionArn',
+      PipelineExecutionArn         => 'MyPipelineExecutionArn',
       PipelineExecutionDescription =>
         'MyPipelineExecutionDescription',    # OPTIONAL
       PipelineExecutionDisplayName => 'MyPipelineExecutionName',    # OPTIONAL

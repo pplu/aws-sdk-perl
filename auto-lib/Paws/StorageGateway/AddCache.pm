@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To add a cache
-    # The following example shows a request that activates a gateway-stored
-    # volume.
+ # To add a cache
+ # The following example shows a request that activates a gateway-stored volume.
     my $AddCacheOutput = $storagegateway->AddCache(
       'DiskIds' =>
         [ 'pci-0000:03:00.0-scsi-0:0:0:0', 'pci-0000:03:00.0-scsi-0:0:1:0' ],

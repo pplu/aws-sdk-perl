@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MetricName => 'MyMetricName',    # max: 256; OPTIONAL
           RecipeList => [
             'MyArn', ...                   # max: 256
-          ],                               # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
         EventValueThreshold => 'MyEventValueThreshold',    # max: 256; OPTIONAL
         FeatureTransformationParameters => {
@@ -63,10 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Name   => 'MyParameterName',    # max: 256
                 Values => [
                   'MyCategoricalValue', ...     # max: 1000
-                ],                              # max: 100; OPTIONAL
+                ],    # max: 100; OPTIONAL
               },
               ...
-            ],                                  # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
             ContinuousHyperParameterRanges => [
               {
                 MaxValue => 1,                    # min: -1000000; OPTIONAL
@@ -74,7 +74,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Name     => 'MyParameterName',    # max: 256
               },
               ...
-            ],                                    # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
             IntegerHyperParameterRanges => [
               {
                 MaxValue => 1,                    # max: 1000000; OPTIONAL
@@ -82,7 +82,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Name     => 'MyParameterName',    # max: 256
               },
               ...
-            ],                                    # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
           },    # OPTIONAL
           HpoObjective => {
             MetricName  => 'MyMetricName',          # max: 256; OPTIONAL

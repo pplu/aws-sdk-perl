@@ -40,11 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MessageAttributes => {
         'MyString' => {
           DataType         => 'MyString',
-          BinaryListValues => [
-            'BlobBinary', ...            # OPTIONAL
-          ],                             # OPTIONAL
-          BinaryValue      => 'BlobBinary',           # OPTIONAL
-          StringListValues => [ 'MyString', ... ],    # OPTIONAL
+          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
+          BinaryValue      => 'BlobBinary',
+          StringListValues => [ 'MyString', ... ],      # OPTIONAL
           StringValue      => 'MyString',
         },
       },    # OPTIONAL
@@ -53,11 +51,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MessageSystemAttributes => {
         'AWSTraceHeader' => {
           DataType         => 'MyString',
-          BinaryListValues => [
-            'BlobBinary', ...                   # OPTIONAL
-          ],                                    # OPTIONAL
-          BinaryValue      => 'BlobBinary',           # OPTIONAL
-          StringListValues => [ 'MyString', ... ],    # OPTIONAL
+          BinaryListValues => [ 'BlobBinary', ... ],    # OPTIONAL
+          BinaryValue      => 'BlobBinary',
+          StringListValues => [ 'MyString', ... ],      # OPTIONAL
           StringValue      => 'MyString',
         },    # key: values: AWSTraceHeader
       },    # OPTIONAL

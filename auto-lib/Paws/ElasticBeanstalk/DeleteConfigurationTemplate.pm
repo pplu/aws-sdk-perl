@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
-    # To delete a configuration template
-    # The following operation deletes a configuration template named my-template
-    # for an application named my-app:
+# To delete a configuration template
+# The following operation deletes a configuration template named my-template for
+# an application named my-app:
     $elasticbeanstalk->DeleteConfigurationTemplate(
       'ApplicationName' => 'my-app',
       'TemplateName'    => 'my-template'

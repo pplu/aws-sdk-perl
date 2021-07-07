@@ -60,27 +60,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterParameterGroupName        => 'MyString',    # OPTIONAL
       ClusterSecurityGroups            => [
         'MyString', ...                                  # max: 2147483647
-      ],                                                 # OPTIONAL
-      ClusterType                    => 'MyString',      # OPTIONAL
-      ClusterVersion                 => 'MyString',      # OPTIONAL
-      ElasticIp                      => 'MyString',      # OPTIONAL
-      Encrypted                      => 1,               # OPTIONAL
-      EnhancedVpcRouting             => 1,               # OPTIONAL
-      HsmClientCertificateIdentifier => 'MyString',      # OPTIONAL
-      HsmConfigurationIdentifier     => 'MyString',      # OPTIONAL
-      KmsKeyId                       => 'MyString',      # OPTIONAL
-      MaintenanceTrackName           => 'MyString',      # OPTIONAL
-      ManualSnapshotRetentionPeriod  => 1,               # OPTIONAL
-      MasterUserPassword             => 'MyString',      # OPTIONAL
-      NewClusterIdentifier           => 'MyString',      # OPTIONAL
-      NodeType                       => 'MyString',      # OPTIONAL
-      NumberOfNodes                  => 1,               # OPTIONAL
-      Port                           => 1,               # OPTIONAL
-      PreferredMaintenanceWindow     => 'MyString',      # OPTIONAL
-      PubliclyAccessible             => 1,               # OPTIONAL
+      ],    # OPTIONAL
+      ClusterType                    => 'MyString',    # OPTIONAL
+      ClusterVersion                 => 'MyString',    # OPTIONAL
+      ElasticIp                      => 'MyString',    # OPTIONAL
+      Encrypted                      => 1,             # OPTIONAL
+      EnhancedVpcRouting             => 1,             # OPTIONAL
+      HsmClientCertificateIdentifier => 'MyString',    # OPTIONAL
+      HsmConfigurationIdentifier     => 'MyString',    # OPTIONAL
+      KmsKeyId                       => 'MyString',    # OPTIONAL
+      MaintenanceTrackName           => 'MyString',    # OPTIONAL
+      ManualSnapshotRetentionPeriod  => 1,             # OPTIONAL
+      MasterUserPassword             => 'MyString',    # OPTIONAL
+      NewClusterIdentifier           => 'MyString',    # OPTIONAL
+      NodeType                       => 'MyString',    # OPTIONAL
+      NumberOfNodes                  => 1,             # OPTIONAL
+      Port                           => 1,             # OPTIONAL
+      PreferredMaintenanceWindow     => 'MyString',    # OPTIONAL
+      PubliclyAccessible             => 1,             # OPTIONAL
       VpcSecurityGroupIds            => [
-        'MyString', ...                                  # max: 2147483647
-      ],                                                 # OPTIONAL
+        'MyString', ...                                # max: 2147483647
+      ],    # OPTIONAL
     );
 
     # Results:

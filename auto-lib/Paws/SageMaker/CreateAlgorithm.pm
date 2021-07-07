@@ -48,27 +48,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],
             SupportedInputModes => [
               'Pipe', ...                                # values: Pipe, File
-            ],                                           # min: 1
-            Description => 'MyEntityDescription',        # max: 1024; OPTIONAL
-            IsRequired  => 1,                            # OPTIONAL
+            ],    # min: 1
+            Description => 'MyEntityDescription',    # max: 1024; OPTIONAL
+            IsRequired  => 1,                        # OPTIONAL
             SupportedCompressionTypes => [
-              'None', ...                                # values: None, Gzip
-            ],                                           # OPTIONAL
+              'None', ...                            # values: None, Gzip
+            ],    # OPTIONAL
           },
           ...
-        ],                                               # min: 1, max: 8
-        TrainingImage     => 'MyContainerImage',         # max: 255
+        ],    # min: 1, max: 8
+        TrainingImage     => 'MyContainerImage',    # max: 255
         MetricDefinitions => [
           {
-            Name  => 'MyMetricName',                     # min: 1, max: 255
-            Regex => 'MyMetricRegex',                    # min: 1, max: 500
+            Name  => 'MyMetricName',     # min: 1, max: 255
+            Regex => 'MyMetricRegex',    # min: 1, max: 500
 
           },
           ...
-        ],                                               # max: 40; OPTIONAL
+        ],    # max: 40; OPTIONAL
         SupportedHyperParameters => [
           {
-            Name => 'MyParameterName',                   # max: 256
+            Name => 'MyParameterName',    # max: 256
             Type =>
               'Integer',    # values: Integer, Continuous, Categorical, FreeText
             DefaultValue => 'MyHyperParameterValue',    # max: 2500; OPTIONAL
@@ -78,8 +78,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Range        => {
               CategoricalParameterRangeSpecification => {
                 Values => [
-                  'MyParameterValue', ...               # max: 256
-                ],                                      # min: 1, max: 20
+                  'MyParameterValue', ...    # max: 256
+                ],    # min: 1, max: 20
 
               },    # OPTIONAL
               ContinuousParameterRangeSpecification => {
@@ -95,7 +95,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
         SupportedTuningJobObjectiveMetrics => [
           {
             MetricName => 'MyMetricName',    # min: 1, max: 255
@@ -103,7 +103,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         SupportsDistributedTraining => 1,                  # OPTIONAL
         TrainingImageDigest         => 'MyImageDigest',    # max: 72; OPTIONAL
       },
@@ -119,12 +119,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ProductId         => 'MyProductId',            # max: 256; OPTIONAL
           },
           ...
-        ],                                                 # min: 1, max: 1
+        ],    # min: 1, max: 1
         SupportedContentTypes => [
-          'MyContentType', ...                             # max: 256
+          'MyContentType', ...    # max: 256
         ],
         SupportedResponseMIMETypes => [
-          'MyResponseMIMEType', ...                        # max: 1024
+          'MyResponseMIMEType', ...    # max: 1024
         ],
         SupportedRealtimeInferenceInstanceTypes => [
           'ml.t2.medium',
@@ -142,7 +142,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       ValidationSpecification => {
         ValidationProfiles => [
           {
@@ -150,13 +150,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TrainingJobDefinition => {
               InputDataConfig => [
                 {
-                  ChannelName => 'MyChannelName',       # min: 1, max: 64
+                  ChannelName => 'MyChannelName',    # min: 1, max: 64
                   DataSource  => {
                     FileSystemDataSource => {
-                      DirectoryPath => 'MyDirectoryPath',    # max: 4096
+                      DirectoryPath        => 'MyDirectoryPath',    # max: 4096
                       FileSystemAccessMode => 'rw',             # values: rw, ro
                       FileSystemId         => 'MyFileSystemId', # min: 11
-                      FileSystemType => 'EFS',    # values: EFS, FSxLustre
+                      FileSystemType       => 'EFS',    # values: EFS, FSxLustre
 
                     },    # OPTIONAL
                     S3DataSource => {
@@ -165,14 +165,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                       S3Uri          => 'MyS3Uri',    # max: 1024
                       AttributeNames => [
                         'MyAttributeName', ...        # min: 1, max: 256
-                      ],                              # max: 16; OPTIONAL
+                      ],    # max: 16; OPTIONAL
                       S3DataDistributionType => 'FullyReplicated'
-                      ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
+                      ,     # values: FullyReplicated, ShardedByS3Key; OPTIONAL
                     },    # OPTIONAL
                   },
-                  CompressionType => 'None',             # values: None, Gzip
-                  ContentType     => 'MyContentType',    # max: 256
-                  InputMode       => 'Pipe',             # values: Pipe, File
+                  CompressionType   => 'None',             # values: None, Gzip
+                  ContentType       => 'MyContentType',    # max: 256
+                  InputMode         => 'Pipe',             # values: Pipe, File
                   RecordWrapperType =>
                     'None',    # values: None, RecordIO; OPTIONAL
                   ShuffleConfig => {
@@ -181,13 +181,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },           # OPTIONAL
                 },
                 ...
-              ],               # min: 1, max: 20
+              ],    # min: 1, max: 20
               OutputDataConfig => {
                 S3OutputPath => 'MyS3Uri',       # max: 1024
                 KmsKeyId     => 'MyKmsKeyId',    # max: 2048; OPTIONAL
               },
               ResourceConfig => {
-                InstanceCount => 1,               # min: 1
+                InstanceCount => 1,                # min: 1
                 InstanceType  => 'ml.m4.xlarge'
                 , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.p4d.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5n.xlarge, ml.c5n.2xlarge, ml.c5n.4xlarge, ml.c5n.9xlarge, ml.c5n.18xlarge
                 VolumeSizeInGB => 1,               # min: 1
@@ -216,7 +216,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 CompressionType => 'None',             # values: None, Gzip
                 ContentType     => 'MyContentType',    # max: 256
-                SplitType =>
+                SplitType       =>
                   'None',    # values: None, Line, RecordIO, TFRecord; OPTIONAL
               },
               TransformOutput => {
@@ -226,7 +226,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 KmsKeyId     => 'MyKmsKeyId',    # max: 2048; OPTIONAL
               },
               TransformResources => {
-                InstanceCount => 1,               # min: 1
+                InstanceCount => 1,                # min: 1
                 InstanceType  => 'ml.m4.xlarge'
                 , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
                 VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
@@ -242,7 +242,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # min: 1, max: 1
+        ],    # min: 1, max: 1
         ValidationRole => 'MyRoleArn',    # min: 20, max: 2048
 
       },    # OPTIONAL

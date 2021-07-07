@@ -89,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 1,
 
           },
-          TransmitDisabled => 1,
+          TransmitDisabled => 1,    # OPTIONAL
         },    # OPTIONAL
         DataflowEndpointConfig => {
           DataflowEndpointName   => 'MyString',
@@ -106,7 +106,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         UplinkEchoConfig => {
           AntennaUplinkConfigArn => 'MyConfigArn',
-          Enabled                => 1,
+          Enabled                => 1,               # OPTIONAL
 
         },    # OPTIONAL
       },

@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
         StatelessCustomActions => [
           {
             ActionDefinition => {
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                  # min: 1, max: 1
+                ],    # min: 1, max: 1
 
               },    # OPTIONAL
             },
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         StatelessRuleGroupReferences => [
           {
             Priority    => 1,                  # min: 1, max: 65535
@@ -68,19 +68,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
       },
       FirewallPolicyName => 'MyResourceName',
       Description        => 'MyDescription',    # OPTIONAL
       DryRun             => 1,                  # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                  # min: 1, max: 128
-          Value => 'MyTagValue',                # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

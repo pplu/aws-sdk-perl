@@ -57,14 +57,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             FieldNames => [
               'Myname', ...    # min: 1, max: 64
-            ],                 # OPTIONAL
+            ],    # OPTIONAL
             StandardIdentifiers => [
               'PROFILE',
               ...    # values: PROFILE, UNIQUE, SECONDARY, LOOKUP_ONLY, NEW_ONLY
-            ],       # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
-        ],           # key: min: 1, max: 64
+        ],    # key: min: 1, max: 64
       },    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256

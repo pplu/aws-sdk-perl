@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'Body' => {
           'Html' => {
             'Charset' => 'UTF-8',
-            'Data' =>
+            'Data'    =>
 'This message body contains HTML formatting. It can, for example, contain links like this one: <a class="ulink" href="http://docs.aws.amazon.com/ses/latest/DeveloperGuide" target="_blank">Amazon SES Developer Guide</a>.'
           },
           'Text' => {

@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAssociationBatchResult = $ssm->CreateAssociationBatch(
       Entries => [
         {
-          Name                    => 'MyDocumentARN',
-          ApplyOnlyAtCronInterval => 1,                      # OPTIONAL
-          AssociationName         => 'MyAssociationName',    # OPTIONAL
+          Name                          => 'MyDocumentARN',
+          ApplyOnlyAtCronInterval       => 1,                      # OPTIONAL
+          AssociationName               => 'MyAssociationName',    # OPTIONAL
           AutomationTargetParameterName =>
             'MyAutomationTargetParameterName',    # min: 1, max: 50; OPTIONAL
           CalendarNames      => [ 'MyCalendarNameOrARN', ... ],    # OPTIONAL
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
-          ,     # OPTIONAL
+          ,                            # OPTIONAL
           ScheduleExpression =>
             'MyScheduleExpression',    # min: 1, max: 256; OPTIONAL
           SyncCompliance  => 'AUTO',   # values: AUTO, MANUAL; OPTIONAL
@@ -67,14 +67,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyMaxErrors',                     # min: 1, max: 7; OPTIONAL
             },
             ...
-          ],                                       # min: 1, max: 100; OPTIONAL
+          ],    # min: 1, max: 100; OPTIONAL
           Targets => [
             {
               Key    => 'MyTargetKey',              # min: 1, max: 163; OPTIONAL
               Values => [ 'MyTargetValue', ... ],   # max: 50; OPTIONAL
             },
             ...
-          ],                                        # max: 5; OPTIONAL
+          ],    # max: 5; OPTIONAL
         },
         ...
       ],

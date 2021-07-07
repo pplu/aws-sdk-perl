@@ -34,27 +34,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Statement  => 'MyPartiQLStatement',    # min: 1, max: 8192
           Parameters => [
             {
-              B    => 'BlobBinaryAttributeValue',
-              BOOL => 1,                                      # OPTIONAL
-              BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-              L    => [ <AttributeValue>, ... ],              # OPTIONAL
-              M    => {
-                'MyAttributeName' => <AttributeValue>,        # key: max: 65535
+              B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+              BOOL => 1,                             # OPTIONAL
+              BS   => [
+                'BlobBinaryAttributeValue', ...      # OPTIONAL
+              ],    # OPTIONAL
+              L => [ <AttributeValue>, ... ],    # OPTIONAL
+              M => {
+                'MyAttributeName' => <AttributeValue>,    # key: max: 65535
               },    # OPTIONAL
-              N    => 'MyNumberAttributeValue',
-              NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-              NULL => 1,                                    # OPTIONAL
-              S    => 'MyStringAttributeValue',             # OPTIONAL
+              N  => 'MyNumberAttributeValue',    # OPTIONAL
+              NS => [
+                'MyNumberAttributeValue', ...    # OPTIONAL
+              ],    # OPTIONAL
+              NULL => 1,                           # OPTIONAL
+              S    => 'MyStringAttributeValue',    # OPTIONAL
               SS   => [
-                'MyStringAttributeValue', ...               # OPTIONAL
-              ],                                            # OPTIONAL
+                'MyStringAttributeValue', ...      # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                                # min: 1; OPTIONAL
+          ],    # min: 1; OPTIONAL
         },
         ...
       ],
-      ClientRequestToken => 'MyClientRequestToken',         # OPTIONAL
+      ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
     );
 
     # Results:

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCompilationJobResponse = $api . sagemaker->CreateCompilationJob(
       CompilationJobName => 'MyEntityName',
       InputConfig        => {
-        DataInputConfig => 'MyDataInputConfig',    # min: 1, max: 1024
+        DataInputConfig => 'MyDataInputConfig',      # min: 1, max: 1024
         Framework       => 'TENSORFLOW'
         , # values: TENSORFLOW, KERAS, MXNET, ONNX, PYTORCH, XGBOOST, TFLITE, DARKNET, SKLEARN
         S3Uri            => 'MyS3Uri',               # max: 1024
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

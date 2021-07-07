@@ -55,10 +55,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DisableApiTermination = $InstanceAttribute->DisableApiTermination;
     my $InstanceId            = $InstanceAttribute->InstanceId;
 
-    # Returns a L<Paws::EC2::InstanceAttribute> object.
-    # To describe the block device mapping for an instance
-    # This example describes the ``blockDeviceMapping`` attribute of the
-    # specified instance.
+  # Returns a L<Paws::EC2::InstanceAttribute> object.
+  # To describe the block device mapping for an instance
+  # This example describes the ``blockDeviceMapping`` attribute of the specified
+  # instance.
 
     my $InstanceAttribute = $ec2->DescribeInstanceAttribute(
       'Attribute'  => 'blockDeviceMapping',

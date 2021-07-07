@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
-        RegionConcurrencyType =>
+        RegionConcurrencyType      =>
           'SEQUENTIAL',    # values: SEQUENTIAL, PARALLEL; OPTIONAL
         RegionOrder => [ 'MyRegion', ... ],    # OPTIONAL
       },    # OPTIONAL
@@ -82,20 +82,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           UsePreviousValue => 1,                     # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
-      PermissionModel => 'SERVICE_MANAGED',          # OPTIONAL
-      Regions         => [ 'MyRegion', ... ],        # OPTIONAL
+      ],    # OPTIONAL
+      PermissionModel => 'SERVICE_MANAGED',      # OPTIONAL
+      Regions         => [ 'MyRegion', ... ],    # OPTIONAL
       Tags            => [
         {
-          Key   => 'MyTagKey',                       # min: 1, max: 128
-          Value => 'MyTagValue',                     # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
-      ],                                             # OPTIONAL
-      TemplateBody        => 'MyTemplateBody',       # OPTIONAL
-      TemplateURL         => 'MyTemplateURL',        # OPTIONAL
-      UsePreviousTemplate => 1,                      # OPTIONAL
+      ],    # OPTIONAL
+      TemplateBody        => 'MyTemplateBody',    # OPTIONAL
+      TemplateURL         => 'MyTemplateURL',     # OPTIONAL
+      UsePreviousTemplate => 1,                   # OPTIONAL
     );
 
     # Results:

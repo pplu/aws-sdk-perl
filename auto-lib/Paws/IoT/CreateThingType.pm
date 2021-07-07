@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       ThingTypeProperties => {
         SearchableAttributes => [
           'MyAttributeName', ...    # max: 128
-        ],                          # OPTIONAL
+        ],    # OPTIONAL
         ThingTypeDescription => 'MyThingTypeDescription',  # max: 2028; OPTIONAL
       },    # OPTIONAL
     );

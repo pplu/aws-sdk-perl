@@ -56,8 +56,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 11; OPTIONAL
-            CrawlAttachments => 1,                  # OPTIONAL
+            ],    # min: 1, max: 11; OPTIONAL
+            CrawlAttachments => 1,    # OPTIONAL
           },    # OPTIONAL
           BlogConfiguration => {
             BlogFieldMappings => [
@@ -70,16 +70,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 9; OPTIONAL
+            ],    # min: 1, max: 9; OPTIONAL
           },    # OPTIONAL
           ExclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           InclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           PageConfiguration => {
             PageFieldMappings => [
               {
@@ -91,17 +91,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 12; OPTIONAL
+            ],    # min: 1, max: 12; OPTIONAL
           },    # OPTIONAL
           SpaceConfiguration => {
             CrawlArchivedSpaces => 1,    # OPTIONAL
             CrawlPersonalSpaces => 1,    # OPTIONAL
             ExcludeSpaces       => [
               'MyConfluenceSpaceIdentifier', ...    # min: 1, max: 255
-            ],                                      # min: 1; OPTIONAL
+            ],    # min: 1; OPTIONAL
             IncludeSpaces => [
               'MyConfluenceSpaceIdentifier', ...    # min: 1, max: 255
-            ],                                      # min: 1; OPTIONAL
+            ],    # min: 1; OPTIONAL
             SpaceFieldMappings => [
               {
                 DataSourceFieldName => 'DISPLAY_URL'
@@ -112,15 +112,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyIndexFieldName',               # min: 1, max: 30; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 4; OPTIONAL
+            ],    # min: 1, max: 4; OPTIONAL
           },    # OPTIONAL
           VpcConfiguration => {
             SecurityGroupIds => [
               'MyVpcSecurityGroupId', ...    # min: 1, max: 200
-            ],                               # min: 1, max: 10
+            ],    # min: 1, max: 10
             SubnetIds => [
-              'MySubnetId', ...              # min: 1, max: 200
-            ],                               # min: 1, max: 6
+              'MySubnetId', ...    # min: 1, max: 200
+            ],    # min: 1, max: 6
 
           },    # OPTIONAL
         },    # OPTIONAL
@@ -128,7 +128,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ColumnConfiguration => {
             ChangeDetectingColumns => [
               'MyColumnName', ...    # min: 1, max: 100
-            ],                       # min: 1, max: 5
+            ],    # min: 1, max: 5
             DocumentDataColumnName  => 'MyColumnName',    # min: 1, max: 100
             DocumentIdColumnName    => 'MyColumnName',    # min: 1, max: 100
             DocumentTitleColumnName => 'MyColumnName',    # min: 1, max: 100
@@ -142,14 +142,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
           },
           ConnectionConfiguration => {
-            DatabaseHost => 'MyDatabaseHost',       # min: 1, max: 253
-            DatabaseName => 'MyDatabaseName',       # min: 1, max: 100
-            DatabasePort => 1,                      # min: 1, max: 65535
-            SecretArn    => 'MySecretArn',          # min: 1, max: 1284
-            TableName    => 'MyTableName',          # min: 1, max: 100
+            DatabaseHost => 'MyDatabaseHost',    # min: 1, max: 253
+            DatabaseName => 'MyDatabaseName',    # min: 1, max: 100
+            DatabasePort => 1,                   # min: 1, max: 65535
+            SecretArn    => 'MySecretArn',       # min: 1, max: 1284
+            TableName    => 'MyTableName',       # min: 1, max: 100
 
           },
           DatabaseEngineType => 'RDS_AURORA_MYSQL'
@@ -165,10 +165,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VpcConfiguration => {
             SecurityGroupIds => [
               'MyVpcSecurityGroupId', ...    # min: 1, max: 200
-            ],                               # min: 1, max: 10
+            ],    # min: 1, max: 10
             SubnetIds => [
-              'MySubnetId', ...              # min: 1, max: 200
-            ],                               # min: 1, max: 6
+              'MySubnetId', ...    # min: 1, max: 200
+            ],    # min: 1, max: 6
 
           },    # OPTIONAL
         },    # OPTIONAL
@@ -176,21 +176,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SecretArn        => 'MySecretArn',    # min: 1, max: 1284
           ExcludeMimeTypes => [
             'MyMimeType', ...                   # min: 1, max: 256
-          ],                                    # max: 30; OPTIONAL
+          ],    # max: 30; OPTIONAL
           ExcludeSharedDrives => [
-            'MySharedDriveId', ...              # min: 1, max: 256
-          ],                                    # max: 100; OPTIONAL
+            'MySharedDriveId', ...    # min: 1, max: 256
+          ],    # max: 100; OPTIONAL
           ExcludeUserAccounts => [
-            'MyUserAccount', ...                # min: 1, max: 256
-          ],                                    # max: 100; OPTIONAL
+            'MyUserAccount', ...    # min: 1, max: 256
+          ],    # max: 100; OPTIONAL
           ExclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
-            ...                                 # min: 1, max: 150
-          ],                                    # max: 100; OPTIONAL
+            ...    # min: 1, max: 150
+          ],    # max: 100; OPTIONAL
           FieldMappings => [
             {
               DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
-              IndexFieldName => 'MyIndexFieldName',  # min: 1, max: 30; OPTIONAL
+              IndexFieldName  => 'MyIndexFieldName', # min: 1, max: 30; OPTIONAL
               DateFieldFormat =>
                 'MyDataSourceDateFieldFormat',       # min: 4, max: 40; OPTIONAL
             },
@@ -199,16 +199,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
         OneDriveConfiguration => {
           OneDriveUsers => {
             OneDriveUserList => [
               'MyOneDriveUser', ...    # min: 1, max: 256
-            ],                         # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
             OneDriveUserS3Path => {
               Bucket => 'MyS3BucketName',    # min: 3, max: 63
-              Key    => 'MyS3ObjectKey',     # min: 1, max: 1024; OPTIONAL
+              Key    => 'MyS3ObjectKey',     # min: 1, max: 1024
 
             },    # OPTIONAL
           },
@@ -218,11 +218,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ExclusionPatterns  => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...                                      # min: 1, max: 150
-          ],                                         # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           FieldMappings => [
             {
               DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
-              IndexFieldName => 'MyIndexFieldName',  # min: 1, max: 30; OPTIONAL
+              IndexFieldName  => 'MyIndexFieldName', # min: 1, max: 30; OPTIONAL
               DateFieldFormat =>
                 'MyDataSourceDateFieldFormat',       # min: 4, max: 40; OPTIONAL
             },
@@ -231,28 +231,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
         S3Configuration => {
           BucketName                     => 'MyS3BucketName',  # min: 3, max: 63
           AccessControlListConfiguration => {
-            KeyPath => 'MyS3ObjectKey',    # min: 1, max: 1024; OPTIONAL
+            KeyPath => 'MyS3ObjectKey',    # min: 1, max: 1024
           },    # OPTIONAL
           DocumentsMetadataConfiguration => {
-            S3Prefix => 'MyS3ObjectKey',    # min: 1, max: 1024; OPTIONAL
+            S3Prefix => 'MyS3ObjectKey',    # min: 1, max: 1024
           },    # OPTIONAL
           ExclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           InclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           InclusionPrefixes => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
         SalesforceConfiguration => {
           SecretArn                => 'MySecretArn',    # min: 1, max: 1284
@@ -271,24 +271,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
             IncludeFilterTypes => [
               'ACTIVE_USER', ...    # values: ACTIVE_USER, STANDARD_USER
-            ],                      # min: 1, max: 2; OPTIONAL
+            ],    # min: 1, max: 2; OPTIONAL
           },    # OPTIONAL
           CrawlAttachments              => 1,    # OPTIONAL
           ExcludeAttachmentFilePatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...                                  # min: 1, max: 150
-          ],                                     # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           IncludeAttachmentFilePatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
-            ...                                  # min: 1, max: 150
-          ],                                     # max: 100; OPTIONAL
+            ...    # min: 1, max: 150
+          ],    # max: 100; OPTIONAL
           KnowledgeArticleConfiguration => {
             IncludedStates => [
               'DRAFT', ...    # values: DRAFT, PUBLISHED, ARCHIVED
-            ],                # min: 1, max: 3
+            ],    # min: 1, max: 3
             CustomKnowledgeArticleTypeConfigurations => [
               {
                 DocumentDataFieldName =>
@@ -310,7 +310,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],    # min: 1, max: 100; OPTIONAL
               },
               ...
-            ],        # min: 1, max: 10; OPTIONAL
+            ],    # min: 1, max: 10; OPTIONAL
             StandardKnowledgeArticleTypeConfiguration => {
               DocumentDataFieldName =>
                 'MyDataSourceFieldName',    # min: 1, max: 100
@@ -342,7 +342,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
           },    # OPTIONAL
           StandardObjectConfigurations => [
             {
@@ -365,13 +365,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],    # min: 1, max: 100; OPTIONAL
             },
             ...
-          ],        # min: 1, max: 17; OPTIONAL
+          ],    # min: 1, max: 17; OPTIONAL
         },    # OPTIONAL
         ServiceNowConfiguration => {
-          HostUrl   => 'MyServiceNowHostUrl',    # min: 1, max: 2048
-          SecretArn => 'MySecretArn',            # min: 1, max: 1284
+          HostUrl                => 'MyServiceNowHostUrl',   # min: 1, max: 2048
+          SecretArn              => 'MySecretArn',           # min: 1, max: 1284
           ServiceNowBuildVersion => 'LONDON',    # values: LONDON, OTHERS
-          AuthenticationType =>
+          AuthenticationType     =>
             'HTTP_BASIC',    # values: HTTP_BASIC, OAUTH2; OPTIONAL
           KnowledgeArticleConfiguration => {
             DocumentDataFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
@@ -392,13 +392,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
             FilterQuery => 'MyServiceNowKnowledgeArticleFilterQuery'
-            ,    # min: 1, max: 2048; OPTIONAL
+            ,     # min: 1, max: 2048; OPTIONAL
             IncludeAttachmentFilePatterns => [
               'MyDataSourceInclusionsExclusionsStringsMember',
               ...    # min: 1, max: 150
-            ],       # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
           },    # OPTIONAL
           ServiceCatalogConfiguration => {
             DocumentDataFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
@@ -419,11 +419,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   'MyDataSourceDateFieldFormat',    # min: 4, max: 40; OPTIONAL
               },
               ...
-            ],                                      # min: 1, max: 100; OPTIONAL
+            ],    # min: 1, max: 100; OPTIONAL
             IncludeAttachmentFilePatterns => [
               'MyDataSourceInclusionsExclusionsStringsMember',
-              ...                                   # min: 1, max: 150
-            ],                                      # max: 100; OPTIONAL
+              ...    # min: 1, max: 150
+            ],    # max: 100; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         SharePointConfiguration => {
@@ -431,7 +431,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SharePointVersion => 'SHAREPOINT_ONLINE',  # values: SHAREPOINT_ONLINE
           Urls              => [
             'MyUrl', ...                             # min: 1, max: 2048
-          ],                                         # min: 1, max: 100
+          ],    # min: 1, max: 100
           CrawlAttachments       => 1,                        # OPTIONAL
           DisableLocalGroups     => 1,                        # OPTIONAL
           DocumentTitleFieldName => 'MyDataSourceFieldName',  # min: 1, max: 100
@@ -442,7 +442,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           FieldMappings => [
             {
               DataSourceFieldName => 'MyDataSourceFieldName', # min: 1, max: 100
-              IndexFieldName => 'MyIndexFieldName',  # min: 1, max: 30; OPTIONAL
+              IndexFieldName  => 'MyIndexFieldName', # min: 1, max: 30; OPTIONAL
               DateFieldFormat =>
                 'MyDataSourceDateFieldFormat',       # min: 4, max: 40; OPTIONAL
             },
@@ -451,15 +451,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           InclusionPatterns => [
             'MyDataSourceInclusionsExclusionsStringsMember',
             ...    # min: 1, max: 150
-          ],       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           UseChangeLog     => 1,    # OPTIONAL
           VpcConfiguration => {
             SecurityGroupIds => [
               'MyVpcSecurityGroupId', ...    # min: 1, max: 200
-            ],                               # min: 1, max: 10
+            ],    # min: 1, max: 10
             SubnetIds => [
-              'MySubnetId', ...              # min: 1, max: 200
-            ],                               # min: 1, max: 6
+              'MySubnetId', ...    # min: 1, max: 200
+            ],    # min: 1, max: 6
 
           },    # OPTIONAL
         },    # OPTIONAL
@@ -469,12 +469,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Schedule    => 'MyScanSchedule',    # OPTIONAL
       Tags        => [
         {
-          Key   => 'MyTagKey',            # min: 1, max: 128
-          Value => 'MyTagValue',          # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ProfileId   => 'Mystring',
               },
               ...
-            ],                                  # OPTIONAL
+            ],    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         QueryArgProfileConfig => {

@@ -42,15 +42,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ImageUri           => 'MyImageUri',    # max: 255
         ContainerArguments => [
           'MyContainerArgument', ...           # max: 256
-        ],                                     # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
         ContainerEntrypoint => [
           'MyContainerEntrypointString', ...    # max: 256
-        ],                                      # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
       },
       ProcessingJobName   => 'MyProcessingJobName',
       ProcessingResources => {
         ClusterConfig => {
-          InstanceCount => 1,                   # min: 1, max: 100
+          InstanceCount => 1,                # min: 1, max: 100
           InstanceType  => 'ml.t3.medium'
           , # values: ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.r5.large, ml.r5.xlarge, ml.r5.2xlarge, ml.r5.4xlarge, ml.r5.8xlarge, ml.r5.12xlarge, ml.r5.16xlarge, ml.r5.24xlarge
           VolumeSizeInGB => 1,               # min: 1, max: 16384
@@ -75,10 +75,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         VpcConfig                             => {
           SecurityGroupIds => [
             'MySecurityGroupId', ...                   # max: 32
-          ],                                           # min: 1, max: 5
+          ],    # min: 1, max: 5
           Subnets => [
-            'MySubnetId', ...                          # max: 32
-          ],                                           # min: 1, max: 16
+            'MySubnetId', ...    # max: 32
+          ],    # min: 1, max: 16
 
         },    # OPTIONAL
       },    # OPTIONAL
@@ -88,13 +88,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AppManaged        => 1,            # OPTIONAL
           DatasetDefinition => {
             AthenaDatasetDefinition => {
-              Catalog  => 'MyAthenaCatalog',     # min: 1, max: 256
-              Database => 'MyAthenaDatabase',    # min: 1, max: 255
+              Catalog      => 'MyAthenaCatalog',     # min: 1, max: 256
+              Database     => 'MyAthenaDatabase',    # min: 1, max: 255
               OutputFormat =>
                 'PARQUET',    # values: PARQUET, ORC, AVRO, JSON, TEXTFILE
-              OutputS3Uri => 'MyS3Uri',                # max: 1024
-              QueryString => 'MyAthenaQueryString',    # min: 1, max: 4096
-              KmsKeyId    => 'MyKmsKeyId',             # max: 2048; OPTIONAL
+              OutputS3Uri       => 'MyS3Uri',              # max: 1024
+              QueryString       => 'MyAthenaQueryString',  # min: 1, max: 4096
+              KmsKeyId          => 'MyKmsKeyId',           # max: 2048; OPTIONAL
               OutputCompression =>
                 'GZIP',    # values: GZIP, SNAPPY, ZLIB; OPTIONAL
               WorkGroup => 'MyAthenaWorkGroup',    # min: 1, max: 128; OPTIONAL
@@ -119,15 +119,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           S3Input => {
             S3DataType => 'ManifestFile',    # values: ManifestFile, S3Prefix
             S3Uri      => 'MyS3Uri',         # max: 1024
-            LocalPath => 'MyProcessingLocalPath',    # max: 256; OPTIONAL
-            S3CompressionType => 'None',    # values: None, Gzip; OPTIONAL
+            LocalPath  => 'MyProcessingLocalPath',    # max: 256; OPTIONAL
+            S3CompressionType      => 'None',    # values: None, Gzip; OPTIONAL
             S3DataDistributionType => 'FullyReplicated'
             ,    # values: FullyReplicated, ShardedByS3Key; OPTIONAL
             S3InputMode => 'Pipe',    # values: Pipe, File; OPTIONAL
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       ProcessingOutputConfig => {
         Outputs => [
           {
@@ -138,14 +138,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
             S3Output => {
-              LocalPath => 'MyProcessingLocalPath',    # max: 256; OPTIONAL
+              LocalPath    => 'MyProcessingLocalPath',    # max: 256; OPTIONAL
               S3UploadMode => 'Continuous',    # values: Continuous, EndOfJob
               S3Uri        => 'MyS3Uri',       # max: 1024
 
             },    # OPTIONAL
           },
           ...
-        ],        # max: 10
+        ],    # max: 10
         KmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },    # OPTIONAL
       StoppingCondition => {
@@ -159,7 +159,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ivs = Paws->service('IVS');
     my $UpdateChannelResponse = $ivs->UpdateChannel(
-      Arn         => 'MyChannelArn',
-      Authorized  => 1,                  # OPTIONAL
-      LatencyMode => 'NORMAL',           # OPTIONAL
-      Name        => 'MyChannelName',    # OPTIONAL
+      Arn                       => 'MyChannelArn',
+      Authorized                => 1,                  # OPTIONAL
+      LatencyMode               => 'NORMAL',           # OPTIONAL
+      Name                      => 'MyChannelName',    # OPTIONAL
       RecordingConfigurationArn =>
-        'MyChannelRecordingConfigurationArn',    # OPTIONAL
-      Type => 'BASIC',                           # OPTIONAL
+        'MyChannelRecordingConfigurationArn',          # OPTIONAL
+      Type => 'BASIC',                                 # OPTIONAL
     );
 
     # Results:

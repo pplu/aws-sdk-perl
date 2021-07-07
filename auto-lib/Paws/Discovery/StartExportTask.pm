@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime          => '1970-01-01T01:00:00',    # OPTIONAL
       ExportDataFormat => [
         'CSV', ...                                  # values: CSV, GRAPHML
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       Filters => [
         {
           Condition => 'MyCondition',
@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                            # OPTIONAL
-      StartTime => '1970-01-01T01:00:00',           # OPTIONAL
+      ],    # OPTIONAL
+      StartTime => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
     # Results:

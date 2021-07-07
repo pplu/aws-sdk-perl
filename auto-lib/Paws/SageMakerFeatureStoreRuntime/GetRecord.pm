@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RecordIdentifierValueAsString => 'MyValueAsString',
       FeatureNames                  => [
         'MyFeatureName', ...    # min: 1, max: 64
-      ],                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

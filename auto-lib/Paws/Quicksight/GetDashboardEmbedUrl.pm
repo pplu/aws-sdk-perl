@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdentityType           => 'IAM',
       AdditionalDashboardIds => [
         'MyRestrictiveResourceId', ...    # min: 1, max: 2048
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       Namespace                => 'MyNamespace',    # OPTIONAL
       ResetDisabled            => 1,                # OPTIONAL
       SessionLifetimeInMinutes => 1,                # OPTIONAL

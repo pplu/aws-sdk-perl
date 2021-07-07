@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CertificateChain => 'BlobCertificateChainBlob',    # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',                           # min: 1, max: 128
-          Value => 'MyTagValue',                         # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

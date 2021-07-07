@@ -52,10 +52,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Statement = $AddPermissionResponse->Statement;
 
-    # Returns a L<Paws::Lambda::AddPermissionResponse> object.
-    # To grant another account permission to invoke a function
-    # The following example adds permission for account 223456789012 invoke a
-    # Lambda function named my-function.
+# Returns a L<Paws::Lambda::AddPermissionResponse> object.
+# To grant another account permission to invoke a function
+# The following example adds permission for account 223456789012 invoke a Lambda
+# function named my-function.
     my $AddPermissionResponse = $lambda->AddPermission(
       'Action'       => 'lambda:InvokeFunction',
       'FunctionName' => 'my-function',

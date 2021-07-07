@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To remove tags from a resource
-    # Lists the iSCSI stored volumes of a gateway. Removes one or more tags from
-    # the specified resource.
+# To remove tags from a resource
+# Lists the iSCSI stored volumes of a gateway. Removes one or more tags from the
+# specified resource.
     my $RemoveTagsFromResourceOutput = $storagegateway->RemoveTagsFromResource(
       'ResourceARN' =>
         'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-11A2222B',

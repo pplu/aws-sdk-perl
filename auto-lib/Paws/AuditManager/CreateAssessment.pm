@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyAssessmentName',
       Roles       => [
         {
-          RoleArn => 'MyIamArn',         # min: 20, max: 2048; OPTIONAL
+          RoleArn  => 'MyIamArn',    # min: 20, max: 2048; OPTIONAL
           RoleType =>
             'PROCESS_OWNER',   # values: PROCESS_OWNER, RESOURCE_OWNER; OPTIONAL
         },
@@ -57,13 +57,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name         => 'MyAccountName',     # min: 1, max: 50; OPTIONAL
           },
           ...
-        ],                                       # OPTIONAL
+        ],    # OPTIONAL
         AwsServices => [
           {
             ServiceName => 'MyAWSServiceName',    # min: 1, max: 40; OPTIONAL
           },
           ...
-        ],                                        # OPTIONAL
+        ],    # OPTIONAL
       },
       Description => 'MyAssessmentDescription',    # OPTIONAL
       Tags        => {

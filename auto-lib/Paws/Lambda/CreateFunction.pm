@@ -47,9 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To create a function
-    # The following example creates a function with a deployment package in
-    # Amazon S3 and enables X-Ray tracing and environment variable encryption.
+  # To create a function
+  # The following example creates a function with a deployment package in Amazon
+  # S3 and enables X-Ray tracing and environment variable encryption.
     my $FunctionConfiguration = $lambda->CreateFunction(
       'Code' => {
         'S3Bucket' => 'my-bucket-1xpuxmplzrlbh',
@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       'FunctionName' => 'my-function',
       'Handler'      => 'index.handler',
-      'KMSKeyArn' =>
+      'KMSKeyArn'    =>
 'arn:aws:kms:us-west-2:123456789012:key/b0844d6c-xmpl-4463-97a4-d49f50839966',
       'MemorySize' => 256,
       'Publish'    => 1,

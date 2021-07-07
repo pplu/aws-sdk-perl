@@ -30,9 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $glacier = Paws->service('Glacier');
-    # To initiate the vault locking process
-    # The example initiates the vault locking process for the vault named
-    # my-vault.
+ # To initiate the vault locking process
+ # The example initiates the vault locking process for the vault named my-vault.
     my $InitiateVaultLockOutput = $glacier->InitiateVaultLock(
       'AccountId' => '-',
       'Policy'    => {

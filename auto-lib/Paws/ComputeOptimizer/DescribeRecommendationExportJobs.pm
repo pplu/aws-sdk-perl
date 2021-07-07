@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $compute -optimizer->DescribeRecommendationExportJobs(
       Filters => [
         {
-          Name => 'ResourceType',    # values: ResourceType, JobStatus; OPTIONAL
+          Name   => 'ResourceType',  # values: ResourceType, JobStatus; OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      JobIds     => [ 'MyJobId', ... ],          # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyNextToken',               # OPTIONAL
+      ],    # OPTIONAL
+      JobIds     => [ 'MyJobId', ... ],    # OPTIONAL
+      MaxResults => 1,                     # OPTIONAL
+      NextToken  => 'MyNextToken',         # OPTIONAL
       );
 
     # Results:

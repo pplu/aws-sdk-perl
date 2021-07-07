@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   ],
                   Window => {
                     Tumbling => {
-                      Interval => 'MyInterval',      # min: 2, max: 3
+                      Interval => 'MyInterval',    # min: 2, max: 3
 
                     },    # OPTIONAL
                   },
@@ -97,19 +97,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Unit         => 'MyPropertyUnit',    # min: 1, max: 256; OPTIONAL
             },
             ...
-          ],                                       # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       AssetModelDescription => 'MyDescription',    # OPTIONAL
       AssetModelHierarchies => [
         {
-          ChildAssetModelId => 'MyID',             # min: 36, max: 36
-          Name              => 'MyName',           # min: 1, max: 256
-          Id                => 'MyID',             # min: 36, max: 36
+          ChildAssetModelId => 'MyID',      # min: 36, max: 36
+          Name              => 'MyName',    # min: 1, max: 256
+          Id                => 'MyID',      # min: 36, max: 36
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       AssetModelProperties => [
         {
           DataType =>
@@ -137,7 +137,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ],
               Window => {
                 Tumbling => {
-                  Interval => 'MyInterval',      # min: 2, max: 3
+                  Interval => 'MyInterval',    # min: 2, max: 3
 
                 },    # OPTIONAL
               },
@@ -164,8 +164,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Unit         => 'MyPropertyUnit',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
-      ClientToken => 'MyClientToken',          # OPTIONAL
+      ],    # OPTIONAL
+      ClientToken => 'MyClientToken',    # OPTIONAL
     );
 
     # Results:

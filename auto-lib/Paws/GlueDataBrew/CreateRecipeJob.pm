@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Overwrite        => 1,    # OPTIONAL
           PartitionColumns => [
             'MyColumnName', ...     # min: 1, max: 255
-          ],                        # max: 200; OPTIONAL
+          ],    # max: 200; OPTIONAL
         },
         ...
       ],

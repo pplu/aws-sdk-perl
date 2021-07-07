@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
    # cluster changes to a different state, usually within 60 minutes of it being
    # created, this action is no longer available.
     my $UpdateClusterResult = $snowball->UpdateCluster(
-      'AddressId' => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
-      'ClusterId' => 'CID123e4567-e89b-12d3-a456-426655440000',
+      'AddressId'   => 'ADID1234ab12-3eec-4eb3-9be6-9374c10eb51b',
+      'ClusterId'   => 'CID123e4567-e89b-12d3-a456-426655440000',
       'Description' =>
         'Updated the address to send this to image processing - RJ'
     );

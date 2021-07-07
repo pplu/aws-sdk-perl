@@ -52,10 +52,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ...
         ],
         SourceObjectReference => {
-          Selector => 'MySelectorObjectReference',            # OPTIONAL
+          Selector => 'MySelectorObjectReference',    # OPTIONAL
         },
         TargetObjectReference => {
-          Selector => 'MySelectorObjectReference',            # OPTIONAL
+          Selector => 'MySelectorObjectReference',    # OPTIONAL
         },
         TypedLinkFacet => {
           SchemaArn     => 'MyArn',
@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
 
       },
-      ConsistencyLevel => 'SERIALIZABLE',                     # OPTIONAL
+      ConsistencyLevel => 'SERIALIZABLE',    # OPTIONAL
     );
 
     # Results:

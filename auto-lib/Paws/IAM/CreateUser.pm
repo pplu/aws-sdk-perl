@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To create an IAM user
-    # The following create-user command creates an IAM user named Bob in the
-    # current account.
+# To create an IAM user
+# The following create-user command creates an IAM user named Bob in the current
+# account.
     my $CreateUserResponse = $iam->CreateUser( 'UserName' => 'Bob' );
 
     # Results:

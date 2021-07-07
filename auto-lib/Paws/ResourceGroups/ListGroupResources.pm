@@ -38,15 +38,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name   => 'resource-type',    # values: resource-type
           Values => [
             'MyResourceFilterValue', ...    # min: 1, max: 128
-          ],                                # min: 1, max: 5
+          ],    # min: 1, max: 5
 
         },
         ...
-      ],                                    # OPTIONAL
-      Group      => 'MyGroupString',        # OPTIONAL
-      GroupName  => 'MyGroupName',          # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyNextToken',          # OPTIONAL
+      ],    # OPTIONAL
+      Group      => 'MyGroupString',    # OPTIONAL
+      GroupName  => 'MyGroupName',      # OPTIONAL
+      MaxResults => 1,                  # OPTIONAL
+      NextToken  => 'MyNextToken',      # OPTIONAL
     );
 
     # Results:

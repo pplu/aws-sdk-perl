@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name                     => 'MyName',
       AccessToken              => 'MyAccessToken',    # OPTIONAL
       AutoBranchCreationConfig => {
-        BasicAuthCredentials => 'MyBasicAuthCredentials',  # max: 2000; OPTIONAL
+        BasicAuthCredentials  => 'MyBasicAuthCredentials', # max: 2000; OPTIONAL
         BuildSpec             => 'MyBuildSpec',   # min: 1, max: 25000; OPTIONAL
         EnableAutoBuild       => 1,               # OPTIONAL
         EnableBasicAuth       => 1,               # OPTIONAL
@@ -59,15 +59,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         EnvironmentVariables     => {
           'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
         },    # OPTIONAL
-        Framework => 'MyFramework',    # max: 255; OPTIONAL
+        Framework                  => 'MyFramework',    # max: 255; OPTIONAL
         PullRequestEnvironmentName =>
-          'MyPullRequestEnvironmentName',    # max: 20; OPTIONAL
+          'MyPullRequestEnvironmentName',               # max: 20; OPTIONAL
         Stage => 'PRODUCTION'
         , # values: PRODUCTION, BETA, DEVELOPMENT, EXPERIMENTAL, PULL_REQUEST; OPTIONAL
       },    # OPTIONAL
       AutoBranchCreationPatterns => [
         'MyAutoBranchCreationPattern', ...    # min: 1, max: 2048
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       BasicAuthCredentials => 'MyBasicAuthCredentials',    # OPTIONAL
       BuildSpec            => 'MyBuildSpec',               # OPTIONAL
       CustomHeaders        => 'MyCustomHeaders',           # OPTIONAL
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Status    => 'MyStatus',       # min: 3, max: 7; OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       Description              => 'MyDescription',    # OPTIONAL
       EnableAutoBranchCreation => 1,                  # OPTIONAL
       EnableBasicAuth          => 1,                  # OPTIONAL

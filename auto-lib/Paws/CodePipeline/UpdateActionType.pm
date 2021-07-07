@@ -36,15 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ,    # min: 1, max: 1000; OPTIONAL
               PollingServicePrincipals => [
                 'MyServicePrincipal', ...    # min: 1, max: 128
-              ],                             # min: 1, max: 10; OPTIONAL
+              ],    # min: 1, max: 10; OPTIONAL
             },    # OPTIONAL
             LambdaExecutorConfiguration => {
               LambdaFunctionArn => 'MyLambdaFunctionArn',    # min: 1, max: 140
 
             },    # OPTIONAL
           },
-          Type       => 'JobWorker',    # values: JobWorker, Lambda
-          JobTimeout => 1,              # min: 60, max: 43200; OPTIONAL
+          Type       => 'JobWorker',         # values: JobWorker, Lambda
+          JobTimeout => 1,                   # min: 60, max: 43200; OPTIONAL
           PolicyStatementsTemplate =>
             'MyPolicyStatementsTemplate',    # min: 1, max: 2048; OPTIONAL
         },
@@ -73,15 +73,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Properties => [
           {
-            Key      => 1,
-            Name     => 'MyActionConfigurationKey',    # min: 1, max: 50
-            NoEcho   => 1,
-            Optional => 1,
+            Key         => 1,
+            Name        => 'MyActionConfigurationKey',    # min: 1, max: 50
+            NoEcho      => 1,
+            Optional    => 1,
             Description => 'MyPropertyDescription', # min: 1, max: 250; OPTIONAL
             Queryable   => 1,
           },
           ...
-        ],                                          # max: 10; OPTIONAL
+        ],    # max: 10; OPTIONAL
         Urls => {
           ConfigurationUrl     => 'MyUrl',         # min: 1, max: 2048; OPTIONAL
           EntityUrlTemplate    => 'MyUrlTemplate', # min: 1, max: 2048; OPTIONAL

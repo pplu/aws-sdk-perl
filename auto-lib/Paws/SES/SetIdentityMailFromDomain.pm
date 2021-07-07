@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # SetIdentityMailFromDomain
-    # The following example configures Amazon SES to use a custom MAIL FROM
-    # domain for an identity:
+  # SetIdentityMailFromDomain
+  # The following example configures Amazon SES to use a custom MAIL FROM domain
+  # for an identity:
     my $SetIdentityMailFromDomainResponse = $email->SetIdentityMailFromDomain(
       'BehaviorOnMXFailure' => 'UseDefaultValue',
       'Identity'            => 'user@example.com',

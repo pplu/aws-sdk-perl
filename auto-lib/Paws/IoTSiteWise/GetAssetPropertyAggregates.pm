@@ -54,8 +54,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PropertyId    => 'MyID',                    # OPTIONAL
       Qualities     => [
         'GOOD', ...                               # values: GOOD, BAD, UNCERTAIN
-      ],                                          # OPTIONAL
-      TimeOrdering => 'ASCENDING',                # OPTIONAL
+      ],    # OPTIONAL
+      TimeOrdering => 'ASCENDING',    # OPTIONAL
       );
 
     # Results:

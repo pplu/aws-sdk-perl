@@ -60,9 +60,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To restore a DB instance to a point in time.
-    # The following example restores a DB instance to a new DB instance at a
-    # point in time from the source DB instance.
+  # To restore a DB instance to a point in time.
+  # The following example restores a DB instance to a new DB instance at a point
+  # in time from the source DB instance.
     my $RestoreDBInstanceToPointInTimeResult =
       $rds->RestoreDBInstanceToPointInTime(
       'RestoreTime'                => '2016-09-13T18:45:00Z',

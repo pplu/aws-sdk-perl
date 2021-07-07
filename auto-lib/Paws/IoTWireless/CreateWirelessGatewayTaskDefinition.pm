@@ -39,12 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name               => 'MyWirelessGatewayTaskName',    # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                              # min: 1, max: 128
-          Value => 'MyTagValue',                            # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                    # OPTIONAL
+      ],    # OPTIONAL
       Update => {
         LoRaWAN => {
           CurrentVersion => {
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             PackageVersion => 'MyPackageVersion',  # min: 1, max: 32; OPTIONAL
             Station        => 'MyStation',         # min: 1, max: 4096; OPTIONAL
           },    # OPTIONAL
-          SigKeyCrc => 1,    # min: 1, max: 4294967295; OPTIONAL
+          SigKeyCrc       => 1,    # min: 1, max: 4294967295; OPTIONAL
           UpdateSignature => 'MyUpdateSignature',  # min: 1, max: 4096; OPTIONAL
           UpdateVersion   => {
             Model          => 'MyModel',           # min: 1, max: 4096; OPTIONAL

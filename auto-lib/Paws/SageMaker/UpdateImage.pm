@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageName        => 'MyImageName',
       DeleteProperties => [
         'MyImageDeleteProperty', ...    # min: 1, max: 11
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
       Description => 'MyImageDescription',    # OPTIONAL
       DisplayName => 'MyImageDisplayName',    # OPTIONAL
       RoleArn     => 'MyRoleArn',             # OPTIONAL

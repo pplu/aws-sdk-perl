@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-   # To list DB snapshot attributes
-   # This example lists all manually-created, shared snapshots for the specified
-   # DB instance.
+# To list DB snapshot attributes
+# This example lists all manually-created, shared snapshots for the specified DB
+# instance.
     my $DBSnapshotMessage = $rds->DescribeDBSnapshots(
       'DBInstanceIdentifier' => 'mymysqlinstance',
       'IncludePublic'        => 0,

@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             IsAlexaForBusinessEnabled => 1,                      # OPTIONAL
           },    # OPTIONAL
           LicenseType => 'Basic', # values: Basic, Plus, Pro, ProTrial; OPTIONAL
-          UserType =>
+          UserType    =>
             'PrivateUser',        # values: PrivateUser, SharedDevice; OPTIONAL
         },
         ...

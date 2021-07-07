@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # To copy a DB cluster parameter group
     # This example copies a DB cluster parameter group.
     my $CopyDBClusterParameterGroupResult = $rds->CopyDBClusterParameterGroup(
-      'SourceDBClusterParameterGroupIdentifier' => 'mydbclusterparametergroup',
+      'SourceDBClusterParameterGroupIdentifier'  => 'mydbclusterparametergroup',
       'TargetDBClusterParameterGroupDescription' =>
         'My DB cluster parameter group copy',
       'TargetDBClusterParameterGroupIdentifier' =>

@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $devicefarm = Paws->service('DeviceFarm');
-    # To install to a remote access session
-    # The following example installs a specific app to a device in a specific
-    # remote access session.
+# To install to a remote access session
+# The following example installs a specific app to a device in a specific remote
+# access session.
     my $InstallToRemoteAccessSessionResult =
       $devicefarm->InstallToRemoteAccessSession(
       'AppArn' =>

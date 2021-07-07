@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           EntryPoint          => 'MyEntryPointPath',    # min: 1, max: 256
           EntryPointArguments => [
             'MyEntryPointArgument', ...                 # min: 1, max: 10280
-          ],                                            # OPTIONAL
+          ],    # OPTIONAL
           SparkSubmitParameters =>
             'MySparkSubmitParameters',    # min: 1, max: 1024; OPTIONAL
         },    # OPTIONAL
@@ -61,10 +61,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # max: 100; OPTIONAL
           },
           ...
-        ],        # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
         MonitoringConfiguration => {
           CloudWatchMonitoringConfiguration => {
-            LogGroupName => 'MyLogGroupName',    # min: 1, max: 512
+            LogGroupName        => 'MyLogGroupName',    # min: 1, max: 512
             LogStreamNamePrefix => 'MyString256',   # min: 1, max: 256; OPTIONAL
           },    # OPTIONAL
           PersistentAppUI => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL

@@ -52,12 +52,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DeviceName => 'MyNonEmptyString',    # min: 1, max: 1024
           Ebs        => {
-            DeleteOnTermination => 1,          # OPTIONAL
-            Encrypted           => 1,          # OPTIONAL
-            Iops                => 1,          # min: 100, max: 10000; OPTIONAL
-            KmsKeyId   => 'MyNonEmptyString',  # min: 1, max: 1024
-            SnapshotId => 'MyNonEmptyString',  # min: 1, max: 1024
-            VolumeSize => 1,                   # min: 1, max: 16000; OPTIONAL
+            DeleteOnTermination => 1,    # OPTIONAL
+            Encrypted           => 1,    # OPTIONAL
+            Iops                => 1,    # min: 100, max: 10000; OPTIONAL
+            KmsKeyId   => 'MyNonEmptyString',    # min: 1, max: 1024
+            SnapshotId => 'MyNonEmptyString',    # min: 1, max: 1024
+            VolumeSize => 1,                     # min: 1, max: 16000; OPTIONAL
             VolumeType => 'standard'
             ,    # values: standard, io1, io2, gp2, gp3, sc1, st1; OPTIONAL
           },    # OPTIONAL
@@ -65,8 +65,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VirtualName => 'MyNonEmptyString',    # min: 1, max: 1024
         },
         ...
-      ],                                        # OPTIONAL
-      Description => 'MyNonEmptyString',        # OPTIONAL
+      ],    # OPTIONAL
+      Description => 'MyNonEmptyString',    # OPTIONAL
       Tags        => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL

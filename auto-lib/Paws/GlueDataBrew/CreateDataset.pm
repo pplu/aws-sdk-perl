@@ -61,17 +61,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Format        => 'CSV',             # OPTIONAL
       FormatOptions => {
         Csv => {
-          Delimiter => 'MyDelimiter',     # min: 1, max: 1; OPTIONAL
-          HeaderRow => 1,                 # OPTIONAL
+          Delimiter => 'MyDelimiter',    # min: 1, max: 1; OPTIONAL
+          HeaderRow => 1,                # OPTIONAL
         },    # OPTIONAL
         Excel => {
           HeaderRow    => 1,    # OPTIONAL
           SheetIndexes => [
             1, ...              # max: 200
-          ],                    # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
           SheetNames => [
             'MySheetName', ...    # min: 1, max: 31
-          ],                      # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
         },    # OPTIONAL
         Json => {
           MultiLine => 1,    # OPTIONAL
@@ -79,8 +79,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PathOptions => {
         FilesLimit => {
-          MaxFiles => 1,               # min: 1
-          Order    => 'DESCENDING',    # values: DESCENDING, ASCENDING; OPTIONAL
+          MaxFiles  => 1,              # min: 1
+          Order     => 'DESCENDING',   # values: DESCENDING, ASCENDING; OPTIONAL
           OrderedBy =>
             'LAST_MODIFIED_DATE',      # values: LAST_MODIFIED_DATE; OPTIONAL
         },    # OPTIONAL

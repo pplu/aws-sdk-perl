@@ -27,10 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-    # Register cross account access role
-    # Registers the IAM role that Amazon Inspector uses to list your EC2
-    # instances at the start of the assessment run or when you call the
-    # PreviewAgents action.
+ # Register cross account access role
+ # Registers the IAM role that Amazon Inspector uses to list your EC2 instances
+ # at the start of the assessment run or when you call the PreviewAgents action.
     $inspector->RegisterCrossAccountAccessRole(
       'RoleArn' => 'arn:aws:iam::123456789012:role/inspector' );
 

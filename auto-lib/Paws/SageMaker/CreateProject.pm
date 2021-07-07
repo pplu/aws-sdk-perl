@@ -38,21 +38,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PathId                 => 'MyServiceCatalogEntityId', # min: 1, max: 100
         ProvisioningParameters => [
           {
-            Key => 'MyProvisioningParameterKey',   # min: 1, max: 1000; OPTIONAL
+            Key   => 'MyProvisioningParameterKey', # min: 1, max: 1000; OPTIONAL
             Value => 'MyProvisioningParameterValue',    # max: 4096; OPTIONAL
           },
           ...
-        ],                                              # OPTIONAL
+        ],    # OPTIONAL
       },
-      ProjectDescription => 'MyEntityDescription',      # OPTIONAL
+      ProjectDescription => 'MyEntityDescription',    # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                          # min: 1, max: 128
-          Value => 'MyTagValue',                        # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

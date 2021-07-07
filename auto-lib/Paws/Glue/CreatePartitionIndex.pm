@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IndexName => 'MyNameString',    # min: 1, max: 255
         Keys      => [
           'MyNameString', ...           # min: 1, max: 255
-        ],                              # min: 1
+        ],    # min: 1
 
       },
       TableName => 'MyNameString',

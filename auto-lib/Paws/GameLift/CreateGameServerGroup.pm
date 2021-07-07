@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],
       LaunchTemplate => {
-        LaunchTemplateId => 'MyLaunchTemplateId',   # min: 1, max: 255; OPTIONAL
+        LaunchTemplateId   => 'MyLaunchTemplateId', # min: 1, max: 255; OPTIONAL
         LaunchTemplateName =>
           'MyLaunchTemplateName',                   # min: 3, max: 128; OPTIONAL
         Version => 'MyLaunchTemplateVersion',       # min: 1, max: 128; OPTIONAL
@@ -67,15 +67,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GameServerProtectionPolicy => 'NO_PROTECTION',    # OPTIONAL
       Tags                       => [
         {
-          Key   => 'MyTagKey',                          # min: 1, max: 128
-          Value => 'MyTagValue',                        # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                # OPTIONAL
+      ],    # OPTIONAL
       VpcSubnets => [
-        'MyVpcSubnet', ...                              # min: 15, max: 24
-      ],                                                # OPTIONAL
+        'MyVpcSubnet', ...    # min: 15, max: 24
+      ],    # OPTIONAL
     );
 
     # Results:

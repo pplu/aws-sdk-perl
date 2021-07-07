@@ -39,17 +39,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ecs = Paws->service('ECS');
-    # To change the task definition used in a service
-    # This example updates the my-http-service service to use the
-    # amazon-ecs-sample task definition.
+ # To change the task definition used in a service
+ # This example updates the my-http-service service to use the amazon-ecs-sample
+ # task definition.
     my $UpdateServiceResponse = $ecs->UpdateService(
       'Service'        => 'my-http-service',
       'TaskDefinition' => 'amazon-ecs-sample'
     );
 
-    # To change the number of tasks in a service
-    # This example updates the desired count of the my-http-service service to
-    # 10.
+  # To change the number of tasks in a service
+  # This example updates the desired count of the my-http-service service to 10.
     my $UpdateServiceResponse = $ecs->UpdateService(
       'DesiredCount' => 10,
       'Service'      => 'my-http-service'

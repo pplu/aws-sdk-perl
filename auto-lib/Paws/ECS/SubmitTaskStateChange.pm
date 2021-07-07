@@ -59,24 +59,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Protocol      => 'tcp',        # values: tcp, udp; OPTIONAL
             },
             ...
-          ],                                 # OPTIONAL
+          ],    # OPTIONAL
           Reason    => 'MyString',
           RuntimeId => 'MyString',
           Status    => 'MyString',
         },
         ...
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
       ExecutionStoppedAt => '1970-01-01T01:00:00',    # OPTIONAL
       ManagedAgents      => [
         {
-          ContainerName => 'MyString',
+          ContainerName    => 'MyString',
           ManagedAgentName =>
             'ExecuteCommandAgent',    # values: ExecuteCommandAgent
           Status => 'MyString',
           Reason => 'MyString',
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       PullStartedAt => '1970-01-01T01:00:00',    # OPTIONAL
       PullStoppedAt => '1970-01-01T01:00:00',    # OPTIONAL
       Reason        => 'MyString',               # OPTIONAL

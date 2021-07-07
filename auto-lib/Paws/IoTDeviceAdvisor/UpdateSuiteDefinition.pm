@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ThingArn => 'MyAmazonResourceName',   # min: 20, max: 2048; OPTIONAL
           },
           ...
-        ],                                        # max: 2; OPTIONAL
+        ],    # max: 2; OPTIONAL
         IntendedForQualification => 1,             # OPTIONAL
         RootGroup                => 'MyRootGroup', # min: 1, max: 2048; OPTIONAL
-        SuiteDefinitionName =>
+        SuiteDefinitionName      =>
           'MySuiteDefinitionName',                 # min: 1, max: 256; OPTIONAL
       },    # OPTIONAL
       );

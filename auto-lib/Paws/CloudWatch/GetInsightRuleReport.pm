@@ -41,8 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxContributorCount => 1,                       # OPTIONAL
       Metrics             => [
         'MyInsightRuleMetricName', ...                # min: 1, max: 32
-      ],                                              # OPTIONAL
-      OrderBy => 'MyInsightRuleOrderBy',              # OPTIONAL
+      ],    # OPTIONAL
+      OrderBy => 'MyInsightRuleOrderBy',    # OPTIONAL
     );
 
     # Results:

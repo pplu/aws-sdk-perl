@@ -37,13 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       RoleMappings => {
         'MyIdentityProviderName' => {
-          Type => 'Token',    # values: Token, Rules
+          Type                    => 'Token',    # values: Token, Rules
           AmbiguousRoleResolution =>
             'AuthenticatedRole',    # values: AuthenticatedRole, Deny; OPTIONAL
           RulesConfiguration => {
             Rules => [
               {
-                Claim => 'MyClaimName',    # min: 1, max: 64
+                Claim     => 'MyClaimName',    # min: 1, max: 64
                 MatchType =>
                   'Equals',    # values: Equals, Contains, StartsWith, NotEqual
                 RoleARN => 'MyARNString',     # min: 20, max: 2048
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                # min: 1, max: 400
+            ],    # min: 1, max: 400
 
           },    # OPTIONAL
         },    # key: min: 1, max: 128

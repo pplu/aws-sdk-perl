@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FindingCriteria => {
         Criterion => {
           'MyString' => {
-            Eq     => [ 'MyString', ... ],    # OPTIONAL
-            Equals => [ 'MyString', ... ],    # OPTIONAL
+            Eq                 => [ 'MyString', ... ],    # OPTIONAL
+            Equals             => [ 'MyString', ... ],    # OPTIONAL
             GreaterThan        => 1,                      # OPTIONAL
             GreaterThanOrEqual => 1,                      # OPTIONAL
             Gt                 => 1,                      # OPTIONAL

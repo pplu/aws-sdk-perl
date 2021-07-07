@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Principal => {
               DataLakePrincipalIdentifier =>
                 'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
-            },
+            },    # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],    # OPTIONAL
         CreateTableDefaultPermissions => [
           {
             Permissions => [
@@ -52,22 +52,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Principal => {
               DataLakePrincipalIdentifier =>
                 'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
-            },
+            },    # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],    # OPTIONAL
         DataLakeAdmins => [
           {
             DataLakePrincipalIdentifier =>
-              'MyDataLakePrincipalString',      # min: 1, max: 255; OPTIONAL
+              'MyDataLakePrincipalString',    # min: 1, max: 255; OPTIONAL
           },
-          ...
-        ],                                      # max: 10; OPTIONAL
+          ...                                 # OPTIONAL
+        ],    # max: 10; OPTIONAL
         TrustedResourceOwners => [
-          'MyCatalogIdString', ...              # min: 1, max: 255
-        ],                                      # OPTIONAL
+          'MyCatalogIdString', ...    # min: 1, max: 255
+        ],    # OPTIONAL
       },
-      CatalogId => 'MyCatalogIdString',         # OPTIONAL
+      CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

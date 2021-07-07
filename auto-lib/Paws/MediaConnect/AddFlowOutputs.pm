@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType =>
+            KeyType                      =>
               'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
@@ -66,23 +66,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                     # OPTIONAL
+              ],    # OPTIONAL
               EncodingParameters => {
                 CompressionFactor => 1,
-                EncoderProfile    => 'main',         # values: main, high
+                EncoderProfile    => 'main',    # values: main, high
 
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
-          MinLatency       => 1,              # OPTIONAL
-          Name             => 'My__string',
-          Port             => 1,              # OPTIONAL
-          RemoteId         => 'My__string',
-          SmoothingLatency => 1,              # OPTIONAL
-          StreamId         => 'My__string',
+          ],    # OPTIONAL
+          MinLatency             => 1,              # OPTIONAL
+          Name                   => 'My__string',
+          Port                   => 1,              # OPTIONAL
+          RemoteId               => 'My__string',
+          SmoothingLatency       => 1,              # OPTIONAL
+          StreamId               => 'My__string',
           VpcInterfaceAttachment => { VpcInterfaceName => 'My__string', }
-          ,                                   # OPTIONAL
+          ,                                         # OPTIONAL
         },
         ...
       ],

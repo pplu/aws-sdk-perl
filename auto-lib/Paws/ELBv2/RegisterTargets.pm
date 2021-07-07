@@ -46,10 +46,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ]
     );
 
-    # To register targets with a target group using port overrides
-    # This example registers the specified instance with the specified target
-    # group using multiple ports. This enables you to register ECS containers on
-    # the same instance as targets in the target group.
+ # To register targets with a target group using port overrides
+ # This example registers the specified instance with the specified target group
+ # using multiple ports. This enables you to register ECS containers on the same
+ # instance as targets in the target group.
     my $RegisterTargetsOutput = $elasticloadbalancing->RegisterTargets(
       'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-new-targets/3bb63f11dfb0faf9',

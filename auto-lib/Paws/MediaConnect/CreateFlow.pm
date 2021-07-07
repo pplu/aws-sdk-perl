@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType =>
+            KeyType                      =>
               'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
@@ -57,10 +57,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url        => 'My__string',
           },    # OPTIONAL
           EntitlementStatus => 'ENABLED',  # values: ENABLED, DISABLED; OPTIONAL
-          Name => 'My__string',
+          Name              => 'My__string',
         },
         ...
-      ],                                   # OPTIONAL
+      ],    # OPTIONAL
       MediaStreams => [
         {
           MediaStreamId   => 1,           # OPTIONAL
@@ -86,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VideoFormat => 'My__string',
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       Outputs => [
         {
           Protocol => 'zixi-push'
@@ -99,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType =>
+            KeyType                      =>
               'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
@@ -122,33 +122,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                     # OPTIONAL
+              ],    # OPTIONAL
               EncodingParameters => {
                 CompressionFactor => 1,
-                EncoderProfile    => 'main',         # values: main, high
+                EncoderProfile    => 'main',    # values: main, high
 
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
-          MinLatency       => 1,              # OPTIONAL
-          Name             => 'My__string',
-          Port             => 1,              # OPTIONAL
-          RemoteId         => 'My__string',
-          SmoothingLatency => 1,              # OPTIONAL
-          StreamId         => 'My__string',
+          ],    # OPTIONAL
+          MinLatency             => 1,              # OPTIONAL
+          Name                   => 'My__string',
+          Port                   => 1,              # OPTIONAL
+          RemoteId               => 'My__string',
+          SmoothingLatency       => 1,              # OPTIONAL
+          StreamId               => 'My__string',
           VpcInterfaceAttachment => { VpcInterfaceName => 'My__string', }
-          ,                                   # OPTIONAL
+          ,                                         # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       Source => {
         Decryption => {
           RoleArn   => 'My__string',
           Algorithm => 'aes128',      # values: aes128, aes192, aes256; OPTIONAL
           ConstantInitializationVector => 'My__string',
           DeviceId                     => 'My__string',
-          KeyType =>
+          KeyType                      =>
             'speke',    # values: speke, static-key, srt-password; OPTIONAL
           Region     => 'My__string',
           ResourceId => 'My__string',
@@ -175,11 +175,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
-        ],                                    # OPTIONAL
-        MinLatency => 1,                      # OPTIONAL
+        ],    # OPTIONAL
+        MinLatency => 1,              # OPTIONAL
         Name       => 'My__string',
         Protocol   => 'zixi-push'
         , # values: zixi-push, rtp-fec, rtp, zixi-pull, rist, st2110-jpegxs, cdi, srt-listener
@@ -198,7 +198,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType =>
+            KeyType                      =>
               'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
@@ -225,11 +225,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                              # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                  # OPTIONAL
-          MinLatency => 1,                    # OPTIONAL
+          ],    # OPTIONAL
+          MinLatency => 1,              # OPTIONAL
           Name       => 'My__string',
           Protocol   => 'zixi-push'
           , # values: zixi-push, rtp-fec, rtp, zixi-pull, rist, st2110-jpegxs, cdi, srt-listener
@@ -241,14 +241,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       VpcInterfaces => [
         {
-          Name             => 'My__string',
-          RoleArn          => 'My__string',
-          SecurityGroupIds => [ 'My__string', ... ],
-          SubnetId         => 'My__string',
+          Name                 => 'My__string',
+          RoleArn              => 'My__string',
+          SecurityGroupIds     => [ 'My__string', ... ],
+          SubnetId             => 'My__string',
           NetworkInterfaceType => 'ena',    # values: ena, efa; OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

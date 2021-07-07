@@ -47,11 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $VersionId = $DeleteObjectTaggingOutput->VersionId;
 
-   # Returns a L<Paws::S3::DeleteObjectTaggingOutput> object.
-   # To remove tag set from an object
-   # The following example removes tag set associated with the specified object.
-   # If the bucket is versioning enabled, the operation removes tag set from the
-   # latest object version.
+# Returns a L<Paws::S3::DeleteObjectTaggingOutput> object.
+# To remove tag set from an object
+# The following example removes tag set associated with the specified object. If
+# the bucket is versioning enabled, the operation removes tag set from the
+# latest object version.
     my $DeleteObjectTaggingOutput = $s3->DeleteObjectTagging(
       'Bucket' => 'examplebucket',
       'Key'    => 'HappyFace.jpg'

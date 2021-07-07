@@ -41,19 +41,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResolverEndpointId => 'MyResourceId',         # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                      # min: 1, max: 128
-          Value => 'MyTagValue',                    # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       TargetIps => [
         {
-          Ip   => 'MyIp',                           # min: 7, max: 36
-          Port => 1,                                # max: 65535; OPTIONAL
+          Ip   => 'MyIp',    # min: 7, max: 36
+          Port => 1,         # max: 65535; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

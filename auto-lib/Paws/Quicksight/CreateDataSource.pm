@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AlternateDataSourceParameters => [
             {
               AmazonElasticsearchParameters => {
-                Domain => 'MyDomain',                       # min: 1, max: 64
+                Domain => 'MyDomain',    # min: 1, max: 64
 
               },    # OPTIONAL
               AthenaParameters => {
@@ -58,13 +58,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               AuroraParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
               AuroraPostgreSqlParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
@@ -78,31 +78,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               MariaDbParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
               MySqlParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
               OracleParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
               PostgreSqlParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
               PrestoParameters => {
                 Catalog => 'MyCatalog',    # max: 128
-                Host    => 'MyHost',       # min: 1, max: 256; OPTIONAL
+                Host    => 'MyHost',       # min: 1, max: 256
                 Port    => 1,              # min: 1, max: 65535
 
               },    # OPTIONAL
@@ -114,7 +114,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               RedshiftParameters => {
                 Database  => 'MyDatabase',     # min: 1, max: 128
                 ClusterId => 'MyClusterId',    # min: 1, max: 64; OPTIONAL
-                Host      => 'MyHost',         # min: 1, max: 256; OPTIONAL
+                Host      => 'MyHost',         # min: 1, max: 256
                 Port      => 1,                # max: 65535; OPTIONAL
               },    # OPTIONAL
               S3Parameters => {
@@ -131,24 +131,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               SnowflakeParameters => {
                 Database  => 'MyDatabase',     # min: 1, max: 128
-                Host      => 'MyHost',         # min: 1, max: 256; OPTIONAL
+                Host      => 'MyHost',         # min: 1, max: 256
                 Warehouse => 'MyWarehouse',    # max: 128
 
               },    # OPTIONAL
               SparkParameters => {
-                Host => 'MyHost',    # min: 1, max: 256; OPTIONAL
+                Host => 'MyHost',    # min: 1, max: 256
                 Port => 1,           # min: 1, max: 65535
 
               },    # OPTIONAL
               SqlServerParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
               TeradataParameters => {
                 Database => 'MyDatabase',    # min: 1, max: 128
-                Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+                Host     => 'MyHost',        # min: 1, max: 256
                 Port     => 1,               # min: 1, max: 65535
 
               },    # OPTIONAL
@@ -159,7 +159,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # min: 1, max: 50; OPTIONAL
+          ],    # min: 1, max: 50; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       DataSourceParameters => {
@@ -172,13 +172,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         AuroraParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
         AuroraPostgreSqlParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
@@ -192,31 +192,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         MariaDbParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
         MySqlParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
         OracleParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
         PostgreSqlParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
         PrestoParameters => {
           Catalog => 'MyCatalog',    # max: 128
-          Host    => 'MyHost',       # min: 1, max: 256; OPTIONAL
+          Host    => 'MyHost',       # min: 1, max: 256
           Port    => 1,              # min: 1, max: 65535
 
         },    # OPTIONAL
@@ -228,7 +228,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RedshiftParameters => {
           Database  => 'MyDatabase',     # min: 1, max: 128
           ClusterId => 'MyClusterId',    # min: 1, max: 64; OPTIONAL
-          Host      => 'MyHost',         # min: 1, max: 256; OPTIONAL
+          Host      => 'MyHost',         # min: 1, max: 256
           Port      => 1,                # max: 65535; OPTIONAL
         },    # OPTIONAL
         S3Parameters => {
@@ -245,24 +245,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         SnowflakeParameters => {
           Database  => 'MyDatabase',     # min: 1, max: 128
-          Host      => 'MyHost',         # min: 1, max: 256; OPTIONAL
+          Host      => 'MyHost',         # min: 1, max: 256
           Warehouse => 'MyWarehouse',    # max: 128
 
         },    # OPTIONAL
         SparkParameters => {
-          Host => 'MyHost',    # min: 1, max: 256; OPTIONAL
+          Host => 'MyHost',    # min: 1, max: 256
           Port => 1,           # min: 1, max: 65535
 
         },    # OPTIONAL
         SqlServerParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
         TeradataParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
-          Host     => 'MyHost',        # min: 1, max: 256; OPTIONAL
+          Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535
 
         },    # OPTIONAL
@@ -279,9 +279,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       SslProperties => {
-        DisableSsl => 1,                       # OPTIONAL
+        DisableSsl => 1,    # OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -290,11 +290,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VpcConnectionProperties => {
         VpcConnectionArn => 'MyArn',
 
-      },                            # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:

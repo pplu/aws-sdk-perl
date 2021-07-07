@@ -40,22 +40,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ActionsEnabled => 1,               # OPTIONAL
       AlarmActions   => [
         'MyResourceName', ...            # min: 1, max: 1024
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       AlarmDescription        => 'MyAlarmDescription',    # OPTIONAL
       InsufficientDataActions => [
         'MyResourceName', ...                             # min: 1, max: 1024
-      ],                                                  # OPTIONAL
+      ],    # OPTIONAL
       OKActions => [
-        'MyResourceName', ...                             # min: 1, max: 1024
-      ],                                                  # OPTIONAL
+        'MyResourceName', ...    # min: 1, max: 1024
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                            # min: 1, max: 128
-          Value => 'MyTagValue',                          # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

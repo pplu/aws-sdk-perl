@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Id => 'MyUUID',                # min: 36, max: 36; OPTIONAL
             },
             ...
-          ],                                 # min: 1; OPTIONAL
-          Id => 'MyControlSetName',          # min: 1, max: 300
+          ],    # min: 1; OPTIONAL
+          Id => 'MyControlSetName',    # min: 1, max: 300
         },
         ...
       ],

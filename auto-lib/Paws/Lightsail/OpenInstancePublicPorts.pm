@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PortInfo     => {
         CidrListAliases => [ 'Mystring', ... ],    # OPTIONAL
         Cidrs           => [ 'Mystring', ... ],    # OPTIONAL
-        FromPort  => 1,                      # min: -1, max: 65535; OPTIONAL
-        Ipv6Cidrs => [ 'Mystring', ... ],    # OPTIONAL
-        Protocol => 'tcp',    # values: tcp, all, udp, icmp; OPTIONAL
-        ToPort   => 1,        # min: -1, max: 65535; OPTIONAL
+        FromPort        => 1,                    # min: -1, max: 65535; OPTIONAL
+        Ipv6Cidrs       => [ 'Mystring', ... ],  # OPTIONAL
+        Protocol        => 'tcp',    # values: tcp, all, udp, icmp; OPTIONAL
+        ToPort          => 1,        # min: -1, max: 65535; OPTIONAL
       },
 
     );

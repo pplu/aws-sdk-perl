@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To attach a target group to an Auto Scaling group
-    # This example attaches the specified target group to the specified Auto
-    # Scaling group.
+# To attach a target group to an Auto Scaling group
+# This example attaches the specified target group to the specified Auto Scaling
+# group.
     my $AttachLoadBalancerTargetGroupsResultType =
       $autoscaling->AttachLoadBalancerTargetGroups(
       'AutoScalingGroupName' => 'my-auto-scaling-group',

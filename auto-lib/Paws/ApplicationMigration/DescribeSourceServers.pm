@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IsArchived      => 1,    # OPTIONAL
         SourceServerIDs => [
           'MySourceServerID', ...    # min: 19, max: 19
-        ],                           # max: 200; OPTIONAL
+        ],    # max: 200; OPTIONAL
       },
       MaxResults => 1,                      # OPTIONAL
       NextToken  => 'MyPaginationToken',    # OPTIONAL

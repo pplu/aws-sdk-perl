@@ -34,13 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RegistrationStatus => 'Registered',     # OPTIONAL
       TagFilters         => [
         {
-          Key => 'MyKey',                     # OPTIONAL
+          Key  => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

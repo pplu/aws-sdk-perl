@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PropertyValues => [
             {
               Timestamp => {
-                TimeInSeconds => 1,         # min: 1, max: 31556889864403199
-                OffsetInNanos => 1,         # max: 999999999; OPTIONAL
+                TimeInSeconds => 1,    # min: 1, max: 31556889864403199
+                OffsetInNanos => 1,    # max: 999999999; OPTIONAL
               },
               Value => {
                 BooleanValue => 1,                               # OPTIONAL

@@ -42,14 +42,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VpcConfiguration => {
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # min: 11, max: 20
-        ],                            # min: 1, max: 10
+        ],    # min: 1, max: 10
         SubnetIds => [
-          'MySubnetId', ...           # min: 15, max: 24
-        ],                            # min: 1, max: 10
+          'MySubnetId', ...    # min: 15, max: 24
+        ],    # min: 1, max: 10
         VpcId          => 'MyVpcId',             # min: 12, max: 21
         TlsCertificate => 'MyTlsCertificate',    # min: 1, max: 16384; OPTIONAL
       },    # OPTIONAL

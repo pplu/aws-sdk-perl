@@ -75,13 +75,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             CronExpressionForRecurrence => 'MyString',
             Duration                    => {
-              Unit  => 'HOURS',            # values: HOURS; OPTIONAL
-              Value => 1,                  # min: 1, max: 24; OPTIONAL
+              Unit  => 'HOURS',    # values: HOURS; OPTIONAL
+              Value => 1,          # min: 1, max: 24; OPTIONAL
             },    # OPTIONAL
             StartAt => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
-        ],                                       # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
       },    # OPTIONAL
       CognitoOptions => {
         Enabled        => 1,                     # OPTIONAL
@@ -148,7 +148,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VPCOptions => {
         SecurityGroupIds => [ 'MyString', ... ],    # OPTIONAL
         SubnetIds        => [ 'MyString', ... ],    # OPTIONAL

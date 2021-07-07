@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->DescribeConformancePackStatus(
       ConformancePackNames => [
         'MyConformancePackName', ...    # min: 1, max: 256
-      ],                                # OPTIONAL
-      Limit     => 1,                   # OPTIONAL
-      NextToken => 'MyNextToken',       # OPTIONAL
+      ],    # OPTIONAL
+      Limit     => 1,                # OPTIONAL
+      NextToken => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:

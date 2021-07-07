@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELB');
-    # To specify the health check settings for your backend EC2 instances
-    # This example specifies the health check settings used to evaluate the
-    # health of your backend EC2 instances.
+  # To specify the health check settings for your backend EC2 instances
+  # This example specifies the health check settings used to evaluate the health
+  # of your backend EC2 instances.
     my $ConfigureHealthCheckOutput =
       $elasticloadbalancing->ConfigureHealthCheck(
       'HealthCheck' => {

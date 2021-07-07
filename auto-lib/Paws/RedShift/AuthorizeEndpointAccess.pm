@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterIdentifier => 'MyString',    # OPTIONAL
       VpcIds            => [
         'MyString', ...                   # max: 2147483647
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

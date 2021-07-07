@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value        => 'MyConditionValue',    # max: 1024; OPTIONAL
           },
           ...
-        ],                                         # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       StepIndex => 1,    # OPTIONAL
       ViewFrame => {
@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ColumnRange      => 1,    # max: 20; OPTIONAL
         HiddenColumns    => [
           'MyColumnName', ...     # min: 1, max: 255
-        ],                        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

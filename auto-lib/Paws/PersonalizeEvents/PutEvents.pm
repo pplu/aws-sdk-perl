@@ -40,16 +40,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           EventValue => 1.0,                     # OPTIONAL
           Impression => [
             'MyItemId', ...                      # min: 1, max: 256
-          ],                                     # min: 1, max: 25; OPTIONAL
-          ItemId     => 'MyItemId',              # min: 1, max: 256
-          Properties => 'MyEventPropertiesJSON', # min: 1, max: 1024; OPTIONAL
+          ],    # min: 1, max: 25; OPTIONAL
+          ItemId     => 'MyItemId',                # min: 1, max: 256
+          Properties => 'MyEventPropertiesJSON',   # min: 1, max: 1024; OPTIONAL
           RecommendationId => 'MyRecommendationId',  # min: 1, max: 40; OPTIONAL
         },
         ...
       ],
       SessionId  => 'MyStringType',
       TrackingId => 'MyStringType',
-      UserId     => 'MyUserId',                      # OPTIONAL
+      UserId     => 'MyUserId',       # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

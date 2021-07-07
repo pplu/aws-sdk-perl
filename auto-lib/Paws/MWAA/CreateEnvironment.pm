@@ -53,10 +53,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NetworkConfiguration => {
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # min: 1, max: 1024
-        ],                            # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
         SubnetIds => [
-          'MySubnetId', ...           # min: 1, max: 1024
-        ],                            # min: 2, max: 2; OPTIONAL
+          'MySubnetId', ...    # min: 1, max: 1024
+        ],    # min: 2, max: 2; OPTIONAL
       },
       SourceBucketArn             => 'MyS3BucketArn',
       AirflowConfigurationOptions => {
@@ -68,31 +68,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KmsKey               => 'MyKmsKey',              # OPTIONAL
       LoggingConfiguration => {
         DagProcessingLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         SchedulerLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         TaskLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         WebserverLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         WorkerLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
@@ -108,9 +108,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyTagKey' =>
           'MyTagValue',    # key: min: 1, max: 128, value: min: 1, max: 256
       },    # OPTIONAL
-      WebserverAccessMode => 'PRIVATE_ONLY',    # OPTIONAL
+      WebserverAccessMode          => 'PRIVATE_ONLY',    # OPTIONAL
       WeeklyMaintenanceWindowStart =>
-        'MyWeeklyMaintenanceWindowStart',       # OPTIONAL
+        'MyWeeklyMaintenanceWindowStart',                # OPTIONAL
     );
 
     # Results:

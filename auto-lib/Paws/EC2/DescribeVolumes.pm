@@ -39,11 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $NextToken = $DescribeVolumesResult->NextToken;
     my $Volumes   = $DescribeVolumesResult->Volumes;
 
-    # Returns a L<Paws::EC2::DescribeVolumesResult> object.
-    # To describe volumes that are attached to a specific instance
-    # This example describes all volumes that are both attached to the instance
-    # with the ID i-1234567890abcdef0 and set to delete when the instance
-    # terminates.
+# Returns a L<Paws::EC2::DescribeVolumesResult> object.
+# To describe volumes that are attached to a specific instance
+# This example describes all volumes that are both attached to the instance with
+# the ID i-1234567890abcdef0 and set to delete when the instance terminates.
     my $DescribeVolumesResult = $ec2->DescribeVolumes(
       'Filters' => [
 

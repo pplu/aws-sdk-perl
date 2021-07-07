@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
-    # To view configuration options for an environment
-    # The following operation retrieves descriptions of all available
-    # configuration options for an environment named my-env:
+ # To view configuration options for an environment
+ # The following operation retrieves descriptions of all available configuration
+ # options for an environment named my-env:
     my $ConfigurationOptionsDescription =
       $elasticbeanstalk->DescribeConfigurationOptions(
       'ApplicationName' => 'my-app',

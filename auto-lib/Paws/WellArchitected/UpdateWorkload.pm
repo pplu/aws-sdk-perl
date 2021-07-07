@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ArchitecturalDesign => 'MyWorkloadArchitecturalDesign',    # OPTIONAL
       AwsRegions          => [
         'MyAwsRegion', ...                                       # max: 100
-      ],                                                         # OPTIONAL
+      ],    # OPTIONAL
       Description                     => 'MyWorkloadDescription',     # OPTIONAL
       Environment                     => 'PRODUCTION',                # OPTIONAL
       ImprovementStatus               => 'NOT_APPLICABLE',            # OPTIONAL
@@ -57,11 +57,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IsReviewOwnerUpdateAcknowledged => 1,                           # OPTIONAL
       NonAwsRegions                   => [
         'MyWorkloadNonAwsRegion', ...    # min: 3, max: 25
-      ],                                 # OPTIONAL
-      Notes            => 'MyNotes',     # OPTIONAL
+      ],    # OPTIONAL
+      Notes            => 'MyNotes',    # OPTIONAL
       PillarPriorities => [
-        'MyPillarId', ...                # min: 1, max: 64
-      ],                                 # OPTIONAL
+        'MyPillarId', ...               # min: 1, max: 64
+      ],    # OPTIONAL
       ReviewOwner  => 'MyWorkloadReviewOwner',    # OPTIONAL
       WorkloadName => 'MyWorkloadName',           # OPTIONAL
     );

@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JobName            => 'MyJobName',                     # OPTIONAL
       RedactionConfig    => {
         MaskCharacter => 'MyMaskCharacter',    # min: 1, max: 1; OPTIONAL
-        MaskMode =>
+        MaskMode      =>
           'MASK',    # values: MASK, REPLACE_WITH_PII_ENTITY_TYPE; OPTIONAL
         PiiEntityTypes => [
           'BANK_ACCOUNT_NUMBER',

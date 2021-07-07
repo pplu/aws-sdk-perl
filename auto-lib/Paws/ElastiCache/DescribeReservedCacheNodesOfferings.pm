@@ -43,10 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ReservedCacheNodesOfferings =
       $ReservedCacheNodesOfferingMessage->ReservedCacheNodesOfferings;
 
-   # Returns a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> object.
-   # DescribeReseredCacheNodeOfferings
-   # Lists available reserved cache node offerings for cache.r3.large nodes with
-   # a 3 year commitment.
+ # Returns a L<Paws::ElastiCache::ReservedCacheNodesOfferingMessage> object.
+ # DescribeReseredCacheNodeOfferings
+ # Lists available reserved cache node offerings for cache.r3.large nodes with a
+ # 3 year commitment.
     my $ReservedCacheNodesOfferingMessage =
       $elasticache->DescribeReservedCacheNodesOfferings(
       'CacheNodeType'                => 'cache.r3.large',

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name           => 'MyScheduleName',
       JobNames       => [
         'MyJobName', ...    # min: 1, max: 240
-      ],                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

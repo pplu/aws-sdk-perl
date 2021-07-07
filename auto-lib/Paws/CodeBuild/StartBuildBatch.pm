@@ -60,7 +60,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $StartBuildBatchOutput = $codebuild->StartBuildBatch(
       ProjectName       => 'MyNonEmptyString',
       ArtifactsOverride => {
-        Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+        Type => 'CODEPIPELINE',        # values: CODEPIPELINE, S3, NO_ARTIFACTS
         ArtifactIdentifier => 'MyString',    # OPTIONAL
         BucketOwnerAccess  => 'NONE',  # values: NONE, READ_ONLY, FULL; OPTIONAL
         EncryptionDisabled => 1,       # OPTIONAL
@@ -76,8 +76,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Restrictions     => {
           ComputeTypesAllowed => [
             'MyNonEmptyString', ...    # min: 1
-          ],                           # OPTIONAL
-          MaximumBuildsAllowed => 1,   # OPTIONAL
+          ],    # OPTIONAL
+          MaximumBuildsAllowed => 1,    # OPTIONAL
         },    # OPTIONAL
         ServiceRole   => 'MyNonEmptyString',    # min: 1
         TimeoutInMins => 1,                     # OPTIONAL
@@ -99,13 +99,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnvironmentTypeOverride      => 'WINDOWS_CONTAINER',       # OPTIONAL
       EnvironmentVariablesOverride => [
         {
-          Name  => 'MyNonEmptyString',                           # min: 1
-          Value => 'MyString',                                   # OPTIONAL
+          Name  => 'MyNonEmptyString',    # min: 1
+          Value => 'MyString',            # OPTIONAL
           Type  => 'PLAINTEXT'
           ,    # values: PLAINTEXT, PARAMETER_STORE, SECRETS_MANAGER; OPTIONAL
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       GitCloneDepthOverride       => 1,    # OPTIONAL
       GitSubmodulesConfigOverride => {
         FetchSubmodules => 1,              # OPTIONAL
@@ -122,7 +122,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           StreamName => 'MyString',    # OPTIONAL
         },    # OPTIONAL
         S3Logs => {
-          Status => 'ENABLED',    # values: ENABLED, DISABLED
+          Status            => 'ENABLED',      # values: ENABLED, DISABLED
           BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
           EncryptionDisabled => 1,             # OPTIONAL
           Location           => 'MyString',    # OPTIONAL
@@ -138,7 +138,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReportBuildBatchStatusOverride => 1,    # OPTIONAL
       SecondaryArtifactsOverride     => [
         {
-          Type => 'CODEPIPELINE',    # values: CODEPIPELINE, S3, NO_ARTIFACTS
+          Type => 'CODEPIPELINE',      # values: CODEPIPELINE, S3, NO_ARTIFACTS
           ArtifactIdentifier => 'MyString',    # OPTIONAL
           BucketOwnerAccess => 'NONE', # values: NONE, READ_ONLY, FULL; OPTIONAL
           EncryptionDisabled   => 1,          # OPTIONAL
@@ -150,7 +150,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Path                 => 'MyString', # OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       SecondarySourcesOverride => [
         {
           Type => 'CODECOMMIT'
@@ -169,21 +169,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             FetchSubmodules => 1,               # OPTIONAL
 
           },
-          InsecureSsl       => 1,               # OPTIONAL
-          Location          => 'MyString',      # OPTIONAL
-          ReportBuildStatus => 1,               # OPTIONAL
-          SourceIdentifier  => 'MyString',      # OPTIONAL
+          InsecureSsl       => 1,             # OPTIONAL
+          Location          => 'MyString',    # OPTIONAL
+          ReportBuildStatus => 1,             # OPTIONAL
+          SourceIdentifier  => 'MyString',    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       SecondarySourcesVersionOverride => [
         {
-          SourceIdentifier => 'MyString',       # OPTIONAL
-          SourceVersion    => 'MyString',       # OPTIONAL
+          SourceIdentifier => 'MyString',    # OPTIONAL
+          SourceVersion    => 'MyString',    # OPTIONAL
 
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       ServiceRoleOverride => 'MyNonEmptyString',    # OPTIONAL
       SourceAuthOverride  => {
         Type     => 'OAUTH',                        # values: OAUTH

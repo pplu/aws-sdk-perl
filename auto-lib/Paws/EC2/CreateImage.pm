@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To create an AMI from an Amazon EBS-backed instance
-    # This example creates an AMI from the specified instance and adds an EBS
-    # volume with the device name /dev/sdh and an instance store volume with the
-    # device name /dev/sdc.
+# To create an AMI from an Amazon EBS-backed instance
+# This example creates an AMI from the specified instance and adds an EBS volume
+# with the device name /dev/sdh and an instance store volume with the device
+# name /dev/sdc.
     my $CreateImageResult = $ec2->CreateImage(
       'BlockDeviceMappings' => [
 

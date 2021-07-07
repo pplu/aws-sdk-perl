@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           And => [
             {
               SimpleCriterion => {
-                Comparator => 'EQ',          # values: EQ, NE; OPTIONAL
+                Comparator => 'EQ',                 # values: EQ, NE; OPTIONAL
                 Key        => 'ACCOUNT_ID'
                 , # values: ACCOUNT_ID, S3_BUCKET_NAME, S3_BUCKET_EFFECTIVE_PERMISSION, S3_BUCKET_SHARED_ACCESS; OPTIONAL
                 Values => [ 'My__string', ... ],    # OPTIONAL
@@ -54,13 +54,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         Includes => {
           And => [
             {
               SimpleCriterion => {
-                Comparator => 'EQ',          # values: EQ, NE; OPTIONAL
+                Comparator => 'EQ',                 # values: EQ, NE; OPTIONAL
                 Key        => 'ACCOUNT_ID'
                 , # values: ACCOUNT_ID, S3_BUCKET_NAME, S3_BUCKET_EFFECTIVE_PERMISSION, S3_BUCKET_SHARED_ACCESS; OPTIONAL
                 Values => [ 'My__string', ... ],    # OPTIONAL
@@ -77,7 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       MaxResults   => 1,               # OPTIONAL

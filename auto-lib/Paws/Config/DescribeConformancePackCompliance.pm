@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ,    # values: COMPLIANT, NON_COMPLIANT, INSUFFICIENT_DATA; OPTIONAL
         ConfigRuleNames => [
           'MyStringWithCharLimit64', ...    # min: 1, max: 64
-        ],                                  # max: 10; OPTIONAL
+        ],    # max: 10; OPTIONAL
       },    # OPTIONAL
       Limit     => 1,                # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL

@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         DnsConfig   => {
           DnsRecords => [
             {
-              TTL  => 1,                           # max: 2147483647
-              Type => 'SRV',                       # values: SRV, A, AAAA, CNAME
+              TTL  => 1,        # max: 2147483647
+              Type => 'SRV',    # values: SRV, A, AAAA, CNAME
 
             },
             ...

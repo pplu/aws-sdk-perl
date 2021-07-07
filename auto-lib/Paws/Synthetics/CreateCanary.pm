@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       FailureRetentionPeriodInDays => 1,    # OPTIONAL
       RunConfig                    => {
-        ActiveTracing => 1,                 # OPTIONAL
+        ActiveTracing        => 1,          # OPTIONAL
         EnvironmentVariables =>
           { 'MyEnvironmentVariableName' => 'MyEnvironmentVariableValue', }
         ,                                   # OPTIONAL

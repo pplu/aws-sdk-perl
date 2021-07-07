@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           UsePreviousValue => 1,                     # OPTIONAL
         },
         ...
-      ],                                             # OPTIONAL
-      TemplateBody => 'MyTemplateBody',              # OPTIONAL
-      TemplateURL  => 'MyTemplateURL',               # OPTIONAL
+      ],    # OPTIONAL
+      TemplateBody => 'MyTemplateBody',    # OPTIONAL
+      TemplateURL  => 'MyTemplateURL',     # OPTIONAL
     );
 
     # Results:

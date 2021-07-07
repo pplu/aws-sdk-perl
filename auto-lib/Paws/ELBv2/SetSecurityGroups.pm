@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELBv2');
-    # To associate a security group with a load balancer
-    # This example associates the specified security group with the specified
-    # load balancer.
+  # To associate a security group with a load balancer
+  # This example associates the specified security group with the specified load
+  # balancer.
     my $SetSecurityGroupsOutput = $elasticloadbalancing->SetSecurityGroups(
       'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',

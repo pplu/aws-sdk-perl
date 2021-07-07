@@ -51,11 +51,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TransactionId => 'MyTransactionId',    # min: 22, max: 22
         Parameters    => [
           {
-            IonBinary => 'BlobIonBinary',      # min: 1, max: 131072; OPTIONAL
-            IonText   => 'MyIonText',          # min: 1, max: 1048576; OPTIONAL
+            IonBinary => 'BlobIonBinary',    # min: 1, max: 131072; OPTIONAL
+            IonText   => 'MyIonText',        # min: 1, max: 1048576; OPTIONAL
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       FetchPage => {
         NextPageToken => 'MyPageToken',        # min: 4, max: 1024

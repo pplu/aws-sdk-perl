@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccessBasedEnumeration => 1,                 # OPTIONAL
       AdminUserList          => [
         'MyUserListUser', ...                      # min: 1, max: 64
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       AuditDestinationARN => 'MyAuditDestinationARN',    # OPTIONAL
       Authentication      => 'MyAuthentication',         # OPTIONAL
       CacheAttributes     => {
@@ -69,25 +69,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GuessMIMETypeEnabled => 1,                    # OPTIONAL
       InvalidUserList      => [
         'MyUserListUser', ...                       # min: 1, max: 64
-      ],                                            # OPTIONAL
-      KMSEncrypted       => 1,                      # OPTIONAL
-      KMSKey             => 'MyKMSKey',             # OPTIONAL
-      NotificationPolicy => 'MyNotificationPolicy', # OPTIONAL
-      ObjectACL          => 'private',              # OPTIONAL
-      ReadOnly           => 1,                      # OPTIONAL
-      RequesterPays      => 1,                      # OPTIONAL
-      SMBACLEnabled      => 1,                      # OPTIONAL
+      ],    # OPTIONAL
+      KMSEncrypted       => 1,                         # OPTIONAL
+      KMSKey             => 'MyKMSKey',                # OPTIONAL
+      NotificationPolicy => 'MyNotificationPolicy',    # OPTIONAL
+      ObjectACL          => 'private',                 # OPTIONAL
+      ReadOnly           => 1,                         # OPTIONAL
+      RequesterPays      => 1,                         # OPTIONAL
+      SMBACLEnabled      => 1,                         # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                      # min: 1, max: 128
-          Value => 'MyTagValue',                    # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       ValidUserList => [
-        'MyUserListUser', ...                       # min: 1, max: 64
-      ],                                            # OPTIONAL
+        'MyUserListUser', ...    # min: 1, max: 64
+      ],    # OPTIONAL
     );
 
     # Results:

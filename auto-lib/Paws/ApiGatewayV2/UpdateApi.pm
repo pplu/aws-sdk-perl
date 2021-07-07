@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApiId                     => 'My__string',
       ApiKeySelectionExpression => 'MySelectionExpression',    # OPTIONAL
       CorsConfiguration         => {
-        AllowCredentials => 1,                                 # OPTIONAL
-        AllowHeaders     => [ 'My__string', ... ],             # OPTIONAL
+        AllowCredentials => 1,    # OPTIONAL
+        AllowHeaders  => [ 'My__string',                      ... ],  # OPTIONAL
         AllowMethods  => [ 'MyStringWithLengthBetween1And64', ... ],  # OPTIONAL
-        AllowOrigins  => [ 'My__string', ... ],                       # OPTIONAL
-        ExposeHeaders => [ 'My__string', ... ],                       # OPTIONAL
-        MaxAge => 1,    # min: -1, max: 86400; OPTIONAL
+        AllowOrigins  => [ 'My__string',                      ... ],  # OPTIONAL
+        ExposeHeaders => [ 'My__string',                      ... ],  # OPTIONAL
+        MaxAge        => 1,    # min: -1, max: 86400; OPTIONAL
       },    # OPTIONAL
       CredentialsArn => 'MyArn',                                # OPTIONAL
       Description    => 'MyStringWithLengthBetween0And1024',    # OPTIONAL

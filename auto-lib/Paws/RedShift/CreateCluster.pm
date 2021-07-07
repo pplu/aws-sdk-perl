@@ -72,37 +72,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterParameterGroupName        => 'MyString',    # OPTIONAL
       ClusterSecurityGroups            => [
         'MyString', ...                                  # max: 2147483647
-      ],                                                 # OPTIONAL
-      ClusterSubnetGroupName         => 'MyString',      # OPTIONAL
-      ClusterType                    => 'MyString',      # OPTIONAL
-      ClusterVersion                 => 'MyString',      # OPTIONAL
-      DBName                         => 'MyString',      # OPTIONAL
-      ElasticIp                      => 'MyString',      # OPTIONAL
-      Encrypted                      => 1,               # OPTIONAL
-      EnhancedVpcRouting             => 1,               # OPTIONAL
-      HsmClientCertificateIdentifier => 'MyString',      # OPTIONAL
-      HsmConfigurationIdentifier     => 'MyString',      # OPTIONAL
+      ],    # OPTIONAL
+      ClusterSubnetGroupName         => 'MyString',    # OPTIONAL
+      ClusterType                    => 'MyString',    # OPTIONAL
+      ClusterVersion                 => 'MyString',    # OPTIONAL
+      DBName                         => 'MyString',    # OPTIONAL
+      ElasticIp                      => 'MyString',    # OPTIONAL
+      Encrypted                      => 1,             # OPTIONAL
+      EnhancedVpcRouting             => 1,             # OPTIONAL
+      HsmClientCertificateIdentifier => 'MyString',    # OPTIONAL
+      HsmConfigurationIdentifier     => 'MyString',    # OPTIONAL
       IamRoles                       => [
-        'MyString', ...                                  # max: 2147483647
-      ],                                                 # OPTIONAL
-      KmsKeyId                      => 'MyString',       # OPTIONAL
-      MaintenanceTrackName          => 'MyString',       # OPTIONAL
-      ManualSnapshotRetentionPeriod => 1,                # OPTIONAL
-      NumberOfNodes                 => 1,                # OPTIONAL
-      Port                          => 1,                # OPTIONAL
-      PreferredMaintenanceWindow    => 'MyString',       # OPTIONAL
-      PubliclyAccessible            => 1,                # OPTIONAL
-      SnapshotScheduleIdentifier    => 'MyString',       # OPTIONAL
+        'MyString', ...                                # max: 2147483647
+      ],    # OPTIONAL
+      KmsKeyId                      => 'MyString',    # OPTIONAL
+      MaintenanceTrackName          => 'MyString',    # OPTIONAL
+      ManualSnapshotRetentionPeriod => 1,             # OPTIONAL
+      NumberOfNodes                 => 1,             # OPTIONAL
+      Port                          => 1,             # OPTIONAL
+      PreferredMaintenanceWindow    => 'MyString',    # OPTIONAL
+      PubliclyAccessible            => 1,             # OPTIONAL
+      SnapshotScheduleIdentifier    => 'MyString',    # OPTIONAL
       Tags                          => [
         {
-          Key   => 'MyString',                           # max: 2147483647
-          Value => 'MyString',                           # max: 2147483647
+          Key   => 'MyString',    # max: 2147483647
+          Value => 'MyString',    # max: 2147483647
         },
         ...
-      ],                                                 # OPTIONAL
+      ],    # OPTIONAL
       VpcSecurityGroupIds => [
-        'MyString', ...                                  # max: 2147483647
-      ],                                                 # OPTIONAL
+        'MyString', ...    # max: 2147483647
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -40,10 +40,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                         # OPTIONAL
-      Marker     => 'MyString',                  # OPTIONAL
-      MaxRecords => 1,                           # OPTIONAL
-      UserId     => 'MyUserId',                  # OPTIONAL
+      ],    # OPTIONAL
+      Marker     => 'MyString',    # OPTIONAL
+      MaxRecords => 1,             # OPTIONAL
+      UserId     => 'MyUserId',    # OPTIONAL
     );
 
     # Results:

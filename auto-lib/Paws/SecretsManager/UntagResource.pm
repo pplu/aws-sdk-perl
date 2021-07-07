@@ -28,11 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-   # To remove tags from a secret
-   # The following example shows how to remove two tags from a secret's
-   # metadata. For each, both the tag and the associated value are removed.
-   # There is no output from this API. To see the result, use the DescribeSecret
-   # operation.
+  # To remove tags from a secret
+  # The following example shows how to remove two tags from a secret's metadata.
+  # For each, both the tag and the associated value are removed. There is no
+  # output from this API. To see the result, use the DescribeSecret operation.
     $secretsmanager->UntagResource(
       'SecretId' => 'MyTestDatabaseSecret',
       'TagKeys'  => [ 'FirstTag', 'SecondTag' ]

@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-   # To get object list
-   # The following example retrieves object list. The request specifies max keys
-   # to limit response to include only 2 object keys.
+# To get object list
+# The following example retrieves object list. The request specifies max keys to
+# limit response to include only 2 object keys.
     my $ListObjectsV2Output = $s3->ListObjectsV2(
       'Bucket'  => 'examplebucket',
       'MaxKeys' => 2

@@ -29,11 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To modify the enableDnsSupport attribute
-    # This example modifies the enableDnsSupport attribute. This attribute
-    # indicates whether DNS resolution is enabled for the VPC. If this attribute
-    # is true, the Amazon DNS server resolves DNS hostnames for instances in the
-    # VPC to their corresponding IP addresses; otherwise, it does not.
+# To modify the enableDnsSupport attribute
+# This example modifies the enableDnsSupport attribute. This attribute indicates
+# whether DNS resolution is enabled for the VPC. If this attribute is true, the
+# Amazon DNS server resolves DNS hostnames for instances in the VPC to their
+# corresponding IP addresses; otherwise, it does not.
     $ec2->ModifyVpcAttribute(
       'EnableDnsSupport' => {
         'Value' => 0
@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'VpcId' => 'vpc-a01106c2'
     );
 
-    # To modify the enableDnsHostnames attribute
-    # This example modifies the enableDnsHostnames attribute. This attribute
-    # indicates whether instances launched in the VPC get DNS hostnames. If this
-    # attribute is true, instances in the VPC get DNS hostnames; otherwise, they
-    # do not.
+ # To modify the enableDnsHostnames attribute
+ # This example modifies the enableDnsHostnames attribute. This attribute
+ # indicates whether instances launched in the VPC get DNS hostnames. If this
+ # attribute is true, instances in the VPC get DNS hostnames; otherwise, they do
+ # not.
     $ec2->ModifyVpcAttribute(
       'EnableDnsHostnames' => {
         'Value' => 0

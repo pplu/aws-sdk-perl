@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-   # Modify replication instance
-   # Modifies the replication instance to apply new settings. You can change one
-   # or more parameters by specifying these parameters and the new values in the
-   # request. Some settings are applied during the maintenance window.
+# Modify replication instance
+# Modifies the replication instance to apply new settings. You can change one or
+# more parameters by specifying these parameters and the new values in the
+# request. Some settings are applied during the maintenance window.
     my $ModifyReplicationInstanceResponse = $dms->ModifyReplicationInstance(
       'AllocatedStorage'           => 123,
       'AllowMajorVersionUpgrade'   => 1,
@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'EngineVersion'              => '1.5.0',
       'MultiAZ'                    => 1,
       'PreferredMaintenanceWindow' => 'sun:06:00-sun:14:00',
-      'ReplicationInstanceArn' =>
+      'ReplicationInstanceArn'     =>
         'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ',
       'ReplicationInstanceClass'      => 'dms.t2.micro',
       'ReplicationInstanceIdentifier' => 'test-rep-1',

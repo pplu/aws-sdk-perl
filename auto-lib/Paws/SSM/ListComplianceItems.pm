@@ -41,15 +41,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ,    # min: 1, max: 20; OPTIONAL
         },
         ...
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       MaxResults  => 1,                # OPTIONAL
       NextToken   => 'MyNextToken',    # OPTIONAL
       ResourceIds => [
         'MyComplianceResourceId', ...    # min: 1, max: 100
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       ResourceTypes => [
         'MyComplianceResourceType', ...    # min: 1, max: 50
-      ],                                   # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

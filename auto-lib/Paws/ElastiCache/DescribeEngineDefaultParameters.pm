@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    # DescribeEngineDefaultParameters
-    # Returns the default engine and system parameter information for the
-    # specified cache engine.
+ # DescribeEngineDefaultParameters
+ # Returns the default engine and system parameter information for the specified
+ # cache engine.
     my $DescribeEngineDefaultParametersResult =
       $elasticache->DescribeEngineDefaultParameters(
       'CacheParameterGroupFamily' => 'redis2.8',

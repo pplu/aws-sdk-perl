@@ -44,11 +44,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Type   => 'EQ',    # values: EQ, REF_EQ, LE, GE, BETWEEN; OPTIONAL
               Values => [
                 'Mystring', ...    # max: 1024
-              ],                   # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

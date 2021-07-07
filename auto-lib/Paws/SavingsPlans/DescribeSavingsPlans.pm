@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
       MaxResults      => 1,                              # OPTIONAL
       NextToken       => 'MyPaginationToken',            # OPTIONAL
       SavingsPlanArns => [ 'MySavingsPlanArn', ... ],    # OPTIONAL
-      SavingsPlanIds  => [ 'MySavingsPlanId', ... ],     # OPTIONAL
+      SavingsPlanIds  => [ 'MySavingsPlanId',  ... ],    # OPTIONAL
       States          => [
         'payment-pending',
         ... # values: payment-pending, payment-failed, active, retired, queued, queued-deleted

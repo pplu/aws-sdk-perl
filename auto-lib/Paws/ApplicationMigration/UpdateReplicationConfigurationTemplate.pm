@@ -56,10 +56,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ReplicationServerInstanceType       => 'MyEC2InstanceType',    # OPTIONAL
       ReplicationServersSecurityGroupsIDs => [
         'MySecurityGroupID', ...                                     # max: 255
-      ],                                                             # OPTIONAL
-      StagingAreaSubnetId => 'MySubnetID',                           # OPTIONAL
+      ],    # OPTIONAL
+      StagingAreaSubnetId => 'MySubnetID',    # OPTIONAL
       StagingAreaTags     => {
-        'MyTagKey' => 'MyTagValue',    # key: max: 256, value: max: 256
+        'MyTagKey' => 'MyTagValue',           # key: max: 256, value: max: 256
       },    # OPTIONAL
       UseDedicatedReplicationServer => 1,    # OPTIONAL
       );

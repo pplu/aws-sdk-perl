@@ -58,9 +58,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
-      Type   => 'MyString',         # OPTIONAL
-      Vendor => 'MyString',         # OPTIONAL
+      ],    # OPTIONAL
+      Type   => 'MyString',    # OPTIONAL
+      Vendor => 'MyString',    # OPTIONAL
     );
 
     # Results:

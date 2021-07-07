@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       InstanceTypeFilter => [
         'Blue', ...    # values: Blue, Green
-      ],               # OPTIONAL
+      ],    # OPTIONAL
       NextToken => 'MyNextToken',    # OPTIONAL
     );
 

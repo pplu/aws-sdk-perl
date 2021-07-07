@@ -28,12 +28,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-    # To get a list of jobs that you've created for AWS Snowball
-    # Returns an array of JobListEntry objects of the specified length. Each
-    # JobListEntry object contains a job's state, a job's ID, and a value that
-    # indicates whether the job is a job part, in the case of export jobs.
-    # Calling this API action in one of the US regions will return jobs from the
-    # list of all jobs associated with this account in all US regions.
+# To get a list of jobs that you've created for AWS Snowball
+# Returns an array of JobListEntry objects of the specified length. Each
+# JobListEntry object contains a job's state, a job's ID, and a value that
+# indicates whether the job is a job part, in the case of export jobs. Calling
+# this API action in one of the US regions will return jobs from the list of all
+# jobs associated with this account in all US regions.
     my $ListJobsResult = $snowball->ListJobs();
 
     # Results:

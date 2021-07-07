@@ -49,13 +49,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       DryRun              => 1,    # OPTIONAL
       LaunchSpecification => {
         AdditionalInfo => 'MyString',
         Architecture   => 'i386',       # values: i386, x86_64, arm64; OPTIONAL
-        GroupIds   => [ 'MySecurityGroupId', ... ],      # OPTIONAL
-        GroupNames => [ 'MySecurityGroupName', ... ],    # OPTIONAL
+        GroupIds       => [ 'MySecurityGroupId',   ... ],    # OPTIONAL
+        GroupNames     => [ 'MySecurityGroupName', ... ],    # OPTIONAL
         InstanceInitiatedShutdownBehavior =>
           'stop',    # values: stop, terminate; OPTIONAL
         InstanceType => 't1.micro'

@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'Bucket'     => 'examplebucket',
       'Key'        => 'examplelargeobject',
       'PartNumber' => 1,
-      'UploadId' =>
+      'UploadId'   =>
 'xadcOB_7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--'
     );
 

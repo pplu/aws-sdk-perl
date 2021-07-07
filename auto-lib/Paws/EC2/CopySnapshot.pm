@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-   # To copy a snapshot
-   # This example copies a snapshot with the snapshot ID of
-   # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the
-   # ``us-east-1`` region and adds a short description to identify the snapshot.
+ # To copy a snapshot
+ # This example copies a snapshot with the snapshot ID of
+ # ``snap-066877671789bd71b`` from the ``us-west-2`` region to the ``us-east-1``
+ # region and adds a short description to identify the snapshot.
     my $CopySnapshotResult = $ec2->CopySnapshot(
       'Description'       => 'This is my copied snapshot.',
       'DestinationRegion' => 'us-east-1',

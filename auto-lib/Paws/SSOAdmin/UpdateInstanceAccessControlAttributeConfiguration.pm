@@ -37,13 +37,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => {
               Source => [
                 'MyAccessControlAttributeValueSource', ...    # max: 256
-              ],                                              # min: 1, max: 1
+              ],    # min: 1, max: 1
 
             },
 
           },
           ...
-        ],                                                    # max: 50
+        ],    # max: 50
 
       },
       InstanceArn => 'MyInstanceArn',

@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccessToken => 'MyTokenModelType',
       MFAOptions  => [
         {
-          AttributeName => 'MyAttributeNameType',    # min: 1, max: 32; OPTIONAL
+          AttributeName  => 'MyAttributeNameType',   # min: 1, max: 32; OPTIONAL
           DeliveryMedium => 'SMS',    # values: SMS, EMAIL; OPTIONAL
         },
         ...

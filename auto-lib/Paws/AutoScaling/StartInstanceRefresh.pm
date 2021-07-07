@@ -29,9 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To start an instance refresh
-    # This example starts an instance refresh for the specified Auto Scaling
-    # group.
+ # To start an instance refresh
+ # This example starts an instance refresh for the specified Auto Scaling group.
     my $StartInstanceRefreshAnswer = $autoscaling->StartInstanceRefresh(
       'AutoScalingGroupName' => 'my-auto-scaling-group',
       'Preferences'          => {

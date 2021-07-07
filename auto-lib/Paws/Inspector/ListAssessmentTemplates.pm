@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-    # List assessment templates
-    # Lists the assessment templates that correspond to the assessment targets
-    # that are specified by the ARNs of the assessment targets.
+ # List assessment templates
+ # Lists the assessment templates that correspond to the assessment targets that
+ # are specified by the ARNs of the assessment targets.
     my $ListAssessmentTemplatesResponse = $inspector->ListAssessmentTemplates(
       'AssessmentTargetArns' =>
         ['arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq'],

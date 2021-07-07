@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResponseMappingTemplate => 'MyMappingTemplate',    # OPTIONAL
       SyncConfig              => {
         ConflictDetection => 'VERSION',    # values: VERSION, NONE; OPTIONAL
-        ConflictHandler => 'OPTIMISTIC_CONCURRENCY'
+        ConflictHandler   => 'OPTIMISTIC_CONCURRENCY'
         ,    # values: OPTIMISTIC_CONCURRENCY, LAMBDA, AUTOMERGE, NONE; OPTIONAL
         LambdaConflictHandlerConfig =>
           { LambdaConflictHandlerArn => 'MyString', },    # OPTIONAL

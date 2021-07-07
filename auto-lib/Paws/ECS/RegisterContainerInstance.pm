@@ -38,14 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RegisterContainerInstanceResponse = $ecs->RegisterContainerInstance(
       Attributes => [
         {
-          Name     => 'MyString',
-          TargetId => 'MyString',
+          Name       => 'MyString',
+          TargetId   => 'MyString',
           TargetType =>
             'container-instance',    # values: container-instance; OPTIONAL
           Value => 'MyString',
         },
         ...
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       Cluster                           => 'MyString',    # OPTIONAL
       ContainerInstanceArn              => 'MyString',    # OPTIONAL
       InstanceIdentityDocument          => 'MyString',    # OPTIONAL
@@ -57,14 +57,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                                  # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TotalResources => [
         {
           DoubleValue    => 1,                      # OPTIONAL
@@ -75,12 +75,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Type           => 'MyString',
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       VersionInfo => {
         AgentHash     => 'MyString',
         AgentVersion  => 'MyString',
         DockerVersion => 'MyString',
-      },                                            # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:

@@ -59,11 +59,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Values => [ 'MyString', ... ],    # OPTIONAL
               },
               ...
-            ],                                    # OPTIONAL
-            Values => [ 'MyString', ... ],        # OPTIONAL
+            ],    # OPTIONAL
+            Values => [ 'MyString', ... ],    # OPTIONAL
           },
           ...
-        ],                                        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       AutoApprovalDelayInSeconds => 1,               # OPTIONAL
       HITLayoutId                => 'MyEntityId',    # OPTIONAL
@@ -83,14 +83,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MapEntries => [
               {
                 Key    => 'MyString',
-                Values => [ 'MyString', ... ],       # OPTIONAL
+                Values => [ 'MyString', ... ],    # OPTIONAL
               },
               ...
-            ],                                       # OPTIONAL
-            Values => [ 'MyString', ... ],           # OPTIONAL
+            ],    # OPTIONAL
+            Values => [ 'MyString', ... ],    # OPTIONAL
           },
           ...
-        ],                                           # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       Keywords                  => 'MyString',    # OPTIONAL
       MaxAssignments            => 1,             # OPTIONAL
@@ -108,14 +108,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Subdivision => 'MyCountryParameters',    # min: 2, max: 2
             },
             ...
-          ],                                           # OPTIONAL
-          RequiredToPreview => 1,                      # OPTIONAL
+          ],    # OPTIONAL
+          RequiredToPreview => 1,    # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
-      Question            => 'MyString',               # OPTIONAL
-      RequesterAnnotation => 'MyString',               # OPTIONAL
-      UniqueRequestToken  => 'MyIdempotencyToken',     # OPTIONAL
+      ],    # OPTIONAL
+      Question            => 'MyString',              # OPTIONAL
+      RequesterAnnotation => 'MyString',              # OPTIONAL
+      UniqueRequestToken  => 'MyIdempotencyToken',    # OPTIONAL
     );
 
     # Results:

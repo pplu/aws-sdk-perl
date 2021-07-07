@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'JobParameters' => {
         'Description' => 'My inventory job',
         'Format'      => 'CSV',
-        'SNSTopic' =>
+        'SNSTopic'    =>
 'arn:aws:sns:us-west-2:111111111111:Glacier-InventoryRetrieval-topic-Example',
         'Type' => 'inventory-retrieval'
       },

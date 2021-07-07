@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    # To delete multiple object versions from a versioned bucket
-    # The following example deletes objects from a bucket. The request specifies
-    # object versions. S3 deletes specific object versions and returns the key
-    # and versions of deleted objects in the response.
+  # To delete multiple object versions from a versioned bucket
+  # The following example deletes objects from a bucket. The request specifies
+  # object versions. S3 deletes specific object versions and returns the key and
+  # versions of deleted objects in the response.
     my $DeleteObjectsOutput = $s3->DeleteObjects(
       'Bucket' => 'examplebucket',
       'Delete' => {
@@ -65,12 +65,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Deleted = $DeleteObjectsOutput->Deleted;
 
-    # Returns a L<Paws::S3::DeleteObjectsOutput> object.
-    # To delete multiple objects from a versioned bucket
-    # The following example deletes objects from a bucket. The bucket is
-    # versioned, and the request does not specify the object version to delete.
-    # In this case, all versions remain in the bucket and S3 adds a delete
-    # marker.
+ # Returns a L<Paws::S3::DeleteObjectsOutput> object.
+ # To delete multiple objects from a versioned bucket
+ # The following example deletes objects from a bucket. The bucket is versioned,
+ # and the request does not specify the object version to delete. In this case,
+ # all versions remain in the bucket and S3 adds a delete marker.
     my $DeleteObjectsOutput = $s3->DeleteObjects(
       'Bucket' => 'examplebucket',
       'Delete' => {

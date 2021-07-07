@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyComponentConfigurationString',   # min: 1, max: 65536; OPTIONAL
             Reset => [
               'MyComponentConfigurationPath', ...    # max: 256
-            ],                                       # OPTIONAL
+            ],    # OPTIONAL
           },    # OPTIONAL
           RunWith => {
             PosixUser => 'MyNonEmptyString',    # min: 1
@@ -68,15 +68,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AbortConfig => {
           CriteriaList => [
             {
-              Action => 'CANCEL',    # values: CANCEL
+              Action      => 'CANCEL',    # values: CANCEL
               FailureType =>
-                'FAILED',            # values: FAILED, REJECTED, TIMED_OUT, ALL
+                'FAILED',    # values: FAILED, REJECTED, TIMED_OUT, ALL
               MinNumberOfExecutedThings => 1,    # min: 1
               ThresholdPercentage       => 1,    # max: 100
 
             },
             ...
-          ],                                     # min: 1
+          ],    # min: 1
 
         },    # OPTIONAL
         JobExecutionsRolloutConfig => {

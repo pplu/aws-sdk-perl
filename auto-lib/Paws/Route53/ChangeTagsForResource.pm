@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $route53 = Paws->service('Route53');
-    # To add or remove tags from a hosted zone or health check
-    # The following example adds two tags and removes one tag from the hosted
-    # zone with ID Z3M3LMPEXAMPLE.
+  # To add or remove tags from a hosted zone or health check
+  # The following example adds two tags and removes one tag from the hosted zone
+  # with ID Z3M3LMPEXAMPLE.
     my $ChangeTagsForResourceResponse = $route53->ChangeTagsForResource(
       'AddTags' => [
 

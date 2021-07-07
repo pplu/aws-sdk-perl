@@ -89,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Properties     => { 'MyString' => 'MyString', },    # OPTIONAL
             },
             ...
-          ],                                                      # OPTIONAL
+          ],    # OPTIONAL
           EbsConfiguration => {
             EbsBlockDeviceConfigs => [
               {
@@ -101,8 +101,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 VolumesPerInstance => 1,
               },
               ...
-            ],                                                    # OPTIONAL
-            EbsOptimized => 1,                                    # OPTIONAL
+            ],    # OPTIONAL
+            EbsOptimized => 1,    # OPTIONAL
           },    # OPTIONAL
           Market => 'ON_DEMAND',             # values: ON_DEMAND, SPOT; OPTIONAL
           Name   => 'MyXmlStringMaxLen256',  # max: 256; OPTIONAL

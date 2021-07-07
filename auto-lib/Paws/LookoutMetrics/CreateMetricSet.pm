@@ -82,11 +82,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ClusterIdentifier => 'MyRedshiftClusterIdentifier', # min: 1, max: 63
           DatabaseHost      => 'MyDatabaseHost',              # min: 1, max: 253
           DatabaseName      => 'MyRedshiftDatabaseName',      # min: 1, max: 100
-          DatabasePort     => 1,                            # min: 1, max: 65535
-          RoleArn          => 'MyArn',                      # max: 256
-          SecretManagerArn => 'MyPoirotSecretManagerArn',   # max: 256
-          TableName        => 'MyTableName',                # min: 1, max: 100
-          VpcConfiguration => {
+          DatabasePort      => 1,                           # min: 1, max: 65535
+          RoleArn           => 'MyArn',                     # max: 256
+          SecretManagerArn  => 'MyPoirotSecretManagerArn',  # max: 256
+          TableName         => 'MyTableName',               # min: 1, max: 100
+          VpcConfiguration  => {
             SecurityGroupIdList => [
               'MySecurityGroupId', ...                      # min: 1, max: 255
             ],
@@ -107,8 +107,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               FileCompression => 'NONE',          # values: NONE, GZIP; OPTIONAL
               HeaderList      => [
                 'MyColumnName', ...               # min: 1, max: 63
-              ],                                  # OPTIONAL
-              QuoteSymbol => 'MyQuoteSymbol',     # max: 1; OPTIONAL
+              ],    # OPTIONAL
+              QuoteSymbol => 'MyQuoteSymbol',    # max: 1; OPTIONAL
             },    # OPTIONAL
             JsonFormatDescriptor => {
               Charset         => 'MyCharset',    # max: 63; OPTIONAL
@@ -117,15 +117,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           HistoricalDataPathList => [
             'MyHistoricalDataPath', ...    # max: 1024
-          ],                               # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
           TemplatedPathList => [
-            'MyTemplatedPath', ...         # max: 1024
-          ],                               # min: 1, max: 1; OPTIONAL
+            'MyTemplatedPath', ...    # max: 1024
+          ],    # min: 1, max: 1; OPTIONAL
         },    # OPTIONAL
       },
       DimensionList => [
         'MyColumnName', ...    # min: 1, max: 63
-      ],                       # OPTIONAL
+      ],    # OPTIONAL
       MetricSetDescription => 'MyMetricSetDescription',    # OPTIONAL
       MetricSetFrequency   => 'P1D',                       # OPTIONAL
       Offset               => 1,                           # OPTIONAL

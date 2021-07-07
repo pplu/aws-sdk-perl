@@ -30,9 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To update a gateway's metadata
-    # Updates a gateway's metadata, which includes the gateway's name and time
-    # zone.
+# To update a gateway's metadata
+# Updates a gateway's metadata, which includes the gateway's name and time zone.
     my $UpdateGatewayInformationOutput =
       $storagegateway->UpdateGatewayInformation(
       'GatewayARN' =>

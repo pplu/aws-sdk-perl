@@ -51,19 +51,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PolicyArn => 'MyPolicyArn',    # min: 25, max: 684
           Groups    => [
             'MyGroup', ...               # min: 1, max: 640
-          ],                             # min: 1, max: 100; OPTIONAL
+          ],    # min: 1, max: 100; OPTIONAL
           Roles => [
-            'MyRole', ...                # min: 1, max: 576
-          ],                             # min: 1, max: 100; OPTIONAL
+            'MyRole', ...    # min: 1, max: 576
+          ],    # min: 1, max: 100; OPTIONAL
           Users => [
-            'MyUser', ...                # min: 1, max: 576
-          ],                             # min: 1, max: 100; OPTIONAL
+            'MyUser', ...    # min: 1, max: 576
+          ],    # min: 1, max: 100; OPTIONAL
         },    # OPTIONAL
         ScpActionDefinition => {
           PolicyId  => 'MyPolicyId',    # min: 10, max: 130
           TargetIds => [
             'MyTargetId', ...           # min: 12, max: 68
-          ],                            # min: 1, max: 100
+          ],    # min: 1, max: 100
 
         },    # OPTIONAL
         SsmActionDefinition => {
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ,    # values: STOP_EC2_INSTANCES, STOP_RDS_INSTANCES
           InstanceIds => [
             'MyInstanceId', ...    # min: 1, max: 63
-          ],                       # min: 1, max: 100
+          ],    # min: 1, max: 100
           Region => 'MyRegion',    # min: 9, max: 20
 
         },    # OPTIONAL
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

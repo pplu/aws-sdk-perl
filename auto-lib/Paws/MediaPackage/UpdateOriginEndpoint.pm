@@ -81,12 +81,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ProgramDateTimeIntervalSeconds => 1,    # OPTIONAL
           },
           ...
-        ],                                          # OPTIONAL
-        SegmentDurationSeconds => 1,                # OPTIONAL
+        ],    # OPTIONAL
+        SegmentDurationSeconds => 1,              # OPTIONAL
         SegmentPrefix          => 'My__string',
         StreamSelection        => {
-          MaxVideoBitsPerSecond => 1,               # OPTIONAL
-          MinVideoBitsPerSecond => 1,               # OPTIONAL
+          MaxVideoBitsPerSecond => 1,             # OPTIONAL
+          MinVideoBitsPerSecond => 1,             # OPTIONAL
           StreamOrder           => 'ORIGINAL'
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
@@ -119,10 +119,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         MinUpdatePeriodSeconds => 1,         # OPTIONAL
         PeriodTriggers         => [
           'ADS', ...                         # values: ADS
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         Profile                => 'NONE',    # values: NONE, HBBTV_1_5; OPTIONAL
         SegmentDurationSeconds => 1,         # OPTIONAL
-        SegmentTemplateFormat => 'NUMBER_WITH_TIMELINE'
+        SegmentTemplateFormat  => 'NUMBER_WITH_TIMELINE'
         , # values: NUMBER_WITH_TIMELINE, TIME_WITH_TIMELINE, NUMBER_WITH_DURATION; OPTIONAL
         StreamSelection => {
           MaxVideoBitsPerSecond => 1,           # OPTIONAL
@@ -131,7 +131,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
         SuggestedPresentationDelaySeconds => 1,    # OPTIONAL
-        UtcTiming => 'NONE',    # values: NONE, HTTP-HEAD, HTTP-ISO; OPTIONAL
+        UtcTiming    => 'NONE',    # values: NONE, HTTP-HEAD, HTTP-ISO; OPTIONAL
         UtcTimingUri => 'My__string',
       },    # OPTIONAL
       Description => 'My__string',    # OPTIONAL

@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-   # To add tags to a secret
-   # The following example shows how to attach two tags each with a Key and
-   # Value to a secret. There is no output from this API. To see the result, use
-   # the DescribeSecret operation.
+  # To add tags to a secret
+  # The following example shows how to attach two tags each with a Key and Value
+  # to a secret. There is no output from this API. To see the result, use the
+  # DescribeSecret operation.
     $secretsmanager->TagResource(
       'SecretId' => 'MyExampleSecret',
       'Tags'     => [

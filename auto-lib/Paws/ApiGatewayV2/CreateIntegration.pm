@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IntegrationUri          => 'MyUriWithLengthBetween1And2048',    # OPTIONAL
       PassthroughBehavior     => 'WHEN_NO_MATCH',                     # OPTIONAL
       PayloadFormatVersion    => 'MyStringWithLengthBetween1And64',   # OPTIONAL
-      RequestParameters =>
+      RequestParameters       =>
         { 'My__string' => 'MyStringWithLengthBetween1And512', },      # OPTIONAL
       RequestTemplates =>
         { 'My__string' => 'MyStringWithLengthBetween0And32K', },      # OPTIONAL

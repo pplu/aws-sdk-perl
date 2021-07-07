@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe a volume attribute
-    # This example describes the ``autoEnableIo`` attribute of the volume with
-    # the ID ``vol-049df61146c4d7901``.
+  # To describe a volume attribute
+  # This example describes the ``autoEnableIo`` attribute of the volume with the
+  # ID ``vol-049df61146c4d7901``.
     my $DescribeVolumeAttributeResult = $ec2->DescribeVolumeAttribute(
       'Attribute' => 'autoEnableIO',
       'VolumeId'  => 'vol-049df61146c4d7901'

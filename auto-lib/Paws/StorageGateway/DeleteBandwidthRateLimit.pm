@@ -28,13 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $storagegateway = Paws->service('StorageGateway');
-    # To delete bandwidth rate limits of gateway
-    # Deletes the bandwidth rate limits of a gateway; either the upload or
-    # download limit, or both.
+ # To delete bandwidth rate limits of gateway
+ # Deletes the bandwidth rate limits of a gateway; either the upload or download
+ # limit, or both.
     my $DeleteBandwidthRateLimitOutput =
       $storagegateway->DeleteBandwidthRateLimit(
       'BandwidthType' => 'All',
-      'GatewayARN' =>
+      'GatewayARN'    =>
         'arn:aws:storagegateway:us-east-1:111122223333:gateway/sgw-12A3456B'
       );
 

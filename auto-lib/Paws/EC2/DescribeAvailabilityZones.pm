@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To describe your Availability Zones
-    # This example describes the Availability Zones that are available to you.
-    # The response includes Availability Zones only for the current region.
+  # To describe your Availability Zones
+  # This example describes the Availability Zones that are available to you. The
+  # response includes Availability Zones only for the current region.
     my $DescribeAvailabilityZonesResult = $ec2->DescribeAvailabilityZones();
 
     # Results:

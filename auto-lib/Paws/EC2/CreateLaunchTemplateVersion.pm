@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To create a launch template version
-    # This example creates a new launch template version based on version 1 of
-    # the specified launch template and specifies a different AMI ID.
+  # To create a launch template version
+  # This example creates a new launch template version based on version 1 of the
+  # specified launch template and specifies a different AMI ID.
     my $CreateLaunchTemplateVersionResult = $ec2->CreateLaunchTemplateVersion(
       'LaunchTemplateData' => {
         'ImageId' => 'ami-c998b6b2'

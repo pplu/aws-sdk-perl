@@ -54,11 +54,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Subdivision => 'MyCountryParameters',    # min: 2, max: 2
             },
             ...
-          ],                                           # OPTIONAL
-          RequiredToPreview => 1,                      # OPTIONAL
+          ],    # OPTIONAL
+          RequiredToPreview => 1,    # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

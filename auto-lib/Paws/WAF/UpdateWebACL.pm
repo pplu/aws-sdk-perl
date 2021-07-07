@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $waf = Paws->service('WAF');
-    # To update a Web ACL
-    # The following example deletes an ActivatedRule object in a WebACL with the
-    # ID webacl-1472061481310.
+ # To update a Web ACL
+ # The following example deletes an ActivatedRule object in a WebACL with the ID
+ # webacl-1472061481310.
     my $UpdateWebACLResponse = $waf->UpdateWebACL(
       'ChangeToken'   => 'abcd12f2-46da-4fdb-b8d5-fbd4c466928f',
       'DefaultAction' => {

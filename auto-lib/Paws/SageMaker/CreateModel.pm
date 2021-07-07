@@ -54,16 +54,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           Mode => 'SingleModel',    # values: SingleModel, MultiModel; OPTIONAL
-          ModelDataUrl => 'MyUrl',  # max: 1024; OPTIONAL
+          ModelDataUrl     => 'MyUrl',    # max: 1024; OPTIONAL
           ModelPackageName =>
-            'MyVersionedArnOrName',    # min: 1, max: 176; OPTIONAL
+            'MyVersionedArnOrName',       # min: 1, max: 176; OPTIONAL
           MultiModelConfig => {
             ModelCacheSetting =>
-              'Enabled',               # values: Enabled, Disabled; OPTIONAL
+              'Enabled',                  # values: Enabled, Disabled; OPTIONAL
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       EnableNetworkIsolation   => 1,    # OPTIONAL
       InferenceExecutionConfig => {
         Mode => 'Serial',               # values: Serial, Direct
@@ -98,14 +98,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       VpcConfig => {
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # max: 32
-        ],                            # min: 1, max: 5
+        ],    # min: 1, max: 5
         Subnets => [
-          'MySubnetId', ...           # max: 32
-        ],                            # min: 1, max: 16
+          'MySubnetId', ...    # max: 32
+        ],    # min: 1, max: 16
 
       },    # OPTIONAL
     );

@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],    # min: 1, max: 30
         StreamingImageIds => [
           'MyStreamingImageId', ...    # max: 22
-        ],                             # max: 20
+        ],    # max: 20
         MaxSessionLengthInMinutes => 1,    # min: 1, max: 690; OPTIONAL
       },
       StudioComponentIds => [ 'My__string', ... ],

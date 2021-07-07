@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AddressAllocationIds => [ 'MyAddressAllocationId', ... ],    # OPTIONAL
         SecurityGroupIds     => [
           'MySecurityGroupId', ...    # min: 11, max: 20
-        ],                            # OPTIONAL
+        ],    # OPTIONAL
         SubnetIds     => [ 'MySubnetId', ... ],    # OPTIONAL
         VpcEndpointId => 'MyVpcEndpointId',        # min: 22, max: 22; OPTIONAL
         VpcId         => 'MyVpcId',                # OPTIONAL
@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LoggingRole => 'MyNullableRole',    # OPTIONAL
       Protocols   => [
         'SFTP', ...                       # values: SFTP, FTP, FTPS
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       SecurityPolicyName => 'MySecurityPolicyName',    # OPTIONAL
     );
 

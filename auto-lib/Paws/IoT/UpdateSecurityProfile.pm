@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       AlertTargets => {
         'SNS' => {
           AlertTargetArn => 'MyAlertTargetArn',
@@ -76,15 +76,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => {
               Cidrs => [
                 'MyCidr', ...    # min: 2, max: 43
-              ],                 # OPTIONAL
-              Count   => 1,      # OPTIONAL
-              Number  => 1,      # OPTIONAL
+              ],    # OPTIONAL
+              Count   => 1,    # OPTIONAL
+              Number  => 1,    # OPTIONAL
               Numbers => [
-                1, ...           # OPTIONAL
-              ],                 # OPTIONAL
+                1, ...         # OPTIONAL
+              ],    # OPTIONAL
               Ports => [
-                1, ...           # max: 65535
-              ],                 # OPTIONAL
+                1, ...    # max: 65535
+              ],    # OPTIONAL
               Strings => [ 'MystringValue', ... ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
@@ -96,7 +96,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SuppressAlerts => 1,    # OPTIONAL
         },
         ...
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       DeleteAdditionalMetricsToRetain => 1,    # OPTIONAL
       DeleteAlertTargets              => 1,    # OPTIONAL
       DeleteBehaviors                 => 1,    # OPTIONAL

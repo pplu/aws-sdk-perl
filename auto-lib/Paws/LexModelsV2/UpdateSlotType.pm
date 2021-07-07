@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SlotTypeValues          => [
         {
           SampleValue => {
-            Value => 'MyValue',                            # min: 1, max: 140
+            Value => 'MyValue',    # min: 1, max: 140
 
           },    # OPTIONAL
           Synonyms => [
@@ -64,10 +64,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...                      # OPTIONAL
-          ],                         # min: 1, max: 10000; OPTIONAL
+          ],    # min: 1, max: 10000; OPTIONAL
         },
         ...
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

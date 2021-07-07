@@ -36,12 +36,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'IMPORT_TASK_ID',   # values: IMPORT_TASK_ID, STATUS, NAME; OPTIONAL
           Values => [
             'MyImportTaskFilterValue', ...    # min: 1, max: 100
-          ],                                  # min: 1, max: 100; OPTIONAL
+          ],    # min: 1, max: 100; OPTIONAL
         },
         ...
-      ],                                      # OPTIONAL
-      MaxResults => 1,                        # OPTIONAL
-      NextToken  => 'MyNextToken',            # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

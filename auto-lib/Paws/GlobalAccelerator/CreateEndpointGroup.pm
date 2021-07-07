@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Weight                      => 1,                 # max: 255; OPTIONAL
         },
         ...
-      ],                                                    # OPTIONAL
+      ],    # OPTIONAL
       HealthCheckIntervalSeconds => 1,                      # OPTIONAL
       HealthCheckPath            => 'MyHealthCheckPath',    # OPTIONAL
       HealthCheckPort            => 1,                      # OPTIONAL
@@ -59,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ListenerPort => 1,    # min: 1, max: 65535; OPTIONAL
         },
         ...
-      ],                        # OPTIONAL
+      ],    # OPTIONAL
       ThresholdCount        => 1,      # OPTIONAL
       TrafficDialPercentage => 1.0,    # OPTIONAL
     );

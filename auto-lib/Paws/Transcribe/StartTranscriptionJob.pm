@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdentifyLanguage     => 1,    # OPTIONAL
       JobExecutionSettings => {
         AllowDeferredExecution => 1,
-        DataAccessRoleArn =>
+        DataAccessRoleArn      =>
           'MyDataAccessRoleArn',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       LanguageCode    => 'af-ZA',    # OPTIONAL
@@ -71,15 +71,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputEncryptionKMSKeyId => 'MyKMSKeyId',            # OPTIONAL
       OutputKey                => 'MyOutputKey',           # OPTIONAL
       Settings                 => {
-        ChannelIdentification => 1,
-        MaxAlternatives       => 1,    # min: 2, max: 10; OPTIONAL
-        MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
-        ShowAlternatives      => 1,
-        ShowSpeakerLabels     => 1,
+        ChannelIdentification  => 1,
+        MaxAlternatives        => 1,    # min: 2, max: 10; OPTIONAL
+        MaxSpeakerLabels       => 1,    # min: 2, max: 10; OPTIONAL
+        ShowAlternatives       => 1,
+        ShowSpeakerLabels      => 1,
         VocabularyFilterMethod =>
-          'remove',                    # values: remove, mask, tag; OPTIONAL
+          'remove',                     # values: remove, mask, tag; OPTIONAL
         VocabularyFilterName =>
-          'MyVocabularyFilterName',    # min: 1, max: 200; OPTIONAL
+          'MyVocabularyFilterName',     # min: 1, max: 200; OPTIONAL
         VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
     );

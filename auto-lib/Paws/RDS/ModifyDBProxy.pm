@@ -45,7 +45,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           UserName    => 'MyString',
         },
         ...
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
       DebugLogging      => 1,                      # OPTIONAL
       IdleClientTimeout => 1,                      # OPTIONAL
       NewDBProxyName    => 'MyString',             # OPTIONAL

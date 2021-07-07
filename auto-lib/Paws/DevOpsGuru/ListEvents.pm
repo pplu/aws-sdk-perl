@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceCollection => {
           CloudFormation => {
             StackNames => [
-              'MyStackName', ...              # min: 1, max: 128
-            ],                                # OPTIONAL
+              'MyStackName', ...    # min: 1, max: 128
+            ],    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

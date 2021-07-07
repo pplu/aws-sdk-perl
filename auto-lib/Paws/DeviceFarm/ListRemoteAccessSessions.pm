@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $devicefarm = Paws->service('DeviceFarm');
-    # To get information about a remote access session
-    # The following example returns information about a specific Device Farm
-    # remote access session.
+ # To get information about a remote access session
+ # The following example returns information about a specific Device Farm remote
+ # access session.
     my $ListRemoteAccessSessionsResult = $devicefarm->ListRemoteAccessSessions(
       'Arn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:session:EXAMPLE-GUID-123-456',

@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SuccessfulFleetRequests =
       $CancelSpotFleetRequestsResponse->SuccessfulFleetRequests;
 
-    # Returns a L<Paws::EC2::CancelSpotFleetRequestsResponse> object.
-    # To cancel a Spot fleet request without terminating its Spot Instances
-    # This example cancels the specified Spot fleet request without terminating
-    # its associated Spot Instances.
+ # Returns a L<Paws::EC2::CancelSpotFleetRequestsResponse> object.
+ # To cancel a Spot fleet request without terminating its Spot Instances
+ # This example cancels the specified Spot fleet request without terminating its
+ # associated Spot Instances.
     my $CancelSpotFleetRequestsResponse = $ec2->CancelSpotFleetRequests(
       'SpotFleetRequestIds' => ['sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE'],
       'TerminateInstances'  => 0

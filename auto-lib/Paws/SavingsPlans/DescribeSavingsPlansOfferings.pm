@@ -44,35 +44,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $savingsplans->DescribeSavingsPlansOfferings(
       Currencies => [
         'CNY', ...    # values: CNY, USD
-      ],              # OPTIONAL
+      ],    # OPTIONAL
       Descriptions => [ 'MySavingsPlanDescription', ... ],    # OPTIONAL
       Durations    => [ 1,                          ... ],    # OPTIONAL
       Filters      => [
         {
-          Name => 'region',    # values: region, instanceFamily; OPTIONAL
+          Name   => 'region',    # values: region, instanceFamily; OPTIONAL
           Values => [ 'MyJsonSafeFilterValueString', ... ],    # OPTIONAL
         },
         ...
-      ],                                                       # OPTIONAL
-      MaxResults  => 1,                                        # OPTIONAL
-      NextToken   => 'MyPaginationToken',                      # OPTIONAL
-      OfferingIds => [ 'MyUUID', ... ],                        # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults  => 1,                      # OPTIONAL
+      NextToken   => 'MyPaginationToken',    # OPTIONAL
+      OfferingIds => [ 'MyUUID', ... ],      # OPTIONAL
       Operations  => [
-        'MySavingsPlanOperation', ...                          # max: 255
-      ],                                                       # OPTIONAL
+        'MySavingsPlanOperation', ...        # max: 255
+      ],    # OPTIONAL
       PaymentOptions => [
         'All Upfront', ...    # values: All Upfront, Partial Upfront, No Upfront
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       PlanTypes => [
-        'Compute', ...        # values: Compute, EC2Instance, SageMaker
-      ],                      # OPTIONAL
-      ProductType  => 'EC2',  # OPTIONAL
+        'Compute', ...    # values: Compute, EC2Instance, SageMaker
+      ],    # OPTIONAL
+      ProductType  => 'EC2',    # OPTIONAL
       ServiceCodes => [
         'MySavingsPlanServiceCode', ...    # max: 255
-      ],                                   # OPTIONAL
+      ],    # OPTIONAL
       UsageTypes => [
-        'MySavingsPlanUsageType', ...      # max: 255
-      ],                                   # OPTIONAL
+        'MySavingsPlanUsageType', ...    # max: 255
+      ],    # OPTIONAL
       );
 
     # Results:

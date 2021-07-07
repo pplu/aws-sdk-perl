@@ -47,10 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                               # min: 1, max: 2
+          ],    # min: 1, max: 2
           Projection => {
             NonKeyAttributes => [
-              'MyNonKeyAttributeName', ...                 # min: 1, max: 255
+              'MyNonKeyAttributeName', ...    # min: 1, max: 255
             ],    # min: 1, max: 20; OPTIONAL
             ProjectionType => 'ALL', # values: ALL, KEYS_ONLY, INCLUDE; OPTIONAL
           },
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       LocalSecondaryIndexOverride => [
         {
           IndexName => 'MyIndexName',    # min: 3, max: 255
@@ -72,20 +72,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                               # min: 1, max: 2
+          ],    # min: 1, max: 2
           Projection => {
             NonKeyAttributes => [
-              'MyNonKeyAttributeName', ...                 # min: 1, max: 255
+              'MyNonKeyAttributeName', ...    # min: 1, max: 255
             ],    # min: 1, max: 20; OPTIONAL
             ProjectionType => 'ALL', # values: ALL, KEYS_ONLY, INCLUDE; OPTIONAL
           },
 
         },
         ...
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       ProvisionedThroughputOverride => {
-        ReadCapacityUnits  => 1,     # min: 1
-        WriteCapacityUnits => 1,     # min: 1
+        ReadCapacityUnits  => 1,    # min: 1
+        WriteCapacityUnits => 1,    # min: 1
 
       },    # OPTIONAL
       SSESpecificationOverride => {

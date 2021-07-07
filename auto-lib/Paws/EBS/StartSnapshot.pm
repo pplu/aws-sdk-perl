@@ -44,12 +44,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ParentSnapshotId => 'MySnapshotId',          # OPTIONAL
       Tags             => [
         {
-          Key   => 'MyTagKey',                     # max: 127; OPTIONAL
-          Value => 'MyTagValue',                   # max: 255; OPTIONAL
+          Key   => 'MyTagKey',      # max: 127; OPTIONAL
+          Value => 'MyTagValue',    # max: 255; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
-      Timeout => 1,                                # OPTIONAL
+      ],    # OPTIONAL
+      Timeout => 1,    # OPTIONAL
     );
 
     # Results:

@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         LambdaArn             => 'MyLambdaFunctionARNWithVersionNumber',
         ComponentDependencies => {
           'MyNonEmptyString' => {
-            DependencyType => 'HARD',        # values: HARD, SOFT; OPTIONAL
+            DependencyType     => 'HARD',    # values: HARD, SOFT; OPTIONAL
             VersionRequirement => 'MyNonEmptyString',    # min: 1
           },    # key: min: 1
         },    # OPTIONAL
@@ -51,8 +51,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                              # OPTIONAL
-          ExecArgs => [ 'MyLambdaExecArg', ... ],    # OPTIONAL
+          ],    # OPTIONAL
+          ExecArgs                 => [ 'MyLambdaExecArg', ... ],    # OPTIONAL
           InputPayloadEncodingType => 'json',   # values: json, binary; OPTIONAL
           LinuxProcessParams       => {
             ContainerParams => {
@@ -63,18 +63,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Permission    => 'ro',              # values: ro, rw; OPTIONAL
                 },
                 ...
-              ],                                      # OPTIONAL
-              MemorySizeInKB => 1,                    # OPTIONAL
-              MountROSysfs   => 1,                    # OPTIONAL
+              ],    # OPTIONAL
+              MemorySizeInKB => 1,    # OPTIONAL
+              MountROSysfs   => 1,    # OPTIONAL
               Volumes        => [
                 {
                   DestinationPath => 'MyFileSystemPath',
                   SourcePath      => 'MyFileSystemPath',
                   AddGroupOwner   => 1,                    # OPTIONAL
-                  Permission => 'ro',    # values: ro, rw; OPTIONAL
+                  Permission      => 'ro',    # values: ro, rw; OPTIONAL
                 },
                 ...
-              ],                         # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
             IsolationMode => 'GreengrassContainer'
             ,     # values: GreengrassContainer, NoContainer; OPTIONAL
@@ -91,14 +91,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Attributes => {
               'MyNonEmptyString' =>
-                'MyNonEmptyString',                 # key: min: 1, value: min: 1
+                'MyNonEmptyString',    # key: min: 1, value: min: 1
             },    # OPTIONAL
             Name => 'MyNonEmptyString',    # min: 1
           },
           ...
-        ],                                 # OPTIONAL
+        ],    # OPTIONAL
         ComponentVersion =>
-          'MyComponentVersionString',      # min: 1, max: 64; OPTIONAL
+          'MyComponentVersionString',    # min: 1, max: 64; OPTIONAL
       },    # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256

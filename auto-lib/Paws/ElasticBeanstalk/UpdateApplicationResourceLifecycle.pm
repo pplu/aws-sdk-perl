@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MaxAgeRule => {
             Enabled            => 1,
             DeleteSourceFromS3 => 1,
-            MaxAgeInDays       => 1,             # OPTIONAL
+            MaxAgeInDays       => 1,    # OPTIONAL
           },    # OPTIONAL
           MaxCountRule => {
             Enabled            => 1,

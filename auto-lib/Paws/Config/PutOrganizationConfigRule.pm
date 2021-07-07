@@ -39,7 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'ConfigurationItemChangeNotification',
           ... # values: ConfigurationItemChangeNotification, OversizedConfigurationItemChangeNotification, ScheduledNotification
         ],
-        Description => 'MyStringWithCharLimit256Min0',    # max: 256; OPTIONAL
+        Description     => 'MyStringWithCharLimit256Min0',  # max: 256; OPTIONAL
         InputParameters =>
           'MyStringWithCharLimit2048',    # min: 1, max: 2048; OPTIONAL
         MaximumExecutionFrequency => 'One_Hour'
@@ -48,13 +48,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyStringWithCharLimit768',    # min: 1, max: 768; OPTIONAL
         ResourceTypesScope => [
           'MyStringWithCharLimit256', ...    # min: 1, max: 256
-        ],                                   # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
         TagKeyScope => 'MyStringWithCharLimit128',  # min: 1, max: 128; OPTIONAL
         TagValueScope => 'MyStringWithCharLimit256',    # min: 1, max: 256
       },    # OPTIONAL
       OrganizationManagedRuleMetadata => {
-        RuleIdentifier => 'MyStringWithCharLimit256',       # min: 1, max: 256
-        Description    => 'MyStringWithCharLimit256Min0',   # max: 256; OPTIONAL
+        RuleIdentifier  => 'MyStringWithCharLimit256',      # min: 1, max: 256
+        Description     => 'MyStringWithCharLimit256Min0',  # max: 256; OPTIONAL
         InputParameters =>
           'MyStringWithCharLimit2048',    # min: 1, max: 2048; OPTIONAL
         MaximumExecutionFrequency => 'One_Hour'
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyStringWithCharLimit768',    # min: 1, max: 768; OPTIONAL
         ResourceTypesScope => [
           'MyStringWithCharLimit256', ...    # min: 1, max: 256
-        ],                                   # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
         TagKeyScope => 'MyStringWithCharLimit128',  # min: 1, max: 128; OPTIONAL
         TagValueScope => 'MyStringWithCharLimit256',    # min: 1, max: 256
       },    # OPTIONAL

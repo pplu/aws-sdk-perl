@@ -38,14 +38,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
           },
           ...
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
         ManagedFields => [
           {
             Name => 'MyFieldName',   # OPTIONAL
             Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
           },
           ...
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       ThingIndexingConfiguration => {
         ThingIndexingMode => 'OFF', # values: OFF, REGISTRY, REGISTRY_AND_SHADOW
@@ -55,14 +55,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
           },
           ...
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
         ManagedFields => [
           {
             Name => 'MyFieldName',   # OPTIONAL
             Type => 'Number',        # values: Number, String, Boolean; OPTIONAL
           },
           ...
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
         ThingConnectivityIndexingMode => 'OFF',  # values: OFF, STATUS; OPTIONAL
       },    # OPTIONAL
     );

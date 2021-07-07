@@ -46,14 +46,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         ChildHealthChecks => [
           'MyHealthCheckId', ...    # max: 64
-        ],                          # max: 256; OPTIONAL
-        Disabled         => 1,      # OPTIONAL
-        EnableSNI        => 1,      # OPTIONAL
-        FailureThreshold => 1,      # min: 1, max: 10; OPTIONAL
+        ],    # max: 256; OPTIONAL
+        Disabled                 => 1,     # OPTIONAL
+        EnableSNI                => 1,     # OPTIONAL
+        FailureThreshold         => 1,     # min: 1, max: 10; OPTIONAL
         FullyQualifiedDomainName =>
           'MyFullyQualifiedDomainName',    # max: 255; OPTIONAL
-        HealthThreshold => 1,              # max: 256; OPTIONAL
-        IPAddress       => 'MyIPAddress',  # max: 45; OPTIONAL
+        HealthThreshold              => 1,                # max: 256; OPTIONAL
+        IPAddress                    => 'MyIPAddress',    # max: 45; OPTIONAL
         InsufficientDataHealthStatus =>
           'Healthy',    # values: Healthy, Unhealthy, LastKnownStatus; OPTIONAL
         Inverted       => 1,    # OPTIONAL

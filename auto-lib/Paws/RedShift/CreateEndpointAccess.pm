@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceOwner       => 'MyString',    # OPTIONAL
       VpcSecurityGroupIds => [
         'MyString', ...                     # max: 2147483647
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

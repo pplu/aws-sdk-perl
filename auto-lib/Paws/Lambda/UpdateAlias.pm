@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To update a function alias
-    # The following example updates the alias named BLUE to send 30% of traffic
-    # to version 2 and 70% to version 1.
+  # To update a function alias
+  # The following example updates the alias named BLUE to send 30% of traffic to
+  # version 2 and 70% to version 1.
     my $AliasConfiguration = $lambda->UpdateAlias(
       'FunctionName'    => 'my-function',
       'FunctionVersion' => 2,

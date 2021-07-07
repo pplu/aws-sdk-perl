@@ -27,9 +27,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To delete a tag from an Auto Scaling group
-    # This example deletes the specified tag from the specified Auto Scaling
-    # group.
+ # To delete a tag from an Auto Scaling group
+ # This example deletes the specified tag from the specified Auto Scaling group.
     $autoscaling->DeleteTags(
       'Tags' => [
 

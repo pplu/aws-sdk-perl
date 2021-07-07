@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      Description            => 'Mydescription',          # OPTIONAL
-      ExternalModelEndpoints => [ 'Mystring', ... ],      # OPTIONAL
+      Description            => 'Mydescription',        # OPTIONAL
+      ExternalModelEndpoints => [ 'Mystring', ... ],    # OPTIONAL
       ModelVersions          => [
         {
           ModelId   => 'MymodelIdentifier',      # min: 1, max: 64
@@ -54,16 +54,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Arn => 'MyfraudDetectorArn',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                  # OPTIONAL
-      RuleExecutionMode => 'ALL_MATCHED', # OPTIONAL
+      ],    # OPTIONAL
+      RuleExecutionMode => 'ALL_MATCHED',    # OPTIONAL
       Tags              => [
         {
-          Key   => 'MytagKey',            # min: 1, max: 128
-          Value => 'MytagValue',          # max: 256
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
 
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

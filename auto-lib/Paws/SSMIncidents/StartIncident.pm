@@ -52,13 +52,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Title => 'MyRelatedItemTitleString',             # max: 200; OPTIONAL
         },
         ...
-      ],                                                   # OPTIONAL
-      Title          => 'MyIncidentTitle',                 # OPTIONAL
+      ],    # OPTIONAL
+      Title          => 'MyIncidentTitle',    # OPTIONAL
       TriggerDetails => {
-        Source     => 'MyIncidentSource',                  # max: 50
+        Source     => 'MyIncidentSource',      # max: 50
         Timestamp  => '1970-01-01T01:00:00',
-        RawData    => 'MyRawData',                         # max: 4000; OPTIONAL
-        TriggerArn => 'MyArn',                             # max: 1000
+        RawData    => 'MyRawData',             # max: 4000; OPTIONAL
+        TriggerArn => 'MyArn',                 # max: 1000
       },    # OPTIONAL
     );
 

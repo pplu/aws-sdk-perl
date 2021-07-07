@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $application-autoscaling = Paws->service('ApplicationAutoScaling');
-    # To apply a scaling policy to an Amazon ECS service
-    # This example applies a scaling policy to an Amazon ECS service called
-    # web-app in the default cluster. The policy increases the desired count of
-    # the service by 200%, with a cool down period of 60 seconds.
+ # To apply a scaling policy to an Amazon ECS service
+ # This example applies a scaling policy to an Amazon ECS service called web-app
+ # in the default cluster. The policy increases the desired count of the service
+ # by 200%, with a cool down period of 60 seconds.
     my $PutScalingPolicyResponse = $application -autoscaling->PutScalingPolicy(
       'PolicyName'                     => 'web-app-cpu-gt-75',
       'PolicyType'                     => 'StepScaling',
@@ -59,11 +59,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $PolicyARN = $PutScalingPolicyResponse->PolicyARN;
 
-   # Returns a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> object.
-   # To apply a scaling policy to an Amazon EC2 Spot fleet
-   # This example applies a scaling policy to an Amazon EC2 Spot fleet. The
-   # policy increases the target capacity of the spot fleet by 200%, with a cool
-   # down period of 180 seconds.",
+ # Returns a L<Paws::ApplicationAutoScaling::PutScalingPolicyResponse> object.
+ # To apply a scaling policy to an Amazon EC2 Spot fleet
+ # This example applies a scaling policy to an Amazon EC2 Spot fleet. The policy
+ # increases the target capacity of the spot fleet by 200%, with a cool down
+ # period of 180 seconds.",
 
     my $PutScalingPolicyResponse = $application -autoscaling->PutScalingPolicy(
       'PolicyName' => 'fleet-cpu-gt-75',

@@ -45,10 +45,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RoleARN   => 'Mystring',
             StreamARN => 'Mystring',
 
-          },                      # OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       Fields       => [ 'Mystring', ... ],    # OPTIONAL
       Name         => 'Mystring',             # OPTIONAL
       SamplingRate => 1,                      # OPTIONAL

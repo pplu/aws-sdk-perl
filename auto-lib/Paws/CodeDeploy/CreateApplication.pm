@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ComputePlatform => 'Server',              # OPTIONAL
       Tags            => [
         {
-          Key   => 'MyKey',                     # OPTIONAL
-          Value => 'MyValue',                   # OPTIONAL
+          Key   => 'MyKey',      # OPTIONAL
+          Value => 'MyValue',    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

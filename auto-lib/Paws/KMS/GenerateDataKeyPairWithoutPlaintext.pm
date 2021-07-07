@@ -32,13 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kms = Paws->service('KMS');
     my $GenerateDataKeyPairWithoutPlaintextResponse =
       $kms->GenerateDataKeyPairWithoutPlaintext(
-      KeyId       => 'MyKeyIdType',
-      KeyPairSpec => 'RSA_2048',
+      KeyId             => 'MyKeyIdType',
+      KeyPairSpec       => 'RSA_2048',
       EncryptionContext =>
         { 'MyEncryptionContextKey' => 'MyEncryptionContextValue', },  # OPTIONAL
       GrantTokens => [
         'MyGrantTokenType', ...    # min: 1, max: 8192
-      ],                           # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

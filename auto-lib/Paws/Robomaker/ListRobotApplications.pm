@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name   => 'MyName',    # min: 1, max: 255; OPTIONAL
           Values => [
             'MyName', ...        # min: 1, max: 255; OPTIONAL
-          ],                     # min: 1, max: 1; OPTIONAL
+          ],    # min: 1, max: 1; OPTIONAL
         },
         ...
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       MaxResults       => 1,                       # OPTIONAL
       NextToken        => 'MyPaginationToken',     # OPTIONAL
       VersionQualifier => 'MyVersionQualifier',    # OPTIONAL

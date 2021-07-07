@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeleteVpcEndpointConnectionNotificationsResult =
       $ec2->DeleteVpcEndpointConnectionNotifications(
       ConnectionNotificationIds => [ 'MyConnectionNotificationId', ... ],
-      DryRun => 1,    # OPTIONAL
+      DryRun                    => 1,    # OPTIONAL
       );
 
     # Results:

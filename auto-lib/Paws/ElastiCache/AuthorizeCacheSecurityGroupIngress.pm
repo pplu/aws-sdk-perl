@@ -29,10 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    # AuthorizeCacheCacheSecurityGroupIngress
-    # Allows network ingress to a cache security group. Applications using
-    # ElastiCache must be running on Amazon EC2. Amazon EC2 security groups are
-    # used as the authorization mechanism.
+# AuthorizeCacheCacheSecurityGroupIngress
+# Allows network ingress to a cache security group. Applications using
+# ElastiCache must be running on Amazon EC2. Amazon EC2 security groups are used
+# as the authorization mechanism.
     my $AuthorizeCacheSecurityGroupIngressResult =
       $elasticache->AuthorizeCacheSecurityGroupIngress(
       'CacheSecurityGroupName'  => 'my-sec-grp',

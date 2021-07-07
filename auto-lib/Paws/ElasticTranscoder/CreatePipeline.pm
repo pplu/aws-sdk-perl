@@ -44,13 +44,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Bucket      => 'MyBucketName',
         Permissions => [
           {
-            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
+            Access  => [ 'MyAccessControl', ... ],  # max: 30; OPTIONAL
             Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
             GranteeType => 'MyGranteeType',         # OPTIONAL
           },
           ...
-        ],                                          # max: 30; OPTIONAL
-        StorageClass => 'MyStorageClass',           # OPTIONAL
+        ],    # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',    # OPTIONAL
       },    # OPTIONAL
       Notifications => {
         Completed   => 'MySnsTopic',    # OPTIONAL
@@ -63,13 +63,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Bucket      => 'MyBucketName',
         Permissions => [
           {
-            Access => [ 'MyAccessControl', ... ],   # max: 30; OPTIONAL
+            Access  => [ 'MyAccessControl', ... ],  # max: 30; OPTIONAL
             Grantee => 'MyGrantee',                 # min: 1, max: 255; OPTIONAL
             GranteeType => 'MyGranteeType',         # OPTIONAL
           },
           ...
-        ],                                          # max: 30; OPTIONAL
-        StorageClass => 'MyStorageClass',           # OPTIONAL
+        ],    # max: 30; OPTIONAL
+        StorageClass => 'MyStorageClass',    # OPTIONAL
       },    # OPTIONAL
     );
 

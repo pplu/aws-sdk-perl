@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $GetRegistryResponse = $glue->GetRegistry(
       RegistryId => {
-        RegistryArn => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
+        RegistryArn  => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
         RegistryName =>
-          'MySchemaRegistryNameString',        # min: 1, max: 255; OPTIONAL
+          'MySchemaRegistryNameString',         # min: 1, max: 255; OPTIONAL
       },
 
     );

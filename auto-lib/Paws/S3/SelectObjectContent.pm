@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AllowQuotedRecordDelimiter => 1,                     # OPTIONAL
           Comments                   => 'MyComments',          # OPTIONAL
           FieldDelimiter             => 'MyFieldDelimiter',    # OPTIONAL
-          FileHeaderInfo => 'USE',    # values: USE, IGNORE, NONE; OPTIONAL
+          FileHeaderInfo       => 'USE',   # values: USE, IGNORE, NONE; OPTIONAL
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
           RecordDelimiter      => 'MyRecordDelimiter',         # OPTIONAL
@@ -71,8 +71,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           FieldDelimiter       => 'MyFieldDelimiter',          # OPTIONAL
           QuoteCharacter       => 'MyQuoteCharacter',          # OPTIONAL
           QuoteEscapeCharacter => 'MyQuoteEscapeCharacter',    # OPTIONAL
-          QuoteFields => 'ALWAYS',    # values: ALWAYS, ASNEEDED; OPTIONAL
-          RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
+          QuoteFields          => 'ALWAYS', # values: ALWAYS, ASNEEDED; OPTIONAL
+          RecordDelimiter      => 'MyRecordDelimiter',    # OPTIONAL
         },    # OPTIONAL
         JSON => {
           RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL

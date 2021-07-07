@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $route53 = Paws->service('Route53');
-    # To associate a VPC with a hosted zone
-    # The following example associates the VPC with ID vpc-1a2b3c4d with the
-    # hosted zone with ID Z3M3LMPEXAMPLE.
+ # To associate a VPC with a hosted zone
+ # The following example associates the VPC with ID vpc-1a2b3c4d with the hosted
+ # zone with ID Z3M3LMPEXAMPLE.
     my $AssociateVPCWithHostedZoneResponse =
       $route53->AssociateVPCWithHostedZone(
       'Comment'      => '',

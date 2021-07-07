@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $devicefarm = Paws->service('DeviceFarm');
     my $CreateVPCEConfigurationResult = $devicefarm->CreateVPCEConfiguration(
-      ServiceDnsName        => 'MyServiceDnsName',
-      VpceConfigurationName => 'MyVPCEConfigurationName',
-      VpceServiceName       => 'MyVPCEServiceName',
+      ServiceDnsName               => 'MyServiceDnsName',
+      VpceConfigurationName        => 'MyVPCEConfigurationName',
+      VpceServiceName              => 'MyVPCEServiceName',
       VpceConfigurationDescription =>
         'MyVPCEConfigurationDescription',    # OPTIONAL
     );

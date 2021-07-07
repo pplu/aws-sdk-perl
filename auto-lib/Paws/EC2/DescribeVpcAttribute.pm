@@ -29,11 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-   # To describe the enableDnsSupport attribute
-   # This example describes the enableDnsSupport attribute. This attribute
-   # indicates whether DNS resolution is enabled for the VPC. If this attribute
-   # is true, the Amazon DNS server resolves DNS hostnames for your instances to
-   # their corresponding IP addresses; otherwise, it does not.
+# To describe the enableDnsSupport attribute
+# This example describes the enableDnsSupport attribute. This attribute
+# indicates whether DNS resolution is enabled for the VPC. If this attribute is
+# true, the Amazon DNS server resolves DNS hostnames for your instances to their
+# corresponding IP addresses; otherwise, it does not.
     my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
       'Attribute' => 'enableDnsSupport',
       'VpcId'     => 'vpc-a01106c2'
@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EnableDnsSupport = $DescribeVpcAttributeResult->EnableDnsSupport;
     my $VpcId            = $DescribeVpcAttributeResult->VpcId;
 
-    # Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
-    # To describe the enableDnsHostnames attribute
-    # This example describes the enableDnsHostnames attribute. This attribute
-    # indicates whether the instances launched in the VPC get DNS hostnames. If
-    # this attribute is true, instances in the VPC get DNS hostnames; otherwise,
-    # they do not.
+# Returns a L<Paws::EC2::DescribeVpcAttributeResult> object.
+# To describe the enableDnsHostnames attribute
+# This example describes the enableDnsHostnames attribute. This attribute
+# indicates whether the instances launched in the VPC get DNS hostnames. If this
+# attribute is true, instances in the VPC get DNS hostnames; otherwise, they do
+# not.
     my $DescribeVpcAttributeResult = $ec2->DescribeVpcAttribute(
       'Attribute' => 'enableDnsHostnames',
       'VpcId'     => 'vpc-a01106c2'

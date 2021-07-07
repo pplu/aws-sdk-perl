@@ -32,10 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-   # To create a Lambda layer version
-   # The following example creates a new Python library layer version. The
-   # command retrieves the layer content a file named layer.zip in the specified
-   # S3 bucket.
+# To create a Lambda layer version
+# The following example creates a new Python library layer version. The command
+# retrieves the layer content a file named layer.zip in the specified S3 bucket.
     my $PublishLayerVersionResponse = $lambda->PublishLayerVersion(
       'CompatibleRuntimes' => [ 'python3.6', 'python3.7' ],
       'Content'            => {

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainConfigurationName => 'MyReservedDomainConfigurationName',
       AuthorizerConfig        => {
         AllowAuthorizerOverride => 1,    # OPTIONAL
-        DefaultAuthorizerName =>
+        DefaultAuthorizerName   =>
           'MyAuthorizerName',            # min: 1, max: 128; OPTIONAL
       },    # OPTIONAL
       DomainConfigurationStatus => 'ENABLED',    # OPTIONAL

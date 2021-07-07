@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Updates the type of medium changer in a gateway-VTL after a gateway-VTL is
     # activated.
     my $UpdateVTLDeviceTypeOutput = $storagegateway->UpdateVTLDeviceType(
-      'DeviceType' => 'Medium Changer',
+      'DeviceType'   => 'Medium Changer',
       'VTLDeviceARN' =>
 'arn:aws:storagegateway:us-east-1:999999999999:gateway/sgw-12A3456B/device/AMZN_SGW-1FAD4876_MEDIACHANGER_00001'
     );

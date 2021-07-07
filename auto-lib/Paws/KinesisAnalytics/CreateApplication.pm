@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Inputs => [
         {
           InputSchema => {
@@ -55,9 +55,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Mapping => 'MyRecordColumnMapping',    # OPTIONAL
               },
               ...
-            ],                                         # min: 1, max: 1000
+            ],    # min: 1, max: 1000
             RecordFormat => {
-              RecordFormatType  => 'JSON',             # values: JSON, CSV
+              RecordFormatType  => 'JSON',    # values: JSON, CSV
               MappingParameters => {
                 CSVMappingParameters => {
                   RecordColumnDelimiter => 'MyRecordColumnDelimiter',   # min: 1
@@ -96,7 +96,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Outputs => [
         {
           DestinationSchema => {
@@ -121,14 +121,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

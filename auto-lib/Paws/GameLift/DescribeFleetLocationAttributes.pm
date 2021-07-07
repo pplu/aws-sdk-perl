@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Limit     => 1,                  # OPTIONAL
       Locations => [
         'MyLocationStringModel', ...    # min: 1, max: 64
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
       );
 

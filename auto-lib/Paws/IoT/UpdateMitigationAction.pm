@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AddThingsToThingGroupParams => {
           ThingGroupNames => [
             'MyThingGroupName', ...    # min: 1, max: 128
-          ],                           # min: 1, max: 10
-          OverrideDynamicGroups => 1,  # OPTIONAL
+          ],    # min: 1, max: 10
+          OverrideDynamicGroups => 1,    # OPTIONAL
         },    # OPTIONAL
         EnableIoTLoggingParams => {
           LogLevel => 'DEBUG',    # values: DEBUG, INFO, ERROR, WARN, DISABLED

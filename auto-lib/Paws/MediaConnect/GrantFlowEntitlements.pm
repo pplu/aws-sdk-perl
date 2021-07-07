@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType =>
+            KeyType                      =>
               'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url        => 'My__string',
           },    # OPTIONAL
           EntitlementStatus => 'ENABLED',  # values: ENABLED, DISABLED; OPTIONAL
-          Name => 'My__string',
+          Name              => 'My__string',
         },
         ...
       ],

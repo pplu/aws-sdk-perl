@@ -85,16 +85,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RemoveAttributes => {
             Attributes => [
               'MyAttributeName', ...    # min: 1, max: 256
-            ],                          # min: 1, max: 50
-            Name => 'MyActivityName',   # min: 1, max: 128
-            Next => 'MyActivityName',   # min: 1, max: 128
+            ],    # min: 1, max: 50
+            Name => 'MyActivityName',    # min: 1, max: 128
+            Next => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
           SelectAttributes => {
             Attributes => [
               'MyAttributeName', ...    # min: 1, max: 256
-            ],                          # min: 1, max: 50
-            Name => 'MyActivityName',   # min: 1, max: 128
-            Next => 'MyActivityName',   # min: 1, max: 128
+            ],    # min: 1, max: 50
+            Name => 'MyActivityName',    # min: 1, max: 128
+            Next => 'MyActivityName',    # min: 1, max: 128
           },    # OPTIONAL
         },
         ...
@@ -107,7 +107,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

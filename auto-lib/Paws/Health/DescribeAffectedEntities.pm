@@ -34,33 +34,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filter => {
         EventArns => [
           'MyeventArn', ...    # max: 1600
-        ],                     # min: 1, max: 10
+        ],    # min: 1, max: 10
         EntityArns => [
           'MyentityArn', ...    # max: 1600
-        ],                      # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
         EntityValues => [
           'MyentityValue', ...    # max: 1224
-        ],                        # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
         LastUpdatedTimes => [
           {
             From => '1970-01-01T01:00:00',    # OPTIONAL
             To   => '1970-01-01T01:00:00',    # OPTIONAL
           },
           ...
-        ],                                    # min: 1, max: 10; OPTIONAL
+        ],    # min: 1, max: 10; OPTIONAL
         StatusCodes => [
           'IMPAIRED', ...    # values: IMPAIRED, UNIMPAIRED, UNKNOWN
-        ],                   # min: 1, max: 3; OPTIONAL
+        ],    # min: 1, max: 3; OPTIONAL
         Tags => [
           {
             'MytagKey' => 'MytagValue',    # key: max: 127, value: max: 255
           },
           ...                              # max: 50
-        ],                                 # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
       },
-      Locale     => 'Mylocale',            # OPTIONAL
-      MaxResults => 1,                     # OPTIONAL
-      NextToken  => 'MynextToken',         # OPTIONAL
+      Locale     => 'Mylocale',       # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MynextToken',    # OPTIONAL
     );
 
     # Results:

@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DaysOfWeek => [
             1, ...    # max: 6
-          ],          # min: 1, max: 7
+          ],    # min: 1, max: 7
           EndHourOfDay                         => 1,    # max: 23
           EndMinuteOfHour                      => 1,    # max: 59
           StartHourOfDay                       => 1,    # max: 23

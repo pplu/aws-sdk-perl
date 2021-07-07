@@ -35,11 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TrafficMirrorFilterId => 'MyTrafficMirrorFilterId',
       AddNetworkServices    => [
         'amazon-dns', ...    # values: amazon-dns
-      ],                     # OPTIONAL
+      ],    # OPTIONAL
       DryRun                => 1,    # OPTIONAL
       RemoveNetworkServices => [
         'amazon-dns', ...            # values: amazon-dns
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

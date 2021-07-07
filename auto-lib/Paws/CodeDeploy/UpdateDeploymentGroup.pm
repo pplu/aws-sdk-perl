@@ -53,9 +53,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name => 'MyAlarmName',    # OPTIONAL
           },
           ...
-        ],                            # OPTIONAL
-        Enabled                => 1,  # OPTIONAL
-        IgnorePollAlarmFailure => 1,  # OPTIONAL
+        ],    # OPTIONAL
+        Enabled                => 1,    # OPTIONAL
+        IgnorePollAlarmFailure => 1,    # OPTIONAL
       },    # OPTIONAL
       AutoRollbackConfiguration => {
         Enabled => 1,    # OPTIONAL
@@ -88,18 +88,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Ec2TagFilters => [
         {
-          Key => 'MyKey',    # OPTIONAL
+          Key  => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       Ec2TagSet => {
         Ec2TagSetList => [
           [
             {
-              Key  => 'MyKey',     # OPTIONAL
+              Key  => 'MyKey',       # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
               Value => 'MyValue',    # OPTIONAL
@@ -107,7 +107,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],
           ...
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       EcsServices => [
         {
@@ -115,20 +115,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ServiceName => 'MyECSServiceName',    # OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       LoadBalancerInfo => {
         ElbInfoList => [
           {
-            Name => 'MyELBName',                # OPTIONAL
+            Name => 'MyELBName',    # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],    # OPTIONAL
         TargetGroupInfoList => [
           {
-            Name => 'MyTargetGroupName',        # OPTIONAL
+            Name => 'MyTargetGroupName',    # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],    # OPTIONAL
         TargetGroupPairInfoList => [
           {
             ProdTrafficRoute => {
@@ -139,29 +139,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Name => 'MyTargetGroupName',    # OPTIONAL
               },
               ...
-            ],                                  # OPTIONAL
+            ],    # OPTIONAL
             TestTrafficRoute => {
               ListenerArns => [ 'MyListenerArn', ... ],    # OPTIONAL
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       NewDeploymentGroupName       => 'MyDeploymentGroupName',    # OPTIONAL
       OnPremisesInstanceTagFilters => [
         {
-          Key => 'MyKey',                                         # OPTIONAL
+          Key  => 'MyKey',    # OPTIONAL
           Type =>
             'KEY_ONLY',  # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
           Value => 'MyValue',    # OPTIONAL
         },
         ...
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       OnPremisesTagSet => {
         OnPremisesTagSetList => [
           [
             {
-              Key  => 'MyKey',     # OPTIONAL
+              Key  => 'MyKey',       # OPTIONAL
               Type => 'KEY_ONLY'
               ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
               Value => 'MyValue',    # OPTIONAL
@@ -169,7 +169,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],
           ...
-        ],                           # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       OutdatedInstancesStrategy => 'UPDATE',    # OPTIONAL
       ServiceRoleArn            => 'MyRole',    # OPTIONAL
@@ -183,7 +183,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TriggerTargetArn => 'MyTriggerTargetArn',    # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

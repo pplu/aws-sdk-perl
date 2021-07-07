@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Path                 => 'MypathType',               # OPTIONAL
       Tags                 => [
         {
-          Key   => 'MytagKeyType',                        # min: 1, max: 128
-          Value => 'MytagValueType',                      # max: 256
+          Key   => 'MytagKeyType',      # min: 1, max: 128
+          Value => 'MytagValueType',    # max: 256
 
         },
         ...
-      ],                                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

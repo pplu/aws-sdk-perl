@@ -56,31 +56,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionRoleArn     => 'MyIamRoleArn',          # OPTIONAL
       LoggingConfiguration => {
         DagProcessingLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         SchedulerLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         TaskLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         WebserverLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
         },    # OPTIONAL
         WorkerLogs => {
-          Enabled => 1,
+          Enabled  => 1,
           LogLevel =>
             'CRITICAL',    # values: CRITICAL, ERROR, WARNING, INFO, DEBUG
 
@@ -91,17 +91,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NetworkConfiguration => {
         SecurityGroupIds => [
           'MySecurityGroupId', ...    # min: 1, max: 1024
-        ],                            # min: 1, max: 5
+        ],    # min: 1, max: 5
 
       },    # OPTIONAL
-      PluginsS3ObjectVersion      => 'MyS3ObjectVersion',    # OPTIONAL
-      PluginsS3Path               => 'MyRelativePath',       # OPTIONAL
-      RequirementsS3ObjectVersion => 'MyS3ObjectVersion',    # OPTIONAL
-      RequirementsS3Path          => 'MyRelativePath',       # OPTIONAL
-      SourceBucketArn             => 'MyS3BucketArn',        # OPTIONAL
-      WebserverAccessMode         => 'PRIVATE_ONLY',         # OPTIONAL
+      PluginsS3ObjectVersion       => 'MyS3ObjectVersion',    # OPTIONAL
+      PluginsS3Path                => 'MyRelativePath',       # OPTIONAL
+      RequirementsS3ObjectVersion  => 'MyS3ObjectVersion',    # OPTIONAL
+      RequirementsS3Path           => 'MyRelativePath',       # OPTIONAL
+      SourceBucketArn              => 'MyS3BucketArn',        # OPTIONAL
+      WebserverAccessMode          => 'PRIVATE_ONLY',         # OPTIONAL
       WeeklyMaintenanceWindowStart =>
-        'MyWeeklyMaintenanceWindowStart',                    # OPTIONAL
+        'MyWeeklyMaintenanceWindowStart',                     # OPTIONAL
     );
 
     # Results:

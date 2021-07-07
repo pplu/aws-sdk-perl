@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To create a customer gateway
-    # This example creates a customer gateway with the specified IP address for
-    # its outside interface.
+ # To create a customer gateway
+ # This example creates a customer gateway with the specified IP address for its
+ # outside interface.
     my $CreateCustomerGatewayResult = $ec2->CreateCustomerGateway(
       'BgpAsn'   => 65534,
       'PublicIp' => '12.1.2.3',

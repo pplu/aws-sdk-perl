@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Arn => 'MyString',                        # OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       OperationalData => {
         'MyOpsItemDataKey' => {
           Type =>
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       OperationalDataToDelete => [
         'MyString', ...    # OPTIONAL
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
       PlannedEndTime   => '1970-01-01T01:00:00',    # OPTIONAL
       PlannedStartTime => '1970-01-01T01:00:00',    # OPTIONAL
       Priority         => 1,                        # OPTIONAL
@@ -72,10 +72,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                            # OPTIONAL
-      Severity => 'MyOpsItemSeverity',              # OPTIONAL
-      Status   => 'Open',                           # OPTIONAL
-      Title    => 'MyOpsItemTitle',                 # OPTIONAL
+      ],    # OPTIONAL
+      Severity => 'MyOpsItemSeverity',    # OPTIONAL
+      Status   => 'Open',                 # OPTIONAL
+      Title    => 'MyOpsItemTitle',       # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

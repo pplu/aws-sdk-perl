@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    # To list all of the secret versions associated with a secret
-    # The following example shows how to retrieve a list of all of the versions
-    # of a secret, including those without any staging labels.
+# To list all of the secret versions associated with a secret
+# The following example shows how to retrieve a list of all of the versions of a
+# secret, including those without any staging labels.
     my $ListSecretVersionIdsResponse = $secretsmanager->ListSecretVersionIds(
       'IncludeDeprecated' => 1,
       'SecretId'          => 'MyTestDatabaseSecret'

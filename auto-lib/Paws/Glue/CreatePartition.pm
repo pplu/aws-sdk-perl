@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         StorageDescriptor => {
           BucketColumns => [
             'MyNameString', ...    # min: 1, max: 255
-          ],                       # OPTIONAL
+          ],    # OPTIONAL
           Columns => [
             {
               Name       => 'MyNameString',       # min: 1, max: 255
@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Type => 'MyColumnTypeString',    # max: 131072; OPTIONAL
             },
             ...
-          ],                                   # OPTIONAL
+          ],    # OPTIONAL
           Compressed      => 1,                     # OPTIONAL
           InputFormat     => 'MyFormatString',      # max: 128; OPTIONAL
           Location        => 'MyLocationString',    # max: 2056; OPTIONAL
@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             SchemaId => {
               RegistryName =>
                 'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
-              SchemaArn => 'MyGlueResourceArn',  # min: 1, max: 10240; OPTIONAL
+              SchemaArn  => 'MyGlueResourceArn', # min: 1, max: 10240; OPTIONAL
               SchemaName =>
                 'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
             },    # OPTIONAL
@@ -87,7 +87,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SkewedInfo => {
             SkewedColumnNames => [
               'MyNameString', ...    # min: 1, max: 255
-            ],                       # OPTIONAL
+            ],    # OPTIONAL
             SkewedColumnValueLocationMaps =>
               { 'MyColumnValuesString' => 'MyColumnValuesString', },  # OPTIONAL
             SkewedColumnValues => [ 'MyColumnValuesString', ... ],    # OPTIONAL
@@ -99,12 +99,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],                                  # OPTIONAL
-          StoredAsSubDirectories => 1,        # OPTIONAL
+          ],    # OPTIONAL
+          StoredAsSubDirectories => 1,    # OPTIONAL
         },    # OPTIONAL
         Values => [
           'MyValueString', ...    # max: 1024
-        ],                        # OPTIONAL
+        ],    # OPTIONAL
       },
       TableName => 'MyNameString',
       CatalogId => 'MyCatalogIdString',    # OPTIONAL

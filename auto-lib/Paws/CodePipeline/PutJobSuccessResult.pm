@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ChangeIdentifier => 'MyRevisionChangeIdentifier',    # min: 1, max: 100
         Revision         => 'MyRevision',                    # min: 1, max: 1500
         Created          => '1970-01-01T01:00:00',           # OPTIONAL
-        RevisionSummary => 'MyRevisionSummary',    # min: 1, max: 2048; OPTIONAL
+        RevisionSummary  => 'MyRevisionSummary',   # min: 1, max: 2048; OPTIONAL
       },    # OPTIONAL
       ExecutionDetails => {
         ExternalExecutionId => 'MyExecutionId',    # min: 1, max: 1500; OPTIONAL

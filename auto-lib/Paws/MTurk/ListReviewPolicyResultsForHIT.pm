@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken    => 'MyPaginationToken',    # OPTIONAL
       PolicyLevels => [
         'Assignment', ...                     # values: Assignment, HIT
-      ],                                      # OPTIONAL
-      RetrieveActions => 1,                   # OPTIONAL
-      RetrieveResults => 1,                   # OPTIONAL
+      ],    # OPTIONAL
+      RetrieveActions => 1,    # OPTIONAL
+      RetrieveResults => 1,    # OPTIONAL
       );
 
     # Results:

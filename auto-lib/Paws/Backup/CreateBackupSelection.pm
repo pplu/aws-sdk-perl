@@ -43,10 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                          # OPTIONAL
-        Resources => [ 'MyARN', ... ],              # OPTIONAL
+        ],    # OPTIONAL
+        Resources => [ 'MyARN', ... ],    # OPTIONAL
       },
-      CreatorRequestId => 'Mystring',               # OPTIONAL
+      CreatorRequestId => 'Mystring',     # OPTIONAL
     );
 
     # Results:

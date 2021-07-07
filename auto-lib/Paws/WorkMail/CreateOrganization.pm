@@ -38,13 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DirectoryId => 'MyDirectoryId',               # OPTIONAL
       Domains     => [
         {
-          DomainName   => 'MyDomainName',           # min: 3, max: 255; OPTIONAL
-          HostedZoneId => 'MyHostedZoneId',         # min: 1, max: 32; OPTIONAL
+          DomainName   => 'MyDomainName',      # min: 3, max: 255; OPTIONAL
+          HostedZoneId => 'MyHostedZoneId',    # min: 1, max: 32; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      EnableInteroperability => 1,                  # OPTIONAL
-      KmsKeyArn              => 'MyKmsKeyArn',      # OPTIONAL
+      ],    # OPTIONAL
+      EnableInteroperability => 1,                # OPTIONAL
+      KmsKeyArn              => 'MyKmsKeyArn',    # OPTIONAL
     );
 
     # Results:

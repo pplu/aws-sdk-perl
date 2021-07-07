@@ -45,9 +45,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To restore a DB cluster to a point in time.
-    # The following example restores a DB cluster to a new DB cluster at a point
-    # in time from the source DB cluster.
+ # To restore a DB cluster to a point in time.
+ # The following example restores a DB cluster to a new DB cluster at a point in
+ # time from the source DB cluster.
     my $RestoreDBClusterToPointInTimeResult =
       $rds->RestoreDBClusterToPointInTime(
       'DBClusterIdentifier'       => 'sample-restored-cluster1',

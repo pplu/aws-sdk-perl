@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -89,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -102,7 +102,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -115,7 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -128,7 +128,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],                                           # OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -143,29 +143,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Relevance => {
             Duration   => 'MyDuration',    # min: 1, max: 10; OPTIONAL
             Freshness  => 1,               # OPTIONAL
-            Importance => 1,               # min: 1, max: 10
-            RankOrder => 'ASCENDING',  # values: ASCENDING, DESCENDING; OPTIONAL
+            Importance => 1,               # min: 1, max: 10; OPTIONAL
+            RankOrder  => 'ASCENDING', # values: ASCENDING, DESCENDING; OPTIONAL
             ValueImportanceMap => {
               'MyValueImportanceMapKey' =>
-                1,    # key: min: 1, max: 50, value: min: 1, max: 10
+                1,    # key: min: 1, max: 50, value: min: 1, max: 10; OPTIONAL
             },    # OPTIONAL
           },
 
         },
         ...
-      ],          # OPTIONAL
+      ],    # OPTIONAL
       Facets => [
         {
           DocumentAttributeKey => 'MyDocumentAttributeKey',   # min: 1, max: 200
         },
         ...
-      ],                                                      # OPTIONAL
-      PageNumber                  => 1,                       # OPTIONAL
-      PageSize                    => 1,                       # OPTIONAL
-      QueryResultTypeFilter       => 'DOCUMENT',              # OPTIONAL
+      ],    # OPTIONAL
+      PageNumber                  => 1,             # OPTIONAL
+      PageSize                    => 1,             # OPTIONAL
+      QueryResultTypeFilter       => 'DOCUMENT',    # OPTIONAL
       RequestedDocumentAttributes => [
-        'MyDocumentAttributeKey', ...                         # min: 1, max: 200
-      ],                                                      # OPTIONAL
+        'MyDocumentAttributeKey', ...               # min: 1, max: 200
+      ],    # OPTIONAL
       SortingConfiguration => {
         DocumentAttributeKey => 'MyDocumentAttributeKey',    # min: 1, max: 200
         SortOrder            => 'DESC',                      # values: DESC, ASC

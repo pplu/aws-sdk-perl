@@ -37,14 +37,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Logging            => {
         ClusterLogging => [
           {
-            Enabled => 1,                  # OPTIONAL
+            Enabled => 1,    # OPTIONAL
             Types   => [
               'api',
               ... # values: api, audit, authenticator, controllerManager, scheduler
             ],    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       ResourcesVpcConfig => {
         EndpointPrivateAccess => 1,                      # OPTIONAL

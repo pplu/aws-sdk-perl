@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceCollection => {
           CloudFormation => {
             StackNames => [
-              'MyStackName', ...              # min: 1, max: 128
-            ],                                # OPTIONAL
+              'MyStackName', ...    # min: 1, max: 128
+            ],    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         ServiceCollection => {
@@ -54,10 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         Severities => [
           'LOW', ...    # values: LOW, MEDIUM, HIGH
-        ],              # max: 3; OPTIONAL
+        ],    # max: 3; OPTIONAL
         Statuses => [
           'ONGOING', ...    # values: ONGOING, CLOSED
-        ],                  # max: 2; OPTIONAL
+        ],    # max: 2; OPTIONAL
       },    # OPTIONAL
       MaxResults => 1,                    # OPTIONAL
       NextToken  => 'MyUuidNextToken',    # OPTIONAL

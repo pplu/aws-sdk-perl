@@ -38,9 +38,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    # To restore an archived object
-    # The following example restores for one day an archived copy of an object
-    # back into Amazon S3 bucket.
+ # To restore an archived object
+ # The following example restores for one day an archived copy of an object back
+ # into Amazon S3 bucket.
     my $RestoreObjectOutput = $s3->RestoreObject(
       'Bucket'         => 'examplebucket',
       'Key'            => 'archivedobjectkey',

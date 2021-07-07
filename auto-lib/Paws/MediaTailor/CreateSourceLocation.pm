@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AccessType => 'S3_SIGV4',    # values: S3_SIGV4; OPTIONAL
       },    # OPTIONAL
       DefaultSegmentDeliveryConfiguration => { BaseUrl => 'My__string', }
-      ,     # OPTIONAL
+      ,                                             # OPTIONAL
       Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 

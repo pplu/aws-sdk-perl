@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       DialogAction => {
         Type => 'ElicitIntent'
         ,    # values: ElicitIntent, ConfirmIntent, ElicitSlot, Close, Delegate
@@ -64,8 +64,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Message       => 'MyText',          # min: 1, max: 1024
         MessageFormat => 'PlainText'
         ,    # values: PlainText, CustomPayload, SSML, Composite; OPTIONAL
-        SlotToElicit => 'MyString',
-        Slots        => { 'MyString' => 'MyString', },    # OPTIONAL
+        SlotToElicit => 'MyString',    # OPTIONAL
+        Slots        => {
+          'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       RecentIntentSummaryView => [
         {
@@ -77,13 +79,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'None',    # values: None, Confirmed, Denied; OPTIONAL
           FulfillmentState => 'Fulfilled'
           ,    # values: Fulfilled, Failed, ReadyForFulfillment; OPTIONAL
-          IntentName   => 'MyIntentName',                   # OPTIONAL
-          SlotToElicit => 'MyString',
-          Slots        => { 'MyString' => 'MyString', },    # OPTIONAL
+          IntentName   => 'MyIntentName',    # OPTIONAL
+          SlotToElicit => 'MyString',        # OPTIONAL
+          Slots        => {
+            'MyString' => 'MyString',        # key: OPTIONAL, value: OPTIONAL
+          },    # OPTIONAL
         },
         ...
-      ],                                                    # OPTIONAL
-      SessionAttributes => { 'MyString' => 'MyString', },   # OPTIONAL
+      ],    # OPTIONAL
+      SessionAttributes => {
+        'MyString' => 'MyString',    # key: OPTIONAL, value: OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:

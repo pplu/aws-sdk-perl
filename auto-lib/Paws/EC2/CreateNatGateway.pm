@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-   # To create a NAT gateway
-   # This example creates a NAT gateway in subnet subnet-1a2b3c4d and associates
-   # an Elastic IP address with the allocation ID eipalloc-37fc1a52 with the NAT
-   # gateway.
+# To create a NAT gateway
+# This example creates a NAT gateway in subnet subnet-1a2b3c4d and associates an
+# Elastic IP address with the allocation ID eipalloc-37fc1a52 with the NAT
+# gateway.
     my $CreateNatGatewayResult = $ec2->CreateNatGateway(
       'AllocationId' => 'eipalloc-37fc1a52',
       'SubnetId'     => 'subnet-1a2b3c4d'

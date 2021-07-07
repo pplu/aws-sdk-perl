@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Key    => 'MyOpsMetadataFilterKey',    # min: 1, max: 128
           Values => [
             'MyOpsMetadataFilterValue', ...      # min: 1, max: 1024
-          ],                                     # min: 1, max: 10
+          ],    # min: 1, max: 10
 
         },
         ...
-      ],                                         # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyNextToken',               # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

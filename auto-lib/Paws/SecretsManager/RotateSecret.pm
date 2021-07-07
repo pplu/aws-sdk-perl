@@ -30,12 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-   # To configure rotation for a secret
-   # The following example configures rotation for a secret by providing the ARN
-   # of a Lambda rotation function (which must already exist) and the number of
-   # days between rotation. The first rotation happens immediately upon
-   # completion of this command. The rotation function runs asynchronously in
-   # the background.
+# To configure rotation for a secret
+# The following example configures rotation for a secret by providing the ARN of
+# a Lambda rotation function (which must already exist) and the number of days
+# between rotation. The first rotation happens immediately upon completion of
+# this command. The rotation function runs asynchronously in the background.
     my $RotateSecretResponse = $secretsmanager->RotateSecret(
       'RotationLambdaARN' =>
 'arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotationLambda',

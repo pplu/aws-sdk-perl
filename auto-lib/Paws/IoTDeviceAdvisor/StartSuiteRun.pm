@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         SelectedTestList => [
           'MyUUID', ...    # min: 12, max: 36
-        ],                 # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
       },    # OPTIONAL
       Tags => {
         'MyString128' =>

@@ -27,12 +27,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To get information about a request to create an account
-    # The following example shows how to request the status about a previous
-    # request to create an account in an organization. This operation can be
-    # called only by a principal from the organization's master account. In the
-    # example, the specified "createAccountRequestId" comes from the response of
-    # the original call to "CreateAccount":
+# To get information about a request to create an account
+# The following example shows how to request the status about a previous request
+# to create an account in an organization. This operation can be called only by
+# a principal from the organization's master account. In the example, the
+# specified "createAccountRequestId" comes from the response of the original
+# call to "CreateAccount":
     my $DescribeCreateAccountStatusResponse =
       $organizations->DescribeCreateAccountStatus(
       'CreateAccountRequestId' => 'car-exampleaccountcreationrequestid' );

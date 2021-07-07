@@ -36,17 +36,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Dimensions => [
             {
-              Name  => 'MyStringValue256',     # min: 1, max: 256; OPTIONAL
-              Value => 'MyStringValue2048',    # min: 1, max: 2048; OPTIONAL
-              DimensionValueType => 'VARCHAR', # values: VARCHAR; OPTIONAL
+              Name               => 'MyStringValue256',     # min: 1, max: 256
+              Value              => 'MyStringValue2048',    # min: 1, max: 2048
+              DimensionValueType => 'VARCHAR',    # values: VARCHAR; OPTIONAL
             },
             ...
-          ],                                   # max: 128; OPTIONAL
-          MeasureName  => 'MyStringValue256',  # min: 1, max: 256; OPTIONAL
-          MeasureValue => 'MyStringValue2048', # min: 1, max: 2048; OPTIONAL
+          ],    # max: 128; OPTIONAL
+          MeasureName      => 'MyStringValue256',     # min: 1, max: 256
+          MeasureValue     => 'MyStringValue2048',    # min: 1, max: 2048
           MeasureValueType =>
             'DOUBLE',    # values: DOUBLE, BIGINT, VARCHAR, BOOLEAN; OPTIONAL
-          Time     => 'MyStringValue256',    # min: 1, max: 256; OPTIONAL
+          Time     => 'MyStringValue256',    # min: 1, max: 256
           TimeUnit => 'MILLISECONDS'
           , # values: MILLISECONDS, SECONDS, MICROSECONDS, NANOSECONDS; OPTIONAL
           Version => 1,    # OPTIONAL
@@ -57,17 +57,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CommonAttributes => {
         Dimensions => [
           {
-            Name  => 'MyStringValue256',     # min: 1, max: 256; OPTIONAL
-            Value => 'MyStringValue2048',    # min: 1, max: 2048; OPTIONAL
-            DimensionValueType => 'VARCHAR', # values: VARCHAR; OPTIONAL
+            Name               => 'MyStringValue256',     # min: 1, max: 256
+            Value              => 'MyStringValue2048',    # min: 1, max: 2048
+            DimensionValueType => 'VARCHAR',    # values: VARCHAR; OPTIONAL
           },
           ...
-        ],                                   # max: 128; OPTIONAL
-        MeasureName  => 'MyStringValue256',  # min: 1, max: 256; OPTIONAL
-        MeasureValue => 'MyStringValue2048', # min: 1, max: 2048; OPTIONAL
+        ],    # max: 128; OPTIONAL
+        MeasureName      => 'MyStringValue256',     # min: 1, max: 256
+        MeasureValue     => 'MyStringValue2048',    # min: 1, max: 2048
         MeasureValueType =>
           'DOUBLE',    # values: DOUBLE, BIGINT, VARCHAR, BOOLEAN; OPTIONAL
-        Time     => 'MyStringValue256',    # min: 1, max: 256; OPTIONAL
+        Time     => 'MyStringValue256',    # min: 1, max: 256
         TimeUnit => 'MILLISECONDS'
         ,   # values: MILLISECONDS, SECONDS, MICROSECONDS, NANOSECONDS; OPTIONAL
         Version => 1,    # OPTIONAL

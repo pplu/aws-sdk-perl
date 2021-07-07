@@ -29,10 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    # DescribeCacheSecurityGroups
-    # Returns a list of cache security group descriptions. If a cache security
-    # group name is specified, the list contains only the description of that
-    # group.
+# DescribeCacheSecurityGroups
+# Returns a list of cache security group descriptions. If a cache security group
+# name is specified, the list contains only the description of that group.
     my $CacheSecurityGroupMessage = $elasticache->DescribeCacheSecurityGroups(
       'CacheSecurityGroupName' => 'my-sec-group' );
 

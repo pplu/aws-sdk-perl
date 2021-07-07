@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RegistryId      => 'MyRegistryId',    # OPTIONAL
       RepositoryNames => [
         'MyRepositoryName', ...             # min: 2, max: 205
-      ],                                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

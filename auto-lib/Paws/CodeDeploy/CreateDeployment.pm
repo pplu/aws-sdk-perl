@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IgnoreApplicationStopFailures => 1,                           # OPTIONAL
       Revision                      => {
         AppSpecContent => {
-          Content => 'MyRawStringContent',                          # OPTIONAL
-          Sha256  => 'MyRawStringSha256',                           # OPTIONAL
+          Content => 'MyRawStringContent',    # OPTIONAL
+          Sha256  => 'MyRawStringSha256',     # OPTIONAL
         },    # OPTIONAL
         GitHubLocation => {
           CommitId   => 'MyCommitId',      # OPTIONAL
@@ -62,11 +62,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RevisionType =>
           'S3',    # values: S3, GitHub, String, AppSpecContent; OPTIONAL
         S3Location => {
-          Bucket => 'MyS3Bucket',    # OPTIONAL
+          Bucket     => 'MyS3Bucket',     # OPTIONAL
           BundleType => 'tar',     # values: tar, tgz, zip, YAML, JSON; OPTIONAL
           ETag       => 'MyETag',  # OPTIONAL
           Key        => 'MyS3Key', # OPTIONAL
-          Version => 'MyVersionId',    # OPTIONAL
+          Version    => 'MyVersionId',    # OPTIONAL
         },    # OPTIONAL
         String => {
           Content => 'MyRawStringContent',    # OPTIONAL
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Ec2TagSetList => [
             [
               {
-                Key  => 'MyKey',                                   # OPTIONAL
+                Key  => 'MyKey',       # OPTIONAL
                 Type => 'KEY_ONLY'
                 ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
                 Value => 'MyValue',    # OPTIONAL
@@ -87,11 +87,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ...
             ],
             ...
-          ],                           # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         TagFilters => [
           {
-            Key  => 'MyKey',     # OPTIONAL
+            Key  => 'MyKey',       # OPTIONAL
             Type => 'KEY_ONLY'
             ,    # values: KEY_ONLY, VALUE_ONLY, KEY_AND_VALUE; OPTIONAL
             Value => 'MyValue',    # OPTIONAL

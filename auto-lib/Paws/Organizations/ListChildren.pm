@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $organizations = Paws->service('Organizations');
 # To retrieve a list of all of the child accounts and OUs in a parent root or OU
-# The following example shows how to request a list of the child OUs in a
-# parent root or OU:/n/n
+# The following example shows how to request a list of the child OUs in a parent
+# root or OU:/n/n
     my $ListChildrenResponse = $organizations->ListChildren(
       'ChildType' => 'ORGANIZATIONAL_UNIT',
       'ParentId'  => 'ou-examplerootid111-exampleouid111'

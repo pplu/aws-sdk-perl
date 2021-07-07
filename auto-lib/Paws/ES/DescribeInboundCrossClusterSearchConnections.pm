@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name   => 'MyNonEmptyString',    # min: 1; OPTIONAL
           Values => [
             'MyNonEmptyString', ...        # min: 1; OPTIONAL
-          ],                               # min: 1; OPTIONAL
+          ],    # min: 1; OPTIONAL
         },
         ...
-      ],                                   # OPTIONAL
-      MaxResults => 1,                     # OPTIONAL
-      NextToken  => 'MyNextToken',         # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:

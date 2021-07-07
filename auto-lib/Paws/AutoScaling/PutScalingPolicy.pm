@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'TargetTrackingConfiguration' => {
         'PredefinedMetricSpecification' => {
           'PredefinedMetricType' => 'ALBRequestCountPerTarget',
-          'ResourceLabel' =>
+          'ResourceLabel'        =>
 'app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff'
         },
         'TargetValue' => 1000

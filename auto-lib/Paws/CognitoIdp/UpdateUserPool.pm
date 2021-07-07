@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                    # min: 1, max: 2; OPTIONAL
+        ],    # min: 1, max: 2; OPTIONAL
       },    # OPTIONAL
       AdminCreateUserConfig => {
         AllowAdminCreateUserOnly => 1,    # OPTIONAL
@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       AutoVerifiedAttributes => [
         'phone_number', ...    # values: phone_number, email
-      ],                       # OPTIONAL
+      ],    # OPTIONAL
       DeviceConfiguration => {
         ChallengeRequiredOnNewDevice     => 1,    # OPTIONAL
         DeviceOnlyRememberedOnUserPrompt => 1,    # OPTIONAL
@@ -81,7 +81,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'COGNITO_DEFAULT',    # values: COGNITO_DEFAULT, DEVELOPER; OPTIONAL
         From                => 'MyStringType',          # OPTIONAL
         ReplyToEmailAddress => 'MyEmailAddressType',    # OPTIONAL
-        SourceArn => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
+        SourceArn           => 'MyArnType',    # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       EmailVerificationMessage => 'MyEmailVerificationMessageType',   # OPTIONAL
       EmailVerificationSubject => 'MyEmailVerificationSubjectType',   # OPTIONAL

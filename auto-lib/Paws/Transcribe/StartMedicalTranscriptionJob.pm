@@ -54,11 +54,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputEncryptionKMSKeyId    => 'MyKMSKeyId',               # OPTIONAL
       OutputKey                   => 'MyOutputKey',              # OPTIONAL
       Settings                    => {
-        ChannelIdentification => 1,    # OPTIONAL
-        MaxAlternatives       => 1,    # min: 2, max: 10; OPTIONAL
-        MaxSpeakerLabels      => 1,    # min: 2, max: 10; OPTIONAL
-        ShowAlternatives      => 1,    # OPTIONAL
-        ShowSpeakerLabels     => 1,    # OPTIONAL
+        ChannelIdentification => 1,              # OPTIONAL
+        MaxAlternatives       => 1,              # min: 2, max: 10; OPTIONAL
+        MaxSpeakerLabels      => 1,              # min: 2, max: 10; OPTIONAL
+        ShowAlternatives      => 1,              # OPTIONAL
+        ShowSpeakerLabels     => 1,              # OPTIONAL
         VocabularyName => 'MyVocabularyName',    # min: 1, max: 200; OPTIONAL
       },    # OPTIONAL
       );

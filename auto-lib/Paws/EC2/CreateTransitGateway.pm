@@ -34,15 +34,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'MyString',    # OPTIONAL
       DryRun      => 1,             # OPTIONAL
       Options     => {
-        AmazonSideAsn => 1,         # OPTIONAL
+        AmazonSideAsn               => 1,    # OPTIONAL
         AutoAcceptSharedAttachments =>
-          'enable',                 # values: enable, disable; OPTIONAL
+          'enable',                          # values: enable, disable; OPTIONAL
         DefaultRouteTableAssociation =>
-          'enable',                 # values: enable, disable; OPTIONAL
+          'enable',                          # values: enable, disable; OPTIONAL
         DefaultRouteTablePropagation =>
-          'enable',                 # values: enable, disable; OPTIONAL
-        DnsSupport       => 'enable',    # values: enable, disable; OPTIONAL
-        MulticastSupport => 'enable',    # values: enable, disable; OPTIONAL
+          'enable',                          # values: enable, disable; OPTIONAL
+        DnsSupport       => 'enable',        # values: enable, disable; OPTIONAL
+        MulticastSupport => 'enable',        # values: enable, disable; OPTIONAL
         TransitGatewayCidrBlocks => [ 'MyString', ... ],    # OPTIONAL
         VpnEcmpSupport => 'enable',    # values: enable, disable; OPTIONAL
       },    # OPTIONAL
@@ -59,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To reset the launchPermission attribute
-    # This example resets the launchPermission attribute for the specified AMI.
-    # By default, AMIs are private.
+  # To reset the launchPermission attribute
+  # This example resets the launchPermission attribute for the specified AMI. By
+  # default, AMIs are private.
     $ec2->ResetImageAttribute(
       'Attribute' => 'launchPermission',
       'ImageId'   => 'ami-5731123e'

@@ -71,9 +71,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To change DB instance settings
-    # This example immediately changes the specified settings for the specified
-    # DB instance.
+  # To change DB instance settings
+  # This example immediately changes the specified settings for the specified DB
+  # instance.
     my $ModifyDBInstanceResult = $rds->ModifyDBInstance(
       'AllocatedStorage'           => 10,
       'ApplyImmediately'           => 1,

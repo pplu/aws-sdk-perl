@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-   # To list information about tags associated with a resource
-   # This example lists information about all tags associated with the specified
-   # DB option group.
+# To list information about tags associated with a resource
+# This example lists information about all tags associated with the specified DB
+# option group.
     my $TagListMessage = $rds->ListTagsForResource( 'ResourceName' =>
         'arn:aws:rds:us-east-1:992648334831:og:mymysqloptiongroup' );
 

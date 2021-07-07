@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       OutputS3Bucket    => 'MyCreateQuantumTaskRequestOutputS3BucketString',
       OutputS3KeyPrefix => 'MyCreateQuantumTaskRequestOutputS3KeyPrefixString',
       Shots             => 1,
-      DeviceParameters =>
+      DeviceParameters  =>
         'MyCreateQuantumTaskRequestDeviceParametersString',    # OPTIONAL
       Tags => { 'MyString' => 'MyString', },                   # OPTIONAL
     );

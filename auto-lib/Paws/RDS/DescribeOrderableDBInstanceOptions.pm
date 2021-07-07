@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To list information about orderable DB instance options
-    # This example lists information for all orderable DB instance options for
-    # the specified DB engine, engine version, DB instance class, license model,
-    # and VPC settings.
+# To list information about orderable DB instance options
+# This example lists information for all orderable DB instance options for the
+# specified DB engine, engine version, DB instance class, license model, and VPC
+# settings.
     my $OrderableDBInstanceOptionsMessage =
       $rds->DescribeOrderableDBInstanceOptions(
       'DBInstanceClass' => 'db.t2.micro',

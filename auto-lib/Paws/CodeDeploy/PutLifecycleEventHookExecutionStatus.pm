@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codedeploy = Paws->service('CodeDeploy');
     my $PutLifecycleEventHookExecutionStatusOutput =
       $codedeploy->PutLifecycleEventHookExecutionStatus(
-      DeploymentId => 'MyDeploymentId',    # OPTIONAL
+      DeploymentId                  => 'MyDeploymentId',    # OPTIONAL
       LifecycleEventHookExecutionId =>
-        'MyLifecycleEventHookExecutionId',    # OPTIONAL
-      Status => 'Pending',                    # OPTIONAL
+        'MyLifecycleEventHookExecutionId',                  # OPTIONAL
+      Status => 'Pending',                                  # OPTIONAL
       );
 
     # Results:

@@ -77,12 +77,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],                                                   # OPTIONAL
-      FeedbackForwardingEmailAddress => 'MyEmailAddress',  # OPTIONAL
+      FeedbackForwardingEmailAddress            => 'MyEmailAddress',  # OPTIONAL
       FeedbackForwardingEmailAddressIdentityArn =>
-        'MyAmazonResourceName',                            # OPTIONAL
-      FromEmailAddress            => 'MyEmailAddress',             # OPTIONAL
-      FromEmailAddressIdentityArn => 'MyAmazonResourceName',       # OPTIONAL
-      ReplyToAddresses            => [ 'MyEmailAddress', ... ],    # OPTIONAL
+        'MyAmazonResourceName',                                       # OPTIONAL
+      FromEmailAddress            => 'MyEmailAddress',                # OPTIONAL
+      FromEmailAddressIdentityArn => 'MyAmazonResourceName',          # OPTIONAL
+      ReplyToAddresses            => [ 'MyEmailAddress', ... ],       # OPTIONAL
     );
 
     # Results:

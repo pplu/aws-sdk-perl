@@ -39,9 +39,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $batch = Paws->service('Batch');
-    # To submit a job to a queue
-    # This example submits a simple container job called example to the
-    # HighPriority job queue.
+# To submit a job to a queue
+# This example submits a simple container job called example to the HighPriority
+# job queue.
     my $SubmitJobResponse = $batch->SubmitJob(
       'JobDefinition' => 'sleep60',
       'JobName'       => 'example',

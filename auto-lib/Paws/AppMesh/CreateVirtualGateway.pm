@@ -107,7 +107,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 1
+        ],    # max: 1
         BackendDefaults => {
           ClientPolicy => {
             Tls => {
@@ -151,7 +151,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Enforce => 1,    # OPTIONAL
               Ports   => [
                 1, ...         # min: 1, max: 65535
-              ],               # OPTIONAL
+              ],    # OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
@@ -169,12 +169,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MeshOwner          => 'MyAccountId',      # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                  # min: 1, max: 128
-          Value => 'MyTagValue',                # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

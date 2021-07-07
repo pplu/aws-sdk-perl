@@ -41,16 +41,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CloudWatchLogs => {
             Enabled  => 1,
             LogGroup => 'My__string',
-          },                                # OPTIONAL
+          },    # OPTIONAL
           Firehose => {
             Enabled        => 1,
             DeliveryStream => 'My__string',
-          },                                # OPTIONAL
+          },    # OPTIONAL
           S3 => {
             Enabled => 1,
             Bucket  => 'My__string',
             Prefix  => 'My__string',
-          },                                # OPTIONAL
+          },    # OPTIONAL
         },
 
       },    # OPTIONAL

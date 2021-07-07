@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To change an IAM user's name
-    # The following command changes the name of the IAM user Bob to Robert. It
-    # does not change the user's path.
+ # To change an IAM user's name
+ # The following command changes the name of the IAM user Bob to Robert. It does
+ # not change the user's path.
     $iam->UpdateUser(
       'NewUserName' => 'Robert',
       'UserName'    => 'Bob'

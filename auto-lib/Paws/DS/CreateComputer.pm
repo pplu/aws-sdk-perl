@@ -41,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyAttributeValue',    # OPTIONAL
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       OrganizationalUnitDistinguishedName =>
-        'MyOrganizationalUnitDN',         # OPTIONAL
+        'MyOrganizationalUnitDN',    # OPTIONAL
     );
 
     # Results:

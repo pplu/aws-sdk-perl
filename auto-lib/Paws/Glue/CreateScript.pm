@@ -37,24 +37,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TargetParameter => 'MyCodeGenArgName',       # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
       DagNodes => [
         {
           Args => [
             {
-              Name  => 'MyCodeGenArgName',             # OPTIONAL
+              Name  => 'MyCodeGenArgName',    # OPTIONAL
               Value => 'MyCodeGenArgValue',
-              Param => 1,                              # OPTIONAL
+              Param => 1,                     # OPTIONAL
             },
             ...
-          ],                                           # max: 50
-          Id         => 'MyCodeGenIdentifier',         # min: 1, max: 255
+          ],    # max: 50
+          Id         => 'MyCodeGenIdentifier',    # min: 1, max: 255
           NodeType   => 'MyCodeGenNodeType',
-          LineNumber => 1,                             # OPTIONAL
+          LineNumber => 1,                        # OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
-      Language => 'PYTHON',                            # OPTIONAL
+      ],    # OPTIONAL
+      Language => 'PYTHON',    # OPTIONAL
     );
 
     # Results:

@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           LambdaArn => 'MyFunctionArn',    # max: 10000; OPTIONAL
         },
         ...
-      ],                                   # OPTIONAL
-      Name => 'MySipMediaApplicationName', # OPTIONAL
+      ],    # OPTIONAL
+      Name => 'MySipMediaApplicationName',    # OPTIONAL
     );
 
     # Results:

@@ -37,15 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Frequency       => 'DAILY',             # OPTIONAL
       MonitorArnList  => [
         'MyArn', ...                          # min: 20, max: 2048
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       Subscribers => [
         {
           Address => 'MySubscriberAddress',    # min: 6, max: 302; OPTIONAL
-          Status => 'CONFIRMED',    # values: CONFIRMED, DECLINED; OPTIONAL
-          Type   => 'EMAIL',        # values: EMAIL, SNS; OPTIONAL
+          Status  => 'CONFIRMED',    # values: CONFIRMED, DECLINED; OPTIONAL
+          Type    => 'EMAIL',        # values: EMAIL, SNS; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       SubscriptionName => 'MyGenericString',    # OPTIONAL
       Threshold        => 1,                    # OPTIONAL
     );

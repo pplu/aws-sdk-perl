@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VolumeSizeInGB => 1,            # OPTIONAL
         },
         ...
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -33,17 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AdditionalSchemaElements => [
           'RESOURCES', ...    # values: RESOURCES
         ],
-        Compression => 'ZIP',             # values: ZIP, GZIP, Parquet
-        Format      => 'textORcsv',       # values: textORcsv, Parquet
-        ReportName  => 'MyReportName',    # max: 256
-        S3Bucket    => 'MyS3Bucket',      # max: 256
-        S3Prefix    => 'MyS3Prefix',      # max: 256
+        Compression => 'ZIP',               # values: ZIP, GZIP, Parquet
+        Format      => 'textORcsv',         # values: textORcsv, Parquet
+        ReportName  => 'MyReportName',      # max: 256
+        S3Bucket    => 'MyS3Bucket',        # max: 256
+        S3Prefix    => 'MyS3Prefix',        # max: 256
         S3Region    => 'af-south-1'
         , # values: af-south-1, ap-east-1, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, eu-north-1, eu-south-1, me-south-1, sa-east-1, us-east-1, us-east-2, us-west-1, us-west-2, cn-north-1, cn-northwest-1
         TimeUnit            => 'HOURLY',    # values: HOURLY, DAILY, MONTHLY
         AdditionalArtifacts => [
           'REDSHIFT', ...    # values: REDSHIFT, QUICKSIGHT, ATHENA
-        ],                   # OPTIONAL
+        ],    # OPTIONAL
         BillingViewArn       => 'MyBillingViewArn',    # max: 128; OPTIONAL
         RefreshClosedReports => 1,                     # OPTIONAL
         ReportVersioning     => 'CREATE_NEW_REPORT'

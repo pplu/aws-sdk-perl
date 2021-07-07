@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dynamodb = Paws->service('DynamoDB');
-    # To scan a table
-    # This example scans the entire Music table, and then narrows the results to
-    # songs by the artist "No One You Know". For each item, only the album title
-    # and song title are returned.
+# To scan a table
+# This example scans the entire Music table, and then narrows the results to
+# songs by the artist "No One You Know". For each item, only the album title and
+# song title are returned.
     my $ScanOutput = $dynamodb->Scan(
       'ExpressionAttributeNames' => {
         '#AT' => 'AlbumTitle',

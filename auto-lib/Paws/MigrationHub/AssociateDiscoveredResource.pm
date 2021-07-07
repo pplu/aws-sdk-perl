@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $mgh = Paws->service('MigrationHub');
     my $AssociateDiscoveredResourceResult = $mgh->AssociateDiscoveredResource(
       DiscoveredResource => {
-        ConfigurationId => 'MyConfigurationId',    # min: 1
+        ConfigurationId => 'MyConfigurationId',             # min: 1, max: 1600
         Description => 'MyDiscoveredResourceDescription',   # max: 500; OPTIONAL
       },
       MigrationTaskName    => 'MyMigrationTaskName',

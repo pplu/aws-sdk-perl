@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Values => [ 'My__string', ... ],    # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],    # OPTIONAL
         Includes => [
           {
             Comparator => 'EQ'
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Values => [ 'My__string', ... ],    # OPTIONAL
           },
           ...
-        ],                                      # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       MaxResults   => 1,               # OPTIONAL
       NextToken    => 'My__string',    # OPTIONAL

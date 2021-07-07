@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name        => 'MyNameString',
       Classifiers => [
         'MyNameString', ...    # min: 1, max: 255
-      ],                       # OPTIONAL
-      Configuration => 'MyCrawlerConfiguration',    # OPTIONAL
+      ],    # OPTIONAL
+      Configuration                => 'MyCrawlerConfiguration',    # OPTIONAL
       CrawlerSecurityConfiguration =>
-        'MyCrawlerSecurityConfiguration',           # OPTIONAL
-      DatabaseName         => 'MyDatabaseName',                  # OPTIONAL
-      Description          => 'MyDescriptionStringRemovable',    # OPTIONAL
+        'MyCrawlerSecurityConfiguration',                          # OPTIONAL
+      DatabaseName         => 'MyDatabaseName',                    # OPTIONAL
+      Description          => 'MyDescriptionStringRemovable',      # OPTIONAL
       LineageConfiguration => {
         CrawlerLineageSettings => 'ENABLE',  # values: ENABLE, DISABLE; OPTIONAL
       },    # OPTIONAL
@@ -70,43 +70,47 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DatabaseName => 'MyNameString',    # min: 1, max: 255
             Tables       => [
               'MyNameString', ...              # min: 1, max: 255
-            ],                                 # min: 1
+            ],    # min: 1
 
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
         DynamoDBTargets => [
           {
-            Path     => 'MyPath',
-            ScanAll  => 1,                     # OPTIONAL
-            ScanRate => 1,                     # OPTIONAL
+            Path     => 'MyPath',    # OPTIONAL
+            ScanAll  => 1,           # OPTIONAL
+            ScanRate => 1,           # OPTIONAL
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
         JdbcTargets => [
           {
             ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
-            Path           => 'MyPath',
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],    # OPTIONAL
+            Path => 'MyPath',    # OPTIONAL
           },
           ...
-        ],                                           # OPTIONAL
+        ],    # OPTIONAL
         MongoDBTargets => [
           {
             ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Path           => 'MyPath',
+            Path           => 'MyPath',              # OPTIONAL
             ScanAll        => 1,                     # OPTIONAL
           },
           ...
-        ],                                           # OPTIONAL
+        ],    # OPTIONAL
         S3Targets => [
           {
             ConnectionName => 'MyConnectionName',    # OPTIONAL
-            Exclusions     => [ 'MyPath', ... ],     # OPTIONAL
-            Path           => 'MyPath',
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
+            ],    # OPTIONAL
+            Path => 'MyPath',    # OPTIONAL
           },
           ...
-        ],                                           # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

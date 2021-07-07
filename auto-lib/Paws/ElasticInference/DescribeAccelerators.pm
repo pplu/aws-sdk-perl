@@ -35,18 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $api . elastic-inference->DescribeAccelerators(
       AcceleratorIds => [
         'MyAcceleratorId', ...    # min: 1, max: 256
-      ],                          # OPTIONAL
+      ],    # OPTIONAL
       Filters => [
         {
           Name   => 'MyFilterName',    # min: 1, max: 128; OPTIONAL
           Values => [
             'MyString', ...            # max: 500000
-          ],                           # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },
         ...
-      ],                               # OPTIONAL
-      MaxResults => 1,                 # OPTIONAL
-      NextToken  => 'MyNextToken',     # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
       );
 
     # Results:

@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $waf = Paws->service('WAF');
-    # To get a sampled requests
-    # The following example returns detailed information about 100 requests --a
-    # sample-- that AWS WAF randomly selects from among the first 5,000 requests
-    # that your AWS resource received between the time period 2016-09-27T15:50Z
-    # to 2016-09-27T15:50Z.
+  # To get a sampled requests
+  # The following example returns detailed information about 100 requests --a
+  # sample-- that AWS WAF randomly selects from among the first 5,000 requests
+  # that your AWS resource received between the time period 2016-09-27T15:50Z to
+  # 2016-09-27T15:50Z.
     my $GetSampledRequestsResponse = $waf->GetSampledRequests(
       'MaxItems'   => 100,
       'RuleId'     => 'WAFRule-1-Example',

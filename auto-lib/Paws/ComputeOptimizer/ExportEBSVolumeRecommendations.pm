@@ -50,8 +50,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      IncludeMemberAccounts => 1,                # OPTIONAL
+      ],    # OPTIONAL
+      IncludeMemberAccounts => 1,    # OPTIONAL
       );
 
     # Results:

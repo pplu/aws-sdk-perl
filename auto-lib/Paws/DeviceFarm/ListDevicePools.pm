@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $devicefarm = Paws->service('DeviceFarm');
-   # To get information about device pools
-   # The following example returns information about the private device pools in
-   # a specific project.
+ # To get information about device pools
+ # The following example returns information about the private device pools in a
+ # specific project.
     my $ListDevicePoolsResult = $devicefarm->ListDevicePools(
       'Arn' =>
 'arn:aws:devicefarm:us-west-2:123456789101:project:EXAMPLE-GUID-123-456',

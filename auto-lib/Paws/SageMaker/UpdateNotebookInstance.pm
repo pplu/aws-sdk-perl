@@ -47,13 +47,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       AdditionalCodeRepositories => [
         'MyCodeRepositoryNameOrUrl', ...    # min: 1, max: 1024
-      ],                                    # OPTIONAL
-      DefaultCodeRepository        => 'MyCodeRepositoryNameOrUrl',    # OPTIONAL
-      DisassociateAcceleratorTypes => 1,                              # OPTIONAL
-      DisassociateAdditionalCodeRepositories => 1,                    # OPTIONAL
-      DisassociateDefaultCodeRepository      => 1,                    # OPTIONAL
-      DisassociateLifecycleConfig            => 1,                    # OPTIONAL
-      InstanceType                           => 'ml.t2.medium',       # OPTIONAL
+      ],    # OPTIONAL
+      DefaultCodeRepository        => 'MyCodeRepositoryNameOrUrl', # OPTIONAL
+      DisassociateAcceleratorTypes => 1,                           # OPTIONAL
+      DisassociateAdditionalCodeRepositories => 1,                 # OPTIONAL
+      DisassociateDefaultCodeRepository      => 1,                 # OPTIONAL
+      DisassociateLifecycleConfig            => 1,                 # OPTIONAL
+      InstanceType                           => 'ml.t2.medium',    # OPTIONAL
       LifecycleConfigName => 'MyNotebookInstanceLifecycleConfigName', # OPTIONAL
       RoleArn             => 'MyRoleArn',                             # OPTIONAL
       RootAccess          => 'Enabled',                               # OPTIONAL

@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MeetingRoomConfiguration => {
         EndOfMeetingReminder => {
           Enabled           => 1,
-          ReminderAtMinutes => [ 1, ... ],                   # min: 1, max: 1
+          ReminderAtMinutes => [ 1, ... ],                 # min: 1, max: 1
           ReminderType      => 'ANNOUNCEMENT_TIME_CHECK'
           , # values: ANNOUNCEMENT_TIME_CHECK, ANNOUNCEMENT_VARIABLE_TIME_LEFT, CHIME, KNOCK
 
@@ -80,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

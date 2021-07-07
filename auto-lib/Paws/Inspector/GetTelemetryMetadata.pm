@@ -27,9 +27,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-    # Get telemetry metadata
-    # Information about the data that is collected for the specified assessment
-    # run.
+# Get telemetry metadata
+# Information about the data that is collected for the specified assessment run.
     my $GetTelemetryMetadataResponse =
       $inspector->GetTelemetryMetadata( 'AssessmentRunArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-0kFIPusq/template/0-4r1V2mAw/run/0-MKkpXXPE'

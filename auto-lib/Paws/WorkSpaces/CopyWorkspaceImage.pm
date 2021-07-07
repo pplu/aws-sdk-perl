@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description   => 'MyWorkspaceImageDescription',    # OPTIONAL
       Tags          => [
         {
-          Key   => 'MyTagKey',                           # min: 1, max: 127
-          Value => 'MyTagValue',                         # max: 255; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 127
+          Value => 'MyTagValue',    # max: 255; OPTIONAL
         },
         ...
-      ],                                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -31,13 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To create a service control policy
-    # The following example shows how to create a service control policy (SCP)
-    # that is named AllowAllS3Actions. The JSON string in the content parameter
-    # specifies the content in the policy. The parameter string is escaped with
-    # backslashes to ensure that the embedded double quotes in the JSON policy
-    # are treated as literals in the parameter, which itself is surrounded by
-    # double quotes:
+# To create a service control policy
+# The following example shows how to create a service control policy (SCP) that
+# is named AllowAllS3Actions. The JSON string in the content parameter specifies
+# the content in the policy. The parameter string is escaped with backslashes to
+# ensure that the embedded double quotes in the JSON policy are treated as
+# literals in the parameter, which itself is surrounded by double quotes:
 
     my $CreatePolicyResponse = $organizations->CreatePolicy(
       'Content' =>

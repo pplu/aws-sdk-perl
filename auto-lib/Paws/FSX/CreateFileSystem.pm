@@ -46,23 +46,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KmsKeyId            => 'MyKmsKeyId',              # OPTIONAL
       LustreConfiguration => {
         AutoImportPolicy => 'NONE',   # values: NONE, NEW, NEW_CHANGED; OPTIONAL
-        AutomaticBackupRetentionDays => 1,    # max: 90; OPTIONAL
-        CopyTagsToBackups            => 1,    # OPTIONAL
+        AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
+        CopyTagsToBackups             => 1,    # OPTIONAL
         DailyAutomaticBackupStartTime =>
-          'MyDailyTime',                      # min: 5, max: 5; OPTIONAL
+          'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
         DeploymentType =>
           'SCRATCH_1',    # values: SCRATCH_1, SCRATCH_2, PERSISTENT_1; OPTIONAL
         DriveCacheType => 'NONE',             # values: NONE, READ; OPTIONAL
         ExportPath     => 'MyArchivePath',    # min: 3, max: 4357; OPTIONAL
         ImportPath     => 'MyArchivePath',    # min: 3, max: 4357; OPTIONAL
-        ImportedFileChunkSize    => 1,        # min: 1, max: 512000; OPTIONAL
-        PerUnitStorageThroughput => 1,        # min: 12, max: 200; OPTIONAL
+        ImportedFileChunkSize      => 1,      # min: 1, max: 512000; OPTIONAL
+        PerUnitStorageThroughput   => 1,      # min: 12, max: 200; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
       SecurityGroupIds => [
         'MySecurityGroupId', ...    # min: 11, max: 20
-      ],                            # OPTIONAL
-      StorageType => 'SSD',         # OPTIONAL
+      ],    # OPTIONAL
+      StorageType => 'SSD',    # OPTIONAL
       Tags        => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -70,24 +70,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       WindowsConfiguration => {
         ThroughputCapacity => 1,                  # min: 8, max: 2048
         ActiveDirectoryId  => 'MyDirectoryId',    # min: 12, max: 12; OPTIONAL
         Aliases            => [
           'MyAlternateDNSName', ...               # min: 4, max: 253
-        ],                                        # max: 50; OPTIONAL
-        AutomaticBackupRetentionDays => 1,        # max: 90; OPTIONAL
-        CopyTagsToBackups            => 1,        # OPTIONAL
+        ],    # max: 50; OPTIONAL
+        AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
+        CopyTagsToBackups             => 1,    # OPTIONAL
         DailyAutomaticBackupStartTime =>
-          'MyDailyTime',                          # min: 5, max: 5; OPTIONAL
+          'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
         DeploymentType =>
           'MULTI_AZ_1', # values: MULTI_AZ_1, SINGLE_AZ_1, SINGLE_AZ_2; OPTIONAL
         PreferredSubnetId => 'MySubnetId',    # min: 15, max: 24
         SelfManagedActiveDirectoryConfiguration => {
           DnsIps => [
             'MyIpAddress', ...                # min: 7, max: 15
-          ],                                  # min: 1, max: 2
+          ],    # min: 1, max: 2
           DomainName =>
             'MyActiveDirectoryFullyQualifiedName',    # min: 1, max: 255
           Password => 'MyDirectoryPassword',          # min: 1, max: 256

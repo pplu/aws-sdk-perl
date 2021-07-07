@@ -26,15 +26,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-   # To enable all features in an organization
-   # This example shows the administrator asking all the invited accounts in the
-   # organization to approve enabling all features in the organization. AWS
-   # Organizations sends an email to the address that is registered with every
-   # invited member account asking the owner to approve the change by accepting
-   # the handshake that is sent. After all invited member accounts accept the
-   # handshake, the organization administrator can finalize the change to enable
-   # all features, and those with appropriate permissions can create policies
-   # and apply them to roots, OUs, and accounts:/n/n
+# To enable all features in an organization
+# This example shows the administrator asking all the invited accounts in the
+# organization to approve enabling all features in the organization. AWS
+# Organizations sends an email to the address that is registered with every
+# invited member account asking the owner to approve the change by accepting the
+# handshake that is sent. After all invited member accounts accept the
+# handshake, the organization administrator can finalize the change to enable
+# all features, and those with appropriate permissions can create policies and
+# apply them to roots, OUs, and accounts:/n/n
     my $EnableAllFeaturesResponse = $organizations->EnableAllFeatures();
 
     # Results:

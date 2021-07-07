@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To describe the scaling activities for an Auto Scaling group
-    # This example describes the scaling activities for the specified Auto
-    # Scaling group.
+  # To describe the scaling activities for an Auto Scaling group
+  # This example describes the scaling activities for the specified Auto Scaling
+  # group.
     my $ActivitiesType = $autoscaling->DescribeScalingActivities(
       'AutoScalingGroupName' => 'my-auto-scaling-group' );
 

@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MytaintValue',    # max: 63; OPTIONAL
           },
           ...
-        ],                              # OPTIONAL
+        ],    # OPTIONAL
         RemoveTaints => [
           {
             Effect => 'NO_SCHEDULE'
@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MytaintValue',    # max: 63; OPTIONAL
           },
           ...
-        ],                              # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
     );
 

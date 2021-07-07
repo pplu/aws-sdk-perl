@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELBv2');
-    # To modify the deregistration delay timeout
-    # This example sets the deregistration delay timeout to the specified value
-    # for the specified target group.
+ # To modify the deregistration delay timeout
+ # This example sets the deregistration delay timeout to the specified value for
+ # the specified target group.
     my $ModifyTargetGroupAttributesOutput =
       $elasticloadbalancing->ModifyTargetGroupAttributes(
       'Attributes' => [

@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Param => 1,                     # OPTIONAL
           },
           ...
-        ],                                  # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
         Jdbc => [
           {
             Name  => 'MyCodeGenArgName',
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Param => 1,                     # OPTIONAL
           },
           ...
-        ],                                  # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
         S3 => [
           {
             Name  => 'MyCodeGenArgName',
@@ -59,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Param => 1,                     # OPTIONAL
           },
           ...
-        ],                                  # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
       },    # OPTIONAL
       Sinks => [
         {
@@ -68,7 +68,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

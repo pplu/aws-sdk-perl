@@ -27,9 +27,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To remove an account from an organization as the master account
-    # The following example shows you how to remove an account from an
-    # organization:
+# To remove an account from an organization as the master account
+# The following example shows you how to remove an account from an organization:
     $organizations->RemoveAccountFromOrganization(
       'AccountId' => 333333333333 );
 

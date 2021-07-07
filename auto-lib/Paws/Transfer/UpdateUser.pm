@@ -40,20 +40,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HomeDirectory         => 'MyHomeDirectory',    # OPTIONAL
       HomeDirectoryMappings => [
         {
-          Entry  => 'MyMapEntry',                    # max: 1024
-          Target => 'MyMapTarget',                   # max: 1024
+          Entry  => 'MyMapEntry',     # max: 1024
+          Target => 'MyMapTarget',    # max: 1024
 
         },
         ...
-      ],                                             # OPTIONAL
-      HomeDirectoryType => 'PATH',                   # OPTIONAL
-      Policy            => 'MyPolicy',               # OPTIONAL
+      ],    # OPTIONAL
+      HomeDirectoryType => 'PATH',        # OPTIONAL
+      Policy            => 'MyPolicy',    # OPTIONAL
       PosixProfile      => {
-        Gid           => 1,                          # max: 4294967295
-        Uid           => 1,                          # max: 4294967295
+        Gid           => 1,               # max: 4294967295
+        Uid           => 1,               # max: 4294967295
         SecondaryGids => [
-          1, ...                                     # max: 4294967295
-        ],                                           # max: 16; OPTIONAL
+          1, ...                          # max: 4294967295
+        ],    # max: 16; OPTIONAL
       },    # OPTIONAL
       Role => 'MyRole',    # OPTIONAL
     );

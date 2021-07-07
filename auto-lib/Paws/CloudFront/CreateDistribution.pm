@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CallerReference      => 'Mystring',
         Comment              => 'MyCommentType',
         DefaultCacheBehavior => {
-          TargetOriginId => 'Mystring',
+          TargetOriginId       => 'Mystring',
           ViewerProtocolPolicy =>
             'allow-all',    # values: allow-all, https-only, redirect-to-https
           AllowedMethods => {
@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           CachePolicyId          => 'Mystring',
-          Compress               => 1,
+          Compress               => 1,            # OPTIONAL
           DefaultTTL             => 1,            # OPTIONAL
           FieldLevelEncryptionId => 'Mystring',
           ForwardedValues        => {
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },    # OPTIONAL
             },
-            QueryString => 1,
+            QueryString => 1,    # OPTIONAL
             Headers     => {
               Quantity => 1,
               Items    => [ 'Mystring', ... ],    # OPTIONAL
@@ -86,7 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                     # OPTIONAL
+            ],    # OPTIONAL
           },    # OPTIONAL
           LambdaFunctionAssociations => {
             Quantity => 1,
@@ -95,7 +95,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 EventType => 'viewer-request'
                 , # values: viewer-request, viewer-response, origin-request, origin-response
                 LambdaFunctionARN => 'MyLambdaFunctionARN',
-                IncludeBody       => 1,
+                IncludeBody       => 1,                       # OPTIONAL
               },
               ...
             ],    # OPTIONAL
@@ -104,19 +104,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MinTTL                => 1,            # OPTIONAL
           OriginRequestPolicyId => 'Mystring',
           RealtimeLogConfigArn  => 'Mystring',
-          SmoothStreaming       => 1,
+          SmoothStreaming       => 1,            # OPTIONAL
           TrustedKeyGroups      => {
-            Enabled  => 1,
+            Enabled  => 1,                       # OPTIONAL
             Quantity => 1,
             Items    => [ 'Mystring', ... ],     # OPTIONAL
           },    # OPTIONAL
           TrustedSigners => {
-            Enabled  => 1,
+            Enabled  => 1,                      # OPTIONAL
             Quantity => 1,
             Items    => [ 'Mystring', ... ],    # OPTIONAL
           },    # OPTIONAL
         },
-        Enabled => 1,
+        Enabled => 1,    # OPTIONAL
         Origins => {
           Items => [
             {
@@ -136,8 +136,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ],    # OPTIONAL
               },    # OPTIONAL
               CustomOriginConfig => {
-                HTTPPort  => 1,
-                HTTPSPort => 1,
+                HTTPPort             => 1,
+                HTTPSPort            => 1,
                 OriginProtocolPolicy =>
                   'http-only',    # values: http-only, match-viewer, https-only
                 OriginKeepaliveTimeout => 1,
@@ -152,7 +152,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
               OriginPath   => 'Mystring',
               OriginShield => {
-                Enabled => 1,
+                Enabled            => 1,     # OPTIONAL
                 OriginShieldRegion =>
                   'MyOriginShieldRegion',    # min: 1, max: 32; OPTIONAL
               },    # OPTIONAL
@@ -162,7 +162,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # min: 1
+          ],    # min: 1
           Quantity => 1,
 
         },
@@ -174,8 +174,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Quantity => 1,
           Items    => [
             {
-              PathPattern    => 'Mystring',
-              TargetOriginId => 'Mystring',
+              PathPattern          => 'Mystring',
+              TargetOriginId       => 'Mystring',
               ViewerProtocolPolicy =>
                 'allow-all',  # values: allow-all, https-only, redirect-to-https
               AllowedMethods => {
@@ -194,7 +194,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
               },    # OPTIONAL
               CachePolicyId          => 'Mystring',
-              Compress               => 1,
+              Compress               => 1,            # OPTIONAL
               DefaultTTL             => 1,            # OPTIONAL
               FieldLevelEncryptionId => 'Mystring',
               ForwardedValues        => {
@@ -205,7 +205,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Items    => [ 'Mystring', ... ],    # OPTIONAL
                   },    # OPTIONAL
                 },
-                QueryString => 1,
+                QueryString => 1,    # OPTIONAL
                 Headers     => {
                   Quantity => 1,
                   Items    => [ 'Mystring', ... ],    # OPTIONAL
@@ -225,7 +225,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                     # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
               LambdaFunctionAssociations => {
                 Quantity => 1,
@@ -234,7 +234,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     EventType => 'viewer-request'
                     , # values: viewer-request, viewer-response, origin-request, origin-response
                     LambdaFunctionARN => 'MyLambdaFunctionARN',
-                    IncludeBody       => 1,
+                    IncludeBody       => 1,                       # OPTIONAL
                   },
                   ...
                 ],    # OPTIONAL
@@ -243,20 +243,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               MinTTL                => 1,            # OPTIONAL
               OriginRequestPolicyId => 'Mystring',
               RealtimeLogConfigArn  => 'Mystring',
-              SmoothStreaming       => 1,
+              SmoothStreaming       => 1,            # OPTIONAL
               TrustedKeyGroups      => {
-                Enabled  => 1,
+                Enabled  => 1,                       # OPTIONAL
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],     # OPTIONAL
               },    # OPTIONAL
               TrustedSigners => {
-                Enabled  => 1,
+                Enabled  => 1,                      # OPTIONAL
                 Quantity => 1,
                 Items    => [ 'Mystring', ... ],    # OPTIONAL
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         CustomErrorResponses => {
           Quantity => 1,
@@ -268,18 +268,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ResponsePagePath   => 'Mystring',
             },
             ...
-          ],                                      # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         DefaultRootObject => 'Mystring',
         HttpVersion       => 'http1.1',    # values: http1.1, http2; OPTIONAL
-        IsIPV6Enabled     => 1,
+        IsIPV6Enabled     => 1,            # OPTIONAL
         Logging           => {
           Bucket         => 'Mystring',
-          Enabled        => 1,
-          IncludeCookies => 1,
+          Enabled        => 1,             # OPTIONAL
+          IncludeCookies => 1,             # OPTIONAL
           Prefix         => 'Mystring',
 
-        },                                 # OPTIONAL
+        },    # OPTIONAL
         OriginGroups => {
           Quantity => 1,
           Items    => [
@@ -307,7 +307,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],          # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         PriceClass => 'PriceClass_100'
         ,     # values: PriceClass_100, PriceClass_200, PriceClass_All; OPTIONAL
@@ -315,7 +315,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           GeoRestriction => {
             Quantity        => 1,
             RestrictionType => 'blacklist', # values: blacklist, whitelist, none
-            Items => [ 'Mystring', ... ],   # OPTIONAL
+            Items           => [ 'Mystring', ... ],    # OPTIONAL
           },
 
         },    # OPTIONAL
@@ -324,7 +324,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Certificate       => 'Mystring',
           CertificateSource =>
             'cloudfront',    # values: cloudfront, iam, acm; OPTIONAL
-          CloudFrontDefaultCertificate => 1,
+          CloudFrontDefaultCertificate => 1,            # OPTIONAL
           IAMCertificateId             => 'Mystring',
           MinimumProtocolVersion       => 'SSLv3'
           , # values: SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018, TLSv1.2_2019; OPTIONAL

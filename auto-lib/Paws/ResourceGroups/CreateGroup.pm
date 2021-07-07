@@ -42,16 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Name   => 'MyGroupConfigurationParameterName',   # min: 1, max: 80
               Values => [
                 'MyGroupConfigurationParameterValue', ...    # min: 1, max: 256
-              ],                                             # OPTIONAL
+              ],    # OPTIONAL
             },
             ...
-          ],                                                 # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                                     # OPTIONAL
-      Description   => 'MyDescription',                      # OPTIONAL
+      ],    # OPTIONAL
+      Description   => 'MyDescription',    # OPTIONAL
       ResourceQuery => {
-        Query => 'MyQuery',                                  # max: 4096
+        Query => 'MyQuery',                # max: 4096
         Type  => 'TAG_FILTERS_1_0'
         ,    # values: TAG_FILTERS_1_0, CLOUDFORMATION_STACK_1_0min: 1, max: 128
 

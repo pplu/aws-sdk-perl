@@ -50,9 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       }
     );
 
-    # To grant launch permissions
-    # This example grants launch permissions for the specified AMI to the
-    # specified AWS account.
+ # To grant launch permissions
+ # This example grants launch permissions for the specified AMI to the specified
+ # AWS account.
     $ec2->ModifyImageAttribute(
       'ImageId'          => 'ami-5731123e',
       'LaunchPermission' => {

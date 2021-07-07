@@ -57,17 +57,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           DeviceName => 'MyString',
           Ebs        => {
-            DeleteOnTermination => 1,               # OPTIONAL
-            Iops                => 1,               # OPTIONAL
+            DeleteOnTermination => 1,            # OPTIONAL
+            Iops                => 1,            # OPTIONAL
             SnapshotId          => 'MyString',
-            VolumeSize          => 1,               # OPTIONAL
-            VolumeType => 'gp2',    # values: gp2, io1, standard; OPTIONAL
+            VolumeSize          => 1,            # OPTIONAL
+            VolumeType          => 'gp2', # values: gp2, io1, standard; OPTIONAL
           },    # OPTIONAL
           NoDevice    => 'MyString',
           VirtualName => 'MyString',
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       EbsOptimized         => 1,             # OPTIONAL
       Hostname             => 'MyString',    # OPTIONAL
       InstallUpdatesOnBoot => 1,             # OPTIONAL

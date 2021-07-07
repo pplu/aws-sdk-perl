@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           AnnotationConsolidationLambdaArn => 'MyLambdaFunctionArn', # max: 2048
 
         },
-        NumberOfHumanWorkersPerDataObject => 1,    # min: 1, max: 9
+        NumberOfHumanWorkersPerDataObject => 1,             # min: 1, max: 9
         PreHumanTaskLambdaArn  => 'MyLambdaFunctionArn',    # max: 2048
         TaskDescription        => 'MyTaskDescription',      # min: 1, max: 255
         TaskTimeLimitInSeconds => 1,                        # min: 30
@@ -55,20 +55,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         MaxConcurrentTaskCount => 1,               # min: 1, max: 1000; OPTIONAL
         PublicWorkforceTaskPrice => {
           AmountInUsd => {
-            Cents                 => 1,            # max: 99; OPTIONAL
-            Dollars               => 1,            # max: 2; OPTIONAL
-            TenthFractionsOfACent => 1,            # max: 9; OPTIONAL
+            Cents                 => 1,    # max: 99; OPTIONAL
+            Dollars               => 1,    # max: 2; OPTIONAL
+            TenthFractionsOfACent => 1,    # max: 9; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         TaskAvailabilityLifetimeInSeconds => 1,    # min: 60; OPTIONAL
         TaskKeywords                      => [
           'MyTaskKeyword', ...                     # min: 1, max: 30
-        ],                                         # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
       },
       InputConfig => {
         DataSource => {
           S3DataSource => {
-            ManifestS3Uri => 'MyS3Uri',            # max: 1024; OPTIONAL
+            ManifestS3Uri => 'MyS3Uri',    # max: 1024; OPTIONAL
 
           },    # OPTIONAL
           SnsDataSource => {
@@ -112,7 +112,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

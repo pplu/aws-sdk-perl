@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Arn        => 'MyArn',    # min: 1, max: 1600
         FilterArns => [
           'MyArn', ...            # min: 1, max: 1600
-        ],                        # OPTIONAL
+        ],    # OPTIONAL
       },
       EventEndTime   => '1970-01-01T01:00:00',
       EventSourceArn => 'MyArn',

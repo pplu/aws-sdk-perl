@@ -43,12 +43,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientToken                    => 'MyClientToken',
       InfrastructureConfigurationArn => 'MyInfrastructureConfigurationArn',
       Name                           => 'MyResourceName',
-      ContainerRecipeArn => 'MyContainerRecipeArn',    # OPTIONAL
-      Description        => 'MyNonEmptyString',        # OPTIONAL
-      DistributionConfigurationArn =>
-        'MyDistributionConfigurationArn',              # OPTIONAL
-      EnhancedImageMetadataEnabled => 1,                     # OPTIONAL
-      ImageRecipeArn               => 'MyImageRecipeArn',    # OPTIONAL
+      ContainerRecipeArn             => 'MyContainerRecipeArn',    # OPTIONAL
+      Description                    => 'MyNonEmptyString',        # OPTIONAL
+      DistributionConfigurationArn   =>
+        'MyDistributionConfigurationArn',                          # OPTIONAL
+      EnhancedImageMetadataEnabled => 1,                           # OPTIONAL
+      ImageRecipeArn               => 'MyImageRecipeArn',          # OPTIONAL
       ImageTestsConfiguration      => {
         ImageTestsEnabled => 1,
         TimeoutMinutes    => 1,    # min: 60, max: 1440; OPTIONAL

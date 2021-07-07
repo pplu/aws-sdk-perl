@@ -58,14 +58,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # max: 10; OPTIONAL
           },
           ...
-        ],        # max: 20; OPTIONAL
+        ],    # max: 20; OPTIONAL
         DialogAction => {
           Type => 'Close'
           ,   # values: Close, ConfirmIntent, Delegate, ElicitIntent, ElicitSlot
           SlotToElicit => 'MyNonEmptyString',    # min: 1
         },    # OPTIONAL
         Intent => {
-          Name => 'MyNonEmptyString',    # min: 1
+          Name              => 'MyNonEmptyString',    # min: 1
           ConfirmationState =>
             'Confirmed',    # values: Confirmed, Denied, None; OPTIONAL
           Slots => {
@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 OriginalValue    => 'MyNonEmptyString',    # min: 1
                 ResolvedValues   => [
                   'MyNonEmptyString', ...                  # min: 1
-                ],                                         # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
             },    # key: min: 1
           },    # OPTIONAL

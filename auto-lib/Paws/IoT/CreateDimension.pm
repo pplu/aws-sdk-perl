@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Type => 'TOPIC_FILTER',
       Tags => [
         {
-          Key   => 'MyTagKey',           # min: 1, max: 128
-          Value => 'MyTagValue',         # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

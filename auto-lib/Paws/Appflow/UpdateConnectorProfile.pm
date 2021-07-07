@@ -88,9 +88,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           Salesforce => {
-            AccessToken => 'MyAccessToken',    # max: 512; OPTIONAL
+            AccessToken          => 'MyAccessToken',    # max: 512; OPTIONAL
             ClientCredentialsArn =>
-              'MyClientCredentialsArn',        # min: 20, max: 2048; OPTIONAL
+              'MyClientCredentialsArn',    # min: 20, max: 2048; OPTIONAL
             OAuthRequest => {
               AuthCode    => 'MyAuthCode',       # max: 512; OPTIONAL
               RedirectUri => 'MyRedirectUri',    # max: 512; OPTIONAL
@@ -187,14 +187,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           Snowflake => {
-            BucketName   => 'MyBucketName',      # min: 3, max: 63
-            Stage        => 'MyStage',           # max: 512
-            Warehouse    => 'MyWarehouse',       # max: 512
-            AccountName  => 'MyAccountName',     # max: 512; OPTIONAL
-            BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
+            BucketName             => 'MyBucketName',      # min: 3, max: 63
+            Stage                  => 'MyStage',           # max: 512
+            Warehouse              => 'MyWarehouse',       # max: 512
+            AccountName            => 'MyAccountName',     # max: 512; OPTIONAL
+            BucketPrefix           => 'MyBucketPrefix',    # max: 512; OPTIONAL
             PrivateLinkServiceName =>
-              'MyPrivateLinkServiceName',        # max: 512; OPTIONAL
-            Region => 'MyRegion',                # max: 64; OPTIONAL
+              'MyPrivateLinkServiceName',                  # max: 512; OPTIONAL
+            Region => 'MyRegion',                          # max: 64; OPTIONAL
           },    # OPTIONAL
           Trendmicro => {
 

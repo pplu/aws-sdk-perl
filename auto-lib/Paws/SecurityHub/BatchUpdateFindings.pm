@@ -67,10 +67,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Normalized => 1,    # max: 100
         Product    => 1,    # OPTIONAL
       },    # OPTIONAL
-      Types => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+      Types             => [ 'MyNonEmptyString', ... ],    # OPTIONAL
       UserDefinedFields => { 'MyNonEmptyString' => 'MyNonEmptyString', }
-      ,                                        # OPTIONAL
-      VerificationState => 'UNKNOWN',          # OPTIONAL
+      ,                                                    # OPTIONAL
+      VerificationState => 'UNKNOWN',                      # OPTIONAL
       Workflow          => {
         Status => 'NEW', # values: NEW, NOTIFIED, RESOLVED, SUPPRESSED; OPTIONAL
       },    # OPTIONAL

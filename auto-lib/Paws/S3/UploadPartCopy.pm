@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'CopySource' => '/bucketname/sourceobjectkey',
       'Key'        => 'examplelargeobject',
       'PartNumber' => 1,
-      'UploadId' =>
+      'UploadId'   =>
 'exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--'
     );
 
@@ -75,7 +75,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'CopySourceRange' => 'bytes=1-100000',
       'Key'             => 'examplelargeobject',
       'PartNumber'      => 2,
-      'UploadId' =>
+      'UploadId'        =>
 'exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3cq3LZSUsfjI4FI7PkP91We7Nrw--'
     );
 

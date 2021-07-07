@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Size => 1,
 
       },
-      Description => 'MyString',           # OPTIONAL
-      DryRun      => 1,                    # OPTIONAL
+      Description => 'MyString',    # OPTIONAL
+      DryRun      => 1,             # OPTIONAL
     );
 
     # Results:

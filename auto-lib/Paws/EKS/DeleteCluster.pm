@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $eks = Paws->service('EKS');
-    # To delete a cluster
-    # This example command deletes a cluster named `devel` in your default
-    # region.
+  # To delete a cluster
+  # This example command deletes a cluster named `devel` in your default region.
     my $DeleteClusterResponse = $eks->DeleteCluster( 'Name' => 'devel' );
 
 

@@ -54,10 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-        IpAddress   => 'MyStringType',        # OPTIONAL
-        ServerName  => 'MyStringType',        # OPTIONAL
-        ServerPath  => 'MyStringType',        # OPTIONAL
-        EncodedData => 'MyStringType',        # OPTIONAL
+        IpAddress   => 'MyStringType',    # OPTIONAL
+        ServerName  => 'MyStringType',    # OPTIONAL
+        ServerPath  => 'MyStringType',    # OPTIONAL
+        EncodedData => 'MyStringType',    # OPTIONAL
       },    # OPTIONAL
     );
 

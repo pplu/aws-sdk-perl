@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
         AccountIds => [
           'MyAccountId', ...    # min: 12, max: 12
-        ],                      # min: 1, max: 50; OPTIONAL
+        ],    # min: 1, max: 50; OPTIONAL
         Resources => [ 'MyString', ... ],    # OPTIONAL
       },
       UsageStatisticType => 'SUM_BY_ACCOUNT',

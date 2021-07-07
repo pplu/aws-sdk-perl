@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LocationArn => 'MyLocationArn',
       AgentArns   => [
         'MyAgentArn', ...    # max: 128
-      ],                     # OPTIONAL
+      ],    # OPTIONAL
       Domain       => 'MySmbDomain',    # OPTIONAL
       MountOptions => {
         Version => 'AUTOMATIC',    # values: AUTOMATIC, SMB2, SMB3; OPTIONAL

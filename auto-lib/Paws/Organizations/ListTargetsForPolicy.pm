@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-  # To retrieve a list of roots, OUs, and accounts to which a policy is attached
-  # The following example shows how to get the list of roots, OUs, and accounts
-  # to which the specified policy is attached:/n/n
+# To retrieve a list of roots, OUs, and accounts to which a policy is attached
+# The following example shows how to get the list of roots, OUs, and accounts to
+# which the specified policy is attached:/n/n
     my $ListTargetsForPolicyResponse =
       $organizations->ListTargetsForPolicy( 'PolicyId' => 'p-FullAWSAccess' );
 

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateCacheSubnetGroupResult = $elasticache->CreateCacheSubnetGroup(
       'CacheSubnetGroupDescription' => 'Sample subnet group',
       'CacheSubnetGroupName'        => 'my-sn-grp2',
-      'SubnetIds' =>
+      'SubnetIds'                   =>
         [ 'subnet-6f28c982', 'subnet-bcd382f3', 'subnet-845b3e7c0' ]
     );
 

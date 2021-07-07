@@ -28,9 +28,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
-    # To obtain information about a customer master key (CMK)
-    # The following example returns information (metadata) about the specified
-    # CMK.
+ # To obtain information about a customer master key (CMK)
+ # The following example returns information (metadata) about the specified CMK.
     my $DescribeKeyResponse =
       $kms->DescribeKey( 'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab' );
 

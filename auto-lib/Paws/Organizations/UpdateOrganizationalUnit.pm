@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To rename an organizational unit
-    # The following example shows how to rename an OU. The output confirms the
-    # new name:/n/n
+  # To rename an organizational unit
+  # The following example shows how to rename an OU. The output confirms the new
+  # name:/n/n
     my $UpdateOrganizationalUnitResponse =
       $organizations->UpdateOrganizationalUnit(
       'Name'                 => 'AccountingOU',

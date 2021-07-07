@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxResults     => 1,    # OPTIONAL
       MonitorArnList => [
         'MyValue', ...        # max: 1024
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 

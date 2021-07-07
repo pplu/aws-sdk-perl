@@ -42,10 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Return = $ModifySpotFleetRequestResponse->Return;
 
-    # Returns a L<Paws::EC2::ModifySpotFleetRequestResponse> object.
-    # To decrease the target capacity of a Spot fleet request
-    # This example decreases the target capacity of the specified Spot fleet
-    # request without terminating any Spot Instances as a result.
+# Returns a L<Paws::EC2::ModifySpotFleetRequestResponse> object.
+# To decrease the target capacity of a Spot fleet request
+# This example decreases the target capacity of the specified Spot fleet request
+# without terminating any Spot Instances as a result.
     my $ModifySpotFleetRequestResponse = $ec2->ModifySpotFleetRequest(
       'ExcessCapacityTerminationPolicy' => 'NoTermination ',
       'SpotFleetRequestId' => 'sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE',

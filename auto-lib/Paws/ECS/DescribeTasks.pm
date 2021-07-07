@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ecs = Paws->service('ECS');
-    # To describe a task
-    # This example provides a description of the specified task, using the task
-    # UUID as an identifier.
+# To describe a task
+# This example provides a description of the specified task, using the task UUID
+# as an identifier.
     my $DescribeTasksResponse = $ecs->DescribeTasks(
       'Tasks' => ['c5cba4eb-5dad-405e-96db-71ef8eefe6a8'] );
 

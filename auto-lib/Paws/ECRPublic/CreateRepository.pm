@@ -35,13 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AboutText     => 'MyAboutText',    # max: 10240; OPTIONAL
         Architectures => [
           'MyArchitecture', ...            # min: 1, max: 50
-        ],                                 # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
         Description      => 'MyRepositoryDescription',   # max: 1024; OPTIONAL
         LogoImageBlob    => 'BlobLogoImageBlob',         # max: 512000; OPTIONAL
         OperatingSystems => [
           'MyOperatingSystem', ...                       # min: 1, max: 50
-        ],                                               # max: 50; OPTIONAL
-        UsageText => 'MyUsageText',                      # max: 10240; OPTIONAL
+        ],    # max: 50; OPTIONAL
+        UsageText => 'MyUsageText',    # max: 10240; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

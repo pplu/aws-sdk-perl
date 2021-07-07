@@ -35,21 +35,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CustomerIdentifier => 'MyCustomerIdentifier',    # min: 1, max: 255
           Dimension          => 'MyUsageDimension',        # min: 1, max: 255
           Timestamp          => '1970-01-01T01:00:00',
-          Quantity         => 1,    # max: 2147483647; OPTIONAL
-          UsageAllocations => [
+          Quantity           => 1,    # max: 2147483647; OPTIONAL
+          UsageAllocations   => [
             {
               AllocatedUsageQuantity => 1,    # max: 2147483647
               Tags                   => [
                 {
-                  Key   => 'MyTagKey',        # min: 1, max: 100
-                  Value => 'MyTagValue',      # min: 1, max: 256
+                  Key   => 'MyTagKey',      # min: 1, max: 100
+                  Value => 'MyTagValue',    # min: 1, max: 256
 
                 },
                 ...
-              ],                              # min: 1, max: 5; OPTIONAL
+              ],    # min: 1, max: 5; OPTIONAL
             },
             ...
-          ],                                  # min: 1, max: 500; OPTIONAL
+          ],    # min: 1, max: 500; OPTIONAL
         },
         ...
       ],

@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Comment      => 'MyDelegationComment',  # max: 350; OPTIONAL
           ControlSetId => 'MyControlSetId',       # min: 1, max: 300; OPTIONAL
           RoleArn      => 'MyIamArn',             # min: 20, max: 2048; OPTIONAL
-          RoleType =>
+          RoleType     =>
             'PROCESS_OWNER',   # values: PROCESS_OWNER, RESOURCE_OWNER; OPTIONAL
         },
         ...

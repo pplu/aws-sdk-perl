@@ -34,12 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description => 'Mydescription',    # OPTIONAL
       Tags        => [
         {
-          Key   => 'MytagKey',           # min: 1, max: 128
-          Value => 'MytagValue',         # max: 256
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
 
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

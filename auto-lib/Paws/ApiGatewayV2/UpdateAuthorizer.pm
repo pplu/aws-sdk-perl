@@ -40,13 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGatewayV2');
     my $UpdateAuthorizerResponse = $apigateway->UpdateAuthorizer(
-      ApiId                    => 'My__string',
-      AuthorizerId             => 'My__string',
-      AuthorizerCredentialsArn => 'MyArn',        # OPTIONAL
+      ApiId                          => 'My__string',
+      AuthorizerId                   => 'My__string',
+      AuthorizerCredentialsArn       => 'MyArn',        # OPTIONAL
       AuthorizerPayloadFormatVersion =>
-        'MyStringWithLengthBetween1And64',        # OPTIONAL
-      AuthorizerResultTtlInSeconds => 1,          # OPTIONAL
-      AuthorizerType               => 'REQUEST',  # OPTIONAL
+        'MyStringWithLengthBetween1And64',              # OPTIONAL
+      AuthorizerResultTtlInSeconds => 1,                            # OPTIONAL
+      AuthorizerType               => 'REQUEST',                    # OPTIONAL
       AuthorizerUri         => 'MyUriWithLengthBetween1And2048',    # OPTIONAL
       EnableSimpleResponses => 1,                                   # OPTIONAL
       IdentitySource        => [ 'My__string', ... ],               # OPTIONAL

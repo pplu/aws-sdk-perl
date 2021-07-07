@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Addresses = $DescribeAddressesResult->Addresses;
 
-    # Returns a L<Paws::EC2::DescribeAddressesResult> object.
-    # To describe your Elastic IP addresses for EC2-VPC
-    # This example describes your Elastic IP addresses for use with instances in
-    # a VPC.
+  # Returns a L<Paws::EC2::DescribeAddressesResult> object.
+  # To describe your Elastic IP addresses for EC2-VPC
+  # This example describes your Elastic IP addresses for use with instances in a
+  # VPC.
     my $DescribeAddressesResult = $ec2->DescribeAddresses(
       'Filters' => [
 

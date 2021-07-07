@@ -51,11 +51,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccessTokenValidity => 1,                    # OPTIONAL
       AllowedOAuthFlows   => [
         'code', ...    # values: code, implicit, client_credentials
-      ],               # OPTIONAL
+      ],    # OPTIONAL
       AllowedOAuthFlowsUserPoolClient => 1,    # OPTIONAL
       AllowedOAuthScopes              => [
         'MyScopeType', ...                     # min: 1, max: 256
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       AnalyticsConfiguration => {
         ApplicationArn => 'MyArnType',          # min: 20, max: 2048; OPTIONAL
         ApplicationId  => 'MyHexStringType',    # OPTIONAL
@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       CallbackURLs => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       DefaultRedirectURI => 'MyRedirectUrlType',    # OPTIONAL
       ExplicitAuthFlows  => [
         'ADMIN_NO_SRP_AUTH',
@@ -75,15 +75,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IdTokenValidity => 1,    # OPTIONAL
       LogoutURLs      => [
         'MyRedirectUrlType', ...    # min: 1, max: 1024
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       PreventUserExistenceErrors => 'LEGACY',    # OPTIONAL
       ReadAttributes             => [
         'MyClientPermissionType', ...            # min: 1, max: 2048
-      ],                                         # OPTIONAL
-      RefreshTokenValidity       => 1,           # OPTIONAL
+      ],    # OPTIONAL
+      RefreshTokenValidity       => 1,    # OPTIONAL
       SupportedIdentityProviders => [
-        'MyProviderNameType', ...                # min: 1, max: 32
-      ],                                         # OPTIONAL
+        'MyProviderNameType', ...         # min: 1, max: 32
+      ],    # OPTIONAL
       TokenValidityUnits => {
         AccessToken =>
           'seconds',    # values: seconds, minutes, hours, days; OPTIONAL
@@ -93,7 +93,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       WriteAttributes => [
         'MyClientPermissionType', ...    # min: 1, max: 2048
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

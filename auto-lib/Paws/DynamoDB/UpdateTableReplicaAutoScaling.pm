@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           IndexName => 'MyIndexName',    # min: 3, max: 255; OPTIONAL
           ProvisionedWriteCapacityAutoScalingUpdate => {
             AutoScalingDisabled => 1,    # OPTIONAL
-            AutoScalingRoleArn =>
+            AutoScalingRoleArn  =>
               'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
             MaximumUnits        => 1,    # min: 1; OPTIONAL
             MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -55,10 +55,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       ProvisionedWriteCapacityAutoScalingUpdate => {
         AutoScalingDisabled => 1,    # OPTIONAL
-        AutoScalingRoleArn =>
+        AutoScalingRoleArn  =>
           'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
         MaximumUnits        => 1,    # min: 1; OPTIONAL
         MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -80,7 +80,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               IndexName => 'MyIndexName',    # min: 3, max: 255; OPTIONAL
               ProvisionedReadCapacityAutoScalingUpdate => {
                 AutoScalingDisabled => 1,    # OPTIONAL
-                AutoScalingRoleArn =>
+                AutoScalingRoleArn  =>
                   'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
                 MaximumUnits        => 1,    # min: 1; OPTIONAL
                 MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -97,10 +97,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
           ReplicaProvisionedReadCapacityAutoScalingUpdate => {
             AutoScalingDisabled => 1,    # OPTIONAL
-            AutoScalingRoleArn =>
+            AutoScalingRoleArn  =>
               'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
             MaximumUnits        => 1,    # min: 1; OPTIONAL
             MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -117,7 +117,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

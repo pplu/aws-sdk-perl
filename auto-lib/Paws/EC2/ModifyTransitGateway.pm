@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description      => 'MyString',             # OPTIONAL
       DryRun           => 1,                      # OPTIONAL
       Options          => {
-        AddTransitGatewayCidrBlocks => [ 'MyString', ... ],    # OPTIONAL
+        AddTransitGatewayCidrBlocks    => [ 'MyString', ... ],    # OPTIONAL
         AssociationDefaultRouteTableId =>
-          'MyTransitGatewayRouteTableId',                      # OPTIONAL
+          'MyTransitGatewayRouteTableId',                         # OPTIONAL
         AutoAcceptSharedAttachments =>
           'enable',    # values: enable, disable; OPTIONAL
         DefaultRouteTableAssociation =>

@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         FederationProviderName =>
           'MyFederationProviderName',    # min: 1, max: 32; OPTIONAL
-        FederationURN => 'Myurn',        # min: 1, max: 255; OPTIONAL
+        FederationURN        => 'Myurn', # min: 1, max: 255; OPTIONAL
         SamlMetadataDocument =>
           'MySamlMetadataDocument',      # min: 1000, max: 10000000; OPTIONAL
         SamlMetadataURL => 'Myurl',      # min: 1, max: 1000; OPTIONAL

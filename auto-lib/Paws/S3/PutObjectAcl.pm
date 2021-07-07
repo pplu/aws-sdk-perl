@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'AccessControlPolicy' => {
 
       },
-      'Bucket' => 'examplebucket',
+      'Bucket'           => 'examplebucket',
       'GrantFullControl' =>
         'emailaddress=user1@example.com,emailaddress=user2@example.com',
       'GrantRead' => 'uri=http://acs.amazonaws.com/groups/global/AllUsers',

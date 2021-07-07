@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To change a subnet's public IP addressing behavior
-    # This example modifies the specified subnet so that all instances launched
-    # into this subnet are assigned a public IP address.
+# To change a subnet's public IP addressing behavior
+# This example modifies the specified subnet so that all instances launched into
+# this subnet are assigned a public IP address.
     $ec2->ModifySubnetAttribute(
       'MapPublicIpOnLaunch' => {
         'Value' => 1

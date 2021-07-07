@@ -75,11 +75,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ReplicationGroup = $CreateReplicationGroupResult->ReplicationGroup;
 
-    # Returns a L<Paws::ElastiCache::CreateReplicationGroupResult> object.
-    # CreateReplicationGroup
-    # Creates a Redis (cluster mode enabled) replication group with two shards.
-    # One shard has one read replica node and the other shard has two read
-    # replicas.
+ # Returns a L<Paws::ElastiCache::CreateReplicationGroupResult> object.
+ # CreateReplicationGroup
+ # Creates a Redis (cluster mode enabled) replication group with two shards. One
+ # shard has one read replica node and the other shard has two read replicas.
     my $CreateReplicationGroupResult = $elasticache->CreateReplicationGroup(
       'AutoMinorVersionUpgrade' => 1,
       'CacheNodeType'           => 'cache.m3.medium',

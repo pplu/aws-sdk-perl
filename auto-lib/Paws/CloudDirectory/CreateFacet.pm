@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyRuleKey' => {
                 Parameters =>
                   { 'MyRuleParameterKey' => 'MyRuleParameterValue', }
-                ,                # OPTIONAL
+                ,    # OPTIONAL
                 Type => 'BINARY_LENGTH'
                 , # values: BINARY_LENGTH, NUMBER_COMPARISON, STRING_FROM_SET, STRING_LENGTH; OPTIONAL
               },    # key: min: 1, max: 64
@@ -68,9 +68,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'REQUIRED_ALWAYS', # values: REQUIRED_ALWAYS, NOT_REQUIRED; OPTIONAL
         },
         ...
-      ],                       # OPTIONAL
-      FacetStyle => 'STATIC',  # OPTIONAL
-      ObjectType => 'NODE',    # OPTIONAL
+      ],    # OPTIONAL
+      FacetStyle => 'STATIC',    # OPTIONAL
+      ObjectType => 'NODE',      # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

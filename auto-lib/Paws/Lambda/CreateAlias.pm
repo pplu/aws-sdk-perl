@@ -32,9 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To create an alias for a Lambda function
-    # The following example creates an alias named LIVE that points to version 1
-    # of the my-function Lambda function.
+ # To create an alias for a Lambda function
+ # The following example creates an alias named LIVE that points to version 1 of
+ # the my-function Lambda function.
     my $AliasConfiguration = $lambda->CreateAlias(
       'Description'     => 'alias for live version of function',
       'FunctionName'    => 'my-function',

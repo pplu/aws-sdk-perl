@@ -27,11 +27,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-   # To cancel scheduled rotation for a secret
-   # The following example shows how to cancel rotation for a secret. The
-   # operation sets the RotationEnabled field to false and cancels all scheduled
-   # rotations. To resume scheduled rotations, you must re-enable rotation by
-   # calling the rotate-secret operation.
+# To cancel scheduled rotation for a secret
+# The following example shows how to cancel rotation for a secret. The operation
+# sets the RotationEnabled field to false and cancels all scheduled rotations.
+# To resume scheduled rotations, you must re-enable rotation by calling the
+# rotate-secret operation.
     my $CancelRotateSecretResponse = $secretsmanager->CancelRotateSecret(
       'SecretId' => 'MyTestDatabaseSecret' );
 

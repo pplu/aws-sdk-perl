@@ -44,27 +44,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     , # values: ARCH, ADVISORY_ID, BUGZILLA_ID, PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, CVE_ID, EPOCH, MSRC_SEVERITY, NAME, PATCH_ID, SECTION, PRIORITY, REPOSITORY, RELEASE, SEVERITY, SECURITY, VERSION
                     Values => [
                       'MyPatchFilterValue', ...    # min: 1, max: 64
-                    ],                             # min: 1, max: 20
+                    ],    # min: 1, max: 20
 
                   },
                   ...
-                ],                                 # max: 4
+                ],    # max: 4
 
               },
-              ApproveAfterDays => 1,               # max: 360; OPTIONAL
+              ApproveAfterDays => 1,        # max: 360; OPTIONAL
               ApproveUntilDate =>
-                'MyPatchStringDateTime',           # min: 1, max: 10; OPTIONAL
+                'MyPatchStringDateTime',    # min: 1, max: 10; OPTIONAL
               ComplianceLevel => 'CRITICAL'
               , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
               EnableNonSecurity => 1,    # OPTIONAL
             },
             ...
-          ],                             # max: 10
+          ],    # max: 10
 
         },    # OPTIONAL
         ApprovedPatches => [
           'MyPatchId', ...    # min: 1, max: 100
-        ],                    # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
         ApprovedPatchesComplianceLevel => 'CRITICAL'
         , # values: CRITICAL, HIGH, MEDIUM, LOW, INFORMATIONAL, UNSPECIFIED; OPTIONAL
         ApprovedPatchesEnableNonSecurity => 1,    # OPTIONAL
@@ -75,18 +75,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               , # values: ARCH, ADVISORY_ID, BUGZILLA_ID, PATCH_SET, PRODUCT, PRODUCT_FAMILY, CLASSIFICATION, CVE_ID, EPOCH, MSRC_SEVERITY, NAME, PATCH_ID, SECTION, PRIORITY, REPOSITORY, RELEASE, SEVERITY, SECURITY, VERSION
               Values => [
                 'MyPatchFilterValue', ...    # min: 1, max: 64
-              ],                             # min: 1, max: 20
+              ],    # min: 1, max: 20
 
             },
             ...
-          ],                                 # max: 4
+          ],    # max: 4
 
         },
         OperatingSystem => 'WINDOWS'
         , # values: WINDOWS, AMAZON_LINUX, AMAZON_LINUX_2, UBUNTU, REDHAT_ENTERPRISE_LINUX, SUSE, CENTOS, ORACLE_LINUX, DEBIAN, MACOS; OPTIONAL
         RejectedPatches => [
           'MyPatchId', ...    # min: 1, max: 100
-        ],                    # max: 50; OPTIONAL
+        ],    # max: 50; OPTIONAL
         RejectedPatchesAction =>
           'ALLOW_AS_DEPENDENCY',  # values: ALLOW_AS_DEPENDENCY, BLOCK; OPTIONAL
         Sources => [
@@ -95,11 +95,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name          => 'MyPatchSourceName',
             Products      => [
               'MyPatchSourceProduct', ...                    # min: 1, max: 128
-            ],                                               # min: 1, max: 20
+            ],    # min: 1, max: 20
 
           },
           ...
-        ],                                                   # max: 20; OPTIONAL
+        ],    # max: 20; OPTIONAL
       },    # OPTIONAL
       );
 

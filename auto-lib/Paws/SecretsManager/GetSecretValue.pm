@@ -29,11 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    # To retrieve the encrypted secret value of a secret
-    # The following example shows how to retrieve the secret string value from
-    # the version of the secret that has the AWSPREVIOUS staging label attached.
-    # If you want to retrieve the AWSCURRENT version of the secret, then you can
-    # omit the VersionStage parameter because it defaults to AWSCURRENT.
+ # To retrieve the encrypted secret value of a secret
+ # The following example shows how to retrieve the secret string value from the
+ # version of the secret that has the AWSPREVIOUS staging label attached. If you
+ # want to retrieve the AWSCURRENT version of the secret, then you can omit the
+ # VersionStage parameter because it defaults to AWSCURRENT.
     my $GetSecretValueResponse = $secretsmanager->GetSecretValue(
       'SecretId'     => 'MyTestDatabaseSecret',
       'VersionStage' => 'AWSPREVIOUS'

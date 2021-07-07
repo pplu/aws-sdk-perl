@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To list DB log file names
-    # This example lists matching log file names for the specified DB instance,
-    # file name pattern, last write date in POSIX time with milleseconds, and
-    # minimum file size.
+# To list DB log file names
+# This example lists matching log file names for the specified DB instance, file
+# name pattern, last write date in POSIX time with milleseconds, and minimum
+# file size.
     my $DescribeDBLogFilesResponse = $rds->DescribeDBLogFiles(
       'DBInstanceIdentifier' => 'mymysqlinstance',
       'FileLastWritten'      => 1470873600000,

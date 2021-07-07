@@ -39,12 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-   # To list object versions
-   # The following example return versions of an object with specific key name
-   # prefix. The request limits the number of items returned to two. If there
-   # are are more than two object version, S3 returns NextToken in the response.
-   # You can specify this token value in your next request to fetch next set of
-   # object versions.
+ # To list object versions
+ # The following example return versions of an object with specific key name
+ # prefix. The request limits the number of items returned to two. If there are
+ # are more than two object version, S3 returns NextToken in the response. You
+ # can specify this token value in your next request to fetch next set of object
+ # versions.
     my $ListObjectVersionsOutput = $s3->ListObjectVersions(
       'Bucket' => 'examplebucket',
       'Prefix' => 'HappyFace.jpg'

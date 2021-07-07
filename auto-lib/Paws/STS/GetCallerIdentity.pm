@@ -26,9 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $sts = Paws->service('STS');
-    # To get details about a calling IAM user
-    # This example shows a request and response made with the credentials for a
-    # user named Alice in the AWS account 123456789012.
+# To get details about a calling IAM user
+# This example shows a request and response made with the credentials for a user
+# named Alice in the AWS account 123456789012.
     my $GetCallerIdentityResponse = $sts->GetCallerIdentity();
 
     # Results:
@@ -36,11 +36,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Arn     = $GetCallerIdentityResponse->Arn;
     my $UserId  = $GetCallerIdentityResponse->UserId;
 
-    # Returns a L<Paws::STS::GetCallerIdentityResponse> object.
-    # To get details about a calling user federated with AssumeRole
-    # This example shows a request and response made with temporary credentials
-    # created by AssumeRole. The name of the assumed role is my-role-name, and
-    # the RoleSessionName is set to my-role-session-name.
+  # Returns a L<Paws::STS::GetCallerIdentityResponse> object.
+  # To get details about a calling user federated with AssumeRole
+  # This example shows a request and response made with temporary credentials
+  # created by AssumeRole. The name of the assumed role is my-role-name, and the
+  # RoleSessionName is set to my-role-session-name.
     my $GetCallerIdentityResponse = $sts->GetCallerIdentity();
 
     # Results:

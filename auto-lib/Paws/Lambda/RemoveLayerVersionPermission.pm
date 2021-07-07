@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To delete layer-version permissions
-    # The following example deletes permission for an account to configure a
-    # layer version.
+  # To delete layer-version permissions
+  # The following example deletes permission for an account to configure a layer
+  # version.
     $lambda->RemoveLayerVersionPermission(
       'LayerName'     => 'my-layer',
       'StatementId'   => 'xaccount',

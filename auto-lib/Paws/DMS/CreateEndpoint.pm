@@ -67,7 +67,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'EndpointType'              => 'source',
       'EngineName'                => 'mysql',
       'ExtraConnectionAttributes' => '',
-      'KmsKeyId' =>
+      'KmsKeyId'                  =>
 'arn:aws:kms:us-east-1:123456789012:key/4c1731d6-5435-ed4d-be13-d53411a7cfbd',
       'Password'   => 'pasword',
       'Port'       => 3306,

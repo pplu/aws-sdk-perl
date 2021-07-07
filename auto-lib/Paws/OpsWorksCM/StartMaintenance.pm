@@ -36,7 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyEngineAttributeValue',    # max: 10000; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

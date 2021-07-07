@@ -36,24 +36,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       LustreConfiguration => {
         AutoImportPolicy => 'NONE',   # values: NONE, NEW, NEW_CHANGED; OPTIONAL
-        AutomaticBackupRetentionDays => 1,    # max: 90; OPTIONAL
+        AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
         DailyAutomaticBackupStartTime =>
-          'MyDailyTime',                      # min: 5, max: 5; OPTIONAL
+          'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
       StorageCapacity      => 1,    # OPTIONAL
       WindowsConfiguration => {
-        AutomaticBackupRetentionDays => 1,    # max: 90; OPTIONAL
+        AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
         DailyAutomaticBackupStartTime =>
-          'MyDailyTime',                      # min: 5, max: 5; OPTIONAL
+          'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
         SelfManagedActiveDirectoryConfiguration => {
           DnsIps => [
-            'MyIpAddress', ...                # min: 7, max: 15
-          ],                                  # min: 1, max: 2; OPTIONAL
-          Password => 'MyDirectoryPassword',  # min: 1, max: 256; OPTIONAL
-          UserName => 'MyDirectoryUserName',  # min: 1, max: 256; OPTIONAL
+            'MyIpAddress', ...                 # min: 7, max: 15
+          ],    # min: 1, max: 2; OPTIONAL
+          Password => 'MyDirectoryPassword',    # min: 1, max: 256; OPTIONAL
+          UserName => 'MyDirectoryUserName',    # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
-        ThroughputCapacity => 1,    # min: 8, max: 2048; OPTIONAL
+        ThroughputCapacity         => 1,    # min: 8, max: 2048; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
     );

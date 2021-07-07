@@ -49,11 +49,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value        => 'MyConditionValue',    # max: 1024; OPTIONAL
             },
             ...
-          ],                                         # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
       ],
-      Description => 'MyRecipeDescription',          # OPTIONAL
+      Description => 'MyRecipeDescription',    # OPTIONAL
       Tags        => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL

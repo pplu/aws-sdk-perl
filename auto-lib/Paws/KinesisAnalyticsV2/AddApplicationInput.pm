@@ -41,15 +41,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Mapping => 'MyRecordColumnMapping',    # max: 65535; OPTIONAL
             },
             ...
-          ],                                         # min: 1, max: 1000
+          ],    # min: 1, max: 1000
           RecordFormat => {
-            RecordFormatType  => 'JSON',             # values: JSON, CSV
+            RecordFormatType  => 'JSON',    # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
                 RecordColumnDelimiter =>
-                  'MyRecordColumnDelimiter',         # min: 1, max: 1024
+                  'MyRecordColumnDelimiter',    # min: 1, max: 1024
                 RecordRowDelimiter =>
-                  'MyRecordRowDelimiter',            # min: 1, max: 1024
+                  'MyRecordRowDelimiter',       # min: 1, max: 1024
 
               },    # OPTIONAL
               JSONMappingParameters => {

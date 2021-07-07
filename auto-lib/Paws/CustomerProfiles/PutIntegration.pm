@@ -102,7 +102,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TriggerProperties => {
             Scheduled => {
               ScheduleExpression => 'MyScheduleExpression',    # max: 256
-              DataPullMode =>
+              DataPullMode       =>
                 'Incremental',    # values: Incremental, Complete; OPTIONAL
               FirstExecutionFrom => '1970-01-01T01:00:00',    # OPTIONAL
               ScheduleEndTime    => '1970-01-01T01:00:00',    # OPTIONAL

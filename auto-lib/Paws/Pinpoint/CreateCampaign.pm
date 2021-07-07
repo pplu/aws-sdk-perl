@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       WriteCampaignRequest => {
         AdditionalTreatments => [
           {
-            SizePercent                 => 1,    # OPTIONAL
+            SizePercent                 => 1,
             CustomDeliveryConfiguration => {
               DeliveryUri   => 'My__string',
               EndpointTypes => [
@@ -54,7 +54,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
-                TimeToLive        => 1,              # OPTIONAL
+                TimeToLive        => 1,
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -69,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
-                TimeToLive        => 1,              # OPTIONAL
+                TimeToLive        => 1,
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -84,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
-                TimeToLive        => 1,              # OPTIONAL
+                TimeToLive        => 1,
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -100,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
-                TimeToLive        => 1,              # OPTIONAL
+                TimeToLive        => 1,
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -121,7 +121,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 MediaUrl          => 'My__string',
                 RawContent        => 'My__string',
                 SilentPush        => 1,              # OPTIONAL
-                TimeToLive        => 1,              # OPTIONAL
+                TimeToLive        => 1,
                 Title             => 'My__string',
                 Url               => 'My__string',
               },    # OPTIONAL
@@ -148,7 +148,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },
                   },    # OPTIONAL
                   EventType => {
-                    Values => [ 'My__string', ... ],
+                    Values        => [ 'My__string', ... ],
                     DimensionType =>
                       'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                   },    # OPTIONAL
@@ -194,7 +194,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TreatmentName        => 'My__string',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         CustomDeliveryConfiguration => {
           DeliveryUri   => 'My__string',
           EndpointTypes => [
@@ -203,19 +203,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },    # OPTIONAL
         Description    => 'My__string',
-        HoldoutPercent => 1,              # OPTIONAL
+        HoldoutPercent => 1,
         Hook           => {
           LambdaFunctionName => 'My__string',
-          Mode   => 'DELIVERY',           # values: DELIVERY, FILTER; OPTIONAL
+          Mode   => 'DELIVERY',     # values: DELIVERY, FILTER; OPTIONAL
           WebUrl => 'My__string',
         },    # OPTIONAL
         IsPaused => 1,    # OPTIONAL
         Limits   => {
-          Daily             => 1,    # OPTIONAL
-          MaximumDuration   => 1,    # OPTIONAL
-          MessagesPerSecond => 1,    # OPTIONAL
-          Total             => 1,    # OPTIONAL
-        },    # OPTIONAL
+          Daily             => 1,
+          MaximumDuration   => 1,
+          MessagesPerSecond => 1,
+          Total             => 1,
+        },                # OPTIONAL
         MessageConfiguration => {
           ADMMessage => {
             Action => 'OPEN_APP',   # values: OPEN_APP, DEEP_LINK, URL; OPTIONAL
@@ -227,7 +227,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
-            TimeToLive        => 1,              # OPTIONAL
+            TimeToLive        => 1,
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -241,7 +241,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
-            TimeToLive        => 1,              # OPTIONAL
+            TimeToLive        => 1,
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -255,7 +255,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
-            TimeToLive        => 1,              # OPTIONAL
+            TimeToLive        => 1,
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -270,7 +270,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
-            TimeToLive        => 1,              # OPTIONAL
+            TimeToLive        => 1,
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
@@ -290,13 +290,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MediaUrl          => 'My__string',
             RawContent        => 'My__string',
             SilentPush        => 1,              # OPTIONAL
-            TimeToLive        => 1,              # OPTIONAL
+            TimeToLive        => 1,
             Title             => 'My__string',
             Url               => 'My__string',
           },    # OPTIONAL
           SMSMessage => {
-            Body     => 'My__string',
-            EntityId => 'My__string',
+            Body        => 'My__string',
+            EntityId    => 'My__string',
             MessageType =>
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
@@ -318,7 +318,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
               },    # OPTIONAL
               EventType => {
-                Values => [ 'My__string', ... ],
+                Values        => [ 'My__string', ... ],
                 DimensionType =>
                   'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
               },    # OPTIONAL
@@ -343,7 +343,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Timezone => 'My__string',
         },    # OPTIONAL
         SegmentId             => 'My__string',
-        SegmentVersion        => 1,                                   # OPTIONAL
+        SegmentVersion        => 1,
         Tags                  => { 'My__string' => 'My__string', },   # OPTIONAL
         TemplateConfiguration => {
           EmailTemplate => {

@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following operation creates a new environment for version v1 of a java
     # application named my-app:
     my $EnvironmentDescription = $elasticbeanstalk->CreateEnvironment(
-      'ApplicationName' => 'my-app',
-      'CNAMEPrefix'     => 'my-app',
-      'EnvironmentName' => 'my-env',
+      'ApplicationName'   => 'my-app',
+      'CNAMEPrefix'       => 'my-app',
+      'EnvironmentName'   => 'my-env',
       'SolutionStackName' =>
         '64bit Amazon Linux 2015.03 v2.0.0 running Tomcat 8 Java 8',
       'VersionLabel' => 'v1'

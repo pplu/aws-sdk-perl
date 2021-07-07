@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         FailureTolerancePercentage => 1,    # max: 100; OPTIONAL
         MaxConcurrentCount         => 1,    # min: 1; OPTIONAL
         MaxConcurrentPercentage    => 1,    # min: 1, max: 100; OPTIONAL
-        RegionConcurrencyType =>
+        RegionConcurrencyType      =>
           'SEQUENTIAL',    # values: SEQUENTIAL, PARALLEL; OPTIONAL
         RegionOrder => [ 'MyRegion', ... ],
       },    # OPTIONAL

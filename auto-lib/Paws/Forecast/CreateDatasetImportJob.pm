@@ -48,15 +48,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GeolocationFormat    => 'MyGeolocationFormat',    # OPTIONAL
       Tags                 => [
         {
-          Key   => 'MyTagKey',                          # min: 1, max: 128
-          Value => 'MyTagValue',                        # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                # OPTIONAL
-      TimeZone                  => 'MyTimeZone',        # OPTIONAL
-      TimestampFormat           => 'MyTimestampFormat', # OPTIONAL
-      UseGeolocationForTimeZone => 1,                   # OPTIONAL
+      ],    # OPTIONAL
+      TimeZone                  => 'MyTimeZone',           # OPTIONAL
+      TimestampFormat           => 'MyTimestampFormat',    # OPTIONAL
+      UseGeolocationForTimeZone => 1,                      # OPTIONAL
     );
 
     # Results:

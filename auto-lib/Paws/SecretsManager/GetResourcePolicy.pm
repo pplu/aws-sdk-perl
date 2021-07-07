@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    # To retrieve the resource-based policy attached to a secret
-    # The following example shows how to retrieve the resource-based policy that
-    # is attached to a secret.
+ # To retrieve the resource-based policy attached to a secret
+ # The following example shows how to retrieve the resource-based policy that is
+ # attached to a secret.
     my $GetResourcePolicyResponse = $secretsmanager->GetResourcePolicy(
       'SecretId' => 'MyTestDatabaseSecret' );
 

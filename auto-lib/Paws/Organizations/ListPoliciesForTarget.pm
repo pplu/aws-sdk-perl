@@ -30,12 +30,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-   # To retrieve a list policies attached to a root, OU, or account
-   # The following example shows how to get a list of all service control
-   # policies (SCPs) of the type specified by the Filter parameter, that are
-   # directly attached to an account. The returned list does not include
-   # policies that apply to the account because of inheritance from its location
-   # in an OU hierarchy:/n/n
+# To retrieve a list policies attached to a root, OU, or account
+# The following example shows how to get a list of all service control policies
+# (SCPs) of the type specified by the Filter parameter, that are directly
+# attached to an account. The returned list does not include policies that apply
+# to the account because of inheritance from its location in an OU
+# hierarchy:/n/n
     my $ListPoliciesForTargetResponse = $organizations->ListPoliciesForTarget(
       'Filter'   => 'SERVICE_CONTROL_POLICY',
       'TargetId' => 444444444444

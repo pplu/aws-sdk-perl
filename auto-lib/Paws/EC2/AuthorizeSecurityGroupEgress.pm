@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-   # To add a rule that allows outbound traffic to a specific address range
-   # This example adds a rule that grants access to the specified address ranges
-   # on TCP port 80.
+# To add a rule that allows outbound traffic to a specific address range
+# This example adds a rule that grants access to the specified address ranges on
+# TCP port 80.
     $ec2->AuthorizeSecurityGroupEgress(
       'GroupId'       => 'sg-1a2b3c4d',
       'IpPermissions' => [
@@ -56,9 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ]
     );
 
-   # To add a rule that allows outbound traffic to a specific security group
-   # This example adds a rule that grants access to the specified security group
-   # on TCP port 80.
+# To add a rule that allows outbound traffic to a specific security group
+# This example adds a rule that grants access to the specified security group on
+# TCP port 80.
     $ec2->AuthorizeSecurityGroupEgress(
       'GroupId'       => 'sg-1a2b3c4d',
       'IpPermissions' => [

@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # DescribeReceiptRuleSet
-    # The following example returns the metadata and receipt rules of a receipt
-    # rule set:
+# DescribeReceiptRuleSet
+# The following example returns the metadata and receipt rules of a receipt rule
+# set:
     my $DescribeReceiptRuleSetResponse =
       $email->DescribeReceiptRuleSet( 'RuleSetName' => 'MyRuleSet' );
 

@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyFilterValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      IncludeDeprecated => 1,                    # OPTIONAL
-      MaxResults        => 1,                    # OPTIONAL
-      NextToken         => 'MyPaginationToken',  # OPTIONAL
-      Owner             => 'Self',               # OPTIONAL
+      ],    # OPTIONAL
+      IncludeDeprecated => 1,                      # OPTIONAL
+      MaxResults        => 1,                      # OPTIONAL
+      NextToken         => 'MyPaginationToken',    # OPTIONAL
+      Owner             => 'Self',                 # OPTIONAL
     );
 
     # Results:

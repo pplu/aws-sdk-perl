@@ -52,8 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SnsTopicArn        => 'MySnsTopicArn',             # OPTIONAL
       SpeechMarkTypes    => [
         'sentence', ...    # values: sentence, ssml, viseme, word
-      ],                   # OPTIONAL
-      TextType => 'ssml',  # OPTIONAL
+      ],    # OPTIONAL
+      TextType => 'ssml',    # OPTIONAL
     );
 
     # Results:

@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Actions => [
         {
           SsmAutomation => {
-            DocumentName => 'MySsmAutomationDocumentNameString',
-            RoleArn      => 'MyRoleArn',                           # max: 1000
+            DocumentName    => 'MySsmAutomationDocumentNameString',
+            RoleArn         => 'MyRoleArn',                          # max: 1000
             DocumentVersion =>
               'MySsmAutomationDocumentVersionString',    # max: 128; OPTIONAL
             Parameters => {
@@ -57,20 +57,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       ChatChannel => {
         ChatbotSns => [
           'MySnsArn', ...    # max: 1000
-        ],                   # min: 1, max: 5; OPTIONAL
+        ],    # min: 1, max: 5; OPTIONAL
         Empty => {
 
-        },                   # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       ClientToken => 'MyClientToken',                # OPTIONAL
       DisplayName => 'MyResponsePlanDisplayName',    # OPTIONAL
       Engagements => [
         'MySsmContactsArn', ...                      # max: 2048
-      ],                                             # OPTIONAL
+      ],    # OPTIONAL
       IncidentTemplateDedupeString        => 'MyDedupeString',    # OPTIONAL
       IncidentTemplateImpact              => 1,                   # OPTIONAL
       IncidentTemplateNotificationTargets => [
@@ -78,9 +78,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SnsTopicArn => 'MyArn',                                 # max: 1000
         },
         ...
-      ],                                                          # OPTIONAL
-      IncidentTemplateSummary => 'MyIncidentSummary',             # OPTIONAL
-      IncidentTemplateTitle   => 'MyIncidentTitle',               # OPTIONAL
+      ],    # OPTIONAL
+      IncidentTemplateSummary => 'MyIncidentSummary',    # OPTIONAL
+      IncidentTemplateTitle   => 'MyIncidentTitle',      # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

@@ -89,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                              # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
               Scte35ReturnToNetworkSettings => {
                 SpliceEventId => 1,    # max: 4294967295
@@ -119,9 +119,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           , # values: WEB_DELIVERY_NOT_ALLOWED, WEB_DELIVERY_ALLOWED
 
                         },    # OPTIONAL
-                        SegmentNum => 1,    # max: 255; OPTIONAL
+                        SegmentNum           => 1,    # max: 255; OPTIONAL
                         SegmentationDuration =>
-                          1,                # max: 1099511627775; OPTIONAL
+                          1,    # max: 1099511627775; OPTIONAL
                         SegmentationTypeId => 1,            # max: 255; OPTIONAL
                         SegmentationUpid   => 'My__string',
                         SegmentationUpidType => 1,          # max: 255; OPTIONAL

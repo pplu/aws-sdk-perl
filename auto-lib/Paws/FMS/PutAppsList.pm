@@ -47,13 +47,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PreviousAppsList => {
           'MyPreviousListVersion' => [
             {
-              AppName  => 'MyResourceName',        # min: 1, max: 128
-              Port     => 1,                       # max: 65535
-              Protocol => 'MyProtocol',            # min: 1, max: 20
+              AppName  => 'MyResourceName',    # min: 1, max: 128
+              Port     => 1,                   # max: 65535
+              Protocol => 'MyProtocol',        # min: 1, max: 20
 
             },
             ...
-          ],                                       # key: min: 1, max: 2
+          ],    # key: min: 1, max: 2
         },    # OPTIONAL
       },
       TagList => [
@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

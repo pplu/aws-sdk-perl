@@ -41,12 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description  => 'Mystring',    # OPTIONAL
       Tags         => [
         {
-          Key   => 'MytagKey',       # min: 1, max: 128
-          Value => 'MytagValue',     # max: 256
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
 
         },
         ...
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       VariableType => 'Mystring',    # OPTIONAL
     );
 

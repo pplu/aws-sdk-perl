@@ -41,12 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           FrameName    => 'MyString',
           ThreadStates => [ 'MyString', ... ],
-          Type =>
+          Type         =>
             'AggregatedRelativeTotalTime', # values: AggregatedRelativeTotalTime
 
         },
         ...
-      ],                                   # OPTIONAL
+      ],    # OPTIONAL
       Period           => 'MyPeriod',               # OPTIONAL
       StartTime        => '1970-01-01T01:00:00',    # OPTIONAL
       TargetResolution => 'PT5M',                   # OPTIONAL

@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       GameServerGroupName => 'MyGameServerGroupNameOrArn',
       InstanceIds         => [
         'MyGameServerInstanceId', ...    # min: 19, max: 19
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       Limit     => 1,                          # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
       );

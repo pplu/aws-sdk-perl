@@ -40,12 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MetadataValue => 'MyMetadataValueString', # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                            # OPTIONAL
-      NextToken => 'MySchemaRegistryTokenString',   # OPTIONAL
+      ],    # OPTIONAL
+      NextToken => 'MySchemaRegistryTokenString',    # OPTIONAL
       SchemaId  => {
         RegistryName =>
-          'MySchemaRegistryNameString',             # min: 1, max: 255; OPTIONAL
-        SchemaArn => 'MyGlueResourceArn',    # min: 1, max: 10240; OPTIONAL
+          'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
+        SchemaArn  => 'MyGlueResourceArn', # min: 1, max: 10240; OPTIONAL
         SchemaName => 'MySchemaRegistryNameString', # min: 1, max: 255; OPTIONAL
       },    # OPTIONAL
       SchemaVersionId     => 'MySchemaVersionIdString',    # OPTIONAL

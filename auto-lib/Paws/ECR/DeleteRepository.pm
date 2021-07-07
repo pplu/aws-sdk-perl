@@ -29,10 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.ecr = Paws->service('ECR');
-    # To force delete a repository
-    # This example force deletes a repository named ubuntu in the default
-    # registry for an account. The force parameter is required if the repository
-    # contains images.
+  # To force delete a repository
+  # This example force deletes a repository named ubuntu in the default registry
+  # for an account. The force parameter is required if the repository contains
+  # images.
     my $DeleteRepositoryResponse = $api
       . ecr->DeleteRepository(
       'Force'          => 1,

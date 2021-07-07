@@ -57,16 +57,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationARNs    => [ 'MyNotificationARN', ... ],    # OPTIONAL
       Parameters          => [
         {
-          ParameterKey     => 'MyParameterKey',               # OPTIONAL
-          ParameterValue   => 'MyParameterValue',             # OPTIONAL
-          ResolvedValue    => 'MyParameterValue',             # OPTIONAL
-          UsePreviousValue => 1,                              # OPTIONAL
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
+          ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
+          UsePreviousValue => 1,                     # OPTIONAL
         },
         ...
-      ],                                                      # OPTIONAL
+      ],    # OPTIONAL
       ResourceTypes => [
-        'MyResourceType', ...                                 # min: 1, max: 256
-      ],                                                      # OPTIONAL
+        'MyResourceType', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       ResourcesToImport => [
         {
           LogicalResourceId  => 'MyLogicalResourceId',
@@ -79,7 +79,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       RoleARN               => 'MyRoleARN',    # OPTIONAL
       RollbackConfiguration => {
         MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
@@ -99,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TemplateBody        => 'MyTemplateBody',    # OPTIONAL
       TemplateURL         => 'MyTemplateURL',     # OPTIONAL
       UsePreviousTemplate => 1,                   # OPTIONAL

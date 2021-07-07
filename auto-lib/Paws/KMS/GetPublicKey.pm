@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KeyId       => 'MyKeyIdType',
       GrantTokens => [
         'MyGrantTokenType', ...    # min: 1, max: 8192
-      ],                           # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PreviousProtocolsList => {
           'MyPreviousListVersion' => [
             'MyProtocol', ...                      # min: 1, max: 20
-          ],                                       # key: min: 1, max: 2
+          ],    # key: min: 1, max: 2
         },    # OPTIONAL
       },
       TagList => [
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -26,9 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # ListVerifiedEmailAddresses
-    # The following example lists all email addresses that have been submitted
-    # for verification with Amazon SES:
+  # ListVerifiedEmailAddresses
+  # The following example lists all email addresses that have been submitted for
+  # verification with Amazon SES:
     my $ListVerifiedEmailAddressesResponse =
       $email->ListVerifiedEmailAddresses();
 

@@ -45,15 +45,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters => {
         Channels => [
           'VOICE', ...          # values: VOICE, CHAT, TASK
-        ],                      # max: 1; OPTIONAL
+        ],    # max: 1; OPTIONAL
         Queues => [ 'MyQueueId', ... ],    # min: 1, max: 100; OPTIONAL
       },
       InstanceId => 'MyInstanceId',
       Groupings  => [
         'QUEUE', ...                       # values: QUEUE, CHANNEL
-      ],                                   # OPTIONAL
-      MaxResults => 1,                     # OPTIONAL
-      NextToken  => 'MyNextToken',         # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                # OPTIONAL
+      NextToken  => 'MyNextToken',    # OPTIONAL
     );
 
     # Results:

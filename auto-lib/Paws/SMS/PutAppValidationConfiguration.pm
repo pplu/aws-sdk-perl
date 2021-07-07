@@ -34,14 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AppId                       => 'MyAppIdWithValidation',
       AppValidationConfigurations => [
         {
-          AppValidationStrategy => 'SSM',    # values: SSM; OPTIONAL
+          AppValidationStrategy => 'SSM',           # values: SSM; OPTIONAL
           Name => 'MyNonEmptyStringWithMaxLen255',  # min: 1, max: 255; OPTIONAL
           SsmValidationParameters => {
             Command => 'MyCommand',    # min: 1, max: 64000; OPTIONAL
             ExecutionTimeoutSeconds => 1,    # min: 60, max: 28800; OPTIONAL
-            InstanceId         => 'MyInstanceId',    # OPTIONAL
-            OutputS3BucketName => 'MyBucketName',    # OPTIONAL
-            ScriptType         => 'SHELL_SCRIPT'
+            InstanceId              => 'MyInstanceId',    # OPTIONAL
+            OutputS3BucketName      => 'MyBucketName',    # OPTIONAL
+            ScriptType              => 'SHELL_SCRIPT'
             ,    # values: SHELL_SCRIPT, POWERSHELL_SCRIPT; OPTIONAL
             Source => {
               S3Location => {
@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ValidationId => 'MyValidationId',    # OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       ServerGroupValidationConfigurations => [
         {
           ServerGroupId                  => 'MyServerGroupId',    # OPTIONAL
@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ReplicationJobId         => 'MyReplicationJobId',    # OPTIONAL
                 ReplicationJobTerminated => 1,                       # OPTIONAL
                 ServerId                 => 'MyServerId',            # OPTIONAL
-                ServerType =>
+                ServerType               =>
                   'VIRTUAL_MACHINE',    # values: VIRTUAL_MACHINE; OPTIONAL
                 VmServer => {
                   VmManagerName => 'MyVmManagerName',    # OPTIONAL
@@ -94,10 +94,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ValidationId => 'MyValidationId',    # OPTIONAL
             },
             ...
-          ],                                       # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

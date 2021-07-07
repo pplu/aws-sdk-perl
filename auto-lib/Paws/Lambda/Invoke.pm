@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To invoke a Lambda function
-    # The following example invokes version 1 of a function named my-function
-    # with an empty event payload.
+  # To invoke a Lambda function
+  # The following example invokes version 1 of a function named my-function with
+  # an empty event payload.
     my $InvocationResponse = $lambda->Invoke(
       'FunctionName' => 'my-function',
       'Payload'      => '{}',

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To copy an AMI to another region
-    # This example copies the specified AMI from the us-east-1 region to the
-    # current region.
+# To copy an AMI to another region
+# This example copies the specified AMI from the us-east-1 region to the current
+# region.
     my $CopyImageResult = $ec2->CopyImage(
       'Description'   => '',
       'Name'          => 'My server',

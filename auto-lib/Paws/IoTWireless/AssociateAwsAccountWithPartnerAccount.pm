@@ -33,19 +33,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AssociateAwsAccountWithPartnerAccountResponse =
       $api . iotwireless->AssociateAwsAccountWithPartnerAccount(
       Sidewalk => {
-        AmazonId => 'MyAmazonId',    # max: 2048; OPTIONAL
+        AmazonId            => 'MyAmazonId',    # max: 2048; OPTIONAL
         AppServerPrivateKey =>
-          'MyAppServerPrivateKey',    # min: 1, max: 4096; OPTIONAL
+          'MyAppServerPrivateKey',              # min: 1, max: 4096; OPTIONAL
       },
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                         # min: 1, max: 128
-          Value => 'MyTagValue',                       # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

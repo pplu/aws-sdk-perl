@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $inspector = Paws->service('Inspector');
-    # Set tags for resource
-    # Sets tags (key and value pairs) to the assessment template that is
-    # specified by the ARN of the assessment template.
+  # Set tags for resource
+  # Sets tags (key and value pairs) to the assessment template that is specified
+  # by the ARN of the assessment template.
     $inspector->SetTagsForResource(
       'ResourceArn' =>
 'arn:aws:inspector:us-west-2:123456789012:target/0-nvgVhaxX/template/0-7sbz2Kz0',

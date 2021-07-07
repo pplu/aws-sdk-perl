@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeConnectorProfilesResponse = $appflow->DescribeConnectorProfiles(
       ConnectorProfileNames => [
         'MyConnectorProfileName', ...    # max: 256
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       ConnectorType => 'Salesforce',     # OPTIONAL
       MaxResults    => 1,                # OPTIONAL
       NextToken     => 'MyNextToken',    # OPTIONAL

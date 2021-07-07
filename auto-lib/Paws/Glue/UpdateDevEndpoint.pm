@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExtraJarsS3Path       => 'MyGenericString',
         ExtraPythonLibsS3Path => 'MyGenericString',
       },                                                              # OPTIONAL
-      DeleteArguments  => [ 'MyGenericString', ... ],                 # OPTIONAL
-      DeletePublicKeys => [ 'MyGenericString', ... ],                 # OPTIONAL
+      DeleteArguments    => [ 'MyGenericString', ... ],               # OPTIONAL
+      DeletePublicKeys   => [ 'MyGenericString', ... ],               # OPTIONAL
       PublicKey          => 'MyGenericString',                        # OPTIONAL
       UpdateEtlLibraries => 1,                                        # OPTIONAL
     );

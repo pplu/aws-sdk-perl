@@ -30,8 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $elasticfilesystem = Paws->service('EFS');
 # To modify the security groups associated with a mount target for a file system
-# This operation modifies the security groups associated with a mount target
-# for a file system.
+# This operation modifies the security groups associated with a mount target for
+# a file system.
     $elasticfilesystem->ModifyMountTargetSecurityGroups(
       'MountTargetId'  => 'fsmt-12340abc',
       'SecurityGroups' => ['sg-abcd1234']

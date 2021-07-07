@@ -34,11 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ivs = Paws->service('IVS');
     my $CreateChannelResponse = $ivs->CreateChannel(
-      Authorized  => 1,                  # OPTIONAL
-      LatencyMode => 'NORMAL',           # OPTIONAL
-      Name        => 'MyChannelName',    # OPTIONAL
+      Authorized                => 1,                  # OPTIONAL
+      LatencyMode               => 'NORMAL',           # OPTIONAL
+      Name                      => 'MyChannelName',    # OPTIONAL
       RecordingConfigurationArn =>
-        'MyChannelRecordingConfigurationArn',    # OPTIONAL
+        'MyChannelRecordingConfigurationArn',          # OPTIONAL
       Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL

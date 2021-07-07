@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value         => 'MyString',    # OPTIONAL
             },
             ...
-          ],                                  # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           HeaderParameters => [
             {
               IsValueSecret => 1,                  # OPTIONAL
@@ -58,7 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value         => 'MyHeaderValue',    # max: 512; OPTIONAL
             },
             ...
-          ],                                       # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
           QueryStringParameters => [
             {
               IsValueSecret => 1,                       # OPTIONAL
@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value         => 'MyQueryStringValue',    # max: 512; OPTIONAL
             },
             ...
-          ],                                            # max: 100; OPTIONAL
+          ],    # max: 100; OPTIONAL
         },    # OPTIONAL
         OAuthParameters => {
           AuthorizationEndpoint => 'MyHttpsEndpoint',    # min: 1, max: 2048
@@ -84,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value         => 'MyString',    # OPTIONAL
               },
               ...
-            ],                                  # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
             HeaderParameters => [
               {
                 IsValueSecret => 1,                  # OPTIONAL
@@ -92,7 +92,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value         => 'MyHeaderValue',    # max: 512; OPTIONAL
               },
               ...
-            ],                                       # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
             QueryStringParameters => [
               {
                 IsValueSecret => 1,                       # OPTIONAL
@@ -100,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Value         => 'MyQueryStringValue',    # max: 512; OPTIONAL
               },
               ...
-            ],                                            # max: 100; OPTIONAL
+            ],    # max: 100; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

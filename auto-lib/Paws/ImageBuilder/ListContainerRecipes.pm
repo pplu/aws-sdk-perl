@@ -38,10 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyFilterValue', ... ],    # min: 1, max: 10; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyNonEmptyString',          # OPTIONAL
-      Owner      => 'Self',                      # OPTIONAL
+      ],    # OPTIONAL
+      MaxResults => 1,                     # OPTIONAL
+      NextToken  => 'MyNonEmptyString',    # OPTIONAL
+      Owner      => 'Self',                # OPTIONAL
     );
 
     # Results:

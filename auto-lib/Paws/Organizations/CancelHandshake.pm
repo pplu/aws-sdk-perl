@@ -27,10 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To cancel a handshake sent to a member account
-    # Bill previously sent an invitation to Susan's account to join his
-    # organization. He changes his mind and decides to cancel the invitation
-    # before Susan accepts it. The following example shows Bill's cancellation:
+ # To cancel a handshake sent to a member account
+ # Bill previously sent an invitation to Susan's account to join his
+ # organization. He changes his mind and decides to cancel the invitation before
+ # Susan accepts it. The following example shows Bill's cancellation:
 
     my $CancelHandshakeResponse = $organizations->CancelHandshake(
       'HandshakeId' => 'h-examplehandshakeid111' );

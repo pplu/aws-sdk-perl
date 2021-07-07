@@ -42,8 +42,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description                   => 'MyLaunchProfileDescription',  # OPTIONAL
       LaunchProfileProtocolVersions => [
         'MyLaunchProfileProtocolVersion', ...                         # max: 10
-      ],                                                              # OPTIONAL
-      Name                => 'MyLaunchProfileName',                   # OPTIONAL
+      ],    # OPTIONAL
+      Name                => 'MyLaunchProfileName',    # OPTIONAL
       StreamConfiguration => {
         ClipboardMode    => 'ENABLED',    # values: ENABLED, DISABLED
         Ec2InstanceTypes => [
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],    # min: 1, max: 30
         StreamingImageIds => [
           'MyStreamingImageId', ...    # max: 22
-        ],                             # max: 20
+        ],    # max: 20
         MaxSessionLengthInMinutes => 1,    # min: 1, max: 690; OPTIONAL
       },    # OPTIONAL
       StudioComponentIds => [ 'My__string', ... ],    # OPTIONAL

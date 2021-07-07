@@ -51,29 +51,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       UserContextPolicy       => 'ATTRIBUTE_FILTER',    # OPTIONAL
       UserTokenConfigurations => [
         {
           JsonTokenTypeConfiguration => {
-            GroupAttributeField    => 'MyString',       # min: 1, max: 2048
-            UserNameAttributeField => 'MyString',       # min: 1, max: 2048
+            GroupAttributeField    => 'MyString',    # min: 1, max: 2048
+            UserNameAttributeField => 'MyString',    # min: 1, max: 2048
 
           },    # OPTIONAL
           JwtTokenTypeConfiguration => {
-            KeyLocation => 'URL',             # values: URL, SECRET_MANAGER
-            ClaimRegex  => 'MyClaimRegex',    # min: 1, max: 100; OPTIONAL
+            KeyLocation         => 'URL',          # values: URL, SECRET_MANAGER
+            ClaimRegex          => 'MyClaimRegex', # min: 1, max: 100; OPTIONAL
             GroupAttributeField =>
-              'MyGroupAttributeField',        # min: 1, max: 100; OPTIONAL
-            Issuer           => 'MyIssuer',   # min: 1, max: 65; OPTIONAL
-            SecretManagerArn => 'MyRoleArn',  # min: 1, max: 1284
-            URL              => 'MyUrl',      # min: 1, max: 2048; OPTIONAL
+              'MyGroupAttributeField',             # min: 1, max: 100; OPTIONAL
+            Issuer                 => 'MyIssuer',  # min: 1, max: 65; OPTIONAL
+            SecretManagerArn       => 'MyRoleArn', # min: 1, max: 1284
+            URL                    => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
             UserNameAttributeField =>
-              'MyUserNameAttributeField',     # min: 1, max: 100; OPTIONAL
+              'MyUserNameAttributeField',          # min: 1, max: 100; OPTIONAL
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

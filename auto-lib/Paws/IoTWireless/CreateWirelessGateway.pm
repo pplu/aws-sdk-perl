@@ -38,24 +38,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         GatewayEui     => 'MyGatewayEui',    # OPTIONAL
         JoinEuiFilters => [
           [ 'MyJoinEui', ... ], ...          # min: 2, max: 2
-        ],                                   # max: 3; OPTIONAL
-        NetIdFilters => [ 'MyNetId', ... ],  # max: 10; OPTIONAL
-        RfRegion     => 'MyRfRegion',        # max: 64; OPTIONAL
+        ],    # max: 3; OPTIONAL
+        NetIdFilters => [ 'MyNetId', ... ],    # max: 10; OPTIONAL
+        RfRegion     => 'MyRfRegion',          # max: 64; OPTIONAL
         SubBands     => [
-          1, ...                             # min: 1, max: 8
-        ],                                   # max: 8; OPTIONAL
+          1, ...                               # min: 1, max: 8
+        ],    # max: 8; OPTIONAL
       },
       ClientRequestToken => 'MyClientRequestToken',     # OPTIONAL
       Description        => 'MyDescription',            # OPTIONAL
       Name               => 'MyWirelessGatewayName',    # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                          # min: 1, max: 128
-          Value => 'MyTagValue',                        # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                                # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

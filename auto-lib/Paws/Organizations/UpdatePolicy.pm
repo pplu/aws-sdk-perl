@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To update the details of a policy
-    # The following example shows how to rename a policy and give it a new
-    # description and new content. The output confirms the new name and
-    # description text:/n/n
+ # To update the details of a policy
+ # The following example shows how to rename a policy and give it a new
+ # description and new content. The output confirms the new name and description
+ # text:/n/n
     my $UpdatePolicyResponse = $organizations->UpdatePolicy(
       'Description' => 'This description replaces the original.',
       'Name'        => 'Renamed-Policy',
@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Policy = $UpdatePolicyResponse->Policy;
 
-    # Returns a L<Paws::Organizations::UpdatePolicyResponse> object.
-    # To update the content of a policy
-    # The following example shows how to replace the JSON text of the SCP from
-    # the preceding example with a new JSON policy text string that allows S3
-    # actions instead of EC2 actions:/n/n
+  # Returns a L<Paws::Organizations::UpdatePolicyResponse> object.
+  # To update the content of a policy
+  # The following example shows how to replace the JSON text of the SCP from the
+  # preceding example with a new JSON policy text string that allows S3 actions
+  # instead of EC2 actions:/n/n
     my $UpdatePolicyResponse = $organizations->UpdatePolicy(
       'Content' =>
 '{ \"Version\": \"2012-10-17\", \"Statement\": {\"Effect\": \"Allow\", \"Action\": \"s3:*\", \"Resource\": \"*\" } }',

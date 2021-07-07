@@ -55,14 +55,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # max: 10; OPTIONAL
           },
           ...
-        ],        # max: 20; OPTIONAL
+        ],    # max: 20; OPTIONAL
         DialogAction => {
           Type => 'Close'
           ,   # values: Close, ConfirmIntent, Delegate, ElicitIntent, ElicitSlot
           SlotToElicit => 'MyNonEmptyString',    # min: 1; OPTIONAL
         },    # OPTIONAL
         Intent => {
-          Name => 'MyNonEmptyString',    # min: 1; OPTIONAL
+          Name              => 'MyNonEmptyString',    # min: 1; OPTIONAL
           ConfirmationState =>
             'Confirmed',    # values: Confirmed, Denied, None; OPTIONAL
           Slots => {
@@ -72,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 OriginalValue    => 'MyNonEmptyString',    # min: 1; OPTIONAL
                 ResolvedValues   => [
                   'MyNonEmptyString', ...                  # min: 1; OPTIONAL
-                ],                                         # OPTIONAL
+                ],    # OPTIONAL
               },    # OPTIONAL
             },    # key: min: 1; OPTIONAL
           },    # OPTIONAL
@@ -93,18 +93,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Title   => 'MyAttachmentTitle',    # min: 1, max: 250
             Buttons => [
               {
-                Text  => 'MyButtonText',       # min: 1, max: 50
-                Value => 'MyButtonValue',      # min: 1, max: 50
+                Text  => 'MyButtonText',     # min: 1, max: 50
+                Value => 'MyButtonValue',    # min: 1, max: 50
 
               },
               ...
-            ],                                 # max: 5; OPTIONAL
-            ImageUrl => 'MyAttachmentUrl',     # min: 1, max: 250; OPTIONAL
-            Subtitle => 'MyAttachmentTitle',   # min: 1, max: 250
+            ],    # max: 5; OPTIONAL
+            ImageUrl => 'MyAttachmentUrl',      # min: 1, max: 250; OPTIONAL
+            Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       RequestAttributes => {
         'MyNonEmptyString' => 'MyString',    # key: min: 1; OPTIONAL
       },    # OPTIONAL

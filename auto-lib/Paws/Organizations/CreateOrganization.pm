@@ -27,23 +27,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To create a new organization with all features enabled
-    # Bill wants to create an organization using credentials from account
-    # 111111111111. The following example shows that the account becomes the
-    # master account in the new organization. Because he does not specify a
-    # feature set, the new organization defaults to all features enabled and
-    # service control policies enabled on the root:
+ # To create a new organization with all features enabled
+ # Bill wants to create an organization using credentials from account
+ # 111111111111. The following example shows that the account becomes the master
+ # account in the new organization. Because he does not specify a feature set,
+ # the new organization defaults to all features enabled and service control
+ # policies enabled on the root:
 
     my $CreateOrganizationResponse = $organizations->CreateOrganization();
 
     # Results:
     my $Organization = $CreateOrganizationResponse->Organization;
 
-    # Returns a L<Paws::Organizations::CreateOrganizationResponse> object.
-    # To create a new organization with consolidated billing features only
-    # In the following example, Bill creates an organization using credentials
-    # from account 111111111111, and configures the organization to support only
-    # the consolidated billing feature set:
+ # Returns a L<Paws::Organizations::CreateOrganizationResponse> object.
+ # To create a new organization with consolidated billing features only
+ # In the following example, Bill creates an organization using credentials from
+ # account 111111111111, and configures the organization to support only the
+ # consolidated billing feature set:
 
     my $CreateOrganizationResponse = $organizations->CreateOrganization(
       'FeatureSet' => 'CONSOLIDATED_BILLING' );

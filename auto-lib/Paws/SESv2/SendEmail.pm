@@ -48,16 +48,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Html => {
               Data    => 'MyMessageData',
               Charset => 'MyCharset',       # OPTIONAL
-            },
+            },    # OPTIONAL
             Text => {
               Data    => 'MyMessageData',
               Charset => 'MyCharset',       # OPTIONAL
-            },
+            },    # OPTIONAL
           },
           Subject => {
             Data    => 'MyMessageData',
-            Charset => 'MyCharset',         # OPTIONAL
-          },
+            Charset => 'MyCharset',       # OPTIONAL
+          },    # OPTIONAL
 
         },    # OPTIONAL
         Template => {
@@ -80,14 +80,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      FeedbackForwardingEmailAddress => 'MyEmailAddress',    # OPTIONAL
+      FeedbackForwardingEmailAddress            => 'MyEmailAddress',  # OPTIONAL
       FeedbackForwardingEmailAddressIdentityArn =>
-        'MyAmazonResourceName',                              # OPTIONAL
-      FromEmailAddress            => 'MyEmailAddress',       # OPTIONAL
-      FromEmailAddressIdentityArn => 'MyAmazonResourceName', # OPTIONAL
+        'MyAmazonResourceName',                                       # OPTIONAL
+      FromEmailAddress            => 'MyEmailAddress',                # OPTIONAL
+      FromEmailAddressIdentityArn => 'MyAmazonResourceName',          # OPTIONAL
       ListManagementOptions       => {
         ContactListName => 'MyContactListName',
-        TopicName       => 'MyTopicName',                    # OPTIONAL
+        TopicName       => 'MyTopicName',                             # OPTIONAL
       },    # OPTIONAL
       ReplyToAddresses => [ 'MyEmailAddress', ... ],    # OPTIONAL
     );

@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $PutVoiceConnectorTerminationResponse =
       $chime->PutVoiceConnectorTermination(
       Termination => {
-        CallingRegions  => [ 'MyCallingRegion', ... ],    # OPTIONAL
-        CidrAllowedList => [ 'MyString',        ... ],    # OPTIONAL
-        CpsLimit           => 1,                          # min: 1; OPTIONAL
-        DefaultPhoneNumber => 'MyE164PhoneNumber',        # OPTIONAL
-        Disabled           => 1,                          # OPTIONAL
+        CallingRegions     => [ 'MyCallingRegion', ... ],    # OPTIONAL
+        CidrAllowedList    => [ 'MyString',        ... ],    # OPTIONAL
+        CpsLimit           => 1,                             # min: 1; OPTIONAL
+        DefaultPhoneNumber => 'MyE164PhoneNumber',           # OPTIONAL
+        Disabled           => 1,                             # OPTIONAL
       },
       VoiceConnectorId => 'MyNonEmptyString',
 

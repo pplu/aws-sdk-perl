@@ -40,8 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HttpMethod          => 'MyString',
       ResourceId          => 'MyString',
       RestApiId           => 'MyString',
-      Body                => 'MyString',                              # OPTIONAL
-      ClientCertificateId => 'MyString',                              # OPTIONAL
+      Body                => 'MyString',                       # OPTIONAL
+      ClientCertificateId => 'MyString',                       # OPTIONAL
       Headers             => { 'MyString' => 'MyString', },           # OPTIONAL
       MultiValueHeaders   => { 'MyString' => [ 'MyString', ... ], },  # OPTIONAL
       PathWithQueryString => 'MyString',                              # OPTIONAL

@@ -44,8 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RangesOnIndexedValues => [
         {
           AttributeKey => {
-            FacetName => 'MyFacetName',             # min: 1, max: 64
-            Name      => 'MyAttributeName',         # min: 1, max: 230
+            FacetName => 'MyFacetName',        # min: 1, max: 64
+            Name      => 'MyAttributeName',    # min: 1, max: 230
             SchemaArn => 'MyArn',
 
           },    # OPTIONAL
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

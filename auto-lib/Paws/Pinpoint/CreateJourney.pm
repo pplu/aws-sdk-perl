@@ -158,7 +158,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     },    # OPTIONAL
                   },
                   ...
-                ],        # OPTIONAL
+                ],    # OPTIONAL
                 Operator => 'ALL',    # values: ALL, ANY; OPTIONAL
               },    # OPTIONAL
               EvaluationWaitTime => {
@@ -293,12 +293,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   NextActivity => 'My__string',
                 },
                 ...
-              ],          # OPTIONAL
+              ],    # OPTIONAL
               DefaultActivity    => 'My__string',
               EvaluationWaitTime => {
                 WaitFor   => 'My__string',
                 WaitUntil => 'My__string',
-              },          # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
             PUSH => {
               MessageConfig   => { TimeToLive => 'My__string', },    # OPTIONAL
@@ -371,7 +371,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },
                 },    # OPTIONAL
                 EventType => {
-                  Values => [ 'My__string', ... ],
+                  Values        => [ 'My__string', ... ],
                   DimensionType =>
                     'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
                 },    # OPTIONAL

@@ -40,13 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           SourceDescription => 'MySourceDescription',    # max: 1000; OPTIONAL
           SourceFrequency => 'DAILY', # values: DAILY, WEEKLY, MONTHLY; OPTIONAL
-          SourceId      => 'MyUUID',  # min: 36, max: 36
-          SourceKeyword => {
+          SourceId        => 'MyUUID',    # min: 36, max: 36
+          SourceKeyword   => {
             KeywordInputType =>
-              'SELECT_FROM_LIST',     # values: SELECT_FROM_LIST; OPTIONAL
+              'SELECT_FROM_LIST',         # values: SELECT_FROM_LIST; OPTIONAL
             KeywordValue => 'MyKeywordValue',    # min: 1, max: 100; OPTIONAL
           },    # OPTIONAL
-          SourceName => 'MySourceName',    # min: 1, max: 100; OPTIONAL
+          SourceName        => 'MySourceName',    # min: 1, max: 100; OPTIONAL
           SourceSetUpOption => 'System_Controls_Mapping'
           , # values: System_Controls_Mapping, Procedural_Controls_Mapping; OPTIONAL
           SourceType => 'AWS_Cloudtrail'

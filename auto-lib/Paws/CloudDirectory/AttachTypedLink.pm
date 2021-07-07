@@ -49,10 +49,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       DirectoryArn          => 'MyArn',
       SourceObjectReference => {
-        Selector => 'MySelectorObjectReference',            # OPTIONAL
+        Selector => 'MySelectorObjectReference',    # OPTIONAL
       },
       TargetObjectReference => {
-        Selector => 'MySelectorObjectReference',            # OPTIONAL
+        Selector => 'MySelectorObjectReference',    # OPTIONAL
       },
       TypedLinkFacet => {
         SchemaArn     => 'MyArn',

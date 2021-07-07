@@ -35,8 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ExternalUserId => 'MyExternalUserIdType',    # min: 2, max: 64
           Tags           => [
             {
-              Key   => 'MyTagKey',                     # min: 1, max: 128
-              Value => 'MyTagValue',                   # min: 1, max: 256
+              Key   => 'MyTagKey',      # min: 1, max: 128
+              Value => 'MyTagValue',    # min: 1, max: 256
 
             },
             ...

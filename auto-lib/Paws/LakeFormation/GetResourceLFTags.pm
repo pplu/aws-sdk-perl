@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TagKey    => 'MyNameString',    # min: 1, max: 255
           TagValues => [
             'MyLFTagValue', ...           # max: 256
-          ],                              # min: 1, max: 50
+          ],    # min: 1, max: 50
           CatalogId => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
         },    # OPTIONAL
         LFTagPolicy => {
@@ -55,11 +55,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TagKey    => 'MyLFTagKey',    # min: 1, max: 128
               TagValues => [
                 'MyLFTagValue', ...         # max: 256
-              ],                            # min: 1, max: 50
+              ],    # min: 1, max: 50
 
             },
             ...
-          ],                                # min: 1, max: 5
+          ],    # min: 1, max: 5
           ResourceType => 'DATABASE',             # values: DATABASE, TABLE
           CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
         },    # OPTIONAL
@@ -77,11 +77,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
           ColumnNames  => [
             'MyNameString', ...                   # min: 1, max: 255
-          ],                                      # OPTIONAL
+          ],    # OPTIONAL
           ColumnWildcard => {
             ExcludedColumnNames => [
-              'MyNameString', ...                 # min: 1, max: 255
-            ],                                    # OPTIONAL
+              'MyNameString', ...    # min: 1, max: 255
+            ],    # OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },

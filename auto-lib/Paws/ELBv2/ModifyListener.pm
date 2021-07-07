@@ -51,10 +51,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Listeners = $ModifyListenerOutput->Listeners;
 
-    # Returns a L<Paws::ELBv2::ModifyListenerOutput> object.
-    # To change the server certificate
-    # This example changes the server certificate for the specified HTTPS
-    # listener.
+ # Returns a L<Paws::ELBv2::ModifyListenerOutput> object.
+ # To change the server certificate
+ # This example changes the server certificate for the specified HTTPS listener.
     my $ModifyListenerOutput = $elasticloadbalancing->ModifyListener(
       'Certificates' => [
 

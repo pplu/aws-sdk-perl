@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SnapshotCopyGrantName => 'MyString',    # OPTIONAL
       TagKeys               => [
         'MyString', ...                       # max: 2147483647
-      ],                                      # OPTIONAL
+      ],    # OPTIONAL
       TagValues => [
-        'MyString', ...                       # max: 2147483647
-      ],                                      # OPTIONAL
+        'MyString', ...    # max: 2147483647
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -94,16 +94,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # min: 1, max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
-      ThemeArn => 'MyArn',                     # OPTIONAL
+      ],    # OPTIONAL
+      ThemeArn => 'MyArn',    # OPTIONAL
     );
 
     # Results:

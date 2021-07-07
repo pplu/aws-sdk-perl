@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-   # To list information about DB log files
-   # This example lists information for the specified log file for the specified
-   # DB instance.
+# To list information about DB log files
+# This example lists information for the specified log file for the specified DB
+# instance.
     my $DownloadDBLogFilePortionDetails = $rds->DownloadDBLogFilePortion(
       'DBInstanceIdentifier' => 'mymysqlinstance',
       'LogFileName'          => 'mysqlUpgrade'

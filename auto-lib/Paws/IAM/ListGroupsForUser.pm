@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To list the groups that an IAM user belongs to
-    # The following command displays the groups that the IAM user named Bob
-    # belongs to.
+ # To list the groups that an IAM user belongs to
+ # The following command displays the groups that the IAM user named Bob belongs
+ # to.
     my $ListGroupsForUserResponse =
       $iam->ListGroupsForUser( 'UserName' => 'Bob' );
 

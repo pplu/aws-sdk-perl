@@ -55,24 +55,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ActionsEnabled     => 1,                                 # OPTIONAL
       AlarmActions       => [
         'MyResourceName', ...    # min: 1, max: 1024
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       AlarmDescription  => 'MyAlarmDescription',    # OPTIONAL
       DatapointsToAlarm => 1,                       # OPTIONAL
       Dimensions        => [
         {
-          Name  => 'MyDimensionName',               # min: 1, max: 255
-          Value => 'MyDimensionValue',              # min: 1, max: 255
+          Name  => 'MyDimensionName',     # min: 1, max: 255
+          Value => 'MyDimensionValue',    # min: 1, max: 255
 
         },
         ...
-      ],                                            # OPTIONAL
+      ],    # OPTIONAL
       EvaluateLowSampleCountPercentile =>
-        'MyEvaluateLowSampleCountPercentile',       # OPTIONAL
+        'MyEvaluateLowSampleCountPercentile',    # OPTIONAL
       ExtendedStatistic       => 'MyExtendedStatistic',    # OPTIONAL
       InsufficientDataActions => [
         'MyResourceName', ...                              # min: 1, max: 1024
-      ],                                                   # OPTIONAL
-      MetricName => 'MyMetricName',                        # OPTIONAL
+      ],    # OPTIONAL
+      MetricName => 'MyMetricName',    # OPTIONAL
       Metrics    => [
         {
           Id         => 'MyMetricId',            # min: 1, max: 255
@@ -87,34 +87,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },
                 ...
-              ],                                  # max: 10
-              MetricName => 'MyMetricName',       # min: 1, max: 255
-              Namespace  => 'MyNamespace',        # min: 1, max: 255; OPTIONAL
+              ],    # max: 10
+              MetricName => 'MyMetricName',    # min: 1, max: 255
+              Namespace  => 'MyNamespace',     # min: 1, max: 255; OPTIONAL
             },
-            Period => 1,                          # min: 1; OPTIONAL
+            Period => 1,                       # min: 1
             Stat   => 'MyStat',
             Unit   => 'Seconds'
             , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
           },    # OPTIONAL
-          Period     => 1,    # min: 1; OPTIONAL
+          Period     => 1,    # min: 1
           ReturnData => 1,    # OPTIONAL
         },
         ...
-      ],                      # OPTIONAL
+      ],    # OPTIONAL
       Namespace => 'MyNamespace',    # OPTIONAL
       OKActions => [
         'MyResourceName', ...        # min: 1, max: 1024
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       Period    => 1,                # OPTIONAL
       Statistic => 'SampleCount',    # OPTIONAL
       Tags      => [
         {
-          Key   => 'MyTagKey',       # min: 1, max: 128
-          Value => 'MyTagValue',     # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                             # OPTIONAL
+      ],    # OPTIONAL
       Threshold         => 1,                       # OPTIONAL
       ThresholdMetricId => 'MyMetricId',            # OPTIONAL
       TreatMissingData  => 'MyTreatMissingData',    # OPTIONAL

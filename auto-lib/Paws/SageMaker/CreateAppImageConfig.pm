@@ -38,11 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DisplayName => 'MyKernelDisplayName',    # max: 1024; OPTIONAL
           },
           ...
-        ],                                           # min: 1, max: 1
+        ],    # min: 1, max: 1
         FileSystemConfig => {
-          DefaultGid => 1,                           # max: 65535; OPTIONAL
-          DefaultUid => 1,                           # max: 65535; OPTIONAL
-          MountPath  => 'MyMountPath',               # max: 1024; OPTIONAL
+          DefaultGid => 1,                # max: 65535; OPTIONAL
+          DefaultUid => 1,                # max: 65535; OPTIONAL
+          MountPath  => 'MyMountPath',    # max: 1024; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       Tags => [
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -64,12 +64,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServerSideKmsKeyId => 'MyNameOrArn',     # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       TrainingDataEndTime   => '1970-01-01T01:00:00',    # OPTIONAL
       TrainingDataStartTime => '1970-01-01T01:00:00',    # OPTIONAL
     );

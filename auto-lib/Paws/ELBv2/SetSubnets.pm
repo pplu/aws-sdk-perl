@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELBv2');
-    # To enable Availability Zones for a load balancer
-    # This example enables the Availability Zones for the specified subnets for
-    # the specified load balancer.
+ # To enable Availability Zones for a load balancer
+ # This example enables the Availability Zones for the specified subnets for the
+ # specified load balancer.
     my $SetSubnetsOutput = $elasticloadbalancing->SetSubnets(
       'LoadBalancerArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:loadbalancer/app/my-load-balancer/50dc6c495c0c9188',

@@ -42,11 +42,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'My__string' => {
             Eq           => [ 'My__string', ... ],    # OPTIONAL
             EqExactMatch => [ 'My__string', ... ],    # OPTIONAL
-            Gt  => 1,                                 # OPTIONAL
-            Gte => 1,                                 # OPTIONAL
-            Lt  => 1,                                 # OPTIONAL
-            Lte => 1,                                 # OPTIONAL
-            Neq => [ 'My__string', ... ],             # OPTIONAL
+            Gt           => 1,                        # OPTIONAL
+            Gte          => 1,                        # OPTIONAL
+            Lt           => 1,                        # OPTIONAL
+            Lte          => 1,                        # OPTIONAL
+            Neq          => [ 'My__string', ... ],    # OPTIONAL
           },
         },    # OPTIONAL
       },    # OPTIONAL

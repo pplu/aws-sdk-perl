@@ -63,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       TaskInvocationParameters => {
         Automation => {
           DocumentVersion => 'MyDocumentVersion',    # OPTIONAL
@@ -117,7 +117,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyMaintenanceWindowTaskParameterName' => {
           Values => [
             'MyMaintenanceWindowTaskParameterValue', ...    # min: 1, max: 255
-          ],                                                # OPTIONAL
+          ],    # OPTIONAL
         },    # key: min: 1, max: 255
       },    # OPTIONAL
       );

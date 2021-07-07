@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DryRun                => 1,                           # OPTIONAL
       FilterInArns          => [
         'MyResourceArn', ...                                # min: 1, max: 1283
-      ],                                                    # OPTIONAL
+      ],    # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
@@ -51,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To detach a volume from an instance
-    # This example detaches the volume (``vol-049df61146c4d7901``) from the
-    # instance it is attached to.
+# To detach a volume from an instance
+# This example detaches the volume (``vol-049df61146c4d7901``) from the instance
+# it is attached to.
     my $VolumeAttachment =
       $ec2->DetachVolume( 'VolumeId' => 'vol-1234567890abcdef0' );
 

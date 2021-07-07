@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # The following command adds a policy named AllPerms to the IAM group named
     # Admins.
     $iam->PutGroupPolicy(
-      'GroupName' => 'Admins',
+      'GroupName'      => 'Admins',
       'PolicyDocument' =>
 '{"Version":"2012-10-17","Statement":{"Effect":"Allow","Action":"*","Resource":"*"}}',
       'PolicyName' => 'AllPerms'

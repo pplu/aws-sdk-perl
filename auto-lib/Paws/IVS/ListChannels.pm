@@ -32,11 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ivs = Paws->service('IVS');
     my $ListChannelsResponse = $ivs->ListChannels(
-      FilterByName => 'MyChannelName',    # OPTIONAL
+      FilterByName                      => 'MyChannelName',    # OPTIONAL
       FilterByRecordingConfigurationArn =>
-        'MyChannelRecordingConfigurationArn',    # OPTIONAL
-      MaxResults => 1,                           # OPTIONAL
-      NextToken  => 'MyPaginationToken',         # OPTIONAL
+        'MyChannelRecordingConfigurationArn',                  # OPTIONAL
+      MaxResults => 1,                                         # OPTIONAL
+      NextToken  => 'MyPaginationToken',                       # OPTIONAL
     );
 
     # Results:

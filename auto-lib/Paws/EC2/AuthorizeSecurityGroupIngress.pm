@@ -36,9 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To add a rule that allows inbound SSH traffic from an IPv4 address range
-    # This example enables inbound traffic on TCP port 22 (SSH). The rule
-    # includes a description to help you identify it later.
+# To add a rule that allows inbound SSH traffic from an IPv4 address range
+# This example enables inbound traffic on TCP port 22 (SSH). The rule includes a
+# description to help you identify it later.
     $ec2->AuthorizeSecurityGroupIngress(
       'GroupId'       => 'sg-903004f8',
       'IpPermissions' => [
@@ -82,10 +82,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ]
     );
 
-    # To add a rule that allows inbound RDP traffic from an IPv6 address range
-    # This example adds an inbound rule that allows RDP traffic from the
-    # specified IPv6 address range. The rule includes a description to help you
-    # identify it later.
+  # To add a rule that allows inbound RDP traffic from an IPv6 address range
+  # This example adds an inbound rule that allows RDP traffic from the specified
+  # IPv6 address range. The rule includes a description to help you identify it
+  # later.
     $ec2->AuthorizeSecurityGroupIngress(
       'GroupId'       => 'sg-123abc12 ',
       'IpPermissions' => [

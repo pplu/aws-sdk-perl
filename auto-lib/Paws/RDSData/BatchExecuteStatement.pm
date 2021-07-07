@@ -48,29 +48,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => {
               ArrayValue => {
                 ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
-                BooleanValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
-                DoubleValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
-                LongValues => [
-                  1, ...                                   # OPTIONAL
-                ],                                         # OPTIONAL
-                StringValues => [ 'MyString', ... ],       # OPTIONAL
+                BooleanValues => [ 1,            ... ],    # OPTIONAL
+                DoubleValues  => [ 1,            ... ],    # OPTIONAL
+                LongValues    => [ 1,            ... ],    # OPTIONAL
+                StringValues  => [ 'MyString',   ... ],    # OPTIONAL
               },    # OPTIONAL
               BlobValue    => 'BlobBlob',    # OPTIONAL
-              BooleanValue => 1,             # OPTIONAL
-              DoubleValue  => 1,             # OPTIONAL
-              IsNull       => 1,             # OPTIONAL
-              LongValue    => 1,             # OPTIONAL
+              BooleanValue => 1,
+              DoubleValue  => 1,
+              IsNull       => 1,
+              LongValue    => 1,
               StringValue  => 'MyString',
             },    # OPTIONAL
           },
           ...
         ],
         ...
-      ],          # OPTIONAL
+      ],    # OPTIONAL
       Schema        => 'MyDbName',    # OPTIONAL
       TransactionId => 'MyId',        # OPTIONAL
     );

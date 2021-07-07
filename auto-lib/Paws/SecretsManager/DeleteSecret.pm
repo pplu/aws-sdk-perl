@@ -29,11 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-   # To delete a secret
-   # The following example shows how to delete a secret. The secret stays in
-   # your account in a deprecated and inaccessible state until the recovery
-   # window ends. After the date and time in the DeletionDate response field has
-   # passed, you can no longer recover this secret with restore-secret.
+# To delete a secret
+# The following example shows how to delete a secret. The secret stays in your
+# account in a deprecated and inaccessible state until the recovery window ends.
+# After the date and time in the DeletionDate response field has passed, you can
+# no longer recover this secret with restore-secret.
     my $DeleteSecretResponse = $secretsmanager->DeleteSecret(
       'RecoveryWindowInDays' => 7,
       'SecretId'             => 'MyTestDatabaseSecret1'

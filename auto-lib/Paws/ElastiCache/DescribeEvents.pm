@@ -44,10 +44,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Events = $EventsMessage->Events;
     my $Marker = $EventsMessage->Marker;
 
-    # Returns a L<Paws::ElastiCache::EventsMessage> object.
-    # DescribeEvents
-    # Describes all the replication-group events from 3:00P to 5:00P on November
-    # 11, 2016.
+# Returns a L<Paws::ElastiCache::EventsMessage> object.
+# DescribeEvents
+# Describes all the replication-group events from 3:00P to 5:00P on November 11,
+# 2016.
     my $EventsMessage =
       $elasticache->DescribeEvents( 'StartTime' => '2016-12-22T15:00:00.000Z' );
 

@@ -50,11 +50,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Relevance => {
             Duration   => 'MyDuration',    # min: 1, max: 10; OPTIONAL
             Freshness  => 1,               # OPTIONAL
-            Importance => 1,               # min: 1, max: 10
-            RankOrder => 'ASCENDING',  # values: ASCENDING, DESCENDING; OPTIONAL
+            Importance => 1,               # min: 1, max: 10; OPTIONAL
+            RankOrder  => 'ASCENDING', # values: ASCENDING, DESCENDING; OPTIONAL
             ValueImportanceMap => {
               'MyValueImportanceMapKey' =>
-                1,    # key: min: 1, max: 50, value: min: 1, max: 10
+                1,    # key: min: 1, max: 50, value: min: 1, max: 10; OPTIONAL
             },    # OPTIONAL
           },    # OPTIONAL
           Search => {
@@ -65,31 +65,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Name                    => 'MyIndexName',         # OPTIONAL
       RoleArn                 => 'MyRoleArn',           # OPTIONAL
       UserContextPolicy       => 'ATTRIBUTE_FILTER',    # OPTIONAL
       UserTokenConfigurations => [
         {
           JsonTokenTypeConfiguration => {
-            GroupAttributeField    => 'MyString',       # min: 1, max: 2048
-            UserNameAttributeField => 'MyString',       # min: 1, max: 2048
+            GroupAttributeField    => 'MyString',    # min: 1, max: 2048
+            UserNameAttributeField => 'MyString',    # min: 1, max: 2048
 
           },    # OPTIONAL
           JwtTokenTypeConfiguration => {
-            KeyLocation => 'URL',             # values: URL, SECRET_MANAGER
-            ClaimRegex  => 'MyClaimRegex',    # min: 1, max: 100; OPTIONAL
+            KeyLocation         => 'URL',          # values: URL, SECRET_MANAGER
+            ClaimRegex          => 'MyClaimRegex', # min: 1, max: 100; OPTIONAL
             GroupAttributeField =>
-              'MyGroupAttributeField',        # min: 1, max: 100; OPTIONAL
-            Issuer           => 'MyIssuer',   # min: 1, max: 65; OPTIONAL
-            SecretManagerArn => 'MyRoleArn',  # min: 1, max: 1284
-            URL              => 'MyUrl',      # min: 1, max: 2048; OPTIONAL
+              'MyGroupAttributeField',             # min: 1, max: 100; OPTIONAL
+            Issuer                 => 'MyIssuer',  # min: 1, max: 65; OPTIONAL
+            SecretManagerArn       => 'MyRoleArn', # min: 1, max: 1284
+            URL                    => 'MyUrl',     # min: 1, max: 2048; OPTIONAL
             UserNameAttributeField =>
-              'MyUserNameAttributeField',     # min: 1, max: 100; OPTIONAL
+              'MyUserNameAttributeField',          # min: 1, max: 100; OPTIONAL
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

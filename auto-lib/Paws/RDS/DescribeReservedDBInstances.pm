@@ -37,10 +37,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To list information about reserved DB instances
-    # This example lists information for all reserved DB instances for the
-    # specified DB instance class, duration, product, offering type, and
-    # availability zone settings.
+# To list information about reserved DB instances
+# This example lists information for all reserved DB instances for the specified
+# DB instance class, duration, product, offering type, and availability zone
+# settings.
     my $ReservedDBInstanceMessage = $rds->DescribeReservedDBInstances(
       'DBInstanceClass'    => 'db.t2.micro',
       'Duration'           => '1y',

@@ -63,9 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    # To create an object.
-    # The following example creates an object. If the bucket is versioning
-    # enabled, S3 returns version ID in response.
+ # To create an object.
+ # The following example creates an object. If the bucket is versioning enabled,
+ # S3 returns version ID in response.
     my $PutObjectOutput = $s3->PutObject(
       'Body'   => 'filetoupload',
       'Bucket' => 'examplebucket',
@@ -94,11 +94,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ServerSideEncryption = $PutObjectOutput->ServerSideEncryption;
     my $VersionId            = $PutObjectOutput->VersionId;
 
-   # Returns a L<Paws::S3::PutObjectOutput> object.
-   # To upload an object and specify canned ACL.
-   # The following example uploads and object. The request specifies optional
-   # canned ACL (access control list) to all READ access to authenticated users.
-   # If the bucket is versioning enabled, S3 returns version ID in response.
+# Returns a L<Paws::S3::PutObjectOutput> object.
+# To upload an object and specify canned ACL.
+# The following example uploads and object. The request specifies optional
+# canned ACL (access control list) to all READ access to authenticated users. If
+# the bucket is versioning enabled, S3 returns version ID in response.
     my $PutObjectOutput = $s3->PutObject(
       'ACL'    => 'authenticated-read',
       'Body'   => 'filetoupload',
@@ -125,11 +125,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ETag      = $PutObjectOutput->ETag;
     my $VersionId = $PutObjectOutput->VersionId;
 
-    # Returns a L<Paws::S3::PutObjectOutput> object.
-    # To upload object and specify user-defined metadata
-    # The following example creates an object. The request also specifies
-    # optional metadata. If the bucket is versioning enabled, S3 returns version
-    # ID in response.
+  # Returns a L<Paws::S3::PutObjectOutput> object.
+  # To upload object and specify user-defined metadata
+  # The following example creates an object. The request also specifies optional
+  # metadata. If the bucket is versioning enabled, S3 returns version ID in
+  # response.
     my $PutObjectOutput = $s3->PutObject(
       'Body'     => 'filetoupload',
       'Bucket'   => 'examplebucket',
@@ -144,11 +144,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ETag      = $PutObjectOutput->ETag;
     my $VersionId = $PutObjectOutput->VersionId;
 
-    # Returns a L<Paws::S3::PutObjectOutput> object.
-    # To upload an object and specify optional tags
-    # The following example uploads an object. The request specifies optional
-    # object tags. The bucket is versioned, therefore S3 returns version ID of
-    # the newly created object.
+# Returns a L<Paws::S3::PutObjectOutput> object.
+# To upload an object and specify optional tags
+# The following example uploads an object. The request specifies optional object
+# tags. The bucket is versioned, therefore S3 returns version ID of the newly
+# created object.
     my $PutObjectOutput = $s3->PutObject(
       'Body'    => 'c:\HappyFace.jpg',
       'Bucket'  => 'examplebucket',
@@ -160,12 +160,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ETag      = $PutObjectOutput->ETag;
     my $VersionId = $PutObjectOutput->VersionId;
 
-   # Returns a L<Paws::S3::PutObjectOutput> object.
-   # To upload an object and specify server-side encryption and object tags
-   # The following example uploads and object. The request specifies the
-   # optional server-side encryption option. The request also specifies optional
-   # object tags. If the bucket is versioning enabled, S3 returns version ID in
-   # response.
+ # Returns a L<Paws::S3::PutObjectOutput> object.
+ # To upload an object and specify server-side encryption and object tags
+ # The following example uploads and object. The request specifies the optional
+ # server-side encryption option. The request also specifies optional object
+ # tags. If the bucket is versioning enabled, S3 returns version ID in response.
     my $PutObjectOutput = $s3->PutObject(
       'Body'                 => 'filetoupload',
       'Bucket'               => 'examplebucket',

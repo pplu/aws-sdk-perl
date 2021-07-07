@@ -40,16 +40,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       AgentArns => [
         'MyAgentArn', ...                         # max: 128
-      ],                                          # OPTIONAL
-      S3StorageClass => 'STANDARD',               # OPTIONAL
-      Subdirectory   => 'MyS3Subdirectory',       # OPTIONAL
+      ],    # OPTIONAL
+      S3StorageClass => 'STANDARD',            # OPTIONAL
+      Subdirectory   => 'MyS3Subdirectory',    # OPTIONAL
       Tags           => [
         {
-          Key   => 'MyTagKey',                    # min: 1, max: 256
-          Value => 'MyTagValue',                  # min: 1, max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 256
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                          # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $geo = Paws->service('LocationService');
     my $SearchPlaceIndexForTextResponse = $geo->SearchPlaceIndexForText(
-      IndexName => 'MyResourceName',
-      Text      => 'MySyntheticSearchPlaceIndexForTextRequestString',
-      BiasPosition    => [ 1, ... ],                  # OPTIONAL
-      FilterBBox      => [ 1, ... ],                  # OPTIONAL
+      IndexName       => 'MyResourceName',
+      Text            => 'MySyntheticSearchPlaceIndexForTextRequestString',
+      BiasPosition    => [ 1,               ... ],    # OPTIONAL
+      FilterBBox      => [ 1,               ... ],    # OPTIONAL
       FilterCountries => [ 'MyCountryCode', ... ],    # OPTIONAL
       MaxResults      => 1,                           # OPTIONAL
     );

@@ -42,15 +42,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ContentType           => 'MyNonEmptyString',    # min: 1
           AudioChunk            => 'BlobAudioChunk',      # OPTIONAL
           ClientTimestampMillis => 1,                     # OPTIONAL
-          EventId => 'MyEventId',    # min: 2, max: 100; OPTIONAL
+          EventId               => 'MyEventId',    # min: 2, max: 100; OPTIONAL
         },    # OPTIONAL
         ConfigurationEvent => {
           ResponseContentType   => 'MyNonEmptyString',    # min: 1
           ClientTimestampMillis => 1,                     # OPTIONAL
           DisablePlayback       => 1,                     # OPTIONAL
-          EventId           => 'MyEventId',    # min: 2, max: 100; OPTIONAL
-          RequestAttributes => {
-            'MyNonEmptyString' => 'MyString',    # key: min: 1
+          EventId               => 'MyEventId',    # min: 2, max: 100; OPTIONAL
+          RequestAttributes     => {
+            'MyNonEmptyString' => 'MyString',      # key: min: 1
           },    # OPTIONAL
           SessionState => {
             ActiveContexts => [
@@ -67,14 +67,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # max: 10; OPTIONAL
               },
               ...
-            ],        # max: 20; OPTIONAL
+            ],    # max: 20; OPTIONAL
             DialogAction => {
               Type => 'Close'
               , # values: Close, ConfirmIntent, Delegate, ElicitIntent, ElicitSlot
               SlotToElicit => 'MyNonEmptyString',    # min: 1
             },    # OPTIONAL
             Intent => {
-              Name => 'MyNonEmptyString',    # min: 1
+              Name              => 'MyNonEmptyString',    # min: 1
               ConfirmationState =>
                 'Confirmed',    # values: Confirmed, Denied, None; OPTIONAL
               Slots => {
@@ -84,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     OriginalValue    => 'MyNonEmptyString',    # min: 1
                     ResolvedValues   => [
                       'MyNonEmptyString', ...                  # min: 1
-                    ],                                         # OPTIONAL
+                    ],    # OPTIONAL
                   },    # OPTIONAL
                 },    # key: min: 1
               },    # OPTIONAL
@@ -105,18 +105,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Title   => 'MyAttachmentTitle',    # min: 1, max: 250
                 Buttons => [
                   {
-                    Text  => 'MyButtonText',       # min: 1, max: 50
-                    Value => 'MyButtonValue',      # min: 1, max: 50
+                    Text  => 'MyButtonText',     # min: 1, max: 50
+                    Value => 'MyButtonValue',    # min: 1, max: 50
 
                   },
                   ...
-                ],                                 # max: 5; OPTIONAL
-                ImageUrl => 'MyAttachmentUrl',     # min: 1, max: 250; OPTIONAL
-                Subtitle => 'MyAttachmentTitle',   # min: 1, max: 250
+                ],    # max: 5; OPTIONAL
+                ImageUrl => 'MyAttachmentUrl',      # min: 1, max: 250; OPTIONAL
+                Subtitle => 'MyAttachmentTitle',    # min: 1, max: 250
               },    # OPTIONAL
             },
             ...
-          ],        # max: 10; OPTIONAL
+          ],    # max: 10; OPTIONAL
         },    # OPTIONAL
         DTMFInputEvent => {
           InputCharacter        => 'MyDTMFRegex',   # min: 1, max: 1

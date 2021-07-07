@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $snowball = Paws->service('Snowball');
-    # To get a list of clusters that you've created for AWS Snowball
-    # Returns an array of ClusterListEntry objects of the specified length. Each
-    # ClusterListEntry object contains a cluster's state, a cluster's ID, and
-    # other important status information.
+ # To get a list of clusters that you've created for AWS Snowball
+ # Returns an array of ClusterListEntry objects of the specified length. Each
+ # ClusterListEntry object contains a cluster's state, a cluster's ID, and other
+ # important status information.
     my $ListClustersResult = $snowball->ListClusters();
 
     # Results:

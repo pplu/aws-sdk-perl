@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           FromPort  => 1,    # min: 1, max: 65535
           Protocols => [
             'TCP', ...       # values: TCP, UDP
-          ],                 # min: 1, max: 2
-          ToPort => 1,       # min: 1, max: 65535
+          ],    # min: 1, max: 2
+          ToPort => 1,    # min: 1, max: 65535
 
         },
         ...

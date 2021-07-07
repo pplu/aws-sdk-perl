@@ -43,11 +43,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DestinationArn => 'MyArnStringModel',    # min: 1, max: 256; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       FilterConfiguration => {
         AllowedLocations => [
-          'MyLocationStringModel', ...             # min: 1, max: 64
-        ],                                         # min: 1, max: 100; OPTIONAL
+          'MyLocationStringModel', ...    # min: 1, max: 64
+        ],    # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
       NotificationTarget    => 'MyQueueSnsArnStringModel',    # OPTIONAL
       PlayerLatencyPolicies => [
@@ -56,14 +56,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PolicyDurationSeconds                      => 1,    # OPTIONAL
         },
         ...
-      ],                                                      # OPTIONAL
+      ],    # OPTIONAL
       PriorityConfiguration => {
         LocationOrder => [
-          'MyLocationStringModel', ...                        # min: 1, max: 64
+          'MyLocationStringModel', ...    # min: 1, max: 64
         ],    # min: 1, max: 100; OPTIONAL
         PriorityOrder => [
           'LATENCY', ...    # values: LATENCY, COST, DESTINATION, LOCATION
-        ],                  # min: 1, max: 4; OPTIONAL
+        ],    # min: 1, max: 4; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -72,8 +72,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
-      TimeoutInSeconds => 1,        # OPTIONAL
+      ],    # OPTIONAL
+      TimeoutInSeconds => 1,    # OPTIONAL
     );
 
     # Results:

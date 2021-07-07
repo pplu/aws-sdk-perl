@@ -39,10 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NextToken         => 'MyNextToken',    # OPTIONAL
       RecommendationIds => [
         'MyRecommendationId', ...            # min: 1, max: 64
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
       UserIds => [
-        'MyUserId', ...                      # min: 1, max: 256
-      ],                                     # OPTIONAL
+        'MyUserId', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       );
 
     # Results:

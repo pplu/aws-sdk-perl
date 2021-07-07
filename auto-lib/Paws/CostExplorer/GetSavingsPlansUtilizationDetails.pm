@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataType => [
         'ATTRIBUTES',
         ...    # values: ATTRIBUTES, UTILIZATION, AMORTIZED_COMMITMENT, SAVINGS
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       Filter => {
         And            => [ <Expression>, ... ],    # OPTIONAL
         CostCategories => {
@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Values => [
             'MyValue', ...    # max: 1024
-          ],                  # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
@@ -64,7 +64,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Values => [
             'MyValue', ...    # max: 1024
-          ],                  # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
@@ -76,13 +76,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           Values => [
             'MyValue', ...    # max: 1024
-          ],                  # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       MaxResults => 1,                    # OPTIONAL
       NextToken  => 'MyNextPageToken',    # OPTIONAL
       SortBy     => {
-        Key => 'MySortDefinitionKey',     # max: 1024
+        Key       => 'MySortDefinitionKey',    # max: 1024
         SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
       },    # OPTIONAL
       );

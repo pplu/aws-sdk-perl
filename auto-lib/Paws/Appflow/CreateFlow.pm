@@ -48,7 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             EventBridge => {
               Object              => 'MyObject',    # max: 512
               ErrorHandlingConfig => {
-                BucketName   => 'MyBucketName',      # min: 3, max: 63
+                BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
                 BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
                 FailOnFirstDestinationError => 1,    # OPTIONAL
               },    # OPTIONAL
@@ -56,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Honeycode => {
               Object              => 'MyObject',    # max: 512
               ErrorHandlingConfig => {
-                BucketName   => 'MyBucketName',      # min: 3, max: 63
+                BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
                 BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
                 FailOnFirstDestinationError => 1,    # OPTIONAL
               },    # OPTIONAL
@@ -65,18 +65,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
             Redshift => {
-              IntermediateBucketName => 'MyBucketName',     # min: 3, max: 63
-              Object                 => 'MyObject',         # max: 512
-              BucketPrefix           => 'MyBucketPrefix',   # max: 512; OPTIONAL
-              ErrorHandlingConfig    => {
-                BucketName   => 'MyBucketName',             # min: 3, max: 63
-                BucketPrefix => 'MyBucketPrefix',           # max: 512; OPTIONAL
-                FailOnFirstDestinationError => 1,           # OPTIONAL
+              IntermediateBucketName =>
+                'MyBucketName',    # min: 3, max: 63; OPTIONAL
+              Object              => 'MyObject',          # max: 512
+              BucketPrefix        => 'MyBucketPrefix',    # max: 512; OPTIONAL
+              ErrorHandlingConfig => {
+                BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
+                BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
+                FailOnFirstDestinationError => 1,    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
             S3 => {
-              BucketName           => 'MyBucketName',      # min: 3, max: 63
-              BucketPrefix         => 'MyBucketPrefix',    # max: 512; OPTIONAL
+              BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
+              BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
               S3OutputFormatConfig => {
                 AggregationConfig => {
                   AggregationType =>
@@ -94,24 +95,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Salesforce => {
               Object              => 'MyObject',    # max: 512
               ErrorHandlingConfig => {
-                BucketName   => 'MyBucketName',      # min: 3, max: 63
+                BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
                 BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
                 FailOnFirstDestinationError => 1,    # OPTIONAL
               },    # OPTIONAL
               IdFieldNames => [
                 'MyName', ...    # max: 128
-              ],                 # max: 1; OPTIONAL
+              ],    # max: 1; OPTIONAL
               WriteOperationType =>
-                'INSERT',        # values: INSERT, UPSERT, UPDATE; OPTIONAL
+                'INSERT',    # values: INSERT, UPSERT, UPDATE; OPTIONAL
             },    # OPTIONAL
             Snowflake => {
-              IntermediateBucketName => 'MyBucketName',     # min: 3, max: 63
-              Object                 => 'MyObject',         # max: 512
-              BucketPrefix           => 'MyBucketPrefix',   # max: 512; OPTIONAL
-              ErrorHandlingConfig    => {
-                BucketName   => 'MyBucketName',             # min: 3, max: 63
-                BucketPrefix => 'MyBucketPrefix',           # max: 512; OPTIONAL
-                FailOnFirstDestinationError => 1,           # OPTIONAL
+              IntermediateBucketName =>
+                'MyBucketName',    # min: 3, max: 63; OPTIONAL
+              Object              => 'MyObject',          # max: 512
+              BucketPrefix        => 'MyBucketPrefix',    # max: 512; OPTIONAL
+              ErrorHandlingConfig => {
+                BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
+                BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
+                FailOnFirstDestinationError => 1,    # OPTIONAL
               },    # OPTIONAL
             },    # OPTIONAL
             Upsolver => {
@@ -134,15 +136,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Zendesk => {
               Object              => 'MyObject',    # max: 512
               ErrorHandlingConfig => {
-                BucketName   => 'MyBucketName',      # min: 3, max: 63
+                BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
                 BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
                 FailOnFirstDestinationError => 1,    # OPTIONAL
               },    # OPTIONAL
               IdFieldNames => [
                 'MyName', ...    # max: 128
-              ],                 # max: 1; OPTIONAL
+              ],    # max: 1; OPTIONAL
               WriteOperationType =>
-                'INSERT',        # values: INSERT, UPSERT, UPDATE; OPTIONAL
+                'INSERT',    # values: INSERT, UPSERT, UPDATE; OPTIONAL
             },    # OPTIONAL
           },
           ConnectorProfileName => 'MyConnectorProfileName', # max: 256; OPTIONAL
@@ -179,7 +181,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },    # OPTIONAL
           S3 => {
-            BucketName   => 'MyBucketName',      # min: 3, max: 63
+            BucketName   => 'MyBucketName',      # min: 3, max: 63; OPTIONAL
             BucketPrefix => 'MyBucketPrefix',    # max: 512; OPTIONAL
           },    # OPTIONAL
           Salesforce => {
@@ -267,7 +269,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TriggerProperties => {
           Scheduled => {
             ScheduleExpression => 'MyScheduleExpression',    # max: 256
-            DataPullMode =>
+            DataPullMode       =>
               'Incremental',    # values: Incremental, Complete; OPTIONAL
             FirstExecutionFrom => '1970-01-01T01:00:00',  # OPTIONAL
             ScheduleEndTime    => '1970-01-01T01:00:00',  # OPTIONAL

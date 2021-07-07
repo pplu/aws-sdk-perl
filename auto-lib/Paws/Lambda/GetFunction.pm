@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To get a Lambda function
-    # The following example returns code and configuration details for version 1
-    # of a function named my-function.
+ # To get a Lambda function
+ # The following example returns code and configuration details for version 1 of
+ # a function named my-function.
     my $GetFunctionResponse = $lambda->GetFunction(
       'FunctionName' => 'my-function',
       'Qualifier'    => 1

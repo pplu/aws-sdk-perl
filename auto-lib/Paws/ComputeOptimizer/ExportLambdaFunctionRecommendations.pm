@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileFormat => 'Csv',    # OPTIONAL
       Filters    => [
         {
-          Name => 'Finding',    # values: Finding, FindingReasonCode; OPTIONAL
+          Name   => 'Finding',    # values: Finding, FindingReasonCode; OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      IncludeMemberAccounts => 1,                # OPTIONAL
+      ],    # OPTIONAL
+      IncludeMemberAccounts => 1,    # OPTIONAL
       );
 
     # Results:

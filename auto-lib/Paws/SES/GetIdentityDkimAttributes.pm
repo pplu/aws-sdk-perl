@@ -27,9 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # GetIdentityDkimAttributes
-    # The following example retrieves the Amazon SES Easy DKIM attributes for a
-    # list of identities:
+# GetIdentityDkimAttributes
+# The following example retrieves the Amazon SES Easy DKIM attributes for a list
+# of identities:
     my $GetIdentityDkimAttributesResponse = $email->GetIdentityDkimAttributes(
       'Identities' => [ 'example.com', 'user@example.com' ] );
 

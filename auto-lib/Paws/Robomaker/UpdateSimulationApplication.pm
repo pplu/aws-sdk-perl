@@ -37,12 +37,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $robomaker->UpdateSimulationApplication(
       Application        => 'MyArn',
       RobotSoftwareSuite => {
-        Name => 'ROS',    # values: ROS, ROS2; OPTIONAL
+        Name    => 'ROS',    # values: ROS, ROS2; OPTIONAL
         Version =>
-          'Kinetic',      # values: Kinetic, Melodic, Dashing, Foxy; OPTIONAL
+          'Kinetic',         # values: Kinetic, Melodic, Dashing, Foxy; OPTIONAL
       },
       SimulationSoftwareSuite => {
-        Name => 'Gazebo',    # values: Gazebo, RosbagPlay; OPTIONAL
+        Name    => 'Gazebo',    # values: Gazebo, RosbagPlay; OPTIONAL
         Version => 'MySimulationSoftwareSuiteVersionType', # max: 1024; OPTIONAL
       },
       Sources => [

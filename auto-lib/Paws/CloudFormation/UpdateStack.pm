@@ -52,19 +52,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotificationARNs   => [ 'MyNotificationARN', ... ],    # OPTIONAL
       Parameters         => [
         {
-          ParameterKey     => 'MyParameterKey',              # OPTIONAL
-          ParameterValue   => 'MyParameterValue',            # OPTIONAL
-          ResolvedValue    => 'MyParameterValue',            # OPTIONAL
-          UsePreviousValue => 1,                             # OPTIONAL
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
+          ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
+          UsePreviousValue => 1,                     # OPTIONAL
         },
         ...
-      ],                                                     # OPTIONAL
+      ],    # OPTIONAL
       ResourceTypes => [
-        'MyResourceType', ...                                # min: 1, max: 256
-      ],                                                     # OPTIONAL
-      RoleARN               => 'MyRoleARN',                  # OPTIONAL
+        'MyResourceType', ...    # min: 1, max: 256
+      ],    # OPTIONAL
+      RoleARN               => 'MyRoleARN',    # OPTIONAL
       RollbackConfiguration => {
-        MonitoringTimeInMinutes => 1,    # max: 180; OPTIONAL
+        MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
         RollbackTriggers        => [
           {
             Arn  => 'MyArn',
@@ -72,7 +72,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                               # max: 5; OPTIONAL
+        ],                                     # max: 5; OPTIONAL
       },    # OPTIONAL
       StackPolicyBody             => 'MyStackPolicyBody',             # OPTIONAL
       StackPolicyDuringUpdateBody => 'MyStackPolicyDuringUpdateBody', # OPTIONAL
@@ -85,7 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TemplateBody        => 'MyTemplateBody',    # OPTIONAL
       TemplateURL         => 'MyTemplateURL',     # OPTIONAL
       UsePreviousTemplate => 1,                   # OPTIONAL

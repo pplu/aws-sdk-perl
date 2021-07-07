@@ -48,8 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PreviousContactId => 'MyContactId',      # OPTIONAL
       References        => {
         'MyReferenceKey' => {
-          Type  => 'URL',                      # values: URL
-          Value => 'MyReferenceValue',         # max: 4096
+          Type  => 'URL',                 # values: URL
+          Value => 'MyReferenceValue',    # max: 4096
 
         },    # key: min: 1, max: 4096
       },    # OPTIONAL

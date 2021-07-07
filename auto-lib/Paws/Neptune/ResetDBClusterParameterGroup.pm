@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters                  => [
         {
           AllowedValues => 'MyString',
-          ApplyMethod =>
+          ApplyMethod   =>
             'immediate',    # values: immediate, pending-reboot; OPTIONAL
           ApplyType            => 'MyString',
           DataType             => 'MyString',
@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Source               => 'MyString',
         },
         ...
-      ],                                        # OPTIONAL
-      ResetAllParameters => 1,                  # OPTIONAL
+      ],    # OPTIONAL
+      ResetAllParameters => 1,    # OPTIONAL
     );
 
     # Results:

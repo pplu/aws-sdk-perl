@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
         AwsvpcConfiguration => {
-          Subnets => [ 'MyString', ... ],
+          Subnets        => [ 'MyString', ... ],
           AssignPublicIp => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL
           SecurityGroups => [ 'MyString', ... ],
         },    # OPTIONAL
@@ -71,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                    # OPTIONAL
+            ],    # OPTIONAL
             Memory               => 1,            # OPTIONAL
             MemoryReservation    => 1,            # OPTIONAL
             Name                 => 'MyString',
@@ -82,15 +82,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                         # OPTIONAL
+            ],    # OPTIONAL
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
         Cpu              => 'MyString',
         EphemeralStorage => {
           SizeInGiB => 1,
 
-        },                             # OPTIONAL
+        },    # OPTIONAL
         ExecutionRoleArn              => 'MyString',
         InferenceAcceleratorOverrides => [
           {
@@ -98,7 +98,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             DeviceType => 'MyString',
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
         Memory      => 'MyString',
         TaskRoleArn => 'MyString',
       },    # OPTIONAL
@@ -107,11 +107,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StartedBy     => 'MyString',           # OPTIONAL
       Tags          => [
         {
-          Key   => 'MyTagKey',               # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',             # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                                     # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

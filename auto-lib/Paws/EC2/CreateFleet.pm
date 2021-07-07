@@ -43,7 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LaunchTemplateConfigs => [
         {
           LaunchTemplateSpecification => {
-            LaunchTemplateId => 'MyLaunchTemplateId',    # OPTIONAL
+            LaunchTemplateId   => 'MyLaunchTemplateId',    # OPTIONAL
             LaunchTemplateName =>
               'MyLaunchTemplateName',    # min: 3, max: 128; OPTIONAL
             Version => 'MyString',       # OPTIONAL
@@ -62,7 +62,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 HostResourceGroupArn => 'MyString',    # OPTIONAL
                 PartitionNumber      => 1,             # OPTIONAL
                 SpreadDomain         => 'MyString',    # OPTIONAL
-                Tenancy =>
+                Tenancy              =>
                   'default',    # values: default, dedicated, host; OPTIONAL
               },    # OPTIONAL
               Priority         => 1,               # OPTIONAL
@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               WeightedCapacity => 1,               # OPTIONAL
             },
             ...
-          ],                                       # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
       ],
@@ -122,10 +122,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Value => 'MyString',    # OPTIONAL
             },
             ...
-          ],                          # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       TerminateInstancesWithExpiration => 1,                        # OPTIONAL
       Type                             => 'request',                # OPTIONAL
       ValidFrom                        => '1970-01-01T01:00:00',    # OPTIONAL

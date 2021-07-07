@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-   # Set logging configuration for a bucket
-   # The following example sets logging policy on a bucket. For the Log Delivery
-   # group to deliver logs to the destination bucket, it needs permission for
-   # the READ_ACP action which the policy grants.
+  # Set logging configuration for a bucket
+  # The following example sets logging policy on a bucket. For the Log Delivery
+  # group to deliver logs to the destination bucket, it needs permission for the
+  # READ_ACP action which the policy grants.
     $s3->PutBucketLogging(
       'Bucket'              => 'sourcebucket',
       'BucketLoggingStatus' => {

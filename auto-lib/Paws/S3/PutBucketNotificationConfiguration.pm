@@ -34,16 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    # Set notification configuration for a bucket
-    # The following example sets notification configuration on a bucket to
-    # publish the object created events to an SNS topic.
+  # Set notification configuration for a bucket
+  # The following example sets notification configuration on a bucket to publish
+  # the object created events to an SNS topic.
     $s3->PutBucketNotificationConfiguration(
       'Bucket'                    => 'examplebucket',
       'NotificationConfiguration' => {
         'TopicConfigurations' => [
 
           {
-            'Events' => ['s3:ObjectCreated:*'],
+            'Events'   => ['s3:ObjectCreated:*'],
             'TopicArn' =>
               'arn:aws:sns:us-west-2:123456789012:s3-notification-topic'
           }

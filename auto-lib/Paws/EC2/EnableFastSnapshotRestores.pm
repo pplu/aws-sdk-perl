@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $EnableFastSnapshotRestoresResult = $ec2->EnableFastSnapshotRestores(
       AvailabilityZones => [ 'MyString',     ... ],
       SourceSnapshotIds => [ 'MySnapshotId', ... ],
-      DryRun => 1,    # OPTIONAL
+      DryRun            => 1,    # OPTIONAL
     );
 
     # Results:

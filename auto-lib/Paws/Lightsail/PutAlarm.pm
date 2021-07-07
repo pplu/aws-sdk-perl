@@ -46,12 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Threshold             => 1,
       ContactProtocols      => [
         'Email', ...    # values: Email, SMS
-      ],                # OPTIONAL
+      ],    # OPTIONAL
       DatapointsToAlarm    => 1,    # OPTIONAL
       NotificationEnabled  => 1,    # OPTIONAL
       NotificationTriggers => [
         'OK', ...                   # values: OK, ALARM, INSUFFICIENT_DATA
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
       TreatMissingData => 'breaching',    # OPTIONAL
     );
 

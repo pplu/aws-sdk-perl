@@ -31,8 +31,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codecommit = Paws->service('CodeCommit');
     my $CreateApprovalRuleTemplateOutput =
       $codecommit->CreateApprovalRuleTemplate(
-      ApprovalRuleTemplateContent => 'MyApprovalRuleTemplateContent',
-      ApprovalRuleTemplateName    => 'MyApprovalRuleTemplateName',
+      ApprovalRuleTemplateContent     => 'MyApprovalRuleTemplateContent',
+      ApprovalRuleTemplateName        => 'MyApprovalRuleTemplateName',
       ApprovalRuleTemplateDescription =>
         'MyApprovalRuleTemplateDescription',    # OPTIONAL
       );

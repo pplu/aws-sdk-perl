@@ -48,28 +48,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Description  => 'MyMobileDeviceAccessRuleDescription',    # OPTIONAL
       DeviceModels => [
         'MyDeviceModel', ...    # min: 1, max: 256
-      ],                        # OPTIONAL
+      ],    # OPTIONAL
       DeviceOperatingSystems => [
         'MyDeviceOperatingSystem', ...    # min: 1, max: 256
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       DeviceTypes => [
-        'MyDeviceType', ...               # min: 1, max: 256
-      ],                                  # OPTIONAL
+        'MyDeviceType', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       DeviceUserAgents => [
-        'MyDeviceUserAgent', ...          # min: 1, max: 256
-      ],                                  # OPTIONAL
+        'MyDeviceUserAgent', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       NotDeviceModels => [
-        'MyDeviceModel', ...              # min: 1, max: 256
-      ],                                  # OPTIONAL
+        'MyDeviceModel', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       NotDeviceOperatingSystems => [
         'MyDeviceOperatingSystem', ...    # min: 1, max: 256
-      ],                                  # OPTIONAL
+      ],    # OPTIONAL
       NotDeviceTypes => [
-        'MyDeviceType', ...               # min: 1, max: 256
-      ],                                  # OPTIONAL
+        'MyDeviceType', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       NotDeviceUserAgents => [
-        'MyDeviceUserAgent', ...          # min: 1, max: 256
-      ],                                  # OPTIONAL
+        'MyDeviceUserAgent', ...    # min: 1, max: 256
+      ],    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.

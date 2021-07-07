@@ -30,9 +30,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    # To get a list of slot types
-    # This example shows how to get a list of all of the slot types in your
-    # account.
+# To get a list of slot types
+# This example shows how to get a list of all of the slot types in your account.
     my $GetSlotTypesResponse = $models
       . lex->GetSlotTypes(
       'MaxResults' => 10,

@@ -38,13 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ClassCTimeout          => 1,                   # max: 1000; OPTIONAL
         FactoryPresetFreqsList => [
           1, ...    # min: 1000000, max: 16700000
-        ],          # max: 20; OPTIONAL
+        ],    # max: 20; OPTIONAL
         MacVersion   => 'MyMacVersion',  # max: 64; OPTIONAL
         MaxDutyCycle => 1,               # max: 100; OPTIONAL
         MaxEirp      => 1,               # max: 15; OPTIONAL
         PingSlotDr   => 1,               # max: 15; OPTIONAL
         PingSlotFreq => 1,               # min: 1000000, max: 16700000; OPTIONAL
-        PingSlotPeriod => 1,             # min: 128, max: 4096; OPTIONAL
+        PingSlotPeriod    => 1,          # min: 128, max: 4096; OPTIONAL
         RegParamsRevision => 'MyRegParamsRevision',    # max: 64; OPTIONAL
         RfRegion          => 'MyRfRegion',             # max: 64; OPTIONAL
         RxDataRate2       => 1,                        # max: 15; OPTIONAL
@@ -59,12 +59,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name => 'MyDeviceProfileName',    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',          # min: 1, max: 128
-          Value => 'MyTagValue',        # max: 256
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
         },
         ...
-      ],                                # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

@@ -41,10 +41,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      InstanceArns => [ 'MyInstanceArn', ... ],  # OPTIONAL
-      MaxResults   => 1,                         # OPTIONAL
-      NextToken    => 'MyNextToken',             # OPTIONAL
+      ],    # OPTIONAL
+      InstanceArns => [ 'MyInstanceArn', ... ],    # OPTIONAL
+      MaxResults   => 1,                           # OPTIONAL
+      NextToken    => 'MyNextToken',               # OPTIONAL
       );
 
     # Results:

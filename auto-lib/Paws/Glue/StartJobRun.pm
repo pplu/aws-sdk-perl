@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $glue = Paws->service('Glue');
     my $StartJobRunResponse = $glue->StartJobRun(
       JobName           => 'MyNameString',
-      AllocatedCapacity => 1,                # OPTIONAL
+      AllocatedCapacity => 1,                                        # OPTIONAL
       Arguments   => { 'MyGenericString' => 'MyGenericString', },    # OPTIONAL
       JobRunId    => 'MyIdString',                                   # OPTIONAL
       MaxCapacity => 1,                                              # OPTIONAL

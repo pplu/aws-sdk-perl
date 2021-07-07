@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
-    # SetIdentityFeedbackForwardingEnabled
-    # The following example configures Amazon SES to forward an identity's
-    # bounces and complaints via email:
+  # SetIdentityFeedbackForwardingEnabled
+  # The following example configures Amazon SES to forward an identity's bounces
+  # and complaints via email:
     my $SetIdentityFeedbackForwardingEnabledResponse =
       $email->SetIdentityFeedbackForwardingEnabled(
       'ForwardingEnabled' => 1,

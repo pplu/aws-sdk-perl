@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ComputeLimits => {
           MaximumCapacityUnits => 1,
           MinimumCapacityUnits => 1,
-          UnitType =>
+          UnitType             =>
             'InstanceFleetUnits',  # values: InstanceFleetUnits, Instances, VCPU
           MaximumCoreCapacityUnits     => 1,
           MaximumOnDemandCapacityUnits => 1,

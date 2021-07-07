@@ -48,9 +48,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
-    # To restore an Amazon Aurora DB cluster from a DB cluster snapshot
-    # The following example restores an Amazon Aurora DB cluster from a DB
-    # cluster snapshot.
+  # To restore an Amazon Aurora DB cluster from a DB cluster snapshot
+  # The following example restores an Amazon Aurora DB cluster from a DB cluster
+  # snapshot.
     my $RestoreDBClusterFromSnapshotResult = $rds->RestoreDBClusterFromSnapshot(
       'DBClusterIdentifier' => 'restored-cluster1',
       'Engine'              => 'aurora',

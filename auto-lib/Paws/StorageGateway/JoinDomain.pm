@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       UserName          => 'MyDomainUserName',
       DomainControllers => [
         'MyHost', ...    # min: 6, max: 1024
-      ],                 # OPTIONAL
+      ],    # OPTIONAL
       OrganizationalUnit => 'MyOrganizationalUnit',    # OPTIONAL
       TimeoutInSeconds   => 1,                         # OPTIONAL
     );

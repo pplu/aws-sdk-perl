@@ -46,8 +46,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       AutoSubDomainCreationPatterns => [
         'MyAutoSubDomainCreationPattern',
-        ...                                  # min: 1, max: 2048
-      ],                                     # OPTIONAL
+        ...    # min: 1, max: 2048
+      ],    # OPTIONAL
       AutoSubDomainIAMRole => 'MyAutoSubDomainIAMRole',    # OPTIONAL
       EnableAutoSubDomain  => 1,                           # OPTIONAL
     );

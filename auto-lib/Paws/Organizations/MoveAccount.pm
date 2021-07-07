@@ -29,9 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    # To move an OU or account to another OU or the root
-    # The following example shows how to move a member account from the root to
-    # an OU:/n/n
+  # To move an OU or account to another OU or the root
+  # The following example shows how to move a member account from the root to an
+  # OU:/n/n
     $organizations->MoveAccount(
       'AccountId'           => 333333333333,
       'DestinationParentId' => 'ou-examplerootid111-exampleouid111',

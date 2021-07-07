@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # This example immediately applies a pending system update to a DB instance.
     my $ApplyPendingMaintenanceActionResult =
       $rds->ApplyPendingMaintenanceAction(
-      'ApplyAction' => 'system-update',
-      'OptInType'   => 'immediate',
+      'ApplyAction'        => 'system-update',
+      'OptInType'          => 'immediate',
       'ResourceIdentifier' =>
         'arn:aws:rds:us-east-1:992648334831:db:mymysqlinstance'
       );

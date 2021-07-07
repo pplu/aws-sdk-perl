@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
-    # To create a basic secret
-    # The following example shows how to create a secret. The credentials stored
-    # in the encrypted secret value are retrieved from a file on disk named
-    # mycreds.json.
+ # To create a basic secret
+ # The following example shows how to create a secret. The credentials stored in
+ # the encrypted secret value are retrieved from a file on disk named
+ # mycreds.json.
     my $CreateSecretResponse = $secretsmanager->CreateSecret(
       'ClientRequestToken' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
       'Description'        => 'My test database secret created with the CLI',

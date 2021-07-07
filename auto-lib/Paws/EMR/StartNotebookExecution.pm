@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ExecutionEngine => {
         Id                            => 'MyXmlStringMaxLen256',    # max: 256
         MasterInstanceSecurityGroupId => 'MyXmlStringMaxLen256',    # max: 256
-        Type => 'EMR',    # values: EMR; OPTIONAL
+        Type                          => 'EMR',    # values: EMR; OPTIONAL
       },
       RelativePath                    => 'MyXmlString',
       ServiceRole                     => 'MyXmlString',
@@ -49,11 +49,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NotebookParams                  => 'MyXmlString',             # OPTIONAL
       Tags                            => [
         {
-          Key   => 'MyString',                                      # OPTIONAL
-          Value => 'MyString',                                      # OPTIONAL
+          Key   => 'MyString',    # OPTIONAL
+          Value => 'MyString',    # OPTIONAL
         },
         ...
-      ],                                                            # OPTIONAL
+      ],    # OPTIONAL
       );
 
     # Results:

@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticbeanstalk = Paws->service('ElasticBeanstalk');
-    # To create a configuration template
-    # The following operation creates a configuration template named my-app-v1
-    # from the settings applied to an environment with the id e-rpqsewtp2j:
+ # To create a configuration template
+ # The following operation creates a configuration template named my-app-v1 from
+ # the settings applied to an environment with the id e-rpqsewtp2j:
     my $ConfigurationSettingsDescription =
       $elasticbeanstalk->CreateConfigurationTemplate(
       'ApplicationName' => 'my-app',

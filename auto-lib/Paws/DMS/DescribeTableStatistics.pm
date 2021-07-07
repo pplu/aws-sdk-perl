@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    # Describe table statistics
-    # Returns table statistics on the database migration task, including table
-    # name, rows inserted, rows updated, and rows deleted.
+# Describe table statistics
+# Returns table statistics on the database migration task, including table name,
+# rows inserted, rows updated, and rows deleted.
     my $DescribeTableStatisticsResponse = $dms->DescribeTableStatistics(
       'Marker'             => '',
       'MaxRecords'         => 123,

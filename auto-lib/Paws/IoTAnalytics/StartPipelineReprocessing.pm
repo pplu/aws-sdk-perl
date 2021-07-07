@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ChannelMessages => {
         S3Paths => [
           'MyS3PathChannelMessage', ...    # min: 1, max: 1024
-        ],                                 # min: 1, max: 100; OPTIONAL
+        ],    # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
       EndTime   => '1970-01-01T01:00:00',    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL

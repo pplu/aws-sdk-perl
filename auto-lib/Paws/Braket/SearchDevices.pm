@@ -36,13 +36,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Name   => 'MySearchDevicesFilterNameString',    # min: 1, max: 64
           Values => [
             'MyString256', ...                            # min: 1, max: 256
-          ],                                              # min: 1, max: 10
+          ],    # min: 1, max: 10
 
         },
         ...
       ],
-      MaxResults => 1,                                    # OPTIONAL
-      NextToken  => 'MyString',                           # OPTIONAL
+      MaxResults => 1,             # OPTIONAL
+      NextToken  => 'MyString',    # OPTIONAL
     );
 
     # Results:

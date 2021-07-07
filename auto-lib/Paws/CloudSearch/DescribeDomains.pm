@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeDomainsResponse = $cloudsearch->DescribeDomains(
       DomainNames => [
         'MyDomainName', ...    # min: 3, max: 28
-      ],                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

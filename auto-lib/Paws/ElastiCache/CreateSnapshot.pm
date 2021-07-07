@@ -41,11 +41,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Snapshot = $CreateSnapshotResult->Snapshot;
 
-    # Returns a L<Paws::ElastiCache::CreateSnapshotResult> object.
-    # CreateSnapshot - NonClustered Redis, 2 read-replicas
-    # Creates a snapshot of a non-clustered Redis cluster that has only three
-    # nodes, primary and two read-replicas. CacheClusterId must be a specific
-    # node in the cluster.
+# Returns a L<Paws::ElastiCache::CreateSnapshotResult> object.
+# CreateSnapshot - NonClustered Redis, 2 read-replicas
+# Creates a snapshot of a non-clustered Redis cluster that has only three nodes,
+# primary and two read-replicas. CacheClusterId must be a specific node in the
+# cluster.
     my $CreateSnapshotResult = $elasticache->CreateSnapshot(
       'CacheClusterId' => 'threenoderedis-001',
       'SnapshotName'   => 'snapshot-2'
@@ -54,10 +54,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Snapshot = $CreateSnapshotResult->Snapshot;
 
-    # Returns a L<Paws::ElastiCache::CreateSnapshotResult> object.
-    # CreateSnapshot-clustered Redis
-    # Creates a snapshot of a clustered Redis cluster that has 2 shards, each
-    # with a primary and 4 read-replicas.
+# Returns a L<Paws::ElastiCache::CreateSnapshotResult> object.
+# CreateSnapshot-clustered Redis
+# Creates a snapshot of a clustered Redis cluster that has 2 shards, each with a
+# primary and 4 read-replicas.
     my $CreateSnapshotResult = $elasticache->CreateSnapshot(
       'ReplicationGroupId' => 'clusteredredis',
       'SnapshotName'       => 'snapshot-2x5'

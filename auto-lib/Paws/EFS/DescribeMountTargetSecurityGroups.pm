@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticfilesystem = Paws->service('EFS');
-    # To describe the security groups for a mount target
-    # This operation describes all of the security groups for a file system's
-    # mount target.
+ # To describe the security groups for a mount target
+ # This operation describes all of the security groups for a file system's mount
+ # target.
     my $DescribeMountTargetSecurityGroupsResponse =
       $elasticfilesystem->DescribeMountTargetSecurityGroups(
       'MountTargetId' => 'fsmt-12340abc' );

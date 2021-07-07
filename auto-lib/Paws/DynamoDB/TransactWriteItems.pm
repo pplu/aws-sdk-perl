@@ -34,23 +34,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TransactItems => [
         {
           ConditionCheck => {
-            ConditionExpression => 'MyConditionExpression',    # OPTIONAL
+            ConditionExpression => 'MyConditionExpression',
             Key                 => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },    # key: max: 65535
             },
             TableName                => 'MyTableName',    # min: 3, max: 255
@@ -60,20 +64,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -82,44 +90,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Delete => {
             Key => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
-            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
+            ConditionExpression => 'MyConditionExpression',
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -128,44 +144,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Put => {
             Item => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
-            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
+            ConditionExpression => 'MyConditionExpression',
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>
@@ -174,45 +198,53 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Update => {
             Key => {
               'MyAttributeName' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },    # key: max: 65535
             },
             TableName           => 'MyTableName',             # min: 3, max: 255
             UpdateExpression    => 'MyUpdateExpression',
-            ConditionExpression => 'MyConditionExpression',   # OPTIONAL
+            ConditionExpression => 'MyConditionExpression',
             ExpressionAttributeNames => {
               'MyExpressionAttributeNameVariable' =>
                 'MyAttributeName',    # , value: max: 65535
             },    # OPTIONAL
             ExpressionAttributeValues => {
               'MyExpressionAttributeValueVariable' => {
-                B    => 'BlobBinaryAttributeValue',
-                BOOL => 1,                                      # OPTIONAL
-                BS   => [ 'BlobBinaryAttributeValue', ... ],    # OPTIONAL
-                L    => [ <AttributeValue>, ... ],              # OPTIONAL
-                M    => {
+                B    => 'BlobBinaryAttributeValue',    # OPTIONAL
+                BOOL => 1,                             # OPTIONAL
+                BS   => [
+                  'BlobBinaryAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
+                L => [ <AttributeValue>, ... ],    # OPTIONAL
+                M => {
                   'MyAttributeName' => <AttributeValue>,    # key: max: 65535
                 },    # OPTIONAL
-                N    => 'MyNumberAttributeValue',
-                NS   => [ 'MyNumberAttributeValue', ... ],    # OPTIONAL
-                NULL => 1,                                    # OPTIONAL
-                S    => 'MyStringAttributeValue',             # OPTIONAL
+                N  => 'MyNumberAttributeValue',    # OPTIONAL
+                NS => [
+                  'MyNumberAttributeValue', ...    # OPTIONAL
+                ],    # OPTIONAL
+                NULL => 1,                           # OPTIONAL
+                S    => 'MyStringAttributeValue',    # OPTIONAL
                 SS   => [
-                  'MyStringAttributeValue', ...               # OPTIONAL
-                ],                                            # OPTIONAL
+                  'MyStringAttributeValue', ...      # OPTIONAL
+                ],    # OPTIONAL
               },
             },    # OPTIONAL
             ReturnValuesOnConditionCheckFailure =>

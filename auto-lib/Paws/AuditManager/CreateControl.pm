@@ -44,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'SELECT_FROM_LIST',     # values: SELECT_FROM_LIST; OPTIONAL
             KeywordValue => 'MyKeywordValue',    # min: 1, max: 100; OPTIONAL
           },    # OPTIONAL
-          SourceName => 'MySourceName',    # min: 1, max: 100; OPTIONAL
+          SourceName        => 'MySourceName',    # min: 1, max: 100; OPTIONAL
           SourceSetUpOption => 'System_Controls_Mapping'
           , # values: System_Controls_Mapping, Procedural_Controls_Mapping; OPTIONAL
           SourceType => 'AWS_Cloudtrail'

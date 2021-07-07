@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.ecr = Paws->service('ECR');
-   # To delete the policy associated with a repository
-   # This example deletes the policy associated with the repository named ubuntu
-   # in the current account.
+# To delete the policy associated with a repository
+# This example deletes the policy associated with the repository named ubuntu in
+# the current account.
     my $DeleteRepositoryPolicyResponse =
       $api . ecr->DeleteRepositoryPolicy( 'RepositoryName' => 'ubuntu' );
 

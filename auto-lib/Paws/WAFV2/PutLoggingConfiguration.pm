@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LoggingConfiguration => {
         LogDestinationConfigs => [
           'MyResourceArn', ...    # min: 20, max: 2048
-        ],                        # min: 1, max: 100
+        ],    # min: 1, max: 100
         ResourceArn   => 'MyResourceArn',    # min: 20, max: 2048
         LoggingFilter => {
           DefaultBehavior => 'KEEP',         # values: KEEP, DROP
@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Conditions => [
                 {
                   ActionCondition => {
-                    Action => 'ALLOW',       # values: ALLOW, BLOCK, COUNT
+                    Action => 'ALLOW',    # values: ALLOW, BLOCK, COUNT
 
                   },    # OPTIONAL
                   LabelNameCondition => {
@@ -50,12 +50,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   },    # OPTIONAL
                 },
                 ...
-              ],        # min: 1
+              ],    # min: 1
               Requirement => 'MEETS_ALL',    # values: MEETS_ALL, MEETS_ANY
 
             },
             ...
-          ],                                 # min: 1
+          ],    # min: 1
 
         },    # OPTIONAL
         ManagedByFirewallManager => 1,    # OPTIONAL
@@ -63,20 +63,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             AllQueryArguments => {
 
-            },                            # OPTIONAL
+            },    # OPTIONAL
             Body => {
 
-            },                            # OPTIONAL
+            },    # OPTIONAL
             JsonBody => {
               MatchPattern => {
                 All => {
 
-                },                        # OPTIONAL
+                },    # OPTIONAL
                 IncludedPaths => [
                   'MyJsonPointerPath', ...    # min: 1, max: 512
-                ],                            # min: 1; OPTIONAL
+                ],    # min: 1; OPTIONAL
               },
-              MatchScope => 'ALL',            # values: ALL, KEY, VALUE
+              MatchScope              => 'ALL',    # values: ALL, KEY, VALUE
               InvalidFallbackBehavior =>
                 'MATCH', # values: MATCH, NO_MATCH, EVALUATE_AS_STRING; OPTIONAL
             },    # OPTIONAL
@@ -99,7 +99,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # max: 100; OPTIONAL
+        ],    # max: 100; OPTIONAL
       },
 
     );

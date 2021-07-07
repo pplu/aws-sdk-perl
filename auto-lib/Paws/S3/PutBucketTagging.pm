@@ -36,9 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    # Set tags on a bucket
-    # The following example sets tags on a bucket. Any existing tags are
-    # replaced.
+  # Set tags on a bucket
+  # The following example sets tags on a bucket. Any existing tags are replaced.
     $s3->PutBucketTagging(
       'Bucket'  => 'examplebucket',
       'Tagging' => {

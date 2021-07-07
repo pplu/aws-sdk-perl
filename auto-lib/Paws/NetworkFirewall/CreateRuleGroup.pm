@@ -69,29 +69,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   Keyword  => 'MyKeyword',    # min: 1, max: 128
                   Settings => [
                     'MySetting', ...          # min: 1, max: 8192
-                  ],                          # OPTIONAL
+                  ],    # OPTIONAL
                 },
                 ...
               ],
 
             },
             ...
-          ],                                  # OPTIONAL
+          ],    # OPTIONAL
           StatelessRulesAndCustomActions => {
             StatelessRules => [
               {
-                Priority       => 1,          # min: 1, max: 65535
+                Priority       => 1,    # min: 1, max: 65535
                 RuleDefinition => {
                   Actions         => [ 'MyCollectionMember_String', ... ],
                   MatchAttributes => {
                     DestinationPorts => [
                       {
-                        FromPort => 1,        # max: 65535
-                        ToPort   => 1,        # max: 65535
+                        FromPort => 1,    # max: 65535
+                        ToPort   => 1,    # max: 65535
 
                       },
                       ...
-                    ],                        # OPTIONAL
+                    ],    # OPTIONAL
                     Destinations => [
                       {
                         AddressDefinition =>
@@ -99,18 +99,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },
                       ...
-                    ],                              # OPTIONAL
+                    ],    # OPTIONAL
                     Protocols => [
-                      1, ...                        # max: 255
-                    ],                              # OPTIONAL
+                      1, ...    # max: 255
+                    ],    # OPTIONAL
                     SourcePorts => [
                       {
-                        FromPort => 1,              # max: 65535
-                        ToPort   => 1,              # max: 65535
+                        FromPort => 1,    # max: 65535
+                        ToPort   => 1,    # max: 65535
 
                       },
                       ...
-                    ],                              # OPTIONAL
+                    ],    # OPTIONAL
                     Sources => [
                       {
                         AddressDefinition =>
@@ -118,7 +118,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },
                       ...
-                    ],                              # OPTIONAL
+                    ],    # OPTIONAL
                     TCPFlags => [
                       {
                         Flags => [
@@ -131,7 +131,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         ],
                       },
                       ...
-                    ],          # OPTIONAL
+                    ],    # OPTIONAL
                   },
 
                 },
@@ -149,7 +149,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                       },
                       ...
-                    ],                                  # min: 1, max: 1
+                    ],    # min: 1, max: 1
 
                   },    # OPTIONAL
                 },
@@ -157,7 +157,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],                                   # OPTIONAL
+            ],    # OPTIONAL
           },    # OPTIONAL
         },
         RuleVariables => {
@@ -165,7 +165,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyRuleVariableName' => {
               Definition => [
                 'MyVariableDefinition', ...    # min: 1
-              ],                               # OPTIONAL
+              ],
 
             },    # key: min: 1, max: 32
           },    # OPTIONAL
@@ -173,7 +173,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyRuleVariableName' => {
               Definition => [
                 'MyVariableDefinition', ...    # min: 1
-              ],                               # OPTIONAL
+              ],
             },    # key: min: 1, max: 32
           },    # OPTIONAL
         },    # OPTIONAL
@@ -186,7 +186,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                            # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

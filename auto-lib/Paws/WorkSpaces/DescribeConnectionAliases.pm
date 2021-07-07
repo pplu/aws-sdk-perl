@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $workspaces->DescribeConnectionAliases(
       AliasIds => [
         'MyConnectionAliasId', ...    # min: 13, max: 68
-      ],                              # OPTIONAL
+      ],    # OPTIONAL
       Limit      => 1,                      # OPTIONAL
       NextToken  => 'MyPaginationToken',    # OPTIONAL
       ResourceId => 'MyNonEmptyString',     # OPTIONAL

@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       RevokePermissions => [
         {
           Actions   => [ 'MyString', ... ],    # min: 1, max: 16
@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

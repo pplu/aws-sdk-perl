@@ -43,13 +43,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         TransformationConfigurations => [
           {
             Actions => [
-              'GetObject', ...                         # values: GetObject
+              'GetObject', ...    # values: GetObject
             ],
             ContentTransformation => {
               AwsLambda => {
-                FunctionArn => 'MyFunctionArnString',    # min: 1, max: 1024
+                FunctionArn     => 'MyFunctionArnString',    # min: 1, max: 1024
                 FunctionPayload =>
-                  'MyAwsLambdaTransformationPayload',    # OPTIONAL
+                  'MyAwsLambdaTransformationPayload',        # OPTIONAL
               },    # OPTIONAL
             },
 
@@ -58,8 +58,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],
         AllowedFeatures => [
           'GetObject-Range',
-          ...       # values: GetObject-Range, GetObject-PartNumber
-        ],          # OPTIONAL
+          ...    # values: GetObject-Range, GetObject-PartNumber
+        ],    # OPTIONAL
         CloudWatchMetricsEnabled => 1,    # OPTIONAL
       },
       Name => 'MyObjectLambdaAccessPointName',

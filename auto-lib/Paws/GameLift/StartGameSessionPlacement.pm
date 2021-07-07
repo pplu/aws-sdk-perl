@@ -44,26 +44,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           PlayerId   => 'MyNonZeroAndMaxString',   # min: 1, max: 1024; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
       GameProperties => [
         {
-          Key   => 'MyGamePropertyKey',            # max: 32
-          Value => 'MyGamePropertyValue',          # max: 96
+          Key   => 'MyGamePropertyKey',      # max: 32
+          Value => 'MyGamePropertyValue',    # max: 96
 
         },
         ...
-      ],                                           # OPTIONAL
-      GameSessionData => 'MyLargeGameSessionData', # OPTIONAL
-      GameSessionName => 'MyNonZeroAndMaxString',  # OPTIONAL
+      ],    # OPTIONAL
+      GameSessionData => 'MyLargeGameSessionData',    # OPTIONAL
+      GameSessionName => 'MyNonZeroAndMaxString',     # OPTIONAL
       PlayerLatencies => [
         {
-          LatencyInMilliseconds => 1.0,            # OPTIONAL
-          PlayerId => 'MyNonZeroAndMaxString',     # min: 1, max: 1024; OPTIONAL
+          LatencyInMilliseconds => 1.0,           # OPTIONAL
+          PlayerId => 'MyNonZeroAndMaxString',    # min: 1, max: 1024; OPTIONAL
           RegionIdentifier =>
-            'MyNonZeroAndMaxString',               # min: 1, max: 1024; OPTIONAL
+            'MyNonZeroAndMaxString',              # min: 1, max: 1024; OPTIONAL
         },
         ...
-      ],                                           # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

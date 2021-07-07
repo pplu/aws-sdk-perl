@@ -35,9 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           EventPublishers => [
             'AnomalyDetection', ...    # values: AnomalyDetection
-          ],                           # min: 1, max: 1
+          ],    # min: 1, max: 1
           Uri => 'MyChannelUri',
-          Id  => 'MyChannelId',        # OPTIONAL
+          Id  => 'MyChannelId',    # OPTIONAL
         },
         ...
       ],

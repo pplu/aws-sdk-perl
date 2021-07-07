@@ -55,15 +55,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Listeners = $CreateListenerOutput->Listeners;
 
-   # Returns a L<Paws::ELBv2::CreateListenerOutput> object.
-   # To create an HTTPS listener
-   # This example creates an HTTPS listener for the specified load balancer that
-   # forwards requests to the specified target group. Note that you must specify
-   # an SSL certificate for an HTTPS listener. You can create and manage
-   # certificates using AWS Certificate Manager (ACM). Alternatively, you can
-   # create a certificate using SSL/TLS tools, get the certificate signed by a
-   # certificate authority (CA), and upload the certificate to AWS Identity and
-   # Access Management (IAM).
+# Returns a L<Paws::ELBv2::CreateListenerOutput> object.
+# To create an HTTPS listener
+# This example creates an HTTPS listener for the specified load balancer that
+# forwards requests to the specified target group. Note that you must specify an
+# SSL certificate for an HTTPS listener. You can create and manage certificates
+# using AWS Certificate Manager (ACM). Alternatively, you can create a
+# certificate using SSL/TLS tools, get the certificate signed by a certificate
+# authority (CA), and upload the certificate to AWS Identity and Access
+# Management (IAM).
     my $CreateListenerOutput = $elasticloadbalancing->CreateListener(
       'Certificates' => [
 

@@ -35,17 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetLifecyclePoliciesResponse = $dlm->GetLifecyclePolicies(
       PolicyIds => [
         'MyPolicyId', ...    # max: 64
-      ],                     # OPTIONAL
+      ],    # OPTIONAL
       ResourceTypes => [
-        'VOLUME', ...        # values: VOLUME, INSTANCE
-      ],                     # OPTIONAL
+        'VOLUME', ...    # values: VOLUME, INSTANCE
+      ],    # OPTIONAL
       State     => 'ENABLED',    # OPTIONAL
       TagsToAdd => [
         'MyTagFilter', ...       # max: 256
-      ],                         # OPTIONAL
+      ],    # OPTIONAL
       TargetTags => [
-        'MyTagFilter', ...       # max: 256
-      ],                         # OPTIONAL
+        'MyTagFilter', ...    # max: 256
+      ],    # OPTIONAL
     );
 
     # Results:

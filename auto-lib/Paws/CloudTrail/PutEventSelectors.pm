@@ -38,29 +38,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Field    => 'MySelectorField',    # min: 1, max: 1000
               EndsWith => [
                 'MyOperatorValue', ...          # min: 1, max: 2048
-              ],                                # min: 1; OPTIONAL
+              ],    # min: 1; OPTIONAL
               Equals => [
-                'MyOperatorValue', ...          # min: 1, max: 2048
-              ],                                # min: 1; OPTIONAL
+                'MyOperatorValue', ...    # min: 1, max: 2048
+              ],    # min: 1; OPTIONAL
               NotEndsWith => [
-                'MyOperatorValue', ...          # min: 1, max: 2048
-              ],                                # min: 1; OPTIONAL
+                'MyOperatorValue', ...    # min: 1, max: 2048
+              ],    # min: 1; OPTIONAL
               NotEquals => [
-                'MyOperatorValue', ...          # min: 1, max: 2048
-              ],                                # min: 1; OPTIONAL
+                'MyOperatorValue', ...    # min: 1, max: 2048
+              ],    # min: 1; OPTIONAL
               NotStartsWith => [
-                'MyOperatorValue', ...          # min: 1, max: 2048
-              ],                                # min: 1; OPTIONAL
+                'MyOperatorValue', ...    # min: 1, max: 2048
+              ],    # min: 1; OPTIONAL
               StartsWith => [
-                'MyOperatorValue', ...          # min: 1, max: 2048
-              ],                                # min: 1; OPTIONAL
+                'MyOperatorValue', ...    # min: 1, max: 2048
+              ],    # min: 1; OPTIONAL
             },
             ...
-          ],                                    # min: 1
-          Name => 'MySelectorName',             # max: 1000; OPTIONAL
+          ],    # min: 1
+          Name => 'MySelectorName',    # max: 1000; OPTIONAL
         },
         ...
-      ],                                        # OPTIONAL
+      ],    # OPTIONAL
       EventSelectors => [
         {
           DataResources => [
@@ -69,14 +69,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Values => [ 'MyString', ... ],    # OPTIONAL
             },
             ...
-          ],                                    # OPTIONAL
+          ],    # OPTIONAL
           ExcludeManagementEventSources => [ 'MyString', ... ],    # OPTIONAL
           IncludeManagementEvents       => 1,                      # OPTIONAL
-          ReadWriteType =>
+          ReadWriteType                 =>
             'ReadOnly',    # values: ReadOnly, WriteOnly, All; OPTIONAL
         },
         ...
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

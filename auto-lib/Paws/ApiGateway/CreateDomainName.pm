@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndpointConfiguration => {
         Types => [
           'REGIONAL', ...                     # values: REGIONAL, EDGE, PRIVATE
-        ],                                    # OPTIONAL
+        ],    # OPTIONAL
         VpcEndpointIds => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
       MutualTlsAuthentication => {

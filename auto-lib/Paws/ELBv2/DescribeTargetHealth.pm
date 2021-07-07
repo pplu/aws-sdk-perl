@@ -28,10 +28,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELBv2');
-    # To describe the health of the targets for a target group
-    # This example describes the health of the targets for the specified target
-    # group. One target is healthy but the other is not specified in an action,
-    # so it can't receive traffic from the load balancer.
+  # To describe the health of the targets for a target group
+  # This example describes the health of the targets for the specified target
+  # group. One target is healthy but the other is not specified in an action, so
+  # it can't receive traffic from the load balancer.
     my $DescribeTargetHealthOutput =
       $elasticloadbalancing->DescribeTargetHealth( 'TargetGroupArn' =>
 'arn:aws:elasticloadbalancing:us-west-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067'

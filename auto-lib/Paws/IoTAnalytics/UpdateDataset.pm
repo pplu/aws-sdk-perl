@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 StringValue => 'MyStringValue',    # max: 1024; OPTIONAL
               },
               ...
-            ],                                     # max: 50; OPTIONAL
+            ],    # max: 50; OPTIONAL
           },    # OPTIONAL
           QueryAction => {
             SqlQuery => 'MySqlQuery',
@@ -74,7 +74,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },    # OPTIONAL
               },
               ...
-            ],        # max: 1; OPTIONAL
+            ],    # max: 1; OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -102,22 +102,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           EntryName => 'MyEntryName',    # OPTIONAL
         },
         ...
-      ],                                 # OPTIONAL
+      ],    # OPTIONAL
       LateDataRules => [
         {
           RuleConfiguration => {
             DeltaTimeSessionWindowConfiguration => {
-              TimeoutInMinutes => 1,     # min: 1, max: 60
+              TimeoutInMinutes => 1,    # min: 1, max: 60
 
             },    # OPTIONAL
           },
           RuleName => 'MyLateDataRuleName',    # min: 1, max: 128; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       RetentionPeriod => {
-        NumberOfDays => 1,                     # min: 1; OPTIONAL
-        Unlimited    => 1,                     # OPTIONAL
+        NumberOfDays => 1,    # min: 1; OPTIONAL
+        Unlimited    => 1,    # OPTIONAL
       },    # OPTIONAL
       Triggers => [
         {
@@ -130,7 +130,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       VersioningConfiguration => {
         MaxVersions => 1,    # min: 1, max: 1000; OPTIONAL
         Unlimited   => 1,    # OPTIONAL

@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticloadbalancing = Paws->service('ELB');
-    # To describe a policy associated with a load balancer
-    # This example describes the specified policy associated with the specified
-    # load balancer.
+# To describe a policy associated with a load balancer
+# This example describes the specified policy associated with the specified load
+# balancer.
     my $DescribeLoadBalancerPoliciesOutput =
       $elasticloadbalancing->DescribeLoadBalancerPolicies(
       'LoadBalancerName' => 'my-load-balancer',

@@ -40,13 +40,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProviderTypes => [
         'CodeCommit',
         ...    # values: CodeCommit, GitHub, Bitbucket, GitHubEnterpriseServer
-      ],       # OPTIONAL
+      ],    # OPTIONAL
       RepositoryNames => [
         'MyName', ...    # min: 1, max: 100
-      ],                 # OPTIONAL
+      ],    # OPTIONAL
       States => [
         'Completed', ...    # values: Completed, Pending, Failed, Deleting
-      ],                    # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

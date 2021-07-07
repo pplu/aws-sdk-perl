@@ -56,10 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AssociationId = $AssociateAddressResult->AssociationId;
 
-    # Returns a L<Paws::EC2::AssociateAddressResult> object.
-    # To associate an Elastic IP address in EC2-Classic
-    # This example associates an Elastic IP address with an instance in
-    # EC2-Classic.
+# Returns a L<Paws::EC2::AssociateAddressResult> object.
+# To associate an Elastic IP address in EC2-Classic
+# This example associates an Elastic IP address with an instance in EC2-Classic.
     my $AssociateAddressResult = $ec2->AssociateAddress(
       'InstanceId' => 'i-07ffe74c7330ebf53',
       'PublicIp'   => '198.51.100.0'

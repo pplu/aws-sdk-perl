@@ -28,9 +28,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-   # To get a Lambda function's event source mapping
-   # The following example returns details about an event source mapping. To get
-   # a mapping's UUID, use ListEventSourceMappings.
+ # To get a Lambda function's event source mapping
+ # The following example returns details about an event source mapping. To get a
+ # mapping's UUID, use ListEventSourceMappings.
     my $EventSourceMappingConfiguration = $lambda->GetEventSourceMapping(
       'UUID' => '14e0db71-xmpl-4eb5-b481-8945cf9d10c2' );
 

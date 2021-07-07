@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $healthlake = Paws->service('HealthLake');
     my $ListFHIRDatastoresResponse = $healthlake->ListFHIRDatastores(
       Filter => {
-        CreatedAfter  => '1970-01-01T01:00:00',    # OPTIONAL
-        CreatedBefore => '1970-01-01T01:00:00',    # OPTIONAL
-        DatastoreName => 'MyDatastoreName',        # min: 1, max: 256; OPTIONAL
+        CreatedAfter    => '1970-01-01T01:00:00',   # OPTIONAL
+        CreatedBefore   => '1970-01-01T01:00:00',   # OPTIONAL
+        DatastoreName   => 'MyDatastoreName',       # min: 1, max: 256; OPTIONAL
         DatastoreStatus =>
           'CREATING',    # values: CREATING, ACTIVE, DELETING, DELETED; OPTIONAL
       },    # OPTIONAL

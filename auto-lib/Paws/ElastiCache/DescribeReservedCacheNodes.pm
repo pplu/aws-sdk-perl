@@ -34,10 +34,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-   # DescribeReservedCacheNodes
-   # Returns information about reserved cache nodes for this account, or about a
-   # specified reserved cache node. If the account has no reserved cache nodes,
-   # the operation returns an empty list, as shown here.
+# DescribeReservedCacheNodes
+# Returns information about reserved cache nodes for this account, or about a
+# specified reserved cache node. If the account has no reserved cache nodes, the
+# operation returns an empty list, as shown here.
     my $ReservedCacheNodeMessage =
       $elasticache->DescribeReservedCacheNodes( 'MaxRecords' => 25 );
 

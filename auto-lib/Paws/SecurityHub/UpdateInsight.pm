@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         CompanyName => [
           {
             Comparison => 'EQUALS'
@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ComplianceStatus => [
           {
             Comparison => 'EQUALS'
@@ -57,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         Confidence => [
           {
             Eq  => 1,    # OPTIONAL
@@ -65,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         CreatedAt => [
           {
             DateRange => {
@@ -76,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         Criticality => [
           {
             Eq  => 1,    # OPTIONAL
@@ -84,7 +84,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         Description => [
           {
             Comparison => 'EQUALS'
@@ -92,7 +92,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsConfidence => [
           {
             Eq  => 1,    # OPTIONAL
@@ -100,7 +100,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsCriticality => [
           {
             Eq  => 1,    # OPTIONAL
@@ -108,7 +108,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsRelatedFindingsId => [
           {
             Comparison => 'EQUALS'
@@ -116,7 +116,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsRelatedFindingsProductArn => [
           {
             Comparison => 'EQUALS'
@@ -124,7 +124,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsSeverityLabel => [
           {
             Comparison => 'EQUALS'
@@ -132,7 +132,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsSeverityOriginal => [
           {
             Comparison => 'EQUALS'
@@ -140,7 +140,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         FindingProviderFieldsTypes => [
           {
             Comparison => 'EQUALS'
@@ -148,7 +148,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         FirstObservedAt => [
           {
             DateRange => {
@@ -159,7 +159,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         GeneratorId => [
           {
             Comparison => 'EQUALS'
@@ -167,7 +167,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         Id => [
           {
             Comparison => 'EQUALS'
@@ -175,7 +175,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         Keyword        => [ { Value => 'MyNonEmptyString', }, ... ],  # OPTIONAL
         LastObservedAt => [
           {
@@ -187,7 +187,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         MalwareName => [
           {
             Comparison => 'EQUALS'
@@ -195,7 +195,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         MalwarePath => [
           {
             Comparison => 'EQUALS'
@@ -203,7 +203,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         MalwareState => [
           {
             Comparison => 'EQUALS'
@@ -211,7 +211,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         MalwareType => [
           {
             Comparison => 'EQUALS'
@@ -219,7 +219,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NetworkDestinationDomain => [
           {
             Comparison => 'EQUALS'
@@ -227,11 +227,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NetworkDestinationIpV4 => [ { Cidr => 'MyNonEmptyString', }, ... ]
-        ,      # OPTIONAL
+        ,     # OPTIONAL
         NetworkDestinationIpV6 => [ { Cidr => 'MyNonEmptyString', }, ... ]
-        ,      # OPTIONAL
+        ,     # OPTIONAL
         NetworkDestinationPort => [
           {
             Eq  => 1,    # OPTIONAL
@@ -239,7 +239,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         NetworkDirection => [
           {
             Comparison => 'EQUALS'
@@ -247,7 +247,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NetworkProtocol => [
           {
             Comparison => 'EQUALS'
@@ -255,7 +255,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourceDomain => [
           {
             Comparison => 'EQUALS'
@@ -263,11 +263,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourceIpV4 => [ { Cidr => 'MyNonEmptyString', }, ... ]
-        ,      # OPTIONAL
+        ,     # OPTIONAL
         NetworkSourceIpV6 => [ { Cidr => 'MyNonEmptyString', }, ... ]
-        ,      # OPTIONAL
+        ,     # OPTIONAL
         NetworkSourceMac => [
           {
             Comparison => 'EQUALS'
@@ -275,7 +275,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NetworkSourcePort => [
           {
             Eq  => 1,    # OPTIONAL
@@ -283,7 +283,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         NoteText => [
           {
             Comparison => 'EQUALS'
@@ -291,7 +291,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         NoteUpdatedAt => [
           {
             DateRange => {
@@ -302,7 +302,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         NoteUpdatedBy => [
           {
             Comparison => 'EQUALS'
@@ -310,7 +310,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ProcessLaunchedAt => [
           {
             DateRange => {
@@ -321,7 +321,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         ProcessName => [
           {
             Comparison => 'EQUALS'
@@ -329,7 +329,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ProcessParentPid => [
           {
             Eq  => 1,    # OPTIONAL
@@ -337,7 +337,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         ProcessPath => [
           {
             Comparison => 'EQUALS'
@@ -345,7 +345,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ProcessPid => [
           {
             Eq  => 1,    # OPTIONAL
@@ -353,7 +353,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         ProcessTerminatedAt => [
           {
             DateRange => {
@@ -364,7 +364,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         ProductArn => [
           {
             Comparison => 'EQUALS'
@@ -372,15 +372,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ProductFields => [
           {
             Comparison => 'EQUALS',    # values: EQUALS, NOT_EQUALS; OPTIONAL
-            Key   => 'MyNonEmptyString',
-            Value => 'MyNonEmptyString',
+            Key        => 'MyNonEmptyString',
+            Value      => 'MyNonEmptyString',
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
         ProductName => [
           {
             Comparison => 'EQUALS'
@@ -388,7 +388,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         RecommendationText => [
           {
             Comparison => 'EQUALS'
@@ -396,7 +396,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         RecordState => [
           {
             Comparison => 'EQUALS'
@@ -404,7 +404,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         RelatedFindingsId => [
           {
             Comparison => 'EQUALS'
@@ -412,7 +412,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         RelatedFindingsProductArn => [
           {
             Comparison => 'EQUALS'
@@ -420,7 +420,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceIamInstanceProfileArn => [
           {
             Comparison => 'EQUALS'
@@ -428,7 +428,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceImageId => [
           {
             Comparison => 'EQUALS'
@@ -436,7 +436,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceIpV4Addresses =>
           [ { Cidr => 'MyNonEmptyString', }, ... ],    # OPTIONAL
         ResourceAwsEc2InstanceIpV6Addresses =>
@@ -448,7 +448,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceLaunchedAt => [
           {
             DateRange => {
@@ -459,7 +459,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceSubnetId => [
           {
             Comparison => 'EQUALS'
@@ -467,7 +467,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceType => [
           {
             Comparison => 'EQUALS'
@@ -475,7 +475,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsEc2InstanceVpcId => [
           {
             Comparison => 'EQUALS'
@@ -483,7 +483,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsIamAccessKeyCreatedAt => [
           {
             DateRange => {
@@ -494,7 +494,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsIamAccessKeyStatus => [
           {
             Comparison => 'EQUALS'
@@ -502,7 +502,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsIamAccessKeyUserName => [
           {
             Comparison => 'EQUALS'
@@ -510,7 +510,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsS3BucketOwnerId => [
           {
             Comparison => 'EQUALS'
@@ -518,7 +518,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceAwsS3BucketOwnerName => [
           {
             Comparison => 'EQUALS'
@@ -526,7 +526,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerImageId => [
           {
             Comparison => 'EQUALS'
@@ -534,7 +534,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerImageName => [
           {
             Comparison => 'EQUALS'
@@ -542,7 +542,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerLaunchedAt => [
           {
             DateRange => {
@@ -553,7 +553,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         ResourceContainerName => [
           {
             Comparison => 'EQUALS'
@@ -561,15 +561,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceDetailsOther => [
           {
             Comparison => 'EQUALS',    # values: EQUALS, NOT_EQUALS; OPTIONAL
-            Key   => 'MyNonEmptyString',
-            Value => 'MyNonEmptyString',
+            Key        => 'MyNonEmptyString',
+            Value      => 'MyNonEmptyString',
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
         ResourceId => [
           {
             Comparison => 'EQUALS'
@@ -577,7 +577,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourcePartition => [
           {
             Comparison => 'EQUALS'
@@ -585,7 +585,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceRegion => [
           {
             Comparison => 'EQUALS'
@@ -593,15 +593,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ResourceTags => [
           {
             Comparison => 'EQUALS',    # values: EQUALS, NOT_EQUALS; OPTIONAL
-            Key   => 'MyNonEmptyString',
-            Value => 'MyNonEmptyString',
+            Key        => 'MyNonEmptyString',
+            Value      => 'MyNonEmptyString',
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
         ResourceType => [
           {
             Comparison => 'EQUALS'
@@ -609,7 +609,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         SeverityLabel => [
           {
             Comparison => 'EQUALS'
@@ -617,7 +617,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         SeverityNormalized => [
           {
             Eq  => 1,    # OPTIONAL
@@ -625,7 +625,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         SeverityProduct => [
           {
             Eq  => 1,    # OPTIONAL
@@ -633,7 +633,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Lte => 1,    # OPTIONAL
           },
           ...
-        ],               # OPTIONAL
+        ],    # OPTIONAL
         SourceUrl => [
           {
             Comparison => 'EQUALS'
@@ -641,7 +641,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorCategory => [
           {
             Comparison => 'EQUALS'
@@ -649,7 +649,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorLastObservedAt => [
           {
             DateRange => {
@@ -660,7 +660,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorSource => [
           {
             Comparison => 'EQUALS'
@@ -668,7 +668,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorSourceUrl => [
           {
             Comparison => 'EQUALS'
@@ -676,7 +676,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorType => [
           {
             Comparison => 'EQUALS'
@@ -684,7 +684,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         ThreatIntelIndicatorValue => [
           {
             Comparison => 'EQUALS'
@@ -692,7 +692,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         Title => [
           {
             Comparison => 'EQUALS'
@@ -700,7 +700,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         Type => [
           {
             Comparison => 'EQUALS'
@@ -708,7 +708,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         UpdatedAt => [
           {
             DateRange => {
@@ -719,15 +719,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Start => 'MyNonEmptyString',
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         UserDefinedFields => [
           {
             Comparison => 'EQUALS',    # values: EQUALS, NOT_EQUALS; OPTIONAL
-            Key   => 'MyNonEmptyString',
-            Value => 'MyNonEmptyString',
+            Key        => 'MyNonEmptyString',
+            Value      => 'MyNonEmptyString',
           },
           ...
-        ],                             # OPTIONAL
+        ],    # OPTIONAL
         VerificationState => [
           {
             Comparison => 'EQUALS'
@@ -735,7 +735,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         WorkflowState => [
           {
             Comparison => 'EQUALS'
@@ -743,7 +743,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
         WorkflowStatus => [
           {
             Comparison => 'EQUALS'
@@ -751,7 +751,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Value => 'MyNonEmptyString',
           },
           ...
-        ],     # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       GroupByAttribute => 'MyNonEmptyString',    # OPTIONAL
       Name             => 'MyNonEmptyString',    # OPTIONAL

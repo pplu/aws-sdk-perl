@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterIdentifier => 'MyString',
       AddIamRoles       => [
         'MyString', ...    # max: 2147483647
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
       RemoveIamRoles => [
         'MyString', ...    # max: 2147483647
-      ],                   # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

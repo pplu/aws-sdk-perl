@@ -30,10 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $iam = Paws->service('IAM');
-    # To create an instance profile
-    # The following example defines a new OIDC provider in IAM with a client ID
-    # of my-application-id and pointing at the server with a URL of
-    # https://server.example.com.
+  # To create an instance profile
+  # The following example defines a new OIDC provider in IAM with a client ID of
+  # my-application-id and pointing at the server with a URL of
+  # https://server.example.com.
     my $CreateOpenIDConnectProviderResponse = $iam->CreateOpenIDConnectProvider(
       'ClientIDList'   => ['my-application-id'],
       'ThumbprintList' => ['3768084dfb3d2b68b7897bf5f565da8efEXAMPLE'],

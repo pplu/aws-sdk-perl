@@ -59,7 +59,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             {
               Encryption => {
                 InitializationVector =>
-                  'MyZeroTo255String',     # max: 255; OPTIONAL
+                  'MyZeroTo255String',    # max: 255; OPTIONAL
                 Key    => 'MyBase64EncodedString',    # OPTIONAL
                 KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
                 Mode   => 'MyEncryptionMode',         # OPTIONAL
@@ -70,7 +70,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TimeOffset => 'MyTimeOffset',    # OPTIONAL
             },
             ...
-          ],                                   # max: 20; OPTIONAL
+          ],    # max: 20; OPTIONAL
           MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
         },    # OPTIONAL
         Interlaced => 'MyInterlaced',    # OPTIONAL
@@ -94,9 +94,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           Encryption => {
             InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key    => 'MyBase64EncodedString',              # OPTIONAL
-            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
-            Mode   => 'MyEncryptionMode',                   # OPTIONAL
+            Key                  => 'MyBase64EncodedString',    # OPTIONAL
+            KeyMd5               => 'MyBase64EncodedString',    # OPTIONAL
+            Mode                 => 'MyEncryptionMode',         # OPTIONAL
           },    # OPTIONAL
           FrameRate     => 'MyFrameRate',    # OPTIONAL
           InputCaptions => {
@@ -104,7 +104,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 Encryption => {
                   InitializationVector =>
-                    'MyZeroTo255String',     # max: 255; OPTIONAL
+                    'MyZeroTo255String',    # max: 255; OPTIONAL
                   Key    => 'MyBase64EncodedString',    # OPTIONAL
                   KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
                   Mode   => 'MyEncryptionMode',         # OPTIONAL
@@ -115,7 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 TimeOffset => 'MyTimeOffset',    # OPTIONAL
               },
               ...
-            ],                                   # max: 20; OPTIONAL
+            ],    # max: 20; OPTIONAL
             MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
           },    # OPTIONAL
           Interlaced => 'MyInterlaced',    # OPTIONAL
@@ -127,7 +127,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       Output => {
         AlbumArt => {
           Artwork => [
@@ -147,8 +147,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               SizingPolicy  => 'MySizingPolicy',   # OPTIONAL
             },
             ...
-          ],                                       # OPTIONAL
-          MergePolicy => 'MyMergePolicy',          # OPTIONAL
+          ],    # OPTIONAL
+          MergePolicy => 'MyMergePolicy',    # OPTIONAL
         },    # OPTIONAL
         Captions => {
           CaptionFormats => [
@@ -164,12 +164,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Pattern => 'MyCaptionFormatPattern',    # OPTIONAL
             },
             ...
-          ],                                          # max: 4; OPTIONAL
+          ],    # max: 4; OPTIONAL
           CaptionSources => [
             {
               Encryption => {
                 InitializationVector =>
-                  'MyZeroTo255String',                # max: 255; OPTIONAL
+                  'MyZeroTo255String',    # max: 255; OPTIONAL
                 Key    => 'MyBase64EncodedString',    # OPTIONAL
                 KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
                 Mode   => 'MyEncryptionMode',         # OPTIONAL
@@ -180,7 +180,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TimeOffset => 'MyTimeOffset',    # OPTIONAL
             },
             ...
-          ],                                   # max: 20; OPTIONAL
+          ],    # max: 20; OPTIONAL
           MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
         },    # OPTIONAL
         Composition => [
@@ -191,7 +191,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },
           ...
-        ],        # OPTIONAL
+        ],    # OPTIONAL
         Encryption => {
           InitializationVector => 'MyZeroTo255String',      # max: 255; OPTIONAL
           Key                  => 'MyBase64EncodedString',  # OPTIONAL
@@ -213,16 +213,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Encryption => {
               InitializationVector => 'MyZeroTo255String',  # max: 255; OPTIONAL
-              Key    => 'MyBase64EncodedString',            # OPTIONAL
-              KeyMd5 => 'MyBase64EncodedString',            # OPTIONAL
-              Mode   => 'MyEncryptionMode',                 # OPTIONAL
+              Key                  => 'MyBase64EncodedString',    # OPTIONAL
+              KeyMd5               => 'MyBase64EncodedString',    # OPTIONAL
+              Mode                 => 'MyEncryptionMode',         # OPTIONAL
             },    # OPTIONAL
-            InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
+            InputKey          => 'MyWatermarkKey', # min: 1, max: 1024; OPTIONAL
             PresetWatermarkId =>
-              'MyPresetWatermarkId',         # min: 1, max: 40; OPTIONAL
+              'MyPresetWatermarkId',               # min: 1, max: 40; OPTIONAL
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
       },    # OPTIONAL
       OutputKeyPrefix => 'MyKey',    # OPTIONAL
       Outputs         => [
@@ -238,15 +238,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
                   Mode   => 'MyEncryptionMode',         # OPTIONAL
                 },    # OPTIONAL
-                InputKey  => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
-                MaxHeight => 'MyDigitsOrAuto',    # OPTIONAL
-                MaxWidth  => 'MyDigitsOrAuto',    # OPTIONAL
+                InputKey      => 'MyWatermarkKey', # min: 1, max: 1024; OPTIONAL
+                MaxHeight     => 'MyDigitsOrAuto', # OPTIONAL
+                MaxWidth      => 'MyDigitsOrAuto', # OPTIONAL
                 PaddingPolicy => 'MyPaddingPolicy',    # OPTIONAL
                 SizingPolicy  => 'MySizingPolicy',     # OPTIONAL
               },
               ...
-            ],                                         # OPTIONAL
-            MergePolicy => 'MyMergePolicy',            # OPTIONAL
+            ],    # OPTIONAL
+            MergePolicy => 'MyMergePolicy',    # OPTIONAL
           },    # OPTIONAL
           Captions => {
             CaptionFormats => [
@@ -262,12 +262,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 Pattern => 'MyCaptionFormatPattern',    # OPTIONAL
               },
               ...
-            ],                                          # max: 4; OPTIONAL
+            ],    # max: 4; OPTIONAL
             CaptionSources => [
               {
                 Encryption => {
                   InitializationVector =>
-                    'MyZeroTo255String',                # max: 255; OPTIONAL
+                    'MyZeroTo255String',    # max: 255; OPTIONAL
                   Key    => 'MyBase64EncodedString',    # OPTIONAL
                   KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
                   Mode   => 'MyEncryptionMode',         # OPTIONAL
@@ -278,7 +278,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 TimeOffset => 'MyTimeOffset',    # OPTIONAL
               },
               ...
-            ],                                   # max: 20; OPTIONAL
+            ],    # max: 20; OPTIONAL
             MergePolicy => 'MyCaptionMergePolicy',    # OPTIONAL
           },    # OPTIONAL
           Composition => [
@@ -289,12 +289,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
           Encryption => {
             InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key    => 'MyBase64EncodedString',              # OPTIONAL
-            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
-            Mode   => 'MyEncryptionMode',                   # OPTIONAL
+            Key                  => 'MyBase64EncodedString',    # OPTIONAL
+            KeyMd5               => 'MyBase64EncodedString',    # OPTIONAL
+            Mode                 => 'MyEncryptionMode',         # OPTIONAL
           },    # OPTIONAL
           Key                 => 'MyKey',           # min: 1, max: 255; OPTIONAL
           PresetId            => 'MyId',
@@ -302,56 +302,56 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           SegmentDuration     => 'MyFloatString',   # OPTIONAL
           ThumbnailEncryption => {
             InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key    => 'MyBase64EncodedString',              # OPTIONAL
-            KeyMd5 => 'MyBase64EncodedString',              # OPTIONAL
-            Mode   => 'MyEncryptionMode',                   # OPTIONAL
+            Key                  => 'MyBase64EncodedString',    # OPTIONAL
+            KeyMd5               => 'MyBase64EncodedString',    # OPTIONAL
+            Mode                 => 'MyEncryptionMode',         # OPTIONAL
           },    # OPTIONAL
           ThumbnailPattern => 'MyThumbnailPattern',    # OPTIONAL
           Watermarks       => [
             {
               Encryption => {
                 InitializationVector =>
-                  'MyZeroTo255String',                 # max: 255; OPTIONAL
-                Key    => 'MyBase64EncodedString',     # OPTIONAL
-                KeyMd5 => 'MyBase64EncodedString',     # OPTIONAL
-                Mode   => 'MyEncryptionMode',          # OPTIONAL
+                  'MyZeroTo255String',    # max: 255; OPTIONAL
+                Key    => 'MyBase64EncodedString',    # OPTIONAL
+                KeyMd5 => 'MyBase64EncodedString',    # OPTIONAL
+                Mode   => 'MyEncryptionMode',         # OPTIONAL
               },    # OPTIONAL
               InputKey => 'MyWatermarkKey',    # min: 1, max: 1024; OPTIONAL
               PresetWatermarkId =>
                 'MyPresetWatermarkId',         # min: 1, max: 40; OPTIONAL
             },
             ...
-          ],                                   # OPTIONAL
+          ],    # OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Playlists => [
         {
           Format               => 'MyPlaylistFormat',    # OPTIONAL
           HlsContentProtection => {
-            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key              => 'MyBase64EncodedString',    # OPTIONAL
-            KeyMd5           => 'MyBase64EncodedString',    # OPTIONAL
-            KeyStoragePolicy => 'MyKeyStoragePolicy',       # OPTIONAL
+            InitializationVector  => 'MyZeroTo255String',   # max: 255; OPTIONAL
+            Key                   => 'MyBase64EncodedString',    # OPTIONAL
+            KeyMd5                => 'MyBase64EncodedString',    # OPTIONAL
+            KeyStoragePolicy      => 'MyKeyStoragePolicy',       # OPTIONAL
             LicenseAcquisitionUrl => 'MyZeroTo512String',   # max: 512; OPTIONAL
-            Method => 'MyHlsContentProtectionMethod',       # OPTIONAL
+            Method                => 'MyHlsContentProtectionMethod',  # OPTIONAL
           },    # OPTIONAL
           Name       => 'MyFilename',    # min: 1, max: 255; OPTIONAL
           OutputKeys => [
             'MyKey', ...                 # min: 1, max: 255; OPTIONAL
-          ],                             # max: 30; OPTIONAL
+          ],    # max: 30; OPTIONAL
           PlayReadyDrm => {
-            Format => 'MyPlayReadyDrmFormatString',    # OPTIONAL
-            InitializationVector => 'MyZeroTo255String',    # max: 255; OPTIONAL
-            Key    => 'MyNonEmptyBase64EncodedString',      # OPTIONAL
-            KeyId  => 'MyKeyIdGuid',                        # OPTIONAL
-            KeyMd5 => 'MyNonEmptyBase64EncodedString',      # OPTIONAL
+            Format                => 'MyPlayReadyDrmFormatString',    # OPTIONAL
+            InitializationVector  => 'MyZeroTo255String',   # max: 255; OPTIONAL
+            Key                   => 'MyNonEmptyBase64EncodedString', # OPTIONAL
+            KeyId                 => 'MyKeyIdGuid',                   # OPTIONAL
+            KeyMd5                => 'MyNonEmptyBase64EncodedString', # OPTIONAL
             LicenseAcquisitionUrl =>
               'MyOneTo512String',    # min: 1, max: 512; OPTIONAL
           },    # OPTIONAL
         },
         ...
-      ],        # OPTIONAL
+      ],    # OPTIONAL
       UserMetadata => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 

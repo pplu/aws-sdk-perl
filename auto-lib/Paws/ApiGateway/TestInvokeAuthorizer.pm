@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $TestInvokeAuthorizerResponse = $apigateway->TestInvokeAuthorizer(
       AuthorizerId        => 'MyString',
       RestApiId           => 'MyString',
-      AdditionalContext   => { 'MyString' => 'MyString', },           # OPTIONAL
-      Body                => 'MyString',                              # OPTIONAL
+      AdditionalContext   => { 'MyString' => 'MyString', },    # OPTIONAL
+      Body                => 'MyString',                       # OPTIONAL
       Headers             => { 'MyString' => 'MyString', },           # OPTIONAL
       MultiValueHeaders   => { 'MyString' => [ 'MyString', ... ], },  # OPTIONAL
       PathWithQueryString => 'MyString',                              # OPTIONAL

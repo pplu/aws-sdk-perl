@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ecs = Paws->service('ECS');
-    # To list your available container instances in a cluster
-    # This example lists all of your available container instances in the
-    # specified cluster in your default region.
+ # To list your available container instances in a cluster
+ # This example lists all of your available container instances in the specified
+ # cluster in your default region.
     my $ListContainerInstancesResponse =
       $ecs->ListContainerInstances( 'Cluster' => 'default' );
 

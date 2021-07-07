@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
         StatelessCustomActions => [
           {
             ActionDefinition => {
@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                   },
                   ...
-                ],                                  # min: 1, max: 1
+                ],    # min: 1, max: 1
 
               },    # OPTIONAL
             },
@@ -61,7 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                   # OPTIONAL
+        ],    # OPTIONAL
         StatelessRuleGroupReferences => [
           {
             Priority    => 1,                  # min: 1, max: 65535
@@ -69,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                     # OPTIONAL
+        ],    # OPTIONAL
       },
       UpdateToken        => 'MyUpdateToken',
       Description        => 'MyDescription',     # OPTIONAL

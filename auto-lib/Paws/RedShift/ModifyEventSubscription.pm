@@ -38,13 +38,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Enabled          => 1,            # OPTIONAL
       EventCategories  => [
         'MyString', ...                 # max: 2147483647
-      ],                                # OPTIONAL
-      Severity    => 'MyString',        # OPTIONAL
-      SnsTopicArn => 'MyString',        # OPTIONAL
+      ],    # OPTIONAL
+      Severity    => 'MyString',    # OPTIONAL
+      SnsTopicArn => 'MyString',    # OPTIONAL
       SourceIds   => [
-        'MyString', ...                 # max: 2147483647
-      ],                                # OPTIONAL
-      SourceType => 'MyString',         # OPTIONAL
+        'MyString', ...             # max: 2147483647
+      ],    # OPTIONAL
+      SourceType => 'MyString',    # OPTIONAL
     );
 
     # Results:

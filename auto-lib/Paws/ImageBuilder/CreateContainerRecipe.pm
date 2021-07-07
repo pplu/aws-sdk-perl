@@ -83,8 +83,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             VirtualName => 'MyNonEmptyString',    # min: 1, max: 1024
           },
           ...
-        ],                                        # OPTIONAL
-        Image => 'MyNonEmptyString',              # min: 1, max: 1024
+        ],    # OPTIONAL
+        Image => 'MyNonEmptyString',    # min: 1, max: 1024
       },    # OPTIONAL
       KmsKeyId         => 'MyNonEmptyString',    # OPTIONAL
       PlatformOverride => 'Windows',             # OPTIONAL

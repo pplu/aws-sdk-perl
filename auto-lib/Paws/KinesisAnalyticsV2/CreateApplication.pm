@@ -66,7 +66,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },
             ...
-          ],        # max: 50
+          ],    # max: 50
 
         },    # OPTIONAL
         FlinkApplicationConfiguration => {
@@ -78,7 +78,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           MonitoringConfiguration => {
             ConfigurationType => 'DEFAULT',    # values: DEFAULT, CUSTOM
-            LogLevel => 'INFO',    # values: INFO, WARN, ERROR, DEBUG; OPTIONAL
+            LogLevel     => 'INFO', # values: INFO, WARN, ERROR, DEBUG; OPTIONAL
             MetricsLevel => 'APPLICATION'
             ,    # values: APPLICATION, TASK, OPERATOR, PARALLELISM; OPTIONAL
           },    # OPTIONAL
@@ -100,15 +100,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',   # max: 65535; OPTIONAL
                   },
                   ...
-                ],                                        # min: 1, max: 1000
+                ],    # min: 1, max: 1000
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',            # values: JSON, CSV
+                  RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',        # min: 1, max: 1024
+                        'MyRecordColumnDelimiter',    # min: 1, max: 1024
                       RecordRowDelimiter =>
-                        'MyRecordRowDelimiter',           # min: 1, max: 1024
+                        'MyRecordRowDelimiter',       # min: 1, max: 1024
 
                     },    # OPTIONAL
                     JSONMappingParameters => {
@@ -140,7 +140,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
           Outputs => [
             {
               DestinationSchema => {
@@ -162,7 +162,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
           ReferenceDataSources => [
             {
               ReferenceSchema => {
@@ -173,15 +173,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     Mapping => 'MyRecordColumnMapping',   # max: 65535; OPTIONAL
                   },
                   ...
-                ],                                        # min: 1, max: 1000
+                ],    # min: 1, max: 1000
                 RecordFormat => {
-                  RecordFormatType  => 'JSON',            # values: JSON, CSV
+                  RecordFormatType  => 'JSON',    # values: JSON, CSV
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',        # min: 1, max: 1024
+                        'MyRecordColumnDelimiter',    # min: 1, max: 1024
                       RecordRowDelimiter =>
-                        'MyRecordRowDelimiter',           # min: 1, max: 1024
+                        'MyRecordRowDelimiter',       # min: 1, max: 1024
 
                     },    # OPTIONAL
                     JSONMappingParameters => {
@@ -199,7 +199,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # OPTIONAL
+          ],    # OPTIONAL
         },    # OPTIONAL
         VpcConfigurations => [
           {
@@ -208,7 +208,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           ...
-        ],                                                     # OPTIONAL
+        ],    # OPTIONAL
         ZeppelinApplicationConfiguration => {
           CatalogConfiguration => {
             GlueDataCatalogConfiguration => {
@@ -233,7 +233,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },    # OPTIONAL
             },
             ...
-          ],        # max: 50; OPTIONAL
+          ],    # max: 50; OPTIONAL
           DeployAsApplicationConfiguration => {
             S3ContentLocation => {
               BucketARN => 'MyBucketARN',    # min: 1, max: 2048
@@ -255,14 +255,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',                 # min: 1, max: 128
-          Value => 'MyTagValue',               # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
         },
         ...
-      ],                                       # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

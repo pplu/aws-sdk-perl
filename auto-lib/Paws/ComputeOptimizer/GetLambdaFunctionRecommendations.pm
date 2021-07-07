@@ -36,14 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountIds => [ 'MyAccountId', ... ],    # OPTIONAL
       Filters    => [
         {
-          Name => 'Finding',    # values: Finding, FindingReasonCode; OPTIONAL
+          Name   => 'Finding',    # values: Finding, FindingReasonCode; OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
-      FunctionArns => [ 'MyFunctionArn', ... ],  # OPTIONAL
-      MaxResults   => 1,                         # OPTIONAL
-      NextToken    => 'MyNextToken',             # OPTIONAL
+      ],    # OPTIONAL
+      FunctionArns => [ 'MyFunctionArn', ... ],    # OPTIONAL
+      MaxResults   => 1,                           # OPTIONAL
+      NextToken    => 'MyNextToken',               # OPTIONAL
       );
 
     # Results:

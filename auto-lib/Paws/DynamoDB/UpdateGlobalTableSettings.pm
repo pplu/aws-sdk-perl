@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           IndexName => 'MyIndexName',    # min: 3, max: 255
           ProvisionedWriteCapacityAutoScalingSettingsUpdate => {
             AutoScalingDisabled => 1,    # OPTIONAL
-            AutoScalingRoleArn =>
+            AutoScalingRoleArn  =>
               'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
             MaximumUnits        => 1,    # min: 1; OPTIONAL
             MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -58,19 +58,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ProvisionedWriteCapacityUnits => 1,    # min: 1; OPTIONAL
         },
         ...
-      ],                                         # OPTIONAL
+      ],    # OPTIONAL
       GlobalTableProvisionedWriteCapacityAutoScalingSettingsUpdate => {
-        AutoScalingDisabled => 1,                # OPTIONAL
-        AutoScalingRoleArn =>
-          'MyAutoScalingRoleArn',                # min: 1, max: 1600; OPTIONAL
-        MaximumUnits        => 1,                # min: 1; OPTIONAL
-        MinimumUnits        => 1,                # min: 1; OPTIONAL
+        AutoScalingDisabled => 1,    # OPTIONAL
+        AutoScalingRoleArn  =>
+          'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
+        MaximumUnits        => 1,    # min: 1; OPTIONAL
+        MinimumUnits        => 1,    # min: 1; OPTIONAL
         ScalingPolicyUpdate => {
           TargetTrackingScalingPolicyConfiguration => {
             TargetValue      => 1,
-            DisableScaleIn   => 1,               # OPTIONAL
-            ScaleInCooldown  => 1,               # OPTIONAL
-            ScaleOutCooldown => 1,               # OPTIONAL
+            DisableScaleIn   => 1,    # OPTIONAL
+            ScaleInCooldown  => 1,    # OPTIONAL
+            ScaleOutCooldown => 1,    # OPTIONAL
           },
           PolicyName => 'MyAutoScalingPolicyName',  # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
@@ -81,10 +81,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RegionName                                => 'MyRegionName',
           ReplicaGlobalSecondaryIndexSettingsUpdate => [
             {
-              IndexName => 'MyIndexName',               # min: 3, max: 255
+              IndexName => 'MyIndexName',    # min: 3, max: 255
               ProvisionedReadCapacityAutoScalingSettingsUpdate => {
-                AutoScalingDisabled => 1,               # OPTIONAL
-                AutoScalingRoleArn =>
+                AutoScalingDisabled => 1,    # OPTIONAL
+                AutoScalingRoleArn  =>
                   'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
                 MaximumUnits        => 1,    # min: 1; OPTIONAL
                 MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -102,10 +102,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ProvisionedReadCapacityUnits => 1,    # min: 1; OPTIONAL
             },
             ...
-          ],                                        # min: 1, max: 20; OPTIONAL
+          ],    # min: 1, max: 20; OPTIONAL
           ReplicaProvisionedReadCapacityAutoScalingSettingsUpdate => {
-            AutoScalingDisabled => 1,               # OPTIONAL
-            AutoScalingRoleArn =>
+            AutoScalingDisabled => 1,    # OPTIONAL
+            AutoScalingRoleArn  =>
               'MyAutoScalingRoleArn',    # min: 1, max: 1600; OPTIONAL
             MaximumUnits        => 1,    # min: 1; OPTIONAL
             MinimumUnits        => 1,    # min: 1; OPTIONAL
@@ -123,7 +123,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ReplicaProvisionedReadCapacityUnits => 1,    # min: 1; OPTIONAL
         },
         ...
-      ],                                               # OPTIONAL
+      ],    # OPTIONAL
     );
 
     # Results:

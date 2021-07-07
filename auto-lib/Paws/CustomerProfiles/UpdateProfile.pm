@@ -56,16 +56,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AccountNumber         => 'Mystring0To255',     # OPTIONAL
       AdditionalInformation => 'Mystring0To1000',    # OPTIONAL
       Address               => {
-        Address1   => 'Mystring0To255',              # max: 255
-        Address2   => 'Mystring0To255',              # max: 255
-        Address3   => 'Mystring0To255',              # max: 255
-        Address4   => 'Mystring0To255',              # max: 255
-        City       => 'Mystring0To255',              # max: 255
-        Country    => 'Mystring0To255',              # max: 255
-        County     => 'Mystring0To255',              # max: 255
-        PostalCode => 'Mystring0To255',              # max: 255
-        Province   => 'Mystring0To255',              # max: 255
-        State      => 'Mystring0To255',              # max: 255
+        Address1   => 'Mystring0To255',    # max: 255
+        Address2   => 'Mystring0To255',    # max: 255
+        Address3   => 'Mystring0To255',    # max: 255
+        Address4   => 'Mystring0To255',    # max: 255
+        City       => 'Mystring0To255',    # max: 255
+        Country    => 'Mystring0To255',    # max: 255
+        County     => 'Mystring0To255',    # max: 255
+        PostalCode => 'Mystring0To255',    # max: 255
+        Province   => 'Mystring0To255',    # max: 255
+        State      => 'Mystring0To255',    # max: 255
       },    # OPTIONAL
       Attributes => {
         'Mystring1To255' =>
@@ -93,16 +93,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       HomePhoneNumber      => 'Mystring0To255',    # OPTIONAL
       LastName             => 'Mystring0To255',    # OPTIONAL
       MailingAddress       => {
-        Address1   => 'Mystring0To255',            # max: 255
-        Address2   => 'Mystring0To255',            # max: 255
-        Address3   => 'Mystring0To255',            # max: 255
-        Address4   => 'Mystring0To255',            # max: 255
-        City       => 'Mystring0To255',            # max: 255
-        Country    => 'Mystring0To255',            # max: 255
-        County     => 'Mystring0To255',            # max: 255
-        PostalCode => 'Mystring0To255',            # max: 255
-        Province   => 'Mystring0To255',            # max: 255
-        State      => 'Mystring0To255',            # max: 255
+        Address1   => 'Mystring0To255',    # max: 255
+        Address2   => 'Mystring0To255',    # max: 255
+        Address3   => 'Mystring0To255',    # max: 255
+        Address4   => 'Mystring0To255',    # max: 255
+        City       => 'Mystring0To255',    # max: 255
+        Country    => 'Mystring0To255',    # max: 255
+        County     => 'Mystring0To255',    # max: 255
+        PostalCode => 'Mystring0To255',    # max: 255
+        Province   => 'Mystring0To255',    # max: 255
+        State      => 'Mystring0To255',    # max: 255
       },    # OPTIONAL
       MiddleName           => 'Mystring0To255',    # OPTIONAL
       MobilePhoneNumber    => 'Mystring0To255',    # OPTIONAL
@@ -110,16 +110,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PersonalEmailAddress => 'Mystring0To255',    # OPTIONAL
       PhoneNumber          => 'Mystring0To255',    # OPTIONAL
       ShippingAddress      => {
-        Address1   => 'Mystring0To255',            # max: 255
-        Address2   => 'Mystring0To255',            # max: 255
-        Address3   => 'Mystring0To255',            # max: 255
-        Address4   => 'Mystring0To255',            # max: 255
-        City       => 'Mystring0To255',            # max: 255
-        Country    => 'Mystring0To255',            # max: 255
-        County     => 'Mystring0To255',            # max: 255
-        PostalCode => 'Mystring0To255',            # max: 255
-        Province   => 'Mystring0To255',            # max: 255
-        State      => 'Mystring0To255',            # max: 255
+        Address1   => 'Mystring0To255',    # max: 255
+        Address2   => 'Mystring0To255',    # max: 255
+        Address3   => 'Mystring0To255',    # max: 255
+        Address4   => 'Mystring0To255',    # max: 255
+        City       => 'Mystring0To255',    # max: 255
+        Country    => 'Mystring0To255',    # max: 255
+        County     => 'Mystring0To255',    # max: 255
+        PostalCode => 'Mystring0To255',    # max: 255
+        Province   => 'Mystring0To255',    # max: 255
+        State      => 'Mystring0To255',    # max: 255
       },    # OPTIONAL
     );
 

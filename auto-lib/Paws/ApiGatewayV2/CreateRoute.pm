@@ -40,11 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGatewayV2');
     my $CreateRouteResponseShape = $apigateway->CreateRoute(
-      ApiId          => 'My__string',
-      RouteKey       => 'MySelectionKey',
-      ApiKeyRequired => 1,                  # OPTIONAL
+      ApiId               => 'My__string',
+      RouteKey            => 'MySelectionKey',
+      ApiKeyRequired      => 1,                        # OPTIONAL
       AuthorizationScopes => [ 'MyStringWithLengthBetween1And64', ... ]
-      ,                                     # OPTIONAL
+      ,                                                # OPTIONAL
       AuthorizationType        => 'NONE',                             # OPTIONAL
       AuthorizerId             => 'MyId',                             # OPTIONAL
       ModelSelectionExpression => 'MySelectionExpression',            # OPTIONAL

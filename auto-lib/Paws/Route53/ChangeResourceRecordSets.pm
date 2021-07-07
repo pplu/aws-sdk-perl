@@ -63,11 +63,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-    # To create weighted resource record sets
-    # The following example creates two weighted resource record sets. The
-    # resource with a Weight of 100 will get 1/3rd of traffic (100/100+200), and
-    # the other resource will get the rest of the traffic for example.com.
+ # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+ # To create weighted resource record sets
+ # The following example creates two weighted resource record sets. The resource
+ # with a Weight of 100 will get 1/3rd of traffic (100/100+200), and the other
+ # resource will get the rest of the traffic for example.com.
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [
@@ -116,10 +116,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-    # To create an alias resource record set
-    # The following example creates an alias resource record set that routes
-    # traffic to a CloudFront distribution.
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create an alias resource record set
+# The following example creates an alias resource record set that routes traffic
+# to a CloudFront distribution.
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [
@@ -145,12 +145,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-   # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-   # To create weighted alias resource record sets
-   # The following example creates two weighted alias resource record sets that
-   # route traffic to ELB load balancers. The resource with a Weight of 100 will
-   # get 1/3rd of traffic (100/100+200), and the other resource will get the
-   # rest of the traffic for example.com.
+  # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+  # To create weighted alias resource record sets
+  # The following example creates two weighted alias resource record sets that
+  # route traffic to ELB load balancers. The resource with a Weight of 100 will
+  # get 1/3rd of traffic (100/100+200), and the other resource will get the rest
+  # of the traffic for example.com.
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [
@@ -195,12 +195,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-   # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-   # To create latency resource record sets
-   # The following example creates two latency resource record sets that route
-   # traffic to EC2 instances. Traffic for example.com is routed either to the
-   # Ohio region or the Oregon region, depending on the latency between the user
-   # and those regions.
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create latency resource record sets
+# The following example creates two latency resource record sets that route
+# traffic to EC2 instances. Traffic for example.com is routed either to the Ohio
+# region or the Oregon region, depending on the latency between the user and
+# those regions.
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [
@@ -299,13 +299,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-    # To create failover resource record sets
-    # The following example creates primary and secondary failover resource
-    # record sets that route traffic to EC2 instances. Traffic is generally
-    # routed to the primary resource, in the Ohio region. If that resource is
-    # unavailable, traffic is routed to the secondary resource, in the Oregon
-    # region.
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create failover resource record sets
+# The following example creates primary and secondary failover resource record
+# sets that route traffic to EC2 instances. Traffic is generally routed to the
+# primary resource, in the Ohio region. If that resource is unavailable, traffic
+# is routed to the secondary resource, in the Oregon region.
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [
@@ -405,13 +404,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-    # To create geolocation resource record sets
-    # The following example creates four geolocation resource record sets that
-    # use IPv4 addresses to route traffic to resources such as web servers
-    # running on EC2 instances. Traffic is routed to one of four IP addresses,
-    # for North America (NA), for South America (SA), for Europe (EU), and for
-    # all other locations (*).
+  # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+  # To create geolocation resource record sets
+  # The following example creates four geolocation resource record sets that use
+  # IPv4 addresses to route traffic to resources such as web servers running on
+  # EC2 instances. Traffic is routed to one of four IP addresses, for North
+  # America (NA), for South America (SA), for Europe (EU), and for all other
+  # locations (*).
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [
@@ -500,12 +499,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
 
-    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
-    # To create geolocation alias resource record sets
-    # The following example creates four geolocation alias resource record sets
-    # that route traffic to ELB load balancers. Traffic is routed to one of four
-    # IP addresses, for North America (NA), for South America (SA), for Europe
-    # (EU), and for all other locations (*).
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create geolocation alias resource record sets
+# The following example creates four geolocation alias resource record sets that
+# route traffic to ELB load balancers. Traffic is routed to one of four IP
+# addresses, for North America (NA), for South America (SA), for Europe (EU),
+# and for all other locations (*).
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
       'ChangeBatch' => {
         'Changes' => [

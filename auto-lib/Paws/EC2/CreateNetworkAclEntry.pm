@@ -36,10 +36,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    # To create a network ACL entry
-    # This example creates an entry for the specified network ACL. The rule
-    # allows ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS) into
-    # any associated subnet.
+  # To create a network ACL entry
+  # This example creates an entry for the specified network ACL. The rule allows
+  # ingress traffic from anywhere (0.0.0.0/0) on UDP port 53 (DNS) into any
+  # associated subnet.
     $ec2->CreateNetworkAclEntry(
       'CidrBlock'    => '0.0.0.0/0',
       'Egress'       => 0,

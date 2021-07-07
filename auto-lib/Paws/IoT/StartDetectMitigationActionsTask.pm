@@ -41,12 +41,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       ClientRequestToken => 'MyClientRequestToken',
       Target             => {
-        BehaviorName => 'MyBehaviorName',    # min: 1, max: 128; OPTIONAL
+        BehaviorName        => 'MyBehaviorName',    # min: 1, max: 128; OPTIONAL
         SecurityProfileName =>
-          'MySecurityProfileName',           # min: 1, max: 128; OPTIONAL
+          'MySecurityProfileName',                  # min: 1, max: 128; OPTIONAL
         ViolationIds => [
-          'MyViolationId', ...               # min: 1, max: 128
-        ],                                   # min: 1, max: 25; OPTIONAL
+          'MyViolationId', ...                      # min: 1, max: 128
+        ],    # min: 1, max: 25; OPTIONAL
       },
       TaskId                        => 'MyMitigationActionsTaskId',
       IncludeOnlyActiveViolations   => 1,                             # OPTIONAL

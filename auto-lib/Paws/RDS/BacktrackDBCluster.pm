@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DBClusterBacktrack = $rds->BacktrackDBCluster(
       BacktrackTo         => '1970-01-01T01:00:00',
       DBClusterIdentifier => 'MyString',
-      Force               => 1,                       # OPTIONAL
-      UseEarliestTimeOnPointInTimeUnavailable => 1,   # OPTIONAL
+      Force               => 1,                        # OPTIONAL
+      UseEarliestTimeOnPointInTimeUnavailable => 1,    # OPTIONAL
     );
 
     # Results:
