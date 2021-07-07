@@ -79,7 +79,7 @@ Contains information about the dataset's source data.
 
 =head2 Offset => Int
 
-The offset for the dataset.
+The offset in seconds. Only supported for S3 and Redshift datasources.
 
 
 =head2 TimestampColumn => L<Paws::LookoutMetrics::TimestampColumn>

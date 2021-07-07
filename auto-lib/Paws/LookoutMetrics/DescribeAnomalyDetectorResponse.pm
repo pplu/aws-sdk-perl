@@ -67,7 +67,7 @@ The time at which the detector was last modified.
 
 The status of the detector.
 
-Valid values are: C<"ACTIVE">, C<"ACTIVATING">, C<"DELETING">, C<"FAILED">, C<"INACTIVE">, C<"BACK_TEST_ACTIVATING">, C<"BACK_TEST_ACTIVE">, C<"BACK_TEST_COMPLETE">
+Valid values are: C<"ACTIVE">, C<"ACTIVATING">, C<"DELETING">, C<"FAILED">, C<"INACTIVE">, C<"LEARNING">, C<"BACK_TEST_ACTIVATING">, C<"BACK_TEST_ACTIVE">, C<"BACK_TEST_COMPLETE">
 =head2 _request_id => Str
 
 

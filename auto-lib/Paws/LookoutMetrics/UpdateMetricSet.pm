@@ -180,8 +180,9 @@ Valid values are: C<"P1D">, C<"PT1H">, C<"PT10M">, C<"PT5M">
 
 =head2 Offset => Int
 
-After an interval ends, the amount of time that the detector waits
-before importing data.
+After an interval ends, the amount of seconds that the detector waits
+before importing data. Offset is only supported for S3 and Redshift
+datasources.
 
 
 

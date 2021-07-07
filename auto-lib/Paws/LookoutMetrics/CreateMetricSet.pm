@@ -195,8 +195,9 @@ Contains information about how the source data should be interpreted.
 
 =head2 Offset => Int
 
-After an interval ends, the amount of time that the detector waits
-before importing data.
+After an interval ends, the amount of seconds that the detector waits
+before importing data. Offset is only supported for S3 and Redshift
+datasources.
 
 
 
