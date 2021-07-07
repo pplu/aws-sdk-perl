@@ -49,10 +49,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 =head2 AuthenticateOnUnsubscribe => Str
 
 Disallows unauthenticated unsubscribes of the subscription. If the
-value of this parameter is C<true> and the request has an AWS
-signature, then only the topic owner and the subscription owner can
-unsubscribe the endpoint. The unsubscribe action requires AWS
-authentication.
+value of this parameter is C<true> and the request has an Amazon Web
+Services signature, then only the topic owner and the subscription
+owner can unsubscribe the endpoint. The unsubscribe action requires
+Amazon Web Services authentication.
 
 
 

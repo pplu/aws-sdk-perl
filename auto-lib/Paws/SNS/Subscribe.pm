@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the C<SetTopicAttributes> action uses:
+request parameters that the C<Subscribe> action uses:
 
 =over
 
@@ -163,7 +163,7 @@ mobile app and device.
 
 =item *
 
-For the C<lambda> protocol, the endpoint is the ARN of an AWS Lambda
+For the C<lambda> protocol, the endpoint is the ARN of an Lambda
 function.
 
 =item *
@@ -213,7 +213,7 @@ EndpointArn for a mobile app and device
 
 =item *
 
-C<lambda> E<ndash> delivery of JSON-encoded message to an AWS Lambda
+C<lambda> E<ndash> delivery of JSON-encoded message to an Lambda
 function
 
 =item *

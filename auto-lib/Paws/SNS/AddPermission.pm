@@ -54,9 +54,9 @@ Valid values: Any Amazon SNS action name, for example C<Publish>.
 
 =head2 B<REQUIRED> AWSAccountId => ArrayRef[Str|Undef]
 
-The AWS account IDs of the users (principals) who will be given access
-to the specified actions. The users must have AWS accounts, but do not
-need to be signed up for this service.
+The account IDs of the users (principals) who will be given access to
+the specified actions. The users must have account, but do not need to
+be signed up for this service.
 
 
 

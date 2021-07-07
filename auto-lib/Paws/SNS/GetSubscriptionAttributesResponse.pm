@@ -47,7 +47,7 @@ in the I<Amazon SNS Developer Guide>.
 
 =item *
 
-C<Owner> E<ndash> The AWS account ID of the subscription's owner.
+C<Owner> E<ndash> The account ID of the subscription's owner.
 
 =item *
 
