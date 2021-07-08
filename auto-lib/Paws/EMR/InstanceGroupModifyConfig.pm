@@ -61,7 +61,7 @@ Target size for the instance group.
 
 =head2 B<REQUIRED> InstanceGroupId => Str
 
-Unique ID of the instance group to expand or shrink.
+Unique ID of the instance group to modify.
 
 
 =head2 ShrinkPolicy => L<Paws::EMR::ShrinkPolicy>

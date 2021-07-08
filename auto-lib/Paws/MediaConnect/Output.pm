@@ -6,11 +6,14 @@ package Paws::MediaConnect::Output;
   has Destination => (is => 'ro', isa => 'Str', request_name => 'destination', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::Encryption', request_name => 'encryption', traits => ['NameInRequest']);
   has EntitlementArn => (is => 'ro', isa => 'Str', request_name => 'entitlementArn', traits => ['NameInRequest']);
+  has ListenerAddress => (is => 'ro', isa => 'Str', request_name => 'listenerAddress', traits => ['NameInRequest']);
   has MediaLiveInputArn => (is => 'ro', isa => 'Str', request_name => 'mediaLiveInputArn', traits => ['NameInRequest']);
+  has MediaStreamOutputConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStreamOutputConfiguration]', request_name => 'mediaStreamOutputConfigurations', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has OutputArn => (is => 'ro', isa => 'Str', request_name => 'outputArn', traits => ['NameInRequest'], required => 1);
   has Port => (is => 'ro', isa => 'Int', request_name => 'port', traits => ['NameInRequest']);
   has Transport => (is => 'ro', isa => 'Paws::MediaConnect::Transport', request_name => 'transport', traits => ['NameInRequest']);
+  has VpcInterfaceAttachment => (is => 'ro', isa => 'Paws::MediaConnect::VpcInterfaceAttachment', request_name => 'vpcInterfaceAttachment', traits => ['NameInRequest']);
 
 1;
 
@@ -31,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::Output object:
 
-  $service_obj->Method(Att1 => { DataTransferSubscriberFeePercent => $value, ..., Transport => $value  });
+  $service_obj->Method(Att1 => { DataTransferSubscriberFeePercent => $value, ..., VpcInterfaceAttachment => $value  });
 
 =head3 Results returned from an API call
 
@@ -75,11 +78,27 @@ The ARN of the entitlement on the originator''s flow. This value is
 relevant only on entitled flows.
 
 
+=head2 ListenerAddress => Str
+
+The IP address that the receiver requires in order to establish a
+connection with the flow. For public networking, the ListenerAddress is
+represented by the elastic IP address of the flow. For private
+networking, the ListenerAddress is represented by the elastic network
+interface IP address of the VPC. This field applies only to outputs
+that use the Zixi pull or SRT listener protocol.
+
+
 =head2 MediaLiveInputArn => Str
 
 The input ARN of the AWS Elemental MediaLive channel. This parameter is
 relevant only for outputs that were added by creating a MediaLive
 input.
+
+
+=head2 MediaStreamOutputConfigurations => ArrayRef[L<Paws::MediaConnect::MediaStreamOutputConfiguration>]
+
+The configuration for each media stream that is associated with the
+output.
 
 
 =head2 B<REQUIRED> Name => Str
@@ -101,6 +120,11 @@ The port to use when content is distributed to this output.
 =head2 Transport => L<Paws::MediaConnect::Transport>
 
 Attributes related to the transport stream that are used in the output.
+
+
+=head2 VpcInterfaceAttachment => L<Paws::MediaConnect::VpcInterfaceAttachment>
+
+The name of the VPC interface attachment to use for this output.
 
 
 

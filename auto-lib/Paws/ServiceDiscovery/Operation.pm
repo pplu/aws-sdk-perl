@@ -109,23 +109,22 @@ The status of the operation. Values include the following:
 
 =over
 
-=item *
+=item SUBMITTED
 
-B<SUBMITTED>: This is the initial state immediately after you submit a
+This is the initial state that occurs immediately after you submit a
 request.
 
-=item *
+=item PENDING
 
-B<PENDING>: AWS Cloud Map is performing the operation.
+Cloud Map is performing the operation.
 
-=item *
+=item SUCCESS
 
-B<SUCCESS>: The operation succeeded.
+The operation succeeded.
 
-=item *
+=item FAIL
 
-B<FAIL>: The operation failed. For the failure reason, see
-C<ErrorMessage>.
+The operation failed. For the failure reason, see C<ErrorMessage>.
 
 =back
 
@@ -133,22 +132,21 @@ C<ErrorMessage>.
 
 =head2 Targets => L<Paws::ServiceDiscovery::OperationTargetsMap>
 
-The name of the target entity that is associated with the operation:
+The name of the target entity that's associated with the operation:
 
 =over
 
-=item *
+=item NAMESPACE
 
-B<NAMESPACE>: The namespace ID is returned in the C<ResourceId>
-property.
+The namespace ID is returned in the C<ResourceId> property.
 
-=item *
+=item SERVICE
 
-B<SERVICE>: The service ID is returned in the C<ResourceId> property.
+The service ID is returned in the C<ResourceId> property.
 
-=item *
+=item INSTANCE
 
-B<INSTANCE>: The instance ID is returned in the C<ResourceId> property.
+The instance ID is returned in the C<ResourceId> property.
 
 =back
 
@@ -156,7 +154,7 @@ B<INSTANCE>: The instance ID is returned in the C<ResourceId> property.
 
 =head2 Type => Str
 
-The name of the operation that is associated with the specified ID.
+The name of the operation that's associated with the specified ID.
 
 
 =head2 UpdateDate => Str

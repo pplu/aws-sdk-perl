@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet. You can use either the fleet ID or ARN
-value.
+A unique identifier for the fleet. You can use either the fleet ID or
+ARN value.
 
 
 

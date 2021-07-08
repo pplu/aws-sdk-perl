@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $events = Paws->service('CloudWatchEvents');
     my $DescribeEventBusResponse = $events->DescribeEventBus(
-      Name => 'MyEventBusName',    # OPTIONAL
+      Name => 'MyEventBusNameOrArn',    # OPTIONAL
     );
 
     # Results:
@@ -46,8 +46,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 Name => Str
 
-The name of the event bus to show details for. If you omit this, the
-default event bus is displayed.
+The name or ARN of the event bus to show details for. If you omit this,
+the default event bus is displayed.
 
 
 

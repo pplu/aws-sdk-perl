@@ -34,9 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListAnalyzedResourcesResponse =
       $access -analyzer->ListAnalyzedResources(
       AnalyzerArn  => 'MyAnalyzerArn',
-      MaxResults   => 1,                   # OPTIONAL
-      NextToken    => 'MyToken',           # OPTIONAL
-      ResourceType => 'AWS::IAM::Role',    # OPTIONAL
+      MaxResults   => 1,                    # OPTIONAL
+      NextToken    => 'MyToken',            # OPTIONAL
+      ResourceType => 'AWS::S3::Bucket',    # OPTIONAL
       );
 
     # Results:
@@ -53,7 +53,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acc
 
 =head2 B<REQUIRED> AnalyzerArn => Str
 
-The ARN of the analyzer to retrieve a list of analyzed resources from.
+The ARN of the analyzer
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+to retrieve a list of analyzed resources from.
 
 
 
@@ -73,7 +75,7 @@ A token used for pagination of results returned.
 
 The type of resource.
 
-Valid values are: C<"AWS::IAM::Role">, C<"AWS::KMS::Key">, C<"AWS::Lambda::Function">, C<"AWS::Lambda::LayerVersion">, C<"AWS::S3::Bucket">, C<"AWS::SQS::Queue">
+Valid values are: C<"AWS::S3::Bucket">, C<"AWS::IAM::Role">, C<"AWS::SQS::Queue">, C<"AWS::Lambda::Function">, C<"AWS::Lambda::LayerVersion">, C<"AWS::KMS::Key">, C<"AWS::SecretsManager::Secret">
 
 
 =head1 SEE ALSO

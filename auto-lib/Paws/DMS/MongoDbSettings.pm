@@ -11,6 +11,8 @@ package Paws::DMS::MongoDbSettings;
   has NestingLevel => (is => 'ro', isa => 'Str');
   has Password => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has SecretsManagerAccessRoleArn => (is => 'ro', isa => 'Str');
+  has SecretsManagerSecretId => (is => 'ro', isa => 'Str');
   has ServerName => (is => 'ro', isa => 'Str');
   has Username => (is => 'ro', isa => 'Str');
 
@@ -44,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::MongoD
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information that defines a MongoDB endpoint.
 
 =head1 ATTRIBUTES
 
@@ -54,29 +56,26 @@ This class has no description
 The authentication mechanism you use to access the MongoDB source
 endpoint.
 
-Valid values: DEFAULT, MONGODB_CR, SCRAM_SHA_1
-
-DEFAULT E<ndash> For MongoDB version 2.x, use MONGODB_CR. For MongoDB
-version 3.x, use SCRAM_SHA_1. This setting is not used when
-authType=No.
+For the default value, in MongoDB version 2.x, C<"default"> is
+C<"mongodb_cr">. For MongoDB version 3.x or later, C<"default"> is
+C<"scram_sha_1">. This setting isn't used when C<AuthType> is set to
+C<"no">.
 
 
 =head2 AuthSource => Str
 
-The MongoDB database name. This setting is not used when
-C<authType=NO>.
+The MongoDB database name. This setting isn't used when C<AuthType> is
+set to C<"no">.
 
-The default is admin.
+The default is C<"admin">.
 
 
 =head2 AuthType => Str
 
 The authentication type you use to access the MongoDB source endpoint.
 
-Valid values: NO, PASSWORD
-
-When NO is selected, user name and password parameters are not used and
-can be empty.
+When when set to C<"no">, user name and password parameters are not
+used and can be empty.
 
 
 =head2 DatabaseName => Str
@@ -87,17 +86,17 @@ The database name on the MongoDB source endpoint.
 =head2 DocsToInvestigate => Str
 
 Indicates the number of documents to preview to determine the document
-organization. Use this setting when C<NestingLevel> is set to ONE.
+organization. Use this setting when C<NestingLevel> is set to C<"one">.
 
-Must be a positive value greater than 0. Default value is 1000.
+Must be a positive value greater than C<0>. Default value is C<1000>.
 
 
 =head2 ExtractDocId => Str
 
 Specifies the document ID. Use this setting when C<NestingLevel> is set
-to NONE.
+to C<"none">.
 
-Default value is false.
+Default value is C<"false">.
 
 
 =head2 KmsKeyId => Str
@@ -113,10 +112,8 @@ account has a different default encryption key for each AWS Region.
 
 Specifies either document or table mode.
 
-Valid values: NONE, ONE
-
-Default value is NONE. Specify NONE to use document mode. Specify ONE
-to use table mode.
+Default value is C<"none">. Specify C<"none"> to use document mode.
+Specify C<"one"> to use table mode.
 
 
 =head2 Password => Str
@@ -128,6 +125,33 @@ endpoint.
 =head2 Port => Int
 
 The port value for the MongoDB source endpoint.
+
+
+=head2 SecretsManagerAccessRoleArn => Str
+
+The full Amazon Resource Name (ARN) of the IAM role that specifies AWS
+DMS as the trusted entity and grants the required permissions to access
+the value in C<SecretsManagerSecret>. C<SecretsManagerSecret> has the
+value of the AWS Secrets Manager secret that allows access to the
+MongoDB endpoint.
+
+You can specify one of two sets of values for these permissions. You
+can specify the values for this setting and C<SecretsManagerSecretId>.
+Or you can specify clear-text values for C<UserName>, C<Password>,
+C<ServerName>, and C<Port>. You can't specify both. For more
+information on creating this C<SecretsManagerSecret> and the
+C<SecretsManagerAccessRoleArn> and C<SecretsManagerSecretId> required
+to access it, see Using secrets to access AWS Database Migration
+Service resources
+(https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager)
+in the I<AWS Database Migration Service User Guide>.
+
+
+=head2 SecretsManagerSecretId => Str
+
+The full ARN, partial ARN, or friendly name of the
+C<SecretsManagerSecret> that contains the MongoDB endpoint connection
+details.
 
 
 =head2 ServerName => Str

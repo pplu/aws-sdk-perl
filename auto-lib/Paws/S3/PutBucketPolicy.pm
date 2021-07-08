@@ -3,8 +3,8 @@ package Paws::S3::PutBucketPolicy;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ConfirmRemoveSelfBucketAccess => (is => 'ro', isa => 'Bool', header_name => 'x-amz-confirm-remove-self-bucket-access', traits => ['ParamInHeader']);
-  has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Policy => (is => 'ro', isa => 'Str', traits => ['ParamInBody'], required => 1);
 
 
@@ -36,13 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # Set bucket policy
+    # The following example sets a permission policy on a bucket.
     $s3->PutBucketPolicy(
-      Bucket                        => 'MyBucketName',
-      Policy                        => 'MyPolicy',
-      ConfirmRemoveSelfBucketAccess => 1,                 # OPTIONAL
-      ContentLength                 => 1,                 # OPTIONAL
-      ContentMD5                    => 'MyContentMD5',    # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Policy' =>
+'{"Version": "2012-10-17", "Statement": [{ "Sid": "id-1","Effect": "Allow","Principal": {"AWS": "arn:aws:iam::123456789012:root"}, "Action": [ "s3:PutObject","s3:PutObjectAcl"], "Resource": ["arn:aws:s3:::acl3/*" ] } ]}'
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketPolicy>
@@ -63,15 +64,20 @@ permissions to change this bucket policy in the future.
 
 
 
-=head2 ContentLength => Int
-
-Size of the body in bytes.
-
-
-
 =head2 ContentMD5 => Str
 
 The MD5 hash of the request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

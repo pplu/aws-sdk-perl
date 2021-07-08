@@ -58,7 +58,7 @@ DBEngineVersion.
 =head2 B<REQUIRED> RoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role to associate with the
-Aurora DB cluster, for example
+Aurora DB cluster, for example,
 C<arn:aws:iam::123456789012:role/AuroraAccessRole>.
 
 

@@ -68,13 +68,13 @@ The S3 bucket where the responses to the command executions should be
 stored. This was requested when issuing the command. For example, in
 the following response:
 
-test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript
+doc-example-bucket/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-02573cafcfEXAMPLE/awsrunShellScript
 
-test_folder is the name of the Amazon S3 bucket;
+doc-example-bucket is the name of the S3 bucket;
 
 ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;
 
-i-1234567876543 is the instance ID;
+i-02573cafcfEXAMPLE is the instance ID;
 
 awsrunShellScript is the name of the plugin.
 
@@ -85,13 +85,13 @@ The S3 directory path inside the bucket where the responses to the
 command executions should be stored. This was requested when issuing
 the command. For example, in the following response:
 
-test_folder/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-1234567876543/awsrunShellScript
+doc-example-bucket/ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix/i-02573cafcfEXAMPLE/awsrunShellScript
 
-test_folder is the name of the Amazon S3 bucket;
+doc-example-bucket is the name of the S3 bucket;
 
 ab19cb99-a030-46dd-9dfc-8eSAMPLEPre-Fix is the name of the S3 prefix;
 
-i-1234567876543 is the instance ID;
+i-02573cafcfEXAMPLE is the instance ID;
 
 awsrunShellScript is the name of the plugin.
 
@@ -99,8 +99,8 @@ awsrunShellScript is the name of the plugin.
 =head2 OutputS3Region => Str
 
 (Deprecated) You can no longer specify this parameter. The system
-ignores it. Instead, Systems Manager automatically determines the
-Amazon S3 bucket region.
+ignores it. Instead, Systems Manager automatically determines the S3
+bucket region.
 
 
 =head2 ResponseCode => Int
@@ -128,8 +128,8 @@ execution is not yet complete, then this string is empty.
 =head2 StandardOutputUrl => Str
 
 The URL for the complete text written by the plugin to stdout in Amazon
-S3. If the Amazon S3 bucket for the command was not specified, then
-this string is empty.
+S3. If the S3 bucket for the command was not specified, then this
+string is empty.
 
 
 =head2 Status => Str
@@ -144,8 +144,8 @@ A detailed status of the plugin execution. StatusDetails includes more
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see
-Understanding Command Statuses
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+Understanding command statuses
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
 in the I<AWS Systems Manager User Guide>. StatusDetails can be one of
 the following values:
 

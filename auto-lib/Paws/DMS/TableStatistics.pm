@@ -4,8 +4,11 @@ package Paws::DMS::TableStatistics;
   has Ddls => (is => 'ro', isa => 'Int');
   has Deletes => (is => 'ro', isa => 'Int');
   has FullLoadCondtnlChkFailedRows => (is => 'ro', isa => 'Int');
+  has FullLoadEndTime => (is => 'ro', isa => 'Str');
   has FullLoadErrorRows => (is => 'ro', isa => 'Int');
+  has FullLoadReloaded => (is => 'ro', isa => 'Bool');
   has FullLoadRows => (is => 'ro', isa => 'Int');
+  has FullLoadStartTime => (is => 'ro', isa => 'Str');
   has Inserts => (is => 'ro', isa => 'Int');
   has LastUpdateTime => (is => 'ro', isa => 'Str');
   has SchemaName => (is => 'ro', isa => 'Str');
@@ -48,14 +51,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::TableS
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides a collection of table statistics in response to a request by
+the C<DescribeTableStatistics> operation.
 
 =head1 ATTRIBUTES
 
 
 =head2 Ddls => Int
 
-The Data Definition Language (DDL) used to build and modify the
+The data definition language (DDL) used to build and modify the
 structure of your tables.
 
 
@@ -66,19 +70,35 @@ The number of delete actions performed on a table.
 
 =head2 FullLoadCondtnlChkFailedRows => Int
 
-The number of rows that failed conditional checks during the Full Load
-operation (valid only for DynamoDB as a target migrations).
+The number of rows that failed conditional checks during the full load
+operation (valid only for migrations where DynamoDB is the target).
+
+
+=head2 FullLoadEndTime => Str
+
+The time when the full load operation completed.
 
 
 =head2 FullLoadErrorRows => Int
 
-The number of rows that failed to load during the Full Load operation
-(valid only for DynamoDB as a target migrations).
+The number of rows that failed to load during the full load operation
+(valid only for migrations where DynamoDB is the target).
+
+
+=head2 FullLoadReloaded => Bool
+
+A value that indicates if the table was reloaded (C<true>) or loaded as
+part of a new full load operation (C<false>).
 
 
 =head2 FullLoadRows => Int
 
-The number of rows added during the Full Load operation.
+The number of rows added during the full load operation.
+
+
+=head2 FullLoadStartTime => Str
+
+The time when the full load operation started.
 
 
 =head2 Inserts => Int
@@ -88,7 +108,7 @@ The number of insert actions performed on a table.
 
 =head2 LastUpdateTime => Str
 
-The last time the table was updated.
+The last time a table was updated.
 
 
 =head2 SchemaName => Str
@@ -129,49 +149,63 @@ The number of records that have yet to be validated.
 
 The validation state of the table.
 
-The parameter can have the following values
+This parameter can have the following values:
 
 =over
 
 =item *
 
-Not enabledE<mdash>Validation is not enabled for the table in the
+Not enabled E<ndash> Validation isn't enabled for the table in the
 migration task.
 
 =item *
 
-Pending recordsE<mdash>Some records in the table are waiting for
+Pending records E<ndash> Some records in the table are waiting for
 validation.
 
 =item *
 
-Mismatched recordsE<mdash>Some records in the table do not match
+Mismatched records E<ndash> Some records in the table don't match
 between the source and target.
 
 =item *
 
-Suspended recordsE<mdash>Some records in the table could not be
+Suspended records E<ndash> Some records in the table couldn't be
 validated.
 
 =item *
 
-No primary keyE<mdash>The table could not be validated because it had
+No primary key E<ndash>The table couldn't be validated because it has
 no primary key.
 
 =item *
 
-Table errorE<mdash>The table was not validated because it was in an
-error state and some data was not migrated.
+Table error E<ndash> The table wasn't validated because it's in an
+error state and some data wasn't migrated.
 
 =item *
 
-ValidatedE<mdash>All rows in the table were validated. If the table is
+Validated E<ndash> All rows in the table are validated. If the table is
 updated, the status can change from Validated.
 
 =item *
 
-ErrorE<mdash>The table could not be validated because of an unexpected
+Error E<ndash> The table couldn't be validated because of an unexpected
 error.
+
+=item *
+
+Pending validation E<ndash> The table is waiting validation.
+
+=item *
+
+Preparing table E<ndash> Preparing the table enabled in the migration
+task for validation.
+
+=item *
+
+Pending revalidation E<ndash> All rows in the table are pending
+validation after the table was updated.
 
 =back
 
@@ -184,7 +218,7 @@ Additional details about the state of validation.
 
 =head2 ValidationSuspendedRecords => Int
 
-The number of records that could not be validated.
+The number of records that couldn't be validated.
 
 
 

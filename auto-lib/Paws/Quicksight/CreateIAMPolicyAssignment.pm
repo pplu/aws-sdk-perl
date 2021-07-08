@@ -66,7 +66,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qui
 
 =head2 B<REQUIRED> AssignmentName => Str
 
-The name of the assignment. It must be unique within an AWS account.
+The name of the assignment, also called a rule. It must be unique
+within an AWS account.
 
 
 

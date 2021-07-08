@@ -3,6 +3,7 @@ package Paws::EC2::SpotOptionsRequest;
   has AllocationStrategy => (is => 'ro', isa => 'Str');
   has InstanceInterruptionBehavior => (is => 'ro', isa => 'Str');
   has InstancePoolsToUseCount => (is => 'ro', isa => 'Int');
+  has MaintenanceStrategies => (is => 'ro', isa => 'Paws::EC2::FleetSpotMaintenanceStrategiesRequest');
   has MaxTotalPrice => (is => 'ro', isa => 'Str');
   has MinTargetCapacity => (is => 'ro', isa => 'Int');
   has SingleAvailabilityZone => (is => 'ro', isa => 'Bool');
@@ -54,9 +55,19 @@ the default allocation strategy.
 If the allocation strategy is C<diversified>, EC2 Fleet launches
 instances from all of the Spot Instance pools that you specify.
 
-If the allocation strategy is C<capacity-optimized>, EC2 Fleet launches
-instances from Spot Instance pools with optimal capacity for the number
-of instances that are launching.
+If the allocation strategy is C<capacity-optimized> (recommended), EC2
+Fleet launches instances from Spot Instance pools with optimal capacity
+for the number of instances that are launching. To give certain
+instance types a higher chance of launching first, use
+C<capacity-optimized-prioritized>. Set a priority for each instance
+type by using the C<Priority> parameter for C<LaunchTemplateOverrides>.
+You can assign the same priority to different
+C<LaunchTemplateOverrides>. EC2 implements the priorities on a
+best-effort basis, but optimizes for capacity first.
+C<capacity-optimized-prioritized> is supported only if your fleet uses
+a launch template. Note that if the On-Demand C<AllocationStrategy> is
+set to C<prioritized>, the same priority is applied when fulfilling
+On-Demand capacity.
 
 
 =head2 InstanceInterruptionBehavior => Str
@@ -72,6 +83,22 @@ capacity. Valid only when Spot B<AllocationStrategy> is set to
 C<lowest-price>. EC2 Fleet selects the cheapest Spot pools and evenly
 allocates your target Spot capacity across the number of Spot pools
 that you specify.
+
+Note that EC2 Fleet attempts to draw Spot Instances from the number of
+pools that you specify on a best effort basis. If a pool runs out of
+Spot capacity before fulfilling your target capacity, EC2 Fleet will
+continue to fulfill your request by drawing from the next cheapest
+pool. To ensure that your target capacity is met, you might receive
+Spot Instances from more than the number of pools that you specified.
+Similarly, if most of the pools have no Spot capacity, you might
+receive your full target capacity from fewer than the number of pools
+that you specified.
+
+
+=head2 MaintenanceStrategies => L<Paws::EC2::FleetSpotMaintenanceStrategiesRequest>
+
+The strategies for managing your Spot Instances that are at an elevated
+risk of being interrupted.
 
 
 =head2 MaxTotalPrice => Str

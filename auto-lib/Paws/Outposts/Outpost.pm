@@ -9,7 +9,9 @@ package Paws::Outposts::Outpost;
   has OutpostArn => (is => 'ro', isa => 'Str');
   has OutpostId => (is => 'ro', isa => 'Str');
   has OwnerId => (is => 'ro', isa => 'Str');
+  has SiteArn => (is => 'ro', isa => 'Str');
   has SiteId => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::Outposts::TagMap');
 
 1;
 
@@ -30,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Outposts::Outpost object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., SiteId => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -86,9 +88,19 @@ Information about an Outpost.
 
 
 
+=head2 SiteArn => Str
+
+
+
+
 =head2 SiteId => Str
 
 
+
+
+=head2 Tags => L<Paws::Outposts::TagMap>
+
+The Outpost tags.
 
 
 

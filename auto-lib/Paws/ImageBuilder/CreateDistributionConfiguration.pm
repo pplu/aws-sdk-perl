@@ -44,17 +44,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
             },    # min: 1, max: 50; OPTIONAL
             Description      => 'MyNonEmptyString',    # min: 1, max: 1024
+            KmsKeyId         => 'MyNonEmptyString',    # min: 1, max: 1024
             LaunchPermission => {
               UserGroups => [
                 'MyNonEmptyString', ...                # min: 1, max: 1024
               ],    # OPTIONAL
-              UserIds => [
-                'MyNonEmptyString', ...    # min: 1, max: 1024
-              ],    # OPTIONAL
+              UserIds => [ 'MyAccountId', ... ],   # min: 1, max: 1536; OPTIONAL
             },    # OPTIONAL
-            Name => 'MyAmiNameString',    # min: 1, max: 127; OPTIONAL
+            Name             => 'MyAmiNameString',  # min: 1, max: 127; OPTIONAL
+            TargetAccountIds => [ 'MyAccountId', ... ]
+            ,    # min: 1, max: 1536; OPTIONAL
           },    # OPTIONAL
-          LicenseConfigurationArns => [ 'MyArn', ... ],    # OPTIONAL
+          ContainerDistributionConfiguration => {
+            TargetRepository => {
+              RepositoryName => 'MyNonEmptyString',    # min: 1, max: 1024
+              Service        => 'ECR',                 # values: ECR
+
+            },
+            ContainerTags => [
+              'MyNonEmptyString', ...                  # min: 1, max: 1024
+            ],    # OPTIONAL
+            Description => 'MyNonEmptyString',    # min: 1, max: 1024
+          },    # OPTIONAL
+          LaunchTemplateConfigurations => [
+            {
+              LaunchTemplateId  => 'MyLaunchTemplateId',
+              AccountId         => 'MyAccountId',
+              SetDefaultVersion => 1,                      # OPTIONAL
+            },
+            ...
+          ],    # min: 1, max: 100; OPTIONAL
+          LicenseConfigurationArns => [ 'MyLicenseConfigurationArn', ... ]
+          ,     # min: 1, max: 50; OPTIONAL
         },
         ...
       ],

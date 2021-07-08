@@ -72,7 +72,7 @@ returned, until no more next tokens are returned.
 =head2 SortBy => Str
 
 The criterion to be used to list build projects shared with the current
-AWS account or user. Valid values include:
+Amazon Web Services account or user. Valid values include:
 
 =over
 

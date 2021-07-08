@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-[C<Service-managed> permissions] Describes whether StackSets
-automatically deploys to AWS Organizations accounts that are added to a
-target organization or organizational unit (OU).
+[Service-managed permissions] Describes whether StackSets automatically
+deploys to AWS Organizations accounts that are added to a target
+organization or organizational unit (OU).
 
 =head1 ATTRIBUTES
 

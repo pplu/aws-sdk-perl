@@ -104,53 +104,16 @@ Valid values are: C<"CapacityForecast">, C<"LoadForecast">, C<"ScheduledActionMi
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the resource. This string consists of the resource type and
-unique identifier.
-
-=over
-
-=item *
-
-Auto Scaling group - The resource type is C<autoScalingGroup> and the
-unique identifier is the name of the Auto Scaling group. Example:
-C<autoScalingGroup/my-asg>.
-
-=item *
-
-ECS service - The resource type is C<service> and the unique identifier
-is the cluster name and service name. Example:
-C<service/default/sample-webapp>.
-
-=item *
-
-Spot Fleet request - The resource type is C<spot-fleet-request> and the
-unique identifier is the Spot Fleet request ID. Example:
-C<spot-fleet-request/sfr-73fbd2ce-aa30-494c-8788-1cee4EXAMPLE>.
-
-=item *
-
-DynamoDB table - The resource type is C<table> and the unique
-identifier is the resource ID. Example: C<table/my-table>.
-
-=item *
-
-DynamoDB global secondary index - The resource type is C<index> and the
-unique identifier is the resource ID. Example:
-C<table/my-table/index/my-table-index>.
-
-=item *
-
-Aurora DB cluster - The resource type is C<cluster> and the unique
-identifier is the cluster name. Example: C<cluster:my-db-cluster>.
-
-=back
-
+The ID of the resource. This string consists of a prefix
+(C<autoScalingGroup>) followed by the name of a specified Auto Scaling
+group (C<my-asg>). Example: C<autoScalingGroup/my-asg>.
 
 
 
 =head2 B<REQUIRED> ScalableDimension => Str
 
-The scalable dimension for the resource.
+The scalable dimension for the resource. The only valid value is
+C<autoscaling:autoScalingGroup:DesiredCapacity>.
 
 Valid values are: C<"autoscaling:autoScalingGroup:DesiredCapacity">, C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"rds:cluster:ReadReplicaCount">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">
 
@@ -162,13 +125,15 @@ The name of the scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version number of the scaling plan.
+The version number of the scaling plan. Currently, the only valid value
+is C<1>.
 
 
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The namespace of the AWS service.
+The namespace of the AWS service. The only valid value is
+C<autoscaling>.
 
 Valid values are: C<"autoscaling">, C<"ecs">, C<"ec2">, C<"rds">, C<"dynamodb">
 

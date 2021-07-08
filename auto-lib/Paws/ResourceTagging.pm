@@ -180,462 +180,6 @@ Paws::ResourceTagging - Perl Interface to AWS AWS Resource Groups Tagging API
 
 Resource Groups Tagging API
 
-This guide describes the API operations for the resource groups
-tagging.
-
-A tag is a label that you assign to an AWS resource. A tag consists of
-a key and a value, both of which you define. For example, if you have
-two Amazon EC2 instances, you might assign both a tag key of "Stack."
-But the value of "Stack" might be "Testing" for one and "Production"
-for the other.
-
-Tagging can help you organize your resources and enables you to
-simplify resource management, access management and cost allocation.
-
-You can use the resource groups tagging API operations to complete the
-following tasks:
-
-=over
-
-=item *
-
-Tag and untag supported resources located in the specified Region for
-the AWS account.
-
-=item *
-
-Use tag-based filters to search for resources located in the specified
-Region for the AWS account.
-
-=item *
-
-List all existing tag keys in the specified Region for the AWS account.
-
-=item *
-
-List all existing values for the specified key in the specified Region
-for the AWS account.
-
-=back
-
-To use resource groups tagging API operations, you must add the
-following permissions to your IAM policy:
-
-=over
-
-=item *
-
-C<tag:GetResources>
-
-=item *
-
-C<tag:TagResources>
-
-=item *
-
-C<tag:UntagResources>
-
-=item *
-
-C<tag:GetTagKeys>
-
-=item *
-
-C<tag:GetTagValues>
-
-=back
-
-You'll also need permissions to access the resources of individual
-services so that you can tag and untag those resources.
-
-For more information on IAM policies, see Managing IAM Policies
-(http://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage.html)
-in the I<IAM User Guide>.
-
-You can use the Resource Groups Tagging API to tag resources for the
-following AWS services.
-
-=over
-
-=item *
-
-Alexa for Business (a4b)
-
-=item *
-
-API Gateway
-
-=item *
-
-Amazon AppStream
-
-=item *
-
-AWS AppSync
-
-=item *
-
-AWS App Mesh
-
-=item *
-
-Amazon Athena
-
-=item *
-
-Amazon Aurora
-
-=item *
-
-AWS Backup
-
-=item *
-
-AWS Certificate Manager
-
-=item *
-
-AWS Certificate Manager Private CA
-
-=item *
-
-Amazon Cloud Directory
-
-=item *
-
-AWS CloudFormation
-
-=item *
-
-Amazon CloudFront
-
-=item *
-
-AWS CloudHSM
-
-=item *
-
-AWS CloudTrail
-
-=item *
-
-Amazon CloudWatch (alarms only)
-
-=item *
-
-Amazon CloudWatch Events
-
-=item *
-
-Amazon CloudWatch Logs
-
-=item *
-
-AWS CodeBuild
-
-=item *
-
-AWS CodeCommit
-
-=item *
-
-AWS CodePipeline
-
-=item *
-
-AWS CodeStar
-
-=item *
-
-Amazon Cognito Identity
-
-=item *
-
-Amazon Cognito User Pools
-
-=item *
-
-Amazon Comprehend
-
-=item *
-
-AWS Config
-
-=item *
-
-AWS Data Exchange
-
-=item *
-
-AWS Data Pipeline
-
-=item *
-
-AWS Database Migration Service
-
-=item *
-
-AWS DataSync
-
-=item *
-
-AWS Device Farm
-
-=item *
-
-AWS Direct Connect
-
-=item *
-
-AWS Directory Service
-
-=item *
-
-Amazon DynamoDB
-
-=item *
-
-Amazon EBS
-
-=item *
-
-Amazon EC2
-
-=item *
-
-Amazon ECR
-
-=item *
-
-Amazon ECS
-
-=item *
-
-Amazon EKS
-
-=item *
-
-AWS Elastic Beanstalk
-
-=item *
-
-Amazon Elastic File System
-
-=item *
-
-Elastic Load Balancing
-
-=item *
-
-Amazon ElastiCache
-
-=item *
-
-Amazon Elasticsearch Service
-
-=item *
-
-AWS Elemental MediaLive
-
-=item *
-
-AWS Elemental MediaPackage
-
-=item *
-
-AWS Elemental MediaTailor
-
-=item *
-
-Amazon EMR
-
-=item *
-
-Amazon FSx
-
-=item *
-
-Amazon S3 Glacier
-
-=item *
-
-AWS Glue
-
-=item *
-
-Amazon GuardDuty
-
-=item *
-
-Amazon Inspector
-
-=item *
-
-AWS IoT Analytics
-
-=item *
-
-AWS IoT Core
-
-=item *
-
-AWS IoT Device Defender
-
-=item *
-
-AWS IoT Device Management
-
-=item *
-
-AWS IoT Events
-
-=item *
-
-AWS IoT Greengrass
-
-=item *
-
-AWS IoT 1-Click
-
-=item *
-
-AWS Key Management Service
-
-=item *
-
-Amazon Kinesis
-
-=item *
-
-Amazon Kinesis Data Analytics
-
-=item *
-
-Amazon Kinesis Data Firehose
-
-=item *
-
-AWS Lambda
-
-=item *
-
-AWS License Manager
-
-=item *
-
-Amazon Machine Learning
-
-=item *
-
-Amazon MQ
-
-=item *
-
-Amazon MSK
-
-=item *
-
-Amazon Neptune
-
-=item *
-
-AWS OpsWorks
-
-=item *
-
-AWS Organizations
-
-=item *
-
-Amazon Quantum Ledger Database (QLDB)
-
-=item *
-
-Amazon RDS
-
-=item *
-
-Amazon Redshift
-
-=item *
-
-AWS Resource Access Manager
-
-=item *
-
-AWS Resource Groups
-
-=item *
-
-AWS RoboMaker
-
-=item *
-
-Amazon Route 53
-
-=item *
-
-Amazon Route 53 Resolver
-
-=item *
-
-Amazon S3 (buckets only)
-
-=item *
-
-Amazon SageMaker
-
-=item *
-
-AWS Secrets Manager
-
-=item *
-
-AWS Security Hub
-
-=item *
-
-AWS Service Catalog
-
-=item *
-
-Amazon Simple Notification Service (SNS)
-
-=item *
-
-Amazon Simple Queue Service (SQS)
-
-=item *
-
-Amazon Simple Workflow Service
-
-=item *
-
-AWS Step Functions
-
-=item *
-
-AWS Storage Gateway
-
-=item *
-
-AWS Systems Manager
-
-=item *
-
-AWS Transfer for SFTP
-
-=item *
-
-Amazon VPC
-
-=item *
-
-Amazon WorkSpaces
-
-=back
-
-
 For the AWS API documentation, see L<https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html>
 
 
@@ -654,8 +198,8 @@ Returns: a L<Paws::ResourceTagging::DescribeReportCreationOutput> instance
 
 Describes the status of the C<StartReportCreation> operation.
 
-You can call this operation only from the organization's master account
-and from the us-east-1 Region.
+You can call this operation only from the organization's management
+account and from the us-east-1 Region.
 
 
 =head2 GetComplianceSummary
@@ -687,11 +231,19 @@ Returns a table that shows counts of resources that are noncompliant
 with their tag policies.
 
 For more information on tag policies, see Tag Policies
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 in the I<AWS Organizations User Guide.>
 
-You can call this operation only from the organization's master account
-and from the us-east-1 Region.
+You can call this operation only from the organization's management
+account and from the us-east-1 Region.
+
+This operation supports pagination, where the response can be sent in
+multiple pages. You should check the C<PaginationToken> response
+parameter to determine if there are additional results available to
+return. Repeat the query, passing the C<PaginationToken> response
+parameter value as an input to the next request until you recieve a
+C<null> value. A null value for C<PaginationToken> indicates that there
+are no more results waiting to be returned.
 
 
 =head2 GetResources
@@ -703,6 +255,8 @@ and from the us-east-1 Region.
 =item [IncludeComplianceDetails => Bool]
 
 =item [PaginationToken => Str]
+
+=item [ResourceARNList => ArrayRef[Str|Undef]]
 
 =item [ResourcesPerPage => Int]
 
@@ -737,15 +291,18 @@ resources.
 
 Information about compliance with the account's effective tag policy.
 For more information on tag policies, see Tag Policies
-(http://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 in the I<AWS Organizations User Guide.>
 
 =back
 
-You can check the C<PaginationToken> response parameter to determine if
-a query is complete. Queries occasionally return fewer results on a
-page than allowed. The C<PaginationToken> response parameter value is
-C<null> I<only> when there are no more results to display.
+This operation supports pagination, where the response can be sent in
+multiple pages. You should check the C<PaginationToken> response
+parameter to determine if there are additional results available to
+return. Repeat the query, passing the C<PaginationToken> response
+parameter value as an input to the next request until you recieve a
+C<null> value. A null value for C<PaginationToken> indicates that there
+are no more results waiting to be returned.
 
 
 =head2 GetTagKeys
@@ -761,7 +318,16 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagKeys>
 
 Returns: a L<Paws::ResourceTagging::GetTagKeysOutput> instance
 
-Returns all tag keys in the specified Region for the AWS account.
+Returns all tag keys currently in use in the specified Region for the
+calling AWS account.
+
+This operation supports pagination, where the response can be sent in
+multiple pages. You should check the C<PaginationToken> response
+parameter to determine if there are additional results available to
+return. Repeat the query, passing the C<PaginationToken> response
+parameter value as an input to the next request until you recieve a
+C<null> value. A null value for C<PaginationToken> indicates that there
+are no more results waiting to be returned.
 
 
 =head2 GetTagValues
@@ -779,8 +345,16 @@ Each argument is described in detail in: L<Paws::ResourceTagging::GetTagValues>
 
 Returns: a L<Paws::ResourceTagging::GetTagValuesOutput> instance
 
-Returns all tag values for the specified key in the specified Region
-for the AWS account.
+Returns all tag values for the specified key that are used in the
+specified AWS Region for the calling AWS account.
+
+This operation supports pagination, where the response can be sent in
+multiple pages. You should check the C<PaginationToken> response
+parameter to determine if there are additional results available to
+return. Repeat the query, passing the C<PaginationToken> response
+parameter value as an input to the next request until you recieve a
+C<null> value. A null value for C<PaginationToken> indicates that there
+are no more results waiting to be returned.
 
 
 =head2 StartReportCreation
@@ -796,16 +370,17 @@ Each argument is described in detail in: L<Paws::ResourceTagging::StartReportCre
 
 Returns: a L<Paws::ResourceTagging::StartReportCreationOutput> instance
 
-Generates a report that lists all tagged resources in accounts across
-your organization and tells whether each resource is compliant with the
-effective tag policy. Compliance data is refreshed daily.
+Generates a report that lists all tagged resources in the accounts
+across your organization and tells whether each resource is compliant
+with the effective tag policy. Compliance data is refreshed daily. The
+report is generated asynchronously.
 
 The generated report is saved to the following location:
 
 C<s3://example-bucket/AwsTagPolicies/o-exampleorgid/YYYY-MM-ddTHH:mm:ssZ/report.csv>
 
-You can call this operation only from the organization's master account
-and from the us-east-1 Region.
+You can call this operation only from the organization's management
+account and from the us-east-1 Region.
 
 
 =head2 TagResources
@@ -830,31 +405,35 @@ following:
 
 =item *
 
-Not all resources can have tags. For a list of services that support
-tagging, see this list
-(http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+Not all resources can have tags. For a list of services with resources
+that support tagging using this operation, see Services that support
+the Resource Groups Tagging API
+(https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/supported-services.html).
 
 =item *
 
 Each resource can have up to 50 tags. For other limits, see Tag Naming
 and Usage Conventions
-(http://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions)
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html#tag-conventions)
 in the I<AWS General Reference.>
 
 =item *
 
-You can only tag resources that are located in the specified Region for
-the AWS account.
+You can only tag resources that are located in the specified AWS Region
+for the AWS account.
 
 =item *
 
 To add tags to a resource, you need the necessary permissions for the
 service that the resource belongs to as well as permissions for adding
-tags. For more information, see this list
-(http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+tags. For more information, see the documentation for each service.
 
 =back
 
+Do not store personally identifiable information (PII) or other
+confidential or sensitive information in tags. We use tags to provide
+you with billing and administration services. Tags are not intended to
+be used for private or sensitive data.
 
 
 =head2 UntagResources
@@ -883,13 +462,13 @@ resource that were already removed. Note the following:
 
 To remove tags from a resource, you need the necessary permissions for
 the service that the resource belongs to as well as permissions for
-removing tags. For more information, see this list
-(http://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/Welcome.html).
+removing tags. For more information, see the documentation for the
+service whose resource you want to untag.
 
 =item *
 
-You can only tag resources that are located in the specified Region for
-the AWS account.
+You can only tag resources that are located in the specified AWS Region
+for the calling AWS account.
 
 =back
 
@@ -913,9 +492,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ResourceTagging::GetComplianceSummaryOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllResources(sub { },[ExcludeCompliantResources => Bool, IncludeComplianceDetails => Bool, PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetAllResources(sub { },[ExcludeCompliantResources => Bool, IncludeComplianceDetails => Bool, PaginationToken => Str, ResourceARNList => ArrayRef[Str|Undef], ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
 
-=head2 GetAllResources([ExcludeCompliantResources => Bool, IncludeComplianceDetails => Bool, PaginationToken => Str, ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
+=head2 GetAllResources([ExcludeCompliantResources => Bool, IncludeComplianceDetails => Bool, PaginationToken => Str, ResourceARNList => ArrayRef[Str|Undef], ResourcesPerPage => Int, ResourceTypeFilters => ArrayRef[Str|Undef], TagFilters => ArrayRef[L<Paws::ResourceTagging::TagFilter>], TagsPerPage => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

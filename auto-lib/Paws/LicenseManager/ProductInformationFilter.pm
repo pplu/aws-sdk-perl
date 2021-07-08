@@ -3,7 +3,7 @@ package Paws::LicenseManager::ProductInformationFilter;
   use Moose;
   has ProductInformationFilterComparator => (is => 'ro', isa => 'Str', required => 1);
   has ProductInformationFilterName => (is => 'ro', isa => 'Str', required => 1);
-  has ProductInformationFilterValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has ProductInformationFilterValue => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -50,7 +50,7 @@ Logical operator.
 Filter name.
 
 
-=head2 B<REQUIRED> ProductInformationFilterValue => ArrayRef[Str|Undef]
+=head2 ProductInformationFilterValue => ArrayRef[Str|Undef]
 
 Filter value.
 

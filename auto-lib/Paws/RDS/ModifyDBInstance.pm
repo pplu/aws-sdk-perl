@@ -5,6 +5,7 @@ package Paws::RDS::ModifyDBInstance;
   has AllowMajorVersionUpgrade => (is => 'ro', isa => 'Bool');
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has AwsBackupRecoveryPointArn => (is => 'ro', isa => 'Str');
   has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has CACertificateIdentifier => (is => 'ro', isa => 'Str');
   has CertificateRotationRestart => (is => 'ro', isa => 'Bool');
@@ -19,6 +20,7 @@ package Paws::RDS::ModifyDBInstance;
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableCustomerOwnedIp => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EnablePerformanceInsights => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -38,6 +40,7 @@ package Paws::RDS::ModifyDBInstance;
   has ProcessorFeatures => (is => 'ro', isa => 'ArrayRef[Paws::RDS::ProcessorFeature]');
   has PromotionTier => (is => 'ro', isa => 'Int');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool');
+  has ReplicaMode => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has TdeCredentialPassword => (is => 'ro', isa => 'Str');
@@ -82,6 +85,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
     );
 
+    # Results:
+    my $DBInstance = $ModifyDBInstanceResult->DBInstance;
+
+    # Returns a L<Paws::RDS::ModifyDBInstanceResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBInstance>
@@ -147,15 +154,24 @@ enabled auto patching for that engine version.
 
 
 
+=head2 AwsBackupRecoveryPointArn => Str
+
+The Amazon Resource Name (ARN) of the recovery point in Amazon Web
+Services Backup.
+
+
+
 =head2 BackupRetentionPeriod => Int
 
 The number of days to retain automated backups. Setting this parameter
 to a positive number enables backups. Setting this parameter to 0
 disables automated backups.
 
-Changing this parameter can result in an outage if you change from 0 to
-a non-zero value or from a non-zero value to 0. These changes are
-applied during the next maintenance window unless the
+Enabling and disabling backups can result in a brief I/O suspension
+that lasts from a few seconds to a few minutes, depending on the size
+and class of your DB instance.
+
+These changes are applied during the next maintenance window unless the
 C<ApplyImmediately> parameter is enabled for this request. If you
 change the parameter from one non-zero value to another non-zero value,
 the change is asynchronously applied as soon as possible.
@@ -177,17 +193,17 @@ Must be a value from 0 to 35
 
 =item *
 
-Can be specified for a MySQL Read Replica only if the source is running
+Can be specified for a MySQL read replica only if the source is running
 MySQL 5.6 or later
 
 =item *
 
-Can be specified for a PostgreSQL Read Replica only if the source is
+Can be specified for a PostgreSQL read replica only if the source is
 running PostgreSQL 9.3.5
 
 =item *
 
-Can't be set to 0 if the DB instance is a source to Read Replicas
+Can't be set to 0 if the DB instance is a source to read replicas
 
 =back
 
@@ -265,9 +281,10 @@ cluster setting. For more information, see C<ModifyDBCluster>.
 =head2 DBInstanceClass => Str
 
 The new compute and memory capacity of the DB instance, for example,
-C<db.m4.large>. Not all DB instance classes are available in all AWS
-Regions, or for all database engines. For the full list of DB instance
-classes, and availability for your engine, see DB Instance Class
+C<db.m4.large>. Not all DB instance classes are available in all Amazon
+Web Services Regions, or for all database engines. For the full list of
+DB instance classes, and availability for your engine, see DB Instance
+Class
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
@@ -327,19 +344,19 @@ B<MySQL>
 
 Default: C<3306>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 B<MariaDB>
 
 Default: C<3306>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 B<PostgreSQL>
 
 Default: C<5432>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 Type: Integer
 
@@ -347,20 +364,20 @@ B<Oracle>
 
 Default: C<1521>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 B<SQL Server>
 
 Default: C<1433>
 
-Valid Values: C<1150-65535> except for C<1434>, C<3389>, C<47001>,
-C<49152>, and C<49152> through C<49156>.
+Valid values: C<1150-65535> except C<1234>, C<1434>, C<3260>, C<3343>,
+C<3389>, C<47001>, and C<49152-49156>.
 
 B<Amazon Aurora>
 
 Default: C<3306>
 
-Valid Values: C<1150-65535>
+Valid values: C<1150-65535>
 
 
 
@@ -388,8 +405,8 @@ If supplied, must match existing DBSecurityGroups.
 The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance isn't
 in a VPC, you can also use this parameter to move your DB instance into
-a VPC. For more information, see Updating the VPC for a DB Instance
-(http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
+a VPC. For more information, see Working with a DB instance in a VPC
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html#USER_VPC.Non-VPC2VPC)
 in the I<Amazon RDS User Guide.>
 
 Changing the subnet group causes an outage during the change. The
@@ -417,22 +434,12 @@ information, see Deleting a DB Instance
 
 The Active Directory directory ID to move the DB instance to. Specify
 C<none> to remove the instance from its current domain. The domain must
-be created prior to this operation. Currently, only Microsoft SQL
-Server and Oracle DB instances can be created in an Active Directory
-Domain.
+be created prior to this operation. Currently, only MySQL, Microsoft
+SQL Server, Oracle, and PostgreSQL DB instances can be created in an
+Active Directory Domain.
 
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see Using Windows Authentication with an Amazon
-RDS DB Instance Running Microsoft SQL Server
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
-in the I<Amazon RDS User Guide>.
-
-For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
-authenticate users that connect to the DB instance. For more
-information, see Using Kerberos Authentication with Amazon RDS for
-Oracle
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/kerberos-authentication.html)
 in the I<Amazon RDS User Guide>.
 
 
@@ -444,12 +451,36 @@ Service.
 
 
 
+=head2 EnableCustomerOwnedIp => Bool
+
+A value that indicates whether to enable a customer-owned IP address
+(CoIP) for an RDS on Outposts DB instance.
+
+A I<CoIP> provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see Working with Amazon RDS
+on Amazon Web Services Outposts
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+in the I<Amazon RDS User Guide>.
+
+For more information about CoIPs, see Customer-owned IP addresses
+(https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+in the I<Amazon Web Services Outposts User Guide>.
+
+
+
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines,
-see CreateDBInstance.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
+
+This setting doesn't apply to Amazon Aurora. Mapping Amazon Web
+Services IAM accounts to database accounts is managed by the DB
+cluster.
 
 For more information about IAM database authentication, see IAM
 Database Authentication for MySQL and PostgreSQL
@@ -474,15 +505,17 @@ in the I<Amazon Relational Database Service User Guide>.
 The version number of the database engine to upgrade to. Changing this
 parameter results in an outage and the change is applied during the
 next maintenance window unless the C<ApplyImmediately> parameter is
-eanbled for this request.
+enabled for this request.
 
 For major version upgrades, if a nondefault DB parameter group is
 currently in use, a new DB parameter group in the DB parameter group
 family for the new engine version must be specified. The new DB
 parameter group can be the default for that DB parameter group family.
 
-For information about valid engine versions, see C<CreateDBInstance>,
-or call C<DescribeDBEngineVersions>.
+If you specify only a major version, Amazon RDS will update the DB
+instance to the default minor version if the current minor version is
+lower. For information about valid engine versions, see
+C<CreateDBInstance>, or call C<DescribeDBEngineVersions>.
 
 
 
@@ -510,7 +543,7 @@ available for use, but might experience performance degradation. While
 the migration takes place, nightly backups for the instance are
 suspended. No other Amazon RDS operations can take place for the
 instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
+deleting the instance, creating a read replica for the instance, and
 creating a DB snapshot of the instance.
 
 Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL, the value
@@ -580,6 +613,12 @@ been accidentally revoked.
 
 The upper limit to which Amazon RDS can automatically scale the storage
 of the DB instance.
+
+For more information about this setting, including limitations that
+apply to it, see Managing capacity automatically with Amazon RDS
+storage autoscaling
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -652,14 +691,14 @@ Example: C<mydbinstance>
 
 =head2 OptionGroupName => Str
 
-Indicates that the DB instance should be associated with the specified
-option group. Changing this parameter doesn't result in an outage
-except in the following case and the change is applied during the next
-maintenance window unless the C<ApplyImmediately> parameter is enabled
-for this request. If the parameter change results in an option group
-that enables OEM, this change can cause a brief (sub-second) period
-during which new connections are rejected but existing connections are
-not interrupted.
+A value that indicates the DB instance should be associated with the
+specified option group. Changing this parameter doesn't result in an
+outage except in the following case and the change is applied during
+the next maintenance window unless the C<ApplyImmediately> parameter is
+enabled for this request. If the parameter change results in an option
+group that enables OEM, this change can cause a brief (sub-second)
+period during which new connections are rejected but existing
+connections are not interrupted.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group, and that option group can't
@@ -669,14 +708,17 @@ be removed from a DB instance once it is associated with a DB instance
 
 =head2 PerformanceInsightsKMSKeyId => Str
 
-The AWS KMS key identifier for encryption of Performance Insights data.
-The KMS key ID is the Amazon Resource Name (ARN), KMS key identifier,
-or the KMS key alias for the KMS encryption key.
+The Amazon Web Services KMS key identifier for encryption of
+Performance Insights data.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 If you do not specify a value for C<PerformanceInsightsKMSKeyId>, then
-Amazon RDS uses your default encryption key. AWS KMS creates the
-default encryption key for your AWS account. Your AWS account has a
-different default encryption key for each AWS Region.
+Amazon RDS uses your default CMK. There is a default CMK for your
+Amazon Web Services account. Your Amazon Web Services account has a
+different default CMK for each Amazon Web Services Region.
 
 
 
@@ -693,7 +735,11 @@ The daily time range during which automated backups are created if
 automated backups are enabled, as determined by the
 C<BackupRetentionPeriod> parameter. Changing this parameter doesn't
 result in an outage and the change is asynchronously applied as soon as
-possible.
+possible. The default is a 30-minute window selected at random from an
+8-hour block of time for each Amazon Web Services Region. For more
+information, see Backup window
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow)
+in the I<Amazon RDS User Guide.>
 
 B<Amazon Aurora>
 
@@ -738,6 +784,10 @@ reboot of the DB instance. If moving this window to the current time,
 there must be at least 30 minutes between the current time and end of
 the window to ensure pending changes are applied.
 
+For more information, see Amazon RDS Maintenance Window
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance)
+in the I<Amazon RDS User Guide.>
+
 Default: Uses existing setting
 
 Format: ddd:hh24:mi-ddd:hh24:mi
@@ -773,11 +823,16 @@ Valid Values: 0 - 15
 =head2 PubliclyAccessible => Bool
 
 A value that indicates whether the DB instance is publicly accessible.
-When the DB instance is publicly accessible, it is an Internet-facing
-instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance isn't publicly accessible, it
-is an internal instance with a DNS name that resolves to a private IP
-address.
+
+When the DB instance is publicly accessible, its DNS endpoint resolves
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
+DB instance is ultimately controlled by the security group it uses, and
+that public access is not permitted if the security group assigned to
+the DB instance doesn't permit it.
+
+When the DB instance isn't publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.
 
 C<PubliclyAccessible> only applies to DB instances in a VPC. The DB
 instance must be part of a public subnet and C<PubliclyAccessible> must
@@ -787,6 +842,24 @@ Changes to the C<PubliclyAccessible> parameter are applied immediately
 regardless of the value of the C<ApplyImmediately> parameter.
 
 
+
+=head2 ReplicaMode => Str
+
+A value that sets the open mode of a replica database to either mounted
+or read-only.
+
+Currently, this parameter is only supported for Oracle DB instances.
+
+Mounted DB replicas are included in Oracle Enterprise Edition. The main
+use case for mounted replicas is cross-Region disaster recovery. The
+primary database doesn't use Active Data Guard to transmit information
+to the mounted replica. Because it doesn't accept user connections, a
+mounted replica can't serve a read-only workload. For more information,
+see Working with Oracle Read Replicas for Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-read-replicas.html)
+in the I<Amazon RDS User Guide>.
+
+Valid values are: C<"open-read-only">, C<"mounted">
 
 =head2 StorageType => Str
 
@@ -807,7 +880,7 @@ available for use, but might experience performance degradation. While
 the migration takes place, nightly backups for the instance are
 suspended. No other Amazon RDS operations can take place for the
 instance, including modifying the instance, rebooting the instance,
-deleting the instance, creating a Read Replica for the instance, and
+deleting the instance, creating a read replica for the instance, and
 creating a DB snapshot of the instance.
 
 Valid values: C<standard | gp2 | io1>

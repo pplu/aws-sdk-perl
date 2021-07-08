@@ -19,6 +19,11 @@ package Paws::SavingsPlans;
     my $call_object = $self->new_with_coercions('Paws::SavingsPlans::CreateSavingsPlan', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteQueuedSavingsPlan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SavingsPlans::DeleteQueuedSavingsPlan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSavingsPlanRates {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SavingsPlans::DescribeSavingsPlanRates', @_);
@@ -57,7 +62,7 @@ package Paws::SavingsPlans;
   
 
 
-  sub operations { qw/CreateSavingsPlan DescribeSavingsPlanRates DescribeSavingsPlans DescribeSavingsPlansOfferingRates DescribeSavingsPlansOfferings ListTagsForResource TagResource UntagResource / }
+  sub operations { qw/CreateSavingsPlan DeleteQueuedSavingsPlan DescribeSavingsPlanRates DescribeSavingsPlans DescribeSavingsPlansOfferingRates DescribeSavingsPlansOfferings ListTagsForResource TagResource UntagResource / }
 
 1;
 
@@ -107,6 +112,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sav
 
 =item [ClientToken => Str]
 
+=item [PurchaseTime => Str]
+
 =item [Tags => L<Paws::SavingsPlans::TagMap>]
 
 =item [UpfrontPaymentAmount => Str]
@@ -119,6 +126,22 @@ Each argument is described in detail in: L<Paws::SavingsPlans::CreateSavingsPlan
 Returns: a L<Paws::SavingsPlans::CreateSavingsPlanResponse> instance
 
 Creates a Savings Plan.
+
+
+=head2 DeleteQueuedSavingsPlan
+
+=over
+
+=item SavingsPlanId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SavingsPlans::DeleteQueuedSavingsPlan>
+
+Returns: a L<Paws::SavingsPlans::DeleteQueuedSavingsPlanResponse> instance
+
+Deletes the queued purchase for the specified Savings Plan.
 
 
 =head2 DescribeSavingsPlanRates

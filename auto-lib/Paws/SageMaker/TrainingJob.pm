@@ -12,6 +12,7 @@ package Paws::SageMaker::TrainingJob;
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
+  has Environment => (is => 'ro', isa => 'Paws::SageMaker::TrainingEnvironmentMap');
   has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
@@ -22,6 +23,7 @@ package Paws::SageMaker::TrainingJob;
   has ModelArtifacts => (is => 'ro', isa => 'Paws::SageMaker::ModelArtifacts');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig');
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig');
+  has RetryStrategy => (is => 'ro', isa => 'Paws::SageMaker::RetryStrategy');
   has RoleArn => (is => 'ro', isa => 'Str');
   has SecondaryStatus => (is => 'ro', isa => 'Str');
   has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
@@ -128,7 +130,8 @@ distributed training.
 
 When true, enables managed spot training using Amazon EC2 Spot
 instances to run training jobs instead of on-demand instances. For more
-information, see model-managed-spot-training.
+information, see Managed Spot Training
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-managed-spot-training.html).
 
 
 =head2 EnableNetworkIsolation => Bool
@@ -136,6 +139,11 @@ information, see model-managed-spot-training.
 If the C<TrainingJob> was created with network isolation, the value is
 set to C<true>. If network isolation is enabled, nodes can't
 communicate beyond the VPC they run in.
+
+
+=head2 Environment => L<Paws::SageMaker::TrainingEnvironmentMap>
+
+The environment variables to set in the Docker container.
 
 
 =head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
@@ -194,10 +202,16 @@ Resources, including ML compute instances and ML storage volumes, that
 are configured for model training.
 
 
+=head2 RetryStrategy => L<Paws::SageMaker::RetryStrategy>
+
+The number of times to retry the job when the job fails due to an
+C<InternalServerError>.
+
+
 =head2 RoleArn => Str
 
-The AWS Identity and Access Management (IAM) role configured for the
-training job.
+The Amazon Web Services Identity and Access Management (IAM) role
+configured for the training job.
 
 
 =head2 SecondaryStatus => Str
@@ -315,9 +329,10 @@ transitioned through.
 
 =head2 StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
-Specifies a limit to how long a model training job can run. When the
-job reaches the time limit, Amazon SageMaker ends the training job. Use
-this API to cap model training costs.
+Specifies a limit to how long a model training job can run. It also
+specifies how long a managed Spot training job has to complete. When
+the job reaches the time limit, Amazon SageMaker ends the training job.
+Use this API to cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
 signal, which delays job termination for 120 seconds. Algorithms can
@@ -327,10 +342,11 @@ of training are not lost.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. For more information, see Using Cost
-Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 =head2 TensorBoardOutputConfig => L<Paws::SageMaker::TensorBoardOutputConfig>

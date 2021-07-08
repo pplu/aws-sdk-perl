@@ -2,10 +2,12 @@
 package Paws::CloudWatch::DescribeAlarmHistory;
   use Moose;
   has AlarmName => (is => 'ro', isa => 'Str');
+  has AlarmTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has EndDate => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Str');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ScanBy => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -33,11 +35,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $monitoring = Paws->service('CloudWatch');
     my $DescribeAlarmHistoryOutput = $monitoring->DescribeAlarmHistory(
-      AlarmName       => 'MyAlarmName',            # OPTIONAL
+      AlarmName  => 'MyAlarmName',    # OPTIONAL
+      AlarmTypes => [
+        'CompositeAlarm', ...         # values: CompositeAlarm, MetricAlarm
+      ],    # OPTIONAL
       EndDate         => '1970-01-01T01:00:00',    # OPTIONAL
       HistoryItemType => 'ConfigurationUpdate',    # OPTIONAL
       MaxRecords      => 1,                        # OPTIONAL
       NextToken       => 'MyNextToken',            # OPTIONAL
+      ScanBy          => 'TimestampDescending',    # OPTIONAL
       StartDate       => '1970-01-01T01:00:00',    # OPTIONAL
     );
 
@@ -56,6 +62,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 =head2 AlarmName => Str
 
 The name of the alarm.
+
+
+
+=head2 AlarmTypes => ArrayRef[Str|Undef]
+
+Use this parameter to specify whether you want the operation to return
+metric alarms or composite alarms. If you omit this parameter, only
+metric alarms are returned.
 
 
 
@@ -83,6 +97,15 @@ The token returned by a previous call to indicate that there is more
 data available.
 
 
+
+=head2 ScanBy => Str
+
+Specified whether to return the newest or oldest alarm history first.
+Specify C<TimestampDescending> to have the newest event history
+returned first, and specify C<TimestampAscending> to have the oldest
+history returned first.
+
+Valid values are: C<"TimestampDescending">, C<"TimestampAscending">
 
 =head2 StartDate => Str
 

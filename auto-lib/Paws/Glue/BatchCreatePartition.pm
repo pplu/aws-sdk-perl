@@ -65,6 +65,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               'MyKeyString' => 'MyParametersMapValue'
               ,    # key: min: 1, max: 255, value: max: 512000
             },    # OPTIONAL
+            SchemaReference => {
+              SchemaId => {
+                RegistryName =>
+                  'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
+                SchemaArn => 'MyGlueResourceArn', # min: 1, max: 10240; OPTIONAL
+                SchemaName =>
+                  'MySchemaRegistryNameString',   # min: 1, max: 255; OPTIONAL
+              },    # OPTIONAL
+              SchemaVersionId =>
+                'MySchemaVersionIdString',    # min: 36, max: 36; OPTIONAL
+              SchemaVersionNumber => 1,       # min: 1, max: 100000; OPTIONAL
+            },    # OPTIONAL
             SerdeInfo => {
               Name       => 'MyNameString',    # min: 1, max: 255
               Parameters => {
@@ -116,7 +128,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the catalog in which the partition is to be created.
-Currently, this should be the AWS account ID.
+Currently, this should be the Amazon Web Services account ID.
 
 
 

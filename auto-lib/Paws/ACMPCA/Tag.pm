@@ -37,8 +37,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::Tag
 Tags are labels that you can use to identify and organize your private
 CAs. Each tag consists of a key and an optional value. You can
 associate up to 50 tags with a private CA. To add one or more tags to a
-private CA, call the TagCertificateAuthority action. To remove a tag,
-call the UntagCertificateAuthority action.
+private CA, call the TagCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html)
+action. To remove a tag, call the UntagCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html)
+action.
 
 =head1 ATTRIBUTES
 

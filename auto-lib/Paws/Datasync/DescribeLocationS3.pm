@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AgentArns      = $DescribeLocationS3Response->AgentArns;
     my $CreationTime   = $DescribeLocationS3Response->CreationTime;
     my $LocationArn    = $DescribeLocationS3Response->LocationArn;
     my $LocationUri    = $DescribeLocationS3Response->LocationUri;

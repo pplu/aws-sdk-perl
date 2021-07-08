@@ -1,6 +1,7 @@
 
 package Paws::MediaLive::UpdateChannelResponse;
   use Moose;
+  has CdiInputSpecification => (is => 'ro', isa => 'Paws::MediaLive::CdiInputSpecification', traits => ['NameInRequest'], request_name => 'cdiInputSpecification');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EncoderSettings => (is => 'ro', isa => 'Paws::MediaLive::EncoderSettings', traits => ['NameInRequest'], request_name => 'encoderSettings');
   has InputAttachments => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputAttachment]', traits => ['NameInRequest'], request_name => 'inputAttachments');
@@ -21,6 +22,11 @@ Paws::MediaLive::UpdateChannelResponse
 =head1 ATTRIBUTES
 
 
+=head2 CdiInputSpecification => L<Paws::MediaLive::CdiInputSpecification>
+
+Specification of CDI inputs for this channel
+
+
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]
 
 A list of output destinations for this channel.
@@ -38,8 +44,7 @@ The encoder settings for this channel.
 
 =head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
 
-Specification of input for this channel (max. bitrate, resolution,
-codec, etc.)
+Specification of network and file inputs for this channel
 
 
 =head2 LogLevel => Str

@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 Activate => Bool
 
-The updated boolean value that specifies whether the ThreateIntelSet is
+The updated Boolean value that specifies whether the ThreateIntelSet is
 active or not.
 
 
@@ -62,8 +62,7 @@ ThreatIntelSet you want to update.
 
 =head2 Location => Str
 
-The updated URI of the file that contains the ThreateIntelSet. For
-example (https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)
+The updated URI of the file that contains the ThreateIntelSet.
 
 
 

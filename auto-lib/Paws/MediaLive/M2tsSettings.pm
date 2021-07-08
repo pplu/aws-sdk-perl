@@ -148,10 +148,12 @@ to 0 lets the muxer automatically determine the appropriate bitrate.
 
 =head2 BufferModel => Str
 
-If set to multiplex, use multiplex buffer model for accurate
-interleaving. Setting to bufferModel to none can lead to lower latency,
-but low-memory devices may not be able to play back the stream without
-interruptions.
+Controls the timing accuracy for output network traffic. Leave as
+MULTIPLEX to ensure accurate network packet timing. Or set to NONE,
+which might result in lower latency but will result in more variability
+in output network packet timing. This variability might cause
+interruptions, jitter, or bursty behavior in your playback or receiving
+devices.
 
 
 =head2 CcDescriptor => Str
@@ -388,7 +390,7 @@ exception to this rule.
 =head2 SegmentationTime => Num
 
 The length in seconds of each segment. Required unless markers is set
-to None_.
+to _none_.
 
 
 =head2 TimedMetadataBehavior => Str

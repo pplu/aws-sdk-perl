@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $frauddetector = Paws->service('FraudDetector');
     my $DescribeModelVersionsResult = $frauddetector->DescribeModelVersions(
       MaxResults         => 1,                          # OPTIONAL
-      ModelId            => 'Myidentifier',             # OPTIONAL
+      ModelId            => 'MymodelIdentifier',        # OPTIONAL
       ModelType          => 'ONLINE_FRAUD_INSIGHTS',    # OPTIONAL
-      ModelVersionNumber => 'MynonEmptyString',         # OPTIONAL
+      ModelVersionNumber => 'MyfloatVersionString',     # OPTIONAL
       NextToken          => 'Mystring',                 # OPTIONAL
     );
 
@@ -71,7 +71,7 @@ Valid values are: C<"ONLINE_FRAUD_INSIGHTS">
 
 =head2 ModelVersionNumber => Str
 
-The model version.
+The model version number.
 
 
 

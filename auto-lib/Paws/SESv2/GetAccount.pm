@@ -32,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $DedicatedIpAutoWarmupEnabled =
       $GetAccountResponse->DedicatedIpAutoWarmupEnabled;
+    my $Details                 = $GetAccountResponse->Details;
     my $EnforcementStatus       = $GetAccountResponse->EnforcementStatus;
     my $ProductionAccessEnabled = $GetAccountResponse->ProductionAccessEnabled;
     my $SendQuota               = $GetAccountResponse->SendQuota;

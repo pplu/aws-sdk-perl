@@ -70,7 +70,12 @@ When true, recursively list attached policies.
 
 =head2 B<REQUIRED> Target => Str
 
-The group or principal for which the policies will be listed.
+The group or principal for which the policies will be listed. Valid
+principals are CertificateArn
+(arn:aws:iot:I<region>:I<accountId>:cert/I<certificateId>),
+thingGroupArn
+(arn:aws:iot:I<region>:I<accountId>:thinggroup/I<groupName>) and
+CognitoId (I<region>:I<id>).
 
 
 

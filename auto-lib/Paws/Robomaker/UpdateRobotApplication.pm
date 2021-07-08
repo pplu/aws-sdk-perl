@@ -34,8 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateRobotApplicationResponse = $robomaker->UpdateRobotApplication(
       Application        => 'MyArn',
       RobotSoftwareSuite => {
-        Name    => 'ROS',        # values: ROS, ROS2; OPTIONAL
-        Version => 'Kinetic',    # values: Kinetic, Melodic, Dashing; OPTIONAL
+        Name    => 'ROS',    # values: ROS, ROS2; OPTIONAL
+        Version =>
+          'Kinetic',         # values: Kinetic, Melodic, Dashing, Foxy; OPTIONAL
       },
       Sources => [
         {

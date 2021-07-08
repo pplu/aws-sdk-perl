@@ -48,8 +48,7 @@ The name of the feature associated with the IAM)role.
 
 =head2 RoleArn => Str
 
-The Amazon Resource Name (ARN) of the IAM role that is associated with
-the DB instance.
+The ARN of the IAM role that is associated with the DB instance.
 
 
 =head2 Status => Str
@@ -61,16 +60,16 @@ instance. The C<Status> property returns one of the following values:
 
 =item *
 
-C<ACTIVE> - the IAM role ARN is associated with the DB instance and can
+C<ACTIVE> - The IAM role ARN is associated with the DB instance and can
 be used to access other AWS services on your behalf.
 
 =item *
 
-C<PENDING> - the IAM role ARN is being associated with the DB instance.
+C<PENDING> - The IAM role ARN is being associated with the DB instance.
 
 =item *
 
-C<INVALID> - the IAM role ARN is associated with the DB instance, but
+C<INVALID> - The IAM role ARN is associated with the DB instance. But
 the DB instance is unable to assume the IAM role in order to access
 other AWS services on your behalf.
 

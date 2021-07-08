@@ -71,10 +71,9 @@ C<ShowAlternatives> field to true.
 =head2 MaxSpeakerLabels => Int
 
 The maximum number of speakers to identify in the input audio. If there
-are more speakers in the audio than this number, multiple speakers will
-be identified as a single speaker. If you specify the
-C<MaxSpeakerLabels> field, you must set the C<ShowSpeakerLabels> field
-to true.
+are more speakers in the audio than this number, multiple speakers are
+identified as a single speaker. If you specify the C<MaxSpeakerLabels>
+field, you must set the C<ShowSpeakerLabels> field to true.
 
 
 =head2 ShowAlternatives => Bool
@@ -103,7 +102,10 @@ C<BadRequestException>.
 Set to C<mask> to remove filtered text from the transcript and replace
 it with three asterisks ("***") as placeholder text. Set to C<remove>
 to remove filtered text from the transcript without using placeholder
-text.
+text. Set to C<tag> to mark the word in the transcription output that
+matches the vocabulary filter. When you set the filter method to
+C<tag>, the words matching your vocabulary filter are not masked or
+removed.
 
 
 =head2 VocabularyFilterName => Str

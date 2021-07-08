@@ -10,6 +10,7 @@ package Paws::Pinpoint::PushNotificationTemplateResponse;
   has DefaultSubstitutions => (is => 'ro', isa => 'Str');
   has GCM => (is => 'ro', isa => 'Paws::Pinpoint::AndroidPushNotificationTemplate');
   has LastModifiedDate => (is => 'ro', isa => 'Str', required => 1);
+  has RecommenderId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TemplateDescription => (is => 'ro', isa => 'Str');
   has TemplateName => (is => 'ro', isa => 'Str', required => 1);
@@ -111,6 +112,12 @@ the default template for push notification channels
 
 The date, in ISO 8601 format, when the message template was last
 modified.
+
+
+=head2 RecommenderId => Str
+
+The unique identifier for the recommender model that's used by the
+message template.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>

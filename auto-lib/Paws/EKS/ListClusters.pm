@@ -29,14 +29,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $eks = Paws->service('EKS');
-    my $ListClustersResponse = $eks->ListClusters(
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
-    );
+    # To list your available clusters
+    # This example command lists all of your available clusters in your default
+    # region.
+    my $ListClustersResponse = $eks->ListClusters();
 
     # Results:
-    my $Clusters  = $ListClustersResponse->Clusters;
-    my $NextToken = $ListClustersResponse->NextToken;
+    my $clusters = $ListClustersResponse->clusters;
 
     # Returns a L<Paws::EKS::ListClustersResponse> object.
 

@@ -36,6 +36,11 @@ function.
 
 B<Amazon ECS>: The target object is an Amazon ECS service.
 
+=item *
+
+B<CloudFormation>: The target object is an AWS CloudFormation
+blue/green deployment.
+
 =back
 
 

@@ -41,7 +41,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DeleteMultiplexProgramResponse->MultiplexProgramSettings;
     my $PacketIdentifiersMap =
       $DeleteMultiplexProgramResponse->PacketIdentifiersMap;
-    my $ProgramName = $DeleteMultiplexProgramResponse->ProgramName;
+    my $PipelineDetails = $DeleteMultiplexProgramResponse->PipelineDetails;
+    my $ProgramName     = $DeleteMultiplexProgramResponse->ProgramName;
 
     # Returns a L<Paws::MediaLive::DeleteMultiplexProgramResponse> object.
 

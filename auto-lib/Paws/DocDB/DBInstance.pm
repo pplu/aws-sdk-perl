@@ -65,7 +65,9 @@ Detailed information about an instance.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor version patches are applied automatically.
+Does not apply. This parameter does not apply to Amazon DocumentDB.
+Amazon DocumentDB does not perform minor version upgrades regardless of
+the value set.
 
 
 =head2 AvailabilityZone => Str
@@ -115,9 +117,9 @@ Specifies the current state of this database.
 
 =head2 DbiResourceId => Str
 
-The AWS Region-unique, immutable identifier for the instance. This
-identifier is found in AWS CloudTrail log entries whenever the AWS KMS
-key for the instance is accessed.
+The Region-unique, immutable identifier for the instance. This
+identifier is found in CloudTrail log entries whenever the KMS key for
+the instance is accessed.
 
 
 =head2 DBSubnetGroup => L<Paws::DocDB::DBSubnetGroup>
@@ -130,7 +132,7 @@ group.
 =head2 EnabledCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 A list of log types that this instance is configured to export to
-Amazon CloudWatch Logs.
+CloudWatch Logs.
 
 
 =head2 Endpoint => L<Paws::DocDB::Endpoint>
@@ -155,7 +157,7 @@ Provides the date and time that the instance was created.
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is C<true>, the AWS KMS key identifier for the
+If C<StorageEncrypted> is C<true>, the KMS key identifier for the
 encrypted instance.
 
 

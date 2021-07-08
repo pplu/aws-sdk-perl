@@ -7,6 +7,7 @@ package Paws::Glue::Workflow;
   has Graph => (is => 'ro', isa => 'Paws::Glue::WorkflowGraph');
   has LastModifiedOn => (is => 'ro', isa => 'Str');
   has LastRun => (is => 'ro', isa => 'Paws::Glue::WorkflowRun');
+  has MaxConcurrentRuns => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
 
 1;
@@ -39,8 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::Workf
 
 =head1 DESCRIPTION
 
-A workflow represents a flow in which AWS Glue components should be
-executed to complete a logical task.
+A workflow represents a flow in which Glue components should be run to
+complete a logical task.
 
 =head1 ATTRIBUTES
 
@@ -63,7 +64,7 @@ A description of the workflow.
 
 =head2 Graph => L<Paws::Glue::WorkflowGraph>
 
-The graph representing all the AWS Glue components that belong to the
+The graph representing all the Glue components that belong to the
 workflow as nodes and directed connections between them as edges.
 
 
@@ -75,6 +76,15 @@ The date and time when the workflow was last modified.
 =head2 LastRun => L<Paws::Glue::WorkflowRun>
 
 The information about the last execution of the workflow.
+
+
+=head2 MaxConcurrentRuns => Int
+
+You can use this parameter to prevent unwanted multiple updates to
+data, to control costs, or in some cases, to prevent exceeding the
+maximum number of concurrent runs of any of the component jobs. If you
+leave this parameter blank, there is no limit to the number of
+concurrent workflow runs.
 
 
 =head2 Name => Str

@@ -29,6 +29,10 @@ expires after 24 hours.
 
 =head2 SearchedLogStreams => ArrayRef[L<Paws::CloudWatchLogs::SearchedLogStream>]
 
+B<IMPORTANT> Starting on May 15, 2020, this parameter will be
+deprecated. This parameter will be an empty list after the deprecation
+occurs.
+
 Indicates which log streams have been searched and whether each has
 been searched completely.
 

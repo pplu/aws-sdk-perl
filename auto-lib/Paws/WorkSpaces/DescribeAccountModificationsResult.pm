@@ -22,8 +22,8 @@ The list of modifications to the configuration of BYOL.
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next set of results, or null if no
-more results are available.
+The token to use to retrieve the next page of results. This value is
+null when there are no more results to return.
 
 
 =head2 _request_id => Str

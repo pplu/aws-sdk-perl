@@ -4,6 +4,7 @@ package Paws::S3::PutBucketLifecycle;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has LifecycleConfiguration => (is => 'ro', isa => 'Paws::S3::LifecycleConfiguration', traits => ['ParamInBody']);
 
 
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Bucket                 => 'MyBucketName',
       ContentLength          => 1,                 # OPTIONAL
       ContentMD5             => 'MyContentMD5',    # OPTIONAL
+      ExpectedBucketOwner    => 'MyAccountId',     # OPTIONAL
       LifecycleConfiguration => {
         Rules => [
           {
@@ -94,7 +96,16 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
 
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

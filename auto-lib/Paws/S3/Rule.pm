@@ -41,9 +41,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Rule ob
 =head1 DESCRIPTION
 
 Specifies lifecycle rules for an Amazon S3 bucket. For more
-information, see PUT Bucket lifecycle
+information, see Put Bucket Lifecycle Configuration
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTlifecycle.html)
-in the I<Amazon Simple Storage Service API Reference>.
+in the I<Amazon S3 API Reference>. For examples, see Put Bucket
+Lifecycle Configuration Examples
+(https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html#API_PutBucketLifecycleConfiguration_Examples).
 
 =head1 ATTRIBUTES
 
@@ -79,6 +81,11 @@ characters.
 Object key prefix that identifies one or more objects to which this
 rule applies.
 
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
+
 
 =head2 B<REQUIRED> Status => Str
 
@@ -88,7 +95,11 @@ rule is not currently being applied.
 
 =head2 Transition => L<Paws::S3::Transition>
 
-Specifies when an object transitions to a specified storage class.
+Specifies when an object transitions to a specified storage class. For
+more information about Amazon S3 lifecycle configuration rules, see
+Transitioning Objects Using Amazon S3 Lifecycle
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
+in the I<Amazon S3 User Guide>.
 
 
 

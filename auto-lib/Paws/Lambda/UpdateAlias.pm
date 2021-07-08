@@ -33,13 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To update a Lambda function alias
-    # This operation updates a Lambda function alias
+  # To update a function alias
+  # The following example updates the alias named BLUE to send 30% of traffic to
+  # version 2 and 70% to version 1.
     my $AliasConfiguration = $lambda->UpdateAlias(
-      'Description'     => '',
-      'FunctionName'    => 'myFunction',
-      'FunctionVersion' => 1,
-      'Name'            => 'functionAlias'
+      'FunctionName'    => 'my-function',
+      'FunctionVersion' => 2,
+      'Name'            => 'BLUE',
+      'RoutingConfig'   => {
+        'AdditionalVersionWeights' => {
+          1 => 0.7
+        }
+      }
     );
 
     # Results:
@@ -47,6 +52,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description     = $AliasConfiguration->Description;
     my $FunctionVersion = $AliasConfiguration->FunctionVersion;
     my $Name            = $AliasConfiguration->Name;
+    my $RevisionId      = $AliasConfiguration->RevisionId;
+    my $RoutingConfig   = $AliasConfiguration->RoutingConfig;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 
@@ -113,7 +120,7 @@ since you last read it.
 =head2 RoutingConfig => L<Paws::Lambda::AliasRoutingConfiguration>
 
 The routing configuration
-(https://docs.aws.amazon.com/lambda/latest/dg/lambda-traffic-shifting-using-aliases.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-aliases.html#configuring-alias-routing)
 of the alias.
 
 

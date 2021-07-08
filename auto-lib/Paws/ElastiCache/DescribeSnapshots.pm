@@ -33,15 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    my $DescribeSnapshotsListMessage = $elasticache->DescribeSnapshots(
-      CacheClusterId      => 'MyString',    # OPTIONAL
-      Marker              => 'MyString',    # OPTIONAL
-      MaxRecords          => 1,             # OPTIONAL
-      ReplicationGroupId  => 'MyString',    # OPTIONAL
-      ShowNodeGroupConfig => 1,             # OPTIONAL
-      SnapshotName        => 'MyString',    # OPTIONAL
-      SnapshotSource      => 'MyString',    # OPTIONAL
-    );
+    # DescribeSnapshots
+    # Returns information about the snapshot mysnapshot. By default.
+    my $DescribeSnapshotsListMessage =
+      $elasticache->DescribeSnapshots( 'SnapshotName' => 'snapshot-20161212' );
 
     # Results:
     my $Marker    = $DescribeSnapshotsListMessage->Marker;

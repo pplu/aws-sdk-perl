@@ -32,7 +32,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $cognito -identity->SetIdentityPoolRoles(
       IdentityPoolId => 'MyIdentityPoolId',
       Roles          => {
-        'MyRoleType' => 'MyARNString',    # , value: min: 20, max: 2048
+        'MyRoleType' =>
+          'MyARNString',    # key: min: 1, max: 128, value: min: 20, max: 2048
       },
       RoleMappings => {
         'MyIdentityProviderName' => {
@@ -50,7 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
               },
               ...
-            ],    # min: 1, max: 25
+            ],    # min: 1, max: 400
 
           },    # OPTIONAL
         },    # key: min: 1, max: 128
@@ -74,7 +75,7 @@ An identity pool ID in the format REGION:GUID.
 How users for a specific identity provider are to mapped to roles. This
 is a string to RoleMapping object map. The string identifies the
 identity provider, for example, "graph.facebook.com" or
-"cognito-idp-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
+"cognito-idp.us-east-1.amazonaws.com/us-east-1_abcdefghi:app_client_id".
 
 Up to 25 rules can be specified per identity provider.
 

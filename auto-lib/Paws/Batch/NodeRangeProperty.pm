@@ -52,9 +52,9 @@ indicates nodes with index values of C<0> through C<3>. If the starting
 range value is omitted (C<:n>), then C<0> is used to start the range.
 If the ending range value is omitted (C<n:>), then the highest possible
 node index is used to end the range. Your accumulative node ranges must
-account for all nodes (0:n). You may nest node ranges, for example 0:10
-and 4:5, in which case the 4:5 range properties override the 0:10
-properties.
+account for all nodes (C<0:n>). You can nest node ranges, for example
+C<0:10> and C<4:5>, in which case the C<4:5> range properties override
+the C<0:10> properties.
 
 
 

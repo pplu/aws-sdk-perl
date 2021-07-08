@@ -41,8 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResolverEndpointId => 'MyResourceId',         # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],    # OPTIONAL
@@ -69,18 +70,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 B<REQUIRED> CreatorRequestId => Str
 
 A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing the operation
-twice. C<CreatorRequestId> can be any unique string, for example, a
-date/time stamp.
+requests to be retried without the risk of running the operation twice.
+C<CreatorRequestId> can be any unique string, for example, a date/time
+stamp.
 
 
 
 =head2 B<REQUIRED> DomainName => Str
 
 DNS queries for this domain name are forwarded to the IP addresses that
-you specify in C<TargetIps>. If a query matches multiple resolver rules
+you specify in C<TargetIps>. If a query matches multiple Resolver rules
 (example.com and www.example.com), outbound DNS queries are routed
-using the resolver rule that contains the most specific domain name
+using the Resolver rule that contains the most specific domain name
 (www.example.com).
 
 
@@ -94,14 +95,27 @@ dashboard in the Route 53 console.
 
 =head2 ResolverEndpointId => Str
 
-The ID of the outbound resolver endpoint that you want to use to route
+The ID of the outbound Resolver endpoint that you want to use to route
 DNS queries to the IP addresses that you specify in C<TargetIps>.
 
 
 
 =head2 B<REQUIRED> RuleType => Str
 
-Specify C<FORWARD>. Other resolver rule types aren't supported.
+When you want to forward DNS queries for specified domain name to
+resolvers on your network, specify C<FORWARD>.
+
+When you have a forwarding rule to forward DNS queries for a domain to
+your network and you want Resolver to process queries for a subdomain
+of that domain, specify C<SYSTEM>.
+
+For example, to forward DNS queries for example.com to resolvers on
+your network, you create a rule and specify C<FORWARD> for C<RuleType>.
+To then have Resolver process queries for apex.example.com, you create
+a rule and specify C<SYSTEM> for C<RuleType>.
+
+Currently, only Resolver can create rules that have a value of
+C<RECURSIVE> for C<RuleType>.
 
 Valid values are: C<"FORWARD">, C<"SYSTEM">, C<"RECURSIVE">
 
@@ -115,7 +129,10 @@ endpoint.
 =head2 TargetIps => ArrayRef[L<Paws::Route53Resolver::TargetAddress>]
 
 The IPs that you want Resolver to forward DNS queries to. You can
-specify only IPv4 addresses. Separate IP addresses with a comma.
+specify only IPv4 addresses. Separate IP addresses with a space.
+
+C<TargetIps> is available only when the value of C<Rule type> is
+C<FORWARD>.
 
 
 

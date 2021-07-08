@@ -76,7 +76,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The maximum number of results to return for the request in a single
 page. The remaining results can be seen by sending another request with
-the returned nextToken value.
+the returned C<nextToken> value. This value can be between 5 and 500.
+If C<maxResults> is given a larger value than 500, you receive an
+error.
 
 Valid range: Minimum value of 1. Maximum value of 1000.
 
@@ -84,7 +86,7 @@ Valid range: Minimum value of 1. Maximum value of 1000.
 
 =head2 NextToken => Str
 
-The token to retrieve the next page of results.
+The token to use to retrieve the next page of results.
 
 
 

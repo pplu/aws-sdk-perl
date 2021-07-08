@@ -14,6 +14,21 @@ package Paws::EKS;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AssociateEncryptionConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::AssociateEncryptionConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateIdentityProviderConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::AssociateIdentityProviderConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAddon {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::CreateAddon', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::CreateCluster', @_);
@@ -27,6 +42,11 @@ package Paws::EKS;
   sub CreateNodegroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::CreateNodegroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAddon {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DeleteAddon', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteCluster {
@@ -44,6 +64,16 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::DeleteNodegroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAddon {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DescribeAddon', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAddonVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DescribeAddonVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::DescribeCluster', @_);
@@ -52,6 +82,11 @@ package Paws::EKS;
   sub DescribeFargateProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::DescribeFargateProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeIdentityProviderConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DescribeIdentityProviderConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNodegroup {
@@ -64,6 +99,16 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::DescribeUpdate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateIdentityProviderConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::DisassociateIdentityProviderConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAddons {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::ListAddons', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListClusters {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListClusters', @_);
@@ -72,6 +117,11 @@ package Paws::EKS;
   sub ListFargateProfiles {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::ListFargateProfiles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListIdentityProviderConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::ListIdentityProviderConfigs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListNodegroups {
@@ -99,6 +149,11 @@ package Paws::EKS;
     my $call_object = $self->new_with_coercions('Paws::EKS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateAddon {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EKS::UpdateAddon', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateClusterConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EKS::UpdateClusterConfig', @_);
@@ -120,6 +175,52 @@ package Paws::EKS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllAddonVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAddonVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeAddonVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->addons }, @{ $next_result->addons };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'addons') foreach (@{ $result->addons });
+        $result = $self->DescribeAddonVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'addons') foreach (@{ $result->addons });
+    }
+
+    return undef
+  }
+  sub ListAllAddons {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAddons(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAddons(@_, nextToken => $next_result->nextToken);
+        push @{ $result->addons }, @{ $next_result->addons };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'addons') foreach (@{ $result->addons });
+        $result = $self->ListAddons(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'addons') foreach (@{ $result->addons });
+    }
+
+    return undef
+  }
   sub ListAllClusters {
     my $self = shift;
 
@@ -162,6 +263,29 @@ package Paws::EKS;
         $result = $self->ListFargateProfiles(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'fargateProfileNames') foreach (@{ $result->fargateProfileNames });
+    }
+
+    return undef
+  }
+  sub ListAllIdentityProviderConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIdentityProviderConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListIdentityProviderConfigs(@_, nextToken => $next_result->nextToken);
+        push @{ $result->identityProviderConfigs }, @{ $next_result->identityProviderConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'identityProviderConfigs') foreach (@{ $result->identityProviderConfigs });
+        $result = $self->ListIdentityProviderConfigs(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'identityProviderConfigs') foreach (@{ $result->identityProviderConfigs });
     }
 
     return undef
@@ -214,7 +338,7 @@ package Paws::EKS;
   }
 
 
-  sub operations { qw/CreateCluster CreateFargateProfile CreateNodegroup DeleteCluster DeleteFargateProfile DeleteNodegroup DescribeCluster DescribeFargateProfile DescribeNodegroup DescribeUpdate ListClusters ListFargateProfiles ListNodegroups ListTagsForResource ListUpdates TagResource UntagResource UpdateClusterConfig UpdateClusterVersion UpdateNodegroupConfig UpdateNodegroupVersion / }
+  sub operations { qw/AssociateEncryptionConfig AssociateIdentityProviderConfig CreateAddon CreateCluster CreateFargateProfile CreateNodegroup DeleteAddon DeleteCluster DeleteFargateProfile DeleteNodegroup DescribeAddon DescribeAddonVersions DescribeCluster DescribeFargateProfile DescribeIdentityProviderConfig DescribeNodegroup DescribeUpdate DisassociateIdentityProviderConfig ListAddons ListClusters ListFargateProfiles ListIdentityProviderConfigs ListNodegroups ListTagsForResource ListUpdates TagResource UntagResource UpdateAddon UpdateClusterConfig UpdateClusterVersion UpdateNodegroupConfig UpdateNodegroupVersion / }
 
 1;
 
@@ -261,6 +385,98 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 =head1 METHODS
 
+=head2 AssociateEncryptionConfig
+
+=over
+
+=item ClusterName => Str
+
+=item EncryptionConfig => ArrayRef[L<Paws::EKS::EncryptionConfig>]
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::AssociateEncryptionConfig>
+
+Returns: a L<Paws::EKS::AssociateEncryptionConfigResponse> instance
+
+Associate encryption configuration to an existing cluster.
+
+You can use this API to enable encryption on existing clusters which do
+not have encryption already enabled. This allows you to implement a
+defense-in-depth security strategy without migrating applications to
+new EKS clusters.
+
+
+=head2 AssociateIdentityProviderConfig
+
+=over
+
+=item ClusterName => Str
+
+=item Oidc => L<Paws::EKS::OidcIdentityProviderConfigRequest>
+
+=item [ClientRequestToken => Str]
+
+=item [Tags => L<Paws::EKS::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::AssociateIdentityProviderConfig>
+
+Returns: a L<Paws::EKS::AssociateIdentityProviderConfigResponse> instance
+
+Associate an identity provider configuration to a cluster.
+
+If you want to authenticate identities using an identity provider, you
+can create an identity provider configuration and associate it to your
+cluster. After configuring authentication to your cluster you can
+create Kubernetes C<roles> and C<clusterroles> to assign permissions to
+the roles, and then bind the roles to the identities using Kubernetes
+C<rolebindings> and C<clusterrolebindings>. For more information see
+Using RBAC Authorization
+(https://kubernetes.io/docs/reference/access-authn-authz/rbac/) in the
+Kubernetes documentation.
+
+
+=head2 CreateAddon
+
+=over
+
+=item AddonName => Str
+
+=item ClusterName => Str
+
+=item [AddonVersion => Str]
+
+=item [ClientRequestToken => Str]
+
+=item [ResolveConflicts => Str]
+
+=item [ServiceAccountRoleArn => Str]
+
+=item [Tags => L<Paws::EKS::TagMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::CreateAddon>
+
+Returns: a L<Paws::EKS::CreateAddonResponse> instance
+
+Creates an Amazon EKS add-on.
+
+Amazon EKS add-ons help to automate the provisioning and lifecycle
+management of common operational software for Amazon EKS clusters.
+Amazon EKS add-ons can only be used with Amazon EKS clusters running
+version 1.18 with platform version C<eks.3> or later because add-ons
+rely on the Server-side Apply Kubernetes feature, which is only
+available in Kubernetes 1.18 and later.
+
+
 =head2 CreateCluster
 
 =over
@@ -272,6 +488,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 =item RoleArn => Str
 
 =item [ClientRequestToken => Str]
+
+=item [EncryptionConfig => ArrayRef[L<Paws::EKS::EncryptionConfig>]]
+
+=item [KubernetesNetworkConfig => L<Paws::EKS::KubernetesNetworkConfigRequest>]
 
 =item [Logging => L<Paws::EKS::Logging>]
 
@@ -299,38 +519,19 @@ The cluster control plane is provisioned across multiple Availability
 Zones and fronted by an Elastic Load Balancing Network Load Balancer.
 Amazon EKS also provisions elastic network interfaces in your VPC
 subnets to provide connectivity from the control plane instances to the
-worker nodes (for example, to support C<kubectl exec>, C<logs>, and
-C<proxy> data flows).
+nodes (for example, to support C<kubectl exec>, C<logs>, and C<proxy>
+data flows).
 
-Amazon EKS worker nodes run in your AWS account and connect to your
-cluster's control plane via the Kubernetes API server endpoint and a
-certificate file that is created for your cluster.
+Amazon EKS nodes run in your AWS account and connect to your cluster's
+control plane via the Kubernetes API server endpoint and a certificate
+file that is created for your cluster.
 
-You can use the C<endpointPublicAccess> and C<endpointPrivateAccess>
-parameters to enable or disable public and private access to your
-cluster's Kubernetes API server endpoint. By default, public access is
-enabled, and private access is disabled. For more information, see
-Amazon EKS Cluster Endpoint Access Control
-(https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
-in the I< I<Amazon EKS User Guide> >.
-
-You can use the C<logging> parameter to enable or disable exporting the
-Kubernetes control plane logs for your cluster to CloudWatch Logs. By
-default, cluster control plane logs aren't exported to CloudWatch Logs.
-For more information, see Amazon EKS Cluster Control Plane Logs
-(https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
-in the I< I<Amazon EKS User Guide> >.
-
-CloudWatch Logs ingestion, archive storage, and data scanning rates
-apply to exported control plane logs. For more information, see Amazon
-CloudWatch Pricing (http://aws.amazon.com/cloudwatch/pricing/).
-
-Cluster creation typically takes between 10 and 15 minutes. After you
-create an Amazon EKS cluster, you must configure your Kubernetes
-tooling to communicate with the API server and launch worker nodes into
-your cluster. For more information, see Managing Cluster Authentication
+Cluster creation typically takes several minutes. After you create an
+Amazon EKS cluster, you must configure your Kubernetes tooling to
+communicate with the API server and launch nodes into your cluster. For
+more information, see Managing Cluster Authentication
 (https://docs.aws.amazon.com/eks/latest/userguide/managing-auth.html)
-and Launching Amazon EKS Worker Nodes
+and Launching Amazon EKS nodes
 (https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 in the I<Amazon EKS User Guide>.
 
@@ -414,6 +615,8 @@ in the I<Amazon EKS User Guide>.
 
 =item [AmiType => Str]
 
+=item [CapacityType => Str]
+
 =item [ClientRequestToken => Str]
 
 =item [DiskSize => Int]
@@ -422,6 +625,8 @@ in the I<Amazon EKS User Guide>.
 
 =item [Labels => L<Paws::EKS::LabelsMap>]
 
+=item [LaunchTemplate => L<Paws::EKS::LaunchTemplateSpecification>]
+
 =item [ReleaseVersion => Str]
 
 =item [RemoteAccess => L<Paws::EKS::RemoteAccessConfig>]
@@ -429,6 +634,10 @@ in the I<Amazon EKS User Guide>.
 =item [ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>]
 
 =item [Tags => L<Paws::EKS::TagMap>]
+
+=item [Taints => ArrayRef[L<Paws::EKS::Taint>]]
+
+=item [UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>]
 
 =item [Version => Str]
 
@@ -439,19 +648,44 @@ Each argument is described in detail in: L<Paws::EKS::CreateNodegroup>
 
 Returns: a L<Paws::EKS::CreateNodegroupResponse> instance
 
-Creates a managed worker node group for an Amazon EKS cluster. You can
-only create a node group for your cluster that is equal to the current
+Creates a managed node group for an Amazon EKS cluster. You can only
+create a node group for your cluster that is equal to the current
 Kubernetes version for the cluster. All node groups are created with
 the latest AMI release version for the respective minor Kubernetes
-version of the cluster.
+version of the cluster, unless you deploy a custom AMI using a launch
+template. For more information about using launch templates, see Launch
+template support
+(https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
 
 An Amazon EKS managed node group is an Amazon EC2 Auto Scaling group
 and associated Amazon EC2 instances that are managed by AWS for an
-Amazon EKS cluster. Each node group uses a version of the Amazon
-EKS-optimized Amazon Linux 2 AMI. For more information, see Managed
-Node Groups
+Amazon EKS cluster. Each node group uses a version of the Amazon EKS
+optimized Amazon Linux 2 AMI. For more information, see Managed Node
+Groups
 (https://docs.aws.amazon.com/eks/latest/userguide/managed-node-groups.html)
 in the I<Amazon EKS User Guide>.
+
+
+=head2 DeleteAddon
+
+=over
+
+=item AddonName => Str
+
+=item ClusterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DeleteAddon>
+
+Returns: a L<Paws::EKS::DeleteAddonResponse> instance
+
+Delete an Amazon EKS add-on.
+
+When you remove the add-on, it will also be deleted from the cluster.
+You can always manually start an add-on on the cluster using the
+Kubernetes API.
 
 
 =head2 DeleteCluster
@@ -479,7 +713,7 @@ in the I<Amazon EKS User Guide>.
 
 If you have managed node groups or Fargate profiles attached to the
 cluster, you must delete them first. For more information, see
-DeleteNodegroup andDeleteFargateProfile.
+DeleteNodegroup and DeleteFargateProfile.
 
 
 =head2 DeleteFargateProfile
@@ -528,6 +762,46 @@ Returns: a L<Paws::EKS::DeleteNodegroupResponse> instance
 Deletes an Amazon EKS node group for a cluster.
 
 
+=head2 DescribeAddon
+
+=over
+
+=item AddonName => Str
+
+=item ClusterName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DescribeAddon>
+
+Returns: a L<Paws::EKS::DescribeAddonResponse> instance
+
+Describes an Amazon EKS add-on.
+
+
+=head2 DescribeAddonVersions
+
+=over
+
+=item [AddonName => Str]
+
+=item [KubernetesVersion => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DescribeAddonVersions>
+
+Returns: a L<Paws::EKS::DescribeAddonVersionsResponse> instance
+
+Describes the Kubernetes versions that the add-on can be used with.
+
+
 =head2 DescribeCluster
 
 =over
@@ -571,6 +845,25 @@ Returns: a L<Paws::EKS::DescribeFargateProfileResponse> instance
 Returns descriptive information about an AWS Fargate profile.
 
 
+=head2 DescribeIdentityProviderConfig
+
+=over
+
+=item ClusterName => Str
+
+=item IdentityProviderConfig => L<Paws::EKS::IdentityProviderConfig>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DescribeIdentityProviderConfig>
+
+Returns: a L<Paws::EKS::DescribeIdentityProviderConfigResponse> instance
+
+Returns descriptive information about an identity provider
+configuration.
+
+
 =head2 DescribeNodegroup
 
 =over
@@ -597,6 +890,8 @@ Returns descriptive information about an Amazon EKS node group.
 
 =item UpdateId => Str
 
+=item [AddonName => Str]
+
 =item [NodegroupName => Str]
 
 
@@ -612,6 +907,49 @@ cluster or associated managed node group.
 When the status of the update is C<Succeeded>, the update is complete.
 If an update fails, the status is C<Failed>, and an error detail
 explains the reason for the failure.
+
+
+=head2 DisassociateIdentityProviderConfig
+
+=over
+
+=item ClusterName => Str
+
+=item IdentityProviderConfig => L<Paws::EKS::IdentityProviderConfig>
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::DisassociateIdentityProviderConfig>
+
+Returns: a L<Paws::EKS::DisassociateIdentityProviderConfigResponse> instance
+
+Disassociates an identity provider configuration from a cluster. If you
+disassociate an identity provider from your cluster, users included in
+the provider can no longer access the cluster. However, you can still
+access the cluster with AWS IAM users.
+
+
+=head2 ListAddons
+
+=over
+
+=item ClusterName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::ListAddons>
+
+Returns: a L<Paws::EKS::ListAddonsResponse> instance
+
+Lists the available add-ons.
 
 
 =head2 ListClusters
@@ -654,6 +992,26 @@ Lists the AWS Fargate profiles associated with the specified cluster in
 your AWS account in the specified Region.
 
 
+=head2 ListIdentityProviderConfigs
+
+=over
+
+=item ClusterName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::ListIdentityProviderConfigs>
+
+Returns: a L<Paws::EKS::ListIdentityProviderConfigsResponse> instance
+
+A list of identity provider configurations.
+
+
 =head2 ListNodegroups
 
 =over
@@ -671,8 +1029,9 @@ Each argument is described in detail in: L<Paws::EKS::ListNodegroups>
 
 Returns: a L<Paws::EKS::ListNodegroupsResponse> instance
 
-Lists the Amazon EKS node groups associated with the specified cluster
-in your AWS account in the specified Region.
+Lists the Amazon EKS managed node groups associated with the specified
+cluster in your AWS account in the specified Region. Self-managed node
+groups are not listed.
 
 
 =head2 ListTagsForResource
@@ -696,6 +1055,8 @@ List the tags for an Amazon EKS resource.
 =over
 
 =item Name => Str
+
+=item [AddonName => Str]
 
 =item [MaxResults => Int]
 
@@ -736,7 +1097,7 @@ the tags associated with that resource are deleted as well. Tags that
 you create for Amazon EKS resources do not propagate to any other
 resources associated with the cluster. For example, if you tag a
 cluster with this operation, that tag does not automatically propagate
-to the subnets and worker nodes associated with the cluster.
+to the subnets and nodes associated with the cluster.
 
 
 =head2 UntagResource
@@ -755,6 +1116,32 @@ Each argument is described in detail in: L<Paws::EKS::UntagResource>
 Returns: a L<Paws::EKS::UntagResourceResponse> instance
 
 Deletes specified tags from a resource.
+
+
+=head2 UpdateAddon
+
+=over
+
+=item AddonName => Str
+
+=item ClusterName => Str
+
+=item [AddonVersion => Str]
+
+=item [ClientRequestToken => Str]
+
+=item [ResolveConflicts => Str]
+
+=item [ServiceAccountRoleArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EKS::UpdateAddon>
+
+Returns: a L<Paws::EKS::UpdateAddonResponse> instance
+
+Updates an Amazon EKS add-on.
 
 
 =head2 UpdateClusterConfig
@@ -799,8 +1186,8 @@ more information, see Amazon EKS Cluster Endpoint Access Control
 (https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 in the I< I<Amazon EKS User Guide> >.
 
-At this time, you can not update the subnets or security group IDs for
-an existing cluster.
+You can't update the subnets or security group IDs for an existing
+cluster.
 
 Cluster updates are asynchronous, and they should finish within a few
 minutes. During an update, the cluster status moves to C<UPDATING>
@@ -857,6 +1244,10 @@ version.
 
 =item [ScalingConfig => L<Paws::EKS::NodegroupScalingConfig>]
 
+=item [Taints => L<Paws::EKS::UpdateTaintsPayload>]
+
+=item [UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>]
+
 
 =back
 
@@ -883,6 +1274,8 @@ the Kubernetes labels for a node group or the scaling configuration.
 
 =item [Force => Bool]
 
+=item [LaunchTemplate => L<Paws::EKS::LaunchTemplateSpecification>]
+
 =item [ReleaseVersion => Str]
 
 =item [Version => Str]
@@ -897,12 +1290,20 @@ Returns: a L<Paws::EKS::UpdateNodegroupVersionResponse> instance
 Updates the Kubernetes version or AMI version of an Amazon EKS managed
 node group.
 
-You can update to the latest available AMI version of a node group's
-current Kubernetes version by not specifying a Kubernetes version in
-the request. You can update to the latest AMI version of your cluster's
-current Kubernetes version by specifying your cluster's Kubernetes
-version in the request. For more information, see Amazon EKS-Optimized
-Linux AMI Versions
+You can update a node group using a launch template only if the node
+group was originally deployed with a launch template. If you need to
+update a custom AMI in a node group that was deployed with a launch
+template, then update your custom AMI, specify the new ID in a new
+version of the launch template, and then update the node group to the
+new version of the launch template.
+
+If you update without a launch template, then you can update to the
+latest available AMI version of a node group's current Kubernetes
+version by not specifying a Kubernetes version in the request. You can
+update to the latest AMI version of your cluster's current Kubernetes
+version by specifying your cluster's Kubernetes version in the request.
+For more information, see Amazon EKS optimized Amazon Linux 2 AMI
+versions
 (https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
 in the I<Amazon EKS User Guide>.
 
@@ -921,6 +1322,30 @@ nodes as a result of a pod disruption budget issue.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAddonVersions(sub { },[AddonName => Str, KubernetesVersion => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAddonVersions([AddonName => Str, KubernetesVersion => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - addons, passing the object as the first parameter, and the string 'addons' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::DescribeAddonVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAddons(sub { },ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAddons(ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - addons, passing the object as the first parameter, and the string 'addons' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::ListAddonsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllClusters(sub { },[MaxResults => Int, NextToken => Str])
 
@@ -946,6 +1371,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EKS::ListFargateProfilesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllIdentityProviderConfigs(sub { },ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllIdentityProviderConfigs(ClusterName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - identityProviderConfigs, passing the object as the first parameter, and the string 'identityProviderConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::EKS::ListIdentityProviderConfigsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllNodegroups(sub { },ClusterName => Str, [MaxResults => Int, NextToken => Str])
 
 =head2 ListAllNodegroups(ClusterName => Str, [MaxResults => Int, NextToken => Str])
@@ -958,9 +1395,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EKS::ListNodegroupsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllUpdates(sub { },Name => Str, [MaxResults => Int, NextToken => Str, NodegroupName => Str])
+=head2 ListAllUpdates(sub { },Name => Str, [AddonName => Str, MaxResults => Int, NextToken => Str, NodegroupName => Str])
 
-=head2 ListAllUpdates(Name => Str, [MaxResults => Int, NextToken => Str, NodegroupName => Str])
+=head2 ListAllUpdates(Name => Str, [AddonName => Str, MaxResults => Int, NextToken => Str, NodegroupName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

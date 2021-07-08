@@ -74,7 +74,51 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Filters => ArrayRef[L<Paws::EC2::Filter>]
 
-One or more filters.
+One or more filters. The possible values are:
+
+=over
+
+=item *
+
+C<transit-gateway-attachment-id> - The ID of the transit gateway
+attachment.
+
+=item *
+
+C<local-owner-id> - The ID of your AWS account.
+
+=item *
+
+C<remote-owner-id> - The ID of the AWS account in the remote Region
+that owns the transit gateway.
+
+=item *
+
+C<state> - The state of the peering attachment. Valid values are
+C<available> | C<deleted> | C<deleting> | C<failed> | C<failing> |
+C<initiatingRequest> | C<modifying> | C<pendingAcceptance> | C<pending>
+| C<rollingBack> | C<rejected> | C<rejecting>).
+
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources that have a tag with a specific key, regardless
+of the tag value.
+
+=item *
+
+C<transit-gateway-id> - The ID of the transit gateway.
+
+=back
+
 
 
 

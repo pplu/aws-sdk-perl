@@ -114,6 +114,11 @@ One or more network interfaces. If you specify a network interface, you
 must specify subnet IDs and security group IDs using the network
 interface.
 
+C<SpotFleetLaunchSpecification> currently does not support Elastic
+Fabric Adapter (EFA). To specify an EFA, you must use
+LaunchTemplateConfig
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_LaunchTemplateConfig.html).
+
 
 =head2 Placement => L<Paws::EC2::SpotPlacement>
 
@@ -125,7 +130,7 @@ The placement information.
 The ID of the RAM disk. Some kernels require additional drivers at
 launch. Check the kernel requirements for information about whether you
 need to specify a RAM disk. To find kernel requirements, refer to the
-AWS Resource Center and search for the kernel ID.
+Amazon Web Services Resource Center and search for the kernel ID.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::EC2::GroupIdentifier>]

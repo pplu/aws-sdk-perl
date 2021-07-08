@@ -65,16 +65,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ecs
 
 =head2 Cluster => Str
 
-The short name or full Amazon Resource Name (ARN) of the cluster that
-hosts the tasks to list. If you do not specify a cluster, the default
-cluster is assumed.
+The short name or full Amazon Resource Name (ARN) of the cluster to use
+when filtering the C<ListTasks> results. If you do not specify a
+cluster, the default cluster is assumed.
 
 
 
 =head2 ContainerInstance => Str
 
-The container instance ID or full ARN of the container instance with
-which to filter the C<ListTasks> results. Specifying a
+The container instance ID or full ARN of the container instance to use
+when filtering the C<ListTasks> results. Specifying a
 C<containerInstance> limits the results to tasks that belong to that
 container instance.
 
@@ -82,7 +82,7 @@ container instance.
 
 =head2 DesiredStatus => Str
 
-The task desired status with which to filter the C<ListTasks> results.
+The task desired status to use when filtering the C<ListTasks> results.
 Specifying a C<desiredStatus> of C<STOPPED> limits the results to tasks
 that Amazon ECS has set the desired status to C<STOPPED>. This can be
 useful for debugging tasks that are not starting properly or have died
@@ -98,17 +98,17 @@ Valid values are: C<"RUNNING">, C<"PENDING">, C<"STOPPED">
 
 =head2 Family => Str
 
-The name of the family with which to filter the C<ListTasks> results.
-Specifying a C<family> limits the results to tasks that belong to that
-family.
+The name of the task definition family to use when filtering the
+C<ListTasks> results. Specifying a C<family> limits the results to
+tasks that belong to that family.
 
 
 
 =head2 LaunchType => Str
 
-The launch type for services to list.
+The launch type to use when filtering the C<ListTasks> results.
 
-Valid values are: C<"EC2">, C<"FARGATE">
+Valid values are: C<"EC2">, C<"FARGATE">, C<"EXTERNAL">
 
 =head2 MaxResults => Int
 
@@ -138,7 +138,7 @@ purposes.
 
 =head2 ServiceName => Str
 
-The name of the service with which to filter the C<ListTasks> results.
+The name of the service to use when filtering the C<ListTasks> results.
 Specifying a C<serviceName> limits the results to tasks that belong to
 that service.
 

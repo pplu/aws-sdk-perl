@@ -74,12 +74,45 @@ The following attribute applies only to server-side-encryption
 
 =item *
 
-C<KmsMasterKeyId> - The ID of an AWS-managed customer master key (CMK)
-for Amazon SNS or a custom CMK. For more information, see Key Terms
+C<KmsMasterKeyId> E<ndash> The ID of an Amazon Web Services managed
+customer master key (CMK) for Amazon SNS or a custom CMK. For more
+information, see Key Terms
 (https://docs.aws.amazon.com/sns/latest/dg/sns-server-side-encryption.html#sse-key-terms).
 For more examples, see KeyId
 (https://docs.aws.amazon.com/kms/latest/APIReference/API_DescribeKey.html#API_DescribeKey_RequestParameters)
-in the I<AWS Key Management Service API Reference>.
+in the I<Key Management Service API Reference>.
+
+=back
+
+The following attribute applies only to FIFO topics
+(https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
+
+=over
+
+=item *
+
+C<ContentBasedDeduplication> E<ndash> Enables content-based
+deduplication for FIFO topics.
+
+=over
+
+=item *
+
+By default, C<ContentBasedDeduplication> is set to C<false>. If you
+create a FIFO topic and this attribute is C<false>, you must specify a
+value for the C<MessageDeduplicationId> parameter for the Publish
+(https://docs.aws.amazon.com/sns/latest/api/API_Publish.html) action.
+
+=item *
+
+When you set C<ContentBasedDeduplication> to C<true>, Amazon SNS uses a
+SHA-256 hash to generate the C<MessageDeduplicationId> using the body
+of the message (but not the attributes of the message).
+
+(Optional) To override the generated value, you can specify a value for
+the C<MessageDeduplicationId> parameter for the C<Publish> action.
+
+=back
 
 =back
 

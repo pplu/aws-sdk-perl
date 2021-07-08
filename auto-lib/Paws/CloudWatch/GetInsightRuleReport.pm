@@ -93,7 +93,7 @@ data point.
 =item *
 
 C<MaxContributorValue> -- the value of the top contributor for each
-data point. The identity of the contributor may change for each data
+data point. The identity of the contributor might change for each data
 point in the graph.
 
 If this rule aggregates by COUNT, the top contributor for each data

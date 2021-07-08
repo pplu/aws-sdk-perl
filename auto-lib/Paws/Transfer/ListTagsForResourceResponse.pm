@@ -18,7 +18,7 @@ Paws::Transfer::ListTagsForResourceResponse
 
 =head2 Arn => Str
 
-This value is the ARN you specified to list the tags of.
+The ARN you specified to list the tags of.
 
 
 =head2 NextToken => Str

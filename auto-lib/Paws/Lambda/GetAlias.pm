@@ -29,11 +29,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieve a Lambda function alias
-    # This operation retrieves a Lambda function alias
+# To get a Lambda function alias
+# The following example returns details about an alias named BLUE for a function
+# named my-function
     my $AliasConfiguration = $lambda->GetAlias(
-      'FunctionName' => 'myFunction',
-      'Name'         => 'myFunctionAlias'
+      'FunctionName' => 'my-function',
+      'Name'         => 'BLUE'
     );
 
     # Results:
@@ -41,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $Description     = $AliasConfiguration->Description;
     my $FunctionVersion = $AliasConfiguration->FunctionVersion;
     my $Name            = $AliasConfiguration->Name;
+    my $RevisionId      = $AliasConfiguration->RevisionId;
 
     # Returns a L<Paws::Lambda::AliasConfiguration> object.
 

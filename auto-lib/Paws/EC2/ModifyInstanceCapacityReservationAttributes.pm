@@ -35,6 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CapacityReservationPreference => 'open',  # values: open, none; OPTIONAL
         CapacityReservationTarget     => {
           CapacityReservationId => 'MyCapacityReservationId',    # OPTIONAL
+          CapacityReservationResourceGroupArn => 'MyString',     # OPTIONAL
         },    # OPTIONAL
       },
       InstanceId => 'MyInstanceId',

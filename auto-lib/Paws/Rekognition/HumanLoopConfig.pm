@@ -49,7 +49,10 @@ Sets attributes of the input data.
 
 =head2 B<REQUIRED> FlowDefinitionArn => Str
 
-The Amazon Resource Name (ARN) of the flow definition.
+The Amazon Resource Name (ARN) of the flow definition. You can create a
+flow definition by using the Amazon Sagemaker CreateFlowDefinition
+(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateFlowDefinition.html)
+Operation.
 
 
 =head2 B<REQUIRED> HumanLoopName => Str

@@ -18,8 +18,9 @@ Paws::XRay::CreateGroupResult
 =head2 Group => L<Paws::XRay::Group>
 
 The group that was created. Contains the name of the group that was
-created, the ARN of the group that was generated based on the group
-name, and the filter expression that was assigned to the group.
+created, the Amazon Resource Name (ARN) of the group that was generated
+based on the group name, the filter expression, and the insight
+configuration that was assigned to the group.
 
 
 =head2 _request_id => Str

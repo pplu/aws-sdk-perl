@@ -9,6 +9,7 @@ package Paws::MediaPackageVod::DescribeAssetResponse;
   has ResourceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceId');
   has SourceArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceArn');
   has SourceRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'sourceRoleArn');
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -60,6 +61,11 @@ ARN of the source object in S3.
 =head2 SourceRoleArn => Str
 
 The IAM role_arn used to access the source S3 bucket.
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 =head2 _request_id => Str

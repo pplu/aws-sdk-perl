@@ -16,7 +16,9 @@ Paws::Lightsail::PutInstancePublicPortsResult
 
 =head2 Operation => L<Paws::Lightsail::Operation>
 
-Describes metadata about the operation you just executed.
+An array of objects that describe the result of the action, such as the
+status of the request, the timestamp of the request, and the resources
+affected by the request.
 
 
 =head2 _request_id => Str

@@ -40,58 +40,12 @@ Amazon GameLift to adjust capacity so that the metric returns to the
 target value. The target configuration specifies settings as needed for
 the target based policy, including the target value.
 
-=over
+B<Related actions>
 
-=item *
-
-DescribeFleetCapacity
-
-=item *
-
-UpdateFleetCapacity
-
-=item *
-
-DescribeEC2InstanceLimits
-
-=item *
-
-Manage scaling policies:
-
-=over
-
-=item *
-
-PutScalingPolicy (auto-scaling)
-
-=item *
-
-DescribeScalingPolicies (auto-scaling)
-
-=item *
-
-DeleteScalingPolicy (auto-scaling)
-
-=back
-
-=item *
-
-Manage fleet actions:
-
-=over
-
-=item *
-
-StartFleetActions
-
-=item *
-
-StopFleetActions
-
-=back
-
-=back
-
+DescribeFleetCapacity | UpdateFleetCapacity | DescribeEC2InstanceLimits
+| PutScalingPolicy | DescribeScalingPolicies | DeleteScalingPolicy |
+StopFleetActions | StartFleetActions | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 

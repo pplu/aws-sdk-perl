@@ -152,13 +152,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           SMSMessage => {
             Body        => 'My__string',
+            EntityId    => 'My__string',
             Keyword     => 'My__string',
+            MediaUrl    => 'My__string',
             MessageType =>
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
             SenderId          => 'My__string',
             Substitutions     => { 'My__string' => [ 'My__string', ... ], }
             ,                     # OPTIONAL
+            TemplateId => 'My__string',
           },    # OPTIONAL
           VoiceMessage => {
             Body              => 'My__string',

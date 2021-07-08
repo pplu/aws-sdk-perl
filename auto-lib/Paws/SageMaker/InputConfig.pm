@@ -3,6 +3,7 @@ package Paws::SageMaker::InputConfig;
   use Moose;
   has DataInputConfig => (is => 'ro', isa => 'Str', required => 1);
   has Framework => (is => 'ro', isa => 'Str', required => 1);
+  has FrameworkVersion => (is => 'ro', isa => 'Str');
   has S3Uri => (is => 'ro', isa => 'Str', required => 1);
 
 1;
@@ -141,10 +142,10 @@ If using the CLI, C<{\"input_1\": [1,3,224,224],
 
 =item *
 
-C<MXNET/ONNX>: You must specify the name and shape (NCHW format) of the
-expected data inputs in order using a dictionary format for your
-trained model. The dictionary formats required for the console and CLI
-are different.
+C<MXNET/ONNX/DARKNET>: You must specify the name and shape (NCHW
+format) of the expected data inputs in order using a dictionary format
+for your trained model. The dictionary formats required for the console
+and CLI are different.
 
 =over
 
@@ -243,12 +244,196 @@ C<XGBOOST>: input data name and shape are not needed.
 
 =back
 
+C<DataInputConfig> supports the following parameters for C<CoreML>
+OutputConfig$TargetDevice (ML Model format):
+
+=over
+
+=item *
+
+C<shape>: Input shape, for example C<{"input_1": {"shape":
+[1,224,224,3]}}>. In addition to static input shapes, CoreML converter
+supports Flexible input shapes:
+
+=over
+
+=item *
+
+Range Dimension. You can use the Range Dimension feature if you know
+the input shape will be within some specific interval in that
+dimension, for example: C<{"input_1": {"shape": ["1..10", 224, 224,
+3]}}>
+
+=item *
+
+Enumerated shapes. Sometimes, the models are trained to work only on a
+select set of inputs. You can enumerate all supported input shapes, for
+example: C<{"input_1": {"shape": [[1, 224, 224, 3], [1, 160, 160,
+3]]}}>
+
+=back
+
+=item *
+
+C<default_shape>: Default input shape. You can set a default shape
+during conversion for both Range Dimension and Enumerated Shapes. For
+example C<{"input_1": {"shape": ["1..10", 224, 224, 3],
+"default_shape": [1, 224, 224, 3]}}>
+
+=item *
+
+C<type>: Input type. Allowed values: C<Image> and C<Tensor>. By
+default, the converter generates an ML Model with inputs of type Tensor
+(MultiArray). User can set input type to be Image. Image input type
+requires additional input parameters such as C<bias> and C<scale>.
+
+=item *
+
+C<bias>: If the input type is an Image, you need to provide the bias
+vector.
+
+=item *
+
+C<scale>: If the input type is an Image, you need to provide a scale
+factor.
+
+=back
+
+CoreML C<ClassifierConfig> parameters can be specified using
+OutputConfig$CompilerOptions. CoreML converter supports Tensorflow and
+PyTorch models. CoreML conversion examples:
+
+=over
+
+=item *
+
+Tensor type input:
+
+=over
+
+=item *
+
+C<"DataInputConfig": {"input_1": {"shape": [[1,224,224,3],
+[1,160,160,3]], "default_shape": [1,224,224,3]}}>
+
+=back
+
+=item *
+
+Tensor type input without input name (PyTorch):
+
+=over
+
+=item *
+
+C<"DataInputConfig": [{"shape": [[1,3,224,224], [1,3,160,160]],
+"default_shape": [1,3,224,224]}]>
+
+=back
+
+=item *
+
+Image type input:
+
+=over
+
+=item *
+
+C<"DataInputConfig": {"input_1": {"shape": [[1,224,224,3],
+[1,160,160,3]], "default_shape": [1,224,224,3], "type": "Image",
+"bias": [-1,-1,-1], "scale": 0.007843137255}}>
+
+=item *
+
+C<"CompilerOptions": {"class_labels": "imagenet_labels_1000.txt"}>
+
+=back
+
+=item *
+
+Image type input without input name (PyTorch):
+
+=over
+
+=item *
+
+C<"DataInputConfig": [{"shape": [[1,3,224,224], [1,3,160,160]],
+"default_shape": [1,3,224,224], "type": "Image", "bias": [-1,-1,-1],
+"scale": 0.007843137255}]>
+
+=item *
+
+C<"CompilerOptions": {"class_labels": "imagenet_labels_1000.txt"}>
+
+=back
+
+=back
+
+Depending on the model format, C<DataInputConfig> requires the
+following parameters for C<ml_eia2> OutputConfig:TargetDevice
+(https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputConfig.html#sagemaker-Type-OutputConfig-TargetDevice).
+
+=over
+
+=item *
+
+For TensorFlow models saved in the SavedModel format, specify the input
+names from C<signature_def_key> and the input model shapes for
+C<DataInputConfig>. Specify the C<signature_def_key> in
+C<OutputConfig:CompilerOptions>
+(https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputConfig.html#sagemaker-Type-OutputConfig-CompilerOptions)
+if the model does not use TensorFlow's default signature def key. For
+example:
+
+=over
+
+=item *
+
+C<"DataInputConfig": {"inputs": [1, 224, 224, 3]}>
+
+=item *
+
+C<"CompilerOptions": {"signature_def_key": "serving_custom"}>
+
+=back
+
+=item *
+
+For TensorFlow models saved as a frozen graph, specify the input tensor
+names and shapes in C<DataInputConfig> and the output tensor names for
+C<output_names> in C<OutputConfig:CompilerOptions>
+(https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_OutputConfig.html#sagemaker-Type-OutputConfig-CompilerOptions).
+For example:
+
+=over
+
+=item *
+
+C<"DataInputConfig": {"input_tensor:0": [1, 224, 224, 3]}>
+
+=item *
+
+C<"CompilerOptions": {"output_names": ["output_tensor:0"]}>
+
+=back
+
+=back
+
 
 
 =head2 B<REQUIRED> Framework => Str
 
 Identifies the framework in which the model was trained. For example:
 TENSORFLOW.
+
+
+=head2 FrameworkVersion => Str
+
+Specifies the framework version to use.
+
+This API field is only supported for PyTorch framework versions C<1.4>,
+C<1.5>, and C<1.6> for cloud instance target devices: C<ml_c4>,
+C<ml_c5>, C<ml_m4>, C<ml_m5>, C<ml_p2>, C<ml_p3>, and C<ml_g4dn>.
 
 
 =head2 B<REQUIRED> S3Uri => Str

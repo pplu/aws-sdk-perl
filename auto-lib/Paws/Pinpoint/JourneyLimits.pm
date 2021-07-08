@@ -3,6 +3,7 @@ package Paws::Pinpoint::JourneyLimits;
   use Moose;
   has DailyCap => (is => 'ro', isa => 'Int');
   has EndpointReentryCap => (is => 'ro', isa => 'Int');
+  has EndpointReentryInterval => (is => 'ro', isa => 'Str');
   has MessagesPerSecond => (is => 'ro', isa => 'Int');
 
 1;
@@ -52,6 +53,12 @@ participant during a 24-hour period. The maximum value is 100.
 The maximum number of times that a participant can enter the journey.
 The maximum value is 100. To allow participants to enter the journey an
 unlimited number of times, set this value to 0.
+
+
+=head2 EndpointReentryInterval => Str
+
+Minimum time that must pass before an endpoint can re-enter a given
+journey. The duration should use an ISO 8601 format, such as PT1H.
 
 
 =head2 MessagesPerSecond => Int

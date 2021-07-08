@@ -29,6 +29,11 @@ package Paws::ResourceGroups;
     my $call_object = $self->new_with_coercions('Paws::ResourceGroups::GetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetGroupConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceGroups::GetGroupConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetGroupQuery {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ResourceGroups::GetGroupQuery', @_);
@@ -37,6 +42,11 @@ package Paws::ResourceGroups;
   sub GetTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ResourceGroups::GetTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GroupResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceGroups::GroupResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGroupResources {
@@ -49,6 +59,11 @@ package Paws::ResourceGroups;
     my $call_object = $self->new_with_coercions('Paws::ResourceGroups::ListGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutGroupConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceGroups::PutGroupConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub SearchResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ResourceGroups::SearchResources', @_);
@@ -57,6 +72,11 @@ package Paws::ResourceGroups;
   sub Tag {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ResourceGroups::Tag', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UngroupResources {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ResourceGroups::UngroupResources', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub Untag {
@@ -86,14 +106,17 @@ package Paws::ResourceGroups;
       while ($next_result->NextToken) {
         $next_result = $self->ListGroupResources(@_, NextToken => $next_result->NextToken);
         push @{ $result->ResourceIdentifiers }, @{ $next_result->ResourceIdentifiers };
+        push @{ $result->Resources }, @{ $next_result->Resources };
       }
       return $result;
     } else {
       while ($result->NextToken) {
         $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+        $callback->($_ => 'Resources') foreach (@{ $result->Resources });
         $result = $self->ListGroupResources(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ResourceIdentifiers') foreach (@{ $result->ResourceIdentifiers });
+      $callback->($_ => 'Resources') foreach (@{ $result->Resources });
     }
 
     return undef
@@ -149,7 +172,7 @@ package Paws::ResourceGroups;
   }
 
 
-  sub operations { qw/CreateGroup DeleteGroup GetGroup GetGroupQuery GetTags ListGroupResources ListGroups SearchResources Tag Untag UpdateGroup UpdateGroupQuery / }
+  sub operations { qw/CreateGroup DeleteGroup GetGroup GetGroupConfiguration GetGroupQuery GetTags GroupResources ListGroupResources ListGroups PutGroupConfiguration SearchResources Tag UngroupResources Untag UpdateGroup UpdateGroupQuery / }
 
 1;
 
@@ -186,7 +209,7 @@ group is a collection of resources that match the resource types
 specified in a query, and share one or more tags or portions of tags.
 You can create a group of resources based on their roles in your cloud
 infrastructure, lifecycle stages, regions, application layers, or
-virtually any criteria. Resource groups enable you to automate
+virtually any criteria. Resource Groups enable you to automate
 management tasks, such as those in AWS Systems Manager Automation
 documents, on tag-related resources in AWS Systems Manager. Groups of
 tagged resources also let you quickly view a custom console in AWS
@@ -242,9 +265,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =item Name => Str
 
-=item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=item [Configuration => ArrayRef[L<Paws::ResourceGroups::GroupConfigurationItem>]]
 
 =item [Description => Str]
+
+=item [ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>]
 
 =item [Tags => L<Paws::ResourceGroups::Tags>]
 
@@ -255,14 +280,36 @@ Each argument is described in detail in: L<Paws::ResourceGroups::CreateGroup>
 
 Returns: a L<Paws::ResourceGroups::CreateGroupOutput> instance
 
-Creates a group with a specified name, description, and resource query.
+Creates a resource group with the specified name and description. You
+can optionally include a resource query, or a service configuration.
+For more information about constructing a resource query, see Create a
+tag-based group in Resource Groups
+(https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+For more information about service configurations, see Service
+configurations for resource groups
+(https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:CreateGroup>
+
+=back
+
 
 
 =head2 DeleteGroup
 
 =over
 
-=item GroupName => Str
+=item [Group => Str]
+
+=item [GroupName => Str]
 
 
 =back
@@ -271,16 +318,31 @@ Each argument is described in detail in: L<Paws::ResourceGroups::DeleteGroup>
 
 Returns: a L<Paws::ResourceGroups::DeleteGroupOutput> instance
 
-Deletes a specified resource group. Deleting a resource group does not
-delete resources that are members of the group; it only deletes the
-group structure.
+Deletes the specified resource group. Deleting a resource group does
+not delete any resources that are members of the group; it only deletes
+the group structure.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:DeleteGroup>
+
+=back
+
 
 
 =head2 GetGroup
 
 =over
 
-=item GroupName => Str
+=item [Group => Str]
+
+=item [GroupName => Str]
 
 
 =back
@@ -291,12 +353,59 @@ Returns: a L<Paws::ResourceGroups::GetGroupOutput> instance
 
 Returns information about a specified resource group.
 
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:GetGroup>
+
+=back
+
+
+
+=head2 GetGroupConfiguration
+
+=over
+
+=item [Group => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ResourceGroups::GetGroupConfiguration>
+
+Returns: a L<Paws::ResourceGroups::GetGroupConfigurationOutput> instance
+
+Returns the service configuration associated with the specified
+resource group. For details about the service configuration syntax, see
+Service configurations for resource groups
+(https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:GetGroupConfiguration>
+
+=back
+
+
 
 =head2 GetGroupQuery
 
 =over
 
-=item GroupName => Str
+=item [Group => Str]
+
+=item [GroupName => Str]
 
 
 =back
@@ -305,8 +414,23 @@ Each argument is described in detail in: L<Paws::ResourceGroups::GetGroupQuery>
 
 Returns: a L<Paws::ResourceGroups::GetGroupQueryOutput> instance
 
-Returns the resource query associated with the specified resource
-group.
+Retrieves the resource query associated with the specified resource
+group. For more information about resource queries, see Create a
+tag-based group in Resource Groups
+(https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:GetGroupQuery>
+
+=back
+
 
 
 =head2 GetTags
@@ -325,14 +449,60 @@ Returns: a L<Paws::ResourceGroups::GetTagsOutput> instance
 Returns a list of tags that are associated with a resource group,
 specified by an ARN.
 
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:GetTags>
+
+=back
+
+
+
+=head2 GroupResources
+
+=over
+
+=item Group => Str
+
+=item ResourceArns => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ResourceGroups::GroupResources>
+
+Returns: a L<Paws::ResourceGroups::GroupResourcesOutput> instance
+
+Adds the specified resources to the specified group.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:GroupResources>
+
+=back
+
+
 
 =head2 ListGroupResources
 
 =over
 
-=item GroupName => Str
-
 =item [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>]]
+
+=item [Group => Str]
+
+=item [GroupName => Str]
 
 =item [MaxResults => Int]
 
@@ -345,8 +515,33 @@ Each argument is described in detail in: L<Paws::ResourceGroups::ListGroupResour
 
 Returns: a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance
 
-Returns a list of ARNs of resources that are members of a specified
+Returns a list of ARNs of the resources that are members of a specified
 resource group.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:ListGroupResources>
+
+=item *
+
+C<cloudformation:DescribeStacks>
+
+=item *
+
+C<cloudformation:ListStackResources>
+
+=item *
+
+C<tag:GetResources>
+
+=back
+
 
 
 =head2 ListGroups
@@ -368,6 +563,52 @@ Returns: a L<Paws::ResourceGroups::ListGroupsOutput> instance
 
 Returns a list of existing resource groups in your account.
 
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:ListGroups>
+
+=back
+
+
+
+=head2 PutGroupConfiguration
+
+=over
+
+=item [Configuration => ArrayRef[L<Paws::ResourceGroups::GroupConfigurationItem>]]
+
+=item [Group => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ResourceGroups::PutGroupConfiguration>
+
+Returns: a L<Paws::ResourceGroups::PutGroupConfigurationOutput> instance
+
+Attaches a service configuration to the specified group. This occurs
+asynchronously, and can take time to complete. You can use
+GetGroupConfiguration to check the status of the update.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:PutGroupConfiguration>
+
+=back
+
+
 
 =head2 SearchResources
 
@@ -386,9 +627,34 @@ Each argument is described in detail in: L<Paws::ResourceGroups::SearchResources
 
 Returns: a L<Paws::ResourceGroups::SearchResourcesOutput> instance
 
-Returns a list of AWS resource identifiers that matches a specified
+Returns a list of AWS resource identifiers that matches the specified
 query. The query uses the same format as a resource query in a
 CreateGroup or UpdateGroupQuery operation.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:SearchResources>
+
+=item *
+
+C<cloudformation:DescribeStacks>
+
+=item *
+
+C<cloudformation:ListStackResources>
+
+=item *
+
+C<tag:GetResources>
+
+=back
+
 
 
 =head2 Tag
@@ -410,6 +676,55 @@ Adds tags to a resource group with the specified ARN. Existing tags on
 a resource group are not changed if they are not specified in the
 request parameters.
 
+Do not store personally identifiable information (PII) or other
+confidential or sensitive information in tags. We use tags to provide
+you with billing and administration services. Tags are not intended to
+be used for private or sensitive data.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:Tag>
+
+=back
+
+
+
+=head2 UngroupResources
+
+=over
+
+=item Group => Str
+
+=item ResourceArns => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ResourceGroups::UngroupResources>
+
+Returns: a L<Paws::ResourceGroups::UngroupResourcesOutput> instance
+
+Removes the specified resources from the specified group.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:UngroupResources>
+
+=back
+
+
 
 =head2 Untag
 
@@ -426,16 +741,31 @@ Each argument is described in detail in: L<Paws::ResourceGroups::Untag>
 
 Returns: a L<Paws::ResourceGroups::UntagOutput> instance
 
-Deletes specified tags from a specified resource.
+Deletes tags from a specified resource group.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:Untag>
+
+=back
+
 
 
 =head2 UpdateGroup
 
 =over
 
-=item GroupName => Str
-
 =item [Description => Str]
+
+=item [Group => Str]
+
+=item [GroupName => Str]
 
 
 =back
@@ -444,17 +774,32 @@ Each argument is described in detail in: L<Paws::ResourceGroups::UpdateGroup>
 
 Returns: a L<Paws::ResourceGroups::UpdateGroupOutput> instance
 
-Updates an existing group with a new or changed description. You cannot
-update the name of a resource group.
+Updates the description for an existing group. You cannot update the
+name of a resource group.
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:UpdateGroup>
+
+=back
+
 
 
 =head2 UpdateGroupQuery
 
 =over
 
-=item GroupName => Str
-
 =item ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+
+=item [Group => Str]
+
+=item [GroupName => Str]
 
 
 =back
@@ -463,7 +808,22 @@ Each argument is described in detail in: L<Paws::ResourceGroups::UpdateGroupQuer
 
 Returns: a L<Paws::ResourceGroups::UpdateGroupQueryOutput> instance
 
-Updates the resource query of a group.
+Updates the resource query of a group. For more information about
+resource queries, see Create a tag-based group in Resource Groups
+(https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+
+B<Minimum permissions>
+
+To run this command, you must have the following permissions:
+
+=over
+
+=item *
+
+C<resource-groups:UpdateGroupQuery>
+
+=back
+
 
 
 
@@ -472,16 +832,18 @@ Updates the resource query of a group.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllGroupResources(sub { },GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources(sub { },[Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], Group => Str, GroupName => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllGroupResources(GroupName => Str, [Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], MaxResults => Int, NextToken => Str])
+=head2 ListAllGroupResources([Filters => ArrayRef[L<Paws::ResourceGroups::ResourceFilter>], Group => Str, GroupName => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
 
  - ResourceIdentifiers, passing the object as the first parameter, and the string 'ResourceIdentifiers' as the second parameter 
 
-If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+ - Resources, passing the object as the first parameter, and the string 'Resources' as the second parameter 
+
+If not, it will return a a L<Paws::ResourceGroups::ListGroupResourcesOutput> instance with all the C<param>s; andC<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllGroups(sub { },[Filters => ArrayRef[L<Paws::ResourceGroups::GroupFilter>], MaxResults => Int, NextToken => Str])

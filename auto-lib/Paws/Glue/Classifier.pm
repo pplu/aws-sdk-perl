@@ -41,7 +41,7 @@ whether a given file is in a format it can handle. If it is, the
 classifier creates a schema in the form of a C<StructType> object that
 matches that data format.
 
-You can use the standard classifiers that AWS Glue provides, or you can
+You can use the standard classifiers that Glue provides, or you can
 write your own classifiers to best categorize your data sources and
 specify the appropriate schemas to use for them. A classifier can be a
 C<grok> classifier, an C<XML> classifier, a C<JSON> classifier, or a

@@ -34,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $AccountId          = $DescribeRestoreJobOutput->AccountId;
     my $BackupSizeInBytes  = $DescribeRestoreJobOutput->BackupSizeInBytes;
     my $CompletionDate     = $DescribeRestoreJobOutput->CompletionDate;
     my $CreatedResourceArn = $DescribeRestoreJobOutput->CreatedResourceArn;
@@ -43,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $IamRoleArn       = $DescribeRestoreJobOutput->IamRoleArn;
     my $PercentDone      = $DescribeRestoreJobOutput->PercentDone;
     my $RecoveryPointArn = $DescribeRestoreJobOutput->RecoveryPointArn;
+    my $ResourceType     = $DescribeRestoreJobOutput->ResourceType;
     my $RestoreJobId     = $DescribeRestoreJobOutput->RestoreJobId;
     my $Status           = $DescribeRestoreJobOutput->Status;
     my $StatusMessage    = $DescribeRestoreJobOutput->StatusMessage;

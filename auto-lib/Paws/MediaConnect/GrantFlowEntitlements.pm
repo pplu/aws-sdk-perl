@@ -36,17 +36,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           DataTransferSubscriberFeePercent => 1,                      # OPTIONAL
           Description                      => 'My__string',
           Encryption                       => {
-            Algorithm => 'aes128',       # values: aes128, aes192, aes256
             RoleArn   => 'My__string',
+            Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
             ConstantInitializationVector => 'My__string',
             DeviceId                     => 'My__string',
-            KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+            KeyType                      =>
+              'speke',    # values: speke, static-key, srt-password; OPTIONAL
             Region     => 'My__string',
             ResourceId => 'My__string',
             SecretArn  => 'My__string',
             Url        => 'My__string',
           },    # OPTIONAL
-          Name => 'My__string',
+          EntitlementStatus => 'ENABLED',  # values: ENABLED, DISABLED; OPTIONAL
+          Name              => 'My__string',
         },
         ...
       ],

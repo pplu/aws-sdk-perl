@@ -38,8 +38,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, describes
-the application output configuration, which includes the in-application
+For a SQL-based Kinesis Data Analytics application, describes the
+application output configuration, which includes the in-application
 stream name and the destination where the stream data is written. The
 destination can be a Kinesis data stream or a Kinesis Data Firehose
 delivery stream.

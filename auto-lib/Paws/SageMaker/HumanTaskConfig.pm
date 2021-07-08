@@ -73,11 +73,15 @@ The Amazon Resource Name (ARN) of a Lambda function that is run before
 a data object is sent to a human worker. Use this function to provide
 input to a custom labeling job.
 
-For the built-in bounding box, image classification, semantic
-segmentation, and text classification task types, Amazon SageMaker
-Ground Truth provides the following Lambda functions:
+For built-in task types
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html),
+use one of the following Amazon SageMaker Ground Truth Lambda function
+ARNs for C<PreHumanTaskLambdaArn>. For custom labeling workflows, see
+Pre-annotation Lambda
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step3.html#sms-custom-templates-step3-prelambda).
 
-B<US East (Northern Virginia) (us-east-1):>
+B<Bounding box> - Finds the most similar boxes from different workers
+based on the Jaccard index of the boxes.
 
 =over
 
@@ -87,83 +91,7 @@ C<arn:aws:lambda:us-east-1:432418664414:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<US East (Ohio) (us-east-2):>
-
-=over
-
-=item *
-
 C<arn:aws:lambda:us-east-2:266458841044:function:PRE-BoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<US West (Oregon) (us-west-2):>
-
-=over
 
 =item *
 
@@ -171,83 +99,7 @@ C<arn:aws:lambda:us-west-2:081040173940:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<Canada (Central) (ca-central-1):>
-
-=over
-
-=item *
-
 C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-BoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<EU (Ireland) (eu-west-1):>
-
-=over
 
 =item *
 
@@ -255,83 +107,7 @@ C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<EU (London) (eu-west-2):>
-
-=over
-
-=item *
-
 C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-BoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<EU Frankfurt (eu-central-1):>
-
-=over
 
 =item *
 
@@ -339,83 +115,7 @@ C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<Asia Pacific (Tokyo) (ap-northeast-1):>
-
-=over
-
-=item *
-
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-BoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<Asia Pacific (Seoul) (ap-northeast-2):>
-
-=over
 
 =item *
 
@@ -423,83 +123,7 @@ C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-BoundingBox>
 
 =item *
 
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<Asia Pacific (Mumbai) (ap-south-1):>
-
-=over
-
-=item *
-
 C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-BoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClass>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentSemanticSegmentation>
-
-=back
-
-B<Asia Pacific (Singapore) (ap-southeast-1):>
-
-=over
 
 =item *
 
@@ -507,7 +131,167 @@ C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-BoundingBox>
 
 =item *
 
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox>
+
+=back
+
+B<Image classification> - Uses a variant of the Expectation
+Maximization approach to estimate the true class of an image based on
+annotations from individual workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClass>
+
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass>
+
+=back
+
+B<Multi-label image classification> - Uses a variant of the Expectation
+Maximization approach to estimate the true classes of an image based on
+annotations from individual workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClassMultiLabel>
+
+=back
+
+B<Semantic segmentation> - Treats each pixel in an image as a
+multi-class classification and treats pixel annotations from workers as
+"votes" for the correct label.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-SemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-SemanticSegmentation>
 
 =item *
 
@@ -515,7 +299,166 @@ C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-SemanticSegmentation>
 
 =item *
 
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation>
+
+=back
+
+B<Text classification> - Uses a variant of the Expectation Maximization
+approach to estimate the true class of text based on annotations from
+individual workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClass>
+
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
+
+=back
+
+B<Multi-label text classification> - Uses a variant of the Expectation
+Maximization approach to estimate the true classes of text based on
+annotations from individual workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClassMultiLabel>
+
+=back
+
+B<Named entity recognition> - Groups similar selections and calculates
+aggregate boundaries, resolving to most-assigned label.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-NamedEntityRecognition>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-NamedEntityRecognition>
 
 =item *
 
@@ -523,45 +466,394 @@ C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-NamedEntityRecognition
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationSemanticSegmentation>
-
-=item *
-
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentBoundingBox>
-
-=item *
-
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentSemanticSegmentation>
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-NamedEntityRecognition>
 
 =back
 
-B<Asia Pacific (Sydney) (ap-southeast-2):>
+B<Video Classification> - Use this task type when you need workers to
+classify videos using predefined labels that you specify. Workers are
+shown videos and are asked to choose one label for each video.
 
 =over
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-BoundingBox>
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoMultiClass>
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-ImageMultiClass>
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoMultiClass>
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-SemanticSegmentation>
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoMultiClass>
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-TextMultiClass>
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoMultiClass>
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-NamedEntityRecognition>
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoMultiClass>
+
+=back
+
+B<Video Frame Object Detection> - Use this task type to have workers
+identify and locate objects in a sequence of video frames (images
+extracted from a video) using bounding boxes. For example, you can use
+this task to ask workers to identify and localize various objects in a
+series of video frames, such as cars, bikes, and pedestrians.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoObjectDetection>
+
+=back
+
+B<Video Frame Object Tracking> - Use this task type to have workers
+track the movement of objects in a sequence of video frames (images
+extracted from a video) using bounding boxes. For example, you can use
+this task to ask workers to track the movement of objects, such as
+cars, bikes, and pedestrians.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VideoObjectTracking>
+
+=back
+
+B<3D Point Cloud Modalities>
+
+Use the following pre-annotation lambdas for 3D point cloud labeling
+modality tasks. See 3D Point Cloud Task types
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud-task-types.html)
+to learn more.
+
+B<3D Point Cloud Object Detection> - Use this task type when you want
+workers to classify objects in a 3D point cloud by drawing 3D cuboids
+around objects. For example, you can use this task type to ask workers
+to identify different types of objects in a point cloud, such as cars,
+bikes, and pedestrians.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudObjectDetection>
+
+=back
+
+B<3D Point Cloud Object Tracking> - Use this task type when you want
+workers to draw 3D cuboids around objects that appear in a sequence of
+3D point cloud frames. For example, you can use this task type to ask
+workers to track the movement of vehicles across multiple point cloud
+frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudObjectTracking>
+
+=back
+
+B<3D Point Cloud Semantic Segmentation> - Use this task type when you
+want workers to create a point-level semantic segmentation masks by
+painting objects in a 3D point cloud using different colors where each
+color is assigned to one of the classes you specify.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-3DPointCloudSemanticSegmentation>
+
+=back
+
+B<Use the following ARNs for Label Verification and Adjustment Jobs>
+
+Use label verification and adjustment jobs to review and adjust labels.
+To learn more, see Verify and Adjust Labels
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html).
+
+B<Bounding box verification> - Uses a variant of the Expectation
+Maximization approach to estimate the true class of verification
+judgement for bounding box labels based on annotations from individual
+workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationBoundingBox>
 
 =item *
 
@@ -569,15 +861,474 @@ C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationBoundingBo
 
 =item *
 
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationSemanticSegmentation>
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationBoundingBox>
+
+=back
+
+B<Bounding box adjustment> - Finds the most similar boxes from
+different workers based on the Jaccard index of the adjusted
+annotations.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentBoundingBox>
 
 =item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentBoundingBox>
 
+=back
+
+B<Semantic segmentation verification> - Uses a variant of the
+Expectation Maximization approach to estimate the true class of
+verification judgment for semantic segmentation labels based on
+annotations from individual workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-VerificationSemanticSegmentation>
+
+=back
+
+B<Semantic segmentation adjustment> - Treats each pixel in an image as
+a multi-class classification and treats pixel adjusted annotations from
+workers as "votes" for the correct label.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentSemanticSegmentation>
+
 =item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentSemanticSegmentation>
+
+=back
+
+B<Video Frame Object Detection Adjustment> - Use this task type when
+you want workers to adjust bounding boxes that workers have added to
+video frames to classify and localize objects in a sequence of video
+frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentVideoObjectDetection>
+
+=back
+
+B<Video Frame Object Tracking Adjustment> - Use this task type when you
+want workers to adjust bounding boxes that workers have added to video
+frames to track object movement across a sequence of video frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-AdjustmentVideoObjectTracking>
+
+=back
+
+B<3D point cloud object detection adjustment> - Adjust 3D cuboids in a
+point cloud frame.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectDetection>
+
+=back
+
+B<3D point cloud object tracking adjustment> - Adjust 3D cuboids across
+a sequence of point cloud frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudObjectTracking>
+
+=back
+
+B<3D point cloud semantic segmentation adjustment> - Adjust semantic
+segmentation masks in a 3D point cloud.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:PRE-Adjustment3DPointCloudSemanticSegmentation>
 
 =back
 
@@ -592,9 +1343,24 @@ Turk worker.
 =head2 TaskAvailabilityLifetimeInSeconds => Int
 
 The length of time that a task remains available for labeling by human
-workers. B<If you choose the Amazon Mechanical Turk workforce, the
-maximum is 12 hours (43200)>. The default value is 864000 seconds (1
-day). For private and vendor workforces, the maximum is as listed.
+workers. The default and maximum values for this parameter depend on
+the type of workforce you use.
+
+=over
+
+=item *
+
+If you choose the Amazon Mechanical Turk workforce, the maximum is 12
+hours (43,200 seconds). The default is 6 hours (21,600 seconds).
+
+=item *
+
+If you choose a private or vendor workforce, the default value is 10
+days (864,000 seconds). For most users, the maximum is also 10 days. If
+you want to change this limit, contact Amazon Web Services Support.
+
+=back
+
 
 
 =head2 B<REQUIRED> TaskDescription => Str
@@ -611,6 +1377,35 @@ Turk can discover the task.
 =head2 B<REQUIRED> TaskTimeLimitInSeconds => Int
 
 The amount of time that a worker has to complete a task.
+
+If you create a custom labeling job, the maximum value for this
+parameter is 8 hours (28,800 seconds).
+
+If you create a labeling job using a built-in task type
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html)
+the maximum for this parameter depends on the task type you use:
+
+=over
+
+=item *
+
+For image
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-images.html)
+and text
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-label-text.html)
+labeling jobs, the maximum is 8 hours (28,800 seconds).
+
+=item *
+
+For 3D point cloud
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-point-cloud.html)
+and video frame
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-video.html)
+labeling jobs, the maximum is 7 days (604,800 seconds). If you want to
+change these limits, contact Amazon Web Services Support.
+
+=back
+
 
 
 =head2 B<REQUIRED> TaskTitle => Str

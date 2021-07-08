@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 =head1 DESCRIPTION
 
 Contains the configuration parameters for a Set Object Tagging
-operation. Amazon S3 batch operations passes each value through to the
-underlying PUT Object tagging API. For more information about the
-parameters for this operation, see PUT Object tagging
+operation. S3 Batch Operations passes every object to the underlying
+PUT Object tagging API. For more information about the parameters for
+this operation, see PUT Object tagging
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectPUTtagging.html).
 
 =head1 ATTRIBUTES

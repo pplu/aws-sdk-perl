@@ -51,25 +51,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-Name of the domain.
+The name of the domain.
 
 
 
 =head2 EndTime => Str
 
-The time at which the logs should end, inclusive.
+The time at which the logs should end. The time range specified is
+inclusive of the end time.
 
 
 
 =head2 StartTime => Str
 
-The time at which the logs should start, inclusive.
+The time at which the logs should start. The time range specified is
+inclusive of the start time.
 
 
 

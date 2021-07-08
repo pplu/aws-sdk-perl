@@ -2,9 +2,13 @@
 package Paws::CostExplorer::CostCategoryReference;
   use Moose;
   has CostCategoryArn => (is => 'ro', isa => 'Str');
+  has DefaultValue => (is => 'ro', isa => 'Str');
   has EffectiveEnd => (is => 'ro', isa => 'Str');
   has EffectiveStart => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has NumberOfRules => (is => 'ro', isa => 'Int');
+  has ProcessingStatus => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::CostCategoryProcessingStatus]');
+  has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -25,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CostExplorer::CostCategoryReference object:
 
-  $service_obj->Method(Att1 => { CostCategoryArn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { CostCategoryArn => $value, ..., Values => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,11 +39,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
   $result->Att1->CostCategoryArn
 
 =head1 DESCRIPTION
-
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
 
 A reference to a Cost Category containing only enough information to
 identify the Cost Category.
@@ -52,7 +51,12 @@ information using C<DescribeCostCategory>.
 
 =head2 CostCategoryArn => Str
 
-The unique identifier for your Cost Category Reference.
+The unique identifier for your Cost Category.
+
+
+=head2 DefaultValue => Str
+
+
 
 
 =head2 EffectiveEnd => Str
@@ -68,6 +72,22 @@ The Cost Category's effective start date.
 =head2 Name => Str
 
 
+
+
+=head2 NumberOfRules => Int
+
+The number of rules associated with a specific Cost Category.
+
+
+=head2 ProcessingStatus => ArrayRef[L<Paws::CostExplorer::CostCategoryProcessingStatus>]
+
+The list of processing statuses for Cost Management products for a
+specific cost category.
+
+
+=head2 Values => ArrayRef[Str|Undef]
+
+A list of unique cost category values in a specific cost category.
 
 
 

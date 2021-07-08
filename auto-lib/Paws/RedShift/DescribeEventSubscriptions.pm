@@ -32,11 +32,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $redshift = Paws->service('RedShift');
     my $EventSubscriptionsMessage = $redshift->DescribeEventSubscriptions(
-      Marker           => 'MyString',             # OPTIONAL
-      MaxRecords       => 1,                      # OPTIONAL
-      SubscriptionName => 'MyString',             # OPTIONAL
-      TagKeys          => [ 'MyString', ... ],    # OPTIONAL
-      TagValues        => [ 'MyString', ... ],    # OPTIONAL
+      Marker           => 'MyString',    # OPTIONAL
+      MaxRecords       => 1,             # OPTIONAL
+      SubscriptionName => 'MyString',    # OPTIONAL
+      TagKeys          => [
+        'MyString', ...                  # max: 2147483647
+      ],    # OPTIONAL
+      TagValues => [
+        'MyString', ...    # max: 2147483647
+      ],    # OPTIONAL
     );
 
     # Results:

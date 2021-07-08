@@ -27,8 +27,8 @@ Paws::S3::ListObjectsOutput
 
 =head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
-All of the keys rolled up in a common prefix count as a single return
-when calculating the number of returns.
+All of the keys (up to 1,000) rolled up in a common prefix count as a
+single return when calculating the number of returns.
 
 A response can contain CommonPrefixes only if you specify a delimiter.
 
@@ -89,7 +89,7 @@ The maximum number of keys returned in the response body.
 
 =head2 Name => Str
 
-Bucket name.
+The bucket name.
 
 
 
@@ -100,9 +100,9 @@ response is true), you can use the key name in this field as marker in
 the subsequent request to get next set of objects. Amazon S3 lists
 objects in alphabetical order Note: This element is returned only if
 you have delimiter request parameter specified. If response does not
-include the NextMaker and it is truncated, you can use the value of the
-last Key in the response as the marker in the subsequent request to get
-the next set of object keys.
+include the NextMarker and it is truncated, you can use the value of
+the last Key in the response as the marker in the subsequent request to
+get the next set of object keys.
 
 
 

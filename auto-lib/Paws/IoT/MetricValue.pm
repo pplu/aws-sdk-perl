@@ -3,7 +3,10 @@ package Paws::IoT::MetricValue;
   use Moose;
   has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrs', traits => ['NameInRequest']);
   has Count => (is => 'ro', isa => 'Int', request_name => 'count', traits => ['NameInRequest']);
+  has Number => (is => 'ro', isa => 'Num', request_name => 'number', traits => ['NameInRequest']);
+  has Numbers => (is => 'ro', isa => 'ArrayRef[Num]', request_name => 'numbers', traits => ['NameInRequest']);
   has Ports => (is => 'ro', isa => 'ArrayRef[Int]', request_name => 'ports', traits => ['NameInRequest']);
+  has Strings => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'strings', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::MetricValue object:
 
-  $service_obj->Method(Att1 => { Cidrs => $value, ..., Ports => $value  });
+  $service_obj->Method(Att1 => { Cidrs => $value, ..., Strings => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,10 +55,25 @@ If the C<comparisonOperator> calls for a numeric value, use this to
 specify that numeric value to be compared with the C<metric>.
 
 
+=head2 Number => Num
+
+The numeral value of a metric.
+
+
+=head2 Numbers => ArrayRef[Num]
+
+The numeral values of a metric.
+
+
 =head2 Ports => ArrayRef[Int]
 
 If the C<comparisonOperator> calls for a set of ports, use this to
 specify that set to be compared with the C<metric>.
+
+
+=head2 Strings => ArrayRef[Str|Undef]
+
+The string values of a metric.
 
 
 

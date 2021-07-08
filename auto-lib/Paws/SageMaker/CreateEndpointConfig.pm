@@ -42,6 +42,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           VariantName     => 'MyVariantName',    # max: 63
           AcceleratorType => 'ml.eia1.medium'
           , # values: ml.eia1.medium, ml.eia1.large, ml.eia1.xlarge, ml.eia2.medium, ml.eia2.large, ml.eia2.xlarge; OPTIONAL
+          CoreDumpConfig => {
+            DestinationS3Uri => 'MyDestinationS3Uri',    # max: 512
+            KmsKeyId         => 'MyKmsKeyId',            # max: 2048; OPTIONAL
+          },    # OPTIONAL
           InitialVariantWeight => 1.0,    # OPTIONAL
         },
         ...
@@ -58,10 +62,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         InitialSamplingPercentage => 1,                       # max: 100
         CaptureContentTypeHeader  => {
           CsvContentTypes => [
-            'MyCsvContentType', ...                           # min: 1
+            'MyCsvContentType', ...                           # min: 1, max: 256
           ],    # min: 1, max: 10; OPTIONAL
           JsonContentTypes => [
-            'MyJsonContentType', ...    # min: 1
+            'MyJsonContentType', ...    # min: 1, max: 256
           ],    # min: 1, max: 10; OPTIONAL
         },    # OPTIONAL
         EnableCapture => 1,               # OPTIONAL
@@ -98,17 +102,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> EndpointConfigName => Str
 
 The name of the endpoint configuration. You specify this name in a
-CreateEndpoint
-(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
-request.
+CreateEndpoint request.
 
 
 
 =head2 KmsKeyId => Str
 
-The Amazon Resource Name (ARN) of a AWS Key Management Service key that
-Amazon SageMaker uses to encrypt data on the storage volume attached to
-the ML compute instance that hosts the endpoint.
+The Amazon Resource Name (ARN) of a Amazon Web Services Key Management
+Service key that Amazon SageMaker uses to encrypt data on the storage
+volume attached to the ML compute instance that hosts the endpoint.
 
 The KmsKeyId can be any of the following formats:
 
@@ -136,8 +138,8 @@ C<arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias>
 
 The KMS key policy must grant permission to the IAM role that you
 specify in your C<CreateEndpoint>, C<UpdateEndpoint> requests. For more
-information, refer to the AWS Key Management Service section Using Key
-Policies in AWS KMS
+information, refer to the Amazon Web Services Key Management Service
+section Using Key Policies in Amazon Web Services KMS
 (https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
 
 Certain Nitro-based instances include local storage, dependent on the
@@ -169,10 +171,11 @@ want to host at this endpoint.
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-A list of key-value pairs. For more information, see Using Cost
-Allocation Tags
-(https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I< AWS Billing and Cost Management User Guide>.
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

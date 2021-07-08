@@ -62,8 +62,8 @@ A unique identifier for the game session to add players to.
 Map of string pairs, each specifying a player ID and a set of
 developer-defined information related to the player. Amazon GameLift
 does not use this data, so it can be formatted as needed for use in the
-game. Player data strings for player IDs not included in the
-C<PlayerIds> parameter are ignored.
+game. Any player data strings for player IDs that are not included in
+the C<PlayerIds> parameter are ignored.
 
 
 

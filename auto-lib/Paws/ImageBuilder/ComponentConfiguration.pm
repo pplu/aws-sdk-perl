@@ -2,6 +2,7 @@
 package Paws::ImageBuilder::ComponentConfiguration;
   use Moose;
   has ComponentArn => (is => 'ro', isa => 'Str', request_name => 'componentArn', traits => ['NameInRequest'], required => 1);
+  has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::ComponentParameter]', request_name => 'parameters', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ImageBuilder::ComponentConfiguration object:
 
-  $service_obj->Method(Att1 => { ComponentArn => $value, ..., ComponentArn => $value  });
+  $service_obj->Method(Att1 => { ComponentArn => $value, ..., Parameters => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,12 @@ Configuration details of the component.
 =head2 B<REQUIRED> ComponentArn => Str
 
 The Amazon Resource Name (ARN) of the component.
+
+
+=head2 Parameters => ArrayRef[L<Paws::ImageBuilder::ComponentParameter>]
+
+A group of parameter settings that are used to configure the component
+for a specific recipe.
 
 
 

@@ -93,8 +93,14 @@ of available log streams.
 
 =head2 PageToken => Str
 
-A token used for advancing to a specific page of results for your C<get
-relational database log events> request.
+The token to advance to the next or previous page of results from your
+request.
+
+To get a page token, perform an initial
+C<GetRelationalDatabaseLogEvents> request. If your results are
+paginated, the response will return a next forward token and/or next
+backward token that you can specify as the page token in a subsequent
+request.
 
 
 

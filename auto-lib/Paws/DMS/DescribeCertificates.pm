@@ -29,17 +29,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Describe certificates
+    # Provides a description of the certificate.
     my $DescribeCertificatesResponse = $dms->DescribeCertificates(
-      Filters => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],
+      'Filters' => [
 
-        },
-        ...
-      ],    # OPTIONAL
-      Marker     => 'MyString',    # OPTIONAL
-      MaxRecords => 1,             # OPTIONAL
+        {
+          'Name'   => 'string',
+          'Values' => [ 'string', 'string' ]
+        }
+      ],
+      'Marker'     => '',
+      'MaxRecords' => 123
     );
 
     # Results:
@@ -56,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
 
-Filters applied to the certificate described in the form of key-value
+Filters applied to the certificates described in the form of key-value
 pairs.
 
 
@@ -65,7 +66,7 @@ pairs.
 
 An optional pagination token provided by a previous request. If this
 parameter is specified, the response includes only records beyond the
-marker, up to the vlue specified by C<MaxRecords>.
+marker, up to the value specified by C<MaxRecords>.
 
 
 

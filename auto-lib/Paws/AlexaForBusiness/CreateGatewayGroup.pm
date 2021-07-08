@@ -4,6 +4,7 @@ package Paws::AlexaForBusiness::CreateGatewayGroup;
   has ClientRequestToken => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken => 'MyClientRequestToken',
       Name               => 'MyGatewayGroupName',
       Description        => 'MyGatewayGroupDescription',    # OPTIONAL
+      Tags               => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -62,6 +71,13 @@ The description of the gateway group.
 =head2 B<REQUIRED> Name => Str
 
 The name of the gateway group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags to be added to the specified resource. Do not provide system
+tags.
 
 
 

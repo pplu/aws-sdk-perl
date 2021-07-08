@@ -25,9 +25,19 @@ package Paws::Athena;
     my $call_object = $self->new_with_coercions('Paws::Athena::BatchGetQueryExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDataCatalog {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::CreateDataCatalog', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNamedQuery {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Athena::CreateNamedQuery', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePreparedStatement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::CreatePreparedStatement', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateWorkGroup {
@@ -35,9 +45,19 @@ package Paws::Athena;
     my $call_object = $self->new_with_coercions('Paws::Athena::CreateWorkGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDataCatalog {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::DeleteDataCatalog', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteNamedQuery {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Athena::DeleteNamedQuery', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePreparedStatement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::DeletePreparedStatement', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteWorkGroup {
@@ -45,9 +65,24 @@ package Paws::Athena;
     my $call_object = $self->new_with_coercions('Paws::Athena::DeleteWorkGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDatabase {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::GetDatabase', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDataCatalog {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::GetDataCatalog', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetNamedQuery {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Athena::GetNamedQuery', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetPreparedStatement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::GetPreparedStatement', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetQueryExecution {
@@ -60,9 +95,29 @@ package Paws::Athena;
     my $call_object = $self->new_with_coercions('Paws::Athena::GetQueryResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTableMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::GetTableMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetWorkGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Athena::GetWorkGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDatabases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::ListDatabases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDataCatalogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::ListDataCatalogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListEngineVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::ListEngineVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListNamedQueries {
@@ -70,9 +125,19 @@ package Paws::Athena;
     my $call_object = $self->new_with_coercions('Paws::Athena::ListNamedQueries', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPreparedStatements {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::ListPreparedStatements', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListQueryExecutions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Athena::ListQueryExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTableMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::ListTableMetadata', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -105,6 +170,16 @@ package Paws::Athena;
     my $call_object = $self->new_with_coercions('Paws::Athena::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateDataCatalog {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::UpdateDataCatalog', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePreparedStatement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Athena::UpdatePreparedStatement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateWorkGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Athena::UpdateWorkGroup', @_);
@@ -130,6 +205,52 @@ package Paws::Athena;
         $result = $self->GetQueryResults(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ResultSet.Rows') foreach (@{ $result->ResultSet->Rows });
+    }
+
+    return undef
+  }
+  sub ListAllDatabases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDatabases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDatabases(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DatabaseList }, @{ $next_result->DatabaseList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DatabaseList') foreach (@{ $result->DatabaseList });
+        $result = $self->ListDatabases(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DatabaseList') foreach (@{ $result->DatabaseList });
+    }
+
+    return undef
+  }
+  sub ListAllDataCatalogs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDataCatalogs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDataCatalogs(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DataCatalogsSummary }, @{ $next_result->DataCatalogsSummary };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DataCatalogsSummary') foreach (@{ $result->DataCatalogsSummary });
+        $result = $self->ListDataCatalogs(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DataCatalogsSummary') foreach (@{ $result->DataCatalogsSummary });
     }
 
     return undef
@@ -180,9 +301,55 @@ package Paws::Athena;
 
     return undef
   }
+  sub ListAllTableMetadata {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTableMetadata(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTableMetadata(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TableMetadataList }, @{ $next_result->TableMetadataList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TableMetadataList') foreach (@{ $result->TableMetadataList });
+        $result = $self->ListTableMetadata(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TableMetadataList') foreach (@{ $result->TableMetadataList });
+    }
+
+    return undef
+  }
+  sub ListAllTagsForResource {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTagsForResource(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTagsForResource(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Tags }, @{ $next_result->Tags };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+        $result = $self->ListTagsForResource(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Tags') foreach (@{ $result->Tags });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchGetNamedQuery BatchGetQueryExecution CreateNamedQuery CreateWorkGroup DeleteNamedQuery DeleteWorkGroup GetNamedQuery GetQueryExecution GetQueryResults GetWorkGroup ListNamedQueries ListQueryExecutions ListTagsForResource ListWorkGroups StartQueryExecution StopQueryExecution TagResource UntagResource UpdateWorkGroup / }
+  sub operations { qw/BatchGetNamedQuery BatchGetQueryExecution CreateDataCatalog CreateNamedQuery CreatePreparedStatement CreateWorkGroup DeleteDataCatalog DeleteNamedQuery DeletePreparedStatement DeleteWorkGroup GetDatabase GetDataCatalog GetNamedQuery GetPreparedStatement GetQueryExecution GetQueryResults GetTableMetadata GetWorkGroup ListDatabases ListDataCatalogs ListEngineVersions ListNamedQueries ListPreparedStatements ListQueryExecutions ListTableMetadata ListTagsForResource ListWorkGroups StartQueryExecution StopQueryExecution TagResource UntagResource UpdateDataCatalog UpdatePreparedStatement UpdateWorkGroup / }
 
 1;
 
@@ -284,6 +451,32 @@ ListQueryExecutionsInput$WorkGroup. Query executions differ from named
 queries.
 
 
+=head2 CreateDataCatalog
+
+=over
+
+=item Name => Str
+
+=item Type => Str
+
+=item [Description => Str]
+
+=item [Parameters => L<Paws::Athena::ParametersMap>]
+
+=item [Tags => ArrayRef[L<Paws::Athena::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::CreateDataCatalog>
+
+Returns: a L<Paws::Athena::CreateDataCatalogOutput> instance
+
+Creates (registers) a data catalog with the specified name and
+properties. Catalogs created are visible to all users of the same AWS
+account.
+
+
 =head2 CreateNamedQuery
 
 =over
@@ -315,6 +508,28 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
+=head2 CreatePreparedStatement
+
+=over
+
+=item QueryStatement => Str
+
+=item StatementName => Str
+
+=item WorkGroup => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::CreatePreparedStatement>
+
+Returns: a L<Paws::Athena::CreatePreparedStatementOutput> instance
+
+Creates a prepared statement for use with SQL queries in Athena.
+
+
 =head2 CreateWorkGroup
 
 =over
@@ -335,6 +550,22 @@ Each argument is described in detail in: L<Paws::Athena::CreateWorkGroup>
 Returns: a L<Paws::Athena::CreateWorkGroupOutput> instance
 
 Creates a workgroup with the specified name.
+
+
+=head2 DeleteDataCatalog
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::DeleteDataCatalog>
+
+Returns: a L<Paws::Athena::DeleteDataCatalogOutput> instance
+
+Deletes a data catalog.
 
 
 =head2 DeleteNamedQuery
@@ -358,6 +589,25 @@ Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
 
 
+=head2 DeletePreparedStatement
+
+=over
+
+=item StatementName => Str
+
+=item WorkGroup => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::DeletePreparedStatement>
+
+Returns: a L<Paws::Athena::DeletePreparedStatementOutput> instance
+
+Deletes the prepared statement with the specified name from the
+specified workgroup.
+
+
 =head2 DeleteWorkGroup
 
 =over
@@ -377,6 +627,40 @@ Deletes the workgroup with the specified name. The primary workgroup
 cannot be deleted.
 
 
+=head2 GetDatabase
+
+=over
+
+=item CatalogName => Str
+
+=item DatabaseName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::GetDatabase>
+
+Returns: a L<Paws::Athena::GetDatabaseOutput> instance
+
+Returns a database object for the specified database and data catalog.
+
+
+=head2 GetDataCatalog
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::GetDataCatalog>
+
+Returns: a L<Paws::Athena::GetDataCatalogOutput> instance
+
+Returns the specified data catalog.
+
+
 =head2 GetNamedQuery
 
 =over
@@ -392,6 +676,25 @@ Returns: a L<Paws::Athena::GetNamedQueryOutput> instance
 
 Returns information about a single query. Requires that you have access
 to the workgroup in which the query was saved.
+
+
+=head2 GetPreparedStatement
+
+=over
+
+=item StatementName => Str
+
+=item WorkGroup => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::GetPreparedStatement>
+
+Returns: a L<Paws::Athena::GetPreparedStatementOutput> instance
+
+Retrieves the prepared statement with the specified name from the
+specified workgroup.
 
 
 =head2 GetQueryExecution
@@ -448,6 +751,26 @@ denied. To restrict user or role access, ensure that Amazon S3
 permissions to the Athena query location are denied.
 
 
+=head2 GetTableMetadata
+
+=over
+
+=item CatalogName => Str
+
+=item DatabaseName => Str
+
+=item TableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::GetTableMetadata>
+
+Returns: a L<Paws::Athena::GetTableMetadataOutput> instance
+
+Returns table metadata for the specified catalog, database, and table.
+
+
 =head2 GetWorkGroup
 
 =over
@@ -462,6 +785,63 @@ Each argument is described in detail in: L<Paws::Athena::GetWorkGroup>
 Returns: a L<Paws::Athena::GetWorkGroupOutput> instance
 
 Returns information about the workgroup with the specified name.
+
+
+=head2 ListDatabases
+
+=over
+
+=item CatalogName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::ListDatabases>
+
+Returns: a L<Paws::Athena::ListDatabasesOutput> instance
+
+Lists the databases in the specified data catalog.
+
+
+=head2 ListDataCatalogs
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::ListDataCatalogs>
+
+Returns: a L<Paws::Athena::ListDataCatalogsOutput> instance
+
+Lists the data catalogs in the current AWS account.
+
+
+=head2 ListEngineVersions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::ListEngineVersions>
+
+Returns: a L<Paws::Athena::ListEngineVersionsOutput> instance
+
+Returns a list of engine versions that are available to choose from,
+including the Auto option.
 
 
 =head2 ListNamedQueries
@@ -482,11 +862,33 @@ Each argument is described in detail in: L<Paws::Athena::ListNamedQueries>
 Returns: a L<Paws::Athena::ListNamedQueriesOutput> instance
 
 Provides a list of available query IDs only for queries saved in the
-specified workgroup. Requires that you have access to the workgroup.
+specified workgroup. Requires that you have access to the specified
+workgroup. If a workgroup is not specified, lists the saved queries for
+the primary workgroup.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
+
+
+=head2 ListPreparedStatements
+
+=over
+
+=item WorkGroup => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::ListPreparedStatements>
+
+Returns: a L<Paws::Athena::ListPreparedStatementsOutput> instance
+
+Lists the prepared statements in the specfied workgroup.
 
 
 =head2 ListQueryExecutions
@@ -507,12 +909,38 @@ Each argument is described in detail in: L<Paws::Athena::ListQueryExecutions>
 Returns: a L<Paws::Athena::ListQueryExecutionsOutput> instance
 
 Provides a list of available query execution IDs for the queries in the
-specified workgroup. Requires you to have access to the workgroup in
-which the queries ran.
+specified workgroup. If a workgroup is not specified, returns a list of
+query execution IDs for the primary workgroup. Requires you to have
+access to the workgroup in which the queries ran.
 
 For code samples using the AWS SDK for Java, see Examples and Code
 Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
 in the I<Amazon Athena User Guide>.
+
+
+=head2 ListTableMetadata
+
+=over
+
+=item CatalogName => Str
+
+=item DatabaseName => Str
+
+=item [Expression => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::ListTableMetadata>
+
+Returns: a L<Paws::Athena::ListTableMetadataOutput> instance
+
+Lists the metadata for the tables in the specified data catalog
+database.
 
 
 =head2 ListTagsForResource
@@ -532,7 +960,8 @@ Each argument is described in detail in: L<Paws::Athena::ListTagsForResource>
 
 Returns: a L<Paws::Athena::ListTagsForResourceOutput> instance
 
-Lists the tags associated with this workgroup.
+Lists the tags associated with an Athena workgroup or data catalog
+resource.
 
 
 =head2 ListWorkGroups
@@ -575,11 +1004,12 @@ Each argument is described in detail in: L<Paws::Athena::StartQueryExecution>
 Returns: a L<Paws::Athena::StartQueryExecutionOutput> instance
 
 Runs the SQL query statements contained in the C<Query>. Requires you
-to have access to the workgroup in which the query ran.
-
-For code samples using the AWS SDK for Java, see Examples and Code
-Samples (http://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
-in the I<Amazon Athena User Guide>.
+to have access to the workgroup in which the query ran. Running queries
+against an external catalog requires GetDataCatalog permission to the
+catalog. For code samples using the AWS SDK for Java, see Examples and
+Code Samples
+(http://docs.aws.amazon.com/athena/latest/ug/code-samples.html) in the
+I<Amazon Athena User Guide>.
 
 
 =head2 StopQueryExecution
@@ -618,20 +1048,21 @@ Each argument is described in detail in: L<Paws::Athena::TagResource>
 
 Returns: a L<Paws::Athena::TagResourceOutput> instance
 
-Adds one or more tags to the resource, such as a workgroup. A tag is a
-label that you assign to an AWS Athena resource (a workgroup). Each tag
-consists of a key and an optional value, both of which you define. Tags
-enable you to categorize resources (workgroups) in Athena, for example,
-by purpose, owner, or environment. Use a consistent set of tag keys to
-make it easier to search and filter workgroups in your account. For
-best practices, see AWS Tagging Strategies
+Adds one or more tags to an Athena resource. A tag is a label that you
+assign to a resource. In Athena, a resource can be a workgroup or data
+catalog. Each tag consists of a key and an optional value, both of
+which you define. For example, you can use tags to categorize Athena
+workgroups or data catalogs by purpose, owner, or environment. Use a
+consistent set of tag keys to make it easier to search and filter
+workgroups or data catalogs in your account. For best practices, see
+Tagging Best Practices
 (https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
-The key length is from 1 (minimum) to 128 (maximum) Unicode characters
-in UTF-8. The tag value length is from 0 (minimum) to 256 (maximum)
-Unicode characters in UTF-8. You can use letters and numbers
-representable in UTF-8, and the following characters: + - = . _ : / @.
-Tag keys and values are case-sensitive. Tag keys must be unique per
-resource. If you specify more than one, separate them by commas.
+Tag keys can be from 1 to 128 UTF-8 Unicode characters, and tag values
+can be from 0 to 256 UTF-8 Unicode characters. Tags can use letters and
+numbers representable in UTF-8, and the following characters: + - = . _
+: / @. Tag keys and values are case-sensitive. Tag keys must be unique
+per resource. If you specify more than one tag, separate them by
+commas.
 
 
 =head2 UntagResource
@@ -649,9 +1080,51 @@ Each argument is described in detail in: L<Paws::Athena::UntagResource>
 
 Returns: a L<Paws::Athena::UntagResourceOutput> instance
 
-Removes one or more tags from the workgroup resource. Takes as an input
-a list of TagKey Strings separated by commas, and removes their tags at
-the same time.
+Removes one or more tags from a data catalog or workgroup resource.
+
+
+=head2 UpdateDataCatalog
+
+=over
+
+=item Name => Str
+
+=item Type => Str
+
+=item [Description => Str]
+
+=item [Parameters => L<Paws::Athena::ParametersMap>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::UpdateDataCatalog>
+
+Returns: a L<Paws::Athena::UpdateDataCatalogOutput> instance
+
+Updates the data catalog that has the specified name.
+
+
+=head2 UpdatePreparedStatement
+
+=over
+
+=item QueryStatement => Str
+
+=item StatementName => Str
+
+=item WorkGroup => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Athena::UpdatePreparedStatement>
+
+Returns: a L<Paws::Athena::UpdatePreparedStatementOutput> instance
+
+Updates a prepared statement.
 
 
 =head2 UpdateWorkGroup
@@ -695,6 +1168,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Athena::GetQueryResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllDatabases(sub { },CatalogName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDatabases(CatalogName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DatabaseList, passing the object as the first parameter, and the string 'DatabaseList' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::ListDatabasesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDataCatalogs(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDataCatalogs([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DataCatalogsSummary, passing the object as the first parameter, and the string 'DataCatalogsSummary' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::ListDataCatalogsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllNamedQueries(sub { },[MaxResults => Int, NextToken => Str, WorkGroup => Str])
 
 =head2 ListAllNamedQueries([MaxResults => Int, NextToken => Str, WorkGroup => Str])
@@ -717,6 +1214,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - QueryExecutionIds, passing the object as the first parameter, and the string 'QueryExecutionIds' as the second parameter 
 
 If not, it will return a a L<Paws::Athena::ListQueryExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTableMetadata(sub { },CatalogName => Str, DatabaseName => Str, [Expression => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTableMetadata(CatalogName => Str, DatabaseName => Str, [Expression => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TableMetadataList, passing the object as the first parameter, and the string 'TableMetadataList' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::ListTableMetadataOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTagsForResource(sub { },ResourceARN => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTagsForResource(ResourceARN => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Tags, passing the object as the first parameter, and the string 'Tags' as the second parameter 
+
+If not, it will return a a L<Paws::Athena::ListTagsForResourceOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

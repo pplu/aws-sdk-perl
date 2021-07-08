@@ -41,13 +41,106 @@ A string filter for querying findings.
 
 =head2 Comparison => Str
 
-The condition to be applied to a string value when querying for
-findings.
+The condition to apply to a string value when querying for findings. To
+search for values that contain the filter criteria value, use one of
+the following comparison operators:
+
+=over
+
+=item *
+
+To search for values that exactly match the filter value, use
+C<EQUALS>.
+
+For example, the filter C<ResourceType EQUALS AwsEc2SecurityGroup> only
+matches findings that have a resource type of C<AwsEc2SecurityGroup>.
+
+=item *
+
+To search for values that start with the filter value, use C<PREFIX>.
+
+For example, the filter C<ResourceType PREFIX AwsIam> matches findings
+that have a resource type that starts with C<AwsIam>. Findings with a
+resource type of C<AwsIamPolicy>, C<AwsIamRole>, or C<AwsIamUser> would
+all match.
+
+=back
+
+C<EQUALS> and C<PREFIX> filters on the same field are joined by C<OR>.
+A finding matches if it matches any one of those filters.
+
+To search for values that do not contain the filter criteria value, use
+one of the following comparison operators:
+
+=over
+
+=item *
+
+To search for values that do not exactly match the filter value, use
+C<NOT_EQUALS>.
+
+For example, the filter C<ResourceType NOT_EQUALS AwsIamPolicy> matches
+findings that have a resource type other than C<AwsIamPolicy>.
+
+=item *
+
+To search for values that do not start with the filter value, use
+C<PREFIX_NOT_EQUALS>.
+
+For example, the filter C<ResourceType PREFIX_NOT_EQUALS AwsIam>
+matches findings that have a resource type that does not start with
+C<AwsIam>. Findings with a resource type of C<AwsIamPolicy>,
+C<AwsIamRole>, or C<AwsIamUser> would all be excluded from the results.
+
+=back
+
+C<NOT_EQUALS> and C<PREFIX_NOT_EQUALS> filters on the same field are
+joined by C<AND>. A finding matches only if it matches all of those
+filters.
+
+For filters on the same field, you cannot provide both an C<EQUALS>
+filter and a C<NOT_EQUALS> or C<PREFIX_NOT_EQUALS> filter. Combining
+filters in this way always returns an error, even if the provided
+filter values would return valid results.
+
+You can combine C<PREFIX> filters with C<NOT_EQUALS> or
+C<PREFIX_NOT_EQUALS> filters for the same field. Security Hub first
+processes the C<PREFIX> filters, then the C<NOT_EQUALS> or
+C<PREFIX_NOT_EQUALS> filters.
+
+For example, for the following filter, Security Hub first identifies
+findings that have resource types that start with either C<AwsIAM> or
+C<AwsEc2>. It then excludes findings that have a resource type of
+C<AwsIamPolicy> and findings that have a resource type of
+C<AwsEc2NetworkInterface>.
+
+=over
+
+=item *
+
+C<ResourceType PREFIX AwsIam>
+
+=item *
+
+C<ResourceType PREFIX AwsEc2>
+
+=item *
+
+C<ResourceType NOT_EQUALS AwsIamPolicy>
+
+=item *
+
+C<ResourceType NOT_EQUALS AwsEc2NetworkInterface>
+
+=back
+
 
 
 =head2 Value => Str
 
-The string filter value.
+The string filter value. Filter values are case sensitive. For example,
+the product name for control-based findings is C<Security Hub>. If you
+provide C<security hub> as the filter text, then there is no match.
 
 
 

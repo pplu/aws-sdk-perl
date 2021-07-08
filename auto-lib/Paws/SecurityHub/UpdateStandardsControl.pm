@@ -44,20 +44,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 ControlStatus => Str
 
-The updated status of the compliance standard control.
+The updated status of the security standard control.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 
 =head2 DisabledReason => Str
 
-A description of the reason why you are disabling a compliance standard
-control.
+A description of the reason why you are disabling a security standard
+control. If you are disabling a control, then this is required.
 
 
 
 =head2 B<REQUIRED> StandardsControlArn => Str
 
-The ARN of the compliance standard control to enable or disable.
+The ARN of the security standard control to enable or disable.
 
 
 

@@ -76,7 +76,7 @@ One or more security groups.
 
 Describes the type of network interface.
 
-Valid values: C<interface> | C<efa>
+Valid values: C<interface> | C<efa> | C<trunk>
 
 
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
@@ -96,7 +96,7 @@ The ID of the network interface.
 
 =head2 OwnerId => Str
 
-The ID of the AWS account that created the network interface.
+The ID of the account that created the network interface.
 
 
 =head2 PrivateDnsName => Str
@@ -117,8 +117,7 @@ interface.
 
 =head2 SourceDestCheck => Bool
 
-Indicates whether to validate network traffic to or from this network
-interface.
+Indicates whether source/destination checking is enabled.
 
 
 =head2 Status => Str

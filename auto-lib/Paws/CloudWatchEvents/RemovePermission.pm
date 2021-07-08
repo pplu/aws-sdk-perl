@@ -2,7 +2,8 @@
 package Paws::CloudWatchEvents::RemovePermission;
   use Moose;
   has EventBusName => (is => 'ro', isa => 'Str');
-  has StatementId => (is => 'ro', isa => 'Str', required => 1);
+  has RemoveAllPermissions => (is => 'ro', isa => 'Bool');
+  has StatementId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $events = Paws->service('CloudWatchEvents');
     $events->RemovePermission(
-      StatementId  => 'MyStatementId',
-      EventBusName => 'MyNonPartnerEventBusName',    # OPTIONAL
+      EventBusName         => 'MyNonPartnerEventBusName',    # OPTIONAL
+      RemoveAllPermissions => 1,                             # OPTIONAL
+      StatementId          => 'MyStatementId',               # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -46,7 +48,13 @@ the default event bus is used.
 
 
 
-=head2 B<REQUIRED> StatementId => Str
+=head2 RemoveAllPermissions => Bool
+
+Specifies whether to remove all permissions.
+
+
+
+=head2 StatementId => Str
 
 The statement ID corresponding to the account that is no longer allowed
 to put events to the default event bus.

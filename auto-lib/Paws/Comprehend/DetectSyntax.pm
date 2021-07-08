@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $comprehend = Paws->service('Comprehend');
     my $DetectSyntaxResponse = $comprehend->DetectSyntax(
       LanguageCode => 'en',
-      Text         => 'MyString',
+      Text         => 'MyCustomerInputString',
 
     );
 

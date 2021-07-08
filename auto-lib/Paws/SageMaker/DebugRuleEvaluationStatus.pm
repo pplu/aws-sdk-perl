@@ -49,7 +49,7 @@ Timestamp when the rule evaluation status was last modified.
 
 =head2 RuleConfigurationName => Str
 
-The name of the rule configuration
+The name of the rule configuration.
 
 
 =head2 RuleEvaluationJobArn => Str

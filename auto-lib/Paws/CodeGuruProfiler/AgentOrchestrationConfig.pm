@@ -33,16 +33,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruPro
 
 =head1 DESCRIPTION
 
-Configuration to orchestrate agents to create and report agent profiles
-of the profiling group. Agents are orchestrated if they follow the
-agent orchestration protocol.
+Specifies whether profiling is enabled or disabled for a profiling
+group. It is used by C<ConfigureAgent>
+(https://docs.aws.amazon.com/codeguru/latest/profiler-api/API_ConfigureAgent.html)
+to enable or disable profiling for a profiling group.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ProfilingEnabled => Bool
 
-If the agents should be enabled to create and report profiles.
+A C<Boolean> that specifies whether the profiling agent collects
+profiling data or not. Set to C<true> to enable profiling.
 
 
 

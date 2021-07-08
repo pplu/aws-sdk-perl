@@ -11,7 +11,10 @@ package Paws::ElastiCache::CreateReplicationGroup;
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has GlobalReplicationGroupId => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has LogDeliveryConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::LogDeliveryConfigurationRequest]');
+  has MultiAZEnabled => (is => 'ro', isa => 'Bool');
   has NodeGroupConfiguration => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::NodeGroupConfiguration]');
   has NotificationTopicArn => (is => 'ro', isa => 'Str');
   has NumCacheClusters => (is => 'ro', isa => 'Int');
@@ -30,6 +33,7 @@ package Paws::ElastiCache::CreateReplicationGroup;
   has SnapshotWindow => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
   has TransitEncryptionEnabled => (is => 'ro', isa => 'Bool');
+  has UserGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
   use MooseX::ClassAttribute;
 
@@ -55,51 +59,52 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # CreateCacheReplicationGroup
+    # Creates a Redis replication group with 3 nodes.
     my $CreateReplicationGroupResult = $elasticache->CreateReplicationGroup(
-      ReplicationGroupDescription => 'MyString',
-      ReplicationGroupId          => 'MyString',
-      AtRestEncryptionEnabled     => 1,                      # OPTIONAL
-      AuthToken                   => 'MyString',             # OPTIONAL
-      AutoMinorVersionUpgrade     => 1,                      # OPTIONAL
-      AutomaticFailoverEnabled    => 1,                      # OPTIONAL
-      CacheNodeType               => 'MyString',             # OPTIONAL
-      CacheParameterGroupName     => 'MyString',             # OPTIONAL
-      CacheSecurityGroupNames     => [ 'MyString', ... ],    # OPTIONAL
-      CacheSubnetGroupName        => 'MyString',             # OPTIONAL
-      Engine                      => 'MyString',             # OPTIONAL
-      EngineVersion               => 'MyString',             # OPTIONAL
-      KmsKeyId                    => 'MyString',             # OPTIONAL
-      NodeGroupConfiguration      => [
+      'AutomaticFailoverEnabled'    => 1,
+      'CacheNodeType'               => 'cache.m3.medium',
+      'Engine'                      => 'redis',
+      'EngineVersion'               => '2.8.24',
+      'NumCacheClusters'            => 3,
+      'ReplicationGroupDescription' => 'A Redis replication group.',
+      'ReplicationGroupId'          => 'my-redis-rg',
+      'SnapshotRetentionLimit'      => 30
+    );
+
+    # Results:
+    my $ReplicationGroup = $CreateReplicationGroupResult->ReplicationGroup;
+
+ # Returns a L<Paws::ElastiCache::CreateReplicationGroupResult> object.
+ # CreateReplicationGroup
+ # Creates a Redis (cluster mode enabled) replication group with two shards. One
+ # shard has one read replica node and the other shard has two read replicas.
+    my $CreateReplicationGroupResult = $elasticache->CreateReplicationGroup(
+      'AutoMinorVersionUpgrade' => 1,
+      'CacheNodeType'           => 'cache.m3.medium',
+      'CacheParameterGroupName' => 'default.redis3.2.cluster.on',
+      'Engine'                  => 'redis',
+      'EngineVersion'           => '3.2.4',
+      'NodeGroupConfiguration'  => [
+
         {
-          NodeGroupId => 'MyAllowedNodeGroupId',    # min: 1, max: 4; OPTIONAL
-          PrimaryAvailabilityZone  => 'MyString',
-          ReplicaAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
-          ReplicaCount             => 1,                      # OPTIONAL
-          Slots                    => 'MyString',
+          'PrimaryAvailabilityZone'  => 'us-east-1c',
+          'ReplicaAvailabilityZones' => ['us-east-1b'],
+          'ReplicaCount'             => 1,
+          'Slots'                    => '0-8999'
         },
-        ...
-      ],    # OPTIONAL
-      NotificationTopicArn       => 'MyString',             # OPTIONAL
-      NumCacheClusters           => 1,                      # OPTIONAL
-      NumNodeGroups              => 1,                      # OPTIONAL
-      Port                       => 1,                      # OPTIONAL
-      PreferredCacheClusterAZs   => [ 'MyString', ... ],    # OPTIONAL
-      PreferredMaintenanceWindow => 'MyString',             # OPTIONAL
-      PrimaryClusterId           => 'MyString',             # OPTIONAL
-      ReplicasPerNodeGroup       => 1,                      # OPTIONAL
-      SecurityGroupIds           => [ 'MyString', ... ],    # OPTIONAL
-      SnapshotArns               => [ 'MyString', ... ],    # OPTIONAL
-      SnapshotName               => 'MyString',             # OPTIONAL
-      SnapshotRetentionLimit     => 1,                      # OPTIONAL
-      SnapshotWindow             => 'MyString',             # OPTIONAL
-      Tags                       => [
+
         {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                    # OPTIONAL
-      TransitEncryptionEnabled => 1,                        # OPTIONAL
+          'PrimaryAvailabilityZone'  => 'us-east-1a',
+          'ReplicaAvailabilityZones' => [ 'us-east-1a', 'us-east-1c' ],
+          'ReplicaCount'             => 2,
+          'Slots'                    => '9000-16383'
+        }
+      ],
+      'NumNodeGroups'               => 2,
+      'ReplicationGroupDescription' => 'A multi-sharded replication group',
+      'ReplicationGroupId'          => 'clustered-redis-rg',
+      'SnapshotRetentionLimit'      => 8
     );
 
     # Results:
@@ -171,33 +176,10 @@ at http://redis.io/commands/AUTH.
 Specifies whether a read-only replica is automatically promoted to
 read/write primary if the existing primary fails.
 
-If C<true>, Multi-AZ is enabled for this replication group. If
-C<false>, Multi-AZ is disabled for this replication group.
-
 C<AutomaticFailoverEnabled> must be enabled for Redis (cluster mode
 enabled) replication groups.
 
 Default: false
-
-Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-failover on:
-
-=over
-
-=item *
-
-Redis versions earlier than 2.8.6.
-
-=item *
-
-Redis (cluster mode disabled): T1 node types.
-
-=item *
-
-Redis (cluster mode enabled): T1 node types.
-
-=back
-
 
 
 
@@ -228,12 +210,25 @@ General purpose:
 
 Current generation:
 
+B<M6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.m6g.large>, C<cache.m6g.xlarge>, C<cache.m6g.2xlarge>,
+C<cache.m6g.4xlarge>, C<cache.m6g.8xlarge>, C<cache.m6g.12xlarge>,
+C<cache.m6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+
 B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
 C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
 C<cache.m5.24xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
+
+B<T3 node types:> C<cache.t3.micro>, C<cache.t3.small>,
+C<cache.t3.medium>
 
 B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>
@@ -275,6 +270,16 @@ Memory optimized:
 =item *
 
 Current generation:
+
+B<R6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.r6g.large>, C<cache.r6g.xlarge>, C<cache.r6g.2xlarge>,
+C<cache.r6g.4xlarge>, C<cache.r6g.8xlarge>, C<cache.r6g.12xlarge>,
+C<cache.r6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 
 B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
 C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,
@@ -332,10 +337,6 @@ The name of the parameter group to associate with this replication
 group. If this argument is omitted, the default cache parameter group
 for the specified engine is used.
 
-If you are restoring to an engine version that is different than the
-original, you must specify the default version of that version. For
-example, C<CacheParameterGroupName=default.redis4.0>.
-
 If you are running Redis version 3.2.4 or later, only one node group
 (shard), and want to use a default parameter group, we recommend that
 you specify the parameter group by name.
@@ -379,7 +380,7 @@ information, see Subnets and Subnet Groups
 =head2 Engine => Str
 
 The name of the cache engine to be used for the clusters in this
-replication group.
+replication group. Must be Redis.
 
 
 
@@ -399,9 +400,29 @@ anew with the earlier engine version.
 
 
 
+=head2 GlobalReplicationGroupId => Str
+
+The name of the Global datastore
+
+
+
 =head2 KmsKeyId => Str
 
-The ID of the KMS key used to encrypt the disk on the cluster.
+The ID of the KMS key used to encrypt the disk in the cluster.
+
+
+
+=head2 LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]
+
+Specifies the destination, format and type of the logs.
+
+
+
+=head2 MultiAZEnabled => Bool
+
+A flag indicating if you have Multi-AZ enabled to enhance fault
+tolerance. For more information, see Minimizing Downtime: Multi-AZ
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html).
 
 
 
@@ -415,9 +436,10 @@ C<ReplicaCount>, and C<Slots>.
 If you're creating a Redis (cluster mode disabled) or a Redis (cluster
 mode enabled) replication group, you can use this parameter to
 individually configure each node group (shard), or you can omit this
-parameter. However, when seeding a Redis (cluster mode enabled) cluster
-from a S3 rdb file, you must configure each node group (shard) using
-this parameter because you must specify the slots for each node group.
+parameter. However, it is required when seeding a Redis (cluster mode
+enabled) cluster from a S3 rdb file. You must configure each node group
+(shard) using this parameter because you must specify the slots for
+each node group.
 
 
 
@@ -643,11 +665,11 @@ an appropriate time range.
 
 =head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-A list of cost allocation tags to be added to this resource. Tags are
-comma-separated key,value pairs (e.g. Key=C<myKey>,
-Value=C<myKeyValue>. You can include multiple tags as shown following:
-Key=C<myKey>, Value=C<myKeyValue> Key=C<mySecondKey>,
-Value=C<mySecondKeyValue>.
+A list of tags to be added to this resource. Tags are comma-separated
+key,value pairs (e.g. Key=C<myKey>, Value=C<myKeyValue>. You can
+include multiple tags as shown following: Key=C<myKey>,
+Value=C<myKeyValue> Key=C<mySecondKey>, Value=C<mySecondKeyValue>. Tags
+on replication groups will be replicated to all nodes.
 
 
 
@@ -674,6 +696,12 @@ Default: C<false>
 
 For HIPAA compliance, you must specify C<TransitEncryptionEnabled> as
 C<true>, an C<AuthToken>, and a C<CacheSubnetGroup>.
+
+
+
+=head2 UserGroupIds => ArrayRef[Str|Undef]
+
+The user group to associate with the replication group.
 
 
 

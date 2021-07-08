@@ -35,25 +35,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-Includes details of the list of the findings that cannot be imported.
+The list of the findings that cannot be imported. For each finding, the
+list provides the error.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ErrorCode => Str
 
-The code of the error made during the C<BatchImportFindings> operation.
+The code of the error returned by the C<BatchImportFindings> operation.
 
 
 =head2 B<REQUIRED> ErrorMessage => Str
 
-The message of the error made during the C<BatchImportFindings>
+The message of the error returned by the C<BatchImportFindings>
 operation.
 
 
 =head2 B<REQUIRED> Id => Str
 
-The ID of the error made during the C<BatchImportFindings> operation.
+The identifier of the finding that could not be updated.
 
 
 

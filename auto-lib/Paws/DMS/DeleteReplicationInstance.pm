@@ -27,10 +27,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    my $DeleteReplicationInstanceResponse = $dms->DeleteReplicationInstance(
-      ReplicationInstanceArn => 'MyString',
+ # Delete Replication Instance
+ # Deletes the specified replication instance. You must delete any migration
+ # tasks that are associated with the replication instance before you can delete
+ # it.
 
-    );
+    my $DeleteReplicationInstanceResponse =
+      $dms->DeleteReplicationInstance( 'ReplicationInstanceArn' =>
+        'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ' );
 
     # Results:
     my $ReplicationInstance =

@@ -32,8 +32,8 @@ and C<KmsKeyArn> of the publishing destination.
 
 =head2 B<REQUIRED> DestinationType => Str
 
-The type of the publishing destination. Currently, only S3 is
-supported.
+The type of publishing destination. Currently, only Amazon S3 buckets
+are supported.
 
 Valid values are: C<"S3">
 =head2 B<REQUIRED> PublishingFailureStartTimestamp => Int

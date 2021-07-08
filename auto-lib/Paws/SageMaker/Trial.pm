@@ -7,6 +7,7 @@ package Paws::SageMaker::Trial;
   has ExperimentName => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Paws::SageMaker::UserContext');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
+  has MetadataProperties => (is => 'ro', isa => 'Paws::SageMaker::MetadataProperties');
   has Source => (is => 'ro', isa => 'Paws::SageMaker::TrialSource');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TrialArn => (is => 'ro', isa => 'Str');
@@ -43,7 +44,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A summary of the properties of a trial as returned by the Search API.
+The properties of a trial as returned by the Search API.
 
 =head1 ATTRIBUTES
 
@@ -77,6 +78,11 @@ The name of the experiment the trial is part of.
 =head2 LastModifiedTime => Str
 
 Who last modified the trial.
+
+
+=head2 MetadataProperties => L<Paws::SageMaker::MetadataProperties>
+
+
 
 
 =head2 Source => L<Paws::SageMaker::TrialSource>

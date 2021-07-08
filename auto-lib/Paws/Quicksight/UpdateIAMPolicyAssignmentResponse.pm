@@ -28,7 +28,7 @@ The ID of the assignment.
 
 =head2 AssignmentName => Str
 
-The name of the assignment.
+The name of the assignment or rule.
 
 
 =head2 AssignmentStatus => Str

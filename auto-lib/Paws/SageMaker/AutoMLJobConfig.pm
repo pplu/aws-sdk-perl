@@ -34,20 +34,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A collection of settings used for a job.
+A collection of settings used for an AutoML job.
 
 =head1 ATTRIBUTES
 
 
 =head2 CompletionCriteria => L<Paws::SageMaker::AutoMLJobCompletionCriteria>
 
-How long a job is allowed to run, or how many candidates a job is
-allowed to generate.
+How long an AutoML job is allowed to run, or how many candidates a job
+is allowed to generate.
 
 
 =head2 SecurityConfig => L<Paws::SageMaker::AutoMLSecurityConfig>
 
-Security configuration for traffic encryption or Amazon VPC settings.
+The security configuration for traffic encryption or Amazon VPC
+settings.
 
 
 

@@ -38,25 +38,41 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Default
 The container element for specifying the default Object Lock retention
 settings for new objects placed in the specified bucket.
 
+=over
+
+=item *
+
+The C<DefaultRetention> settings require both a mode and a period.
+
+=item *
+
+The C<DefaultRetention> period can be either C<Days> or C<Years> but
+you must select one. You cannot specify C<Days> and C<Years> at the
+same time.
+
+=back
+
+
 =head1 ATTRIBUTES
 
 
 =head2 Days => Int
 
 The number of days that you want to specify for the default retention
-period.
+period. Must be used with C<Mode>.
 
 
 =head2 Mode => Str
 
 The default Object Lock retention mode you want to apply to new objects
-placed in the specified bucket.
+placed in the specified bucket. Must be used with either C<Days> or
+C<Years>.
 
 
 =head2 Years => Int
 
 The number of years that you want to specify for the default retention
-period.
+period. Must be used with C<Mode>.
 
 
 

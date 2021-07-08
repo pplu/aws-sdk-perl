@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Org
 =head1 DESCRIPTION
 
 Error information returned when a DescribeEventDetailsForOrganization
-operation cannot find a specified event.
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html)
+operation can't find a specified event.
 
 =head1 ATTRIBUTES
 
@@ -45,12 +46,40 @@ operation cannot find a specified event.
 =head2 AwsAccountId => Str
 
 Error information returned when a DescribeEventDetailsForOrganization
-operation cannot find a specified event.
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html)
+operation can't find a specified event.
 
 
 =head2 ErrorMessage => Str
 
 A message that describes the error.
+
+If you call the C<DescribeEventDetailsForOrganization> operation and
+receive one of the following errors, follow the recommendations in the
+message:
+
+=over
+
+=item *
+
+We couldn't find a public event that matches your request. To find an
+event that is account specific, you must enter an AWS account ID in the
+request.
+
+=item *
+
+We couldn't find an account specific event for the specified AWS
+account. To find an event that is public, you must enter a null value
+for the AWS account ID in the request.
+
+=item *
+
+Your AWS account doesn't include the AWS Support plan required to use
+the AWS Health API. You must have either a Business or Enterprise
+Support plan.
+
+=back
+
 
 
 =head2 ErrorName => Str
@@ -60,10 +89,13 @@ The name of the error.
 
 =head2 EventArn => Str
 
-The unique identifier for the event. Format:
+The unique identifier for the event. The event ARN has the
 C<arn:aws:health:I<event-region>::event/I<SERVICE>/I<EVENT_TYPE_CODE>/I<EVENT_TYPE_PLUS_ID>
->. Example: C<Example:
-arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
+> format.
+
+For example, an event ARN might look like the following:
+
+C<arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
 
 
 

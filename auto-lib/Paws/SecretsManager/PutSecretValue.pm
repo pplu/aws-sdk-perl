@@ -31,14 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+    # To store a secret value in a new version of a secret
+    # The following example shows how to create a new version of the secret.
+    # Alternatively, you can use the update-secret command.
     my $PutSecretValueResponse = $secretsmanager->PutSecretValue(
-      SecretId           => 'MySecretIdType',
-      ClientRequestToken => 'MyClientRequestTokenType',    # OPTIONAL
-      SecretBinary       => 'BlobSecretBinaryType',        # OPTIONAL
-      SecretString       => 'MySecretStringType',          # OPTIONAL
-      VersionStages      => [
-        'MySecretVersionStageType', ...                    # min: 1, max: 256
-      ],    # OPTIONAL
+      'ClientRequestToken' => 'EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE',
+      'SecretId'           => 'MyTestDatabaseSecret',
+      'SecretString' => '{"username":"david","password":"BnQw!XDWgaEeT9XGTT29"}'
     );
 
     # Results:
@@ -89,7 +88,7 @@ request then the request is ignored (the operation is idempotent).
 
 =item *
 
-If a version with this value already exists and that version's
+If a version with this value already exists and the version of the
 C<SecretString> and C<SecretBinary> values are different from those in
 the request then the request fails because you cannot modify an
 existing secret version. You can only create new versions to store new
@@ -133,8 +132,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

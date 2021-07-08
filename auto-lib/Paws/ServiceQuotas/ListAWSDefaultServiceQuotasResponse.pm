@@ -17,16 +17,13 @@ Paws::ServiceQuotas::ListAWSDefaultServiceQuotasResponse
 
 =head2 NextToken => Str
 
-(Optional) Use this parameter in a request if you receive a
-C<NextToken> response in a previous request that indicates that there's
-more output available. In a subsequent call, set it to the value of the
-previous call's C<NextToken> response to indicate where the output
-should continue from.
+The token to use to retrieve the next page of results. This value is
+null when there are no more results to return.
 
 
 =head2 Quotas => ArrayRef[L<Paws::ServiceQuotas::ServiceQuota>]
 
-A list of the quotas in the account with the AWS default values.
+Information about the quotas.
 
 
 =head2 _request_id => Str

@@ -1,6 +1,8 @@
 
 package Paws::IoT::ListActiveViolations;
   use Moose;
+  has BehaviorCriteriaType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'behaviorCriteriaType');
+  has ListSuppressedAlerts => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'listSuppressedAlerts');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'securityProfileName');
@@ -32,10 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListActiveViolationsResponse = $iot->ListActiveViolations(
-      MaxResults          => 1,                              # OPTIONAL
-      NextToken           => 'MyNextToken',                  # OPTIONAL
-      SecurityProfileName => 'MySecurityProfileName',        # OPTIONAL
-      ThingName           => 'MyDeviceDefenderThingName',    # OPTIONAL
+      BehaviorCriteriaType => 'STATIC',                       # OPTIONAL
+      ListSuppressedAlerts => 1,                              # OPTIONAL
+      MaxResults           => 1,                              # OPTIONAL
+      NextToken            => 'MyNextToken',                  # OPTIONAL
+      SecurityProfileName  => 'MySecurityProfileName',        # OPTIONAL
+      ThingName            => 'MyDeviceDefenderThingName',    # OPTIONAL
     );
 
     # Results:
@@ -48,6 +52,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot/ListActiveViolations>
 
 =head1 ATTRIBUTES
+
+
+=head2 BehaviorCriteriaType => Str
+
+The criteria for a behavior.
+
+Valid values are: C<"STATIC">, C<"STATISTICAL">, C<"MACHINE_LEARNING">
+
+=head2 ListSuppressedAlerts => Bool
+
+A list of all suppressed alerts.
+
 
 
 =head2 MaxResults => Int

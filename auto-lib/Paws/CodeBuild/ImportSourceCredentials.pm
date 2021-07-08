@@ -54,8 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 The type of authentication used to connect to a GitHub, GitHub
 Enterprise, or Bitbucket repository. An OAUTH connection is not
-supported by the API and must be created using the AWS CodeBuild
-console.
+supported by the API and must be created using the CodeBuild console.
 
 Valid values are: C<"OAUTH">, C<"BASIC_AUTH">, C<"PERSONAL_ACCESS_TOKEN">
 

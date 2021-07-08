@@ -13,6 +13,7 @@ package Paws::Firehose::ElasticsearchDestinationConfiguration;
   has S3BackupMode => (is => 'ro', isa => 'Str');
   has S3Configuration => (is => 'ro', isa => 'Paws::Firehose::S3DestinationConfiguration', required => 1);
   has TypeName => (is => 'ro', isa => 'Str');
+  has VpcConfiguration => (is => 'ro', isa => 'Paws::Firehose::VpcConfiguration');
 
 1;
 
@@ -33,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Firehose::ElasticsearchDestinationConfiguration object:
 
-  $service_obj->Method(Att1 => { BufferingHints => $value, ..., TypeName => $value  });
+  $service_obj->Method(Att1 => { BufferingHints => $value, ..., VpcConfiguration => $value  });
 
 =head3 Results returned from an API call
 
@@ -127,6 +128,8 @@ see Amazon S3 Backup for the Amazon ES Destination
 (https://docs.aws.amazon.com/firehose/latest/dev/basic-deliver.html#es-s3-backup).
 Default value is C<FailedDocumentsOnly>.
 
+You can't change this backup mode after you create the delivery stream.
+
 
 =head2 B<REQUIRED> S3Configuration => L<Paws::Firehose::S3DestinationConfiguration>
 
@@ -141,6 +144,11 @@ index that already has another type, Kinesis Data Firehose returns an
 error during run time.
 
 For Elasticsearch 7.x, don't specify a C<TypeName>.
+
+
+=head2 VpcConfiguration => L<Paws::Firehose::VpcConfiguration>
+
+The details of the VPC of the Amazon ES destination.
 
 
 

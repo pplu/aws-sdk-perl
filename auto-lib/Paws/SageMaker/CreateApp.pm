@@ -38,9 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DomainId        => 'MyDomainId',
       UserProfileName => 'MyUserProfileName',
       ResourceSpec    => {
-        EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-        InstanceType   => 'system'
+        InstanceType => 'system'
         , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+        SageMakerImageArn        => 'MyImageArn',           # max: 256; OPTIONAL
+        SageMakerImageVersionArn => 'MyImageVersionArn',    # max: 256; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -71,7 +72,8 @@ The name of the app.
 
 =head2 B<REQUIRED> AppType => Str
 
-The type of app.
+The type of app. Supported apps are C<JupyterServer> and
+C<KernelGateway>. C<TensorBoard> is not supported.
 
 Valid values are: C<"JupyterServer">, C<"KernelGateway">, C<"TensorBoard">
 
@@ -83,7 +85,8 @@ The domain ID.
 
 =head2 ResourceSpec => L<Paws::SageMaker::ResourceSpec>
 
-The instance type and quantity.
+The instance type and the Amazon Resource Name (ARN) of the SageMaker
+image created on the instance.
 
 
 

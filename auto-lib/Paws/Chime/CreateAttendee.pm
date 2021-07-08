@@ -3,6 +3,7 @@ package Paws::Chime::CreateAttendee;
   use Moose;
   has ExternalUserId => (is => 'ro', isa => 'Str', required => 1);
   has MeetingId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meetingId', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Chime::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateAttendeeResponse = $chime->CreateAttendee(
       ExternalUserId => 'MyExternalUserIdType',
       MeetingId      => 'MyGuidString',
+      Tags           => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -48,14 +56,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 =head2 B<REQUIRED> ExternalUserId => Str
 
-The Amazon Chime SDK external user ID. Links the attendee to an
-identity managed by a builder application.
+The Amazon Chime SDK external user ID. An idempotency token. Links the
+attendee to an identity managed by a builder application.
 
 
 
 =head2 B<REQUIRED> MeetingId => Str
 
 The Amazon Chime SDK meeting ID.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Chime::Tag>]
+
+The tag key-value pairs.
 
 
 

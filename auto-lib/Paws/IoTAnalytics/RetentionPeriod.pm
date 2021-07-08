@@ -41,8 +41,8 @@ How long, in days, message data is kept.
 
 =head2 NumberOfDays => Int
 
-The number of days that message data is kept. The "unlimited" parameter
-must be false.
+The number of days that message data is kept. The C<unlimited>
+parameter must be false.
 
 
 =head2 Unlimited => Bool

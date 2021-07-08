@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Dat
 =head1 DESCRIPTION
 
 Maps a column or attribute in the data source to an index field. You
-must first create the fields in the index using the UpdateIndex
+must first create the fields in the index using the C<UpdateIndex>
 operation.
 
 =head1 ATTRIBUTES

@@ -46,6 +46,9 @@ The name of the group.
 
 The AWS account ID.
 
+Constraints: Up to 10 000 account IDs can be specified in a single
+request.
+
 
 
 =head1 SEE ALSO

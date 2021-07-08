@@ -49,16 +49,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExecutionRole            => 'MyRoleArn',  # min: 20, max: 2048; OPTIONAL
         JupyterServerAppSettings => {
           DefaultResourceSpec => {
-            EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-            InstanceType   => 'system'
+            InstanceType => 'system'
             , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+            SageMakerImageArn        => 'MyImageArn',    # max: 256; OPTIONAL
+            SageMakerImageVersionArn =>
+              'MyImageVersionArn',                       # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         KernelGatewayAppSettings => {
+          CustomImages => [
+            {
+              AppImageConfigName => 'MyAppImageConfigName',    # max: 63
+              ImageName          => 'MyImageName',             # min: 1, max: 63
+              ImageVersionNumber => 1,                         # OPTIONAL
+            },
+            ...
+          ],    # max: 30; OPTIONAL
           DefaultResourceSpec => {
-            EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-            InstanceType   => 'system'
+            InstanceType => 'system'
             , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+            SageMakerImageArn        => 'MyImageArn',    # max: 256; OPTIONAL
+            SageMakerImageVersionArn =>
+              'MyImageVersionArn',                       # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
         SecurityGroups => [
@@ -72,9 +84,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         TensorBoardAppSettings => {
           DefaultResourceSpec => {
-            EnvironmentArn => 'MyEnvironmentArn',    # max: 256; OPTIONAL
-            InstanceType   => 'system'
+            InstanceType => 'system'
             , # values: system, ml.t3.micro, ml.t3.small, ml.t3.medium, ml.t3.large, ml.t3.xlarge, ml.t3.2xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.8xlarge, ml.m5.12xlarge, ml.m5.16xlarge, ml.m5.24xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.12xlarge, ml.c5.18xlarge, ml.c5.24xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge; OPTIONAL
+            SageMakerImageArn        => 'MyImageArn',    # max: 256; OPTIONAL
+            SageMakerImageVersionArn =>
+              'MyImageVersionArn',                       # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
@@ -108,10 +122,10 @@ not SSO, this field cannot be specified.
 
 =head2 SingleSignOnUserValue => Str
 
-The username of the associated AWS Single Sign-On User for this
-UserProfile. If the Domain's AuthMode is SSO, this field is required,
-and must match a valid username of a user in your directory. If the
-Domain's AuthMode is not SSO, this field cannot be specified.
+The username of the associated Amazon Web Services Single Sign-On User
+for this UserProfile. If the Domain's AuthMode is SSO, this field is
+required, and must match a valid username of a user in your directory.
+If the Domain's AuthMode is not SSO, this field cannot be specified.
 
 
 
@@ -120,11 +134,14 @@ Domain's AuthMode is not SSO, this field cannot be specified.
 Each tag consists of a key and an optional value. Tag keys must be
 unique per resource.
 
+Tags that you specify for the User Profile are also added to all Apps
+that the User Profile launches.
+
 
 
 =head2 B<REQUIRED> UserProfileName => Str
 
-A name for the UserProfile.
+A name for the UserProfile. This value is not case sensitive.
 
 
 

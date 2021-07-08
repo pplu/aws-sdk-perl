@@ -6,6 +6,7 @@ package Paws::ApiGatewayV2::UpdateApi;
   has CorsConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::Cors', traits => ['NameInRequest'], request_name => 'corsConfiguration');
   has CredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentialsArn');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DisableExecuteApiEndpoint => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableExecuteApiEndpoint');
   has DisableSchemaValidation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableSchemaValidation');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has RouteKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeKey');
@@ -49,24 +50,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExposeHeaders => [ 'My__string',                      ... ],  # OPTIONAL
         MaxAge        => 1,    # min: -1, max: 86400; OPTIONAL
       },    # OPTIONAL
-      CredentialsArn          => 'MyArn',                             # OPTIONAL
-      Description             => 'MyStringWithLengthBetween0And1024', # OPTIONAL
-      DisableSchemaValidation => 1,                                   # OPTIONAL
-      Name                    => 'MyStringWithLengthBetween1And128',  # OPTIONAL
-      RouteKey                => 'MySelectionKey',                    # OPTIONAL
+      CredentialsArn => 'MyArn',                                # OPTIONAL
+      Description    => 'MyStringWithLengthBetween0And1024',    # OPTIONAL
+      DisableExecuteApiEndpoint => 1,                           # OPTIONAL
+      DisableSchemaValidation   => 1,                           # OPTIONAL
+      Name                     => 'MyStringWithLengthBetween1And128', # OPTIONAL
+      RouteKey                 => 'MySelectionKey',                   # OPTIONAL
       RouteSelectionExpression => 'MySelectionExpression',            # OPTIONAL
       Target                   => 'MyUriWithLengthBetween1And2048',   # OPTIONAL
       Version                  => 'MyStringWithLengthBetween1And64',  # OPTIONAL
     );
 
     # Results:
-    my $ApiEndpoint = $UpdateApiResponse->ApiEndpoint;
-    my $ApiId       = $UpdateApiResponse->ApiId;
+    my $ApiEndpoint       = $UpdateApiResponse->ApiEndpoint;
+    my $ApiGatewayManaged = $UpdateApiResponse->ApiGatewayManaged;
+    my $ApiId             = $UpdateApiResponse->ApiId;
     my $ApiKeySelectionExpression =
       $UpdateApiResponse->ApiKeySelectionExpression;
-    my $CorsConfiguration        = $UpdateApiResponse->CorsConfiguration;
-    my $CreatedDate              = $UpdateApiResponse->CreatedDate;
-    my $Description              = $UpdateApiResponse->Description;
+    my $CorsConfiguration = $UpdateApiResponse->CorsConfiguration;
+    my $CreatedDate       = $UpdateApiResponse->CreatedDate;
+    my $Description       = $UpdateApiResponse->Description;
+    my $DisableExecuteApiEndpoint =
+      $UpdateApiResponse->DisableExecuteApiEndpoint;
     my $DisableSchemaValidation  = $UpdateApiResponse->DisableSchemaValidation;
     my $ImportInfo               = $UpdateApiResponse->ImportInfo;
     my $Name                     = $UpdateApiResponse->Name;
@@ -112,16 +117,26 @@ options are available. To specify an IAM Role for API Gateway to
 assume, use the role's Amazon Resource Name (ARN). To require that the
 caller's identity be passed through from the request, specify
 arn:aws:iam::*:user/*. To use resource-based permissions on supported
-AWS services, specify null. Currently, this property is not used for
-HTTP integrations. If provided, this value replaces the credentials
-associated with the quick create integration. Supported only for HTTP
-APIs.
+AWS services, don't specify this parameter. Currently, this property is
+not used for HTTP integrations. If provided, this value replaces the
+credentials associated with the quick create integration. Supported
+only for HTTP APIs.
 
 
 
 =head2 Description => Str
 
 The description of the API.
+
+
+
+=head2 DisableExecuteApiEndpoint => Bool
+
+Specifies whether clients can invoke your API by using the default
+execute-api endpoint. By default, clients can invoke your API with the
+default https://{api_id}.execute-api.{region}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.
 
 
 

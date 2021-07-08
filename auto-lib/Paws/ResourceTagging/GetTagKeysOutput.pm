@@ -17,9 +17,10 @@ Paws::ResourceTagging::GetTagKeysOutput
 
 =head2 PaginationToken => Str
 
-A string that indicates that the response contains more data than can
-be returned in a single response. To receive additional data, specify
-this string for the C<PaginationToken> value in a subsequent request.
+A string that indicates that there is more data available than this
+response contains. To receive the next part of the response, specify
+this response value as the C<PaginationToken> value in the request for
+the next page.
 
 
 =head2 TagKeys => ArrayRef[Str|Undef]

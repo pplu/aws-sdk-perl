@@ -2,6 +2,7 @@
 package Paws::IoTAnalytics::CreateDatasetContent;
   use Moose;
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'datasetName', required => 1);
+  has VersionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'versionId');
 
   use MooseX::ClassAttribute;
 
@@ -30,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $CreateDatasetContentResponse = $iotanalytics->CreateDatasetContent(
       DatasetName => 'MyDatasetName',
-
+      VersionId   => 'MyDatasetContentVersion',    # OPTIONAL
     );
 
     # Results:
@@ -46,7 +47,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> DatasetName => Str
 
-The name of the data set.
+The name of the dataset.
+
+
+
+=head2 VersionId => Str
+
+The version ID of the dataset content. To specify C<versionId> for a
+dataset content, the dataset must use a DeltaTimer
+(https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html)
+filter.
 
 
 

@@ -91,6 +91,12 @@ C<EQUALS> | C<BEGINS_WITH>.
 C<resource_id> - The ID of the resource. Logical operators are
 C<EQUALS> | C<NOT_EQUALS>.
 
+=item *
+
+C<tag:E<lt>keyE<gt>> - The key/value combination of a tag assigned to
+the resource. Logical operators are C<EQUALS> (single account) or
+C<EQUALS> | C<NOT_EQUALS> (cross account).
+
 =back
 
 

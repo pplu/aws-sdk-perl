@@ -56,7 +56,7 @@ an integer value.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'math' activity.
+The name of the math activity.
 
 
 =head2 Next => Str

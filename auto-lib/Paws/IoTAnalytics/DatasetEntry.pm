@@ -41,7 +41,7 @@ The reference to a data set entry.
 
 =head2 DataURI => Str
 
-The pre-signed URI of the data set item.
+The presigned URI of the data set item.
 
 
 =head2 EntryName => Str

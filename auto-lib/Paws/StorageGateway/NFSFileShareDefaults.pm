@@ -48,27 +48,28 @@ is only supported for file gateways.
 
 =head2 DirectoryMode => Str
 
-The Unix directory mode in the form "nnnn". For example, "0666"
+The Unix directory mode in the form "nnnn". For example, C<0666>
 represents the default access mode for all directories inside the file
-share. The default value is 0777.
+share. The default value is C<0777>.
 
 
 =head2 FileMode => Str
 
-The Unix file mode in the form "nnnn". For example, "0666" represents
-the default file mode inside the file share. The default value is 0666.
+The Unix file mode in the form "nnnn". For example, C<0666> represents
+the default file mode inside the file share. The default value is
+C<0666>.
 
 
 =head2 GroupId => Int
 
 The default group ID for the file share (unless the files have another
-group ID specified). The default value is nfsnobody.
+group ID specified). The default value is C<nfsnobody>.
 
 
 =head2 OwnerId => Int
 
 The default owner ID for files in the file share (unless the files have
-another owner ID specified). The default value is nfsnobody.
+another owner ID specified). The default value is C<nfsnobody>.
 
 
 

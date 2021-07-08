@@ -34,14 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::OIDC o
 =head1 DESCRIPTION
 
 An object representing the OpenID Connect (https://openid.net/connect/)
-identity provider information for the cluster.
+(OIDC) identity provider information for the cluster.
 
 =head1 ATTRIBUTES
 
 
 =head2 Issuer => Str
 
-The issuer URL for the OpenID Connect identity provider.
+The issuer URL for the OIDC identity provider.
 
 
 

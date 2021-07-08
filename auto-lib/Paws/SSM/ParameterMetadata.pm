@@ -2,6 +2,7 @@
 package Paws::SSM::ParameterMetadata;
   use Moose;
   has AllowedPattern => (is => 'ro', isa => 'Str');
+  has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
@@ -55,6 +56,12 @@ A parameter name can include only the following letters and symbols.
 a-zA-Z0-9_.-
 
 
+=head2 DataType => Str
+
+The data type of the parameter, such as C<text> or C<aws:ec2:image>.
+The default is C<text>.
+
+
 =head2 Description => Str
 
 Description of the parameter actions.
@@ -94,7 +101,7 @@ The parameter tier.
 =head2 Type => Str
 
 The type of parameter. Valid parameter types include the following:
-String, String list, Secure string.
+C<String>, C<StringList>, and C<SecureString>.
 
 
 =head2 Version => Int

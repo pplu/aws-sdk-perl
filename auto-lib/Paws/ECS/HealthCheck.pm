@@ -42,6 +42,59 @@ parameters that are specified in a container definition override any
 Docker health checks that exist in the container image (such as those
 specified in a parent image or from the image's Dockerfile).
 
+You can view the health status of both individual containers and a task
+with the DescribeTasks API operation or when viewing the task details
+in the console.
+
+The following describes the possible C<healthStatus> values for a
+container:
+
+=over
+
+=item *
+
+C<HEALTHY>-The container health check has passed successfully.
+
+=item *
+
+C<UNHEALTHY>-The container health check has failed.
+
+=item *
+
+C<UNKNOWN>-The container health check is being evaluated or there is no
+container health check defined.
+
+=back
+
+The following describes the possible C<healthStatus> values for a task.
+The container health check status of nonessential containers do not
+have an effect on the health status of a task.
+
+=over
+
+=item *
+
+C<HEALTHY>-All essential containers within the task have passed their
+health checks.
+
+=item *
+
+C<UNHEALTHY>-One or more essential containers have failed their health
+check.
+
+=item *
+
+C<UNKNOWN>-The essential containers within the task are still having
+their health checks evaluated or there are no container health checks
+defined.
+
+=back
+
+If a task is run manually, and not as part of a service, the task will
+continue its lifecycle regardless of its health status. For tasks that
+are part of a service, if the task reports as unhealthy then the task
+will be stopped and the service scheduler will replace it.
+
 The following are notes about container health check support:
 
 =over

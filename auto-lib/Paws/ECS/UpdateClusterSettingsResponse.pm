@@ -16,7 +16,7 @@ Paws::ECS::UpdateClusterSettingsResponse
 
 =head2 Cluster => L<Paws::ECS::Cluster>
 
-
+Details about the cluster
 
 
 =head2 _request_id => Str

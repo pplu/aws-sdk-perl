@@ -3,6 +3,7 @@ package Paws::Lambda::UpdateFunctionCode;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
+  has ImageUri => (is => 'ro', isa => 'Str');
   has Publish => (is => 'ro', isa => 'Bool');
   has RevisionId => (is => 'ro', isa => 'Str');
   has S3Bucket => (is => 'ro', isa => 'Str');
@@ -35,31 +36,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To update a Lambda function's code
-    # This operation updates a Lambda function's code
+# To update a Lambda function's code
+# The following example replaces the code of the unpublished ($LATEST) version
+# of a function named my-function with the contents of the specified zip file in
+# Amazon S3.
     my $FunctionConfiguration = $lambda->UpdateFunctionCode(
-      'FunctionName'    => 'myFunction',
-      'Publish'         => 1,
-      'S3Bucket'        => 'myBucket',
-      'S3Key'           => 'myKey',
-      'S3ObjectVersion' => 1,
-      'ZipFile'         => 'fileb://file-path/file.zip'
+      'FunctionName' => 'my-function',
+      'S3Bucket'     => 'my-bucket-1xpuxmplzrlbh',
+      'S3Key'        => 'function.zip'
     );
 
     # Results:
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Description  = $FunctionConfiguration->Description;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $Role         = $FunctionConfiguration->Role;
-    my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $Version      = $FunctionConfiguration->Version;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $CodeSha256    = $FunctionConfiguration->CodeSha256;
+    my $CodeSize      = $FunctionConfiguration->CodeSize;
+    my $Description   = $FunctionConfiguration->Description;
+    my $FunctionArn   = $FunctionConfiguration->FunctionArn;
+    my $FunctionName  = $FunctionConfiguration->FunctionName;
+    my $Handler       = $FunctionConfiguration->Handler;
+    my $LastModified  = $FunctionConfiguration->LastModified;
+    my $MemorySize    = $FunctionConfiguration->MemorySize;
+    my $RevisionId    = $FunctionConfiguration->RevisionId;
+    my $Role          = $FunctionConfiguration->Role;
+    my $Runtime       = $FunctionConfiguration->Runtime;
+    my $Timeout       = $FunctionConfiguration->Timeout;
+    my $TracingConfig = $FunctionConfiguration->TracingConfig;
+    my $Version       = $FunctionConfiguration->Version;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -104,6 +105,12 @@ the function name, it is limited to 64 characters in length.
 
 
 
+=head2 ImageUri => Str
+
+URI of a container image in the Amazon ECR registry.
+
+
+
 =head2 Publish => Bool
 
 Set to true to publish a new version of the function after updating the
@@ -121,8 +128,8 @@ changed since you last read it.
 
 =head2 S3Bucket => Str
 
-An Amazon S3 bucket in the same AWS Region as your function. The bucket
-can be in a different AWS account.
+An Amazon S3 bucket in the same Amazon Web Services Region as your
+function. The bucket can be in a different Amazon Web Services account.
 
 
 
@@ -141,8 +148,9 @@ use.
 
 =head2 ZipFile => Str
 
-The base64-encoded contents of the deployment package. AWS SDK and AWS
-CLI clients handle the encoding for you.
+The base64-encoded contents of the deployment package. Amazon Web
+Services SDK and Amazon Web Services CLI clients handle the encoding
+for you.
 
 
 

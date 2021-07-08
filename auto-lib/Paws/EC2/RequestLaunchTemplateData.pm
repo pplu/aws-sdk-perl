@@ -8,6 +8,7 @@ package Paws::EC2::RequestLaunchTemplateData;
   has EbsOptimized => (is => 'ro', isa => 'Bool');
   has ElasticGpuSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecification]', request_name => 'ElasticGpuSpecification', traits => ['NameInRequest']);
   has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::LaunchTemplateElasticInferenceAccelerator]', request_name => 'ElasticInferenceAccelerator', traits => ['NameInRequest']);
+  has EnclaveOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateEnclaveOptionsRequest');
   has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateHibernationOptionsRequest');
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest');
   has ImageId => (is => 'ro', isa => 'Str');
@@ -84,8 +85,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 CreditSpecification => L<Paws::EC2::CreditSpecificationRequest>
 
-The credit option for CPU usage of the instance. Valid for T2 or T3
-instances only.
+The credit option for CPU usage of the instance. Valid for T2, T3, or
+T3a instances only.
 
 
 =head2 DisableApiTermination => Bool
@@ -118,6 +119,17 @@ An elastic GPU to associate with the instance.
 The elastic inference accelerator for the instance.
 
 
+=head2 EnclaveOptions => L<Paws::EC2::LaunchTemplateEnclaveOptionsRequest>
+
+Indicates whether the instance is enabled for AWS Nitro Enclaves. For
+more information, see What is AWS Nitro Enclaves?
+(https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html)
+in the I<AWS Nitro Enclaves User Guide>.
+
+You can't enable AWS Nitro Enclaves and hibernation on the same
+instance.
+
+
 =head2 HibernationOptions => L<Paws::EC2::LaunchTemplateHibernationOptionsRequest>
 
 Indicates whether an instance is enabled for hibernation. This
@@ -131,7 +143,7 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 IamInstanceProfile => L<Paws::EC2::LaunchTemplateIamInstanceProfileSpecificationRequest>
 
-The IAM instance profile.
+The name or Amazon Resource Name (ARN) of an IAM instance profile.
 
 
 =head2 ImageId => Str

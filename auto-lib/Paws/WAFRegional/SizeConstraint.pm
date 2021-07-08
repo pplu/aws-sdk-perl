@@ -36,6 +36,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFRegional
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Specifies a constraint on the size of a part of the web request. AWS
 WAF uses the C<Size>, C<ComparisonOperator>, and C<FieldToMatch> to
 build an expression in the form of "C<Size> C<ComparisonOperator> size
@@ -98,7 +109,7 @@ long.
 Text transformations eliminate some of the unusual formatting that
 attackers use in web requests in an effort to bypass AWS WAF. If you
 specify a transformation, AWS WAF performs the transformation on
-C<FieldToMatch> before inspecting a request for a match.
+C<FieldToMatch> before inspecting it for a match.
 
 You can only specify a single type of TextTransformation.
 

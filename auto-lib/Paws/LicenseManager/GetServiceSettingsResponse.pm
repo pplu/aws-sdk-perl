@@ -20,20 +20,20 @@ Paws::LicenseManager::GetServiceSettingsResponse
 
 =head2 EnableCrossAccountsDiscovery => Bool
 
-Indicates whether cross-account discovery has been enabled.
+Indicates whether cross-account discovery is enabled.
 
 
 =head2 LicenseManagerResourceShareArn => Str
 
 Amazon Resource Name (ARN) of the AWS resource share. The License
-Manager master account will provide member accounts with access to this
+Manager management account provides member accounts with access to this
 share.
 
 
 =head2 OrganizationConfiguration => L<Paws::LicenseManager::OrganizationConfiguration>
 
-Indicates whether AWS Organizations has been integrated with License
-Manager for cross-account discovery.
+Indicates whether AWS Organizations is integrated with License Manager
+for cross-account discovery.
 
 
 =head2 S3BucketArn => Str

@@ -31,7 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $imagebuilder = Paws->service('ImageBuilder');
     my $PutComponentPolicyResponse = $imagebuilder->PutComponentPolicy(
       ComponentArn => 'MyComponentBuildVersionArn',
-      Policy       => 'MyNonEmptyString',
+      Policy       => 'MyResourcePolicyDocument',
 
     );
 

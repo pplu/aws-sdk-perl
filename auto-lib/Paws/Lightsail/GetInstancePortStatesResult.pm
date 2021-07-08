@@ -16,7 +16,8 @@ Paws::Lightsail::GetInstancePortStatesResult
 
 =head2 PortStates => ArrayRef[L<Paws::Lightsail::InstancePortState>]
 
-Information about the port states resulting from your request.
+An array of objects that describe the firewall port states for the
+specified instance.
 
 
 =head2 _request_id => Str

@@ -17,7 +17,7 @@ Paws::Amplify::CreateBackendEnvironmentResult
 
 =head2 B<REQUIRED> BackendEnvironment => L<Paws::Amplify::BackendEnvironment>
 
-Backend environment structure for an amplify App.
+Describes the backend environment for an Amplify app.
 
 
 =head2 _request_id => Str

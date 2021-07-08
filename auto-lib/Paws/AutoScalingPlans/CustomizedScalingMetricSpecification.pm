@@ -62,8 +62,10 @@ decrease when capacity increases.
 
 =back
 
-For more information about CloudWatch, see Amazon CloudWatch Concepts
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
+For information about terminology, available metrics, or how to publish
+new metrics, see Amazon CloudWatch Concepts
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html)
+in the I<Amazon CloudWatch User Guide>.
 
 =head1 ATTRIBUTES
 

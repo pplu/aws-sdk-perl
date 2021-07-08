@@ -2,6 +2,7 @@
 package Paws::MediaLive::ArchiveContainerSettings;
   use Moose;
   has M2tsSettings => (is => 'ro', isa => 'Paws::MediaLive::M2tsSettings', request_name => 'm2tsSettings', traits => ['NameInRequest']);
+  has RawSettings => (is => 'ro', isa => 'Paws::MediaLive::RawSettings', request_name => 'rawSettings', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::ArchiveContainerSettings object:
 
-  $service_obj->Method(Att1 => { M2tsSettings => $value, ..., M2tsSettings => $value  });
+  $service_obj->Method(Att1 => { M2tsSettings => $value, ..., RawSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,6 +40,11 @@ Archive Container Settings
 
 
 =head2 M2tsSettings => L<Paws::MediaLive::M2tsSettings>
+
+
+
+
+=head2 RawSettings => L<Paws::MediaLive::RawSettings>
 
 
 

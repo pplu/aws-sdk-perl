@@ -99,7 +99,9 @@ C<arn:aws:ecs:region:aws_account_id:container-instance/container_instance_ID>.
 
 =head2 Ec2InstanceId => Str
 
-The EC2 instance ID of the container instance.
+The ID of the container instance. For Amazon EC2 instances, this value
+is the Amazon EC2 instance ID. For external instances, this value is
+the AWS Systems Manager managed instance ID.
 
 
 =head2 PendingTasksCount => Int

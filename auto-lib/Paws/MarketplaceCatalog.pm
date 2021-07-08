@@ -75,9 +75,9 @@ Paws::MarketplaceCatalog - Perl Interface to AWS AWS Marketplace Catalog Service
 
 =head1 DESCRIPTION
 
-Catalog API actions allow you to create, describe, list, and delete
-changes to your published entities. An entity is a product or an offer
-on AWS Marketplace.
+Catalog API actions allow you to manage your entities through list,
+describe, and update capabilities. An entity can be a product or an
+offer on AWS Marketplace.
 
 You can automate your entity update process by integrating the AWS
 Marketplace Catalog API with your AWS Marketplace product build or
@@ -221,7 +221,23 @@ Each argument is described in detail in: L<Paws::MarketplaceCatalog::StartChange
 
 Returns: a L<Paws::MarketplaceCatalog::StartChangeSetResponse> instance
 
-This operation allows you to request changes in your entities.
+This operation allows you to request changes for your entities. Within
+a single ChangeSet, you cannot start the same change type against the
+same entity multiple times. Additionally, when a ChangeSet is running,
+all the entities targeted by the different changes are locked until the
+ChangeSet has completed (either succeeded, cancelled, or failed). If
+you try to start a ChangeSet containing a change against an entity that
+is already locked, you will receive a C<ResourceInUseException>.
+
+For example, you cannot start the ChangeSet described in the example
+(https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples)
+later in this topic, because it contains two changes to execute the
+same change type (C<AddRevisions>) against the same entity
+(C<entity-id@1)>.
+
+For more information about working with change sets, see Working with
+change sets
+(https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
 
 
 

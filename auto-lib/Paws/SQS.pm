@@ -154,6 +154,52 @@ package Paws::SQS;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllDeadLetterSourceQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDeadLetterSourceQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDeadLetterSourceQueues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->queueUrls }, @{ $next_result->queueUrls };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'queueUrls') foreach (@{ $result->queueUrls });
+        $result = $self->ListDeadLetterSourceQueues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'queueUrls') foreach (@{ $result->queueUrls });
+    }
+
+    return undef
+  }
+  sub ListAllQueues {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListQueues(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListQueues(@_, NextToken => $next_result->NextToken);
+        push @{ $result->QueueUrls }, @{ $next_result->QueueUrls };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'QueueUrls') foreach (@{ $result->QueueUrls });
+        $result = $self->ListQueues(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'QueueUrls') foreach (@{ $result->QueueUrls });
+    }
+
+    return undef
+  }
 
 
   sub operations { qw/AddPermission ChangeMessageVisibility ChangeMessageVisibilityBatch CreateQueue DeleteMessage DeleteMessageBatch DeleteQueue GetQueueAttributes GetQueueUrl ListDeadLetterSourceQueues ListQueues ListQueueTags PurgeQueue ReceiveMessage RemovePermission SendMessage SendMessageBatch SetQueueAttributes TagQueue UntagQueue / }
@@ -184,16 +230,21 @@ Paws::SQS - Perl Interface to AWS Amazon Simple Queue Service
 
 =head1 DESCRIPTION
 
-Welcome to the I<Amazon Simple Queue Service API Reference>.
+Welcome to the I<Amazon SQS API Reference>.
 
-Amazon Simple Queue Service (Amazon SQS) is a reliable, highly-scalable
-hosted queue for storing messages as they travel between applications
-or microservices. Amazon SQS moves data between distributed application
-components and helps you decouple these components.
+Amazon SQS is a reliable, highly-scalable hosted queue for storing
+messages as they travel between applications or microservices. Amazon
+SQS moves data between distributed application components and helps you
+decouple these components.
 
-You can use AWS SDKs (http://aws.amazon.com/tools/#sdk) to access
-Amazon SQS using your favorite programming language. The SDKs perform
-tasks such as the following automatically:
+For information on the permissions you need to use this API, see
+Identity and access management
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
+in the I<Amazon SQS Developer Guide.>
+
+You can use Amazon Web Services SDKs (http://aws.amazon.com/tools/#sdk)
+to access Amazon SQS using your favorite programming language. The SDKs
+perform tasks such as the following automatically:
 
 =over
 
@@ -211,7 +262,7 @@ Handle error responses
 
 =back
 
-B<Additional Information>
+B<Additional information>
 
 =over
 
@@ -221,7 +272,7 @@ Amazon SQS Product Page (http://aws.amazon.com/sqs/)
 
 =item *
 
-I<Amazon Simple Queue Service Developer Guide>
+I<Amazon SQS Developer Guide>
 
 =over
 
@@ -233,7 +284,7 @@ Making API Requests
 =item *
 
 Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
 
 =item *
 
@@ -244,7 +295,7 @@ Amazon SQS Dead-Letter Queues
 
 =item *
 
-Amazon SQS in the I<AWS CLI Command Reference>
+Amazon SQS in the I<Command Line Interface>
 (http://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
 
 =item *
@@ -296,7 +347,7 @@ queue. Only you, the owner of the queue, can grant or deny permissions
 to the queue. For more information about these permissions, see Allow
 Developers to Write Messages to a Shared Queue
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =over
 
@@ -306,7 +357,7 @@ C<AddPermission> generates a policy for you. You can use C<
 SetQueueAttributes > to upload your policy. For more information, see
 Using Custom Policies with the Amazon SQS Access Policy Language
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-creating-custom-policies.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =item *
 
@@ -324,15 +375,15 @@ Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
 For example, a parameter list with two elements looks like this:
 
-C<&Attribute.1=first>
+C<&AttributeName.1=first>
 
-C<&Attribute.2=second>
+C<&AttributeName.2=second>
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ChangeMessageVisibility
@@ -357,7 +408,7 @@ new value. The default visibility timeout for a message is 30 seconds.
 The minimum is 0 seconds. The maximum is 12 hours. For more
 information, see Visibility Timeout
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 For example, you have a message with a visibility timeout of 5 minutes.
 After 3 minutes, you call C<ChangeMessageVisibility> with a timeout of
@@ -452,9 +503,9 @@ Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
 For example, a parameter list with two elements looks like this:
 
-C<&Attribute.1=first>
+C<&AttributeName.1=first>
 
-C<&Attribute.2=second>
+C<&AttributeName.2=second>
 
 
 =head2 CreateQueue
@@ -475,7 +526,7 @@ Each argument is described in detail in: L<Paws::SQS::CreateQueue>
 Returns: a L<Paws::SQS::CreateQueueResult> instance
 
 Creates a new standard or FIFO queue. You can pass one or more
-attributes in the request. Keep the following caveats in mind:
+attributes in the request. Keep the following in mind:
 
 =over
 
@@ -490,7 +541,7 @@ create a new FIFO queue for your application or delete your existing
 standard queue and recreate it as a FIFO queue. For more information,
 see Moving From a Standard Queue to a FIFO Queue
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-moving)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =item *
 
@@ -508,6 +559,9 @@ To successfully create a new queue, you must provide a queue name that
 adheres to the limits related to queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/limits-queues.html)
 and is unique within the scope of your queues.
+
+After you create a queue, you must wait at least one second after the
+queue is created to be able to use the queue.
 
 To get the queue URL, use the C< GetQueueUrl > action. C< GetQueueUrl >
 requires only the C<QueueName> parameter. be aware of existing queue
@@ -532,15 +586,15 @@ Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
 For example, a parameter list with two elements looks like this:
 
-C<&Attribute.1=first>
+C<&AttributeName.1=first>
 
-C<&Attribute.2=second>
+C<&AttributeName.2=second>
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 DeleteMessage
@@ -609,9 +663,9 @@ Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
 For example, a parameter list with two elements looks like this:
 
-C<&Attribute.1=first>
+C<&AttributeName.1=first>
 
-C<&Attribute.2=second>
+C<&AttributeName.2=second>
 
 
 =head2 DeleteQueue
@@ -628,8 +682,7 @@ Each argument is described in detail in: L<Paws::SQS::DeleteQueue>
 Returns: nothing
 
 Deletes the queue specified by the C<QueueUrl>, regardless of the
-queue's contents. If the specified queue doesn't exist, Amazon SQS
-returns a successful response.
+queue's contents.
 
 Be careful with the C<DeleteQueue> action: When you delete a queue, any
 messages in the queue are no longer available.
@@ -643,10 +696,10 @@ When you delete a queue, you must wait at least 60 seconds before
 creating a queue with the same name.
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 GetQueueAttributes
@@ -669,14 +722,6 @@ Gets attributes for the specified queue.
 To determine whether a queue is FIFO
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
 you can check whether C<QueueName> ends with the C<.fifo> suffix.
-
-Some actions take lists of parameters. These lists are specified using
-the C<param.n> notation. Values of C<n> are integers starting from 1.
-For example, a parameter list with two elements looks like this:
-
-C<&Attribute.1=first>
-
-C<&Attribute.2=second>
 
 
 =head2 GetQueueUrl
@@ -703,7 +748,7 @@ the queue. For more information about shared queue access, see C<
 AddPermission > or see Allow Developers to Write Messages to a Shared
 Queue
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-writing-an-sqs-policy.html#write-messages-to-shared-queue)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListDeadLetterSourceQueues
@@ -711,6 +756,10 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 =over
 
 =item QueueUrl => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
 
 
 =back
@@ -722,15 +771,28 @@ Returns: a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance
 Returns a list of your queues that have the C<RedrivePolicy> queue
 attribute configured with a dead-letter queue.
 
+The C<ListDeadLetterSourceQueues> methods supports pagination. Set
+parameter C<MaxResults> in the request to specify the maximum number of
+results to be returned in the response. If you do not set
+C<MaxResults>, the response includes a maximum of 1,000 results. If you
+set C<MaxResults> and there are additional results to display, the
+response includes a value for C<NextToken>. Use C<NextToken> as a
+parameter in your next request to C<ListDeadLetterSourceQueues> to
+receive the next page of results.
+
 For more information about using dead-letter queues, see Using Amazon
 SQS Dead-Letter Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListQueues
 
 =over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
 
 =item [QueueNamePrefix => Str]
 
@@ -741,16 +803,24 @@ Each argument is described in detail in: L<Paws::SQS::ListQueues>
 
 Returns: a L<Paws::SQS::ListQueuesResult> instance
 
-Returns a list of your queues. The maximum number of queues that can be
-returned is 1,000. If you specify a value for the optional
-C<QueueNamePrefix> parameter, only queues with a name that begins with
-the specified value are returned.
+Returns a list of your queues in the current region. The response
+includes a maximum of 1,000 results. If you specify a value for the
+optional C<QueueNamePrefix> parameter, only queues with a name that
+begins with the specified value are returned.
+
+The C<listQueues> methods supports pagination. Set parameter
+C<MaxResults> in the request to specify the maximum number of results
+to be returned in the response. If you do not set C<MaxResults>, the
+response includes a maximum of 1,000 results. If you set C<MaxResults>
+and there are additional results to display, the response includes a
+value for C<NextToken>. Use C<NextToken> as a parameter in your next
+request to C<listQueues> to receive the next page of results.
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 ListQueueTags
@@ -769,13 +839,13 @@ Returns: a L<Paws::SQS::ListQueueTagsResult> instance
 List all cost allocation tags added to the specified Amazon SQS queue.
 For an overview, see Tagging Your Amazon SQS Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 PurgeQueue
@@ -835,7 +905,7 @@ Retrieves one or more messages (up to 10), from the specified queue.
 Using the C<WaitTimeSeconds> parameter enables long-poll support. For
 more information, see Amazon SQS Long Polling
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-long-polling.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 Short poll is the default behavior where a weighted random set of
 machines is sampled on a C<ReceiveMessage> call. Thus, only the
@@ -880,7 +950,7 @@ An MD5 digest of the message attributes.
 The receipt handle is the identifier you must provide when deleting the
 message. For more information, see Queue and Message Identifiers
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-message-identifiers.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 You can provide the C<VisibilityTimeout> parameter in your request. The
 parameter is applied to the messages that Amazon SQS returns in the
@@ -888,7 +958,7 @@ response. If you don't include the parameter, the overall visibility
 timeout for the queue is used for the returned messages. For more
 information, see Visibility Timeout
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 A message that isn't deleted or a message whose visibility isn't
 extended before the visibility timeout expires counts as a failed
@@ -927,10 +997,10 @@ Only the owner of a queue can remove permissions from it.
 =item *
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =item *
 
@@ -1025,9 +1095,9 @@ Some actions take lists of parameters. These lists are specified using
 the C<param.n> notation. Values of C<n> are integers starting from 1.
 For example, a parameter list with two elements looks like this:
 
-C<&Attribute.1=first>
+C<&AttributeName.1=first>
 
-C<&Attribute.2=second>
+C<&AttributeName.2=second>
 
 
 =head2 SetQueueAttributes
@@ -1062,10 +1132,10 @@ can handle new attributes gracefully.
 =item *
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 =item *
 
@@ -1095,7 +1165,7 @@ Returns: nothing
 Add cost allocation tags to the specified Amazon SQS queue. For an
 overview, see Tagging Your Amazon SQS Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 When you use queue tags, keep the following guidelines in mind:
 
@@ -1121,15 +1191,15 @@ the existing tag.
 
 =back
 
-For a full list of tag restrictions, see Limits Related to Queues
+For a full list of tag restrictions, see Quotas related to queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-limits.html#limits-queues)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 UntagQueue
@@ -1150,13 +1220,13 @@ Returns: nothing
 Remove cost allocation tags from the specified Amazon SQS queue. For an
 overview, see Tagging Your Amazon SQS Queues
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 Cross-account permissions don't apply to this action. For more
-information, see Grant Cross-Account Permissions to a Role and a User
-Name
+information, see Grant cross-account permissions to a role and a user
+name
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-customer-managed-policy-examples.html#grant-cross-account-permissions-to-role-and-user-name)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 
@@ -1164,6 +1234,30 @@ in the I<Amazon Simple Queue Service Developer Guide>.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllDeadLetterSourceQueues(sub { },QueueUrl => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDeadLetterSourceQueues(QueueUrl => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - queueUrls, passing the object as the first parameter, and the string 'queueUrls' as the second parameter 
+
+If not, it will return a a L<Paws::SQS::ListDeadLetterSourceQueuesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllQueues(sub { },[MaxResults => Int, NextToken => Str, QueueNamePrefix => Str])
+
+=head2 ListAllQueues([MaxResults => Int, NextToken => Str, QueueNamePrefix => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - QueueUrls, passing the object as the first parameter, and the string 'QueueUrls' as the second parameter 
+
+If not, it will return a a L<Paws::SQS::ListQueuesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

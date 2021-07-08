@@ -88,10 +88,9 @@ group, interleaved in a single response. If the value is false, all the
 matched log events in the first log stream are searched first, then
 those in the next log stream, and so on. The default is false.
 
-B<IMPORTANT:> Starting on June 17, 2019, this parameter will be ignored
-and the value will be assumed to be true. The response from this
-operation will always interleave events from multiple log streams
-within a log group.
+B<Important:> Starting on June 17, 2019, this parameter is ignored and
+the value is assumed to be true. The response from this operation
+always interleaves events from multiple log streams within a log group.
 
 
 

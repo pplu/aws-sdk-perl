@@ -4,7 +4,8 @@ package Paws::KinesisVideoArchivedMedia::ListFragments;
   has FragmentSelector => (is => 'ro', isa => 'Paws::KinesisVideoArchivedMedia::FragmentSelector');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  has StreamARN => (is => 'ro', isa => 'Str');
+  has StreamName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -32,7 +33,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $kinesisvideo = Paws->service('KinesisVideoArchivedMedia');
     my $ListFragmentsOutput = $kinesisvideo->ListFragments(
-      StreamName       => 'MyStreamName',
       FragmentSelector => {
         FragmentSelectorType =>
           'PRODUCER_TIMESTAMP',   # values: PRODUCER_TIMESTAMP, SERVER_TIMESTAMP
@@ -43,8 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
 
       },    # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
+      MaxResults => 1,                  # OPTIONAL
+      NextToken  => 'MyNextToken',      # OPTIONAL
+      StreamARN  => 'MyResourceARN',    # OPTIONAL
+      StreamName => 'MyStreamName',     # OPTIONAL
     );
 
     # Results:
@@ -82,9 +84,18 @@ ListFragmentsOutput$NextToken from a previously truncated response.
 
 
 
-=head2 B<REQUIRED> StreamName => Str
+=head2 StreamARN => Str
 
-The name of the stream from which to retrieve a fragment list.
+The Amazon Resource Name (ARN) of the stream from which to retrieve a
+fragment list. Specify either this parameter or the C<StreamName>
+parameter.
+
+
+
+=head2 StreamName => Str
+
+The name of the stream from which to retrieve a fragment list. Specify
+either this parameter or the C<StreamARN> parameter.
 
 
 

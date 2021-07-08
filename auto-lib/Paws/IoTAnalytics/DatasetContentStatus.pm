@@ -47,8 +47,8 @@ The reason the data set contents are in this state.
 
 =head2 State => Str
 
-The state of the data set contents. Can be one of "READY", "CREATING",
-"SUCCEEDED" or "FAILED".
+The state of the data set contents. Can be one of READY, CREATING,
+SUCCEEDED, or FAILED.
 
 
 

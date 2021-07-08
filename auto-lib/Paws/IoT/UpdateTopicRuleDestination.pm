@@ -85,7 +85,7 @@ endpoint.
 =back
 
 
-Valid values are: C<"ENABLED">, C<"IN_PROGRESS">, C<"DISABLED">, C<"ERROR">
+Valid values are: C<"ENABLED">, C<"IN_PROGRESS">, C<"DISABLED">, C<"ERROR">, C<"DELETING">
 
 
 =head1 SEE ALSO

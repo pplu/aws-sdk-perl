@@ -52,7 +52,7 @@ they're extracted.
 =head2 CodeSizeZipped => Int
 
 The maximum size of a deployment package when it's uploaded directly to
-AWS Lambda. Use Amazon S3 for larger files.
+Lambda. Use Amazon S3 for larger files.
 
 
 =head2 ConcurrentExecutions => Int

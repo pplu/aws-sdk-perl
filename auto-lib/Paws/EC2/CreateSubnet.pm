@@ -7,6 +7,7 @@ package Paws::EC2::CreateSubnet;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Ipv6CidrBlock => (is => 'ro', isa => 'Str');
   has OutpostArn => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has VpcId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -66,6 +67,9 @@ that support Local Zones, see Available Regions
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
+To create a subnet in an Outpost, set this value to the Availability
+Zone for the Outpost and specify the Outpost ARN.
+
 
 
 =head2 AvailabilityZoneId => Str
@@ -77,7 +81,9 @@ The AZ ID or the Local Zone ID of the subnet.
 =head2 B<REQUIRED> CidrBlock => Str
 
 The IPv4 network range for the subnet, in CIDR notation. For example,
-C<10.0.0.0/24>.
+C<10.0.0.0/24>. We modify the specified CIDR block to its canonical
+form; for example, if you specify C<100.68.0.18/18>, we modify it to
+C<100.68.0.0/18>.
 
 
 
@@ -99,7 +105,15 @@ size must use a /64 prefix length.
 
 =head2 OutpostArn => Str
 
-The Amazon Resource Name (ARN) of the Outpost.
+The Amazon Resource Name (ARN) of the Outpost. If you specify an
+Outpost ARN, you must also specify the Availability Zone of the Outpost
+subnet.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to assign to the subnet.
 
 
 

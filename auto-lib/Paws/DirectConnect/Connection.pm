@@ -7,13 +7,17 @@ package Paws::DirectConnect::Connection;
   has ConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionId' );
   has ConnectionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionName' );
   has ConnectionState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionState' );
+  has EncryptionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionMode' );
   has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
   has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has LoaIssueTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'loaIssueTime' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has MacSecCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'macSecCapable' );
+  has MacSecKeys => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::MacSecKey]', traits => ['NameInRequest'], request_name => 'macSecKeys' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
   has PartnerName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'partnerName' );
+  has PortEncryptionStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'portEncryptionStatus' );
   has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
   has Region => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'region' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
@@ -110,6 +114,14 @@ C<unknown>: The state of the connection is not available.
 
 
 Valid values are: C<"ordering">, C<"requested">, C<"pending">, C<"available">, C<"down">, C<"deleting">, C<"deleted">, C<"rejected">, C<"unknown">
+=head2 EncryptionMode => Str
+
+The MAC Security (MACsec) connection encryption mode.
+
+The valid values are C<no_encrypt>, C<should_encrypt>, and
+C<must_encrypt>.
+
+
 =head2 HasLogicalRedundancy => Str
 
 Indicates whether the connection supports a secondary BGP peer in the
@@ -136,6 +148,16 @@ The time of the most recent call to DescribeLoa for this connection.
 The location of the connection.
 
 
+=head2 MacSecCapable => Bool
+
+Indicates whether the connection supports MAC Security (MACsec).
+
+
+=head2 MacSecKeys => ArrayRef[L<Paws::DirectConnect::MacSecKey>]
+
+The MAC Security (MACsec) security keys associated with the connection.
+
+
 =head2 OwnerAccount => Str
 
 The ID of the AWS account that owns the connection.
@@ -145,6 +167,14 @@ The ID of the AWS account that owns the connection.
 
 The name of the AWS Direct Connect service provider associated with the
 connection.
+
+
+=head2 PortEncryptionStatus => Str
+
+The MAC Security (MACsec) port link status of the connection.
+
+The valid values are C<Encryption Up>, which means that there is an
+active Connection Key Name, or C<Encryption Down>.
 
 
 =head2 ProviderName => Str

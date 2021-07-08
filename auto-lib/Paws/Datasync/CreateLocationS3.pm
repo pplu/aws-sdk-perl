@@ -1,6 +1,7 @@
 
 package Paws::Datasync::CreateLocationS3;
   use Moose;
+  has AgentArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has S3BucketArn => (is => 'ro', isa => 'Str', required => 1);
   has S3Config => (is => 'ro', isa => 'Paws::Datasync::S3Config', required => 1);
   has S3StorageClass => (is => 'ro', isa => 'Str');
@@ -37,8 +38,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BucketAccessRoleArn => 'MyIamRoleArn',    # max: 2048
 
       },
-      S3StorageClass => 'STANDARD',               # OPTIONAL
-      Subdirectory   => 'MyS3Subdirectory',       # OPTIONAL
+      AgentArns => [
+        'MyAgentArn', ...                         # max: 128
+      ],    # OPTIONAL
+      S3StorageClass => 'STANDARD',            # OPTIONAL
+      Subdirectory   => 'MyS3Subdirectory',    # OPTIONAL
       Tags           => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 256
@@ -59,9 +63,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head1 ATTRIBUTES
 
 
+=head2 AgentArns => ArrayRef[Str|Undef]
+
+If you are using DataSync on an AWS Outpost, specify the Amazon
+Resource Names (ARNs) of the DataSync agents deployed on your Outpost.
+For more information about launching a DataSync agent on an AWS
+Outpost, see Deploy your DataSync agent on AWS Outposts
+(https://docs.aws.amazon.com/datasync/latest/userguide/deploy-agents.html#outposts-agent).
+
+
+
 =head2 B<REQUIRED> S3BucketArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon S3 bucket.
+The ARN of the Amazon S3 bucket. If the bucket is on an AWS Outpost,
+this must be an access point ARN.
 
 
 
@@ -74,14 +89,18 @@ The Amazon Resource Name (ARN) of the Amazon S3 bucket.
 =head2 S3StorageClass => Str
 
 The Amazon S3 storage class that you want to store your files in when
-this location is used as a task destination. For more information about
-S3 storage classes, see Amazon S3 Storage Classes
-(https://aws.amazon.com/s3/storage-classes/) in the I<Amazon Simple
-Storage Service Developer Guide>. Some storage classes have behaviors
-that can affect your S3 storage cost. For detailed information, see
-using-storage-classes.
+this location is used as a task destination. For buckets in AWS
+Regions, the storage class defaults to Standard. For buckets on AWS
+Outposts, the storage class defaults to AWS S3 Outposts.
 
-Valid values are: C<"STANDARD">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+For more information about S3 storage classes, see Amazon S3 Storage
+Classes (http://aws.amazon.com/s3/storage-classes/). Some storage
+classes have behaviors that can affect your S3 storage cost. For
+detailed information, see Considerations when working with S3 storage
+classes in DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes).
+
+Valid values are: C<"STANDARD">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 Subdirectory => Str
 

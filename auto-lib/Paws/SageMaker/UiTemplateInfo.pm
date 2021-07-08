@@ -41,7 +41,7 @@ Container for user interface template information.
 
 =head2 ContentSha256 => Str
 
-The SHA 256 hash that you used to create the request signature.
+The SHA-256 digest of the contents of the template.
 
 
 =head2 Url => Str

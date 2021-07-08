@@ -2,9 +2,12 @@
 package Paws::IoT::TopicRuleDestinationSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has HttpUrlSummary => (is => 'ro', isa => 'Paws::IoT::HttpUrlDestinationSummary', request_name => 'httpUrlSummary', traits => ['NameInRequest']);
+  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has StatusReason => (is => 'ro', isa => 'Str', request_name => 'statusReason', traits => ['NameInRequest']);
+  has VpcDestinationSummary => (is => 'ro', isa => 'Paws::IoT::VpcDestinationSummary', request_name => 'vpcDestinationSummary', traits => ['NameInRequest']);
 
 1;
 
@@ -25,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoT::TopicRuleDestinationSummary object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., StatusReason => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VpcDestinationSummary => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,9 +49,19 @@ Information about the topic rule destination.
 The topic rule destination ARN.
 
 
+=head2 CreatedAt => Str
+
+The date and time when the topic rule destination was created.
+
+
 =head2 HttpUrlSummary => L<Paws::IoT::HttpUrlDestinationSummary>
 
 Information about the HTTP URL.
+
+
+=head2 LastUpdatedAt => Str
+
+The date and time when the topic rule destination was last updated.
 
 
 =head2 Status => Str
@@ -93,6 +106,11 @@ endpoint.
 =head2 StatusReason => Str
 
 The reason the topic rule destination is in the current status.
+
+
+=head2 VpcDestinationSummary => L<Paws::IoT::VpcDestinationSummary>
+
+Information about the virtual private cloud (VPC) connection.
 
 
 

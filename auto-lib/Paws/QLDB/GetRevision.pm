@@ -60,7 +60,7 @@ The block location of the document revision to be verified. An address
 is an Amazon Ion structure that has two fields: C<strandId> and
 C<sequenceNo>.
 
-For example: C<{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}>
+For example: C<{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:14}>.
 
 
 
@@ -70,13 +70,14 @@ The latest block location covered by the digest for which to request a
 proof. An address is an Amazon Ion structure that has two fields:
 C<strandId> and C<sequenceNo>.
 
-For example: C<{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}>
+For example: C<{strandId:"BlFTjlSXze9BIh1KOszcE3",sequenceNo:49}>.
 
 
 
 =head2 B<REQUIRED> DocumentId => Str
 
-The unique ID of the document to be verified.
+The UUID (represented in Base62-encoded text) of the document to be
+verified.
 
 
 

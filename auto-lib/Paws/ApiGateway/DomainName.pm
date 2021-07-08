@@ -10,6 +10,7 @@ package Paws::ApiGateway::DomainName;
   has DomainNameStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainNameStatus');
   has DomainNameStatusMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainNameStatusMessage');
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
+  has MutualTlsAuthentication => (is => 'ro', isa => 'Paws::ApiGateway::MutualTlsAuthentication', traits => ['NameInRequest'], request_name => 'mutualTlsAuthentication');
   has RegionalCertificateArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateArn');
   has RegionalCertificateName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalCertificateName');
   has RegionalDomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionalDomainName');
@@ -93,6 +94,14 @@ of the DomainName migration.
 
 The endpoint configuration of this DomainName showing the endpoint
 types of the domain name.
+
+
+=head2 MutualTlsAuthentication => L<Paws::ApiGateway::MutualTlsAuthentication>
+
+The mutual TLS authentication configuration for a custom domain name.
+If specified, API Gateway performs two-way authentication between the
+client and the server. Clients must present a trusted certificate to
+access your API.
 
 
 =head2 RegionalCertificateArn => Str

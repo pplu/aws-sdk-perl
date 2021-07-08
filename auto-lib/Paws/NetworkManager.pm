@@ -24,6 +24,16 @@ package Paws::NetworkManager;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::AssociateLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateTransitGatewayConnectPeer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::AssociateTransitGatewayConnectPeer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::CreateConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDevice {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::CreateDevice', @_);
@@ -42,6 +52,11 @@ package Paws::NetworkManager;
   sub CreateSite {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::CreateSite', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::DeleteConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDevice {
@@ -84,6 +99,16 @@ package Paws::NetworkManager;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::DisassociateLink', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateTransitGatewayConnectPeer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::DisassociateTransitGatewayConnectPeer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetConnections {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::GetConnections', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCustomerGatewayAssociations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::GetCustomerGatewayAssociations', @_);
@@ -109,6 +134,11 @@ package Paws::NetworkManager;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::GetSites', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetTransitGatewayConnectPeerAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::GetTransitGatewayConnectPeerAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTransitGatewayRegistrations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::GetTransitGatewayRegistrations', @_);
@@ -132,6 +162,11 @@ package Paws::NetworkManager;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::NetworkManager::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::NetworkManager::UpdateConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDevice {
@@ -174,6 +209,29 @@ package Paws::NetworkManager;
         $result = $self->DescribeGlobalNetworks(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'GlobalNetworks') foreach (@{ $result->GlobalNetworks });
+    }
+
+    return undef
+  }
+  sub GetAllConnections {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetConnections(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetConnections(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Connections }, @{ $next_result->Connections };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Connections') foreach (@{ $result->Connections });
+        $result = $self->GetConnections(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Connections') foreach (@{ $result->Connections });
     }
 
     return undef
@@ -293,6 +351,29 @@ package Paws::NetworkManager;
 
     return undef
   }
+  sub GetAllTransitGatewayConnectPeerAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTransitGatewayConnectPeerAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTransitGatewayConnectPeerAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayConnectPeerAssociations }, @{ $next_result->TransitGatewayConnectPeerAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayConnectPeerAssociations') foreach (@{ $result->TransitGatewayConnectPeerAssociations });
+        $result = $self->GetTransitGatewayConnectPeerAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayConnectPeerAssociations') foreach (@{ $result->TransitGatewayConnectPeerAssociations });
+    }
+
+    return undef
+  }
   sub GetAllTransitGatewayRegistrations {
     my $self = shift;
 
@@ -318,7 +399,7 @@ package Paws::NetworkManager;
   }
 
 
-  sub operations { qw/AssociateCustomerGateway AssociateLink CreateDevice CreateGlobalNetwork CreateLink CreateSite DeleteDevice DeleteGlobalNetwork DeleteLink DeleteSite DeregisterTransitGateway DescribeGlobalNetworks DisassociateCustomerGateway DisassociateLink GetCustomerGatewayAssociations GetDevices GetLinkAssociations GetLinks GetSites GetTransitGatewayRegistrations ListTagsForResource RegisterTransitGateway TagResource UntagResource UpdateDevice UpdateGlobalNetwork UpdateLink UpdateSite / }
+  sub operations { qw/AssociateCustomerGateway AssociateLink AssociateTransitGatewayConnectPeer CreateConnection CreateDevice CreateGlobalNetwork CreateLink CreateSite DeleteConnection DeleteDevice DeleteGlobalNetwork DeleteLink DeleteSite DeregisterTransitGateway DescribeGlobalNetworks DisassociateCustomerGateway DisassociateLink DisassociateTransitGatewayConnectPeer GetConnections GetCustomerGatewayAssociations GetDevices GetLinkAssociations GetLinks GetSites GetTransitGatewayConnectPeerAssociations GetTransitGatewayRegistrations ListTagsForResource RegisterTransitGateway TagResource UntagResource UpdateConnection UpdateDevice UpdateGlobalNetwork UpdateLink UpdateSite / }
 
 1;
 
@@ -349,6 +430,10 @@ Paws::NetworkManager - Perl Interface to AWS AWS Network Manager
 Transit Gateway Network Manager (Network Manager) enables you to create
 a global network, in which you can monitor your AWS and on-premises
 networks that are built around transit gateways.
+
+The Network Manager APIs are supported in the US West (Oregon) Region
+only. You must specify the C<us-west-2> Region in all requests made to
+Network Manager.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/networkmanager-2019-07-05>
 
@@ -413,11 +498,74 @@ links and a link can be associated to multiple devices. The device and
 link must be in the same global network and the same site.
 
 
+=head2 AssociateTransitGatewayConnectPeer
+
+=over
+
+=item DeviceId => Str
+
+=item GlobalNetworkId => Str
+
+=item TransitGatewayConnectPeerArn => Str
+
+=item [LinkId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::AssociateTransitGatewayConnectPeer>
+
+Returns: a L<Paws::NetworkManager::AssociateTransitGatewayConnectPeerResponse> instance
+
+Associates a transit gateway Connect peer with a device, and
+optionally, with a link. If you specify a link, it must be associated
+with the specified device.
+
+You can only associate transit gateway Connect peers that have been
+created on a transit gateway that's registered in your global network.
+
+You cannot associate a transit gateway Connect peer with more than one
+device and link.
+
+
+=head2 CreateConnection
+
+=over
+
+=item ConnectedDeviceId => Str
+
+=item DeviceId => Str
+
+=item GlobalNetworkId => Str
+
+=item [ConnectedLinkId => Str]
+
+=item [Description => Str]
+
+=item [LinkId => Str]
+
+=item [Tags => ArrayRef[L<Paws::NetworkManager::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::CreateConnection>
+
+Returns: a L<Paws::NetworkManager::CreateConnectionResponse> instance
+
+Creates a connection between two devices. The devices can be a physical
+or virtual appliance that connects to a third-party appliance in a VPC,
+or a physical appliance that connects to another physical appliance in
+an on-premises network.
+
+
 =head2 CreateDevice
 
 =over
 
 =item GlobalNetworkId => Str
+
+=item [AWSLocation => L<Paws::NetworkManager::AWSLocation>]
 
 =item [Description => Str]
 
@@ -513,6 +661,24 @@ Each argument is described in detail in: L<Paws::NetworkManager::CreateSite>
 Returns: a L<Paws::NetworkManager::CreateSiteResponse> instance
 
 Creates a new site in a global network.
+
+
+=head2 DeleteConnection
+
+=over
+
+=item ConnectionId => Str
+
+=item GlobalNetworkId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::DeleteConnection>
+
+Returns: a L<Paws::NetworkManager::DeleteConnectionResponse> instance
+
+Deletes the specified connection in your global network.
 
 
 =head2 DeleteDevice
@@ -672,6 +838,49 @@ Disassociates an existing device from a link. You must first
 disassociate any customer gateways that are associated with the link.
 
 
+=head2 DisassociateTransitGatewayConnectPeer
+
+=over
+
+=item GlobalNetworkId => Str
+
+=item TransitGatewayConnectPeerArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::DisassociateTransitGatewayConnectPeer>
+
+Returns: a L<Paws::NetworkManager::DisassociateTransitGatewayConnectPeerResponse> instance
+
+Disassociates a transit gateway Connect peer from a device and link.
+
+
+=head2 GetConnections
+
+=over
+
+=item GlobalNetworkId => Str
+
+=item [ConnectionIds => ArrayRef[Str|Undef]]
+
+=item [DeviceId => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::GetConnections>
+
+Returns: a L<Paws::NetworkManager::GetConnectionsResponse> instance
+
+Gets information about one or more of your connections in a global
+network.
+
+
 =head2 GetCustomerGatewayAssociations
 
 =over
@@ -798,6 +1007,29 @@ Returns: a L<Paws::NetworkManager::GetSitesResponse> instance
 Gets information about one or more of your sites in a global network.
 
 
+=head2 GetTransitGatewayConnectPeerAssociations
+
+=over
+
+=item GlobalNetworkId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayConnectPeerArns => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::GetTransitGatewayConnectPeerAssociations>
+
+Returns: a L<Paws::NetworkManager::GetTransitGatewayConnectPeerAssociationsResponse> instance
+
+Gets information about one or more of your transit gateway Connect peer
+associations in a global network.
+
+
 =head2 GetTransitGatewayRegistrations
 
 =over
@@ -894,6 +1126,31 @@ Returns: a L<Paws::NetworkManager::UntagResourceResponse> instance
 Removes tags from a specified resource.
 
 
+=head2 UpdateConnection
+
+=over
+
+=item ConnectionId => Str
+
+=item GlobalNetworkId => Str
+
+=item [ConnectedLinkId => Str]
+
+=item [Description => Str]
+
+=item [LinkId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::NetworkManager::UpdateConnection>
+
+Returns: a L<Paws::NetworkManager::UpdateConnectionResponse> instance
+
+Updates the information for an existing connection. To remove
+information for any of the parameters, specify an empty string.
+
+
 =head2 UpdateDevice
 
 =over
@@ -901,6 +1158,8 @@ Removes tags from a specified resource.
 =item DeviceId => Str
 
 =item GlobalNetworkId => Str
+
+=item [AWSLocation => L<Paws::NetworkManager::AWSLocation>]
 
 =item [Description => Str]
 
@@ -1014,6 +1273,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::NetworkManager::DescribeGlobalNetworksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllConnections(sub { },GlobalNetworkId => Str, [ConnectionIds => ArrayRef[Str|Undef], DeviceId => Str, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllConnections(GlobalNetworkId => Str, [ConnectionIds => ArrayRef[Str|Undef], DeviceId => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Connections, passing the object as the first parameter, and the string 'Connections' as the second parameter 
+
+If not, it will return a a L<Paws::NetworkManager::GetConnectionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllCustomerGatewayAssociations(sub { },GlobalNetworkId => Str, [CustomerGatewayArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 =head2 GetAllCustomerGatewayAssociations(GlobalNetworkId => Str, [CustomerGatewayArns => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -1072,6 +1343,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Sites, passing the object as the first parameter, and the string 'Sites' as the second parameter 
 
 If not, it will return a a L<Paws::NetworkManager::GetSitesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTransitGatewayConnectPeerAssociations(sub { },GlobalNetworkId => Str, [MaxResults => Int, NextToken => Str, TransitGatewayConnectPeerArns => ArrayRef[Str|Undef]])
+
+=head2 GetAllTransitGatewayConnectPeerAssociations(GlobalNetworkId => Str, [MaxResults => Int, NextToken => Str, TransitGatewayConnectPeerArns => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayConnectPeerAssociations, passing the object as the first parameter, and the string 'TransitGatewayConnectPeerAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::NetworkManager::GetTransitGatewayConnectPeerAssociationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllTransitGatewayRegistrations(sub { },GlobalNetworkId => Str, [MaxResults => Int, NextToken => Str, TransitGatewayArns => ArrayRef[Str|Undef]])

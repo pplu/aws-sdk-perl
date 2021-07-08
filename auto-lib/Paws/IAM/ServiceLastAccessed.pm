@@ -3,9 +3,11 @@ package Paws::IAM::ServiceLastAccessed;
   use Moose;
   has LastAuthenticated => (is => 'ro', isa => 'Str');
   has LastAuthenticatedEntity => (is => 'ro', isa => 'Str');
+  has LastAuthenticatedRegion => (is => 'ro', isa => 'Str');
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has TotalAuthenticatedEntities => (is => 'ro', isa => 'Int');
+  has TrackedActionsLastAccessed => (is => 'ro', isa => 'ArrayRef[Paws::IAM::TrackedActionLastAccessed]');
 
 1;
 
@@ -26,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::ServiceLastAccessed object:
 
-  $service_obj->Method(Att1 => { LastAuthenticated => $value, ..., TotalAuthenticatedEntities => $value  });
+  $service_obj->Method(Att1 => { LastAuthenticated => $value, ..., TrackedActionsLastAccessed => $value  });
 
 =head3 Results returned from an API call
 
@@ -67,6 +69,17 @@ within the reporting period
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
 
 
+=head2 LastAuthenticatedRegion => Str
+
+The Region from which the authenticated entity (user or role) last
+attempted to access the service. AWS does not report unauthenticated
+requests.
+
+This field is null if no IAM entities attempted to access the service
+within the reporting period
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+
+
 =head2 B<REQUIRED> ServiceName => Str
 
 The name of the service in which access was attempted.
@@ -76,13 +89,13 @@ The name of the service in which access was attempted.
 
 The namespace of the service in which access was attempted.
 
-To learn the service namespace of a service, go to Actions, Resources,
-and Condition Keys for AWS Services
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_actions-resources-contextkeys.html)
-in the I<IAM User Guide>. Choose the name of the service to view
-details for that service. In the first paragraph, find the service
-prefix. For example, C<(service prefix: a4b)>. For more information
-about service namespaces, see AWS Service Namespaces
+To learn the service namespace of a service, see Actions, resources,
+and condition keys for AWS services
+(https://docs.aws.amazon.com/service-authorization/latest/reference/reference_policies_actions-resources-contextkeys.html)
+in the I<Service Authorization Reference>. Choose the name of the
+service to view details for that service. In the first paragraph, find
+the service prefix. For example, C<(service prefix: a4b)>. For more
+information about service namespaces, see AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
 in the I<AWS General Reference>.
 
@@ -95,6 +108,19 @@ IAM roles) that have attempted to access the service.
 This field is null if no principals attempted to access the service
 within the reporting period
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+
+
+=head2 TrackedActionsLastAccessed => ArrayRef[L<Paws::IAM::TrackedActionLastAccessed>]
+
+An object that contains details about the most recent attempt to access
+a tracked action within the service.
+
+This field is null if there no tracked actions or if the principal did
+not use the tracked actions within the reporting period
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_access-advisor.html#service-last-accessed-reporting-period).
+This field is also null if the report was generated at the service
+level and not the action level. For more information, see the
+C<Granularity> field in GenerateServiceLastAccessedDetails.
 
 
 

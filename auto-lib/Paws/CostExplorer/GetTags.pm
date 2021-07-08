@@ -1,8 +1,11 @@
 
 package Paws::CostExplorer::GetTags;
   use Moose;
+  has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
+  has MaxResults => (is => 'ro', isa => 'Int');
   has NextPageToken => (is => 'ro', isa => 'Str');
   has SearchString => (is => 'ro', isa => 'Str');
+  has SortBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::SortDefinition]');
   has TagKey => (is => 'ro', isa => 'Str');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
@@ -32,13 +35,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetTagsResponse = $ce->GetTags(
       TimePeriod => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',    # max: 40
+        Start => 'MyYearMonthDay',    # max: 40
 
       },
+      Filter => {
+        And            => [ <Expression>, ... ],    # OPTIONAL
+        CostCategories => {
+          Key          => 'MyCostCategoryName',     # min: 1, max: 50; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
+        },    # OPTIONAL
+        Dimensions => {
+          Key => 'AZ'
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
+        },    # OPTIONAL
+        Not  => <Expression>,
+        Or   => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
+          Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
+      MaxResults    => 1,                    # OPTIONAL
       NextPageToken => 'MyNextPageToken',    # OPTIONAL
       SearchString  => 'MySearchString',     # OPTIONAL
-      TagKey        => 'MyTagKey',           # OPTIONAL
+      SortBy        => [
+        {
+          Key       => 'MySortDefinitionKey',    # max: 1024
+          SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      TagKey => 'MyTagKey',    # OPTIONAL
     );
 
     # Results:
@@ -55,6 +102,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/
 =head1 ATTRIBUTES
 
 
+=head2 Filter => L<Paws::CostExplorer::Expression>
+
+
+
+
+
+=head2 MaxResults => Int
+
+This field is only used when SortBy is provided in the request. The
+maximum number of objects that to be returned for this request. If
+MaxResults is not specified with SortBy, the request will return 1000
+results as the default value for this parameter.
+
+For C<GetTags>, MaxResults has an upper limit of 1000.
+
+
+
 =head2 NextPageToken => Str
 
 The token to retrieve the next set of results. AWS provides the token
@@ -66,6 +130,52 @@ maximum page size.
 =head2 SearchString => Str
 
 The value that you want to search for.
+
+
+
+=head2 SortBy => ArrayRef[L<Paws::CostExplorer::SortDefinition>]
+
+The value by which you want to sort the data.
+
+The key represents cost and usage metrics. The following values are
+supported:
+
+=over
+
+=item *
+
+C<BlendedCost>
+
+=item *
+
+C<UnblendedCost>
+
+=item *
+
+C<AmortizedCost>
+
+=item *
+
+C<NetAmortizedCost>
+
+=item *
+
+C<NetUnblendedCost>
+
+=item *
+
+C<UsageQuantity>
+
+=item *
+
+C<NormalizedUsageAmount>
+
+=back
+
+Supported values for C<SortOrder> are C<ASCENDING> or C<DESCENDING>.
+
+When using C<SortBy>, C<NextPageToken> and C<SearchString> are not
+supported.
 
 
 

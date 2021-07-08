@@ -60,13 +60,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pin
 
 Specifies whether to save the updates as a new version of the message
 template. Valid values are: true, save the updates as a new version;
-and, false, save the updates to the latest existing version of the
-template.
+and, false, save the updates to (overwrite) the latest existing version
+of the template.
 
 If you don't specify a value for this parameter, Amazon Pinpoint saves
-the updates to the latest existing version of the template. If you
-specify a value of true for this parameter, don't specify a value for
-the version parameter. Otherwise, an error will occur.
+the updates to (overwrites) the latest existing version of the
+template. If you specify a value of true for this parameter, don't
+specify a value for the version parameter. Otherwise, an error will
+occur.
 
 
 
@@ -87,9 +88,9 @@ and other information for all the versions of a template, use the
 
 Template Versions resource.
 
-If specified, this value must match the identifier of an existing
+If specified, this value must match the identifier for an existing
 template version. If specified for an update operation, this value must
-match the identifier of the latest existing version of the template.
+match the identifier for the latest existing version of the template.
 This restriction helps ensure that race conditions don't occur.
 
 If you don't specify a value for this parameter, Amazon Pinpoint does
@@ -104,9 +105,9 @@ the template.
 
 =item *
 
-For an update operation, saves the updates to the latest existing
-version of the template, if the create-new-version parameter isn't used
-or is set to false.
+For an update operation, saves the updates to (overwrites) the latest
+existing version of the template, if the create-new-version parameter
+isn't used or is set to false.
 
 =item *
 

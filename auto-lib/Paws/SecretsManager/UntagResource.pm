@@ -28,13 +28,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+  # To remove tags from a secret
+  # The following example shows how to remove two tags from a secret's metadata.
+  # For each, both the tag and the associated value are removed. There is no
+  # output from this API. To see the result, use the DescribeSecret operation.
     $secretsmanager->UntagResource(
-      SecretId => 'MySecretIdType',
-      TagKeys  => [
-        'MyTagKeyType', ...    # min: 1, max: 128
-      ],
-
+      'SecretId' => 'MyTestDatabaseSecret',
+      'TagKeys'  => [ 'FirstTag', 'SecondTag' ]
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/UntagResource>
@@ -59,8 +61,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

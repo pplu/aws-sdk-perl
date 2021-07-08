@@ -5,6 +5,7 @@ package Paws::IoT::OTAUpdateFile;
   has CodeSigning => (is => 'ro', isa => 'Paws::IoT::CodeSigning', request_name => 'codeSigning', traits => ['NameInRequest']);
   has FileLocation => (is => 'ro', isa => 'Paws::IoT::FileLocation', request_name => 'fileLocation', traits => ['NameInRequest']);
   has FileName => (is => 'ro', isa => 'Str', request_name => 'fileName', traits => ['NameInRequest']);
+  has FileType => (is => 'ro', isa => 'Int', request_name => 'fileType', traits => ['NameInRequest']);
   has FileVersion => (is => 'ro', isa => 'Str', request_name => 'fileVersion', traits => ['NameInRequest']);
 
 1;
@@ -60,6 +61,12 @@ The location of the updated firmware.
 =head2 FileName => Str
 
 The name of the file.
+
+
+=head2 FileType => Int
+
+An integer value you can include in the job document to allow your
+devices to identify the type of file received from the cloud.
 
 
 =head2 FileVersion => Str

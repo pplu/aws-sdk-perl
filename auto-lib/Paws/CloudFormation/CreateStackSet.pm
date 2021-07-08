@@ -3,6 +3,7 @@ package Paws::CloudFormation::CreateStackSet;
   use Moose;
   has AdministrationRoleARN => (is => 'ro', isa => 'Str');
   has AutoDeployment => (is => 'ro', isa => 'Paws::CloudFormation::AutoDeployment');
+  has CallAs => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
@@ -45,6 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Enabled                      => 1,         # OPTIONAL
         RetainStacksOnAccountRemoval => 1,         # OPTIONAL
       },    # OPTIONAL
+      CallAs       => 'SELF',    # OPTIONAL
       Capabilities => [
         'CAPABILITY_IAM',
         ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
@@ -105,10 +107,42 @@ Describes whether StackSets automatically deploys to AWS Organizations
 accounts that are added to the target organization or organizational
 unit (OU). Specify only if C<PermissionModel> is C<SERVICE_MANAGED>.
 
-If you specify C<AutoDeployment>, do not specify C<DeploymentTargets>
-or C<Regions>.
 
 
+=head2 CallAs => Str
+
+[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, C<SELF> is specified. Use C<SELF> for stack sets with
+self-managed permissions.
+
+=over
+
+=item *
+
+To create a stack set with service-managed permissions while signed in
+to the management account, specify C<SELF>.
+
+=item *
+
+To create a stack set with service-managed permissions while signed in
+to a delegated administrator account, specify C<DELEGATED_ADMIN>.
+
+Your AWS account must be registered as a delegated admin in the
+management account. For more information, see Register a delegated
+administrator
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+in the I<AWS CloudFormation User Guide>.
+
+=back
+
+Stack sets with service-managed permissions are created in the
+management account, including stack sets that are created by delegated
+administrators.
+
+Valid values are: C<"SELF">, C<"DELEGATED_ADMIN">
 
 =head2 Capabilities => ArrayRef[Str|Undef]
 
@@ -200,22 +234,23 @@ CloudFormation Templates
 
 C<CAPABILITY_AUTO_EXPAND>
 
-Some templates contain macros. If your stack template contains one or
-more macros, and you choose to create a stack directly from the
+Some templates reference macros. If your stack set template references
+one or more macros, you must create the stack set directly from the
 processed template, without first reviewing the resulting changes in a
-change set, you must acknowledge this capability. For more information,
-see Using AWS CloudFormation Macros to Perform Custom Processing on
-Templates
+change set. To create the stack set directly, you must acknowledge this
+capability. For more information, see Using AWS CloudFormation Macros
+to Perform Custom Processing on Templates
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
 
-Stack sets do not currently support macros in stack templates. (This
-includes the AWS::Include
+Stack sets with service-managed permissions do not currently support
+the use of macros in templates. (This includes the AWS::Include
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
 and AWS::Serverless
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 transforms, which are macros hosted by AWS CloudFormation.) Even if you
-specify this capability, if you include a macro in your template the
-stack set operation will fail.
+specify this capability for a stack set with service-managed
+permissions, if you reference a macro in your template the stack set
+operation will fail.
 
 =back
 
@@ -291,7 +326,7 @@ Valid values are: C<"SERVICE_MANAGED">, C<"SELF_MANAGED">
 =head2 B<REQUIRED> StackSetName => Str
 
 The name to associate with the stack set. The name must be unique in
-the region where you create your stack set.
+the Region where you create your stack set.
 
 A stack name can contain only alphanumeric characters (case-sensitive)
 and hyphens. It must start with an alphabetic character and can't be
@@ -330,7 +365,8 @@ TemplateURL parameter, but not both.
 
 The location of the file that contains the template body. The URL must
 point to a template (maximum size: 460,800 bytes) that's located in an
-Amazon S3 bucket. For more information, see Template Anatomy
+Amazon S3 bucket or a Systems Manager document. For more information,
+see Template Anatomy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 

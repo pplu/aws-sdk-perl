@@ -29,10 +29,10 @@ The name of the MSK cluster.
 
 =head2 State => Str
 
-The state of the cluster. The possible states are CREATING, ACTIVE, and
-FAILED.
+The state of the cluster. The possible states are ACTIVE, CREATING,
+DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and UPDATING.
 
-Valid values are: C<"ACTIVE">, C<"CREATING">, C<"UPDATING">, C<"DELETING">, C<"FAILED">
+Valid values are: C<"ACTIVE">, C<"CREATING">, C<"DELETING">, C<"FAILED">, C<"HEALING">, C<"MAINTENANCE">, C<"REBOOTING_BROKER">, C<"UPDATING">
 =head2 _request_id => Str
 
 

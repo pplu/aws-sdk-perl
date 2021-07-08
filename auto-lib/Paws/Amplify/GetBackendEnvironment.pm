@@ -48,13 +48,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique id for an Amplify app.
 
 
 
 =head2 B<REQUIRED> EnvironmentName => Str
 
-Name for the backend environment.
+The name for the backend environment.
 
 
 

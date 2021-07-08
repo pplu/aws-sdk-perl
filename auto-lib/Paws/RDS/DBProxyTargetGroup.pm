@@ -40,9 +40,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBProx
 
 =head1 DESCRIPTION
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Represents a set of RDS DB instances, Aurora DB clusters, or both that
 a proxy can connect to. Currently, each target group is associated with
 exactly one RDS DB instance or Aurora DB cluster.
@@ -92,7 +89,8 @@ The Amazon Resource Name (ARN) representing the target group.
 =head2 TargetGroupName => Str
 
 The identifier for the target group. This name must be unique for all
-target groups owned by your AWS account in the specified AWS Region.
+target groups owned by your Amazon Web Services account in the
+specified Amazon Web Services Region.
 
 
 =head2 UpdatedDate => Str

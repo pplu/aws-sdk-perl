@@ -37,9 +37,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes an SQL-based Amazon Kinesis Data Analytics application's
-output configuration, in which you identify an in-application stream
-and a destination where you want the in-application stream data to be
+Describes a SQL-based Kinesis Data Analytics application's output
+configuration, in which you identify an in-application stream and a
+destination where you want the in-application stream data to be
 written. The destination can be a Kinesis data stream or a Kinesis Data
 Firehose delivery stream.
 
@@ -53,13 +53,12 @@ Describes the data format when records are written to the destination.
 
 =head2 KinesisFirehoseOutput => L<Paws::KinesisAnalyticsV2::KinesisFirehoseOutput>
 
-Identifies an Amazon Kinesis Data Firehose delivery stream as the
-destination.
+Identifies a Kinesis Data Firehose delivery stream as the destination.
 
 
 =head2 KinesisStreamsOutput => L<Paws::KinesisAnalyticsV2::KinesisStreamsOutput>
 
-Identifies an Amazon Kinesis data stream as the destination.
+Identifies a Kinesis data stream as the destination.
 
 
 =head2 LambdaOutput => L<Paws::KinesisAnalyticsV2::LambdaOutput>

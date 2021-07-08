@@ -89,15 +89,15 @@ The ID displayed for a case in the AWS Support Center user interface.
 
 =head2 IncludeCommunications => Bool
 
-Specifies whether communications should be included in the
-DescribeCases results. The default is I<true>.
+Specifies whether to include communications in the C<DescribeCases>
+response. By default, communications are included.
 
 
 
 =head2 IncludeResolvedCases => Bool
 
-Specifies whether resolved support cases should be included in the
-DescribeCases results. The default is I<false>.
+Specifies whether to include resolved support cases in the
+C<DescribeCases> response. By default, resolved cases aren't included.
 
 
 

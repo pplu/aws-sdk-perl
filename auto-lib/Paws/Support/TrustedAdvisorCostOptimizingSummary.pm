@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Support::Tr
 =head1 DESCRIPTION
 
 The estimated cost savings that might be realized if the recommended
-actions are taken.
+operations are taken.
 
 =head1 ATTRIBUTES
 
@@ -43,13 +43,13 @@ actions are taken.
 =head2 B<REQUIRED> EstimatedMonthlySavings => Num
 
 The estimated monthly savings that might be realized if the recommended
-actions are taken.
+operations are taken.
 
 
 =head2 B<REQUIRED> EstimatedPercentMonthlySavings => Num
 
 The estimated percentage of savings that might be realized if the
-recommended actions are taken.
+recommended operations are taken.
 
 
 

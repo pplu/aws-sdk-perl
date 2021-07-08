@@ -31,13 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-# To execute an Auto Scaling policy
-# This example executes the specified Auto Scaling policy for the specified Auto
-# Scaling group.
+    # To execute a scaling policy
+    # This example executes the specified policy.
     $autoscaling->ExecutePolicy(
       'AutoScalingGroupName' => 'my-auto-scaling-group',
-      'HonorCooldown'        => 1,
-      'PolicyName'           => 'ScaleIn'
+      'BreachThreshold'      => 50,
+      'MetricValue'          => 59,
+      'PolicyName'           => 'my-step-scale-out-policy'
     );
 
 
@@ -57,8 +57,8 @@ The name of the Auto Scaling group.
 
 The breach threshold for the alarm.
 
-Conditional: This parameter is required if the policy type is
-C<StepScaling> and not supported otherwise.
+Required if the policy type is C<StepScaling> and not supported
+otherwise.
 
 
 
@@ -67,10 +67,8 @@ C<StepScaling> and not supported otherwise.
 Indicates whether Amazon EC2 Auto Scaling waits for the cooldown period
 to complete before executing the policy.
 
-This parameter is not supported if the policy type is C<StepScaling> or
-C<TargetTrackingScaling>.
-
-For more information, see Scaling Cooldowns
+Valid only if the policy type is C<SimpleScaling>. For more
+information, see Scaling cooldowns for Amazon EC2 Auto Scaling
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -87,8 +85,8 @@ bound of 10, you can set the metric value to 59.
 If you specify a metric value that doesn't correspond to a step
 adjustment for the policy, the call returns an error.
 
-Conditional: This parameter is required if the policy type is
-C<StepScaling> and not supported otherwise.
+Required if the policy type is C<StepScaling> and not supported
+otherwise.
 
 
 

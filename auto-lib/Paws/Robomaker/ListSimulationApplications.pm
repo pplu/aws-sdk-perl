@@ -83,11 +83,13 @@ up to 100 results and a C<nextToken> value if applicable.
 
 =head2 NextToken => Str
 
-The C<nextToken> value returned from a previous paginated
-C<ListSimulationApplications> request where C<maxResults> was used and
-the results exceeded the value of that parameter. Pagination continues
-from the end of the previous results that returned the C<nextToken>
-value.
+If the previous paginated request did not return all of the remaining
+results, the response object's C<nextToken> parameter value is set to a
+token. To retrieve the next set of results, call
+C<ListSimulationApplications> again and assign that token to the
+request object's C<nextToken> parameter. If there are no remaining
+results, the previous response object's NextToken parameter is set to
+null.
 
 
 

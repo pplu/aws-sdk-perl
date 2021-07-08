@@ -8,6 +8,7 @@ package Paws::LexModels::CreateBotVersionResponse;
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DetectSentiment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'detectSentiment');
+  has EnableModelImprovements => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableModelImprovements');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
@@ -32,7 +33,7 @@ Paws::LexModels::CreateBotVersionResponse
 
 =head2 AbortStatement => L<Paws::LexModels::Statement>
 
-The message that Amazon Lex uses to abort a conversation. For more
+The message that Amazon Lex uses to cancel a conversation. For more
 information, see PutBot.
 
 
@@ -92,6 +93,12 @@ Indicates whether utterances entered by the user should be sent to
 Amazon Comprehend for sentiment analysis.
 
 
+=head2 EnableModelImprovements => Bool
+
+Indicates whether the bot uses accuracy improvements. C<true> indicates
+that the bot is using the improvements, otherwise, C<false>.
+
+
 =head2 FailureReason => Str
 
 If C<status> is C<FAILED>, Amazon Lex provides the reason that it
@@ -118,7 +125,7 @@ The date when the C<$LATEST> version of this bot was updated.
 
 Specifies the target locale for the bot.
 
-Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
+Valid values are: C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-US">, C<"es-419">, C<"es-ES">, C<"es-US">, C<"fr-FR">, C<"fr-CA">, C<"it-IT">, C<"ja-JP">
 =head2 Name => Str
 
 The name of the bot.

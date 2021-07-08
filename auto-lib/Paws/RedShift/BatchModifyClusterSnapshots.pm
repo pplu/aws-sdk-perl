@@ -31,9 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $BatchModifyClusterSnapshotsOutputMessage =
       $redshift->BatchModifyClusterSnapshots(
-      SnapshotIdentifierList        => [ 'MyString', ... ],
-      Force                         => 1,                     # OPTIONAL
-      ManualSnapshotRetentionPeriod => 1,                     # OPTIONAL
+      SnapshotIdentifierList => [
+        'MyString', ...    # max: 2147483647
+      ],
+      Force                         => 1,    # OPTIONAL
+      ManualSnapshotRetentionPeriod => 1,    # OPTIONAL
       );
 
     # Results:

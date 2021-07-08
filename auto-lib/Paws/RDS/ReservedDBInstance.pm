@@ -85,8 +85,8 @@ The fixed price charged for this reserved DB instance.
 The unique identifier for the lease associated with the reserved DB
 instance.
 
-AWS Support might request the lease ID for an issue related to a
-reserved DB instance.
+Amazon Web Services Support might request the lease ID for an issue
+related to a reserved DB instance.
 
 
 =head2 MultiAZ => Bool

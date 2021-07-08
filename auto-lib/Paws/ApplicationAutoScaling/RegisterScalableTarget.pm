@@ -72,15 +72,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 MaxCapacity => Int
 
-The maximum value to scale to in response to a scale-out event.
-C<MaxCapacity> is required to register a scalable target.
+The maximum value that you plan to scale out to. When a scaling policy
+is in effect, Application Auto Scaling can scale out (expand) as needed
+to the maximum capacity limit in response to changing demand. This
+property is required when registering a new scalable target.
+
+Although you can specify a large maximum capacity, note that service
+quotas may impose lower limits. Each service has its own default quotas
+for the maximum capacity of the resource. If you want to specify a
+higher limit, you can request an increase. For more information,
+consult the documentation for that service. For information about the
+default quotas for each service, see Service Endpoints and Quotas
+(https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html)
+in the I<Amazon Web Services General Reference>.
 
 
 
 =head2 MinCapacity => Int
 
-The minimum value to scale to in response to a scale-in event.
-C<MinCapacity> is required to register a scalable target.
+The minimum value that you plan to scale in to. When a scaling policy
+is in effect, Application Auto Scaling can scale in (contract) as
+needed to the minimum capacity limit in response to changing demand.
+This property is required when registering a new scalable target.
+
+For certain resources, the minimum value allowed is 0. This includes
+Lambda provisioned concurrency, Spot Fleet, ECS services, Aurora DB
+clusters, EMR clusters, and custom resources. For all other resources,
+the minimum value allowed is 1.
 
 
 
@@ -153,10 +171,28 @@ C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE
 
 =item *
 
+Amazon Comprehend entity recognizer endpoint - The resource type and
+unique identifier are specified using the endpoint ARN. Example:
+C<arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE>.
+
+=item *
+
 Lambda provisioned concurrency - The resource type is C<function> and
 the unique identifier is the function name with a function version or
 alias name suffix that is not C<$LATEST>. Example:
 C<function:my-function:prod> or C<function:my-function:1>.
+
+=item *
+
+Amazon Keyspaces table - The resource type is C<table> and the unique
+identifier is the table name. Example:
+C<keyspace/mykeyspace/table/mytable>.
+
+=item *
+
+Amazon MSK cluster - The resource type and unique identifier are
+specified using the cluster ARN. Example:
+C<arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5>.
 
 =back
 
@@ -165,14 +201,15 @@ C<function:my-function:prod> or C<function:my-function:1>.
 
 =head2 RoleARN => Str
 
-Application Auto Scaling creates a service-linked role that grants it
-permissions to modify the scalable target on your behalf. For more
-information, see Service-Linked Roles for Application Auto Scaling
-(https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-service-linked-roles.html).
-
-For Amazon EMR, this parameter is required, and it must specify the ARN
+This parameter is required for services that do not support
+service-linked roles (such as Amazon EMR), and it must specify the ARN
 of an IAM role that allows Application Auto Scaling to modify the
 scalable target on your behalf.
+
+If the service supports service-linked roles, Application Auto Scaling
+uses a service-linked role, which it creates if it does not yet exist.
+For more information, see Application Auto Scaling IAM roles
+(https://docs.aws.amazon.com/autoscaling/application/userguide/security_iam_service-with-iam.html#security_iam_service-with-iam-roles).
 
 
 
@@ -246,23 +283,42 @@ classification endpoint.
 
 =item *
 
+C<comprehend:entity-recognizer-endpoint:DesiredInferenceUnits> - The
+number of inference units for an Amazon Comprehend entity recognizer
+endpoint.
+
+=item *
+
 C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
 for a Lambda function.
+
+=item *
+
+C<cassandra:table:ReadCapacityUnits> - The provisioned read capacity
+for an Amazon Keyspaces table.
+
+=item *
+
+C<cassandra:table:WriteCapacityUnits> - The provisioned write capacity
+for an Amazon Keyspaces table.
+
+=item *
+
+C<kafka:broker-storage:VolumeSize> - The provisioned volume size (in
+GiB) for brokers in an Amazon MSK cluster.
 
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">, C<"cassandra:table:ReadCapacityUnits">, C<"cassandra:table:WriteCapacityUnits">, C<"kafka:broker-storage:VolumeSize">
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The namespace of the AWS service that provides the resource or
-C<custom-resource> for a resource provided by your own application or
-service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-in the I<Amazon Web Services General Reference>.
+The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+C<custom-resource> instead.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">, C<"cassandra">, C<"kafka">
 
 =head2 SuspendedState => L<Paws::ApplicationAutoScaling::SuspendedState>
 
@@ -295,7 +351,7 @@ scaling activities that involve scheduled actions are suspended.
 
 =back
 
-For more information, see Suspending and Resuming Scaling
+For more information, see Suspending and resuming scaling
 (https://docs.aws.amazon.com/autoscaling/application/userguide/application-auto-scaling-suspend-resume-scaling.html)
 in the I<Application Auto Scaling User Guide>.
 

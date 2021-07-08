@@ -79,7 +79,7 @@ backup plan.
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.
+to be retried without the risk of running the operation twice.
 
 
 

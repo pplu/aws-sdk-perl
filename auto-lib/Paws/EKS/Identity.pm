@@ -33,16 +33,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::Identi
 
 =head1 DESCRIPTION
 
-An object representing an identity provider for authentication
-credentials.
+An object representing an identity provider.
 
 =head1 ATTRIBUTES
 
 
 =head2 Oidc => L<Paws::EKS::OIDC>
 
-The OpenID Connect (https://openid.net/connect/) identity provider
-information for the cluster.
+An object representing the OpenID Connect (https://openid.net/connect/)
+identity provider information.
 
 
 

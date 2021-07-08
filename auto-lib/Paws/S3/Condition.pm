@@ -63,6 +63,11 @@ is specified and sibling C<HttpErrorCodeReturnedEquals> is not
 specified. If both conditions are specified, both must be true for the
 redirect to be applied.
 
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
+
 
 
 =head1 SEE ALSO

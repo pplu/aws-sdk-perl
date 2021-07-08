@@ -48,7 +48,7 @@ The Auto Scaling groups associated with the node group.
 =head2 RemoteAccessSecurityGroup => Str
 
 The remote access security group associated with the node group. This
-security group controls SSH access to the worker nodes.
+security group controls SSH access to the nodes.
 
 
 

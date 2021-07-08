@@ -11,6 +11,7 @@ package Paws::EC2::CreateFlowLogs;
   has MaxAggregationInterval => (is => 'ro', isa => 'Int');
   has ResourceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ResourceId' , required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TrafficType => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -49,6 +50,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       LogFormat                => 'MyString',                       # OPTIONAL
       LogGroupName             => 'MyString',                       # OPTIONAL
       MaxAggregationInterval   => 1,                                # OPTIONAL
+      TagSpecifications        => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -144,8 +159,6 @@ Specify the fields using the C<${field-id}> format, separated by
 spaces. For the AWS CLI, use single quotation marks (' ') to surround
 the parameter value.
 
-Only applicable to flow logs that are published to an Amazon S3 bucket.
-
 
 
 =head2 LogGroupName => Str
@@ -189,6 +202,12 @@ you specified a VPC ID for the C<ResourceId> property, specify C<VPC>
 for this property.
 
 Valid values are: C<"VPC">, C<"Subnet">, C<"NetworkInterface">
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the flow logs.
+
+
 
 =head2 B<REQUIRED> TrafficType => Str
 

@@ -17,7 +17,7 @@ Paws::FSX::DescribeBackupsResponse
 
 =head2 Backups => ArrayRef[L<Paws::FSX::Backup>]
 
-Any array of backups.
+An array of backups.
 
 
 =head2 NextToken => Str

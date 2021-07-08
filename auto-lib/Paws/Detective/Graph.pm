@@ -34,8 +34,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Detective::
 
 =head1 DESCRIPTION
 
-Amazon Detective is currently in preview.
-
 A behavior graph in Detective.
 
 =head1 ATTRIBUTES

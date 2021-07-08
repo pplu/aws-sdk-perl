@@ -49,14 +49,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppIds => ArrayRef[Str|Undef]
 
-
+The unique application IDs.
 
 
 
 =head2 MaxResults => Int
 
 The maximum number of results to return in a single call. The default
-value is 50. To retrieve the remaining results, make another call with
+value is 100. To retrieve the remaining results, make another call with
 the returned C<NextToken> value.
 
 

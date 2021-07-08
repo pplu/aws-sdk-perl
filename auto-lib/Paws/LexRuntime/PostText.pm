@@ -1,6 +1,7 @@
 
 package Paws::LexRuntime::PostText;
   use Moose;
+  has ActiveContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::ActiveContext]', traits => ['NameInRequest'], request_name => 'activeContexts');
   has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
   has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
   has InputText => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputText', required => 1);
@@ -34,25 +35,44 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $runtime.lex = Paws->service('LexRuntime');
     my $PostTextResponse = $runtime . lex->PostText(
-      BotAlias          => 'MyBotAlias',
-      BotName           => 'MyBotName',
-      InputText         => 'MyText',
-      UserId            => 'MyUserId',
+      BotAlias       => 'MyBotAlias',
+      BotName        => 'MyBotName',
+      InputText      => 'MyText',
+      UserId         => 'MyUserId',
+      ActiveContexts => [
+        {
+          Name       => 'MyActiveContextName',    # min: 1, max: 100
+          Parameters => {
+            'MyParameterName' =>
+              'MyText',    # key: min: 1, max: 100, value: min: 1, max: 1024
+          },    # max: 10
+          TimeToLive => {
+            TimeToLiveInSeconds => 1,    # min: 5, max: 86400; OPTIONAL
+            TurnsToLive         => 1,    # min: 1, max: 20; OPTIONAL
+          },
+
+        },
+        ...
+      ],    # OPTIONAL
       RequestAttributes => { 'MyString' => 'MyString', },    # OPTIONAL
       SessionAttributes => { 'MyString' => 'MyString', },    # OPTIONAL
     );
 
     # Results:
-    my $DialogState       = $PostTextResponse->DialogState;
-    my $IntentName        = $PostTextResponse->IntentName;
-    my $Message           = $PostTextResponse->Message;
-    my $MessageFormat     = $PostTextResponse->MessageFormat;
-    my $ResponseCard      = $PostTextResponse->ResponseCard;
-    my $SentimentResponse = $PostTextResponse->SentimentResponse;
-    my $SessionAttributes = $PostTextResponse->SessionAttributes;
-    my $SessionId         = $PostTextResponse->SessionId;
-    my $SlotToElicit      = $PostTextResponse->SlotToElicit;
-    my $Slots             = $PostTextResponse->Slots;
+    my $ActiveContexts      = $PostTextResponse->ActiveContexts;
+    my $AlternativeIntents  = $PostTextResponse->AlternativeIntents;
+    my $BotVersion          = $PostTextResponse->BotVersion;
+    my $DialogState         = $PostTextResponse->DialogState;
+    my $IntentName          = $PostTextResponse->IntentName;
+    my $Message             = $PostTextResponse->Message;
+    my $MessageFormat       = $PostTextResponse->MessageFormat;
+    my $NluIntentConfidence = $PostTextResponse->NluIntentConfidence;
+    my $ResponseCard        = $PostTextResponse->ResponseCard;
+    my $SentimentResponse   = $PostTextResponse->SentimentResponse;
+    my $SessionAttributes   = $PostTextResponse->SessionAttributes;
+    my $SessionId           = $PostTextResponse->SessionId;
+    my $SlotToElicit        = $PostTextResponse->SlotToElicit;
+    my $Slots               = $PostTextResponse->Slots;
 
     # Returns a L<Paws::LexRuntime::PostTextResponse> object.
 
@@ -60,6 +80,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/runtime.lex/PostText>
 
 =head1 ATTRIBUTES
+
+
+=head2 ActiveContexts => ArrayRef[L<Paws::LexRuntime::ActiveContext>]
+
+A list of contexts active for the request. A context can be activated
+when a previous intent is fulfilled, or by including the context in the
+request,
+
+If you don't specify a list of contexts, Amazon Lex will use the
+current list of contexts for the session. If you specify an empty list,
+all contexts for the session are cleared.
+
 
 
 =head2 B<REQUIRED> BotAlias => Str

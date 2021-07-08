@@ -2,6 +2,7 @@
 package Paws::StepFunctions::TaskSubmittedEventDetails;
   use Moose;
   has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
+  has OutputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'outputDetails', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
 
@@ -42,7 +43,14 @@ Contains details about a task submitted to a resource .
 
 =head2 Output => Str
 
-The response from a resource when a task has started.
+The response from a resource when a task has started. Length
+constraints apply to the payload size, and are expressed as bytes in
+UTF-8 encoding.
+
+
+=head2 OutputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the output of an execution history event.
 
 
 =head2 B<REQUIRED> Resource => Str

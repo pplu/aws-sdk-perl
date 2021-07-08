@@ -18,7 +18,7 @@ Paws::GameLift::ResolveAliasOutput
 =head2 FleetArn => Str
 
 The Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 associated with the GameLift fleet resource that this alias points to.
 
 

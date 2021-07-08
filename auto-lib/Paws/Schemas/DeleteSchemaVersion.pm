@@ -45,19 +45,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 
 =head2 B<REQUIRED> SchemaName => Str
 
-
+The name of the schema.
 
 
 
 =head2 B<REQUIRED> SchemaVersion => Str
 
-
+The version number of the schema
 
 
 

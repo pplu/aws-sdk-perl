@@ -11,7 +11,9 @@ package Paws::IoT::Job;
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', request_name => 'jobExecutionsRolloutConfig', traits => ['NameInRequest']);
   has JobId => (is => 'ro', isa => 'Str', request_name => 'jobId', traits => ['NameInRequest']);
   has JobProcessDetails => (is => 'ro', isa => 'Paws::IoT::JobProcessDetails', request_name => 'jobProcessDetails', traits => ['NameInRequest']);
+  has JobTemplateArn => (is => 'ro', isa => 'Str', request_name => 'jobTemplateArn', traits => ['NameInRequest']);
   has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest']);
+  has NamespaceId => (is => 'ro', isa => 'Str', request_name => 'namespaceId', traits => ['NameInRequest']);
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', request_name => 'presignedUrlConfig', traits => ['NameInRequest']);
   has ReasonCode => (is => 'ro', isa => 'Str', request_name => 'reasonCode', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -106,9 +108,27 @@ The unique identifier you assigned to this job when it was created.
 Details about the job process.
 
 
+=head2 JobTemplateArn => Str
+
+The ARN of the job template used to create the job.
+
+
 =head2 LastUpdatedAt => Str
 
 The time, in seconds since the epoch, when the job was last updated.
+
+
+=head2 NamespaceId => Str
+
+The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+C<$aws/things/I<THING_NAME>/jobs/I<JOB_ID>/notify-namespace-I<NAMESPACE_ID>/>
+
+The C<namespaceId> feature is in public preview.
 
 
 =head2 PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>

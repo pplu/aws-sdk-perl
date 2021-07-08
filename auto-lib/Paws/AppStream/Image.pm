@@ -10,6 +10,7 @@ package Paws::AppStream::Image;
   has DisplayName => (is => 'ro', isa => 'Str');
   has ImageBuilderName => (is => 'ro', isa => 'Str');
   has ImageBuilderSupported => (is => 'ro', isa => 'Bool');
+  has ImageErrors => (is => 'ro', isa => 'ArrayRef[Paws::AppStream::ResourceError]');
   has ImagePermissions => (is => 'ro', isa => 'Paws::AppStream::ImagePermissions');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Platform => (is => 'ro', isa => 'Str');
@@ -98,6 +99,12 @@ image. If the image is shared, this value is null.
 =head2 ImageBuilderSupported => Bool
 
 Indicates whether an image builder can be launched from this image.
+
+
+=head2 ImageErrors => ArrayRef[L<Paws::AppStream::ResourceError>]
+
+Describes the errors that are returned when a new image can't be
+created.
 
 
 =head2 ImagePermissions => L<Paws::AppStream::ImagePermissions>

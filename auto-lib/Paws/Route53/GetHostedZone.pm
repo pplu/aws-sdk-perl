@@ -32,15 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $route53 = Paws->service('Route53');
-    my $GetHostedZoneResponse = $route53->GetHostedZone(
-      Id => 'MyResourceId',
-
-    );
+  # To get information about a hosted zone
+  # The following example gets information about the Z3M3LMPEXAMPLE hosted zone.
+    my $GetHostedZoneResponse =
+      $route53->GetHostedZone( 'Id' => 'Z3M3LMPEXAMPLE' );
 
     # Results:
     my $DelegationSet = $GetHostedZoneResponse->DelegationSet;
     my $HostedZone    = $GetHostedZoneResponse->HostedZone;
-    my $VPCs          = $GetHostedZoneResponse->VPCs;
 
     # Returns a L<Paws::Route53::GetHostedZoneResponse> object.
 

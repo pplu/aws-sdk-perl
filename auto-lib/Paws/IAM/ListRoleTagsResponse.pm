@@ -36,9 +36,9 @@ request.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-The list of tags currently that is attached to the role. Each tag
+The list of tags that are currently attached to the role. Each tag
 consists of a key name and an associated value. If no tags are attached
-to the specified role, the response contains an empty list.
+to the specified resource, the response contains an empty list.
 
 
 =head2 _request_id => Str

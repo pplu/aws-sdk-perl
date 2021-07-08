@@ -1,6 +1,7 @@
 
 package Paws::Backup::GetBackupPlanOutput;
   use Moose;
+  has AdvancedBackupSettings => (is => 'ro', isa => 'ArrayRef[Paws::Backup::AdvancedBackupSetting]');
   has BackupPlan => (is => 'ro', isa => 'Paws::Backup::BackupPlan');
   has BackupPlanArn => (is => 'ro', isa => 'Str');
   has BackupPlanId => (is => 'ro', isa => 'Str');
@@ -20,6 +21,12 @@ package Paws::Backup::GetBackupPlanOutput;
 Paws::Backup::GetBackupPlanOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 AdvancedBackupSettings => ArrayRef[L<Paws::Backup::AdvancedBackupSetting>]
+
+Contains a list of C<BackupOptions> for each resource type. The list is
+populated only if the advanced option is set for the backup plan.
 
 
 =head2 BackupPlan => L<Paws::Backup::BackupPlan>
@@ -51,24 +58,24 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 =head2 CreatorRequestId => Str
 
 A unique string that identifies the request and allows failed requests
-to be retried without the risk of executing the operation twice.
+to be retried without the risk of running the operation twice.
 
 
 =head2 DeletionDate => Str
 
 The date and time that a backup plan is deleted, in Unix format and
-Coordinated Universal Time (UTC). The value of C<CreationDate> is
+Coordinated Universal Time (UTC). The value of C<DeletionDate> is
 accurate to milliseconds. For example, the value 1516925490.087
 represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
 =head2 LastExecutionDate => Str
 
-The last time a job to back up resources was executed with this backup
-plan. A date and time, in Unix format and Coordinated Universal Time
-(UTC). The value of C<LastExecutionDate> is accurate to milliseconds.
-For example, the value 1516925490.087 represents Friday, January 26,
-2018 12:11:30.087 AM.
+The last time a job to back up resources was run with this backup plan.
+A date and time, in Unix format and Coordinated Universal Time (UTC).
+The value of C<LastExecutionDate> is accurate to milliseconds. For
+example, the value 1516925490.087 represents Friday, January 26, 2018
+12:11:30.087 AM.
 
 
 =head2 VersionId => Str

@@ -68,7 +68,8 @@ truncated response you just received.
 
 =head2 B<REQUIRED> RetiringPrincipal => Str
 
-The retiring principal for which to list grants.
+The retiring principal for which to list grants. Enter a principal in
+your AWS account.
 
 To specify the retiring principal, use the Amazon Resource Name (ARN)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)

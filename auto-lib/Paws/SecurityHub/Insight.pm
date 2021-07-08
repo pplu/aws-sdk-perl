@@ -50,9 +50,10 @@ defined in the filters.
 
 =head2 B<REQUIRED> GroupByAttribute => Str
 
-The attribute that the insight's findings are grouped by. This
-attribute is used as a findings aggregator for the purposes of viewing
-and managing multiple related findings under a single operand.
+The grouping attribute for the insight's findings. Indicates how to
+group the matching findings, and identifies the type of item that the
+insight applies to. For example, if an insight is grouped by resource
+identifier, then the insight produces a list of resource identifiers.
 
 
 =head2 B<REQUIRED> InsightArn => Str

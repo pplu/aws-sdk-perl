@@ -10,7 +10,9 @@ package Paws::Datasync::Options;
   has PosixPermissions => (is => 'ro', isa => 'Str');
   has PreserveDeletedFiles => (is => 'ro', isa => 'Str');
   has PreserveDevices => (is => 'ro', isa => 'Str');
+  has SecurityDescriptorCopyFlags => (is => 'ro', isa => 'Str');
   has TaskQueueing => (is => 'ro', isa => 'Str');
+  has TransferMode => (is => 'ro', isa => 'Str');
   has Uid => (is => 'ro', isa => 'Str');
   has VerifyMode => (is => 'ro', isa => 'Str');
 
@@ -45,15 +47,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::O
 =head1 DESCRIPTION
 
 Represents the options that are available to control the behavior of a
-StartTaskExecution operation. Behavior includes preserving metadata
-such as user ID (UID), group ID (GID), and file permissions, and also
-overwriting files in the destination, data integrity verification, and
-so on.
+StartTaskExecution
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_StartTaskExecution.html)
+operation. Behavior includes preserving metadata such as user ID (UID),
+group ID (GID), and file permissions, and also overwriting files in the
+destination, data integrity verification, and so on.
 
 A task has a set of default options associated with it. If you don't
-specify an option in StartTaskExecution, the default value is used. You
-can override the defaults options on each task execution by specifying
-an overriding C<Options> value to StartTaskExecution.
+specify an option in StartTaskExecution
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_StartTaskExecution.html),
+the default value is used. You can override the defaults options on
+each task execution by specifying an overriding C<Options> value to
+StartTaskExecution
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_StartTaskExecution.html).
 
 =head1 ATTRIBUTES
 
@@ -89,7 +95,10 @@ C<1048576> (C<=1024*1024>).
 
 =head2 Gid => Str
 
-The group ID (GID) of the file's owners.
+The POSIX group ID (GID) of the file's owners. This option should only
+be set for NFS, EFS, and S3 locations. For more information about what
+metadata is copied by DataSync, see Metadata Copied by DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/special-files.html#metadata-copied).
 
 Default value: INT_VALUE. This preserves the integer value of the ID.
 
@@ -101,17 +110,22 @@ NONE: Ignore UID and GID.
 
 =head2 LogLevel => Str
 
-A value that determines the type of logs DataSync will deliver to your
-AWS CloudWatch Logs file. If set to C<OFF>, no logs will be delivered.
-C<BASIC> will deliver a few logs per transfer operation and C<TRANSFER>
-will deliver a verbose log that contains logs for every file that is
-transferred.
+A value that determines the type of logs that DataSync publishes to a
+log stream in the Amazon CloudWatch log group that you provide. For
+more information about providing a log group for DataSync, see
+CloudWatchLogGroupArn
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_CreateTask.html#DataSync-CreateTask-request-CloudWatchLogGroupArn).
+If set to C<OFF>, no logs are published. C<BASIC> publishes logs on
+errors for individual files transferred, and C<TRANSFER> publishes logs
+for every file or object that is transferred and integrity checked.
 
 
 =head2 Mtime => Str
 
 A value that indicates the last time that a file was modified (that is,
-a file was written to) before the PREPARING phase.
+a file was written to) before the PREPARING phase. This option is
+required for cases when you need to run the same task more than one
+time.
 
 Default value: PRESERVE.
 
@@ -134,14 +148,20 @@ the destination and you sync the files, you can use this value to
 protect against overwriting those changes.
 
 Some storage classes have specific behaviors that can affect your S3
-storage cost. For detailed information, see using-storage-classes in
-the I<AWS DataSync User Guide>.
+storage cost. For detailed information, see Considerations when working
+with Amazon S3 storage classes in DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes)
+in the I<AWS DataSync User Guide>.
 
 
 =head2 PosixPermissions => Str
 
 A value that determines which users or groups can access a file for a
 specific purpose such as reading, writing, or execution of the file.
+This option should only be set for NFS, EFS, and S3 locations. For more
+information about what metadata is copied by DataSync, see Metadata
+Copied by DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/special-files.html#metadata-copied).
 
 Default value: PRESERVE.
 
@@ -158,8 +178,10 @@ A value that specifies whether files in the destination that don't
 exist in the source file system should be preserved. This option can
 affect your storage cost. If your task deletes objects, you might incur
 minimum storage duration charges for certain storage classes. For
-detailed information, see using-storage-classes in the I<AWS DataSync
-User Guide>.
+detailed information, see Considerations when working with Amazon S3
+storage classes in DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes)
+in the I<AWS DataSync User Guide>.
 
 Default value: PRESERVE.
 
@@ -173,8 +195,9 @@ source.
 
 A value that determines whether AWS DataSync should preserve the
 metadata of block and character devices in the source file system, and
-recreate the files with that device name and metadata on the
-destination.
+re-create the files with that device name and metadata on the
+destination. DataSync does not copy the contents of such devices, only
+the name and metadata.
 
 AWS DataSync can't sync the actual contents of such devices, because
 they are nonterminal and don't return an end-of-file (EOF) marker.
@@ -187,19 +210,103 @@ PRESERVE: Preserve character and block device metadata. This option
 isn't currently supported for Amazon EFS.
 
 
+=head2 SecurityDescriptorCopyFlags => Str
+
+A value that determines which components of the SMB security descriptor
+are copied from source to destination objects.
+
+This value is only used for transfers between SMB and Amazon FSx for
+Windows File Server locations, or between two Amazon FSx for Windows
+File Server locations. For more information about how DataSync handles
+metadata, see How DataSync Handles Metadata and Special Files
+(https://docs.aws.amazon.com/datasync/latest/userguide/special-files.html).
+
+Default value: OWNER_DACL.
+
+B<OWNER_DACL>: For each copied object, DataSync copies the following
+metadata:
+
+=over
+
+=item *
+
+Object owner.
+
+=item *
+
+NTFS discretionary access control lists (DACLs), which determine
+whether to grant access to an object.
+
+=back
+
+When choosing this option, DataSync does NOT copy the NTFS system
+access control lists (SACLs), which are used by administrators to log
+attempts to access a secured object.
+
+B<OWNER_DACL_SACL>: For each copied object, DataSync copies the
+following metadata:
+
+=over
+
+=item *
+
+Object owner.
+
+=item *
+
+NTFS discretionary access control lists (DACLs), which determine
+whether to grant access to an object.
+
+=item *
+
+NTFS system access control lists (SACLs), which are used by
+administrators to log attempts to access a secured object.
+
+=back
+
+Copying SACLs requires granting additional permissions to the Windows
+user that DataSync uses to access your SMB location. For information
+about choosing a user that ensures sufficient permissions to files,
+folders, and metadata, see user.
+
+B<NONE>: None of the SMB security descriptor components are copied.
+Destination objects are owned by the user that was provided for
+accessing the destination location. DACLs and SACLs are set based on
+the destination serverE<rsquo>s configuration.
+
+
 =head2 TaskQueueing => Str
 
 A value that determines whether tasks should be queued before executing
 the tasks. If set to C<ENABLED>, the tasks will be queued. The default
 is C<ENABLED>.
 
-If you use the same agent to run multiple tasks you can enable the
-tasks to run in series. For more information see queue-task-execution.
+If you use the same agent to run multiple tasks, you can enable the
+tasks to run in series. For more information, see Queueing task
+executions
+(https://docs.aws.amazon.com/datasync/latest/userguide/run-task.html#queue-task-execution).
+
+
+=head2 TransferMode => Str
+
+A value that determines whether DataSync transfers only the data and
+metadata that differ between the source and the destination location,
+or whether DataSync transfers all the content from the source, without
+comparing to the destination location.
+
+CHANGED: DataSync copies only data or metadata that is new or different
+content from the source location to the destination location.
+
+ALL: DataSync copies all source location content to the destination,
+without comparing to existing content on the destination.
 
 
 =head2 Uid => Str
 
-The user ID (UID) of the file's owner.
+The POSIX user ID (UID) of the file's owner. This option should only be
+set for NFS, EFS, and S3 locations. To learn more about what metadata
+is copied by DataSync, see Metadata Copied by DataSync
+(https://docs.aws.amazon.com/datasync/latest/userguide/special-files.html#metadata-copied).
 
 Default value: INT_VALUE. This preserves the integer value of the ID.
 
@@ -213,16 +320,23 @@ NONE: Ignore UID and GID.
 
 A value that determines whether a data integrity verification should be
 performed at the end of a task execution after all data and metadata
-have been transferred.
+have been transferred. For more information, see Configure task
+settings
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-task.html).
 
 Default value: POINT_IN_TIME_CONSISTENT.
 
-POINT_IN_TIME_CONSISTENT: Perform verification (recommended).
+ONLY_FILES_TRANSFERRED (recommended): Perform verification only on
+files that were transferred.
 
-ONLY_FILES_TRANSFERRED: Perform verification on only files that were
-transferred.
+POINT_IN_TIME_CONSISTENT: Scan the entire source and entire destination
+at the end of the transfer to verify that source and destination are
+fully synchronized. This option isn't supported when transferring to S3
+Glacier or S3 Glacier Deep Archive storage classes.
 
-NONE: Skip verification.
+NONE: No additional verification is done at the end of the transfer,
+but all data transmissions are integrity-checked with checksum
+verification during the transfer.
 
 
 

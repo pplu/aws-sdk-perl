@@ -4,7 +4,10 @@ package Paws::Shield::Subscription;
   has AutoRenew => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has Limits => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Limit]');
+  has ProactiveEngagementStatus => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
+  has SubscriptionArn => (is => 'ro', isa => 'Str');
+  has SubscriptionLimits => (is => 'ro', isa => 'Paws::Shield::SubscriptionLimits', required => 1);
   has TimeCommitmentInSeconds => (is => 'ro', isa => 'Int');
 
 1;
@@ -64,11 +67,35 @@ The date and time your subscription will end.
 Specifies how many protections of a given type you can create.
 
 
+=head2 ProactiveEngagementStatus => Str
+
+If C<ENABLED>, the DDoS Response Team (DRT) will use email and phone to
+notify contacts about escalations to the DRT and to initiate proactive
+customer support.
+
+If C<PENDING>, you have requested proactive engagement and the request
+is pending. The status changes to C<ENABLED> when your request is fully
+processed.
+
+If C<DISABLED>, the DRT will not proactively notify contacts about
+escalations or to initiate proactive customer support.
+
+
 =head2 StartTime => Str
 
 The start time of the subscription, in Unix time in seconds. For more
 information see timestamp
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#parameter-types).
+
+
+=head2 SubscriptionArn => Str
+
+The ARN (Amazon Resource Name) of the subscription.
+
+
+=head2 B<REQUIRED> SubscriptionLimits => L<Paws::Shield::SubscriptionLimits>
+
+Limits settings for your subscription.
 
 
 =head2 TimeCommitmentInSeconds => Int

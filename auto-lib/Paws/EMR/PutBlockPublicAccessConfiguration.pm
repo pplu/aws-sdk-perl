@@ -33,8 +33,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         BlockPublicSecurityGroupRules          => 1,
         PermittedPublicSecurityGroupRuleRanges => [
           {
-            MinRange => 1,    # max: 65535
-            MaxRange => 1,    # max: 65535
+            MinRange => 1,    # min: -1, max: 65535
+            MaxRange => 1,    # min: -1, max: 65535
           },
           ...
         ],    # OPTIONAL
@@ -61,6 +61,12 @@ C<BlockPublicAccessConfiguration>. By default, Port 22 (SSH) is an
 exception, and public access is allowed on this port. You can change
 this by updating C<BlockPublicSecurityGroupRules> to remove the
 exception.
+
+For accounts that created clusters in a Region before November 25,
+2019, block public access is disabled by default in that Region. To use
+this feature, you must manually enable and configure it. For accounts
+that did not create an EMR cluster in a Region before this date, block
+public access is enabled by default in that Region.
 
 
 

@@ -71,8 +71,9 @@ is attempted.
 
 =head2 RadiusServers => ArrayRef[Str|Undef]
 
-An array of strings that contains the IP addresses of the RADIUS server
-endpoints, or the IP addresses of your RADIUS server load balancer.
+An array of strings that contains the fully qualified domain name
+(FQDN) or IP addresses of the RADIUS server endpoints, or the FQDN or
+IP addresses of your RADIUS server load balancer.
 
 
 =head2 RadiusTimeout => Int

@@ -53,15 +53,15 @@ The tag filter type:
 
 =item *
 
-KEY_ONLY: Key only.
+C<KEY_ONLY>: Key only.
 
 =item *
 
-VALUE_ONLY: Value only.
+C<VALUE_ONLY>: Value only.
 
 =item *
 
-KEY_AND_VALUE: Key and value.
+C<KEY_AND_VALUE>: Key and value.
 
 =back
 

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Instan
 
 =head1 DESCRIPTION
 
-The URL of Amazon S3 bucket where you want to store the results of this
+The URL of S3 bucket where you want to store the results of this
 request.
 
 =head1 ATTRIBUTES
@@ -41,7 +41,7 @@ request.
 
 =head2 S3OutputUrl => L<Paws::SSM::S3OutputUrl>
 
-The URL of Amazon S3 bucket where you want to store the results of this
+The URL of S3 bucket where you want to store the results of this
 request.
 
 

@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 The IP address type. The possible values are C<ipv4> (for IPv4
 addresses) and C<dualstack> (for IPv4 and IPv6 addresses). Internal
-load balancers must use C<ipv4>. Network Load Balancers must use
-C<ipv4>.
+load balancers must use C<ipv4>. You canE<rsquo>t specify C<dualstack>
+for a load balancer with a UDP or TCP_UDP listener.
 
 Valid values are: C<"ipv4">, C<"dualstack">
 

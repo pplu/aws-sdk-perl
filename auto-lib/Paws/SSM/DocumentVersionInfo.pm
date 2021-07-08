@@ -2,10 +2,12 @@
 package Paws::SSM::DocumentVersionInfo;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
+  has DisplayName => (is => 'ro', isa => 'Str');
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has IsDefaultVersion => (is => 'ro', isa => 'Bool');
   has Name => (is => 'ro', isa => 'Str');
+  has ReviewStatus => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusInformation => (is => 'ro', isa => 'Str');
   has VersionName => (is => 'ro', isa => 'Str');
@@ -50,6 +52,13 @@ Version information about the document.
 The date the document was created.
 
 
+=head2 DisplayName => Str
+
+The friendly name of the Systems Manager document. This value can
+differ for each version of the document. If you want to update this
+value, see UpdateDocument.
+
+
 =head2 DocumentFormat => Str
 
 The document format, either JSON or YAML.
@@ -68,6 +77,12 @@ An identifier for the default version of the document.
 =head2 Name => Str
 
 The document name.
+
+
+=head2 ReviewStatus => Str
+
+The current status of the approval review for the latest version of the
+document.
 
 
 =head2 Status => Str

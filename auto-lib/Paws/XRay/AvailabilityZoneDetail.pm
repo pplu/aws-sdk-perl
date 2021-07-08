@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::XRay::Avail
 
 =head1 DESCRIPTION
 
-A list of availability zones corresponding to the segments in a trace.
+A list of Availability Zones corresponding to the segments in a trace.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-The name of a corresponding availability zone.
+The name of a corresponding Availability Zone.
 
 
 

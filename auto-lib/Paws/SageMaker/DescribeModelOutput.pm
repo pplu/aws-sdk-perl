@@ -5,6 +5,7 @@ package Paws::SageMaker::DescribeModelOutput;
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has InferenceExecutionConfig => (is => 'ro', isa => 'Paws::SageMaker::InferenceExecutionConfig');
   has ModelArn => (is => 'ro', isa => 'Str', required => 1);
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has PrimaryContainer => (is => 'ro', isa => 'Paws::SageMaker::ContainerDefinition');
@@ -41,6 +42,12 @@ the model container.
 
 The Amazon Resource Name (ARN) of the IAM role that you specified for
 the model.
+
+
+=head2 InferenceExecutionConfig => L<Paws::SageMaker::InferenceExecutionConfig>
+
+Specifies details of how containers in a multi-container endpoint are
+called.
 
 
 =head2 B<REQUIRED> ModelArn => Str

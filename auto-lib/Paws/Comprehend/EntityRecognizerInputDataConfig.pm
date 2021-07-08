@@ -2,7 +2,9 @@
 package Paws::Comprehend::EntityRecognizerInputDataConfig;
   use Moose;
   has Annotations => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerAnnotations');
-  has Documents => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerDocuments', required => 1);
+  has AugmentedManifests => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::AugmentedManifestsListItem]');
+  has DataFormat => (is => 'ro', isa => 'Str');
+  has Documents => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerDocuments');
   has EntityList => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerEntityList');
   has EntityTypes => (is => 'ro', isa => 'ArrayRef[Paws::Comprehend::EntityTypesListItem]', required => 1);
 
@@ -43,24 +45,78 @@ Specifies the format and location of the input data.
 
 =head2 Annotations => L<Paws::Comprehend::EntityRecognizerAnnotations>
 
-S3 location of the annotations file for an entity recognizer.
+The S3 location of the CSV file that annotates your training documents.
 
 
-=head2 B<REQUIRED> Documents => L<Paws::Comprehend::EntityRecognizerDocuments>
+=head2 AugmentedManifests => ArrayRef[L<Paws::Comprehend::AugmentedManifestsListItem>]
 
-S3 location of the documents folder for an entity recognizer
+A list of augmented manifest files that provide training data for your
+custom model. An augmented manifest file is a labeled dataset that is
+produced by Amazon SageMaker Ground Truth.
+
+This parameter is required if you set C<DataFormat> to
+C<AUGMENTED_MANIFEST>.
+
+
+=head2 DataFormat => Str
+
+The format of your training data:
+
+=over
+
+=item *
+
+C<COMPREHEND_CSV>: A CSV file that supplements your training documents.
+The CSV file contains information about the custom entities that your
+trained model will detect. The required format of the file depends on
+whether you are providing annotations or an entity list.
+
+If you use this value, you must provide your CSV file by using either
+the C<Annotations> or C<EntityList> parameters. You must provide your
+training documents by using the C<Documents> parameter.
+
+=item *
+
+C<AUGMENTED_MANIFEST>: A labeled dataset that is produced by Amazon
+SageMaker Ground Truth. This file is in JSON lines format. Each line is
+a complete JSON object that contains a training document and its
+labels. Each label annotates a named entity in the training document.
+
+If you use this value, you must provide the C<AugmentedManifests>
+parameter in your request.
+
+=back
+
+If you don't specify a value, Amazon Comprehend uses C<COMPREHEND_CSV>
+as the default.
+
+
+=head2 Documents => L<Paws::Comprehend::EntityRecognizerDocuments>
+
+The S3 location of the folder that contains the training documents for
+your custom entity recognizer.
+
+This parameter is required if you set C<DataFormat> to
+C<COMPREHEND_CSV>.
 
 
 =head2 EntityList => L<Paws::Comprehend::EntityRecognizerEntityList>
 
-S3 location of the entity list for an entity recognizer.
+The S3 location of the CSV file that has the entity list for your
+custom entity recognizer.
 
 
 =head2 B<REQUIRED> EntityTypes => ArrayRef[L<Paws::Comprehend::EntityTypesListItem>]
 
-The entity types in the input data for an entity recognizer. A maximum
-of 12 entity types can be used at one time to train an entity
-recognizer.
+The entity types in the labeled training data that Amazon Comprehend
+uses to train the custom entity recognizer. Any entity types that you
+don't specify are ignored.
+
+A maximum of 25 entity types can be used at one time to train an entity
+recognizer. Entity types must not contain the following invalid
+characters: \n (line break), \\n (escaped line break), \r (carriage
+return), \\r (escaped carriage return), \t (tab), \\t (escaped tab),
+space, and , (comma).
 
 
 

@@ -2,12 +2,14 @@
 package Paws::ImageBuilder::ImagePipeline;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has ContainerRecipeArn => (is => 'ro', isa => 'Str', request_name => 'containerRecipeArn', traits => ['NameInRequest']);
   has DateCreated => (is => 'ro', isa => 'Str', request_name => 'dateCreated', traits => ['NameInRequest']);
   has DateLastRun => (is => 'ro', isa => 'Str', request_name => 'dateLastRun', traits => ['NameInRequest']);
   has DateNextRun => (is => 'ro', isa => 'Str', request_name => 'dateNextRun', traits => ['NameInRequest']);
   has DateUpdated => (is => 'ro', isa => 'Str', request_name => 'dateUpdated', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DistributionConfigurationArn => (is => 'ro', isa => 'Str', request_name => 'distributionConfigurationArn', traits => ['NameInRequest']);
+  has EnhancedImageMetadataEnabled => (is => 'ro', isa => 'Bool', request_name => 'enhancedImageMetadataEnabled', traits => ['NameInRequest']);
   has ImageRecipeArn => (is => 'ro', isa => 'Str', request_name => 'imageRecipeArn', traits => ['NameInRequest']);
   has ImageTestsConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::ImageTestsConfiguration', request_name => 'imageTestsConfiguration', traits => ['NameInRequest']);
   has InfrastructureConfigurationArn => (is => 'ro', isa => 'Str', request_name => 'infrastructureConfigurationArn', traits => ['NameInRequest']);
@@ -57,6 +59,12 @@ Details of an image pipeline.
 The Amazon Resource Name (ARN) of the image pipeline.
 
 
+=head2 ContainerRecipeArn => Str
+
+The Amazon Resource Name (ARN) of the container recipe that is used for
+this pipeline.
+
+
 =head2 DateCreated => Str
 
 The date on which this image pipeline was created.
@@ -86,6 +94,14 @@ The description of the image pipeline.
 
 The Amazon Resource Name (ARN) of the distribution configuration
 associated with this image pipeline.
+
+
+=head2 EnhancedImageMetadataEnabled => Bool
+
+Collects additional information about the image being created,
+including the operating system (OS) version and package list. This
+information is used to enhance the overall experience of using EC2
+Image Builder. Enabled by default.
 
 
 =head2 ImageRecipeArn => Str

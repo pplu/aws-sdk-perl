@@ -6,6 +6,8 @@ package Paws::EKS::UpdateNodegroupConfig;
   has Labels => (is => 'ro', isa => 'Paws::EKS::UpdateLabelsPayload', traits => ['NameInRequest'], request_name => 'labels');
   has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodegroupName', required => 1);
   has ScalingConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupScalingConfig', traits => ['NameInRequest'], request_name => 'scalingConfig');
+  has Taints => (is => 'ro', isa => 'Paws::EKS::UpdateTaintsPayload', traits => ['NameInRequest'], request_name => 'taints');
+  has UpdateConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupUpdateConfig', traits => ['NameInRequest'], request_name => 'updateConfig');
 
   use MooseX::ClassAttribute;
 
@@ -39,14 +41,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Labels             => {
         AddOrUpdateLabels => {
           'MylabelKey' =>
-            'MylabelValue',    # key: min: 1, max: 63, value: min: 1, max: 253
+            'MylabelValue',    # key: min: 1, max: 63, value: min: 1, max: 63
         },    # OPTIONAL
         RemoveLabels => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
       ScalingConfig => {
-        DesiredSize => 1,    # min: 1; OPTIONAL
+        DesiredSize => 1,    # OPTIONAL
         MaxSize     => 1,    # min: 1; OPTIONAL
-        MinSize     => 1,    # min: 1; OPTIONAL
+        MinSize     => 1,    # OPTIONAL
+      },    # OPTIONAL
+      Taints => {
+        AddOrUpdateTaints => [
+          {
+            Effect => 'NO_SCHEDULE'
+            ,    # values: NO_SCHEDULE, NO_EXECUTE, PREFER_NO_SCHEDULE; OPTIONAL
+            Key   => 'MytaintKey',      # min: 1, max: 63; OPTIONAL
+            Value => 'MytaintValue',    # max: 63; OPTIONAL
+          },
+          ...
+        ],    # OPTIONAL
+        RemoveTaints => [
+          {
+            Effect => 'NO_SCHEDULE'
+            ,    # values: NO_SCHEDULE, NO_EXECUTE, PREFER_NO_SCHEDULE; OPTIONAL
+            Key   => 'MytaintKey',      # min: 1, max: 63; OPTIONAL
+            Value => 'MytaintValue',    # max: 63; OPTIONAL
+          },
+          ...
+        ],    # OPTIONAL
+      },    # OPTIONAL
+      UpdateConfig => {
+        MaxUnavailable           => 1,    # min: 1; OPTIONAL
+        MaxUnavailablePercentage => 1,    # min: 1, max: 100; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -92,6 +118,19 @@ The name of the managed node group to update.
 
 The scaling configuration details for the Auto Scaling group after the
 update.
+
+
+
+=head2 Taints => L<Paws::EKS::UpdateTaintsPayload>
+
+The Kubernetes taints to be applied to the nodes in the node group
+after the update.
+
+
+
+=head2 UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>
+
+
 
 
 

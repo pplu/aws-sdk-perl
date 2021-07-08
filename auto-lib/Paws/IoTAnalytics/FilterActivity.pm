@@ -43,12 +43,13 @@ An activity that filters a message based on its attributes.
 =head2 B<REQUIRED> Filter => Str
 
 An expression that looks like a SQL WHERE clause that must return a
-Boolean value.
+Boolean value. Messages that satisfy the condition are passed to the
+next activity.
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'filter' activity.
+The name of the filter activity.
 
 
 =head2 Next => Str

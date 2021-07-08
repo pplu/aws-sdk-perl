@@ -1,6 +1,7 @@
 
 package Paws::S3::PutObjectOutput;
   use Moose;
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has ETag => (is => 'ro', isa => 'Str', header_name => 'ETag', traits => ['ParamInHeader']);
   has Expiration => (is => 'ro', isa => 'Str', header_name => 'x-amz-expiration', traits => ['ParamInHeader']);
   has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
@@ -24,6 +25,13 @@ Paws::S3::PutObjectOutput
 =head1 ATTRIBUTES
 
 
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the uploaded object uses an S3 Bucket Key for
+server-side encryption with AWS KMS (SSE-KMS).
+
+
+
 =head2 ETag => Str
 
 Entity tag for the uploaded object.
@@ -33,10 +41,11 @@ Entity tag for the uploaded object.
 =head2 Expiration => Str
 
 If the expiration is configured for the object (see
-PutBucketLifecycleConfiguration), the response includes this header. It
-includes the expiry-date and rule-id key-value pairs that provide
-information about object expiration. The value of the rule-id is URL
-encoded.
+PutBucketLifecycleConfiguration
+(https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketLifecycleConfiguration.html)),
+the response includes this header. It includes the expiry-date and
+rule-id key-value pairs that provide information about object
+expiration. The value of the rule-id is URL encoded.
 
 
 

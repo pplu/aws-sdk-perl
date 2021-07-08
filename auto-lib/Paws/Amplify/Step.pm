@@ -43,66 +43,65 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::St
 
 =head1 DESCRIPTION
 
-Structure for an execution step for an execution job, for an Amplify
-App.
+Describes an execution step, for an execution job, for an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 ArtifactsUrl => Str
 
-URL to the artifact for the execution step.
+The URL to the artifact for the execution step.
 
 
 =head2 Context => Str
 
-The context for current step, will include build image if step is
+The context for the current step. Includes a build image if the step is
 build.
 
 
 =head2 B<REQUIRED> EndTime => Str
 
-End date/ time of the execution step.
+The end date and time of the execution step.
 
 
 =head2 LogUrl => Str
 
-URL to the logs for the execution step.
+The URL to the logs for the execution step.
 
 
 =head2 Screenshots => L<Paws::Amplify::Screenshots>
 
-List of screenshot URLs for the execution step, if relevant.
+The list of screenshot URLs for the execution step, if relevant.
 
 
 =head2 B<REQUIRED> StartTime => Str
 
-Start date/ time of the execution step.
+The start date and time of the execution step.
 
 
 =head2 B<REQUIRED> Status => Str
 
-Status of the execution step.
+The status of the execution step.
 
 
 =head2 StatusReason => Str
 
-The reason for current step status.
+The reason for the current step status.
 
 
 =head2 B<REQUIRED> StepName => Str
 
-Name of the execution step.
+The name of the execution step.
 
 
 =head2 TestArtifactsUrl => Str
 
-URL to the test artifact for the execution step.
+The URL to the test artifact for the execution step.
 
 
 =head2 TestConfigUrl => Str
 
-URL to the test config for the execution step.
+The URL to the test configuration for the execution step.
 
 
 

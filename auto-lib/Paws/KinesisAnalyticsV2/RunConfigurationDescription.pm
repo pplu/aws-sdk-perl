@@ -2,6 +2,7 @@
 package Paws::KinesisAnalyticsV2::RunConfigurationDescription;
   use Moose;
   has ApplicationRestoreConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration');
+  has FlinkRunConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkRunConfiguration');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::RunConfigurationDescription object:
 
-  $service_obj->Method(Att1 => { ApplicationRestoreConfigurationDescription => $value, ..., ApplicationRestoreConfigurationDescription => $value  });
+  $service_obj->Method(Att1 => { ApplicationRestoreConfigurationDescription => $value, ..., FlinkRunConfigurationDescription => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,6 +43,11 @@ application.
 =head2 ApplicationRestoreConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationRestoreConfiguration>
 
 Describes the restore behavior of a restarting application.
+
+
+=head2 FlinkRunConfigurationDescription => L<Paws::KinesisAnalyticsV2::FlinkRunConfiguration>
+
+
 
 
 

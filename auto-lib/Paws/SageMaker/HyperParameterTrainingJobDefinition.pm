@@ -11,6 +11,7 @@ package Paws::SageMaker::HyperParameterTrainingJobDefinition;
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Channel]');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig', required => 1);
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
+  has RetryStrategy => (is => 'ro', isa => 'Paws::SageMaker::RetryStrategy');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has StaticHyperParameters => (is => 'ro', isa => 'Paws::SageMaker::HyperParameters');
   has StoppingCondition => (is => 'ro', isa => 'Paws::SageMaker::StoppingCondition', required => 1);
@@ -125,6 +126,12 @@ specification. For distributed training algorithms, specify an instance
 count greater than 1.
 
 
+=head2 RetryStrategy => L<Paws::SageMaker::RetryStrategy>
+
+The number of times to retry the job when the job fails due to an
+C<InternalServerError>.
+
+
 =head2 B<REQUIRED> RoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role associated with the
@@ -140,10 +147,9 @@ tuning job.
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
 Specifies a limit to how long a model hyperparameter training job can
-run. It also specifies how long you are willing to wait for a managed
-spot training job to complete. When the job reaches the a limit, Amazon
-SageMaker ends the training job. Use this API to cap model training
-costs.
+run. It also specifies how long a managed spot training job has to
+complete. When the job reaches the time limit, Amazon SageMaker ends
+the training job. Use this API to cap model training costs.
 
 
 =head2 TuningObjective => L<Paws::SageMaker::HyperParameterTuningJobObjective>

@@ -5,6 +5,7 @@ package Paws::Batch::CreateJobQueue;
   has JobQueueName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobQueueName', required => 1);
   has Priority => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'priority', required => 1);
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagrisTagsMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -43,7 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         }
       ],
       'JobQueueName' => 'LowPriority',
-      'Priority'     => 10,
+      'Priority'     => 1,
       'State'        => 'ENABLED'
     );
 
@@ -70,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         }
       ],
       'JobQueueName' => 'HighPriority',
-      'Priority'     => 1,
+      'Priority'     => 10,
       'State'        => 'ENABLED'
     );
 
@@ -90,16 +91,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bat
 
 The set of compute environments mapped to a job queue and their order
 relative to each other. The job scheduler uses this parameter to
-determine which compute environment should execute a given job. Compute
+determine which compute environment should run a specific job. Compute
 environments must be in the C<VALID> state before you can associate
 them with a job queue. You can associate up to three compute
-environments with a job queue.
+environments with a job queue. All of the compute environments must be
+either EC2 (C<EC2> or C<SPOT>) or Fargate (C<FARGATE> or
+C<FARGATE_SPOT>); EC2 and Fargate compute environments can't be mixed.
+
+All compute environments that are associated with a job queue must
+share the same architecture. AWS Batch doesn't support mixing compute
+environment architecture types in a single job queue.
 
 
 
 =head2 B<REQUIRED> JobQueueName => Str
 
-The name of the job queue.
+The name of the job queue. Up to 128 letters (uppercase and lowercase),
+numbers, and underscores are allowed.
 
 
 
@@ -108,18 +116,31 @@ The name of the job queue.
 The priority of the job queue. Job queues with a higher priority (or a
 higher integer value for the C<priority> parameter) are evaluated first
 when associated with the same compute environment. Priority is
-determined in descending order, for example, a job queue with a
+determined in descending order. For example, a job queue with a
 priority value of C<10> is given scheduling preference over a job queue
-with a priority value of C<1>.
+with a priority value of C<1>. All of the compute environments must be
+either EC2 (C<EC2> or C<SPOT>) or Fargate (C<FARGATE> or
+C<FARGATE_SPOT>); EC2 and Fargate compute environments cannot be mixed.
 
 
 
 =head2 State => Str
 
 The state of the job queue. If the job queue state is C<ENABLED>, it is
-able to accept jobs.
+able to accept jobs. If the job queue state is C<DISABLED>, new jobs
+can't be added to the queue, but jobs already in the queue can finish.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
+
+=head2 Tags => L<Paws::Batch::TagrisTagsMap>
+
+The tags that you apply to the job queue to help you categorize and
+organize your resources. Each tag consists of a key and an optional
+value. For more information, see Tagging your AWS Batch resources
+(https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html) in
+I<AWS Batch User Guide>.
+
+
 
 
 =head1 SEE ALSO

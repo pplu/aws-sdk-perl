@@ -33,14 +33,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend:
 
 =head1 DESCRIPTION
 
-Information about an individual item on a list of entity types.
+An entity type within a labeled training dataset that Amazon Comprehend
+uses to train a custom entity recognizer.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Type => Str
 
-Entity type of an item on an entity type list.
+An entity type within a labeled training dataset that Amazon Comprehend
+uses to train a custom entity recognizer.
+
+Entity types must not contain the following invalid characters: \n
+(line break), \\n (escaped line break, \r (carriage return), \\r
+(escaped carriage return), \t (tab), \\t (escaped tab), space, and ,
+(comma).
 
 
 

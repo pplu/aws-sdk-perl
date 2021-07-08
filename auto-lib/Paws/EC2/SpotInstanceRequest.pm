@@ -56,9 +56,7 @@ This class has no description
 
 =head2 ActualBlockHourlyPrice => Str
 
-If you specified a duration and your Spot Instance request was
-fulfilled, this is the fixed hourly price in effect for the Spot
-Instance while it runs.
+Deprecated.
 
 
 =head2 AvailabilityZoneGroup => Str
@@ -70,7 +68,7 @@ in the same Availability Zone.
 
 =head2 BlockDurationMinutes => Int
 
-The duration for the Spot Instance, in minutes.
+Deprecated.
 
 
 =head2 CreateTime => Str
@@ -131,7 +129,7 @@ Instance.
 
 The state of the Spot Instance request. Spot status information helps
 track your Spot Instance requests. For more information, see Spot
-Status
+status
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -161,12 +159,26 @@ this date and time.
 
 =head2 ValidUntil => Str
 
-The end date of the request, in UTC format (for example,
-I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z). If this is a one-time request,
-it remains active until all instances launch, the request is canceled,
-or this date is reached. If the request is persistent, it remains
-active until it is canceled or this date is reached. The default end
-date is 7 days from the current date.
+The end date of the request, in UTC format
+(I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
+
+=over
+
+=item *
+
+For a persistent request, the request remains active until the
+C<validUntil> date and time is reached. Otherwise, the request remains
+active until you cancel it.
+
+=item *
+
+For a one-time request, the request remains active until all instances
+launch, the request is canceled, or the C<validUntil> date and time is
+reached. By default, the request is valid for 7 days from the date the
+request was created.
+
+=back
+
 
 
 

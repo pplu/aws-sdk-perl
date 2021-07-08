@@ -63,8 +63,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pol
 =head2 Engine => Str
 
 Specifies the engine (C<standard> or C<neural>) for Amazon Polly to use
-when processing input text for speech synthesis. Using a voice that is
-not supported for the engine selected will result in an error.
+when processing input text for speech synthesis. For information on
+Amazon Polly voices and which voices are available in standard-only,
+NTTS-only, and both standard and NTTS formats, see Available Voices
+(https://docs.aws.amazon.com/polly/latest/dg/voicelist.html).
+
+B<NTTS-only voices>
+
+When using NTTS-only voices such as Kevin (en-US), this parameter is
+required and must be set to C<neural>. If the engine is not specified,
+or is set to C<standard>, this will result in an error.
+
+Type: String
+
+Valid Values: C<standard> | C<neural>
+
+Required: Yes
+
+B<Standard voices>
+
+For standard voices, this is not required; the engine parameter
+defaults to C<standard>. If the engine is not specified, or is set to
+C<standard> and an NTTS-only voice is selected, this will result in an
+error.
 
 Valid values are: C<"standard">, C<"neural">
 
@@ -146,7 +167,7 @@ voice IDs by calling the DescribeVoices
 (https://docs.aws.amazon.com/polly/latest/dg/API_DescribeVoices.html)
 operation.
 
-Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Camila">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Lupe">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
+Valid values are: C<"Aditi">, C<"Amy">, C<"Astrid">, C<"Bianca">, C<"Brian">, C<"Camila">, C<"Carla">, C<"Carmen">, C<"Celine">, C<"Chantal">, C<"Conchita">, C<"Cristiano">, C<"Dora">, C<"Emma">, C<"Enrique">, C<"Ewa">, C<"Filiz">, C<"Gabrielle">, C<"Geraint">, C<"Giorgio">, C<"Gwyneth">, C<"Hans">, C<"Ines">, C<"Ivy">, C<"Jacek">, C<"Jan">, C<"Joanna">, C<"Joey">, C<"Justin">, C<"Karl">, C<"Kendra">, C<"Kevin">, C<"Kimberly">, C<"Lea">, C<"Liv">, C<"Lotte">, C<"Lucia">, C<"Lupe">, C<"Mads">, C<"Maja">, C<"Marlene">, C<"Mathieu">, C<"Matthew">, C<"Maxim">, C<"Mia">, C<"Miguel">, C<"Mizuki">, C<"Naja">, C<"Nicole">, C<"Olivia">, C<"Penelope">, C<"Raveena">, C<"Ricardo">, C<"Ruben">, C<"Russell">, C<"Salli">, C<"Seoyeon">, C<"Takumi">, C<"Tatyana">, C<"Vicki">, C<"Vitoria">, C<"Zeina">, C<"Zhiyu">
 
 
 =head1 SEE ALSO

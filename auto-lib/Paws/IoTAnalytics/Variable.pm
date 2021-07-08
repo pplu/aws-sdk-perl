@@ -37,16 +37,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-An instance of a variable to be passed to the "containerAction"
+An instance of a variable to be passed to the C<containerAction>
 execution. Each variable must have a name and a value given by one of
-"stringValue", "datasetContentVersionValue", or "outputFileUriValue".
+C<stringValue>, C<datasetContentVersionValue>, or
+C<outputFileUriValue>.
 
 =head1 ATTRIBUTES
 
 
 =head2 DatasetContentVersionValue => L<Paws::IoTAnalytics::DatasetContentVersionValue>
 
-The value of the variable as a structure that specifies a data set
+The value of the variable as a structure that specifies a dataset
 content version.
 
 

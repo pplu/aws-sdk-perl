@@ -71,7 +71,7 @@ The command against which this invocation was requested.
 
 =head2 CommandPlugins => ArrayRef[L<Paws::SSM::CommandPlugin>]
 
-
+Plugins processed by the command.
 
 
 =head2 Comment => Str
@@ -97,9 +97,9 @@ The instance ID in which this invocation was requested.
 
 =head2 InstanceName => Str
 
-The name of the invocation target. For Amazon EC2 instances this is the
-value for the aws:Name tag. For on-premises instances, this is the name
-of the instance.
+The name of the invocation target. For EC2 instances this is the value
+for the aws:Name tag. For on-premises instances, this is the name of
+the instance.
 
 
 =head2 NotificationConfig => L<Paws::SSM::NotificationConfig>
@@ -122,18 +122,18 @@ basis.
 
 =head2 StandardErrorUrl => Str
 
-The URL to the plugin's StdErr file in Amazon S3, if the Amazon S3
-bucket was defined for the parent command. For an invocation,
-StandardErrorUrl is populated if there is just one plugin defined for
-the command, and the Amazon S3 bucket was defined for the command.
+The URL to the plugin's StdErr file in Amazon S3, if the S3 bucket was
+defined for the parent command. For an invocation, StandardErrorUrl is
+populated if there is just one plugin defined for the command, and the
+S3 bucket was defined for the command.
 
 
 =head2 StandardOutputUrl => Str
 
-The URL to the plugin's StdOut file in Amazon S3, if the Amazon S3
-bucket was defined for the parent command. For an invocation,
-StandardOutputUrl is populated if there is just one plugin defined for
-the command, and the Amazon S3 bucket was defined for the command.
+The URL to the plugin's StdOut file in Amazon S3, if the S3 bucket was
+defined for the parent command. For an invocation, StandardOutputUrl is
+populated if there is just one plugin defined for the command, and the
+S3 bucket was defined for the command.
 
 
 =head2 Status => Str
@@ -148,8 +148,8 @@ instance targeted by the command). StatusDetails includes more
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see
-Understanding Command Statuses
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+Understanding command statuses
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
 in the I<AWS Systems Manager User Guide>. StatusDetails can be one of
 the following values:
 

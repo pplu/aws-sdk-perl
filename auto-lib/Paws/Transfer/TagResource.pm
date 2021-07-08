@@ -20,7 +20,7 @@ Paws::Transfer::TagResource - Arguments for method TagResource on L<Paws::Transf
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method TagResource on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method TagResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to TagResource.
@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 
 =head2 B<REQUIRED> Arn => Str
 
-An Amazon Resource Name (ARN) for a specific AWS resource, such as a
-server, user, or role.
+An Amazon Resource Name (ARN) for a specific Amazon Web Services
+resource, such as a server, user, or role.
 
 
 

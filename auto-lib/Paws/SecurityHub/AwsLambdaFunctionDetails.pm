@@ -94,8 +94,12 @@ managed CMK.
 
 =head2 LastModified => Str
 
-The date and time that the function was last updated, in ISO-8601
-format (YYYY-MM-DDThh:mm:ss.sTZD).
+Indicates when the function was last updated.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 =head2 Layers => ArrayRef[L<Paws::SecurityHub::AwsLambdaFunctionLayer>]
@@ -110,7 +114,7 @@ For Lambda@Edge functions, the ARN of the master function.
 
 =head2 MemorySize => Int
 
-The memory that's allocated to the function.
+The memory that is allocated to the function.
 
 
 =head2 RevisionId => Str

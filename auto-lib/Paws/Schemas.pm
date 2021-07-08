@@ -39,6 +39,11 @@ package Paws::Schemas;
     my $call_object = $self->new_with_coercions('Paws::Schemas::DeleteRegistry', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Schemas::DeleteResourcePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSchema {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Schemas::DeleteSchema', @_);
@@ -69,6 +74,11 @@ package Paws::Schemas;
     my $call_object = $self->new_with_coercions('Paws::Schemas::DescribeSchema', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExportSchema {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Schemas::ExportSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCodeBindingSource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Schemas::GetCodeBindingSource', @_);
@@ -77,6 +87,11 @@ package Paws::Schemas;
   sub GetDiscoveredSchema {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Schemas::GetDiscoveredSchema', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Schemas::GetResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDiscoverers {
@@ -104,14 +119,14 @@ package Paws::Schemas;
     my $call_object = $self->new_with_coercions('Paws::Schemas::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
-  sub LockServiceLinkedRole {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Schemas::LockServiceLinkedRole', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
   sub PutCodeBinding {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Schemas::PutCodeBinding', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Schemas::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SearchSchemas {
@@ -132,11 +147,6 @@ package Paws::Schemas;
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Schemas::TagResource', @_);
-    return $self->caller->do_call($self, $call_object);
-  }
-  sub UnlockServiceLinkedRole {
-    my $self = shift;
-    my $call_object = $self->new_with_coercions('Paws::Schemas::UnlockServiceLinkedRole', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UntagResource {
@@ -277,7 +287,7 @@ package Paws::Schemas;
   }
 
 
-  sub operations { qw/CreateDiscoverer CreateRegistry CreateSchema DeleteDiscoverer DeleteRegistry DeleteSchema DeleteSchemaVersion DescribeCodeBinding DescribeDiscoverer DescribeRegistry DescribeSchema GetCodeBindingSource GetDiscoveredSchema ListDiscoverers ListRegistries ListSchemas ListSchemaVersions ListTagsForResource LockServiceLinkedRole PutCodeBinding SearchSchemas StartDiscoverer StopDiscoverer TagResource UnlockServiceLinkedRole UntagResource UpdateDiscoverer UpdateRegistry UpdateSchema / }
+  sub operations { qw/CreateDiscoverer CreateRegistry CreateSchema DeleteDiscoverer DeleteRegistry DeleteResourcePolicy DeleteSchema DeleteSchemaVersion DescribeCodeBinding DescribeDiscoverer DescribeRegistry DescribeSchema ExportSchema GetCodeBindingSource GetDiscoveredSchema GetResourcePolicy ListDiscoverers ListRegistries ListSchemas ListSchemaVersions ListTagsForResource PutCodeBinding PutResourcePolicy SearchSchemas StartDiscoverer StopDiscoverer TagResource UntagResource UpdateDiscoverer UpdateRegistry UpdateSchema / }
 
 1;
 
@@ -305,7 +315,7 @@ Paws::Schemas - Perl Interface to AWS Schemas
 
 =head1 DESCRIPTION
 
-AWS EventBridge Schemas
+Amazon EventBridge Schema Registry
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/schemas-2019-12-02>
 
@@ -377,6 +387,8 @@ Returns: a L<Paws::Schemas::CreateSchemaResponse> instance
 
 Creates a schema definition.
 
+Inactive schemas will be deleted after two years.
+
 
 =head2 DeleteDiscoverer
 
@@ -408,6 +420,22 @@ Each argument is described in detail in: L<Paws::Schemas::DeleteRegistry>
 Returns: nothing
 
 Deletes a Registry.
+
+
+=head2 DeleteResourcePolicy
+
+=over
+
+=item [RegistryName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Schemas::DeleteResourcePolicy>
+
+Returns: nothing
+
+Delete the resource-based policy attached to the specified registry.
 
 
 =head2 DeleteSchema
@@ -522,6 +550,28 @@ Returns: a L<Paws::Schemas::DescribeSchemaResponse> instance
 Retrieve the schema definition.
 
 
+=head2 ExportSchema
+
+=over
+
+=item RegistryName => Str
+
+=item SchemaName => Str
+
+=item Type => Str
+
+=item [SchemaVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Schemas::ExportSchema>
+
+Returns: a L<Paws::Schemas::ExportSchemaResponse> instance
+
+
+
+
 =head2 GetCodeBindingSource
 
 =over
@@ -560,6 +610,22 @@ Each argument is described in detail in: L<Paws::Schemas::GetDiscoveredSchema>
 Returns: a L<Paws::Schemas::GetDiscoveredSchemaResponse> instance
 
 Get the discovered schema that was generated based on sampled events.
+
+
+=head2 GetResourcePolicy
+
+=over
+
+=item [RegistryName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Schemas::GetResourcePolicy>
+
+Returns: a L<Paws::Schemas::GetResourcePolicyResponse> instance
+
+Retrieves the resource-based policy attached to a given registry.
 
 
 =head2 ListDiscoverers
@@ -666,24 +732,6 @@ Returns: a L<Paws::Schemas::ListTagsForResourceResponse> instance
 Get tags for resource.
 
 
-=head2 LockServiceLinkedRole
-
-=over
-
-=item RoleArn => Str
-
-=item Timeout => Int
-
-
-=back
-
-Each argument is described in detail in: L<Paws::Schemas::LockServiceLinkedRole>
-
-Returns: a L<Paws::Schemas::LockServiceLinkedRoleResponse> instance
-
-
-
-
 =head2 PutCodeBinding
 
 =over
@@ -704,6 +752,26 @@ Each argument is described in detail in: L<Paws::Schemas::PutCodeBinding>
 Returns: a L<Paws::Schemas::PutCodeBindingResponse> instance
 
 Put code binding URI
+
+
+=head2 PutResourcePolicy
+
+=over
+
+=item Policy => Str
+
+=item [RegistryName => Str]
+
+=item [RevisionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Schemas::PutResourcePolicy>
+
+Returns: a L<Paws::Schemas::PutResourcePolicyResponse> instance
+
+The name of the policy.
 
 
 =head2 SearchSchemas
@@ -776,22 +844,6 @@ Each argument is described in detail in: L<Paws::Schemas::TagResource>
 Returns: nothing
 
 Add tags to a resource.
-
-
-=head2 UnlockServiceLinkedRole
-
-=over
-
-=item RoleArn => Str
-
-
-=back
-
-Each argument is described in detail in: L<Paws::Schemas::UnlockServiceLinkedRole>
-
-Returns: a L<Paws::Schemas::UnlockServiceLinkedRoleResponse> instance
-
-
 
 
 =head2 UntagResource
@@ -872,6 +924,8 @@ Each argument is described in detail in: L<Paws::Schemas::UpdateSchema>
 Returns: a L<Paws::Schemas::UpdateSchemaResponse> instance
 
 Updates the schema definition
+
+Inactive schemas will be deleted after two years.
 
 
 

@@ -34,19 +34,33 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELB::Additi
 
 =head1 DESCRIPTION
 
-This data type is reserved.
+Information about additional load balancer attributes.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-This parameter is reserved.
+The name of the attribute.
+
+The following attribute is supported.
+
+=over
+
+=item *
+
+C<elb.http.desyncmitigationmode> - Determines how the load balancer
+handles requests that might pose a security risk to your application.
+The possible values are C<monitor>, C<defensive>, and C<strictest>. The
+default is C<defensive>.
+
+=back
+
 
 
 =head2 Value => Str
 
-This parameter is reserved.
+This value of the attribute.
 
 
 

@@ -38,7 +38,7 @@ This class has no description
 
 =head2 SizeInMiB => Int
 
-The size (in MiB) for the memory available to the GPU accelerator.
+The size of the memory available to the GPU accelerator, in MiB.
 
 
 

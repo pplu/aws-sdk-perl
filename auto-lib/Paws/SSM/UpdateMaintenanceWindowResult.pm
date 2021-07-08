@@ -9,6 +9,7 @@ package Paws::SSM::UpdateMaintenanceWindowResult;
   has EndDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Schedule => (is => 'ro', isa => 'Str');
+  has ScheduleOffset => (is => 'ro', isa => 'Int');
   has ScheduleTimezone => (is => 'ro', isa => 'Str');
   has StartDate => (is => 'ro', isa => 'Str');
   has WindowId => (is => 'ro', isa => 'Str');
@@ -69,11 +70,17 @@ The schedule of the maintenance window in the form of a cron or rate
 expression.
 
 
+=head2 ScheduleOffset => Int
+
+The number of days to wait to run a maintenance window after the
+scheduled CRON expression date and time.
+
+
 =head2 ScheduleTimezone => Str
 
 The time zone that the scheduled maintenance window executions are
 based on, in Internet Assigned Numbers Authority (IANA) format. For
-example: "America/Los_Angeles", "etc/UTC", or "Asia/Seoul". For more
+example: "America/Los_Angeles", "UTC", or "Asia/Seoul". For more
 information, see the Time Zone Database
 (https://www.iana.org/time-zones) on the IANA website.
 

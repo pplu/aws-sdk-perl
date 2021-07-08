@@ -34,11 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $storagegateway = Paws->service('StorageGateway');
     my $JoinDomainOutput = $storagegateway->JoinDomain(
-      DomainName         => 'MyDomainName',
-      GatewayARN         => 'MyGatewayARN',
-      Password           => 'MyDomainUserPassword',
-      UserName           => 'MyDomainUserName',
-      DomainControllers  => [ 'MyHost', ... ],         # OPTIONAL
+      DomainName        => 'MyDomainName',
+      GatewayARN        => 'MyGatewayARN',
+      Password          => 'MyDomainUserPassword',
+      UserName          => 'MyDomainUserName',
+      DomainControllers => [
+        'MyHost', ...    # min: 6, max: 1024
+      ],    # OPTIONAL
       OrganizationalUnit => 'MyOrganizationalUnit',    # OPTIONAL
       TimeoutInSeconds   => 1,                         # OPTIONAL
     );

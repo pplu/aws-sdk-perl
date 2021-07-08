@@ -3,7 +3,10 @@ package Paws::ManagedBlockchain::MemberConfiguration;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has FrameworkConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberFrameworkConfiguration', required => 1);
+  has KmsKeyArn => (is => 'ro', isa => 'Str');
+  has LogPublishingConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberLogPublishingConfiguration');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::ManagedBlockchain::InputTagMap');
 
 1;
 
@@ -24,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ManagedBlockchain::MemberConfiguration object:
 
-  $service_obj->Method(Att1 => { Description => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Description => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,6 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ManagedBloc
 =head1 DESCRIPTION
 
 Configuration properties of the member.
+
+Applies only to Hyperledger Fabric.
 
 =head1 ATTRIBUTES
 
@@ -51,9 +56,60 @@ Configuration properties of the blockchain framework relevant to the
 member.
 
 
+=head2 KmsKeyArn => Str
+
+The Amazon Resource Name (ARN) of the customer managed key in AWS Key
+Management Service (AWS KMS) to use for encryption at rest in the
+member. This parameter is inherited by any nodes that this member
+creates.
+
+Use one of the following options to specify this parameter:
+
+=over
+
+=item *
+
+B<Undefined or empty string> - The member uses an AWS owned KMS key for
+encryption by default.
+
+=item *
+
+B<A valid symmetric customer managed KMS key> - The member uses the
+specified key for encryption.
+
+Amazon Managed Blockchain doesn't support asymmetric keys. For more
+information, see Using symmetric and asymmetric keys
+(https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html)
+in the I<AWS Key Management Service Developer Guide>.
+
+The following is an example of a KMS key ARN:
+C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+
+=back
+
+
+
+=head2 LogPublishingConfiguration => L<Paws::ManagedBlockchain::MemberLogPublishingConfiguration>
+
+Configuration properties for logging events associated with a member of
+a Managed Blockchain network.
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the member.
+
+
+=head2 Tags => L<Paws::ManagedBlockchain::InputTagMap>
+
+Tags assigned to the member. Tags consist of a key and optional value.
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
+
+When specifying tags during creation, you can specify multiple
+key-value pairs in a single request, with an overall maximum of 50 tags
+added to each resource.
 
 
 

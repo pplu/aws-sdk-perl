@@ -42,29 +42,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the network interface of the Ec2 instance.
+Contains information about the elastic network interface of the EC2
+instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 Ipv6Addresses => ArrayRef[Str|Undef]
 
-A list of EC2 instance IPv6 address information.
+A list of IPv6 addresses for the EC2 instance.
 
 
 =head2 NetworkInterfaceId => Str
 
-The ID of the network interface
+The ID of the network interface.
 
 
 =head2 PrivateDnsName => Str
 
-Private DNS name of the EC2 instance.
+The private DNS name of the EC2 instance.
 
 
 =head2 PrivateIpAddress => Str
 
-Private IP address of the EC2 instance.
+The private IP address of the EC2 instance.
 
 
 =head2 PrivateIpAddresses => ArrayRef[L<Paws::GuardDuty::PrivateIpAddressDetails>]
@@ -74,17 +75,17 @@ Other private IP address information of the EC2 instance.
 
 =head2 PublicDnsName => Str
 
-Public DNS name of the EC2 instance.
+The public DNS name of the EC2 instance.
 
 
 =head2 PublicIp => Str
 
-Public IP address of the EC2 instance.
+The public IP address of the EC2 instance.
 
 
 =head2 SecurityGroups => ArrayRef[L<Paws::GuardDuty::SecurityGroup>]
 
-Security groups associated with the EC2 instance.
+The security groups associated with the EC2 instance.
 
 
 =head2 SubnetId => Str

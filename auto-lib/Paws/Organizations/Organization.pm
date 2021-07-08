@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 Contains details about an organization. An organization is a collection
 of accounts that are centrally managed together using consolidated
 billing, organized hierarchically with organizational units (OUs), and
-controlled with policies.
+controlled with policies .
 
 =head1 ATTRIBUTES
 
@@ -53,20 +53,17 @@ The Amazon Resource Name (ARN) of an organization.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies)
+in the I<AWS Service Authorization Reference>.
 
 
 =head2 AvailablePolicyTypes => ArrayRef[L<Paws::Organizations::PolicyTypeSummary>]
 
-A list of policy types that are enabled for this organization. For
-example, if your organization has all features enabled, then service
-control policies (SCPs) are included in the list.
+Do not use. This field is deprecated and doesn't provide complete
+information about the policies in your organization.
 
-Even if a policy type is shown as available in the organization, you
-can separately enable and disable them at the root level by using
-EnablePolicyType and DisablePolicyType. Use ListRoots to see the status
-of a policy type in that root.
+To determine the policies that are enabled and available for use in
+your organization, use the ListRoots operation instead.
 
 
 =head2 FeatureSet => Str
@@ -86,30 +83,31 @@ in the I<AWS Organizations User Guide>.
 The unique identifier (ID) of an organization.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for an organization
-ID string requires "o-" followed by from 10 to 32 lower-case letters or
+ID string requires "o-" followed by from 10 to 32 lowercase letters or
 digits.
 
 
 =head2 MasterAccountArn => Str
 
 The Amazon Resource Name (ARN) of the account that is designated as the
-master account for the organization.
+management account for the organization.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies)
+in the I<AWS Service Authorization Reference>.
 
 
 =head2 MasterAccountEmail => Str
 
 The email address that is associated with the AWS account that is
-designated as the master account for the organization.
+designated as the management account for the organization.
 
 
 =head2 MasterAccountId => Str
 
-The unique identifier (ID) of the master account of an organization.
+The unique identifier (ID) of the management account of an
+organization.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for an account ID
 string requires exactly 12 digits.

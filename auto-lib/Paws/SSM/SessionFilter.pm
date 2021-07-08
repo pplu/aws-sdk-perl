@@ -105,6 +105,10 @@ Failed
 
 =back
 
+=item *
+
+SessionId: Specify a session ID to return details about the session.
+
 =back
 
 

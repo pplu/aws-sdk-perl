@@ -35,22 +35,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::StepFunctio
 
 =head1 DESCRIPTION
 
-This class has no description
+The C<LoggingConfiguration> data type is used to set CloudWatch Logs
+options.
 
 =head1 ATTRIBUTES
 
 
 =head2 Destinations => ArrayRef[L<Paws::StepFunctions::LogDestination>]
 
-An object that describes where your execution history events will be
-logged. Limited to size 1. Required, if your log level is not set to
-C<OFF>.
+An array of objects that describes where your execution history events
+will be logged. Limited to size 1. Required, if your log level is not
+set to C<OFF>.
 
 
 =head2 IncludeExecutionData => Bool
 
-Determines whether execution history data is included in your log. When
-set to C<FALSE>, data is excluded.
+Determines whether execution data is included in your log. When set to
+C<false>, data is excluded.
 
 
 =head2 Level => Str

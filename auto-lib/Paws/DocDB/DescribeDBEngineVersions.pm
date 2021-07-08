@@ -100,7 +100,7 @@ The database engine to return.
 
 The database engine version to return.
 
-Example: C<5.1.49>
+Example: C<3.6.0>
 
 
 

@@ -41,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 =head2 B<REQUIRED> MemberAccountId => Str
 
 The ID of the AWS account that you want to associate with Amazon Macie
-as a member account.
+Classic as a member account.
 
 
 

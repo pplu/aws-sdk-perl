@@ -30,12 +30,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $StopInstancesResult = $ec2->StopInstances(
-      InstanceIds => [ 'MyInstanceId', ... ],
-      DryRun      => 1,                         # OPTIONAL
-      Force       => 1,                         # OPTIONAL
-      Hibernate   => 1,                         # OPTIONAL
-    );
+    # To stop a running EC2 instance
+    # This example stops the specified EC2 instance.
+    my $StopInstancesResult =
+      $ec2->StopInstances( 'InstanceIds' => ['i-1234567890abcdef0'] );
 
     # Results:
     my $StoppingInstances = $StopInstancesResult->StoppingInstances;
@@ -72,9 +70,9 @@ Default: C<false>
 
 Hibernates the instance if the instance was enabled for hibernation at
 launch. If the instance cannot hibernate successfully, a normal
-shutdown occurs. For more information, see Hibernate Your Instance
+shutdown occurs. For more information, see Hibernate your instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
-the I<Amazon Elastic Compute Cloud User Guide>.
+the I<Amazon EC2 User Guide>.
 
 Default: C<false>
 

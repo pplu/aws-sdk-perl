@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExtraParams => [
           {
             Name => 'DUNS_NUMBER'
-            , # values: DUNS_NUMBER, BRAND_NUMBER, BIRTH_DEPARTMENT, BIRTH_DATE_IN_YYYY_MM_DD, BIRTH_COUNTRY, BIRTH_CITY, DOCUMENT_NUMBER, AU_ID_NUMBER, AU_ID_TYPE, CA_LEGAL_TYPE, CA_BUSINESS_ENTITY_TYPE, ES_IDENTIFICATION, ES_IDENTIFICATION_TYPE, ES_LEGAL_FORM, FI_BUSINESS_NUMBER, FI_ID_NUMBER, FI_NATIONALITY, FI_ORGANIZATION_TYPE, IT_PIN, IT_REGISTRANT_ENTITY_TYPE, RU_PASSPORT_DATA, SE_ID_NUMBER, SG_ID_NUMBER, VAT_NUMBER, UK_CONTACT_TYPE, UK_COMPANY_NUMBER
+            , # values: DUNS_NUMBER, BRAND_NUMBER, BIRTH_DEPARTMENT, BIRTH_DATE_IN_YYYY_MM_DD, BIRTH_COUNTRY, BIRTH_CITY, DOCUMENT_NUMBER, AU_ID_NUMBER, AU_ID_TYPE, CA_LEGAL_TYPE, CA_BUSINESS_ENTITY_TYPE, CA_LEGAL_REPRESENTATIVE, CA_LEGAL_REPRESENTATIVE_CAPACITY, ES_IDENTIFICATION, ES_IDENTIFICATION_TYPE, ES_LEGAL_FORM, FI_BUSINESS_NUMBER, FI_ID_NUMBER, FI_NATIONALITY, FI_ORGANIZATION_TYPE, IT_NATIONALITY, IT_PIN, IT_REGISTRANT_ENTITY_TYPE, RU_PASSPORT_DATA, SE_ID_NUMBER, SG_ID_NUMBER, VAT_NUMBER, UK_CONTACT_TYPE, UK_COMPANY_NUMBER
             Value => 'MyExtraParamValue',    # max: 2048
 
           },
@@ -77,7 +77,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExtraParams => [
           {
             Name => 'DUNS_NUMBER'
-            , # values: DUNS_NUMBER, BRAND_NUMBER, BIRTH_DEPARTMENT, BIRTH_DATE_IN_YYYY_MM_DD, BIRTH_COUNTRY, BIRTH_CITY, DOCUMENT_NUMBER, AU_ID_NUMBER, AU_ID_TYPE, CA_LEGAL_TYPE, CA_BUSINESS_ENTITY_TYPE, ES_IDENTIFICATION, ES_IDENTIFICATION_TYPE, ES_LEGAL_FORM, FI_BUSINESS_NUMBER, FI_ID_NUMBER, FI_NATIONALITY, FI_ORGANIZATION_TYPE, IT_PIN, IT_REGISTRANT_ENTITY_TYPE, RU_PASSPORT_DATA, SE_ID_NUMBER, SG_ID_NUMBER, VAT_NUMBER, UK_CONTACT_TYPE, UK_COMPANY_NUMBER
+            , # values: DUNS_NUMBER, BRAND_NUMBER, BIRTH_DEPARTMENT, BIRTH_DATE_IN_YYYY_MM_DD, BIRTH_COUNTRY, BIRTH_CITY, DOCUMENT_NUMBER, AU_ID_NUMBER, AU_ID_TYPE, CA_LEGAL_TYPE, CA_BUSINESS_ENTITY_TYPE, CA_LEGAL_REPRESENTATIVE, CA_LEGAL_REPRESENTATIVE_CAPACITY, ES_IDENTIFICATION, ES_IDENTIFICATION_TYPE, ES_LEGAL_FORM, FI_BUSINESS_NUMBER, FI_ID_NUMBER, FI_NATIONALITY, FI_ORGANIZATION_TYPE, IT_NATIONALITY, IT_PIN, IT_REGISTRANT_ENTITY_TYPE, RU_PASSPORT_DATA, SE_ID_NUMBER, SG_ID_NUMBER, VAT_NUMBER, UK_CONTACT_TYPE, UK_COMPANY_NUMBER
             Value => 'MyExtraParamValue',    # max: 2048
 
           },
@@ -103,7 +103,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExtraParams => [
           {
             Name => 'DUNS_NUMBER'
-            , # values: DUNS_NUMBER, BRAND_NUMBER, BIRTH_DEPARTMENT, BIRTH_DATE_IN_YYYY_MM_DD, BIRTH_COUNTRY, BIRTH_CITY, DOCUMENT_NUMBER, AU_ID_NUMBER, AU_ID_TYPE, CA_LEGAL_TYPE, CA_BUSINESS_ENTITY_TYPE, ES_IDENTIFICATION, ES_IDENTIFICATION_TYPE, ES_LEGAL_FORM, FI_BUSINESS_NUMBER, FI_ID_NUMBER, FI_NATIONALITY, FI_ORGANIZATION_TYPE, IT_PIN, IT_REGISTRANT_ENTITY_TYPE, RU_PASSPORT_DATA, SE_ID_NUMBER, SG_ID_NUMBER, VAT_NUMBER, UK_CONTACT_TYPE, UK_COMPANY_NUMBER
+            , # values: DUNS_NUMBER, BRAND_NUMBER, BIRTH_DEPARTMENT, BIRTH_DATE_IN_YYYY_MM_DD, BIRTH_COUNTRY, BIRTH_CITY, DOCUMENT_NUMBER, AU_ID_NUMBER, AU_ID_TYPE, CA_LEGAL_TYPE, CA_BUSINESS_ENTITY_TYPE, CA_LEGAL_REPRESENTATIVE, CA_LEGAL_REPRESENTATIVE_CAPACITY, ES_IDENTIFICATION, ES_IDENTIFICATION_TYPE, ES_LEGAL_FORM, FI_BUSINESS_NUMBER, FI_ID_NUMBER, FI_NATIONALITY, FI_ORGANIZATION_TYPE, IT_NATIONALITY, IT_PIN, IT_REGISTRANT_ENTITY_TYPE, RU_PASSPORT_DATA, SE_ID_NUMBER, SG_ID_NUMBER, VAT_NUMBER, UK_CONTACT_TYPE, UK_COMPANY_NUMBER
             Value => 'MyExtraParamValue',    # max: 2048
 
           },
@@ -137,7 +137,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> AdminContact => L<Paws::Route53Domains::ContactDetail>
 
-Provides detailed contact information.
+Provides detailed contact information. For information about the values
+that you specify for each element, see ContactDetail
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 
 
 
@@ -153,11 +155,43 @@ Default: C<true>
 
 =head2 B<REQUIRED> DomainName => Str
 
-The domain name that you want to register.
+The domain name that you want to register. The top-level domain (TLD),
+such as .com, must be a TLD that Route 53 supports. For a list of
+supported TLDs, see Domains that You Can Register with Amazon Route 53
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+in the I<Amazon Route 53 Developer Guide>.
 
-Constraints: The domain name can contain only the letters a through z,
-the numbers 0 through 9, and hyphen (-). Internationalized Domain Names
-are not supported.
+The domain name can contain only the following characters:
+
+=over
+
+=item *
+
+Letters a through z. Domain names are not case sensitive.
+
+=item *
+
+Numbers 0 through 9.
+
+=item *
+
+Hyphen (-). You can't specify a hyphen at the beginning or end of a
+label.
+
+=item *
+
+Period (.) to separate the labels in the name, such as the C<.> in
+C<example.com>.
+
+=back
+
+Internationalized domain names are not supported for some top-level
+domains. To determine whether the TLD that you want to use supports
+internationalized domain names, see Domains that You Can Register with
+Amazon Route 53
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html).
+For more information, see Formatting Internationalized Domain Names
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html#domain-name-format-idns).
 
 
 
@@ -167,7 +201,7 @@ The number of years that you want to register the domain for. Domains
 are registered for a minimum of one year. The maximum period depends on
 the top-level domain. For the range of valid values for your domain,
 see Domains that You Can Register with Amazon Route 53
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 Default: 1
@@ -221,13 +255,17 @@ Default: C<true>
 
 =head2 B<REQUIRED> RegistrantContact => L<Paws::Route53Domains::ContactDetail>
 
-Provides detailed contact information.
+Provides detailed contact information. For information about the values
+that you specify for each element, see ContactDetail
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 
 
 
 =head2 B<REQUIRED> TechContact => L<Paws::Route53Domains::ContactDetail>
 
-Provides detailed contact information.
+Provides detailed contact information. For information about the values
+that you specify for each element, see ContactDetail
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_ContactDetail.html).
 
 
 

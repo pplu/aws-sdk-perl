@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Neptune::DB
 
 =head1 DESCRIPTION
 
-Contains status information for a DB cluster option group.
+Not supported by Neptune.
 
 =head1 ATTRIBUTES
 
 
 =head2 DBClusterOptionGroupName => Str
 
-Specifies the name of the DB cluster option group.
+Not supported by Neptune.
 
 
 =head2 Status => Str
 
-Specifies the status of the DB cluster option group.
+Not supported by Neptune.
 
 
 

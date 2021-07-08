@@ -34,33 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::P
 
 =head1 DESCRIPTION
 
-Queue setting that determines the highest latency allowed for
-individual players when placing a game session. When a latency policy
-is in force, a game session cannot be placed with any fleet in a Region
-where a player reports latency higher than the cap. Latency policies
-are only enforced when the placement request contains player latency
-information.
+Sets a latency cap for individual players when placing a game session.
+With a latency policy in force, a game session cannot be placed in a
+fleet location where a player reports latency higher than the cap.
+Latency policies are used only with placement request that provide
+player latency information. Player latency policies can be stacked to
+gradually relax latency requirements over time.
 
-=over
-
-=item *
-
-CreateGameSessionQueue
-
-=item *
-
-DescribeGameSessionQueues
-
-=item *
-
-UpdateGameSessionQueue
-
-=item *
-
-DeleteGameSessionQueue
-
-=back
-
+Latency policies are part of a GameSessionQueue.
 
 =head1 ATTRIBUTES
 

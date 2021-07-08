@@ -53,6 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DomainNameStatus         = $DomainName->DomainNameStatus;
     my $DomainNameStatusMessage  = $DomainName->DomainNameStatusMessage;
     my $EndpointConfiguration    = $DomainName->EndpointConfiguration;
+    my $MutualTlsAuthentication  = $DomainName->MutualTlsAuthentication;
     my $RegionalCertificateArn   = $DomainName->RegionalCertificateArn;
     my $RegionalCertificateName  = $DomainName->RegionalCertificateName;
     my $RegionalDomainName       = $DomainName->RegionalDomainName;

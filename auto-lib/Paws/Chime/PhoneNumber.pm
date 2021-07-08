@@ -5,6 +5,7 @@ package Paws::Chime::PhoneNumber;
   has CallingName => (is => 'ro', isa => 'Str');
   has CallingNameStatus => (is => 'ro', isa => 'Str');
   has Capabilities => (is => 'ro', isa => 'Paws::Chime::PhoneNumberCapabilities');
+  has Country => (is => 'ro', isa => 'Str');
   has CreatedTimestamp => (is => 'ro', isa => 'Str');
   has DeletionTimestamp => (is => 'ro', isa => 'Str');
   has E164PhoneNumber => (is => 'ro', isa => 'Str');
@@ -68,6 +69,11 @@ The outbound calling name status.
 =head2 Capabilities => L<Paws::Chime::PhoneNumberCapabilities>
 
 The phone number capabilities.
+
+
+=head2 Country => Str
+
+The phone number country. Format: ISO 3166-1 alpha-2.
 
 
 =head2 CreatedTimestamp => Str

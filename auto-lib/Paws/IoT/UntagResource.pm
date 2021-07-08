@@ -31,7 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iot = Paws->service('IoT');
     my $UntagResourceResponse = $iot->UntagResource(
       ResourceArn => 'MyResourceArn',
-      TagKeys     => [ 'MyTagKey', ... ],
+      TagKeys     => [
+        'MyTagKey', ...    # min: 1, max: 128
+      ],
 
     );
 

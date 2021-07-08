@@ -3,6 +3,7 @@ package Paws::CodePipeline::ListActionTypes;
   use Moose;
   has ActionOwnerFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'actionOwnerFilter' );
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken' );
+  has RegionFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'regionFilter' );
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $codepipeline = Paws->service('CodePipeline');
     my $ListActionTypesOutput = $codepipeline->ListActionTypes(
-      ActionOwnerFilter => 'AWS',            # OPTIONAL
-      NextToken         => 'MyNextToken',    # OPTIONAL
+      ActionOwnerFilter => 'AWS',                # OPTIONAL
+      NextToken         => 'MyNextToken',        # OPTIONAL
+      RegionFilter      => 'MyAWSRegionName',    # OPTIONAL
     );
 
     # Results:
@@ -57,6 +59,12 @@ Valid values are: C<"AWS">, C<"ThirdParty">, C<"Custom">
 An identifier that was returned from the previous list action types
 call, which can be used to return the next set of action types in the
 list.
+
+
+
+=head2 RegionFilter => Str
+
+The Region to filter on for the list of action types.
 
 
 

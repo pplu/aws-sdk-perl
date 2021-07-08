@@ -40,7 +40,7 @@ Contains information about finding statistics.
 
 =head2 CountBySeverity => L<Paws::GuardDuty::CountBySeverity>
 
-Represents a map of severity to count statistic for a set of findings
+Represents a map of severity to count statistics for a set of findings.
 
 
 

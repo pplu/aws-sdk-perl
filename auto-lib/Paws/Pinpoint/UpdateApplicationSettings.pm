@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           WebUrl => 'My__string',
         },    # OPTIONAL
         CloudWatchMetricsEnabled => 1,    # OPTIONAL
+        EventTaggingEnabled      => 1,    # OPTIONAL
         Limits                   => {
           Daily             => 1,         # OPTIONAL
           MaximumDuration   => 1,         # OPTIONAL

@@ -2,6 +2,7 @@
 package Paws::ServerlessRepo::ApplicationPolicyStatement;
   use Moose;
   has Actions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'actions', traits => ['NameInRequest'], required => 1);
+  has PrincipalOrgIDs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'principalOrgIDs', traits => ['NameInRequest']);
   has Principals => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'principals', traits => ['NameInRequest'], required => 1);
   has StatementId => (is => 'ro', isa => 'Str', request_name => 'statementId', traits => ['NameInRequest']);
 
@@ -45,6 +46,14 @@ Policy statement applied to the application.
 For the list of actions supported for this operation, see Application
 Permissions
 (https://docs.aws.amazon.com/serverlessrepo/latest/devguide/access-control-resource-based.html#application-permissions).
+
+
+=head2 PrincipalOrgIDs => ArrayRef[Str|Undef]
+
+An array of PrinciplalOrgIDs, which corresponds to AWS IAM
+aws:PrincipalOrgID
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#principal-org-id)
+global condition key.
 
 
 =head2 B<REQUIRED> Principals => ArrayRef[Str|Undef]

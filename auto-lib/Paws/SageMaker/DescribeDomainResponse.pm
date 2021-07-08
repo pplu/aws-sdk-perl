@@ -1,6 +1,7 @@
 
 package Paws::SageMaker::DescribeDomainResponse;
   use Moose;
+  has AppNetworkAccessType => (is => 'ro', isa => 'Str');
   has AuthMode => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has DefaultUserSettings => (is => 'ro', isa => 'Paws::SageMaker::UserSettings');
@@ -10,6 +11,7 @@ package Paws::SageMaker::DescribeDomainResponse;
   has FailureReason => (is => 'ro', isa => 'Str');
   has HomeEfsFileSystemId => (is => 'ro', isa => 'Str');
   has HomeEfsFileSystemKmsKeyId => (is => 'ro', isa => 'Str');
+  has KmsKeyId => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has SingleSignOnManagedApplicationInstanceId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -28,6 +30,27 @@ Paws::SageMaker::DescribeDomainResponse
 =head1 ATTRIBUTES
 
 
+=head2 AppNetworkAccessType => Str
+
+Specifies the VPC used for non-EFS traffic. The default value is
+C<PublicInternetOnly>.
+
+=over
+
+=item *
+
+C<PublicInternetOnly> - Non-EFS traffic is through a VPC managed by
+Amazon SageMaker, which allows direct internet access
+
+=item *
+
+C<VpcOnly> - All Studio traffic is through the specified VPC and
+subnets
+
+=back
+
+
+Valid values are: C<"PublicInternetOnly">, C<"VpcOnly">
 =head2 AuthMode => Str
 
 The domain's authentication mode.
@@ -40,8 +63,8 @@ The creation time.
 
 =head2 DefaultUserSettings => L<Paws::SageMaker::UserSettings>
 
-Settings which are applied to all UserProfile in this domain, if
-settings are not explicitly specified in a given UserProfile.
+Settings which are applied to UserProfiles in this domain if settings
+are not explicitly specified in a given UserProfile.
 
 
 =head2 DomainArn => Str
@@ -71,7 +94,13 @@ The ID of the Amazon Elastic File System (EFS) managed by this Domain.
 
 =head2 HomeEfsFileSystemKmsKeyId => Str
 
-The AWS Key Management Service encryption key ID.
+This member is deprecated and replaced with C<KmsKeyId>.
+
+
+=head2 KmsKeyId => Str
+
+The Amazon Web Services KMS customer managed CMK used to encrypt the
+EFS volume attached to the domain.
 
 
 =head2 LastModifiedTime => Str
@@ -88,10 +117,10 @@ The SSO managed application instance ID.
 
 The status.
 
-Valid values are: C<"Deleting">, C<"Failed">, C<"InService">, C<"Pending">
+Valid values are: C<"Deleting">, C<"Failed">, C<"InService">, C<"Pending">, C<"Updating">, C<"Update_Failed">, C<"Delete_Failed">
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-Security setting to limit to a set of subnets.
+The VPC subnets that Studio uses for communication.
 
 
 =head2 Url => Str
@@ -101,7 +130,8 @@ The domain's URL.
 
 =head2 VpcId => Str
 
-The ID of the Amazon Virtual Private Cloud.
+The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for
+communication.
 
 
 =head2 _request_id => Str

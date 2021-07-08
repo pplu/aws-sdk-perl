@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       RootDirectory => {
         CreationInfo => {
-          OwnerGid    => 1,                 # max: 4294967295
-          OwnerUid    => 1,                 # max: 4294967295
-          Permissions => 'MyPermissions',
+          OwnerGid    => 1,                  # max: 4294967295
+          OwnerUid    => 1,                  # max: 4294967295
+          Permissions => 'MyPermissions',    # min: 3, max: 4
 
         },    # OPTIONAL
         Path => 'MyPath',    # min: 1, max: 100; OPTIONAL
@@ -110,7 +110,13 @@ access the root directory and below. If the C<RootDirectory> E<gt>
 C<Path> specified does not exist, EFS creates it and applies the
 C<CreationInfo> settings when a client connects to an access point.
 When specifying a C<RootDirectory>, you need to provide the C<Path>,
-and the C<CreationInfo> is optional.
+and the C<CreationInfo>.
+
+Amazon EFS creates a root directory only if you have provided the
+CreationInfo: OwnUid, OwnGID, and permissions for the directory. If you
+do not provide this information, Amazon EFS does not create the root
+directory. If the root directory does not exist, attempts to mount
+using the access point will fail.
 
 
 

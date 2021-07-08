@@ -48,6 +48,9 @@ ID or launch template name in the request.
 Any parameters that you specify override the same parameters in the
 launch template.
 
+For fleets of type C<request> and C<maintain>, a maximum of 300 items
+is allowed across all launch templates.
+
 
 
 =head1 SEE ALSO

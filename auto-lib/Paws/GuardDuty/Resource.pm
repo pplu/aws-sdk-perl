@@ -4,6 +4,7 @@ package Paws::GuardDuty::Resource;
   has AccessKeyDetails => (is => 'ro', isa => 'Paws::GuardDuty::AccessKeyDetails', request_name => 'accessKeyDetails', traits => ['NameInRequest']);
   has InstanceDetails => (is => 'ro', isa => 'Paws::GuardDuty::InstanceDetails', request_name => 'instanceDetails', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
+  has S3BucketDetails => (is => 'ro', isa => 'ArrayRef[Paws::GuardDuty::S3BucketDetail]', request_name => 's3BucketDetails', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::GuardDuty::Resource object:
 
-  $service_obj->Method(Att1 => { AccessKeyDetails => $value, ..., ResourceType => $value  });
+  $service_obj->Method(Att1 => { AccessKeyDetails => $value, ..., S3BucketDetails => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,7 +56,12 @@ that prompted GuardDuty to generate a finding.
 
 =head2 ResourceType => Str
 
-The type of the AWS resource.
+The type of AWS resource.
+
+
+=head2 S3BucketDetails => ArrayRef[L<Paws::GuardDuty::S3BucketDetail>]
+
+Contains information on the S3 bucket.
 
 
 

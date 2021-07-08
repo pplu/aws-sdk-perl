@@ -3,6 +3,7 @@ package Paws::GroundStation::DescribeContactResponse;
   use Moose;
   has ContactId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contactId');
   has ContactStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'contactStatus');
+  has DataflowList => (is => 'ro', isa => 'ArrayRef[Paws::GroundStation::DataflowDetail]', traits => ['NameInRequest'], request_name => 'dataflowList');
   has EndTime => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'endTime');
   has ErrorMessage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'errorMessage');
   has GroundStation => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groundStation');
@@ -36,7 +37,12 @@ UUID of a contact.
 
 Status of a contact.
 
-Valid values are: C<"AVAILABLE">, C<"AWS_CANCELLED">, C<"CANCELLED">, C<"CANCELLING">, C<"COMPLETED">, C<"FAILED">, C<"FAILED_TO_SCHEDULE">, C<"PASS">, C<"POSTPASS">, C<"PREPASS">, C<"SCHEDULED">, C<"SCHEDULING">
+Valid values are: C<"AVAILABLE">, C<"AWS_CANCELLED">, C<"AWS_FAILED">, C<"CANCELLED">, C<"CANCELLING">, C<"COMPLETED">, C<"FAILED">, C<"FAILED_TO_SCHEDULE">, C<"PASS">, C<"POSTPASS">, C<"PREPASS">, C<"SCHEDULED">, C<"SCHEDULING">
+=head2 DataflowList => ArrayRef[L<Paws::GroundStation::DataflowDetail>]
+
+List describing source and destination details for each dataflow edge.
+
+
 =head2 EndTime => Str
 
 End time of a contact.

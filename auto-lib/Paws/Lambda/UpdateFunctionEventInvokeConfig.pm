@@ -32,19 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To update an asynchronous invocation configuration
+    # The following example adds an on-failure destination to the existing
+    # asynchronous invocation configuration for a function named my-function.
     my $FunctionEventInvokeConfig = $lambda->UpdateFunctionEventInvokeConfig(
-      FunctionName      => 'MyFunctionName',
-      DestinationConfig => {
-        OnFailure => {
-          Destination => 'MyDestinationArn',    # max: 350; OPTIONAL
-        },    # OPTIONAL
-        OnSuccess => {
-          Destination => 'MyDestinationArn',    # max: 350; OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      MaximumEventAgeInSeconds => 1,                # OPTIONAL
-      MaximumRetryAttempts     => 1,                # OPTIONAL
-      Qualifier                => 'MyQualifier',    # OPTIONAL
+      'DestinationConfig' => {
+        'OnFailure' => {
+          'Destination' => 'arn:aws:sqs:us-east-2:123456789012:destination'
+        }
+      },
+      'FunctionName' => 'my-function'
     );
 
     # Results:

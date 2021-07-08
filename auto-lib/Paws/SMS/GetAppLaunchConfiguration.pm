@@ -32,8 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AppId    = $GetAppLaunchConfigurationResponse->AppId;
-    my $RoleName = $GetAppLaunchConfigurationResponse->RoleName;
+    my $AppId      = $GetAppLaunchConfigurationResponse->AppId;
+    my $AutoLaunch = $GetAppLaunchConfigurationResponse->AutoLaunch;
+    my $RoleName   = $GetAppLaunchConfigurationResponse->RoleName;
     my $ServerGroupLaunchConfigurations =
       $GetAppLaunchConfigurationResponse->ServerGroupLaunchConfigurations;
 
@@ -47,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application launch configuration.
+The ID of the application.
 
 
 

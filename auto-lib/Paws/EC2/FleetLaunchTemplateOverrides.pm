@@ -65,12 +65,22 @@ The location where the instance launched, if applicable.
 
 =head2 Priority => Num
 
-The priority for the launch template override. If B<AllocationStrategy>
-is set to C<prioritized>, EC2 Fleet uses priority to determine which
-launch template override to use first in fulfilling On-Demand capacity.
-The highest priority is launched first. Valid values are whole numbers
-starting at C<0>. The lower the number, the higher the priority. If no
-number is set, the override has the lowest priority.
+The priority for the launch template override. The highest priority is
+launched first.
+
+If the On-Demand C<AllocationStrategy> is set to C<prioritized>, EC2
+Fleet uses priority to determine which launch template override to use
+first in fulfilling On-Demand capacity.
+
+If the Spot C<AllocationStrategy> is set to
+C<capacity-optimized-prioritized>, EC2 Fleet uses priority on a
+best-effort basis to determine which launch template override to use in
+fulfilling Spot capacity, but optimizes for capacity first.
+
+Valid values are whole numbers starting at C<0>. The lower the number,
+the higher the priority. If no number is set, the override has the
+lowest priority. You can set the same priority for different launch
+template overrides.
 
 
 =head2 SubnetId => Str

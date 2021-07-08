@@ -66,14 +66,14 @@ of key you specify.
 For the key I<SourceUrl>, the value is an S3 bucket location. For
 example:
 
-C<"Values": [ "s3://my-bucket/my-folder" ]>
+C<"Values": [ "s3://doc-example-bucket/my-folder" ]>
 
 =item *
 
 For the key I<S3FileUrl>, the value is a file in an S3 bucket. For
 example:
 
-C<"Values": [ "s3://my-bucket/my-folder/my-file.py" ]>
+C<"Values": [ "s3://doc-example-bucket/my-folder/my-file.py" ]>
 
 =item *
 

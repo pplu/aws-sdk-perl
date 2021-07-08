@@ -47,16 +47,20 @@ doesn't log the event.
 
 You can configure up to five event selectors for a trail.
 
+You cannot apply both event selectors and advanced event selectors to a
+trail.
+
 =head1 ATTRIBUTES
 
 
 =head2 DataResources => ArrayRef[L<Paws::CloudTrail::DataResource>]
 
 CloudTrail supports data event logging for Amazon S3 objects and AWS
-Lambda functions. You can specify up to 250 resources for an individual
-event selector, but the total number of data resources cannot exceed
-250 across all event selectors in a trail. This limit does not apply if
-you configure resource logging for all data events.
+Lambda functions with basic event selectors. You can specify up to 250
+resources for an individual event selector, but the total number of
+data resources cannot exceed 250 across all event selectors in a trail.
+This limit does not apply if you configure resource logging for all
+data events.
 
 For more information, see Data Events
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html#logging-data-events)
@@ -85,6 +89,12 @@ For more information, see Management Events
 in the I<AWS CloudTrail User Guide>.
 
 By default, the value is C<true>.
+
+The first copy of management events is free. You are charged for
+additional copies of management events that you are logging on any
+subsequent trail in the same region. For more information about
+CloudTrail pricing, see AWS CloudTrail Pricing
+(http://aws.amazon.com/cloudtrail/pricing/).
 
 
 =head2 ReadWriteType => Str

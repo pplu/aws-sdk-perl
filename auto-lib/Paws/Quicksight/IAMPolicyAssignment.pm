@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-An IAM policy assignment.
+An AWS Identity and Access Management (IAM) policy assignment.
 
 =head1 ATTRIBUTES
 

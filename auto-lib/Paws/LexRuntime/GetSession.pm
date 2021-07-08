@@ -39,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ActiveContexts          = $GetSessionResponse->ActiveContexts;
     my $DialogAction            = $GetSessionResponse->DialogAction;
     my $RecentIntentSummaryView = $GetSessionResponse->RecentIntentSummaryView;
     my $SessionAttributes       = $GetSessionResponse->SessionAttributes;

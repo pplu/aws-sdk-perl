@@ -79,7 +79,10 @@ group.
 =head2 Status => Str
 
 The current status of the endpoint. One of: C<creating>, C<available>,
-C<deleting>, C<modifying>.
+C<deleting>, C<inactive>, C<modifying>. The C<inactive> state applies
+to an endpoint that can't be used for a certain kind of cluster, such
+as a C<writer> endpoint for a read-only secondary cluster in a global
+database.
 
 
 =head2 _request_id => Str

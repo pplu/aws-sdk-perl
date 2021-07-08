@@ -58,6 +58,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DeploymentStrategyId        = $Deployment->DeploymentStrategyId;
     my $Description                 = $Deployment->Description;
     my $EnvironmentId               = $Deployment->EnvironmentId;
+    my $EventLog                    = $Deployment->EventLog;
     my $FinalBakeTimeInMinutes      = $Deployment->FinalBakeTimeInMinutes;
     my $GrowthFactor                = $Deployment->GrowthFactor;
     my $GrowthType                  = $Deployment->GrowthType;

@@ -20,18 +20,22 @@ Paws::ResourceGroups::ListGroupsOutput
 =head2 GroupIdentifiers => ArrayRef[L<Paws::ResourceGroups::GroupIdentifier>]
 
 A list of GroupIdentifier objects. Each identifier is an object that
-contains both the GroupName and the GroupArn.
+contains both the C<Name> and the C<GroupArn>.
 
 
 =head2 Groups => ArrayRef[L<Paws::ResourceGroups::Group>]
 
-A list of resource groups.
+I<B<Deprecated - don't use this field. Use the C<GroupIdentifiers>
+response field instead.>>
 
 
 =head2 NextToken => Str
 
-The NextToken value to include in a subsequent C<ListGroups> request,
-to get more results.
+If present, indicates that more output is available than is included in
+the current response. Use this value in the C<NextToken> request
+parameter in a subsequent call to the operation to get the next part of
+the output. You should repeat this until the C<NextToken> response
+element comes back as C<null>.
 
 
 =head2 _request_id => Str

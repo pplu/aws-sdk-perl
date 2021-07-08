@@ -3,6 +3,7 @@ package Paws::SSM::CreateDocument;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentsSource]');
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DisplayName => (is => 'ro', isa => 'Str');
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -49,12 +50,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      DocumentFormat => 'YAML',       # OPTIONAL
-      DocumentType   => 'Command',    # OPTIONAL
+      DisplayName    => 'MyDocumentDisplayName',    # OPTIONAL
+      DocumentFormat => 'YAML',                     # OPTIONAL
+      DocumentType   => 'Command',                  # OPTIONAL
       Requires       => [
         {
           Name    => 'MyDocumentARN',
-          Version => 'MyDocumentVersion',    # OPTIONAL
+          Version => 'MyDocumentVersion',           # OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -90,7 +92,41 @@ a document.
 
 =head2 B<REQUIRED> Content => Str
 
-A valid JSON or YAML string.
+The content for the new SSM document in JSON or YAML format. We
+recommend storing the contents for your new document in an external
+JSON or YAML file and referencing the file in a command.
+
+For examples, see the following topics in the I<AWS Systems Manager
+User Guide>.
+
+=over
+
+=item *
+
+Create an SSM document (AWS API)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
+
+=item *
+
+Create an SSM document (AWS CLI)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-cli.html)
+
+=item *
+
+Create an SSM document (API)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/create-ssm-document-api.html)
+
+=back
+
+
+
+
+=head2 DisplayName => Str
+
+An optional field where you can specify a friendly name for the Systems
+Manager document. This value can differ for each version of the
+document. You can update this value at a later time using the
+UpdateDocument action.
 
 
 
@@ -105,20 +141,20 @@ Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 The type of document to create.
 
-Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">
+Valid values are: C<"Command">, C<"Policy">, C<"Automation">, C<"Session">, C<"Package">, C<"ApplicationConfiguration">, C<"ApplicationConfigurationSchema">, C<"DeploymentStrategy">, C<"ChangeCalendar">, C<"Automation.ChangeTemplate">, C<"ProblemAnalysis">, C<"ProblemAnalysisTemplate">
 
 =head2 B<REQUIRED> Name => Str
 
 A name for the Systems Manager document.
 
-Do not use the following to begin the names of documents you create.
-They are reserved by AWS for use as document prefixes:
+You can't use the following strings as document name prefixes. These
+are reserved by AWS for use as document name prefixes:
 
 =over
 
 =item *
 
-C<aws>
+C<aws->
 
 =item *
 
@@ -135,9 +171,15 @@ C<amzn>
 
 =head2 Requires => ArrayRef[L<Paws::SSM::DocumentRequires>]
 
-A list of SSM documents required by a document. For example, an
+A list of SSM documents required by a document. This parameter is used
+exclusively by AWS AppConfig. When a user creates an AppConfig
+configuration in an SSM document, the user must also specify a required
+document for validation purposes. In this case, an
 C<ApplicationConfiguration> document requires an
-C<ApplicationConfigurationSchema> document.
+C<ApplicationConfigurationSchema> document for validation purposes. For
+more information, see AWS AppConfig
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -173,8 +215,8 @@ run on. For example, to run a document on EC2 instances, specify the
 following value: /AWS::EC2::Instance. If you specify a value of '/' the
 document can run on all types of resources. If you don't specify a
 value, the document can't run on any resources. For a list of valid
-resource types, see AWS Resource Types Reference
-(http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+resource types, see AWS resource and property types reference
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
 in the I<AWS CloudFormation User Guide>.
 
 

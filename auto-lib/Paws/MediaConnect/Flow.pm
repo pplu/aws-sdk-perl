@@ -6,10 +6,14 @@ package Paws::MediaConnect::Flow;
   has EgressIp => (is => 'ro', isa => 'Str', request_name => 'egressIp', traits => ['NameInRequest']);
   has Entitlements => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::Entitlement]', request_name => 'entitlements', traits => ['NameInRequest'], required => 1);
   has FlowArn => (is => 'ro', isa => 'Str', request_name => 'flowArn', traits => ['NameInRequest'], required => 1);
+  has MediaStreams => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStream]', request_name => 'mediaStreams', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Outputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::Output]', request_name => 'outputs', traits => ['NameInRequest'], required => 1);
   has Source => (is => 'ro', isa => 'Paws::MediaConnect::Source', request_name => 'source', traits => ['NameInRequest'], required => 1);
+  has SourceFailoverConfig => (is => 'ro', isa => 'Paws::MediaConnect::FailoverConfig', request_name => 'sourceFailoverConfig', traits => ['NameInRequest']);
+  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::Source]', request_name => 'sources', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
+  has VpcInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::VpcInterface]', request_name => 'vpcInterfaces', traits => ['NameInRequest']);
 
 1;
 
@@ -30,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConnect::Flow object:
 
-  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { AvailabilityZone => $value, ..., VpcInterfaces => $value  });
 
 =head3 Results returned from an API call
 
@@ -75,6 +79,13 @@ The Amazon Resource Name (ARN), a unique identifier for any AWS
 resource, of the flow.
 
 
+=head2 MediaStreams => ArrayRef[L<Paws::MediaConnect::MediaStream>]
+
+The media streams that are associated with the flow. After you
+associate a media stream with a source, you can also associate it with
+outputs on the flow.
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the flow.
@@ -90,9 +101,24 @@ The outputs in this flow.
 
 
 
+=head2 SourceFailoverConfig => L<Paws::MediaConnect::FailoverConfig>
+
+
+
+
+=head2 Sources => ArrayRef[L<Paws::MediaConnect::Source>]
+
+
+
+
 =head2 B<REQUIRED> Status => Str
 
 The current status of the flow.
+
+
+=head2 VpcInterfaces => ArrayRef[L<Paws::MediaConnect::VpcInterface>]
+
+The VPC Interfaces for this flow.
 
 
 

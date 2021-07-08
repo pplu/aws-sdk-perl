@@ -34,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $config->DescribeConformancePackCompliance(
       ConformancePackName => 'MyConformancePackName',
       Filters             => {
-        ComplianceType =>
-          'COMPLIANT',    # values: COMPLIANT, NON_COMPLIANT; OPTIONAL
+        ComplianceType => 'COMPLIANT'
+        ,    # values: COMPLIANT, NON_COMPLIANT, INSUFFICIENT_DATA; OPTIONAL
         ConfigRuleNames => [
           'MyStringWithCharLimit64', ...    # min: 1, max: 64
         ],    # max: 10; OPTIONAL

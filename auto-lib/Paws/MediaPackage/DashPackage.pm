@@ -14,6 +14,8 @@ package Paws::MediaPackage::DashPackage;
   has SegmentTemplateFormat => (is => 'ro', isa => 'Str', request_name => 'segmentTemplateFormat', traits => ['NameInRequest']);
   has StreamSelection => (is => 'ro', isa => 'Paws::MediaPackage::StreamSelection', request_name => 'streamSelection', traits => ['NameInRequest']);
   has SuggestedPresentationDelaySeconds => (is => 'ro', isa => 'Int', request_name => 'suggestedPresentationDelaySeconds', traits => ['NameInRequest']);
+  has UtcTiming => (is => 'ro', isa => 'Str', request_name => 'utcTiming', traits => ['NameInRequest']);
+  has UtcTimingUri => (is => 'ro', isa => 'Str', request_name => 'utcTimingUri', traits => ['NameInRequest']);
 
 1;
 
@@ -34,7 +36,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackage::DashPackage object:
 
-  $service_obj->Method(Att1 => { AdsOnDeliveryRestrictions => $value, ..., SuggestedPresentationDelaySeconds => $value  });
+  $service_obj->Method(Att1 => { AdsOnDeliveryRestrictions => $value, ..., UtcTimingUri => $value  });
 
 =head3 Results returned from an API call
 
@@ -133,6 +135,18 @@ SegmentTemplate, with $Number$ media URLs.
 =head2 SuggestedPresentationDelaySeconds => Int
 
 Duration (in seconds) to delay live content before presentation.
+
+
+=head2 UtcTiming => Str
+
+Determines the type of UTCTiming included in the Media Presentation
+Description (MPD)
+
+
+=head2 UtcTimingUri => Str
+
+Specifies the value attribute of the UTCTiming field when utcTiming is
+set to HTTP-ISO or HTTP-HEAD
 
 
 

@@ -2,6 +2,7 @@
 package Paws::XRay::CreateSamplingRule;
   use Moose;
   has SamplingRule => (is => 'ro', isa => 'Paws::XRay::SamplingRule', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::XRay::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RuleARN  => 'MyString',      # OPTIONAL
         RuleName => 'MyRuleName',    # min: 1, max: 32; OPTIONAL
       },
+      Tags => [
+        {
+          Key   => 'MyTagKey',       # min: 1, max: 128
+          Value => 'MyTagValue',     # max: 256
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -64,6 +72,48 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/xra
 =head2 B<REQUIRED> SamplingRule => L<Paws::XRay::SamplingRule>
 
 The rule definition.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::XRay::Tag>]
+
+A map that contains one or more tag keys and tag values to attach to an
+X-Ray sampling rule. For more information about ways to use tags, see
+Tagging AWS resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the
+I<AWS General Reference>.
+
+The following restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of user-applied tags per resource: 50
+
+=item *
+
+Maximum tag key length: 128 Unicode characters
+
+=item *
+
+Maximum tag value length: 256 Unicode characters
+
+=item *
+
+Valid values for key and value: a-z, A-Z, 0-9, space, and the following
+characters: _ . : / = + - and @
+
+=item *
+
+Tag keys and values are case sensitive.
+
+=item *
+
+Don't use C<aws:> as a prefix for keys; it's reserved for AWS use.
+
+=back
+
 
 
 

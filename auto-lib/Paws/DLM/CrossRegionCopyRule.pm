@@ -5,7 +5,8 @@ package Paws::DLM::CrossRegionCopyRule;
   has CopyTags => (is => 'ro', isa => 'Bool');
   has Encrypted => (is => 'ro', isa => 'Bool', required => 1);
   has RetainRule => (is => 'ro', isa => 'Paws::DLM::CrossRegionCopyRetainRule');
-  has TargetRegion => (is => 'ro', isa => 'Str', required => 1);
+  has Target => (is => 'ro', isa => 'Str');
+  has TargetRegion => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -68,9 +69,21 @@ if encryption by default is not enabled.
 The retention rule.
 
 
-=head2 B<REQUIRED> TargetRegion => Str
+=head2 Target => Str
 
-The target Region.
+The Amazon Resource Name (ARN) of the target AWS Outpost for the
+snapshot copies.
+
+If you specify an ARN, you must omit B<TargetRegion>. You cannot
+specify a target Region and a target Outpost in the same rule.
+
+
+=head2 TargetRegion => Str
+
+The target Region for the snapshot copies.
+
+If you specify a target Region, you must omit B<Target>. You cannot
+specify a target Region and a target Outpost in the same rule.
 
 
 

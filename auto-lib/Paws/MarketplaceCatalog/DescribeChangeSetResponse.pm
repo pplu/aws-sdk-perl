@@ -6,6 +6,7 @@ package Paws::MarketplaceCatalog::DescribeChangeSetResponse;
   has ChangeSetId => (is => 'ro', isa => 'Str');
   has ChangeSetName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
+  has FailureCode => (is => 'ro', isa => 'Str');
   has FailureDescription => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -52,6 +53,14 @@ request transitioned to a terminal state. The change cannot transition
 to a different state. Null if the request is not in a terminal state.
 
 
+=head2 FailureCode => Str
+
+Returned if the change set is in C<FAILED> status. Can be either
+C<CLIENT_ERROR>, which means that there are issues with the request
+(see the C<ErrorDetailList>), or C<SERVER_FAULT>, which means that
+there is a problem in the system, and you should retry your request.
+
+Valid values are: C<"CLIENT_ERROR">, C<"SERVER_FAULT">
 =head2 FailureDescription => Str
 
 Returned if there is a failure on the change set, but that failure is

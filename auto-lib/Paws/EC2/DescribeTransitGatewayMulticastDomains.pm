@@ -45,9 +45,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       MaxResults                       => 1,             # OPTIONAL
       NextToken                        => 'MyString',    # OPTIONAL
-      TransitGatewayMulticastDomainIds => [
-        'MyString', ...                                  # OPTIONAL
-      ],    # OPTIONAL
+      TransitGatewayMulticastDomainIds =>
+        [ 'MyTransitGatewayMulticastDomainId', ... ],    # OPTIONAL
       );
 
     # Results:

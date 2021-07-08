@@ -2,6 +2,7 @@
 package Paws::S3::SelectObjectContent;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Expression => (is => 'ro', isa => 'Str', required => 1);
   has ExpressionType => (is => 'ro', isa => 'Str', required => 1);
   has InputSerialization => (is => 'ro', isa => 'Paws::S3::InputSerialization', required => 1);
@@ -77,8 +78,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RecordDelimiter => 'MyRecordDelimiter',    # OPTIONAL
         },    # OPTIONAL
       },
-      RequestProgress => {
-        Enabled => 1,    # OPTIONAL
+      ExpectedBucketOwner => 'MyAccountId',    # OPTIONAL
+      RequestProgress     => {
+        Enabled => 1,                          # OPTIONAL
       },    # OPTIONAL
       SSECustomerAlgorithm => 'MySSECustomerAlgorithm',    # OPTIONAL
       SSECustomerKey       => 'MySSECustomerKey',          # OPTIONAL
@@ -103,6 +105,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 The S3 bucket.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

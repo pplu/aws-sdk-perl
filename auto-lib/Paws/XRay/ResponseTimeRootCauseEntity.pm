@@ -43,7 +43,7 @@ response time warning.
 
 =head2 Coverage => Num
 
-The types and messages of the exceptions.
+The type and messages of the exceptions.
 
 
 =head2 Name => Str

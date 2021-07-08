@@ -24,7 +24,7 @@ The automatic scaling policy definition.
 
 =head2 ClusterArn => Str
 
-The Amazon Resource Name of the cluster.
+The Amazon Resource Name (ARN) of the cluster.
 
 
 =head2 ClusterId => Str

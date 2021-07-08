@@ -50,7 +50,7 @@ The category of the Trusted Advisor check.
 =head2 B<REQUIRED> Description => Str
 
 The description of the Trusted Advisor check, which includes the alert
-criteria and recommended actions (contains HTML markup).
+criteria and recommended operations (contains HTML markup).
 
 
 =head2 B<REQUIRED> Id => Str

@@ -4,6 +4,7 @@ package Paws::LexModels::StartImport;
   has MergeStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergeStrategy', required => 1);
   has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -34,7 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MergeStrategy => 'OVERWRITE_LATEST',
       Payload       => 'BlobBlob',
       ResourceType  => 'BOT',
+      Tags          => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -44,6 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MergeStrategy = $StartImportResponse->MergeStrategy;
     my $Name          = $StartImportResponse->Name;
     my $ResourceType  = $StartImportResponse->ResourceType;
+    my $Tags          = $StartImportResponse->Tags;
 
     # Returns a L<Paws::LexModels::StartImportResponse> object.
 
@@ -103,6 +112,13 @@ An intent exports dependent slot types.
 
 
 Valid values are: C<"BOT">, C<"INTENT">, C<"SLOT_TYPE">
+
+=head2 Tags => ArrayRef[L<Paws::LexModels::Tag>]
+
+A list of tags to add to the imported bot. You can only add tags when
+you import a bot, you can't add tags to an intent or slot type.
+
+
 
 
 =head1 SEE ALSO

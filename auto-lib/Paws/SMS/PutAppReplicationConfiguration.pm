@@ -79,13 +79,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application tassociated with the replication configuration.
+The ID of the application.
 
 
 
 =head2 ServerGroupReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupReplicationConfiguration>]
 
-Replication configurations for server groups in the application.
+Information about the replication configurations for server groups in
+the application.
 
 
 

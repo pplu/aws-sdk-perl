@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $iot = Paws->service('IoT');
     my $CancelAuditMitigationActionsTaskResponse =
       $iot->CancelAuditMitigationActionsTask(
-      TaskId => 'MyAuditMitigationActionsTaskId',
+      TaskId => 'MyMitigationActionsTaskId',
 
       );
 

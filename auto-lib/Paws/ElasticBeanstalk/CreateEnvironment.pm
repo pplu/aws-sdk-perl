@@ -6,6 +6,7 @@ package Paws::ElasticBeanstalk::CreateEnvironment;
   has Description => (is => 'ro', isa => 'Str');
   has EnvironmentName => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
+  has OperationsRole => (is => 'ro', isa => 'Str');
   has OptionSettings => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::ConfigurationOptionSetting]');
   has OptionsToRemove => (is => 'ro', isa => 'ArrayRef[Paws::ElasticBeanstalk::OptionSpecification]');
   has PlatformArn => (is => 'ro', isa => 'Str');
@@ -74,39 +75,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of the application that contains the version to be deployed.
-
-If no application is found with this name, C<CreateEnvironment> returns
-an C<InvalidParameterValue> error.
+The name of the application that is associated with this environment.
 
 
 
 =head2 CNAMEPrefix => Str
 
 If specified, the environment attempts to use this value as the prefix
-for the CNAME. If not specified, the CNAME is generated automatically
-by appending a random alphanumeric string to the environment name.
+for the CNAME in your Elastic Beanstalk environment URL. If not
+specified, the CNAME is generated automatically by appending a random
+alphanumeric string to the environment name.
 
 
 
 =head2 Description => Str
 
-Describes this environment.
+Your description for this environment.
 
 
 
 =head2 EnvironmentName => Str
 
-A unique name for the deployment environment. Used in the application
-URL.
+A unique name for the environment.
 
 Constraint: Must be from 4 to 40 characters in length. The name can
-contain only letters, numbers, and hyphens. It cannot start or end with
+contain only letters, numbers, and hyphens. It can't start or end with
 a hyphen. This name must be unique within a region in your account. If
-the specified name already exists in the region, AWS Elastic Beanstalk
+the specified name already exists in the region, Elastic Beanstalk
 returns an C<InvalidParameterValue> error.
 
-Default: If the CNAME parameter is not specified, the environment name
+If you don't specify the C<CNAMEPrefix> parameter, the environment name
 becomes part of the CNAME, and therefore part of the visible URL for
 your application.
 
@@ -120,6 +118,19 @@ environment manifest and not with the environment name parameter. See
 Environment Manifest (env.yaml)
 (https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environment-cfg-manifest.html)
 for details.
+
+
+
+=head2 OperationsRole => Str
+
+The Amazon Resource Name (ARN) of an existing IAM role to be used as
+the environment's operations role. If specified, Elastic Beanstalk uses
+the operations role for permissions to downstream services during this
+call and during subsequent calls acting on this environment. To specify
+an operations role, you must have the C<iam:PassRole> permission for
+the role. For more information, see Operations roles
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/iam-operationsrole.html)
+in the I<AWS Elastic Beanstalk Developer Guide>.
 
 
 
@@ -141,19 +152,27 @@ configuration set for this new environment.
 
 =head2 PlatformArn => Str
 
-The ARN of the platform.
+The Amazon Resource Name (ARN) of the custom platform to use with the
+environment. For more information, see Custom Platforms
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/custom-platforms.html)
+in the I<AWS Elastic Beanstalk Developer Guide>.
+
+If you specify C<PlatformArn>, don't specify C<SolutionStackName>.
 
 
 
 =head2 SolutionStackName => Str
 
-This is an alternative to specifying a template name. If specified, AWS
-Elastic Beanstalk sets the configuration values to the default values
-associated with the specified solution stack.
+The name of an Elastic Beanstalk solution stack (platform version) to
+use with the environment. If specified, Elastic Beanstalk sets the
+configuration values to the default values associated with the
+specified solution stack. For a list of current solution stacks, see
+Elastic Beanstalk Supported Platforms
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/platforms/platforms-supported.html)
+in the I<AWS Elastic Beanstalk Platforms> guide.
 
-For a list of current solution stacks, see Elastic Beanstalk Supported
-Platforms
-(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/concepts.platforms.html).
+If you specify C<SolutionStackName>, don't specify C<PlatformArn> or
+C<TemplateName>.
 
 
 
@@ -165,15 +184,20 @@ Specifies the tags applied to resources in the environment.
 
 =head2 TemplateName => Str
 
-The name of the configuration template to use in deployment. If no
-configuration template is found with this name, AWS Elastic Beanstalk
-returns an C<InvalidParameterValue> error.
+The name of the Elastic Beanstalk configuration template to use with
+the environment.
+
+If you specify C<TemplateName>, then don't specify
+C<SolutionStackName>.
 
 
 
 =head2 Tier => L<Paws::ElasticBeanstalk::EnvironmentTier>
 
-This specifies the tier to use for creating this environment.
+Specifies the tier to use in creating this environment. The environment
+tier that you choose determines whether Elastic Beanstalk provisions
+resources to support a web application that handles HTTP(S) requests or
+a web application that handles background-processing tasks.
 
 
 
@@ -181,12 +205,8 @@ This specifies the tier to use for creating this environment.
 
 The name of the application version to deploy.
 
-If the specified application has no associated application versions,
-AWS Elastic Beanstalk C<UpdateEnvironment> returns an
-C<InvalidParameterValue> error.
-
-Default: If not specified, AWS Elastic Beanstalk attempts to launch the
-sample application in the container.
+Default: If not specified, Elastic Beanstalk attempts to deploy the
+sample application.
 
 
 

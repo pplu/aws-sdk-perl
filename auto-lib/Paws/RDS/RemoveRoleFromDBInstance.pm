@@ -59,7 +59,7 @@ C<DBEngineVersion>.
 =head2 B<REQUIRED> RoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role to disassociate from the
-DB instance, for example C<arn:aws:iam::123456789012:role/AccessRole>.
+DB instance, for example, C<arn:aws:iam::123456789012:role/AccessRole>.
 
 
 

@@ -75,7 +75,7 @@ Valid values are: C<"PENDING">, C<"IN_PROGRESS">, C<"SUCCESS">, C<"FAILED">
 Reserved for use by the CloudFormation CLI
 (https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
 
-Valid values are: C<"NotUpdatable">, C<"InvalidRequest">, C<"AccessDenied">, C<"InvalidCredentials">, C<"AlreadyExists">, C<"NotFound">, C<"ResourceConflict">, C<"Throttling">, C<"ServiceLimitExceeded">, C<"NotStabilized">, C<"GeneralServiceException">, C<"ServiceInternalError">, C<"NetworkFailure">, C<"InternalFailure">
+Valid values are: C<"NotUpdatable">, C<"InvalidRequest">, C<"AccessDenied">, C<"InvalidCredentials">, C<"AlreadyExists">, C<"NotFound">, C<"ResourceConflict">, C<"Throttling">, C<"ServiceLimitExceeded">, C<"NotStabilized">, C<"GeneralServiceException">, C<"ServiceInternalError">, C<"NetworkFailure">, C<"InternalFailure">, C<"InvalidTypeConfiguration">
 
 =head2 B<REQUIRED> OperationStatus => Str
 

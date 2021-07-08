@@ -61,14 +61,14 @@ time.
 
 =head2 NextToken => Str
 
-Use this string, provided with the response to a previous request, to
-request the next batch of jobs.
+Optional. Use this string, provided with the response to a previous
+request, to request the next batch of jobs.
 
 
 
 =head2 Order => Str
 
-When you request lists of resources, you can optionally specify whether
+Optional. When you request lists of resources, you can specify whether
 they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.
 
@@ -76,14 +76,14 @@ Valid values are: C<"ASCENDING">, C<"DESCENDING">
 
 =head2 Queue => Str
 
-Provide a queue name to get back only jobs from that queue.
+Optional. Provide a queue name to get back only jobs from that queue.
 
 
 
 =head2 Status => Str
 
-A job's status can be SUBMITTED, PROGRESSING, COMPLETE, CANCELED, or
-ERROR.
+Optional. A job's status can be SUBMITTED, PROGRESSING, COMPLETE,
+CANCELED, or ERROR.
 
 Valid values are: C<"SUBMITTED">, C<"PROGRESSING">, C<"COMPLETE">, C<"CANCELED">, C<"ERROR">
 

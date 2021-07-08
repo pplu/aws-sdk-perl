@@ -33,9 +33,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ApplySecurityGroupsToClientVpnTargetNetworkResult =
       $ec2->ApplySecurityGroupsToClientVpnTargetNetwork(
       ClientVpnEndpointId => 'MyClientVpnEndpointId',
-      SecurityGroupIds    => [ 'MyString', ... ],
+      SecurityGroupIds    => [ 'MySecurityGroupId', ... ],
       VpcId               => 'MyVpcId',
-      DryRun              => 1,                         # OPTIONAL
+      DryRun              => 1,                              # OPTIONAL
       );
 
     # Results:

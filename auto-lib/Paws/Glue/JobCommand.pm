@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::JobCo
 
 =head1 DESCRIPTION
 
-Specifies code executed when a job is run.
+Specifies code that runs when a job is run.
 
 =head1 ATTRIBUTES
 
@@ -43,19 +43,20 @@ Specifies code executed when a job is run.
 =head2 Name => Str
 
 The name of the job command. For an Apache Spark ETL job, this must be
-C<glueetl>. For a Python shell job, it must be C<pythonshell>.
+C<glueetl>. For a Python shell job, it must be C<pythonshell>. For an
+Apache Spark streaming ETL job, this must be C<gluestreaming>.
 
 
 =head2 PythonVersion => Str
 
-The Python version being used to execute a Python shell job. Allowed
-values are 2 or 3.
+The Python version being used to run a Python shell job. Allowed values
+are 2 or 3.
 
 
 =head2 ScriptLocation => Str
 
 Specifies the Amazon Simple Storage Service (Amazon S3) path to a
-script that executes a job.
+script that runs a job.
 
 
 

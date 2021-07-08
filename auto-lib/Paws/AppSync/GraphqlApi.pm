@@ -11,6 +11,7 @@ package Paws::AppSync::GraphqlApi;
   has Tags => (is => 'ro', isa => 'Paws::AppSync::TagMap', request_name => 'tags', traits => ['NameInRequest']);
   has Uris => (is => 'ro', isa => 'Paws::AppSync::MapOfStringToString', request_name => 'uris', traits => ['NameInRequest']);
   has UserPoolConfig => (is => 'ro', isa => 'Paws::AppSync::UserPoolConfig', request_name => 'userPoolConfig', traits => ['NameInRequest']);
+  has WafWebAclArn => (is => 'ro', isa => 'Str', request_name => 'wafWebAclArn', traits => ['NameInRequest']);
   has XrayEnabled => (is => 'ro', isa => 'Bool', request_name => 'xrayEnabled', traits => ['NameInRequest']);
 
 1;
@@ -97,6 +98,12 @@ The URIs.
 =head2 UserPoolConfig => L<Paws::AppSync::UserPoolConfig>
 
 The Amazon Cognito user pool configuration.
+
+
+=head2 WafWebAclArn => Str
+
+The ARN of the AWS Web Application Firewall (WAF) ACL associated with
+this C<GraphqlApi>, if one exists.
 
 
 =head2 XrayEnabled => Bool

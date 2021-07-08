@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector the ipSet is associated with.
+The unique ID of the detector that the IPSet is associated with.
 
 
 
@@ -65,7 +65,7 @@ want in the response. The default value is 50. The maximum value is 50.
 
 You can use this parameter when paginating results. Set the value of
 this parameter to null on your first call to the list action. For
-subsequent calls to the action fill nextToken in the request with the
+subsequent calls to the action, fill nextToken in the request with the
 value of NextToken from the previous response to continue listing data.
 
 

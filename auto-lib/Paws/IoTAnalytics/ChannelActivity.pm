@@ -48,7 +48,7 @@ The name of the channel from which the messages are processed.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'channel' activity.
+The name of the channel activity.
 
 
 =head2 Next => Str

@@ -69,7 +69,7 @@ The time of the most recent log event in the log stream in CloudWatch
 Logs. This number is expressed as the number of milliseconds after Jan
 1, 1970 00:00:00 UTC. The C<lastEventTime> value updates on an eventual
 consistency basis. It typically updates in less than an hour from
-ingestion, but may take longer in some rare situations.
+ingestion, but in rare situations might take longer.
 
 
 =head2 LastIngestionTime => Int
@@ -87,7 +87,7 @@ The name of the log stream.
 
 The number of bytes stored.
 
-B<IMPORTANT:>On June 17, 2019, this parameter was deprecated for log
+B<Important:> On June 17, 2019, this parameter was deprecated for log
 streams, and is always reported as zero. This change applies only to
 log streams. The C<storedBytes> parameter for log groups is not
 affected.

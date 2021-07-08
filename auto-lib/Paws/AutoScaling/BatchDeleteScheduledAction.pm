@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $autoscaling = Paws->service('AutoScaling');
     my $BatchDeleteScheduledActionAnswer =
       $autoscaling->BatchDeleteScheduledAction(
-      AutoScalingGroupName => 'MyResourceName',
+      AutoScalingGroupName => 'MyXmlStringMaxLen255',
       ScheduledActionNames => [
-        'MyResourceName', ...    # min: 1, max: 1600
+        'MyXmlStringMaxLen255', ...    # min: 1, max: 255
       ],
 
       );

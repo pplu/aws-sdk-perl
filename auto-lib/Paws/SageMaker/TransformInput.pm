@@ -72,7 +72,20 @@ The default value for C<SplitType> is C<None>, which indicates that
 input data files are not split, and request payloads contain the entire
 contents of an input object. Set the value of this parameter to C<Line>
 to split records on a newline character boundary. C<SplitType> also
-supports a number of record-oriented binary data formats.
+supports a number of record-oriented binary data formats. Currently,
+the supported record formats are:
+
+=over
+
+=item *
+
+RecordIO
+
+=item *
+
+TFRecord
+
+=back
 
 When splitting is enabled, the size of a mini-batch depends on the
 values of the C<BatchStrategy> and C<MaxPayloadInMB> parameters. When
@@ -92,8 +105,8 @@ For more information about C<RecordIO>, see Create a Dataset Using
 RecordIO (https://mxnet.apache.org/api/faq/recordio) in the MXNet
 documentation. For more information about C<TFRecord>, see Consuming
 TFRecord data
-(https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data) in
-the TensorFlow documentation.
+(https://www.tensorflow.org/guide/data#consuming_tfrecord_data) in the
+TensorFlow documentation.
 
 
 

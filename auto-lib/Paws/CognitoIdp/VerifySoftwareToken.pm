@@ -71,6 +71,8 @@ calls to the service.
 =head2 B<REQUIRED> UserCode => Str
 
 The one time password computed using the secret code returned by
+AssociateSoftwareToken"
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_AssociateSoftwareToken.html).
 
 
 

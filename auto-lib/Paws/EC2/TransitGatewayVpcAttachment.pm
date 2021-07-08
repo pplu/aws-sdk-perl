@@ -56,7 +56,8 @@ The VPC attachment options.
 
 =head2 State => Str
 
-The state of the VPC attachment.
+The state of the VPC attachment. Note that the C<initiating> state has
+been deprecated.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]

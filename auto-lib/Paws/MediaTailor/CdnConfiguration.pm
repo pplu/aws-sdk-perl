@@ -45,7 +45,7 @@ Amazon CloudFront, for content and ad segment management.
 A non-default content delivery network (CDN) to serve ad segments. By
 default, AWS Elemental MediaTailor uses Amazon CloudFront with default
 cache settings as its CDN for ad segments. To set up an alternate CDN,
-create a rule in your CDN for the following origin:
+create a rule in your CDN for the origin
 ads.mediatailor.E<lt>regionE<gt>.amazonaws.com. Then specify the rule's
 name in this AdSegmentUrlPrefix. When AWS Elemental MediaTailor serves
 a manifest, it reports your CDN as the source for ad segments.

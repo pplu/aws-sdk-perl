@@ -6,6 +6,7 @@ package Paws::Kendra::DataSourceSyncJob;
   has ErrorCode => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has ExecutionId => (is => 'ro', isa => 'Str');
+  has Metrics => (is => 'ro', isa => 'Paws::Kendra::DataSourceSyncJobMetrics');
   has StartTime => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
 
@@ -72,6 +73,13 @@ fail.
 =head2 ExecutionId => Str
 
 A unique identifier for the synchronization job.
+
+
+=head2 Metrics => L<Paws::Kendra::DataSourceSyncJobMetrics>
+
+Maps a batch delete document request to a specific data source sync
+job. This is optional and should only be supplied when documents are
+deleted by a data source connector.
 
 
 =head2 StartTime => Str

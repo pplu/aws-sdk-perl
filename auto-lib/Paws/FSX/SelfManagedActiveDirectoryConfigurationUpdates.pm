@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FSX::SelfMa
 =head1 DESCRIPTION
 
 The configuration that Amazon FSx uses to join the Windows File Server
-instance to the self-managed Microsoft Active Directory (AD) directory.
+instance to a self-managed Microsoft Active Directory (AD) directory.
 
 =head1 ATTRIBUTES
 

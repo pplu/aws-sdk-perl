@@ -34,23 +34,90 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::Val
 
 =head1 DESCRIPTION
 
-Length of time for which the certificate issued by your private
-certificate authority (CA), or by the private CA itself, is valid in
-days, months, or years. You can issue a certificate by calling the
-IssueCertificate action.
+Validity specifies the period of time during which a certificate is
+valid. Validity can be expressed as an explicit date and time when the
+validity of a certificate starts or expires, or as a span of time after
+issuance, stated in days, months, or years. For more information, see
+Validity (https://tools.ietf.org/html/rfc5280#section-4.1.2.5) in RFC
+5280.
+
+ACM Private CA API consumes the C<Validity> data type differently in
+two distinct parameters of the C<IssueCertificate> action. The required
+parameter C<IssueCertificate>:C<Validity> specifies the end of a
+certificate's validity period. The optional parameter
+C<IssueCertificate>:C<ValidityNotBefore> specifies a customized
+starting time for the validity period.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Type => Str
 
-Specifies whether the C<Value> parameter represents days, months, or
-years.
+Determines how I<ACM Private CA> interprets the C<Value> parameter, an
+integer. Supported validity types include those listed below. Type
+definitions with values include a sample input value and the resulting
+output.
+
+C<END_DATE>: The specific date and time when the certificate will
+expire, expressed using UTCTime (YYMMDDHHMMSS) or GeneralizedTime
+(YYYYMMDDHHMMSS) format. When UTCTime is used, if the year field (YY)
+is greater than or equal to 50, the year is interpreted as 19YY. If the
+year field is less than 50, the year is interpreted as 20YY.
+
+=over
+
+=item *
+
+Sample input value: 491231235959 (UTCTime format)
+
+=item *
+
+Output expiration date/time: 12/31/2049 23:59:59
+
+=back
+
+C<ABSOLUTE>: The specific date and time when the validity of a
+certificate will start or expire, expressed in seconds since the Unix
+Epoch.
+
+=over
+
+=item *
+
+Sample input value: 2524608000
+
+=item *
+
+Output expiration date/time: 01/01/2050 00:00:00
+
+=back
+
+C<DAYS>, C<MONTHS>, C<YEARS>: The relative time from the moment of
+issuance until the certificate will expire, expressed in days, months,
+or years.
+
+Example if C<DAYS>, issued on 10/12/2020 at 12:34:54 UTC:
+
+=over
+
+=item *
+
+Sample input value: 90
+
+=item *
+
+Output expiration date: 01/10/2020 12:34:54 UTC
+
+=back
+
+The minimum validity duration for a certificate using relative time
+(C<DAYS>) is one day. The minimum validity for a certificate using
+absolute time (C<ABSOLUTE> or C<END_DATE>) is one second.
 
 
 =head2 B<REQUIRED> Value => Int
 
-Time period.
+A long integer interpreted according to the value of C<Type>, below.
 
 
 

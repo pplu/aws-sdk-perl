@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       JourneyId           => 'My__string',
       JourneyStateRequest => {
         State => 'DRAFT'
-        ,    # values: DRAFT, ACTIVE, COMPLETED, CANCELLED, CLOSED; OPTIONAL
+        , # values: DRAFT, ACTIVE, COMPLETED, CANCELLED, CLOSED, PAUSED; OPTIONAL
       },
 
     );

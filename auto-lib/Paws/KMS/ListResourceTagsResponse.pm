@@ -28,6 +28,11 @@ Do not assume or infer any information from this value.
 
 A list of tags. Each tag consists of a tag key and a tag value.
 
+Tagging or untagging a CMK can allow or deny permission to the CMK. For
+details, see Using ABAC in AWS KMS
+(https://docs.aws.amazon.com/kms/latest/developerguide/abac.html) in
+the I<AWS Key Management Service Developer Guide>.
+
 
 =head2 Truncated => Bool
 

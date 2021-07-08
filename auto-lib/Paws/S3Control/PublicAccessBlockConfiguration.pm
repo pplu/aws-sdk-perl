@@ -37,11 +37,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 =head1 DESCRIPTION
 
 The C<PublicAccessBlock> configuration that you want to apply to this
-Amazon S3 bucket. You can enable the configuration options in any
+Amazon S3 account. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
 bucket or object public, see The Meaning of "Public"
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status)
-in the Amazon Simple Storage Service Developer Guide.
+in the I<Amazon S3 User Guide>.
+
+This is not supported for Amazon S3 on Outposts.
 
 =head1 ATTRIBUTES
 
@@ -71,6 +73,8 @@ PUT Bucket calls fail if the request includes a public ACL.
 
 Enabling this setting doesn't affect existing policies or ACLs.
 
+This is not supported for Amazon S3 on Outposts.
+
 
 =head2 BlockPublicPolicy => Bool
 
@@ -80,6 +84,8 @@ S3 to reject calls to PUT Bucket policy if the specified bucket policy
 allows public access.
 
 Enabling this setting doesn't affect existing bucket policies.
+
+This is not supported for Amazon S3 on Outposts.
 
 
 =head2 IgnorePublicAcls => Bool
@@ -92,18 +98,22 @@ they contain.
 Enabling this setting doesn't affect the persistence of any existing
 ACLs and doesn't prevent new public ACLs from being set.
 
+This is not supported for Amazon S3 on Outposts.
+
 
 =head2 RestrictPublicBuckets => Bool
 
 Specifies whether Amazon S3 should restrict public bucket policies for
 buckets in this account. Setting this element to C<TRUE> restricts
-access to buckets with public policies to only AWS services and
-authorized users within this account.
+access to buckets with public policies to only AWS service principals
+and authorized users within this account.
 
 Enabling this setting doesn't affect previously stored bucket policies,
 except that public and cross-account access within any public bucket
 policy, including non-public delegation to specific accounts, is
 blocked.
+
+This is not supported for Amazon S3 on Outposts.
 
 
 

@@ -30,13 +30,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+# To configure rotation for a secret
+# The following example configures rotation for a secret by providing the ARN of
+# a Lambda rotation function (which must already exist) and the number of days
+# between rotation. The first rotation happens immediately upon completion of
+# this command. The rotation function runs asynchronously in the background.
     my $RotateSecretResponse = $secretsmanager->RotateSecret(
-      SecretId           => 'MySecretIdType',
-      ClientRequestToken => 'MyClientRequestTokenType',    # OPTIONAL
-      RotationLambdaARN  => 'MyRotationLambdaARNType',     # OPTIONAL
-      RotationRules      => {
-        AutomaticallyAfterDays => 1,    # min: 1, max: 1000; OPTIONAL
-      },    # OPTIONAL
+      'RotationLambdaARN' =>
+'arn:aws:lambda:us-west-2:123456789012:function:MyTestDatabaseRotationLambda',
+      'RotationRules' => {
+        'AutomaticallyAfterDays' => 30
+      },
+      'SecretId' => 'MyTestDatabaseSecret'
     );
 
     # Results:
@@ -65,9 +70,9 @@ request to the Secrets Manager service endpoint, then you must generate
 a C<ClientRequestToken> yourself for new versions and include that
 value in the request.
 
-You only need to specify your own value if you are implementing your
-own retry logic and want to ensure that a given secret is not created
-twice. We recommend that you generate a UUID-type
+You only need to specify your own value if you implement your own retry
+logic and want to ensure that a given secret is not created twice. We
+recommend that you generate a UUID-type
 (https://wikipedia.org/wiki/Universally_unique_identifier) value to
 ensure uniqueness within the specified secret.
 
@@ -107,8 +112,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

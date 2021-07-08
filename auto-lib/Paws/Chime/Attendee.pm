@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::Atte
 =head1 DESCRIPTION
 
 An Amazon Chime SDK meeting attendee. Includes a unique C<AttendeeId>
-and C<JoinToken>. The C<JoinToken> allows a client to authenticate and
+and C<JoinToken> . The C<JoinToken> allows a client to authenticate and
 join as the specified attendee. The C<JoinToken> expires when the
 meeting ends or when DeleteAttendee is called. After that, the attendee
 is unable to join the meeting.
@@ -55,8 +55,8 @@ The Amazon Chime SDK attendee ID.
 
 =head2 ExternalUserId => Str
 
-The Amazon Chime SDK external user ID. Links the attendee to an
-identity managed by a builder application.
+The Amazon Chime SDK external user ID. An idempotency token. Links the
+attendee to an identity managed by a builder application.
 
 
 =head2 JoinToken => Str

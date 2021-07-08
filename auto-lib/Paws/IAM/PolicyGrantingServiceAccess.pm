@@ -52,7 +52,7 @@ The name of the entity (user or role) to which the inline policy is
 attached.
 
 This field is null for managed policies. For more information about
-these policy types, see Managed Policies and Inline Policies
+these policy types, see Managed policies and inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 in the I<IAM User Guide>.
 
@@ -63,7 +63,7 @@ The type of entity (user or role) that used the policy to access the
 service to which the inline policy is attached.
 
 This field is null for managed policies. For more information about
-these policy types, see Managed Policies and Inline Policies
+these policy types, see Managed policies and inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 in the I<IAM User Guide>.
 
@@ -81,7 +81,7 @@ The policy name.
 =head2 B<REQUIRED> PolicyType => Str
 
 The policy type. For more information about these policy types, see
-Managed Policies and Inline Policies
+Managed policies and inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 in the I<IAM User Guide>.
 

@@ -73,7 +73,8 @@ The identifier of the index that was queried.
 =head2 B<REQUIRED> QueryId => Str
 
 The identifier of the specific query for which you are submitting
-feedback. The query ID is returned in the response to the operation.
+feedback. The query ID is returned in the response to the C<Query>
+operation.
 
 
 

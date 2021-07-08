@@ -52,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 The type of medium changer you want to select.
 
-Valid Values: "STK-L700", "AWS-Gateway-VTL"
+Valid Values: C<STK-L700> | C<AWS-Gateway-VTL> | C<IBM-03584L32-0402>
 
 
 

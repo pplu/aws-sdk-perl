@@ -8,6 +8,7 @@ package Paws::Kafka::ClusterOperationInfo;
   has ErrorInfo => (is => 'ro', isa => 'Paws::Kafka::ErrorInfo', request_name => 'errorInfo', traits => ['NameInRequest']);
   has OperationArn => (is => 'ro', isa => 'Str', request_name => 'operationArn', traits => ['NameInRequest']);
   has OperationState => (is => 'ro', isa => 'Str', request_name => 'operationState', traits => ['NameInRequest']);
+  has OperationSteps => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::ClusterOperationStep]', request_name => 'operationSteps', traits => ['NameInRequest']);
   has OperationType => (is => 'ro', isa => 'Str', request_name => 'operationType', traits => ['NameInRequest']);
   has SourceClusterInfo => (is => 'ro', isa => 'Paws::Kafka::MutableClusterInfo', request_name => 'sourceClusterInfo', traits => ['NameInRequest']);
   has TargetClusterInfo => (is => 'ro', isa => 'Paws::Kafka::MutableClusterInfo', request_name => 'targetClusterInfo', traits => ['NameInRequest']);
@@ -80,6 +81,11 @@ ARN of the cluster operation.
 =head2 OperationState => Str
 
 State of the cluster operation.
+
+
+=head2 OperationSteps => ArrayRef[L<Paws::Kafka::ClusterOperationStep>]
+
+Steps completed during the operation.
 
 
 =head2 OperationType => Str

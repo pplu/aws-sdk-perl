@@ -152,13 +152,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           SMSMessage => {
             Body        => 'My__string',
+            EntityId    => 'My__string',
             Keyword     => 'My__string',
+            MediaUrl    => 'My__string',
             MessageType =>
               'TRANSACTIONAL',    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
             OriginationNumber => 'My__string',
             SenderId          => 'My__string',
             Substitutions     => { 'My__string' => [ 'My__string', ... ], }
             ,                     # OPTIONAL
+            TemplateId => 'My__string',
           },    # OPTIONAL
           VoiceMessage => {
             Body              => 'My__string',
@@ -172,8 +175,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Addresses => {
           'My__string' => {
             BodyOverride => 'My__string',
-            ChannelType  => 'GCM'
-            , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
+            ChannelType  => 'PUSH'
+            , # values: PUSH, GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
             Context       => { 'My__string' => 'My__string', },    # OPTIONAL
             RawContent    => 'My__string',
             Substitutions => { 'My__string' => [ 'My__string', ... ], }

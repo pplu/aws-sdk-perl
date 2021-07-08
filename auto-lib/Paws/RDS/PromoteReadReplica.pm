@@ -38,6 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'PreferredBackupWindow' => '03:30-04:00'
     );
 
+    # Results:
+    my $DBInstance = $PromoteReadReplicaResult->DBInstance;
+
+    # Returns a L<Paws::RDS::PromoteReadReplicaResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/PromoteReadReplica>
@@ -63,7 +67,7 @@ Must be a value from 0 to 35.
 
 =item *
 
-Can't be set to 0 if the DB instance is a source to Read Replicas.
+Can't be set to 0 if the DB instance is a source to read replicas.
 
 =back
 
@@ -80,7 +84,7 @@ Constraints:
 
 =item *
 
-Must match the identifier of an existing Read Replica DB instance.
+Must match the identifier of an existing read replica DB instance.
 
 =back
 
@@ -95,8 +99,8 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred Maintenance Window
+block of time for each Amazon Web Services Region. To see the time
+blocks available, see Adjusting the Preferred Maintenance Window
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/AdjustingTheMaintenanceWindow.html)
 in the I<Amazon RDS User Guide.>
 

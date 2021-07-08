@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::DBCl
 
 =head1 DESCRIPTION
 
-Describes an AWS Identity and Access Management (IAM) role that is
+Describes an Identity and Access Management (IAM) role that is
 associated with a cluster.
 
 =head1 ATTRIBUTES
@@ -42,31 +42,31 @@ associated with a cluster.
 
 =head2 RoleArn => Str
 
-The Amazon Resource Name (ARN) of the IAM role that is associated with
+The Amazon Resource Name (ARN) of the IAMrole that is associated with
 the DB cluster.
 
 
 =head2 Status => Str
 
-Describes the state of association between the IAM role and the
-cluster. The C<Status> property returns one of the following values:
+Describes the state of association between the IAMrole and the cluster.
+The C<Status> property returns one of the following values:
 
 =over
 
 =item *
 
-C<ACTIVE> - The IAM role ARN is associated with the cluster and can be
-used to access other AWS services on your behalf.
+C<ACTIVE> - The IAMrole ARN is associated with the cluster and can be
+used to access other Amazon Web Services services on your behalf.
 
 =item *
 
-C<PENDING> - The IAM role ARN is being associated with the DB cluster.
+C<PENDING> - The IAMrole ARN is being associated with the cluster.
 
 =item *
 
-C<INVALID> - The IAM role ARN is associated with the cluster, but the
-cluster cannot assume the IAM role to access other AWS services on your
-behalf.
+C<INVALID> - The IAMrole ARN is associated with the cluster, but the
+cluster cannot assume the IAMrole to access other Amazon Web Services
+services on your behalf.
 
 =back
 

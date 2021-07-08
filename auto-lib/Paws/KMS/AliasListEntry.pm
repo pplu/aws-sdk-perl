@@ -3,6 +3,8 @@ package Paws::KMS::AliasListEntry;
   use Moose;
   has AliasArn => (is => 'ro', isa => 'Str');
   has AliasName => (is => 'ro', isa => 'Str');
+  has CreationDate => (is => 'ro', isa => 'Str');
+  has LastUpdatedDate => (is => 'ro', isa => 'Str');
   has TargetKeyId => (is => 'ro', isa => 'Str');
 
 1;
@@ -50,9 +52,22 @@ String that contains the key ARN.
 String that contains the alias. This value begins with C<alias/>.
 
 
+=head2 CreationDate => Str
+
+Date and time that the alias was most recently created in the account
+and Region. Formatted as Unix time.
+
+
+=head2 LastUpdatedDate => Str
+
+Date and time that the alias was most recently associated with a CMK in
+the account and Region. Formatted as Unix time.
+
+
 =head2 TargetKeyId => Str
 
-String that contains the key identifier referred to by the alias.
+String that contains the key identifier of the CMK associated with the
+alias.
 
 
 

@@ -54,12 +54,19 @@ use the Cognito Management Console to create a role for SMS MFA,
 Cognito will create a role with the required permissions and a trust
 policy that demonstrates use of the C<ExternalId>.
 
+For more information about the C<ExternalId> of a role, see How to use
+an external ID when granting access to your AWS resources to a third
+party
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user_externalid.html)
+
 
 =head2 B<REQUIRED> SnsCallerArn => Str
 
 The Amazon Resource Name (ARN) of the Amazon Simple Notification
 Service (SNS) caller. This is the ARN of the IAM role in your AWS
-account which Cognito will use to send SMS messages.
+account which Cognito will use to send SMS messages. SMS messages are
+subject to a spending limit
+(https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-email-phone-verification.html).
 
 
 

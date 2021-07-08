@@ -3,7 +3,10 @@ package Paws::RDS::DBInstanceAutomatedBackup;
   use Moose;
   has AllocatedStorage => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has BackupRetentionPeriod => (is => 'ro', isa => 'Int');
   has DBInstanceArn => (is => 'ro', isa => 'Str');
+  has DBInstanceAutomatedBackupsArn => (is => 'ro', isa => 'Str');
+  has DBInstanceAutomatedBackupsReplications => (is => 'ro', isa => 'ArrayRef[Paws::RDS::DBInstanceAutomatedBackupsReplication]', request_name => 'DBInstanceAutomatedBackupsReplication', traits => ['NameInRequest']);
   has DBInstanceIdentifier => (is => 'ro', isa => 'Str');
   has DbiResourceId => (is => 'ro', isa => 'Str');
   has Encrypted => (is => 'ro', isa => 'Bool');
@@ -55,7 +58,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBInst
 
 =head1 DESCRIPTION
 
-An automated backup of a DB instance. It it consists of system backups,
+An automated backup of a DB instance. It consists of system backups,
 transaction logs, and the database instance properties that existed at
 the time you deleted the source instance.
 
@@ -70,14 +73,30 @@ Specifies the allocated storage size in gibibytes (GiB).
 =head2 AvailabilityZone => Str
 
 The Availability Zone that the automated backup was created in. For
-information on AWS Regions and Availability Zones, see Regions and
-Availability Zones
+information on Amazon Web Services Regions and Availability Zones, see
+Regions and Availability Zones
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html).
+
+
+=head2 BackupRetentionPeriod => Int
+
+The retention period for the automated backups.
 
 
 =head2 DBInstanceArn => Str
 
-The Amazon Resource Name (ARN) for the automated backup.
+The Amazon Resource Name (ARN) for the automated backups.
+
+
+=head2 DBInstanceAutomatedBackupsArn => Str
+
+The Amazon Resource Name (ARN) for the replicated automated backups.
+
+
+=head2 DBInstanceAutomatedBackupsReplications => ArrayRef[L<Paws::RDS::DBInstanceAutomatedBackupsReplication>]
+
+The list of replications to different Amazon Web Services Regions
+associated with the automated backup.
 
 
 =head2 DBInstanceIdentifier => Str
@@ -89,7 +108,7 @@ automated backup.
 =head2 DbiResourceId => Str
 
 The identifier for the source DB instance, which can't be changed and
-which is unique to an AWS Region.
+which is unique to an Amazon Web Services Region.
 
 
 =head2 Encrypted => Bool
@@ -109,8 +128,8 @@ The version of the database engine for the automated backup.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled, and otherwise false.
 
 
 =head2 InstanceCreateTime => Str
@@ -125,9 +144,11 @@ The IOPS (I/O operations per second) value for the automated backup.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key ID for an automated backup. The KMS key ID is the
-Amazon Resource Name (ARN), KMS key identifier, or the KMS key alias
-for the KMS encryption key.
+The Amazon Web Services KMS key ID for an automated backup.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LicenseModel => Str
@@ -157,7 +178,7 @@ Valid Values: C<1150-65535>
 
 =head2 Region => Str
 
-The AWS Region associated with the automated backup.
+The Amazon Web Services Region associated with the automated backup.
 
 
 =head2 RestoreWindow => L<Paws::RDS::RestoreWindow>

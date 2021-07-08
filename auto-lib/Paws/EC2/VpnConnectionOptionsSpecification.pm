@@ -1,7 +1,12 @@
 package Paws::EC2::VpnConnectionOptionsSpecification;
   use Moose;
   has EnableAcceleration => (is => 'ro', isa => 'Bool');
+  has LocalIpv4NetworkCidr => (is => 'ro', isa => 'Str');
+  has LocalIpv6NetworkCidr => (is => 'ro', isa => 'Str');
+  has RemoteIpv4NetworkCidr => (is => 'ro', isa => 'Str');
+  has RemoteIpv6NetworkCidr => (is => 'ro', isa => 'Str');
   has StaticRoutesOnly => (is => 'ro', isa => 'Bool', request_name => 'staticRoutesOnly', traits => ['NameInRequest']);
+  has TunnelInsideIpVersion => (is => 'ro', isa => 'Str');
   has TunnelOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::VpnTunnelOptionsSpecification]');
 1;
 
@@ -45,6 +50,36 @@ Indicate whether to enable acceleration for the VPN connection.
 Default: C<false>
 
 
+=head2 LocalIpv4NetworkCidr => Str
+
+The IPv4 CIDR on the customer gateway (on-premises) side of the VPN
+connection.
+
+Default: C<0.0.0.0/0>
+
+
+=head2 LocalIpv6NetworkCidr => Str
+
+The IPv6 CIDR on the customer gateway (on-premises) side of the VPN
+connection.
+
+Default: C<::/0>
+
+
+=head2 RemoteIpv4NetworkCidr => Str
+
+The IPv4 CIDR on the AWS side of the VPN connection.
+
+Default: C<0.0.0.0/0>
+
+
+=head2 RemoteIpv6NetworkCidr => Str
+
+The IPv6 CIDR on the AWS side of the VPN connection.
+
+Default: C<::/0>
+
+
 =head2 StaticRoutesOnly => Bool
 
 Indicate whether the VPN connection uses static routes only. If you are
@@ -53,6 +88,13 @@ must specify C<true>. Use CreateVpnConnectionRoute to create a static
 route.
 
 Default: C<false>
+
+
+=head2 TunnelInsideIpVersion => Str
+
+Indicate whether the VPN tunnels process IPv4 or IPv6 traffic.
+
+Default: C<ipv4>
 
 
 =head2 TunnelOptions => ArrayRef[L<Paws::EC2::VpnTunnelOptionsSpecification>]

@@ -25,7 +25,9 @@ Base64-encoded.
 
 =head2 KeyId => Str
 
-The identifier of the CMK that encrypted the data key.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the CMK that encrypted the data key.
 
 
 =head2 Plaintext => Str

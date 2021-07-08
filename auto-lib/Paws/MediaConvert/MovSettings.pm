@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for MOV Container.
+These settings relate to your QuickTime MOV output container.
 
 =head1 ATTRIBUTES
 
@@ -67,7 +67,11 @@ Only applicable when the video codec is MPEG2.
 
 =head2 PaddingControl => Str
 
-If set to OMNEON, inserts Omneon-compatible padding
+To make this output compatible with Omenon, keep the default value,
+OMNEON. Unless you need Omneon compatibility, set this value to NONE.
+When you keep the default value, OMNEON, MediaConvert increases the
+length of the edit list atom. This might cause file rejections when a
+recipient of the output file doesn't expct this extra padding.
 
 
 =head2 Reference => Str

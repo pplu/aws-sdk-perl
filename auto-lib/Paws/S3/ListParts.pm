@@ -2,6 +2,7 @@
 package Paws::S3::ListParts;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has MaxParts => (is => 'ro', isa => 'Int', query_name => 'max-parts', traits => ['ParamInQuery']);
   has PartNumberMarker => (is => 'ro', isa => 'Int', query_name => 'part-number-marker', traits => ['ParamInQuery']);
@@ -37,30 +38,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+   # To list parts of a multipart upload.
+   # The following example lists parts uploaded for a specific multipart upload.
     my $ListPartsOutput = $s3->ListParts(
-      Bucket           => 'MyBucketName',
-      Key              => 'MyObjectKey',
-      UploadId         => 'MyMultipartUploadId',
-      MaxParts         => 1,                       # OPTIONAL
-      PartNumberMarker => 1,                       # OPTIONAL
-      RequestPayer     => 'requester',             # OPTIONAL
+      'Bucket'   => 'examplebucket',
+      'Key'      => 'bigobject',
+      'UploadId' =>
+'example7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--'
     );
 
     # Results:
-    my $AbortDate            = $ListPartsOutput->AbortDate;
-    my $AbortRuleId          = $ListPartsOutput->AbortRuleId;
-    my $Bucket               = $ListPartsOutput->Bucket;
-    my $Initiator            = $ListPartsOutput->Initiator;
-    my $IsTruncated          = $ListPartsOutput->IsTruncated;
-    my $Key                  = $ListPartsOutput->Key;
-    my $MaxParts             = $ListPartsOutput->MaxParts;
-    my $NextPartNumberMarker = $ListPartsOutput->NextPartNumberMarker;
-    my $Owner                = $ListPartsOutput->Owner;
-    my $PartNumberMarker     = $ListPartsOutput->PartNumberMarker;
-    my $Parts                = $ListPartsOutput->Parts;
-    my $RequestCharged       = $ListPartsOutput->RequestCharged;
-    my $StorageClass         = $ListPartsOutput->StorageClass;
-    my $UploadId             = $ListPartsOutput->UploadId;
+    my $Initiator    = $ListPartsOutput->Initiator;
+    my $Owner        = $ListPartsOutput->Owner;
+    my $Parts        = $ListPartsOutput->Parts;
+    my $StorageClass = $ListPartsOutput->StorageClass;
 
     # Returns a L<Paws::S3::ListPartsOutput> object.
 
@@ -72,16 +63,34 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket to which the parts are being uploaded.
+The name of the bucket to which the parts are being uploaded.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

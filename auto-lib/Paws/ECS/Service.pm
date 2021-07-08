@@ -10,6 +10,7 @@ package Paws::ECS::Service;
   has Deployments => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Deployment]', request_name => 'deployments', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', request_name => 'enableECSManagedTags', traits => ['NameInRequest']);
+  has EnableExecuteCommand => (is => 'ro', isa => 'Bool', request_name => 'enableExecuteCommand', traits => ['NameInRequest']);
   has Events => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ServiceEvent]', request_name => 'events', traits => ['NameInRequest']);
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', request_name => 'healthCheckGracePeriodSeconds', traits => ['NameInRequest']);
   has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
@@ -120,6 +121,13 @@ Resources
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 EnableExecuteCommand => Bool
+
+Whether or not the execute command functionality is enabled for the
+service. If C<true>, the execute command functionality is enabled for
+all containers in tasks as part of the service.
+
+
 =head2 Events => ArrayRef[L<Paws::ECS::ServiceEvent>]
 
 The event stream for your service. A maximum of 100 of the latest
@@ -135,9 +143,8 @@ task has first started.
 
 =head2 LaunchType => Str
 
-The launch type on which your service is running. If no value is
-specified, it will default to C<EC2>. Valid values include C<EC2> and
-C<FARGATE>. For more information, see Amazon ECS Launch Types
+The infrastructure on which your service is running. For more
+information, see Amazon ECS launch types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -222,9 +229,10 @@ decisions.
 =item *
 
 C<DAEMON>-The daemon scheduling strategy deploys exactly one task on
-each container instance in your cluster. When you are using this
-strategy, do not specify a desired number of tasks or any task
-placement strategies.
+each active container instance that meets all of the task placement
+constraints that you specify in your cluster. The service scheduler
+also evaluates the task placement constraints for running tasks and
+will stop tasks that do not meet the placement constraints.
 
 Fargate tasks do not support the C<DAEMON> scheduling strategy.
 
@@ -244,9 +252,9 @@ C<arn:aws:ecs:region:012345678910:service/my-service>.
 =head2 ServiceName => Str
 
 The name of your service. Up to 255 letters (uppercase and lowercase),
-numbers, and hyphens are allowed. Service names must be unique within a
-cluster, but you can have similarly named services in multiple clusters
-within a Region or across multiple Regions.
+numbers, underscores, and hyphens are allowed. Service names must be
+unique within a cluster, but you can have similarly named services in
+multiple clusters within a Region or across multiple Regions.
 
 
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]

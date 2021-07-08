@@ -2,11 +2,13 @@
 package Paws::DS::Certificate;
   use Moose;
   has CertificateId => (is => 'ro', isa => 'Str');
+  has ClientCertAuthSettings => (is => 'ro', isa => 'Paws::DS::ClientCertAuthSettings');
   has CommonName => (is => 'ro', isa => 'Str');
   has ExpiryDateTime => (is => 'ro', isa => 'Str');
   has RegisteredDateTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has StateReason => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -27,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DS::Certificate object:
 
-  $service_obj->Method(Att1 => { CertificateId => $value, ..., StateReason => $value  });
+  $service_obj->Method(Att1 => { CertificateId => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,6 +48,12 @@ Information about the certificate.
 =head2 CertificateId => Str
 
 The identifier of the certificate.
+
+
+=head2 ClientCertAuthSettings => L<Paws::DS::ClientCertAuthSettings>
+
+A C<ClientCertAuthSettings> object that contains client certificate
+authentication settings.
 
 
 =head2 CommonName => Str
@@ -71,6 +79,13 @@ The state of the certificate.
 =head2 StateReason => Str
 
 Describes a state change for the certificate.
+
+
+=head2 Type => Str
+
+The function that the registered certificate performs. Valid values
+include C<ClientLDAPS> or C<ClientCertAuth>. The default value is
+C<ClientLDAPS>.
 
 
 

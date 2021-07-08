@@ -51,15 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
-A list of account IDs of the GuardDuty member accounts whose findings
-you want the master account to stop monitoring.
+A list of account IDs for the member accounts to stop monitoring.
 
 
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty account that you want to
-stop from monitor members' findings.
+The unique ID of the detector associated with the GuardDuty
+administrator account that is monitoring member accounts.
 
 
 

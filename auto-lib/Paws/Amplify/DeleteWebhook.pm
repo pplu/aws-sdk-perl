@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> WebhookId => Str
 
-Unique Id for a webhook.
+The unique ID for a webhook.
 
 
 

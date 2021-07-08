@@ -1,9 +1,9 @@
 
 package Paws::DeviceFarm::PurchaseOffering;
   use Moose;
-  has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId' );
+  has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId' , required => 1);
   has OfferingPromotionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringPromotionId' );
-  has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' );
+  has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 =head1 ATTRIBUTES
 
 
-=head2 OfferingId => Str
+=head2 B<REQUIRED> OfferingId => Str
 
 The ID of the offering.
 
@@ -59,7 +59,7 @@ The ID of the offering promotion to be applied to the purchase.
 
 
 
-=head2 Quantity => Int
+=head2 B<REQUIRED> Quantity => Int
 
 The number of device slots to purchase in an offering request.
 

@@ -93,9 +93,29 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::CreateSecurityConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateStudio {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::CreateStudio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateStudioSessionMapping {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::CreateStudioSessionMapping', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteSecurityConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::DeleteSecurityConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteStudio {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::DeleteStudio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteStudioSessionMapping {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::DeleteStudioSessionMapping', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCluster {
@@ -108,6 +128,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeJobFlows', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeNotebookExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::DescribeNotebookExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSecurityConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeSecurityConfiguration', @_);
@@ -118,9 +143,24 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::DescribeStep', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeStudio {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::DescribeStudio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetBlockPublicAccessConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::GetBlockPublicAccessConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetManagedScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::GetManagedScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetStudioSessionMapping {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::GetStudioSessionMapping', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBootstrapActions {
@@ -148,6 +188,11 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListNotebookExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListNotebookExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListSecurityConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListSecurityConfigurations', @_);
@@ -156,6 +201,16 @@ package Paws::EMR;
   sub ListSteps {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::ListSteps', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListStudios {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListStudios', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListStudioSessionMappings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::ListStudioSessionMappings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCluster {
@@ -183,9 +238,19 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::PutBlockPublicAccessConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutManagedScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::PutManagedScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RemoveAutoScalingPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::RemoveAutoScalingPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveManagedScalingPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::RemoveManagedScalingPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTags {
@@ -208,9 +273,29 @@ package Paws::EMR;
     my $call_object = $self->new_with_coercions('Paws::EMR::SetVisibleToAllUsers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartNotebookExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::StartNotebookExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopNotebookExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::StopNotebookExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TerminateJobFlows {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EMR::TerminateJobFlows', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateStudio {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::UpdateStudio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateStudioSessionMapping {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EMR::UpdateStudioSessionMapping', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -329,6 +414,29 @@ package Paws::EMR;
 
     return undef
   }
+  sub ListAllNotebookExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNotebookExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListNotebookExecutions(@_, Marker => $next_result->Marker);
+        push @{ $result->NotebookExecutions }, @{ $next_result->NotebookExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'NotebookExecutions') foreach (@{ $result->NotebookExecutions });
+        $result = $self->ListNotebookExecutions(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'NotebookExecutions') foreach (@{ $result->NotebookExecutions });
+    }
+
+    return undef
+  }
   sub ListAllSecurityConfigurations {
     my $self = shift;
 
@@ -375,9 +483,55 @@ package Paws::EMR;
 
     return undef
   }
+  sub ListAllStudios {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStudios(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListStudios(@_, Marker => $next_result->Marker);
+        push @{ $result->Studios }, @{ $next_result->Studios };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Studios') foreach (@{ $result->Studios });
+        $result = $self->ListStudios(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Studios') foreach (@{ $result->Studios });
+    }
+
+    return undef
+  }
+  sub ListAllStudioSessionMappings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListStudioSessionMappings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->ListStudioSessionMappings(@_, Marker => $next_result->Marker);
+        push @{ $result->SessionMappings }, @{ $next_result->SessionMappings };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'SessionMappings') foreach (@{ $result->SessionMappings });
+        $result = $self->ListStudioSessionMappings(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'SessionMappings') foreach (@{ $result->SessionMappings });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration DeleteSecurityConfiguration DescribeCluster DescribeJobFlows DescribeSecurityConfiguration DescribeStep GetBlockPublicAccessConfiguration ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListSecurityConfigurations ListSteps ModifyCluster ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy PutBlockPublicAccessConfiguration RemoveAutoScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers TerminateJobFlows / }
+  sub operations { qw/AddInstanceFleet AddInstanceGroups AddJobFlowSteps AddTags CancelSteps CreateSecurityConfiguration CreateStudio CreateStudioSessionMapping DeleteSecurityConfiguration DeleteStudio DeleteStudioSessionMapping DescribeCluster DescribeJobFlows DescribeNotebookExecution DescribeSecurityConfiguration DescribeStep DescribeStudio GetBlockPublicAccessConfiguration GetManagedScalingPolicy GetStudioSessionMapping ListBootstrapActions ListClusters ListInstanceFleets ListInstanceGroups ListInstances ListNotebookExecutions ListSecurityConfigurations ListSteps ListStudios ListStudioSessionMappings ModifyCluster ModifyInstanceFleet ModifyInstanceGroups PutAutoScalingPolicy PutBlockPublicAccessConfiguration PutManagedScalingPolicy RemoveAutoScalingPolicy RemoveManagedScalingPolicy RemoveTags RunJobFlow SetTerminationProtection SetVisibleToAllUsers StartNotebookExecution StopNotebookExecution TerminateJobFlows UpdateStudio UpdateStudioSessionMapping / }
 
 1;
 
@@ -405,11 +559,11 @@ Paws::EMR - Perl Interface to AWS Amazon Elastic MapReduce
 
 =head1 DESCRIPTION
 
-Amazon EMR is a web service that makes it easy to process large amounts
-of data efficiently. Amazon EMR uses Hadoop processing combined with
-several AWS products to do tasks such as web indexing, data mining, log
-file analysis, machine learning, scientific simulation, and data
-warehousing.
+Amazon EMR is a web service that makes it easier to process large
+amounts of data efficiently. Amazon EMR uses Hadoop processing combined
+with several AWS services to do tasks such as web indexing, data
+mining, log file analysis, machine learning, scientific simulation, and
+data warehouse management.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticmapreduce-2009-03-31>
 
@@ -539,7 +693,7 @@ Returns: a L<Paws::EMR::CancelStepsOutput> instance
 Cancels a pending step or steps in a running cluster. Available only in
 Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum
 of 256 steps are allowed in each CancelSteps request. CancelSteps is
-idempotent but asynchronous; it does not guarantee a step will be
+idempotent but asynchronous; it does not guarantee that a step will be
 canceled, even if the request is successfully submitted. You can only
 cancel steps that are in a C<PENDING> state.
 
@@ -563,6 +717,68 @@ Creates a security configuration, which is stored in the service and
 can be specified when a cluster is created.
 
 
+=head2 CreateStudio
+
+=over
+
+=item AuthMode => Str
+
+=item DefaultS3Location => Str
+
+=item EngineSecurityGroupId => Str
+
+=item Name => Str
+
+=item ServiceRole => Str
+
+=item SubnetIds => ArrayRef[Str|Undef]
+
+=item UserRole => Str
+
+=item VpcId => Str
+
+=item WorkspaceSecurityGroupId => Str
+
+=item [Description => Str]
+
+=item [Tags => ArrayRef[L<Paws::EMR::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::CreateStudio>
+
+Returns: a L<Paws::EMR::CreateStudioOutput> instance
+
+Creates a new Amazon EMR Studio.
+
+
+=head2 CreateStudioSessionMapping
+
+=over
+
+=item IdentityType => Str
+
+=item SessionPolicyArn => Str
+
+=item StudioId => Str
+
+=item [IdentityId => Str]
+
+=item [IdentityName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::CreateStudioSessionMapping>
+
+Returns: nothing
+
+Maps a user or group to the Amazon EMR Studio specified by C<StudioId>,
+and applies a session policy to refine Studio permissions for that user
+or group.
+
+
 =head2 DeleteSecurityConfiguration
 
 =over
@@ -577,6 +793,44 @@ Each argument is described in detail in: L<Paws::EMR::DeleteSecurityConfiguratio
 Returns: a L<Paws::EMR::DeleteSecurityConfigurationOutput> instance
 
 Deletes a security configuration.
+
+
+=head2 DeleteStudio
+
+=over
+
+=item StudioId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::DeleteStudio>
+
+Returns: nothing
+
+Removes an Amazon EMR Studio from the Studio metadata store.
+
+
+=head2 DeleteStudioSessionMapping
+
+=over
+
+=item IdentityType => Str
+
+=item StudioId => Str
+
+=item [IdentityId => Str]
+
+=item [IdentityName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::DeleteStudioSessionMapping>
+
+Returns: nothing
+
+Removes a user or group from an Amazon EMR Studio.
 
 
 =head2 DescribeCluster
@@ -615,9 +869,9 @@ Each argument is described in detail in: L<Paws::EMR::DescribeJobFlows>
 
 Returns: a L<Paws::EMR::DescribeJobFlowsOutput> instance
 
-This API is deprecated and will eventually be removed. We recommend you
-use ListClusters, DescribeCluster, ListSteps, ListInstanceGroups and
-ListBootstrapActions instead.
+This API is no longer supported and will eventually be removed. We
+recommend you use ListClusters, DescribeCluster, ListSteps,
+ListInstanceGroups and ListBootstrapActions instead.
 
 DescribeJobFlows returns a list of job flows that match all of the
 supplied parameters. The parameters can include a list of job flow IDs,
@@ -643,6 +897,22 @@ following states: C<RUNNING>, C<WAITING>, C<SHUTTING_DOWN>, C<STARTING>
 =back
 
 Amazon EMR can return a maximum of 512 job flow descriptions.
+
+
+=head2 DescribeNotebookExecution
+
+=over
+
+=item NotebookExecutionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::DescribeNotebookExecution>
+
+Returns: a L<Paws::EMR::DescribeNotebookExecutionOutput> instance
+
+Provides details of a notebook execution.
 
 
 =head2 DescribeSecurityConfiguration
@@ -680,6 +950,23 @@ Returns: a L<Paws::EMR::DescribeStepOutput> instance
 Provides more detail about the cluster step.
 
 
+=head2 DescribeStudio
+
+=over
+
+=item StudioId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::DescribeStudio>
+
+Returns: a L<Paws::EMR::DescribeStudioOutput> instance
+
+Returns details for the specified Amazon EMR Studio including ID, Name,
+VPC, Studio access URL, and so on.
+
+
 =head2 GetBlockPublicAccessConfiguration
 
 
@@ -696,6 +983,45 @@ account in the current Region. For more information see Configure Block
 Public Access for Amazon EMR
 (https://docs.aws.amazon.com/emr/latest/ManagementGuide/configure-block-public-access.html)
 in the I<Amazon EMR Management Guide>.
+
+
+=head2 GetManagedScalingPolicy
+
+=over
+
+=item ClusterId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::GetManagedScalingPolicy>
+
+Returns: a L<Paws::EMR::GetManagedScalingPolicyOutput> instance
+
+Fetches the attached managed scaling policy for an Amazon EMR cluster.
+
+
+=head2 GetStudioSessionMapping
+
+=over
+
+=item IdentityType => Str
+
+=item StudioId => Str
+
+=item [IdentityId => Str]
+
+=item [IdentityName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::GetStudioSessionMapping>
+
+Returns: a L<Paws::EMR::GetStudioSessionMappingOutput> instance
+
+Fetches mapping details for the specified Amazon EMR Studio and
+identity (user or group).
 
 
 =head2 ListBootstrapActions
@@ -814,6 +1140,34 @@ in any of the following states are considered active:
 AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 
 
+=head2 ListNotebookExecutions
+
+=over
+
+=item [EditorId => Str]
+
+=item [From => Str]
+
+=item [Marker => Str]
+
+=item [Status => Str]
+
+=item [To => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::ListNotebookExecutions>
+
+Returns: a L<Paws::EMR::ListNotebookExecutionsOutput> instance
+
+Provides summaries of all notebook executions. You can filter the list
+based on multiple criteria such as status, time range, and editor id.
+Returns a maximum of 50 notebook executions and a marker to track the
+paging of a longer notebook execution list across multiple
+C<ListNotebookExecution> calls.
+
+
 =head2 ListSecurityConfigurations
 
 =over
@@ -855,7 +1209,46 @@ Returns: a L<Paws::EMR::ListStepsOutput> instance
 
 Provides a list of steps for the cluster in reverse order unless you
 specify C<stepIds> with the request of filter by C<StepStates>. You can
-specify a maximum of ten C<stepIDs>.
+specify a maximum of 10 C<stepIDs>.
+
+
+=head2 ListStudios
+
+=over
+
+=item [Marker => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::ListStudios>
+
+Returns: a L<Paws::EMR::ListStudiosOutput> instance
+
+Returns a list of all Amazon EMR Studios associated with the AWS
+account. The list includes details such as ID, Studio Access URL, and
+creation time for each Studio.
+
+
+=head2 ListStudioSessionMappings
+
+=over
+
+=item [IdentityType => Str]
+
+=item [Marker => Str]
+
+=item [StudioId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::ListStudioSessionMappings>
+
+Returns: a L<Paws::EMR::ListStudioSessionMappingsOutput> instance
+
+Returns a list of all user or group session mappings for the Amazon EMR
+Studio specified by C<StudioId>.
 
 
 =head2 ModifyCluster
@@ -966,6 +1359,28 @@ Configure Block Public Access for Amazon EMR
 in the I<Amazon EMR Management Guide>.
 
 
+=head2 PutManagedScalingPolicy
+
+=over
+
+=item ClusterId => Str
+
+=item ManagedScalingPolicy => L<Paws::EMR::ManagedScalingPolicy>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::PutManagedScalingPolicy>
+
+Returns: a L<Paws::EMR::PutManagedScalingPolicyOutput> instance
+
+Creates or updates a managed scaling policy for an Amazon EMR cluster.
+The managed scaling policy defines the limits for resources, such as
+EC2 instances that can be added or terminated from a cluster. The
+policy only applies to the core and task nodes. The master node cannot
+be scaled after initial configuration.
+
+
 =head2 RemoveAutoScalingPolicy
 
 =over
@@ -983,6 +1398,22 @@ Returns: a L<Paws::EMR::RemoveAutoScalingPolicyOutput> instance
 
 Removes an automatic scaling policy from a specified instance group
 within an EMR cluster.
+
+
+=head2 RemoveManagedScalingPolicy
+
+=over
+
+=item ClusterId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::RemoveManagedScalingPolicy>
+
+Returns: a L<Paws::EMR::RemoveManagedScalingPolicyOutput> instance
+
+Removes a managed scaling policy from a specified EMR cluster.
 
 
 =head2 RemoveTags
@@ -1038,9 +1469,15 @@ cluster:
 
 =item [KerberosAttributes => L<Paws::EMR::KerberosAttributes>]
 
+=item [LogEncryptionKmsKeyId => Str]
+
 =item [LogUri => Str]
 
+=item [ManagedScalingPolicy => L<Paws::EMR::ManagedScalingPolicy>]
+
 =item [NewSupportedProducts => ArrayRef[L<Paws::EMR::SupportedProductConfig>]]
+
+=item [PlacementGroupConfigs => ArrayRef[L<Paws::EMR::PlacementGroupConfig>]]
 
 =item [ReleaseLabel => Str]
 
@@ -1168,6 +1605,52 @@ default C<true> setting when you create a cluster by using the
 C<VisibleToAllUsers> parameter with C<RunJobFlow>.
 
 
+=head2 StartNotebookExecution
+
+=over
+
+=item EditorId => Str
+
+=item ExecutionEngine => L<Paws::EMR::ExecutionEngineConfig>
+
+=item RelativePath => Str
+
+=item ServiceRole => Str
+
+=item [NotebookExecutionName => Str]
+
+=item [NotebookInstanceSecurityGroupId => Str]
+
+=item [NotebookParams => Str]
+
+=item [Tags => ArrayRef[L<Paws::EMR::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::StartNotebookExecution>
+
+Returns: a L<Paws::EMR::StartNotebookExecutionOutput> instance
+
+Starts a notebook execution.
+
+
+=head2 StopNotebookExecution
+
+=over
+
+=item NotebookExecutionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::StopNotebookExecution>
+
+Returns: nothing
+
+Stops a notebook execution.
+
+
 =head2 TerminateJobFlows
 
 =over
@@ -1192,6 +1675,56 @@ C<TerminateJobFlows> is asynchronous. Depending on the configuration of
 the cluster, it may take up to 1-5 minutes for the cluster to
 completely terminate and release allocated resources, such as Amazon
 EC2 instances.
+
+
+=head2 UpdateStudio
+
+=over
+
+=item StudioId => Str
+
+=item [DefaultS3Location => Str]
+
+=item [Description => Str]
+
+=item [Name => Str]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::UpdateStudio>
+
+Returns: nothing
+
+Updates an Amazon EMR Studio configuration, including attributes such
+as name, description, and subnets.
+
+
+=head2 UpdateStudioSessionMapping
+
+=over
+
+=item IdentityType => Str
+
+=item SessionPolicyArn => Str
+
+=item StudioId => Str
+
+=item [IdentityId => Str]
+
+=item [IdentityName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EMR::UpdateStudioSessionMapping>
+
+Returns: nothing
+
+Updates the session policy attached to the user or group for the
+specified Amazon EMR Studio.
 
 
 
@@ -1260,6 +1793,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EMR::ListInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllNotebookExecutions(sub { },[EditorId => Str, From => Str, Marker => Str, Status => Str, To => Str])
+
+=head2 ListAllNotebookExecutions([EditorId => Str, From => Str, Marker => Str, Status => Str, To => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NotebookExecutions, passing the object as the first parameter, and the string 'NotebookExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListNotebookExecutionsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllSecurityConfigurations(sub { },[Marker => Str])
 
 =head2 ListAllSecurityConfigurations([Marker => Str])
@@ -1282,6 +1827,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Steps, passing the object as the first parameter, and the string 'Steps' as the second parameter 
 
 If not, it will return a a L<Paws::EMR::ListStepsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStudios(sub { },[Marker => Str])
+
+=head2 ListAllStudios([Marker => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Studios, passing the object as the first parameter, and the string 'Studios' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListStudiosOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllStudioSessionMappings(sub { },[IdentityType => Str, Marker => Str, StudioId => Str])
+
+=head2 ListAllStudioSessionMappings([IdentityType => Str, Marker => Str, StudioId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SessionMappings, passing the object as the first parameter, and the string 'SessionMappings' as the second parameter 
+
+If not, it will return a a L<Paws::EMR::ListStudioSessionMappingsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

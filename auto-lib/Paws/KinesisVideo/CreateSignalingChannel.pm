@@ -61,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 =head2 B<REQUIRED> ChannelName => Str
 
 A name for the signaling channel that you are creating. It must be
-unique for each account and region.
+unique for each AWS account and AWS Region.
 
 
 
@@ -81,7 +81,7 @@ channel type.
 
 =head2 Tags => ArrayRef[L<Paws::KinesisVideo::Tag>]
 
-A set of tags (key/value pairs) that you want to associate with this
+A set of tags (key-value pairs) that you want to associate with this
 channel.
 
 

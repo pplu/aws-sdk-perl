@@ -3,6 +3,7 @@ package Paws::S3::GetObjectOutput;
   use Moose;
   has AcceptRanges => (is => 'ro', isa => 'Str', header_name => 'accept-ranges', traits => ['ParamInHeader']);
   has Body => (is => 'ro', isa => 'Str', traits => ['ParamInBody']);
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
   has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
   has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
@@ -57,6 +58,13 @@ Indicates that a range of bytes was specified.
 =head2 Body => Str
 
 Object data.
+
+
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the object uses an S3 Bucket Key for server-side
+encryption with AWS KMS (SSE-KMS).
 
 
 
@@ -136,7 +144,7 @@ The date and time at which the object is no longer cacheable.
 
 =head2 LastModified => Str
 
-Last modified date of the object
+Creation date of the object.
 
 
 
@@ -197,7 +205,7 @@ Valid values are: C<"requester">
 
 =head2 Restore => Str
 
-Provides information about object restoration operation and expiration
+Provides information about object restoration action and expiration
 time of the restored object copy.
 
 
@@ -236,9 +244,10 @@ for the object.
 =head2 StorageClass => Str
 
 Provides storage class information of the object. Amazon S3 returns
-this header for all objects except for Standard storage class objects.
+this header for all objects except for S3 Standard storage class
+objects.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 TagCount => Int
 

@@ -9,6 +9,7 @@ package Paws::ImageBuilder::CreateComponent;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has Platform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platform', required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion', required => 1);
+  has SupportedOsVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'supportedOsVersions');
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', traits => ['NameInRequest'], request_name => 'tags');
   has Uri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'uri');
 
@@ -38,15 +39,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $imagebuilder = Paws->service('ImageBuilder');
     my $CreateComponentResponse = $imagebuilder->CreateComponent(
-      ClientToken       => 'MyClientToken',
-      Name              => 'MyResourceName',
-      Platform          => 'Windows',
-      SemanticVersion   => 'MyVersionNumber',
-      ChangeDescription => 'MyNonEmptyString',         # OPTIONAL
-      Data              => 'MyInlineComponentData',    # OPTIONAL
-      Description       => 'MyNonEmptyString',         # OPTIONAL
-      KmsKeyId          => 'MyNonEmptyString',         # OPTIONAL
-      Tags              => {
+      ClientToken         => 'MyClientToken',
+      Name                => 'MyResourceName',
+      Platform            => 'Windows',
+      SemanticVersion     => 'MyVersionNumber',
+      ChangeDescription   => 'MyNonEmptyString',         # OPTIONAL
+      Data                => 'MyInlineComponentData',    # OPTIONAL
+      Description         => 'MyNonEmptyString',         # OPTIONAL
+      KmsKeyId            => 'MyNonEmptyString',         # OPTIONAL
+      SupportedOsVersions => [
+        'MyOsVersion', ...                               # min: 1
+      ],    # OPTIONAL
+      Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
       Uri => 'MyUri',    # OPTIONAL
@@ -120,6 +124,14 @@ versioned like software (2.0.1) or like a date (2019.12.01).
 
 
 
+=head2 SupportedOsVersions => ArrayRef[Str|Undef]
+
+The operating system (OS) version supported by the component. If the OS
+information is available, a prefix match is performed against the
+parent image OS version during image recipe creation.
+
+
+
 =head2 Tags => L<Paws::ImageBuilder::TagMap>
 
 The tags of the component.
@@ -128,10 +140,10 @@ The tags of the component.
 
 =head2 Uri => Str
 
-The uri of the component. Must be an S3 URL and the requester must have
-permission to access the S3 bucket. If you use S3, you can specify
-component content up to your service quota. Either C<data> or C<uri>
-can be used to specify the data within the component.
+The uri of the component. Must be an Amazon S3 URL and the requester
+must have permission to access the Amazon S3 bucket. If you use Amazon
+S3, you can specify component content up to your service quota. Either
+C<data> or C<uri> can be used to specify the data within the component.
 
 
 

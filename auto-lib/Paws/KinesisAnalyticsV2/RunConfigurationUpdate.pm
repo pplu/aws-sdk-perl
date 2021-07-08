@@ -47,8 +47,8 @@ Describes updates to the restore behavior of a restarting application.
 
 =head2 FlinkRunConfiguration => L<Paws::KinesisAnalyticsV2::FlinkRunConfiguration>
 
-Describes the starting parameters for an Apache Flink-based Kinesis
-Data Analytics application.
+Describes the starting parameters for a Flink-based Kinesis Data
+Analytics application.
 
 
 

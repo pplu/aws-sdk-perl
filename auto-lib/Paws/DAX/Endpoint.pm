@@ -3,6 +3,7 @@ package Paws::DAX::Endpoint;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
+  has URL => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DAX::Endpoint object:
 
-  $service_obj->Method(Att1 => { Address => $value, ..., Port => $value  });
+  $service_obj->Method(Att1 => { Address => $value, ..., URL => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,8 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DAX::Endpoi
 =head1 DESCRIPTION
 
 Represents the information required for client programs to connect to
-the configuration endpoint for a DAX cluster, or to an individual node
-within the cluster.
+the endpoint for a DAX cluster.
 
 =head1 ATTRIBUTES
 
@@ -50,6 +50,13 @@ The DNS hostname of the endpoint.
 
 The port number that applications should use to connect to the
 endpoint.
+
+
+=head2 URL => Str
+
+The URL that applications should use to connect to the endpoint. The
+default ports are 8111 for the "dax" protocol and 9111 for the "daxs"
+protocol.
 
 
 

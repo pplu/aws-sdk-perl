@@ -2,6 +2,7 @@
 package Paws::SMS::PutAppLaunchConfiguration;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'appId' );
+  has AutoLaunch => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoLaunch' );
   has RoleName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleName' );
   has ServerGroupLaunchConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SMS::ServerGroupLaunchConfiguration]', traits => ['NameInRequest'], request_name => 'serverGroupLaunchConfigurations' );
 
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $sms = Paws->service('SMS');
     my $PutAppLaunchConfigurationResponse = $sms->PutAppLaunchConfiguration(
       AppId                           => 'MyAppId',       # OPTIONAL
+      AutoLaunch                      => 1,               # OPTIONAL
       RoleName                        => 'MyRoleName',    # OPTIONAL
       ServerGroupLaunchConfigurations => [
         {
@@ -38,12 +40,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ServerGroupId              => 'MyServerGroupId',    # OPTIONAL
           ServerLaunchConfigurations => [
             {
-              AssociatePublicIpAddress => 1,                    # OPTIONAL
-              Ec2KeyName               => 'MyEC2KeyName',       # OPTIONAL
-              InstanceType             => 'MyInstanceType',     # OPTIONAL
-              LogicalId                => 'MyLogicalId',        # OPTIONAL
-              SecurityGroup            => 'MySecurityGroup',    # OPTIONAL
-              Server                   => {
+              AssociatePublicIpAddress => 1,                  # OPTIONAL
+              ConfigureScript          => {
+                Bucket => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
+                Key    => 'MyS3KeyName',       # max: 1024; OPTIONAL
+              },    # OPTIONAL
+              ConfigureScriptType => 'SHELL_SCRIPT'
+              ,     # values: SHELL_SCRIPT, POWERSHELL_SCRIPT; OPTIONAL
+              Ec2KeyName             => 'MyEC2KeyName',       # OPTIONAL
+              IamInstanceProfileName => 'MyRoleName',
+              InstanceType           => 'MyInstanceType',     # OPTIONAL
+              LogicalId              => 'MyLogicalId',        # OPTIONAL
+              SecurityGroup          => 'MySecurityGroup',    # OPTIONAL
+              Server                 => {
                 ReplicationJobId         => 'MyReplicationJobId',    # OPTIONAL
                 ReplicationJobTerminated => 1,                       # OPTIONAL
                 ServerId                 => 'MyServerId',            # OPTIONAL
@@ -64,8 +73,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Subnet   => 'MySubnet',    # OPTIONAL
               UserData => {
                 S3Location => {
-                  Bucket => 'MyBucketName',    # OPTIONAL
-                  Key    => 'MyKeyName',       # OPTIONAL
+                  Bucket => 'MyS3BucketName',    # min: 3, max: 63; OPTIONAL
+                  Key    => 'MyS3KeyName',       # max: 1024; OPTIONAL
                 },    # OPTIONAL
               },    # OPTIONAL
               Vpc => 'MyVPC',    # OPTIONAL
@@ -85,20 +94,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application associated with the launch configuration.
+The ID of the application.
+
+
+
+=head2 AutoLaunch => Bool
+
+Indicates whether the application is configured to launch automatically
+after replication is complete.
 
 
 
 =head2 RoleName => Str
 
-Name of service role in the customer's account that Amazon
+The name of service role in the customer's account that AWS
 CloudFormation uses to launch the application.
 
 
 
 =head2 ServerGroupLaunchConfigurations => ArrayRef[L<Paws::SMS::ServerGroupLaunchConfiguration>]
 
-Launch configurations for server groups in the application.
+Information about the launch configurations for server groups in the
+application.
 
 
 

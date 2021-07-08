@@ -42,8 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-A summary of the properties of an experiment as returned by the Search
-API.
+The properties of an experiment as returned by the Search API.
 
 =head1 ATTRIBUTES
 

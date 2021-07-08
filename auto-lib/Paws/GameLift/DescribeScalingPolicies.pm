@@ -3,6 +3,7 @@ package Paws::GameLift::DescribeScalingPolicies;
   use Moose;
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
   has Limit => (is => 'ro', isa => 'Int');
+  has Location => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has StatusFilter => (is => 'ro', isa => 'Str');
 
@@ -31,8 +32,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeScalingPoliciesOutput = $gamelift->DescribeScalingPolicies(
-      FleetId      => 'MyFleetId',
+      FleetId      => 'MyFleetIdOrArn',
       Limit        => 1,                          # OPTIONAL
+      Location     => 'MyLocationStringModel',    # OPTIONAL
       NextToken    => 'MyNonZeroAndMaxString',    # OPTIONAL
       StatusFilter => 'ACTIVE',                   # OPTIONAL
     );
@@ -51,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to retrieve scaling policies for. You
+A unique identifier for the fleet to retrieve scaling policies for. You
 can use either the fleet ID or ARN value.
 
 
@@ -63,11 +65,18 @@ C<NextToken> to get results as a set of sequential pages.
 
 
 
+=head2 Location => Str
+
+CONTENT TODO
+
+
+
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value.
 
 
 

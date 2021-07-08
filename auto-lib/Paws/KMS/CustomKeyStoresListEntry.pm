@@ -97,12 +97,12 @@ connecting to the custom key store.
 =item *
 
 C<SUBNET_NOT_FOUND> - A subnet in the AWS CloudHSM cluster
-configuration was deleted. If AWS KMS cannot find all of the subnets
-that were configured for the cluster when the custom key store was
-created, attempts to connect fail. To fix this error, create a cluster
-from a backup and associate it with your custom key store. This process
-includes selecting a VPC and subnets. For details, see How to Fix a
-Connection Failure
+configuration was deleted. If AWS KMS cannot find all of the subnets in
+the cluster configuration, attempts to connect the custom key store to
+the AWS CloudHSM cluster fail. To fix this error, create a cluster from
+a recent backup and associate it with your custom key store. (This
+process creates a new cluster configuration with a VPC and private
+subnets.) For details, see How to Fix a Connection Failure
 (https://docs.aws.amazon.com/kms/latest/developerguide/fix-keystore.html#fix-keystore-failed)
 in the I<AWS Key Management Service Developer Guide>.
 

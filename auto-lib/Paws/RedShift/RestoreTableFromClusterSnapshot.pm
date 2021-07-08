@@ -2,6 +2,7 @@
 package Paws::RedShift::RestoreTableFromClusterSnapshot;
   use Moose;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
+  has EnableCaseSensitiveIdentifier => (is => 'ro', isa => 'Bool');
   has NewTableName => (is => 'ro', isa => 'Str', required => 1);
   has SnapshotIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has SourceDatabaseName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,14 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $RestoreTableFromClusterSnapshotResult =
       $redshift->RestoreTableFromClusterSnapshot(
-      ClusterIdentifier  => 'MyString',
-      NewTableName       => 'MyString',
-      SnapshotIdentifier => 'MyString',
-      SourceDatabaseName => 'MyString',
-      SourceTableName    => 'MyString',
-      SourceSchemaName   => 'MyString',    # OPTIONAL
-      TargetDatabaseName => 'MyString',    # OPTIONAL
-      TargetSchemaName   => 'MyString',    # OPTIONAL
+      ClusterIdentifier             => 'MyString',
+      NewTableName                  => 'MyString',
+      SnapshotIdentifier            => 'MyString',
+      SourceDatabaseName            => 'MyString',
+      SourceTableName               => 'MyString',
+      EnableCaseSensitiveIdentifier => 1,             # OPTIONAL
+      SourceSchemaName              => 'MyString',    # OPTIONAL
+      TargetDatabaseName            => 'MyString',    # OPTIONAL
+      TargetSchemaName              => 'MyString',    # OPTIONAL
       );
 
     # Results:
@@ -61,6 +63,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/red
 =head2 B<REQUIRED> ClusterIdentifier => Str
 
 The identifier of the Amazon Redshift cluster to restore the table to.
+
+
+
+=head2 EnableCaseSensitiveIdentifier => Bool
+
+Indicates whether name identifiers for database, schema, and table are
+case sensitive. If C<true>, the names are case sensitive. If C<false>
+(default), the names are not case sensitive.
 
 
 

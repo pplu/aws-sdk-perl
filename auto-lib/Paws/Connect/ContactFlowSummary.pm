@@ -38,6 +38,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Connect::Co
 
 Contains summary information about a contact flow.
 
+You can also create and update contact flows using the Amazon Connect
+Flow language
+(https://docs.aws.amazon.com/connect/latest/adminguide/flow-language.html).
+
 =head1 ATTRIBUTES
 
 

@@ -77,12 +77,25 @@ General purpose:
 
 Current generation:
 
+B<M6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.m6g.large>, C<cache.m6g.xlarge>, C<cache.m6g.2xlarge>,
+C<cache.m6g.4xlarge>, C<cache.m6g.8xlarge>, C<cache.m6g.12xlarge>,
+C<cache.m6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
+
 B<M5 node types:> C<cache.m5.large>, C<cache.m5.xlarge>,
 C<cache.m5.2xlarge>, C<cache.m5.4xlarge>, C<cache.m5.12xlarge>,
 C<cache.m5.24xlarge>
 
 B<M4 node types:> C<cache.m4.large>, C<cache.m4.xlarge>,
 C<cache.m4.2xlarge>, C<cache.m4.4xlarge>, C<cache.m4.10xlarge>
+
+B<T3 node types:> C<cache.t3.micro>, C<cache.t3.small>,
+C<cache.t3.medium>
 
 B<T2 node types:> C<cache.t2.micro>, C<cache.t2.small>,
 C<cache.t2.medium>
@@ -124,6 +137,16 @@ Memory optimized:
 =item *
 
 Current generation:
+
+B<R6g node types> (available only for Redis engine version 5.0.6 onward
+and for Memcached engine version 1.5.16 onward).
+
+C<cache.r6g.large>, C<cache.r6g.xlarge>, C<cache.r6g.2xlarge>,
+C<cache.r6g.4xlarge>, C<cache.r6g.8xlarge>, C<cache.r6g.12xlarge>,
+C<cache.r6g.16xlarge>
+
+For region availability, see Supported Node Types
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheNodes.SupportedTypes.html#CacheNodes.SupportedTypesByRegion)
 
 B<R5 node types:> C<cache.r5.large>, C<cache.r5.xlarge>,
 C<cache.r5.2xlarge>, C<cache.r5.4xlarge>, C<cache.r5.12xlarge>,

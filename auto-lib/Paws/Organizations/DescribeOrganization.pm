@@ -26,6 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+    # To get information about an organization
+    # The following example shows how to request information about the current
+    # user's organization:/n/n
     my $DescribeOrganizationResponse = $organizations->DescribeOrganization();
 
     # Results:

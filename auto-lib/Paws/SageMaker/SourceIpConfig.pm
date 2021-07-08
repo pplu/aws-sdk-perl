@@ -36,18 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 A list of IP address ranges (CIDRs
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)).
 Used to create an allow list of IP addresses for a private workforce.
-For more information, see .
+Workers will only be able to login to their worker portal from an IP
+address within this range. By default, a workforce isn't restricted to
+specific IP addresses.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Cidrs => ArrayRef[Str|Undef]
 
-A list of one to four Classless Inter-Domain Routing
+A list of one to ten Classless Inter-Domain Routing
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html)
 (CIDR) values.
 
-Maximum: 4 CIDR values
+Maximum: Ten CIDR values
 
 The following Length Constraints apply to individual CIDR values in the
 CIDR value list.

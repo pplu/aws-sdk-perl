@@ -39,7 +39,7 @@ UUID of a C<Config>.
 
 Type of a C<Config>.
 
-Valid values are: C<"antenna-downlink">, C<"antenna-downlink-demod-decode">, C<"antenna-uplink">, C<"dataflow-endpoint">, C<"tracking">, C<"uplink-echo">
+Valid values are: C<"antenna-downlink">, C<"antenna-downlink-demod-decode">, C<"antenna-uplink">, C<"dataflow-endpoint">, C<"tracking">, C<"uplink-echo">, C<"s3-recording">
 =head2 B<REQUIRED> Name => Str
 
 Name of a C<Config>.

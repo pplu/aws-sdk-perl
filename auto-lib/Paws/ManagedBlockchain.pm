@@ -94,9 +94,34 @@ package Paws::ManagedBlockchain;
     my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::ListProposalVotes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RejectInvitation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::RejectInvitation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMember {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::UpdateMember', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateNode {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ManagedBlockchain::UpdateNode', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub VoteOnProposal {
@@ -107,7 +132,7 @@ package Paws::ManagedBlockchain;
   
 
 
-  sub operations { qw/CreateMember CreateNetwork CreateNode CreateProposal DeleteMember DeleteNode GetMember GetNetwork GetNode GetProposal ListInvitations ListMembers ListNetworks ListNodes ListProposals ListProposalVotes RejectInvitation VoteOnProposal / }
+  sub operations { qw/CreateMember CreateNetwork CreateNode CreateProposal DeleteMember DeleteNode GetMember GetNetwork GetNode GetProposal ListInvitations ListMembers ListNetworks ListNodes ListProposals ListProposalVotes ListTagsForResource RejectInvitation TagResource UntagResource UpdateMember UpdateNode VoteOnProposal / }
 
 1;
 
@@ -136,11 +161,21 @@ Paws::ManagedBlockchain - Perl Interface to AWS Amazon Managed Blockchain
 =head1 DESCRIPTION
 
 Amazon Managed Blockchain is a fully managed service for creating and
-managing blockchain networks using open source frameworks. Blockchain
+managing blockchain networks using open-source frameworks. Blockchain
 allows you to build applications where multiple parties can securely
 and transparently run transactions and share data without the need for
-a trusted, central authority. Currently, Managed Blockchain supports
-the Hyperledger Fabric open source framework.
+a trusted, central authority.
+
+Managed Blockchain supports the Hyperledger Fabric and Ethereum
+open-source frameworks. Because of fundamental differences between the
+frameworks, some API actions or data types may only apply in the
+context of one framework and not the other. For example, actions
+related to Hyperledger Fabric network members such as C<CreateMember>
+and C<DeleteMember> do not apply to Ethereum.
+
+The description for each action indicates the framework or frameworks
+to which it applies. Data types and properties that apply only in the
+context of a particular framework are similarly indicated.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/managedblockchain-2018-09-24>
 
@@ -168,6 +203,8 @@ Returns: a L<Paws::ManagedBlockchain::CreateMemberOutput> instance
 
 Creates a member within a Managed Blockchain network.
 
+Applies only to Hyperledger Fabric.
+
 
 =head2 CreateNetwork
 
@@ -189,6 +226,8 @@ Creates a member within a Managed Blockchain network.
 
 =item [FrameworkConfiguration => L<Paws::ManagedBlockchain::NetworkFrameworkConfiguration>]
 
+=item [Tags => L<Paws::ManagedBlockchain::InputTagMap>]
+
 
 =back
 
@@ -198,6 +237,8 @@ Returns: a L<Paws::ManagedBlockchain::CreateNetworkOutput> instance
 
 Creates a new blockchain network using Amazon Managed Blockchain.
 
+Applies only to Hyperledger Fabric.
+
 
 =head2 CreateNode
 
@@ -205,11 +246,13 @@ Creates a new blockchain network using Amazon Managed Blockchain.
 
 =item ClientRequestToken => Str
 
-=item MemberId => Str
-
 =item NetworkId => Str
 
 =item NodeConfiguration => L<Paws::ManagedBlockchain::NodeConfiguration>
+
+=item [MemberId => Str]
+
+=item [Tags => L<Paws::ManagedBlockchain::InputTagMap>]
 
 
 =back
@@ -218,7 +261,9 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::CreateNode>
 
 Returns: a L<Paws::ManagedBlockchain::CreateNodeOutput> instance
 
-Creates a peer node in a member.
+Creates a node on the specified blockchain network.
+
+Applies to Hyperledger Fabric and Ethereum.
 
 
 =head2 CreateProposal
@@ -235,6 +280,8 @@ Creates a peer node in a member.
 
 =item [Description => Str]
 
+=item [Tags => L<Paws::ManagedBlockchain::InputTagMap>]
+
 
 =back
 
@@ -245,6 +292,8 @@ Returns: a L<Paws::ManagedBlockchain::CreateProposalOutput> instance
 Creates a proposal for a change to the network that other members of
 the network can vote on, for example, a proposal to add a new member to
 the network. Any member can create a proposal.
+
+Applies only to Hyperledger Fabric.
 
 
 =head2 DeleteMember
@@ -271,16 +320,18 @@ an approved proposal to remove a member. If C<MemberId> is the last
 member in a network specified by the last AWS account, the network is
 deleted also.
 
+Applies only to Hyperledger Fabric.
+
 
 =head2 DeleteNode
 
 =over
 
-=item MemberId => Str
-
 =item NetworkId => Str
 
 =item NodeId => Str
+
+=item [MemberId => Str]
 
 
 =back
@@ -289,8 +340,10 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::DeleteNode>
 
 Returns: a L<Paws::ManagedBlockchain::DeleteNodeOutput> instance
 
-Deletes a peer node from a member that your AWS account owns. All data
-on the node is lost and cannot be recovered.
+Deletes a node that your AWS account owns. All data on the node is lost
+and cannot be recovered.
+
+Applies to Hyperledger Fabric and Ethereum.
 
 
 =head2 GetMember
@@ -310,6 +363,8 @@ Returns: a L<Paws::ManagedBlockchain::GetMemberOutput> instance
 
 Returns detailed information about a member.
 
+Applies only to Hyperledger Fabric.
+
 
 =head2 GetNetwork
 
@@ -326,16 +381,18 @@ Returns: a L<Paws::ManagedBlockchain::GetNetworkOutput> instance
 
 Returns detailed information about a network.
 
+Applies to Hyperledger Fabric and Ethereum.
+
 
 =head2 GetNode
 
 =over
 
-=item MemberId => Str
-
 =item NetworkId => Str
 
 =item NodeId => Str
+
+=item [MemberId => Str]
 
 
 =back
@@ -344,7 +401,9 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::GetNode>
 
 Returns: a L<Paws::ManagedBlockchain::GetNodeOutput> instance
 
-Returns detailed information about a peer node.
+Returns detailed information about a node.
+
+Applies to Hyperledger Fabric and Ethereum.
 
 
 =head2 GetProposal
@@ -364,6 +423,8 @@ Returns: a L<Paws::ManagedBlockchain::GetProposalOutput> instance
 
 Returns detailed information about a proposal.
 
+Applies only to Hyperledger Fabric.
+
 
 =head2 ListInvitations
 
@@ -380,7 +441,9 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::ListInvitati
 
 Returns: a L<Paws::ManagedBlockchain::ListInvitationsOutput> instance
 
-Returns a listing of all invitations made on the specified network.
+Returns a list of all invitations for the current AWS account.
+
+Applies only to Hyperledger Fabric.
 
 
 =head2 ListMembers
@@ -406,8 +469,10 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::ListMembers>
 
 Returns: a L<Paws::ManagedBlockchain::ListMembersOutput> instance
 
-Returns a listing of the members in a network and properties of their
+Returns a list of the members in a network and properties of their
 configurations.
+
+Applies only to Hyperledger Fabric.
 
 
 =head2 ListNetworks
@@ -432,18 +497,20 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::ListNetworks
 Returns: a L<Paws::ManagedBlockchain::ListNetworksOutput> instance
 
 Returns information about the networks in which the current AWS account
-has members.
+participates.
+
+Applies to Hyperledger Fabric and Ethereum.
 
 
 =head2 ListNodes
 
 =over
 
-=item MemberId => Str
-
 =item NetworkId => Str
 
 =item [MaxResults => Int]
+
+=item [MemberId => Str]
 
 =item [NextToken => Str]
 
@@ -457,6 +524,8 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::ListNodes>
 Returns: a L<Paws::ManagedBlockchain::ListNodesOutput> instance
 
 Returns information about the nodes within a network.
+
+Applies to Hyperledger Fabric and Ethereum.
 
 
 =head2 ListProposals
@@ -476,7 +545,9 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::ListProposal
 
 Returns: a L<Paws::ManagedBlockchain::ListProposalsOutput> instance
 
-Returns a listing of proposals for the network.
+Returns a list of proposals for the network.
+
+Applies only to Hyperledger Fabric.
 
 
 =head2 ListProposalVotes
@@ -498,9 +569,35 @@ Each argument is described in detail in: L<Paws::ManagedBlockchain::ListProposal
 
 Returns: a L<Paws::ManagedBlockchain::ListProposalVotesOutput> instance
 
-Returns the listing of votes for a specified proposal, including the
-value of each vote and the unique identifier of the member that cast
-the vote.
+Returns the list of votes for a specified proposal, including the value
+of each vote and the unique identifier of the member that cast the
+vote.
+
+Applies only to Hyperledger Fabric.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ManagedBlockchain::ListTagsForResource>
+
+Returns: a L<Paws::ManagedBlockchain::ListTagsForResourceResponse> instance
+
+Returns a list of tags for the specified resource. Each tag consists of
+a key and optional value.
+
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Ethereum Developer Guide>, or
+Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
 
 
 =head2 RejectInvitation
@@ -519,6 +616,112 @@ Returns: a L<Paws::ManagedBlockchain::RejectInvitationOutput> instance
 Rejects an invitation to join a network. This action can be called by a
 principal in an AWS account that has received an invitation to create a
 member and join a network.
+
+Applies only to Hyperledger Fabric.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::ManagedBlockchain::InputTagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ManagedBlockchain::TagResource>
+
+Returns: a L<Paws::ManagedBlockchain::TagResourceResponse> instance
+
+Adds or overwrites the specified tags for the specified Amazon Managed
+Blockchain resource. Each tag consists of a key and optional value.
+
+When you specify a tag key that already exists, the tag value is
+overwritten with the new value. Use C<UntagResource> to remove tag
+keys.
+
+A resource can have up to 50 tags. If you try to create more than 50
+tags for a resource, your request fails and returns an error.
+
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Ethereum Developer Guide>, or
+Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ManagedBlockchain::UntagResource>
+
+Returns: a L<Paws::ManagedBlockchain::UntagResourceResponse> instance
+
+Removes the specified tags from the Amazon Managed Blockchain resource.
+
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Ethereum Developer Guide>, or
+Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
+
+
+=head2 UpdateMember
+
+=over
+
+=item MemberId => Str
+
+=item NetworkId => Str
+
+=item [LogPublishingConfiguration => L<Paws::ManagedBlockchain::MemberLogPublishingConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ManagedBlockchain::UpdateMember>
+
+Returns: a L<Paws::ManagedBlockchain::UpdateMemberOutput> instance
+
+Updates a member configuration with new parameters.
+
+Applies only to Hyperledger Fabric.
+
+
+=head2 UpdateNode
+
+=over
+
+=item NetworkId => Str
+
+=item NodeId => Str
+
+=item [LogPublishingConfiguration => L<Paws::ManagedBlockchain::NodeLogPublishingConfiguration>]
+
+=item [MemberId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ManagedBlockchain::UpdateNode>
+
+Returns: a L<Paws::ManagedBlockchain::UpdateNodeOutput> instance
+
+Updates a node configuration with new parameters.
+
+Applies only to Hyperledger Fabric.
 
 
 =head2 VoteOnProposal
@@ -543,6 +746,8 @@ Returns: a L<Paws::ManagedBlockchain::VoteOnProposalOutput> instance
 Casts a vote for a specified C<ProposalId> on behalf of a member. The
 member to vote as, specified by C<VoterMemberId>, must be in the same
 AWS account as the principal that calls the action.
+
+Applies only to Hyperledger Fabric.
 
 
 

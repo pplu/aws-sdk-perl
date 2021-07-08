@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 
 =head2 B<REQUIRED> QueryId => Str
 
-The ID number of the query to stop. If necessary, you can use
-C<DescribeQueries> to find this ID number.
+The ID number of the query to stop. To find this ID number, use
+C<DescribeQueries>.
 
 
 

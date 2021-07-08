@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-The S3 bucket that contains the Ground Truth manifest file.
+The S3 bucket that contains an Amazon Sagemaker Ground Truth format
+manifest file.
 
 =head1 ATTRIBUTES
 

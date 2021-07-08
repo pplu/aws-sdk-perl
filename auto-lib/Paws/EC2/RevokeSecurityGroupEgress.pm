@@ -14,7 +14,7 @@ package Paws::EC2::RevokeSecurityGroupEgress;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'RevokeSecurityGroupEgress');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::RevokeSecurityGroupEgressResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    $ec2->RevokeSecurityGroupEgress(
+    my $RevokeSecurityGroupEgressResult = $ec2->RevokeSecurityGroupEgress(
       GroupId       => 'MySecurityGroupId',
       CidrIp        => 'MyString',            # OPTIONAL
       DryRun        => 1,                     # OPTIONAL
@@ -86,6 +86,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL
       ToPort                     => 1,             # OPTIONAL
     );
+
+    # Results:
+    my $Return = $RevokeSecurityGroupEgressResult->Return;
+    my $UnknownIpPermissions =
+      $RevokeSecurityGroupEgressResult->UnknownIpPermissions;
+
+    # Returns a L<Paws::EC2::RevokeSecurityGroupEgressResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RevokeSecurityGroupEgress>

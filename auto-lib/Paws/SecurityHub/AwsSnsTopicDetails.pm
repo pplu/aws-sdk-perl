@@ -36,14 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-A wrapper type for the topic's Amazon Resource Name (ARN).
+A wrapper type for the topic's ARN.
 
 =head1 ATTRIBUTES
 
 
 =head2 KmsMasterKeyId => Str
 
-The ID of an AWS-managed customer master key (CMK) for Amazon SNS or a
+The ID of an AWS managed customer master key (CMK) for Amazon SNS or a
 custom CMK.
 
 

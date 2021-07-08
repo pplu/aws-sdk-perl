@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $UpdateFleetAttributesOutput = $gamelift->UpdateFleetAttributes(
-      FleetId      => 'MyFleetId',
+      FleetId      => 'MyFleetIdOrArn',
       Description  => 'MyNonZeroAndMaxString',    # OPTIONAL
       MetricGroups => [
         'MyMetricGroup', ...                      # min: 1, max: 255
@@ -59,24 +59,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 Description => Str
 
-Human-readable description of a fleet.
+A human-readable description of a fleet.
 
 
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to update attribute metadata for. You
+A unique identifier for the fleet to update attribute metadata for. You
 can use either the fleet ID or ARN value.
 
 
 
 =head2 MetricGroups => ArrayRef[Str|Undef]
 
-Names of metric groups to include this fleet in. Amazon CloudWatch uses
-a fleet metric group is to aggregate metrics from multiple fleets. Use
-an existing metric group name to add this fleet to the group. Or use a
-new name to create a new metric group. A fleet can only be included in
-one metric group at a time.
+The name of a metric group to add this fleet to. Use a metric group in
+Amazon CloudWatch to aggregate the metrics from multiple fleets.
+Provide an existing metric group name, or create a new metric group by
+providing a new name. A fleet can only be in one metric group at a
+time.
 
 
 
@@ -89,9 +89,10 @@ need to be unique.
 
 =head2 NewGameSessionProtectionPolicy => Str
 
-Game session protection policy to apply to all new instances created in
-this fleet. Instances that already exist are not affected. You can set
-protection for individual instances using UpdateGameSession.
+The game session protection policy to apply to all new instances
+created in this fleet. Instances that already exist are not affected.
+You can set protection for individual instances using
+UpdateGameSession.
 
 =over
 
@@ -112,8 +113,8 @@ Valid values are: C<"NoProtection">, C<"FullProtection">
 
 =head2 ResourceCreationLimitPolicy => L<Paws::GameLift::ResourceCreationLimitPolicy>
 
-Policy that limits the number of game sessions an individual player can
-create over a span of time.
+Policy settings that limit the number of game sessions an individual
+player can create over a span of time.
 
 
 

@@ -4,7 +4,9 @@ package Paws::CodeBuild::Project;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', request_name => 'artifacts', traits => ['NameInRequest']);
   has Badge => (is => 'ro', isa => 'Paws::CodeBuild::ProjectBadge', request_name => 'badge', traits => ['NameInRequest']);
+  has BuildBatchConfig => (is => 'ro', isa => 'Paws::CodeBuild::ProjectBuildBatchConfig', request_name => 'buildBatchConfig', traits => ['NameInRequest']);
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', request_name => 'cache', traits => ['NameInRequest']);
+  has ConcurrentBuildLimit => (is => 'ro', isa => 'Int', request_name => 'concurrentBuildLimit', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
@@ -75,9 +77,25 @@ Information about the build output artifacts for the build project.
 Information about the build badge for the build project.
 
 
+=head2 BuildBatchConfig => L<Paws::CodeBuild::ProjectBuildBatchConfig>
+
+A ProjectBuildBatchConfig object that defines the batch build options
+for the project.
+
+
 =head2 Cache => L<Paws::CodeBuild::ProjectCache>
 
 Information about the cache for the build project.
+
+
+=head2 ConcurrentBuildLimit => Int
+
+The maximum number of concurrent builds that are allowed for this
+project.
+
+New builds are only started if the current number of builds is less
+than or equal to this limit. If the current build count meets this
+limit, new builds are throttled and are not run.
 
 
 =head2 Created => Str
@@ -92,14 +110,16 @@ A description that makes the build project easy to identify.
 
 =head2 EncryptionKey => Str
 
-The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the build output artifacts.
+The Key Management Service customer master key (CMK) to be used for
+encrypting the build output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format C<alias/I<alias-name> >).
+available, the CMK's alias (using the format
+C<alias/E<lt>alias-nameE<gt>>). If you don't specify a value, CodeBuild
+uses the managed CMK for Amazon Simple Storage Service (Amazon S3).
 
 
 =head2 Environment => L<Paws::CodeBuild::ProjectEnvironment>
@@ -124,7 +144,7 @@ time format.
 =head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
 
 Information about logs for the build project. A project can create logs
-in Amazon CloudWatch Logs, an S3 bucket, or both.
+in CloudWatch Logs, an S3 bucket, or both.
 
 
 =head2 Name => Str
@@ -157,9 +177,9 @@ take over these C<secondarySourceVersions> (at the project level).
 
 =head2 ServiceRole => Str
 
-The ARN of the AWS Identity and Access Management (IAM) role that
-enables AWS CodeBuild to interact with dependent AWS services on behalf
-of the AWS account.
+The ARN of the Identity and Access Management role that enables
+CodeBuild to interact with dependent Amazon Web Services services on
+behalf of the Amazon Web Services account.
 
 
 =head2 Source => L<Paws::CodeBuild::ProjectSource>
@@ -176,7 +196,7 @@ specified, the latest version is used. If specified, it must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 
@@ -196,8 +216,8 @@ the default branch's HEAD commit ID is used.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+For Amazon S3: the version ID of the object that represents the build
+input ZIP file to use.
 
 =back
 
@@ -206,33 +226,33 @@ takes precedence over this C<sourceVersion> (at the project level).
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
 
-The tags for this build project.
+A list of tag key and value pairs associated with this build project.
 
-These tags are available for use by AWS services that support AWS
-CodeBuild build project tags.
+These tags are available for use by Amazon Web Services services that
+support CodeBuild build project tags.
 
 
 =head2 TimeoutInMinutes => Int
 
-How long, in minutes, from 5 to 480 (8 hours), for AWS CodeBuild to
-wait before timing out any related build that did not get marked as
+How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait
+before timing out any related build that did not get marked as
 completed. The default is 60 minutes.
 
 
 =head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
 
-Information about the VPC configuration that AWS CodeBuild accesses.
+Information about the VPC configuration that CodeBuild accesses.
 
 
 =head2 Webhook => L<Paws::CodeBuild::Webhook>
 
 Information about a webhook that connects repository events to a build
-project in AWS CodeBuild.
+project in CodeBuild.
 
 
 

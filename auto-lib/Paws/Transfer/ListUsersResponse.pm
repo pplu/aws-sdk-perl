@@ -26,8 +26,8 @@ additional users.
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server that the users
-are assigned to.
+A system-assigned unique identifier for a server that the users are
+assigned to.
 
 
 =head2 B<REQUIRED> Users => ArrayRef[L<Paws::Transfer::ListedUser>]

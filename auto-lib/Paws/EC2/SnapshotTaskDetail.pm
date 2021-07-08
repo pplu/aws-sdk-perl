@@ -99,7 +99,7 @@ The URL of the disk image from which the snapshot is created.
 
 =head2 UserBucket => L<Paws::EC2::UserBucketDetails>
 
-The S3 bucket for the disk image.
+The Amazon S3 bucket for the disk image.
 
 
 

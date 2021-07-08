@@ -43,13 +43,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 B<REQUIRED> InvitationId => Str
 
-The ID of the invitation sent from the Security Hub master account.
+The identifier of the invitation sent from the Security Hub
+administrator account.
 
 
 
 =head2 B<REQUIRED> MasterId => Str
 
-The account ID of the Security Hub master account that sent the
+The account ID of the Security Hub administrator account that sent the
 invitation.
 
 

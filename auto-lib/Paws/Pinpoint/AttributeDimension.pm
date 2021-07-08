@@ -42,10 +42,33 @@ from a segment.
 
 =head2 AttributeType => Str
 
-The type of segment dimension to use. Valid values are: INCLUSIVE,
-endpoints that match the criteria are included in the segment; and,
-EXCLUSIVE, endpoints that match the criteria are excluded from the
-segment.
+The type of segment dimension to use. Valid values are:
+
+=over
+
+=item * INCLUSIVE - endpoints that have attributes matching the values
+are included in the segment.
+
+=item * EXCLUSIVE - endpoints that have attributes matching the values
+are excluded in the segment.
+
+=item * CONTAINS - endpoints that have attributes' substrings match the
+values are included in the segment.
+
+=item * BEFORE - endpoints with attributes read as ISO_INSTANT
+datetimes before the value are included in the segment.
+
+=item * AFTER - endpoints with attributes read as ISO_INSTANT datetimes
+after the value are included in the segment.
+
+=item * ON - endpoints with attributes read as ISO_INSTANT dates on the
+value are included in the segment. Time is ignored in this comparison.
+
+=item * BETWEEN - endpoints with attributes read as ISO_INSTANT
+datetimes between the values are included in the segment.
+
+=back
+
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]

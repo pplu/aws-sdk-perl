@@ -42,8 +42,7 @@ configuration of a Lambda function alias.
 
 =head2 AdditionalVersionWeights => L<Paws::Lambda::AdditionalVersionWeights>
 
-The name of the second alias, and the percentage of traffic that's
-routed to it.
+The second version, and the percentage of traffic that's routed to it.
 
 
 

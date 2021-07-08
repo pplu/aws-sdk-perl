@@ -40,7 +40,7 @@ Contains information about the city associated with the IP address.
 
 =head2 CityName => Str
 
-City name of the remote IP address.
+The city name of the remote IP address.
 
 
 

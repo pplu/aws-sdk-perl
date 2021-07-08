@@ -40,7 +40,7 @@ An attached permissions boundary is a managed policy that has been
 attached to a user or role to set the permissions boundary.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
+boundaries for IAM identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 

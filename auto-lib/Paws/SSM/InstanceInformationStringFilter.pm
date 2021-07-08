@@ -47,6 +47,11 @@ The filter key name to describe your instances. For example:
 "InstanceIds"|"AgentVersion"|"PingStatus"|"PlatformTypes"|"ActivationIds"|"IamRole"|"ResourceType"|"AssociationStatus"|"Tag
 Key"
 
+C<Tag key> is not a valid filter. You must specify either C<tag-key> or
+C<tag:keyname> and a string. Here are some valid examples: tag-key,
+tag:123, tag:al!, tag:Windows. Here are some I<invalid> examples:
+tag-keys, Tag Key, tag:, tagKey, abc:keyname.
+
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 

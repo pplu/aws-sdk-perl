@@ -28,10 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Test conection
+    # Tests the connection between the replication instance and the endpoint.
     my $TestConnectionResponse = $dms->TestConnection(
-      EndpointArn            => 'MyString',
-      ReplicationInstanceArn => 'MyString',
-
+      'EndpointArn' =>
+'arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM',
+      'ReplicationInstanceArn' =>
+        'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ'
     );
 
     # Results:

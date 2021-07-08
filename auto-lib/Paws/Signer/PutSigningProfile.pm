@@ -4,7 +4,8 @@ package Paws::Signer::PutSigningProfile;
   has Overrides => (is => 'ro', isa => 'Paws::Signer::SigningPlatformOverrides', traits => ['NameInRequest'], request_name => 'overrides');
   has PlatformId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformId', required => 1);
   has ProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'profileName', required => 1);
-  has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', traits => ['NameInRequest'], request_name => 'signingMaterial', required => 1);
+  has SignatureValidityPeriod => (is => 'ro', isa => 'Paws::Signer::SignatureValidityPeriod', traits => ['NameInRequest'], request_name => 'signatureValidityPeriod');
+  has SigningMaterial => (is => 'ro', isa => 'Paws::Signer::SigningMaterial', traits => ['NameInRequest'], request_name => 'signingMaterial');
   has SigningParameters => (is => 'ro', isa => 'Paws::Signer::SigningParameters', traits => ['NameInRequest'], request_name => 'signingParameters');
   has Tags => (is => 'ro', isa => 'Paws::Signer::TagMap', traits => ['NameInRequest'], request_name => 'tags');
 
@@ -34,17 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $signer = Paws->service('Signer');
     my $PutSigningProfileResponse = $signer->PutSigningProfile(
-      PlatformId      => 'MyPlatformId',
-      ProfileName     => 'MyProfileName',
-      SigningMaterial => {
-        CertificateArn => 'MyCertificateArn',
-
-      },
-      Overrides => {
+      PlatformId  => 'MyPlatformId',
+      ProfileName => 'MyProfileName',
+      Overrides   => {
         SigningConfiguration => {
           EncryptionAlgorithm => 'RSA',     # values: RSA, ECDSA; OPTIONAL
           HashAlgorithm       => 'SHA1',    # values: SHA1, SHA256; OPTIONAL
         },    # OPTIONAL
+        SigningImageFormat =>
+          'JSON',    # values: JSON, JSONEmbedded, JSONDetached; OPTIONAL
+      },    # OPTIONAL
+      SignatureValidityPeriod => {
+        Type  => 'DAYS',    # values: DAYS, MONTHS, YEARS; OPTIONAL
+        Value => 1,         # OPTIONAL
+      },    # OPTIONAL
+      SigningMaterial => {
+        CertificateArn => 'MyCertificateArn',
+
       },    # OPTIONAL
       SigningParameters =>
         { 'MySigningParameterKey' => 'MySigningParameterValue', },    # OPTIONAL
@@ -54,7 +61,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Arn = $PutSigningProfileResponse->Arn;
+    my $Arn               = $PutSigningProfileResponse->Arn;
+    my $ProfileVersion    = $PutSigningProfileResponse->ProfileVersion;
+    my $ProfileVersionArn = $PutSigningProfileResponse->ProfileVersionArn;
 
     # Returns a L<Paws::Signer::PutSigningProfileResponse> object.
 
@@ -74,7 +83,7 @@ different C<hash-algorithm> or C<signing-algorithm>).
 
 =head2 B<REQUIRED> PlatformId => Str
 
-The ID of the signing profile to be created.
+The ID of the signing platform to be created.
 
 
 
@@ -84,7 +93,14 @@ The name of the signing profile to be created.
 
 
 
-=head2 B<REQUIRED> SigningMaterial => L<Paws::Signer::SigningMaterial>
+=head2 SignatureValidityPeriod => L<Paws::Signer::SignatureValidityPeriod>
+
+The default validity period override for any signature generated using
+this signing profile. If unspecified, the default is 135 months.
+
+
+
+=head2 SigningMaterial => L<Paws::Signer::SigningMaterial>
 
 The AWS Certificate Manager certificate that will be used to sign code
 with the new signing profile.
@@ -100,7 +116,7 @@ that you want to use during signing.
 
 =head2 Tags => L<Paws::Signer::TagMap>
 
-Tags to be associated with the signing profile being created.
+Tags to be associated with the signing profile that is being created.
 
 
 

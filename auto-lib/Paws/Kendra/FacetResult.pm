@@ -3,6 +3,7 @@ package Paws::Kendra::FacetResult;
   use Moose;
   has DocumentAttributeKey => (is => 'ro', isa => 'Str');
   has DocumentAttributeValueCountPairs => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::DocumentAttributeValueCountPair]');
+  has DocumentAttributeValueType => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kendra::FacetResult object:
 
-  $service_obj->Method(Att1 => { DocumentAttributeKey => $value, ..., DocumentAttributeValueCountPairs => $value  });
+  $service_obj->Method(Att1 => { DocumentAttributeKey => $value, ..., DocumentAttributeValueType => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,6 +51,12 @@ C<DocumentAttributeKey> provided in the query.
 An array of key/value pairs, where the key is the value of the
 attribute and the count is the number of documents that share the key
 value.
+
+
+=head2 DocumentAttributeValueType => Str
+
+The data type of the facet value. This is the same as the type defined
+for the index field when it was created.
 
 
 

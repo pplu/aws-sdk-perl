@@ -18,7 +18,7 @@ Paws::CloudWatch::ListMetricsOutput
 
 =head2 Metrics => ArrayRef[L<Paws::CloudWatch::Metric>]
 
-The metrics.
+The metrics that match your request.
 
 
 =head2 NextToken => Str

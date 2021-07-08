@@ -48,7 +48,8 @@ A unique number that ensures that the request can't be replayed.
 
 =head2 Comment => Str
 
-An optional comment for the field-level encryption profile.
+An optional comment for the field-level encryption profile. The comment
+cannot be longer than 128 characters.
 
 
 =head2 B<REQUIRED> EncryptionEntities => L<Paws::CloudFront::EncryptionEntities>

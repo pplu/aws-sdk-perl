@@ -4,6 +4,7 @@ package Paws::IoTAnalytics::CreateDataset;
   has Actions => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetAction]', traits => ['NameInRequest'], request_name => 'actions', required => 1);
   has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', traits => ['NameInRequest'], request_name => 'contentDeliveryRules');
   has DatasetName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datasetName', required => 1);
+  has LateDataRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::LateDataRule]', traits => ['NameInRequest'], request_name => 'lateDataRules');
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has Triggers => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetTrigger]', traits => ['NameInRequest'], request_name => 'triggers');
@@ -103,6 +104,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      LateDataRules => [
+        {
+          RuleConfiguration => {
+            DeltaTimeSessionWindowConfiguration => {
+              TimeoutInMinutes => 1,    # min: 1, max: 60
+
+            },    # OPTIONAL
+          },
+          RuleName => 'MyLateDataRuleName',    # min: 1, max: 128; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
       RetentionPeriod => {
         NumberOfDays => 1,    # min: 1; OPTIONAL
         Unlimited    => 1,    # OPTIONAL
@@ -154,7 +167,7 @@ A list of actions that create the data set contents.
 
 =head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
 
-When data set contents are created they are delivered to destinations
+When dataset contents are created, they are delivered to destinations
 specified here.
 
 
@@ -165,14 +178,26 @@ The name of the data set.
 
 
 
+=head2 LateDataRules => ArrayRef[L<Paws::IoTAnalytics::LateDataRule>]
+
+A list of data rules that send notifications to Amazon CloudWatch, when
+data arrives late. To specify C<lateDataRules>, the dataset must use a
+DeltaTimer
+(https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html)
+filter.
+
+
+
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
-[Optional] How long, in days, versions of data set contents are kept
-for the data set. If not specified or set to null, versions of data set
+Optional. How long, in days, versions of dataset contents are kept for
+the dataset. If not specified or set to C<null>, versions of dataset
 contents are retained for at most 90 days. The number of versions of
-data set contents retained is determined by the
-C<versioningConfiguration> parameter. (For more information, see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+dataset contents retained is determined by the
+C<versioningConfiguration> parameter. For more information, see Keeping
+Multiple Versions of AWS IoT Analytics Data Sets
+(https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+in the I<AWS IoT Analytics User Guide>.
 
 
 
@@ -187,18 +212,19 @@ Metadata which can be used to manage the data set.
 A list of triggers. A trigger causes data set contents to be populated
 at a specified time interval or when another data set's contents are
 created. The list of triggers can be empty or contain up to five
-B<DataSetTrigger> objects.
+C<DataSetTrigger> objects.
 
 
 
 =head2 VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>
 
-[Optional] How many versions of data set contents are kept. If not
+Optional. How many versions of dataset contents are kept. If not
 specified or set to null, only the latest version plus the latest
 succeeded version (if they are different) are kept for the time period
-specified by the "retentionPeriod" parameter. (For more information,
-see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+specified by the C<retentionPeriod> parameter. For more information,
+see Keeping Multiple Versions of AWS IoT Analytics Data Sets
+(https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+in the I<AWS IoT Analytics User Guide>.
 
 
 

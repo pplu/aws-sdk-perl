@@ -7,11 +7,15 @@ package Paws::Forecast::DescribeDatasetImportJobResponse;
   has DatasetImportJobName => (is => 'ro', isa => 'Str');
   has DataSize => (is => 'ro', isa => 'Num');
   has DataSource => (is => 'ro', isa => 'Paws::Forecast::DataSource');
+  has EstimatedTimeRemainingInMinutes => (is => 'ro', isa => 'Int');
   has FieldStatistics => (is => 'ro', isa => 'Paws::Forecast::FieldStatistics');
+  has GeolocationFormat => (is => 'ro', isa => 'Str');
   has LastModificationTime => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has TimestampFormat => (is => 'ro', isa => 'Str');
+  has TimeZone => (is => 'ro', isa => 'Str');
+  has UseGeolocationForTimeZone => (is => 'ro', isa => 'Bool');
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -61,25 +65,45 @@ If encryption is used, C<DataSource> includes an AWS Key Management
 Service (KMS) key.
 
 
+=head2 EstimatedTimeRemainingInMinutes => Int
+
+The estimated time remaining in minutes for the dataset import job to
+complete.
+
+
 =head2 FieldStatistics => L<Paws::Forecast::FieldStatistics>
 
 Statistical information about each field in the input data.
 
 
+=head2 GeolocationFormat => Str
+
+The format of the geolocation attribute. Valid Values:C<"LAT_LONG"> and
+C<"CC_POSTALCODE">.
+
+
 =head2 LastModificationTime => Str
 
-The last time that the dataset was modified. The time depends on the
-status of the job, as follows:
+The last time the resource was modified. The timestamp depends on the
+status of the job:
 
 =over
 
 =item *
 
-C<CREATE_PENDING> - The same time as C<CreationTime>.
+C<CREATE_PENDING> - The C<CreationTime>.
 
 =item *
 
 C<CREATE_IN_PROGRESS> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPING> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPED> - When the job stopped.
 
 =item *
 
@@ -96,10 +120,7 @@ If an error occurred, an informational message about the error.
 
 =head2 Status => Str
 
-The status of the dataset import job. The status is reflected in the
-status of the dataset. For example, when the import job status is
-C<CREATE_IN_PROGRESS>, the status of the dataset is
-C<UPDATE_IN_PROGRESS>. States include:
+The status of the dataset import job. States include:
 
 =over
 
@@ -114,6 +135,10 @@ C<CREATE_PENDING>, C<CREATE_IN_PROGRESS>, C<CREATE_FAILED>
 =item *
 
 C<DELETE_PENDING>, C<DELETE_IN_PROGRESS>, C<DELETE_FAILED>
+
+=item *
+
+C<CREATE_STOPPING>, C<CREATE_STOPPED>
 
 =back
 
@@ -142,6 +167,17 @@ optionally, for: Y, M, W, and D
 
 =back
 
+
+
+=head2 TimeZone => Str
+
+The single time zone applied to every item in the dataset
+
+
+=head2 UseGeolocationForTimeZone => Bool
+
+Whether C<TimeZone> is automatically derived from the geolocation
+attribute.
 
 
 =head2 _request_id => Str

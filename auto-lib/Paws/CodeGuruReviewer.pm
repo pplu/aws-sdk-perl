@@ -19,6 +19,21 @@ package Paws::CodeGuruReviewer;
     my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::AssociateRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCodeReview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::CreateCodeReview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCodeReview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::DescribeCodeReview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRecommendationFeedback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::DescribeRecommendationFeedback', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeRepositoryAssociation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::DescribeRepositoryAssociation', @_);
@@ -29,9 +44,44 @@ package Paws::CodeGuruReviewer;
     my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::DisassociateRepository', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCodeReviews {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::ListCodeReviews', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRecommendationFeedback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::ListRecommendationFeedback', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListRecommendations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::ListRecommendations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRepositoryAssociations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::ListRepositoryAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRecommendationFeedback {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::PutRecommendationFeedback', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeGuruReviewer::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -60,7 +110,7 @@ package Paws::CodeGuruReviewer;
   }
 
 
-  sub operations { qw/AssociateRepository DescribeRepositoryAssociation DisassociateRepository ListRepositoryAssociations / }
+  sub operations { qw/AssociateRepository CreateCodeReview DescribeCodeReview DescribeRecommendationFeedback DescribeRepositoryAssociation DisassociateRepository ListCodeReviews ListRecommendationFeedback ListRecommendations ListRepositoryAssociations ListTagsForResource PutRecommendationFeedback TagResource UntagResource / }
 
 1;
 
@@ -89,7 +139,24 @@ Paws::CodeGuruReviewer - Perl Interface to AWS Amazon CodeGuru Reviewer
 =head1 DESCRIPTION
 
 This section provides documentation for the Amazon CodeGuru Reviewer
-API operations.
+API operations. CodeGuru Reviewer is a service that uses program
+analysis and machine learning to detect potential defects that are
+difficult for developers to find and recommends fixes in your Java and
+Python code.
+
+By proactively detecting and providing recommendations for addressing
+code defects and implementing best practices, CodeGuru Reviewer
+improves the overall quality and maintainability of your code base
+during the code review stage. For more information about CodeGuru
+Reviewer, see the I< Amazon CodeGuru Reviewer User Guide
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html).>
+
+To improve the security of your CodeGuru Reviewer API calls, you can
+establish a private connection between your VPC and CodeGuru Reviewer
+by creating an I<interface VPC endpoint>. For more information, see
+CodeGuru Reviewer and interface VPC endpoints (AWS PrivateLink)
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/vpc-interface-endpoints.html)
+in the I<Amazon CodeGuru Reviewer User Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codeguru-reviewer-2019-09-19>
 
@@ -104,6 +171,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =item [ClientRequestToken => Str]
 
+=item [KMSKeyDetails => L<Paws::CodeGuruReviewer::KMSKeyDetails>]
+
+=item [Tags => L<Paws::CodeGuruReviewer::TagMap>]
+
 
 =back
 
@@ -111,14 +182,95 @@ Each argument is described in detail in: L<Paws::CodeGuruReviewer::AssociateRepo
 
 Returns: a L<Paws::CodeGuruReviewer::AssociateRepositoryResponse> instance
 
-Associates an AWS CodeCommit repository with Amazon CodeGuru Reviewer.
-When you associate an AWS CodeCommit repository with Amazon CodeGuru
-Reviewer, Amazon CodeGuru Reviewer will provide recommendations for
-each pull request. You can view recommendations in the AWS CodeCommit
-repository.
+Use to associate an AWS CodeCommit repository or a repostory managed by
+AWS CodeStar Connections with Amazon CodeGuru Reviewer. When you
+associate a repository, CodeGuru Reviewer reviews source code changes
+in the repository's pull requests and provides automatic
+recommendations. You can view recommendations using the CodeGuru
+Reviewer console. For more information, see Recommendations in Amazon
+CodeGuru Reviewer
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/recommendations.html)
+in the I<Amazon CodeGuru Reviewer User Guide.>
 
-You can associate a GitHub repository using the Amazon CodeGuru
-Reviewer console.
+If you associate a CodeCommit or S3 repository, it must be in the same
+AWS Region and AWS account where its CodeGuru Reviewer code reviews are
+configured.
+
+Bitbucket and GitHub Enterprise Server repositories are managed by AWS
+CodeStar Connections to connect to CodeGuru Reviewer. For more
+information, see Associate a repository
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-associate-repository.html)
+in the I<Amazon CodeGuru Reviewer User Guide.>
+
+You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
+GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
+repository, use the console. For more information, see Getting started
+with CodeGuru Reviewer
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/getting-started-with-guru.html)
+in the I<CodeGuru Reviewer User Guide.>
+
+
+=head2 CreateCodeReview
+
+=over
+
+=item Name => Str
+
+=item RepositoryAssociationArn => Str
+
+=item Type => L<Paws::CodeGuruReviewer::CodeReviewType>
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::CreateCodeReview>
+
+Returns: a L<Paws::CodeGuruReviewer::CreateCodeReviewResponse> instance
+
+Use to create a code review with a C<CodeReviewType>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_CodeReviewType.html)
+of C<RepositoryAnalysis>. This type of code review analyzes all code
+under a specified branch in an associated repository. C<PullRequest>
+code reviews are automatically triggered by a pull request.
+
+
+=head2 DescribeCodeReview
+
+=over
+
+=item CodeReviewArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::DescribeCodeReview>
+
+Returns: a L<Paws::CodeGuruReviewer::DescribeCodeReviewResponse> instance
+
+Returns the metadata associated with the code review along with its
+status.
+
+
+=head2 DescribeRecommendationFeedback
+
+=over
+
+=item CodeReviewArn => Str
+
+=item RecommendationId => Str
+
+=item [UserId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::DescribeRecommendationFeedback>
+
+Returns: a L<Paws::CodeGuruReviewer::DescribeRecommendationFeedbackResponse> instance
+
+Describes the customer feedback for a CodeGuru Reviewer recommendation.
 
 
 =head2 DescribeRepositoryAssociation
@@ -134,7 +286,10 @@ Each argument is described in detail in: L<Paws::CodeGuruReviewer::DescribeRepos
 
 Returns: a L<Paws::CodeGuruReviewer::DescribeRepositoryAssociationResponse> instance
 
-Describes a repository association.
+Returns a C<RepositoryAssociation>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+object that contains information about the requested repository
+association.
 
 
 =head2 DisassociateRepository
@@ -152,6 +307,80 @@ Returns: a L<Paws::CodeGuruReviewer::DisassociateRepositoryResponse> instance
 
 Removes the association between Amazon CodeGuru Reviewer and a
 repository.
+
+
+=head2 ListCodeReviews
+
+=over
+
+=item Type => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ProviderTypes => ArrayRef[Str|Undef]]
+
+=item [RepositoryNames => ArrayRef[Str|Undef]]
+
+=item [States => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::ListCodeReviews>
+
+Returns: a L<Paws::CodeGuruReviewer::ListCodeReviewsResponse> instance
+
+Lists all the code reviews that the customer has created in the past 90
+days.
+
+
+=head2 ListRecommendationFeedback
+
+=over
+
+=item CodeReviewArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [RecommendationIds => ArrayRef[Str|Undef]]
+
+=item [UserIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::ListRecommendationFeedback>
+
+Returns: a L<Paws::CodeGuruReviewer::ListRecommendationFeedbackResponse> instance
+
+Returns a list of C<RecommendationFeedbackSummary>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html)
+objects that contain customer recommendation feedback for all CodeGuru
+Reviewer users.
+
+
+=head2 ListRecommendations
+
+=over
+
+=item CodeReviewArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::ListRecommendations>
+
+Returns: a L<Paws::CodeGuruReviewer::ListRecommendationsResponse> instance
+
+Returns the list of all recommendations for a completed code review.
 
 
 =head2 ListRepositoryAssociations
@@ -177,9 +406,92 @@ Each argument is described in detail in: L<Paws::CodeGuruReviewer::ListRepositor
 
 Returns: a L<Paws::CodeGuruReviewer::ListRepositoryAssociationsResponse> instance
 
-Lists repository associations. You can optionally filter on one or more
-of the following recommendation properties: provider types, states,
-names, and owners.
+Returns a list of C<RepositoryAssociationSummary>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html)
+objects that contain summary information about a repository
+association. You can filter the returned list by C<ProviderType>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-ProviderType),
+C<Name>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Name),
+C<State>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-State),
+and C<Owner>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociationSummary.html#reviewer-Type-RepositoryAssociationSummary-Owner).
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::ListTagsForResource>
+
+Returns: a L<Paws::CodeGuruReviewer::ListTagsForResourceResponse> instance
+
+Returns the list of tags associated with an associated repository
+resource.
+
+
+=head2 PutRecommendationFeedback
+
+=over
+
+=item CodeReviewArn => Str
+
+=item Reactions => ArrayRef[Str|Undef]
+
+=item RecommendationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::PutRecommendationFeedback>
+
+Returns: a L<Paws::CodeGuruReviewer::PutRecommendationFeedbackResponse> instance
+
+Stores customer feedback for a CodeGuru Reviewer recommendation. When
+this API is called again with different reactions the previous feedback
+is overwritten.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::CodeGuruReviewer::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::TagResource>
+
+Returns: a L<Paws::CodeGuruReviewer::TagResourceResponse> instance
+
+Adds one or more tags to an associated repository.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeGuruReviewer::UntagResource>
+
+Returns: a L<Paws::CodeGuruReviewer::UntagResourceResponse> instance
+
+Removes a tag from an associated repository.
 
 
 

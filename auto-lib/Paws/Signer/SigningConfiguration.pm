@@ -47,7 +47,7 @@ job.
 
 =head2 B<REQUIRED> HashAlgorithmOptions => L<Paws::Signer::HashAlgorithmOptions>
 
-The hash algorithm options that are available for a a code signing job.
+The hash algorithm options that are available for a code signing job.
 
 
 

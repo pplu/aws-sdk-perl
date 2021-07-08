@@ -8,12 +8,14 @@ package Paws::LexModels::GetBotResponse;
   has CreatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'createdDate');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has DetectSentiment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'detectSentiment');
+  has EnableModelImprovements => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableModelImprovements');
   has FailureReason => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureReason');
   has IdleSessionTTLInSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'idleSessionTTLInSeconds');
   has Intents => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Intent]', traits => ['NameInRequest'], request_name => 'intents');
   has LastUpdatedDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lastUpdatedDate');
   has Locale => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'locale');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
+  has NluIntentConfidenceThreshold => (is => 'ro', isa => 'Num', traits => ['NameInRequest'], request_name => 'nluIntentConfidenceThreshold');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
   has VoiceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'voiceId');
@@ -93,6 +95,12 @@ Indicates whether user utterances should be sent to Amazon Comprehend
 for sentiment analysis.
 
 
+=head2 EnableModelImprovements => Bool
+
+Indicates whether the bot uses accuracy improvements. C<true> indicates
+that the bot is using the improvements, otherwise, C<false>.
+
+
 =head2 FailureReason => Str
 
 If C<status> is C<FAILED>, Amazon Lex explains why it failed to build
@@ -120,10 +128,23 @@ creation date and last updated date are the same.
 
 The target locale for the bot.
 
-Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
+Valid values are: C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-US">, C<"es-419">, C<"es-ES">, C<"es-US">, C<"fr-FR">, C<"fr-CA">, C<"it-IT">, C<"ja-JP">
 =head2 Name => Str
 
 The name of the bot.
+
+
+=head2 NluIntentConfidenceThreshold => Num
+
+The score that determines where Amazon Lex inserts the
+C<AMAZON.FallbackIntent>, C<AMAZON.KendraSearchIntent>, or both when
+returning alternative intents in a PostContent
+(https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostContent.html)
+or PostText
+(https://docs.aws.amazon.com/lex/latest/dg/API_runtime_PostText.html)
+response. C<AMAZON.FallbackIntent> is inserted if the confidence score
+for all intents is below this value. C<AMAZON.KendraSearchIntent> is
+only inserted if it is configured for the bot.
 
 
 =head2 Status => Str

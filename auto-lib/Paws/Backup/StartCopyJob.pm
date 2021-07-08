@@ -68,7 +68,7 @@ C<arn:aws:backup:us-east-1:123456789012:vault:aBackupVault>.
 =head2 B<REQUIRED> IamRoleArn => Str
 
 Specifies the IAM role ARN used to copy the target recovery point; for
-example, arn:aws:iam::123456789012:role/S3Access.
+example, C<arn:aws:iam::123456789012:role/S3Access>.
 
 
 
@@ -98,7 +98,7 @@ arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108
 The name of a logical source container where backups are stored. Backup
 vaults are identified by names that are unique to the account used to
 create them and the AWS Region where they are created. They consist of
-lowercase letters, numbers, and hyphens. E<gt>
+lowercase letters, numbers, and hyphens.
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::Datasync::ListTasks;
   use Moose;
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Datasync::TaskFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -29,6 +30,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $datasync = Paws->service('Datasync');
     my $ListTasksResponse = $datasync->ListTasks(
+      Filters => [
+        {
+          Name     => 'LocationId',    # values: LocationId, CreationTime
+          Operator => 'Equals'
+          , # values: Equals, NotEquals, In, LessThanOrEqual, LessThan, GreaterThanOrEqual, GreaterThan, Contains, NotContains, BeginsWith
+          Values => [
+            'MyFilterAttributeValue', ...    # min: 1, max: 255
+          ],
+
+        },
+        ...
+      ],    # OPTIONAL
       MaxResults => 1,                # OPTIONAL
       NextToken  => 'MyNextToken',    # OPTIONAL
     );
@@ -43,6 +56,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/datasync/ListTasks>
 
 =head1 ATTRIBUTES
+
+
+=head2 Filters => ArrayRef[L<Paws::Datasync::TaskFilter>]
+
+You can use API filters to narrow down the list of resources returned
+by C<ListTasks>. For example, to retrieve all tasks on a specific
+source location, you can use C<ListTasks> with filter name
+C<LocationId> and C<Operator Equals> with the ARN for the location.
+
 
 
 =head2 MaxResults => Int

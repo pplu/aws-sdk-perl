@@ -7,6 +7,7 @@ package Paws::AlexaForBusiness::CreateConferenceProvider;
   has IPDialIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::IPDialIn');
   has MeetingSetting => (is => 'ro', isa => 'Paws::AlexaForBusiness::MeetingSetting', required => 1);
   has PSTNDialIn => (is => 'ro', isa => 'Paws::AlexaForBusiness::PSTNDialIn');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -52,6 +53,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         PhoneNumber      => 'MyOutboundPhoneNumber',
 
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -99,6 +108,13 @@ The meeting settings for the conference provider.
 =head2 PSTNDialIn => L<Paws::AlexaForBusiness::PSTNDialIn>
 
 The information for PSTN conferencing.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags to be added to the specified resource. Do not provide system
+tags.
 
 
 

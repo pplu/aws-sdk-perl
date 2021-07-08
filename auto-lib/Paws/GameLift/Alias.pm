@@ -41,57 +41,36 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::A
 
 Properties that describe an alias resource.
 
-=over
+B<Related actions>
 
-=item *
-
-CreateAlias
-
-=item *
-
-ListAliases
-
-=item *
-
-DescribeAlias
-
-=item *
-
-UpdateAlias
-
-=item *
-
-DeleteAlias
-
-=item *
-
-ResolveAlias
-
-=back
-
+CreateAlias | ListAliases | DescribeAlias | UpdateAlias | DeleteAlias |
+ResolveAlias | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
 
 =head2 AliasArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a GameLift alias resource and uniquely identifies
-it. ARNs are unique across all Regions.. In a GameLift alias ARN, the
-resource ID matches the alias ID value.
+it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::alias/alias-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
+In a GameLift alias ARN, the resource ID matches the alias ID value.
 
 
 =head2 AliasId => Str
 
-A unique identifier for an alias. Alias IDs are unique within a Region.
+A unique identifier for the alias. Alias IDs are unique within a
+Region.
 
 
 =head2 CreationTime => Str
 
 A time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 Description => Str
@@ -102,7 +81,8 @@ A human-readable description of an alias.
 =head2 LastUpdatedTime => Str
 
 The time that this data object was last modified. Format is a number
-expressed in Unix time as milliseconds (for example "1469498468.057").
+expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 =head2 Name => Str

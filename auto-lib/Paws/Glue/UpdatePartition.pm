@@ -65,6 +65,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyKeyString' => 'MyParametersMapValue'
             ,    # key: min: 1, max: 255, value: max: 512000
           },    # OPTIONAL
+          SchemaReference => {
+            SchemaId => {
+              RegistryName =>
+                'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
+              SchemaArn  => 'MyGlueResourceArn', # min: 1, max: 10240; OPTIONAL
+              SchemaName =>
+                'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            SchemaVersionId =>
+              'MySchemaVersionIdString',    # min: 36, max: 36; OPTIONAL
+            SchemaVersionNumber => 1,       # min: 1, max: 100000; OPTIONAL
+          },    # OPTIONAL
           SerdeInfo => {
             Name       => 'MyNameString',    # min: 1, max: 255
             Parameters => {
@@ -111,7 +123,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partition to be updated resides.
-If none is provided, the AWS account ID is used by default.
+If none is provided, the Amazon Web Services account ID is used by
+default.
 
 
 
@@ -126,11 +139,15 @@ resides.
 
 The new partition object to update the partition to.
 
+The C<Values> property can't be changed. If you want to change the
+partition key values for a partition, delete and recreate the
+partition.
+
 
 
 =head2 B<REQUIRED> PartitionValueList => ArrayRef[Str|Undef]
 
-A list of the values defining the partition.
+List of partition key values that define the partition to update.
 
 
 

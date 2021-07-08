@@ -55,7 +55,7 @@ action to abort incomplete multipart uploads.
 
 =head2 Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+The name of the bucket to which the multipart upload was initiated.
 
 
 
@@ -130,7 +130,7 @@ Valid values are: C<"requester">
 Class of storage (STANDARD or REDUCED_REDUNDANCY) used to store the
 uploaded object.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 UploadId => Str
 

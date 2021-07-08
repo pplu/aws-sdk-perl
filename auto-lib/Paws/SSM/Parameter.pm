@@ -2,6 +2,7 @@
 package Paws::SSM::Parameter;
   use Moose;
   has ARN => (is => 'ro', isa => 'Str');
+  has DataType => (is => 'ro', isa => 'Str');
   has LastModifiedDate => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Selector => (is => 'ro', isa => 'Str');
@@ -40,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Parame
 
 =head1 DESCRIPTION
 
-An Amazon EC2 Systems Manager parameter in Parameter Store.
+An Systems Manager parameter in Parameter Store.
 
 =head1 ATTRIBUTES
 
@@ -48,6 +49,12 @@ An Amazon EC2 Systems Manager parameter in Parameter Store.
 =head2 ARN => Str
 
 The Amazon Resource Name (ARN) of the parameter.
+
+
+=head2 DataType => Str
+
+The data type of the parameter, such as C<text> or C<aws:ec2:image>.
+The default is C<text>.
 
 
 =head2 LastModifiedDate => Str
@@ -79,8 +86,8 @@ SourceResult is the raw result or response from the source.
 
 =head2 Type => Str
 
-The type of parameter. Valid values include the following: String,
-String list, Secure string.
+The type of parameter. Valid values include the following: C<String>,
+C<StringList>, and C<SecureString>.
 
 
 =head2 Value => Str

@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $config = Paws->service('Config');
     $config->DeleteConfigRule(
-      ConfigRuleName => 'MyStringWithCharLimit64',
+      ConfigRuleName => 'MyConfigRuleName',
 
     );
 

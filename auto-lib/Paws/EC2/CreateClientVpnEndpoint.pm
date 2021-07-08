@@ -3,15 +3,19 @@ package Paws::EC2::CreateClientVpnEndpoint;
   use Moose;
   has AuthenticationOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClientVpnAuthenticationRequest]', traits => ['NameInRequest'], request_name => 'Authentication' , required => 1);
   has ClientCidrBlock => (is => 'ro', isa => 'Str', required => 1);
+  has ClientConnectOptions => (is => 'ro', isa => 'Paws::EC2::ClientConnectOptions');
   has ClientToken => (is => 'ro', isa => 'Str');
   has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogOptions', required => 1);
   has Description => (is => 'ro', isa => 'Str');
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has DryRun => (is => 'ro', isa => 'Bool');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
+  has SelfServicePortal => (is => 'ro', isa => 'Str');
   has ServerCertificateArn => (is => 'ro', isa => 'Str', required => 1);
   has SplitTunnel => (is => 'ro', isa => 'Bool');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransportProtocol => (is => 'ro', isa => 'Str');
+  has VpcId => (is => 'ro', isa => 'Str');
   has VpnPort => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -44,11 +48,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ActiveDirectory => {
             DirectoryId => 'MyString',    # OPTIONAL
           },    # OPTIONAL
+          FederatedAuthentication => {
+            SAMLProviderArn            => 'MyString',    # OPTIONAL
+            SelfServiceSAMLProviderArn => 'MyString',    # OPTIONAL
+          },    # OPTIONAL
           MutualAuthentication => {
             ClientRootCertificateChainArn => 'MyString',    # OPTIONAL
           },    # OPTIONAL
           Type => 'certificate-authentication'
-          , # values: certificate-authentication, directory-service-authentication; OPTIONAL
+          , # values: certificate-authentication, directory-service-authentication, federated-authentication; OPTIONAL
         },
         ...
       ],
@@ -59,17 +67,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Enabled             => 1,             # OPTIONAL
       },
       ServerCertificateArn => 'MyString',
-      ClientToken          => 'MyString',     # OPTIONAL
-      Description          => 'MyString',     # OPTIONAL
-      DnsServers           => [
-        'MyString', ...                       # OPTIONAL
+      ClientConnectOptions => {
+        Enabled           => 1,               # OPTIONAL
+        LambdaFunctionArn => 'MyString',      # OPTIONAL
+      },    # OPTIONAL
+      ClientToken => 'MyString',    # OPTIONAL
+      Description => 'MyString',    # OPTIONAL
+      DnsServers  => [
+        'MyString', ...             # OPTIONAL
       ],    # OPTIONAL
-      DryRun            => 1,    # OPTIONAL
-      SplitTunnel       => 1,    # OPTIONAL
+      DryRun            => 1,                               # OPTIONAL
+      SecurityGroupIds  => [ 'MySecurityGroupId', ... ],    # OPTIONAL
+      SelfServicePortal => 'enabled',                       # OPTIONAL
+      SplitTunnel       => 1,                               # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',    # OPTIONAL
@@ -80,8 +94,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      TransportProtocol => 'tcp',    # OPTIONAL
-      VpnPort           => 1,        # OPTIONAL
+      TransportProtocol => 'tcp',        # OPTIONAL
+      VpcId             => 'MyVpcId',    # OPTIONAL
+      VpnPort           => 1,            # OPTIONAL
     );
 
     # Results:
@@ -112,6 +127,13 @@ IP addresses. The address range cannot overlap with the local CIDR of
 the VPC in which the associated subnet is located, or the routes that
 you add manually. The address range cannot be changed after the Client
 VPN endpoint has been created. The CIDR block should be /22 or greater.
+
+
+
+=head2 ClientConnectOptions => L<Paws::EC2::ClientConnectOptions>
+
+The options for managing connection authorization for new client
+connections.
 
 
 
@@ -179,6 +201,23 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+The IDs of one or more security groups to apply to the target network.
+You must also specify the ID of the VPC that contains the security
+groups.
+
+
+
+=head2 SelfServicePortal => Str
+
+Specify whether to enable the self-service portal for the Client VPN
+endpoint.
+
+Default Value: C<enabled>
+
+Valid values are: C<"enabled">, C<"disabled">
+
 =head2 B<REQUIRED> ServerCertificateArn => Str
 
 The ARN of the server certificate. For more information, see the AWS
@@ -214,6 +253,14 @@ The transport protocol to be used by the VPN session.
 Default value: C<udp>
 
 Valid values are: C<"tcp">, C<"udp">
+
+=head2 VpcId => Str
+
+The ID of the VPC to associate with the Client VPN endpoint. If no
+security group IDs are specified in the request, the default security
+group for the VPC is applied.
+
+
 
 =head2 VpnPort => Int
 

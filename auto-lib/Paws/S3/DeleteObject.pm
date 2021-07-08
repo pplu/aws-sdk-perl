@@ -3,6 +3,7 @@ package Paws::S3::DeleteObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has MFA => (is => 'ro', isa => 'Str', header_name => 'x-amz-mfa', traits => ['ParamInHeader']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -37,21 +38,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To delete an object
+    # The following example deletes an object from an S3 bucket.
     my $DeleteObjectOutput = $s3->DeleteObject(
-      Bucket                    => 'MyBucketName',
-      Key                       => 'MyObjectKey',
-      BypassGovernanceRetention => 1,                      # OPTIONAL
-      MFA                       => 'MyMFA',                # OPTIONAL
-      RequestPayer              => 'requester',            # OPTIONAL
-      VersionId                 => 'MyObjectVersionId',    # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Key'    => 'objectkey.jpg'
     );
 
-    # Results:
-    my $DeleteMarker   = $DeleteObjectOutput->DeleteMarker;
-    my $RequestCharged = $DeleteObjectOutput->RequestCharged;
-    my $VersionId      = $DeleteObjectOutput->VersionId;
+    # To delete an object (from a non-versioned bucket)
+    # The following example deletes an object from a non-versioned bucket.
+    my $DeleteObjectOutput = $s3->DeleteObject(
+      'Bucket' => 'ExampleBucket',
+      'Key'    => 'HappyFace.jpg'
+    );
 
-    # Returns a L<Paws::S3::DeleteObjectOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/DeleteObject>
@@ -63,14 +63,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The bucket name of the bucket containing the object.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -78,6 +88,14 @@ in the I<Amazon Simple Storage Service Developer Guide>.
 
 Indicates whether S3 Object Lock should bypass Governance-mode
 restrictions to process this operation.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

@@ -54,8 +54,8 @@ letter: e.g., C<us-east-2a>.
 
 =head2 IncludeRelationalDatabaseAvailabilityZones => Bool
 
-E<gt>A Boolean value indicating whether to also include Availability
-Zones for databases in your get regions request. Availability Zones are
+A Boolean value indicating whether to also include Availability Zones
+for databases in your get regions request. Availability Zones are
 indicated with a letter (e.g., C<us-east-2a>).
 
 

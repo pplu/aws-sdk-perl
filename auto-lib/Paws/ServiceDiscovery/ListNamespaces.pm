@@ -68,9 +68,9 @@ to be returned by C<ListNamespaces>.
 
 =head2 MaxResults => Int
 
-The maximum number of namespaces that you want AWS Cloud Map to return
-in the response to a C<ListNamespaces> request. If you don't specify a
-value for C<MaxResults>, AWS Cloud Map returns up to 100 namespaces.
+The maximum number of namespaces that you want Cloud Map to return in
+the response to a C<ListNamespaces> request. If you don't specify a
+value for C<MaxResults>, Cloud Map returns up to 100 namespaces.
 
 
 
@@ -82,9 +82,9 @@ If the response contains C<NextToken>, submit another C<ListNamespaces>
 request to get the next group of results. Specify the value of
 C<NextToken> from the previous response in the next request.
 
-AWS Cloud Map gets C<MaxResults> namespaces and then filters them based
-on the specified criteria. It's possible that no namespaces in the
-first C<MaxResults> namespaces matched the specified criteria but that
+Cloud Map gets C<MaxResults> namespaces and then filters them based on
+the specified criteria. It's possible that no namespaces in the first
+C<MaxResults> namespaces matched the specified criteria but that
 subsequent groups of C<MaxResults> namespaces do contain namespaces
 that match the criteria.
 

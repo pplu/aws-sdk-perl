@@ -1,6 +1,7 @@
 
 package Paws::Batch::SubmitJobResponse;
   use Moose;
+  has JobArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobArn');
   has JobId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobId', required => 1);
   has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName', required => 1);
 
@@ -14,6 +15,11 @@ package Paws::Batch::SubmitJobResponse;
 Paws::Batch::SubmitJobResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 JobArn => Str
+
+The Amazon Resource Name (ARN) for the job.
 
 
 =head2 B<REQUIRED> JobId => Str

@@ -17,14 +17,14 @@ Paws::GameLift::ListBuildsOutput
 
 =head2 Builds => ArrayRef[L<Paws::GameLift::Build>]
 
-A collection of build records that match the request.
+A collection of build resources that match the request.
 
 
 =head2 NextToken => Str
 
-Token that indicates where to resume retrieving results on the next
-call to this action. If no token is returned, these results represent
-the end of the list.
+A token that indicates where to resume retrieving results on the next
+call to this operation. If no token is returned, these results
+represent the end of the list.
 
 
 =head2 _request_id => Str

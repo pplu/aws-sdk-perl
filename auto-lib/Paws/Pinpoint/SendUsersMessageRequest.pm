@@ -71,10 +71,12 @@ visible to message recipients.
 
 =head2 B<REQUIRED> Users => L<Paws::Pinpoint::MapOfEndpointSendConfiguration>
 
-A map that associates user IDs with EndpointSendConfiguration objects.
-You can use an EndpointSendConfiguration object to tailor the message
-for a user by specifying settings such as content overrides and message
-variables.
+A map that associates user IDs with EndpointSendConfiguration
+(https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-endpointsendconfiguration)
+objects. You can use an EndpointSendConfiguration
+(https://docs.aws.amazon.com/pinpoint/latest/apireference/apps-application-id-messages.html#apps-application-id-messages-model-endpointsendconfiguration)
+object to tailor the message for a user by specifying settings such as
+content overrides and message variables.
 
 
 

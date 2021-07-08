@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Accoun
 
 =head1 DESCRIPTION
 
-Describes a quota for an AWS account.
+Describes a quota for an Amazon Web Services account.
 
 The following are account quotas:
 
@@ -68,11 +68,11 @@ count of nondefault DB cluster parameter groups in the account.
 
 =item *
 
-C<DBClusterRoles> - The number of associated AWS Identity and Access
-Management (IAM) roles per DB cluster. The used value is the highest
-number of associated IAM roles for a DB cluster in the account. Other
-DB clusters in the account might have a lower number of associated IAM
-roles.
+C<DBClusterRoles> - The number of associated Amazon Web Services
+Identity and Access Management (IAM) roles per DB cluster. The used
+value is the highest number of associated IAM roles for a DB cluster in
+the account. Other DB clusters in the account might have a lower number
+of associated IAM roles.
 
 =item *
 
@@ -119,8 +119,15 @@ The used value is the count of the event subscriptions in the account.
 
 =item *
 
-C<ManualSnapshots> - The number of manual DB snapshots per account. The
-used value is the count of the manual DB snapshots in the account.
+C<ManualClusterSnapshots> - The number of manual DB cluster snapshots
+per account. The used value is the count of the manual DB cluster
+snapshots in the account.
+
+=item *
+
+C<ManualSnapshots> - The number of manual DB instance snapshots per
+account. The used value is the count of the manual DB instance
+snapshots in the account.
 
 =item *
 
@@ -130,10 +137,10 @@ option groups in the account.
 
 =item *
 
-C<ReadReplicasPerMaster> - The number of Read Replicas per DB instance.
-The used value is the highest number of Read Replicas for a DB instance
+C<ReadReplicasPerMaster> - The number of read replicas per DB instance.
+The used value is the highest number of read replicas for a DB instance
 in the account. Other DB instances in the account might have a lower
-number of Read Replicas.
+number of read replicas.
 
 =item *
 
@@ -161,7 +168,7 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 AccountQuotaName => Str
 
-The name of the Amazon RDS quota for this AWS account.
+The name of the Amazon RDS quota for this Amazon Web Services account.
 
 
 =head2 Max => Int

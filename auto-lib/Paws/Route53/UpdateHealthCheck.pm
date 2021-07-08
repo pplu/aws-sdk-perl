@@ -53,7 +53,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AlarmIdentifier => {
         Name   => 'MyAlarmName',    # min: 1, max: 256
         Region => 'us-east-1'
-        , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-east-1, me-south-1, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, cn-northwest-1, cn-north-1min: 1, max: 64
+        , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-central-1, eu-west-1, eu-west-2, eu-west-3, ap-east-1, me-south-1, ap-south-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, cn-northwest-1, cn-north-1, af-south-1, eu-south-1, us-gov-west-1, us-gov-east-1, us-iso-east-1, us-isob-east-1min: 1, max: 64
 
       },    # OPTIONAL
       ChildHealthChecks => [
@@ -179,7 +179,7 @@ The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
 from unhealthy to healthy or vice versa. For more information, see How
 Amazon Route 53 Determines Whether an Endpoint Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 If you don't specify a value for C<FailureThreshold>, the default value
@@ -458,8 +458,11 @@ RFC 5156, Special-Use IPv6 Addresses
 
 =head2 Port => Int
 
-The port on the endpoint on which you want Amazon Route 53 to perform
-health checks.
+The port on the endpoint that you want Amazon Route 53 to perform
+health checks on.
+
+Don't specify a value for C<Port> when you specify a value for C<Type>
+of C<CLOUDWATCH_METRIC> or C<CALCULATED>.
 
 
 
@@ -523,7 +526,7 @@ Specify this value only if you want to change it.
 
 =head2 SearchString => Str
 
-If the value of C<Type> is C<HTTP_STR_MATCH> or C<HTTP_STR_MATCH>, the
+If the value of C<Type> is C<HTTP_STR_MATCH> or C<HTTPS_STR_MATCH>, the
 string that you want Amazon Route 53 to search for in the response body
 from the specified resource. If the string appears in the response
 body, Route 53 considers the resource healthy. (You can't change the

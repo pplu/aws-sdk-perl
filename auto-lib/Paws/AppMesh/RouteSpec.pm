@@ -45,12 +45,12 @@ type.
 
 =head2 GrpcRoute => L<Paws::AppMesh::GrpcRoute>
 
-An object that represents the specification of a GRPC route.
+An object that represents the specification of a gRPC route.
 
 
 =head2 Http2Route => L<Paws::AppMesh::HttpRoute>
 
-An object that represents the specification of an HTTP2 route.
+An object that represents the specification of an HTTP/2 route.
 
 
 =head2 HttpRoute => L<Paws::AppMesh::HttpRoute>

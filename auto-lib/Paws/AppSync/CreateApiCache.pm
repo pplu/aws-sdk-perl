@@ -65,7 +65,7 @@ B<FULL_REQUEST_CACHING>: All requests are fully cached.
 
 =item *
 
-B<PER_RESOLVER_CACHING>: Individual resovlers that you specify are
+B<PER_RESOLVER_CACHING>: Individual resolvers that you specify are
 cached.
 
 =back
@@ -103,7 +103,50 @@ Valid values are between 1 and 3600 seconds.
 
 =head2 B<REQUIRED> Type => Str
 
-The cache instance type.
+The cache instance type. Valid values are
+
+=over
+
+=item *
+
+C<SMALL>
+
+=item *
+
+C<MEDIUM>
+
+=item *
+
+C<LARGE>
+
+=item *
+
+C<XLARGE>
+
+=item *
+
+C<LARGE_2X>
+
+=item *
+
+C<LARGE_4X>
+
+=item *
+
+C<LARGE_8X> (not available in all regions)
+
+=item *
+
+C<LARGE_12X>
+
+=back
+
+Historically, instance types were identified by an EC2-style value. As
+of July 2020, this is deprecated, and the generic identifiers above
+should be used.
+
+The following legacy instance types are available, but their use is
+discouraged:
 
 =over
 
@@ -138,7 +181,7 @@ B<R4_8XLARGE>: A r4.8xlarge instance type.
 =back
 
 
-Valid values are: C<"T2_SMALL">, C<"T2_MEDIUM">, C<"R4_LARGE">, C<"R4_XLARGE">, C<"R4_2XLARGE">, C<"R4_4XLARGE">, C<"R4_8XLARGE">
+Valid values are: C<"T2_SMALL">, C<"T2_MEDIUM">, C<"R4_LARGE">, C<"R4_XLARGE">, C<"R4_2XLARGE">, C<"R4_4XLARGE">, C<"R4_8XLARGE">, C<"SMALL">, C<"MEDIUM">, C<"LARGE">, C<"XLARGE">, C<"LARGE_2X">, C<"LARGE_4X">, C<"LARGE_8X">, C<"LARGE_12X">
 
 
 =head1 SEE ALSO

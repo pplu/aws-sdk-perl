@@ -65,8 +65,8 @@ The unique identifier for the campaign.
 =head2 PageSize => Str
 
 The maximum number of items to include in each page of a paginated
-response. This parameter is currently not supported for application,
-campaign, and journey metrics.
+response. This parameter is not supported for application, campaign,
+and journey metrics.
 
 
 

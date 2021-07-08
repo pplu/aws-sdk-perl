@@ -66,9 +66,10 @@ Valid values are: C<"SYMMETRIC_DEFAULT">, C<"RSAES_OAEP_SHA_1">, C<"RSAES_OAEP_S
 =head2 EncryptionContext => L<Paws::KMS::EncryptionContextType>
 
 Specifies the encryption context that will be used to encrypt the data.
-An encryption context is valid only for cryptographic operations with a
-symmetric CMK. The standard asymmetric encryption algorithms that AWS
-KMS uses do not support an encryption context.
+An encryption context is valid only for cryptographic operations
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+with a symmetric CMK. The standard asymmetric encryption algorithms
+that AWS KMS uses do not support an encryption context.
 
 An I<encryption context> is a collection of non-secret key-value pairs
 that represents additional authenticated data. When you use an
@@ -87,7 +88,9 @@ in the I<AWS Key Management Service Developer Guide>.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens
+Use a grant token when your permission to call this operation comes
+from a new grant that has not yet achieved I<eventual consistency>. For
+more information, see Grant token
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -95,12 +98,12 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Identifies the customer master key (CMK) to use in the encryption
+operation.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">. To specify a CMK in a different AWS account, you must use
-the key ARN or alias ARN.
+To specify a CMK, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with C<"alias/">. To specify a CMK
+in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 

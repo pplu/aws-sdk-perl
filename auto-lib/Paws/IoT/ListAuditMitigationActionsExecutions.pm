@@ -35,10 +35,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ListAuditMitigationActionsExecutionsResponse =
       $iot->ListAuditMitigationActionsExecutions(
       FindingId    => 'MyFindingId',
-      TaskId       => 'MyAuditMitigationActionsTaskId',
-      ActionStatus => 'IN_PROGRESS',                      # OPTIONAL
-      MaxResults   => 1,                                  # OPTIONAL
-      NextToken    => 'MyNextToken',                      # OPTIONAL
+      TaskId       => 'MyMitigationActionsTaskId',
+      ActionStatus => 'IN_PROGRESS',                 # OPTIONAL
+      MaxResults   => 1,                             # OPTIONAL
+      NextToken    => 'MyNextToken',                 # OPTIONAL
       );
 
     # Results:

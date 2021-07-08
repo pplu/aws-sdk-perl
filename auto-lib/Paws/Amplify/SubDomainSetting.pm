@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Su
 
 =head1 DESCRIPTION
 
-Setting for the Subdomain.
+Describes the settings for the subdomain.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Branch name setting for the Subdomain.
+The branch name setting for the subdomain.
 
 
 =head2 B<REQUIRED> Prefix => Str
 
-Prefix setting for the Subdomain.
+The prefix setting for the subdomain.
 
 
 

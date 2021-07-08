@@ -49,7 +49,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyFindingId', ...               # min: 1, max: 128
         ],    # min: 1, max: 25; OPTIONAL
       },
-      TaskId => 'MyAuditMitigationActionsTaskId',
+      TaskId => 'MyMitigationActionsTaskId',
 
       );
 
@@ -84,7 +84,7 @@ request token is generated automatically.
 
 Specifies the audit findings to which the mitigation actions are
 applied. You can apply them to a type of audit check, to all findings
-from an audit, or to a speecific set of findings.
+from an audit, or to a specific set of findings.
 
 
 

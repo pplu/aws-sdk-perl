@@ -2,7 +2,9 @@
 package Paws::StorageGateway::TapeInfo;
   use Moose;
   has GatewayARN => (is => 'ro', isa => 'Str');
+  has PoolEntryDate => (is => 'ro', isa => 'Str');
   has PoolId => (is => 'ro', isa => 'Str');
+  has RetentionStartDate => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
@@ -49,15 +51,26 @@ The Amazon Resource Name (ARN) of the gateway. Use the ListGateways
 operation to return a list of gateways for your account and AWS Region.
 
 
+=head2 PoolEntryDate => Str
+
+The date that the tape entered the custom tape pool with tape retention
+lock enabled.
+
+
 =head2 PoolId => Str
 
 The ID of the pool that you want to add your tape to for archiving. The
 tape in this pool is archived in the S3 storage class that is
 associated with the pool. When you use your backup application to eject
-the tape, the tape is archived directly into the storage class (Glacier
-or Deep Archive) that corresponds to the pool.
+the tape, the tape is archived directly into the storage class (S3
+Glacier or S3 Glacier Deep Archive) that corresponds to the pool.
 
-Valid values: "GLACIER", "DEEP_ARCHIVE"
+Valid Values: C<GLACIER> | C<DEEP_ARCHIVE>
+
+
+=head2 RetentionStartDate => Str
+
+The date that the tape became subject to tape retention lock.
 
 
 =head2 TapeARN => Str

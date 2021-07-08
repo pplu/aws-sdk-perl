@@ -48,34 +48,34 @@ Details on the Amazon EC2 Resource.
 
 =head2 HourlyOnDemandRate => Str
 
-Hourly public On Demand rate for the instance type.
+Hourly public On-Demand rate for the instance type.
 
 
 =head2 InstanceType => Str
 
-The type of Amazon Web Services instance.
+The type of AWS instance.
 
 
 =head2 Memory => Str
 
-Memory capacity of Amazon Web Services instance.
+Memory capacity of the AWS instance.
 
 
 =head2 NetworkPerformance => Str
 
-Network performance capacity of the Amazon Web Services instance.
+Network performance capacity of the AWS instance.
 
 
 =head2 Platform => Str
 
-The platform of the Amazon Web Services instance. The platform is the
-specific combination of operating system, license model, and software
-on an instance.
+The platform of the AWS instance. The platform is the specific
+combination of operating system, license model, and software on an
+instance.
 
 
 =head2 Region => Str
 
-The Amazon Web Services Region of the instance.
+The AWS Region of the instance.
 
 
 =head2 Sku => Str
@@ -85,12 +85,12 @@ The SKU of the product.
 
 =head2 Storage => Str
 
-The disk storage of the Amazon Web Services instance (Not EBS storage).
+The disk storage of the AWS instance (not EBS storage).
 
 
 =head2 Vcpu => Str
 
-Number of VCPU cores in the Amazon Web Services instance type.
+Number of VCPU cores in the AWS instance type.
 
 
 

@@ -23,8 +23,14 @@ request.
 
 =head2 NextPageToken => Str
 
-A token used for advancing to the next page of results of your get
-relational database bundles request.
+The token to advance to the next page of results from your request.
+
+A next page token is not returned if there are no more results to
+display.
+
+To get the next page of results, perform another
+C<GetRelationalDatabaseBundles> request and specify the next page token
+using the C<pageToken> parameter.
 
 
 =head2 _request_id => Str

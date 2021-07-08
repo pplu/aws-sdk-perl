@@ -1,8 +1,10 @@
 package Paws::EC2::LocalGatewayRouteTableVpcAssociation;
   use Moose;
   has LocalGatewayId => (is => 'ro', isa => 'Str', request_name => 'localGatewayId', traits => ['NameInRequest']);
+  has LocalGatewayRouteTableArn => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableArn', traits => ['NameInRequest']);
   has LocalGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableId', traits => ['NameInRequest']);
   has LocalGatewayRouteTableVpcAssociationId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableVpcAssociationId', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
@@ -46,6 +48,12 @@ This class has no description
 The ID of the local gateway.
 
 
+=head2 LocalGatewayRouteTableArn => Str
+
+The Amazon Resource Name (ARN) of the local gateway route table for the
+association.
+
+
 =head2 LocalGatewayRouteTableId => Str
 
 The ID of the local gateway route table.
@@ -54,6 +62,12 @@ The ID of the local gateway route table.
 =head2 LocalGatewayRouteTableVpcAssociationId => Str
 
 The ID of the association.
+
+
+=head2 OwnerId => Str
+
+The AWS account ID that owns the local gateway route table for the
+association.
 
 
 =head2 State => Str

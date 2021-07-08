@@ -101,8 +101,8 @@ The name of the association.
 
 =head2 OutputUrl => L<Paws::SSM::InstanceAssociationOutputUrl>
 
-A URL for an Amazon S3 bucket where you want to store the results of
-this request.
+A URL for an S3 bucket where you want to store the results of this
+request.
 
 
 =head2 Status => Str

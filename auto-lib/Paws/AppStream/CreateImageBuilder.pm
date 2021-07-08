@@ -132,7 +132,7 @@ builder. To assume a role, the image builder calls the AWS Security
 Token Service (STS) C<AssumeRole> API operation and passes the ARN of
 the role to use. The operation creates a new session with temporary
 credentials. AppStream 2.0 retrieves the temporary credentials and
-creates the B<AppStream_Machine_Role> credential profile on the
+creates the B<appstream_machine_role> credential profile on the
 instance.
 
 For more information, see Using an IAM Role to Grant Permissions to
@@ -160,6 +160,10 @@ The instance type to use when launching the image builder. The
 following instance types are available:
 
 =over
+
+=item *
+
+stream.standard.small
 
 =item *
 
@@ -211,6 +215,30 @@ stream.memory.8xlarge
 
 =item *
 
+stream.memory.z1d.large
+
+=item *
+
+stream.memory.z1d.xlarge
+
+=item *
+
+stream.memory.z1d.2xlarge
+
+=item *
+
+stream.memory.z1d.3xlarge
+
+=item *
+
+stream.memory.z1d.6xlarge
+
+=item *
+
+stream.memory.z1d.12xlarge
+
+=item *
+
 stream.graphics-design.large
 
 =item *
@@ -228,6 +256,30 @@ stream.graphics-design.4xlarge
 =item *
 
 stream.graphics-desktop.2xlarge
+
+=item *
+
+stream.graphics.g4dn.xlarge
+
+=item *
+
+stream.graphics.g4dn.2xlarge
+
+=item *
+
+stream.graphics.g4dn.4xlarge
+
+=item *
+
+stream.graphics.g4dn.8xlarge
+
+=item *
+
+stream.graphics.g4dn.12xlarge
+
+=item *
+
+stream.graphics.g4dn.16xlarge
 
 =item *
 

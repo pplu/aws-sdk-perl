@@ -4,7 +4,11 @@ package Paws::Forecast::CreateDatasetImportJob;
   has DatasetArn => (is => 'ro', isa => 'Str', required => 1);
   has DatasetImportJobName => (is => 'ro', isa => 'Str', required => 1);
   has DataSource => (is => 'ro', isa => 'Paws::Forecast::DataSource', required => 1);
+  has GeolocationFormat => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::Tag]');
   has TimestampFormat => (is => 'ro', isa => 'Str');
+  has TimeZone => (is => 'ro', isa => 'Str');
+  has UseGeolocationForTimeZone => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -41,7 +45,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       DatasetArn           => 'MyArn',
       DatasetImportJobName => 'MyName',
-      TimestampFormat      => 'MyTimestampFormat',    # OPTIONAL
+      GeolocationFormat    => 'MyGeolocationFormat',    # OPTIONAL
+      Tags                 => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
+      TimeZone                  => 'MyTimeZone',           # OPTIONAL
+      TimestampFormat           => 'MyTimestampFormat',    # OPTIONAL
+      UseGeolocationForTimeZone => 1,                      # OPTIONAL
     );
 
     # Results:
@@ -85,6 +100,82 @@ operation.
 
 
 
+=head2 GeolocationFormat => Str
+
+The format of the geolocation attribute. The geolocation attribute can
+be formatted in one of two ways:
+
+=over
+
+=item *
+
+C<LAT_LONG> - the latitude and longitude in decimal format (Example:
+47.61_-122.33).
+
+=item *
+
+C<CC_POSTALCODE> (US Only) - the country code (US), followed by the
+5-digit ZIP code (Example: US_98121).
+
+=back
+
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Forecast::Tag>]
+
+The optional metadata that you apply to the dataset import job to help
+you categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50.
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8.
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8.
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this prefix.
+If a tag value has C<aws> as its prefix but the key does not, then
+Forecast considers it to be a user tag and will count against the limit
+of 50 tags. Tags with only the key prefix of C<aws> do not count
+against your tags per resource limit.
+
+=back
+
+
+
+
 =head2 TimestampFormat => Str
 
 The format of timestamps in the dataset. The format that you specify
@@ -110,6 +201,26 @@ optionally, for: Y, M, W, and D
 
 If the format isn't specified, Amazon Forecast expects the format to be
 "yyyy-MM-dd HH:mm:ss".
+
+
+
+=head2 TimeZone => Str
+
+A single time zone for every item in your dataset. This option is ideal
+for datasets with all timestamps within a single time zone, or if all
+timestamps are normalized to a single time zone.
+
+Refer to the Joda-Time API
+(http://joda-time.sourceforge.net/timezones.html) for a complete list
+of valid time zone names.
+
+
+
+=head2 UseGeolocationForTimeZone => Bool
+
+Automatically derive time zone information from the geolocation
+attribute. This option is ideal for datasets that contain timestamps in
+multiple time zones and those timestamps are expressed in local time.
 
 
 

@@ -8,6 +8,7 @@ package Paws::DirectConnect::CreateLag;
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' , required => 1);
   has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
+  has RequestMACSec => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'requestMACSec' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
@@ -46,9 +47,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      ConnectionId => 'MyConnectionId',    # OPTIONAL
-      ProviderName => 'MyProviderName',    # OPTIONAL
-      Tags         => [
+      ConnectionId  => 'MyConnectionId',    # OPTIONAL
+      ProviderName  => 'MyProviderName',    # OPTIONAL
+      RequestMACSec => 1,                   # OPTIONAL
+      Tags          => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256; OPTIONAL
@@ -63,12 +65,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AwsDeviceV2             = $Lag->AwsDeviceV2;
     my $Connections             = $Lag->Connections;
     my $ConnectionsBandwidth    = $Lag->ConnectionsBandwidth;
+    my $EncryptionMode          = $Lag->EncryptionMode;
     my $HasLogicalRedundancy    = $Lag->HasLogicalRedundancy;
     my $JumboFrameCapable       = $Lag->JumboFrameCapable;
     my $LagId                   = $Lag->LagId;
     my $LagName                 = $Lag->LagName;
     my $LagState                = $Lag->LagState;
     my $Location                = $Lag->Location;
+    my $MacSecCapable           = $Lag->MacSecCapable;
+    my $MacSecKeys              = $Lag->MacSecKeys;
     my $MinimumLinks            = $Lag->MinimumLinks;
     my $NumberOfConnections     = $Lag->NumberOfConnections;
     my $OwnerAccount            = $Lag->OwnerAccount;
@@ -92,15 +97,14 @@ The tags to associate with the automtically created LAGs.
 
 =head2 ConnectionId => Str
 
-The ID of an existing connection to migrate to the LAG.
+The ID of an existing dedicated connection to migrate to the LAG.
 
 
 
 =head2 B<REQUIRED> ConnectionsBandwidth => Str
 
-The bandwidth of the individual physical connections bundled by the
-LAG. The possible values are 50Mbps, 100Mbps, 200Mbps, 300Mbps,
-400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and 10Gbps.
+The bandwidth of the individual physical dedicated connections bundled
+by the LAG. The possible values are 1Gbps and 10Gbps.
 
 
 
@@ -118,14 +122,26 @@ The location for the LAG.
 
 =head2 B<REQUIRED> NumberOfConnections => Int
 
-The number of physical connections initially provisioned and bundled by
-the LAG.
+The number of physical dedicated connections initially provisioned and
+bundled by the LAG.
 
 
 
 =head2 ProviderName => Str
 
 The name of the service provider associated with the LAG.
+
+
+
+=head2 RequestMACSec => Bool
+
+Indicates whether the connection will support MAC Security (MACsec).
+
+All connections in the LAG must be capable of supporting MAC Security
+(MACsec). For information about MAC Security (MACsec) prerequisties,
+see MACsec prerequisties
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+in the I<AWS Direct Connect User Guide>.
 
 
 

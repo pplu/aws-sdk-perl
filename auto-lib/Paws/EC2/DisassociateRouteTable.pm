@@ -43,7 +43,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 B<REQUIRED> AssociationId => Str
 
 The association ID representing the current association between the
-route table and subnet.
+route table and subnet or gateway.
 
 
 

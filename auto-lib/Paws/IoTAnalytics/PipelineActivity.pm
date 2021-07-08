@@ -69,7 +69,7 @@ Adds data from the AWS IoT device registry to your message.
 
 =head2 DeviceShadowEnrich => L<Paws::IoTAnalytics::DeviceShadowEnrichActivity>
 
-Adds information from the AWS IoT Device Shadows service to a message.
+Adds information from the AWS IoT Device Shadow service to a message.
 
 
 =head2 Filter => L<Paws::IoTAnalytics::FilterActivity>

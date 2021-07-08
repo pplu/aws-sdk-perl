@@ -4,6 +4,7 @@ package Paws::CloudFormation::StackResourceDrift;
   has ActualProperties => (is => 'ro', isa => 'Str');
   has ExpectedProperties => (is => 'ro', isa => 'Str');
   has LogicalResourceId => (is => 'ro', isa => 'Str', required => 1);
+  has ModuleInfo => (is => 'ro', isa => 'Paws::CloudFormation::ModuleInfo');
   has PhysicalResourceId => (is => 'ro', isa => 'Str');
   has PhysicalResourceIdContext => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::PhysicalResourceIdContextKeyValuePair]');
   has PropertyDifferences => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::PropertyDifference]');
@@ -84,6 +85,13 @@ structure will not be present.
 =head2 B<REQUIRED> LogicalResourceId => Str
 
 The logical name of the resource specified in the template.
+
+
+=head2 ModuleInfo => L<Paws::CloudFormation::ModuleInfo>
+
+Contains information about the module from which the resource was
+created, if the resource was created from a module included in the
+stack template.
 
 
 =head2 PhysicalResourceId => Str

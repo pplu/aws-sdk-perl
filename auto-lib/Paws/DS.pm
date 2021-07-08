@@ -25,6 +25,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::AddIpRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddRegion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::AddRegion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AddTagsToResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::AddTagsToResource', @_);
@@ -145,6 +150,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeLDAPSSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeRegions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DescribeRegions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSharedDirectories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeSharedDirectories', @_);
@@ -160,6 +170,11 @@ package Paws::DS;
     my $call_object = $self->new_with_coercions('Paws::DS::DescribeTrusts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableClientAuthentication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::DisableClientAuthentication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableLDAPS {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DisableLDAPS', @_);
@@ -173,6 +188,11 @@ package Paws::DS;
   sub DisableSso {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::DisableSso', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableClientAuthentication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::EnableClientAuthentication', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableLDAPS {
@@ -243,6 +263,11 @@ package Paws::DS;
   sub RemoveIpRoutes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DS::RemoveIpRoutes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveRegion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DS::RemoveRegion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromResource {
@@ -510,7 +535,7 @@ package Paws::DS;
   }
 
 
-  sub operations { qw/AcceptSharedDirectory AddIpRoutes AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateLogSubscription CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteLogSubscription DeleteSnapshot DeleteTrust DeregisterCertificate DeregisterEventTopic DescribeCertificate DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeLDAPSSettings DescribeSharedDirectories DescribeSnapshots DescribeTrusts DisableLDAPS DisableRadius DisableSso EnableLDAPS EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListCertificates ListIpRoutes ListLogSubscriptions ListSchemaExtensions ListTagsForResource RegisterCertificate RegisterEventTopic RejectSharedDirectory RemoveIpRoutes RemoveTagsFromResource ResetUserPassword RestoreFromSnapshot ShareDirectory StartSchemaExtension UnshareDirectory UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius UpdateTrust VerifyTrust / }
+  sub operations { qw/AcceptSharedDirectory AddIpRoutes AddRegion AddTagsToResource CancelSchemaExtension ConnectDirectory CreateAlias CreateComputer CreateConditionalForwarder CreateDirectory CreateLogSubscription CreateMicrosoftAD CreateSnapshot CreateTrust DeleteConditionalForwarder DeleteDirectory DeleteLogSubscription DeleteSnapshot DeleteTrust DeregisterCertificate DeregisterEventTopic DescribeCertificate DescribeConditionalForwarders DescribeDirectories DescribeDomainControllers DescribeEventTopics DescribeLDAPSSettings DescribeRegions DescribeSharedDirectories DescribeSnapshots DescribeTrusts DisableClientAuthentication DisableLDAPS DisableRadius DisableSso EnableClientAuthentication EnableLDAPS EnableRadius EnableSso GetDirectoryLimits GetSnapshotLimits ListCertificates ListIpRoutes ListLogSubscriptions ListSchemaExtensions ListTagsForResource RegisterCertificate RegisterEventTopic RejectSharedDirectory RemoveIpRoutes RemoveRegion RemoveTagsFromResource ResetUserPassword RestoreFromSnapshot ShareDirectory StartSchemaExtension UnshareDirectory UpdateConditionalForwarder UpdateNumberOfDomainControllers UpdateRadius UpdateTrust VerifyTrust / }
 
 1;
 
@@ -609,6 +634,27 @@ about what permissions are required to run the I<AddIpRoutes>
 operation, see AWS Directory Service API Permissions: Actions,
 Resources, and Conditions Reference
 (http://docs.aws.amazon.com/directoryservice/latest/admin-guide/UsingWithDS_IAM_ResourcePermissions.html).
+
+
+=head2 AddRegion
+
+=over
+
+=item DirectoryId => Str
+
+=item RegionName => Str
+
+=item VPCSettings => L<Paws::DS::DirectoryVpcSettings>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::AddRegion>
+
+Returns: a L<Paws::DS::AddRegionResult> instance
+
+Adds two domain controllers in the specified Region for the specified
+directory.
 
 
 =head2 AddTagsToResource
@@ -732,8 +778,7 @@ Each argument is described in detail in: L<Paws::DS::CreateComputer>
 
 Returns: a L<Paws::DS::CreateComputerResult> instance
 
-Creates a computer account in the specified directory, and joins the
-computer to the directory.
+Creates an Active Directory computer object in the specified directory.
 
 
 =head2 CreateConditionalForwarder
@@ -1022,8 +1067,8 @@ Each argument is described in detail in: L<Paws::DS::DeregisterCertificate>
 
 Returns: a L<Paws::DS::DeregisterCertificateResult> instance
 
-Deletes from the system the certificate that was registered for a
-secured LDAP connection.
+Deletes from the system the certificate that was registered for secure
+LDAP or client certificate authentication.
 
 
 =head2 DeregisterEventTopic
@@ -1060,8 +1105,8 @@ Each argument is described in detail in: L<Paws::DS::DescribeCertificate>
 
 Returns: a L<Paws::DS::DescribeCertificateResult> instance
 
-Displays information about the certificate registered for a secured
-LDAP connection.
+Displays information about the certificate registered for secure LDAP
+or client certificate authentication.
 
 
 =head2 DescribeConditionalForwarders
@@ -1184,6 +1229,27 @@ Returns: a L<Paws::DS::DescribeLDAPSSettingsResult> instance
 Describes the status of LDAP security for the specified directory.
 
 
+=head2 DescribeRegions
+
+=over
+
+=item DirectoryId => Str
+
+=item [NextToken => Str]
+
+=item [RegionName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::DescribeRegions>
+
+Returns: a L<Paws::DS::DescribeRegionsResult> instance
+
+Provides information about the Regions that are configured for
+multi-Region replication.
+
+
 =head2 DescribeSharedDirectories
 
 =over
@@ -1263,6 +1329,25 @@ this request describes all the trust relationships belonging to the
 account.
 
 
+=head2 DisableClientAuthentication
+
+=over
+
+=item DirectoryId => Str
+
+=item Type => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::DisableClientAuthentication>
+
+Returns: a L<Paws::DS::DisableClientAuthenticationResult> instance
+
+Disables alternative client authentication methods for the specified
+directory.
+
+
 =head2 DisableLDAPS
 
 =over
@@ -1317,6 +1402,25 @@ Each argument is described in detail in: L<Paws::DS::DisableSso>
 Returns: a L<Paws::DS::DisableSsoResult> instance
 
 Disables single-sign on for a directory.
+
+
+=head2 EnableClientAuthentication
+
+=over
+
+=item DirectoryId => Str
+
+=item Type => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::EnableClientAuthentication>
+
+Returns: a L<Paws::DS::EnableClientAuthenticationResult> instance
+
+Enables alternative client authentication methods for the specified
+directory.
 
 
 =head2 EnableLDAPS
@@ -1428,7 +1532,7 @@ Each argument is described in detail in: L<Paws::DS::ListCertificates>
 Returns: a L<Paws::DS::ListCertificatesResult> instance
 
 For the specified directory, lists all the certificates registered for
-a secured LDAP connection.
+a secure LDAP or client certificate authentication.
 
 
 =head2 ListIpRoutes
@@ -1519,6 +1623,10 @@ Lists all tags on a directory.
 
 =item DirectoryId => Str
 
+=item [ClientCertAuthSettings => L<Paws::DS::ClientCertAuthSettings>]
+
+=item [Type => Str]
+
 
 =back
 
@@ -1526,7 +1634,8 @@ Each argument is described in detail in: L<Paws::DS::RegisterCertificate>
 
 Returns: a L<Paws::DS::RegisterCertificateResult> instance
 
-Registers a certificate for secured LDAP connection.
+Registers a certificate for a secure LDAP or client certificate
+authentication.
 
 
 =head2 RegisterEventTopic
@@ -1585,6 +1694,24 @@ Each argument is described in detail in: L<Paws::DS::RemoveIpRoutes>
 Returns: a L<Paws::DS::RemoveIpRoutesResult> instance
 
 Removes IP address blocks from a directory.
+
+
+=head2 RemoveRegion
+
+=over
+
+=item DirectoryId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DS::RemoveRegion>
+
+Returns: a L<Paws::DS::RemoveRegionResult> instance
+
+Stops all replication and removes the domain controllers from the
+specified Region. You cannot remove the primary Region with this
+operation. Instead, use the C<DeleteDirectory> API.
 
 
 =head2 RemoveTagsFromResource

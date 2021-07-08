@@ -46,8 +46,8 @@ C<PermittedPublicSecurityGroupRuleRanges>.
 
 =head2 B<REQUIRED> BlockPublicSecurityGroupRules => Bool
 
-Indicates whether EMR block public access is enabled (C<true>) or
-disabled (C<false>). By default, the value is C<false> for accounts
+Indicates whether Amazon EMR block public access is enabled (C<true>)
+or disabled (C<false>). By default, the value is C<false> for accounts
 that have created EMR clusters before July 2019. For accounts created
 after this, the default is C<true>.
 

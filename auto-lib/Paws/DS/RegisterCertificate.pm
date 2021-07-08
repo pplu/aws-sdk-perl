@@ -2,7 +2,9 @@
 package Paws::DS::RegisterCertificate;
   use Moose;
   has CertificateData => (is => 'ro', isa => 'Str', required => 1);
+  has ClientCertAuthSettings => (is => 'ro', isa => 'Paws::DS::ClientCertAuthSettings');
   has DirectoryId => (is => 'ro', isa => 'Str', required => 1);
+  has Type => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,9 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ds = Paws->service('DS');
     my $RegisterCertificateResult = $ds->RegisterCertificate(
-      CertificateData => 'MyCertificateData',
-      DirectoryId     => 'MyDirectoryId',
-
+      CertificateData        => 'MyCertificateData',
+      DirectoryId            => 'MyDirectoryId',
+      ClientCertAuthSettings => {
+        OCSPUrl => 'MyOCSPUrl',    # min: 1, max: 1024; OPTIONAL
+      },    # OPTIONAL
+      Type => 'ClientCertAuth',    # OPTIONAL
     );
 
     # Results:
@@ -51,11 +56,26 @@ The certificate PEM string that needs to be registered.
 
 
 
+=head2 ClientCertAuthSettings => L<Paws::DS::ClientCertAuthSettings>
+
+A C<ClientCertAuthSettings> object that contains client certificate
+authentication settings.
+
+
+
 =head2 B<REQUIRED> DirectoryId => Str
 
 The identifier of the directory.
 
 
+
+=head2 Type => Str
+
+The function that the registered certificate performs. Valid values
+include C<ClientLDAPS> or C<ClientCertAuth>. The default value is
+C<ClientLDAPS>.
+
+Valid values are: C<"ClientCertAuth">, C<"ClientLDAPS">
 
 
 =head1 SEE ALSO

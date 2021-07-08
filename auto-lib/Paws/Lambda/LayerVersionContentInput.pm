@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Lay
 
 =head1 DESCRIPTION
 
-A ZIP archive that contains the contents of an AWS Lambda layer
+A ZIP archive that contains the contents of an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 You can specify either an Amazon S3 location, or upload a layer archive
 directly.
@@ -61,8 +61,8 @@ For versioned objects, the version of the layer archive object to use.
 
 =head2 ZipFile => Str
 
-The base64-encoded contents of the layer archive. AWS SDK and AWS CLI
-clients handle the encoding for you.
+The base64-encoded contents of the layer archive. Amazon Web Services
+SDK and Amazon Web Services CLI clients handle the encoding for you.
 
 
 

@@ -21,13 +21,15 @@ Paws::S3::GetBucketWebsiteOutput
 
 =head2 ErrorDocument => L<Paws::S3::ErrorDocument>
 
-The name of the error document for the website.
+The object key name of the website error document to use for 4XX class
+errors.
 
 
 
 =head2 IndexDocument => L<Paws::S3::IndexDocument>
 
-The name of the index document for the website.
+The name of the index document for the website (for example
+C<index.html>).
 
 
 

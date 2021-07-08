@@ -9,6 +9,7 @@ package Paws::ApplicationAutoScaling::PutScheduledAction;
   has ScheduledActionName => (is => 'ro', isa => 'Str', required => 1);
   has ServiceNamespace => (is => 'ro', isa => 'Str', required => 1);
   has StartTime => (is => 'ro', isa => 'Str');
+  has Timezone => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -47,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       Schedule  => 'MyResourceIdMaxLen1600',    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',       # OPTIONAL
+      Timezone  => 'MyResourceIdMaxLen1600',    # OPTIONAL
       );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -57,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 EndTime => Str
 
-The date and time for the scheduled action to end.
+The date and time for the recurring schedule to end, in UTC.
 
 
 
@@ -129,10 +131,28 @@ C<arn:aws:comprehend:us-west-2:123456789012:document-classifier-endpoint/EXAMPLE
 
 =item *
 
+Amazon Comprehend entity recognizer endpoint - The resource type and
+unique identifier are specified using the endpoint ARN. Example:
+C<arn:aws:comprehend:us-west-2:123456789012:entity-recognizer-endpoint/EXAMPLE>.
+
+=item *
+
 Lambda provisioned concurrency - The resource type is C<function> and
 the unique identifier is the function name with a function version or
 alias name suffix that is not C<$LATEST>. Example:
 C<function:my-function:prod> or C<function:my-function:1>.
+
+=item *
+
+Amazon Keyspaces table - The resource type is C<table> and the unique
+identifier is the table name. Example:
+C<keyspace/mykeyspace/table/mytable>.
+
+=item *
+
+Amazon MSK cluster - The resource type and unique identifier are
+specified using the cluster ARN. Example:
+C<arn:aws:kafka:us-east-1:123456789012:cluster/demo-cluster-1/6357e0b2-0e6a-4b86-a0b4-70df934c2e31-5>.
 
 =back
 
@@ -209,18 +229,39 @@ classification endpoint.
 
 =item *
 
+C<comprehend:entity-recognizer-endpoint:DesiredInferenceUnits> - The
+number of inference units for an Amazon Comprehend entity recognizer
+endpoint.
+
+=item *
+
 C<lambda:function:ProvisionedConcurrency> - The provisioned concurrency
 for a Lambda function.
+
+=item *
+
+C<cassandra:table:ReadCapacityUnits> - The provisioned read capacity
+for an Amazon Keyspaces table.
+
+=item *
+
+C<cassandra:table:WriteCapacityUnits> - The provisioned write capacity
+for an Amazon Keyspaces table.
+
+=item *
+
+C<kafka:broker-storage:VolumeSize> - The provisioned volume size (in
+GiB) for brokers in an Amazon MSK cluster.
 
 =back
 
 
-Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">
+Valid values are: C<"ecs:service:DesiredCount">, C<"ec2:spot-fleet-request:TargetCapacity">, C<"elasticmapreduce:instancegroup:InstanceCount">, C<"appstream:fleet:DesiredCapacity">, C<"dynamodb:table:ReadCapacityUnits">, C<"dynamodb:table:WriteCapacityUnits">, C<"dynamodb:index:ReadCapacityUnits">, C<"dynamodb:index:WriteCapacityUnits">, C<"rds:cluster:ReadReplicaCount">, C<"sagemaker:variant:DesiredInstanceCount">, C<"custom-resource:ResourceType:Property">, C<"comprehend:document-classifier-endpoint:DesiredInferenceUnits">, C<"comprehend:entity-recognizer-endpoint:DesiredInferenceUnits">, C<"lambda:function:ProvisionedConcurrency">, C<"cassandra:table:ReadCapacityUnits">, C<"cassandra:table:WriteCapacityUnits">, C<"kafka:broker-storage:VolumeSize">
 
 =head2 ScalableTargetAction => L<Paws::ApplicationAutoScaling::ScalableTargetAction>
 
 The new minimum and maximum capacity. You can set both values or just
-one. During the scheduled time, if the current capacity is below the
+one. At the scheduled time, if the current capacity is below the
 minimum capacity, Application Auto Scaling scales out to the minimum
 capacity. If the current capacity is above the maximum capacity,
 Application Auto Scaling scales in to the maximum capacity.
@@ -247,37 +288,58 @@ Cron expressions - "C<cron(I<fields>)>"
 
 =back
 
-At expressions are useful for one-time schedules. Specify the time, in
-UTC.
+At expressions are useful for one-time schedules. Cron expressions are
+useful for scheduled actions that run periodically at a specified date
+and time, and rate expressions are useful for scheduled actions that
+run at a regular interval.
+
+At and cron expressions use Universal Coordinated Time (UTC) by
+default.
+
+The cron format consists of six fields separated by white spaces:
+[Minutes] [Hours] [Day_of_Month] [Month] [Day_of_Week] [Year].
 
 For rate expressions, I<value> is a positive integer and I<unit> is
 C<minute> | C<minutes> | C<hour> | C<hours> | C<day> | C<days>.
 
-For more information about cron expressions, see Cron Expressions
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html#CronExpressions)
-in the I<Amazon CloudWatch Events User Guide>.
+For more information and examples, see Example scheduled actions for
+Application Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/application/userguide/examples-scheduled-actions.html)
+in the I<Application Auto Scaling User Guide>.
 
 
 
 =head2 B<REQUIRED> ScheduledActionName => Str
 
-The name of the scheduled action.
+The name of the scheduled action. This name must be unique among all
+other scheduled actions on the specified scalable target.
 
 
 
 =head2 B<REQUIRED> ServiceNamespace => Str
 
-The namespace of the AWS service that provides the resource or
-C<custom-resource> for a resource provided by your own application or
-service. For more information, see AWS Service Namespaces
-(http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html#genref-aws-service-namespaces)
-in the I<Amazon Web Services General Reference>.
+The namespace of the AWS service that provides the resource. For a
+resource provided by your own application or service, use
+C<custom-resource> instead.
 
-Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">
+Valid values are: C<"ecs">, C<"elasticmapreduce">, C<"ec2">, C<"appstream">, C<"dynamodb">, C<"rds">, C<"sagemaker">, C<"custom-resource">, C<"comprehend">, C<"lambda">, C<"cassandra">, C<"kafka">
 
 =head2 StartTime => Str
 
-The date and time for the scheduled action to start.
+The date and time for this scheduled action to start, in UTC.
+
+
+
+=head2 Timezone => Str
+
+Specifies the time zone used when setting a scheduled action by using
+an at or cron expression. If a time zone is not provided, UTC is used
+by default.
+
+Valid values are the canonical names of the IANA time zones supported
+by Joda-Time (such as C<Etc/GMT+9> or C<Pacific/Tahiti>). For more
+information, see https://www.joda.org/joda-time/timezones.html
+(https://www.joda.org/joda-time/timezones.html).
 
 
 

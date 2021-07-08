@@ -52,8 +52,8 @@ The format for the exported image.
 
 =head2 S3Bucket => Str
 
-The S3 bucket for the destination image. The destination bucket must
-exist and grant WRITE and READ_ACP permissions to the AWS account
+The Amazon S3 bucket for the destination image. The destination bucket
+must exist and grant WRITE and READ_ACP permissions to the AWS account
 C<vm-import-export@amazon.com>.
 
 

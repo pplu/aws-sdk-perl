@@ -2,7 +2,8 @@
 package Paws::KinesisVideoArchivedMedia::GetMediaForFragmentList;
   use Moose;
   has Fragments => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has StreamName => (is => 'ro', isa => 'Str', required => 1);
+  has StreamARN => (is => 'ro', isa => 'Str');
+  has StreamName => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -33,8 +34,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Fragments => [
         'MyFragmentNumberString', ...    # min: 1, max: 128
       ],
-      StreamName => 'MyStreamName',
-
+      StreamARN  => 'MyResourceARN',     # OPTIONAL
+      StreamName => 'MyStreamName',      # OPTIONAL
     );
 
     # Results:
@@ -56,9 +57,18 @@ retrieve these values with ListFragments.
 
 
 
-=head2 B<REQUIRED> StreamName => Str
+=head2 StreamARN => Str
 
-The name of the stream from which to retrieve fragment media.
+The Amazon Resource Name (ARN) of the stream from which to retrieve
+fragment media. Specify either this parameter or the C<StreamName>
+parameter.
+
+
+
+=head2 StreamName => Str
+
+The name of the stream from which to retrieve fragment media. Specify
+either this parameter or the C<StreamARN> parameter.
 
 
 

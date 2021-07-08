@@ -58,8 +58,8 @@ consist of any upper or lowercased letter or digit.
 =head2 B<REQUIRED> Status => Str
 
 The status you want to assign to the secret access key. C<Active> means
-that the key can be used for API calls to AWS, while C<Inactive> means
-that the key cannot be used.
+that the key can be used for programmatic calls to AWS, while
+C<Inactive> means that the key cannot be used.
 
 Valid values are: C<"Active">, C<"Inactive">
 

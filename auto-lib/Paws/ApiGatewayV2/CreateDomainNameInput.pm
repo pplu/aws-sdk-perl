@@ -3,6 +3,7 @@ package Paws::ApiGatewayV2::CreateDomainNameInput;
   use Moose;
   has DomainName => (is => 'ro', isa => 'Str', request_name => 'domainName', traits => ['NameInRequest'], required => 1);
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
+  has MutualTlsAuthentication => (is => 'ro', isa => 'Paws::ApiGatewayV2::MutualTlsAuthenticationInput', request_name => 'mutualTlsAuthentication', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
@@ -48,6 +49,11 @@ The domain name.
 =head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
 
 The domain name configurations.
+
+
+=head2 MutualTlsAuthentication => L<Paws::ApiGatewayV2::MutualTlsAuthenticationInput>
+
+The mutual TLS authentication configuration for a custom domain name.
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>

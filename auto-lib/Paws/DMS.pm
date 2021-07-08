@@ -25,6 +25,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::ApplyPendingMaintenanceAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelReplicationTaskAssessmentRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::CancelReplicationTaskAssessmentRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::CreateEndpoint', @_);
@@ -85,9 +90,19 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::DeleteReplicationTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteReplicationTaskAssessmentRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DeleteReplicationTaskAssessmentRun', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAccountAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeAccountAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeApplicableIndividualAssessments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeApplicableIndividualAssessments', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCertificates {
@@ -103,6 +118,11 @@ package Paws::DMS;
   sub DescribeEndpoints {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeEndpoints', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEndpointSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeEndpointSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeEndpointTypes {
@@ -160,6 +180,16 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationTaskAssessmentResults', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeReplicationTaskAssessmentRuns {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationTaskAssessmentRuns', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReplicationTaskIndividualAssessments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationTaskIndividualAssessments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeReplicationTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::DescribeReplicationTasks', @_);
@@ -210,6 +240,11 @@ package Paws::DMS;
     my $call_object = $self->new_with_coercions('Paws::DMS::ModifyReplicationTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub MoveReplicationTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::MoveReplicationTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RebootReplicationInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::RebootReplicationInstance', @_);
@@ -238,6 +273,11 @@ package Paws::DMS;
   sub StartReplicationTaskAssessment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DMS::StartReplicationTaskAssessment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartReplicationTaskAssessmentRun {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DMS::StartReplicationTaskAssessmentRun', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopReplicationTask {
@@ -552,7 +592,7 @@ package Paws::DMS;
   }
 
 
-  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteConnection DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DescribeAccountAttributes DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribePendingMaintenanceActions DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StopReplicationTask TestConnection / }
+  sub operations { qw/AddTagsToResource ApplyPendingMaintenanceAction CancelReplicationTaskAssessmentRun CreateEndpoint CreateEventSubscription CreateReplicationInstance CreateReplicationSubnetGroup CreateReplicationTask DeleteCertificate DeleteConnection DeleteEndpoint DeleteEventSubscription DeleteReplicationInstance DeleteReplicationSubnetGroup DeleteReplicationTask DeleteReplicationTaskAssessmentRun DescribeAccountAttributes DescribeApplicableIndividualAssessments DescribeCertificates DescribeConnections DescribeEndpoints DescribeEndpointSettings DescribeEndpointTypes DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableReplicationInstances DescribePendingMaintenanceActions DescribeRefreshSchemasStatus DescribeReplicationInstances DescribeReplicationInstanceTaskLogs DescribeReplicationSubnetGroups DescribeReplicationTaskAssessmentResults DescribeReplicationTaskAssessmentRuns DescribeReplicationTaskIndividualAssessments DescribeReplicationTasks DescribeSchemas DescribeTableStatistics ImportCertificate ListTagsForResource ModifyEndpoint ModifyEventSubscription ModifyReplicationInstance ModifyReplicationSubnetGroup ModifyReplicationTask MoveReplicationTask RebootReplicationInstance RefreshSchemas ReloadTables RemoveTagsFromResource StartReplicationTask StartReplicationTaskAssessment StartReplicationTaskAssessmentRun StopReplicationTask TestConnection / }
 
 1;
 
@@ -619,7 +659,9 @@ Adds metadata tags to an AWS DMS resource, including replication
 instance, endpoint, security group, and migration task. These tags can
 also be used with cost allocation reporting to track cost associated
 with DMS resources, or used in a Condition statement in an IAM policy
-for DMS.
+for DMS. For more information, see C<Tag>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html) data
+type description.
 
 
 =head2 ApplyPendingMaintenanceAction
@@ -643,6 +685,26 @@ Applies a pending maintenance action to a resource (for example, to a
 replication instance).
 
 
+=head2 CancelReplicationTaskAssessmentRun
+
+=over
+
+=item ReplicationTaskAssessmentRunArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::CancelReplicationTaskAssessmentRun>
+
+Returns: a L<Paws::DMS::CancelReplicationTaskAssessmentRunResponse> instance
+
+Cancels a single premigration assessment run.
+
+This operation prevents any individual assessments from running if they
+haven't started running. It also attempts to cancel any individual
+assessments that are currently running.
+
+
 =head2 CreateEndpoint
 
 =over
@@ -659,6 +721,8 @@ replication instance).
 
 =item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
 
+=item [DocDbSettings => L<Paws::DMS::DocDbSettings>]
+
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
 
 =item [ElasticsearchSettings => L<Paws::DMS::ElasticsearchSettings>]
@@ -667,17 +731,33 @@ replication instance).
 
 =item [ExtraConnectionAttributes => Str]
 
+=item [IBMDb2Settings => L<Paws::DMS::IBMDb2Settings>]
+
+=item [KafkaSettings => L<Paws::DMS::KafkaSettings>]
+
 =item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
 
 =item [KmsKeyId => Str]
 
+=item [MicrosoftSQLServerSettings => L<Paws::DMS::MicrosoftSQLServerSettings>]
+
 =item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
+
+=item [MySQLSettings => L<Paws::DMS::MySQLSettings>]
+
+=item [NeptuneSettings => L<Paws::DMS::NeptuneSettings>]
+
+=item [OracleSettings => L<Paws::DMS::OracleSettings>]
 
 =item [Password => Str]
 
 =item [Port => Int]
 
+=item [PostgreSQLSettings => L<Paws::DMS::PostgreSQLSettings>]
+
 =item [RedshiftSettings => L<Paws::DMS::RedshiftSettings>]
+
+=item [ResourceIdentifier => Str]
 
 =item [S3Settings => L<Paws::DMS::S3Settings>]
 
@@ -686,6 +766,8 @@ replication instance).
 =item [ServiceAccessRoleArn => Str]
 
 =item [SslMode => Str]
+
+=item [SybaseSettings => L<Paws::DMS::SybaseSettings>]
 
 =item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
 
@@ -775,6 +857,8 @@ the I<AWS Database Migration Service User Guide.>
 
 =item [ReplicationSubnetGroupIdentifier => Str]
 
+=item [ResourceIdentifier => Str]
+
 =item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
 
 =item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
@@ -792,10 +876,10 @@ AWS DMS requires that your account have certain roles with appropriate
 permissions before you can create a replication instance. For
 information on the required roles, see Creating the IAM Roles to Use
 With the AWS CLI and AWS DMS API
-(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.APIRole.html).
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.APIRole).
 For information on the required permissions, see IAM Permissions Needed
 to Use AWS DMS
-(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.IAMPermissions.html).
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#CHAP_Security.IAMPermissions).
 
 
 =head2 CreateReplicationSubnetGroup
@@ -845,7 +929,11 @@ VPC.
 
 =item [ReplicationTaskSettings => Str]
 
+=item [ResourceIdentifier => Str]
+
 =item [Tags => ArrayRef[L<Paws::DMS::Tag>]]
+
+=item [TaskData => Str]
 
 
 =back
@@ -977,6 +1065,26 @@ Returns: a L<Paws::DMS::DeleteReplicationTaskResponse> instance
 Deletes the specified replication task.
 
 
+=head2 DeleteReplicationTaskAssessmentRun
+
+=over
+
+=item ReplicationTaskAssessmentRunArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DeleteReplicationTaskAssessmentRun>
+
+Returns: a L<Paws::DMS::DeleteReplicationTaskAssessmentRunResponse> instance
+
+Deletes the record of a single premigration assessment run.
+
+This operation removes all metadata that AWS DMS maintains about this
+assessment run. However, the operation leaves untouched all information
+about this assessment run that is stored in your Amazon S3 bucket.
+
+
 =head2 DescribeAccountAttributes
 
 
@@ -998,6 +1106,55 @@ quota's maximum value. DMS uses the unique account identifier to name
 each artifact used by DMS in the given region.
 
 This command does not take any parameters.
+
+
+=head2 DescribeApplicableIndividualAssessments
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [MigrationType => Str]
+
+=item [ReplicationInstanceArn => Str]
+
+=item [ReplicationTaskArn => Str]
+
+=item [SourceEngineName => Str]
+
+=item [TargetEngineName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DescribeApplicableIndividualAssessments>
+
+Returns: a L<Paws::DMS::DescribeApplicableIndividualAssessmentsResponse> instance
+
+Provides a list of individual assessments that you can specify for a
+new premigration assessment run, given one or more parameters.
+
+If you specify an existing migration task, this operation provides the
+default individual assessments you can specify for that task.
+Otherwise, the specified parameters model elements of a possible
+migration task on which to base a premigration assessment run.
+
+To use these migration task modeling parameters, you must specify an
+existing replication instance, a source database engine, a target
+database engine, and a migration type. This combination of parameters
+potentially limits the default individual assessments available for an
+assessment run created for a corresponding migration task.
+
+If you specify no parameters, this operation provides a list of all
+possible individual assessments that you can specify for an assessment
+run. If you specify any one of the task modeling parameters, you must
+specify all of them or the operation cannot provide a list of
+individual assessments. The only parameter that you can specify alone
+is for an existing migration task. The specified task definition then
+determines the default list of individual assessments that you can
+specify in an assessment run for the task.
 
 
 =head2 DescribeCertificates
@@ -1061,6 +1218,27 @@ Returns: a L<Paws::DMS::DescribeEndpointsResponse> instance
 
 Returns information about the endpoints for your account in the current
 region.
+
+
+=head2 DescribeEndpointSettings
+
+=over
+
+=item EngineName => Str
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DescribeEndpointSettings>
+
+Returns: a L<Paws::DMS::DescribeEndpointSettingsResponse> instance
+
+Returns information about the possible endpoint settings available when
+you create an endpoint for a specific database engine.
 
 
 =head2 DescribeEndpointTypes
@@ -1308,6 +1486,59 @@ Returns the task assessment results from Amazon S3. This action always
 returns the latest results.
 
 
+=head2 DescribeReplicationTaskAssessmentRuns
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTaskAssessmentRuns>
+
+Returns: a L<Paws::DMS::DescribeReplicationTaskAssessmentRunsResponse> instance
+
+Returns a paginated list of premigration assessment runs based on
+filter settings.
+
+These filter settings can specify a combination of premigration
+assessment runs, migration tasks, replication instances, and assessment
+run status values.
+
+This operation doesn't return information about individual assessments.
+For this information, see the
+C<DescribeReplicationTaskIndividualAssessments> operation.
+
+
+=head2 DescribeReplicationTaskIndividualAssessments
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::DMS::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::DescribeReplicationTaskIndividualAssessments>
+
+Returns: a L<Paws::DMS::DescribeReplicationTaskIndividualAssessmentsResponse> instance
+
+Returns a paginated list of individual assessments based on filter
+settings.
+
+These filter settings can specify a combination of premigration
+assessment runs, migration tasks, and assessment status values.
+
+
 =head2 DescribeReplicationTasks
 
 =over
@@ -1413,7 +1644,11 @@ Each argument is described in detail in: L<Paws::DMS::ListTagsForResource>
 
 Returns: a L<Paws::DMS::ListTagsForResourceResponse> instance
 
-Lists all tags for an AWS DMS resource.
+Lists all metadata tags attached to an AWS DMS resource, including
+replication instance, endpoint, security group, and migration task. For
+more information, see C<Tag>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html) data
+type description.
 
 
 =head2 ModifyEndpoint
@@ -1427,6 +1662,8 @@ Lists all tags for an AWS DMS resource.
 =item [DatabaseName => Str]
 
 =item [DmsTransferSettings => L<Paws::DMS::DmsTransferSettings>]
+
+=item [DocDbSettings => L<Paws::DMS::DocDbSettings>]
 
 =item [DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>]
 
@@ -1442,13 +1679,27 @@ Lists all tags for an AWS DMS resource.
 
 =item [ExtraConnectionAttributes => Str]
 
+=item [IBMDb2Settings => L<Paws::DMS::IBMDb2Settings>]
+
+=item [KafkaSettings => L<Paws::DMS::KafkaSettings>]
+
 =item [KinesisSettings => L<Paws::DMS::KinesisSettings>]
 
+=item [MicrosoftSQLServerSettings => L<Paws::DMS::MicrosoftSQLServerSettings>]
+
 =item [MongoDbSettings => L<Paws::DMS::MongoDbSettings>]
+
+=item [MySQLSettings => L<Paws::DMS::MySQLSettings>]
+
+=item [NeptuneSettings => L<Paws::DMS::NeptuneSettings>]
+
+=item [OracleSettings => L<Paws::DMS::OracleSettings>]
 
 =item [Password => Str]
 
 =item [Port => Int]
+
+=item [PostgreSQLSettings => L<Paws::DMS::PostgreSQLSettings>]
 
 =item [RedshiftSettings => L<Paws::DMS::RedshiftSettings>]
 
@@ -1459,6 +1710,8 @@ Lists all tags for an AWS DMS resource.
 =item [ServiceAccessRoleArn => Str]
 
 =item [SslMode => Str]
+
+=item [SybaseSettings => L<Paws::DMS::SybaseSettings>]
 
 =item [Username => Str]
 
@@ -1576,6 +1829,8 @@ Modifies the settings for the specified replication subnet group.
 
 =item [TableMappings => Str]
 
+=item [TaskData => Str]
+
 
 =back
 
@@ -1592,6 +1847,27 @@ For more information about AWS DMS tasks, see Working with Migration
 Tasks
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in
 the I<AWS Database Migration Service User Guide>.
+
+
+=head2 MoveReplicationTask
+
+=over
+
+=item ReplicationTaskArn => Str
+
+=item TargetReplicationInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::MoveReplicationTask>
+
+Returns: a L<Paws::DMS::MoveReplicationTaskResponse> instance
+
+Moves a replication task from its current replication instance to a
+different target replication instance using the specified parameters.
+The target replication instance must be created with the same or later
+AWS DMS version as the current replication instance.
 
 
 =head2 RebootReplicationInstance
@@ -1669,7 +1945,11 @@ Each argument is described in detail in: L<Paws::DMS::RemoveTagsFromResource>
 
 Returns: a L<Paws::DMS::RemoveTagsFromResourceResponse> instance
 
-Removes metadata tags from a DMS resource.
+Removes metadata tags from an AWS DMS resource, including replication
+instance, endpoint, security group, and migration task. For more
+information, see C<Tag>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_Tag.html) data
+type description.
 
 
 =head2 StartReplicationTask
@@ -1716,6 +1996,46 @@ Returns: a L<Paws::DMS::StartReplicationTaskAssessmentResponse> instance
 
 Starts the replication task assessment for unsupported data types in
 the source database.
+
+
+=head2 StartReplicationTaskAssessmentRun
+
+=over
+
+=item AssessmentRunName => Str
+
+=item ReplicationTaskArn => Str
+
+=item ResultLocationBucket => Str
+
+=item ServiceAccessRoleArn => Str
+
+=item [Exclude => ArrayRef[Str|Undef]]
+
+=item [IncludeOnly => ArrayRef[Str|Undef]]
+
+=item [ResultEncryptionMode => Str]
+
+=item [ResultKmsKeyArn => Str]
+
+=item [ResultLocationFolder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DMS::StartReplicationTaskAssessmentRun>
+
+Returns: a L<Paws::DMS::StartReplicationTaskAssessmentRunResponse> instance
+
+Starts a new premigration assessment run for one or more individual
+assessments of a migration task.
+
+The assessments that you can specify depend on the source and target
+database engine and the migration type defined for the given task. To
+run this operation, your migration task must already be created. After
+you run this operation, you can review the status of each individual
+assessment. You can also run the migration task manually after the
+assessment run and its individual assessments complete.
 
 
 =head2 StopReplicationTask

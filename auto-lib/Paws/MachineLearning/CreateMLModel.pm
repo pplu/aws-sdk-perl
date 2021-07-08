@@ -73,19 +73,24 @@ Choose from the following types:
 
 =over
 
-=item * Choose C<REGRESSION> if the C<MLModel> will be used to predict
-a numeric value.
+=item *
 
-=item * Choose C<BINARY> if the C<MLModel> result has two possible
+Choose C<REGRESSION> if the C<MLModel> will be used to predict a
+numeric value.
+
+=item *
+
+Choose C<BINARY> if the C<MLModel> result has two possible values.
+
+=item *
+
+Choose C<MULTICLASS> if the C<MLModel> result has a limited number of
 values.
-
-=item * Choose C<MULTICLASS> if the C<MLModel> result has a limited
-number of values.
 
 =back
 
 For more information, see the Amazon Machine Learning Developer Guide
-(http://docs.aws.amazon.com/machine-learning/latest/dg).
+(https://docs.aws.amazon.com/machine-learning/latest/dg).
 
 Valid values are: C<"REGRESSION">, C<"BINARY">, C<"MULTICLASS">
 

@@ -37,9 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Specifies the training algorithm to use in a CreateTrainingJob
-(https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html)
-request.
+Specifies the training algorithm to use in a CreateTrainingJob request.
 
 For more information about algorithms provided by Amazon SageMaker, see
 Algorithms
@@ -54,9 +52,9 @@ Algorithms with Amazon SageMaker
 =head2 AlgorithmName => Str
 
 The name of the algorithm resource to use for the training job. This
-must be an algorithm resource that you created or subscribe to on AWS
-Marketplace. If you specify a value for this parameter, you can't
-specify a value for C<TrainingImage>.
+must be an algorithm resource that you created or subscribe to on
+Amazon Web Services Marketplace. If you specify a value for this
+parameter, you can't specify a value for C<TrainingImage>.
 
 
 =head2 EnableSageMakerMetricsTimeSeries => Bool

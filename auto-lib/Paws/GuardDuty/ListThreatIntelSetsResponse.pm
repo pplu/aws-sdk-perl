@@ -18,8 +18,8 @@ Paws::GuardDuty::ListThreatIntelSetsResponse
 
 =head2 NextToken => Str
 
-Pagination parameter to be used on the next list operation to retrieve
-more items.
+The pagination parameter to be used on the next list operation to
+retrieve more items.
 
 
 =head2 B<REQUIRED> ThreatIntelSetIds => ArrayRef[Str|Undef]

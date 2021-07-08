@@ -52,7 +52,7 @@ The key used to encrypt stored data.
 
 =head2 VpcConfig => L<Paws::SageMaker::VpcConfig>
 
-VPC configuration.
+The VPC configuration.
 
 
 

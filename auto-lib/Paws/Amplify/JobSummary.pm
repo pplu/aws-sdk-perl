@@ -41,56 +41,58 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Jo
 
 =head1 DESCRIPTION
 
-Structure for the summary of a Job.
+Describes the summary for an execution job for an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CommitId => Str
 
-Commit Id from 3rd party repository provider for the Job.
+The commit ID from a third-party repository provider for the job.
 
 
 =head2 B<REQUIRED> CommitMessage => Str
 
-Commit message from 3rd party repository provider for the Job.
+The commit message from a third-party repository provider for the job.
 
 
 =head2 B<REQUIRED> CommitTime => Str
 
-Commit date / time for the Job.
+The commit date and time for the job.
 
 
 =head2 EndTime => Str
 
-End date / time for the Job.
+The end date and time for the job.
 
 
 =head2 B<REQUIRED> JobArn => Str
 
-Arn for the Job.
+The Amazon Resource Name (ARN) for the job.
 
 
 =head2 B<REQUIRED> JobId => Str
 
-Unique Id for the Job.
+The unique ID for the job.
 
 
 =head2 B<REQUIRED> JobType => Str
 
-Type for the Job. \n "RELEASE": Manually released from source by using
-StartJob API. "RETRY": Manually retried by using StartJob API.
-"WEB_HOOK": Automatically triggered by WebHooks.
+The type for the job. If the value is C<RELEASE>, the job was manually
+released from its source by using the C<StartJob> API. If the value is
+C<RETRY>, the job was manually retried using the C<StartJob> API. If
+the value is C<WEB_HOOK>, the job was automatically triggered by
+webhooks.
 
 
 =head2 B<REQUIRED> StartTime => Str
 
-Start date / time for the Job.
+The start date and time for the job.
 
 
 =head2 B<REQUIRED> Status => Str
 
-Status for the Job.
+The current status for the job.
 
 
 

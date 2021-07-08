@@ -45,7 +45,7 @@ operations.
 When used in C<GetMetricData>, it indicates the metric data to return,
 and whether this call is just retrieving a batch set of data for one
 metric, or is performing a math expression on metric data. A single
-C<GetMetricData> call can include up to 100 C<MetricDataQuery>
+C<GetMetricData> call can include up to 500 C<MetricDataQuery>
 structures.
 
 When used in C<PutMetricAlarm>, it enables you to create an alarm based
@@ -107,6 +107,10 @@ value represents. If the metric or expression is shown in a CloudWatch
 dashboard widget, the label is shown. If Label is omitted, CloudWatch
 generates a default.
 
+You can put dynamic expressions into a label, so that it is more
+descriptive. For more information, see Using Dynamic Labels
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/graph-dynamic-labels.html).
+
 
 =head2 MetricStat => L<Paws::CloudWatch::MetricStat>
 
@@ -127,10 +131,6 @@ are collected at intervals of less than one minute, the period can be
 1, 5, 10, 30, 60, or any multiple of 60. High-resolution metrics are
 those metrics stored by a C<PutMetricData> operation that includes a
 C<StorageResolution of 1 second>.
-
-If you are performing a C<GetMetricData> operation, use this field only
-if you are specifying an C<Expression>. Do not use this field when you
-are specifying a C<MetricStat> in a C<GetMetricData> operation.
 
 
 =head2 ReturnData => Bool

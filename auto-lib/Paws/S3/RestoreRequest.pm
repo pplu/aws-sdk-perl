@@ -49,6 +49,9 @@ Container for restore job parameters.
 Lifetime of the active copy in days. Do not use with restores that
 specify C<OutputLocation>.
 
+The Days element is required for regular restores, and must not be
+provided for select requests.
+
 
 =head2 Description => Str
 
@@ -57,7 +60,7 @@ The optional description for the job.
 
 =head2 GlacierJobParameters => L<Paws::S3::GlacierJobParameters>
 
-Glacier related parameters pertaining to this job. Do not use with
+S3 Glacier related parameters pertaining to this job. Do not use with
 restores that specify C<OutputLocation>.
 
 
@@ -73,7 +76,7 @@ Describes the parameters for Select job types.
 
 =head2 Tier => Str
 
-Glacier retrieval tier at which the restore will be processed.
+Retrieval tier at which the restore will be processed.
 
 
 =head2 Type => Str

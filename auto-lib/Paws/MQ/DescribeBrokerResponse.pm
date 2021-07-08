@@ -1,6 +1,7 @@
 
 package Paws::MQ::DescribeBrokerResponse;
   use Moose;
+  has AuthenticationStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationStrategy');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
   has BrokerArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerArn');
   has BrokerId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'brokerId');
@@ -14,10 +15,13 @@ package Paws::MQ::DescribeBrokerResponse;
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
+  has LdapServerMetadata => (is => 'ro', isa => 'Paws::MQ::LdapServerMetadataOutput', traits => ['NameInRequest'], request_name => 'ldapServerMetadata');
   has Logs => (is => 'ro', isa => 'Paws::MQ::LogsSummary', traits => ['NameInRequest'], request_name => 'logs');
   has MaintenanceWindowStartTime => (is => 'ro', isa => 'Paws::MQ::WeeklyStartTime', traits => ['NameInRequest'], request_name => 'maintenanceWindowStartTime');
+  has PendingAuthenticationStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pendingAuthenticationStrategy');
   has PendingEngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pendingEngineVersion');
   has PendingHostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'pendingHostInstanceType');
+  has PendingLdapServerMetadata => (is => 'ro', isa => 'Paws::MQ::LdapServerMetadataOutput', traits => ['NameInRequest'], request_name => 'pendingLdapServerMetadata');
   has PendingSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'pendingSecurityGroups');
   has PubliclyAccessible => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'publiclyAccessible');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
@@ -38,6 +42,11 @@ Paws::MQ::DescribeBrokerResponse
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationStrategy => Str
+
+The authentication strategy used to secure the broker.
+
+Valid values are: C<"SIMPLE">, C<"LDAP">
 =head2 AutoMinorVersionUpgrade => Bool
 
 Required. Enables automatic upgrades to new minor versions for brokers,
@@ -87,7 +96,7 @@ The time when the broker was created.
 
 Required. The deployment mode of the broker.
 
-Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">
+Valid values are: C<"SINGLE_INSTANCE">, C<"ACTIVE_STANDBY_MULTI_AZ">, C<"CLUSTER_MULTI_AZ">
 =head2 EncryptionOptions => L<Paws::MQ::EncryptionOptions>
 
 Encryption options for the broker.
@@ -96,9 +105,9 @@ Encryption options for the broker.
 =head2 EngineType => Str
 
 Required. The type of broker engine. Note: Currently, Amazon MQ
-supports only ACTIVEMQ.
+supports ACTIVEMQ and RABBITMQ.
 
-Valid values are: C<"ACTIVEMQ">
+Valid values are: C<"ACTIVEMQ">, C<"RABBITMQ">
 =head2 EngineVersion => Str
 
 The version of the broker engine. For a list of supported engine
@@ -109,6 +118,12 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 =head2 HostInstanceType => Str
 
 The broker's instance type.
+
+
+=head2 LdapServerMetadata => L<Paws::MQ::LdapServerMetadataOutput>
+
+The metadata of the LDAP server used to authenticate and authorize
+connections to the broker.
 
 
 =head2 Logs => L<Paws::MQ::LogsSummary>
@@ -122,6 +137,12 @@ deployed for the specified broker.
 The parameters that determine the WeeklyStartTime.
 
 
+=head2 PendingAuthenticationStrategy => Str
+
+The authentication strategy that will be applied when the broker is
+rebooted.
+
+Valid values are: C<"SIMPLE">, C<"LDAP">
 =head2 PendingEngineVersion => Str
 
 The version of the broker engine to upgrade to. For a list of supported
@@ -134,6 +155,12 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 The host instance type of the broker to upgrade to. For a list of
 supported instance types, see
 https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+
+
+=head2 PendingLdapServerMetadata => L<Paws::MQ::LdapServerMetadataOutput>
+
+The metadata of the LDAP server that will be used to authenticate and
+authorize connections to the broker once it is rebooted.
 
 
 =head2 PendingSecurityGroups => ArrayRef[Str|Undef]
@@ -161,10 +188,13 @@ The broker's storage type.
 Valid values are: C<"EBS">, C<"EFS">
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-The list of groups (2 maximum) that define which subnets and IP ranges
-the broker can use from different Availability Zones. A SINGLE_INSTANCE
-deployment requires one subnet (for example, the default subnet). An
-ACTIVE_STANDBY_MULTI_AZ deployment requires two subnets.
+The list of groups that define which subnets and IP ranges the broker
+can use from different Availability Zones. A SINGLE_INSTANCE deployment
+requires one subnet (for example, the default subnet). An
+ACTIVE_STANDBY_MULTI_AZ deployment (ACTIVEMQ) requires two subnets. A
+CLUSTER_MULTI_AZ deployment (RABBITMQ) has no subnet requirements when
+deployed with public accessibility, deployment without public
+accessibility requires at least one subnet.
 
 
 =head2 Tags => L<Paws::MQ::__mapOf__string>
@@ -174,7 +204,7 @@ The list of all tags associated with this broker.
 
 =head2 Users => ArrayRef[L<Paws::MQ::UserSummary>]
 
-The list of all ActiveMQ usernames for the specified broker.
+The list of all broker usernames for the specified broker.
 
 
 =head2 _request_id => Str

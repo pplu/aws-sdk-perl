@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Enable Timed metadata insertion (TimedMetadataInsertion) to include ID3
-tags in your job. To include timed metadata, you must enable it here,
-enable it in each output container, and specify tags and timecodes in
-ID3 insertion (Id3Insertion) objects.
+tags in any HLS outputs. To include timed metadata, you must enable it
+here, enable it in each output container, and specify tags and
+timecodes in ID3 insertion (Id3Insertion) objects.
 
 =head1 ATTRIBUTES
 

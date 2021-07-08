@@ -7,6 +7,7 @@ package Paws::Lightsail::CreateInstances;
   has BundleId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'bundleId' , required => 1);
   has CustomImageName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'customImageName' );
   has InstanceNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'instanceNames' , required => 1);
+  has IpAddressType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ipAddressType' );
   has KeyPairName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'keyPairName' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Lightsail::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has UserData => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userData' );
@@ -50,6 +51,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],    # OPTIONAL
       CustomImageName => 'MyResourceName',    # OPTIONAL
+      IpAddressType   => 'dualstack',         # OPTIONAL
       KeyPairName     => 'MyResourceName',    # OPTIONAL
       Tags            => [
         {
@@ -128,6 +130,17 @@ C<["MyFirstInstance","MySecondInstance"]>
 
 
 
+=head2 IpAddressType => Str
+
+The IP address type for the instance.
+
+The possible values are C<ipv4> for IPv4 only, and C<dualstack> for
+IPv4 and IPv6.
+
+The default value is C<dualstack>.
+
+Valid values are: C<"dualstack">, C<"ipv4">
+
 =head2 KeyPairName => Str
 
 The name of your key pair.
@@ -138,8 +151,7 @@ The name of your key pair.
 
 The tag keys and optional values to add to the resource during create.
 
-To tag a resource after it has been created, see the C<tag resource>
-operation.
+Use the C<TagResource> action to tag a resource after it's created.
 
 
 

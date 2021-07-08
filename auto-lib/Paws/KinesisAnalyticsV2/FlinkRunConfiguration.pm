@@ -33,23 +33,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes the starting parameters for an Apache Flink-based Kinesis
-Data Analytics application.
+Describes the starting parameters for a Flink-based Kinesis Data
+Analytics application.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllowNonRestoredState => Bool
 
-When restoring from a savepoint, specifies whether the runtime is
+When restoring from a snapshot, specifies whether the runtime is
 allowed to skip a state that cannot be mapped to the new program. This
-will happen if the program is updated between savepoints to remove
-stateful parameters, and state data in the savepoint no longer
+will happen if the program is updated between snapshots to remove
+stateful parameters, and state data in the snapshot no longer
 corresponds to valid application data. For more information, see
 Allowing Non-Restored State
 (https://ci.apache.org/projects/flink/flink-docs-release-1.8/ops/state/savepoints.html#allowing-non-restored-state)
 in the Apache Flink documentation
 (https://ci.apache.org/projects/flink/flink-docs-release-1.8/).
+
+This value defaults to C<false>. If you update your application without
+specifying this parameter, C<AllowNonRestoredState> will be set to
+C<false>, even if it was previously set to C<true>.
 
 
 

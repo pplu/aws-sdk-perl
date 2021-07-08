@@ -6,12 +6,15 @@ package Paws::DirectConnect::Lag;
   has AwsDeviceV2 => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'awsDeviceV2' );
   has Connections => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Connection]', traits => ['NameInRequest'], request_name => 'connections' );
   has ConnectionsBandwidth => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'connectionsBandwidth' );
+  has EncryptionMode => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionMode' );
   has HasLogicalRedundancy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hasLogicalRedundancy' );
   has JumboFrameCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'jumboFrameCapable' );
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has LagName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagName' );
   has LagState => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagState' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' );
+  has MacSecCapable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'macSecCapable' );
+  has MacSecKeys => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::MacSecKey]', traits => ['NameInRequest'], request_name => 'macSecKeys' );
   has MinimumLinks => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumLinks' );
   has NumberOfConnections => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'numberOfConnections' );
   has OwnerAccount => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'ownerAccount' );
@@ -54,6 +57,14 @@ The connections bundled by the LAG.
 
 The individual bandwidth of the physical connections bundled by the
 LAG. The possible values are 1Gbps and 10Gbps.
+
+
+=head2 EncryptionMode => Str
+
+The LAG MAC Security (MACsec) encryption mode.
+
+The valid values are C<no_encrypt>, C<should_encrypt>, and
+C<must_encrypt>.
 
 
 =head2 HasLogicalRedundancy => Str
@@ -122,16 +133,26 @@ Valid values are: C<"requested">, C<"pending">, C<"available">, C<"down">, C<"de
 The location of the LAG.
 
 
+=head2 MacSecCapable => Bool
+
+Indicates whether the LAG supports MAC Security (MACsec).
+
+
+=head2 MacSecKeys => ArrayRef[L<Paws::DirectConnect::MacSecKey>]
+
+The MAC Security (MACsec) security keys associated with the LAG.
+
+
 =head2 MinimumLinks => Int
 
-The minimum number of physical connections that must be operational for
-the LAG itself to be operational.
+The minimum number of physical dedicated connections that must be
+operational for the LAG itself to be operational.
 
 
 =head2 NumberOfConnections => Int
 
-The number of physical connections bundled by the LAG, up to a maximum
-of 10.
+The number of physical dedicated connections bundled by the LAG, up to
+a maximum of 10.
 
 
 =head2 OwnerAccount => Str

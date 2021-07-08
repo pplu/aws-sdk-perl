@@ -9,6 +9,7 @@ package Paws::MediaConvert::ContainerSettings;
   has MovSettings => (is => 'ro', isa => 'Paws::MediaConvert::MovSettings', request_name => 'movSettings', traits => ['NameInRequest']);
   has Mp4Settings => (is => 'ro', isa => 'Paws::MediaConvert::Mp4Settings', request_name => 'mp4Settings', traits => ['NameInRequest']);
   has MpdSettings => (is => 'ro', isa => 'Paws::MediaConvert::MpdSettings', request_name => 'mpdSettings', traits => ['NameInRequest']);
+  has MxfSettings => (is => 'ro', isa => 'Paws::MediaConvert::MxfSettings', request_name => 'mxfSettings', traits => ['NameInRequest']);
 
 1;
 
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::ContainerSettings object:
 
-  $service_obj->Method(Att1 => { CmfcSettings => $value, ..., MpdSettings => $value  });
+  $service_obj->Method(Att1 => { CmfcSettings => $value, ..., MxfSettings => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,7 +48,8 @@ Container specific settings.
 
 =head2 CmfcSettings => L<Paws::MediaConvert::CmfcSettings>
 
-Settings for MP4 segments in CMAF
+These settings relate to the fragmented MP4 container for the segments
+in your CMAF outputs.
 
 
 =head2 Container => Str
@@ -78,23 +80,31 @@ within the asset.
 
 =head2 M3u8Settings => L<Paws::MediaConvert::M3u8Settings>
 
-Settings for TS segments in HLS
+These settings relate to the MPEG-2 transport stream (MPEG2-TS)
+container for the MPEG2-TS segments in your HLS outputs.
 
 
 =head2 MovSettings => L<Paws::MediaConvert::MovSettings>
 
-Settings for MOV Container.
+These settings relate to your QuickTime MOV output container.
 
 
 =head2 Mp4Settings => L<Paws::MediaConvert::Mp4Settings>
 
-Settings for MP4 container. You can create audio-only AAC outputs with
-this container.
+These settings relate to your MP4 output container. You can create
+audio only outputs with this container. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/supported-codecs-containers-audio-only.html#output-codecs-and-containers-supported-for-audio-only.
 
 
 =head2 MpdSettings => L<Paws::MediaConvert::MpdSettings>
 
-Settings for MP4 segments in DASH
+These settings relate to the fragmented MP4 container for the segments
+in your DASH outputs.
+
+
+=head2 MxfSettings => L<Paws::MediaConvert::MxfSettings>
+
+These settings relate to your MXF output container.
 
 
 

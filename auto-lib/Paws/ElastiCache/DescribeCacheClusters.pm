@@ -31,17 +31,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DescribeCacheClusters
+    # Lists the details for up to 50 cache clusters.
     my $CacheClusterMessage = $elasticache->DescribeCacheClusters(
-      CacheClusterId                          => 'MyString',    # OPTIONAL
-      Marker                                  => 'MyString',    # OPTIONAL
-      MaxRecords                              => 1,             # OPTIONAL
-      ShowCacheClustersNotInReplicationGroups => 1,             # OPTIONAL
-      ShowCacheNodeInfo                       => 1,             # OPTIONAL
+      'CacheClusterId' => 'my-mem-cluster' );
+
+    # Results:
+    my $CacheClusters = $CacheClusterMessage->CacheClusters;
+
+    # Returns a L<Paws::ElastiCache::CacheClusterMessage> object.
+    # DescribeCacheClusters
+    # Lists the details for the cache cluster my-mem-cluster.
+    my $CacheClusterMessage = $elasticache->DescribeCacheClusters(
+      'CacheClusterId'    => 'my-mem-cluster',
+      'ShowCacheNodeInfo' => 1
     );
 
     # Results:
     my $CacheClusters = $CacheClusterMessage->CacheClusters;
-    my $Marker        = $CacheClusterMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::CacheClusterMessage> object.
 

@@ -27,9 +27,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+ # To create a new organization with all features enabled
+ # Bill wants to create an organization using credentials from account
+ # 111111111111. The following example shows that the account becomes the master
+ # account in the new organization. Because he does not specify a feature set,
+ # the new organization defaults to all features enabled and service control
+ # policies enabled on the root:
+
+    my $CreateOrganizationResponse = $organizations->CreateOrganization();
+
+    # Results:
+    my $Organization = $CreateOrganizationResponse->Organization;
+
+ # Returns a L<Paws::Organizations::CreateOrganizationResponse> object.
+ # To create a new organization with consolidated billing features only
+ # In the following example, Bill creates an organization using credentials from
+ # account 111111111111, and configures the organization to support only the
+ # consolidated billing feature set:
+
     my $CreateOrganizationResponse = $organizations->CreateOrganization(
-      FeatureSet => 'ALL',    # OPTIONAL
-    );
+      'FeatureSet' => 'CONSOLIDATED_BILLING' );
 
     # Results:
     my $Organization = $CreateOrganizationResponse->Organization;
@@ -52,8 +69,8 @@ feature set supports different levels of functionality.
 =item *
 
 C<CONSOLIDATED_BILLING>: All member accounts have their bills
-consolidated to and paid by the master account. For more information,
-see Consolidated billing
+consolidated to and paid by the management account. For more
+information, see Consolidated billing
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
 in the I<AWS Organizations User Guide.>
 
@@ -62,10 +79,10 @@ organizations in the AWS GovCloud (US) Region.
 
 =item *
 
-C<ALL>: In addition to all the features that consolidated billing
-feature set supports, the master account can also apply any policy type
-to any member account in the organization. For more information, see
-All features
+C<ALL>: In addition to all the features supported by the consolidated
+billing feature set, the management account can also apply any policy
+type to any member account in the organization. For more information,
+see All features
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
 in the I<AWS Organizations User Guide.>
 

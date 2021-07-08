@@ -11,6 +11,7 @@ package Paws::Amplify::CreateBranch;
   has EnableAutoBuild => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoBuild');
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableBasicAuth');
   has EnableNotification => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableNotification');
+  has EnablePerformanceMode => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enablePerformanceMode');
   has EnablePullRequestPreview => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enablePullRequestPreview');
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', traits => ['NameInRequest'], request_name => 'environmentVariables');
   has Framework => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'framework');
@@ -55,6 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EnableAutoBuild          => 1,                            # OPTIONAL
       EnableBasicAuth          => 1,                            # OPTIONAL
       EnableNotification       => 1,                            # OPTIONAL
+      EnablePerformanceMode    => 1,                            # OPTIONAL
       EnablePullRequestPreview => 1,                            # OPTIONAL
       EnvironmentVariables     => {
         'MyEnvKey' => 'MyEnvValue',    # key: max: 255, value: max: 1000
@@ -81,43 +83,45 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 BackendEnvironmentArn => Str
 
-ARN for a Backend Environment, part of an Amplify App.
+The Amazon Resource Name (ARN) for a backend environment that is part
+of an Amplify app.
 
 
 
 =head2 BasicAuthCredentials => Str
 
-Basic Authorization credentials for the branch.
+The basic authorization credentials for the branch.
 
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for the branch.
+The name for the branch.
 
 
 
 =head2 BuildSpec => Str
 
-BuildSpec for the branch.
+The build specification (build spec) for the branch.
 
 
 
 =head2 Description => Str
 
-Description for the branch.
+The description for the branch.
 
 
 
 =head2 DisplayName => Str
 
-Display name for a branch, will use as the default domain prefix.
+The display name for a branch. This is used as the default domain
+prefix.
 
 
 
@@ -129,7 +133,7 @@ Enables auto building for the branch.
 
 =head2 EnableBasicAuth => Bool
 
-Enables Basic Auth for the branch.
+Enables basic authorization for the branch.
 
 
 
@@ -139,45 +143,56 @@ Enables notifications for the branch.
 
 
 
+=head2 EnablePerformanceMode => Bool
+
+Enables performance mode for the branch.
+
+Performance mode optimizes for faster hosting performance by keeping
+content cached at the edge for a longer interval. When performance mode
+is enabled, hosting configuration or code changes can take up to 10
+minutes to roll out.
+
+
+
 =head2 EnablePullRequestPreview => Bool
 
-Enables Pull Request Preview for this branch.
+Enables pull request previews for this branch.
 
 
 
 =head2 EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
-Environment Variables for the branch.
+The environment variables for the branch.
 
 
 
 =head2 Framework => Str
 
-Framework for the branch.
+The framework for the branch.
 
 
 
 =head2 PullRequestEnvironmentName => Str
 
-The Amplify Environment name for the pull request.
+The Amplify environment name for the pull request.
 
 
 
 =head2 Stage => Str
 
-Stage for the branch.
+Describes the current stage for the branch.
 
 Valid values are: C<"PRODUCTION">, C<"BETA">, C<"DEVELOPMENT">, C<"EXPERIMENTAL">, C<"PULL_REQUEST">
 
 =head2 Tags => L<Paws::Amplify::TagMap>
 
-Tag for the branch.
+The tag for the branch.
 
 
 
 =head2 Ttl => Str
 
-The content TTL for the website in seconds.
+The content Time To Live (TTL) for the website in seconds.
 
 
 

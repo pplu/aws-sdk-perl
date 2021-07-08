@@ -56,8 +56,7 @@ also include any of the following characters: _+=,.@-
 
 The Amazon Resource Name (ARN) of the IAM policy you want to detach.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 

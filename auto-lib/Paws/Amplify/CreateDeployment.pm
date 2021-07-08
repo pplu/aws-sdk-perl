@@ -53,22 +53,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for the branch, for the Job.
+The name for the branch, for the job.
 
 
 
 =head2 FileMap => L<Paws::Amplify::FileMap>
 
-Optional file map that contains file name as the key and file content
-md5 hash as the value. If this argument is provided, the service will
-generate different upload url per file. Otherwise, the service will
-only generate a single upload url for the zipped files.
+An optional file map that contains the file name as the key and the
+file content md5 hash as the value. If this argument is provided, the
+service will generate a unique upload URL per file. Otherwise, the
+service will only generate a single upload URL for the zipped files.
 
 
 

@@ -22,9 +22,9 @@ Information about the bundles.
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next set of results, or null if there
-are no more results available. This token is valid for one day and must
-be used within that time frame.
+The token to use to retrieve the next page of results. This value is
+null when there are no more results to return. This token is valid for
+one day and must be used within that time frame.
 
 
 =head2 _request_id => Str

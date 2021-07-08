@@ -3,7 +3,10 @@ package Paws::IoTAnalytics::DatastoreSummary;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has DatastoreName => (is => 'ro', isa => 'Str', request_name => 'datastoreName', traits => ['NameInRequest']);
+  has DatastorePartitions => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastorePartitions', request_name => 'datastorePartitions', traits => ['NameInRequest']);
   has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorageSummary', request_name => 'datastoreStorage', traits => ['NameInRequest']);
+  has FileFormatType => (is => 'ro', isa => 'Str', request_name => 'fileFormatType', traits => ['NameInRequest']);
+  has LastMessageArrivalTime => (is => 'ro', isa => 'Str', request_name => 'lastMessageArrivalTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 
@@ -52,9 +55,31 @@ When the data store was created.
 The name of the data store.
 
 
+=head2 DatastorePartitions => L<Paws::IoTAnalytics::DatastorePartitions>
+
+Contains information about the partitions in a data store.
+
+
 =head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorageSummary>
 
 Where data store data is stored.
+
+
+=head2 FileFormatType => Str
+
+The file format of the data in the data store.
+
+
+=head2 LastMessageArrivalTime => Str
+
+The last time when a new message arrived in the data store.
+
+AWS IoT Analytics updates this value at most once per minute for one
+data store. Hence, the C<lastMessageArrivalTime> value is an
+approximation.
+
+This feature only applies to messages that arrived in the data store
+after October 23, 2020.
 
 
 =head2 LastUpdateTime => Str

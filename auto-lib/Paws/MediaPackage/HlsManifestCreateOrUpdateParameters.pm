@@ -54,6 +54,9 @@ output. "PASSTHROUGH" causes the manifest to contain a copy of the
 SCTE-35 ad markers (comments) taken directly from the input HTTP Live
 Streaming (HLS) manifest. "SCTE35_ENHANCED" generates ad markers and
 blackout tags based on SCTE-35 messages in the input source.
+"DATERANGE" inserts EXT-X-DATERANGE tags to signal ad and program
+transition events in HLS and CMAF manifests. For this option, you must
+set a programDateTimeIntervalSeconds value that is greater than 0.
 
 
 =head2 AdsOnDeliveryRestrictions => Str

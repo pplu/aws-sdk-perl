@@ -4,8 +4,11 @@ package Paws::Lightsail::InstancePortInfo;
   has AccessDirection => (is => 'ro', isa => 'Str', request_name => 'accessDirection', traits => ['NameInRequest']);
   has AccessFrom => (is => 'ro', isa => 'Str', request_name => 'accessFrom', traits => ['NameInRequest']);
   has AccessType => (is => 'ro', isa => 'Str', request_name => 'accessType', traits => ['NameInRequest']);
+  has CidrListAliases => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrListAliases', traits => ['NameInRequest']);
+  has Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrs', traits => ['NameInRequest']);
   has CommonName => (is => 'ro', isa => 'Str', request_name => 'commonName', traits => ['NameInRequest']);
   has FromPort => (is => 'ro', isa => 'Int', request_name => 'fromPort', traits => ['NameInRequest']);
+  has Ipv6Cidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'ipv6Cidrs', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest']);
   has ToPort => (is => 'ro', isa => 'Int', request_name => 'toPort', traits => ['NameInRequest']);
 
@@ -39,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lightsail::
 
 =head1 DESCRIPTION
 
-Describes information about the instance ports.
+Describes information about ports for an Amazon Lightsail instance.
 
 =head1 ATTRIBUTES
 
@@ -48,11 +51,14 @@ Describes information about the instance ports.
 
 The access direction (C<inbound> or C<outbound>).
 
+Lightsail currently supports only C<inbound> access direction.
+
 
 =head2 AccessFrom => Str
 
-The location from which access is allowed (e.g., C<Anywhere
-(0.0.0.0/0)>).
+The location from which access is allowed. For example, C<Anywhere
+(0.0.0.0/0)>, or C<Custom> if a specific IP address or range of IP
+addresses is allowed.
 
 
 =head2 AccessType => Str
@@ -60,19 +66,87 @@ The location from which access is allowed (e.g., C<Anywhere
 The type of access (C<Public> or C<Private>).
 
 
+=head2 CidrListAliases => ArrayRef[Str|Undef]
+
+An alias that defines access for a preconfigured range of IP addresses.
+
+The only alias currently supported is C<lightsail-connect>, which
+allows IP addresses of the browser-based RDP/SSH client in the
+Lightsail console to connect to your instance.
+
+
+=head2 Cidrs => ArrayRef[Str|Undef]
+
+The IPv4 address, or range of IPv4 addresses (in CIDR notation) that
+are allowed to connect to an instance through the ports, and the
+protocol.
+
+The C<ipv6Cidrs> parameter lists the IPv6 addresses that are allowed to
+connect to an instance.
+
+For more information about CIDR block notation, see Classless
+Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)
+on I<Wikipedia>.
+
+
 =head2 CommonName => Str
 
-The common name.
+The common name of the port information.
 
 
 =head2 FromPort => Int
 
-The first port in the range.
+The first port in a range of open ports on an instance.
+
+Allowed ports:
+
+=over
+
+=item *
+
+TCP and UDP - C<0> to C<65535>
+
+=item *
+
+ICMP - The ICMP type for IPv4 addresses. For example, specify C<8> as
+the C<fromPort> (ICMP type), and C<-1> as the C<toPort> (ICMP code), to
+enable ICMP Ping. For more information, see Control Messages
+(https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages)
+on I<Wikipedia>.
+
+=item *
+
+ICMPv6 - The ICMP type for IPv6 addresses. For example, specify C<128>
+as the C<fromPort> (ICMPv6 type), and C<0> as C<toPort> (ICMPv6 code).
+For more information, see Internet Control Message Protocol for IPv6
+(https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol_for_IPv6).
+
+=back
+
+
+
+=head2 Ipv6Cidrs => ArrayRef[Str|Undef]
+
+The IPv6 address, or range of IPv6 addresses (in CIDR notation) that
+are allowed to connect to an instance through the ports, and the
+protocol. Only devices with an IPv6 address can connect to an instance
+through IPv6; otherwise, IPv4 should be used.
+
+The C<cidrs> parameter lists the IPv4 addresses that are allowed to
+connect to an instance.
+
+For more information about CIDR block notation, see Classless
+Inter-Domain Routing
+(https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#CIDR_notation)
+on I<Wikipedia>.
 
 
 =head2 Protocol => Str
 
-The protocol being used. Can be one of the following.
+The IP protocol name.
+
+The name can be one of the following:
 
 =over
 
@@ -88,7 +162,7 @@ use UDP instead.
 
 C<all> - All transport layer protocol types. For more general
 information, see Transport layer
-(https://en.wikipedia.org/wiki/Transport_layer) on Wikipedia.
+(https://en.wikipedia.org/wiki/Transport_layer) on I<Wikipedia>.
 
 =item *
 
@@ -101,13 +175,48 @@ connectionless datagram service that emphasizes reduced latency over
 reliability. If you do require reliable data stream service, use TCP
 instead.
 
+=item *
+
+C<icmp> - Internet Control Message Protocol (ICMP) is used to send
+error messages and operational information indicating success or
+failure when communicating with an instance. For example, an error is
+indicated when an instance could not be reached. When you specify
+C<icmp> as the C<protocol>, you must specify the ICMP type using the
+C<fromPort> parameter, and ICMP code using the C<toPort> parameter.
+
 =back
 
 
 
 =head2 ToPort => Int
 
-The last port in the range.
+The last port in a range of open ports on an instance.
+
+Allowed ports:
+
+=over
+
+=item *
+
+TCP and UDP - C<0> to C<65535>
+
+=item *
+
+ICMP - The ICMP code for IPv4 addresses. For example, specify C<8> as
+the C<fromPort> (ICMP type), and C<-1> as the C<toPort> (ICMP code), to
+enable ICMP Ping. For more information, see Control Messages
+(https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol#Control_messages)
+on I<Wikipedia>.
+
+=item *
+
+ICMPv6 - The ICMP code for IPv6 addresses. For example, specify C<128>
+as the C<fromPort> (ICMPv6 type), and C<0> as C<toPort> (ICMPv6 code).
+For more information, see Internet Control Message Protocol for IPv6
+(https://en.wikipedia.org/wiki/Internet_Control_Message_Protocol_for_IPv6).
+
+=back
+
 
 
 

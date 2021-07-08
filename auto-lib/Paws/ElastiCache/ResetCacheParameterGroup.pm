@@ -29,16 +29,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # ResetCacheParameterGroup
+    # Modifies the parameters of a cache parameter group to the engine or system
+    # default value.
     my $CacheParameterGroupNameMessage = $elasticache->ResetCacheParameterGroup(
-      CacheParameterGroupName => 'MyString',
-      ParameterNameValues     => [
-        {
-          ParameterName  => 'MyString',
-          ParameterValue => 'MyString',
-        },
-        ...
-      ],    # OPTIONAL
-      ResetAllParameters => 1,    # OPTIONAL
+      'CacheParameterGroupName' => 'custom-mem1-4',
+      'ResetAllParameters'      => 1
     );
 
     # Results:

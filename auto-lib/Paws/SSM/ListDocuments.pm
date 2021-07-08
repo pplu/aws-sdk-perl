@@ -66,15 +66,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 =head2 DocumentFilterList => ArrayRef[L<Paws::SSM::DocumentFilter>]
 
-One or more filters. Use a filter to return a more specific list of
-results.
+This data type is deprecated. Instead, use C<Filters>.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::SSM::DocumentKeyValuesFilter>]
 
-One or more filters. Use a filter to return a more specific list of
-results.
+One or more C<DocumentKeyValuesFilter> objects. Use a filter to return
+a more specific list of results. For keys, you can specify one or more
+key-value pair tags that have been applied to a document. Other valid
+keys include C<Owner>, C<Name>, C<PlatformTypes>, C<DocumentType>, and
+C<TargetType>. For example, to return documents you own use
+C<Key=Owner,Values=Self>. To specify a custom key-value pair, use the
+format C<Key=tag:tagName,Values=valueName>.
+
+This API action only supports filtering documents by using a single tag
+key and one or more tag values. For example:
+C<Key=tag:tagName,Values=valueName1,valueName2>
 
 
 

@@ -39,7 +39,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::S
 =head1 DESCRIPTION
 
 Specifies the schema to which you want Kinesis Data Firehose to
-configure your data before it writes it to Amazon S3.
+configure your data before it writes it to Amazon S3. This parameter is
+required if C<Enabled> is set to true.
 
 =head1 ATTRIBUTES
 

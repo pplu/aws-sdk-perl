@@ -8,6 +8,7 @@ package Paws::MediaConvert::VideoSelector;
   has Pid => (is => 'ro', isa => 'Int', request_name => 'pid', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has Rotate => (is => 'ro', isa => 'Str', request_name => 'rotate', traits => ['NameInRequest']);
+  has SampleRange => (is => 'ro', isa => 'Str', request_name => 'sampleRange', traits => ['NameInRequest']);
 
 1;
 
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaConvert::VideoSelector object:
 
-  $service_obj->Method(Att1 => { AlphaBehavior => $value, ..., Rotate => $value  });
+  $service_obj->Method(Att1 => { AlphaBehavior => $value, ..., SampleRange => $value  });
 
 =head3 Results returned from an API call
 
@@ -39,7 +40,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Selector for video.
+Input video selectors contain the video settings for the input. Each of
+your inputs can have up to one video selector.
 
 =head1 ATTRIBUTES
 
@@ -129,6 +131,21 @@ metadata specifies any other rotation, the service will default to no
 rotation. By default, the service does no rotation, even if your input
 video has rotation metadata. The service doesn't pass through rotation
 metadata.
+
+
+=head2 SampleRange => Str
+
+Use this setting when your input video codec is AVC-Intra. Ignore this
+setting for all other inputs. If the sample range metadata in your
+input video is accurate, or if you don't know about sample range, keep
+the default value, Follow (FOLLOW), for this setting. When you do, the
+service automatically detects your input sample range. If your input
+video has metadata indicating the wrong sample range, specify the
+accurate sample range here. When you do, MediaConvert ignores any
+sample range information in the input metadata. Regardless of whether
+MediaConvert uses the input sample range or the sample range that you
+specify, MediaConvert uses the sample range for transcoding and also
+writes it to the output metadata.
 
 
 

@@ -57,8 +57,6 @@ CredentialProvider
 
 =back
 
-The domain configuration feature is in public preview and is subject to
-change.
 
 =head1 ATTRIBUTES
 

@@ -3,6 +3,7 @@ package Paws::Rekognition::TestingDataResult;
   use Moose;
   has Input => (is => 'ro', isa => 'Paws::Rekognition::TestingData');
   has Output => (is => 'ro', isa => 'Paws::Rekognition::TestingData');
+  has Validation => (is => 'ro', isa => 'Paws::Rekognition::ValidationData');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::TestingDataResult object:
 
-  $service_obj->Method(Att1 => { Input => $value, ..., Output => $value  });
+  $service_obj->Method(Att1 => { Input => $value, ..., Validation => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-A Sagemaker Groundtruth format manifest file representing the dataset
-used for testing.
+Sagemaker Groundtruth format manifest files for the input, output and
+validation datasets that are used and created during testing.
 
 =head1 ATTRIBUTES
 
@@ -49,6 +50,12 @@ The testing dataset that was supplied for training.
 
 The subset of the dataset that was actually tested. Some images
 (assets) might not be tested due to file formatting and other issues.
+
+
+=head2 Validation => L<Paws::Rekognition::ValidationData>
+
+The location of the data validation manifest. The data validation
+manifest is created for the test dataset during model training.
 
 
 

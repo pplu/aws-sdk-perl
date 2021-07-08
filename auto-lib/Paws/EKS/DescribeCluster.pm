@@ -28,13 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $eks = Paws->service('EKS');
-    my $DescribeClusterResponse = $eks->DescribeCluster(
-      Name => 'MyString',
-
-    );
+  # To describe a cluster
+  # This example command provides a description of the specified cluster in your
+  # default region.
+    my $DescribeClusterResponse = $eks->DescribeCluster( 'Name' => 'devel' );
 
     # Results:
-    my $Cluster = $DescribeClusterResponse->Cluster;
+    my $cluster = $DescribeClusterResponse->cluster;
 
     # Returns a L<Paws::EKS::DescribeClusterResponse> object.
 

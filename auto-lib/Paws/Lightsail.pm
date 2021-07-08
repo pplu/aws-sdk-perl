@@ -20,6 +20,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::AllocateStaticIp', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AttachCertificateToDistribution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachCertificateToDistribution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AttachDisk {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::AttachDisk', @_);
@@ -50,9 +55,34 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CopySnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCloudFormationStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateCloudFormationStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateContactMethod {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateContactMethod', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateContainerService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateContainerService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateContainerServiceDeployment {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateContainerServiceDeployment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateContainerServiceRegistryLogin {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateContainerServiceRegistryLogin', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDisk {
@@ -68,6 +98,11 @@ package Paws::Lightsail;
   sub CreateDiskSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateDiskSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDistribution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateDomain {
@@ -125,9 +160,34 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::CreateRelationalDatabaseSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAlarm {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteAlarm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAutoSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteAutoSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteCertificate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContactMethod {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteContactMethod', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContainerImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteContainerImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContainerService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteContainerService', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDisk {
@@ -138,6 +198,11 @@ package Paws::Lightsail;
   sub DeleteDiskSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDiskSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDistribution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteDistribution', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDomain {
@@ -190,6 +255,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DeleteRelationalDatabaseSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DetachCertificateFromDistribution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachCertificateFromDistribution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DetachDisk {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::DetachDisk', @_);
@@ -230,6 +300,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetActiveNames', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAlarms {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetAlarms', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAutoSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetAutoSnapshots', @_);
@@ -245,9 +320,54 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetBundles', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCertificates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetCertificates', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCloudFormationStackRecords {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetCloudFormationStackRecords', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContactMethods {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContactMethods', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerAPIMetadata {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerAPIMetadata', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerImages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerImages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerLog {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerLog', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerServiceDeployments {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerServiceDeployments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerServiceMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerServiceMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerServicePowers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerServicePowers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerServices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetContainerServices', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDisk {
@@ -268,6 +388,26 @@ package Paws::Lightsail;
   sub GetDiskSnapshots {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDiskSnapshots', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDistributionBundles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDistributionBundles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDistributionLatestCacheReset {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDistributionLatestCacheReset', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDistributionMetricData {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDistributionMetricData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetDistributions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::GetDistributions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDomain {
@@ -465,6 +605,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::PeerVpc', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutAlarm {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::PutAlarm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutInstancePublicPorts {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::PutInstancePublicPorts', @_);
@@ -480,9 +625,29 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::RebootRelationalDatabase', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterContainerImage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::RegisterContainerImage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ReleaseStaticIp {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::ReleaseStaticIp', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ResetDistributionCache {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::ResetDistributionCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SendContactMethodVerification {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::SendContactMethodVerification', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetIpAddressType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::SetIpAddressType', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartInstance {
@@ -510,6 +675,11 @@ package Paws::Lightsail;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::TagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TestAlarm {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::TestAlarm', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UnpeerVpc {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::UnpeerVpc', @_);
@@ -518,6 +688,21 @@ package Paws::Lightsail;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lightsail::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateContainerService {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateContainerService', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDistribution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateDistribution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDistributionBundle {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lightsail::UpdateDistributionBundle', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDomainEntry {
@@ -1003,7 +1188,7 @@ package Paws::Lightsail;
   }
 
 
-  sub operations { qw/AllocateStaticIp AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CopySnapshot CreateCloudFormationStack CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteAutoSnapshot DeleteDisk DeleteDiskSnapshot DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteKnownHostKeys DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DisableAddOn DownloadDefaultKeyPair EnableAddOn ExportSnapshot GetActiveNames GetAutoSnapshots GetBlueprints GetBundles GetCloudFormationStackRecords GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDomain GetDomains GetExportSnapshotRecords GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutInstancePublicPorts RebootInstance RebootRelationalDatabase ReleaseStaticIp StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase TagResource UnpeerVpc UntagResource UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
+  sub operations { qw/AllocateStaticIp AttachCertificateToDistribution AttachDisk AttachInstancesToLoadBalancer AttachLoadBalancerTlsCertificate AttachStaticIp CloseInstancePublicPorts CopySnapshot CreateCertificate CreateCloudFormationStack CreateContactMethod CreateContainerService CreateContainerServiceDeployment CreateContainerServiceRegistryLogin CreateDisk CreateDiskFromSnapshot CreateDiskSnapshot CreateDistribution CreateDomain CreateDomainEntry CreateInstances CreateInstancesFromSnapshot CreateInstanceSnapshot CreateKeyPair CreateLoadBalancer CreateLoadBalancerTlsCertificate CreateRelationalDatabase CreateRelationalDatabaseFromSnapshot CreateRelationalDatabaseSnapshot DeleteAlarm DeleteAutoSnapshot DeleteCertificate DeleteContactMethod DeleteContainerImage DeleteContainerService DeleteDisk DeleteDiskSnapshot DeleteDistribution DeleteDomain DeleteDomainEntry DeleteInstance DeleteInstanceSnapshot DeleteKeyPair DeleteKnownHostKeys DeleteLoadBalancer DeleteLoadBalancerTlsCertificate DeleteRelationalDatabase DeleteRelationalDatabaseSnapshot DetachCertificateFromDistribution DetachDisk DetachInstancesFromLoadBalancer DetachStaticIp DisableAddOn DownloadDefaultKeyPair EnableAddOn ExportSnapshot GetActiveNames GetAlarms GetAutoSnapshots GetBlueprints GetBundles GetCertificates GetCloudFormationStackRecords GetContactMethods GetContainerAPIMetadata GetContainerImages GetContainerLog GetContainerServiceDeployments GetContainerServiceMetricData GetContainerServicePowers GetContainerServices GetDisk GetDisks GetDiskSnapshot GetDiskSnapshots GetDistributionBundles GetDistributionLatestCacheReset GetDistributionMetricData GetDistributions GetDomain GetDomains GetExportSnapshotRecords GetInstance GetInstanceAccessDetails GetInstanceMetricData GetInstancePortStates GetInstances GetInstanceSnapshot GetInstanceSnapshots GetInstanceState GetKeyPair GetKeyPairs GetLoadBalancer GetLoadBalancerMetricData GetLoadBalancers GetLoadBalancerTlsCertificates GetOperation GetOperations GetOperationsForResource GetRegions GetRelationalDatabase GetRelationalDatabaseBlueprints GetRelationalDatabaseBundles GetRelationalDatabaseEvents GetRelationalDatabaseLogEvents GetRelationalDatabaseLogStreams GetRelationalDatabaseMasterUserPassword GetRelationalDatabaseMetricData GetRelationalDatabaseParameters GetRelationalDatabases GetRelationalDatabaseSnapshot GetRelationalDatabaseSnapshots GetStaticIp GetStaticIps ImportKeyPair IsVpcPeered OpenInstancePublicPorts PeerVpc PutAlarm PutInstancePublicPorts RebootInstance RebootRelationalDatabase RegisterContainerImage ReleaseStaticIp ResetDistributionCache SendContactMethodVerification SetIpAddressType StartInstance StartRelationalDatabase StopInstance StopRelationalDatabase TagResource TestAlarm UnpeerVpc UntagResource UpdateContainerService UpdateDistribution UpdateDistributionBundle UpdateDomainEntry UpdateLoadBalancerAttribute UpdateRelationalDatabase UpdateRelationalDatabaseParameters / }
 
 1;
 
@@ -1031,21 +1216,27 @@ Paws::Lightsail - Perl Interface to AWS Amazon Lightsail
 
 =head1 DESCRIPTION
 
-Amazon Lightsail is the easiest way to get started with AWS for
-developers who just need virtual private servers. Lightsail includes
-everything you need to launch your project quickly - a virtual machine,
-a managed database, SSD-based storage, data transfer, DNS management,
-and a static IP - for a low, predictable price. You manage those
-Lightsail servers through the Lightsail console or by using the API or
-command-line interface (CLI).
+Amazon Lightsail is the easiest way to get started with Amazon Web
+Services (AWS) for developers who need to build websites or web
+applications. It includes everything you need to launch your project
+quickly - instances (virtual private servers), container services,
+managed databases, SSD-based block storage, static IP addresses, load
+balancers, content delivery network (CDN) distributions, DNS management
+of registered domains, and resource snapshots (backups) - for a low,
+predictable monthly price.
 
-For more information about Lightsail concepts and tasks, see the
-Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/all).
-
-To use the Lightsail API or the CLI, you will need to use AWS Identity
-and Access Management (IAM) to generate access keys. For details about
-how to set this up, see the Lightsail Dev Guide
+You can manage your Lightsail resources using the Lightsail console,
+Lightsail API, AWS Command Line Interface (AWS CLI), or SDKs. For more
+information about Lightsail concepts and tasks, see the Lightsail Dev
+Guide
 (http://lightsail.aws.amazon.com/ls/docs/how-to/article/lightsail-how-to-set-up-access-keys-to-use-sdk-api-cli).
+
+This API Reference provides detailed information about the actions,
+data types, parameters, and errors of the Lightsail service. For more
+information about the supported AWS Regions, endpoints, and service
+quotas of the Lightsail service, see Amazon Lightsail Endpoints and
+Quotas (https://docs.aws.amazon.com/general/latest/gr/lightsail.html)
+in the I<AWS General Reference>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28>
 
@@ -1066,6 +1257,38 @@ Each argument is described in detail in: L<Paws::Lightsail::AllocateStaticIp>
 Returns: a L<Paws::Lightsail::AllocateStaticIpResult> instance
 
 Allocates a static IP address.
+
+
+=head2 AttachCertificateToDistribution
+
+=over
+
+=item CertificateName => Str
+
+=item DistributionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::AttachCertificateToDistribution>
+
+Returns: a L<Paws::Lightsail::AttachCertificateToDistributionResult> instance
+
+Attaches an SSL/TLS certificate to your Amazon Lightsail content
+delivery network (CDN) distribution.
+
+After the certificate is attached, your distribution accepts HTTPS
+traffic for all of the domains that are associated with the
+certificate.
+
+Use the C<CreateCertificate> action to create a certificate that you
+can attach to your distribution.
+
+Only certificates created in the C<us-east-1> AWS Region can be
+attached to Lightsail distributions. Lightsail distributions are global
+resources that can reference an origin in any AWS Region, and
+distribute its content globally. However, all distributions are located
+in the C<us-east-1> Region.
 
 
 =head2 AttachDisk
@@ -1142,14 +1365,15 @@ Layer (SSL).
 
 Once you create and validate your certificate, you can attach it to
 your load balancer. You can also use this API to rotate the
-certificates on your account. Use the C<attach load balancer tls
-certificate> operation with the non-attached certificate, and it will
-replace the existing one and become the attached certificate.
+certificates on your account. Use the
+C<AttachLoadBalancerTlsCertificate> action with the non-attached
+certificate, and it will replace the existing one and become the
+attached certificate.
 
-The C<attach load balancer tls certificate> operation supports
-tag-based access control via resource tags applied to the resource
-identified by C<load balancer name>. For more information, see the
-Lightsail Dev Guide
+The C<AttachLoadBalancerTlsCertificate> operation supports tag-based
+access control via resource tags applied to the resource identified by
+C<load balancer name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1186,11 +1410,11 @@ Each argument is described in detail in: L<Paws::Lightsail::CloseInstancePublicP
 
 Returns: a L<Paws::Lightsail::CloseInstancePublicPortsResult> instance
 
-Closes the public ports on a specific Amazon Lightsail instance.
+Closes ports for a specific Amazon Lightsail instance.
 
-The C<close instance public ports> operation supports tag-based access
+The C<CloseInstancePublicPorts> action supports tag-based access
 control via resource tags applied to the resource identified by
-C<instance name>. For more information, see the Lightsail Dev Guide
+C<instanceName>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1233,6 +1457,41 @@ the C<restore date> or the C<use latest restorable auto snapshot>
 parameters.
 
 
+=head2 CreateCertificate
+
+=over
+
+=item CertificateName => Str
+
+=item DomainName => Str
+
+=item [SubjectAlternativeNames => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateCertificate>
+
+Returns: a L<Paws::Lightsail::CreateCertificateResult> instance
+
+Creates an SSL/TLS certificate for an Amazon Lightsail content delivery
+network (CDN) distribution and a container service.
+
+After the certificate is valid, use the
+C<AttachCertificateToDistribution> action to use the certificate and
+its domains with your distribution. Or use the
+C<UpdateContainerService> action to use the certificate and its domains
+with your container service.
+
+Only certificates created in the C<us-east-1> AWS Region can be
+attached to Lightsail distributions. Lightsail distributions are global
+resources that can reference an origin in any AWS Region, and
+distribute its content globally. However, all distributions are located
+in the C<us-east-1> Region.
+
+
 =head2 CreateCloudFormationStack
 
 =over
@@ -1255,6 +1514,134 @@ records> operation to get a list of the CloudFormation stacks created.
 Wait until after your new Amazon EC2 instance is created before running
 the C<create cloud formation stack> operation again with the same
 export snapshot record.
+
+
+=head2 CreateContactMethod
+
+=over
+
+=item ContactEndpoint => Str
+
+=item Protocol => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateContactMethod>
+
+Returns: a L<Paws::Lightsail::CreateContactMethodResult> instance
+
+Creates an email or SMS text message contact method.
+
+A contact method is used to send you notifications about your Amazon
+Lightsail resources. You can add one email address and one mobile phone
+number contact method in each AWS Region. However, SMS text messaging
+is not supported in some AWS Regions, and SMS text messages cannot be
+sent to some countries/regions. For more information, see Notifications
+in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+
+
+=head2 CreateContainerService
+
+=over
+
+=item Power => Str
+
+=item Scale => Int
+
+=item ServiceName => Str
+
+=item [Deployment => L<Paws::Lightsail::ContainerServiceDeploymentRequest>]
+
+=item [PublicDomainNames => L<Paws::Lightsail::ContainerServicePublicDomains>]
+
+=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateContainerService>
+
+Returns: a L<Paws::Lightsail::CreateContainerServiceResult> instance
+
+Creates an Amazon Lightsail container service.
+
+A Lightsail container service is a compute resource to which you can
+deploy containers. For more information, see Container services in
+Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-container-services)
+in the I<Lightsail Dev Guide>.
+
+
+=head2 CreateContainerServiceDeployment
+
+=over
+
+=item ServiceName => Str
+
+=item [Containers => L<Paws::Lightsail::ContainerMap>]
+
+=item [PublicEndpoint => L<Paws::Lightsail::EndpointRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateContainerServiceDeployment>
+
+Returns: a L<Paws::Lightsail::CreateContainerServiceDeploymentResult> instance
+
+Creates a deployment for your Amazon Lightsail container service.
+
+A deployment specifies the containers that will be launched on the
+container service and their settings, such as the ports to open, the
+environment variables to apply, and the launch command to run. It also
+specifies the container that will serve as the public endpoint of the
+deployment and its settings, such as the HTTP or HTTPS port to use, and
+the health check configuration.
+
+You can deploy containers to your container service using container
+images from a public registry like Docker Hub, or from your local
+machine. For more information, see Creating container images for your
+Amazon Lightsail container services
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-creating-container-images)
+in the I<Lightsail Dev Guide>.
+
+
+=head2 CreateContainerServiceRegistryLogin
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateContainerServiceRegistryLogin>
+
+Returns: a L<Paws::Lightsail::CreateContainerServiceRegistryLoginResult> instance
+
+Creates a temporary set of log in credentials that you can use to log
+in to the Docker process on your local machine. After you're logged in,
+you can use the native Docker commands to push your local container
+images to the container image registry of your Amazon Lightsail account
+so that you can use them with your Lightsail container service. The log
+in credentials expire 12 hours after they are created, at which point
+you will need to create a new set of log in credentials.
+
+You can only push container images to the container service registry of
+your Lightsail account. You cannot pull container images or perform any
+other container image management actions on the container service
+registry.
+
+After you push your container images to the container image registry of
+your Lightsail account, use the C<RegisterContainerImage> action to
+register the pushed images to a specific Lightsail container service.
+
+This action is not required if you install and use the Lightsail
+Control (lightsailctl) plugin to push container images to your
+Lightsail container service. For more information, see Pushing and
+managing container images on your Amazon Lightsail container services
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images)
+in the I<Lightsail Dev Guide>.
 
 
 =head2 CreateDisk
@@ -1375,6 +1762,43 @@ via request tags. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
+=head2 CreateDistribution
+
+=over
+
+=item BundleId => Str
+
+=item DefaultCacheBehavior => L<Paws::Lightsail::CacheBehavior>
+
+=item DistributionName => Str
+
+=item Origin => L<Paws::Lightsail::InputOrigin>
+
+=item [CacheBehaviors => ArrayRef[L<Paws::Lightsail::CacheBehaviorPerPath>]]
+
+=item [CacheBehaviorSettings => L<Paws::Lightsail::CacheSettings>]
+
+=item [IpAddressType => Str]
+
+=item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::CreateDistribution>
+
+Returns: a L<Paws::Lightsail::CreateDistributionResult> instance
+
+Creates an Amazon Lightsail content delivery network (CDN)
+distribution.
+
+A distribution is a globally distributed network of caching servers
+that improve the performance of your website or web application hosted
+on a Lightsail instance. For more information, see Content delivery
+networks in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-content-delivery-network-distributions).
+
+
 =head2 CreateDomain
 
 =over
@@ -1412,9 +1836,10 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateDomainEntry>
 
 Returns: a L<Paws::Lightsail::CreateDomainEntryResult> instance
 
-Creates one of the following entry records associated with the domain:
-Address (A), canonical name (CNAME), mail exchanger (MX), name server
-(NS), start of authority (SOA), service locator (SRV), or text (TXT).
+Creates one of the following domain name system (DNS) records in a
+domain DNS zone: Address (A), canonical name (CNAME), mail exchanger
+(MX), name server (NS), start of authority (SOA), service locator
+(SRV), or text (TXT).
 
 The C<create domain entry> operation supports tag-based access control
 via resource tags applied to the resource identified by C<domain name>.
@@ -1437,6 +1862,8 @@ For more information, see the Lightsail Dev Guide
 =item [AddOns => ArrayRef[L<Paws::Lightsail::AddOnRequest>]]
 
 =item [CustomImageName => Str]
+
+=item [IpAddressType => Str]
 
 =item [KeyPairName => Str]
 
@@ -1473,6 +1900,8 @@ request tags. For more information, see the Lightsail Dev Guide
 =item [AttachedDiskMapping => L<Paws::Lightsail::AttachedDiskMap>]
 
 =item [InstanceSnapshotName => Str]
+
+=item [IpAddressType => Str]
 
 =item [KeyPairName => Str]
 
@@ -1568,6 +1997,8 @@ request tags. For more information, see the Lightsail Dev Guide
 
 =item [HealthCheckPath => Str]
 
+=item [IpAddressType => Str]
+
 =item [Tags => ArrayRef[L<Paws::Lightsail::Tag>]]
 
 
@@ -1613,15 +2044,15 @@ Each argument is described in detail in: L<Paws::Lightsail::CreateLoadBalancerTl
 
 Returns: a L<Paws::Lightsail::CreateLoadBalancerTlsCertificateResult> instance
 
-Creates a Lightsail load balancer TLS certificate.
+Creates an SSL/TLS certificate for an Amazon Lightsail load balancer.
 
 TLS is just an updated, more secure version of Secure Socket Layer
 (SSL).
 
-The C<create load balancer tls certificate> operation supports
-tag-based access control via resource tags applied to the resource
-identified by C<load balancer name>. For more information, see the
-Lightsail Dev Guide
+The C<CreateLoadBalancerTlsCertificate> operation supports tag-based
+access control via resource tags applied to the resource identified by
+C<load balancer name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -1736,6 +2167,28 @@ Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
+=head2 DeleteAlarm
+
+=over
+
+=item AlarmName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteAlarm>
+
+Returns: a L<Paws::Lightsail::DeleteAlarmResult> instance
+
+Deletes an alarm.
+
+An alarm is used to monitor a single metric for one of your resources.
+When a metric condition is met, the alarm can notify you by email, SMS
+text message, and a banner displayed on the Amazon Lightsail console.
+For more information, see Alarms in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+
+
 =head2 DeleteAutoSnapshot
 
 =over
@@ -1754,6 +2207,86 @@ Returns: a L<Paws::Lightsail::DeleteAutoSnapshotResult> instance
 Deletes an automatic snapshot of an instance or disk. For more
 information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-configuring-automatic-snapshots).
+
+
+=head2 DeleteCertificate
+
+=over
+
+=item CertificateName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteCertificate>
+
+Returns: a L<Paws::Lightsail::DeleteCertificateResult> instance
+
+Deletes an SSL/TLS certificate for your Amazon Lightsail content
+delivery network (CDN) distribution.
+
+Certificates that are currently attached to a distribution cannot be
+deleted. Use the C<DetachCertificateFromDistribution> action to detach
+a certificate from a distribution.
+
+
+=head2 DeleteContactMethod
+
+=over
+
+=item Protocol => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteContactMethod>
+
+Returns: a L<Paws::Lightsail::DeleteContactMethodResult> instance
+
+Deletes a contact method.
+
+A contact method is used to send you notifications about your Amazon
+Lightsail resources. You can add one email address and one mobile phone
+number contact method in each AWS Region. However, SMS text messaging
+is not supported in some AWS Regions, and SMS text messages cannot be
+sent to some countries/regions. For more information, see Notifications
+in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+
+
+=head2 DeleteContainerImage
+
+=over
+
+=item Image => Str
+
+=item ServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteContainerImage>
+
+Returns: a L<Paws::Lightsail::DeleteContainerImageResult> instance
+
+Deletes a container image that is registered to your Amazon Lightsail
+container service.
+
+
+=head2 DeleteContainerService
+
+=over
+
+=item ServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteContainerService>
+
+Returns: a L<Paws::Lightsail::DeleteContainerServiceResult> instance
+
+Deletes your Amazon Lightsail container service.
 
 
 =head2 DeleteDisk
@@ -1809,6 +2342,23 @@ The C<delete disk snapshot> operation supports tag-based access control
 via resource tags applied to the resource identified by C<disk snapshot
 name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+
+
+=head2 DeleteDistribution
+
+=over
+
+=item [DistributionName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DeleteDistribution>
+
+Returns: a L<Paws::Lightsail::DeleteDistributionResult> instance
+
+Deletes your Amazon Lightsail content delivery network (CDN)
+distribution.
 
 
 =head2 DeleteDomain
@@ -1992,10 +2542,10 @@ Returns: a L<Paws::Lightsail::DeleteLoadBalancerTlsCertificateResult> instance
 Deletes an SSL/TLS certificate associated with a Lightsail load
 balancer.
 
-The C<delete load balancer tls certificate> operation supports
-tag-based access control via resource tags applied to the resource
-identified by C<load balancer name>. For more information, see the
-Lightsail Dev Guide
+The C<DeleteLoadBalancerTlsCertificate> operation supports tag-based
+access control via resource tags applied to the resource identified by
+C<load balancer name>. For more information, see the Lightsail Dev
+Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -2045,6 +2595,27 @@ access control via resource tags applied to the resource identified by
 relationalDatabaseName. For more information, see the Lightsail Dev
 Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+
+
+=head2 DetachCertificateFromDistribution
+
+=over
+
+=item DistributionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::DetachCertificateFromDistribution>
+
+Returns: a L<Paws::Lightsail::DetachCertificateFromDistributionResult> instance
+
+Detaches an SSL/TLS certificate from your Amazon Lightsail content
+delivery network (CDN) distribution.
+
+After the certificate is detached, your distribution stops accepting
+traffic for all of the domains that are associated with the
+certificate.
 
 
 =head2 DetachDisk
@@ -2218,6 +2789,35 @@ Returns: a L<Paws::Lightsail::GetActiveNamesResult> instance
 Returns the names of all active (not deleted) resources.
 
 
+=head2 GetAlarms
+
+=over
+
+=item [AlarmName => Str]
+
+=item [MonitoredResourceName => Str]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetAlarms>
+
+Returns: a L<Paws::Lightsail::GetAlarmsResult> instance
+
+Returns information about the configured alarms. Specify an alarm name
+in your request to return information about a specific alarm, or
+specify a monitored resource name to return information about all
+alarms for a specific resource.
+
+An alarm is used to monitor a single metric for one of your resources.
+When a metric condition is met, the alarm can notify you by email, SMS
+text message, and a banner displayed on the Amazon Lightsail console.
+For more information, see Alarms in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+
+
 =head2 GetAutoSnapshots
 
 =over
@@ -2283,6 +2883,31 @@ Returns the list of bundles that are available for purchase. A bundle
 describes the specs for your virtual private server (or I<instance>).
 
 
+=head2 GetCertificates
+
+=over
+
+=item [CertificateName => Str]
+
+=item [CertificateStatuses => ArrayRef[Str|Undef]]
+
+=item [IncludeCertificateDetails => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetCertificates>
+
+Returns: a L<Paws::Lightsail::GetCertificatesResult> instance
+
+Returns information about one or more Amazon Lightsail SSL/TLS
+certificates.
+
+To get a summary of a certificate, ommit C<includeCertificateDetails>
+from your request. The response will include only the certificate
+Amazon Resource Name (ARN), certificate name, domain name, and tags.
+
+
 =head2 GetCloudFormationStackRecords
 
 =over
@@ -2301,6 +2926,199 @@ C<create cloud formation stack> operation.
 
 An AWS CloudFormation stack is used to create a new Amazon EC2 instance
 from an exported Lightsail snapshot.
+
+
+=head2 GetContactMethods
+
+=over
+
+=item [Protocols => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContactMethods>
+
+Returns: a L<Paws::Lightsail::GetContactMethodsResult> instance
+
+Returns information about the configured contact methods. Specify a
+protocol in your request to return information about a specific contact
+method.
+
+A contact method is used to send you notifications about your Amazon
+Lightsail resources. You can add one email address and one mobile phone
+number contact method in each AWS Region. However, SMS text messaging
+is not supported in some AWS Regions, and SMS text messages cannot be
+sent to some countries/regions. For more information, see Notifications
+in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+
+
+=head2 GetContainerAPIMetadata
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerAPIMetadata>
+
+Returns: a L<Paws::Lightsail::GetContainerAPIMetadataResult> instance
+
+Returns information about Amazon Lightsail containers, such as the
+current version of the Lightsail Control (lightsailctl) plugin.
+
+
+=head2 GetContainerImages
+
+=over
+
+=item ServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerImages>
+
+Returns: a L<Paws::Lightsail::GetContainerImagesResult> instance
+
+Returns the container images that are registered to your Amazon
+Lightsail container service.
+
+If you created a deployment on your Lightsail container service that
+uses container images from a public registry like Docker Hub, those
+images are not returned as part of this action. Those images are not
+registered to your Lightsail container service.
+
+
+=head2 GetContainerLog
+
+=over
+
+=item ContainerName => Str
+
+=item ServiceName => Str
+
+=item [EndTime => Str]
+
+=item [FilterPattern => Str]
+
+=item [PageToken => Str]
+
+=item [StartTime => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerLog>
+
+Returns: a L<Paws::Lightsail::GetContainerLogResult> instance
+
+Returns the log events of a container of your Amazon Lightsail
+container service.
+
+If your container service has more than one node (i.e., a scale greater
+than 1), then the log events that are returned for the specified
+container are merged from all nodes on your container service.
+
+Container logs are retained for a certain amount of time. For more
+information, see Amazon Lightsail endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in the
+I<AWS General Reference>.
+
+
+=head2 GetContainerServiceDeployments
+
+=over
+
+=item ServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerServiceDeployments>
+
+Returns: a L<Paws::Lightsail::GetContainerServiceDeploymentsResult> instance
+
+Returns the deployments for your Amazon Lightsail container service
+
+A deployment specifies the settings, such as the ports and launch
+command, of containers that are deployed to your container service.
+
+The deployments are ordered by version in ascending order. The newest
+version is listed at the top of the response.
+
+A set number of deployments are kept before the oldest one is replaced
+with the newest one. For more information, see Amazon Lightsail
+endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/lightsail.html) in the
+I<AWS General Reference>.
+
+
+=head2 GetContainerServiceMetricData
+
+=over
+
+=item EndTime => Str
+
+=item MetricName => Str
+
+=item Period => Int
+
+=item ServiceName => Str
+
+=item StartTime => Str
+
+=item Statistics => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerServiceMetricData>
+
+Returns: a L<Paws::Lightsail::GetContainerServiceMetricDataResult> instance
+
+Returns the data points of a specific metric of your Amazon Lightsail
+container service.
+
+Metrics report the utilization of your resources. Monitor and collect
+metric data regularly to maintain the reliability, availability, and
+performance of your resources.
+
+
+=head2 GetContainerServicePowers
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerServicePowers>
+
+Returns: a L<Paws::Lightsail::GetContainerServicePowersResult> instance
+
+Returns the list of powers that can be specified for your Amazon
+Lightsail container services.
+
+The power specifies the amount of memory, the number of vCPUs, and the
+base price of the container service.
+
+
+=head2 GetContainerServices
+
+=over
+
+=item [ServiceName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetContainerServices>
+
+Returns: a L<Paws::Lightsail::ContainerServicesListResult> instance
+
+Returns information about one or more of your Amazon Lightsail
+container services.
 
 
 =head2 GetDisk
@@ -2335,10 +3153,6 @@ Returns: a L<Paws::Lightsail::GetDisksResult> instance
 Returns information about all block storage disks in your AWS account
 and region.
 
-If you are describing a long list of disks, you can paginate the output
-to make the list more manageable. You can use the pageToken and
-nextPageToken values to retrieve the next items in the list.
-
 
 =head2 GetDiskSnapshot
 
@@ -2372,9 +3186,93 @@ Returns: a L<Paws::Lightsail::GetDiskSnapshotsResult> instance
 Returns information about all block storage disk snapshots in your AWS
 account and region.
 
-If you are describing a long list of disk snapshots, you can paginate
-the output to make the list more manageable. You can use the pageToken
-and nextPageToken values to retrieve the next items in the list.
+
+=head2 GetDistributionBundles
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDistributionBundles>
+
+Returns: a L<Paws::Lightsail::GetDistributionBundlesResult> instance
+
+Returns the list bundles that can be applied to you Amazon Lightsail
+content delivery network (CDN) distributions.
+
+A distribution bundle specifies the monthly network transfer quota and
+monthly cost of your dsitribution.
+
+
+=head2 GetDistributionLatestCacheReset
+
+=over
+
+=item [DistributionName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDistributionLatestCacheReset>
+
+Returns: a L<Paws::Lightsail::GetDistributionLatestCacheResetResult> instance
+
+Returns the timestamp and status of the last cache reset of a specific
+Amazon Lightsail content delivery network (CDN) distribution.
+
+
+=head2 GetDistributionMetricData
+
+=over
+
+=item DistributionName => Str
+
+=item EndTime => Str
+
+=item MetricName => Str
+
+=item Period => Int
+
+=item StartTime => Str
+
+=item Statistics => ArrayRef[Str|Undef]
+
+=item Unit => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDistributionMetricData>
+
+Returns: a L<Paws::Lightsail::GetDistributionMetricDataResult> instance
+
+Returns the data points of a specific metric for an Amazon Lightsail
+content delivery network (CDN) distribution.
+
+Metrics report the utilization of your resources, and the error counts
+generated by them. Monitor and collect metric data regularly to
+maintain the reliability, availability, and performance of your
+resources.
+
+
+=head2 GetDistributions
+
+=over
+
+=item [DistributionName => Str]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::GetDistributions>
+
+Returns: a L<Paws::Lightsail::GetDistributionsResult> instance
+
+Returns information about one or more of your Amazon Lightsail content
+delivery network (CDN) distributions.
 
 
 =head2 GetDomain
@@ -2499,6 +3397,11 @@ Returns: a L<Paws::Lightsail::GetInstanceMetricDataResult> instance
 Returns the data points for the specified Amazon Lightsail instance
 metric, given an instance name.
 
+Metrics report the utilization of your resources, and the error counts
+generated by them. Monitor and collect metric data regularly to
+maintain the reliability, availability, and performance of your
+resources.
+
 
 =head2 GetInstancePortStates
 
@@ -2513,8 +3416,9 @@ Each argument is described in detail in: L<Paws::Lightsail::GetInstancePortState
 
 Returns: a L<Paws::Lightsail::GetInstancePortStatesResult> instance
 
-Returns the port states for a specific virtual private server, or
-I<instance>.
+Returns the firewall port states for a specific Amazon Lightsail
+instance, the IP addresses allowed to connect to the instance through
+the ports, and the protocol.
 
 
 =head2 GetInstances
@@ -2659,6 +3563,11 @@ Returns: a L<Paws::Lightsail::GetLoadBalancerMetricDataResult> instance
 Returns information about health metrics for your Lightsail load
 balancer.
 
+Metrics report the utilization of your resources, and the error counts
+generated by them. Monitor and collect metric data regularly to
+maintain the reliability, availability, and performance of your
+resources.
+
 
 =head2 GetLoadBalancers
 
@@ -2674,10 +3583,6 @@ Each argument is described in detail in: L<Paws::Lightsail::GetLoadBalancers>
 Returns: a L<Paws::Lightsail::GetLoadBalancersResult> instance
 
 Returns information about all load balancers in an account.
-
-If you are describing a long list of load balancers, you can paginate
-the output to make the list more manageable. You can use the pageToken
-and nextPageToken values to retrieve the next items in the list.
 
 
 =head2 GetLoadBalancerTlsCertificates
@@ -2951,6 +3856,11 @@ Returns: a L<Paws::Lightsail::GetRelationalDatabaseMetricDataResult> instance
 Returns the data points of the specified metric for a database in
 Amazon Lightsail.
 
+Metrics report the utilization of your resources, and the error counts
+generated by them. Monitor and collect metric data regularly to
+maintain the reliability, availability, and performance of your
+resources.
+
 
 =head2 GetRelationalDatabaseParameters
 
@@ -3040,7 +3950,7 @@ Each argument is described in detail in: L<Paws::Lightsail::GetStaticIp>
 
 Returns: a L<Paws::Lightsail::GetStaticIpResult> instance
 
-Returns information about a specific static IP.
+Returns information about an Amazon Lightsail static IP.
 
 
 =head2 GetStaticIps
@@ -3107,11 +4017,13 @@ Each argument is described in detail in: L<Paws::Lightsail::OpenInstancePublicPo
 
 Returns: a L<Paws::Lightsail::OpenInstancePublicPortsResult> instance
 
-Adds public ports to an Amazon Lightsail instance.
+Opens ports for a specific Amazon Lightsail instance, and specifies the
+IP addresses allowed to connect to the instance through the ports, and
+the protocol.
 
-The C<open instance public ports> operation supports tag-based access
-control via resource tags applied to the resource identified by
-C<instance name>. For more information, see the Lightsail Dev Guide
+The C<OpenInstancePublicPorts> action supports tag-based access control
+via resource tags applied to the resource identified by
+C<instanceName>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3129,6 +4041,58 @@ Returns: a L<Paws::Lightsail::PeerVpcResult> instance
 Tries to peer the Lightsail VPC with the user's default VPC.
 
 
+=head2 PutAlarm
+
+=over
+
+=item AlarmName => Str
+
+=item ComparisonOperator => Str
+
+=item EvaluationPeriods => Int
+
+=item MetricName => Str
+
+=item MonitoredResourceName => Str
+
+=item Threshold => Num
+
+=item [ContactProtocols => ArrayRef[Str|Undef]]
+
+=item [DatapointsToAlarm => Int]
+
+=item [NotificationEnabled => Bool]
+
+=item [NotificationTriggers => ArrayRef[Str|Undef]]
+
+=item [TreatMissingData => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::PutAlarm>
+
+Returns: a L<Paws::Lightsail::PutAlarmResult> instance
+
+Creates or updates an alarm, and associates it with the specified
+metric.
+
+An alarm is used to monitor a single metric for one of your resources.
+When a metric condition is met, the alarm can notify you by email, SMS
+text message, and a banner displayed on the Amazon Lightsail console.
+For more information, see Alarms in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+
+When this action creates an alarm, the alarm state is immediately set
+to C<INSUFFICIENT_DATA>. The alarm is then evaluated and its state is
+set appropriately. Any actions associated with the new state are then
+executed.
+
+When you update an existing alarm, its state is left unchanged, but the
+update completely overwrites the previous configuration of the alarm.
+The alarm is then evaluated with the updated configuration.
+
+
 =head2 PutInstancePublicPorts
 
 =over
@@ -3144,13 +4108,17 @@ Each argument is described in detail in: L<Paws::Lightsail::PutInstancePublicPor
 
 Returns: a L<Paws::Lightsail::PutInstancePublicPortsResult> instance
 
-Sets the specified open ports for an Amazon Lightsail instance, and
-closes all ports for every protocol not included in the current
-request.
+Opens ports for a specific Amazon Lightsail instance, and specifies the
+IP addresses allowed to connect to the instance through the ports, and
+the protocol. This action also closes all currently open ports that are
+not included in the request. Include all of the ports and the protocols
+you want to open in your C<PutInstancePublicPorts>request. Or use the
+C<OpenInstancePublicPorts> action to open ports without closing
+currently open ports.
 
-The C<put instance public ports> operation supports tag-based access
-control via resource tags applied to the resource identified by
-C<instance name>. For more information, see the Lightsail Dev Guide
+The C<PutInstancePublicPorts> action supports tag-based access control
+via resource tags applied to the resource identified by
+C<instanceName>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
@@ -3197,6 +4165,33 @@ Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
+=head2 RegisterContainerImage
+
+=over
+
+=item Digest => Str
+
+=item Label => Str
+
+=item ServiceName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::RegisterContainerImage>
+
+Returns: a L<Paws::Lightsail::RegisterContainerImageResult> instance
+
+Registers a container image to your Amazon Lightsail container service.
+
+This action is not required if you install and use the Lightsail
+Control (lightsailctl) plugin to push container images to your
+Lightsail container service. For more information, see Pushing and
+managing container images on your Amazon Lightsail container services
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-pushing-container-images)
+in the I<Lightsail Dev Guide>.
+
+
 =head2 ReleaseStaticIp
 
 =over
@@ -3211,6 +4206,82 @@ Each argument is described in detail in: L<Paws::Lightsail::ReleaseStaticIp>
 Returns: a L<Paws::Lightsail::ReleaseStaticIpResult> instance
 
 Deletes a specific static IP from your account.
+
+
+=head2 ResetDistributionCache
+
+=over
+
+=item [DistributionName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::ResetDistributionCache>
+
+Returns: a L<Paws::Lightsail::ResetDistributionCacheResult> instance
+
+Deletes currently cached content from your Amazon Lightsail content
+delivery network (CDN) distribution.
+
+After resetting the cache, the next time a content request is made,
+your distribution pulls, serves, and caches it from the origin.
+
+
+=head2 SendContactMethodVerification
+
+=over
+
+=item Protocol => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::SendContactMethodVerification>
+
+Returns: a L<Paws::Lightsail::SendContactMethodVerificationResult> instance
+
+Sends a verification request to an email contact method to ensure it's
+owned by the requester. SMS contact methods don't need to be verified.
+
+A contact method is used to send you notifications about your Amazon
+Lightsail resources. You can add one email address and one mobile phone
+number contact method in each AWS Region. However, SMS text messaging
+is not supported in some AWS Regions, and SMS text messages cannot be
+sent to some countries/regions. For more information, see Notifications
+in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-notifications).
+
+A verification request is sent to the contact method when you initially
+create it. Use this action to send another verification request if a
+previous verification request was deleted, or has expired.
+
+Notifications are not sent to an email contact method until after it is
+verified, and confirmed as valid.
+
+
+=head2 SetIpAddressType
+
+=over
+
+=item IpAddressType => Str
+
+=item ResourceName => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::SetIpAddressType>
+
+Returns: a L<Paws::Lightsail::SetIpAddressTypeResult> instance
+
+Sets the IP address type for an Amazon Lightsail resource.
+
+Use this action to enable dual-stack for a resource, which enables IPv4
+and IPv6 for the specified resource. Alternately, you can use this
+action to disable dual-stack, and enable IPv4 only.
 
 
 =head2 StartInstance
@@ -3347,6 +4418,33 @@ C<resource name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 
 
+=head2 TestAlarm
+
+=over
+
+=item AlarmName => Str
+
+=item State => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::TestAlarm>
+
+Returns: a L<Paws::Lightsail::TestAlarmResult> instance
+
+Tests an alarm by displaying a banner on the Amazon Lightsail console.
+If a notification trigger is configured for the specified alarm, the
+test also sends a notification to the notification protocol (C<Email>
+and/or C<SMS>) configured for the alarm.
+
+An alarm is used to monitor a single metric for one of your resources.
+When a metric condition is met, the alarm can notify you by email, SMS
+text message, and a banner displayed on the Amazon Lightsail console.
+For more information, see Alarms in Amazon Lightsail
+(https://lightsail.aws.amazon.com/ls/docs/en_us/articles/amazon-lightsail-alarms).
+
+
 =head2 UnpeerVpc
 
 
@@ -3385,6 +4483,92 @@ The C<untag resource> operation supports tag-based access control via
 request tags and resource tags applied to the resource identified by
 C<resource name>. For more information, see the Lightsail Dev Guide
 (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
+
+
+=head2 UpdateContainerService
+
+=over
+
+=item ServiceName => Str
+
+=item [IsDisabled => Bool]
+
+=item [Power => Str]
+
+=item [PublicDomainNames => L<Paws::Lightsail::ContainerServicePublicDomains>]
+
+=item [Scale => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::UpdateContainerService>
+
+Returns: a L<Paws::Lightsail::UpdateContainerServiceResult> instance
+
+Updates the configuration of your Amazon Lightsail container service,
+such as its power, scale, and public domain names.
+
+
+=head2 UpdateDistribution
+
+=over
+
+=item DistributionName => Str
+
+=item [CacheBehaviors => ArrayRef[L<Paws::Lightsail::CacheBehaviorPerPath>]]
+
+=item [CacheBehaviorSettings => L<Paws::Lightsail::CacheSettings>]
+
+=item [DefaultCacheBehavior => L<Paws::Lightsail::CacheBehavior>]
+
+=item [IsEnabled => Bool]
+
+=item [Origin => L<Paws::Lightsail::InputOrigin>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::UpdateDistribution>
+
+Returns: a L<Paws::Lightsail::UpdateDistributionResult> instance
+
+Updates an existing Amazon Lightsail content delivery network (CDN)
+distribution.
+
+Use this action to update the configuration of your existing
+distribution
+
+
+=head2 UpdateDistributionBundle
+
+=over
+
+=item [BundleId => Str]
+
+=item [DistributionName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lightsail::UpdateDistributionBundle>
+
+Returns: a L<Paws::Lightsail::UpdateDistributionBundleResult> instance
+
+Updates the bundle of your Amazon Lightsail content delivery network
+(CDN) distribution.
+
+A distribution bundle specifies the monthly network transfer quota and
+monthly cost of your dsitribution.
+
+Update your distribution's bundle if your distribution is going over
+its monthly network transfer quota and is incurring an overage fee.
+
+You can update your distribution's bundle only one time within your
+monthly AWS billing cycle. To determine if you can update your
+distribution's bundle, use the C<GetDistributions> action. The
+C<ableToUpdateBundle> parameter in the result will indicate whether you
+can currently update your distribution's bundle.
 
 
 =head2 UpdateDomainEntry

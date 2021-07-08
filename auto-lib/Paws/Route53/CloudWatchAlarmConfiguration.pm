@@ -58,7 +58,7 @@ For the metric that the CloudWatch alarm is associated with, a complex
 type that contains information about the dimensions for the metric. For
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
 Reference
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)
 in the I<Amazon CloudWatch User Guide>.
 
 
@@ -78,7 +78,7 @@ The name of the CloudWatch metric that the alarm is associated with.
 The namespace of the metric that the alarm is associated with. For more
 information, see Amazon CloudWatch Namespaces, Dimensions, and Metrics
 Reference
-(http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/CW_Support_For_AWS.html)
 in the I<Amazon CloudWatch User Guide>.
 
 

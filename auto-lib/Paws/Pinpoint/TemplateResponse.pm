@@ -49,7 +49,11 @@ your Amazon Pinpoint account.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the message template.
+The Amazon Resource Name (ARN) of the message template. This value
+isn't included in a TemplateResponse object. To retrieve the ARN of a
+template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or
+GetVoiceTemplate operation, depending on the type of template that you
+want to retrieve the ARN for.
 
 
 =head2 B<REQUIRED> CreationDate => Str
@@ -60,9 +64,11 @@ The date, in ISO 8601 format, when the message template was created.
 =head2 DefaultSubstitutions => Str
 
 The JSON object that specifies the default values that are used for
-message variables in the message template. This object is a set of
-key-value pairs. Each key defines a message variable in the template.
-The corresponding value defines the default value for that variable.
+message variables in the message template. This object isn't included
+in a TemplateResponse object. To retrieve this object for a template,
+use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or
+GetVoiceTemplate operation, depending on the type of template that you
+want to retrieve the object for.
 
 
 =head2 B<REQUIRED> LastModifiedDate => Str
@@ -73,14 +79,21 @@ modified.
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>
 
-A string-to-string map of key-value pairs that identifies the tags that
-are associated with the message template. Each tag consists of a
-required tag key and an associated tag value.
+A map of key-value pairs that identifies the tags that are associated
+with the message template. This object isn't included in a
+TemplateResponse object. To retrieve this object for a template, use
+the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or
+GetVoiceTemplate operation, depending on the type of template that you
+want to retrieve the object for.
 
 
 =head2 TemplateDescription => Str
 
-The custom description of the message template.
+The custom description of the message template. This value isn't
+included in a TemplateResponse object. To retrieve the description of a
+template, use the GetEmailTemplate, GetPushTemplate, GetSmsTemplate, or
+GetVoiceTemplate operation, depending on the type of template that you
+want to retrieve the description for.
 
 
 =head2 B<REQUIRED> TemplateName => Str

@@ -47,7 +47,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings for video outputs
+Settings related to video encoding of your output. The specific video
+settings depend on the video codec that you choose. When you work
+directly in your JSON job specification, include one instance of Video
+description (VideoDescription) per output.
 
 =head1 ATTRIBUTES
 
@@ -77,9 +80,10 @@ contains the group of settings related to video encoding. The settings
 in this group vary depending on the value that you choose for Video
 codec (Codec). For each codec enum that you choose, define the
 corresponding settings object. The following lists the codec enum,
-settings object pairs. * FRAME_CAPTURE, FrameCaptureSettings * H_264,
-H264Settings * H_265, H265Settings * MPEG2, Mpeg2Settings * PRORES,
-ProresSettings
+settings object pairs. * AV1, Av1Settings * AVC_INTRA, AvcIntraSettings
+* FRAME_CAPTURE, FrameCaptureSettings * H_264, H264Settings * H_265,
+H265Settings * MPEG2, Mpeg2Settings * PRORES, ProresSettings * VC3,
+Vc3Settings * VP8, Vp8Settings * VP9, Vp9Settings * XAVC, XavcSettings
 
 
 =head2 ColorMetadata => Str

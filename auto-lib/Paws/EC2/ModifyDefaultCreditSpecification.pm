@@ -70,7 +70,7 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 The instance family.
 
-Valid values are: C<"t2">, C<"t3">, C<"t3a">
+Valid values are: C<"t2">, C<"t3">, C<"t3a">, C<"t4g">
 
 
 =head1 SEE ALSO

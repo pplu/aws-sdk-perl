@@ -47,8 +47,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> Account => Str
 
-The AWS account ID of the customer who is permitted to create a
-matching partner event bus for this partner event source.
+The AWS account ID that is permitted to create a matching partner event
+bus for this partner event source.
 
 
 

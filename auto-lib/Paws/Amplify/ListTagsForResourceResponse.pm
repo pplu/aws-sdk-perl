@@ -17,7 +17,7 @@ Paws::Amplify::ListTagsForResourceResponse
 
 =head2 Tags => L<Paws::Amplify::TagMap>
 
-Tags result for response.
+A list of tags for the specified The Amazon Resource Name (ARN).
 
 
 =head2 _request_id => Str

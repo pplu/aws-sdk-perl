@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-Decimal parameter.
+A decimal parameter.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-A display name for the dataset.
+A display name for the decimal parameter.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Num]
 
-Values.
+The values for the decimal parameter.
 
 
 

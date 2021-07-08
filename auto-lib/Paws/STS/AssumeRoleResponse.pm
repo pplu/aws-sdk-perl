@@ -4,6 +4,7 @@ package Paws::STS::AssumeRoleResponse;
   has AssumedRoleUser => (is => 'ro', isa => 'Paws::STS::AssumedRoleUser');
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
   has PackedPolicySize => (is => 'ro', isa => 'Int');
+  has SourceIdentity => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -43,6 +44,28 @@ A percentage value that indicates the packed size of the session
 policies and session tags combined passed in the request. The request
 fails if the packed size is greater than 100 percent, which means the
 policies and tags exceeded the allowed space.
+
+
+=head2 SourceIdentity => Str
+
+The source identity specified by the principal that is calling the
+C<AssumeRole> operation.
+
+You can require users to specify a source identity when they assume a
+role. You do this by using the C<sts:SourceIdentity> condition key in a
+role trust policy. You can use source identity information in AWS
+CloudTrail logs to determine who took actions with a role. You can use
+the C<aws:SourceIdentity> condition key to further control access to
+AWS resources based on the value of source identity. For more
+information about using source identity, see Monitor and control
+actions taken with assumed roles
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html)
+in the I<IAM User Guide>.
+
+The regex used to validate this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@-
 
 
 =head2 _request_id => Str

@@ -98,13 +98,15 @@ resource.
 
 =item *
 
-C<resource-type> - The resource type (C<vpc> | C<vpn>).
+C<resource-type> - The resource type. Valid values are C<vpc> | C<vpn>
+| C<direct-connect-gateway> | C<peering> | C<connect>.
 
 =item *
 
-C<state> - The state of the attachment (C<available> | C<deleted> |
-C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
-C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
+C<state> - The state of the attachment. Valid values are C<available> |
+C<deleted> | C<deleting> | C<failed> | C<failing> |
+C<initiatingRequest> | C<modifying> | C<pendingAcceptance> | C<pending>
+| C<rollingBack> | C<rejected> | C<rejecting>.
 
 =item *
 

@@ -18,7 +18,7 @@ Paws::MediaConnect::UpdateFlowEntitlementResponse
 
 =head2 Entitlement => L<Paws::MediaConnect::Entitlement>
 
-
+The new configuration of the entitlement that you updated.
 
 
 =head2 FlowArn => Str

@@ -13,10 +13,12 @@ package Paws::MediaLive::HlsGroupSettings;
   has ConstantIv => (is => 'ro', isa => 'Str', request_name => 'constantIv', traits => ['NameInRequest']);
   has Destination => (is => 'ro', isa => 'Paws::MediaLive::OutputLocationRef', request_name => 'destination', traits => ['NameInRequest'], required => 1);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
+  has DiscontinuityTags => (is => 'ro', isa => 'Str', request_name => 'discontinuityTags', traits => ['NameInRequest']);
   has EncryptionType => (is => 'ro', isa => 'Str', request_name => 'encryptionType', traits => ['NameInRequest']);
   has HlsCdnSettings => (is => 'ro', isa => 'Paws::MediaLive::HlsCdnSettings', request_name => 'hlsCdnSettings', traits => ['NameInRequest']);
   has HlsId3SegmentTagging => (is => 'ro', isa => 'Str', request_name => 'hlsId3SegmentTagging', traits => ['NameInRequest']);
   has IFrameOnlyPlaylists => (is => 'ro', isa => 'Str', request_name => 'iFrameOnlyPlaylists', traits => ['NameInRequest']);
+  has IncompleteSegmentBehavior => (is => 'ro', isa => 'Str', request_name => 'incompleteSegmentBehavior', traits => ['NameInRequest']);
   has IndexNSegments => (is => 'ro', isa => 'Int', request_name => 'indexNSegments', traits => ['NameInRequest']);
   has InputLossAction => (is => 'ro', isa => 'Str', request_name => 'inputLossAction', traits => ['NameInRequest']);
   has IvInManifest => (is => 'ro', isa => 'Str', request_name => 'ivInManifest', traits => ['NameInRequest']);
@@ -166,6 +168,17 @@ and encryption keys (if enabled).
 Place segments in subdirectories.
 
 
+=head2 DiscontinuityTags => Str
+
+Specifies whether to insert EXT-X-DISCONTINUITY tags in the HLS child
+manifests for this output group. Typically, choose Insert because these
+tags are required in the manifest (according to the HLS specification)
+and serve an important purpose. Choose Never Insert only if the
+downstream system is doing real-time failover (without using the
+MediaLive automatic failover feature) and only if that downstream
+system has advised you to exclude the tags.
+
+
 =head2 EncryptionType => Str
 
 Encrypts the segments with the given encryption scheme. Exclude this
@@ -193,12 +206,23 @@ tag to indicate it is I-frame only, and one or more #EXT-X-BYTERANGE
 entries identifying the I-frame position. For example,
 
 
+=head2 IncompleteSegmentBehavior => Str
+
+Specifies whether to include the final (incomplete) segment in the
+media output when the pipeline stops producing output because of a
+channel stop, a channel pause or a loss of input to the pipeline. Auto
+means that MediaLive decides whether to include the final segment,
+depending on the channel class and the types of output groups. Suppress
+means to never include the incomplete segment. We recommend you choose
+Auto and let MediaLive control the behavior.
+
+
 =head2 IndexNSegments => Int
 
 Applies only if Mode field is LIVE. Specifies the maximum number of
 segments in the media manifest file. After this maximum, older segments
-are removed from the media manifest. This number must be less than or
-equal to the Keep Segments field.
+are removed from the media manifest. This number must be smaller than
+the number in the Keep Segments field.
 
 
 =head2 InputLossAction => Str
@@ -226,7 +250,13 @@ change every segment (to match the segment number). If this is set to
 =head2 KeepSegments => Int
 
 Applies only if Mode field is LIVE. Specifies the number of media
-segments (.ts files) to retain in the destination directory.
+segments to retain in the destination directory. This number should be
+bigger than indexNSegments (Num segments). We recommend (value = (2 x
+indexNsegments) + 1). If this "keep segments" number is too low, the
+following might happen: the player is still reading a media manifest
+file that lists this segment, but that segment has been removed from
+the destination directory (as directed by indexNSegments). This
+situation would result in a 404 HTTP error on the player.
 
 
 =head2 KeyFormat => Str
@@ -278,9 +308,11 @@ manifest on completion of the stream.
 
 =head2 OutputSelection => Str
 
-MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if
-applicable, and media manifests) for this output group. SEGMENTSONLY:
-Does not generate any manifests for this output group.
+MANIFESTS_AND_SEGMENTS: Generates manifests (master manifest, if
+applicable, and media manifests) for this output group.
+VARIANT_MANIFESTS_AND_SEGMENTS: Generates media manifests for this
+output group, but not a master manifest. SEGMENTS_ONLY: Does not
+generate any manifests for this output group.
 
 
 =head2 ProgramDateTime => Str
@@ -356,8 +388,8 @@ Provides an extra millisecond delta offset to fine tune the timestamps.
 
 =head2 TsFileMode => Str
 
-SEGMENTEDFILES: Emit the program as segments - multiple .ts media
-files. SINGLEFILE: Applies only if Mode field is VOD. Emit the program
+SEGMENTED_FILES: Emit the program as segments - multiple .ts media
+files. SINGLE_FILE: Applies only if Mode field is VOD. Emit the program
 as a single .ts media file. The media manifest includes
 
 this value is when sending the output to AWS Elemental MediaConvert,

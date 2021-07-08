@@ -36,6 +36,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::Rule o
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 A combination of ByteMatchSet, IPSet, and/or SqlInjectionMatchSet
 objects that identify the web requests that you want to allow, block,
 or count. For example, you might create a C<Rule> that includes the

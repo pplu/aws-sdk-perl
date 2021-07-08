@@ -44,7 +44,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the rule that you're removing tags from.
+The ARN of the EventBridge resource from which you are removing tags.
 
 
 

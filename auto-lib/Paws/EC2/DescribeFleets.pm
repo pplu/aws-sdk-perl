@@ -42,9 +42,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      FleetIds   => [ 'MyFleetIdentifier', ... ],    # OPTIONAL
-      MaxResults => 1,                               # OPTIONAL
-      NextToken  => 'MyString',                      # OPTIONAL
+      FleetIds   => [ 'MyFleetId', ... ],    # OPTIONAL
+      MaxResults => 1,                       # OPTIONAL
+      NextToken  => 'MyString',              # OPTIONAL
     );
 
     # Results:

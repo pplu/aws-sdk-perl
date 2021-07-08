@@ -55,10 +55,11 @@ C<CapAdd> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--cap-add> option
-to docker run (https://docs.docker.com/engine/reference/run/).
+to docker run
+(https://docs.docker.com/engine/reference/run/#security-configuration).
 
-If you are using tasks that use the Fargate launch type, the C<add>
-parameter is not supported.
+Tasks launched on AWS Fargate only support adding the C<SYS_PTRACE>
+kernel capability.
 
 Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
 "BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |
@@ -79,7 +80,8 @@ C<CapDrop> in the Create a container
 (https://docs.docker.com/engine/api/v1.35/#operation/ContainerCreate)
 section of the Docker Remote API
 (https://docs.docker.com/engine/api/v1.35/) and the C<--cap-drop>
-option to docker run (https://docs.docker.com/engine/reference/run/).
+option to docker run
+(https://docs.docker.com/engine/reference/run/#security-configuration).
 
 Valid values: C<"ALL" | "AUDIT_CONTROL" | "AUDIT_WRITE" |
 "BLOCK_SUSPEND" | "CHOWN" | "DAC_OVERRIDE" | "DAC_READ_SEARCH" |

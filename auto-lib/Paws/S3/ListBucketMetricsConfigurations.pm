@@ -3,6 +3,7 @@ package Paws::S3::ListBucketMetricsConfigurations;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContinuationToken => (is => 'ro', isa => 'Str', query_name => 'continuation-token', traits => ['ParamInQuery']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
 
 
   use MooseX::ClassAttribute;
@@ -35,8 +36,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $s3 = Paws->service('S3');
     my $ListBucketMetricsConfigurationsOutput =
       $s3->ListBucketMetricsConfigurations(
-      Bucket            => 'MyBucketName',
-      ContinuationToken => 'MyToken',        # OPTIONAL
+      Bucket              => 'MyBucketName',
+      ContinuationToken   => 'MyToken',        # OPTIONAL
+      ExpectedBucketOwner => 'MyAccountId',    # OPTIONAL
       );
 
     # Results:
@@ -69,6 +71,14 @@ The marker that is used to continue a metrics configuration listing
 that has been truncated. Use the NextContinuationToken from a
 previously truncated list response to continue the listing. The
 continuation token is an opaque value that Amazon S3 understands.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

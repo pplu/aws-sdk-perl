@@ -169,7 +169,7 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 If a C<launchType> is specified, the C<capacityProviderStrategy>
 parameter must be omitted.
 
-Valid values are: C<"EC2">, C<"FARGATE">
+Valid values are: C<"EC2">, C<"FARGATE">, C<"EXTERNAL">
 
 =head2 LoadBalancers => ArrayRef[L<Paws::ECS::LoadBalancer>]
 
@@ -181,7 +181,7 @@ Load Balancer or a Network Load Balancer.
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
-
+An object representing the network configuration for a task set.
 
 
 
@@ -196,7 +196,8 @@ default.
 
 =head2 Scale => L<Paws::ECS::Scale>
 
-
+A floating-point percentage of the desired number of tasks to place and
+keep running in the task set.
 
 
 

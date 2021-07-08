@@ -43,7 +43,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet. This fleet specified must match the
+A unique identifier for the fleet. This fleet specified must match the
 fleet referenced in the VPC peering connection record. You can use
 either the fleet ID or ARN value.
 

@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceGro
 
 =head1 DESCRIPTION
 
-The ARN of a resource, and its resource type.
+A structure that contains the ARN of a resource and its resource type.
 
 =head1 ATTRIBUTES
 

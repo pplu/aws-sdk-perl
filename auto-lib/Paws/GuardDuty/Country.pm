@@ -34,20 +34,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the country in which the remote IP address
-is located.
+Contains information about the country where the remote IP address is
+located.
 
 =head1 ATTRIBUTES
 
 
 =head2 CountryCode => Str
 
-Country code of the remote IP address.
+The country code of the remote IP address.
 
 
 =head2 CountryName => Str
 
-Country name of the remote IP address.
+The country name of the remote IP address.
 
 
 

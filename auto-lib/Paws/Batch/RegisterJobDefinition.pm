@@ -5,7 +5,10 @@ package Paws::Batch::RegisterJobDefinition;
   has JobDefinitionName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobDefinitionName', required => 1);
   has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', traits => ['NameInRequest'], request_name => 'nodeProperties');
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', traits => ['NameInRequest'], request_name => 'parameters');
+  has PlatformCapabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'platformCapabilities');
+  has PropagateTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'propagateTags');
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', traits => ['NameInRequest'], request_name => 'retryStrategy');
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagrisTagsMap', traits => ['NameInRequest'], request_name => 'tags');
   has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', traits => ['NameInRequest'], request_name => 'timeout');
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type', required => 1);
 
@@ -67,6 +70,9 @@ container-based jobs. If the job definition's C<type> parameter is
 C<container>, then you must specify either C<containerProperties> or
 C<nodeProperties>.
 
+If the job runs on Fargate resources, then you must not specify
+C<nodeProperties>; use only C<containerProperties>.
+
 
 
 =head2 B<REQUIRED> JobDefinitionName => Str
@@ -87,6 +93,9 @@ in the I<AWS Batch User Guide>. If the job definition's C<type>
 parameter is C<container>, then you must specify either
 C<containerProperties> or C<nodeProperties>.
 
+If the job runs on Fargate resources, then you must not specify
+C<nodeProperties>; use C<containerProperties> instead.
+
 
 
 =head2 Parameters => L<Paws::Batch::ParametersMap>
@@ -98,12 +107,42 @@ parameter defaults from the job definition.
 
 
 
+=head2 PlatformCapabilities => ArrayRef[Str|Undef]
+
+The platform capabilities required by the job definition. If no value
+is specified, it defaults to C<EC2>. To run the job on Fargate
+resources, specify C<FARGATE>.
+
+
+
+=head2 PropagateTags => Bool
+
+Specifies whether to propagate the tags from the job or job definition
+to the corresponding Amazon ECS task. If no value is specified, the
+tags are not propagated. Tags can only be propagated to the tasks
+during task creation. For tags with the same name, job tags are given
+priority over job definitions tags. If the total number of combined
+tags from the job and job definition is over 50, the job is moved to
+the C<FAILED> state.
+
+
+
 =head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
 
 The retry strategy to use for failed jobs that are submitted with this
-job definition. Any retry strategy that is specified during a SubmitJob
+job definition. Any retry strategy that's specified during a SubmitJob
 operation overrides the retry strategy defined here. If a job is
-terminated due to a timeout, it is not retried.
+terminated due to a timeout, it isn't retried.
+
+
+
+=head2 Tags => L<Paws::Batch::TagrisTagsMap>
+
+The tags that you apply to the job definition to help you categorize
+and organize your resources. Each tag consists of a key and an optional
+value. For more information, see Tagging AWS Resources
+(https://docs.aws.amazon.com/batch/latest/userguide/using-tags.html) in
+I<AWS Batch User Guide>.
 
 
 
@@ -111,19 +150,25 @@ terminated due to a timeout, it is not retried.
 
 The timeout configuration for jobs that are submitted with this job
 definition, after which AWS Batch terminates your jobs if they have not
-finished. If a job is terminated due to a timeout, it is not retried.
+finished. If a job is terminated due to a timeout, it isn't retried.
 The minimum value for the timeout is 60 seconds. Any timeout
-configuration that is specified during a SubmitJob operation overrides
+configuration that's specified during a SubmitJob operation overrides
 the timeout configuration defined here. For more information, see Job
 Timeouts
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
+(https://docs.aws.amazon.com/batch/latest/userguide/job_timeouts.html)
+in the I<AWS Batch User Guide>.
 
 
 
 =head2 B<REQUIRED> Type => Str
 
-The type of job definition.
+The type of job definition. For more information about multi-node
+parallel jobs, see Creating a multi-node parallel job definition
+(https://docs.aws.amazon.com/batch/latest/userguide/multi-node-job-def.html)
+in the I<AWS Batch User Guide>.
+
+If the job is run on Fargate resources, then C<multinode> isn't
+supported.
 
 Valid values are: C<"container">, C<"multinode">
 

@@ -70,7 +70,8 @@ Default: 20
 
 An optional parameter that lets you get information about all the
 operations that you submitted after a specified date and time. Specify
-the date and time in Coordinated Universal time (UTC).
+the date and time in Unix time format and Coordinated Universal time
+(UTC).
 
 
 

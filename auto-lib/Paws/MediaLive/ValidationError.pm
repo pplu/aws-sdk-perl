@@ -41,12 +41,12 @@ Placeholder documentation for ValidationError
 
 =head2 ElementPath => Str
 
-
+Path to the source of the error.
 
 
 =head2 ErrorMessage => Str
 
-
+The error message.
 
 
 

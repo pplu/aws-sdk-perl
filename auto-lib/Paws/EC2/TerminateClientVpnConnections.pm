@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $TerminateClientVpnConnectionsResult =
       $ec2->TerminateClientVpnConnections(
       ClientVpnEndpointId => 'MyClientVpnEndpointId',
-      ConnectionId        => 'MyString',                # OPTIONAL
+      ConnectionId        => 'MyVpnConnectionId',       # OPTIONAL
       DryRun              => 1,                         # OPTIONAL
       Username            => 'MyString',                # OPTIONAL
       );

@@ -8,6 +8,7 @@ package Paws::EC2::ExportImage;
   has ImageId => (is => 'ro', isa => 'Str', required => 1);
   has RoleName => (is => 'ro', isa => 'Str');
   has S3ExportLocation => (is => 'ro', isa => 'Paws::EC2::ExportTaskS3LocationRequest', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -40,10 +41,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         S3Bucket => 'MyString',
         S3Prefix => 'MyString',
       },
-      ClientToken => 'MyString',    # OPTIONAL
-      Description => 'MyString',    # OPTIONAL
-      DryRun      => 1,             # OPTIONAL
-      RoleName    => 'MyString',    # OPTIONAL
+      ClientToken       => 'MyString',    # OPTIONAL
+      Description       => 'MyString',    # OPTIONAL
+      DryRun            => 1,             # OPTIONAL
+      RoleName          => 'MyString',    # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -56,6 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $S3ExportLocation  = $ExportImageResult->S3ExportLocation;
     my $Status            = $ExportImageResult->Status;
     my $StatusMessage     = $ExportImageResult->StatusMessage;
+    my $Tags              = $ExportImageResult->Tags;
 
     # Returns a L<Paws::EC2::ExportImageResult> object.
 
@@ -74,7 +90,7 @@ Token to enable idempotency for export image requests.
 =head2 Description => Str
 
 A description of the image being exported. The maximum length is 255
-bytes.
+characters.
 
 
 
@@ -102,16 +118,22 @@ The ID of the image.
 =head2 RoleName => Str
 
 The name of the role that grants VM Import/Export permission to export
-images to your S3 bucket. If this parameter is not specified, the
-default role is named 'vmimport'.
+images to your Amazon S3 bucket. If this parameter is not specified,
+the default role is named 'vmimport'.
 
 
 
 =head2 B<REQUIRED> S3ExportLocation => L<Paws::EC2::ExportTaskS3LocationRequest>
 
-Information about the destination S3 bucket. The bucket must exist and
-grant WRITE and READ_ACP permissions to the AWS account
+Information about the destination Amazon S3 bucket. The bucket must
+exist and grant WRITE and READ_ACP permissions to the AWS account
 vm-import-export@amazon.com.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the export image task during creation.
 
 
 

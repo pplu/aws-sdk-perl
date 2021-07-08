@@ -89,7 +89,7 @@ Specifies the maximum number of objects to return.
 
 =head2 Name => Str
 
-Bucket name.
+The bucket name.
 
 
 

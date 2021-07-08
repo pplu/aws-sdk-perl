@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Arn                = $DescribeSimulationJobResponse->Arn;
     my $ClientRequestToken = $DescribeSimulationJobResponse->ClientRequestToken;
+    my $Compute            = $DescribeSimulationJobResponse->Compute;
     my $DataSources        = $DescribeSimulationJobResponse->DataSources;
     my $FailureBehavior    = $DescribeSimulationJobResponse->FailureBehavior;
     my $FailureCode        = $DescribeSimulationJobResponse->FailureCode;

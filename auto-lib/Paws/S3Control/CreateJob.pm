@@ -10,6 +10,7 @@ package Paws::S3Control::CreateJob;
   has Priority => (is => 'ro', isa => 'Int', required => 1);
   has Report => (is => 'ro', isa => 'Paws::S3Control::JobReport', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Tag]');
 
 
   use MooseX::ClassAttribute;
@@ -61,7 +62,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       Operation => {
         LambdaInvoke => {
-          FunctionArn => 'MyNonEmptyMaxLength1024String',    # min: 1, max: 1024
+          FunctionArn => 'MyFunctionArnString',    # min: 1, max: 1024; OPTIONAL
+        },    # OPTIONAL
+        S3DeleteObjectTagging => {
+
         },    # OPTIONAL
         S3InitiateRestoreObject => {
           ExpirationInDays => 1,         # OPTIONAL
@@ -111,6 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],    # OPTIONAL
+          BucketKeyEnabled        => 1,                        # OPTIONAL
           CannedAccessControlList => 'private'
           , # values: private, public-read, public-read-write, aws-exec-read, authenticated-read, bucket-owner-read, bucket-owner-full-control; OPTIONAL
           MetadataDirective       => 'COPY',   # values: COPY, REPLACE; OPTIONAL
@@ -136,8 +141,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },    # OPTIONAL
           NewObjectTagging => [
             {
-              Key   => 'MyNonEmptyMaxLength1024String',    # min: 1, max: 1024
-              Value => 'MyMaxLength1024String',            # max: 1024
+              Key   => 'MyTagKeyString',      # min: 1, max: 1024
+              Value => 'MyTagValueString',    # max: 1024
 
             },
             ...
@@ -157,11 +162,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           TargetResource => 'MyS3BucketArnString',  # min: 1, max: 128; OPTIONAL
           UnModifiedSinceConstraint => '1970-01-01T01:00:00',    # OPTIONAL
         },    # OPTIONAL
+        S3PutObjectLegalHold => {
+          LegalHold => {
+            Status => 'OFF',    # values: OFF, ON; OPTIONAL
+
+          },
+
+        },    # OPTIONAL
+        S3PutObjectRetention => {
+          Retention => {
+            Mode => 'COMPLIANCE',    # values: COMPLIANCE, GOVERNANCE; OPTIONAL
+            RetainUntilDate => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          BypassGovernanceRetention => 1,                # OPTIONAL
+        },    # OPTIONAL
         S3PutObjectTagging => {
           TagSet => [
             {
-              Key   => 'MyNonEmptyMaxLength1024String',    # min: 1, max: 1024
-              Value => 'MyMaxLength1024String',            # max: 1024
+              Key   => 'MyTagKeyString',      # min: 1, max: 1024
+              Value => 'MyTagValueString',    # max: 1024
 
             },
             ...
@@ -179,6 +198,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleArn              => 'MyIAMRoleArn',
       ConfirmationRequired => 1,                                 # OPTIONAL
       Description          => 'MyNonEmptyMaxLength256String',    # OPTIONAL
+      Tags                 => [
+        {
+          Key   => 'MyTagKeyString',      # min: 1, max: 1024
+          Value => 'MyTagValueString',    # max: 1024
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -194,7 +221,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 =head2 B<REQUIRED> AccountId => Str
 
-
+The AWS account ID that creates the job.
 
 
 
@@ -229,11 +256,11 @@ Configuration parameters for the manifest.
 
 =head2 B<REQUIRED> Operation => L<Paws::S3Control::JobOperation>
 
-The operation that you want this job to perform on each object listed
-in the manifest. For more information about the available operations,
-see Available Operations
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+The action that you want this job to perform on every object listed in
+the manifest. For more information about the available actions, see
+Operations
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-actions.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -252,9 +279,16 @@ Configuration parameters for the optional job-completion report.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) for the Identity and Access Management
-(IAM) Role that batch operations will use to execute this job's
-operation on each object in the manifest.
+The Amazon Resource Name (ARN) for the AWS Identity and Access
+Management (IAM) role that Batch Operations will use to run this job's
+action on every object in the manifest.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::S3Control::S3Tag>]
+
+A set of tags to associate with the S3 Batch Operations job. This is an
+optional parameter.
 
 
 

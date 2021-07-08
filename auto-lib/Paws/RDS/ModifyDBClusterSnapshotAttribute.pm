@@ -42,6 +42,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'ValuesToRemove'              => ['all']
       );
 
+    # Results:
+    my $DBClusterSnapshotAttributesResult =
+      $ModifyDBClusterSnapshotAttributeResult
+      ->DBClusterSnapshotAttributesResult;
+
+    # Returns a L<Paws::RDS::ModifyDBClusterSnapshotAttributeResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBClusterSnapshotAttribute>
@@ -53,8 +59,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 The name of the DB cluster snapshot attribute to modify.
 
-To manage authorization for other AWS accounts to copy or restore a
-manual DB cluster snapshot, set this value to C<restore>.
+To manage authorization for other Amazon Web Services accounts to copy
+or restore a manual DB cluster snapshot, set this value to C<restore>.
+
+To view the list of attributes available to modify, use the
+DescribeDBClusterSnapshotAttributes API action.
 
 
 
@@ -70,12 +79,13 @@ for.
 A list of DB cluster snapshot attributes to add to the attribute
 specified by C<AttributeName>.
 
-To authorize other AWS accounts to copy or restore a manual DB cluster
-snapshot, set this list to include one or more AWS account IDs, or
-C<all> to make the manual DB cluster snapshot restorable by any AWS
-account. Do not add the C<all> value for any manual DB cluster
-snapshots that contain private information that you don't want
-available to all AWS accounts.
+To authorize other Amazon Web Services accounts to copy or restore a
+manual DB cluster snapshot, set this list to include one or more Amazon
+Web Services account IDs, or C<all> to make the manual DB cluster
+snapshot restorable by any Amazon Web Services account. Do not add the
+C<all> value for any manual DB cluster snapshots that contain private
+information that you don't want available to all Amazon Web Services
+accounts.
 
 
 
@@ -84,13 +94,13 @@ available to all AWS accounts.
 A list of DB cluster snapshot attributes to remove from the attribute
 specified by C<AttributeName>.
 
-To remove authorization for other AWS accounts to copy or restore a
-manual DB cluster snapshot, set this list to include one or more AWS
-account identifiers, or C<all> to remove authorization for any AWS
-account to copy or restore the DB cluster snapshot. If you specify
-C<all>, an AWS account whose account ID is explicitly added to the
-C<restore> attribute can still copy or restore a manual DB cluster
-snapshot.
+To remove authorization for other Amazon Web Services accounts to copy
+or restore a manual DB cluster snapshot, set this list to include one
+or more Amazon Web Services account identifiers, or C<all> to remove
+authorization for any Amazon Web Services account to copy or restore
+the DB cluster snapshot. If you specify C<all>, an Amazon Web Services
+account whose account ID is explicitly added to the C<restore>
+attribute can still copy or restore a manual DB cluster snapshot.
 
 
 

@@ -59,8 +59,9 @@ new use cases instead of using C<DeveloperOnlyAttribute>.
 Specifies whether the attribute type is developer only. This attribute
 can only be modified by an administrator. Users will not be able to
 modify this attribute using their access token. For example,
-C<DeveloperOnlyAttribute> can be modified using the API but cannot be
-updated using the API.
+C<DeveloperOnlyAttribute> can be modified using
+AdminUpdateUserAttributes but cannot be updated using
+UpdateUserAttributes.
 
 
 =head2 Mutable => Bool

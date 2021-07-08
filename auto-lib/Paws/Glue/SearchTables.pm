@@ -5,6 +5,7 @@ package Paws::Glue::SearchTables;
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PropertyPredicate]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ResourceShareType => (is => 'ro', isa => 'Str');
   has SearchText => (is => 'ro', isa => 'Str');
   has SortCriteria => (is => 'ro', isa => 'ArrayRef[Paws::Glue::SortCriterion]');
 
@@ -43,10 +44,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      MaxResults   => 1,                  # OPTIONAL
-      NextToken    => 'MyToken',          # OPTIONAL
-      SearchText   => 'MyValueString',    # OPTIONAL
-      SortCriteria => [
+      MaxResults        => 1,                  # OPTIONAL
+      NextToken         => 'MyToken',          # OPTIONAL
+      ResourceShareType => 'FOREIGN',          # OPTIONAL
+      SearchText        => 'MyValueString',    # OPTIONAL
+      SortCriteria      => [
         {
           FieldName => 'MyValueString',    # max: 1024; OPTIONAL
           Sort      => 'ASC',              # values: ASC, DESC; OPTIONAL
@@ -69,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 
 =head2 CatalogId => Str
 
-A unique identifier, consisting of C< I<account_id>/datalake>.
+A unique identifier, consisting of C< I<account_id> >.
 
 
 
@@ -77,6 +79,16 @@ A unique identifier, consisting of C< I<account_id>/datalake>.
 
 A list of key-value pairs, and a comparator used to filter the search
 results. Returns all entities matching the predicate.
+
+The C<Comparator> member of the C<PropertyPredicate> struct is used
+only for time fields, and can be omitted for other field types. Also,
+when comparing string values, such as when C<Key=Name>, a fuzzy match
+algorithm is used. The C<Key> field (for example, the value of the
+C<Name> field) is split on certain punctuation characters, for example,
+-, :, #, etc. into tokens. Then each token is exact-match compared with
+the C<Value> member of C<PropertyPredicate>. For example, if
+C<Key=Name> and C<Value=link>, tables named C<customer-link> and
+C<xx-link-yy> are returned, but C<xxlinkyy> is not returned.
 
 
 
@@ -91,6 +103,27 @@ The maximum number of tables to return in a single response.
 A continuation token, included if this is a continuation call.
 
 
+
+=head2 ResourceShareType => Str
+
+Allows you to specify that you want to search the tables shared with
+your account. The allowable values are C<FOREIGN> or C<ALL>.
+
+=over
+
+=item *
+
+If set to C<FOREIGN>, will search the tables shared with your account.
+
+=item *
+
+If set to C<ALL>, will search the tables shared with your account, as
+well as the tables in yor local account.
+
+=back
+
+
+Valid values are: C<"FOREIGN">, C<"ALL">
 
 =head2 SearchText => Str
 

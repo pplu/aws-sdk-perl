@@ -39,6 +39,11 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::BatchPutScheduledUpdateGroupAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelInstanceRefresh {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::CancelInstanceRefresh', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CompleteLifecycleAction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::CompleteLifecycleAction', @_);
@@ -94,6 +99,11 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteWarmPool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DeleteWarmPool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAccountLimits {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAccountLimits', @_);
@@ -117,6 +127,11 @@ package Paws::AutoScaling;
   sub DescribeAutoScalingNotificationTypes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeAutoScalingNotificationTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInstanceRefreshes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeInstanceRefreshes', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLaunchConfigurations {
@@ -184,6 +199,11 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeTerminationPolicyTypes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeWarmPool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::DescribeWarmPool', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DetachInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::DetachInstances', @_);
@@ -224,6 +244,11 @@ package Paws::AutoScaling;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::ExitStandby', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPredictiveScalingForecast {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::GetPredictiveScalingForecast', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutLifecycleHook {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutLifecycleHook', @_);
@@ -242,6 +267,11 @@ package Paws::AutoScaling;
   sub PutScheduledUpdateGroupAction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutScheduledUpdateGroupAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutWarmPool {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::PutWarmPool', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RecordLifecycleActionHeartbeat {
@@ -267,6 +297,11 @@ package Paws::AutoScaling;
   sub SetInstanceProtection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AutoScaling::SetInstanceProtection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartInstanceRefresh {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AutoScaling::StartInstanceRefresh', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SuspendProcesses {
@@ -517,7 +552,7 @@ package Paws::AutoScaling;
   }
 
 
-  sub operations { qw/AttachInstances AttachLoadBalancers AttachLoadBalancerTargetGroups BatchDeleteScheduledAction BatchPutScheduledUpdateGroupAction CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeLoadBalancerTargetGroups DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DetachInstances DetachLoadBalancers DetachLoadBalancerTargetGroups DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
+  sub operations { qw/AttachInstances AttachLoadBalancers AttachLoadBalancerTargetGroups BatchDeleteScheduledAction BatchPutScheduledUpdateGroupAction CancelInstanceRefresh CompleteLifecycleAction CreateAutoScalingGroup CreateLaunchConfiguration CreateOrUpdateTags DeleteAutoScalingGroup DeleteLaunchConfiguration DeleteLifecycleHook DeleteNotificationConfiguration DeletePolicy DeleteScheduledAction DeleteTags DeleteWarmPool DescribeAccountLimits DescribeAdjustmentTypes DescribeAutoScalingGroups DescribeAutoScalingInstances DescribeAutoScalingNotificationTypes DescribeInstanceRefreshes DescribeLaunchConfigurations DescribeLifecycleHooks DescribeLifecycleHookTypes DescribeLoadBalancers DescribeLoadBalancerTargetGroups DescribeMetricCollectionTypes DescribeNotificationConfigurations DescribePolicies DescribeScalingActivities DescribeScalingProcessTypes DescribeScheduledActions DescribeTags DescribeTerminationPolicyTypes DescribeWarmPool DetachInstances DetachLoadBalancers DetachLoadBalancerTargetGroups DisableMetricsCollection EnableMetricsCollection EnterStandby ExecutePolicy ExitStandby GetPredictiveScalingForecast PutLifecycleHook PutNotificationConfiguration PutScalingPolicy PutScheduledUpdateGroupAction PutWarmPool RecordLifecycleActionHeartbeat ResumeProcesses SetDesiredCapacity SetInstanceHealth SetInstanceProtection StartInstanceRefresh SuspendProcesses TerminateInstanceInAutoScalingGroup UpdateAutoScalingGroup / }
 
 1;
 
@@ -549,13 +584,16 @@ Amazon EC2 Auto Scaling
 
 Amazon EC2 Auto Scaling is designed to automatically launch or
 terminate EC2 instances based on user-defined scaling policies,
-scheduled actions, and health checks. Use this service with AWS Auto
-Scaling, Amazon CloudWatch, and Elastic Load Balancing.
+scheduled actions, and health checks.
 
-For more information, including information about granting IAM users
-required permissions for Amazon EC2 Auto Scaling actions, see the
-Amazon EC2 Auto Scaling User Guide
+For more information about Amazon EC2 Auto Scaling, see the Amazon EC2
+Auto Scaling User Guide
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html).
+For information about granting IAM users required permissions for calls
+to Amazon EC2 Auto Scaling, see Granting IAM users required permissions
+for Amazon EC2 Auto Scaling resources
+(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/ec2-auto-scaling-api-permissions.html)
+in the I<Amazon EC2 Auto Scaling API Reference>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/autoscaling-2011-01-01>
 
@@ -590,8 +628,8 @@ group, the instances are also registered with the load balancer. If
 there are target groups attached to your Auto Scaling group, the
 instances are also registered with the target groups.
 
-For more information, see Attach EC2 Instances to Your Auto Scaling
-Group
+For more information, see Attach EC2 instances to your Auto Scaling
+group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-instance-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -611,19 +649,21 @@ Each argument is described in detail in: L<Paws::AutoScaling::AttachLoadBalancer
 
 Returns: a L<Paws::AutoScaling::AttachLoadBalancersResultType> instance
 
+To attach an Application Load Balancer, Network Load Balancer, or
+Gateway Load Balancer, use the AttachLoadBalancerTargetGroups API
+operation instead.
+
 Attaches one or more Classic Load Balancers to the specified Auto
-Scaling group.
+Scaling group. Amazon EC2 Auto Scaling registers the running instances
+with these Classic Load Balancers.
 
-To attach an Application Load Balancer or a Network Load Balancer
-instead, see AttachLoadBalancerTargetGroups.
+To describe the load balancers for an Auto Scaling group, call the
+DescribeLoadBalancers API. To detach the load balancer from the Auto
+Scaling group, call the DetachLoadBalancers API.
 
-To describe the load balancers for an Auto Scaling group, use
-DescribeLoadBalancers. To detach the load balancer from the Auto
-Scaling group, use DetachLoadBalancers.
-
-For more information, see Attaching a Load Balancer to Your Auto
-Scaling Group
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+For more information, see Elastic Load Balancing and Amazon EC2 Auto
+Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -644,15 +684,33 @@ Returns: a L<Paws::AutoScaling::AttachLoadBalancerTargetGroupsResultType> instan
 
 Attaches one or more target groups to the specified Auto Scaling group.
 
-To describe the target groups for an Auto Scaling group, use
-DescribeLoadBalancerTargetGroups. To detach the target group from the
-Auto Scaling group, use DetachLoadBalancerTargetGroups.
+This operation is used with the following load balancer types:
 
-With Application Load Balancers and Network Load Balancers, instances
-are registered as targets with a target group. With Classic Load
-Balancers, instances are registered with the load balancer. For more
-information, see Attaching a Load Balancer to Your Auto Scaling Group
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/attach-load-balancer-asg.html)
+=over
+
+=item *
+
+Application Load Balancer - Operates at the application layer (layer 7)
+and supports HTTP and HTTPS.
+
+=item *
+
+Network Load Balancer - Operates at the transport layer (layer 4) and
+supports TCP, TLS, and UDP.
+
+=item *
+
+Gateway Load Balancer - Operates at the network layer (layer 3).
+
+=back
+
+To describe the target groups for an Auto Scaling group, call the
+DescribeLoadBalancerTargetGroups API. To detach the target group from
+the Auto Scaling group, call the DetachLoadBalancerTargetGroups API.
+
+For more information, see Elastic Load Balancing and Amazon EC2 Auto
+Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -691,8 +749,30 @@ Each argument is described in detail in: L<Paws::AutoScaling::BatchPutScheduledU
 Returns: a L<Paws::AutoScaling::BatchPutScheduledUpdateGroupActionAnswer> instance
 
 Creates or updates one or more scheduled scaling actions for an Auto
-Scaling group. If you leave a parameter unspecified when updating a
-scheduled scaling action, the corresponding value remains unchanged.
+Scaling group.
+
+
+=head2 CancelInstanceRefresh
+
+=over
+
+=item AutoScalingGroupName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::CancelInstanceRefresh>
+
+Returns: a L<Paws::AutoScaling::CancelInstanceRefreshAnswer> instance
+
+Cancels an instance refresh operation in progress. Cancellation does
+not roll back any replacements that have already been completed, but it
+prevents new replacements from being started.
+
+This operation is part of the instance refresh feature
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+in Amazon EC2 Auto Scaling, which helps you update instances in your
+Auto Scaling group after you make configuration changes.
 
 
 =head2 CompleteLifecycleAction
@@ -754,7 +834,7 @@ action.>
 
 =back
 
-For more information, see Amazon EC2 Auto Scaling Lifecycle Hooks
+For more information, see Amazon EC2 Auto Scaling lifecycle hooks
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -770,6 +850,10 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =item MinSize => Int
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [CapacityRebalance => Bool]
+
+=item [Context => Str]
 
 =item [DefaultCooldown => Int]
 
@@ -814,14 +898,35 @@ Each argument is described in detail in: L<Paws::AutoScaling::CreateAutoScalingG
 
 Returns: nothing
 
+B<We strongly recommend using a launch template when calling this
+operation to ensure full functionality for Amazon EC2 Auto Scaling and
+Amazon EC2.>
+
 Creates an Auto Scaling group with the specified name and attributes.
 
 If you exceed your maximum limit of Auto Scaling groups, the call
-fails. For information about viewing this limit, see
-DescribeAccountLimits. For information about updating this limit, see
-Amazon EC2 Auto Scaling Service Quotas
+fails. To query this limit, call the DescribeAccountLimits API. For
+information about updating this limit, see Amazon EC2 Auto Scaling
+service quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+For introductory exercises for creating an Auto Scaling group, see
+Getting started with Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/GettingStartedTutorial.html)
+and Tutorial: Set up a scaled and load-balanced application
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-register-lbs-with-asg.html)
+in the I<Amazon EC2 Auto Scaling User Guide>. For more information, see
+Auto Scaling groups
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroup.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+Every Auto Scaling group has three size parameters (C<DesiredCapacity>,
+C<MaxSize>, and C<MinSize>). Usually, you set these sizes based on a
+specific number of instances. However, if you configure a mixed
+instances policy that defines weights for the instance types, you must
+specify these sizes with the same units that you use for weighting
+instances.
 
 
 =head2 CreateLaunchConfiguration
@@ -854,6 +959,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [KeyName => Str]
 
+=item [MetadataOptions => L<Paws::AutoScaling::InstanceMetadataOptions>]
+
 =item [PlacementTenancy => Str]
 
 =item [RamdiskId => Str]
@@ -874,13 +981,13 @@ Returns: nothing
 Creates a launch configuration.
 
 If you exceed your maximum limit of launch configurations, the call
-fails. For information about viewing this limit, see
-DescribeAccountLimits. For information about updating this limit, see
-Amazon EC2 Auto Scaling Service Quotas
+fails. To query this limit, call the DescribeAccountLimits API. For
+information about updating this limit, see Amazon EC2 Auto Scaling
+service quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-For more information, see Launch Configurations
+For more information, see Launch configurations
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/LaunchConfiguration.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -904,7 +1011,7 @@ When you specify a tag with a key that already exists, the operation
 overwrites the previous tag definition, and you do not get an error
 message.
 
-For more information, see Tagging Auto Scaling Groups and Instances
+For more information, see Tagging Auto Scaling groups and instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -934,13 +1041,13 @@ underlying alarm actions, and any alarm that no longer has an
 associated action.
 
 To remove instances from the Auto Scaling group before deleting it,
-call DetachInstances with the list of instances and the option to
-decrement the desired capacity. This ensures that Amazon EC2 Auto
+call the DetachInstances API with the list of instances and the option
+to decrement the desired capacity. This ensures that Amazon EC2 Auto
 Scaling does not launch replacement instances.
 
 To terminate all instances before deleting the Auto Scaling group, call
-UpdateAutoScalingGroup and set the minimum size and desired capacity of
-the Auto Scaling group to zero.
+the UpdateAutoScalingGroup API and set the minimum size and desired
+capacity of the Auto Scaling group to zero.
 
 
 =head2 DeleteLaunchConfiguration
@@ -1024,7 +1131,7 @@ Deleting either a step scaling policy or a simple scaling policy
 deletes the underlying alarm action, but does not delete the alarm,
 even if it no longer has an associated action.
 
-For more information, see Deleting a Scaling Policy
+For more information, see Deleting a scaling policy
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/deleting-scaling-policy.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1063,6 +1170,28 @@ Returns: nothing
 Deletes the specified tags.
 
 
+=head2 DeleteWarmPool
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item [ForceDelete => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::DeleteWarmPool>
+
+Returns: a L<Paws::AutoScaling::DeleteWarmPoolAnswer> instance
+
+Deletes the warm pool for the specified Auto Scaling group.
+
+For more information, see Warm pools for Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
 =head2 DescribeAccountLimits
 
 =over
@@ -1077,10 +1206,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAccountLim
 Returns: a L<Paws::AutoScaling::DescribeAccountLimitsAnswer> instance
 
 Describes the current Amazon EC2 Auto Scaling resource quotas for your
-AWS account.
+account.
 
-For information about requesting an increase, see Amazon EC2 Auto
-Scaling Service Quotas
+When you establish an account, the account has initial quotas on the
+maximum number of Auto Scaling groups and launch configurations that
+you can create in a given Region. For more information, see Amazon EC2
+Auto Scaling service quotas
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-account-limits.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1098,7 +1229,27 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAdjustment
 
 Returns: a L<Paws::AutoScaling::DescribeAdjustmentTypesAnswer> instance
 
-Describes the policy adjustment types for use with PutScalingPolicy.
+Describes the available adjustment types for step scaling and simple
+scaling policies.
+
+The following adjustment types are supported:
+
+=over
+
+=item *
+
+C<ChangeInCapacity>
+
+=item *
+
+C<ExactCapacity>
+
+=item *
+
+C<PercentChangeInCapacity>
+
+=back
+
 
 
 =head2 DescribeAutoScalingGroups
@@ -1118,7 +1269,12 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalin
 
 Returns: a L<Paws::AutoScaling::AutoScalingGroupsType> instance
 
-Describes one or more Auto Scaling groups.
+Gets information about the Auto Scaling groups in the account and
+Region.
+
+This operation returns information about instances in Auto Scaling
+groups. To retrieve information about the instances in a warm pool, you
+must call the DescribeWarmPool API.
 
 
 =head2 DescribeAutoScalingInstances
@@ -1138,7 +1294,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeAutoScalin
 
 Returns: a L<Paws::AutoScaling::AutoScalingInstancesType> instance
 
-Describes one or more Auto Scaling instances.
+Gets information about the Auto Scaling instances in the account and
+Region.
 
 
 =head2 DescribeAutoScalingNotificationTypes
@@ -1158,6 +1315,75 @@ Describes the notification types that are supported by Amazon EC2 Auto
 Scaling.
 
 
+=head2 DescribeInstanceRefreshes
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item [InstanceRefreshIds => ArrayRef[Str|Undef]]
+
+=item [MaxRecords => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeInstanceRefreshes>
+
+Returns: a L<Paws::AutoScaling::DescribeInstanceRefreshesAnswer> instance
+
+Gets information about the instance refreshes for the specified Auto
+Scaling group.
+
+This operation is part of the instance refresh feature
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+in Amazon EC2 Auto Scaling, which helps you update instances in your
+Auto Scaling group after you make configuration changes.
+
+To help you determine the status of an instance refresh, this operation
+returns information about the instance refreshes you previously
+initiated, including their status, end time, the percentage of the
+instance refresh that is complete, and the number of instances
+remaining to update before the instance refresh is complete.
+
+The following are the possible statuses:
+
+=over
+
+=item *
+
+C<Pending> - The request was created, but the operation has not
+started.
+
+=item *
+
+C<InProgress> - The operation is in progress.
+
+=item *
+
+C<Successful> - The operation completed successfully.
+
+=item *
+
+C<Failed> - The operation failed to complete. You can troubleshoot
+using the status reason and the scaling activities.
+
+=item *
+
+C<Cancelling> - An ongoing operation is being cancelled. Cancellation
+does not roll back any replacements that have already been completed,
+but it prevents new replacements from being started.
+
+=item *
+
+C<Cancelled> - The operation is cancelled.
+
+=back
+
+
+
 =head2 DescribeLaunchConfigurations
 
 =over
@@ -1175,7 +1401,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLaunchConf
 
 Returns: a L<Paws::AutoScaling::LaunchConfigurationsType> instance
 
-Describes one or more launch configurations.
+Gets information about the launch configurations in the account and
+Region.
 
 
 =head2 DescribeLifecycleHooks
@@ -1193,7 +1420,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLifecycleH
 
 Returns: a L<Paws::AutoScaling::DescribeLifecycleHooksAnswer> instance
 
-Describes the lifecycle hooks for the specified Auto Scaling group.
+Gets information about the lifecycle hooks for the specified Auto
+Scaling group.
 
 
 =head2 DescribeLifecycleHookTypes
@@ -1217,11 +1445,11 @@ The following hook types are supported:
 
 =item *
 
-autoscaling:EC2_INSTANCE_LAUNCHING
+C<autoscaling:EC2_INSTANCE_LAUNCHING>
 
 =item *
 
-autoscaling:EC2_INSTANCE_TERMINATING
+C<autoscaling:EC2_INSTANCE_TERMINATING>
 
 =back
 
@@ -1244,11 +1472,38 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLoadBalanc
 
 Returns: a L<Paws::AutoScaling::DescribeLoadBalancersResponse> instance
 
-Describes the load balancers for the specified Auto Scaling group.
+Gets information about the load balancers for the specified Auto
+Scaling group.
 
 This operation describes only Classic Load Balancers. If you have
-Application Load Balancers or Network Load Balancers, use
-DescribeLoadBalancerTargetGroups instead.
+Application Load Balancers, Network Load Balancers, or Gateway Load
+Balancers, use the DescribeLoadBalancerTargetGroups API instead.
+
+To determine the availability of registered instances, use the C<State>
+element in the response. When you attach a load balancer to an Auto
+Scaling group, the initial C<State> value is C<Adding>. The state
+transitions to C<Added> after all Auto Scaling instances are registered
+with the load balancer. If Elastic Load Balancing health checks are
+enabled for the Auto Scaling group, the state transitions to
+C<InService> after at least one Auto Scaling instance passes the health
+check. When the load balancer is in the C<InService> state, Amazon EC2
+Auto Scaling can terminate and replace any instances that are reported
+as unhealthy. If no registered instances pass the health checks, the
+load balancer doesn't enter the C<InService> state.
+
+Load balancers also have an C<InService> state if you attach them in
+the CreateAutoScalingGroup API call. If your load balancer state is
+C<InService>, but it is not working properly, check the scaling
+activities by calling DescribeScalingActivities and take any corrective
+actions necessary.
+
+For help with failed health checks, see Troubleshooting Amazon EC2 Auto
+Scaling: Health checks
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ts-as-healthchecks.html)
+in the I<Amazon EC2 Auto Scaling User Guide>. For more information, see
+Elastic Load Balancing and Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DescribeLoadBalancerTargetGroups
@@ -1268,7 +1523,34 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeLoadBalanc
 
 Returns: a L<Paws::AutoScaling::DescribeLoadBalancerTargetGroupsResponse> instance
 
-Describes the target groups for the specified Auto Scaling group.
+Gets information about the load balancer target groups for the
+specified Auto Scaling group.
+
+To determine the availability of registered instances, use the C<State>
+element in the response. When you attach a target group to an Auto
+Scaling group, the initial C<State> value is C<Adding>. The state
+transitions to C<Added> after all Auto Scaling instances are registered
+with the target group. If Elastic Load Balancing health checks are
+enabled for the Auto Scaling group, the state transitions to
+C<InService> after at least one Auto Scaling instance passes the health
+check. When the target group is in the C<InService> state, Amazon EC2
+Auto Scaling can terminate and replace any instances that are reported
+as unhealthy. If no registered instances pass the health checks, the
+target group doesn't enter the C<InService> state.
+
+Target groups also have an C<InService> state if you attach them in the
+CreateAutoScalingGroup API call. If your target group state is
+C<InService>, but it is not working properly, check the scaling
+activities by calling DescribeScalingActivities and take any corrective
+actions necessary.
+
+For help with failed health checks, see Troubleshooting Amazon EC2 Auto
+Scaling: Health checks
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ts-as-healthchecks.html)
+in the I<Amazon EC2 Auto Scaling User Guide>. For more information, see
+Elastic Load Balancing and Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-load-balancer.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DescribeMetricCollectionTypes
@@ -1287,8 +1569,8 @@ Returns: a L<Paws::AutoScaling::DescribeMetricCollectionTypesAnswer> instance
 Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 
 The C<GroupStandbyInstances> metric is not returned by default. You
-must explicitly request this metric when calling
-EnableMetricsCollection.
+must explicitly request this metric when calling the
+EnableMetricsCollection API.
 
 
 =head2 DescribeNotificationConfigurations
@@ -1308,8 +1590,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeNotificati
 
 Returns: a L<Paws::AutoScaling::DescribeNotificationConfigurationsAnswer> instance
 
-Describes the notification actions associated with the specified Auto
-Scaling group.
+Gets information about the Amazon SNS notifications that are configured
+for one or more Auto Scaling groups.
 
 
 =head2 DescribePolicies
@@ -1333,7 +1615,7 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribePolicies>
 
 Returns: a L<Paws::AutoScaling::PoliciesType> instance
 
-Describes the policies for the specified Auto Scaling group.
+Gets information about the scaling policies in the account and Region.
 
 
 =head2 DescribeScalingActivities
@@ -1343,6 +1625,8 @@ Describes the policies for the specified Auto Scaling group.
 =item [ActivityIds => ArrayRef[Str|Undef]]
 
 =item [AutoScalingGroupName => Str]
+
+=item [IncludeDeletedGroups => Bool]
 
 =item [MaxRecords => Int]
 
@@ -1355,8 +1639,23 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingAct
 
 Returns: a L<Paws::AutoScaling::ActivitiesType> instance
 
-Describes one or more scaling activities for the specified Auto Scaling
-group.
+Gets information about the scaling activities in the account and
+Region.
+
+When scaling events occur, you see a record of the scaling activity in
+the scaling activities. For more information, see Verifying a scaling
+activity for an Auto Scaling group
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-verify-scaling-activity.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+If the scaling event succeeds, the value of the C<StatusCode> element
+in the response is C<Successful>. If an attempt to launch instances
+failed, the C<StatusCode> value is C<Failed> or C<Cancelled> and the
+C<StatusMessage> element in the response indicates the cause of the
+failure. For help interpreting the C<StatusMessage>, see
+Troubleshooting Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/CHAP_Troubleshooting.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 DescribeScalingProcessTypes
@@ -1372,8 +1671,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScalingPro
 
 Returns: a L<Paws::AutoScaling::ProcessesType> instance
 
-Describes the scaling process types for use with ResumeProcesses and
-SuspendProcesses.
+Describes the scaling process types for use with the ResumeProcesses
+and SuspendProcesses APIs.
 
 
 =head2 DescribeScheduledActions
@@ -1399,9 +1698,11 @@ Each argument is described in detail in: L<Paws::AutoScaling::DescribeScheduledA
 
 Returns: a L<Paws::AutoScaling::ScheduledActionsType> instance
 
-Describes the actions scheduled for your Auto Scaling group that
-haven't run or that have not reached their end time. To describe the
-actions that have already run, use DescribeScalingActivities.
+Gets information about the scheduled actions that haven't run or that
+have not reached their end time.
+
+To describe the scaling activities for scheduled actions that have
+already run, call the DescribeScalingActivities API.
 
 
 =head2 DescribeTags
@@ -1432,6 +1733,10 @@ You can also specify multiple filters. The result includes information
 for a particular tag only if it matches all the filters. If there's no
 match, no special message is returned.
 
+For more information, see Tagging Auto Scaling groups and instances
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
 
 =head2 DescribeTerminationPolicyTypes
 
@@ -1449,9 +1754,33 @@ Returns: a L<Paws::AutoScaling::DescribeTerminationPolicyTypesAnswer> instance
 Describes the termination policies supported by Amazon EC2 Auto
 Scaling.
 
-For more information, see Controlling Which Auto Scaling Instances
-Terminate During Scale In
+For more information, see Controlling which Auto Scaling instances
+terminate during scale in
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+=head2 DescribeWarmPool
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item [MaxRecords => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::DescribeWarmPool>
+
+Returns: a L<Paws::AutoScaling::DescribeWarmPoolAnswer> instance
+
+Gets information about a warm pool and its instances.
+
+For more information, see Warm pools for Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1486,8 +1815,8 @@ the instances are deregistered from the load balancer. If there are
 target groups attached to the Auto Scaling group, the instances are
 deregistered from the target groups.
 
-For more information, see Detach EC2 Instances from Your Auto Scaling
-Group
+For more information, see Detach EC2 instances from your Auto Scaling
+group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/detach-instance-asg.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1511,13 +1840,13 @@ Detaches one or more Classic Load Balancers from the specified Auto
 Scaling group.
 
 This operation detaches only Classic Load Balancers. If you have
-Application Load Balancers or Network Load Balancers, use
-DetachLoadBalancerTargetGroups instead.
+Application Load Balancers, Network Load Balancers, or Gateway Load
+Balancers, use the DetachLoadBalancerTargetGroups API instead.
 
 When you detach a load balancer, it enters the C<Removing> state while
 deregistering the instances in the group. When all instances are
 deregistered, then you can no longer describe the load balancer using
-DescribeLoadBalancers. The instances remain running.
+the DescribeLoadBalancers API call. The instances remain running.
 
 
 =head2 DetachLoadBalancerTargetGroups
@@ -1575,7 +1904,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::EnableMetricsColle
 Returns: nothing
 
 Enables group metrics for the specified Auto Scaling group. For more
-information, see Monitoring Your Auto Scaling Groups and Instances
+information, see Monitoring CloudWatch metrics for your Auto Scaling
+groups and instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-monitoring.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1608,8 +1938,8 @@ If you choose not to decrement the desired capacity of the Auto Scaling
 group, the Auto Scaling group launches new instances to replace the
 instances on standby.
 
-For more information, see Temporarily Removing Instances from Your Auto
-Scaling Group
+For more information, see Temporarily removing instances from your Auto
+Scaling group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1635,7 +1965,8 @@ Each argument is described in detail in: L<Paws::AutoScaling::ExecutePolicy>
 
 Returns: nothing
 
-Executes the specified policy.
+Executes the specified policy. This can be useful for testing the
+design of your scaling policy.
 
 
 =head2 ExitStandby
@@ -1658,9 +1989,46 @@ Moves the specified instances out of the standby state.
 After you put the instances back in service, the desired capacity is
 incremented.
 
-For more information, see Temporarily Removing Instances from Your Auto
-Scaling Group
+For more information, see Temporarily removing instances from your Auto
+Scaling group
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-enter-exit-standby.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+=head2 GetPredictiveScalingForecast
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item EndTime => Str
+
+=item PolicyName => Str
+
+=item StartTime => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::GetPredictiveScalingForecast>
+
+Returns: a L<Paws::AutoScaling::GetPredictiveScalingForecastAnswer> instance
+
+Retrieves the forecast data for a predictive scaling policy.
+
+Load forecasts are predictions of the hourly load values using
+historical load data from CloudWatch and an analysis of historical
+trends. Capacity forecasts are represented as predicted values for the
+minimum capacity that is needed on an hourly basis, based on the hourly
+load forecast.
+
+A minimum of 24 hours of data is required to create the initial
+forecasts. However, having a full 14 days of historical data results in
+more accurate forecasts.
+
+For more information, see Predictive scaling for Amazon EC2 Auto
+Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1724,25 +2092,26 @@ instances launch or terminate.>
 =item 4.
 
 If you need more time, record the lifecycle action heartbeat to keep
-the instance in a pending state using RecordLifecycleActionHeartbeat.
+the instance in a pending state using the
+RecordLifecycleActionHeartbeat API call.
 
 =item 5.
 
 If you finish before the timeout period ends, complete the lifecycle
-action using CompleteLifecycleAction.
+action using the CompleteLifecycleAction API call.
 
 =back
 
-For more information, see Amazon EC2 Auto Scaling Lifecycle Hooks
+For more information, see Amazon EC2 Auto Scaling lifecycle hooks
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 If you exceed your maximum limit of lifecycle hooks, which by default
 is 50 per Auto Scaling group, the call fails.
 
-You can view the lifecycle hooks for an Auto Scaling group using
-DescribeLifecycleHooks. If you are no longer using a lifecycle hook,
-you can delete it using DeleteLifecycleHook.
+You can view the lifecycle hooks for an Auto Scaling group using the
+DescribeLifecycleHooks API call. If you are no longer using a lifecycle
+hook, you can delete it by calling the DeleteLifecycleHook API.
 
 
 =head2 PutNotificationConfiguration
@@ -1768,10 +2137,13 @@ delivered to an endpoint such as a web server or an email address.
 
 This configuration overwrites any existing configuration.
 
-For more information, see Getting Amazon SNS Notifications When Your
-Auto Scaling Group Scales
+For more information, see Getting Amazon SNS notifications when your
+Auto Scaling group scales
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/ASGettingNotifications.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+If you exceed your maximum limit of SNS topics, which is 10 per Auto
+Scaling group, the call fails.
 
 
 =head2 PutScalingPolicy
@@ -1798,6 +2170,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [PolicyType => Str]
 
+=item [PredictiveScalingConfiguration => L<Paws::AutoScaling::PredictiveScalingConfiguration>]
+
 =item [ScalingAdjustment => Int]
 
 =item [StepAdjustments => ArrayRef[L<Paws::AutoScaling::StepAdjustment>]]
@@ -1811,12 +2185,26 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScalingPolicy>
 
 Returns: a L<Paws::AutoScaling::PolicyARNType> instance
 
-Creates or updates a scaling policy for an Auto Scaling group.
+Creates or updates a scaling policy for an Auto Scaling group. Scaling
+policies are used to scale an Auto Scaling group based on configurable
+metrics. If no policies are defined, the dynamic scaling and predictive
+scaling features are not used.
 
-For more information about using scaling policies to scale your Auto
-Scaling group automatically, see Dynamic Scaling
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scale-based-on-demand.html)
+For more information about using dynamic scaling, see Target tracking
+scaling policies
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-target-tracking.html)
+and Step and simple scaling policies
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+For more information about using predictive scaling, see Predictive
+scaling for Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-predictive-scaling.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+You can view the scaling policies for an Auto Scaling group using the
+DescribePolicies API call. If you are no longer using a scaling policy,
+you can delete it by calling the DeletePolicy API.
 
 
 =head2 PutScheduledUpdateGroupAction
@@ -1841,6 +2229,8 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =item [Time => Str]
 
+=item [TimeZone => Str]
+
 
 =back
 
@@ -1849,12 +2239,54 @@ Each argument is described in detail in: L<Paws::AutoScaling::PutScheduledUpdate
 Returns: nothing
 
 Creates or updates a scheduled scaling action for an Auto Scaling
-group. If you leave a parameter unspecified when updating a scheduled
-scaling action, the corresponding value remains unchanged.
+group.
 
-For more information, see Scheduled Scaling
+For more information, see Scheduled scaling
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/schedule_time.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+You can view the scheduled actions for an Auto Scaling group using the
+DescribeScheduledActions API call. If you are no longer using a
+scheduled action, you can delete it by calling the
+DeleteScheduledAction API.
+
+
+=head2 PutWarmPool
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item [MaxGroupPreparedCapacity => Int]
+
+=item [MinSize => Int]
+
+=item [PoolState => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::PutWarmPool>
+
+Returns: a L<Paws::AutoScaling::PutWarmPoolAnswer> instance
+
+Creates or updates a warm pool for the specified Auto Scaling group. A
+warm pool is a pool of pre-initialized EC2 instances that sits
+alongside the Auto Scaling group. Whenever your application needs to
+scale out, the Auto Scaling group can draw on the warm pool to meet its
+new desired capacity. For more information and example configurations,
+see Warm pools for Amazon EC2 Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+This operation must be called from the Region in which the Auto Scaling
+group was created. This operation cannot be called on an Auto Scaling
+group that has a mixed instances policy or a launch template or launch
+configuration that requests Spot Instances.
+
+You can view the instances in the warm pool using the DescribeWarmPool
+API call. If you are no longer using a warm pool, you can delete it by
+calling the DeleteWarmPool API.
 
 
 =head2 RecordLifecycleActionHeartbeat
@@ -1878,7 +2310,7 @@ Returns: a L<Paws::AutoScaling::RecordLifecycleActionHeartbeatAnswer> instance
 
 Records a heartbeat for the lifecycle action associated with the
 specified token or instance. This extends the timeout by the length of
-time defined using PutLifecycleHook.
+time defined using the PutLifecycleHook API call.
 
 This step is a part of the procedure for adding a lifecycle hook to an
 Auto Scaling group:
@@ -1915,8 +2347,8 @@ action.
 
 =back
 
-For more information, see Auto Scaling Lifecycle
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+For more information, see Amazon EC2 Auto Scaling lifecycle hooks
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/lifecycle-hooks.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1935,10 +2367,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::ResumeProcesses>
 
 Returns: nothing
 
-Resumes the specified suspended automatic scaling processes, or all
+Resumes the specified suspended auto scaling processes, or all
 suspended process, for the specified Auto Scaling group.
 
-For more information, see Suspending and Resuming Scaling Processes
+For more information, see Suspending and resuming scaling processes
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -1962,9 +2394,13 @@ Returns: nothing
 
 Sets the size of the specified Auto Scaling group.
 
-For more information about desired capacity, see What Is Amazon EC2
-Auto Scaling?
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/what-is-amazon-ec2-auto-scaling.html)
+If a scale-in activity occurs as a result of a new C<DesiredCapacity>
+value that is lower than the current size of the group, the Auto
+Scaling group uses its termination policy to determine which instances
+to terminate.
+
+For more information, see Manual scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-manual-scaling.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -1987,7 +2423,7 @@ Returns: nothing
 
 Sets the health status of the specified instance.
 
-For more information, see Health Checks for Auto Scaling Instances
+For more information, see Health checks for Auto Scaling instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -2010,12 +2446,50 @@ Each argument is described in detail in: L<Paws::AutoScaling::SetInstanceProtect
 Returns: a L<Paws::AutoScaling::SetInstanceProtectionAnswer> instance
 
 Updates the instance protection settings of the specified instances.
+This operation cannot be called on instances in a warm pool.
 
 For more information about preventing instances that are part of an
-Auto Scaling group from terminating on scale in, see Instance
-Protection
+Auto Scaling group from terminating on scale in, see Instance scale-in
+protection
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+If you exceed your maximum limit of instance IDs, which is 50 per Auto
+Scaling group, the call fails.
+
+
+=head2 StartInstanceRefresh
+
+=over
+
+=item AutoScalingGroupName => Str
+
+=item [Preferences => L<Paws::AutoScaling::RefreshPreferences>]
+
+=item [Strategy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AutoScaling::StartInstanceRefresh>
+
+Returns: a L<Paws::AutoScaling::StartInstanceRefreshAnswer> instance
+
+Starts a new instance refresh operation, which triggers a rolling
+replacement of previously launched instances in the Auto Scaling group
+with a new group of instances.
+
+This operation is part of the instance refresh feature
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh.html)
+in Amazon EC2 Auto Scaling, which helps you update instances in your
+Auto Scaling group after you make configuration changes.
+
+If the call succeeds, it creates a new instance refresh request with a
+unique ID that you can use to track its progress. To query its status,
+call the DescribeInstanceRefreshes API. To describe the instance
+refreshes that have already run, call the DescribeInstanceRefreshes
+API. To cancel an instance refresh operation in progress, use the
+CancelInstanceRefresh API.
 
 
 =head2 SuspendProcesses
@@ -2033,17 +2507,17 @@ Each argument is described in detail in: L<Paws::AutoScaling::SuspendProcesses>
 
 Returns: nothing
 
-Suspends the specified automatic scaling processes, or all processes,
-for the specified Auto Scaling group.
+Suspends the specified auto scaling processes, or all processes, for
+the specified Auto Scaling group.
 
 If you suspend either the C<Launch> or C<Terminate> process types, it
-can prevent other process types from functioning properly.
-
-To resume processes that have been suspended, use ResumeProcesses.
-
-For more information, see Suspending and Resuming Scaling Processes
+can prevent other process types from functioning properly. For more
+information, see Suspending and resuming scaling processes
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
+
+To resume processes that have been suspended, call the ResumeProcesses
+API.
 
 
 =head2 TerminateInstanceInAutoScalingGroup
@@ -2062,10 +2536,13 @@ Each argument is described in detail in: L<Paws::AutoScaling::TerminateInstanceI
 Returns: a L<Paws::AutoScaling::ActivityType> instance
 
 Terminates the specified instance and optionally adjusts the desired
-group size. This call simply makes a termination request. The instance
-is not terminated immediately. When an instance is terminated, the
-instance status changes to C<terminated>. You can't connect to or start
-an instance after you've terminated it.
+group size. This operation cannot be called on instances in a warm
+pool.
+
+This call simply makes a termination request. The instance is not
+terminated immediately. When an instance is terminated, the instance
+status changes to C<terminated>. You can't connect to or start an
+instance after you've terminated it.
 
 If you do not specify the option to decrement the desired capacity,
 Amazon EC2 Auto Scaling launches instances to replace the ones that are
@@ -2076,7 +2553,7 @@ Availability Zones. If you decrement the desired capacity, your Auto
 Scaling group can become unbalanced between Availability Zones. Amazon
 EC2 Auto Scaling tries to rebalance the group, and rebalancing might
 terminate instances in other zones. For more information, see
-Rebalancing Activities
+Rebalancing activities
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-benefits.html#AutoScalingBehavior.InstanceUsage)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -2088,6 +2565,10 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =item AutoScalingGroupName => Str
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
+
+=item [CapacityRebalance => Bool]
+
+=item [Context => Str]
 
 =item [DefaultCooldown => Int]
 
@@ -2126,6 +2607,10 @@ Each argument is described in detail in: L<Paws::AutoScaling::UpdateAutoScalingG
 
 Returns: nothing
 
+B<We strongly recommend that all Auto Scaling groups use launch
+templates to ensure full functionality for Amazon EC2 Auto Scaling and
+Amazon EC2.>
+
 Updates the configuration for the specified Auto Scaling group.
 
 To update an Auto Scaling group, specify the name of the group and the
@@ -2154,7 +2639,7 @@ C<MinSize>:
 
 =item *
 
-If a scale-in event occurs as a result of a new C<DesiredCapacity>
+If a scale-in activity occurs as a result of a new C<DesiredCapacity>
 value that is lower than the current size of the group, the Auto
 Scaling group uses its termination policy to determine which instances
 to terminate.
@@ -2175,10 +2660,10 @@ the new C<MaxSize> value.
 
 =back
 
-To see which parameters have been set, use DescribeAutoScalingGroups.
-You can also view the scaling policies for an Auto Scaling group using
-DescribePolicies. If the group has scaling policies, you can update
-them using PutScalingPolicy.
+To see which parameters have been set, call the
+DescribeAutoScalingGroups API. To view the scaling policies for an Auto
+Scaling group, call the DescribePolicies API. If the group has scaling
+policies, you can update them by calling the PutScalingPolicy API.
 
 
 
@@ -2271,9 +2756,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::AutoScaling::PoliciesType> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllScalingActivities(sub { },[ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
+=head2 DescribeAllScalingActivities(sub { },[ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, IncludeDeletedGroups => Bool, MaxRecords => Int, NextToken => Str])
 
-=head2 DescribeAllScalingActivities([ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, MaxRecords => Int, NextToken => Str])
+=head2 DescribeAllScalingActivities([ActivityIds => ArrayRef[Str|Undef], AutoScalingGroupName => Str, IncludeDeletedGroups => Bool, MaxRecords => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

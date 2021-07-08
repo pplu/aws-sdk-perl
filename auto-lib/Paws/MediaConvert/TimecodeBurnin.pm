@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and
-specified prefix into the output.
+Settings for burning the output timecode and specified prefix into the
+output.
 
 =head1 ATTRIBUTES
 

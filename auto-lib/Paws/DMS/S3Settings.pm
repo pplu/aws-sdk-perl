@@ -3,12 +3,18 @@ package Paws::DMS::S3Settings;
   use Moose;
   has BucketFolder => (is => 'ro', isa => 'Str');
   has BucketName => (is => 'ro', isa => 'Str');
+  has CdcInsertsAndUpdates => (is => 'ro', isa => 'Bool');
   has CdcInsertsOnly => (is => 'ro', isa => 'Bool');
+  has CdcPath => (is => 'ro', isa => 'Str');
   has CompressionType => (is => 'ro', isa => 'Str');
   has CsvDelimiter => (is => 'ro', isa => 'Str');
+  has CsvNoSupValue => (is => 'ro', isa => 'Str');
   has CsvRowDelimiter => (is => 'ro', isa => 'Str');
   has DataFormat => (is => 'ro', isa => 'Str');
   has DataPageSize => (is => 'ro', isa => 'Int');
+  has DatePartitionDelimiter => (is => 'ro', isa => 'Str');
+  has DatePartitionEnabled => (is => 'ro', isa => 'Bool');
+  has DatePartitionSequence => (is => 'ro', isa => 'Str');
   has DictPageSizeLimit => (is => 'ro', isa => 'Int');
   has EnableStatistics => (is => 'ro', isa => 'Bool');
   has EncodingType => (is => 'ro', isa => 'Str');
@@ -17,10 +23,12 @@ package Paws::DMS::S3Settings;
   has IncludeOpForFullLoad => (is => 'ro', isa => 'Bool');
   has ParquetTimestampInMillisecond => (is => 'ro', isa => 'Bool');
   has ParquetVersion => (is => 'ro', isa => 'Str');
+  has PreserveTransactions => (is => 'ro', isa => 'Bool');
   has RowGroupLength => (is => 'ro', isa => 'Int');
   has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has TimestampColumnName => (is => 'ro', isa => 'Str');
+  has UseCsvNoSupValue => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -41,7 +49,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DMS::S3Settings object:
 
-  $service_obj->Method(Att1 => { BucketFolder => $value, ..., TimestampColumnName => $value  });
+  $service_obj->Method(Att1 => { BucketFolder => $value, ..., UseCsvNoSupValue => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,13 +69,42 @@ Settings for exporting data to Amazon S3.
 
 An optional parameter to set a folder name in the S3 bucket. If
 provided, tables are created in the path C<
-I<bucketFolder>/I<schema_name>/I<table_name>/>. If this parameter is
-not specified, then the path used is C< I<schema_name>/I<table_name>/>.
+I<bucketFolder>/I<schema_name>/I<table_name>/>. If this parameter isn't
+specified, then the path used is C< I<schema_name>/I<table_name>/>.
 
 
 =head2 BucketName => Str
 
 The name of the S3 bucket.
+
+
+=head2 CdcInsertsAndUpdates => Bool
+
+A value that enables a change data capture (CDC) load to write INSERT
+and UPDATE operations to .csv or .parquet (columnar storage) output
+files. The default setting is C<false>, but when
+C<CdcInsertsAndUpdates> is set to C<true> or C<y>, only INSERTs and
+UPDATEs from the source database are migrated to the .csv or .parquet
+file.
+
+For .csv file format only, how these INSERTs and UPDATEs are recorded
+depends on the value of the C<IncludeOpForFullLoad> parameter. If
+C<IncludeOpForFullLoad> is set to C<true>, the first field of every CDC
+record is set to either C<I> or C<U> to indicate INSERT and UPDATE
+operations at the source. But if C<IncludeOpForFullLoad> is set to
+C<false>, CDC records are written without an indication of INSERT or
+UPDATE operations at the source. For more information about how these
+settings work together, see Indicating Source DB Operations in Migrated
+S3 Data
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps)
+in the I<AWS Database Migration Service User Guide.>.
+
+AWS DMS supports the use of the C<CdcInsertsAndUpdates> parameter in
+versions 3.3.1 and later.
+
+C<CdcInsertsOnly> and C<CdcInsertsAndUpdates> can't both be set to
+C<true> for the same endpoint. Set either C<CdcInsertsOnly> or
+C<CdcInsertsAndUpdates> to C<true> for the same endpoint, but not both.
 
 
 =head2 CdcInsertsOnly => Bool
@@ -92,28 +129,82 @@ S3 Data
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps)
 in the I<AWS Database Migration Service User Guide.>.
 
-AWS DMS supports this interaction between the C<CdcInsertsOnly> and
-C<IncludeOpForFullLoad> parameters in versions 3.1.4 and later.
+AWS DMS supports the interaction described preceding between the
+C<CdcInsertsOnly> and C<IncludeOpForFullLoad> parameters in versions
+3.1.4 and later.
+
+C<CdcInsertsOnly> and C<CdcInsertsAndUpdates> can't both be set to
+C<true> for the same endpoint. Set either C<CdcInsertsOnly> or
+C<CdcInsertsAndUpdates> to C<true> for the same endpoint, but not both.
+
+
+=head2 CdcPath => Str
+
+Specifies the folder path of CDC files. For an S3 source, this setting
+is required if a task captures change data; otherwise, it's optional.
+If C<CdcPath> is set, AWS DMS reads CDC files from this path and
+replicates the data changes to the target endpoint. For an S3 target if
+you set C<PreserveTransactions>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-PreserveTransactions)
+to C<true>, AWS DMS verifies that you have set this parameter to a
+folder path on your S3 target where AWS DMS can save the transaction
+order for the CDC load. AWS DMS creates this CDC folder path in either
+your S3 target working directory or the S3 target location specified by
+C<BucketFolder>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-BucketFolder)
+and C<BucketName>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-BucketName).
+
+For example, if you specify C<CdcPath> as C<MyChangedData>, and you
+specify C<BucketName> as C<MyTargetBucket> but do not specify
+C<BucketFolder>, AWS DMS creates the CDC folder path following:
+C<MyTargetBucket/MyChangedData>.
+
+If you specify the same C<CdcPath>, and you specify C<BucketName> as
+C<MyTargetBucket> and C<BucketFolder> as C<MyTargetData>, AWS DMS
+creates the CDC folder path following:
+C<MyTargetBucket/MyTargetData/MyChangedData>.
+
+For more information on CDC including transaction order on an S3
+target, see Capturing data changes (CDC) including transaction order on
+the S3 target
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.EndpointSettings.CdcPath).
+
+This setting is supported in AWS DMS versions 3.4.2 and later.
 
 
 =head2 CompressionType => Str
 
 An optional parameter to use GZIP to compress the target files. Set to
-GZIP to compress the target files. Set to NONE (the default) or do not
-use to leave the files uncompressed. Applies to both .csv and .parquet
-file formats.
+GZIP to compress the target files. Either set this parameter to NONE
+(the default) or don't use it to leave the files uncompressed. This
+parameter applies to both .csv and .parquet file formats.
 
 
 =head2 CsvDelimiter => Str
 
-The delimiter used to separate columns in the source files. The default
-is a comma.
+The delimiter used to separate columns in the .csv file for both source
+and target. The default is a comma.
+
+
+=head2 CsvNoSupValue => Str
+
+This setting only applies if your Amazon S3 output files during a
+change data capture (CDC) load are written in .csv format. If
+C<UseCsvNoSupValue>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-UseCsvNoSupValue)
+is set to true, specify a string value that you want AWS DMS to use for
+all columns not included in the supplemental log. If you do not specify
+a string value, AWS DMS uses the null value for these columns
+regardless of the C<UseCsvNoSupValue> setting.
+
+This setting is supported in AWS DMS versions 3.4.1 and later.
 
 
 =head2 CsvRowDelimiter => Str
 
-The delimiter used to separate rows in the source files. The default is
-a carriage return (C<\n>).
+The delimiter used to separate rows in the .csv file for both source
+and target. The default is a carriage return (C<\n>).
 
 
 =head2 DataFormat => Str
@@ -142,6 +233,29 @@ response.
 
 The size of one data page in bytes. This parameter defaults to 1024 *
 1024 bytes (1 MiB). This number is used for .parquet file format only.
+
+
+=head2 DatePartitionDelimiter => Str
+
+Specifies a date separating delimiter to use during folder
+partitioning. The default value is C<SLASH>. Use this parameter when
+C<DatePartitionedEnabled> is set to C<true>.
+
+
+=head2 DatePartitionEnabled => Bool
+
+When set to C<true>, this parameter partitions S3 bucket folders based
+on transaction commit dates. The default value is C<false>. For more
+information about date-based folder partitoning, see Using date-based
+folder partitioning
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.DatePartitioning).
+
+
+=head2 DatePartitionSequence => Str
+
+Identifies the sequence of the date format to use during folder
+partitioning. The default value is C<YYYYMMDD>. Use this parameter when
+C<DatePartitionedEnabled> is set to C<true>.
 
 
 =head2 DictPageSizeLimit => Int
@@ -192,9 +306,16 @@ column chunk.
 The type of server-side encryption that you want to use for your data.
 This encryption type is part of the endpoint settings or the extra
 connections attributes for Amazon S3. You can choose either C<SSE_S3>
-(the default) or C<SSE_KMS>. To use C<SSE_S3>, you need an AWS Identity
-and Access Management (IAM) role with permission to allow
-C<"arn:aws:s3:::dms-*"> to use the following actions:
+(the default) or C<SSE_KMS>.
+
+For the C<ModifyEndpoint> operation, you can change the existing value
+of the C<EncryptionMode> parameter from C<SSE_KMS> to C<SSE_S3>. But
+you canE<rsquo>t change the existing value from C<SSE_S3> to
+C<SSE_KMS>.
+
+To use C<SSE_S3>, you need an AWS Identity and Access Management (IAM)
+role with permission to allow C<"arn:aws:s3:::dms-*"> to use the
+following actions:
 
 =over
 
@@ -248,7 +369,7 @@ C<s3:DeleteBucketPolicy>
 
 =head2 ExternalTableDefinition => Str
 
-The external table definition.
+Specifies how tables are defined in the S3 source files only.
 
 
 =head2 IncludeOpForFullLoad => Bool
@@ -268,10 +389,10 @@ recorded as an I annotation in the first field of the .csv file. This
 allows the format of your target records from a full load to be
 consistent with the target records from a CDC load.
 
-This setting works together with the C<CdcInsertsOnly> parameter for
-output to .csv files only. For more information about how these
-settings work together, see Indicating Source DB Operations in Migrated
-S3 Data
+This setting works together with the C<CdcInsertsOnly> and the
+C<CdcInsertsAndUpdates> parameters for output to .csv files only. For
+more information about how these settings work together, see Indicating
+Source DB Operations in Migrated S3 Data
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring.InsertOps)
 in the I<AWS Database Migration Service User Guide.>.
 
@@ -308,6 +429,18 @@ The version of the Apache Parquet format that you want to use:
 C<parquet_1_0> (the default) or C<parquet_2_0>.
 
 
+=head2 PreserveTransactions => Bool
+
+If set to C<true>, AWS DMS saves the transaction order for a change
+data capture (CDC) load on the Amazon S3 target specified by C<CdcPath>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-CdcPath).
+For more information, see Capturing data changes (CDC) including
+transaction order on the S3 target
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.EndpointSettings.CdcPath).
+
+This setting is supported in AWS DMS versions 3.4.2 and later.
+
+
 =head2 RowGroupLength => Int
 
 The number of rows in a row group. A smaller row group size provides
@@ -333,7 +466,9 @@ ServiceAccessRoleArn=I<value>,BucketFolder=I<value>,BucketName=I<value>,Encrypti
 
 =head2 ServiceAccessRoleArn => Str
 
-The Amazon Resource Name (ARN) used by the service access IAM role.
+The Amazon Resource Name (ARN) used by the service access IAM role. It
+is a required parameter that enables DMS to write and read objects from
+an S3 bucket.
 
 
 =head2 TimestampColumnName => Str
@@ -363,6 +498,19 @@ the commit timestamp supported by DMS for the source database.
 When the C<AddColumnName> parameter is set to C<true>, DMS also
 includes a name for the timestamp column that you set with
 C<TimestampColumnName>.
+
+
+=head2 UseCsvNoSupValue => Bool
+
+This setting applies if the S3 output files during a change data
+capture (CDC) load are written in .csv format. If set to C<true> for
+columns not included in the supplemental log, AWS DMS uses the value
+specified by C<CsvNoSupValue>
+(https://docs.aws.amazon.com/dms/latest/APIReference/API_S3Settings.html#DMS-Type-S3Settings-CsvNoSupValue).
+If not set or set to C<false>, AWS DMS uses the null value for these
+columns.
+
+This setting is supported in AWS DMS versions 3.4.1 and later.
 
 
 

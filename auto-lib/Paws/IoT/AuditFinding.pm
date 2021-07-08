@@ -4,6 +4,7 @@ package Paws::IoT::AuditFinding;
   has CheckName => (is => 'ro', isa => 'Str', request_name => 'checkName', traits => ['NameInRequest']);
   has FindingId => (is => 'ro', isa => 'Str', request_name => 'findingId', traits => ['NameInRequest']);
   has FindingTime => (is => 'ro', isa => 'Str', request_name => 'findingTime', traits => ['NameInRequest']);
+  has IsSuppressed => (is => 'ro', isa => 'Bool', request_name => 'isSuppressed', traits => ['NameInRequest']);
   has NonCompliantResource => (is => 'ro', isa => 'Paws::IoT::NonCompliantResource', request_name => 'nonCompliantResource', traits => ['NameInRequest']);
   has ReasonForNonCompliance => (is => 'ro', isa => 'Str', request_name => 'reasonForNonCompliance', traits => ['NameInRequest']);
   has ReasonForNonComplianceCode => (is => 'ro', isa => 'Str', request_name => 'reasonForNonComplianceCode', traits => ['NameInRequest']);
@@ -61,6 +62,12 @@ used to apply mitigation tasks to one or more sets of findings.
 =head2 FindingTime => Str
 
 The time the result (finding) was discovered.
+
+
+=head2 IsSuppressed => Bool
+
+Indicates whether the audit finding was suppressed or not during
+reporting.
 
 
 =head2 NonCompliantResource => L<Paws::IoT::NonCompliantResource>

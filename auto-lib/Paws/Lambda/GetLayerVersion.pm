@@ -29,10 +29,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To get information about a Lambda layer version
+    # The following example returns information for version 1 of a layer named
+    # my-layer.
     my $GetLayerVersionResponse = $lambda->GetLayerVersion(
-      LayerName     => 'MyLayerName',
-      VersionNumber => 1,
-
+      'LayerName'     => 'my-layer',
+      'VersionNumber' => 1
     );
 
     # Results:

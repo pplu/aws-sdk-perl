@@ -2,6 +2,7 @@
 package Paws::CodeBuild::S3ReportExportConfig;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', request_name => 'bucket', traits => ['NameInRequest']);
+  has BucketOwner => (is => 'ro', isa => 'Str', request_name => 'bucketOwner', traits => ['NameInRequest']);
   has EncryptionDisabled => (is => 'ro', isa => 'Bool', request_name => 'encryptionDisabled', traits => ['NameInRequest']);
   has EncryptionKey => (is => 'ro', isa => 'Str', request_name => 'encryptionKey', traits => ['NameInRequest']);
   has Packaging => (is => 'ro', isa => 'Str', request_name => 'packaging', traits => ['NameInRequest']);
@@ -48,6 +49,14 @@ exported.
 The name of the S3 bucket where the raw data of a report are exported.
 
 
+=head2 BucketOwner => Str
+
+The Amazon Web Services account identifier of the owner of the Amazon
+S3 bucket. This allows report data to be exported to an Amazon S3
+bucket that is owned by an account other than the account running the
+build.
+
+
 =head2 EncryptionDisabled => Bool
 
 A boolean value that specifies if the results of a report are
@@ -67,13 +76,13 @@ The type of build output artifact to create. Valid values include:
 
 =item *
 
-C<NONE>: AWS CodeBuild creates the raw data in the output bucket. This
-is the default if packaging is not specified.
+C<NONE>: CodeBuild creates the raw data in the output bucket. This is
+the default if packaging is not specified.
 
 =item *
 
-C<ZIP>: AWS CodeBuild creates a ZIP file with the raw data in the
-output bucket.
+C<ZIP>: CodeBuild creates a ZIP file with the raw data in the output
+bucket.
 
 =back
 

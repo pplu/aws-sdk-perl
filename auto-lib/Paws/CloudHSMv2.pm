@@ -65,6 +65,16 @@ package Paws::CloudHSMv2;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::ListTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyBackupAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::ModifyBackupAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::ModifyCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreBackup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudHSMv2::RestoreBackup', @_);
@@ -152,7 +162,7 @@ package Paws::CloudHSMv2;
   }
 
 
-  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteBackup DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags RestoreBackup TagResource UntagResource / }
+  sub operations { qw/CopyBackupToRegion CreateCluster CreateHsm DeleteBackup DeleteCluster DeleteHsm DescribeBackups DescribeClusters InitializeCluster ListTags ModifyBackupAttributes ModifyCluster RestoreBackup TagResource UntagResource / }
 
 1;
 
@@ -216,6 +226,8 @@ Copy an AWS CloudHSM cluster backup to a different region.
 =item HsmType => Str
 
 =item SubnetIds => ArrayRef[Str|Undef]
+
+=item [BackupRetentionPolicy => L<Paws::CloudHSMv2::BackupRetentionPolicy>]
 
 =item [SourceBackupId => Str]
 
@@ -419,6 +431,42 @@ a subset of tags, it includes a C<NextToken> value. Use this value in a
 subsequent C<ListTags> request to get more tags. When you receive a
 response with no C<NextToken> (or an empty or null value), that means
 there are no more tags to get.
+
+
+=head2 ModifyBackupAttributes
+
+=over
+
+=item BackupId => Str
+
+=item NeverExpires => Bool
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::ModifyBackupAttributes>
+
+Returns: a L<Paws::CloudHSMv2::ModifyBackupAttributesResponse> instance
+
+Modifies attributes for AWS CloudHSM backup.
+
+
+=head2 ModifyCluster
+
+=over
+
+=item BackupRetentionPolicy => L<Paws::CloudHSMv2::BackupRetentionPolicy>
+
+=item ClusterId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudHSMv2::ModifyCluster>
+
+Returns: a L<Paws::CloudHSMv2::ModifyClusterResponse> instance
+
+Modifies AWS CloudHSM cluster.
 
 
 =head2 RestoreBackup

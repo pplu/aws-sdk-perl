@@ -35,49 +35,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that specifies the AWS accounts, if any, that you want
-to allow to create signed URLs for private content.
-
-If you want to require signed URLs in requests for objects in the
-target origin that match the C<PathPattern> for this cache behavior,
-specify C<true> for C<Enabled>, and specify the applicable values for
-C<Quantity> and C<Items>. For more information, see Serving Private
-Content through CloudFront
-(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/PrivateContent.html)
-in the I< Amazon CloudFront Developer Guide>.
-
-If you don't want to require signed URLs in requests for objects that
-match C<PathPattern>, specify C<false> for C<Enabled> and C<0> for
-C<Quantity>. Omit C<Items>.
-
-To add, change, or remove one or more trusted signers, change
-C<Enabled> to C<true> (if it's currently C<false>), change C<Quantity>
-as applicable, and specify all of the trusted signers that you want to
-include in the updated distribution.
-
-For more information about updating the distribution configuration, see
-DistributionConfig
-(https://docs.aws.amazon.com/cloudfront/latest/APIReference/DistributionConfig.html)
-in the I<Amazon CloudFront API Reference>.
+A list of AWS accounts whose public keys CloudFront can use to verify
+the signatures of signed URLs and signed cookies.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Enabled => Bool
 
-Specifies whether you want to require viewers to use signed URLs to
-access the files specified by C<PathPattern> and C<TargetOriginId>.
+This field is C<true> if any of the AWS accounts have public keys that
+CloudFront can use to verify the signatures of signed URLs and signed
+cookies. If not, this field is C<false>.
 
 
 =head2 Items => ArrayRef[Str|Undef]
 
-B<Optional>: A complex type that contains trusted signers for this
-cache behavior. If C<Quantity> is C<0>, you can omit C<Items>.
+A list of AWS account identifiers.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of trusted signers for this cache behavior.
+The number of AWS accounts in the list.
 
 
 

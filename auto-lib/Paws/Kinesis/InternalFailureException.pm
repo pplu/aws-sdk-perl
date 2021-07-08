@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::In
 
 =head1 DESCRIPTION
 
-This class has no description
+The processing of the request failed because of an unknown error,
+exception, or failure.
 
 =head1 ATTRIBUTES
 

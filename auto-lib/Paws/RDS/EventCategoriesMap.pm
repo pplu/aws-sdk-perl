@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::EventC
 =head1 DESCRIPTION
 
 Contains the results of a successful invocation of the
-C<DescribeEventCategories> action.
+C<DescribeEventCategories> operation.
 
 =head1 ATTRIBUTES
 

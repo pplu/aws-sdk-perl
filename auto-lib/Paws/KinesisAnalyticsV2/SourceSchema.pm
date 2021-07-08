@@ -35,10 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, describes
-the format of the data in the streaming source, and how each data
-element maps to corresponding columns created in the in-application
-stream.
+For a SQL-based Kinesis Data Analytics application, describes the
+format of the data in the streaming source, and how each data element
+maps to corresponding columns created in the in-application stream.
 
 =head1 ATTRIBUTES
 

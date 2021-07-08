@@ -11,6 +11,7 @@ package Paws::MediaConvert::InputTemplate;
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
   has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has InputClippings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputClipping]', request_name => 'inputClippings', traits => ['NameInRequest']);
+  has InputScanType => (is => 'ro', isa => 'Str', request_name => 'inputScanType', traits => ['NameInRequest']);
   has Position => (is => 'ro', isa => 'Paws::MediaConvert::Rectangle', request_name => 'position', traits => ['NameInRequest']);
   has ProgramNumber => (is => 'ro', isa => 'Int', request_name => 'programNumber', traits => ['NameInRequest']);
   has PsiControl => (is => 'ro', isa => 'Str', request_name => 'psiControl', traits => ['NameInRequest']);
@@ -55,23 +56,25 @@ Specified video input in a template.
 
 =head2 AudioSelectorGroups => L<Paws::MediaConvert::__mapOfAudioSelectorGroup>
 
-Specifies set of audio selectors within an input to combine. An input
-may have multiple audio selector groups. See "Audio Selector
-Group":#inputs-audio_selector_group for more information.
+Use audio selector groups to combine multiple sidecar audio inputs so
+that you can assign them to a single output audio tab
+(AudioDescription). Note that, if you're working with embedded audio,
+it's simpler to assign multiple input tracks into a single audio
+selector rather than use an audio selector group.
 
 
 =head2 AudioSelectors => L<Paws::MediaConvert::__mapOfAudioSelector>
 
 Use Audio selectors (AudioSelectors) to specify a track or set of
 tracks from the input that you will use in your outputs. You can use
-mutiple Audio selectors per input.
+multiple Audio selectors per input.
 
 
 =head2 CaptionSelectors => L<Paws::MediaConvert::__mapOfCaptionSelector>
 
-Use Captions selectors (CaptionSelectors) to specify the captions data
-from the input that you will use in your outputs. You can use mutiple
-captions selectors per input.
+Use captions selectors to specify the captions data from your input
+that you use in your outputs. You can use up to 20 captions selectors
+per input.
 
 
 =head2 Crop => L<Paws::MediaConvert::Rectangle>
@@ -85,7 +88,7 @@ Cropping selection (crop).
 =head2 DeblockFilter => Str
 
 Enable Deblock (InputDeblockFilter) to produce smoother motion in the
-output. Default is disabled. Only manaully controllable for MPEG2 and
+output. Default is disabled. Only manually controllable for MPEG2 and
 uncompressed video inputs.
 
 
@@ -98,14 +101,14 @@ uncompressed video inputs.
 
 =head2 FilterEnable => Str
 
-Use Filter enable (InputFilterEnable) to specify how the transcoding
-service applies the denoise and deblock filters. You must also enable
-the filters separately, with Denoise (InputDenoiseFilter) and Deblock
-(InputDeblockFilter). * Auto - The transcoding service determines
-whether to apply filtering, depending on input type and quality. *
-Disable - The input is not filtered. This is true even if you use the
-API to enable them in (InputDeblockFilter) and (InputDeblockFilter). *
-Force - The in put is filtered regardless of input type.
+Specify how the transcoding service applies the denoise and deblock
+filters. You must also enable the filters separately, with Denoise
+(InputDenoiseFilter) and Deblock (InputDeblockFilter). * Auto - The
+transcoding service determines whether to apply filtering, depending on
+input type and quality. * Disable - The input is not filtered. This is
+true even if you use the API to enable them in (InputDeblockFilter) and
+(InputDeblockFilter). * Force - The input is filtered regardless of
+input type.
 
 
 =head2 FilterStrength => Int
@@ -131,6 +134,18 @@ point to the end. If you provide only an end time, it will be the
 entire input up to that point. When you specify more than one input
 clip, the transcoding service creates the job outputs by stringing the
 clips together in the order you specify them.
+
+
+=head2 InputScanType => Str
+
+When you have a progressive segmented frame (PsF) input, use this
+setting to flag the input as PsF. MediaConvert doesn't automatically
+detect PsF. Therefore, flagging your input as PsF results in better
+preservation of video quality when you do deinterlacing and frame rate
+conversion. If you don't specify, the default value is Auto (AUTO).
+Auto is the correct setting for all inputs that are not PsF. Don't set
+this value to PsF when your input is interlaced. Doing so creates
+horizontal interlacing artifacts.
 
 
 =head2 Position => L<Paws::MediaConvert::Rectangle>
@@ -188,7 +203,8 @@ see https://docs.aws.amazon.com/console/mediaconvert/timecode.
 
 =head2 VideoSelector => L<Paws::MediaConvert::VideoSelector>
 
-Selector for video.
+Input video selectors contain the video settings for the input. Each of
+your inputs can have up to one video selector.
 
 
 

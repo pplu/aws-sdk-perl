@@ -5,11 +5,14 @@ package Paws::DMS::RedshiftSettings;
   has AfterConnectScript => (is => 'ro', isa => 'Str');
   has BucketFolder => (is => 'ro', isa => 'Str');
   has BucketName => (is => 'ro', isa => 'Str');
+  has CaseSensitiveNames => (is => 'ro', isa => 'Bool');
+  has CompUpdate => (is => 'ro', isa => 'Bool');
   has ConnectionTimeout => (is => 'ro', isa => 'Int');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DateFormat => (is => 'ro', isa => 'Str');
   has EmptyAsNull => (is => 'ro', isa => 'Bool');
   has EncryptionMode => (is => 'ro', isa => 'Str');
+  has ExplicitIds => (is => 'ro', isa => 'Bool');
   has FileTransferUploadStreams => (is => 'ro', isa => 'Int');
   has LoadTimeout => (is => 'ro', isa => 'Int');
   has MaxFileSize => (is => 'ro', isa => 'Int');
@@ -18,6 +21,8 @@ package Paws::DMS::RedshiftSettings;
   has RemoveQuotes => (is => 'ro', isa => 'Bool');
   has ReplaceChars => (is => 'ro', isa => 'Str');
   has ReplaceInvalidChars => (is => 'ro', isa => 'Str');
+  has SecretsManagerAccessRoleArn => (is => 'ro', isa => 'Str');
+  has SecretsManagerSecretId => (is => 'ro', isa => 'Str');
   has ServerName => (is => 'ro', isa => 'Str');
   has ServerSideEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
@@ -57,7 +62,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Redshi
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information that defines an Amazon Redshift endpoint.
 
 =head1 ATTRIBUTES
 
@@ -82,13 +87,41 @@ itself, not the name of a file containing the code.
 
 =head2 BucketFolder => Str
 
-The location where the comma-separated value (.csv) files are stored
-before being uploaded to the S3 bucket.
+An S3 folder where the comma-separated-value (.csv) files are stored
+before being uploaded to the target Redshift cluster.
+
+For full load mode, AWS DMS converts source records into .csv files and
+loads them to the I<BucketFolder/TableID> path. AWS DMS uses the
+Redshift C<COPY> command to upload the .csv files to the target table.
+The files are deleted once the C<COPY> operation has finished. For more
+information, see COPY
+(https://docs.aws.amazon.com/redshift/latest/dg/r_COPY.html) in the
+I<Amazon Redshift Database Developer Guide>.
+
+For change-data-capture (CDC) mode, AWS DMS creates a I<NetChanges>
+table, and loads the .csv files to this
+I<BucketFolder/NetChangesTableID> path.
 
 
 =head2 BucketName => Str
 
-The name of the S3 bucket you want to use
+The name of the intermediate S3 bucket used to store .csv files before
+uploading data to Redshift.
+
+
+=head2 CaseSensitiveNames => Bool
+
+If Amazon Redshift is configured to support case sensitive schema
+names, set C<CaseSensitiveNames> to C<true>. The default is C<false>.
+
+
+=head2 CompUpdate => Bool
+
+If you set C<CompUpdate> to C<true> Amazon Redshift applies automatic
+compression if the table is empty. This applies even if the table
+columns already have encodings other than C<RAW>. If you set
+C<CompUpdate> to C<false>, automatic compression is disabled and
+existing column encodings aren't changed. The default is C<true>.
 
 
 =head2 ConnectionTimeout => Int
@@ -127,10 +160,25 @@ fields to null. The default is C<false>.
 The type of server-side encryption that you want to use for your data.
 This encryption type is part of the endpoint settings or the extra
 connections attributes for Amazon S3. You can choose either C<SSE_S3>
-(the default) or C<SSE_KMS>. To use C<SSE_S3>, create an AWS Identity
-and Access Management (IAM) role with a policy that allows
-C<"arn:aws:s3:::*"> to use the following actions: C<"s3:PutObject",
-"s3:ListBucket">
+(the default) or C<SSE_KMS>.
+
+For the C<ModifyEndpoint> operation, you can change the existing value
+of the C<EncryptionMode> parameter from C<SSE_KMS> to C<SSE_S3>. But
+you canE<rsquo>t change the existing value from C<SSE_S3> to
+C<SSE_KMS>.
+
+To use C<SSE_S3>, create an AWS Identity and Access Management (IAM)
+role with a policy that allows C<"arn:aws:s3:::*"> to use the following
+actions: C<"s3:PutObject", "s3:ListBucket">
+
+
+=head2 ExplicitIds => Bool
+
+This setting is only valid for a full-load migration task. Set
+C<ExplicitIds> to C<true> to have tables with C<IDENTITY> columns
+override their auto-generated values with explicit values loaded from
+the source data files used to populate the tables. The default is
+C<false>.
 
 
 =head2 FileTransferUploadStreams => Int
@@ -138,18 +186,27 @@ C<"arn:aws:s3:::*"> to use the following actions: C<"s3:PutObject",
 The number of threads used to upload a single file. This parameter
 accepts a value from 1 through 64. It defaults to 10.
 
+The number of parallel streams used to upload a single .csv file to an
+S3 bucket using S3 Multipart Upload. For more information, see
+Multipart upload overview
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html).
+
+C<FileTransferUploadStreams> accepts a value from 1 through 64. It
+defaults to 10.
+
 
 =head2 LoadTimeout => Int
 
-The amount of time to wait (in milliseconds) before timing out,
-beginning from when you begin loading.
+The amount of time to wait (in milliseconds) before timing out of
+operations performed by AWS DMS on a Redshift cluster, such as Redshift
+COPY, INSERT, DELETE, and UPDATE.
 
 
 =head2 MaxFileSize => Int
 
-The maximum size (in KB) of any .csv file used to transfer data to
-Amazon Redshift. This accepts a value from 1 through 1,048,576. It
-defaults to 32,768 KB (32 MB).
+The maximum size (in KB) of any .csv file used to load data on an S3
+bucket and transfer data to Amazon Redshift. It defaults to 1048576KB
+(1 GB).
 
 
 =head2 Password => Str
@@ -181,6 +238,33 @@ The default is C<"?">.
 
 A list of characters that you want to replace. Use with
 C<ReplaceChars>.
+
+
+=head2 SecretsManagerAccessRoleArn => Str
+
+The full Amazon Resource Name (ARN) of the IAM role that specifies AWS
+DMS as the trusted entity and grants the required permissions to access
+the value in C<SecretsManagerSecret>. C<SecretsManagerSecret> has the
+value of the AWS Secrets Manager secret that allows access to the
+Amazon Redshift endpoint.
+
+You can specify one of two sets of values for these permissions. You
+can specify the values for this setting and C<SecretsManagerSecretId>.
+Or you can specify clear-text values for C<UserName>, C<Password>,
+C<ServerName>, and C<Port>. You can't specify both. For more
+information on creating this C<SecretsManagerSecret> and the
+C<SecretsManagerAccessRoleArn> and C<SecretsManagerSecretId> required
+to access it, see Using secrets to access AWS Database Migration
+Service resources
+(https://docs.aws.amazon.com/https:/docs.aws.amazon.com/dms/latest/userguide/CHAP_Security.html#security-iam-secretsmanager)
+in the I<AWS Database Migration Service User Guide>.
+
+
+=head2 SecretsManagerSecretId => Str
+
+The full ARN, partial ARN, or friendly name of the
+C<SecretsManagerSecret> that contains the Amazon Redshift endpoint
+connection details.
 
 
 =head2 ServerName => Str
@@ -238,9 +322,9 @@ An Amazon Redshift user name for a registered user.
 
 =head2 WriteBufferSize => Int
 
-The size of the write buffer to use in rows. Valid values range from 1
-through 2,048. The default is 1,024. Use this setting to tune
-performance.
+The size (in KB) of the in-memory file write buffer used when
+generating .csv files on the local disk at the DMS replication
+instance. The default value is 1000 (buffer size is 1000KB).
 
 
 

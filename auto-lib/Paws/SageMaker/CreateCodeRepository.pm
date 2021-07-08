@@ -3,6 +3,7 @@ package Paws::SageMaker::CreateCodeRepository;
   use Moose;
   has CodeRepositoryName => (is => 'ro', isa => 'Str', required => 1);
   has GitConfig => (is => 'ro', isa => 'Paws::SageMaker::GitConfig', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,7 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Branch        => 'MyBranch',         # min: 1, max: 1024; OPTIONAL
         SecretArn     => 'MySecretArn',      # min: 1, max: 2048; OPTIONAL
       },
+      Tags => [
+        {
+          Key   => 'MyTagKey',               # min: 1, max: 128
+          Value => 'MyTagValue',             # max: 256
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -61,6 +69,16 @@ Valid characters are a-z, A-Z, 0-9, and - (hyphen).
 Specifies details about the repository, including the URL where the
 repository is located, the default branch, and credentials to use to
 access the repository.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

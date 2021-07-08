@@ -51,8 +51,8 @@ roles) that the policy is attached to.
 This data type is used as a response element in the
 GetAccountAuthorizationDetails operation.
 
-For more information about managed policies, see Managed Policies and
-Inline Policies
+For more information about managed policies, see Managed policies and
+inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<IAM User Guide>.
 
@@ -81,8 +81,8 @@ The date and time, in ISO 8601 date-time format
 The identifier for the version of the policy that is set as the default
 (operative) version.
 
-For more information about policy versions, see Versioning for Managed
-Policies
+For more information about policy versions, see Versioning for managed
+policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-versions.html)
 in the I<IAM User Guide>.
 
@@ -102,7 +102,7 @@ role.
 
 The path to the policy.
 
-For more information about paths, see IAM Identifiers
+For more information about paths, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -113,7 +113,7 @@ The number of entities (users and roles) for which the policy is used
 as the permissions boundary.
 
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
+boundaries for IAM identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
@@ -122,7 +122,7 @@ in the I<IAM User Guide>.
 
 The stable and unique string identifying the policy.
 
-For more information about IDs, see IAM Identifiers
+For more information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

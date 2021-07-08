@@ -27,10 +27,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
-    my $DeleteEndpointResponse = $dms->DeleteEndpoint(
-      EndpointArn => 'MyString',
+# Delete Endpoint
+# Deletes the specified endpoint. All tasks associated with the endpoint must be
+# deleted before you can delete the endpoint.
 
-    );
+    my $DeleteEndpointResponse =
+      $dms->DeleteEndpoint( 'EndpointArn' =>
+        'arn:aws:dms:us-east-1:123456789012:endpoint:RAAR3R22XSH46S3PWLC3NJAWKM'
+      );
 
     # Results:
     my $Endpoint = $DeleteEndpointResponse->Endpoint;

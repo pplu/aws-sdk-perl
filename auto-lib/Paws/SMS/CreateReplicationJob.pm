@@ -68,8 +68,7 @@ The description of the replication job.
 
 =head2 Encrypted => Bool
 
-When I<true>, the replication job produces encrypted AMIs. See also
-C<KmsKeyId> below.
+Indicates whether the replication job produces encrypted AMIs.
 
 
 
@@ -81,8 +80,8 @@ The time between consecutive replication runs, in hours.
 
 =head2 KmsKeyId => Str
 
-KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-of the following:
+The ID of the KMS key for replication jobs that produce encrypted AMIs.
+This value can be any of the following:
 
 =over
 
@@ -96,16 +95,16 @@ KMS key alias
 
 =item *
 
-ARN referring to KMS key ID
+ARN referring to the KMS key ID
 
 =item *
 
-ARN referring to KMS key alias
+ARN referring to the KMS key alias
 
 =back
 
-If encrypted is I<true> but a KMS key id is not specified, the
-customer's default KMS key for EBS is used.
+If encrypted is I<true> but a KMS key ID is not specified, the
+customer's default KMS key for Amazon EBS is used.
 
 
 
@@ -118,8 +117,8 @@ Valid values are: C<"AWS">, C<"BYOL">
 
 =head2 NumberOfRecentAmisToKeep => Int
 
-The maximum number of SMS-created AMIs to retain. The oldest will be
-deleted once the maximum number is reached and a new AMI is created.
+The maximum number of SMS-created AMIs to retain. The oldest is deleted
+after the maximum number is reached and a new AMI is created.
 
 
 
@@ -131,7 +130,7 @@ The name of the IAM role to be used by the AWS SMS.
 
 =head2 RunOnce => Bool
 
-
+Indicates whether to run the replication job one time.
 
 
 
@@ -143,7 +142,7 @@ The seed replication time.
 
 =head2 B<REQUIRED> ServerId => Str
 
-The identifier of the server.
+The ID of the server.
 
 
 

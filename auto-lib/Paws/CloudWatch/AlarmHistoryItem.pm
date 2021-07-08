@@ -2,6 +2,7 @@
 package Paws::CloudWatch::AlarmHistoryItem;
   use Moose;
   has AlarmName => (is => 'ro', isa => 'Str');
+  has AlarmType => (is => 'ro', isa => 'Str');
   has HistoryData => (is => 'ro', isa => 'Str');
   has HistoryItemType => (is => 'ro', isa => 'Str');
   has HistorySummary => (is => 'ro', isa => 'Str');
@@ -45,6 +46,11 @@ Represents the history of a specific alarm.
 =head2 AlarmName => Str
 
 The descriptive name for the alarm.
+
+
+=head2 AlarmType => Str
+
+The type of alarm, either metric alarm or composite alarm.
 
 
 =head2 HistoryData => Str

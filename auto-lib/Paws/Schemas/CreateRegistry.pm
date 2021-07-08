@@ -58,7 +58,7 @@ A description of the registry to be created.
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 

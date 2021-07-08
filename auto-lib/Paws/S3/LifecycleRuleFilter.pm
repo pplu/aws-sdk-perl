@@ -51,6 +51,11 @@ specified.
 
 Prefix identifying one or more objects to which the rule applies.
 
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
+
 
 =head2 Tag => L<Paws::S3::Tag>
 

@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     $gamelift->DeleteFleet(
-      FleetId => 'MyFleetId',
+      FleetId => 'MyFleetIdOrArn',
 
     );
 
@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to be deleted. You can use either the
+A unique identifier for the fleet to be deleted. You can use either the
 fleet ID or ARN value.
 
 

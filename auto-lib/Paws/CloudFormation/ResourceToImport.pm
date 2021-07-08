@@ -56,7 +56,10 @@ C<MyS3Bucket>).
 =head2 B<REQUIRED> ResourceType => Str
 
 The type of resource to import into your stack, such as
-C<AWS::S3::Bucket>.
+C<AWS::S3::Bucket>. For a list of supported resource types, see
+Resources that support import operations
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resource-import-supported-resources.html)
+in the AWS CloudFormation User Guide.
 
 
 

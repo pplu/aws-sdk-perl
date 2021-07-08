@@ -82,23 +82,23 @@ The credentials for access to a private registry.
 
 The type of build environment to use for related builds.
 
-The environment type C<ARM_CONTAINER> is available only in regions US
+The environment type C<ARM_CONTAINER> is available only in Regions US
 East (N. Virginia), US East (Ohio), US West (Oregon), Europe (Ireland),
 Asia Pacific (Mumbai), Asia Pacific (Tokyo), Asia Pacific (Sydney), and
 Europe (Frankfurt).
 
 The environment type C<LINUX_CONTAINER> with compute type
-build.general1.2xlarge is available only in regions US East (N.
+build.general1.2xlarge is available only in Regions US East (N.
 Virginia), US East (N. Virginia), US West (Oregon), Canada (Central),
 Europe (Ireland), Europe (London), Europe (Frankfurt), Asia Pacific
 (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific
 (Sydney), China (Beijing), and China (Ningxia).
 
 The environment type C<LINUX_GPU_CONTAINER> is available only in
-regions US East (N. Virginia), US East (N. Virginia), US West (Oregon),
+Regions US East (N. Virginia), US East (N. Virginia), US West (Oregon),
 Canada (Central), Europe (Ireland), Europe (London), Europe
 (Frankfurt), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific
-(Singapore), Asia Pacific (Sydney) , China (Beijing), and China
+(Singapore), Asia Pacific (Sydney), China (Beijing), and China
 (Ningxia).
 
 Valid values: C<WINDOWS_CONTAINER> | C<LINUX_CONTAINER> |

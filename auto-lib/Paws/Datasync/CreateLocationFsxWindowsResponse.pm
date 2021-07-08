@@ -16,8 +16,8 @@ Paws::Datasync::CreateLocationFsxWindowsResponse
 
 =head2 LocationArn => Str
 
-The Amazon Resource Name (ARN) of the FSx for Windows file system
-location that is created.
+The Amazon Resource Name (ARN) of the FSx for Windows File Server file
+system location that is created.
 
 
 =head2 _request_id => Str

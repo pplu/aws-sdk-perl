@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Failur
 
 =head1 DESCRIPTION
 
-A failed resource.
+A failed resource. For a list of common causes, see API failure reasons
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/api_failures_messages.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head1 ATTRIBUTES
 

@@ -48,7 +48,7 @@ A list of the attributes to select from the message.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'selectAttributes' activity.
+The name of the C<selectAttributes> activity.
 
 
 =head2 Next => Str

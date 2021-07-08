@@ -2,12 +2,17 @@
 package Paws::Transfer::DescribedServer;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Certificate => (is => 'ro', isa => 'Str');
+  has Domain => (is => 'ro', isa => 'Str');
   has EndpointDetails => (is => 'ro', isa => 'Paws::Transfer::EndpointDetails');
   has EndpointType => (is => 'ro', isa => 'Str');
   has HostKeyFingerprint => (is => 'ro', isa => 'Str');
   has IdentityProviderDetails => (is => 'ro', isa => 'Paws::Transfer::IdentityProviderDetails');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
+  has ProtocolDetails => (is => 'ro', isa => 'Paws::Transfer::ProtocolDetails');
+  has Protocols => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SecurityPolicyName => (is => 'ro', isa => 'Str');
   has ServerId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Transfer::Tag]');
@@ -43,75 +48,137 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::D
 
 =head1 DESCRIPTION
 
-Describes the properties of the server that was specified. Information
-returned includes the following: the server Amazon Resource Name (ARN),
-the authentication configuration and type, the logging role, the server
-ID and state, and assigned tags or metadata.
+Describes the properties of a file transfer protocol-enabled server
+that was specified.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-Specifies the unique Amazon Resource Name (ARN) for the server to be
-described.
+Specifies the unique Amazon Resource Name (ARN) of the server.
+
+
+=head2 Certificate => Str
+
+Specifies the ARN of the Amazon Web ServicesCertificate Manager (ACM)
+certificate. Required when C<Protocols> is set to C<FTPS>.
+
+
+=head2 Domain => Str
+
+Specifies the domain of the storage system that is used for file
+transfers.
 
 
 =head2 EndpointDetails => L<Paws::Transfer::EndpointDetails>
 
-The virtual private cloud (VPC) endpoint settings that you configured
-for your SFTP server.
+The virtual private cloud (VPC) endpoint settings that are configured
+for your server. When you host your endpoint within your VPC, you can
+make it accessible only to resources within your VPC, or you can attach
+Elastic IP addresses and make it accessible to clients over the
+internet. Your VPC's default security groups are automatically assigned
+to your endpoint.
 
 
 =head2 EndpointType => Str
 
-The type of endpoint that your SFTP server is connected to. If your
-SFTP server is connected to a VPC endpoint, your server isn't
-accessible over the public internet.
+Defines the type of endpoint that your server is connected to. If your
+server is connected to a VPC endpoint, your server isn't accessible
+over the public internet.
 
 
 =head2 HostKeyFingerprint => Str
 
-This value contains the message-digest algorithm (MD5) hash of the
-server's host key. This value is equivalent to the output of the
-C<ssh-keygen -l -E md5 -f my-new-server-key> command.
+Specifies the Base64-encoded SHA256 fingerprint of the server's host
+key. This value is equivalent to the output of the C<ssh-keygen -l -f
+my-new-server-key> command.
 
 
 =head2 IdentityProviderDetails => L<Paws::Transfer::IdentityProviderDetails>
 
 Specifies information to call a customer-supplied authentication API.
-This field is not populated when the C<IdentityProviderType> of the
-server is C<SERVICE_MANAGED>E<gt>.
+This field is not populated when the C<IdentityProviderType> of a
+server is C<AWS_DIRECTORY_SERVICE> or C<SERVICE_MANAGED>.
 
 
 =head2 IdentityProviderType => Str
 
-This property defines the mode of authentication method enabled for
-this service. A value of C<SERVICE_MANAGED> means that you are using
-this server to store and access SFTP user credentials within the
-service. A value of C<API_GATEWAY> indicates that you have integrated
-an API Gateway endpoint that will be invoked for authenticating your
-user into the service.
+Specifies the mode of authentication for a server. The default value is
+C<SERVICE_MANAGED>, which allows you to store and access user
+credentials within the Amazon Web Services Transfer Family service.
+
+Use C<AWS_DIRECTORY_SERVICE> to provide access to Active Directory
+groups in Amazon Web Services Managed Active Directory or Microsoft
+Active Directory in your on-premises environment or in Amazon Web
+Services using AD Connectors. This option also requires you to provide
+a Directory ID using the C<IdentityProviderDetails> parameter.
+
+Use the C<API_GATEWAY> value to integrate with an identity provider of
+your choosing. The C<API_GATEWAY> setting requires you to provide an
+API Gateway endpoint URL to call for authentication using the
+C<IdentityProviderDetails> parameter.
 
 
 =head2 LoggingRole => Str
 
-This property is an AWS Identity and Access Management (IAM) entity
-that allows the server to turn on Amazon CloudWatch logging for Amazon
-S3 events. When set, user activity can be viewed in your CloudWatch
-logs.
+Specifies the Amazon Resource Name (ARN) of the Amazon Web Services
+Identity and Access Management (IAM) role that allows a server to turn
+on Amazon CloudWatch logging for Amazon S3 or Amazon EFS events. When
+set, user activity can be viewed in your CloudWatch logs.
+
+
+=head2 ProtocolDetails => L<Paws::Transfer::ProtocolDetails>
+
+The protocol settings that are configured for your server.
+
+Use the C<PassiveIp> parameter to indicate passive mode. Enter a single
+dotted-quad IPv4 address, such as the external IP address of a
+firewall, router, or load balancer.
+
+
+=head2 Protocols => ArrayRef[Str|Undef]
+
+Specifies the file transfer protocol or protocols over which your file
+transfer protocol client can connect to your server's endpoint. The
+available protocols are:
+
+=over
+
+=item *
+
+C<SFTP> (Secure Shell (SSH) File Transfer Protocol): File transfer over
+SSH
+
+=item *
+
+C<FTPS> (File Transfer Protocol Secure): File transfer with TLS
+encryption
+
+=item *
+
+C<FTP> (File Transfer Protocol): Unencrypted file transfer
+
+=back
+
+
+
+=head2 SecurityPolicyName => Str
+
+Specifies the name of the security policy that is attached to the
+server.
 
 
 =head2 ServerId => Str
 
-This property is a unique system-assigned identifier for the SFTP
-server that you instantiate.
+Specifies the unique system-assigned identifier for a server that you
+instantiate.
 
 
 =head2 State => Str
 
-The condition of the SFTP server for the server that was described. A
-value of C<ONLINE> indicates that the server can accept jobs and
+Specifies the condition of a server for the server that was described.
+A value of C<ONLINE> indicates that the server can accept jobs and
 transfer files. A C<State> value of C<OFFLINE> means that the server
 cannot perform file transfer operations.
 
@@ -123,15 +190,14 @@ indicate an error condition.
 
 =head2 Tags => ArrayRef[L<Paws::Transfer::Tag>]
 
-This property contains the key-value pairs that you can use to search
-for and group servers that were assigned to the server that was
-described.
+Specifies the key-value pairs that you can use to search for and group
+servers that were assigned to the server that was described.
 
 
 =head2 UserCount => Int
 
-The number of users that are assigned to the SFTP server you specified
-with the C<ServerId>.
+Specifies the number of users that are assigned to a server you
+specified with the C<ServerId>.
 
 
 

@@ -51,7 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =head2 B<REQUIRED> Arn => Str
 
-The ARN of the resource from which to remove tags.
+The ARN of the resource group from which to remove tags. The command
+removed both the specified keys and any values associated with those
+keys.
 
 
 

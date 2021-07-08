@@ -52,7 +52,7 @@ Project
 (https://docs.aws.amazon.com/codebuild/latest/userguide/project-sharing.html#project-sharing-share)
 and Sharing a Report Group
 (https://docs.aws.amazon.com/codebuild/latest/userguide/report-groups-sharing.html#report-groups-sharing-share)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 

@@ -17,8 +17,8 @@ Paws::SecurityHub::GetMasterAccountResponse
 
 =head2 Master => L<Paws::SecurityHub::Invitation>
 
-A list of details about the Security Hub master account for the current
-member account.
+A list of details about the Security Hub administrator account for the
+current member account.
 
 
 =head2 _request_id => Str

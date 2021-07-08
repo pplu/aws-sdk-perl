@@ -5,6 +5,7 @@ package Paws::RDS::GlobalCluster;
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has FailoverState => (is => 'ro', isa => 'Paws::RDS::FailoverState');
   has GlobalClusterArn => (is => 'ro', isa => 'Str');
   has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has GlobalClusterMembers => (is => 'ro', isa => 'ArrayRef[Paws::RDS::GlobalClusterMember]', request_name => 'GlobalClusterMember', traits => ['NameInRequest']);
@@ -67,6 +68,14 @@ The Aurora database engine used by the global database cluster.
 Indicates the database engine version.
 
 
+=head2 FailoverState => L<Paws::RDS::FailoverState>
+
+A data object containing all properties for the current state of an
+in-process or pending failover process for this Aurora global database.
+This object is empty unless the FailoverGlobalCluster API operation has
+been called on this Aurora global database (GlobalCluster).
+
+
 =head2 GlobalClusterArn => Str
 
 The Amazon Resource Name (ARN) for the global database cluster.
@@ -86,9 +95,10 @@ database cluster. Currently limited to 1 item.
 
 =head2 GlobalClusterResourceId => Str
 
-The AWS Region-unique, immutable identifier for the global database
-cluster. This identifier is found in AWS CloudTrail log entries
-whenever the AWS KMS key for the DB cluster is accessed.
+The Amazon Web Services Region-unique, immutable identifier for the
+global database cluster. This identifier is found in Amazon Web
+Services CloudTrail log entries whenever the Amazon Web Services KMS
+customer master key (CMK) for the DB cluster is accessed.
 
 
 =head2 Status => Str

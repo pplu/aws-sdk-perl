@@ -37,9 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 =head1 DESCRIPTION
 
 A I<group> in Amazon QuickSight consists of a set of users. You can use
-groups to make it easier to manage access and security. Currently, an
-Amazon QuickSight subscription can't contain more than 500 Amazon
-QuickSight groups.
+groups to make it easier to manage access and security.
 
 =head1 ATTRIBUTES
 

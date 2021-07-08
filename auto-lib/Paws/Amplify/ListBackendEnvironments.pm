@@ -2,7 +2,7 @@
 package Paws::Amplify::ListBackendEnvironments;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
-  has EnvironmentName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'environmentName');
+  has EnvironmentName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'environmentName');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
 
@@ -53,26 +53,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 EnvironmentName => Str
 
-Name of the backend environment
+The name of the backend environment
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of records to list in a single response.
+The maximum number of records to list in a single response.
 
 
 
 =head2 NextToken => Str
 
-Pagination token. Set to null to start listing backen environments from
-start. If a non-null pagination token is returned in a result, then
+A pagination token. Set to null to start listing backend environments
+from the start. If a non-null pagination token is returned in a result,
 pass its value in here to list more backend environments.
 
 

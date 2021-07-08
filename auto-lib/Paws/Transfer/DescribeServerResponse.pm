@@ -16,8 +16,8 @@ Paws::Transfer::DescribeServerResponse
 
 =head2 B<REQUIRED> Server => L<Paws::Transfer::DescribedServer>
 
-An array containing the properties of the server with the C<ServerID>
-you specified.
+An array containing the properties of a server with the C<ServerID> you
+specified.
 
 
 =head2 _request_id => Str

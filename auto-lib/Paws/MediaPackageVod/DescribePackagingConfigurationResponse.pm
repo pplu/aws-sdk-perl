@@ -8,6 +8,7 @@ package Paws::MediaPackageVod::DescribePackagingConfigurationResponse;
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
   has PackagingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'packagingGroupId');
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -54,6 +55,11 @@ The ID of the PackagingConfiguration.
 =head2 PackagingGroupId => Str
 
 The ID of a PackagingGroup.
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 =head2 _request_id => Str

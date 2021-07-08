@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $models.lex = Paws->service('LexModels');
     my $GetBuiltinSlotTypesResponse = $models . lex->GetBuiltinSlotTypes(
-      Locale            => 'en-US',          # OPTIONAL
+      Locale            => 'de-DE',          # OPTIONAL
       MaxResults        => 1,                # OPTIONAL
       NextToken         => 'MyNextToken',    # OPTIONAL
       SignatureContains => 'MyString',       # OPTIONAL
@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mod
 
 A list of locales that the slot type supports.
 
-Valid values are: C<"en-US">, C<"en-GB">, C<"de-DE">
+Valid values are: C<"de-DE">, C<"en-AU">, C<"en-GB">, C<"en-US">, C<"es-419">, C<"es-ES">, C<"es-US">, C<"fr-FR">, C<"fr-CA">, C<"it-IT">, C<"ja-JP">
 
 =head2 MaxResults => Int
 

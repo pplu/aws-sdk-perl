@@ -34,35 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that specifies whether you want CloudFront to forward
-cookies to the origin and, if so, which ones. For more information
-about forwarding cookies to the origin, see Caching Content Based on
-Request Headers
-(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/header-caching.html)
-in the I<Amazon CloudFront Developer Guide>.
+Contains a list of cookie names.
 
 =head1 ATTRIBUTES
 
 
 =head2 Items => ArrayRef[Str|Undef]
 
-A complex type that contains one C<Name> element for each cookie that
-you want CloudFront to forward to the origin for this cache behavior.
-It must contain the same number of items that is specified in the
-C<Quantity> field.
-
-When you set C<Forward = whitelist> (in the C<CookiePreferences>
-object), this field must contain at least one item.
+A list of cookie names.
 
 
 =head2 B<REQUIRED> Quantity => Int
 
-The number of different cookies that you want CloudFront to forward to
-the origin for this cache behavior. The value must equal the number of
-items that are in the C<Items> field.
-
-When you set C<Forward = whitelist> (in the C<CookiePreferences>
-object), this value must be C<1> or higher.
+The number of cookie names in the C<Items> list.
 
 
 

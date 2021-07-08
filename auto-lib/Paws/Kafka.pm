@@ -14,6 +14,16 @@ package Paws::Kafka;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub BatchAssociateScramSecret {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::BatchAssociateScramSecret', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDisassociateScramSecret {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::BatchDisassociateScramSecret', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::CreateCluster', @_);
@@ -27,6 +37,11 @@ package Paws::Kafka;
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::DeleteCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::DeleteConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCluster {
@@ -52,6 +67,11 @@ package Paws::Kafka;
   sub GetBootstrapBrokers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::GetBootstrapBrokers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetCompatibleKafkaVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::GetCompatibleKafkaVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListClusterOperations {
@@ -84,9 +104,19 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListNodes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListScramSecrets {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::ListScramSecrets', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RebootBroker {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::RebootBroker', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -109,9 +139,24 @@ package Paws::Kafka;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateBrokerStorage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateBrokerType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateBrokerType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateClusterConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateClusterConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateClusterKafkaVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateClusterKafkaVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Kafka::UpdateConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateMonitoring {
@@ -258,9 +303,32 @@ package Paws::Kafka;
 
     return undef
   }
+  sub ListAllScramSecrets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListScramSecrets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListScramSecrets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->SecretArnList }, @{ $next_result->SecretArnList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'SecretArnList') foreach (@{ $result->SecretArnList });
+        $result = $self->ListScramSecrets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'SecretArnList') foreach (@{ $result->SecretArnList });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateCluster CreateConfiguration DeleteCluster DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListKafkaVersions ListNodes ListTagsForResource TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateClusterConfiguration UpdateMonitoring / }
+  sub operations { qw/BatchAssociateScramSecret BatchDisassociateScramSecret CreateCluster CreateConfiguration DeleteCluster DeleteConfiguration DescribeCluster DescribeClusterOperation DescribeConfiguration DescribeConfigurationRevision GetBootstrapBrokers GetCompatibleKafkaVersions ListClusterOperations ListClusters ListConfigurationRevisions ListConfigurations ListKafkaVersions ListNodes ListScramSecrets ListTagsForResource RebootBroker TagResource UntagResource UpdateBrokerCount UpdateBrokerStorage UpdateBrokerType UpdateClusterConfiguration UpdateClusterKafkaVersion UpdateConfiguration UpdateMonitoring / }
 
 1;
 
@@ -295,6 +363,42 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =head1 METHODS
 
+=head2 BatchAssociateScramSecret
+
+=over
+
+=item ClusterArn => Str
+
+=item SecretArnList => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::BatchAssociateScramSecret>
+
+Returns: a L<Paws::Kafka::BatchAssociateScramSecretResponse> instance
+
+Associates one or more Scram Secrets with an Amazon MSK cluster.
+
+
+=head2 BatchDisassociateScramSecret
+
+=over
+
+=item ClusterArn => Str
+
+=item SecretArnList => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::BatchDisassociateScramSecret>
+
+Returns: a L<Paws::Kafka::BatchDisassociateScramSecretResponse> instance
+
+Disassociates one or more Scram Secrets from an Amazon MSK cluster.
+
+
 =head2 CreateCluster
 
 =over
@@ -315,6 +419,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kaf
 
 =item [EnhancedMonitoring => Str]
 
+=item [LoggingInfo => L<Paws::Kafka::LoggingInfo>]
+
 =item [OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>]
 
 =item [Tags => L<Paws::Kafka::__mapOf__string>]
@@ -333,13 +439,13 @@ Creates a new MSK cluster.
 
 =over
 
-=item KafkaVersions => ArrayRef[Str|Undef]
-
 =item Name => Str
 
 =item ServerProperties => Str
 
 =item [Description => Str]
+
+=item [KafkaVersions => ArrayRef[Str|Undef]]
 
 
 =back
@@ -368,6 +474,22 @@ Returns: a L<Paws::Kafka::DeleteClusterResponse> instance
 
 Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in
 the request.
+
+
+=head2 DeleteConfiguration
+
+=over
+
+=item Arn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::DeleteConfiguration>
+
+Returns: a L<Paws::Kafka::DeleteConfigurationResponse> instance
+
+Deletes an MSK Configuration.
 
 
 =head2 DescribeCluster
@@ -451,6 +573,22 @@ Each argument is described in detail in: L<Paws::Kafka::GetBootstrapBrokers>
 Returns: a L<Paws::Kafka::GetBootstrapBrokersResponse> instance
 
 A list of brokers that a client application can use to bootstrap.
+
+
+=head2 GetCompatibleKafkaVersions
+
+=over
+
+=item [ClusterArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::GetCompatibleKafkaVersions>
+
+Returns: a L<Paws::Kafka::GetCompatibleKafkaVersionsResponse> instance
+
+Gets the Apache Kafka versions to which you can update the MSK cluster.
 
 
 =head2 ListClusterOperations
@@ -570,6 +708,27 @@ Returns: a L<Paws::Kafka::ListNodesResponse> instance
 Returns a list of the broker nodes in the cluster.
 
 
+=head2 ListScramSecrets
+
+=over
+
+=item ClusterArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::ListScramSecrets>
+
+Returns: a L<Paws::Kafka::ListScramSecretsResponse> instance
+
+Returns a list of the Scram Secrets associated with an Amazon MSK
+cluster.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -584,6 +743,24 @@ Each argument is described in detail in: L<Paws::Kafka::ListTagsForResource>
 Returns: a L<Paws::Kafka::ListTagsForResourceResponse> instance
 
 Returns a list of the tags associated with the specified resource.
+
+
+=head2 RebootBroker
+
+=over
+
+=item BrokerIds => ArrayRef[Str|Undef]
+
+=item ClusterArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::RebootBroker>
+
+Returns: a L<Paws::Kafka::RebootBrokerResponse> instance
+
+Reboots brokers.
 
 
 =head2 TagResource
@@ -663,6 +840,26 @@ Returns: a L<Paws::Kafka::UpdateBrokerStorageResponse> instance
 Updates the EBS storage associated with MSK brokers.
 
 
+=head2 UpdateBrokerType
+
+=over
+
+=item ClusterArn => Str
+
+=item CurrentVersion => Str
+
+=item TargetInstanceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateBrokerType>
+
+Returns: a L<Paws::Kafka::UpdateBrokerTypeResponse> instance
+
+Updates EC2 instance type.
+
+
 =head2 UpdateClusterConfiguration
 
 =over
@@ -684,6 +881,48 @@ Updates the cluster with the configuration that is specified in the
 request body.
 
 
+=head2 UpdateClusterKafkaVersion
+
+=over
+
+=item ClusterArn => Str
+
+=item CurrentVersion => Str
+
+=item TargetKafkaVersion => Str
+
+=item [ConfigurationInfo => L<Paws::Kafka::ConfigurationInfo>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateClusterKafkaVersion>
+
+Returns: a L<Paws::Kafka::UpdateClusterKafkaVersionResponse> instance
+
+Updates the Apache Kafka version for the cluster.
+
+
+=head2 UpdateConfiguration
+
+=over
+
+=item Arn => Str
+
+=item ServerProperties => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Kafka::UpdateConfiguration>
+
+Returns: a L<Paws::Kafka::UpdateConfigurationResponse> instance
+
+Updates an MSK configuration.
+
+
 =head2 UpdateMonitoring
 
 =over
@@ -693,6 +932,8 @@ request body.
 =item CurrentVersion => Str
 
 =item [EnhancedMonitoring => Str]
+
+=item [LoggingInfo => L<Paws::Kafka::LoggingInfo>]
 
 =item [OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>]
 
@@ -785,6 +1026,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - NodeInfoList, passing the object as the first parameter, and the string 'NodeInfoList' as the second parameter 
 
 If not, it will return a a L<Paws::Kafka::ListNodesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllScramSecrets(sub { },ClusterArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllScramSecrets(ClusterArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - SecretArnList, passing the object as the first parameter, and the string 'SecretArnList' as the second parameter 
+
+If not, it will return a a L<Paws::Kafka::ListScramSecretsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

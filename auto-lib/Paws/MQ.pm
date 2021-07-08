@@ -178,11 +178,11 @@ Paws::MQ - Perl Interface to AWS AmazonMQ
 
 =head1 DESCRIPTION
 
-Amazon MQ is a managed message broker service for Apache ActiveMQ that
-makes it easy to set up and operate message brokers in the cloud. A
-message broker allows software applications and components to
-communicate using various programming languages, operating systems, and
-formal messaging protocols.
+Amazon MQ is a managed message broker service for Apache ActiveMQ and
+RabbitMQ that makes it easy to set up and operate message brokers in
+the cloud. A message broker allows software applications and components
+to communicate using various programming languages, operating systems,
+and formal messaging protocols.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 
@@ -192,6 +192,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 =head2 CreateBroker
 
 =over
+
+=item [AuthenticationStrategy => Str]
 
 =item [AutoMinorVersionUpgrade => Bool]
 
@@ -210,6 +212,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/amazon-mq/>
 =item [EngineVersion => Str]
 
 =item [HostInstanceType => Str]
+
+=item [LdapServerMetadata => L<Paws::MQ::LdapServerMetadataInput>]
 
 =item [Logs => L<Paws::MQ::Logs>]
 
@@ -240,6 +244,8 @@ Creates a broker. Note: This API is asynchronous.
 =head2 CreateConfiguration
 
 =over
+
+=item [AuthenticationStrategy => Str]
 
 =item [EngineType => Str]
 
@@ -581,6 +587,8 @@ Reboots a broker. Note: This API is asynchronous.
 
 =item BrokerId => Str
 
+=item [AuthenticationStrategy => Str]
+
 =item [AutoMinorVersionUpgrade => Bool]
 
 =item [Configuration => L<Paws::MQ::ConfigurationId>]
@@ -588,6 +596,8 @@ Reboots a broker. Note: This API is asynchronous.
 =item [EngineVersion => Str]
 
 =item [HostInstanceType => Str]
+
+=item [LdapServerMetadata => L<Paws::MQ::LdapServerMetadataInput>]
 
 =item [Logs => L<Paws::MQ::Logs>]
 

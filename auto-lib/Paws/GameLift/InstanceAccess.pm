@@ -50,12 +50,13 @@ Credentials required to access the instance.
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet containing the instance being accessed.
+A unique identifier for the fleet containing the instance being
+accessed.
 
 
 =head2 InstanceId => Str
 
-A unique identifier for an instance being accessed.
+A unique identifier for the instance being accessed.
 
 
 =head2 IpAddress => Str

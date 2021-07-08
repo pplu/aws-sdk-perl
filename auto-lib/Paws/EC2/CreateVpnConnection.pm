@@ -4,6 +4,7 @@ package Paws::EC2::CreateVpnConnection;
   has CustomerGatewayId => (is => 'ro', isa => 'Str', required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Options => (is => 'ro', isa => 'Paws::EC2::VpnConnectionOptionsSpecification', traits => ['NameInRequest'], request_name => 'options' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransitGatewayId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str', required => 1);
   has VpnGatewayId => (is => 'ro', isa => 'Str');
@@ -37,10 +38,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Type              => 'MyString',
       DryRun            => 1,                       # OPTIONAL
       Options           => {
-        EnableAcceleration => 1,
-        StaticRoutesOnly   => 1,
-        TunnelOptions      => [
+        EnableAcceleration    => 1,
+        LocalIpv4NetworkCidr  => 'MyString',
+        LocalIpv6NetworkCidr  => 'MyString',
+        RemoteIpv4NetworkCidr => 'MyString',
+        RemoteIpv6NetworkCidr => 'MyString',
+        StaticRoutesOnly      => 1,
+        TunnelInsideIpVersion => 'ipv4',       # values: ipv4, ipv6; OPTIONAL
+        TunnelOptions         => [
           {
+            DPDTimeoutAction  => 'MyString',
             DPDTimeoutSeconds => 1,                                   # OPTIONAL
             IKEVersions       => [ { Value => 'MyString', }, ... ],   # OPTIONAL
             Phase1DHGroupNumbers => [
@@ -69,11 +76,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RekeyFuzzPercentage    => 1,            # OPTIONAL
             RekeyMarginTimeSeconds => 1,            # OPTIONAL
             ReplayWindowSize       => 1,            # OPTIONAL
+            StartupAction          => 'MyString',
             TunnelInsideCidr       => 'MyString',
+            TunnelInsideIpv6Cidr   => 'MyString',
           },
           ...
         ],    # OPTIONAL
       },    # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
       TransitGatewayId => 'MyTransitGatewayId',    # OPTIONAL
       VpnGatewayId     => 'MyVpnGatewayId',        # OPTIONAL
     );
@@ -107,6 +130,12 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 Options => L<Paws::EC2::VpnConnectionOptionsSpecification>
 
 The options for the VPN connection.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the VPN connection.
 
 
 

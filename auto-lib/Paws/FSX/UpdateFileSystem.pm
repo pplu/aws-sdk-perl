@@ -4,6 +4,7 @@ package Paws::FSX::UpdateFileSystem;
   has ClientRequestToken => (is => 'ro', isa => 'Str');
   has FileSystemId => (is => 'ro', isa => 'Str', required => 1);
   has LustreConfiguration => (is => 'ro', isa => 'Paws::FSX::UpdateFileSystemLustreConfiguration');
+  has StorageCapacity => (is => 'ro', isa => 'Int');
   has WindowsConfiguration => (is => 'ro', isa => 'Paws::FSX::UpdateFileSystemWindowsConfiguration');
 
   use MooseX::ClassAttribute;
@@ -34,10 +35,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FileSystemId        => 'MyFileSystemId',
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       LustreConfiguration => {
+        AutoImportPolicy => 'NONE',   # values: NONE, NEW, NEW_CHANGED; OPTIONAL
+        AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
+        DailyAutomaticBackupStartTime =>
+          'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
+        DataCompressionType        => 'NONE',  # values: NONE, LZ4; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
+      StorageCapacity      => 1,    # OPTIONAL
       WindowsConfiguration => {
-        AutomaticBackupRetentionDays  => 1,    # max: 35; OPTIONAL
+        AuditLogConfiguration => {
+          FileAccessAuditLogLevel => 'DISABLED'
+          ,  # values: DISABLED, SUCCESS_ONLY, FAILURE_ONLY, SUCCESS_AND_FAILURE
+          FileShareAccessAuditLogLevel => 'DISABLED'
+          ,  # values: DISABLED, SUCCESS_ONLY, FAILURE_ONLY, SUCCESS_AND_FAILURE
+          AuditLogDestination => 'MyGeneralARN',   # min: 8, max: 1024; OPTIONAL
+        },    # OPTIONAL
+        AutomaticBackupRetentionDays  => 1,    # max: 90; OPTIONAL
         DailyAutomaticBackupStartTime =>
           'MyDailyTime',                       # min: 5, max: 5; OPTIONAL
         SelfManagedActiveDirectoryConfiguration => {
@@ -47,6 +61,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Password => 'MyDirectoryPassword',    # min: 1, max: 256; OPTIONAL
           UserName => 'MyDirectoryUserName',    # min: 1, max: 256; OPTIONAL
         },    # OPTIONAL
+        ThroughputCapacity         => 1,    # min: 8, max: 2048; OPTIONAL
         WeeklyMaintenanceStartTime => 'MyWeeklyTime', # min: 7, max: 7; OPTIONAL
       },    # OPTIONAL
     );
@@ -64,16 +79,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 =head2 ClientRequestToken => Str
 
-(Optional) A string of up to 64 ASCII characters that Amazon FSx uses
-to ensure idempotent updates. This string is automatically filled on
-your behalf when you use the AWS Command Line Interface (AWS CLI) or an
-AWS SDK.
+A string of up to 64 ASCII characters that Amazon FSx uses to ensure
+idempotent updates. This string is automatically filled on your behalf
+when you use the AWS Command Line Interface (AWS CLI) or an AWS SDK.
 
 
 
 =head2 B<REQUIRED> FileSystemId => Str
 
-
+Identifies the file system that you are updating.
 
 
 
@@ -83,11 +97,57 @@ AWS SDK.
 
 
 
+=head2 StorageCapacity => Int
+
+Use this parameter to increase the storage capacity of an Amazon FSx
+file system. Specifies the storage capacity target value, GiB, to
+increase the storage capacity for the file system that you're updating.
+You cannot make a storage capacity increase request if there is an
+existing storage capacity increase request in progress.
+
+For Windows file systems, the storage capacity target value must be at
+least 10 percent (%) greater than the current storage capacity value.
+In order to increase storage capacity, the file system must have at
+least 16 MB/s of throughput capacity.
+
+For Lustre file systems, the storage capacity target value can be the
+following:
+
+=over
+
+=item *
+
+For C<SCRATCH_2> and C<PERSISTENT_1 SSD> deployment types, valid values
+are in multiples of 2400 GiB. The value must be greater than the
+current storage capacity.
+
+=item *
+
+For C<PERSISTENT HDD> file systems, valid values are multiples of 6000
+GiB for 12 MB/s/TiB file systems and multiples of 1800 GiB for 40
+MB/s/TiB file systems. The values must be greater than the current
+storage capacity.
+
+=item *
+
+For C<SCRATCH_1> file systems, you cannot increase the storage
+capacity.
+
+=back
+
+For more information, see Managing storage capacity
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html)
+in the I<Amazon FSx for Windows File Server User Guide> and Managing
+storage and throughput capacity
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/managing-storage-capacity.html)
+in the I<Amazon FSx for Lustre User Guide>.
+
+
+
 =head2 WindowsConfiguration => L<Paws::FSX::UpdateFileSystemWindowsConfiguration>
 
-The configuration update for this Microsoft Windows file system. The
-only supported options are for backup and maintenance and for
-self-managed Active Directory configuration.
+The configuration updates for an Amazon FSx for Windows File Server
+file system.
 
 
 

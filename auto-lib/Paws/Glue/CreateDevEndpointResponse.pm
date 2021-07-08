@@ -44,14 +44,6 @@ Valid arguments are:
 
 C<"--enable-glue-datacatalog": "">
 
-=item *
-
-C<"GLUE_PYTHON_VERSION": "3">
-
-=item *
-
-C<"GLUE_PYTHON_VERSION": "2">
-
 =back
 
 You can specify a version of Python support for development endpoints
@@ -95,13 +87,18 @@ The reason for a current failure in this C<DevEndpoint>.
 =head2 GlueVersion => Str
 
 Glue version determines the versions of Apache Spark and Python that
-AWS Glue supports. The Python version indicates the version supported
-for running your ETL scripts on development endpoints.
+Glue supports. The Python version indicates the version supported for
+running your ETL scripts on development endpoints.
+
+For more information about the available Glue versions and
+corresponding Spark and Python versions, see Glue version
+(https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
+developer guide.
 
 
 =head2 NumberOfNodes => Int
 
-The number of AWS Glue Data Processing Units (DPUs) allocated to this
+The number of Glue Data Processing Units (DPUs) allocated to this
 DevEndpoint.
 
 

@@ -4,7 +4,9 @@ package Paws::RDS::DBProxyTarget;
   has Endpoint => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has RdsResourceId => (is => 'ro', isa => 'Str');
+  has Role => (is => 'ro', isa => 'Str');
   has TargetArn => (is => 'ro', isa => 'Str');
+  has TargetHealth => (is => 'ro', isa => 'Paws::RDS::TargetHealth');
   has TrackedClusterId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
 
@@ -38,9 +40,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBProx
 
 =head1 DESCRIPTION
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Contains the details for an RDS Proxy target. It represents an RDS DB
 instance or Aurora DB cluster that the proxy can connect to. One or
 more targets are associated with an RDS Proxy target group.
@@ -69,10 +68,21 @@ identifier for an RDS DB instance, or the cluster identifier for an
 Aurora DB cluster.
 
 
+=head2 Role => Str
+
+A value that indicates whether the target of the proxy can be used for
+read/write or read-only operations.
+
+
 =head2 TargetArn => Str
 
 The Amazon Resource Name (ARN) for the RDS DB instance or Aurora DB
 cluster.
+
+
+=head2 TargetHealth => L<Paws::RDS::TargetHealth>
+
+Information about the connection health of the RDS Proxy target.
 
 
 =head2 TrackedClusterId => Str

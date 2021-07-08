@@ -14,6 +14,16 @@ package Paws::CloudFormation;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::QueryCaller';
 
   
+  sub ActivateType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::ActivateType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDescribeTypeConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::BatchDescribeTypeConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelUpdateStack {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::CancelUpdateStack', @_);
@@ -42,6 +52,11 @@ package Paws::CloudFormation;
   sub CreateStackSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::CreateStackSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeactivateType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DeactivateType', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteChangeSet {
@@ -77,6 +92,11 @@ package Paws::CloudFormation;
   sub DescribeChangeSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribeChangeSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePublisher {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::DescribePublisher', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeStackDriftDetectionStatus {
@@ -234,9 +254,19 @@ package Paws::CloudFormation;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::ListTypeVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PublishType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::PublishType', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RecordHandlerProgress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::RecordHandlerProgress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RegisterPublisher {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::RegisterPublisher', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegisterType {
@@ -247,6 +277,11 @@ package Paws::CloudFormation;
   sub SetStackPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::SetStackPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SetTypeConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::SetTypeConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetTypeDefaultVersion {
@@ -262,6 +297,11 @@ package Paws::CloudFormation;
   sub StopStackSetOperation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CloudFormation::StopStackSetOperation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TestType {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CloudFormation::TestType', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateStack {
@@ -589,9 +629,32 @@ package Paws::CloudFormation;
 
     return undef
   }
+  sub ListAllTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTypes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TypeSummaries }, @{ $next_result->TypeSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TypeSummaries') foreach (@{ $result->TypeSummaries });
+        $result = $self->ListTypes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TypeSummaries') foreach (@{ $result->TypeSummaries });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DeregisterType DescribeAccountLimits DescribeChangeSet DescribeStackDriftDetectionStatus DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResourceDrifts DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation DescribeType DescribeTypeRegistration DetectStackDrift DetectStackResourceDrift DetectStackSetDrift EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets ListTypeRegistrations ListTypes ListTypeVersions RecordHandlerProgress RegisterType SetStackPolicy SetTypeDefaultVersion SignalResource StopStackSetOperation UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
+  sub operations { qw/ActivateType BatchDescribeTypeConfigurations CancelUpdateStack ContinueUpdateRollback CreateChangeSet CreateStack CreateStackInstances CreateStackSet DeactivateType DeleteChangeSet DeleteStack DeleteStackInstances DeleteStackSet DeregisterType DescribeAccountLimits DescribeChangeSet DescribePublisher DescribeStackDriftDetectionStatus DescribeStackEvents DescribeStackInstance DescribeStackResource DescribeStackResourceDrifts DescribeStackResources DescribeStacks DescribeStackSet DescribeStackSetOperation DescribeType DescribeTypeRegistration DetectStackDrift DetectStackResourceDrift DetectStackSetDrift EstimateTemplateCost ExecuteChangeSet GetStackPolicy GetTemplate GetTemplateSummary ListChangeSets ListExports ListImports ListStackInstances ListStackResources ListStacks ListStackSetOperationResults ListStackSetOperations ListStackSets ListTypeRegistrations ListTypes ListTypeVersions PublishType RecordHandlerProgress RegisterPublisher RegisterType SetStackPolicy SetTypeConfiguration SetTypeDefaultVersion SignalResource StopStackSetOperation TestType UpdateStack UpdateStackInstances UpdateStackSet UpdateTerminationProtection ValidateTemplate / }
 
 1;
 
@@ -647,6 +710,71 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 
 =head1 METHODS
+
+=head2 ActivateType
+
+=over
+
+=item [AutoUpdate => Bool]
+
+=item [ExecutionRoleArn => Str]
+
+=item [LoggingConfig => L<Paws::CloudFormation::LoggingConfig>]
+
+=item [MajorVersion => Int]
+
+=item [PublicTypeArn => Str]
+
+=item [PublisherId => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+=item [TypeNameAlias => Str]
+
+=item [VersionBump => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::ActivateType>
+
+Returns: a L<Paws::CloudFormation::ActivateTypeOutput> instance
+
+Activates a public third-party extension, making it available for use
+in stack templates. For more information, see Using public extensions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html)
+in the I<CloudFormation User Guide>.
+
+Once you have activated a public third-party extension in your account
+and region, use SetTypeConfiguration to specify configuration
+properties for the extension. For more information, see Configuring
+extensions at the account level
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration)
+in the I<CloudFormation User Guide>.
+
+
+=head2 BatchDescribeTypeConfigurations
+
+=over
+
+=item TypeConfigurationIdentifiers => ArrayRef[L<Paws::CloudFormation::TypeConfigurationIdentifier>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::BatchDescribeTypeConfigurations>
+
+Returns: a L<Paws::CloudFormation::BatchDescribeTypeConfigurationsOutput> instance
+
+Returns configuration data for the specified CloudFormation extensions,
+from the CloudFormation registry for the account and region.
+
+For more information, see Configuring extensions at the account level
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration)
+in the I<CloudFormation User Guide>.
+
 
 =head2 CancelUpdateStack
 
@@ -722,6 +850,8 @@ back to it, causing the update rollback to fail.
 
 =item [Description => Str]
 
+=item [IncludeNestedStacks => Bool]
+
 =item [NotificationARNs => ArrayRef[Str|Undef]]
 
 =item [Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]]
@@ -773,6 +903,9 @@ or to review it, use the DescribeChangeSet action.
 When you are satisfied with the changes the change set will make,
 execute the change set by using the ExecuteChangeSet action. AWS
 CloudFormation doesn't make changes until you execute the change set.
+
+To create a change set for the entire stack hierachy, set
+C<IncludeNestedStacks> to C<True>.
 
 
 =head2 CreateStack
@@ -835,6 +968,8 @@ the stack via the DescribeStacks API.
 
 =item [Accounts => ArrayRef[Str|Undef]]
 
+=item [CallAs => Str]
+
 =item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
@@ -851,8 +986,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::CreateStackInst
 Returns: a L<Paws::CloudFormation::CreateStackInstancesOutput> instance
 
 Creates stack instances for the specified accounts, within the
-specified regions. A stack instance refers to a stack in a specific
-account and region. You must specify at least one value for either
+specified Regions. A stack instance refers to a stack in a specific
+account and Region. You must specify at least one value for either
 C<Accounts> or C<DeploymentTargets>, and you must specify at least one
 value for C<Regions>.
 
@@ -866,6 +1001,8 @@ value for C<Regions>.
 =item [AdministrationRoleARN => Str]
 
 =item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
+=item [CallAs => Str]
 
 =item [Capabilities => ArrayRef[Str|Undef]]
 
@@ -895,6 +1032,33 @@ Returns: a L<Paws::CloudFormation::CreateStackSetOutput> instance
 Creates a stack set.
 
 
+=head2 DeactivateType
+
+=over
+
+=item [Arn => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DeactivateType>
+
+Returns: a L<Paws::CloudFormation::DeactivateTypeOutput> instance
+
+Deactivates a public extension that was previously activated in this
+account and region.
+
+Once deactivated, an extension cannot be used in any CloudFormation
+operation. This includes stack update operations where the stack
+template includes the extension, even if no updates are being made to
+the extension. In addition, deactivated extensions are not
+automatically updated if a new version of the extension is released.
+
+
 =head2 DeleteChangeSet
 
 =over
@@ -915,6 +1079,11 @@ one executes the wrong change set.
 
 If the call successfully completes, AWS CloudFormation successfully
 deleted the change set.
+
+If C<IncludeNestedStacks> specifies C<True> during the creation of the
+nested change set, then C<DeleteChangeSet> will delete all change sets
+that belong to the stacks hierarchy and will also delete all change
+sets for nested stacks with the status of C<REVIEW_IN_PROGRESS>.
 
 
 =head2 DeleteStack
@@ -953,6 +1122,8 @@ API if the deletion has been completed successfully.
 
 =item [Accounts => ArrayRef[Str|Undef]]
 
+=item [CallAs => Str]
+
 =item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
@@ -967,7 +1138,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::DeleteStackInst
 Returns: a L<Paws::CloudFormation::DeleteStackInstancesOutput> instance
 
 Deletes stack instances for the specified accounts, in the specified
-regions.
+Regions.
 
 
 =head2 DeleteStackSet
@@ -975,6 +1146,8 @@ regions.
 =over
 
 =item StackSetName => Str
+
+=item [CallAs => Str]
 
 
 =back
@@ -1007,18 +1180,24 @@ Each argument is described in detail in: L<Paws::CloudFormation::DeregisterType>
 
 Returns: a L<Paws::CloudFormation::DeregisterTypeOutput> instance
 
-Removes a type or type version from active use in the CloudFormation
-registry. If a type or type version is deregistered, it cannot be used
-in CloudFormation operations.
+Marks an extension or extension version as C<DEPRECATED> in the
+CloudFormation registry, removing it from active use. Deprecated
+extensions or extension versions cannot be used in CloudFormation
+operations.
 
-To deregister a type, you must individually deregister all registered
-versions of that type. If a type has only a single registered version,
-deregistering that version results in the type itself being
-deregistered.
+To deregister an entire extension, you must individually deregister all
+active versions of that extension. If an extension has only a single
+active version, deregistering that version results in the extension
+itself being deregistered and marked as deprecated in the registry.
 
-You cannot deregister the default version of a type, unless it is the
-only registered version of that type, in which case the type itself is
-deregistered as well.
+You cannot deregister the default version of an extension if there are
+other active version of that extension. If you do deregister the
+default version of an extension, the textensionype itself is
+deregistered as well and marked as deprecated.
+
+To view the deprecation status of an extension or extension version,
+use DescribeType
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html).
 
 
 =head2 DescribeAccountLimits
@@ -1063,6 +1242,44 @@ CloudFormation will make if you execute the change set. For more
 information, see Updating Stacks Using Change Sets
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html)
 in the AWS CloudFormation User Guide.
+
+
+=head2 DescribePublisher
+
+=over
+
+=item [PublisherId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::DescribePublisher>
+
+Returns: a L<Paws::CloudFormation::DescribePublisherOutput> instance
+
+Returns information about a CloudFormation extension publisher.
+
+If you do not supply a C<PublisherId>, and you have registered as an
+extension publisher, C<DescribePublisher> returns information about
+your own publisher account.
+
+For more information on registering as a publisher, see:
+
+=over
+
+=item *
+
+RegisterPublisher
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html)
+
+=item *
+
+Publishing extensions to make them available for public use
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html)
+in the I<CloudFormation CLI User Guide>
+
+=back
+
 
 
 =head2 DescribeStackDriftDetectionStatus
@@ -1131,6 +1348,8 @@ deleted by specifying the unique stack identifier (stack ID).
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 
 =back
 
@@ -1139,7 +1358,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeStackIn
 Returns: a L<Paws::CloudFormation::DescribeStackInstanceOutput> instance
 
 Returns the stack instance that's associated with the specified stack
-set, AWS account, and region.
+set, AWS account, and Region.
 
 For a list of stack instances that are associated with a specific stack
 set, use ListStackInstances.
@@ -1271,6 +1490,8 @@ returned.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 
 =back
 
@@ -1289,6 +1510,8 @@ Returns the description of the specified stack set.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 
 =back
 
@@ -1305,6 +1528,10 @@ Returns the description of the specified stack set operation.
 
 =item [Arn => Str]
 
+=item [PublicVersionNumber => Str]
+
+=item [PublisherId => Str]
+
 =item [Type => Str]
 
 =item [TypeName => Str]
@@ -1318,11 +1545,12 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeType>
 
 Returns: a L<Paws::CloudFormation::DescribeTypeOutput> instance
 
-Returns detailed information about a type that has been registered.
+Returns detailed information about an extension that has been
+registered.
 
 If you specify a C<VersionId>, C<DescribeType> returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.
+about that specific extension version. Otherwise, it returns
+information about the default extension version.
 
 
 =head2 DescribeTypeRegistration
@@ -1338,15 +1566,15 @@ Each argument is described in detail in: L<Paws::CloudFormation::DescribeTypeReg
 
 Returns: a L<Paws::CloudFormation::DescribeTypeRegistrationOutput> instance
 
-Returns information about a type's registration, including its current
-status and type and version identifiers.
+Returns information about an extension's registration, including its
+current status and type and version identifiers.
 
 When you initiate a registration request using C< RegisterType >, you
 can then use C< DescribeTypeRegistration > to monitor the progress of
 that registration request.
 
 Once the registration request has completed, use C< DescribeType > to
-return detailed informaiton about a type.
+return detailed information about an extension.
 
 
 =head2 DetectStackDrift
@@ -1437,6 +1665,8 @@ Resources that Support Drift Detection
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 =item [OperationId => Str]
 
 =item [OperationPreferences => L<Paws::CloudFormation::StackSetOperationPreferences>]
@@ -1469,7 +1699,7 @@ drift information:
 
 =item *
 
-Use C< DescribeStackSet > to return detailed informaiton about the
+Use C< DescribeStackSet > to return detailed information about the
 stack set, including detailed information about the last I<completed>
 drift operation performed on the stack set. (Information about drift
 operations that are in progress is not included.)
@@ -1551,6 +1781,9 @@ If a stack policy is associated with the stack, AWS CloudFormation
 enforces the policy during the update. You can't specify a temporary
 stack policy that overrides the current policy.
 
+To create a change set for the entire stack hierachy,
+C<IncludeNestedStacks> must have been set to C<True>.
+
 
 =head2 GetStackPolicy
 
@@ -1598,6 +1831,8 @@ If the template does not exist, a C<ValidationError> is returned.
 =head2 GetTemplateSummary
 
 =over
+
+=item [CallAs => Str]
 
 =item [StackName => Str]
 
@@ -1661,7 +1896,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListExports>
 
 Returns: a L<Paws::CloudFormation::ListExportsOutput> instance
 
-Lists all exported output values in the account and region in which you
+Lists all exported output values in the account and Region in which you
 call this action. Use this action to see the exported output values
 that you can import into other stacks. To import values, use the
 C<Fn::ImportValue>
@@ -1704,6 +1939,10 @@ function.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
+=item [Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1721,7 +1960,8 @@ Returns: a L<Paws::CloudFormation::ListStackInstancesOutput> instance
 
 Returns summary information about stack instances that are associated
 with the specified stack set. You can filter for stack instances that
-are associated with a specific AWS account name or region.
+are associated with a specific AWS account name or Region, or that have
+a specific status.
 
 
 =head2 ListStackResources
@@ -1775,6 +2015,8 @@ returned (including existing stacks and stacks that have been deleted).
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1795,6 +2037,8 @@ Returns summary information about the results of a stack set operation.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1813,6 +2057,8 @@ Returns summary information about operations performed on a stack set.
 
 =over
 
+=item [CallAs => Str]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -1828,6 +2074,30 @@ Returns: a L<Paws::CloudFormation::ListStackSetsOutput> instance
 
 Returns summary information about stack sets that are associated with
 the user.
+
+=over
+
+=item *
+
+[Self-managed permissions] If you set the C<CallAs> parameter to
+C<SELF> while signed in to your AWS account, C<ListStackSets> returns
+all self-managed stack sets in your AWS account.
+
+=item *
+
+[Service-managed permissions] If you set the C<CallAs> parameter to
+C<SELF> while signed in to the organization's management account,
+C<ListStackSets> returns all stack sets in the management account.
+
+=item *
+
+[Service-managed permissions] If you set the C<CallAs> parameter to
+C<DELEGATED_ADMIN> while signed in to your member account,
+C<ListStackSets> returns all stack sets with service-managed
+permissions in the management account.
+
+=back
+
 
 
 =head2 ListTypeRegistrations
@@ -1853,7 +2123,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypeRegistr
 
 Returns: a L<Paws::CloudFormation::ListTypeRegistrationsOutput> instance
 
-Returns a list of registration tokens for the specified type(s).
+Returns a list of registration tokens for the specified extension(s).
 
 
 =head2 ListTypes
@@ -1862,11 +2132,15 @@ Returns a list of registration tokens for the specified type(s).
 
 =item [DeprecatedStatus => Str]
 
+=item [Filters => L<Paws::CloudFormation::TypeFilters>]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
 
 =item [ProvisioningType => Str]
+
+=item [Type => Str]
 
 =item [Visibility => Str]
 
@@ -1877,8 +2151,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypes>
 
 Returns: a L<Paws::CloudFormation::ListTypesOutput> instance
 
-Returns summary information about types that have been registered with
-CloudFormation.
+Returns summary information about extension that have been registered
+with CloudFormation.
 
 
 =head2 ListTypeVersions
@@ -1893,6 +2167,8 @@ CloudFormation.
 
 =item [NextToken => Str]
 
+=item [PublisherId => Str]
+
 =item [Type => Str]
 
 =item [TypeName => Str]
@@ -1904,7 +2180,39 @@ Each argument is described in detail in: L<Paws::CloudFormation::ListTypeVersion
 
 Returns: a L<Paws::CloudFormation::ListTypeVersionsOutput> instance
 
-Returns summary information about the versions of a type.
+Returns summary information about the versions of an extension.
+
+
+=head2 PublishType
+
+=over
+
+=item [Arn => Str]
+
+=item [PublicVersionNumber => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::PublishType>
+
+Returns: a L<Paws::CloudFormation::PublishTypeOutput> instance
+
+Publishes the specified extension to the CloudFormation registry as a
+public extension in this region. Public extensions are available for
+use by all CloudFormation users. For more information on publishing
+extensions, see Publishing extensions to make them available for public
+use
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html)
+in the I<CloudFormation CLI User Guide>.
+
+To publish an extension, you must be registered as a publisher with
+CloudFormation. For more information, see RegisterPublisher
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterPublisher.html).
 
 
 =head2 RecordHandlerProgress
@@ -1939,6 +2247,33 @@ Reserved for use by the CloudFormation CLI
 Do not use this API in your code.
 
 
+=head2 RegisterPublisher
+
+=over
+
+=item [AcceptTermsAndConditions => Bool]
+
+=item [ConnectionArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::RegisterPublisher>
+
+Returns: a L<Paws::CloudFormation::RegisterPublisherOutput> instance
+
+Registers your account as a publisher of public extensions in the
+CloudFormation registry. Public extensions are available for use by all
+CloudFormation users. This publisher ID applies to your account in all
+AWS regions.
+
+For information on requirements for registering as a public extension
+publisher, see Registering your account to publish CloudFormation
+extensions
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-prereqs)
+in the I<CloudFormation CLI User Guide>.
+
+
 =head2 RegisterType
 
 =over
@@ -1962,34 +2297,46 @@ Each argument is described in detail in: L<Paws::CloudFormation::RegisterType>
 
 Returns: a L<Paws::CloudFormation::RegisterTypeOutput> instance
 
-Registers a type with the CloudFormation service. Registering a type
-makes it available for use in CloudFormation templates in your AWS
-account, and includes:
+Registers an extension with the CloudFormation service. Registering an
+extension makes it available for use in CloudFormation templates in
+your AWS account, and includes:
 
 =over
 
 =item *
 
-Validating the resource schema
+Validating the extension schema
 
 =item *
 
-Determining which handlers have been specified for the resource
+Determining which handlers, if any, have been specified for the
+extension
 
 =item *
 
-Making the resource type available for use in your account
+Making the extension available for use in your account
 
 =back
 
-For more information on how to develop types and ready them for
+For more information on how to develop extensions and ready them for
 registeration, see Creating Resource Providers
 (https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-types.html)
 in the I<CloudFormation CLI User Guide>.
 
+You can have a maximum of 50 resource extension versions registered at
+a time. This maximum is per account and per region. Use DeregisterType
+to deregister specific extension versions if necessary.
+
 Once you have initiated a registration request using C< RegisterType >,
 you can use C< DescribeTypeRegistration > to monitor the progress of
 the registration request.
+
+Once you have registered a private extension in your account and
+region, use SetTypeConfiguration to specify configuration properties
+for the extension. For more information, see Configuring extensions at
+the account level
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration)
+in the I<CloudFormation User Guide>.
 
 
 =head2 SetStackPolicy
@@ -2012,6 +2359,43 @@ Returns: nothing
 Sets a stack policy for a specified stack.
 
 
+=head2 SetTypeConfiguration
+
+=over
+
+=item Configuration => Str
+
+=item [ConfigurationAlias => Str]
+
+=item [Type => Str]
+
+=item [TypeArn => Str]
+
+=item [TypeName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::SetTypeConfiguration>
+
+Returns: a L<Paws::CloudFormation::SetTypeConfigurationOutput> instance
+
+Specifies the configuration data for a registered CloudFormation
+extension, in the given account and region.
+
+To view the current configuration data for an extension, refer to the
+C<ConfigurationSchema> element of DescribeType. For more information,
+see Configuring extensions at the account level
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-register.html#registry-set-configuration)
+in the I<CloudFormation User Guide>.
+
+It is strongly recommended that you use dynamic references to restrict
+sensitive configuration definitions, such as third-party credentials.
+For more details on dynamic references, see Using dynamic references to
+specify template values (https://docs.aws.amazon.com/) in the I<AWS
+CloudFormation User Guide>.
+
+
 =head2 SetTypeDefaultVersion
 
 =over
@@ -2031,8 +2415,8 @@ Each argument is described in detail in: L<Paws::CloudFormation::SetTypeDefaultV
 
 Returns: a L<Paws::CloudFormation::SetTypeDefaultVersionOutput> instance
 
-Specify the default version of a type. The default version of a type
-will be used in CloudFormation operations.
+Specify the default version of an extension. The default version of an
+extension will be used in CloudFormation operations.
 
 
 =head2 SignalResource
@@ -2071,6 +2455,8 @@ other than an Amazon EC2 instance.
 
 =item StackSetName => Str
 
+=item [CallAs => Str]
+
 
 =back
 
@@ -2080,6 +2466,68 @@ Returns: a L<Paws::CloudFormation::StopStackSetOperationOutput> instance
 
 Stops an in-progress operation on a stack set and its associated stack
 instances.
+
+
+=head2 TestType
+
+=over
+
+=item [Arn => Str]
+
+=item [LogDeliveryBucket => Str]
+
+=item [Type => Str]
+
+=item [TypeName => Str]
+
+=item [VersionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CloudFormation::TestType>
+
+Returns: a L<Paws::CloudFormation::TestTypeOutput> instance
+
+Tests a registered extension to make sure it meets all necessary
+requirements for being published in the CloudFormation registry.
+
+=over
+
+=item *
+
+For resource types, this includes passing all contracts tests defined
+for the type.
+
+=item *
+
+For modules, this includes determining if the module's model meets all
+necessary requirements.
+
+=back
+
+For more information, see Testing your public extension prior to
+publishing
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html#publish-extension-testing)
+in the I<CloudFormation CLI User Guide>.
+
+If you do not specify a version, CloudFormation uses the default
+version of the extension in your account and region for testing.
+
+To perform testing, CloudFormation assumes the execution role specified
+when the test was registered. For more information, see RegisterType.
+
+Once you've initiated testing on an extension using C<TestType>, you
+can use DescribeType
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html)
+to monitor the current test status and test status description for the
+extension.
+
+An extension must have a test status of C<PASSED> before it can be
+published. For more information, see Publishing extensions to make them
+available for public use
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-publish.html)
+in the I<CloudFormation CLI User Guide>.
 
 
 =head2 UpdateStack
@@ -2147,6 +2595,8 @@ stack, and monitoring the progress of the update, see Updating a Stack
 
 =item [Accounts => ArrayRef[Str|Undef]]
 
+=item [CallAs => Str]
+
 =item [DeploymentTargets => L<Paws::CloudFormation::DeploymentTargets>]
 
 =item [OperationId => Str]
@@ -2163,10 +2613,10 @@ Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackInst
 Returns: a L<Paws::CloudFormation::UpdateStackInstancesOutput> instance
 
 Updates the parameter values for stack instances for the specified
-accounts, within the specified regions. A stack instance refers to a
-stack in a specific account and region.
+accounts, within the specified Regions. A stack instance refers to a
+stack in a specific account and Region.
 
-You can only update stack instances in regions and accounts where they
+You can only update stack instances in Regions and accounts where they
 already exist; to create additional stack instances, use
 CreateStackInstances
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_CreateStackInstances.html).
@@ -2198,6 +2648,8 @@ value using C<UpdateStackInstances>.
 =item [AdministrationRoleARN => Str]
 
 =item [AutoDeployment => L<Paws::CloudFormation::AutoDeployment>]
+
+=item [CallAs => Str]
 
 =item [Capabilities => ArrayRef[Str|Undef]]
 
@@ -2233,7 +2685,7 @@ Each argument is described in detail in: L<Paws::CloudFormation::UpdateStackSet>
 Returns: a L<Paws::CloudFormation::UpdateStackSetOutput> instance
 
 Updates the stack set, and associated stack instances in the specified
-accounts and regions.
+accounts and Regions.
 
 Even if the stack set operation created by updating the stack set fails
 (completely or partially, below or above a specified failure
@@ -2381,9 +2833,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListImportsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackInstances(sub { },StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+=head2 ListAllStackInstances(sub { },StackSetName => Str, [CallAs => Str, Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>], MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
 
-=head2 ListAllStackInstances(StackSetName => Str, [MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
+=head2 ListAllStackInstances(StackSetName => Str, [CallAs => Str, Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>], MaxResults => Int, NextToken => Str, StackInstanceAccount => Str, StackInstanceRegion => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2417,9 +2869,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListStacksOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackSetOperationResults(sub { },OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperationResults(sub { },OperationId => Str, StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllStackSetOperationResults(OperationId => Str, StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperationResults(OperationId => Str, StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2429,9 +2881,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListStackSetOperationResultsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackSetOperations(sub { },StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperations(sub { },StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
-=head2 ListAllStackSetOperations(StackSetName => Str, [MaxResults => Int, NextToken => Str])
+=head2 ListAllStackSetOperations(StackSetName => Str, [CallAs => Str, MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2441,9 +2893,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CloudFormation::ListStackSetOperationsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllStackSets(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListAllStackSets(sub { },[CallAs => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
-=head2 ListAllStackSets([MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListAllStackSets([CallAs => Str, MaxResults => Int, NextToken => Str, Status => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -2451,6 +2903,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Summaries, passing the object as the first parameter, and the string 'Summaries' as the second parameter 
 
 If not, it will return a a L<Paws::CloudFormation::ListStackSetsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTypes(sub { },[DeprecatedStatus => Str, Filters => L<Paws::CloudFormation::TypeFilters>, MaxResults => Int, NextToken => Str, ProvisioningType => Str, Type => Str, Visibility => Str])
+
+=head2 ListAllTypes([DeprecatedStatus => Str, Filters => L<Paws::CloudFormation::TypeFilters>, MaxResults => Int, NextToken => Str, ProvisioningType => Str, Type => Str, Visibility => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TypeSummaries, passing the object as the first parameter, and the string 'TypeSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::CloudFormation::ListTypesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

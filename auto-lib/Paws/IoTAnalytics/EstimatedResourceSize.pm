@@ -46,7 +46,7 @@ The time when the estimate of the size of the resource was made.
 
 =head2 EstimatedSizeInBytes => Num
 
-The estimated size of the resource in bytes.
+The estimated size of the resource, in bytes.
 
 
 

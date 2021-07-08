@@ -3,10 +3,13 @@ package Paws::ServiceCatalog::UpdateProvisionedProduct;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
   has PathId => (is => 'ro', isa => 'Str');
+  has PathName => (is => 'ro', isa => 'Str');
   has ProductId => (is => 'ro', isa => 'Str');
+  has ProductName => (is => 'ro', isa => 'Str');
   has ProvisionedProductId => (is => 'ro', isa => 'Str');
   has ProvisionedProductName => (is => 'ro', isa => 'Str');
   has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactName => (is => 'ro', isa => 'Str');
   has ProvisioningParameters => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::UpdateProvisioningParameter]');
   has ProvisioningPreferences => (is => 'ro', isa => 'Paws::ServiceCatalog::UpdateProvisioningPreferences');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::Tag]');
@@ -38,14 +41,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $UpdateProvisionedProductOutput =
       $servicecatalog->UpdateProvisionedProduct(
-      UpdateToken            => 'MyIdempotencyToken',
-      AcceptLanguage         => 'MyAcceptLanguage',                 # OPTIONAL
-      PathId                 => 'MyId',                             # OPTIONAL
-      ProductId              => 'MyId',                             # OPTIONAL
-      ProvisionedProductId   => 'MyId',                             # OPTIONAL
-      ProvisionedProductName => 'MyProvisionedProductNameOrArn',    # OPTIONAL
-      ProvisioningArtifactId => 'MyId',                             # OPTIONAL
-      ProvisioningParameters => [
+      UpdateToken              => 'MyIdempotencyToken',
+      AcceptLanguage           => 'MyAcceptLanguage',                 # OPTIONAL
+      PathId                   => 'MyId',                             # OPTIONAL
+      PathName                 => 'MyPortfolioDisplayName',           # OPTIONAL
+      ProductId                => 'MyId',                             # OPTIONAL
+      ProductName              => 'MyProductViewName',                # OPTIONAL
+      ProvisionedProductId     => 'MyId',                             # OPTIONAL
+      ProvisionedProductName   => 'MyProvisionedProductNameOrArn',    # OPTIONAL
+      ProvisioningArtifactId   => 'MyId',                             # OPTIONAL
+      ProvisioningArtifactName => 'MyProvisioningArtifactName',       # OPTIONAL
+      ProvisioningParameters   => [
         {
           Key              => 'MyParameterKey',    # min: 1, max: 1000; OPTIONAL
           UsePreviousValue => 1,                   # OPTIONAL
@@ -109,21 +115,35 @@ C<zh> - Chinese
 
 =head2 PathId => Str
 
-The new path identifier. This value is optional if the product has a
-default path, and required if the product has more than one path.
+The path identifier. This value is optional if the product has a
+default path, and required if the product has more than one path. You
+must provide the name or ID, but not both.
+
+
+
+=head2 PathName => Str
+
+The name of the path. You must provide the name or ID, but not both.
 
 
 
 =head2 ProductId => Str
 
-The identifier of the product.
+The identifier of the product. You must provide the name or ID, but not
+both.
+
+
+
+=head2 ProductName => Str
+
+The name of the product. You must provide the name or ID, but not both.
 
 
 
 =head2 ProvisionedProductId => Str
 
-The identifier of the provisioned product. You cannot specify both
-C<ProvisionedProductName> and C<ProvisionedProductId>.
+The identifier of the provisioned product. You must provide the name or
+ID, but not both.
 
 
 
@@ -137,6 +157,13 @@ C<ProvisionedProductName> and C<ProvisionedProductId>.
 =head2 ProvisioningArtifactId => Str
 
 The identifier of the provisioning artifact.
+
+
+
+=head2 ProvisioningArtifactName => Str
+
+The name of the provisioning artifact. You must provide the name or ID,
+but not both.
 
 
 

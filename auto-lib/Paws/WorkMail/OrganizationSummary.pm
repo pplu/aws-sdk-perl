@@ -2,6 +2,7 @@
 package Paws::WorkMail::OrganizationSummary;
   use Moose;
   has Alias => (is => 'ro', isa => 'Str');
+  has DefaultMailDomain => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
   has OrganizationId => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
@@ -44,6 +45,11 @@ The representation of an organization.
 =head2 Alias => Str
 
 The alias associated with the organization.
+
+
+=head2 DefaultMailDomain => Str
+
+The default email domain associated with the organization.
 
 
 =head2 ErrorMessage => Str

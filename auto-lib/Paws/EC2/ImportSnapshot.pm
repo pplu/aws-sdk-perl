@@ -9,6 +9,7 @@ package Paws::EC2::ImportSnapshot;
   has Encrypted => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -52,16 +53,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           S3Key    => 'MyString',     # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      DryRun    => 1,               # OPTIONAL
-      Encrypted => 1,               # OPTIONAL
-      KmsKeyId  => 'MyKmsKeyId',    # OPTIONAL
-      RoleName  => 'MyString',      # OPTIONAL
+      DryRun            => 1,               # OPTIONAL
+      Encrypted         => 1,               # OPTIONAL
+      KmsKeyId          => 'MyKmsKeyId',    # OPTIONAL
+      RoleName          => 'MyString',      # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',    # OPTIONAL
+              Value => 'MyString',    # OPTIONAL
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
     my $Description        = $ImportSnapshotResult->Description;
     my $ImportTaskId       = $ImportSnapshotResult->ImportTaskId;
     my $SnapshotTaskDetail = $ImportSnapshotResult->SnapshotTaskDetail;
+    my $Tags               = $ImportSnapshotResult->Tags;
 
     # Returns a L<Paws::EC2::ImportSnapshotResult> object.
 
@@ -169,6 +185,12 @@ Amazon EBS does not support asymmetric CMKs.
 
 The name of the role to use when not using the default role,
 'vmimport'.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the import snapshot task during creation.
 
 
 

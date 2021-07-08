@@ -30,11 +30,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $events = Paws->service('CloudWatchEvents');
     my $DescribeRuleResponse = $events->DescribeRule(
       Name         => 'MyRuleName',
-      EventBusName => 'MyEventBusName',    # OPTIONAL
+      EventBusName => 'MyEventBusNameOrArn',    # OPTIONAL
     );
 
     # Results:
     my $Arn                = $DescribeRuleResponse->Arn;
+    my $CreatedBy          = $DescribeRuleResponse->CreatedBy;
     my $Description        = $DescribeRuleResponse->Description;
     my $EventBusName       = $DescribeRuleResponse->EventBusName;
     my $EventPattern       = $DescribeRuleResponse->EventPattern;
@@ -54,8 +55,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 EventBusName => Str
 
-The event bus associated with the rule. If you omit this, the default
-event bus is used.
+The name or ARN of the event bus associated with the rule. If you omit
+this, the default event bus is used.
 
 
 

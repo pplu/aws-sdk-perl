@@ -1,9 +1,12 @@
 
 package Paws::FraudDetector::CreateModelVersion;
   use Moose;
-  has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
+  has ExternalEventsDetail => (is => 'ro', isa => 'Paws::FraudDetector::ExternalEventsDetail', traits => ['NameInRequest'], request_name => 'externalEventsDetail' );
   has ModelId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelId' , required => 1);
   has ModelType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'modelType' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has TrainingDataSchema => (is => 'ro', isa => 'Paws::FraudDetector::TrainingDataSchema', traits => ['NameInRequest'], request_name => 'trainingDataSchema' , required => 1);
+  has TrainingDataSource => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'trainingDataSource' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +33,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $frauddetector = Paws->service('FraudDetector');
     my $CreateModelVersionResult = $frauddetector->CreateModelVersion(
-      ModelId     => 'Myidentifier',
-      ModelType   => 'ONLINE_FRAUD_INSIGHTS',
-      Description => 'Mydescription',           # OPTIONAL
+      ModelId            => 'MymodelIdentifier',
+      ModelType          => 'ONLINE_FRAUD_INSIGHTS',
+      TrainingDataSchema => {
+        LabelSchema => {
+          LabelMapper => { 'Mystring' => [ 'Mystring', ... ], },
+
+        },
+        ModelVariables => [ 'Mystring', ... ],
+
+      },
+      TrainingDataSource   => 'EXTERNAL_EVENTS',
+      ExternalEventsDetail => {
+        DataAccessRoleArn => 'MyiamRoleArn',          # min: 1, max: 256
+        DataLocation      => 'Mys3BucketLocation',    # min: 1, max: 512
+
+      },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -49,9 +73,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fra
 =head1 ATTRIBUTES
 
 
-=head2 Description => Str
+=head2 ExternalEventsDetail => L<Paws::FraudDetector::ExternalEventsDetail>
 
-The model version description.
+Details for the external events data used for model version training.
+Required if C<trainingDataSource> is C<EXTERNAL_EVENTS>.
 
 
 
@@ -66,6 +91,24 @@ The model ID.
 The model type.
 
 Valid values are: C<"ONLINE_FRAUD_INSIGHTS">
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
+
+
+
+=head2 B<REQUIRED> TrainingDataSchema => L<Paws::FraudDetector::TrainingDataSchema>
+
+The training data schema.
+
+
+
+=head2 B<REQUIRED> TrainingDataSource => Str
+
+The training data source location in Amazon S3.
+
+Valid values are: C<"EXTERNAL_EVENTS">
 
 
 =head1 SEE ALSO

@@ -64,8 +64,8 @@ results in a single page along with a C<nextToken> response element.
 The remaining results of the initial request can be seen by sending
 another C<DescribeComputeEnvironments> request with the returned
 C<nextToken> value. This value can be between 1 and 100. If this
-parameter is not used, then C<DescribeComputeEnvironments> returns up
-to 100 results and a C<nextToken> value if applicable.
+parameter isn't used, then C<DescribeComputeEnvironments> returns up to
+100 results and a C<nextToken> value if applicable.
 
 
 
@@ -77,7 +77,7 @@ the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the C<nextToken>
 value. This value is C<null> when there are no more results to return.
 
-This token should be treated as an opaque identifier that is only used
+This token should be treated as an opaque identifier that's only used
 to retrieve the next items in a list and not for other programmatic
 purposes.
 

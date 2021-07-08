@@ -2,6 +2,7 @@
 package Paws::S3::HeadObject;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has IfMatch => (is => 'ro', isa => 'Str', header_name => 'If-Match', traits => ['ParamInHeader']);
   has IfModifiedSince => (is => 'ro', isa => 'Str', header_name => 'If-Modified-Since', traits => ['ParamInHeader']);
   has IfNoneMatch => (is => 'ro', isa => 'Str', header_name => 'If-None-Match', traits => ['ParamInHeader']);
@@ -44,53 +45,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To retrieve metadata of an object without returning the object itself
+    # The following example retrieves an object metadata.
     my $HeadObjectOutput = $s3->HeadObject(
-      Bucket               => 'MyBucketName',
-      Key                  => 'MyObjectKey',
-      IfMatch              => 'MyIfMatch',                 # OPTIONAL
-      IfModifiedSince      => '1970-01-01T01:00:00',       # OPTIONAL
-      IfNoneMatch          => 'MyIfNoneMatch',             # OPTIONAL
-      IfUnmodifiedSince    => '1970-01-01T01:00:00',       # OPTIONAL
-      PartNumber           => 1,                           # OPTIONAL
-      Range                => 'MyRange',                   # OPTIONAL
-      RequestPayer         => 'requester',                 # OPTIONAL
-      SSECustomerAlgorithm => 'MySSECustomerAlgorithm',    # OPTIONAL
-      SSECustomerKey       => 'MySSECustomerKey',          # OPTIONAL
-      SSECustomerKeyMD5    => 'MySSECustomerKeyMD5',       # OPTIONAL
-      VersionId            => 'MyObjectVersionId',         # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Key'    => 'HappyFace.jpg'
     );
 
     # Results:
-    my $AcceptRanges       = $HeadObjectOutput->AcceptRanges;
-    my $CacheControl       = $HeadObjectOutput->CacheControl;
-    my $ContentDisposition = $HeadObjectOutput->ContentDisposition;
-    my $ContentEncoding    = $HeadObjectOutput->ContentEncoding;
-    my $ContentLanguage    = $HeadObjectOutput->ContentLanguage;
-    my $ContentLength      = $HeadObjectOutput->ContentLength;
-    my $ContentType        = $HeadObjectOutput->ContentType;
-    my $DeleteMarker       = $HeadObjectOutput->DeleteMarker;
-    my $ETag               = $HeadObjectOutput->ETag;
-    my $Expiration         = $HeadObjectOutput->Expiration;
-    my $Expires            = $HeadObjectOutput->Expires;
-    my $LastModified       = $HeadObjectOutput->LastModified;
-    my $Metadata           = $HeadObjectOutput->Metadata;
-    my $MissingMeta        = $HeadObjectOutput->MissingMeta;
-    my $ObjectLockLegalHoldStatus =
-      $HeadObjectOutput->ObjectLockLegalHoldStatus;
-    my $ObjectLockMode = $HeadObjectOutput->ObjectLockMode;
-    my $ObjectLockRetainUntilDate =
-      $HeadObjectOutput->ObjectLockRetainUntilDate;
-    my $PartsCount              = $HeadObjectOutput->PartsCount;
-    my $ReplicationStatus       = $HeadObjectOutput->ReplicationStatus;
-    my $RequestCharged          = $HeadObjectOutput->RequestCharged;
-    my $Restore                 = $HeadObjectOutput->Restore;
-    my $SSECustomerAlgorithm    = $HeadObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5       = $HeadObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSKeyId             = $HeadObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption    = $HeadObjectOutput->ServerSideEncryption;
-    my $StorageClass            = $HeadObjectOutput->StorageClass;
-    my $VersionId               = $HeadObjectOutput->VersionId;
-    my $WebsiteRedirectLocation = $HeadObjectOutput->WebsiteRedirectLocation;
+    my $AcceptRanges  = $HeadObjectOutput->AcceptRanges;
+    my $ContentLength = $HeadObjectOutput->ContentLength;
+    my $ContentType   = $HeadObjectOutput->ContentType;
+    my $ETag          = $HeadObjectOutput->ETag;
+    my $LastModified  = $HeadObjectOutput->LastModified;
+    my $Metadata      = $HeadObjectOutput->Metadata;
+    my $VersionId     = $HeadObjectOutput->VersionId;
 
     # Returns a L<Paws::S3::HeadObjectOutput> object.
 
@@ -103,6 +72,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 The name of the bucket containing the object.
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 
@@ -153,7 +149,11 @@ number of parts in this object.
 
 Downloads the specified range bytes of an object. For more information
 about the HTTP Range header, see
-http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35.
+http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35
+(http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.35).
+
+Amazon S3 doesn't support retrieving multiple ranges of data per C<GET>
+request.
 
 
 

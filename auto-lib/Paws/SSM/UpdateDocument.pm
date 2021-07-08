@@ -3,6 +3,7 @@ package Paws::SSM::UpdateDocument;
   use Moose;
   has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::SSM::AttachmentsSource]');
   has Content => (is => 'ro', isa => 'Str', required => 1);
+  has DisplayName => (is => 'ro', isa => 'Str');
   has DocumentFormat => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -47,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      DisplayName     => 'MyDocumentDisplayName',    # OPTIONAL
       DocumentFormat  => 'YAML',                     # OPTIONAL
       DocumentVersion => 'MyDocumentVersion',        # OPTIONAL
       TargetType      => 'MyTargetType',             # OPTIONAL
@@ -77,6 +79,15 @@ A valid JSON or YAML string.
 
 
 
+=head2 DisplayName => Str
+
+The friendly name of the Systems Manager document that you want to
+update. This value can differ for each version of the document. If you
+do not specify a value for this parameter in your request, the existing
+value is applied to the new document version.
+
+
+
 =head2 DocumentFormat => Str
 
 Specify the document format for the new document version. Systems
@@ -86,13 +97,16 @@ Valid values are: C<"YAML">, C<"JSON">, C<"TEXT">
 
 =head2 DocumentVersion => Str
 
-(Required) The version of the document that you want to update.
+The version of the document that you want to update. Currently, Systems
+Manager supports updating only the latest version of the document. You
+can specify the version number of the latest version or use the
+C<$LATEST> variable.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the document that you want to update.
+The name of the Systems Manager document that you want to update.
 
 
 

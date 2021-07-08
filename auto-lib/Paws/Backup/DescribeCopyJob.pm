@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 
 =head2 B<REQUIRED> CopyJobId => Str
 
-Uniquely identifies a request to AWS Backup to copy a resource.
+Uniquely identifies a copy job.
 
 
 

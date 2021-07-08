@@ -39,8 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      MaxResults => 1,                     # OPTIONAL
-      NextToken  => 'MyNonEmptyString',    # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyPaginationToken',    # OPTIONAL
       );
 
     # Results:
@@ -61,6 +61,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ima
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]
 
 The filters.
+
+=over
+
+=item *
+
+C<name> - The name of this distribution configuration.
+
+=back
+
 
 
 

@@ -35,9 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Budgets::Ca
 =head1 DESCRIPTION
 
 The spend objects that are associated with this budget. The
-C<actualSpend> tracks how much you've used, cost, usage, or RI units,
-and the C<forecastedSpend> tracks how much you are predicted to spend
-if your current usage remains steady.
+C<actualSpend> tracks how much you've used, cost, usage, RI units, or
+Savings Plans units and the C<forecastedSpend> tracks how much you are
+predicted to spend based on your historical usage profile.
 
 For example, if it is the 20th of the month and you have spent C<50>
 dollars on Amazon EC2, your C<actualSpend> is C<50 USD>, and your
@@ -48,12 +48,14 @@ C<forecastedSpend> is C<75 USD>.
 
 =head2 B<REQUIRED> ActualSpend => L<Paws::Budgets::Spend>
 
-The amount of cost, usage, or RI units that you have used.
+The amount of cost, usage, RI units, or Savings Plans units that you
+have used.
 
 
 =head2 ForecastedSpend => L<Paws::Budgets::Spend>
 
-The amount of cost, usage, or RI units that you are forecasted to use.
+The amount of cost, usage, RI units, or Savings Plans units that you
+are forecasted to use.
 
 
 

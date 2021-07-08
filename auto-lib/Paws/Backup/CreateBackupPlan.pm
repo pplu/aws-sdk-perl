@@ -48,7 +48,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],    # OPTIONAL
-            Lifecycle => {
+            EnableContinuousBackup => 1,    # OPTIONAL
+            Lifecycle              => {
               DeleteAfterDays            => 1,    # OPTIONAL
               MoveToColdStorageAfterDays => 1,    # OPTIONAL
             },    # OPTIONAL
@@ -58,13 +59,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],
-
+        AdvancedBackupSettings => [
+          {
+            BackupOptions => { 'MyBackupOptionKey' => 'MyBackupOptionValue', }
+            ,                                                         # OPTIONAL
+            ResourceType => 'MyResourceType',                         # OPTIONAL
+          },
+          ...
+        ],    # OPTIONAL
       },
       BackupPlanTags   => { 'MyTagKey' => 'MyTagValue', },    # OPTIONAL
       CreatorRequestId => 'Mystring',                         # OPTIONAL
     );
 
     # Results:
+    my $AdvancedBackupSettings =
+      $CreateBackupPlanOutput->AdvancedBackupSettings;
     my $BackupPlanArn = $CreateBackupPlanOutput->BackupPlanArn;
     my $BackupPlanId  = $CreateBackupPlanOutput->BackupPlanId;
     my $CreationDate  = $CreateBackupPlanOutput->CreationDate;
@@ -96,7 +106,7 @@ specified tags are assigned to all backups created with this plan.
 =head2 CreatorRequestId => Str
 
 Identifies the request and allows failed requests to be retried without
-the risk of executing the operation twice. If the request includes a
+the risk of running the operation twice. If the request includes a
 C<CreatorRequestId> that matches an existing backup plan, that plan is
 returned. This parameter is optional.
 

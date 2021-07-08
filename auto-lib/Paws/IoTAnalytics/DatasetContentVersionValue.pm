@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-The data set whose latest contents are used as input to the notebook or
+The dataset whose latest contents are used as input to the notebook or
 application.
 
 =head1 ATTRIBUTES
@@ -41,7 +41,7 @@ application.
 
 =head2 B<REQUIRED> DatasetName => Str
 
-The name of the data set whose latest contents are used as input to the
+The name of the dataset whose latest contents are used as input to the
 notebook or application.
 
 

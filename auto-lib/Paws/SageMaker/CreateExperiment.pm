@@ -71,8 +71,8 @@ C<ExperimentName> is displayed.
 
 =head2 B<REQUIRED> ExperimentName => Str
 
-The name of the experiment. The name must be unique in your AWS account
-and is not case-sensitive.
+The name of the experiment. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.
 
 
 

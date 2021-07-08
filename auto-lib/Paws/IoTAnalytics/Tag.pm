@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-A set of key/value pairs which are used to manage the resource.
+A set of key-value pairs that are used to manage the resource.
 
 =head1 ATTRIBUTES
 

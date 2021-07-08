@@ -19,10 +19,10 @@ Paws::Quicksight::GetDashboardEmbedUrlResponse
 
 =head2 EmbedUrl => Str
 
-An URL that you can put into your server-side webpage to embed your
-dashboard. This URL is valid for 5 minutes, and the resulting session
-is valid for 10 hours. The API provides the URL with an C<auth_code>
-value that enables a single sign-on session.
+A single-use URL that you can put into your server-side webpage to
+embed your dashboard. This URL is valid for 5 minutes. The API
+operation provides the URL with an C<auth_code> value that enables one
+(and only one) sign-on to a user session that is valid for 10 hours.
 
 
 =head2 RequestId => Str

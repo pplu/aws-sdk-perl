@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           NewReplicaCount            => 1,
           NodeGroupId                => 'MyAllowedNodeGroupId', # min: 1, max: 4
           PreferredAvailabilityZones => [ 'MyString', ... ],    # OPTIONAL
+          PreferredOutpostArns       => [ 'MyString', ... ],    # OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -84,11 +85,11 @@ Redis (cluster mode disabled)
 
 =item *
 
-If Multi-AZ with Automatic Failover is enabled: 1
+If Multi-AZ is enabled: 1
 
 =item *
 
-If Multi-AZ with Automatic Failover is not enabled: 0
+If Multi-AZ is not enabled: 0
 
 =back
 

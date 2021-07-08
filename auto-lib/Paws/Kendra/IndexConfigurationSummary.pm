@@ -2,6 +2,7 @@
 package Paws::Kendra::IndexConfigurationSummary;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str', required => 1);
+  has Edition => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str', required => 1);
@@ -45,6 +46,12 @@ A summary of information about an index.
 =head2 B<REQUIRED> CreatedAt => Str
 
 The Unix timestamp when the index was created.
+
+
+=head2 Edition => Str
+
+Indicates whether the index is a enterprise edition index or a
+developer edition index.
 
 
 =head2 Id => Str

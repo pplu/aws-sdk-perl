@@ -17,8 +17,8 @@ Paws::Macie::DisassociateS3ResourcesResult
 =head2 FailedS3Resources => ArrayRef[L<Paws::Macie::FailedS3Resource>]
 
 S3 resources that couldn't be removed from being monitored and
-classified by Amazon Macie. An error code and an error message are
-provided for each failed item.
+classified by Amazon Macie Classic. An error code and an error message
+are provided for each failed item.
 
 
 =head2 _request_id => Str

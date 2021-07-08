@@ -43,16 +43,16 @@ the message.
 
 =head2 B<REQUIRED> Attributes => L<Paws::IoTAnalytics::AttributeNameMapping>
 
-A list of 1-50 "AttributeNameMapping" objects that map an existing
+A list of 1-50 C<AttributeNameMapping> objects that map an existing
 attribute to a new attribute.
 
 The existing attributes remain in the message, so if you want to remove
-the originals, use "RemoveAttributeActivity".
+the originals, use C<RemoveAttributeActivity>.
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'addAttributes' activity.
+The name of the addAttributes activity.
 
 
 =head2 Next => Str

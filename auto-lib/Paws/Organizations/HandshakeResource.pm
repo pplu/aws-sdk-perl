@@ -68,13 +68,13 @@ account that receives the handshake.
 
 =item *
 
-C<OWNER_EMAIL> - Specifies the email address associated with the master
-account. Included as information about an organization.
+C<OWNER_EMAIL> - Specifies the email address associated with the
+management account. Included as information about an organization.
 
 =item *
 
-C<OWNER_NAME> - Specifies the name associated with the master account.
-Included as information about an organization.
+C<OWNER_NAME> - Specifies the name associated with the management
+account. Included as information about an organization.
 
 =item *
 

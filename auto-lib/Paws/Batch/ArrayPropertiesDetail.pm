@@ -42,7 +42,7 @@ An object representing the array properties of a job.
 
 =head2 Index => Int
 
-The job index within the array that is associated with this job. This
+The job index within the array that's associated with this job. This
 parameter is returned for array job children.
 
 

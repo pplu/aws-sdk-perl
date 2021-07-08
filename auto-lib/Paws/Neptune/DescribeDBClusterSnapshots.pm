@@ -118,8 +118,8 @@ This parameter is not currently supported.
 =head2 IncludePublic => Bool
 
 True to include manual DB cluster snapshots that are public and can be
-copied or restored by any AWS account, and otherwise false. The default
-is C<false>. The default is false.
+copied or restored by any Amazon account, and otherwise false. The
+default is C<false>. The default is false.
 
 You can share a manual DB cluster snapshot as public by using the
 ModifyDBClusterSnapshotAttribute API action.
@@ -128,12 +128,12 @@ ModifyDBClusterSnapshotAttribute API action.
 
 =head2 IncludeShared => Bool
 
-True to include shared manual DB cluster snapshots from other AWS
+True to include shared manual DB cluster snapshots from other Amazon
 accounts that this AWS account has been given permission to copy or
 restore, and otherwise false. The default is C<false>.
 
-You can give an AWS account permission to restore a manual DB cluster
-snapshot from another AWS account by the
+You can give an Amazon account permission to restore a manual DB
+cluster snapshot from another Amazon account by the
 ModifyDBClusterSnapshotAttribute API action.
 
 
@@ -170,7 +170,7 @@ the following values:
 =item *
 
 C<automated> - Return all DB cluster snapshots that have been
-automatically taken by Amazon Neptune for my AWS account.
+automatically taken by Amazon Neptune for my Amazon account.
 
 =item *
 
@@ -180,7 +180,7 @@ AWS account.
 =item *
 
 C<shared> - Return all manual DB cluster snapshots that have been
-shared to my AWS account.
+shared to my Amazon account.
 
 =item *
 

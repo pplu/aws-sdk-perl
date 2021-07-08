@@ -38,8 +38,9 @@ public key is C<ENCRYPT_DECRYPT>.
 
 =head2 KeyId => Str
 
-The identifier of the asymmetric CMK from which the public key was
-downloaded.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the asymmetric CMK from which the public key was downloaded.
 
 
 =head2 KeyUsage => Str

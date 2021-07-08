@@ -60,10 +60,11 @@ C<}>
 =head2 B<REQUIRED> AttributeName => Str
 
 The name of the schema attribute that specifies the data field to be
-featurized. Only the C<target> field of the C<TARGET_TIME_SERIES>
-dataset type is supported. For example, for the C<RETAIL> domain, the
-target is C<demand>, and for the C<CUSTOM> domain, the target is
-C<target_value>.
+featurized. Amazon Forecast supports the target field of the
+C<TARGET_TIME_SERIES> and the C<RELATED_TIME_SERIES> datasets. For
+example, for the C<RETAIL> domain, the target is C<demand>, and for the
+C<CUSTOM> domain, the target is C<target_value>. For more information,
+see howitworks-missing-values.
 
 
 =head2 FeaturizationPipeline => ArrayRef[L<Paws::Forecast::FeaturizationMethod>]

@@ -3,10 +3,13 @@ package Paws::Quicksight::DashboardVersion;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str');
+  has DataSetArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Description => (is => 'ro', isa => 'Str');
   has Errors => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::DashboardError]');
+  has Sheets => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::Sheet]');
   has SourceEntityArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has ThemeArn => (is => 'ro', isa => 'Str');
   has VersionNumber => (is => 'ro', isa => 'Int');
 
 1;
@@ -54,6 +57,12 @@ The Amazon Resource Name (ARN) of the resource.
 The time that this dashboard version was created.
 
 
+=head2 DataSetArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Numbers (ARNs) for the datasets that are associated
+with this version of the dashboard.
+
+
 =head2 Description => Str
 
 Description.
@@ -61,7 +70,13 @@ Description.
 
 =head2 Errors => ArrayRef[L<Paws::Quicksight::DashboardError>]
 
-Errors.
+Errors associated with this dashboard version.
+
+
+=head2 Sheets => ArrayRef[L<Paws::Quicksight::Sheet>]
+
+A list of the associated sheets with the unique identifier and name of
+each sheet.
 
 
 =head2 SourceEntityArn => Str
@@ -74,9 +89,14 @@ Source entity ARN.
 The HTTP status of the request.
 
 
+=head2 ThemeArn => Str
+
+The ARN of the theme associated with a version of the dashboard.
+
+
 =head2 VersionNumber => Int
 
-Version number.
+Version number for this version of the dashboard.
 
 
 

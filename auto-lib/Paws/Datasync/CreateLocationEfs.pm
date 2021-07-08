@@ -108,7 +108,7 @@ EFS file system is used to read data from the EFS source location or
 write data to the EFS destination. By default, AWS DataSync uses the
 root directory.
 
-C<Subdirectory> must be specified with forward slashes. For example
+C<Subdirectory> must be specified with forward slashes. For example,
 C</path/to/folder>.
 
 

@@ -2,6 +2,7 @@
 package Paws::EC2::CreateTransitGatewayMulticastDomain;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool');
+  has Options => (is => 'ro', isa => 'Paws::EC2::CreateTransitGatewayMulticastDomainRequestOptions');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has TransitGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -31,12 +32,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $CreateTransitGatewayMulticastDomainResult =
       $ec2->CreateTransitGatewayMulticastDomain(
-      TransitGatewayId  => 'MyTransitGatewayId',
-      DryRun            => 1,                      # OPTIONAL
+      TransitGatewayId => 'MyTransitGatewayId',
+      DryRun           => 1,                      # OPTIONAL
+      Options          => {
+        AutoAcceptSharedAssociations =>
+          'enable',    # values: enable, disable; OPTIONAL
+        Igmpv2Support        => 'enable',    # values: enable, disable; OPTIONAL
+        StaticSourcesSupport => 'enable',    # values: enable, disable; OPTIONAL
+      },    # OPTIONAL
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',    # OPTIONAL
@@ -67,6 +74,12 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 Options => L<Paws::EC2::CreateTransitGatewayMulticastDomainRequestOptions>
+
+The options for the transit gateway multicast domain.
 
 
 

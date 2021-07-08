@@ -4,6 +4,7 @@ package Paws::IoTEventsData::Message;
   has InputName => (is => 'ro', isa => 'Str', request_name => 'inputName', traits => ['NameInRequest'], required => 1);
   has MessageId => (is => 'ro', isa => 'Str', request_name => 'messageId', traits => ['NameInRequest'], required => 1);
   has Payload => (is => 'ro', isa => 'Str', request_name => 'payload', traits => ['NameInRequest'], required => 1);
+  has Timestamp => (is => 'ro', isa => 'Paws::IoTEventsData::TimestampValue', request_name => 'timestamp', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IoTEventsData::Message object:
 
-  $service_obj->Method(Att1 => { InputName => $value, ..., Payload => $value  });
+  $service_obj->Method(Att1 => { InputName => $value, ..., Timestamp => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,6 +57,11 @@ C<"messageId"> must be unique.
 The payload of the message. This can be a JSON string or a
 Base-64-encoded string representing binary data (in which case you must
 decode it).
+
+
+=head2 Timestamp => L<Paws::IoTEventsData::TimestampValue>
+
+The timestamp associated with the message.
 
 
 

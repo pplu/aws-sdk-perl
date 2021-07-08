@@ -2,9 +2,14 @@
 package Paws::Quicksight::UpdateUser;
   use Moose;
   has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
+  has CustomFederationProviderUrl => (is => 'ro', isa => 'Str');
+  has CustomPermissionsName => (is => 'ro', isa => 'Str');
   has Email => (is => 'ro', isa => 'Str', required => 1);
+  has ExternalLoginFederationProviderType => (is => 'ro', isa => 'Str');
+  has ExternalLoginId => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'Namespace', required => 1);
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has UnapplyCustomPermissions => (is => 'ro', isa => 'Bool');
   has UserName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UserName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,12 +38,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $quicksight = Paws->service('Quicksight');
     my $UpdateUserResponse = $quicksight->UpdateUser(
-      AwsAccountId => 'MyAwsAccountId',
-      Email        => 'MyString',
-      Namespace    => 'MyNamespace',
-      Role         => 'ADMIN',
-      UserName     => 'MyUserName',
-
+      AwsAccountId                        => 'MyAwsAccountId',
+      Email                               => 'MyString',
+      Namespace                           => 'MyNamespace',
+      Role                                => 'ADMIN',
+      UserName                            => 'MyUserName',
+      CustomFederationProviderUrl         => 'MyString',         # OPTIONAL
+      CustomPermissionsName               => 'MyRoleName',       # OPTIONAL
+      ExternalLoginFederationProviderType => 'MyString',         # OPTIONAL
+      ExternalLoginId                     => 'MyString',         # OPTIONAL
+      UnapplyCustomPermissions            => 1,                  # OPTIONAL
     );
 
     # Results:
@@ -61,9 +70,102 @@ ID for the AWS account that contains your Amazon QuickSight account.
 
 
 
+=head2 CustomFederationProviderUrl => Str
+
+The URL of the custom OpenID Connect (OIDC) provider that provides
+identity to let a user federate into QuickSight with an associated AWS
+Identity and Access Management (IAM) role. This parameter should only
+be used when C<ExternalLoginFederationProviderType> parameter is set to
+C<CUSTOM_OIDC>.
+
+
+
+=head2 CustomPermissionsName => Str
+
+(Enterprise edition only) The name of the custom permissions profile
+that you want to assign to this user. Customized permissions allows you
+to control a user's access by restricting access the following
+operations:
+
+=over
+
+=item *
+
+Create and update data sources
+
+=item *
+
+Create and update datasets
+
+=item *
+
+Create and update email reports
+
+=item *
+
+Subscribe to email reports
+
+=back
+
+A set of custom permissions includes any combination of these
+restrictions. Currently, you need to create the profile names for
+custom permission sets by using the QuickSight console. Then, you use
+the C<RegisterUser> API operation to assign the named set of
+permissions to a QuickSight user.
+
+QuickSight custom permissions are applied through IAM policies.
+Therefore, they override the permissions typically granted by assigning
+QuickSight users to one of the default security cohorts in QuickSight
+(admin, author, reader).
+
+This feature is available only to QuickSight Enterprise edition
+subscriptions that use SAML 2.0-Based Federation for Single Sign-On
+(SSO).
+
+
+
 =head2 B<REQUIRED> Email => Str
 
 The email address of the user that you want to update.
+
+
+
+=head2 ExternalLoginFederationProviderType => Str
+
+The type of supported external login provider that provides identity to
+let a user federate into QuickSight with an associated AWS Identity and
+Access Management (IAM) role. The type of supported external login
+provider can be one of the following.
+
+=over
+
+=item *
+
+C<COGNITO>: Amazon Cognito. The provider URL is
+cognito-identity.amazonaws.com. When choosing the C<COGNITO> provider
+type, donE<rsquo>t use the "CustomFederationProviderUrl" parameter
+which is only needed when the external provider is custom.
+
+=item *
+
+C<CUSTOM_OIDC>: Custom OpenID Connect (OIDC) provider. When choosing
+C<CUSTOM_OIDC> type, use the C<CustomFederationProviderUrl> parameter
+to provide the custom OIDC provider URL.
+
+=item *
+
+C<NONE>: This clears all the previously saved external login
+information for a user. Use C< DescribeUser > API to check the external
+login information.
+
+=back
+
+
+
+
+=head2 ExternalLoginId => Str
+
+The identity ID for a user in the external login provider.
 
 
 
@@ -75,8 +177,8 @@ The namespace. Currently, you should set this to C<default>.
 
 =head2 B<REQUIRED> Role => Str
 
-The Amazon QuickSight role of the user. The user role can be one of the
-following:
+The Amazon QuickSight role of the user. The role can be one of the
+following default security cohorts:
 
 =over
 
@@ -96,8 +198,19 @@ QuickSight settings.
 
 =back
 
+The name of the QuickSight role is invisible to the user except for the
+console screens dealing with permissions.
 
 Valid values are: C<"ADMIN">, C<"AUTHOR">, C<"READER">, C<"RESTRICTED_AUTHOR">, C<"RESTRICTED_READER">
+
+=head2 UnapplyCustomPermissions => Bool
+
+A flag that you use to indicate that you want to remove all custom
+permissions from this user. Using this parameter resets the user to the
+state it was in before a custom permissions profile was applied. This
+parameter defaults to NULL and it doesn't accept any other value.
+
+
 
 =head2 B<REQUIRED> UserName => Str
 

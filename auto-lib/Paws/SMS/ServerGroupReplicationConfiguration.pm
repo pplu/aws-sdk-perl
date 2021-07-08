@@ -41,13 +41,13 @@ Replication configuration for a server group.
 
 =head2 ServerGroupId => Str
 
-Identifier of the server group this replication configuration is
-associated with.
+The ID of the server group with which this replication configuration is
+associated.
 
 
 =head2 ServerReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerReplicationConfiguration>]
 
-Replication configuration for servers in the server group.
+The replication configuration for servers in the server group.
 
 
 

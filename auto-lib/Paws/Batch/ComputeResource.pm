@@ -4,13 +4,14 @@ package Paws::Batch::ComputeResource;
   has AllocationStrategy => (is => 'ro', isa => 'Str', request_name => 'allocationStrategy', traits => ['NameInRequest']);
   has BidPercentage => (is => 'ro', isa => 'Int', request_name => 'bidPercentage', traits => ['NameInRequest']);
   has DesiredvCpus => (is => 'ro', isa => 'Int', request_name => 'desiredvCpus', traits => ['NameInRequest']);
+  has Ec2Configuration => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ec2Configuration]', request_name => 'ec2Configuration', traits => ['NameInRequest']);
   has Ec2KeyPair => (is => 'ro', isa => 'Str', request_name => 'ec2KeyPair', traits => ['NameInRequest']);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest']);
-  has InstanceRole => (is => 'ro', isa => 'Str', request_name => 'instanceRole', traits => ['NameInRequest'], required => 1);
-  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest'], required => 1);
+  has InstanceRole => (is => 'ro', isa => 'Str', request_name => 'instanceRole', traits => ['NameInRequest']);
+  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest']);
   has LaunchTemplate => (is => 'ro', isa => 'Paws::Batch::LaunchTemplateSpecification', request_name => 'launchTemplate', traits => ['NameInRequest']);
   has MaxvCpus => (is => 'ro', isa => 'Int', request_name => 'maxvCpus', traits => ['NameInRequest'], required => 1);
-  has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest'], required => 1);
+  has MinvCpus => (is => 'ro', isa => 'Int', request_name => 'minvCpus', traits => ['NameInRequest']);
   has PlacementGroup => (is => 'ro', isa => 'Str', request_name => 'placementGroup', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SpotIamFleetRole => (is => 'ro', isa => 'Str', request_name => 'spotIamFleetRole', traits => ['NameInRequest']);
@@ -48,33 +49,66 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Comp
 
 =head1 DESCRIPTION
 
-An object representing an AWS Batch compute resource.
+An object representing an AWS Batch compute resource. For more
+information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 AllocationStrategy => Str
 
-The allocation strategy to use for the compute resource in case not
-enough instances of the best fitting instance type can be allocated.
-This could be due to availability of the instance type in the region or
+The allocation strategy to use for the compute resource if not enough
+instances of the best fitting instance type can be allocated. This
+might be because of availability of the instance type in the Region or
 Amazon EC2 service limits
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html).
-If this is not specified, the default is C<BEST_FIT>, which will use
-only the best fitting instance type, waiting for additional capacity if
-it's not available. This allocation strategy keeps costs lower but can
-limit scaling. If you are using Spot Fleets with C<BEST_FIT> then the
-Spot Fleet IAM Role must be specified. C<BEST_FIT_PROGRESSIVE> will
-select additional instance types that are large enough to meet the
-requirements of the jobs in the queue, with a preference for instance
-types with a lower cost per vCPU. C<SPOT_CAPACITY_OPTIMIZED> is only
-available for Spot Instance compute resources and will select
-additional instance types that are large enough to meet the
-requirements of the jobs in the queue, with a preference for instance
-types that are less likely to be interrupted. For more information, see
-Allocation Strategies
-(https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html
-) in the I<AWS Batch User Guide>.
+For more information, see Allocation Strategies
+(https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html)
+in the I<AWS Batch User Guide>.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
+=over
+
+=item BEST_FIT (default)
+
+AWS Batch selects an instance type that best fits the needs of the jobs
+with a preference for the lowest-cost instance type. If additional
+instances of the selected instance type aren't available, AWS Batch
+waits for the additional instances to be available. If there aren't
+enough instances available, or if the user is hitting Amazon EC2
+service limits
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html)
+then additional jobs aren't run until the currently running jobs have
+completed. This allocation strategy keeps costs lower but can limit
+scaling. If you are using Spot Fleets with C<BEST_FIT> then the Spot
+Fleet IAM Role must be specified.
+
+=item BEST_FIT_PROGRESSIVE
+
+AWS Batch will select additional instance types that are large enough
+to meet the requirements of the jobs in the queue, with a preference
+for instance types with a lower cost per unit vCPU. If additional
+instances of the previously selected instance types aren't available,
+AWS Batch will select new instance types.
+
+=item SPOT_CAPACITY_OPTIMIZED
+
+AWS Batch will select one or more instance types that are large enough
+to meet the requirements of the jobs in the queue, with a preference
+for instance types that are less likely to be interrupted. This
+allocation strategy is only available for Spot Instance compute
+resources.
+
+=back
+
+With both C<BEST_FIT_PROGRESSIVE> and C<SPOT_CAPACITY_OPTIMIZED>
+strategies, AWS Batch might need to go above C<maxvCpus> to meet your
+capacity requirements. In this event, AWS Batch never exceeds
+C<maxvCpus> by more than a single instance.
 
 
 =head2 BidPercentage => Int
@@ -82,30 +116,66 @@ Allocation Strategies
 The maximum percentage that a Spot Instance price can be when compared
 with the On-Demand price for that instance type before instances are
 launched. For example, if your maximum percentage is 20%, then the Spot
-price must be below 20% of the current On-Demand price for that Amazon
-EC2 instance. You always pay the lowest (market) price and never more
-than your maximum percentage. If you leave this field empty, the
+price must be less than 20% of the current On-Demand price for that
+Amazon EC2 instance. You always pay the lowest (market) price and never
+more than your maximum percentage. If you leave this field empty, the
 default value is 100% of the On-Demand price.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
 
 
 =head2 DesiredvCpus => Int
 
-The desired number of Amazon EC2 vCPUS in the compute environment.
+The desired number of Amazon EC2 vCPUS in the compute environment. AWS
+Batch modifies this value between the minimum and maximum values, based
+on job queue demand.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
+
+=head2 Ec2Configuration => ArrayRef[L<Paws::Batch::Ec2Configuration>]
+
+Provides information used to select Amazon Machine Images (AMIs) for
+EC2 instances in the compute environment. If C<Ec2Configuration> isn't
+specified, the default is C<ECS_AL1>.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
 
 
 =head2 Ec2KeyPair => Str
 
-The Amazon EC2 key pair that is used for instances launched in the
-compute environment.
+The Amazon EC2 key pair that's used for instances launched in the
+compute environment. You can use this key pair to log in to your
+instances with SSH.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
 
 
 =head2 ImageId => Str
 
 The Amazon Machine Image (AMI) ID used for instances launched in the
-compute environment.
+compute environment. This parameter is overridden by the
+C<imageIdOverride> member of the C<Ec2Configuration> structure.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
+The AMI that you choose for a compute environment must match the
+architecture of the instance types that you intend to use for that
+compute environment. For example, if your compute environment uses A1
+instance types, the compute resource AMI that you choose must support
+ARM instances. Amazon ECS vends both x86 and ARM versions of the Amazon
+ECS-optimized Amazon Linux 2 AMI. For more information, see Amazon
+ECS-optimized Amazon Linux 2 AMI
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html#ecs-optimized-ami-linux-variants.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
-=head2 B<REQUIRED> InstanceRole => Str
+=head2 InstanceRole => Str
 
 The Amazon ECS instance profile applied to Amazon EC2 instances in a
 compute environment. You can specify the short name or full Amazon
@@ -116,15 +186,31 @@ C<arn:aws:iam::I<E<lt>aws_account_idE<gt>>:instance-profile/I<ecsInstanceRole>
 (https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
 in the I<AWS Batch User Guide>.
 
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
 
-=head2 B<REQUIRED> InstanceTypes => ArrayRef[Str|Undef]
 
-The instances types that may be launched. You can specify instance
+=head2 InstanceTypes => ArrayRef[Str|Undef]
+
+The instances types that can be launched. You can specify instance
 families to launch any instance type within those families (for
 example, C<c5> or C<p3>), or you can specify specific sizes within a
-family (such as C<c5.8xlarge>). You can also choose C<optimal> to pick
-instance types (from the C, M, and R instance families) on the fly that
+family (such as C<c5.8xlarge>). You can also choose C<optimal> to
+select instance types (from the C4, M4, and R4 instance families) that
 match the demand of your job queues.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
+When you create a compute environment, the instance types that you
+select for the compute environment must share the same architecture.
+For example, you can't mix x86 and ARM instances in the same compute
+environment.
+
+Currently, C<optimal> uses instance types from the C4, M4, and R4
+instance families. In Regions that don't have instance types from those
+instance families, instance types from the C5, M5. and R5 instance
+families are used.
 
 
 =head2 LaunchTemplate => L<Paws::Batch::LaunchTemplateSpecification>
@@ -138,16 +224,30 @@ information, see Launch Template Support
 (https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html)
 in the I<AWS Batch User Guide>.
 
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
 
 =head2 B<REQUIRED> MaxvCpus => Int
 
-The maximum number of Amazon EC2 vCPUs that an environment can reach.
+The maximum number of Amazon EC2 vCPUs that a compute environment can
+reach.
+
+With both C<BEST_FIT_PROGRESSIVE> and C<SPOT_CAPACITY_OPTIMIZED>
+allocation strategies, AWS Batch might need to exceed C<maxvCpus> to
+meet your capacity requirements. In this event, AWS Batch never exceeds
+C<maxvCpus> by more than a single instance. For example, no more than a
+single instance from among those specified in your compute environment
+is allocated.
 
 
-=head2 B<REQUIRED> MinvCpus => Int
+=head2 MinvCpus => Int
 
 The minimum number of Amazon EC2 vCPUs that an environment should
 maintain (even if the compute environment is C<DISABLED>).
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
 
 
 =head2 PlacementGroup => Str
@@ -162,47 +262,82 @@ information, see Placement Groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 The Amazon EC2 security groups associated with instances launched in
 the compute environment. One or more security groups must be specified,
 either in C<securityGroupIds> or using a launch template referenced in
-C<launchTemplate>. If security groups are specified using both
-C<securityGroupIds> and C<launchTemplate>, the values in
-C<securityGroupIds> will be used.
+C<launchTemplate>. This parameter is required for jobs running on
+Fargate resources and must contain at least one security group. Fargate
+doesn't support launch templates. If security groups are specified
+using both C<securityGroupIds> and C<launchTemplate>, the values in
+C<securityGroupIds> is used.
 
 
 =head2 SpotIamFleetRole => Str
 
 The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role
 applied to a C<SPOT> compute environment. This role is required if the
-allocation strategy set to C<BEST_FIT> or if the allocation strategy is
-not specified. For more information, see Amazon EC2 Spot Fleet Role
+allocation strategy set to C<BEST_FIT> or if the allocation strategy
+isn't specified. For more information, see Amazon EC2 Spot Fleet Role
 (https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html)
+in the I<AWS Batch User Guide>.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
+
+To tag your Spot Instances on creation, the Spot Fleet IAM role
+specified here must use the newer B<AmazonEC2SpotFleetTaggingRole>
+managed policy. The previously recommended B<AmazonEC2SpotFleetRole>
+managed policy doesn't have the required permissions to tag Spot
+Instances. For more information, see Spot Instances not tagged on
+creation
+(https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#spot-instance-no-tag)
 in the I<AWS Batch User Guide>.
 
 
 =head2 B<REQUIRED> Subnets => ArrayRef[Str|Undef]
 
-The VPC subnets into which the compute resources are launched. For more
-information, see VPCs and Subnets
+The VPC subnets into which the compute resources are launched. These
+subnets must be within the same VPC. Fargate compute resources can
+contain up to 16 subnets. For more information, see VPCs and Subnets
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html) in
 the I<Amazon VPC User Guide>.
 
 
 =head2 Tags => L<Paws::Batch::TagsMap>
 
-Key-value pair tags to be applied to resources that are launched in the
-compute environment. For AWS Batch, these take the form of "String1":
-"String2", where String1 is the tag key and String2 is the tag
-valueE<mdash>for example, { "Name": "AWS Batch Instance - C4OnDemand"
-}.
+Key-value pair tags to be applied to EC2 resources that are launched in
+the compute environment. For AWS Batch, these take the form of
+"String1": "String2", where String1 is the tag key and String2 is the
+tag valueE<minus>for example, { "Name": "AWS Batch Instance -
+C4OnDemand" }. This is helpful for recognizing your AWS Batch instances
+in the Amazon EC2 console. These tags can't be updated or removed after
+the compute environment has been created; any changes require creating
+a new compute environment and removing the old compute environment.
+These tags aren't seen when using the AWS Batch C<ListTagsForResource>
+API operation.
+
+This parameter isn't applicable to jobs running on Fargate resources,
+and shouldn't be specified.
 
 
 =head2 B<REQUIRED> Type => Str
 
-The type of compute environment: C<EC2> or C<SPOT>.
+The type of compute environment: C<EC2>, C<SPOT>, C<FARGATE>, or
+C<FARGATE_SPOT>. For more information, see Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
+
+If you choose C<SPOT>, you must also specify an Amazon EC2 Spot Fleet
+role with the C<spotIamFleetRole> parameter. For more information, see
+Amazon EC2 Spot Fleet role
+(https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html)
+in the I<AWS Batch User Guide>.
 
 
 

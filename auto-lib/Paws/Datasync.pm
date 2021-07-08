@@ -40,6 +40,11 @@ package Paws::Datasync;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationNfs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateLocationObjectStorage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationObjectStorage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateLocationS3 {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::CreateLocationS3', @_);
@@ -88,6 +93,11 @@ package Paws::Datasync;
   sub DescribeLocationNfs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationNfs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeLocationObjectStorage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::DescribeLocationObjectStorage', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLocationS3 {
@@ -155,9 +165,29 @@ package Paws::Datasync;
     my $call_object = $self->new_with_coercions('Paws::Datasync::UpdateAgent', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateLocationNfs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::UpdateLocationNfs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateLocationObjectStorage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::UpdateLocationObjectStorage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateLocationSmb {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::UpdateLocationSmb', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Datasync::UpdateTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateTaskExecution {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Datasync::UpdateTaskExecution', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -278,7 +308,7 @@ package Paws::Datasync;
   }
 
 
-  sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationFsxWindows CreateLocationNfs CreateLocationS3 CreateLocationSmb CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationFsxWindows DescribeLocationNfs DescribeLocationS3 DescribeLocationSmb DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateTask / }
+  sub operations { qw/CancelTaskExecution CreateAgent CreateLocationEfs CreateLocationFsxWindows CreateLocationNfs CreateLocationObjectStorage CreateLocationS3 CreateLocationSmb CreateTask DeleteAgent DeleteLocation DeleteTask DescribeAgent DescribeLocationEfs DescribeLocationFsxWindows DescribeLocationNfs DescribeLocationObjectStorage DescribeLocationS3 DescribeLocationSmb DescribeTask DescribeTaskExecution ListAgents ListLocations ListTagsForResource ListTaskExecutions ListTasks StartTaskExecution TagResource UntagResource UpdateAgent UpdateLocationNfs UpdateLocationObjectStorage UpdateLocationSmb UpdateTask UpdateTaskExecution / }
 
 1;
 
@@ -336,7 +366,7 @@ Returns: a L<Paws::Datasync::CancelTaskExecutionResponse> instance
 
 Cancels execution of a task.
 
-When you cancel a task execution, the transfer of some files are
+When you cancel a task execution, the transfer of some files is
 abruptly interrupted. The contents of files that are transferred to the
 destination might be incomplete or inconsistent with the source files.
 However, if you start a new task execution on the same task and you
@@ -377,9 +407,9 @@ you want to activate the agent in. You activate the agent in the AWS
 Region where your target locations (in Amazon S3 or Amazon EFS) reside.
 Your tasks are created in this AWS Region.
 
-You can activate the agent in a VPC (Virtual private Cloud) or provide
+You can activate the agent in a VPC (virtual private cloud) or provide
 the agent access to a VPC endpoint so you can run tasks without going
-over the public Internet.
+over the public internet.
 
 You can use an agent for more than one location. If a task uses
 multiple agents, all of them need to have status AVAILABLE for the task
@@ -437,7 +467,8 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationFsxWind
 
 Returns: a L<Paws::Datasync::CreateLocationFsxWindowsResponse> instance
 
-Creates an endpoint for an Amazon FSx for Windows file system.
+Creates an endpoint for an Amazon FSx for Windows File Server file
+system.
 
 
 =head2 CreateLocationNfs
@@ -462,7 +493,42 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationNfs>
 Returns: a L<Paws::Datasync::CreateLocationNfsResponse> instance
 
 Defines a file system on a Network File System (NFS) server that can be
-read from or written to
+read from or written to.
+
+
+=head2 CreateLocationObjectStorage
+
+=over
+
+=item AgentArns => ArrayRef[Str|Undef]
+
+=item BucketName => Str
+
+=item ServerHostname => Str
+
+=item [AccessKey => Str]
+
+=item [SecretKey => Str]
+
+=item [ServerPort => Int]
+
+=item [ServerProtocol => Str]
+
+=item [Subdirectory => Str]
+
+=item [Tags => ArrayRef[L<Paws::Datasync::TagListEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::CreateLocationObjectStorage>
+
+Returns: a L<Paws::Datasync::CreateLocationObjectStorageResponse> instance
+
+Creates an endpoint for a self-managed object storage bucket. For more
+information about self-managed object storage locations, see Creating a
+location for object storage
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html).
 
 
 =head2 CreateLocationS3
@@ -472,6 +538,8 @@ read from or written to
 =item S3BucketArn => Str
 
 =item S3Config => L<Paws::Datasync::S3Config>
+
+=item [AgentArns => ArrayRef[Str|Undef]]
 
 =item [S3StorageClass => Str]
 
@@ -488,15 +556,9 @@ Returns: a L<Paws::Datasync::CreateLocationS3Response> instance
 
 Creates an endpoint for an Amazon S3 bucket.
 
-For AWS DataSync to access a destination S3 bucket, it needs an AWS
-Identity and Access Management (IAM) role that has the required
-permissions. You can set up the required permissions by creating an IAM
-policy that grants the required permissions and attaching the policy to
-the role. An example of such a policy is shown in the examples section.
-
 For more information, see
-https://docs.aws.amazon.com/datasync/latest/userguide/working-with-locations.html#create-s3-location
-in the I<AWS DataSync User Guide.>
+https://docs.aws.amazon.com/datasync/latest/userguide/create-locations-cli.html#create-location-s3-cli
+in the I<AWS DataSync User Guide>.
 
 
 =head2 CreateLocationSmb
@@ -526,7 +588,7 @@ Each argument is described in detail in: L<Paws::Datasync::CreateLocationSmb>
 
 Returns: a L<Paws::Datasync::CreateLocationSmbResponse> instance
 
-Defines a file system on an Server Message Block (SMB) server that can
+Defines a file system on a Server Message Block (SMB) server that can
 be read from or written to.
 
 
@@ -557,24 +619,27 @@ Each argument is described in detail in: L<Paws::Datasync::CreateTask>
 
 Returns: a L<Paws::Datasync::CreateTaskResponse> instance
 
-Creates a task. A task is a set of two locations (source and
-destination) and a set of Options that you use to control the behavior
-of a task. If you don't specify Options when you create a task, AWS
-DataSync populates them with service defaults.
+Creates a task.
 
-When you create a task, it first enters the CREATING state. During
-CREATING AWS DataSync attempts to mount the on-premises Network File
-System (NFS) location. The task transitions to the AVAILABLE state
-without waiting for the AWS location to become mounted. If required,
-AWS DataSync mounts the AWS location before each task execution.
+A task includes a source location and a destination location, and a
+configuration that specifies how data is transferred. A task always
+transfers data from the source location to the destination location.
+The configuration specifies options such as task scheduling, bandwidth
+limits, etc. A task is the complete definition of a data transfer.
 
-If an agent that is associated with a source (NFS) location goes
-offline, the task transitions to the UNAVAILABLE status. If the status
-of the task remains in the CREATING status for more than a few minutes,
-it means that your agent might be having trouble mounting the source
-NFS file system. Check the task's ErrorCode and ErrorDetail. Mount
-issues are often caused by either a misconfigured firewall or a
-mistyped NFS server host name.
+When you create a task that transfers data between AWS services in
+different AWS Regions, one of the two locations that you specify must
+reside in the Region where DataSync is being used. The other location
+must be specified in a different Region.
+
+You can transfer data between commercial AWS Regions except for China,
+or between AWS GovCloud (US-East and US-West) Regions.
+
+When you use DataSync to copy files or objects between AWS Regions, you
+pay for data transfer between Regions. This is billed as data transfer
+OUT from your source Region to your destination Region. For more
+information, see Data Transfer pricing
+(http://aws.amazon.com/ec2/pricing/on-demand/#Data_Transfer).
 
 
 =head2 DeleteAgent
@@ -679,7 +744,7 @@ Each argument is described in detail in: L<Paws::Datasync::DescribeLocationFsxWi
 Returns: a L<Paws::Datasync::DescribeLocationFsxWindowsResponse> instance
 
 Returns metadata, such as the path information about an Amazon FSx for
-Windows location.
+Windows File Server location.
 
 
 =head2 DescribeLocationNfs
@@ -695,7 +760,26 @@ Each argument is described in detail in: L<Paws::Datasync::DescribeLocationNfs>
 
 Returns: a L<Paws::Datasync::DescribeLocationNfsResponse> instance
 
-Returns metadata, such as the path information, about a NFS location.
+Returns metadata, such as the path information, about an NFS location.
+
+
+=head2 DescribeLocationObjectStorage
+
+=over
+
+=item LocationArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::DescribeLocationObjectStorage>
+
+Returns: a L<Paws::Datasync::DescribeLocationObjectStorageResponse> instance
+
+Returns metadata about a self-managed object storage server location.
+For more information about self-managed object storage locations, see
+Creating a location for object storage
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html).
 
 
 =head2 DescribeLocationS3
@@ -728,7 +812,7 @@ Each argument is described in detail in: L<Paws::Datasync::DescribeLocationSmb>
 
 Returns: a L<Paws::Datasync::DescribeLocationSmbResponse> instance
 
-Returns metadata, such as the path and user information about a SMB
+Returns metadata, such as the path and user information about an SMB
 location.
 
 
@@ -797,6 +881,8 @@ the next page of agents.
 
 =over
 
+=item [Filters => ArrayRef[L<Paws::Datasync::LocationFilter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -808,7 +894,7 @@ Each argument is described in detail in: L<Paws::Datasync::ListLocations>
 
 Returns: a L<Paws::Datasync::ListLocationsResponse> instance
 
-Returns a lists of source and destination locations.
+Returns a list of source and destination locations.
 
 If you have more locations than are returned in a response (that is,
 the response returns only a truncated list of your agents), the
@@ -833,7 +919,7 @@ Each argument is described in detail in: L<Paws::Datasync::ListTagsForResource>
 
 Returns: a L<Paws::Datasync::ListTagsForResourceResponse> instance
 
-Returns all the tags associated with a specified resources.
+Returns all the tags associated with a specified resource.
 
 
 =head2 ListTaskExecutions
@@ -859,6 +945,8 @@ Returns a list of executed tasks.
 =head2 ListTasks
 
 =over
+
+=item [Filters => ArrayRef[L<Paws::Datasync::TaskFilter>]]
 
 =item [MaxResults => Int]
 
@@ -956,6 +1044,94 @@ Returns: a L<Paws::Datasync::UpdateAgentResponse> instance
 Updates the name of an agent.
 
 
+=head2 UpdateLocationNfs
+
+=over
+
+=item LocationArn => Str
+
+=item [MountOptions => L<Paws::Datasync::NfsMountOptions>]
+
+=item [OnPremConfig => L<Paws::Datasync::OnPremConfig>]
+
+=item [Subdirectory => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::UpdateLocationNfs>
+
+Returns: a L<Paws::Datasync::UpdateLocationNfsResponse> instance
+
+Updates some of the parameters of a previously created location for
+Network File System (NFS) access. For information about creating an NFS
+location, see Creating a location for NFS
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-nfs-location.html).
+
+
+=head2 UpdateLocationObjectStorage
+
+=over
+
+=item LocationArn => Str
+
+=item [AccessKey => Str]
+
+=item [AgentArns => ArrayRef[Str|Undef]]
+
+=item [SecretKey => Str]
+
+=item [ServerPort => Int]
+
+=item [ServerProtocol => Str]
+
+=item [Subdirectory => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::UpdateLocationObjectStorage>
+
+Returns: a L<Paws::Datasync::UpdateLocationObjectStorageResponse> instance
+
+Updates some of the parameters of a previously created location for
+self-managed object storage server access. For information about
+creating a self-managed object storage location, see Creating a
+location for object storage
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-object-location.html).
+
+
+=head2 UpdateLocationSmb
+
+=over
+
+=item LocationArn => Str
+
+=item [AgentArns => ArrayRef[Str|Undef]]
+
+=item [Domain => Str]
+
+=item [MountOptions => L<Paws::Datasync::SmbMountOptions>]
+
+=item [Password => Str]
+
+=item [Subdirectory => Str]
+
+=item [User => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::UpdateLocationSmb>
+
+Returns: a L<Paws::Datasync::UpdateLocationSmbResponse> instance
+
+Updates some of the parameters of a previously created location for
+Server Message Block (SMB) file system access. For information about
+creating an SMB location, see Creating a location for SMB
+(https://docs.aws.amazon.com/datasync/latest/userguide/create-smb-location.html).
+
+
 =head2 UpdateTask
 
 =over
@@ -982,6 +1158,34 @@ Returns: a L<Paws::Datasync::UpdateTaskResponse> instance
 Updates the metadata associated with a task.
 
 
+=head2 UpdateTaskExecution
+
+=over
+
+=item Options => L<Paws::Datasync::Options>
+
+=item TaskExecutionArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Datasync::UpdateTaskExecution>
+
+Returns: a L<Paws::Datasync::UpdateTaskExecutionResponse> instance
+
+Updates execution of a task.
+
+You can modify bandwidth throttling for a task execution that is
+running or queued. For more information, see Adjusting Bandwidth
+Throttling for a Task Execution
+(https://docs.aws.amazon.com/datasync/latest/userguide/working-with-task-executions.html#adjust-bandwidth-throttling).
+
+The only C<Option> that can be modified by C<UpdateTaskExecution> is C<
+BytesPerSecond
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_Options.html#DataSync-Type-Options-BytesPerSecond)
+>.
+
+
 
 
 =head1 PAGINATORS
@@ -1000,9 +1204,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Datasync::ListAgentsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllLocations(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllLocations(sub { },[Filters => ArrayRef[L<Paws::Datasync::LocationFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllLocations([MaxResults => Int, NextToken => Str])
+=head2 ListAllLocations([Filters => ArrayRef[L<Paws::Datasync::LocationFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -1036,9 +1240,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Datasync::ListTaskExecutionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllTasks(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllTasks(sub { },[Filters => ArrayRef[L<Paws::Datasync::TaskFilter>], MaxResults => Int, NextToken => Str])
 
-=head2 ListAllTasks([MaxResults => Int, NextToken => Str])
+=head2 ListAllTasks([Filters => ArrayRef[L<Paws::Datasync::TaskFilter>], MaxResults => Int, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

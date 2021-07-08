@@ -3,6 +3,7 @@ package Paws::CUR::ReportDefinition;
   use Moose;
   has AdditionalArtifacts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AdditionalSchemaElements => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has BillingViewArn => (is => 'ro', isa => 'Str');
   has Compression => (is => 'ro', isa => 'Str', required => 1);
   has Format => (is => 'ro', isa => 'Str', required => 1);
   has RefreshClosedReports => (is => 'ro', isa => 'Bool');
@@ -60,6 +61,12 @@ this report.
 
 A list of strings that indicate additional content that Amazon Web
 Services includes in the report, such as individual resource IDs.
+
+
+=head2 BillingViewArn => Str
+
+The Amazon resource name of the billing view. You can get this value by
+using the billing view service public APIs.
 
 
 =head2 B<REQUIRED> Compression => Str

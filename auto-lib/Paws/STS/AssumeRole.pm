@@ -8,6 +8,7 @@ package Paws::STS::AssumeRole;
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has RoleSessionName => (is => 'ro', isa => 'Str', required => 1);
   has SerialNumber => (is => 'ro', isa => 'Str');
+  has SourceIdentity => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::STS::Tag]');
   has TokenCode => (is => 'ro', isa => 'Str');
   has TransitiveTagKeys => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -61,14 +62,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sts
 
 =head2 DurationSeconds => Int
 
-The duration, in seconds, of the role session. The value can range from
-900 seconds (15 minutes) up to the maximum session duration setting for
-the role. This setting can have a value from 1 hour to 12 hours. If you
-specify a value higher than this setting, the operation fails. For
-example, if you specify a session duration of 12 hours, but your
-administrator set the maximum session duration to 6 hours, your
-operation fails. To learn how to view the maximum value for your role,
-see View the Maximum Session Duration Setting for a Role
+The duration, in seconds, of the role session. The value specified can
+can range from 900 seconds (15 minutes) up to the maximum session
+duration that is set for the role. The maximum session duration setting
+can have a value from 1 hour to 12 hours. If you specify a value higher
+than this setting or the administrator setting (whichever is lower),
+the operation fails. For example, if you specify a session duration of
+12 hours, but your administrator set the maximum session duration to 6
+hours, your operation fails. To learn how to view the maximum value for
+your role, see View the Maximum Session Duration Setting for a Role
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use.html#id_roles_use_view-role-max-session)
 in the I<IAM User Guide>.
 
@@ -124,15 +126,15 @@ For more information, see Session Policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#policies_session)
 in the I<IAM User Guide>.
 
-The plain text that you use for both inline and managed session
-policies can't exceed 2,048 characters. The JSON policy characters can
-be any ASCII character from the space character to the end of the valid
+The plaintext that you use for both inline and managed session policies
+can't exceed 2,048 characters. The JSON policy characters can be any
+ASCII character from the space character to the end of the valid
 character list (\u0020 through \u00FF). It can also include the tab
 (\u0009), linefeed (\u000A), and carriage return (\u000D) characters.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -146,7 +148,7 @@ want to use as managed session policies. The policies must exist in the
 same account as the role.
 
 This parameter is optional. You can provide up to 10 managed policy
-ARNs. However, the plain text that you use for both inline and managed
+ARNs. However, the plaintext that you use for both inline and managed
 session policies can't exceed 2,048 characters. For more information
 about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
@@ -154,7 +156,7 @@ in the AWS General Reference.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -215,6 +217,30 @@ characters: =,.@-
 
 
 
+=head2 SourceIdentity => Str
+
+The source identity specified by the principal that is calling the
+C<AssumeRole> operation.
+
+You can require users to specify a source identity when they assume a
+role. You do this by using the C<sts:SourceIdentity> condition key in a
+role trust policy. You can use source identity information in AWS
+CloudTrail logs to determine who took actions with a role. You can use
+the C<aws:SourceIdentity> condition key to further control access to
+AWS resources based on the value of source identity. For more
+information about using source identity, see Monitor and control
+actions taken with assumed roles
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html)
+in the I<IAM User Guide>.
+
+The regex used to validate this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@-. You cannot use a value that begins with the text
+C<aws:>. This prefix is reserved for AWS internal use.
+
+
+
 =head2 Tags => ArrayRef[L<Paws::STS::Tag>]
 
 A list of session tags that you want to pass. Each session tag consists
@@ -224,7 +250,7 @@ session tags, see Tagging AWS STS Sessions
 in the I<IAM User Guide>.
 
 This parameter is optional. You can pass up to 50 session tags. The
-plain text session tag keys canE<rsquo>t exceed 128 characters, and the
+plaintext session tag keys canE<rsquo>t exceed 128 characters, and the
 values canE<rsquo>t exceed 256 characters. For these and additional
 limits, see IAM and STS Character Limits
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-limits.html#reference_iam-limits-entity-length)
@@ -232,7 +258,7 @@ in the I<IAM User Guide>.
 
 An AWS conversion compresses the passed session policies and session
 tags into a packed binary format that has a separate limit. Your
-request can fail for this limit even if your plain text meets the other
+request can fail for this limit even if your plaintext meets the other
 requirements. The C<PackedPolicySize> response element indicates by
 percentage how close the policies and tags for your request are to the
 upper size limit.
@@ -263,10 +289,10 @@ in the I<IAM User Guide>.
 =head2 TokenCode => Str
 
 The value provided by the MFA device, if the trust policy of the role
-being assumed requires MFA (that is, if the policy includes a condition
-that tests for MFA). If the role being assumed requires MFA and if the
-C<TokenCode> value is missing or expired, the C<AssumeRole> call
-returns an "access denied" error.
+being assumed requires MFA. (In other words, if the policy includes a
+condition that tests for MFA). If the role being assumed requires MFA
+and if the C<TokenCode> value is missing or expired, the C<AssumeRole>
+call returns an "access denied" error.
 
 The format for this parameter, as described by its regex pattern, is a
 sequence of six numeric digits.

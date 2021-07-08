@@ -33,14 +33,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Env
 
 =head1 DESCRIPTION
 
-A function's environment variable settings.
+A function's environment variable settings. You can use environment
+variables to adjust your function's behavior without updating code. An
+environment variable is a pair of strings that are stored in a
+function's version-specific configuration.
 
 =head1 ATTRIBUTES
 
 
 =head2 Variables => L<Paws::Lambda::EnvironmentVariables>
 
-Environment variable key-value pairs.
+Environment variable key-value pairs. For more information, see Using
+Lambda environment variables
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html).
 
 
 

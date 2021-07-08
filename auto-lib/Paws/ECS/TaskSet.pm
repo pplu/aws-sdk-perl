@@ -107,7 +107,7 @@ The ID of the task set.
 =head2 LaunchType => Str
 
 The launch type the tasks in the task set are using. For more
-information, see Amazon ECS Launch Types
+information, see Amazon ECS launch types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -133,10 +133,9 @@ in the C<STOPPED> state.
 
 =head2 PlatformVersion => Str
 
-The platform version on which the tasks in the task set are running. A
-platform version is only specified for tasks using the Fargate launch
-type. If one is not specified, the C<LATEST> platform version is used
-by default. For more information, see AWS Fargate Platform Versions
+The AWS Fargate platform version on which the tasks in the task set are
+running. A platform version is only specified for tasks run on AWS
+Fargate. For more information, see AWS Fargate platform versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -162,7 +161,7 @@ The Amazon Resource Name (ARN) of the service the task set exists in.
 =head2 ServiceRegistries => ArrayRef[L<Paws::ECS::ServiceRegistry>]
 
 The details of the service discovery registries to assign to this task
-set. For more information, see Service Discovery
+set. For more information, see Service discovery
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html).
 
 

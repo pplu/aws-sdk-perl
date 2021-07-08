@@ -5,6 +5,7 @@ package Paws::IoT::CreateAuthorizer;
   has AuthorizerName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'authorizerName', required => 1);
   has SigningDisabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'signingDisabled');
   has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has TokenKeyName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'tokenKeyName');
   has TokenSigningPublicKeys => (is => 'ro', isa => 'Paws::IoT::PublicKeyMap', traits => ['NameInRequest'], request_name => 'tokenSigningPublicKeys');
 
@@ -34,11 +35,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $CreateAuthorizerResponse = $iot->CreateAuthorizer(
-      AuthorizerFunctionArn  => 'MyAuthorizerFunctionArn',
-      AuthorizerName         => 'MyAuthorizerName',
-      SigningDisabled        => 1,                           # OPTIONAL
-      Status                 => 'ACTIVE',                    # OPTIONAL
-      TokenKeyName           => 'MyTokenKeyName',            # OPTIONAL
+      AuthorizerFunctionArn => 'MyAuthorizerFunctionArn',
+      AuthorizerName        => 'MyAuthorizerName',
+      SigningDisabled       => 1,                           # OPTIONAL
+      Status                => 'ACTIVE',                    # OPTIONAL
+      Tags                  => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      TokenKeyName           => 'MyTokenKeyName',    # OPTIONAL
       TokenSigningPublicKeys => {
         'MyKeyName' => 'MyKeyValue',   # key: min: 1, max: 128, value: max: 5120
       },    # OPTIONAL
@@ -80,6 +88,20 @@ authorization request.
 The status of the create authorizer request.
 
 Valid values are: C<"ACTIVE">, C<"INACTIVE">
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the custom authorizer.
+
+For URI Request parameters use format: ...key1=value1&key2=value2...
+
+For the CLI command-line parameter use format: &&tags
+"key1=value1&key2=value2..."
+
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."
+
+
 
 =head2 TokenKeyName => Str
 

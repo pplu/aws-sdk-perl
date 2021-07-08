@@ -51,8 +51,8 @@ The name assigned to the tag that you create.
 
 =head2 B<REQUIRED> Value => Str
 
-This property contains one or more values that you assigned to the key
-name you create.
+Contains one or more values that you assigned to the key name you
+create.
 
 
 

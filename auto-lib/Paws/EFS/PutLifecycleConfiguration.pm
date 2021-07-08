@@ -29,17 +29,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticfilesystem = Paws->service('EFS');
+# Creates a new lifecycleconfiguration object for a file system
+# This operation enables lifecycle management on a file system by creating a new
+# LifecycleConfiguration object. A LifecycleConfiguration object defines when
+# files in an Amazon EFS file system are automatically transitioned to the
+# lower-cost EFS Infrequent Access (IA) storage class. A LifecycleConfiguration
+# applies to all files in a file system.
     my $LifecycleConfigurationDescription =
       $elasticfilesystem->PutLifecycleConfiguration(
-      FileSystemId      => 'MyFileSystemId',
-      LifecyclePolicies => [
-        {
-          TransitionToIA => 'AFTER_7_DAYS'
-          , # values: AFTER_7_DAYS, AFTER_14_DAYS, AFTER_30_DAYS, AFTER_60_DAYS, AFTER_90_DAYS; OPTIONAL
-        },
-        ...
-      ],
+      'FileSystemId'      => 'fs-01234567',
+      'LifecyclePolicies' => [
 
+        {
+          'TransitionToIA' => 'AFTER_30_DAYS'
+        }
+      ]
       );
 
     # Results:

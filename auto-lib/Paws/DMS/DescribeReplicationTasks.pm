@@ -30,18 +30,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+   # Describe replication tasks
+   # Returns information about replication tasks for your account in the current
+   # region.
     my $DescribeReplicationTasksResponse = $dms->DescribeReplicationTasks(
-      Filters => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],
+      'Filters' => [
 
-        },
-        ...
-      ],    # OPTIONAL
-      Marker          => 'MyString',    # OPTIONAL
-      MaxRecords      => 1,             # OPTIONAL
-      WithoutSettings => 1,             # OPTIONAL
+        {
+          'Name'   => 'string',
+          'Values' => [ 'string', 'string' ]
+        }
+      ],
+      'Marker'     => '',
+      'MaxRecords' => 123
     );
 
     # Results:
@@ -58,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
 
-Filters applied to the describe action.
+Filters applied to replication tasks.
 
 Valid filter names: replication-task-arn | replication-task-id |
 migration-type | endpoint-arn | replication-instance-arn

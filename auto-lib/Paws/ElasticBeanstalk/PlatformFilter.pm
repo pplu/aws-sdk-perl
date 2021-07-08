@@ -35,11 +35,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 
 =head1 DESCRIPTION
 
-Specify criteria to restrict the results when listing custom platforms.
+Describes criteria to restrict the results when listing platform
+versions.
 
-The filter is evaluated as the expression:
-
-C<Type> C<Operator> C<Values[i]>
+The filter is evaluated as follows: C<Type Operator Values[1]>
 
 =head1 ATTRIBUTES
 
@@ -48,23 +47,50 @@ C<Type> C<Operator> C<Values[i]>
 
 The operator to apply to the C<Type> with each of the C<Values>.
 
-Valid Values: C<=> (equal to) | C<!=> (not equal to) | C<E<lt>> (less
-than) | C<E<lt>=> (less than or equal to) | C<E<gt>> (greater than) |
-C<E<gt>=> (greater than or equal to) | C<contains> | C<begins_with> |
-C<ends_with>
+Valid values: C<=> | C<!=> | C<E<lt>> | C<E<lt>=> | C<E<gt>> |
+C<E<gt>=> | C<contains> | C<begins_with> | C<ends_with>
 
 
 =head2 Type => Str
 
-The custom platform attribute to which the filter values are applied.
+The platform version attribute to which the filter values are applied.
 
-Valid Values: C<PlatformName> | C<PlatformVersion> | C<PlatformStatus>
-| C<PlatformOwner>
+Valid values: C<PlatformName> | C<PlatformVersion> | C<PlatformStatus>
+| C<PlatformBranchName> | C<PlatformLifecycleState> | C<PlatformOwner>
+| C<SupportedTier> | C<SupportedAddon> | C<ProgrammingLanguageName> |
+C<OperatingSystemName>
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-The list of values applied to the custom platform attribute.
+The list of values applied to the filtering platform version attribute.
+Only one value is supported for all current operators.
+
+The following list shows valid filter values for some filter
+attributes.
+
+=over
+
+=item *
+
+C<PlatformStatus>: C<Creating> | C<Failed> | C<Ready> | C<Deleting> |
+C<Deleted>
+
+=item *
+
+C<PlatformLifecycleState>: C<recommended>
+
+=item *
+
+C<SupportedTier>: C<WebServer/Standard> | C<Worker/SQS/HTTP>
+
+=item *
+
+C<SupportedAddon>: C<Log/S3> | C<Monitoring/Healthd> |
+C<WorkerDaemon/SQSD>
+
+=back
+
 
 
 

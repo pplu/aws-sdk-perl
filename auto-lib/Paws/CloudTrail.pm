@@ -390,8 +390,8 @@ If your event selector includes management events.
 
 =item *
 
-If your event selector includes data events, the Amazon S3 objects or
-AWS Lambda functions that you are logging for data events.
+If your event selector includes data events, the resources on which you
+are logging data events.
 
 =back
 
@@ -612,17 +612,19 @@ All attributes are optional. The default number of results returned is
 50, with a maximum of 50 possible. The response includes a token that
 you can use to get the next page of results.
 
-The rate of lookup requests is limited to two per second per account.
-If this limit is exceeded, a throttling error occurs.
+The rate of lookup requests is limited to two per second, per account,
+per region. If this limit is exceeded, a throttling error occurs.
 
 
 =head2 PutEventSelectors
 
 =over
 
-=item EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]
-
 =item TrailName => Str
+
+=item [AdvancedEventSelectors => ArrayRef[L<Paws::CloudTrail::AdvancedEventSelector>]]
+
+=item [EventSelectors => ArrayRef[L<Paws::CloudTrail::EventSelector>]]
 
 
 =back
@@ -631,16 +633,17 @@ Each argument is described in detail in: L<Paws::CloudTrail::PutEventSelectors>
 
 Returns: a L<Paws::CloudTrail::PutEventSelectorsResponse> instance
 
-Configures an event selector for your trail. Use event selectors to
-further specify the management and data event settings for your trail.
-By default, trails created without specific event selectors will be
-configured to log all read and write management events, and no data
-events.
+Configures an event selector or advanced event selectors for your
+trail. Use event selectors or advanced event selectors to specify
+management and data event settings for your trail. By default, trails
+created without specific event selectors are configured to log all read
+and write management events, and no data events.
 
 When an event occurs in your account, CloudTrail evaluates the event
-selectors in all trails. For each trail, if the event matches any event
-selector, the trail processes and logs the event. If the event doesn't
-match any event selector, the trail doesn't log the event.
+selectors or advanced event selectors in all trails. For each trail, if
+the event matches any event selector, the trail processes and logs the
+event. If the event doesn't match any event selector, the trail doesn't
+log the event.
 
 Example
 
@@ -667,20 +670,30 @@ selector. The trail logs the event.
 
 =item 5.
 
-The C<GetConsoleOutput> is a read-only event but it doesn't match your
+The C<GetConsoleOutput> is a read-only event that doesn't match your
 event selector. The trail doesn't log the event.
 
 =back
 
 The C<PutEventSelectors> operation must be called from the region in
 which the trail was created; otherwise, an
-C<InvalidHomeRegionException> is thrown.
+C<InvalidHomeRegionException> exception is thrown.
 
 You can configure up to five event selectors for each trail. For more
-information, see Logging Data and Management Events for Trails
+information, see Logging data and management events for trails
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-management-and-data-events-with-cloudtrail.html)
-and Limits in AWS CloudTrail
+and Quotas in AWS CloudTrail
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/WhatIsCloudTrail-Limits.html)
+in the I<AWS CloudTrail User Guide>.
+
+You can add advanced event selectors, and conditions for your advanced
+event selectors, up to a maximum of 500 values for all conditions and
+selectors on a trail. You can use either C<AdvancedEventSelectors> or
+C<EventSelectors>, but not both. If you apply C<AdvancedEventSelectors>
+to a trail, any existing C<EventSelectors> are overwritten. For more
+information about advanced event selectors, see Logging data events for
+trails
+(https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-data-events-with-cloudtrail.html)
 in the I<AWS CloudTrail User Guide>.
 
 

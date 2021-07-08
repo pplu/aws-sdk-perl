@@ -19,19 +19,19 @@ Paws::Amplify::CreateDeploymentResult
 
 =head2 B<REQUIRED> FileUploadUrls => L<Paws::Amplify::FileUploadUrls>
 
-When the fileMap argument is provided in the request, the
-fileUploadUrls will contain a map of file names to upload url.
+When the C<fileMap> argument is provided in the request,
+C<fileUploadUrls> will contain a map of file names to upload URLs.
 
 
 =head2 JobId => Str
 
-The jobId for this deployment, will supply to start deployment api.
+The job ID for this deployment. will supply to start deployment api.
 
 
 =head2 B<REQUIRED> ZipUploadUrl => Str
 
-When the fileMap argument is NOT provided. This zipUploadUrl will be
-returned.
+When the C<fileMap> argument is not provided in the request, this
+C<zipUploadUrl> is returned.
 
 
 =head2 _request_id => Str

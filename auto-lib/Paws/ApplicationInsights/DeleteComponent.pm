@@ -29,7 +29,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $applicationinsights = Paws->service('ApplicationInsights');
     my $DeleteComponentResponse = $applicationinsights->DeleteComponent(
-      ComponentName     => 'MyComponentName',
+      ComponentName     => 'MyCustomComponentName',
       ResourceGroupName => 'MyResourceGroupName',
 
     );

@@ -6,6 +6,8 @@ package Paws::MediaLive::DescribeInputResponse;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id');
   has InputClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputClass');
+  has InputDevices => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDeviceSettings]', traits => ['NameInRequest'], request_name => 'inputDevices');
+  has InputPartnerIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputPartnerIds');
   has InputSourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'inputSourceType');
   has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlow]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -61,6 +63,16 @@ ChannelClass is STANDARD, this value is not valid because the channel
 requires two sources in the input.
 
 Valid values are: C<"STANDARD">, C<"SINGLE_PIPELINE">
+=head2 InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceSettings>]
+
+Settings for the input devices.
+
+
+=head2 InputPartnerIds => ArrayRef[Str|Undef]
+
+A list of IDs for all Inputs which are partners of this one.
+
+
 =head2 InputSourceType => Str
 
 Certain pull input sources can be dynamic, meaning that they can have
@@ -108,7 +120,7 @@ A collection of key-value pairs.
 
 
 
-Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
+Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">, C<"INPUT_DEVICE">, C<"AWS_CDI">
 =head2 _request_id => Str
 
 

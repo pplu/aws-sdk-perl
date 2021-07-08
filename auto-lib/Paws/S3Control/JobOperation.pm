@@ -2,9 +2,12 @@
 package Paws::S3Control::JobOperation;
   use Moose;
   has LambdaInvoke => (is => 'ro', isa => 'Paws::S3Control::LambdaInvokeOperation');
+  has S3DeleteObjectTagging => (is => 'ro', isa => 'Paws::S3Control::S3DeleteObjectTaggingOperation');
   has S3InitiateRestoreObject => (is => 'ro', isa => 'Paws::S3Control::S3InitiateRestoreObjectOperation');
   has S3PutObjectAcl => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectAclOperation');
   has S3PutObjectCopy => (is => 'ro', isa => 'Paws::S3Control::S3CopyObjectOperation');
+  has S3PutObjectLegalHold => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectLegalHoldOperation');
+  has S3PutObjectRetention => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectRetentionOperation');
   has S3PutObjectTagging => (is => 'ro', isa => 'Paws::S3Control::S3SetObjectTaggingOperation');
 
 1;
@@ -37,42 +40,58 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 
 =head1 DESCRIPTION
 
-The operation that you want this job to perform on each object listed
+The operation that you want this job to perform on every object listed
 in the manifest. For more information about the available operations,
-see Available Operations
+see Operations
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/batch-ops-operations.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 LambdaInvoke => L<Paws::S3Control::LambdaInvokeOperation>
 
-Directs the specified job to invoke an AWS Lambda function on each
+Directs the specified job to invoke an AWS Lambda function on every
 object in the manifest.
+
+
+=head2 S3DeleteObjectTagging => L<Paws::S3Control::S3DeleteObjectTaggingOperation>
+
+Directs the specified job to execute a DELETE Object tagging call on
+every object in the manifest.
 
 
 =head2 S3InitiateRestoreObject => L<Paws::S3Control::S3InitiateRestoreObjectOperation>
 
-Directs the specified job to execute an Initiate Glacier Restore call
-on each object in the manifest.
+Directs the specified job to initiate restore requests for every
+archived object in the manifest.
 
 
 =head2 S3PutObjectAcl => L<Paws::S3Control::S3SetObjectAclOperation>
 
-Directs the specified job to execute a PUT Object acl call on each
-object in the manifest.
+Directs the specified job to run a PUT Object acl call on every object
+in the manifest.
 
 
 =head2 S3PutObjectCopy => L<Paws::S3Control::S3CopyObjectOperation>
 
-Directs the specified job to execute a PUT Copy object call on each
-object in the manifest.
+Directs the specified job to run a PUT Copy object call on every object
+in the manifest.
+
+
+=head2 S3PutObjectLegalHold => L<Paws::S3Control::S3SetObjectLegalHoldOperation>
+
+
+
+
+=head2 S3PutObjectRetention => L<Paws::S3Control::S3SetObjectRetentionOperation>
+
+
 
 
 =head2 S3PutObjectTagging => L<Paws::S3Control::S3SetObjectTaggingOperation>
 
-Directs the specified job to execute a PUT Object tagging call on each
+Directs the specified job to run a PUT Object tagging call on every
 object in the manifest.
 
 

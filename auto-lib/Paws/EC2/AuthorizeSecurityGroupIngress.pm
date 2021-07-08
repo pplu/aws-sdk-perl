@@ -36,58 +36,75 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+# To add a rule that allows inbound SSH traffic from an IPv4 address range
+# This example enables inbound traffic on TCP port 22 (SSH). The rule includes a
+# description to help you identify it later.
     $ec2->AuthorizeSecurityGroupIngress(
-      CidrIp        => 'MyString',               # OPTIONAL
-      DryRun        => 1,                        # OPTIONAL
-      FromPort      => 1,                        # OPTIONAL
-      GroupId       => 'MySecurityGroupId',      # OPTIONAL
-      GroupName     => 'MySecurityGroupName',    # OPTIONAL
-      IpPermissions => [
+      'GroupId'       => 'sg-903004f8',
+      'IpPermissions' => [
+
         {
-          FromPort   => 1,
-          IpProtocol => 'MyString',
-          IpRanges   => [
+          'FromPort'   => 22,
+          'IpProtocol' => 'tcp',
+          'IpRanges'   => [
+
             {
-              CidrIp      => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-          Ipv6Ranges => [
-            {
-              CidrIpv6    => 'MyString',
-              Description => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-          PrefixListIds => [
-            {
-              Description  => 'MyString',
-              PrefixListId => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-          ToPort           => 1,
-          UserIdGroupPairs => [
-            {
-              Description            => 'MyString',
-              GroupId                => 'MyString',
-              GroupName              => 'MyString',
-              PeeringStatus          => 'MyString',
-              UserId                 => 'MyString',
-              VpcId                  => 'MyString',
-              VpcPeeringConnectionId => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      IpProtocol                 => 'MyString',    # OPTIONAL
-      SourceSecurityGroupName    => 'MyString',    # OPTIONAL
-      SourceSecurityGroupOwnerId => 'MyString',    # OPTIONAL
-      ToPort                     => 1,             # OPTIONAL
+              'CidrIp'      => '203.0.113.0/24',
+              'Description' => 'SSH access from the LA office'
+            }
+          ],
+          'ToPort' => 22
+        }
+      ]
     );
+
+    # To add a rule that allows inbound HTTP traffic from another security group
+    # This example enables inbound traffic on TCP port 80 from the specified
+    # security group. The group must be in the same VPC or a peer VPC. Incoming
+    # traffic is allowed based on the private IP addresses of instances that are
+    # associated with the specified security group.
+    $ec2->AuthorizeSecurityGroupIngress(
+      'GroupId'       => 'sg-111aaa22',
+      'IpPermissions' => [
+
+        {
+          'FromPort'         => 80,
+          'IpProtocol'       => 'tcp',
+          'ToPort'           => 80,
+          'UserIdGroupPairs' => [
+
+            {
+              'Description' => 'HTTP access from other instances',
+              'GroupId'     => 'sg-1a2b3c4d'
+            }
+          ]
+        }
+      ]
+    );
+
+  # To add a rule that allows inbound RDP traffic from an IPv6 address range
+  # This example adds an inbound rule that allows RDP traffic from the specified
+  # IPv6 address range. The rule includes a description to help you identify it
+  # later.
+    $ec2->AuthorizeSecurityGroupIngress(
+      'GroupId'       => 'sg-123abc12 ',
+      'IpPermissions' => [
+
+        {
+          'FromPort'   => 3389,
+          'IpProtocol' => 'tcp',
+          'Ipv6Ranges' => [
+
+            {
+              'CidrIpv6'    => '2001:db8:1234:1a00::/64',
+              'Description' => 'RDP access from the NY office'
+            }
+          ],
+          'ToPort' => 3389
+        }
+      ]
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/AuthorizeSecurityGroupIngress>

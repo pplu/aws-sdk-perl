@@ -31,7 +31,7 @@ The creation time.
 
 =head2 DomainId => Str
 
-The domain ID.
+The ID of the domain that contains the profile.
 
 
 =head2 FailureReason => Str
@@ -41,7 +41,8 @@ The failure reason.
 
 =head2 HomeEfsFileSystemUid => Str
 
-The homa Amazon Elastic File System (EFS) Uid.
+The ID of the user's profile in the Amazon Elastic File System (EFS)
+volume.
 
 
 =head2 LastModifiedTime => Str
@@ -63,7 +64,7 @@ The SSO user value.
 
 The status.
 
-Valid values are: C<"Deleting">, C<"Failed">, C<"InService">, C<"Pending">
+Valid values are: C<"Deleting">, C<"Failed">, C<"InService">, C<"Pending">, C<"Updating">, C<"Update_Failed">, C<"Delete_Failed">
 =head2 UserProfileArn => Str
 
 The user profile Amazon Resource Name (ARN).

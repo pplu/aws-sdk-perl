@@ -1,6 +1,7 @@
 
 package Paws::Backup::DescribeRestoreJobOutput;
   use Moose;
+  has AccountId => (is => 'ro', isa => 'Str');
   has BackupSizeInBytes => (is => 'ro', isa => 'Int');
   has CompletionDate => (is => 'ro', isa => 'Str');
   has CreatedResourceArn => (is => 'ro', isa => 'Str');
@@ -9,6 +10,7 @@ package Paws::Backup::DescribeRestoreJobOutput;
   has IamRoleArn => (is => 'ro', isa => 'Str');
   has PercentDone => (is => 'ro', isa => 'Str');
   has RecoveryPointArn => (is => 'ro', isa => 'Str');
+  has ResourceType => (is => 'ro', isa => 'Str');
   has RestoreJobId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusMessage => (is => 'ro', isa => 'Str');
@@ -23,6 +25,11 @@ package Paws::Backup::DescribeRestoreJobOutput;
 Paws::Backup::DescribeRestoreJobOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 AccountId => Str
+
+Returns the account ID that owns the restore job.
 
 
 =head2 BackupSizeInBytes => Int
@@ -77,6 +84,11 @@ An ARN that uniquely identifies a recovery point; for example,
 C<arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45>.
 
 
+=head2 ResourceType => Str
+
+Returns metadata associated with a restore job listed by resource type.
+
+
 =head2 RestoreJobId => Str
 
 Uniquely identifies the job that restores a recovery point.
@@ -90,8 +102,7 @@ Backup to restore a recovery point.
 Valid values are: C<"PENDING">, C<"RUNNING">, C<"COMPLETED">, C<"ABORTED">, C<"FAILED">
 =head2 StatusMessage => Str
 
-A detailed message explaining the status of a job to restore a recovery
-point.
+A message showing the status of a job to restore a recovery point.
 
 
 =head2 _request_id => Str

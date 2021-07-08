@@ -4,6 +4,7 @@ package Paws::ES::AdvancedSecurityOptionsInput;
   has Enabled => (is => 'ro', isa => 'Bool');
   has InternalUserDatabaseEnabled => (is => 'ro', isa => 'Bool');
   has MasterUserOptions => (is => 'ro', isa => 'Paws::ES::MasterUserOptions');
+  has SAMLOptions => (is => 'ro', isa => 'Paws::ES::SAMLOptionsInput');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ES::AdvancedSecurityOptionsInput object:
 
-  $service_obj->Method(Att1 => { Enabled => $value, ..., MasterUserOptions => $value  });
+  $service_obj->Method(Att1 => { Enabled => $value, ..., SAMLOptions => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,6 +57,11 @@ True if the internal user database is enabled.
 =head2 MasterUserOptions => L<Paws::ES::MasterUserOptions>
 
 Credentials for the master user: username and password, ARN, or both.
+
+
+=head2 SAMLOptions => L<Paws::ES::SAMLOptionsInput>
+
+Specifies the SAML application configuration for the domain.
 
 
 

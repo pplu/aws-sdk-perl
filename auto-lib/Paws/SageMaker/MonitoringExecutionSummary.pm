@@ -6,7 +6,9 @@ package Paws::SageMaker::MonitoringExecutionSummary;
   has FailureReason => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
   has MonitoringExecutionStatus => (is => 'ro', isa => 'Str', required => 1);
+  has MonitoringJobDefinitionName => (is => 'ro', isa => 'Str');
   has MonitoringScheduleName => (is => 'ro', isa => 'Str', required => 1);
+  has MonitoringType => (is => 'ro', isa => 'Str');
   has ProcessingJobArn => (is => 'ro', isa => 'Str');
   has ScheduledTime => (is => 'ro', isa => 'Str', required => 1);
 
@@ -52,7 +54,7 @@ The time at which the monitoring job was created.
 
 =head2 EndpointName => Str
 
-The name of teh endpoint used to run the monitoring job.
+The name of the endpoint used to run the monitoring job.
 
 
 =head2 FailureReason => Str
@@ -71,9 +73,19 @@ modified.
 The status of the monitoring job.
 
 
+=head2 MonitoringJobDefinitionName => Str
+
+The name of the monitoring job.
+
+
 =head2 B<REQUIRED> MonitoringScheduleName => Str
 
 The name of the monitoring schedule.
+
+
+=head2 MonitoringType => Str
+
+The type of the monitoring job.
 
 
 =head2 ProcessingJobArn => Str

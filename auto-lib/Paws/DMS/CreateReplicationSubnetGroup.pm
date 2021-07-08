@@ -30,18 +30,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+   # Create replication subnet group
+   # Creates a replication subnet group given a list of the subnet IDs in a VPC.
     my $CreateReplicationSubnetGroupResponse =
       $dms->CreateReplicationSubnetGroup(
-      ReplicationSubnetGroupDescription => 'MyString',
-      ReplicationSubnetGroupIdentifier  => 'MyString',
-      SubnetIds                         => [ 'MyString', ... ],
-      Tags                              => [
+      'ReplicationSubnetGroupDescription' => 'US West subnet group',
+      'ReplicationSubnetGroupIdentifier'  => 'us-west-2ab-vpc-215ds366',
+      'SubnetIds' => [ 'subnet-e145356n', 'subnet-58f79200' ],
+      'Tags'      => [
+
         {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],    # OPTIONAL
+          'Key'   => 'Acount',
+          'Value' => 145235
+        }
+      ]
       );
 
     # Results:

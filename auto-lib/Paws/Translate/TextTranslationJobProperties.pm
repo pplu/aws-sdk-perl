@@ -10,6 +10,7 @@ package Paws::Translate::TextTranslationJobProperties;
   has JobStatus => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Translate::OutputDataConfig');
+  has ParallelDataNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SourceLanguageCode => (is => 'ro', isa => 'Str');
   has SubmittedTime => (is => 'ro', isa => 'Str');
   has TargetLanguageCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -99,6 +100,12 @@ translation job.
 
 The output configuration properties that were specified when the job
 was requested.
+
+
+=head2 ParallelDataNames => ArrayRef[Str|Undef]
+
+A list containing the names of the parallel data resources applied to
+the translation job.
 
 
 =head2 SourceLanguageCode => Str

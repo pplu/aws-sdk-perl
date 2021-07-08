@@ -29,29 +29,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $GetBotResponse = $models . lex->GetBot(
-      Name           => 'MyBotName',
-      VersionOrAlias => 'MyString',
-
-    );
+    # To get information about a bot
+    # This example shows how to get configuration information for a bot.
+    my $GetBotResponse = $models
+      . lex->GetBot(
+      'Name'           => 'DocOrderPizza',
+      'VersionOrAlias' => '$LATEST'
+      );
 
     # Results:
-    my $AbortStatement          = $GetBotResponse->AbortStatement;
-    my $Checksum                = $GetBotResponse->Checksum;
-    my $ChildDirected           = $GetBotResponse->ChildDirected;
-    my $ClarificationPrompt     = $GetBotResponse->ClarificationPrompt;
-    my $CreatedDate             = $GetBotResponse->CreatedDate;
-    my $Description             = $GetBotResponse->Description;
-    my $DetectSentiment         = $GetBotResponse->DetectSentiment;
-    my $FailureReason           = $GetBotResponse->FailureReason;
-    my $IdleSessionTTLInSeconds = $GetBotResponse->IdleSessionTTLInSeconds;
-    my $Intents                 = $GetBotResponse->Intents;
-    my $LastUpdatedDate         = $GetBotResponse->LastUpdatedDate;
-    my $Locale                  = $GetBotResponse->Locale;
-    my $Name                    = $GetBotResponse->Name;
-    my $Status                  = $GetBotResponse->Status;
-    my $Version                 = $GetBotResponse->Version;
-    my $VoiceId                 = $GetBotResponse->VoiceId;
+    my $abortStatement          = $GetBotResponse->abortStatement;
+    my $checksum                = $GetBotResponse->checksum;
+    my $childDirected           = $GetBotResponse->childDirected;
+    my $clarificationPrompt     = $GetBotResponse->clarificationPrompt;
+    my $createdDate             = $GetBotResponse->createdDate;
+    my $description             = $GetBotResponse->description;
+    my $idleSessionTTLInSeconds = $GetBotResponse->idleSessionTTLInSeconds;
+    my $intents                 = $GetBotResponse->intents;
+    my $lastUpdatedDate         = $GetBotResponse->lastUpdatedDate;
+    my $locale                  = $GetBotResponse->locale;
+    my $name                    = $GetBotResponse->name;
+    my $status                  = $GetBotResponse->status;
+    my $version                 = $GetBotResponse->version;
 
     # Returns a L<Paws::LexModels::GetBotResponse> object.
 

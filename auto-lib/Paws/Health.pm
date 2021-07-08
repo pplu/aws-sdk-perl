@@ -275,120 +275,68 @@ Paws::Health - Perl Interface to AWS AWS Health APIs and Notifications
 AWS Health
 
 The AWS Health API provides programmatic access to the AWS Health
-information that is presented in the AWS Personal Health Dashboard
-(https://phd.aws.amazon.com/phd/home#/). You can get information about
-events that affect your AWS resources:
+information that appears in the AWS Personal Health Dashboard
+(https://phd.aws.amazon.com/phd/home#/). You can use the API operations
+to get information about AWS Health events that affect your AWS
+services and resources.
 
 =over
 
 =item *
 
-DescribeEvents: Summary information about events.
+You must have a Business or Enterprise Support plan from AWS Support
+(http://aws.amazon.com/premiumsupport/) to use the AWS Health API. If
+you call the AWS Health API from an AWS account that doesn't have a
+Business or Enterprise Support plan, you receive a
+C<SubscriptionRequiredException> error.
 
 =item *
 
-DescribeEventDetails: Detailed information about one or more events.
-
-=item *
-
-DescribeAffectedEntities: Information about AWS resources that are
-affected by one or more events.
+You can use the AWS Health endpoint health.us-east-1.amazonaws.com
+(HTTPS) to call the AWS Health API operations. AWS Health supports a
+multi-Region application architecture and has two regional endpoints in
+an active-passive configuration. You can use the high availability
+endpoint example to determine which AWS Region is active, so that you
+can get the latest information from the API. For more information, see
+Accessing the AWS Health API
+(https://docs.aws.amazon.com/health/latest/ug/health-api.html) in the
+I<AWS Health User Guide>.
 
 =back
-
-In addition, these operations provide information about event types and
-summary counts of events or affected entities:
-
-=over
-
-=item *
-
-DescribeEventTypes: Information about the kinds of events that AWS
-Health tracks.
-
-=item *
-
-DescribeEventAggregates: A count of the number of events that meet
-specified criteria.
-
-=item *
-
-DescribeEntityAggregates: A count of the number of affected entities
-that meet specified criteria.
-
-=back
-
-AWS Health integrates with AWS Organizations to provide a centralized
-view of AWS Health events across all accounts in your organization.
-
-=over
-
-=item *
-
-DescribeEventsForOrganization: Summary information about events across
-the organization.
-
-=item *
-
-DescribeAffectedAccountsForOrganization: List of accounts in your
-organization impacted by an event.
-
-=item *
-
-DescribeEventDetailsForOrganization: Detailed information about events
-in your organization.
-
-=item *
-
-DescribeAffectedEntitiesForOrganization: Information about AWS
-resources in your organization that are affected by events.
-
-=back
-
-You can use the following operations to enable or disable AWS Health
-from working with AWS Organizations.
-
-=over
-
-=item *
-
-EnableHealthServiceAccessForOrganization: Enables AWS Health to work
-with AWS Organizations.
-
-=item *
-
-DisableHealthServiceAccessForOrganization: Disables AWS Health from
-working with AWS Organizations.
-
-=item *
-
-DescribeHealthServiceStatusForOrganization: Status information about
-enabling or disabling AWS Health from working with AWS Organizations.
-
-=back
-
-The Health API requires a Business or Enterprise support plan from AWS
-Support (http://aws.amazon.com/premiumsupport/). Calling the Health API
-from an account that does not have a Business or Enterprise support
-plan causes a C<SubscriptionRequiredException>.
 
 For authentication of requests, AWS Health uses the Signature Version 4
 Signing Process
 (https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html).
 
-See the AWS Health User Guide
-(https://docs.aws.amazon.com/health/latest/ug/what-is-aws-health.html)
-for information about how to use the API.
+If your AWS account is part of AWS Organizations, you can use the AWS
+Health organizational view feature. This feature provides a centralized
+view of AWS Health events across all accounts in your organization. You
+can aggregate AWS Health events in real time to identify accounts in
+your organization that are affected by an operational event or get
+notified of security vulnerabilities. Use the organizational view API
+operations to enable this feature and return event information. For
+more information, see Aggregating AWS Health events
+(https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html) in
+the I<AWS Health User Guide>.
 
-B<Service Endpoint>
-
-The HTTP endpoint for the AWS Health API is:
+When you use the AWS Health API operations to return AWS Health events,
+see the following recommendations:
 
 =over
 
 =item *
 
-https://health.us-east-1.amazonaws.com
+Use the eventScopeCode
+(https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
+parameter to specify whether to return AWS Health events that are
+public or account-specific.
+
+=item *
+
+Use pagination to view all events from the response. For example, if
+you call the C<DescribeEventsForOrganization> operation to get all
+events in your organization, you might receive several page results.
+Specify the C<nextToken> in the next request to return more results.
 
 =back
 
@@ -416,12 +364,18 @@ Each argument is described in detail in: L<Paws::Health::DescribeAffectedAccount
 Returns: a L<Paws::Health::DescribeAffectedAccountsForOrganizationResponse> instance
 
 Returns a list of accounts in the organization from AWS Organizations
-that are affected by the provided event.
+that are affected by the provided event. For more information about the
+different types of AWS Health events, see Event
+(https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-EnableHealthServiceAccessForOrganization operation from your
-organization's master account.
+EnableHealthServiceAccessForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+operation from your organization's management account.
+
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
 
 
 =head2 DescribeAffectedEntities
@@ -453,6 +407,24 @@ unknown, include at least one entity indicating this.
 At least one event ARN is required. Results are sorted by the
 C<lastUpdatedTime> of the entity, starting with the most recent.
 
+=over
+
+=item *
+
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
+
+=item *
+
+This operation supports resource-level permissions. You can use this
+operation to allow or deny access to specific AWS Health events. For
+more information, see Resource- and action-based conditions
+(https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+in the I<AWS Health User Guide>.
+
+=back
+
+
 
 =head2 DescribeAffectedEntitiesForOrganization
 
@@ -479,13 +451,33 @@ Organizations, based on the filter criteria. Entities can refer to
 individual customer resources, groups of customer resources, or any
 other construct, depending on the AWS service.
 
-At least one event ARN and account ID are required. Results are sorted
-by the C<lastUpdatedTime> of the entity, starting with the most recent.
+At least one event Amazon Resource Name (ARN) and account ID are
+required. Results are sorted by the C<lastUpdatedTime> of the entity,
+starting with the most recent.
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-EnableHealthServiceAccessForOrganization operation from your
-organization's master account.
+EnableHealthServiceAccessForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+operation from your organization's management account.
+
+=over
+
+=item *
+
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
+
+=item *
+
+This operation doesn't support resource-level permissions. You can't
+use this operation to allow or deny access to specific AWS Health
+events. For more information, see Resource- and action-based conditions
+(https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+in the I<AWS Health User Guide>.
+
+=back
+
 
 
 =head2 DescribeEntityAggregates
@@ -529,6 +521,9 @@ Returns the number of events of each event type (issue, scheduled
 change, and account notification). If no filter is specified, the
 counts of all events in each category are returned.
 
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
+
 
 =head2 DescribeEventDetails
 
@@ -546,14 +541,23 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventDetails>
 Returns: a L<Paws::Health::DescribeEventDetailsResponse> instance
 
 Returns detailed information about one or more specified events.
-Information includes standard event data (region, service, and so on,
-as returned by DescribeEvents), a detailed event description, and
-possible additional metadata that depends upon the nature of the event.
-Affected entities are not included; to retrieve those, use the
-DescribeAffectedEntities operation.
+Information includes standard event data (AWS Region, service, and so
+on, as returned by DescribeEvents
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEvents.html)),
+a detailed event description, and possible additional metadata that
+depends upon the nature of the event. Affected entities are not
+included. To retrieve the entities, use the DescribeAffectedEntities
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html)
+operation.
 
-If a specified event cannot be retrieved, an error message is returned
+If a specified event can't be retrieved, an error message is returned
 for that event.
+
+This operation supports resource-level permissions. You can use this
+operation to allow or deny access to specific AWS Health events. For
+more information, see Resource- and action-based conditions
+(https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+in the I<AWS Health User Guide>.
 
 
 =head2 DescribeEventDetailsForOrganization
@@ -572,17 +576,52 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventDetailsFor
 Returns: a L<Paws::Health::DescribeEventDetailsForOrganizationResponse> instance
 
 Returns detailed information about one or more specified events for one
-or more accounts in your organization. Information includes standard
-event data (Region, service, and so on, as returned by
-DescribeEventsForOrganization, a detailed event description, and
-possible additional metadata that depends upon the nature of the event.
-Affected entities are not included; to retrieve those, use the
-DescribeAffectedEntitiesForOrganization operation.
+or more AWS accounts in your organization. This information includes
+standard event data (such as the AWS Region and service), an event
+description, and (depending on the event) possible metadata. This
+operation doesn't return affected entities, such as the resources
+related to the event. To return affected entities, use the
+DescribeAffectedEntitiesForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html)
+operation.
 
 Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-EnableHealthServiceAccessForOrganization operation from your
-organization's master account.
+EnableHealthServiceAccessForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+operation from your organization's management account.
+
+When you call the C<DescribeEventDetailsForOrganization> operation,
+specify the C<organizationEventDetailFilters> object in the request.
+Depending on the AWS Health event type, note the following differences:
+
+=over
+
+=item *
+
+To return event details for a public event, you must specify a null
+value for the C<awsAccountId> parameter. If you specify an account ID
+for a public event, AWS Health returns an error message because public
+events aren't specific to an account.
+
+=item *
+
+To return event details for an event that is specific to an account in
+your organization, you must specify the C<awsAccountId> parameter in
+the request. If you don't specify an account ID, AWS Health returns an
+error message because the event is specific to an account in your
+organization.
+
+=back
+
+For more information, see Event
+(https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
+
+This operation doesn't support resource-level permissions. You can't
+use this operation to allow or deny access to specific AWS Health
+events. For more information, see Resource- and action-based conditions
+(https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html#resource-action-based-conditions)
+in the I<AWS Health User Guide>.
 
 
 =head2 DescribeEvents
@@ -608,10 +647,36 @@ Returns information about events that meet the specified filter
 criteria. Events are returned in a summary form and do not include the
 detailed description, any additional metadata that depends on the event
 type, or any affected resources. To retrieve that information, use the
-DescribeEventDetails and DescribeAffectedEntities operations.
+DescribeEventDetails
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetails.html)
+and DescribeAffectedEntities
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntities.html)
+operations.
 
 If no filter criteria are specified, all events are returned. Results
-are sorted by C<lastModifiedTime>, starting with the most recent.
+are sorted by C<lastModifiedTime>, starting with the most recent event.
+
+=over
+
+=item *
+
+When you call the C<DescribeEvents> operation and specify an entity for
+the C<entityValues> parameter, AWS Health might return public events
+that aren't specific to that resource. For example, if you call
+C<DescribeEvents> and specify an ID for an Amazon Elastic Compute Cloud
+(Amazon EC2) instance, AWS Health might return events that aren't
+specific to that resource or service. To get events that are specific
+to a service, use the C<services> parameter in the C<filter> object.
+For more information, see Event
+(https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
+
+=item *
+
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
+
+=back
+
 
 
 =head2 DescribeEventsForOrganization
@@ -634,22 +699,47 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventsForOrgani
 Returns: a L<Paws::Health::DescribeEventsForOrganizationResponse> instance
 
 Returns information about events across your organization in AWS
-Organizations, meeting the specified filter criteria. Events are
-returned in a summary form and do not include the accounts impacted,
-detailed description, any additional metadata that depends on the event
-type, or any affected resources. To retrieve that information, use the
-DescribeAffectedAccountsForOrganization,
-DescribeEventDetailsForOrganization, and
-DescribeAffectedEntitiesForOrganization operations.
+Organizations. You can use theC<filters> parameter to specify the
+events that you want to return. Events are returned in a summary form
+and don't include the affected accounts, detailed description, any
+additional metadata that depends on the event type, or any affected
+resources. To retrieve that information, use the following operations:
 
-If no filter criteria are specified, all events across your
-organization are returned. Results are sorted by C<lastModifiedTime>,
-starting with the most recent.
+=over
 
-Before you can call this operation, you must first enable Health to
+=item *
+
+DescribeAffectedAccountsForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedAccountsForOrganization.html)
+
+=item *
+
+DescribeEventDetailsForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html)
+
+=item *
+
+DescribeAffectedEntitiesForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeAffectedEntitiesForOrganization.html)
+
+=back
+
+If you don't specify a C<filter>, the C<DescribeEventsForOrganizations>
+returns all events across your organization. Results are sorted by
+C<lastModifiedTime>, starting with the most recent event.
+
+For more information about the different types of AWS Health events,
+see Event
+(https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html).
+
+Before you can call this operation, you must first enable AWS Health to
 work with AWS Organizations. To do this, call the
-EnableHealthServiceAccessForOrganization operation from your
-organization's master account.
+EnableHealthServiceAccessForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EnableHealthServiceAccessForOrganization.html)
+operation from your organization's management account.
+
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
 
 
 =head2 DescribeEventTypes
@@ -671,9 +761,18 @@ Each argument is described in detail in: L<Paws::Health::DescribeEventTypes>
 
 Returns: a L<Paws::Health::DescribeEventTypesResponse> instance
 
-Returns the event types that meet the specified filter criteria. If no
-filter criteria are specified, all event types are returned, in no
-particular order.
+Returns the event types that meet the specified filter criteria. You
+can use this API operation to find information about the AWS Health
+event, such as the category, AWS service, and event code. The metadata
+for each event appears in the EventType
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EventType.html)
+object.
+
+If you don't specify a filter criteria, the API operation returns all
+event types, in no particular order.
+
+This API operation uses pagination. Specify the C<nextToken> parameter
+in the next request to return more results.
 
 
 =head2 DescribeHealthServiceStatusForOrganization
@@ -692,7 +791,7 @@ Returns: a L<Paws::Health::DescribeHealthServiceStatusForOrganizationResponse> i
 This operation provides status information on enabling or disabling AWS
 Health to work with your organization. To call this operation, you must
 sign in as an IAM user, assume an IAM role, or sign in as the root user
-(not recommended) in the organization's master account.
+(not recommended) in the organization's management account.
 
 
 =head2 DisableHealthServiceAccessForOrganization
@@ -708,12 +807,30 @@ Each argument is described in detail in: L<Paws::Health::DisableHealthServiceAcc
 
 Returns: nothing
 
-Calling this operation disables Health from working with AWS
-Organizations. This does not remove the Service Linked Role (SLR) from
-the the master account in your organization. Use the IAM console, API,
-or AWS CLI to remove the SLR if desired. To call this operation, you
-must sign in as an IAM user, assume an IAM role, or sign in as the root
-user (not recommended) in the organization's master account.
+Disables AWS Health from working with AWS Organizations. To call this
+operation, you must sign in as an AWS Identity and Access Management
+(IAM) user, assume an IAM role, or sign in as the root user (not
+recommended) in the organization's management account. For more
+information, see Aggregating AWS Health events
+(https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html) in
+the I<AWS Health User Guide>.
+
+This operation doesn't remove the service-linked role from the
+management account in your organization. You must use the IAM console,
+API, or AWS Command Line Interface (AWS CLI) to remove the
+service-linked role. For more information, see Deleting a
+Service-Linked Role
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html#delete-service-linked-role)
+in the I<IAM User Guide>.
+
+You can also disable the organizational feature by using the
+Organizations DisableAWSServiceAccess
+(https://docs.aws.amazon.com/organizations/latest/APIReference/API_DisableAWSServiceAccess.html)
+API operation. After you call this operation, AWS Health stops
+aggregating events for all other AWS accounts in your organization. If
+you call the AWS Health API operations for organizational view, AWS
+Health returns an error. AWS Health continues to aggregate health
+events for your AWS account.
 
 
 =head2 EnableHealthServiceAccessForOrganization
@@ -729,13 +846,39 @@ Each argument is described in detail in: L<Paws::Health::EnableHealthServiceAcce
 
 Returns: nothing
 
-Calling this operation enables AWS Health to work with AWS
-Organizations. This applies a Service Linked Role (SLR) to the master
-account in the organization. To learn more about the steps in this
-process, visit enabling service access for AWS Health in AWS
-Organizations. To call this operation, you must sign in as an IAM user,
-assume an IAM role, or sign in as the root user (not recommended) in
-the organization's master account.
+Enables AWS Health to work with AWS Organizations. You can use the
+organizational view feature to aggregate events from all AWS accounts
+in your organization in a centralized location.
+
+This operation also creates a service-linked role for the management
+account in the organization.
+
+To call this operation, you must meet the following requirements:
+
+=over
+
+=item *
+
+You must have a Business or Enterprise Support plan from AWS Support
+(http://aws.amazon.com/premiumsupport/) to use the AWS Health API. If
+you call the AWS Health API from an AWS account that doesn't have a
+Business or Enterprise Support plan, you receive a
+C<SubscriptionRequiredException> error.
+
+=item *
+
+You must have permission to call this operation from the organization's
+management account. For example IAM policies, see AWS Health
+identity-based policy examples
+(https://docs.aws.amazon.com/health/latest/ug/security_iam_id-based-policy-examples.html).
+
+=back
+
+If you don't have the required support plan, you can instead use the
+AWS Health console to enable the organizational view feature. For more
+information, see Aggregating AWS Health events
+(https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html) in
+the I<AWS Health User Guide>.
 
 
 

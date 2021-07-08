@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $Arn        = $DescribeDetectorResult->Arn;
     my $DetectorId = $DescribeDetectorResult->DetectorId;
     my $DetectorVersionSummaries =
       $DescribeDetectorResult->DetectorVersionSummaries;

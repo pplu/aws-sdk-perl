@@ -19,6 +19,16 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CancelIngestion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateAccountCustomization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateAccountCustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDashboard {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateDashboard', @_);
@@ -32,6 +42,16 @@ package Paws::Quicksight;
   sub CreateDataSource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateDataSource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateFolderMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateFolderMembership', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateGroup {
@@ -54,6 +74,11 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateIngestion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateNamespace', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateTemplate', @_);
@@ -62,6 +87,26 @@ package Paws::Quicksight;
   sub CreateTemplateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateTemplateAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTheme {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateTheme', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateThemeAlias {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::CreateThemeAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAccountCustomization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteAccountCustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteAnalysis', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDashboard {
@@ -79,6 +124,16 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteDataSource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFolderMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteFolderMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteGroup', @_);
@@ -94,6 +149,11 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteIAMPolicyAssignment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteNamespace', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteTemplate', @_);
@@ -104,6 +164,16 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteTemplateAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTheme {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteTheme', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteThemeAlias {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteThemeAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteUser', @_);
@@ -112,6 +182,26 @@ package Paws::Quicksight;
   sub DeleteUserByPrincipalId {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DeleteUserByPrincipalId', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountCustomization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeAccountCustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAnalysisPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeAnalysisPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDashboard {
@@ -144,6 +234,21 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeDataSourcePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFolderPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeFolderPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeFolderResolvedPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeFolderResolvedPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeGroup', @_);
@@ -157,6 +262,11 @@ package Paws::Quicksight;
   sub DescribeIngestion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeIngestion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeNamespace {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeNamespace', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeTemplate {
@@ -174,6 +284,21 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeTemplatePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTheme {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeTheme', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeThemeAlias {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeThemeAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeThemePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeThemePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::DescribeUser', @_);
@@ -182,6 +307,16 @@ package Paws::Quicksight;
   sub GetDashboardEmbedUrl {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::GetDashboardEmbedUrl', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSessionEmbedUrl {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::GetSessionEmbedUrl', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAnalyses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListAnalyses', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListDashboards {
@@ -202,6 +337,16 @@ package Paws::Quicksight;
   sub ListDataSources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::ListDataSources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFolderMembers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListFolderMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFolders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListFolders', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGroupMemberships {
@@ -229,6 +374,11 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::ListIngestions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListNamespaces {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListNamespaces', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::ListTagsForResource', @_);
@@ -249,6 +399,21 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::ListTemplateVersions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListThemeAliases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListThemeAliases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListThemes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListThemes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListThemeVersions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::ListThemeVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListUserGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::ListUserGroups', @_);
@@ -264,6 +429,26 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::RegisterUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RestoreAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::RestoreAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchAnalyses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::SearchAnalyses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchDashboards {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::SearchDashboards', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub SearchFolders {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::SearchFolders', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::TagResource', @_);
@@ -272,6 +457,26 @@ package Paws::Quicksight;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAccountCustomization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateAccountCustomization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAccountSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateAccountSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAnalysisPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateAnalysisPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDashboard {
@@ -309,6 +514,16 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateDataSourcePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateFolder {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateFolder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateFolderPermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateFolderPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateGroup', @_);
@@ -334,15 +549,352 @@ package Paws::Quicksight;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateTemplatePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateTheme {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateTheme', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateThemeAlias {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateThemeAlias', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateThemePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateThemePermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Quicksight::UpdateUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub ListAllAnalyses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAnalyses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListAnalyses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AnalysisSummaryList }, @{ $next_result->AnalysisSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AnalysisSummaryList') foreach (@{ $result->AnalysisSummaryList });
+        $result = $self->ListAnalyses(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AnalysisSummaryList') foreach (@{ $result->AnalysisSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllDashboards {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDashboards(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDashboards(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DashboardSummaryList }, @{ $next_result->DashboardSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DashboardSummaryList') foreach (@{ $result->DashboardSummaryList });
+        $result = $self->ListDashboards(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DashboardSummaryList') foreach (@{ $result->DashboardSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllDashboardVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDashboardVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDashboardVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DashboardVersionSummaryList }, @{ $next_result->DashboardVersionSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DashboardVersionSummaryList') foreach (@{ $result->DashboardVersionSummaryList });
+        $result = $self->ListDashboardVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DashboardVersionSummaryList') foreach (@{ $result->DashboardVersionSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllDataSets {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDataSets(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDataSets(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DataSetSummaries }, @{ $next_result->DataSetSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DataSetSummaries') foreach (@{ $result->DataSetSummaries });
+        $result = $self->ListDataSets(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DataSetSummaries') foreach (@{ $result->DataSetSummaries });
+    }
+
+    return undef
+  }
+  sub ListAllDataSources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDataSources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListDataSources(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DataSources }, @{ $next_result->DataSources };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DataSources') foreach (@{ $result->DataSources });
+        $result = $self->ListDataSources(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DataSources') foreach (@{ $result->DataSources });
+    }
+
+    return undef
+  }
+  sub ListAllIngestions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListIngestions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListIngestions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Ingestions }, @{ $next_result->Ingestions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Ingestions') foreach (@{ $result->Ingestions });
+        $result = $self->ListIngestions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Ingestions') foreach (@{ $result->Ingestions });
+    }
+
+    return undef
+  }
+  sub ListAllNamespaces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListNamespaces(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListNamespaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Namespaces }, @{ $next_result->Namespaces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Namespaces') foreach (@{ $result->Namespaces });
+        $result = $self->ListNamespaces(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Namespaces') foreach (@{ $result->Namespaces });
+    }
+
+    return undef
+  }
+  sub ListAllTemplateAliases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTemplateAliases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTemplateAliases(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TemplateAliasList }, @{ $next_result->TemplateAliasList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TemplateAliasList') foreach (@{ $result->TemplateAliasList });
+        $result = $self->ListTemplateAliases(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TemplateAliasList') foreach (@{ $result->TemplateAliasList });
+    }
+
+    return undef
+  }
+  sub ListAllTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTemplates(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TemplateSummaryList }, @{ $next_result->TemplateSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TemplateSummaryList') foreach (@{ $result->TemplateSummaryList });
+        $result = $self->ListTemplates(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TemplateSummaryList') foreach (@{ $result->TemplateSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllTemplateVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTemplateVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListTemplateVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TemplateVersionSummaryList }, @{ $next_result->TemplateVersionSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TemplateVersionSummaryList') foreach (@{ $result->TemplateVersionSummaryList });
+        $result = $self->ListTemplateVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TemplateVersionSummaryList') foreach (@{ $result->TemplateVersionSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllThemes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThemes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListThemes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ThemeSummaryList }, @{ $next_result->ThemeSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ThemeSummaryList') foreach (@{ $result->ThemeSummaryList });
+        $result = $self->ListThemes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ThemeSummaryList') foreach (@{ $result->ThemeSummaryList });
+    }
+
+    return undef
+  }
+  sub ListAllThemeVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThemeVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListThemeVersions(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ThemeVersionSummaryList }, @{ $next_result->ThemeVersionSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ThemeVersionSummaryList') foreach (@{ $result->ThemeVersionSummaryList });
+        $result = $self->ListThemeVersions(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ThemeVersionSummaryList') foreach (@{ $result->ThemeVersionSummaryList });
+    }
+
+    return undef
+  }
+  sub SearchAllAnalyses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchAnalyses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchAnalyses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AnalysisSummaryList }, @{ $next_result->AnalysisSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AnalysisSummaryList') foreach (@{ $result->AnalysisSummaryList });
+        $result = $self->SearchAnalyses(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AnalysisSummaryList') foreach (@{ $result->AnalysisSummaryList });
+    }
+
+    return undef
+  }
+  sub SearchAllDashboards {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchDashboards(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchDashboards(@_, NextToken => $next_result->NextToken);
+        push @{ $result->DashboardSummaryList }, @{ $next_result->DashboardSummaryList };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'DashboardSummaryList') foreach (@{ $result->DashboardSummaryList });
+        $result = $self->SearchDashboards(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'DashboardSummaryList') foreach (@{ $result->DashboardSummaryList });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CancelIngestion CreateDashboard CreateDataSet CreateDataSource CreateGroup CreateGroupMembership CreateIAMPolicyAssignment CreateIngestion CreateTemplate CreateTemplateAlias DeleteDashboard DeleteDataSet DeleteDataSource DeleteGroup DeleteGroupMembership DeleteIAMPolicyAssignment DeleteTemplate DeleteTemplateAlias DeleteUser DeleteUserByPrincipalId DescribeDashboard DescribeDashboardPermissions DescribeDataSet DescribeDataSetPermissions DescribeDataSource DescribeDataSourcePermissions DescribeGroup DescribeIAMPolicyAssignment DescribeIngestion DescribeTemplate DescribeTemplateAlias DescribeTemplatePermissions DescribeUser GetDashboardEmbedUrl ListDashboards ListDashboardVersions ListDataSets ListDataSources ListGroupMemberships ListGroups ListIAMPolicyAssignments ListIAMPolicyAssignmentsForUser ListIngestions ListTagsForResource ListTemplateAliases ListTemplates ListTemplateVersions ListUserGroups ListUsers RegisterUser TagResource UntagResource UpdateDashboard UpdateDashboardPermissions UpdateDashboardPublishedVersion UpdateDataSet UpdateDataSetPermissions UpdateDataSource UpdateDataSourcePermissions UpdateGroup UpdateIAMPolicyAssignment UpdateTemplate UpdateTemplateAlias UpdateTemplatePermissions UpdateUser / }
+  sub operations { qw/CancelIngestion CreateAccountCustomization CreateAnalysis CreateDashboard CreateDataSet CreateDataSource CreateFolder CreateFolderMembership CreateGroup CreateGroupMembership CreateIAMPolicyAssignment CreateIngestion CreateNamespace CreateTemplate CreateTemplateAlias CreateTheme CreateThemeAlias DeleteAccountCustomization DeleteAnalysis DeleteDashboard DeleteDataSet DeleteDataSource DeleteFolder DeleteFolderMembership DeleteGroup DeleteGroupMembership DeleteIAMPolicyAssignment DeleteNamespace DeleteTemplate DeleteTemplateAlias DeleteTheme DeleteThemeAlias DeleteUser DeleteUserByPrincipalId DescribeAccountCustomization DescribeAccountSettings DescribeAnalysis DescribeAnalysisPermissions DescribeDashboard DescribeDashboardPermissions DescribeDataSet DescribeDataSetPermissions DescribeDataSource DescribeDataSourcePermissions DescribeFolder DescribeFolderPermissions DescribeFolderResolvedPermissions DescribeGroup DescribeIAMPolicyAssignment DescribeIngestion DescribeNamespace DescribeTemplate DescribeTemplateAlias DescribeTemplatePermissions DescribeTheme DescribeThemeAlias DescribeThemePermissions DescribeUser GetDashboardEmbedUrl GetSessionEmbedUrl ListAnalyses ListDashboards ListDashboardVersions ListDataSets ListDataSources ListFolderMembers ListFolders ListGroupMemberships ListGroups ListIAMPolicyAssignments ListIAMPolicyAssignmentsForUser ListIngestions ListNamespaces ListTagsForResource ListTemplateAliases ListTemplates ListTemplateVersions ListThemeAliases ListThemes ListThemeVersions ListUserGroups ListUsers RegisterUser RestoreAnalysis SearchAnalyses SearchDashboards SearchFolders TagResource UntagResource UpdateAccountCustomization UpdateAccountSettings UpdateAnalysis UpdateAnalysisPermissions UpdateDashboard UpdateDashboardPermissions UpdateDashboardPublishedVersion UpdateDataSet UpdateDataSetPermissions UpdateDataSource UpdateDataSourcePermissions UpdateFolder UpdateFolderPermissions UpdateGroup UpdateIAMPolicyAssignment UpdateTemplate UpdateTemplateAlias UpdateTemplatePermissions UpdateTheme UpdateThemeAlias UpdateThemePermissions UpdateUser / }
 
 1;
 
@@ -403,6 +955,79 @@ Returns: a L<Paws::Quicksight::CancelIngestionResponse> instance
 Cancels an ongoing ingestion of data into SPICE.
 
 
+=head2 CreateAccountCustomization
+
+=over
+
+=item AccountCustomization => L<Paws::Quicksight::AccountCustomization>
+
+=item AwsAccountId => Str
+
+=item [Namespace => Str]
+
+=item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateAccountCustomization>
+
+Returns: a L<Paws::Quicksight::CreateAccountCustomizationResponse> instance
+
+Creates Amazon QuickSight customizations the current AWS Region.
+Currently, you can add a custom default theme by using the
+C<CreateAccountCustomization> or C<UpdateAccountCustomization> API
+operation. To further customize QuickSight by removing QuickSight
+sample assets and videos for all new users, see Customizing QuickSight
+(https://docs.aws.amazon.com/quicksight/latest/user/customizing-quicksight.html)
+in the I<Amazon QuickSight User Guide.>
+
+You can create customizations for your AWS account or, if you specify a
+namespace, for a QuickSight namespace instead. Customizations that
+apply to a namespace always override customizations that apply to an
+AWS account. To find out which customizations apply, use the
+C<DescribeAccountCustomization> API operation.
+
+Before you use the C<CreateAccountCustomization> API operation to add a
+theme as the namespace default, make sure that you first share the
+theme with the namespace. If you don't share it with the namespace, the
+theme isn't visible to your users even if you make it the default
+theme. To check if the theme is shared, view the current permissions by
+using the C< DescribeThemePermissions > API operation. To share the
+theme, grant permissions by using the C< UpdateThemePermissions > API
+operation.
+
+
+=head2 CreateAnalysis
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+=item Name => Str
+
+=item SourceEntity => L<Paws::Quicksight::AnalysisSourceEntity>
+
+=item [Parameters => L<Paws::Quicksight::Parameters>]
+
+=item [Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
+
+=item [ThemeArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateAnalysis>
+
+Returns: a L<Paws::Quicksight::CreateAnalysisResponse> instance
+
+Creates an analysis in Amazon QuickSight.
+
+
 =head2 CreateDashboard
 
 =over
@@ -423,6 +1048,8 @@ Cancels an ongoing ingestion of data into SPICE.
 
 =item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
 
+=item [ThemeArn => Str]
+
 =item [VersionDescription => Str]
 
 
@@ -433,15 +1060,13 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateDashboard>
 Returns: a L<Paws::Quicksight::CreateDashboardResponse> instance
 
 Creates a dashboard from a template. To first create a template, see
-the CreateTemplate API operation.
+the C< CreateTemplate > API operation.
 
 A dashboard is an entity in QuickSight that identifies QuickSight
 reports, created from analyses. You can share QuickSight dashboards.
 With the right permissions, you can create scheduled email reports from
-them. The C<CreateDashboard>, C<DescribeDashboard>, and
-C<ListDashboardsByUser> API operations act on the dashboard entity. If
-you have the correct permissions, you can create a dashboard from a
-template that exists in a different AWS account.
+them. If you have the correct permissions, you can create a dashboard
+from a template that exists in a different AWS account.
 
 
 =head2 CreateDataSet
@@ -459,6 +1084,10 @@ template that exists in a different AWS account.
 =item PhysicalTableMap => L<Paws::Quicksight::PhysicalTableMap>
 
 =item [ColumnGroups => ArrayRef[L<Paws::Quicksight::ColumnGroup>]]
+
+=item [ColumnLevelPermissionRules => ArrayRef[L<Paws::Quicksight::ColumnLevelPermissionRule>]]
+
+=item [FieldFolders => L<Paws::Quicksight::FieldFolderMap>]
 
 =item [LogicalTableMap => L<Paws::Quicksight::LogicalTableMap>]
 
@@ -510,6 +1139,56 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateDataSource>
 Returns: a L<Paws::Quicksight::CreateDataSourceResponse> instance
 
 Creates a data source.
+
+
+=head2 CreateFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item [FolderType => Str]
+
+=item [Name => Str]
+
+=item [ParentFolderArn => Str]
+
+=item [Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateFolder>
+
+Returns: a L<Paws::Quicksight::CreateFolderResponse> instance
+
+Creates an empty shared folder.
+
+
+=head2 CreateFolderMembership
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item MemberId => Str
+
+=item MemberType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateFolderMembership>
+
+Returns: a L<Paws::Quicksight::CreateFolderMembershipResponse> instance
+
+Adds an asset, such as a dashboard, analysis, or dataset into a folder.
 
 
 =head2 CreateGroup
@@ -586,9 +1265,10 @@ Each argument is described in detail in: L<Paws::Quicksight::CreateIAMPolicyAssi
 Returns: a L<Paws::Quicksight::CreateIAMPolicyAssignmentResponse> instance
 
 Creates an assignment with one specified IAM policy, identified by its
-Amazon Resource Name (ARN). This policy will be assigned to specified
-groups or users of Amazon QuickSight. The users and groups need to be
-in the same namespace.
+Amazon Resource Name (ARN). This policy assignment is attached to the
+specified groups or users of Amazon QuickSight. Assignment names are
+unique per AWS account. To avoid overwriting rules in other namespaces,
+use assignment names that are unique.
 
 
 =head2 CreateIngestion
@@ -614,9 +1294,41 @@ Any ingestions operating on tagged datasets inherit the same tags
 automatically for use in access control. For an example, see How do I
 create an IAM policy to control access to Amazon EC2 resources using
 tags?
-(https://aws.example.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/)
+(http://aws.amazon.com/premiumsupport/knowledge-center/iam-ec2-resource-tags/)
 in the AWS Knowledge Center. Tags are visible on the tagged dataset,
 but not on the ingestion resource.
+
+
+=head2 CreateNamespace
+
+=over
+
+=item AwsAccountId => Str
+
+=item IdentityStore => Str
+
+=item Namespace => Str
+
+=item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateNamespace>
+
+Returns: a L<Paws::Quicksight::CreateNamespaceResponse> instance
+
+(Enterprise edition only) Creates a new namespace for you to use with
+Amazon QuickSight.
+
+A namespace allows you to isolate the QuickSight users and groups that
+are registered for that namespace. Users that access the namespace can
+share assets only with other users or groups in the same namespace.
+They can't see users and groups in other namespaces. You can create a
+namespace after your AWS account is subscribed to QuickSight. The
+namespace must be unique within the AWS account. By default, there is a
+limit of 100 namespaces per AWS account. To increase your limit, create
+a ticket with AWS Support.
 
 
 =head2 CreateTemplate
@@ -678,6 +1390,120 @@ Returns: a L<Paws::Quicksight::CreateTemplateAliasResponse> instance
 Creates a template alias for a template.
 
 
+=head2 CreateTheme
+
+=over
+
+=item AwsAccountId => Str
+
+=item BaseThemeId => Str
+
+=item Configuration => L<Paws::Quicksight::ThemeConfiguration>
+
+=item Name => Str
+
+=item ThemeId => Str
+
+=item [Permissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [Tags => ArrayRef[L<Paws::Quicksight::Tag>]]
+
+=item [VersionDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateTheme>
+
+Returns: a L<Paws::Quicksight::CreateThemeResponse> instance
+
+Creates a theme.
+
+A I<theme> is set of configuration options for color and layout. Themes
+apply to analyses and dashboards. For more information, see Using
+Themes in Amazon QuickSight
+(https://docs.aws.amazon.com/quicksight/latest/user/themes-in-quicksight.html)
+in the I<Amazon QuickSight User Guide>.
+
+
+=head2 CreateThemeAlias
+
+=over
+
+=item AliasName => Str
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item ThemeVersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::CreateThemeAlias>
+
+Returns: a L<Paws::Quicksight::CreateThemeAliasResponse> instance
+
+Creates a theme alias for a theme.
+
+
+=head2 DeleteAccountCustomization
+
+=over
+
+=item AwsAccountId => Str
+
+=item [Namespace => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteAccountCustomization>
+
+Returns: a L<Paws::Quicksight::DeleteAccountCustomizationResponse> instance
+
+Deletes all Amazon QuickSight customizations in this AWS Region for the
+specified AWS account and QuickSight namespace.
+
+
+=head2 DeleteAnalysis
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+=item [ForceDeleteWithoutRecovery => Bool]
+
+=item [RecoveryWindowInDays => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteAnalysis>
+
+Returns: a L<Paws::Quicksight::DeleteAnalysisResponse> instance
+
+Deletes an analysis from Amazon QuickSight. You can optionally include
+a recovery window during which you can restore the analysis. If you
+don't specify a recovery window value, the operation defaults to 30
+days. QuickSight attaches a C<DeletionTime> stamp to the response that
+specifies the end of the recovery window. At the end of the recovery
+window, QuickSight deletes the analysis permanently.
+
+At any time before recovery window ends, you can use the
+C<RestoreAnalysis> API operation to remove the C<DeletionTime> stamp
+and cancel the deletion of the analysis. The analysis remains visible
+in the API until it's deleted, so you can describe it but you can't
+make a template from it.
+
+An analysis that's scheduled for deletion isn't accessible in the
+QuickSight console. To access it in the console, restore it. Deleting
+an analysis doesn't delete the dashboards that you publish from it.
+
+
 =head2 DeleteDashboard
 
 =over
@@ -731,8 +1557,49 @@ Each argument is described in detail in: L<Paws::Quicksight::DeleteDataSource>
 
 Returns: a L<Paws::Quicksight::DeleteDataSourceResponse> instance
 
-Deletes the data source permanently. This action breaks all the
+Deletes the data source permanently. This operation breaks all the
 datasets that reference the deleted data source.
+
+
+=head2 DeleteFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteFolder>
+
+Returns: a L<Paws::Quicksight::DeleteFolderResponse> instance
+
+Deletes an empty folder.
+
+
+=head2 DeleteFolderMembership
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item MemberId => Str
+
+=item MemberType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteFolderMembership>
+
+Returns: a L<Paws::Quicksight::DeleteFolderMembershipResponse> instance
+
+Removes an asset, such as a dashboard, analysis, or dataset, from a
+folder.
 
 
 =head2 DeleteGroup
@@ -798,6 +1665,27 @@ Returns: a L<Paws::Quicksight::DeleteIAMPolicyAssignmentResponse> instance
 Deletes an existing IAM policy assignment.
 
 
+=head2 DeleteNamespace
+
+=over
+
+=item AwsAccountId => Str
+
+=item Namespace => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteNamespace>
+
+Returns: a L<Paws::Quicksight::DeleteNamespaceResponse> instance
+
+Deletes a namespace and the users and groups that are associated with
+the namespace. This is an asynchronous process. Assets including
+dashboards, analyses, datasets and data sources are not deleted. To
+delete these assets, you use the API operations for the relevant asset.
+
+
 =head2 DeleteTemplate
 
 =over
@@ -840,6 +1728,48 @@ provide a specific alias, you delete the version of the template that
 the alias points to.
 
 
+=head2 DeleteTheme
+
+=over
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item [VersionNumber => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteTheme>
+
+Returns: a L<Paws::Quicksight::DeleteThemeResponse> instance
+
+Deletes a theme.
+
+
+=head2 DeleteThemeAlias
+
+=over
+
+=item AliasName => Str
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DeleteThemeAlias>
+
+Returns: a L<Paws::Quicksight::DeleteThemeAliasResponse> instance
+
+Deletes the version of the theme that the specified theme alias points
+to. If you provide a specific alias, you delete the version of the
+theme that the alias points to.
+
+
 =head2 DeleteUser
 
 =over
@@ -880,6 +1810,151 @@ Each argument is described in detail in: L<Paws::Quicksight::DeleteUserByPrincip
 Returns: a L<Paws::Quicksight::DeleteUserByPrincipalIdResponse> instance
 
 Deletes a user identified by its principal ID.
+
+
+=head2 DescribeAccountCustomization
+
+=over
+
+=item AwsAccountId => Str
+
+=item [Namespace => Str]
+
+=item [Resolved => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeAccountCustomization>
+
+Returns: a L<Paws::Quicksight::DescribeAccountCustomizationResponse> instance
+
+Describes the customizations associated with the provided AWS account
+and Amazon QuickSight namespace in an AWS Region. The QuickSight
+console evaluates which customizations to apply by running this API
+operation with the C<Resolved> flag included.
+
+To determine what customizations display when you run this command, it
+can help to visualize the relationship of the entities involved.
+
+=over
+
+=item *
+
+C<AWS Account> - The AWS account exists at the top of the hierarchy. It
+has the potential to use all of the AWS Regions and AWS Services. When
+you subscribe to QuickSight, you choose one AWS Region to use as your
+home Region. That's where your free SPICE capacity is located. You can
+use QuickSight in any supported AWS Region.
+
+=item *
+
+C<AWS Region> - In each AWS Region where you sign in to QuickSight at
+least once, QuickSight acts as a separate instance of the same service.
+If you have a user directory, it resides in us-east-1, which is the US
+East (N. Virginia). Generally speaking, these users have access to
+QuickSight in any AWS Region, unless they are constrained to a
+namespace.
+
+To run the command in a different AWS Region, you change your Region
+settings. If you're using the AWS CLI, you can use one of the following
+options:
+
+=over
+
+=item *
+
+Use command line options
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-options.html).
+
+=item *
+
+Use named profiles
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html).
+
+=item *
+
+Run C<aws configure> to change your default AWS Region. Use Enter to
+key the same settings for your keys. For more information, see
+Configuring the AWS CLI
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
+
+=back
+
+=item *
+
+C<Namespace> - A QuickSight namespace is a partition that contains
+users and assets (data sources, datasets, dashboards, and so on). To
+access assets that are in a specific namespace, users and groups must
+also be part of the same namespace. People who share a namespace are
+completely isolated from users and assets in other namespaces, even if
+they are in the same AWS account and AWS Region.
+
+=item *
+
+C<Applied customizations> - Within an AWS Region, a set of QuickSight
+customizations can apply to an AWS account or to a namespace. Settings
+that you apply to a namespace override settings that you apply to an
+AWS account. All settings are isolated to a single AWS Region. To apply
+them in other AWS Regions, run the C<CreateAccountCustomization>
+command in each AWS Region where you want to apply the same
+customizations.
+
+=back
+
+
+
+=head2 DescribeAccountSettings
+
+=over
+
+=item AwsAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeAccountSettings>
+
+Returns: a L<Paws::Quicksight::DescribeAccountSettingsResponse> instance
+
+Describes the settings that were used when your QuickSight subscription
+was first created in this AWS account.
+
+
+=head2 DescribeAnalysis
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeAnalysis>
+
+Returns: a L<Paws::Quicksight::DescribeAnalysisResponse> instance
+
+Provides a summary of the metadata for an analysis.
+
+
+=head2 DescribeAnalysisPermissions
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeAnalysisPermissions>
+
+Returns: a L<Paws::Quicksight::DescribeAnalysisPermissionsResponse> instance
+
+Provides the read and write permissions for an analysis.
 
 
 =head2 DescribeDashboard
@@ -997,6 +2072,62 @@ Returns: a L<Paws::Quicksight::DescribeDataSourcePermissionsResponse> instance
 Describes the resource permissions for a data source.
 
 
+=head2 DescribeFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeFolder>
+
+Returns: a L<Paws::Quicksight::DescribeFolderResponse> instance
+
+Describes a folder.
+
+
+=head2 DescribeFolderPermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeFolderPermissions>
+
+Returns: a L<Paws::Quicksight::DescribeFolderPermissionsResponse> instance
+
+Describes permissions for a folder.
+
+
+=head2 DescribeFolderResolvedPermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeFolderResolvedPermissions>
+
+Returns: a L<Paws::Quicksight::DescribeFolderResolvedPermissionsResponse> instance
+
+Describes the folder resolved permissions. Permissions consists of both
+folder direct permissions and the inherited permissions from the
+ancestor folders.
+
+
 =head2 DescribeGroup
 
 =over
@@ -1059,6 +2190,24 @@ Returns: a L<Paws::Quicksight::DescribeIngestionResponse> instance
 Describes a SPICE ingestion.
 
 
+=head2 DescribeNamespace
+
+=over
+
+=item AwsAccountId => Str
+
+=item Namespace => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeNamespace>
+
+Returns: a L<Paws::Quicksight::DescribeNamespaceResponse> instance
+
+Describes the current namespace.
+
+
 =head2 DescribeTemplate
 
 =over
@@ -1119,6 +2268,66 @@ Returns: a L<Paws::Quicksight::DescribeTemplatePermissionsResponse> instance
 Describes read and write permissions on a template.
 
 
+=head2 DescribeTheme
+
+=over
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item [AliasName => Str]
+
+=item [VersionNumber => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeTheme>
+
+Returns: a L<Paws::Quicksight::DescribeThemeResponse> instance
+
+Describes a theme.
+
+
+=head2 DescribeThemeAlias
+
+=over
+
+=item AliasName => Str
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeThemeAlias>
+
+Returns: a L<Paws::Quicksight::DescribeThemeAliasResponse> instance
+
+Describes the alias for a theme.
+
+
+=head2 DescribeThemePermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::DescribeThemePermissions>
+
+Returns: a L<Paws::Quicksight::DescribeThemePermissionsResponse> instance
+
+Describes the read and write permissions for a theme.
+
+
 =head2 DescribeUser
 
 =over
@@ -1149,9 +2358,15 @@ Returns information about a user, given the user name.
 
 =item IdentityType => Str
 
+=item [AdditionalDashboardIds => ArrayRef[Str|Undef]]
+
+=item [Namespace => Str]
+
 =item [ResetDisabled => Bool]
 
 =item [SessionLifetimeInMinutes => Int]
+
+=item [StatePersistenceEnabled => Bool]
 
 =item [UndoRedoDisabled => Bool]
 
@@ -1164,18 +2379,106 @@ Each argument is described in detail in: L<Paws::Quicksight::GetDashboardEmbedUr
 
 Returns: a L<Paws::Quicksight::GetDashboardEmbedUrlResponse> instance
 
-Generates a server-side embeddable URL and authorization code. For this
-process to work properly, first configure the dashboards and user
-permissions. For more information, see Embedding Amazon QuickSight
-Dashboards
-(https://docs.aws.amazon.com/quicksight/latest/user/embedding-dashboards.html)
-in the I<Amazon QuickSight User Guide> or Embedding Amazon QuickSight
-Dashboards
-(https://docs.aws.amazon.com/quicksight/latest/APIReference/qs-dev-embedded-dashboards.html)
-in the I<Amazon QuickSight API Reference>.
+Generates a session URL and authorization code that you can use to
+embed an Amazon QuickSight read-only dashboard in your web server code.
+Before you use this command, make sure that you have configured the
+dashboards and permissions.
 
 Currently, you can use C<GetDashboardEmbedURL> only from the server,
-not from the userE<rsquo>s browser.
+not from the user's browser. The following rules apply to the
+combination of URL and authorization code:
+
+=over
+
+=item *
+
+They must be used together.
+
+=item *
+
+They can be used one time only.
+
+=item *
+
+They are valid for 5 minutes after you run this command.
+
+=item *
+
+The resulting user session is valid for 10 hours.
+
+=back
+
+For more information, see Embedded Analytics
+(https://docs.aws.amazon.com/quicksight/latest/user/embedded-analytics.html)
+in the I<Amazon QuickSight User Guide>.
+
+
+=head2 GetSessionEmbedUrl
+
+=over
+
+=item AwsAccountId => Str
+
+=item [EntryPoint => Str]
+
+=item [SessionLifetimeInMinutes => Int]
+
+=item [UserArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::GetSessionEmbedUrl>
+
+Returns: a L<Paws::Quicksight::GetSessionEmbedUrlResponse> instance
+
+Generates a session URL and authorization code that you can use to
+embed the Amazon QuickSight console in your web server code. Use
+C<GetSessionEmbedUrl> where you want to provide an authoring portal
+that allows users to create data sources, datasets, analyses, and
+dashboards. The users who access an embedded QuickSight console need
+belong to the author or admin security cohort. If you want to restrict
+permissions to some of these features, add a custom permissions profile
+to the user with the C< UpdateUser > API operation. Use C< RegisterUser
+> API operation to add a new user with a custom permission profile
+attached. For more information, see the following sections in the
+I<Amazon QuickSight User Guide>:
+
+=over
+
+=item *
+
+Embedding the Amazon QuickSight Console
+(https://docs.aws.amazon.com/quicksight/latest/user/embedding-the-quicksight-console.html)
+
+=item *
+
+Customizing Access to the Amazon QuickSight Console
+(https://docs.aws.amazon.com/quicksight/latest/user/customizing-permissions-to-the-quicksight-console.html)
+
+=back
+
+
+
+=head2 ListAnalyses
+
+=over
+
+=item AwsAccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListAnalyses>
+
+Returns: a L<Paws::Quicksight::ListAnalysesResponse> instance
+
+Lists Amazon QuickSight analyses that exist in the specified AWS
+account.
 
 
 =head2 ListDashboards
@@ -1264,6 +2567,49 @@ Returns: a L<Paws::Quicksight::ListDataSourcesResponse> instance
 
 Lists data sources in current AWS Region that belong to this AWS
 account.
+
+
+=head2 ListFolderMembers
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListFolderMembers>
+
+Returns: a L<Paws::Quicksight::ListFolderMembersResponse> instance
+
+List all assets (C<DASHBOARD>, C<ANALYSIS>, and C<DATASET>) in a
+folder.
+
+
+=head2 ListFolders
+
+=over
+
+=item AwsAccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListFolders>
+
+Returns: a L<Paws::Quicksight::ListFoldersResponse> instance
+
+Lists all folders in an account.
 
 
 =head2 ListGroupMemberships
@@ -1384,6 +2730,26 @@ Returns: a L<Paws::Quicksight::ListIngestionsResponse> instance
 Lists the history of SPICE ingestions for a dataset.
 
 
+=head2 ListNamespaces
+
+=over
+
+=item AwsAccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListNamespaces>
+
+Returns: a L<Paws::Quicksight::ListNamespacesResponse> instance
+
+Lists the namespaces for the specified AWS account.
+
+
 =head2 ListTagsForResource
 
 =over
@@ -1465,6 +2831,72 @@ Lists all the versions of the templates in the current Amazon
 QuickSight account.
 
 
+=head2 ListThemeAliases
+
+=over
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListThemeAliases>
+
+Returns: a L<Paws::Quicksight::ListThemeAliasesResponse> instance
+
+Lists all the aliases of a theme.
+
+
+=head2 ListThemes
+
+=over
+
+=item AwsAccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListThemes>
+
+Returns: a L<Paws::Quicksight::ListThemesResponse> instance
+
+Lists all the themes in the current AWS account.
+
+
+=head2 ListThemeVersions
+
+=over
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::ListThemeVersions>
+
+Returns: a L<Paws::Quicksight::ListThemeVersionsResponse> instance
+
+Lists all the versions of the themes in the current AWS account.
+
+
 =head2 ListUserGroups
 
 =over
@@ -1527,6 +2959,14 @@ account.
 
 =item UserRole => Str
 
+=item [CustomFederationProviderUrl => Str]
+
+=item [CustomPermissionsName => Str]
+
+=item [ExternalLoginFederationProviderType => Str]
+
+=item [ExternalLoginId => Str]
+
 =item [IamArn => Str]
 
 =item [SessionName => Str]
@@ -1543,6 +2983,90 @@ Returns: a L<Paws::Quicksight::RegisterUserResponse> instance
 Creates an Amazon QuickSight user, whose identity is associated with
 the AWS Identity and Access Management (IAM) identity or role specified
 in the request.
+
+
+=head2 RestoreAnalysis
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::RestoreAnalysis>
+
+Returns: a L<Paws::Quicksight::RestoreAnalysisResponse> instance
+
+Restores an analysis.
+
+
+=head2 SearchAnalyses
+
+=over
+
+=item AwsAccountId => Str
+
+=item Filters => ArrayRef[L<Paws::Quicksight::AnalysisSearchFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::SearchAnalyses>
+
+Returns: a L<Paws::Quicksight::SearchAnalysesResponse> instance
+
+Searches for analyses that belong to the user specified in the filter.
+
+
+=head2 SearchDashboards
+
+=over
+
+=item AwsAccountId => Str
+
+=item Filters => ArrayRef[L<Paws::Quicksight::DashboardSearchFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::SearchDashboards>
+
+Returns: a L<Paws::Quicksight::SearchDashboardsResponse> instance
+
+Searches for dashboards that belong to a user.
+
+
+=head2 SearchFolders
+
+=over
+
+=item AwsAccountId => Str
+
+=item Filters => ArrayRef[L<Paws::Quicksight::FolderSearchFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::SearchFolders>
+
+Returns: a L<Paws::Quicksight::SearchFoldersResponse> instance
+
+Searches the subfolders in a folder.
 
 
 =head2 TagResource
@@ -1613,6 +3137,101 @@ Returns: a L<Paws::Quicksight::UntagResourceResponse> instance
 Removes a tag or tags from a resource.
 
 
+=head2 UpdateAccountCustomization
+
+=over
+
+=item AccountCustomization => L<Paws::Quicksight::AccountCustomization>
+
+=item AwsAccountId => Str
+
+=item [Namespace => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateAccountCustomization>
+
+Returns: a L<Paws::Quicksight::UpdateAccountCustomizationResponse> instance
+
+Updates Amazon QuickSight customizations the current AWS Region.
+Currently, the only customization you can use is a theme.
+
+You can use customizations for your AWS account or, if you specify a
+namespace, for a QuickSight namespace instead. Customizations that
+apply to a namespace override customizations that apply to an AWS
+account. To find out which customizations apply, use the
+C<DescribeAccountCustomization> API operation.
+
+
+=head2 UpdateAccountSettings
+
+=over
+
+=item AwsAccountId => Str
+
+=item DefaultNamespace => Str
+
+=item [NotificationEmail => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateAccountSettings>
+
+Returns: a L<Paws::Quicksight::UpdateAccountSettingsResponse> instance
+
+Updates the Amazon QuickSight settings in your AWS account.
+
+
+=head2 UpdateAnalysis
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+=item Name => Str
+
+=item SourceEntity => L<Paws::Quicksight::AnalysisSourceEntity>
+
+=item [Parameters => L<Paws::Quicksight::Parameters>]
+
+=item [ThemeArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateAnalysis>
+
+Returns: a L<Paws::Quicksight::UpdateAnalysisResponse> instance
+
+Updates an analysis in Amazon QuickSight
+
+
+=head2 UpdateAnalysisPermissions
+
+=over
+
+=item AnalysisId => Str
+
+=item AwsAccountId => Str
+
+=item [GrantPermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [RevokePermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateAnalysisPermissions>
+
+Returns: a L<Paws::Quicksight::UpdateAnalysisPermissionsResponse> instance
+
+Updates the read and write permissions for an analysis.
+
+
 =head2 UpdateDashboard
 
 =over
@@ -1628,6 +3247,8 @@ Removes a tag or tags from a resource.
 =item [DashboardPublishOptions => L<Paws::Quicksight::DashboardPublishOptions>]
 
 =item [Parameters => L<Paws::Quicksight::Parameters>]
+
+=item [ThemeArn => Str]
 
 =item [VersionDescription => Str]
 
@@ -1698,6 +3319,10 @@ Updates the published version of a dashboard.
 =item PhysicalTableMap => L<Paws::Quicksight::PhysicalTableMap>
 
 =item [ColumnGroups => ArrayRef[L<Paws::Quicksight::ColumnGroup>]]
+
+=item [ColumnLevelPermissionRules => ArrayRef[L<Paws::Quicksight::ColumnLevelPermissionRule>]]
+
+=item [FieldFolders => L<Paws::Quicksight::FieldFolderMap>]
 
 =item [LogicalTableMap => L<Paws::Quicksight::LogicalTableMap>]
 
@@ -1788,6 +3413,48 @@ Returns: a L<Paws::Quicksight::UpdateDataSourcePermissionsResponse> instance
 Updates the permissions to a data source.
 
 
+=head2 UpdateFolder
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateFolder>
+
+Returns: a L<Paws::Quicksight::UpdateFolderResponse> instance
+
+Updates the name of a folder.
+
+
+=head2 UpdateFolderPermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item FolderId => Str
+
+=item [GrantPermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [RevokePermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateFolderPermissions>
+
+Returns: a L<Paws::Quicksight::UpdateFolderPermissionsResponse> instance
+
+Updates permissions of a folder.
+
+
 =head2 UpdateGroup
 
 =over
@@ -1835,6 +3502,7 @@ Returns: a L<Paws::Quicksight::UpdateIAMPolicyAssignmentResponse> instance
 
 Updates an existing IAM policy assignment. This operation updates only
 the optional parameter or parameters that are specified in the request.
+This overwrites all of the users included in C<Identities>.
 
 
 =head2 UpdateTemplate
@@ -1906,6 +3574,167 @@ Returns: a L<Paws::Quicksight::UpdateTemplatePermissionsResponse> instance
 Updates the resource permissions for a template.
 
 
+=head2 UpdateTheme
+
+=over
+
+=item AwsAccountId => Str
+
+=item BaseThemeId => Str
+
+=item ThemeId => Str
+
+=item [Configuration => L<Paws::Quicksight::ThemeConfiguration>]
+
+=item [Name => Str]
+
+=item [VersionDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateTheme>
+
+Returns: a L<Paws::Quicksight::UpdateThemeResponse> instance
+
+Updates a theme.
+
+
+=head2 UpdateThemeAlias
+
+=over
+
+=item AliasName => Str
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item ThemeVersionNumber => Int
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateThemeAlias>
+
+Returns: a L<Paws::Quicksight::UpdateThemeAliasResponse> instance
+
+Updates an alias of a theme.
+
+
+=head2 UpdateThemePermissions
+
+=over
+
+=item AwsAccountId => Str
+
+=item ThemeId => Str
+
+=item [GrantPermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+=item [RevokePermissions => ArrayRef[L<Paws::Quicksight::ResourcePermission>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Quicksight::UpdateThemePermissions>
+
+Returns: a L<Paws::Quicksight::UpdateThemePermissionsResponse> instance
+
+Updates the resource permissions for a theme. Permissions apply to the
+action to grant or revoke permissions on, for example
+C<"quicksight:DescribeTheme">.
+
+Theme permissions apply in groupings. Valid groupings include the
+following for the three levels of permissions, which are user, owner,
+or no permissions:
+
+=over
+
+=item *
+
+User
+
+=over
+
+=item *
+
+C<"quicksight:DescribeTheme">
+
+=item *
+
+C<"quicksight:DescribeThemeAlias">
+
+=item *
+
+C<"quicksight:ListThemeAliases">
+
+=item *
+
+C<"quicksight:ListThemeVersions">
+
+=back
+
+=item *
+
+Owner
+
+=over
+
+=item *
+
+C<"quicksight:DescribeTheme">
+
+=item *
+
+C<"quicksight:DescribeThemeAlias">
+
+=item *
+
+C<"quicksight:ListThemeAliases">
+
+=item *
+
+C<"quicksight:ListThemeVersions">
+
+=item *
+
+C<"quicksight:DeleteTheme">
+
+=item *
+
+C<"quicksight:UpdateTheme">
+
+=item *
+
+C<"quicksight:CreateThemeAlias">
+
+=item *
+
+C<"quicksight:DeleteThemeAlias">
+
+=item *
+
+C<"quicksight:UpdateThemeAlias">
+
+=item *
+
+C<"quicksight:UpdateThemePermissions">
+
+=item *
+
+C<"quicksight:DescribeThemePermissions">
+
+=back
+
+=item *
+
+To specify no permissions, omit the permissions list.
+
+=back
+
+
+
 =head2 UpdateUser
 
 =over
@@ -1919,6 +3748,16 @@ Updates the resource permissions for a template.
 =item Role => Str
 
 =item UserName => Str
+
+=item [CustomFederationProviderUrl => Str]
+
+=item [CustomPermissionsName => Str]
+
+=item [ExternalLoginFederationProviderType => Str]
+
+=item [ExternalLoginId => Str]
+
+=item [UnapplyCustomPermissions => Bool]
 
 
 =back
@@ -1935,6 +3774,174 @@ Updates an Amazon QuickSight user.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAnalyses(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAnalyses(AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AnalysisSummaryList, passing the object as the first parameter, and the string 'AnalysisSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListAnalysesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDashboards(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDashboards(AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DashboardSummaryList, passing the object as the first parameter, and the string 'DashboardSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListDashboardsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDashboardVersions(sub { },AwsAccountId => Str, DashboardId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDashboardVersions(AwsAccountId => Str, DashboardId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DashboardVersionSummaryList, passing the object as the first parameter, and the string 'DashboardVersionSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListDashboardVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDataSets(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDataSets(AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DataSetSummaries, passing the object as the first parameter, and the string 'DataSetSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListDataSetsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDataSources(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDataSources(AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DataSources, passing the object as the first parameter, and the string 'DataSources' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListDataSourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllIngestions(sub { },AwsAccountId => Str, DataSetId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllIngestions(AwsAccountId => Str, DataSetId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Ingestions, passing the object as the first parameter, and the string 'Ingestions' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListIngestionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllNamespaces(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllNamespaces(AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Namespaces, passing the object as the first parameter, and the string 'Namespaces' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListNamespacesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTemplateAliases(sub { },AwsAccountId => Str, TemplateId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTemplateAliases(AwsAccountId => Str, TemplateId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TemplateAliasList, passing the object as the first parameter, and the string 'TemplateAliasList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListTemplateAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTemplates(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTemplates(AwsAccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TemplateSummaryList, passing the object as the first parameter, and the string 'TemplateSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllTemplateVersions(sub { },AwsAccountId => Str, TemplateId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTemplateVersions(AwsAccountId => Str, TemplateId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TemplateVersionSummaryList, passing the object as the first parameter, and the string 'TemplateVersionSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListTemplateVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThemes(sub { },AwsAccountId => Str, [MaxResults => Int, NextToken => Str, Type => Str])
+
+=head2 ListAllThemes(AwsAccountId => Str, [MaxResults => Int, NextToken => Str, Type => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ThemeSummaryList, passing the object as the first parameter, and the string 'ThemeSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListThemesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThemeVersions(sub { },AwsAccountId => Str, ThemeId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllThemeVersions(AwsAccountId => Str, ThemeId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ThemeVersionSummaryList, passing the object as the first parameter, and the string 'ThemeVersionSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::ListThemeVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllAnalyses(sub { },AwsAccountId => Str, Filters => ArrayRef[L<Paws::Quicksight::AnalysisSearchFilter>], [MaxResults => Int, NextToken => Str])
+
+=head2 SearchAllAnalyses(AwsAccountId => Str, Filters => ArrayRef[L<Paws::Quicksight::AnalysisSearchFilter>], [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AnalysisSummaryList, passing the object as the first parameter, and the string 'AnalysisSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::SearchAnalysesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllDashboards(sub { },AwsAccountId => Str, Filters => ArrayRef[L<Paws::Quicksight::DashboardSearchFilter>], [MaxResults => Int, NextToken => Str])
+
+=head2 SearchAllDashboards(AwsAccountId => Str, Filters => ArrayRef[L<Paws::Quicksight::DashboardSearchFilter>], [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DashboardSummaryList, passing the object as the first parameter, and the string 'DashboardSummaryList' as the second parameter 
+
+If not, it will return a a L<Paws::Quicksight::SearchDashboardsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

@@ -41,8 +41,8 @@ Name of the Amazon SageMaker endpoint configuration.
 
 =head2 KmsKeyId => Str
 
-AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on
-the ML storage volume attached to the instance.
+Amazon Web Services KMS key ID Amazon SageMaker uses to encrypt data
+when storing it on the ML storage volume attached to the instance.
 
 
 =head2 B<REQUIRED> ProductionVariants => ArrayRef[L<Paws::SageMaker::ProductionVariant>]

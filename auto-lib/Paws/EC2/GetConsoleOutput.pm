@@ -29,11 +29,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $GetConsoleOutputResult = $ec2->GetConsoleOutput(
-      InstanceId => 'MyInstanceId',
-      DryRun     => 1,                # OPTIONAL
-      Latest     => 1,                # OPTIONAL
-    );
+    # To get the console output
+    # This example gets the console output for the specified instance.
+    my $GetConsoleOutputResult =
+      $ec2->GetConsoleOutput( 'InstanceId' => 'i-1234567890abcdef0' );
 
     # Results:
     my $InstanceId = $GetConsoleOutputResult->InstanceId;

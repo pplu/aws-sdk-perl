@@ -5,6 +5,7 @@ package Paws::ApiGateway::CreateRestApi;
   has BinaryMediaTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'binaryMediaTypes');
   has CloneFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cloneFrom');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DisableExecuteApiEndpoint => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableExecuteApiEndpoint');
   has EndpointConfiguration => (is => 'ro', isa => 'Paws::ApiGateway::EndpointConfiguration', traits => ['NameInRequest'], request_name => 'endpointConfiguration');
   has MinimumCompressionSize => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minimumCompressionSize');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
@@ -38,12 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $apigateway = Paws->service('ApiGateway');
     my $RestApi = $apigateway->CreateRestApi(
-      Name                  => 'MyString',
-      ApiKeySource          => 'HEADER',               # OPTIONAL
-      BinaryMediaTypes      => [ 'MyString', ... ],    # OPTIONAL
-      CloneFrom             => 'MyString',             # OPTIONAL
-      Description           => 'MyString',             # OPTIONAL
-      EndpointConfiguration => {
+      Name                      => 'MyString',
+      ApiKeySource              => 'HEADER',               # OPTIONAL
+      BinaryMediaTypes          => [ 'MyString', ... ],    # OPTIONAL
+      CloneFrom                 => 'MyString',             # OPTIONAL
+      Description               => 'MyString',             # OPTIONAL
+      DisableExecuteApiEndpoint => 1,                      # OPTIONAL
+      EndpointConfiguration     => {
         Types => [
           'REGIONAL', ...    # values: REGIONAL, EDGE, PRIVATE
         ],    # OPTIONAL
@@ -56,18 +58,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $ApiKeySource           = $RestApi->ApiKeySource;
-    my $BinaryMediaTypes       = $RestApi->BinaryMediaTypes;
-    my $CreatedDate            = $RestApi->CreatedDate;
-    my $Description            = $RestApi->Description;
-    my $EndpointConfiguration  = $RestApi->EndpointConfiguration;
-    my $Id                     = $RestApi->Id;
-    my $MinimumCompressionSize = $RestApi->MinimumCompressionSize;
-    my $Name                   = $RestApi->Name;
-    my $Policy                 = $RestApi->Policy;
-    my $Tags                   = $RestApi->Tags;
-    my $Version                = $RestApi->Version;
-    my $Warnings               = $RestApi->Warnings;
+    my $ApiKeySource              = $RestApi->ApiKeySource;
+    my $BinaryMediaTypes          = $RestApi->BinaryMediaTypes;
+    my $CreatedDate               = $RestApi->CreatedDate;
+    my $Description               = $RestApi->Description;
+    my $DisableExecuteApiEndpoint = $RestApi->DisableExecuteApiEndpoint;
+    my $EndpointConfiguration     = $RestApi->EndpointConfiguration;
+    my $Id                        = $RestApi->Id;
+    my $MinimumCompressionSize    = $RestApi->MinimumCompressionSize;
+    my $Name                      = $RestApi->Name;
+    my $Policy                    = $RestApi->Policy;
+    my $Tags                      = $RestApi->Tags;
+    my $Version                   = $RestApi->Version;
+    my $Warnings                  = $RestApi->Warnings;
 
     # Returns a L<Paws::ApiGateway::RestApi> object.
 
@@ -111,6 +114,16 @@ The ID of the RestApi that you want to clone from.
 =head2 Description => Str
 
 The description of the RestApi.
+
+
+
+=head2 DisableExecuteApiEndpoint => Bool
+
+Specifies whether clients can invoke your API by using the default
+C<execute-api> endpoint. By default, clients can invoke your API with
+the default https://{api_id}.execute-api.{region}.amazonaws.com
+endpoint. To require that clients use a custom domain name to invoke
+your API, disable the default endpoint.
 
 
 

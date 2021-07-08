@@ -31,12 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Start replication task
+    # Starts the replication task.
     my $StartReplicationTaskResponse = $dms->StartReplicationTask(
-      ReplicationTaskArn       => 'MyString',
-      StartReplicationTaskType => 'start-replication',
-      CdcStartPosition         => 'MyString',               # OPTIONAL
-      CdcStartTime             => '1970-01-01T01:00:00',    # OPTIONAL
-      CdcStopPosition          => 'MyString',               # OPTIONAL
+      'CdcStartTime'       => '2016-12-14T13:33:20Z',
+      'ReplicationTaskArn' =>
+        'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ',
+      'StartReplicationTaskType' => 'start-replication'
     );
 
     # Results:
@@ -92,10 +93,10 @@ Indicates when you want a change data capture (CDC) operation to stop.
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-E<ldquo>server_time:3018-02-09T12:12:12E<rdquo>
+E<ldquo>server_time:2018-02-09T12:12:12E<rdquo>
 
 Commit time example: --cdc-stop-position E<ldquo>commit_time:
-3018-02-09T12:12:12 E<ldquo>
+2018-02-09T12:12:12 E<ldquo>
 
 
 
@@ -107,7 +108,7 @@ The Amazon Resource Name (ARN) of the replication task to be started.
 
 =head2 B<REQUIRED> StartReplicationTaskType => Str
 
-The type of replication task.
+A type of replication task.
 
 Valid values are: C<"start-replication">, C<"resume-processing">, C<"reload-target">
 

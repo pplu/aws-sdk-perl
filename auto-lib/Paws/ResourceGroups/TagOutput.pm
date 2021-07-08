@@ -23,7 +23,7 @@ The ARN of the tagged resource.
 
 =head2 Tags => L<Paws::ResourceGroups::Tags>
 
-The tags that have been added to the specified resource.
+The tags that have been added to the specified resource group.
 
 
 =head2 _request_id => Str

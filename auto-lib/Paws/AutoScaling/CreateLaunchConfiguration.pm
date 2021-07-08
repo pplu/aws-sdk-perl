@@ -14,6 +14,7 @@ package Paws::AutoScaling::CreateLaunchConfiguration;
   has KernelId => (is => 'ro', isa => 'Str');
   has KeyName => (is => 'ro', isa => 'Str');
   has LaunchConfigurationName => (is => 'ro', isa => 'Str', required => 1);
+  has MetadataOptions => (is => 'ro', isa => 'Paws::AutoScaling::InstanceMetadataOptions');
   has PlacementTenancy => (is => 'ro', isa => 'Str');
   has RamdiskId => (is => 'ro', isa => 'Str');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -67,7 +68,7 @@ For Auto Scaling groups that are running in a virtual private cloud
 (VPC), specifies whether to assign a public IP address to the group's
 instances. If you specify C<true>, each instance in the Auto Scaling
 group receives a unique public IP address. For more information, see
-Launching Auto Scaling Instances in a VPC
+Launching Auto Scaling instances in a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -99,7 +100,7 @@ The ID of a ClassicLink-enabled VPC to link your EC2-Classic instances
 to. For more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon EC2 User Guide for Linux Instances> and Linking
-EC2-Classic Instances to a VPC
+EC2-Classic instances to a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -114,7 +115,7 @@ The IDs of one or more security groups for the specified
 ClassicLink-enabled VPC. For more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon EC2 User Guide for Linux Instances> and Linking
-EC2-Classic Instances to a VPC
+EC2-Classic instances to a VPC
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-ClassicLink)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -145,8 +146,8 @@ The name or the Amazon Resource Name (ARN) of the instance profile
 associated with the IAM role for the instance. The instance profile
 contains the IAM role.
 
-For more information, see IAM Role for Applications That Run on Amazon
-EC2 Instances
+For more information, see IAM role for applications that run on Amazon
+EC2 instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/us-iam-role.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -173,8 +174,8 @@ To create a launch configuration with a block device mapping or
 override any other instance attributes, specify them as part of the
 same request.
 
-For more information, see Create a Launch Configuration Using an EC2
-Instance
+For more information, see Creating a launch configuration using an EC2
+instance
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-lc-with-instanceID.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -195,7 +196,7 @@ metrics every minute and your account is charged a fee. When you
 disable detailed monitoring, CloudWatch generates metrics every 5
 minutes. For more information, see Configure Monitoring for Auto
 Scaling Instances
-(https://docs.aws.amazon.com/autoscaling/latest/userguide/as-instance-monitoring.html#enable-as-instance-metrics)
+(https://docs.aws.amazon.com/autoscaling/latest/userguide/enable-as-instance-metrics.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
@@ -207,7 +208,7 @@ Specifies the instance type of the EC2 instance.
 For information about available instance types, see Available Instance
 Types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#AvailableInstanceTypes)
-in the I<Amazon EC2 User Guide for Linux Instances.>
+in the I<Amazon EC2 User Guide for Linux Instances>.
 
 If you do not specify C<InstanceId>, you must specify C<InstanceType>.
 
@@ -235,6 +236,15 @@ Region per account.
 
 
 
+=head2 MetadataOptions => L<Paws::AutoScaling::InstanceMetadataOptions>
+
+The metadata options for the instances. For more information, see
+Configuring the Instance Metadata Options
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-launch-config.html#launch-configurations-imds)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+
 =head2 PlacementTenancy => Str
 
 The tenancy of the instance. An instance with C<dedicated> tenancy runs
@@ -248,8 +258,9 @@ the value of this parameter to C<dedicated>.
 If you specify C<PlacementTenancy>, you must specify at least one
 subnet for C<VPCZoneIdentifier> when you create your group.
 
-For more information, see Instance Placement Tenancy
-(https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-in-vpc.html#as-vpc-tenancy)
+For more information, see Configuring instance tenancy with Amazon EC2
+Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/auto-scaling-dedicated-instances.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
 Valid Values: C<default> | C<dedicated>
@@ -284,7 +295,7 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 The maximum hourly price to be paid for any Spot Instance launched to
 fulfill the request. Spot Instances are launched when the price you
 specify exceeds the current Spot price. For more information, see
-Launching Spot Instances in Your Auto Scaling Group
+Requesting Spot Instances
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-launch-spot-instances.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -297,10 +308,14 @@ Spot price.
 
 =head2 UserData => Str
 
-The Base64-encoded user data to make available to the launched EC2
-instances. For more information, see Instance Metadata and User Data
+The user data to make available to the launched EC2 instances. For more
+information, see Instance metadata and user data
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
-in the I<Amazon EC2 User Guide for Linux Instances>.
+(Linux) and Instance metadata and user data
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html)
+(Windows). If you are using a command line tool, base64-encoding is
+performed for you, and you can load the text from a file. Otherwise,
+you must provide base64-encoded text. User data is limited to 16 KB.
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::S3::UploadPartOutput;
   use Moose;
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has ETag => (is => 'ro', isa => 'Str', header_name => 'ETag', traits => ['ParamInHeader']);
   has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
   has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
@@ -19,6 +20,13 @@ package Paws::S3::UploadPartOutput;
 Paws::S3::UploadPartOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the multipart upload uses an S3 Bucket Key for
+server-side encryption with AWS KMS (SSE-KMS).
+
 
 
 =head2 ETag => Str

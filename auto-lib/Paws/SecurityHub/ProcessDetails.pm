@@ -45,7 +45,12 @@ The details of process-related information about a finding.
 
 =head2 LaunchedAt => Str
 
-The date/time that the process was launched.
+Indicates when the process was launched.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 =head2 Name => Str
@@ -70,7 +75,12 @@ The process ID.
 
 =head2 TerminatedAt => Str
 
-The date and time when the process was terminated.
+Indicates when the process was terminated.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 

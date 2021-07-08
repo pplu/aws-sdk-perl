@@ -5,6 +5,7 @@ package Paws::StepFunctions::UpdateStateMachine;
   has LoggingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::LoggingConfiguration', traits => ['NameInRequest'], request_name => 'loggingConfiguration' );
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' );
   has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
+  has TracingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::TracingConfiguration', traits => ['NameInRequest'], request_name => 'tracingConfiguration' );
 
   use MooseX::ClassAttribute;
 
@@ -45,7 +46,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         IncludeExecutionData => 1,    # OPTIONAL
         Level => 'ALL',               # values: ALL, ERROR, FATAL, OFF; OPTIONAL
       },    # OPTIONAL
-      RoleArn => 'MyArn',    # OPTIONAL
+      RoleArn              => 'MyArn',    # OPTIONAL
+      TracingConfiguration => {
+        Enabled => 1,                     # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -69,7 +73,8 @@ States Language
 
 =head2 LoggingConfiguration => L<Paws::StepFunctions::LoggingConfiguration>
 
-
+The C<LoggingConfiguration> data type is used to set CloudWatch Logs
+options.
 
 
 
@@ -82,6 +87,12 @@ The Amazon Resource Name (ARN) of the IAM role of the state machine.
 =head2 B<REQUIRED> StateMachineArn => Str
 
 The Amazon Resource Name (ARN) of the state machine.
+
+
+
+=head2 TracingConfiguration => L<Paws::StepFunctions::TracingConfiguration>
+
+Selects whether AWS X-Ray tracing is enabled.
 
 
 

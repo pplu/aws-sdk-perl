@@ -1,10 +1,12 @@
 
 package Paws::SSM::UpdateAssociation;
   use Moose;
+  has ApplyOnlyAtCronInterval => (is => 'ro', isa => 'Bool');
   has AssociationId => (is => 'ro', isa => 'Str', required => 1);
   has AssociationName => (is => 'ro', isa => 'Str');
   has AssociationVersion => (is => 'ro', isa => 'Str');
   has AutomationTargetParameterName => (is => 'ro', isa => 'Str');
+  has CalendarNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ComplianceSeverity => (is => 'ro', isa => 'Str');
   has DocumentVersion => (is => 'ro', isa => 'Str');
   has MaxConcurrency => (is => 'ro', isa => 'Str');
@@ -13,6 +15,8 @@ package Paws::SSM::UpdateAssociation;
   has OutputLocation => (is => 'ro', isa => 'Paws::SSM::InstanceAssociationOutputLocation');
   has Parameters => (is => 'ro', isa => 'Paws::SSM::Parameters');
   has ScheduleExpression => (is => 'ro', isa => 'Str');
+  has SyncCompliance => (is => 'ro', isa => 'Str');
+  has TargetLocations => (is => 'ro', isa => 'ArrayRef[Paws::SSM::TargetLocation]');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
 
   use MooseX::ClassAttribute;
@@ -41,10 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $UpdateAssociationResult = $ssm->UpdateAssociation(
       AssociationId                 => 'MyAssociationId',
+      ApplyOnlyAtCronInterval       => 1,                         # OPTIONAL
       AssociationName               => 'MyAssociationName',       # OPTIONAL
       AssociationVersion            => 'MyAssociationVersion',    # OPTIONAL
       AutomationTargetParameterName =>
         'MyAutomationTargetParameterName',                        # OPTIONAL
+      CalendarNames      => [ 'MyCalendarNameOrARN', ... ],       # OPTIONAL
       ComplianceSeverity => 'CRITICAL',                           # OPTIONAL
       DocumentVersion    => 'MyDocumentVersion',                  # OPTIONAL
       MaxConcurrency     => 'MyMaxConcurrency',                   # OPTIONAL
@@ -60,7 +66,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters => { 'MyParameterName' => [ 'MyParameterValue', ... ], }
       ,                                                # OPTIONAL
       ScheduleExpression => 'MyScheduleExpression',    # OPTIONAL
-      Targets            => [
+      SyncCompliance     => 'AUTO',                    # OPTIONAL
+      TargetLocations    => [
+        {
+          Accounts          => [ 'MyAccount', ... ], # min: 1, max: 50; OPTIONAL
+          ExecutionRoleName =>
+            'MyExecutionRoleName',                   # min: 1, max: 64; OPTIONAL
+          Regions => [ 'MyRegion', ... ],            # min: 1, max: 50; OPTIONAL
+          TargetLocationMaxConcurrency => 'MyMaxConcurrency',   # min: 1, max: 7
+          TargetLocationMaxErrors      => 'MyMaxErrors',        # min: 1, max: 7
+        },
+        ...
+      ],    # OPTIONAL
+      Targets => [
         {
           Key    => 'MyTargetKey',               # min: 1, max: 163; OPTIONAL
           Values => [ 'MyTargetValue', ... ],    # max: 50; OPTIONAL
@@ -79,6 +97,23 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/UpdateAssociation>
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplyOnlyAtCronInterval => Bool
+
+By default, when you update an association, the system runs it
+immediately after it is updated and then according to the schedule you
+specified. Specify this option if you don't want an association to run
+immediately after you update it. This parameter is not supported for
+rate expressions.
+
+Also, if you specified this option when you created the association,
+you can reset it. To do so, specify the
+C<no-apply-only-at-cron-interval> parameter when you update the
+association from the command line. This parameter forces the
+association to run immediately after updating it and according to the
+interval specified.
+
 
 
 =head2 B<REQUIRED> AssociationId => Str
@@ -107,6 +142,16 @@ this parameter.
 Specify the target for the association. This target is required for
 associations that use an Automation document and target resources by
 using rate controls.
+
+
+
+=head2 CalendarNames => ArrayRef[Str|Undef]
+
+The names or Amazon Resource Names (ARNs) of the Systems Manager Change
+Calendar type documents you want to gate your associations under. The
+associations only run when that Change Calendar is open. For more
+information, see AWS Systems Manager Change Calendar
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-change-calendar).
 
 
 
@@ -183,8 +228,7 @@ C<AWS-ApplyPatchBaseline> or C<My-Document>.
 
 =head2 OutputLocation => L<Paws::SSM::InstanceAssociationOutputLocation>
 
-An Amazon S3 bucket where you want to store the results of this
-request.
+An S3 bucket where you want to store the results of this request.
 
 
 
@@ -200,6 +244,32 @@ parameter using Parameter Store, you can reference the parameter using
 
 The cron expression used to schedule the association that you want to
 update.
+
+
+
+=head2 SyncCompliance => Str
+
+The mode for generating association compliance. You can specify C<AUTO>
+or C<MANUAL>. In C<AUTO> mode, the system uses the status of the
+association execution to determine the compliance status. If the
+association execution runs successfully, then the association is
+C<COMPLIANT>. If the association execution doesn't run successfully,
+the association is C<NON-COMPLIANT>.
+
+In C<MANUAL> mode, you must specify the C<AssociationId> as a parameter
+for the PutComplianceItems API action. In this case, compliance data is
+not managed by State Manager. It is managed by your direct call to the
+PutComplianceItems API action.
+
+By default, all associations use C<AUTO> mode.
+
+Valid values are: C<"AUTO">, C<"MANUAL">
+
+=head2 TargetLocations => ArrayRef[L<Paws::SSM::TargetLocation>]
+
+A location is a combination of AWS Regions and AWS accounts where you
+want to run the association. Use this action to update an association
+in multiple Regions and multiple accounts.
 
 
 

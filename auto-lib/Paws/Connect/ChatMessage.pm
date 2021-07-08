@@ -46,7 +46,7 @@ The content of the chat message.
 
 =head2 B<REQUIRED> ContentType => Str
 
-The type of the content. Supported types are text/plain.
+The type of the content. Supported types are text and plain.
 
 
 

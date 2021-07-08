@@ -30,15 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $GetSlotTypesResponse = $models . lex->GetSlotTypes(
-      MaxResults   => 1,                   # OPTIONAL
-      NameContains => 'MySlotTypeName',    # OPTIONAL
-      NextToken    => 'MyNextToken',       # OPTIONAL
-    );
+# To get a list of slot types
+# This example shows how to get a list of all of the slot types in your account.
+    my $GetSlotTypesResponse = $models
+      . lex->GetSlotTypes(
+      'MaxResults' => 10,
+      'NextToken'  => ''
+      );
 
     # Results:
-    my $NextToken = $GetSlotTypesResponse->NextToken;
-    my $SlotTypes = $GetSlotTypesResponse->SlotTypes;
+    my $slotTypes = $GetSlotTypesResponse->slotTypes;
 
     # Returns a L<Paws::LexModels::GetSlotTypesResponse> object.
 

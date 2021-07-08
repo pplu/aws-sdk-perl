@@ -93,7 +93,9 @@ next resource record set that has the current DNS name and type.
 =head2 StartRecordName => Str
 
 The first name in the lexicographic ordering of resource record sets
-that you want to list.
+that you want to list. If the specified record name doesn't exist, the
+results begin with the first resource record set that has a name
+greater than the value of C<name>.
 
 
 
@@ -131,11 +133,11 @@ B<Elastic Load Balancing load balancer>: A | AAAA
 
 =item *
 
-B<Amazon S3 bucket>: A
+B<S3 bucket>: A
 
 =item *
 
-B<Amazon VPC interface VPC endpoint>: A
+B<VPC interface VPC endpoint>: A
 
 =item *
 
@@ -147,7 +149,7 @@ resource record set that the alias references.
 Constraint: Specifying C<type> without specifying C<name> returns an
 C<InvalidInput> error.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">, C<"DS">
 
 
 =head1 SEE ALSO

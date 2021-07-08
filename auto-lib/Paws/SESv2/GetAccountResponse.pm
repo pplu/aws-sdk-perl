@@ -2,6 +2,7 @@
 package Paws::SESv2::GetAccountResponse;
   use Moose;
   has DedicatedIpAutoWarmupEnabled => (is => 'ro', isa => 'Bool');
+  has Details => (is => 'ro', isa => 'Paws::SESv2::AccountDetails');
   has EnforcementStatus => (is => 'ro', isa => 'Str');
   has ProductionAccessEnabled => (is => 'ro', isa => 'Bool');
   has SendingEnabled => (is => 'ro', isa => 'Bool');
@@ -24,6 +25,11 @@ Paws::SESv2::GetAccountResponse
 
 Indicates whether or not the automatic warm-up feature is enabled for
 dedicated IP addresses that are associated with your account.
+
+
+=head2 Details => L<Paws::SESv2::AccountDetails>
+
+An object that defines your account details.
 
 
 =head2 EnforcementStatus => Str

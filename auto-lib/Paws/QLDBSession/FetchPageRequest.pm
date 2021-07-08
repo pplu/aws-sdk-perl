@@ -46,7 +46,7 @@ Specifies the next page token of the page to be fetched.
 
 =head2 B<REQUIRED> TransactionId => Str
 
-Specifies the transaction id of the page to be fetched.
+Specifies the transaction ID of the page to be fetched.
 
 
 

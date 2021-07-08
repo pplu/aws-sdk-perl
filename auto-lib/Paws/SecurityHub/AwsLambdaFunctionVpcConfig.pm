@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 =head1 DESCRIPTION
 
 The VPC security groups and subnets that are attached to a Lambda
-function. For more information, see VPC Settings.
+function.
 
 =head1 ATTRIBUTES
 

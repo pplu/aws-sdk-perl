@@ -35,6 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Arn                   = $StopChannelResponse->Arn;
+    my $CdiInputSpecification = $StopChannelResponse->CdiInputSpecification;
     my $ChannelClass          = $StopChannelResponse->ChannelClass;
     my $Destinations          = $StopChannelResponse->Destinations;
     my $EgressEndpoints       = $StopChannelResponse->EgressEndpoints;
@@ -49,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RoleArn               = $StopChannelResponse->RoleArn;
     my $State                 = $StopChannelResponse->State;
     my $Tags                  = $StopChannelResponse->Tags;
+    my $Vpc                   = $StopChannelResponse->Vpc;
 
     # Returns a L<Paws::MediaLive::StopChannelResponse> object.
 

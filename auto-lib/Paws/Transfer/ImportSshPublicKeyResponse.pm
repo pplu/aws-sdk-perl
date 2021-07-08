@@ -18,13 +18,12 @@ Paws::Transfer::ImportSshPublicKeyResponse
 
 =head2 B<REQUIRED> ServerId => Str
 
-A system-assigned unique identifier for an SFTP server.
+A system-assigned unique identifier for a server.
 
 
 =head2 B<REQUIRED> SshPublicKeyId => Str
 
-This identifier is the name given to a public key by the system that
-was imported.
+The name given to a public key by the system that was imported.
 
 
 =head2 B<REQUIRED> UserName => Str

@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-Resource arn used to list tags.
+The Amazon Resource Name (ARN) to use to list tags.
 
 
 

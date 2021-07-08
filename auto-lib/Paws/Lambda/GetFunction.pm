@@ -29,16 +29,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieve a Lambda function's event source mapping
-    # This operation retrieves a Lambda function's event source mapping
+ # To get a Lambda function
+ # The following example returns code and configuration details for version 1 of
+ # a function named my-function.
     my $GetFunctionResponse = $lambda->GetFunction(
-      'FunctionName' => 'myFunction',
+      'FunctionName' => 'my-function',
       'Qualifier'    => 1
     );
 
     # Results:
     my $Code          = $GetFunctionResponse->Code;
     my $Configuration = $GetFunctionResponse->Configuration;
+    my $Tags          = $GetFunctionResponse->Tags;
 
     # Returns a L<Paws::Lambda::GetFunctionResponse> object.
 

@@ -8,10 +8,13 @@ package Paws::CloudFormation::DescribeChangeSetOutput;
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ExecutionStatus => (is => 'ro', isa => 'Str');
+  has IncludeNestedStacks => (is => 'ro', isa => 'Bool');
   has NextToken => (is => 'ro', isa => 'Str');
   has NotificationARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Parameters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
+  has ParentChangeSetId => (is => 'ro', isa => 'Str');
   has RollbackConfiguration => (is => 'ro', isa => 'Paws::CloudFormation::RollbackConfiguration');
+  has RootChangeSetId => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -71,6 +74,11 @@ state because AWS CloudFormation is still creating it or in an
 C<OBSOLETE> state because the stack was already updated.
 
 Valid values are: C<"UNAVAILABLE">, C<"AVAILABLE">, C<"EXECUTE_IN_PROGRESS">, C<"EXECUTE_COMPLETE">, C<"EXECUTE_FAILED">, C<"OBSOLETE">
+=head2 IncludeNestedStacks => Bool
+
+Verifies if C<IncludeNestedStacks> is set to C<True>.
+
+
 =head2 NextToken => Str
 
 If the output exceeds 1 MB, a string that identifies the next page of
@@ -92,11 +100,23 @@ see the Parameter
 data type.
 
 
+=head2 ParentChangeSetId => Str
+
+Specifies the change set ID of the parent change set in the current
+nested change set hierarchy.
+
+
 =head2 RollbackConfiguration => L<Paws::CloudFormation::RollbackConfiguration>
 
 The rollback triggers for AWS CloudFormation to monitor during stack
 creation and updating operations, and for the specified monitoring
 period afterwards.
+
+
+=head2 RootChangeSetId => Str
+
+Specifies the change set ID of the root change set in the current
+nested change set hierarchy.
 
 
 =head2 StackId => Str
@@ -114,7 +134,7 @@ The name of the stack that is associated with the change set.
 The current status of the change set, such as C<CREATE_IN_PROGRESS>,
 C<CREATE_COMPLETE>, or C<FAILED>.
 
-Valid values are: C<"CREATE_PENDING">, C<"CREATE_IN_PROGRESS">, C<"CREATE_COMPLETE">, C<"DELETE_COMPLETE">, C<"FAILED">
+Valid values are: C<"CREATE_PENDING">, C<"CREATE_IN_PROGRESS">, C<"CREATE_COMPLETE">, C<"DELETE_PENDING">, C<"DELETE_IN_PROGRESS">, C<"DELETE_COMPLETE">, C<"DELETE_FAILED">, C<"FAILED">
 =head2 StatusReason => Str
 
 A description of the change set's status. For example, if your attempt

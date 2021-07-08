@@ -30,18 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+# Describe table statistics
+# Returns table statistics on the database migration task, including table name,
+# rows inserted, rows updated, and rows deleted.
     my $DescribeTableStatisticsResponse = $dms->DescribeTableStatistics(
-      ReplicationTaskArn => 'MyString',
-      Filters            => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],
-
-        },
-        ...
-      ],    # OPTIONAL
-      Marker     => 'MyString',    # OPTIONAL
-      MaxRecords => 1,             # OPTIONAL
+      'Marker'             => '',
+      'MaxRecords'         => 123,
+      'ReplicationTaskArn' => ''
     );
 
     # Results:
@@ -60,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 
 =head2 Filters => ArrayRef[L<Paws::DMS::Filter>]
 
-Filters applied to the describe table statistics action.
+Filters applied to table statistics.
 
 Valid filter names: schema-name | table-name | table-state
 

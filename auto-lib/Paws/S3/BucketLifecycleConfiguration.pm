@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::BucketL
 Specifies the lifecycle configuration for objects in an Amazon S3
 bucket. For more information, see Object Lifecycle Management
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/object-lifecycle-mgmt.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 

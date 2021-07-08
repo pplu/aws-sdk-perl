@@ -3,6 +3,7 @@ package Paws::Pinpoint::SMSTemplateRequest;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
   has DefaultSubstitutions => (is => 'ro', isa => 'Str');
+  has RecommenderId => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Pinpoint::MapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has TemplateDescription => (is => 'ro', isa => 'Str');
 
@@ -57,6 +58,15 @@ corresponding value defines the default value for that variable. When
 you create a message that's based on the template, you can override
 these defaults with message-specific and address-specific variables and
 values.
+
+
+=head2 RecommenderId => Str
+
+The unique identifier for the recommender model to use for the message
+template. Amazon Pinpoint uses this value to determine how to retrieve
+and process data from a recommender model when it sends messages that
+use the template, if the template contains message variables for
+recommendation data.
 
 
 =head2 Tags => L<Paws::Pinpoint::MapOf__string>

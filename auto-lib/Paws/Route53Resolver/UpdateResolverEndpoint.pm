@@ -47,13 +47,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 Name => Str
 
-The name of the resolver endpoint that you want to update.
+The name of the Resolver endpoint that you want to update.
 
 
 
 =head2 B<REQUIRED> ResolverEndpointId => Str
 
-The ID of the resolver endpoint that you want to update.
+The ID of the Resolver endpoint that you want to update.
 
 
 

@@ -3,7 +3,14 @@ package Paws::CloudFormation::TypeSummary;
   use Moose;
   has DefaultVersionId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has IsActivated => (is => 'ro', isa => 'Bool');
   has LastUpdated => (is => 'ro', isa => 'Str');
+  has LatestPublicVersion => (is => 'ro', isa => 'Str');
+  has OriginalTypeName => (is => 'ro', isa => 'Str');
+  has PublicVersionNumber => (is => 'ro', isa => 'Str');
+  has PublisherId => (is => 'ro', isa => 'Str');
+  has PublisherIdentity => (is => 'ro', isa => 'Str');
+  has PublisherName => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has TypeArn => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
@@ -38,42 +45,150 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-Contains summary information about the specified CloudFormation type.
+Contains summary information about the specified CloudFormation
+extension.
 
 =head1 ATTRIBUTES
 
 
 =head2 DefaultVersionId => Str
 
-The ID of the default version of the type. The default version is used
-when the type version is not specified.
+The ID of the default version of the extension. The default version is
+used when the extension version is not specified.
 
-To set the default version of a type, use C< SetTypeDefaultVersion >.
+This applies only to private extensions you have registered in your
+account. For public extensions, both those provided by Amazon and
+published by third parties, CloudFormation returns C<null>. For more
+information, see RegisterType
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html).
+
+To set the default version of an extension, use C<
+SetTypeDefaultVersion >.
 
 
 =head2 Description => Str
 
-The description of the type.
+The description of the extension.
+
+
+=head2 IsActivated => Bool
+
+Whether or not the extension is activated for this account and region.
+
+This applies only to third-party public extensions. Extensions
+published by Amazon are activated by default.
 
 
 =head2 LastUpdated => Str
 
-When the current default version of the type was registered.
+When the specified extension version was registered. This applies only
+to:
+
+=over
+
+=item *
+
+Private extensions you have registered in your account. For more
+information, see RegisterType
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html).
+
+=item *
+
+Public extensions you have activated in your account with auto-update
+specified. For more information, see ActivateType
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html).
+
+=back
+
+For all other extension types, CloudFormation returns C<null>.
+
+
+=head2 LatestPublicVersion => Str
+
+For public extensions that have been activated for this account and
+region, the latest version of the public extension I<that is
+available>. For any extensions other than activated third-arty
+extensions, CloudFormation returns C<null>.
+
+How you specified C<AutoUpdate> when enabling the extension affects
+whether CloudFormation automatically updates the extention in this
+account and region when a new version is released. For more
+information, see Setting CloudFormation to automatically use new
+versions of extensions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html#registry-public-enable-auto)
+in the I<CloudFormation User Guide>.
+
+
+=head2 OriginalTypeName => Str
+
+For public extensions that have been activated for this account and
+region, the type name of the public extension.
+
+If you specified a C<TypeNameAlias> when enabling the extension in this
+account and region, CloudFormation treats that alias as the extension's
+type name within the account and region, not the type name of the
+public extension. For more information, see Specifying aliases to refer
+to extensions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html#registry-public-enable-alias)
+in the I<CloudFormation User Guide>.
+
+
+=head2 PublicVersionNumber => Str
+
+For public extensions that have been activated for this account and
+region, the version of the public extension to be used for
+CloudFormation operations in this account and region.
+
+How you specified C<AutoUpdate> when enabling the extension affects
+whether CloudFormation automatically updates the extention in this
+account and region when a new version is released. For more
+information, see Setting CloudFormation to automatically use new
+versions of extensions
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html#registry-public-enable-auto)
+in the I<CloudFormation User Guide>.
+
+
+=head2 PublisherId => Str
+
+The ID of the extension publisher, if the extension is published by a
+third party. Extensions published by Amazon do not return a publisher
+ID.
+
+
+=head2 PublisherIdentity => Str
+
+The service used to verify the publisher identity.
+
+For more information, see Registering your account to publish
+CloudFormation extensions
+(https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html)
+in the I< CFN-CLI User Guide for Extension Development>.
+
+
+=head2 PublisherName => Str
+
+The publisher name, as defined in the public profile for that publisher
+in the service used to verify the publisher identity.
 
 
 =head2 Type => Str
 
-The kind of type.
+The kind of extension.
 
 
 =head2 TypeArn => Str
 
-The Amazon Resource Name (ARN) of the type.
+The Amazon Resource Name (ARN) of the extension.
 
 
 =head2 TypeName => Str
 
-The name of the type.
+The name of the extension.
+
+If you specified a C<TypeNameAlias> when you activate this extension
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html)
+in your account and region, CloudFormation considers that alias as the
+type name.
 
 
 

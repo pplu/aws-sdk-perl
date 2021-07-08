@@ -46,7 +46,7 @@ The Amazon Resource Name (ARN) of the AWS Identity and Access
 Management (IAM) role that Amazon S3 assumes when replicating objects.
 For more information, see How to Set Up Replication
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-how-setup.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 =head2 B<REQUIRED> Rules => ArrayRef[L<Paws::S3::ReplicationRule>]

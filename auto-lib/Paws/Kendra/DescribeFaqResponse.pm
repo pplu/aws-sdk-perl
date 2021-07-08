@@ -4,6 +4,7 @@ package Paws::Kendra::DescribeFaqResponse;
   has CreatedAt => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ErrorMessage => (is => 'ro', isa => 'Str');
+  has FileFormat => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has IndexId => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
@@ -39,6 +40,11 @@ If the C<Status> field is C<FAILED>, the C<ErrorMessage> field contains
 the reason why the FAQ failed.
 
 
+=head2 FileFormat => Str
+
+The file format used by the input files for the FAQ.
+
+Valid values are: C<"CSV">, C<"CSV_WITH_HEADER">, C<"JSON">
 =head2 Id => Str
 
 The identifier of the FAQ.

@@ -25,6 +25,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::AssociateMemberToGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelMailboxExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::CancelMailboxExportJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAlias {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::CreateAlias', @_);
@@ -33,6 +38,16 @@ package Paws::WorkMail;
   sub CreateGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::CreateGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateMobileDeviceAccessRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::CreateMobileDeviceAccessRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateOrganization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::CreateOrganization', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateResource {
@@ -65,9 +80,24 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteMailboxPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteMobileDeviceAccessRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteMobileDeviceAccessRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteOrganization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteOrganization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRetentionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::DeleteRetentionPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteUser {
@@ -83,6 +113,11 @@ package Paws::WorkMail;
   sub DescribeGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::DescribeGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeMailboxExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::DescribeMailboxExportJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeOrganization {
@@ -115,9 +150,19 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::GetAccessControlEffect', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetDefaultRetentionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::GetDefaultRetentionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetMailboxDetails {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::GetMailboxDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetMobileDeviceAccessEffect {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::GetMobileDeviceAccessEffect', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAccessControlRules {
@@ -140,9 +185,19 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListMailboxExportJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::ListMailboxExportJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListMailboxPermissions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ListMailboxPermissions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListMobileDeviceAccessRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::ListMobileDeviceAccessRules', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListOrganizations {
@@ -180,6 +235,11 @@ package Paws::WorkMail;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::PutMailboxPermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutRetentionPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::PutRetentionPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterToWorkMail {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::RegisterToWorkMail', @_);
@@ -188,6 +248,11 @@ package Paws::WorkMail;
   sub ResetPassword {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::ResetPassword', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartMailboxExportJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::StartMailboxExportJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -203,6 +268,11 @@ package Paws::WorkMail;
   sub UpdateMailboxQuota {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkMail::UpdateMailboxQuota', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMobileDeviceAccessRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkMail::UpdateMobileDeviceAccessRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePrimaryEmailAddress {
@@ -402,7 +472,7 @@ package Paws::WorkMail;
   }
 
 
-  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CreateAlias CreateGroup CreateResource CreateUser DeleteAccessControlRule DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteResource DeleteUser DeregisterFromWorkMail DescribeGroup DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup GetAccessControlEffect GetMailboxDetails ListAccessControlRules ListAliases ListGroupMembers ListGroups ListMailboxPermissions ListOrganizations ListResourceDelegates ListResources ListTagsForResource ListUsers PutAccessControlRule PutMailboxPermissions RegisterToWorkMail ResetPassword TagResource UntagResource UpdateMailboxQuota UpdatePrimaryEmailAddress UpdateResource / }
+  sub operations { qw/AssociateDelegateToResource AssociateMemberToGroup CancelMailboxExportJob CreateAlias CreateGroup CreateMobileDeviceAccessRule CreateOrganization CreateResource CreateUser DeleteAccessControlRule DeleteAlias DeleteGroup DeleteMailboxPermissions DeleteMobileDeviceAccessRule DeleteOrganization DeleteResource DeleteRetentionPolicy DeleteUser DeregisterFromWorkMail DescribeGroup DescribeMailboxExportJob DescribeOrganization DescribeResource DescribeUser DisassociateDelegateFromResource DisassociateMemberFromGroup GetAccessControlEffect GetDefaultRetentionPolicy GetMailboxDetails GetMobileDeviceAccessEffect ListAccessControlRules ListAliases ListGroupMembers ListGroups ListMailboxExportJobs ListMailboxPermissions ListMobileDeviceAccessRules ListOrganizations ListResourceDelegates ListResources ListTagsForResource ListUsers PutAccessControlRule PutMailboxPermissions PutRetentionPolicy RegisterToWorkMail ResetPassword StartMailboxExportJob TagResource UntagResource UpdateMailboxQuota UpdateMobileDeviceAccessRule UpdatePrimaryEmailAddress UpdateResource / }
 
 1;
 
@@ -529,6 +599,29 @@ Returns: a L<Paws::WorkMail::AssociateMemberToGroupResponse> instance
 Adds a member (user or group) to the group's set.
 
 
+=head2 CancelMailboxExportJob
+
+=over
+
+=item ClientToken => Str
+
+=item JobId => Str
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::CancelMailboxExportJob>
+
+Returns: a L<Paws::WorkMail::CancelMailboxExportJobResponse> instance
+
+Cancels a mailbox export job.
+
+If the mailbox export job is near completion, it might not be possible
+to cancel it.
+
+
 =head2 CreateAlias
 
 =over
@@ -567,6 +660,95 @@ Returns: a L<Paws::WorkMail::CreateGroupResponse> instance
 
 Creates a group that can be used in Amazon WorkMail by calling the
 RegisterToWorkMail operation.
+
+
+=head2 CreateMobileDeviceAccessRule
+
+=over
+
+=item Effect => Str
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+=item [ClientToken => Str]
+
+=item [Description => Str]
+
+=item [DeviceModels => ArrayRef[Str|Undef]]
+
+=item [DeviceOperatingSystems => ArrayRef[Str|Undef]]
+
+=item [DeviceTypes => ArrayRef[Str|Undef]]
+
+=item [DeviceUserAgents => ArrayRef[Str|Undef]]
+
+=item [NotDeviceModels => ArrayRef[Str|Undef]]
+
+=item [NotDeviceOperatingSystems => ArrayRef[Str|Undef]]
+
+=item [NotDeviceTypes => ArrayRef[Str|Undef]]
+
+=item [NotDeviceUserAgents => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::CreateMobileDeviceAccessRule>
+
+Returns: a L<Paws::WorkMail::CreateMobileDeviceAccessRuleResponse> instance
+
+Creates a new mobile device access rule for the specified Amazon
+WorkMail organization.
+
+
+=head2 CreateOrganization
+
+=over
+
+=item Alias => Str
+
+=item [ClientToken => Str]
+
+=item [DirectoryId => Str]
+
+=item [Domains => ArrayRef[L<Paws::WorkMail::Domain>]]
+
+=item [EnableInteroperability => Bool]
+
+=item [KmsKeyArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::CreateOrganization>
+
+Returns: a L<Paws::WorkMail::CreateOrganizationResponse> instance
+
+Creates a new Amazon WorkMail organization. Optionally, you can choose
+to associate an existing AWS Directory Service directory with your
+organization. If an AWS Directory Service directory ID is specified,
+the organization alias must match the directory alias. If you choose
+not to associate an existing directory with your organization, then we
+create a new Amazon WorkMail directory for you. For more information,
+see Adding an organization
+(https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html)
+in the I<Amazon WorkMail Administrator Guide>.
+
+You can associate multiple email domains with an organization, then set
+your default email domain from the Amazon WorkMail console. You can
+also associate a domain that is managed in an Amazon Route 53 public
+hosted zone. For more information, see Adding a domain
+(https://docs.aws.amazon.com/workmail/latest/adminguide/add_domain.html)
+and Choosing the default domain
+(https://docs.aws.amazon.com/workmail/latest/adminguide/default_domain.html)
+in the I<Amazon WorkMail Administrator Guide>.
+
+Optionally, you can use a customer managed master key from AWS Key
+Management Service (AWS KMS) to encrypt email for your organization. If
+you don't associate an AWS KMS key, Amazon WorkMail creates a default
+AWS managed master key for you.
 
 
 =head2 CreateResource
@@ -618,7 +800,7 @@ RegisterToWorkMail operation.
 
 =item Name => Str
 
-=item [OrganizationId => Str]
+=item OrganizationId => Str
 
 
 =back
@@ -689,6 +871,50 @@ Returns: a L<Paws::WorkMail::DeleteMailboxPermissionsResponse> instance
 Deletes permissions granted to a member (user or group).
 
 
+=head2 DeleteMobileDeviceAccessRule
+
+=over
+
+=item MobileDeviceAccessRuleId => Str
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::DeleteMobileDeviceAccessRule>
+
+Returns: a L<Paws::WorkMail::DeleteMobileDeviceAccessRuleResponse> instance
+
+Deletes a mobile device access rule for the specified Amazon WorkMail
+organization.
+
+
+=head2 DeleteOrganization
+
+=over
+
+=item DeleteDirectory => Bool
+
+=item OrganizationId => Str
+
+=item [ClientToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::DeleteOrganization>
+
+Returns: a L<Paws::WorkMail::DeleteOrganizationResponse> instance
+
+Deletes an Amazon WorkMail organization and all underlying AWS
+resources managed by Amazon WorkMail as part of the organization. You
+can choose whether to delete the associated directory. For more
+information, see Removing an organization
+(https://docs.aws.amazon.com/workmail/latest/adminguide/remove_organization.html)
+in the I<Amazon WorkMail Administrator Guide>.
+
+
 =head2 DeleteResource
 
 =over
@@ -705,6 +931,24 @@ Each argument is described in detail in: L<Paws::WorkMail::DeleteResource>
 Returns: a L<Paws::WorkMail::DeleteResourceResponse> instance
 
 Deletes the specified resource.
+
+
+=head2 DeleteRetentionPolicy
+
+=over
+
+=item Id => Str
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::DeleteRetentionPolicy>
+
+Returns: a L<Paws::WorkMail::DeleteRetentionPolicyResponse> instance
+
+Deletes the specified retention policy from the specified organization.
 
 
 =head2 DeleteUser
@@ -767,6 +1011,24 @@ Each argument is described in detail in: L<Paws::WorkMail::DescribeGroup>
 Returns: a L<Paws::WorkMail::DescribeGroupResponse> instance
 
 Returns the data available for the group.
+
+
+=head2 DescribeMailboxExportJob
+
+=over
+
+=item JobId => Str
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::DescribeMailboxExportJob>
+
+Returns: a L<Paws::WorkMail::DescribeMailboxExportJobResponse> instance
+
+Describes the current status of a mailbox export job.
 
 
 =head2 DescribeOrganization
@@ -885,6 +1147,23 @@ Gets the effects of an organization's access control rules as they
 apply to a specified IPv4 address, access protocol action, or user ID.
 
 
+=head2 GetDefaultRetentionPolicy
+
+=over
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::GetDefaultRetentionPolicy>
+
+Returns: a L<Paws::WorkMail::GetDefaultRetentionPolicyResponse> instance
+
+Gets the default retention policy details for the specified
+organization.
+
+
 =head2 GetMailboxDetails
 
 =over
@@ -902,6 +1181,33 @@ Returns: a L<Paws::WorkMail::GetMailboxDetailsResponse> instance
 
 Requests a user's mailbox details for a specified organization and
 user.
+
+
+=head2 GetMobileDeviceAccessEffect
+
+=over
+
+=item OrganizationId => Str
+
+=item [DeviceModel => Str]
+
+=item [DeviceOperatingSystem => Str]
+
+=item [DeviceType => Str]
+
+=item [DeviceUserAgent => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::GetMobileDeviceAccessEffect>
+
+Returns: a L<Paws::WorkMail::GetMobileDeviceAccessEffectResponse> instance
+
+Simulates the effect of the mobile device access rules for the given
+attributes of a sample access event. Use this method to test the
+effects of the current set of mobile device access rules for the Amazon
+WorkMail organization for a particular user's attributes.
 
 
 =head2 ListAccessControlRules
@@ -986,6 +1292,27 @@ Returns: a L<Paws::WorkMail::ListGroupsResponse> instance
 Returns summaries of the organization's groups.
 
 
+=head2 ListMailboxExportJobs
+
+=over
+
+=item OrganizationId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::ListMailboxExportJobs>
+
+Returns: a L<Paws::WorkMail::ListMailboxExportJobsResponse> instance
+
+Lists the mailbox export jobs started for the specified organization
+within the last seven days.
+
+
 =head2 ListMailboxPermissions
 
 =over
@@ -1009,6 +1336,23 @@ Lists the mailbox permissions associated with a user, group, or
 resource mailbox.
 
 
+=head2 ListMobileDeviceAccessRules
+
+=over
+
+=item OrganizationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::ListMobileDeviceAccessRules>
+
+Returns: a L<Paws::WorkMail::ListMobileDeviceAccessRulesResponse> instance
+
+Lists the mobile device access rules for the specified Amazon WorkMail
+organization.
+
+
 =head2 ListOrganizations
 
 =over
@@ -1024,7 +1368,7 @@ Each argument is described in detail in: L<Paws::WorkMail::ListOrganizations>
 
 Returns: a L<Paws::WorkMail::ListOrganizationsResponse> instance
 
-Returns summaries of the customer's non-deleted organizations.
+Returns summaries of the customer's organizations.
 
 
 =head2 ListResourceDelegates
@@ -1166,6 +1510,30 @@ Sets permissions for a user, group, or resource. This replaces any
 pre-existing permissions.
 
 
+=head2 PutRetentionPolicy
+
+=over
+
+=item FolderConfigurations => ArrayRef[L<Paws::WorkMail::FolderConfiguration>]
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+=item [Description => Str]
+
+=item [Id => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::PutRetentionPolicy>
+
+Returns: a L<Paws::WorkMail::PutRetentionPolicyResponse> instance
+
+Puts a retention policy to the specified organization.
+
+
 =head2 RegisterToWorkMail
 
 =over
@@ -1214,6 +1582,41 @@ Each argument is described in detail in: L<Paws::WorkMail::ResetPassword>
 Returns: a L<Paws::WorkMail::ResetPasswordResponse> instance
 
 Allows the administrator to reset the password for a user.
+
+
+=head2 StartMailboxExportJob
+
+=over
+
+=item ClientToken => Str
+
+=item EntityId => Str
+
+=item KmsKeyArn => Str
+
+=item OrganizationId => Str
+
+=item RoleArn => Str
+
+=item S3BucketName => Str
+
+=item S3Prefix => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::StartMailboxExportJob>
+
+Returns: a L<Paws::WorkMail::StartMailboxExportJobResponse> instance
+
+Starts a mailbox export job to export MIME-format email messages and
+calendar items from the specified mailbox to the specified Amazon
+Simple Storage Service (Amazon S3) bucket. For more information, see
+Exporting mailbox content
+(https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html)
+in the I<Amazon WorkMail Administrator Guide>.
 
 
 =head2 TagResource
@@ -1273,6 +1676,47 @@ Returns: a L<Paws::WorkMail::UpdateMailboxQuotaResponse> instance
 
 Updates a user's current mailbox quota for a specified organization and
 user.
+
+
+=head2 UpdateMobileDeviceAccessRule
+
+=over
+
+=item Effect => Str
+
+=item MobileDeviceAccessRuleId => Str
+
+=item Name => Str
+
+=item OrganizationId => Str
+
+=item [Description => Str]
+
+=item [DeviceModels => ArrayRef[Str|Undef]]
+
+=item [DeviceOperatingSystems => ArrayRef[Str|Undef]]
+
+=item [DeviceTypes => ArrayRef[Str|Undef]]
+
+=item [DeviceUserAgents => ArrayRef[Str|Undef]]
+
+=item [NotDeviceModels => ArrayRef[Str|Undef]]
+
+=item [NotDeviceOperatingSystems => ArrayRef[Str|Undef]]
+
+=item [NotDeviceTypes => ArrayRef[Str|Undef]]
+
+=item [NotDeviceUserAgents => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkMail::UpdateMobileDeviceAccessRule>
+
+Returns: a L<Paws::WorkMail::UpdateMobileDeviceAccessRuleResponse> instance
+
+Updates a mobile device access rule for the specified Amazon WorkMail
+organization.
 
 
 =head2 UpdatePrimaryEmailAddress

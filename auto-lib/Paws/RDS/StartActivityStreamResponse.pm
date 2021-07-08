@@ -2,6 +2,7 @@
 package Paws::RDS::StartActivityStreamResponse;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has EngineNativeAuditFieldsIncluded => (is => 'ro', isa => 'Bool');
   has KinesisStreamName => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
@@ -26,6 +27,12 @@ soon as possible, regardless of the maintenance window for the
 database.
 
 
+=head2 EngineNativeAuditFieldsIncluded => Bool
+
+Indicates whether engine-native audit fields are included in the
+database activity stream.
+
+
 =head2 KinesisStreamName => Str
 
 The name of the Amazon Kinesis data stream to be used for the database
@@ -34,8 +41,8 @@ activity stream.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for encryption of messages in the database
-activity stream.
+The Amazon Web Services KMS key identifier for encryption of messages
+in the database activity stream.
 
 
 =head2 Mode => Str

@@ -55,7 +55,7 @@ launched in the group.
 
 =head2 ResourceId => Str
 
-The name of the group.
+The name of the Auto Scaling group.
 
 
 =head2 ResourceType => Str

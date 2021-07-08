@@ -35,12 +35,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       );
 
     # Results:
-    my $CreationTimestamp = $DescribeHumanLoopResponse->CreationTimestamp;
+    my $CreationTime      = $DescribeHumanLoopResponse->CreationTime;
     my $FailureCode       = $DescribeHumanLoopResponse->FailureCode;
     my $FailureReason     = $DescribeHumanLoopResponse->FailureReason;
     my $FlowDefinitionArn = $DescribeHumanLoopResponse->FlowDefinitionArn;
     my $HumanLoopArn      = $DescribeHumanLoopResponse->HumanLoopArn;
-    my $HumanLoopInput    = $DescribeHumanLoopResponse->HumanLoopInput;
     my $HumanLoopName     = $DescribeHumanLoopResponse->HumanLoopName;
     my $HumanLoopOutput   = $DescribeHumanLoopResponse->HumanLoopOutput;
     my $HumanLoopStatus   = $DescribeHumanLoopResponse->HumanLoopStatus;
@@ -55,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a2i
 
 =head2 B<REQUIRED> HumanLoopName => Str
 
-The name of the human loop.
+The name of the human loop that you want information about.
 
 
 

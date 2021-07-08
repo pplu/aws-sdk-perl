@@ -3,6 +3,7 @@ package Paws::IoT::Certificate;
   use Moose;
   has CertificateArn => (is => 'ro', isa => 'Str', request_name => 'certificateArn', traits => ['NameInRequest']);
   has CertificateId => (is => 'ro', isa => 'Str', request_name => 'certificateId', traits => ['NameInRequest']);
+  has CertificateMode => (is => 'ro', isa => 'Str', request_name => 'certificateMode', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 
@@ -50,6 +51,11 @@ The ARN of the certificate.
 
 The ID of the certificate. (The last part of the certificate ARN
 contains the certificate ID.)
+
+
+=head2 CertificateMode => Str
+
+The mode of the certificate.
 
 
 =head2 CreationDate => Str

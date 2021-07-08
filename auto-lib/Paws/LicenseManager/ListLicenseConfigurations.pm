@@ -66,8 +66,9 @@ operators are supported:
 
 =item *
 
-C<licenseCountingType> - The dimension on which licenses are counted
-(vCPU). Logical operators are C<EQUALS> | C<NOT_EQUALS>.
+C<licenseCountingType> - The dimension on which licenses are counted.
+Possible values are C<vCPU> | C<Instance> | C<Core> | C<Socket>.
+Logical operators are C<EQUALS> | C<NOT_EQUALS>.
 
 =item *
 

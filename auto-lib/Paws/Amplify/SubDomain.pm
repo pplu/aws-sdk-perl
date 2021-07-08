@@ -35,24 +35,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Su
 
 =head1 DESCRIPTION
 
-Subdomain for the Domain Association.
+The subdomain for the domain association.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DnsRecord => Str
 
-DNS record for the Subdomain.
+The DNS record for the subdomain.
 
 
 =head2 B<REQUIRED> SubDomainSetting => L<Paws::Amplify::SubDomainSetting>
 
-Setting structure for the Subdomain.
+Describes the settings for the subdomain.
 
 
 =head2 B<REQUIRED> Verified => Bool
 
-Verified status of the Subdomain
+The verified status of the subdomain
 
 
 

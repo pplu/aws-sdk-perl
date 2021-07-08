@@ -53,13 +53,22 @@ The instance type.
 
 =head2 Priority => Num
 
-The priority for the launch template override. If
-B<OnDemandAllocationStrategy> is set to C<prioritized>, Spot Fleet uses
-priority to determine which launch template override to use first in
-fulfilling On-Demand capacity. The highest priority is launched first.
+The priority for the launch template override. The highest priority is
+launched first.
+
+If C<OnDemandAllocationStrategy> is set to C<prioritized>, Spot Fleet
+uses priority to determine which launch template override to use first
+in fulfilling On-Demand capacity.
+
+If the Spot C<AllocationStrategy> is set to
+C<capacityOptimizedPrioritized>, Spot Fleet uses priority on a
+best-effort basis to determine which launch template override to use in
+fulfilling Spot capacity, but optimizes for capacity first.
+
 Valid values are whole numbers starting at C<0>. The lower the number,
 the higher the priority. If no number is set, the launch template
-override has the lowest priority.
+override has the lowest priority. You can set the same priority for
+different launch template overrides.
 
 
 =head2 SpotPrice => Str

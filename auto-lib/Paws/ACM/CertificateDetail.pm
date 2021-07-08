@@ -67,7 +67,7 @@ in the response to a DescribeCertificate request.
 =head2 CertificateArn => Str
 
 The Amazon Resource Name (ARN) of the certificate. For more information
-about ARNs, see Amazon Resource Names (ARNs) and AWS Service Namespaces
+about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -83,8 +83,7 @@ C<arn:aws:acm-pca:region:account:certificate-authority/12345678-1234-1234-1234-1
 
 =head2 CreatedAt => Str
 
-The time at which the certificate was requested. This value exists only
-when the certificate type is C<AMAZON_ISSUED>.
+The time at which the certificate was requested.
 
 
 =head2 DomainName => Str

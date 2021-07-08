@@ -50,7 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 InsightArns => ArrayRef[Str|Undef]
 
-The ARNs of the insights to describe.
+The ARNs of the insights to describe. If you do not provide any insight
+ARNs, then C<GetInsights> returns all of your custom insights. It does
+not return any managed insights.
 
 
 

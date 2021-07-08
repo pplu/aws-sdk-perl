@@ -5,6 +5,7 @@ package Paws::MarketplaceMetering::UsageRecord;
   has Dimension => (is => 'ro', isa => 'Str', required => 1);
   has Quantity => (is => 'ro', isa => 'Int');
   has Timestamp => (is => 'ro', isa => 'Str', required => 1);
+  has UsageAllocations => (is => 'ro', isa => 'ArrayRef[Paws::MarketplaceMetering::UsageAllocation]');
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MarketplaceMetering::UsageRecord object:
 
-  $service_obj->Method(Att1 => { CustomerIdentifier => $value, ..., Timestamp => $value  });
+  $service_obj->Method(Att1 => { CustomerIdentifier => $value, ..., UsageAllocations => $value  });
 
 =head3 Results returned from an API call
 
@@ -70,6 +71,12 @@ Timestamp, in UTC, for which the usage is being reported.
 
 Your application can meter usage for up to one hour in the past. Make
 sure the timestamp value is not before the start of the software usage.
+
+
+=head2 UsageAllocations => ArrayRef[L<Paws::MarketplaceMetering::UsageAllocation>]
+
+The set of UsageAllocations to submit. The sum of all UsageAllocation
+quantities must equal the Quantity of the UsageRecord.
 
 
 

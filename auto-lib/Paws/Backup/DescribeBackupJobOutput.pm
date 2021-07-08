@@ -1,8 +1,11 @@
 
 package Paws::Backup::DescribeBackupJobOutput;
   use Moose;
+  has AccountId => (is => 'ro', isa => 'Str');
   has BackupJobId => (is => 'ro', isa => 'Str');
+  has BackupOptions => (is => 'ro', isa => 'Paws::Backup::BackupOptions');
   has BackupSizeInBytes => (is => 'ro', isa => 'Int');
+  has BackupType => (is => 'ro', isa => 'Str');
   has BackupVaultArn => (is => 'ro', isa => 'Str');
   has BackupVaultName => (is => 'ro', isa => 'Str');
   has BytesTransferred => (is => 'ro', isa => 'Int');
@@ -31,14 +34,33 @@ Paws::Backup::DescribeBackupJobOutput
 =head1 ATTRIBUTES
 
 
+=head2 AccountId => Str
+
+Returns the account ID that owns the backup job.
+
+
 =head2 BackupJobId => Str
 
 Uniquely identifies a request to AWS Backup to back up a resource.
 
 
+=head2 BackupOptions => L<Paws::Backup::BackupOptions>
+
+Represents the options specified as part of backup plan or on-demand
+backup job.
+
+
 =head2 BackupSizeInBytes => Int
 
 The size, in bytes, of a backup.
+
+
+=head2 BackupType => Str
+
+Represents the actual backup type selected for a backup job. For
+example, if a successful WindowsVSS backup was taken, C<BackupType>
+returns "WindowsVSS". If C<BackupType> is empty, then the backup type
+that was is a regular backup.
 
 
 =head2 BackupVaultArn => Str
@@ -66,7 +88,7 @@ job status was queried.
 
 The date and time that a job to create a backup job is completed, in
 Unix format and Coordinated Universal Time (UTC). The value of
-C<CreationDate> is accurate to milliseconds. For example, the value
+C<CompletionDate> is accurate to milliseconds. For example, the value
 1516925490.087 represents Friday, January 26, 2018 12:11:30.087 AM.
 
 
@@ -120,7 +142,7 @@ depends on the resource type.
 
 =head2 ResourceType => Str
 
-The type of AWS resource to be backed-up; for example, an Amazon
+The type of AWS resource to be backed up; for example, an Amazon
 Elastic Block Store (Amazon EBS) volume or an Amazon Relational
 Database Service (Amazon RDS) database.
 

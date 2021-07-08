@@ -56,8 +56,8 @@ want in the response. The default value is 250.
 
 =head2 MemberAccountId => Str
 
-The Amazon Macie member account ID whose associated S3 resources you
-want to list.
+The Amazon Macie Classic member account ID whose associated S3
+resources you want to list.
 
 
 

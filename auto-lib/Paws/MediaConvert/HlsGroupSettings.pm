@@ -3,6 +3,7 @@ package Paws::MediaConvert::HlsGroupSettings;
   use Moose;
   has AdditionalManifests => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::HlsAdditionalManifest]', request_name => 'additionalManifests', traits => ['NameInRequest']);
   has AdMarkers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'adMarkers', traits => ['NameInRequest']);
+  has AudioOnlyHeader => (is => 'ro', isa => 'Str', request_name => 'audioOnlyHeader', traits => ['NameInRequest']);
   has BaseUrl => (is => 'ro', isa => 'Str', request_name => 'baseUrl', traits => ['NameInRequest']);
   has CaptionLanguageMappings => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::HlsCaptionLanguageMapping]', request_name => 'captionLanguageMappings', traits => ['NameInRequest']);
   has CaptionLanguageSetting => (is => 'ro', isa => 'Str', request_name => 'captionLanguageSetting', traits => ['NameInRequest']);
@@ -12,6 +13,7 @@ package Paws::MediaConvert::HlsGroupSettings;
   has DestinationSettings => (is => 'ro', isa => 'Paws::MediaConvert::DestinationSettings', request_name => 'destinationSettings', traits => ['NameInRequest']);
   has DirectoryStructure => (is => 'ro', isa => 'Str', request_name => 'directoryStructure', traits => ['NameInRequest']);
   has Encryption => (is => 'ro', isa => 'Paws::MediaConvert::HlsEncryptionSettings', request_name => 'encryption', traits => ['NameInRequest']);
+  has ImageBasedTrickPlay => (is => 'ro', isa => 'Str', request_name => 'imageBasedTrickPlay', traits => ['NameInRequest']);
   has ManifestCompression => (is => 'ro', isa => 'Str', request_name => 'manifestCompression', traits => ['NameInRequest']);
   has ManifestDurationFormat => (is => 'ro', isa => 'Str', request_name => 'manifestDurationFormat', traits => ['NameInRequest']);
   has MinFinalSegmentLength => (is => 'ro', isa => 'Num', request_name => 'minFinalSegmentLength', traits => ['NameInRequest']);
@@ -57,8 +59,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Required when you set (Type) under
-(OutputGroups)E<gt>(OutputGroupSettings) to HLS_GROUP_SETTINGS.
+Settings related to your HLS output package. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/outputs-file-ABR.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set Type, under
+OutputGroupSettings, to HLS_GROUP_SETTINGS.
 
 =head1 ATTRIBUTES
 
@@ -77,6 +82,14 @@ specify a list of them here.
 Choose one or more ad marker types to decorate your Apple HLS manifest.
 This setting does not determine whether SCTE-35 markers appear in the
 outputs themselves.
+
+
+=head2 AudioOnlyHeader => Str
+
+Ignore this setting unless you are using FairPlay DRM with Verimatrix
+and you encounter playback issues. Keep the default value, Include
+(INCLUDE), to output audio-only headers. Choose Exclude (EXCLUDE) to
+remove the audio-only headers from your audio segments.
 
 
 =head2 BaseUrl => Str
@@ -107,8 +120,10 @@ CLOSED-CAPTIONS line from the manifest.
 
 =head2 ClientCache => Str
 
-When set to ENABLED, sets #EXT-X-ALLOW-CACHE:no tag, which prevents
-client from saving media segments for later replay.
+Disable this setting only when your workflow requires the
+
+(ENABLED) and control caching in your video distribution set up. For
+example, use the Cache-Control http header.
 
 
 =head2 CodecSpecification => Str
@@ -140,6 +155,21 @@ Indicates whether segments should be placed in subdirectories.
 =head2 Encryption => L<Paws::MediaConvert::HlsEncryptionSettings>
 
 DRM settings.
+
+
+=head2 ImageBasedTrickPlay => Str
+
+Specify whether MediaConvert generates images for trick play. Keep the
+default value, None (NONE), to not generate any images. Choose
+Thumbnail (THUMBNAIL) to generate tiled thumbnails. Choose Thumbnail
+and full frame (THUMBNAIL_AND_FULLFRAME) to generate tiled thumbnails
+and full-resolution images of single frames. MediaConvert creates a
+child manifest for each set of images that you generate and adds
+corresponding entries to the parent manifest. A common application for
+these images is Roku trick mode. The thumbnails and full-frame images
+that MediaConvert creates with this feature are compatible with this
+Roku specification:
+https://developer.roku.com/docs/developer-program/media-playback/trick-mode/hls-and-dash.md
 
 
 =head2 ManifestCompression => Str

@@ -49,13 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the rule that you're adding tags to.
+The ARN of the EventBridge resource that you're adding tags to.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::CloudWatchEvents::Tag>]
 
-The list of key-value pairs to associate with the rule.
+The list of key-value pairs to associate with the resource.
 
 
 

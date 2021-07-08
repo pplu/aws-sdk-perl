@@ -94,8 +94,8 @@ from a previous call.)
 
 =head2 ReverseOrder => Bool
 
-A boolean that indicates whether to list step executions in reverse
-order by start time. The default value is false.
+Indicates whether to list step executions in reverse order by start
+time. The default value is 'false'.
 
 
 

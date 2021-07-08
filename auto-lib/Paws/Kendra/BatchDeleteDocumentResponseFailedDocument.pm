@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Bat
 =head1 DESCRIPTION
 
 Provides information about documents that could not be removed from an
-index by the BatchDeleteDocument operation.
+index by the C<BatchDeleteDocument> operation.
 
 =head1 ATTRIBUTES
 

@@ -93,10 +93,11 @@ The tags to apply to the analyzer.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of analyzer to create. Only ACCOUNT analyzers are supported.
-You can create only one analyzer per account per Region.
+The type of analyzer to create. Only ACCOUNT and ORGANIZATION analyzers
+are supported. You can create only one analyzer per account per Region.
+You can create up to 5 analyzers per organization per Region.
 
-Valid values are: C<"ACCOUNT">
+Valid values are: C<"ACCOUNT">, C<"ORGANIZATION">
 
 
 =head1 SEE ALSO

@@ -1,6 +1,7 @@
 package Paws::EC2::InstanceStorageInfo;
   use Moose;
   has Disks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DiskInfo]', request_name => 'disks', traits => ['NameInRequest']);
+  has NvmeSupport => (is => 'ro', isa => 'Str', request_name => 'nvmeSupport', traits => ['NameInRequest']);
   has TotalSizeInGB => (is => 'ro', isa => 'Int', request_name => 'totalSizeInGB', traits => ['NameInRequest']);
 1;
 
@@ -39,7 +40,13 @@ This class has no description
 
 =head2 Disks => ArrayRef[L<Paws::EC2::DiskInfo>]
 
-Array describing the disks that are available for the instance type.
+Describes the disks that are available for the instance type.
+
+
+=head2 NvmeSupport => Str
+
+Indicates whether non-volatile memory express (NVMe) is supported for
+instance store.
 
 
 =head2 TotalSizeInGB => Int

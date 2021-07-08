@@ -44,27 +44,24 @@ Savings Plans, and total Savings Plans costs for an account.
 
 =head2 CoveragePercentage => Str
 
-The percentage of your existing Savings Planscovered usage, divided by
+The percentage of your existing Savings Plans covered usage, divided by
 all of your eligible Savings Plans usage in an account(or set of
 accounts).
 
 
 =head2 OnDemandCost => Str
 
-The cost of your Amazon Web Services usage at the public On-Demand
-rate.
+The cost of your AWS usage at the public On-Demand rate.
 
 
 =head2 SpendCoveredBySavingsPlans => Str
 
-The amount of your Amazon Web Services usage that is covered by a
-Savings Plans.
+The amount of your AWS usage that is covered by a Savings Plans.
 
 
 =head2 TotalCost => Str
 
-The total cost of your Amazon Web Services usage, regardless of your
-purchase option.
+The total cost of your AWS usage, regardless of your purchase option.
 
 
 

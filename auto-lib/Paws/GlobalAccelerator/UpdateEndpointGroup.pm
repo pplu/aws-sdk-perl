@@ -7,6 +7,7 @@ package Paws::GlobalAccelerator::UpdateEndpointGroup;
   has HealthCheckPath => (is => 'ro', isa => 'Str');
   has HealthCheckPort => (is => 'ro', isa => 'Int');
   has HealthCheckProtocol => (is => 'ro', isa => 'Str');
+  has PortOverrides => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::PortOverride]');
   has ThresholdCount => (is => 'ro', isa => 'Int');
   has TrafficDialPercentage => (is => 'ro', isa => 'Num');
 
@@ -44,12 +45,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      HealthCheckIntervalSeconds => 1,                    # OPTIONAL
-      HealthCheckPath            => 'MyGenericString',    # OPTIONAL
-      HealthCheckPort            => 1,                    # OPTIONAL
-      HealthCheckProtocol        => 'TCP',                # OPTIONAL
-      ThresholdCount             => 1,                    # OPTIONAL
-      TrafficDialPercentage      => 1.0,                  # OPTIONAL
+      HealthCheckIntervalSeconds => 1,                      # OPTIONAL
+      HealthCheckPath            => 'MyHealthCheckPath',    # OPTIONAL
+      HealthCheckPort            => 1,                      # OPTIONAL
+      HealthCheckProtocol        => 'TCP',                  # OPTIONAL
+      PortOverrides              => [
+        {
+          EndpointPort => 1,    # min: 1, max: 65535; OPTIONAL
+          ListenerPort => 1,    # min: 1, max: 65535; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      ThresholdCount        => 1,      # OPTIONAL
+      TrafficDialPercentage => 1.0,    # OPTIONAL
     );
 
     # Results:
@@ -65,7 +73,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glo
 
 =head2 EndpointConfigurations => ArrayRef[L<Paws::GlobalAccelerator::EndpointConfiguration>]
 
-The list of endpoint objects.
+The list of endpoint objects. A resource must be valid and active when
+you add it as an endpoint.
 
 
 
@@ -106,6 +115,20 @@ endpoints that are part of this endpoint group. The default value is
 TCP.
 
 Valid values are: C<"TCP">, C<"HTTP">, C<"HTTPS">
+
+=head2 PortOverrides => ArrayRef[L<Paws::GlobalAccelerator::PortOverride>]
+
+Override specific listener ports used to route traffic to endpoints
+that are part of this endpoint group. For example, you can create a
+port override in which the listener receives user traffic on ports 80
+and 443, but your accelerator routes that traffic to ports 1080 and
+1443, respectively, on the endpoints.
+
+For more information, see Port overrides
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
+in the I<AWS Global Accelerator Developer Guide>.
+
+
 
 =head2 ThresholdCount => Int
 

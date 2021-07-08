@@ -150,6 +150,11 @@ package Paws::CodeCommit;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetComment', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCommentReactions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetCommentReactions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCommentsForComparedCommit {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::GetCommentsForComparedCommit', @_);
@@ -303,6 +308,11 @@ package Paws::CodeCommit;
   sub PostCommentReply {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeCommit::PostCommentReply', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutCommentReaction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeCommit::PutCommentReaction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutFile {
@@ -554,7 +564,7 @@ package Paws::CodeCommit;
   }
 
 
-  sub operations { qw/AssociateApprovalRuleTemplateWithRepository BatchAssociateApprovalRuleTemplateWithRepositories BatchDescribeMergeConflicts BatchDisassociateApprovalRuleTemplateFromRepositories BatchGetCommits BatchGetRepositories CreateApprovalRuleTemplate CreateBranch CreateCommit CreatePullRequest CreatePullRequestApprovalRule CreateRepository CreateUnreferencedMergeCommit DeleteApprovalRuleTemplate DeleteBranch DeleteCommentContent DeleteFile DeletePullRequestApprovalRule DeleteRepository DescribeMergeConflicts DescribePullRequestEvents DisassociateApprovalRuleTemplateFromRepository EvaluatePullRequestApprovalRules GetApprovalRuleTemplate GetBlob GetBranch GetComment GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetPullRequestApprovalStates GetPullRequestOverrideState GetRepository GetRepositoryTriggers ListApprovalRuleTemplates ListAssociatedApprovalRuleTemplatesForRepository ListBranches ListPullRequests ListRepositories ListRepositoriesForApprovalRuleTemplate ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay OverridePullRequestApprovalRules PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateApprovalRuleTemplateContent UpdateApprovalRuleTemplateDescription UpdateApprovalRuleTemplateName UpdateComment UpdateDefaultBranch UpdatePullRequestApprovalRuleContent UpdatePullRequestApprovalState UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
+  sub operations { qw/AssociateApprovalRuleTemplateWithRepository BatchAssociateApprovalRuleTemplateWithRepositories BatchDescribeMergeConflicts BatchDisassociateApprovalRuleTemplateFromRepositories BatchGetCommits BatchGetRepositories CreateApprovalRuleTemplate CreateBranch CreateCommit CreatePullRequest CreatePullRequestApprovalRule CreateRepository CreateUnreferencedMergeCommit DeleteApprovalRuleTemplate DeleteBranch DeleteCommentContent DeleteFile DeletePullRequestApprovalRule DeleteRepository DescribeMergeConflicts DescribePullRequestEvents DisassociateApprovalRuleTemplateFromRepository EvaluatePullRequestApprovalRules GetApprovalRuleTemplate GetBlob GetBranch GetComment GetCommentReactions GetCommentsForComparedCommit GetCommentsForPullRequest GetCommit GetDifferences GetFile GetFolder GetMergeCommit GetMergeConflicts GetMergeOptions GetPullRequest GetPullRequestApprovalStates GetPullRequestOverrideState GetRepository GetRepositoryTriggers ListApprovalRuleTemplates ListAssociatedApprovalRuleTemplatesForRepository ListBranches ListPullRequests ListRepositories ListRepositoriesForApprovalRuleTemplate ListTagsForResource MergeBranchesByFastForward MergeBranchesBySquash MergeBranchesByThreeWay MergePullRequestByFastForward MergePullRequestBySquash MergePullRequestByThreeWay OverridePullRequestApprovalRules PostCommentForComparedCommit PostCommentForPullRequest PostCommentReply PutCommentReaction PutFile PutRepositoryTriggers TagResource TestRepositoryTriggers UntagResource UpdateApprovalRuleTemplateContent UpdateApprovalRuleTemplateDescription UpdateApprovalRuleTemplateName UpdateComment UpdateDefaultBranch UpdatePullRequestApprovalRuleContent UpdatePullRequestApprovalState UpdatePullRequestDescription UpdatePullRequestStatus UpdatePullRequestTitle UpdateRepositoryDescription UpdateRepositoryName / }
 
 1;
 
@@ -973,6 +983,11 @@ GetComment, which returns information about a comment on a commit.
 
 =item *
 
+GetCommentReactions, which returns information about emoji reactions to
+comments.
+
+=item *
+
 GetCommentsForComparedCommit, which returns information about comments
 on the comparison between two commit specifiers in a repository.
 
@@ -984,6 +999,11 @@ between two commit specifiers in a repository.
 =item *
 
 PostCommentReply, which creates a reply to a comment.
+
+=item *
+
+PutCommentReaction, which creates or updates an emoji reaction to a
+comment.
 
 =item *
 
@@ -1672,6 +1692,34 @@ Returns: a L<Paws::CodeCommit::GetCommentOutput> instance
 Returns the content of a comment made on a change, file, or commit in a
 repository.
 
+Reaction counts might include numbers from user identities who were
+deleted after the reaction was made. For a count of reactions from
+active identities, use GetCommentReactions.
+
+
+=head2 GetCommentReactions
+
+=over
+
+=item CommentId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReactionUserArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::GetCommentReactions>
+
+Returns: a L<Paws::CodeCommit::GetCommentReactionsOutput> instance
+
+Returns information about reactions to a specified comment ID.
+Reactions from users who have been deleted will not be included in the
+count.
+
 
 =head2 GetCommentsForComparedCommit
 
@@ -1696,6 +1744,10 @@ Returns: a L<Paws::CodeCommit::GetCommentsForComparedCommitOutput> instance
 
 Returns information about comments made on the comparison between two
 commits.
+
+Reaction counts might include numbers from user identities who were
+deleted after the reaction was made. For a count of reactions from
+active identities, use GetCommentReactions.
 
 
 =head2 GetCommentsForPullRequest
@@ -1722,6 +1774,10 @@ Each argument is described in detail in: L<Paws::CodeCommit::GetCommentsForPullR
 Returns: a L<Paws::CodeCommit::GetCommentsForPullRequestOutput> instance
 
 Returns comments made on a pull request.
+
+Reaction counts might include numbers from user identities who were
+deleted after the reaction was made. For a count of reactions from
+active identities, use GetCommentReactions.
 
 
 =head2 GetCommit
@@ -2423,6 +2479,27 @@ Returns: a L<Paws::CodeCommit::PostCommentReplyOutput> instance
 
 Posts a comment in reply to an existing comment on a comparison between
 commits or a pull request.
+
+
+=head2 PutCommentReaction
+
+=over
+
+=item CommentId => Str
+
+=item ReactionValue => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeCommit::PutCommentReaction>
+
+Returns: nothing
+
+Adds or updates a reaction to a specified comment for the user whose
+identity is used to make the request. You can only add or update a
+reaction for yourself. You cannot add, modify, or delete a reaction for
+another user.
 
 
 =head2 PutFile

@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-In a CreateResolverRule request, an array of the IPs that you want to
-forward DNS queries to.
+In a CreateResolverRule
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverRule.html)
+request, an array of the IPs that you want to forward DNS queries to.
 
 =head1 ATTRIBUTES
 

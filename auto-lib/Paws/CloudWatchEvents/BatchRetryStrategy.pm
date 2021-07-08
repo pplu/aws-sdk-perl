@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-The retry strategy to use for failed jobs if the target is an AWS Batch
-job. If you specify a retry strategy here, it overrides the retry
+The retry strategy to use for failed jobs, if the target is an AWS
+Batch job. If you specify a retry strategy here, it overrides the retry
 strategy defined in the job definition.
 
 =head1 ATTRIBUTES

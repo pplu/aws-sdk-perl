@@ -155,6 +155,11 @@ package Paws::ServiceCatalog;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribePortfolio', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribePortfolioShares {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribePortfolioShares', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribePortfolioShareStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::DescribePortfolioShareStatus', @_);
@@ -263,6 +268,16 @@ package Paws::ServiceCatalog;
   sub GetAWSOrganizationsAccessStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::GetAWSOrganizationsAccessStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetProvisionedProductOutputs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::GetProvisionedProductOutputs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ImportAsProvisionedProduct {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::ImportAsProvisionedProduct', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListAcceptedPortfolioShares {
@@ -398,6 +413,11 @@ package Paws::ServiceCatalog;
   sub UpdatePortfolio {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdatePortfolio', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePortfolioShare {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ServiceCatalog::UpdatePortfolioShare', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateProduct {
@@ -801,7 +821,7 @@ package Paws::ServiceCatalog;
   }
 
 
-  sub operations { qw/AcceptPortfolioShare AssociateBudgetWithResource AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeServiceActionExecutionParameters DescribeTagOption DisableAWSOrganizationsAccess DisassociateBudgetFromResource DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus ListAcceptedPortfolioShares ListBudgetsForResource ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListStackInstancesForProvisionedProduct ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdateProduct UpdateProvisionedProduct UpdateProvisionedProductProperties UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
+  sub operations { qw/AcceptPortfolioShare AssociateBudgetWithResource AssociatePrincipalWithPortfolio AssociateProductWithPortfolio AssociateServiceActionWithProvisioningArtifact AssociateTagOptionWithResource BatchAssociateServiceActionWithProvisioningArtifact BatchDisassociateServiceActionFromProvisioningArtifact CopyProduct CreateConstraint CreatePortfolio CreatePortfolioShare CreateProduct CreateProvisionedProductPlan CreateProvisioningArtifact CreateServiceAction CreateTagOption DeleteConstraint DeletePortfolio DeletePortfolioShare DeleteProduct DeleteProvisionedProductPlan DeleteProvisioningArtifact DeleteServiceAction DeleteTagOption DescribeConstraint DescribeCopyProductStatus DescribePortfolio DescribePortfolioShares DescribePortfolioShareStatus DescribeProduct DescribeProductAsAdmin DescribeProductView DescribeProvisionedProduct DescribeProvisionedProductPlan DescribeProvisioningArtifact DescribeProvisioningParameters DescribeRecord DescribeServiceAction DescribeServiceActionExecutionParameters DescribeTagOption DisableAWSOrganizationsAccess DisassociateBudgetFromResource DisassociatePrincipalFromPortfolio DisassociateProductFromPortfolio DisassociateServiceActionFromProvisioningArtifact DisassociateTagOptionFromResource EnableAWSOrganizationsAccess ExecuteProvisionedProductPlan ExecuteProvisionedProductServiceAction GetAWSOrganizationsAccessStatus GetProvisionedProductOutputs ImportAsProvisionedProduct ListAcceptedPortfolioShares ListBudgetsForResource ListConstraintsForPortfolio ListLaunchPaths ListOrganizationPortfolioAccess ListPortfolioAccess ListPortfolios ListPortfoliosForProduct ListPrincipalsForPortfolio ListProvisionedProductPlans ListProvisioningArtifacts ListProvisioningArtifactsForServiceAction ListRecordHistory ListResourcesForTagOption ListServiceActions ListServiceActionsForProvisioningArtifact ListStackInstancesForProvisionedProduct ListTagOptions ProvisionProduct RejectPortfolioShare ScanProvisionedProducts SearchProducts SearchProductsAsAdmin SearchProvisionedProducts TerminateProvisionedProduct UpdateConstraint UpdatePortfolio UpdatePortfolioShare UpdateProduct UpdateProvisionedProduct UpdateProvisionedProductProperties UpdateProvisioningArtifact UpdateServiceAction UpdateTagOption / }
 
 1;
 
@@ -833,9 +853,9 @@ AWS Service Catalog
 
 AWS Service Catalog (https://aws.amazon.com/servicecatalog/) enables
 organizations to create and manage catalogs of IT services that are
-approved for use on AWS. To get the most out of this documentation, you
-should be familiar with the terminology discussed in AWS Service
-Catalog Concepts
+approved for AWS. To get the most out of this documentation, you should
+be familiar with the terminology discussed in AWS Service Catalog
+Concepts
 (http://docs.aws.amazon.com/servicecatalog/latest/adminguide/what-is_concepts.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/servicecatalog-2015-12-10>
@@ -923,6 +943,8 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::AssociateProduc
 Returns: a L<Paws::ServiceCatalog::AssociateProductWithPortfolioOutput> instance
 
 Associates the specified product with the specified portfolio.
+
+A delegated admin is authorized to invoke this command.
 
 
 =head2 AssociateServiceActionWithProvisioningArtifact
@@ -1065,6 +1087,8 @@ Returns: a L<Paws::ServiceCatalog::CreateConstraintOutput> instance
 
 Creates a constraint.
 
+A delegated admin is authorized to invoke this command.
+
 
 =head2 CreatePortfolio
 
@@ -1091,6 +1115,8 @@ Returns: a L<Paws::ServiceCatalog::CreatePortfolioOutput> instance
 
 Creates a portfolio.
 
+A delegated admin is authorized to invoke this command.
+
 
 =head2 CreatePortfolioShare
 
@@ -1104,6 +1130,8 @@ Creates a portfolio.
 
 =item [OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>]
 
+=item [ShareTagOptions => Bool]
+
 
 =back
 
@@ -1113,9 +1141,23 @@ Returns: a L<Paws::ServiceCatalog::CreatePortfolioShareOutput> instance
 
 Shares the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be created
-by the master account of an Organization. AWSOrganizationsAccess must
-be enabled in order to create a portfolio share to an organization
-node.
+by the management account of an organization or by a delegated
+administrator. You can share portfolios to an organization, an
+organizational unit, or a specific account.
+
+Note that if a delegated admin is de-registered, they can no longer
+create portfolio shares.
+
+C<AWSOrganizationsAccess> must be enabled in order to create a
+portfolio share to an organization node.
+
+You can't share a shared resource, including portfolios that contain a
+shared product.
+
+If the portfolio share with the specified account or organization node
+already exists, this action will have no effect and will not return an
+error. To update an existing share, you must use the C<
+UpdatePortfolioShare> API instead.
 
 
 =head2 CreateProduct
@@ -1154,6 +1196,13 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::CreateProduct>
 Returns: a L<Paws::ServiceCatalog::CreateProductOutput> instance
 
 Creates a product.
+
+A delegated admin is authorized to invoke this command.
+
+The user or role that performs this operation must have the
+C<cloudformation:GetTemplate> IAM policy permission. This policy
+permission is required when using the C<ImportFromPhysicalId> template
+source in the information data section.
 
 
 =head2 CreateProvisionedProductPlan
@@ -1227,6 +1276,11 @@ specified product.
 You cannot create a provisioning artifact for a product that was shared
 with you.
 
+The user or role that performs this operation must have the
+C<cloudformation:GetTemplate> IAM policy permission. This policy
+permission is required when using the C<ImportFromPhysicalId> template
+source in the information data section.
+
 
 =head2 CreateServiceAction
 
@@ -1289,6 +1343,8 @@ Returns: a L<Paws::ServiceCatalog::DeleteConstraintOutput> instance
 
 Deletes the specified constraint.
 
+A delegated admin is authorized to invoke this command.
+
 
 =head2 DeletePortfolio
 
@@ -1309,6 +1365,8 @@ Deletes the specified portfolio.
 
 You cannot delete a portfolio if it was shared with you or if it has
 associated products, users, constraints, or shared accounts.
+
+A delegated admin is authorized to invoke this command.
 
 
 =head2 DeletePortfolioShare
@@ -1332,7 +1390,11 @@ Returns: a L<Paws::ServiceCatalog::DeletePortfolioShareOutput> instance
 
 Stops sharing the specified portfolio with the specified account or
 organization node. Shares to an organization node can only be deleted
-by the master account of an Organization.
+by the management account of an organization or by a delegated
+administrator.
+
+Note that if a delegated admin is de-registered, portfolio shares
+created from that account are removed.
 
 
 =head2 DeleteProduct
@@ -1354,6 +1416,8 @@ Deletes the specified product.
 
 You cannot delete a product if it was shared with you or is associated
 with a portfolio.
+
+A delegated admin is authorized to invoke this command.
 
 
 =head2 DeleteProvisionedProductPlan
@@ -1492,6 +1556,37 @@ Returns: a L<Paws::ServiceCatalog::DescribePortfolioOutput> instance
 
 Gets information about the specified portfolio.
 
+A delegated admin is authorized to invoke this command.
+
+
+=head2 DescribePortfolioShares
+
+=over
+
+=item PortfolioId => Str
+
+=item Type => Str
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::DescribePortfolioShares>
+
+Returns: a L<Paws::ServiceCatalog::DescribePortfolioSharesOutput> instance
+
+Returns a summary of each of the portfolio shares that were created for
+the specified portfolio.
+
+You can use this API to determine which accounts or organizational
+nodes this portfolio have been shared, whether the recipient entity has
+imported the share, and whether TagOptions are included with the share.
+
+The C<PortfolioId> and C<Type> parameters are both required.
+
 
 =head2 DescribePortfolioShareStatus
 
@@ -1507,16 +1602,19 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::DescribePortfol
 Returns: a L<Paws::ServiceCatalog::DescribePortfolioShareStatusOutput> instance
 
 Gets the status of the specified portfolio share operation. This API
-can only be called by the master account in the organization.
+can only be called by the management account in the organization or by
+a delegated admin.
 
 
 =head2 DescribeProduct
 
 =over
 
-=item Id => Str
-
 =item [AcceptLanguage => Str]
+
+=item [Id => Str]
+
+=item [Name => Str]
 
 
 =back
@@ -1532,9 +1630,13 @@ Gets information about the specified product.
 
 =over
 
-=item Id => Str
-
 =item [AcceptLanguage => Str]
+
+=item [Id => Str]
+
+=item [Name => Str]
+
+=item [SourcePortfolioId => Str]
 
 
 =back
@@ -1569,9 +1671,11 @@ Gets information about the specified product.
 
 =over
 
-=item Id => Str
-
 =item [AcceptLanguage => Str]
+
+=item [Id => Str]
+
+=item [Name => Str]
 
 
 =back
@@ -1609,11 +1713,15 @@ Gets information about the resource changes for the specified plan.
 
 =over
 
-=item ProductId => Str
-
-=item ProvisioningArtifactId => Str
-
 =item [AcceptLanguage => Str]
+
+=item [ProductId => Str]
+
+=item [ProductName => Str]
+
+=item [ProvisioningArtifactId => Str]
+
+=item [ProvisioningArtifactName => Str]
 
 =item [Verbose => Bool]
 
@@ -1632,13 +1740,19 @@ as a version) for the specified product.
 
 =over
 
-=item ProductId => Str
-
-=item ProvisioningArtifactId => Str
-
 =item [AcceptLanguage => Str]
 
 =item [PathId => Str]
+
+=item [PathName => Str]
+
+=item [ProductId => Str]
+
+=item [ProductName => Str]
+
+=item [ProvisioningArtifactId => Str]
+
+=item [ProvisioningArtifactName => Str]
 
 
 =back
@@ -1763,8 +1877,14 @@ Disable portfolio sharing through AWS Organizations feature. This
 feature will not delete your current shares but it will prevent you
 from creating new shares throughout your organization. Current shares
 will not be in sync with your organization structure if it changes
-after calling this API. This API can only be called by the master
+after calling this API. This API can only be called by the management
 account in the organization.
+
+This API can't be invoked if there are active delegated administrators
+in the organization.
+
+Note that a delegated administrator is not authorized to invoke
+C<DisableAWSOrganizationsAccess>.
 
 
 =head2 DisassociateBudgetFromResource
@@ -1825,6 +1945,8 @@ Returns: a L<Paws::ServiceCatalog::DisassociateProductFromPortfolioOutput> insta
 
 Disassociates the specified product from the specified portfolio.
 
+A delegated admin is authorized to invoke this command.
+
 
 =head2 DisassociateServiceActionFromProvisioningArtifact
 
@@ -1881,11 +2003,14 @@ Returns: a L<Paws::ServiceCatalog::EnableAWSOrganizationsAccessOutput> instance
 Enable portfolio sharing feature through AWS Organizations. This API
 will allow Service Catalog to receive updates on your organization in
 order to sync your shares with the current structure. This API can only
-be called by the master account in the organization.
+be called by the management account in the organization.
 
 By calling this API Service Catalog will make a call to
 organizations:EnableAWSServiceAccess on your behalf so that your shares
 can be in sync with any changes in your AWS Organizations structure.
+
+Note that a delegated administrator is not authorized to invoke
+C<EnableAWSOrganizationsAccess>.
 
 
 =head2 ExecuteProvisionedProductPlan
@@ -1945,7 +2070,80 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::GetAWSOrganizat
 Returns: a L<Paws::ServiceCatalog::GetAWSOrganizationsAccessStatusOutput> instance
 
 Get the Access Status for AWS Organization portfolio share feature.
-This API can only be called by the master account in the organization.
+This API can only be called by the management account in the
+organization or by a delegated admin.
+
+
+=head2 GetProvisionedProductOutputs
+
+=over
+
+=item [AcceptLanguage => Str]
+
+=item [OutputKeys => ArrayRef[Str|Undef]]
+
+=item [PageSize => Int]
+
+=item [PageToken => Str]
+
+=item [ProvisionedProductId => Str]
+
+=item [ProvisionedProductName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::GetProvisionedProductOutputs>
+
+Returns: a L<Paws::ServiceCatalog::GetProvisionedProductOutputsOutput> instance
+
+This API takes either a C<ProvisonedProductId> or a
+C<ProvisionedProductName>, along with a list of one or more output
+keys, and responds with the key/value pairs of those outputs.
+
+
+=head2 ImportAsProvisionedProduct
+
+=over
+
+=item IdempotencyToken => Str
+
+=item PhysicalId => Str
+
+=item ProductId => Str
+
+=item ProvisionedProductName => Str
+
+=item ProvisioningArtifactId => Str
+
+=item [AcceptLanguage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::ImportAsProvisionedProduct>
+
+Returns: a L<Paws::ServiceCatalog::ImportAsProvisionedProductOutput> instance
+
+Requests the import of a resource as a Service Catalog provisioned
+product that is associated to a Service Catalog product and
+provisioning artifact. Once imported, all supported Service Catalog
+governance actions are supported on the provisioned product.
+
+Resource import only supports CloudFormation stack ARNs. CloudFormation
+StackSets and non-root nested stacks are not supported.
+
+The CloudFormation stack must have one of the following statuses to be
+imported: C<CREATE_COMPLETE>, C<UPDATE_COMPLETE>,
+C<UPDATE_ROLLBACK_COMPLETE>, C<IMPORT_COMPLETE>,
+C<IMPORT_ROLLBACK_COMPLETE>.
+
+Import of the resource requires that the CloudFormation stack template
+matches the associated Service Catalog product provisioning artifact.
+
+The user or role that performs this operation must have the
+C<cloudformation:GetTemplate> and C<cloudformation:DescribeStacks> IAM
+policy permissions.
 
 
 =head2 ListAcceptedPortfolioShares
@@ -2062,8 +2260,11 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListOrganizatio
 Returns: a L<Paws::ServiceCatalog::ListOrganizationPortfolioAccessOutput> instance
 
 Lists the organization nodes that have access to the specified
-portfolio. This API can only be called by the master account in the
-organization.
+portfolio. This API can only be called by the management account in the
+organization or by a delegated admin.
+
+If a delegated admin is de-registered, they can no longer perform this
+operation.
 
 
 =head2 ListPortfolioAccess
@@ -2088,6 +2289,10 @@ Each argument is described in detail in: L<Paws::ServiceCatalog::ListPortfolioAc
 Returns: a L<Paws::ServiceCatalog::ListPortfolioAccessOutput> instance
 
 Lists the account IDs that have access to the specified portfolio.
+
+A delegated admin can list the accounts that have access to the shared
+portfolio. Note that if a delegated admin is de-registered, they can no
+longer perform this operation.
 
 
 =head2 ListPortfolios
@@ -2361,11 +2566,7 @@ Lists the specified TagOptions or all TagOptions.
 
 =over
 
-=item ProductId => Str
-
 =item ProvisionedProductName => Str
-
-=item ProvisioningArtifactId => Str
 
 =item ProvisionToken => Str
 
@@ -2374,6 +2575,16 @@ Lists the specified TagOptions or all TagOptions.
 =item [NotificationArns => ArrayRef[Str|Undef]]
 
 =item [PathId => Str]
+
+=item [PathName => Str]
+
+=item [ProductId => Str]
+
+=item [ProductName => Str]
+
+=item [ProvisioningArtifactId => Str]
+
+=item [ProvisioningArtifactName => Str]
 
 =item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::ProvisioningParameter>]]
 
@@ -2545,6 +2756,8 @@ criteria.
 
 =item [ProvisionedProductName => Str]
 
+=item [RetainPhysicalResources => Bool]
+
 
 =back
 
@@ -2612,6 +2825,46 @@ Updates the specified portfolio.
 You cannot update a product that was shared with you.
 
 
+=head2 UpdatePortfolioShare
+
+=over
+
+=item PortfolioId => Str
+
+=item [AcceptLanguage => Str]
+
+=item [AccountId => Str]
+
+=item [OrganizationNode => L<Paws::ServiceCatalog::OrganizationNode>]
+
+=item [ShareTagOptions => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ServiceCatalog::UpdatePortfolioShare>
+
+Returns: a L<Paws::ServiceCatalog::UpdatePortfolioShareOutput> instance
+
+Updates the specified portfolio share. You can use this API to enable
+or disable TagOptions sharing for an existing portfolio share.
+
+The portfolio share cannot be updated if the C< CreatePortfolioShare>
+operation is C<IN_PROGRESS>, as the share is not available to recipient
+entities. In this case, you must wait for the portfolio share to be
+COMPLETED.
+
+You must provide the C<accountId> or organization node in the input,
+but not both.
+
+If the portfolio is shared to both an external account and an
+organization node, and both shares need to be updated, you must invoke
+C<UpdatePortfolioShare> separately for each share type.
+
+This API cannot be used for removing the portfolio share. You must use
+C<DeletePortfolioShare> API for that action.
+
+
 =head2 UpdateProduct
 
 =over
@@ -2658,13 +2911,19 @@ Updates the specified product.
 
 =item [PathId => Str]
 
+=item [PathName => Str]
+
 =item [ProductId => Str]
+
+=item [ProductName => Str]
 
 =item [ProvisionedProductId => Str]
 
 =item [ProvisionedProductName => Str]
 
 =item [ProvisioningArtifactId => Str]
+
+=item [ProvisioningArtifactName => Str]
 
 =item [ProvisioningParameters => ArrayRef[L<Paws::ServiceCatalog::UpdateProvisioningParameter>]]
 

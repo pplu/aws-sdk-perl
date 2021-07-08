@@ -78,11 +78,11 @@ network interface.
 
 =item *
 
-C<network-interface-permission.aws-account-id> - The AWS account ID.
+C<network-interface-permission.aws-account-id> - The account ID.
 
 =item *
 
-C<network-interface-permission.aws-service> - The AWS service.
+C<network-interface-permission.aws-service> - The Amazon Web Service.
 
 =item *
 

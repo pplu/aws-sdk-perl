@@ -101,10 +101,16 @@ result in an outage.
 
 =head2 MasterUserPassword => Str
 
-The password for the master user of your database. The password can
-include any printable ASCII character except "/", """, or "@".
+The password for the master user. The password can include any
+printable ASCII character except "/", """, or "@".
 
-Constraints: Must contain 8 to 41 characters.
+MyB<SQL>
+
+Constraints: Must contain from 8 to 41 characters.
+
+B<PostgreSQL>
+
+Constraints: Must contain from 8 to 128 characters.
 
 
 
@@ -190,7 +196,7 @@ your database.
 
 =head2 B<REQUIRED> RelationalDatabaseName => Str
 
-The name of your database to update.
+The name of your Lightsail database resource to update.
 
 
 

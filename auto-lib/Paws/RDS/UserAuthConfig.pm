@@ -37,9 +37,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::UserAu
 
 =head1 DESCRIPTION
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Specifies the details of authentication used by a proxy to log in as a
 specific database user.
 
@@ -60,8 +57,8 @@ to log in as a specific database user.
 
 =head2 IAMAuth => Str
 
-Whether to require or disallow AWS Identity and Access Management (IAM)
-authentication for connections to the proxy.
+Whether to require or disallow Amazon Web Services Identity and Access
+Management (IAM) authentication for connections to the proxy.
 
 
 =head2 SecretArn => Str

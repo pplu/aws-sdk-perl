@@ -1,6 +1,7 @@
 
 package Paws::EC2::DescribeNatGateways;
   use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
   has Filter => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NatGatewayIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'NatGatewayId' );
@@ -51,6 +52,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DescribeNatGateways>
 
 =head1 ATTRIBUTES
+
+
+=head2 DryRun => Bool
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 
 =head2 Filter => ArrayRef[L<Paws::EC2::Filter>]

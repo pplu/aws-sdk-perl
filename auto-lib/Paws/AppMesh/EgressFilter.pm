@@ -42,9 +42,9 @@ An object that represents the egress filter rules for a service mesh.
 
 The egress filter type. By default, the type is C<DROP_ALL>, which
 allows egress only from virtual nodes to other defined resources in the
-service mesh (and any traffic to C<*.amazonaws.com> for AWS API calls).
-You can set the egress filter type to C<ALLOW_ALL> to allow egress to
-any endpoint inside or outside of the service mesh.
+service mesh (and any traffic to C<*.amazonaws.com> for Amazon Web
+Services API calls). You can set the egress filter type to C<ALLOW_ALL>
+to allow egress to any endpoint inside or outside of the service mesh.
 
 
 

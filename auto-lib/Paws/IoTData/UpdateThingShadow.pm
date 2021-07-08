@@ -2,6 +2,7 @@
 package Paws::IoTData::UpdateThingShadow;
   use Moose;
   has Payload => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payload', required => 1);
+  has ShadowName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'name');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -30,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $data.iot = Paws->service('IoTData');
     my $UpdateThingShadowResponse = $data . iot->UpdateThingShadow(
-      Payload   => 'BlobJsonDocument',
-      ThingName => 'MyThingName',
-
+      Payload    => 'BlobJsonDocument',
+      ThingName  => 'MyThingName',
+      ShadowName => 'MyShadowName',       # OPTIONAL
     );
 
     # Results:
@@ -49,6 +50,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 =head2 B<REQUIRED> Payload => Str
 
 The state information, in JSON format.
+
+
+
+=head2 ShadowName => Str
+
+The name of the shadow.
 
 
 

@@ -1,6 +1,7 @@
 package Paws::EC2::TransitGatewayMulticastDomainAssociation;
   use Moose;
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has ResourceOwnerId => (is => 'ro', isa => 'Str', request_name => 'resourceOwnerId', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has Subnet => (is => 'ro', isa => 'Paws::EC2::SubnetAssociation', request_name => 'subnet', traits => ['NameInRequest']);
   has TransitGatewayAttachmentId => (is => 'ro', isa => 'Str', request_name => 'transitGatewayAttachmentId', traits => ['NameInRequest']);
@@ -42,6 +43,12 @@ This class has no description
 =head2 ResourceId => Str
 
 The ID of the resource.
+
+
+=head2 ResourceOwnerId => Str
+
+The ID of the AWS account that owns the transit gateway multicast
+domain association resource.
 
 
 =head2 ResourceType => Str

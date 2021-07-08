@@ -57,19 +57,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 An array that contains the IDs of all the instances that you want to
 get the health status for.
 
-If you omit C<Instances>, AWS Cloud Map returns the health status for
-all the instances that are associated with the specified service.
+If you omit C<Instances>, Cloud Map returns the health status for all
+the instances that are associated with the specified service.
 
 To get the IDs for the instances that you've registered by using a
-specified service, submit a ListInstances request.
+specified service, submit a ListInstances
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_ListInstances.html)
+request.
 
 
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want AWS Cloud Map to return
-in the response to a C<GetInstancesHealthStatus> request. If you don't
-specify a value for C<MaxResults>, AWS Cloud Map returns up to 100
+The maximum number of instances that you want Cloud Map to return in
+the response to a C<GetInstancesHealthStatus> request. If you don't
+specify a value for C<MaxResults>, Cloud Map returns up to 100
 instances.
 
 

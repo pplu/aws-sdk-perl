@@ -29,10 +29,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DeleteReplicationGroup
+    # Deletes the Amazon ElastiCache replication group my-redis-rg.
     my $DeleteReplicationGroupResult = $elasticache->DeleteReplicationGroup(
-      ReplicationGroupId      => 'MyString',
-      FinalSnapshotIdentifier => 'MyString',    # OPTIONAL
-      RetainPrimaryCluster    => 1,             # OPTIONAL
+      'ReplicationGroupId'   => 'my-redis-rg',
+      'RetainPrimaryCluster' => 0
     );
 
     # Results:

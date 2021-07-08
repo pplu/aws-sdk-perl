@@ -3,6 +3,7 @@ package Paws::CodeBuild::UpdateReportGroup;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn' , required => 1);
   has ExportConfig => (is => 'ro', isa => 'Paws::CodeBuild::ReportExportConfig', traits => ['NameInRequest'], request_name => 'exportConfig' );
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -34,12 +35,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExportConfigType => 'S3',    # values: S3, NO_EXPORT; OPTIONAL
         S3Destination    => {
           Bucket             => 'MyNonEmptyString',    # min: 1
+          BucketOwner        => 'MyString',            # OPTIONAL
           EncryptionDisabled => 1,                     # OPTIONAL
           EncryptionKey      => 'MyNonEmptyString',    # min: 1
           Packaging          => 'ZIP',         # values: ZIP, NONE; OPTIONAL
           Path               => 'MyString',    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyKeyInput',      # min: 1, max: 127; OPTIONAL
+          Value => 'MyValueInput',    # max: 255; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -75,6 +84,16 @@ C<NO_EXPORT>: The report results are not exported.
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
+
+An updated list of tag key and value pairs associated with this report
+group.
+
+These tags are available for use by Amazon Web Services services that
+support CodeBuild report group tags.
 
 
 

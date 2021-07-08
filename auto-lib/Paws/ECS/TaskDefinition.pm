@@ -4,6 +4,8 @@ package Paws::ECS::TaskDefinition;
   has Compatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'compatibilities', traits => ['NameInRequest']);
   has ContainerDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ContainerDefinition]', request_name => 'containerDefinitions', traits => ['NameInRequest']);
   has Cpu => (is => 'ro', isa => 'Str', request_name => 'cpu', traits => ['NameInRequest']);
+  has DeregisteredAt => (is => 'ro', isa => 'Str', request_name => 'deregisteredAt', traits => ['NameInRequest']);
+  has EphemeralStorage => (is => 'ro', isa => 'Paws::ECS::EphemeralStorage', request_name => 'ephemeralStorage', traits => ['NameInRequest']);
   has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has Family => (is => 'ro', isa => 'Str', request_name => 'family', traits => ['NameInRequest']);
   has InferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::ECS::InferenceAccelerator]', request_name => 'inferenceAccelerators', traits => ['NameInRequest']);
@@ -13,6 +15,8 @@ package Paws::ECS::TaskDefinition;
   has PidMode => (is => 'ro', isa => 'Str', request_name => 'pidMode', traits => ['NameInRequest']);
   has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::TaskDefinitionPlacementConstraint]', request_name => 'placementConstraints', traits => ['NameInRequest']);
   has ProxyConfiguration => (is => 'ro', isa => 'Paws::ECS::ProxyConfiguration', request_name => 'proxyConfiguration', traits => ['NameInRequest']);
+  has RegisteredAt => (is => 'ro', isa => 'Str', request_name => 'registeredAt', traits => ['NameInRequest']);
+  has RegisteredBy => (is => 'ro', isa => 'Str', request_name => 'registeredBy', traits => ['NameInRequest']);
   has RequiresAttributes => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Attribute]', request_name => 'requiresAttributes', traits => ['NameInRequest']);
   has RequiresCompatibilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'requiresCompatibilities', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest']);
@@ -62,8 +66,9 @@ Amazon ECS service or task.
 
 =head2 Compatibilities => ArrayRef[Str|Undef]
 
-The launch type to use with your task. For more information, see Amazon
-ECS Launch Types
+The task launch types the task definition validated against during task
+definition registration. For more information, see Amazon ECS launch
+types
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
@@ -117,11 +122,26 @@ values for the C<memory> parameter:
 
 
 
+=head2 DeregisteredAt => Str
+
+The Unix timestamp for when the task definition was deregistered.
+
+
+=head2 EphemeralStorage => L<Paws::ECS::EphemeralStorage>
+
+The ephemeral storage settings to use for tasks run with the task
+definition.
+
+
 =head2 ExecutionRoleArn => Str
 
-The Amazon Resource Name (ARN) of the task execution role that
-containers in this task can assume. All containers in this task are
-granted the permissions that are specified in this role.
+The Amazon Resource Name (ARN) of the task execution role that grants
+the Amazon ECS container agent permission to make AWS API calls on your
+behalf. The task execution IAM role is required depending on the
+requirements of your task. For more information, see Amazon ECS task
+execution IAM role
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Family => Str
@@ -181,21 +201,25 @@ C<systemControls> will apply to all containers within a task.
 
 =back
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.
+This parameter is not supported for Windows containers or tasks run on
+AWS Fargate.
 
 
 =head2 Memory => Str
 
 The amount (in MiB) of memory used by the task.
 
-If using the EC2 launch type, this field is optional and any value can
-be used. If a task-level memory value is specified then the
-container-level memory value is optional.
+If your tasks will be run on Amazon EC2 instances, you must specify
+either a task-level memory value or a container-level memory value.
+This field is optional and any value can be used. If a task-level
+memory value is specified then the container-level memory value is
+optional. For more information regarding container-level memory and
+memory reservation, see ContainerDefinition
+(https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_ContainerDefinition.html).
 
-If using the Fargate launch type, this field is required and you must
-use one of the following values, which determines your range of valid
-values for the C<cpu> parameter:
+If your tasks will be run on AWS Fargate, this field is required and
+you must use one of the following values, which determines your range
+of valid values for the C<cpu> parameter:
 
 =over
 
@@ -231,22 +255,27 @@ Available C<cpu> values: 4096 (4 vCPU)
 =head2 NetworkMode => Str
 
 The Docker networking mode to use for the containers in the task. The
-valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. The
-default Docker network mode is C<bridge>. If you are using the Fargate
-launch type, the C<awsvpc> network mode is required. If you are using
-the EC2 launch type, any network mode can be used. If the network mode
-is set to C<none>, you cannot specify port mappings in your container
-definitions, and the tasks containers do not have external
-connectivity. The C<host> and C<awsvpc> network modes offer the highest
-networking performance for containers because they use the EC2 network
-stack instead of the virtualized network stack provided by the
-C<bridge> mode.
+valid values are C<none>, C<bridge>, C<awsvpc>, and C<host>. If no
+network mode is specified, the default is C<bridge>.
+
+For Amazon ECS tasks on Fargate, the C<awsvpc> network mode is
+required. For Amazon ECS tasks on Amazon EC2 instances, any network
+mode can be used. If the network mode is set to C<none>, you cannot
+specify port mappings in your container definitions, and the tasks
+containers do not have external connectivity. The C<host> and C<awsvpc>
+network modes offer the highest networking performance for containers
+because they use the EC2 network stack instead of the virtualized
+network stack provided by the C<bridge> mode.
 
 With the C<host> and C<awsvpc> network modes, exposed container ports
 are mapped directly to the corresponding host port (for the C<host>
 network mode) or the attached elastic network interface port (for the
 C<awsvpc> network mode), so you cannot take advantage of dynamic host
 port mappings.
+
+When using the C<host> network mode, you should not run containers
+using the root user (UID 0). It is considered best practice to use a
+non-root user.
 
 If the network mode is C<awsvpc>, the task is allocated an elastic
 network interface, and you must specify a NetworkConfiguration value
@@ -291,14 +320,15 @@ If the C<host> PID mode is used, be aware that there is a heightened
 risk of undesired process namespace expose. For more information, see
 Docker security (https://docs.docker.com/engine/security/security/).
 
-This parameter is not supported for Windows containers or tasks using
-the Fargate launch type.
+This parameter is not supported for Windows containers or tasks run on
+AWS Fargate.
 
 
 =head2 PlacementConstraints => ArrayRef[L<Paws::ECS::TaskDefinitionPlacementConstraint>]
 
-An array of placement constraint objects to use for tasks. This field
-is not valid if you are using the Fargate launch type for your task.
+An array of placement constraint objects to use for tasks.
+
+This parameter is not supported for tasks run on AWS Fargate.
 
 
 =head2 ProxyConfiguration => L<Paws::ECS::ProxyConfiguration>
@@ -316,16 +346,36 @@ AMI
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
+=head2 RegisteredAt => Str
+
+The Unix timestamp for when the task definition was registered.
+
+
+=head2 RegisteredBy => Str
+
+The principal that registered the task definition.
+
+
 =head2 RequiresAttributes => ArrayRef[L<Paws::ECS::Attribute>]
 
-The container instance attributes required by your task. This field is
-not valid if you are using the Fargate launch type for your task.
+The container instance attributes required by your task. When an Amazon
+EC2 instance is registered to your cluster, the Amazon ECS container
+agent assigns some standard attributes to the instance. You can apply
+custom attributes, specified as key-value pairs using the Amazon ECS
+console or the PutAttributes API. These attributes are used when
+considering task placement for tasks hosted on Amazon EC2 instances.
+For more information, see Attributes
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+This parameter is not supported for tasks run on AWS Fargate.
 
 
 =head2 RequiresCompatibilities => ArrayRef[Str|Undef]
 
-The launch type the task requires. If no value is specified, it will
-default to C<EC2>. Valid values include C<EC2> and C<FARGATE>.
+The task launch types the task definition was validated against. To
+determine which task launch types the task definition is validated for,
+see the TaskDefinition$compatibilities parameter.
 
 
 =head2 Revision => Int
@@ -354,29 +404,27 @@ The short name or full Amazon Resource Name (ARN) of the AWS Identity
 and Access Management (IAM) role that grants containers in the task
 permission to call AWS APIs on your behalf. For more information, see
 Amazon ECS Task Role
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_IAM_role.html)
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-iam-roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 IAM roles for tasks on Windows require that the C<-EnableTaskIAMRole>
 option is set when you launch the Amazon ECS-optimized Windows AMI.
 Your containers must also run some configuration code in order to take
-advantage of the feature. For more information, see Windows IAM Roles
-for Tasks
+advantage of the feature. For more information, see Windows IAM roles
+for tasks
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
 
 =head2 Volumes => ArrayRef[L<Paws::ECS::Volume>]
 
-The list of volume definitions for the task.
-
-If your tasks are using the Fargate launch type, the C<host> and
-C<sourcePath> parameters are not supported.
-
-For more information about volume definition parameters and defaults,
-see Amazon ECS Task Definitions
-(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html)
+The list of data volume definitions for the task. For more information,
+see Using data volumes in tasks
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_data_volumes.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+The C<host> and C<sourcePath> parameters are not supported for tasks
+run on AWS Fargate.
 
 
 

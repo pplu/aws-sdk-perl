@@ -3,8 +3,10 @@ package Paws::ImageBuilder::AmiDistributionConfiguration;
   use Moose;
   has AmiTags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'amiTags', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
   has LaunchPermission => (is => 'ro', isa => 'Paws::ImageBuilder::LaunchPermissionConfiguration', request_name => 'launchPermission', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has TargetAccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'targetAccountIds', traits => ['NameInRequest']);
 
 1;
 
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ImageBuilder::AmiDistributionConfiguration object:
 
-  $service_obj->Method(Att1 => { AmiTags => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { AmiTags => $value, ..., TargetAccountIds => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,18 +50,29 @@ The tags to apply to AMIs distributed to this Region.
 
 =head2 Description => Str
 
-The description of the distribution configuration.
+The description of the distribution configuration. Minimum and maximum
+length are in characters.
+
+
+=head2 KmsKeyId => Str
+
+The KMS key identifier used to encrypt the distributed image.
 
 
 =head2 LaunchPermission => L<Paws::ImageBuilder::LaunchPermissionConfiguration>
 
-Launch permissions can be used to configure which AWS accounts can use
-the AMI to launch instances.
+Launch permissions can be used to configure which accounts can use the
+AMI to launch instances.
 
 
 =head2 Name => Str
 
 The name of the distribution configuration.
+
+
+=head2 TargetAccountIds => ArrayRef[Str|Undef]
+
+The ID of an account to which you want to distribute an image.
 
 
 

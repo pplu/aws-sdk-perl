@@ -71,7 +71,7 @@ The last time that this dataset was updated.
 
 =head2 Name => Str
 
-A display name for the dataset.
+A display name for the dashboard.
 
 
 =head2 Version => L<Paws::Quicksight::DashboardVersion>

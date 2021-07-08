@@ -79,8 +79,8 @@ imported portfolios.
 
 =item *
 
-C<AWS_ORGANIZATIONS> - Reject portfolios shared by the master account
-of your organization.
+C<AWS_ORGANIZATIONS> - Reject portfolios shared by the management
+account of your organization.
 
 =item *
 

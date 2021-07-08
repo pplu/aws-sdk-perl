@@ -9,6 +9,7 @@ package Paws::ECS::Container;
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has ImageDigest => (is => 'ro', isa => 'Str', request_name => 'imageDigest', traits => ['NameInRequest']);
   has LastStatus => (is => 'ro', isa => 'Str', request_name => 'lastStatus', traits => ['NameInRequest']);
+  has ManagedAgents => (is => 'ro', isa => 'ArrayRef[Paws::ECS::ManagedAgent]', request_name => 'managedAgents', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Str', request_name => 'memory', traits => ['NameInRequest']);
   has MemoryReservation => (is => 'ro', isa => 'Str', request_name => 'memoryReservation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
@@ -98,6 +99,12 @@ hosted in Amazon ECR, otherwise it is omitted.
 =head2 LastStatus => Str
 
 The last known status of the container.
+
+
+=head2 ManagedAgents => ArrayRef[L<Paws::ECS::ManagedAgent>]
+
+The details of any Amazon ECS managed agents associated with the
+container.
 
 
 =head2 Memory => Str

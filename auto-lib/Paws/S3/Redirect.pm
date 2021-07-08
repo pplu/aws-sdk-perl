@@ -70,6 +70,11 @@ C<ReplaceKeyPrefixWith> to C</documents>. Not required if one of the
 siblings is present. Can be present only if C<ReplaceKeyWith> is not
 provided.
 
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
+
 
 =head2 ReplaceKeyWith => Str
 
@@ -77,6 +82,11 @@ The specific object key to use in the redirect request. For example,
 redirect request to C<error.html>. Not required if one of the siblings
 is present. Can be present only if C<ReplaceKeyPrefixWith> is not
 provided.
+
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
 
 
 

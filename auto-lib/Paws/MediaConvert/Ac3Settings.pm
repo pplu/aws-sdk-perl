@@ -5,7 +5,9 @@ package Paws::MediaConvert::Ac3Settings;
   has BitstreamMode => (is => 'ro', isa => 'Str', request_name => 'bitstreamMode', traits => ['NameInRequest']);
   has CodingMode => (is => 'ro', isa => 'Str', request_name => 'codingMode', traits => ['NameInRequest']);
   has Dialnorm => (is => 'ro', isa => 'Int', request_name => 'dialnorm', traits => ['NameInRequest']);
+  has DynamicRangeCompressionLine => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionLine', traits => ['NameInRequest']);
   has DynamicRangeCompressionProfile => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionProfile', traits => ['NameInRequest']);
+  has DynamicRangeCompressionRf => (is => 'ro', isa => 'Str', request_name => 'dynamicRangeCompressionRf', traits => ['NameInRequest']);
   has LfeFilter => (is => 'ro', isa => 'Str', request_name => 'lfeFilter', traits => ['NameInRequest']);
   has MetadataControl => (is => 'ro', isa => 'Str', request_name => 'metadataControl', traits => ['NameInRequest']);
   has SampleRate => (is => 'ro', isa => 'Int', request_name => 'sampleRate', traits => ['NameInRequest']);
@@ -70,10 +72,44 @@ Sets the dialnorm for the output. If blank and input audio is Dolby
 Digital, dialnorm will be passed through.
 
 
+=head2 DynamicRangeCompressionLine => Str
+
+Choose the Dolby Digital dynamic range control (DRC) profile that
+MediaConvert uses when encoding the metadata in the Dolby Digital
+stream for the line operating mode. Related setting: When you use this
+setting, MediaConvert ignores any value you provide for Dynamic range
+compression profile (DynamicRangeCompressionProfile). For information
+about the Dolby Digital DRC operating modes and profiles, see the
+Dynamic Range Control chapter of the Dolby Metadata Guide at
+https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
+
+
 =head2 DynamicRangeCompressionProfile => Str
 
-If set to FILM_STANDARD, adds dynamic range compression signaling to
-the output bitstream as defined in the Dolby Digital specification.
+When you want to add Dolby dynamic range compression (DRC) signaling to
+your output stream, we recommend that you use the mode-specific
+settings instead of Dynamic range compression profile
+(DynamicRangeCompressionProfile). The mode-specific settings are
+Dynamic range compression profile, line mode
+(dynamicRangeCompressionLine) and Dynamic range compression profile, RF
+mode (dynamicRangeCompressionRf). Note that when you specify values for
+all three settings, MediaConvert ignores the value of this setting in
+favor of the mode-specific settings. If you do use this setting instead
+of the mode-specific settings, choose None (NONE) to leave out DRC
+signaling. Keep the default Film standard (FILM_STANDARD) to set the
+profile to Dolby's film standard profile for all operating modes.
+
+
+=head2 DynamicRangeCompressionRf => Str
+
+Choose the Dolby Digital dynamic range control (DRC) profile that
+MediaConvert uses when encoding the metadata in the Dolby Digital
+stream for the RF operating mode. Related setting: When you use this
+setting, MediaConvert ignores any value you provide for Dynamic range
+compression profile (DynamicRangeCompressionProfile). For information
+about the Dolby Digital DRC operating modes and profiles, see the
+Dynamic Range Control chapter of the Dolby Metadata Guide at
+https://developer.dolby.com/globalassets/professional/documents/dolby-metadata-guide.pdf.
 
 
 =head2 LfeFilter => Str

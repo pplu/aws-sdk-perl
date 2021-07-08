@@ -17,8 +17,9 @@ Paws::Macie::ListMemberAccountsResult
 
 =head2 MemberAccounts => ArrayRef[L<Paws::Macie::MemberAccount>]
 
-A list of the Amazon Macie member accounts returned by the action. The
-current master account is also included in this list.
+A list of the Amazon Macie Classic member accounts returned by the
+action. The current Macie Classic administrator account is also
+included in this list.
 
 
 =head2 NextToken => Str

@@ -4,6 +4,7 @@ package Paws::IoT::CreateRoleAlias;
   has CredentialDurationSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'credentialDurationSeconds');
   has RoleAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'roleAlias', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -34,6 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleAlias                 => 'MyRoleAlias',
       RoleArn                   => 'MyRoleArn',
       CredentialDurationSeconds => 1,               # OPTIONAL
+      Tags                      => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -64,6 +72,20 @@ role without having to update the device.
 =head2 B<REQUIRED> RoleArn => Str
 
 The role ARN.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IoT::Tag>]
+
+Metadata which can be used to manage the role alias.
+
+For URI Request parameters use format: ...key1=value1&key2=value2...
+
+For the CLI command-line parameter use format: &&tags
+"key1=value1&key2=value2..."
+
+For the cli-input-json file use format: "tags":
+"key1=value1&key2=value2..."
 
 
 

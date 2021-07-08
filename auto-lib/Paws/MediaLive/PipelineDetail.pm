@@ -3,6 +3,8 @@ package Paws::MediaLive::PipelineDetail;
   use Moose;
   has ActiveInputAttachmentName => (is => 'ro', isa => 'Str', request_name => 'activeInputAttachmentName', traits => ['NameInRequest']);
   has ActiveInputSwitchActionName => (is => 'ro', isa => 'Str', request_name => 'activeInputSwitchActionName', traits => ['NameInRequest']);
+  has ActiveMotionGraphicsActionName => (is => 'ro', isa => 'Str', request_name => 'activeMotionGraphicsActionName', traits => ['NameInRequest']);
+  has ActiveMotionGraphicsUri => (is => 'ro', isa => 'Str', request_name => 'activeMotionGraphicsUri', traits => ['NameInRequest']);
   has PipelineId => (is => 'ro', isa => 'Str', request_name => 'pipelineId', traits => ['NameInRequest']);
 
 1;
@@ -51,6 +53,18 @@ this pipeline.
 The name of the input switch schedule action that occurred most
 recently and that resulted in the switch to the current input
 attachment for this pipeline.
+
+
+=head2 ActiveMotionGraphicsActionName => Str
+
+The name of the motion graphics activate action that occurred most
+recently and that resulted in the current graphics URI for this
+pipeline.
+
+
+=head2 ActiveMotionGraphicsUri => Str
+
+The current URI being used for HTML5 motion graphics for this pipeline.
 
 
 =head2 PipelineId => Str

@@ -59,7 +59,10 @@ date, days and, whether the object has a delete marker.
 
 =head2 Filter => L<Paws::S3::LifecycleRuleFilter>
 
-
+The C<Filter> is used to identify objects that a Lifecycle Rule applies
+to. A C<Filter> must have exactly one of C<Prefix>, C<Tag>, or C<And>
+specified. C<Filter> is required if the C<LifecycleRule> does not
+containt a C<Prefix> element.
 
 
 =head2 ID => Str
@@ -86,7 +89,12 @@ lifetime.
 =head2 Prefix => Str
 
 Prefix identifying one or more objects to which the rule applies. This
-is No longer used; use C<Filter> instead.
+is no longer used; use C<Filter> instead.
+
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
 
 
 =head2 B<REQUIRED> Status => Str

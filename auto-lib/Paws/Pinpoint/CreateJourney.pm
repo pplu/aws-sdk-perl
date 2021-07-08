@@ -35,6 +35,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Name       => 'My__string',
         Activities => {
           'My__string' => {
+            CUSTOM => {
+              DeliveryUri   => 'My__string',
+              EndpointTypes => [
+                'PUSH',
+                ... # values: PUSH, GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM
+              ],    # OPTIONAL
+              MessageConfig   => { Data => 'My__string', },    # OPTIONAL
+              NextActivity    => 'My__string',
+              TemplateName    => 'My__string',
+              TemplateVersion => 'My__string',
+            },    # OPTIONAL
             ConditionalSplit => {
               Condition => {
                 Conditions => [
@@ -45,7 +56,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'My__string' => {
                             Values        => [ 'My__string', ... ],
                             AttributeType => 'INCLUSIVE'
-                            ,    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                            , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                           },
                         },    # OPTIONAL
                         EventType => {
@@ -60,7 +71,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                           },
                         },    # OPTIONAL
-                      },
+                      },    # OPTIONAL
                       MessageActivity => 'My__string',
                     },    # OPTIONAL
                     SegmentCondition => {
@@ -72,7 +83,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'My__string' => {
                           Values        => [ 'My__string', ... ],
                           AttributeType => 'INCLUSIVE'
-                          ,    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                          , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                         },
                       },    # OPTIONAL
                       Behavior => {
@@ -141,7 +152,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'My__string' => {
                           Values        => [ 'My__string', ... ],
                           AttributeType => 'INCLUSIVE'
-                          ,    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                          , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                         },
                       },    # OPTIONAL
                     },    # OPTIONAL
@@ -178,7 +189,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                           'My__string' => {
                             Values        => [ 'My__string', ... ],
                             AttributeType => 'INCLUSIVE'
-                            ,    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                            , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                           },
                         },    # OPTIONAL
                         EventType => {
@@ -193,7 +204,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                           },
                         },    # OPTIONAL
-                      },
+                      },    # OPTIONAL
                       MessageActivity => 'My__string',
                     },    # OPTIONAL
                     SegmentCondition => {
@@ -205,7 +216,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'My__string' => {
                           Values        => [ 'My__string', ... ],
                           AttributeType => 'INCLUSIVE'
-                          ,    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                          , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                         },
                       },    # OPTIONAL
                       Behavior => {
@@ -274,7 +285,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                         'My__string' => {
                           Values        => [ 'My__string', ... ],
                           AttributeType => 'INCLUSIVE'
-                          ,    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                          , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
                         },
                       },    # OPTIONAL
                     },    # OPTIONAL
@@ -289,6 +300,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 WaitUntil => 'My__string',
               },    # OPTIONAL
             },    # OPTIONAL
+            PUSH => {
+              MessageConfig   => { TimeToLive => 'My__string', },    # OPTIONAL
+              NextActivity    => 'My__string',
+              TemplateName    => 'My__string',
+              TemplateVersion => 'My__string',
+            },    # OPTIONAL
             RandomSplit => {
               Branches => [
                 {
@@ -297,6 +314,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 },
                 ...
               ],    # OPTIONAL
+            },    # OPTIONAL
+            SMS => {
+              MessageConfig => {
+                EntityId    => 'My__string',
+                MessageType => 'TRANSACTIONAL'
+                ,    # values: TRANSACTIONAL, PROMOTIONAL; OPTIONAL
+                OriginationNumber => 'My__string',
+                SenderId          => 'My__string',
+                TemplateId        => 'My__string',
+              },    # OPTIONAL
+              NextActivity    => 'My__string',
+              TemplateName    => 'My__string',
+              TemplateVersion => 'My__string',
             },    # OPTIONAL
             Wait => {
               NextActivity => 'My__string',
@@ -310,31 +340,62 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CreationDate     => 'My__string',
         LastModifiedDate => 'My__string',
         Limits           => {
-          DailyCap           => 1,
-          EndpointReentryCap => 1,
-          MessagesPerSecond  => 1,
+          DailyCap                => 1,
+          EndpointReentryCap      => 1,
+          EndpointReentryInterval => 'My__string',
+          MessagesPerSecond       => 1,
         },    # OPTIONAL
         LocalTime => 1,    # OPTIONAL
         QuietTime => {
           End   => 'My__string',
           Start => 'My__string',
         },                 # OPTIONAL
-        RefreshFrequency => 'My__string',
-        Schedule         => {
-          EndTime   => '1970-01-01T01:00:00',    # OPTIONAL
-          StartTime => '1970-01-01T01:00:00',    # OPTIONAL
+        RefreshFrequency       => 'My__string',
+        RefreshOnSegmentUpdate => 1,              # OPTIONAL
+        Schedule               => {
+          EndTime   => '1970-01-01T01:00:00',     # OPTIONAL
+          StartTime => '1970-01-01T01:00:00',     # OPTIONAL
           Timezone  => 'My__string',
         },    # OPTIONAL
         StartActivity  => 'My__string',
         StartCondition => {
-          Description           => 'My__string',
+          Description         => 'My__string',
+          EventStartCondition => {
+            EventFilter => {
+              Dimensions => {
+                Attributes => {
+                  'My__string' => {
+                    Values        => [ 'My__string', ... ],
+                    AttributeType => 'INCLUSIVE'
+                    , # values: INCLUSIVE, EXCLUSIVE, CONTAINS, BEFORE, AFTER, ON, BETWEEN; OPTIONAL
+                  },
+                },    # OPTIONAL
+                EventType => {
+                  Values        => [ 'My__string', ... ],
+                  DimensionType =>
+                    'INCLUSIVE',    # values: INCLUSIVE, EXCLUSIVE; OPTIONAL
+                },    # OPTIONAL
+                Metrics => {
+                  'My__string' => {
+                    ComparisonOperator => 'My__string',
+                    Value              => 1,
+
+                  },
+                },    # OPTIONAL
+              },    # OPTIONAL
+              FilterType => 'SYSTEM',    # values: SYSTEM, ENDPOINT
+
+            },    # OPTIONAL
+            SegmentId => 'My__string',
+          },    # OPTIONAL
           SegmentStartCondition => {
             SegmentId => 'My__string',
 
           },    # OPTIONAL
         },    # OPTIONAL
         State => 'DRAFT'
-        ,     # values: DRAFT, ACTIVE, COMPLETED, CANCELLED, CLOSED; OPTIONAL
+        , # values: DRAFT, ACTIVE, COMPLETED, CANCELLED, CLOSED, PAUSED; OPTIONAL
+        WaitForQuietTime => 1,    # OPTIONAL
       },
 
     );

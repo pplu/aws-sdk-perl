@@ -53,7 +53,12 @@ The name of the image related to a finding.
 
 =head2 LaunchedAt => Str
 
-The date and time when the container started.
+Indicates when the container started.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 =head2 Name => Str

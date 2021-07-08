@@ -2,6 +2,7 @@
 package Paws::SageMaker::AutoMLCandidate;
   use Moose;
   has CandidateName => (is => 'ro', isa => 'Str', required => 1);
+  has CandidateProperties => (is => 'ro', isa => 'Paws::SageMaker::CandidateProperties');
   has CandidateStatus => (is => 'ro', isa => 'Str', required => 1);
   has CandidateSteps => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AutoMLCandidateStep]', required => 1);
   has CreationTime => (is => 'ro', isa => 'Str', required => 1);
@@ -42,15 +43,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-An AutoPilot job will return recommendations, or candidates. Each
-candidate has futher details about the steps involed, and the status.
+An Autopilot job returns recommendations, or candidates. Each candidate
+has futher details about the steps involved and the status.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CandidateName => Str
 
-The candidate name.
+The name of the candidate.
+
+
+=head2 CandidateProperties => L<Paws::SageMaker::CandidateProperties>
+
+The AutoML candidate's properties.
 
 
 =head2 B<REQUIRED> CandidateStatus => Str
@@ -60,7 +66,7 @@ The candidate's status.
 
 =head2 B<REQUIRED> CandidateSteps => ArrayRef[L<Paws::SageMaker::AutoMLCandidateStep>]
 
-The candidate's steps.
+Information about the candidate's steps.
 
 
 =head2 B<REQUIRED> CreationTime => Str
@@ -85,7 +91,7 @@ The failure reason.
 
 =head2 InferenceContainers => ArrayRef[L<Paws::SageMaker::AutoMLContainerDefinition>]
 
-The inference containers.
+Information about the inference container definitions.
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
@@ -95,7 +101,7 @@ The last modified time.
 
 =head2 B<REQUIRED> ObjectiveStatus => Str
 
-The objective status.
+The objective's status.
 
 
 

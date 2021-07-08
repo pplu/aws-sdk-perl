@@ -119,8 +119,8 @@ require an on-premises customer provided license.
 
 B<Microsoft SQL Server>
 
-See Version and Feature Support on Amazon RDS
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.FeatureSupport)
+See Microsoft SQL Server Versions on Amazon RDS
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport)
 in the I<Amazon RDS User Guide.>
 
 

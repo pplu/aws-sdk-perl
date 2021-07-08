@@ -44,8 +44,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $HumanLoopActivationConfig =
       $DescribeFlowDefinitionResponse->HumanLoopActivationConfig;
     my $HumanLoopConfig = $DescribeFlowDefinitionResponse->HumanLoopConfig;
-    my $OutputConfig    = $DescribeFlowDefinitionResponse->OutputConfig;
-    my $RoleArn         = $DescribeFlowDefinitionResponse->RoleArn;
+    my $HumanLoopRequestSource =
+      $DescribeFlowDefinitionResponse->HumanLoopRequestSource;
+    my $OutputConfig = $DescribeFlowDefinitionResponse->OutputConfig;
+    my $RoleArn      = $DescribeFlowDefinitionResponse->RoleArn;
 
     # Returns a L<Paws::SageMaker::DescribeFlowDefinitionResponse> object.
 

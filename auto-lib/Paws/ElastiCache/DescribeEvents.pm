@@ -33,15 +33,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DescribeEvents
+    # Describes all the cache-cluster events for the past 120 minutes.
     my $EventsMessage = $elasticache->DescribeEvents(
-      Duration         => 1,                        # OPTIONAL
-      EndTime          => '1970-01-01T01:00:00',    # OPTIONAL
-      Marker           => 'MyString',               # OPTIONAL
-      MaxRecords       => 1,                        # OPTIONAL
-      SourceIdentifier => 'MyString',               # OPTIONAL
-      SourceType       => 'cache-cluster',          # OPTIONAL
-      StartTime        => '1970-01-01T01:00:00',    # OPTIONAL
+      'Duration'   => 360,
+      'SourceType' => 'cache-cluster'
     );
+
+    # Results:
+    my $Events = $EventsMessage->Events;
+    my $Marker = $EventsMessage->Marker;
+
+# Returns a L<Paws::ElastiCache::EventsMessage> object.
+# DescribeEvents
+# Describes all the replication-group events from 3:00P to 5:00P on November 11,
+# 2016.
+    my $EventsMessage =
+      $elasticache->DescribeEvents( 'StartTime' => '2016-12-22T15:00:00.000Z' );
 
     # Results:
     my $Events = $EventsMessage->Events;
@@ -104,7 +112,7 @@ not specified, all sources are included in the response.
 The event source to retrieve events for. If no value is specified, all
 events are returned.
 
-Valid values are: C<"cache-cluster">, C<"cache-parameter-group">, C<"cache-security-group">, C<"cache-subnet-group">, C<"replication-group">
+Valid values are: C<"cache-cluster">, C<"cache-parameter-group">, C<"cache-security-group">, C<"cache-subnet-group">, C<"replication-group">, C<"user">, C<"user-group">
 
 =head2 StartTime => Str
 

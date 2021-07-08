@@ -3,6 +3,7 @@ package Paws::EC2::CreateSnapshot;
   use Moose;
   has Description => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
+  has OutpostArn => (is => 'ro', isa => 'Str');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has VolumeId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -68,6 +69,39 @@ Checks whether you have the required permissions for the action,
 without actually making the request, and provides an error response. If
 you have the required permissions, the error response is
 C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
+
+
+=head2 OutpostArn => Str
+
+The Amazon Resource Name (ARN) of the AWS Outpost on which to create a
+local snapshot.
+
+=over
+
+=item *
+
+To create a snapshot of a volume in a Region, omit this parameter. The
+snapshot is created in the same Region as the volume.
+
+=item *
+
+To create a snapshot of a volume on an Outpost and store the snapshot
+in the Region, omit this parameter. The snapshot is created in the
+Region for the Outpost.
+
+=item *
+
+To create a snapshot of a volume on an Outpost and store the snapshot
+on an Outpost, specify the ARN of the destination Outpost. The snapshot
+must be created on the same Outpost as the volume.
+
+=back
+
+For more information, see Creating local snapshots from volumes on an
+Outpost
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#create-snapshot)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 

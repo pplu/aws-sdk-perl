@@ -3,7 +3,7 @@ package Paws::AppStream::CreateDirectoryConfig;
   use Moose;
   has DirectoryName => (is => 'ro', isa => 'Str', required => 1);
   has OrganizationalUnitDistinguishedNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
-  has ServiceAccountCredentials => (is => 'ro', isa => 'Paws::AppStream::ServiceAccountCredentials', required => 1);
+  has ServiceAccountCredentials => (is => 'ro', isa => 'Paws::AppStream::ServiceAccountCredentials');
 
   use MooseX::ClassAttribute;
 
@@ -38,8 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         AccountName     => 'MyAccountName',             # min: 1
         AccountPassword => 'MyAccountPassword',         # min: 1, max: 127
 
-      },
-
+      },    # OPTIONAL
     );
 
     # Results:
@@ -67,7 +66,7 @@ accounts.
 
 
 
-=head2 B<REQUIRED> ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
+=head2 ServiceAccountCredentials => L<Paws::AppStream::ServiceAccountCredentials>
 
 The credentials for the service account used by the fleet or image
 builder to connect to the directory.

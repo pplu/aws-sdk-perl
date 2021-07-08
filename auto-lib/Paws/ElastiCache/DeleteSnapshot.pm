@@ -27,10 +27,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    my $DeleteSnapshotResult = $elasticache->DeleteSnapshot(
-      SnapshotName => 'MyString',
-
-    );
+    # DeleteSnapshot
+    # Deletes the Redis snapshot snapshot-20160822.
+    my $DeleteSnapshotResult =
+      $elasticache->DeleteSnapshot( 'SnapshotName' => 'snapshot-20161212' );
 
     # Results:
     my $Snapshot = $DeleteSnapshotResult->Snapshot;

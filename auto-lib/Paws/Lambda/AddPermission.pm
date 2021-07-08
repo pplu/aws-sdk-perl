@@ -36,15 +36,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-  # add-permission
-  # This example adds a permission for an S3 bucket to invoke a Lambda function.
+    # To grant Amazon S3 permission to invoke a function
+    # The following example adds permission for Amazon S3 to invoke a Lambda
+    # function named my-function for notifications from a bucket named
+    # my-bucket-1xpuxmplzrlbh in account 123456789012.
     my $AddPermissionResponse = $lambda->AddPermission(
       'Action'        => 'lambda:InvokeFunction',
-      'FunctionName'  => 'MyFunction',
+      'FunctionName'  => 'my-function',
       'Principal'     => 's3.amazonaws.com',
       'SourceAccount' => 123456789012,
-      'SourceArn'     => 'arn:aws:s3:::examplebucket/*',
-      'StatementId'   => 'ID-1'
+      'SourceArn'     => 'arn:aws:s3:::my-bucket-1xpuxmplzrlbh/*',
+      'StatementId'   => 's3'
+    );
+
+    # Results:
+    my $Statement = $AddPermissionResponse->Statement;
+
+# Returns a L<Paws::Lambda::AddPermissionResponse> object.
+# To grant another account permission to invoke a function
+# The following example adds permission for account 223456789012 invoke a Lambda
+# function named my-function.
+    my $AddPermissionResponse = $lambda->AddPermission(
+      'Action'       => 'lambda:InvokeFunction',
+      'FunctionName' => 'my-function',
+      'Principal'    => 223456789012,
+      'StatementId'  => 'xaccount'
     );
 
     # Results:
@@ -104,9 +120,9 @@ function name, it is limited to 64 characters in length.
 
 =head2 B<REQUIRED> Principal => Str
 
-The AWS service or account that invokes the function. If you specify a
-service, use C<SourceArn> or C<SourceAccount> to limit who can invoke
-the function through that service.
+The Amazon Web Services service or account that invokes the function.
+If you specify a service, use C<SourceArn> or C<SourceAccount> to limit
+who can invoke the function through that service.
 
 
 
@@ -127,19 +143,18 @@ since you last read it.
 
 =head2 SourceAccount => Str
 
-For AWS services, the ID of the account that owns the resource. Use
-this instead of C<SourceArn> to grant permission to resources that are
-owned by another account (for example, all of an account's Amazon S3
-buckets). Or use it together with C<SourceArn> to ensure that the
-resource is owned by the specified account. For example, an Amazon S3
-bucket could be deleted by its owner and recreated by another account.
+For Amazon S3, the ID of the account that owns the resource. Use this
+together with C<SourceArn> to ensure that the resource is owned by the
+specified account. It is possible for an Amazon S3 bucket to be deleted
+by its owner and recreated by another account.
 
 
 
 =head2 SourceArn => Str
 
-For AWS services, the ARN of the AWS resource that invokes the
-function. For example, an Amazon S3 bucket or Amazon SNS topic.
+For Amazon Web Services services, the ARN of the Amazon Web Services
+resource that invokes the function. For example, an Amazon S3 bucket or
+Amazon SNS topic.
 
 
 

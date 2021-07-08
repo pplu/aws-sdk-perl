@@ -64,6 +64,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateCacheSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateGlobalReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReplicationGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateReplicationGroup', @_);
@@ -72,6 +77,21 @@ package Paws::ElastiCache;
   sub CreateSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateUserGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::CreateUserGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DecreaseNodeGroupsInGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DecreaseNodeGroupsInGlobalReplicationGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DecreaseReplicaCount {
@@ -99,6 +119,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteCacheSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteGlobalReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteReplicationGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteReplicationGroup', @_);
@@ -107,6 +132,16 @@ package Paws::ElastiCache;
   sub DeleteSnapshot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteSnapshot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUserGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DeleteUserGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeCacheClusters {
@@ -149,6 +184,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeGlobalReplicationGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeGlobalReplicationGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeReplicationGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeReplicationGroups', @_);
@@ -177,6 +217,31 @@ package Paws::ElastiCache;
   sub DescribeUpdateActions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeUpdateActions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUserGroups {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeUserGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DescribeUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::DisassociateGlobalReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub FailoverGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::FailoverGlobalReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub IncreaseNodeGroupsInGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::IncreaseNodeGroupsInGlobalReplicationGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub IncreaseReplicaCount {
@@ -209,6 +274,11 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyCacheSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyGlobalReplicationGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyReplicationGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyReplicationGroup', @_);
@@ -219,9 +289,24 @@ package Paws::ElastiCache;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyReplicationGroupShardConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyUserGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::ModifyUserGroup', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PurchaseReservedCacheNodesOffering {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ElastiCache::PurchaseReservedCacheNodesOffering', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RebalanceSlotsInGlobalReplicationGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ElastiCache::RebalanceSlotsInGlobalReplicationGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RebootCacheCluster {
@@ -439,6 +524,29 @@ package Paws::ElastiCache;
 
     return undef
   }
+  sub DescribeAllGlobalReplicationGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeGlobalReplicationGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeGlobalReplicationGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->GlobalReplicationGroups }, @{ $next_result->GlobalReplicationGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'GlobalReplicationGroups') foreach (@{ $result->GlobalReplicationGroups });
+        $result = $self->DescribeGlobalReplicationGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'GlobalReplicationGroups') foreach (@{ $result->GlobalReplicationGroups });
+    }
+
+    return undef
+  }
   sub DescribeAllReplicationGroups {
     my $self = shift;
 
@@ -577,9 +685,55 @@ package Paws::ElastiCache;
 
     return undef
   }
+  sub DescribeAllUserGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeUserGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeUserGroups(@_, Marker => $next_result->Marker);
+        push @{ $result->UserGroups }, @{ $next_result->UserGroups };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'UserGroups') foreach (@{ $result->UserGroups });
+        $result = $self->DescribeUserGroups(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'UserGroups') foreach (@{ $result->UserGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllUsers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeUsers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeUsers(@_, Marker => $next_result->Marker);
+        push @{ $result->Users }, @{ $next_result->Users };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'Users') foreach (@{ $result->Users });
+        $result = $self->DescribeUsers(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'Users') foreach (@{ $result->Users });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress BatchApplyUpdateAction BatchStopUpdateAction CompleteMigration CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateReplicationGroup CreateSnapshot DecreaseReplicaCount DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteReplicationGroup DeleteSnapshot DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeServiceUpdates DescribeSnapshots DescribeUpdateActions IncreaseReplicaCount ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration PurchaseReservedCacheNodesOffering RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress StartMigration TestFailover / }
+  sub operations { qw/AddTagsToResource AuthorizeCacheSecurityGroupIngress BatchApplyUpdateAction BatchStopUpdateAction CompleteMigration CopySnapshot CreateCacheCluster CreateCacheParameterGroup CreateCacheSecurityGroup CreateCacheSubnetGroup CreateGlobalReplicationGroup CreateReplicationGroup CreateSnapshot CreateUser CreateUserGroup DecreaseNodeGroupsInGlobalReplicationGroup DecreaseReplicaCount DeleteCacheCluster DeleteCacheParameterGroup DeleteCacheSecurityGroup DeleteCacheSubnetGroup DeleteGlobalReplicationGroup DeleteReplicationGroup DeleteSnapshot DeleteUser DeleteUserGroup DescribeCacheClusters DescribeCacheEngineVersions DescribeCacheParameterGroups DescribeCacheParameters DescribeCacheSecurityGroups DescribeCacheSubnetGroups DescribeEngineDefaultParameters DescribeEvents DescribeGlobalReplicationGroups DescribeReplicationGroups DescribeReservedCacheNodes DescribeReservedCacheNodesOfferings DescribeServiceUpdates DescribeSnapshots DescribeUpdateActions DescribeUserGroups DescribeUsers DisassociateGlobalReplicationGroup FailoverGlobalReplicationGroup IncreaseNodeGroupsInGlobalReplicationGroup IncreaseReplicaCount ListAllowedNodeTypeModifications ListTagsForResource ModifyCacheCluster ModifyCacheParameterGroup ModifyCacheSubnetGroup ModifyGlobalReplicationGroup ModifyReplicationGroup ModifyReplicationGroupShardConfiguration ModifyUser ModifyUserGroup PurchaseReservedCacheNodesOffering RebalanceSlotsInGlobalReplicationGroup RebootCacheCluster RemoveTagsFromResource ResetCacheParameterGroup RevokeCacheSecurityGroupIngress StartMigration TestFailover / }
 
 1;
 
@@ -642,17 +796,23 @@ Each argument is described in detail in: L<Paws::ElastiCache::AddTagsToResource>
 
 Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
-Adds up to 50 cost allocation tags to the named resource. A cost
-allocation tag is a key-value pair where the key and value are
-case-sensitive. You can use cost allocation tags to categorize and
-track your AWS costs.
+A tag is a key-value pair where the key and value are case-sensitive.
+You can use tags to categorize and track all your ElastiCache
+resources, with the exception of global replication group. When you add
+or remove tags on replication groups, those actions will be replicated
+to all nodes in the replication group. For more information, see
+Resource-level permissions
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 
-When you apply tags to your ElastiCache resources, AWS generates a cost
-allocation report as a comma-separated value (CSV) file with your usage
-and costs aggregated by your tags. You can apply tags that represent
-business categories (such as cost centers, application names, or
-owners) to organize your costs across multiple services. For more
-information, see Using Cost Allocation Tags in Amazon ElastiCache
+For example, you can use cost-allocation tags to your ElastiCache
+resources, AWS generates a cost allocation report as a comma-separated
+value (CSV) file with your usage and costs aggregated by your tags. You
+can apply tags that represent business categories (such as cost
+centers, application names, or owners) to organize your costs across
+multiple services.
+
+For more information, see Using Cost Allocation Tags in Amazon
+ElastiCache
 (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html)
 in the I<ElastiCache User Guide>.
 
@@ -753,6 +913,8 @@ Complete the migration of data.
 =item TargetSnapshotName => Str
 
 =item [KmsKeyId => Str]
+
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
 
 =item [TargetBucket => Str]
 
@@ -888,9 +1050,13 @@ in the ElastiCache User Guide.
 
 =item [EngineVersion => Str]
 
+=item [LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]]
+
 =item [NotificationTopicArn => Str]
 
 =item [NumCacheNodes => Int]
+
+=item [OutpostMode => Str]
 
 =item [Port => Int]
 
@@ -899,6 +1065,10 @@ in the ElastiCache User Guide.
 =item [PreferredAvailabilityZones => ArrayRef[Str|Undef]]
 
 =item [PreferredMaintenanceWindow => Str]
+
+=item [PreferredOutpostArn => Str]
+
+=item [PreferredOutpostArns => ArrayRef[Str|Undef]]
 
 =item [ReplicationGroupId => Str]
 
@@ -937,6 +1107,8 @@ clusters.
 =item CacheParameterGroupName => Str
 
 =item Description => Str
+
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
 
 
 =back
@@ -981,6 +1153,8 @@ in the ElastiCache User Guide.
 
 =item Description => Str
 
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
 
 =back
 
@@ -1008,6 +1182,8 @@ For more information, see CreateCacheSubnetGroup
 
 =item SubnetIds => ArrayRef[Str|Undef]
 
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
 
 =back
 
@@ -1019,6 +1195,47 @@ Creates a new cache subnet group.
 
 Use this parameter only when you are creating a cluster in an Amazon
 Virtual Private Cloud (Amazon VPC).
+
+
+=head2 CreateGlobalReplicationGroup
+
+=over
+
+=item GlobalReplicationGroupIdSuffix => Str
+
+=item PrimaryReplicationGroupId => Str
+
+=item [GlobalReplicationGroupDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::CreateGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::CreateGlobalReplicationGroupResult> instance
+
+Global Datastore for Redis offers fully managed, fast, reliable and
+secure cross-region replication. Using Global Datastore for Redis, you
+can create cross-region read replica clusters for ElastiCache for Redis
+to enable low-latency reads and disaster recovery across regions. For
+more information, see Replication Across Regions Using Global Datastore
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
+
+=over
+
+=item *
+
+The B<GlobalReplicationGroupIdSuffix> is the name of the Global
+datastore.
+
+=item *
+
+The B<PrimaryReplicationGroupId> represents the name of the primary
+cluster that accepts writes and will replicate updates to the secondary
+cluster.
+
+=back
+
 
 
 =head2 CreateReplicationGroup
@@ -1049,7 +1266,13 @@ Virtual Private Cloud (Amazon VPC).
 
 =item [EngineVersion => Str]
 
+=item [GlobalReplicationGroupId => Str]
+
 =item [KmsKeyId => Str]
+
+=item [LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]]
+
+=item [MultiAZEnabled => Bool]
 
 =item [NodeGroupConfiguration => ArrayRef[L<Paws::ElastiCache::NodeGroupConfiguration>]]
 
@@ -1083,6 +1306,8 @@ Virtual Private Cloud (Amazon VPC).
 
 =item [TransitEncryptionEnabled => Bool]
 
+=item [UserGroupIds => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -1093,27 +1318,43 @@ Returns: a L<Paws::ElastiCache::CreateReplicationGroupResult> instance
 Creates a Redis (cluster mode disabled) or a Redis (cluster mode
 enabled) replication group.
 
+This API can be used to create a standalone regional replication group
+or a secondary replication group associated with a Global datastore.
+
 A Redis (cluster mode disabled) replication group is a collection of
 clusters, where one of the clusters is a read/write primary and the
 others are read-only replicas. Writes to the primary are asynchronously
 propagated to the replicas.
 
-A Redis (cluster mode enabled) replication group is a collection of 1
-to 90 node groups (shards). Each node group (shard) has one read/write
-primary node and up to 5 read-only replica nodes. Writes to the primary
-are asynchronously propagated to the replicas. Redis (cluster mode
-enabled) replication groups partition the data across node groups
-(shards).
+A Redis cluster-mode enabled cluster is comprised of from 1 to 90
+shards (API/CLI: node groups). Each shard has a primary node and up to
+5 read-only replica nodes. The configuration can range from 90 shards
+and 0 replicas to 15 shards and 5 replicas, which is the maximum number
+or replicas allowed.
+
+The node or shard limit can be increased to a maximum of 500 per
+cluster if the Redis engine version is 5.0.6 or higher. For example,
+you can choose to configure a 500 node cluster that ranges between 83
+shards (one primary and 5 replicas per shard) and 500 shards (single
+primary and no replicas). Make sure there are enough available IP
+addresses to accommodate the increase. Common pitfalls include the
+subnets in the subnet group have too small a CIDR range or the subnets
+are shared and heavily used by other clusters. For more information,
+see Creating a Subnet Group
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/SubnetGroups.Creating.html).
+For versions below 5.0.6, the limit is 250 per cluster.
+
+To request a limit increase, see AWS Service Limits
+(https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html)
+and choose the limit type B<Nodes per cluster per instance type>.
 
 When a Redis (cluster mode disabled) replication group has been
 successfully created, you can add one or more read replicas to it, up
-to a total of 5 read replicas. You cannot alter a Redis (cluster mode
-enabled) replication group after it has been created. However, if you
-need to increase or decrease the number of node groups (console:
-shards), you can avail yourself of ElastiCache for Redis' enhanced
-backup and restore. For more information, see Restoring From a Backup
-with Cluster Resizing
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/backups-restoring.html)
+to a total of 5 read replicas. If you need to increase or decrease the
+number of node groups (console: shards), you can avail yourself of
+ElastiCache for Redis' scaling. For more information, see Scaling
+ElastiCache for Redis Clusters
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.html)
 in the I<ElastiCache User Guide>.
 
 This operation is valid for Redis only.
@@ -1131,6 +1372,8 @@ This operation is valid for Redis only.
 
 =item [ReplicationGroupId => Str]
 
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
 
 =back
 
@@ -1142,6 +1385,84 @@ Creates a copy of an entire cluster or replication group at a specific
 moment in time.
 
 This operation is valid for Redis only.
+
+
+=head2 CreateUser
+
+=over
+
+=item AccessString => Str
+
+=item Engine => Str
+
+=item UserId => Str
+
+=item UserName => Str
+
+=item [NoPasswordRequired => Bool]
+
+=item [Passwords => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::CreateUser>
+
+Returns: a L<Paws::ElastiCache::User> instance
+
+For Redis engine version 6.x onwards: Creates a Redis user. For more
+information, see Using Role Based Access Control (RBAC)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+
+
+=head2 CreateUserGroup
+
+=over
+
+=item Engine => Str
+
+=item UserGroupId => Str
+
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
+=item [UserIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::CreateUserGroup>
+
+Returns: a L<Paws::ElastiCache::UserGroup> instance
+
+For Redis engine version 6.x onwards: Creates a Redis user group. For
+more information, see Using Role Based Access Control (RBAC)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
+
+
+=head2 DecreaseNodeGroupsInGlobalReplicationGroup
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item GlobalReplicationGroupId => Str
+
+=item NodeGroupCount => Int
+
+=item [GlobalNodeGroupsToRemove => ArrayRef[Str|Undef]]
+
+=item [GlobalNodeGroupsToRetain => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DecreaseNodeGroupsInGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::DecreaseNodeGroupsInGlobalReplicationGroupResult> instance
+
+Decreases the number of node groups in a Global datastore
 
 
 =head2 DecreaseReplicaCount
@@ -1165,7 +1486,7 @@ Each argument is described in detail in: L<Paws::ElastiCache::DecreaseReplicaCou
 
 Returns: a L<Paws::ElastiCache::DecreaseReplicaCountResult> instance
 
-Dynamically decreases the number of replics in a Redis (cluster mode
+Dynamically decreases the number of replicas in a Redis (cluster mode
 disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.
@@ -1202,7 +1523,15 @@ Redis (cluster mode enabled) clusters
 
 =item *
 
+Redis (cluster mode disabled) clusters
+
+=item *
+
 A cluster that is the last read replica of a replication group
+
+=item *
+
+A cluster that is the primary node of a replication group
 
 =item *
 
@@ -1234,7 +1563,8 @@ Each argument is described in detail in: L<Paws::ElastiCache::DeleteCacheParamet
 Returns: nothing
 
 Deletes the specified cache parameter group. You cannot delete a cache
-parameter group if it is associated with any cache clusters.
+parameter group if it is associated with any cache clusters. You cannot
+delete the default cache parameter groups in your account.
 
 
 =head2 DeleteCacheSecurityGroup
@@ -1271,8 +1601,52 @@ Returns: nothing
 
 Deletes a cache subnet group.
 
-You cannot delete a cache subnet group if it is associated with any
-clusters.
+You cannot delete a default cache subnet group or one that is
+associated with any clusters.
+
+
+=head2 DeleteGlobalReplicationGroup
+
+=over
+
+=item GlobalReplicationGroupId => Str
+
+=item RetainPrimaryReplicationGroup => Bool
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::DeleteGlobalReplicationGroupResult> instance
+
+Deleting a Global datastore is a two-step process:
+
+=over
+
+=item *
+
+First, you must DisassociateGlobalReplicationGroup to remove the
+secondary clusters in the Global datastore.
+
+=item *
+
+Once the Global datastore contains only the primary cluster, you can
+use the C<DeleteGlobalReplicationGroup> API to delete the Global
+datastore while retainining the primary cluster using
+C<RetainPrimaryReplicationGroup=true>.
+
+=back
+
+Since the Global Datastore has only a primary cluster, you can delete
+the Global Datastore while retaining the primary by setting
+C<RetainPrimaryReplicationGroup=true>. The primary cluster is never
+deleted when deleting a Global Datastore. It can only be deleted when
+it no longer is associated with any Global Datastore.
+
+When you receive a successful response from this operation, Amazon
+ElastiCache immediately begins deleting the selected resources; you
+cannot cancel or revert this operation.
 
 
 =head2 DeleteReplicationGroup
@@ -1323,6 +1697,46 @@ from this operation, ElastiCache immediately begins deleting the
 snapshot; you cannot cancel or revert this operation.
 
 This operation is valid for Redis only.
+
+
+=head2 DeleteUser
+
+=over
+
+=item UserId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteUser>
+
+Returns: a L<Paws::ElastiCache::User> instance
+
+For Redis engine version 6.x onwards: Deletes a user. The user will be
+removed from all user groups and in turn removed from all replication
+groups. For more information, see Using Role Based Access Control
+(RBAC)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
+
+
+=head2 DeleteUserGroup
+
+=over
+
+=item UserGroupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DeleteUserGroup>
+
+Returns: a L<Paws::ElastiCache::UserGroup> instance
+
+For Redis engine version 6.x onwards: Deletes a user group. The user
+group must first be disassociated from the replication group before it
+can be deleted. For more information, see Using Role Based Access
+Control (RBAC)
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
 
 
 =head2 DescribeCacheClusters
@@ -1544,6 +1958,30 @@ returned; however, you can retrieve up to 14 days' worth of events if
 necessary.
 
 
+=head2 DescribeGlobalReplicationGroups
+
+=over
+
+=item [GlobalReplicationGroupId => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ShowMemberInfo => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeGlobalReplicationGroups>
+
+Returns: a L<Paws::ElastiCache::DescribeGlobalReplicationGroupsResult> instance
+
+Returns information about a particular global replication group. If no
+identifier is specified, returns information about all Global
+datastores.
+
+
 =head2 DescribeReplicationGroups
 
 =over
@@ -1716,6 +2154,117 @@ Returns: a L<Paws::ElastiCache::UpdateActionsMessage> instance
 Returns details of the update actions
 
 
+=head2 DescribeUserGroups
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [UserGroupId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeUserGroups>
+
+Returns: a L<Paws::ElastiCache::DescribeUserGroupsResult> instance
+
+Returns a list of user groups.
+
+
+=head2 DescribeUsers
+
+=over
+
+=item [Engine => Str]
+
+=item [Filters => ArrayRef[L<Paws::ElastiCache::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [UserId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DescribeUsers>
+
+Returns: a L<Paws::ElastiCache::DescribeUsersResult> instance
+
+Returns a list of users.
+
+
+=head2 DisassociateGlobalReplicationGroup
+
+=over
+
+=item GlobalReplicationGroupId => Str
+
+=item ReplicationGroupId => Str
+
+=item ReplicationGroupRegion => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::DisassociateGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::DisassociateGlobalReplicationGroupResult> instance
+
+Remove a secondary cluster from the Global datastore using the Global
+datastore name. The secondary cluster will no longer receive updates
+from the primary cluster, but will remain as a standalone cluster in
+that AWS region.
+
+
+=head2 FailoverGlobalReplicationGroup
+
+=over
+
+=item GlobalReplicationGroupId => Str
+
+=item PrimaryRegion => Str
+
+=item PrimaryReplicationGroupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::FailoverGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::FailoverGlobalReplicationGroupResult> instance
+
+Used to failover the primary region to a selected secondary region. The
+selected secondary region will become primary, and all other clusters
+will become secondary.
+
+
+=head2 IncreaseNodeGroupsInGlobalReplicationGroup
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item GlobalReplicationGroupId => Str
+
+=item NodeGroupCount => Int
+
+=item [RegionalConfigurations => ArrayRef[L<Paws::ElastiCache::RegionalConfiguration>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::IncreaseNodeGroupsInGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::IncreaseNodeGroupsInGlobalReplicationGroupResult> instance
+
+Increase the number of node groups in the Global datastore
+
+
 =head2 IncreaseReplicaCount
 
 =over
@@ -1735,7 +2284,7 @@ Each argument is described in detail in: L<Paws::ElastiCache::IncreaseReplicaCou
 
 Returns: a L<Paws::ElastiCache::IncreaseReplicaCountResult> instance
 
-Dynamically increases the number of replics in a Redis (cluster mode
+Dynamically increases the number of replicas in a Redis (cluster mode
 disabled) replication group or the number of replica nodes in one or
 more node groups (shards) of a Redis (cluster mode enabled) replication
 group. This operation is performed with no cluster down time.
@@ -1778,17 +2327,18 @@ Each argument is described in detail in: L<Paws::ElastiCache::ListTagsForResourc
 
 Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
-Lists all cost allocation tags currently on the named resource. A
-C<cost allocation tag> is a key-value pair where the key is
-case-sensitive and the value is optional. You can use cost allocation
-tags to categorize and track your AWS costs.
+Lists all tags currently on a named resource.
+
+A tag is a key-value pair where the key and value are case-sensitive.
+You can use tags to categorize and track all your ElastiCache
+resources, with the exception of global replication group. When you add
+or remove tags on replication groups, those actions will be replicated
+to all nodes in the replication group. For more information, see
+Resource-level permissions
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 
 If the cluster is not in the I<available> state, C<ListTagsForResource>
 returns an error.
-
-You can have a maximum of 50 cost allocation tags on an ElastiCache
-resource. For more information, see Monitoring Costs with Tags
-(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Tagging.html).
 
 
 =head2 ModifyCacheCluster
@@ -1816,6 +2366,8 @@ resource. For more information, see Monitoring Costs with Tags
 =item [CacheSecurityGroupNames => ArrayRef[Str|Undef]]
 
 =item [EngineVersion => Str]
+
+=item [LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]]
 
 =item [NewAvailabilityZones => ArrayRef[Str|Undef]]
 
@@ -1885,6 +2437,34 @@ Returns: a L<Paws::ElastiCache::ModifyCacheSubnetGroupResult> instance
 Modifies an existing cache subnet group.
 
 
+=head2 ModifyGlobalReplicationGroup
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item GlobalReplicationGroupId => Str
+
+=item [AutomaticFailoverEnabled => Bool]
+
+=item [CacheNodeType => Str]
+
+=item [CacheParameterGroupName => Str]
+
+=item [EngineVersion => Str]
+
+=item [GlobalReplicationGroupDescription => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::ModifyGlobalReplicationGroupResult> instance
+
+Modifies the settings for a Global datastore.
+
+
 =head2 ModifyReplicationGroup
 
 =over
@@ -1909,6 +2489,10 @@ Modifies an existing cache subnet group.
 
 =item [EngineVersion => Str]
 
+=item [LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::LogDeliveryConfigurationRequest>]]
+
+=item [MultiAZEnabled => Bool]
+
 =item [NodeGroupId => Str]
 
 =item [NotificationTopicArn => Str]
@@ -1918,6 +2502,8 @@ Modifies an existing cache subnet group.
 =item [PreferredMaintenanceWindow => Str]
 
 =item [PrimaryClusterId => Str]
+
+=item [RemoveUserGroups => Bool]
 
 =item [ReplicationGroupDescription => Str]
 
@@ -1929,6 +2515,10 @@ Modifies an existing cache subnet group.
 
 =item [SnapshotWindow => Str]
 
+=item [UserGroupIdsToAdd => ArrayRef[Str|Undef]]
+
+=item [UserGroupIdsToRemove => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -1937,10 +2527,6 @@ Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationG
 Returns: a L<Paws::ElastiCache::ModifyReplicationGroupResult> instance
 
 Modifies the settings for a replication group.
-
-For Redis (cluster mode enabled) clusters, this operation cannot be
-used to change a cluster's node type or engine version. For more
-information, see:
 
 =over
 
@@ -1985,8 +2571,52 @@ Each argument is described in detail in: L<Paws::ElastiCache::ModifyReplicationG
 Returns: a L<Paws::ElastiCache::ModifyReplicationGroupShardConfigurationResult> instance
 
 Modifies a replication group's shards (node groups) by allowing you to
-add shards, remove shards, or rebalance the keyspaces among exisiting
+add shards, remove shards, or rebalance the keyspaces among existing
 shards.
+
+
+=head2 ModifyUser
+
+=over
+
+=item UserId => Str
+
+=item [AccessString => Str]
+
+=item [AppendAccessString => Str]
+
+=item [NoPasswordRequired => Bool]
+
+=item [Passwords => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyUser>
+
+Returns: a L<Paws::ElastiCache::User> instance
+
+Changes user password(s) and/or access string.
+
+
+=head2 ModifyUserGroup
+
+=over
+
+=item UserGroupId => Str
+
+=item [UserIdsToAdd => ArrayRef[Str|Undef]]
+
+=item [UserIdsToRemove => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::ModifyUserGroup>
+
+Returns: a L<Paws::ElastiCache::UserGroup> instance
+
+Changes the list of users that belong to the user group.
 
 
 =head2 PurchaseReservedCacheNodesOffering
@@ -1999,6 +2629,8 @@ shards.
 
 =item [ReservedCacheNodeId => Str]
 
+=item [Tags => ArrayRef[L<Paws::ElastiCache::Tag>]]
+
 
 =back
 
@@ -2006,7 +2638,32 @@ Each argument is described in detail in: L<Paws::ElastiCache::PurchaseReservedCa
 
 Returns: a L<Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult> instance
 
-Allows you to purchase a reserved cache node offering.
+Allows you to purchase a reserved cache node offering. Reserved nodes
+are not eligible for cancellation and are non-refundable. For more
+information, see Managing Costs with Reserved Nodes
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/reserved-nodes.html)
+for Redis or Managing Costs with Reserved Nodes
+(https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/reserved-nodes.html)
+for Memcached.
+
+
+=head2 RebalanceSlotsInGlobalReplicationGroup
+
+=over
+
+=item ApplyImmediately => Bool
+
+=item GlobalReplicationGroupId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ElastiCache::RebalanceSlotsInGlobalReplicationGroup>
+
+Returns: a L<Paws::ElastiCache::RebalanceSlotsInGlobalReplicationGroupResult> instance
+
+Redistribute slots to ensure uniform distribution across existing
+shards in the cluster.
 
 
 =head2 RebootCacheCluster
@@ -2062,7 +2719,13 @@ Each argument is described in detail in: L<Paws::ElastiCache::RemoveTagsFromReso
 Returns: a L<Paws::ElastiCache::TagListMessage> instance
 
 Removes the tags identified by the C<TagKeys> list from the named
-resource.
+resource. A tag is a key-value pair where the key and value are
+case-sensitive. You can use tags to categorize and track all your
+ElastiCache resources, with the exception of global replication group.
+When you add or remove tags on replication groups, those actions will
+be replicated to all nodes in the replication group. For more
+information, see Resource-level permissions
+(http://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 
 
 =head2 ResetCacheParameterGroup
@@ -2186,12 +2849,12 @@ E<lt>node-group-idE<gt>>
 
 =item 2.
 
-Cache cluster message: C<Failover from master node
+Cache cluster message: C<Failover from primary node
 E<lt>primary-node-idE<gt> to replica node E<lt>node-idE<gt> completed>
 
 =item 3.
 
-Replication group message: C<Failover from master node
+Replication group message: C<Failover from primary node
 E<lt>primary-node-idE<gt> to replica node E<lt>node-idE<gt> completed>
 
 =item 4.
@@ -2225,7 +2888,7 @@ in the ElastiCache API Reference
 
 =back
 
-Also see, Testing Multi-AZ with Automatic Failover
+Also see, Testing Multi-AZ
 (https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/AutoFailover.html#auto-failover-test)
 in the I<ElastiCache User Guide>.
 
@@ -2332,6 +2995,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::ElastiCache::EventsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllGlobalReplicationGroups(sub { },[GlobalReplicationGroupId => Str, Marker => Str, MaxRecords => Int, ShowMemberInfo => Bool])
+
+=head2 DescribeAllGlobalReplicationGroups([GlobalReplicationGroupId => Str, Marker => Str, MaxRecords => Int, ShowMemberInfo => Bool])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - GlobalReplicationGroups, passing the object as the first parameter, and the string 'GlobalReplicationGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeGlobalReplicationGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllReplicationGroups(sub { },[Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
 
 =head2 DescribeAllReplicationGroups([Marker => Str, MaxRecords => Int, ReplicationGroupId => Str])
@@ -2402,6 +3077,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - UpdateActions, passing the object as the first parameter, and the string 'UpdateActions' as the second parameter 
 
 If not, it will return a a L<Paws::ElastiCache::UpdateActionsMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllUserGroups(sub { },[Marker => Str, MaxRecords => Int, UserGroupId => Str])
+
+=head2 DescribeAllUserGroups([Marker => Str, MaxRecords => Int, UserGroupId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UserGroups, passing the object as the first parameter, and the string 'UserGroups' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeUserGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllUsers(sub { },[Engine => Str, Filters => ArrayRef[L<Paws::ElastiCache::Filter>], Marker => Str, MaxRecords => Int, UserId => Str])
+
+=head2 DescribeAllUsers([Engine => Str, Filters => ArrayRef[L<Paws::ElastiCache::Filter>], Marker => Str, MaxRecords => Int, UserId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Users, passing the object as the first parameter, and the string 'Users' as the second parameter 
+
+If not, it will return a a L<Paws::ElastiCache::DescribeUsersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

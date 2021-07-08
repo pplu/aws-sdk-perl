@@ -2,6 +2,7 @@
 package Paws::Transfer::ListedServer;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', required => 1);
+  has Domain => (is => 'ro', isa => 'Str');
   has EndpointType => (is => 'ro', isa => 'Str');
   has IdentityProviderType => (is => 'ro', isa => 'Str');
   has LoggingRole => (is => 'ro', isa => 'Str');
@@ -39,49 +40,69 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::L
 
 =head1 DESCRIPTION
 
-Returns properties of the server that was specified.
+Returns properties of a file transfer protocol-enabled server that was
+specified.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Arn => Str
 
-The unique Amazon Resource Name (ARN) for the server to be listed.
+Specifies the unique Amazon Resource Name (ARN) for a server to be
+listed.
+
+
+=head2 Domain => Str
+
+Specifies the domain of the storage system that is used for file
+transfers.
 
 
 =head2 EndpointType => Str
 
-The type of VPC endpoint that your SFTP server is connected to. If your
-SFTP server is connected to a VPC endpoint, your server isn't
+Specifies the type of VPC endpoint that your server is connected to. If
+your server is connected to a VPC endpoint, your server isn't
 accessible over the public internet.
 
 
 =head2 IdentityProviderType => Str
 
-The authentication method used to validate a user for the server that
-was specified. This can include Secure Shell (SSH), user name and
-password combinations, or your own custom authentication method. Valid
-values include C<SERVICE_MANAGED> or C<API_GATEWAY>.
+Specifies the mode of authentication for a server. The default value is
+C<SERVICE_MANAGED>, which allows you to store and access user
+credentials within the Amazon Web Services Transfer Family service.
+
+Use C<AWS_DIRECTORY_SERVICE> to provide access to Active Directory
+groups in Amazon Web Services Managed Active Directory or Microsoft
+Active Directory in your on-premises environment or in Amazon Web
+Services using AD Connectors. This option also requires you to provide
+a Directory ID using the C<IdentityProviderDetails> parameter.
+
+Use the C<API_GATEWAY> value to integrate with an identity provider of
+your choosing. The C<API_GATEWAY> setting requires you to provide an
+API Gateway endpoint URL to call for authentication using the
+C<IdentityProviderDetails> parameter.
 
 
 =head2 LoggingRole => Str
 
-The AWS Identity and Access Management entity that allows the server to
-turn on Amazon CloudWatch logging.
+Specifies the Amazon Resource Name (ARN) of the Amazon Web Services
+Identity and Access Management (IAM) role that allows a server to turn
+on Amazon CloudWatch logging for Amazon S3 or Amazon EFS events. When
+set, user activity can be viewed in your CloudWatch logs.
 
 
 =head2 ServerId => Str
 
-This value is the unique system assigned identifier for the SFTP
-servers that were listed.
+Specifies the unique system assigned identifier for the servers that
+were listed.
 
 
 =head2 State => Str
 
-This property describes the condition of the SFTP server for the server
-that was described. A value of C<ONLINE>E<gt> indicates that the server
-can accept jobs and transfer files. A C<State> value of C<OFFLINE>
-means that the server cannot perform file transfer operations.
+Specifies the condition of a server for the server that was described.
+A value of C<ONLINE> indicates that the server can accept jobs and
+transfer files. A C<State> value of C<OFFLINE> means that the server
+cannot perform file transfer operations.
 
 The states of C<STARTING> and C<STOPPING> indicate that the server is
 in an intermediate state, either not fully able to respond, or not
@@ -91,9 +112,8 @@ indicate an error condition.
 
 =head2 UserCount => Int
 
-This property is a numeric value that indicates the number of users
-that are assigned to the SFTP server you specified with the
-C<ServerId>.
+Specifies the number of users that are assigned to a server you
+specified with the C<ServerId>.
 
 
 

@@ -28,16 +28,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # AddTagsToResource
+    # Adds up to 10 tags, key/value pairs, to a cluster or snapshot resource.
     my $TagListMessage = $elasticache->AddTagsToResource(
-      ResourceName => 'MyString',
-      Tags         => [
-        {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],
+      'ResourceName' =>
+        'arn:aws:elasticache:us-east-1:1234567890:cluster:my-mem-cluster',
+      'Tags' => [
 
+        {
+          'Key'   => 'APIVersion',
+          'Value' => 20150202
+        },
+
+        {
+          'Key'   => 'Service',
+          'Value' => 'ElastiCache'
+        }
+      ]
     );
 
     # Results:
@@ -67,8 +74,9 @@ AWS Service Namespaces
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
 
-A list of cost allocation tags to be added to this resource. A tag is a
-key-value pair. A tag key must be accompanied by a tag value.
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 

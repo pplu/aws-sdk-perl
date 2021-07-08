@@ -26,6 +26,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $email = Paws->service('SES');
+    # GetAccountSendingEnabled
+    # The following example returns if sending status for an account is enabled.
+    # (true / false):
     my $GetAccountSendingEnabledResponse = $email->GetAccountSendingEnabled();
 
     # Results:

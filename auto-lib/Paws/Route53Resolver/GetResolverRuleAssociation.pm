@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> ResolverRuleAssociationId => Str
 
-The ID of the resolver rule association that you want to get
+The ID of the Resolver rule association that you want to get
 information about.
 
 

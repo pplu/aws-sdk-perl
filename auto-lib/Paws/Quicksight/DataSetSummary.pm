@@ -2,6 +2,7 @@
 package Paws::Quicksight::DataSetSummary;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has ColumnLevelPermissionRulesApplied => (is => 'ro', isa => 'Bool');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has DataSetId => (is => 'ro', isa => 'Str');
   has ImportMode => (is => 'ro', isa => 'Str');
@@ -49,6 +50,12 @@ Dataset summary.
 The Amazon Resource Name (ARN) of the dataset.
 
 
+=head2 ColumnLevelPermissionRulesApplied => Bool
+
+A value that indicates if the dataset has column level permission
+configured.
+
+
 =head2 CreatedTime => Str
 
 The time that this dataset was created.
@@ -61,7 +68,7 @@ The ID of the dataset.
 
 =head2 ImportMode => Str
 
-Indicates whether you want to import the data into SPICE.
+A value that indicates whether you want to import the data into SPICE.
 
 
 =head2 LastUpdatedTime => Str

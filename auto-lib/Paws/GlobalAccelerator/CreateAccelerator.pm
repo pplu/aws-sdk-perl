@@ -3,8 +3,10 @@ package Paws::GlobalAccelerator::CreateAccelerator;
   use Moose;
   has Enabled => (is => 'ro', isa => 'Bool');
   has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
+  has IpAddresses => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has IpAddressType => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +37,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name             => 'MyGenericString',
       Enabled          => 1,                      # OPTIONAL
       IpAddressType    => 'IPV4',                 # OPTIONAL
+      IpAddresses      => [
+        'MyIpAddress', ...                        # max: 45
+      ],    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -65,6 +78,28 @@ idempotencyE<mdash>that is, the uniquenessE<mdash>of an accelerator.
 
 
 
+=head2 IpAddresses => ArrayRef[Str|Undef]
+
+Optionally, if you've added your own IP address pool to Global
+Accelerator (BYOIP), you can choose IP addresses from your own pool to
+use for the accelerator's static IP addresses when you create an
+accelerator. You can specify one or two addresses, separated by a
+space. Do not include the /32 suffix.
+
+Only one IP address from each of your IP address ranges can be used for
+each accelerator. If you specify only one IP address from your IP
+address range, Global Accelerator assigns a second static IP address
+for the accelerator from the AWS IP address pool.
+
+Note that you can't update IP addresses for an existing accelerator. To
+change them, you must create a new accelerator with the new addresses.
+
+For more information, see Bring Your Own IP Addresses (BYOIP)
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/using-byoip.html)
+in the I<AWS Global Accelerator Developer Guide>.
+
+
+
 =head2 IpAddressType => Str
 
 The value for the address type must be IPv4.
@@ -76,6 +111,16 @@ Valid values are: C<"IPV4">
 The name of an accelerator. The name can have a maximum of 32
 characters, must contain only alphanumeric characters or hyphens (-),
 and must not begin or end with a hyphen.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::GlobalAccelerator::Tag>]
+
+Create tags for an accelerator.
+
+For more information, see Tagging in AWS Global Accelerator
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
+in the I<AWS Global Accelerator Developer Guide>.
 
 
 

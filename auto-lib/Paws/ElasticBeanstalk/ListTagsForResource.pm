@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 The Amazon Resource Name (ARN) of the resouce for which a tag list is
 requested.
 
-Must be the ARN of an Elastic Beanstalk environment.
+Must be the ARN of an Elastic Beanstalk resource.
 
 
 

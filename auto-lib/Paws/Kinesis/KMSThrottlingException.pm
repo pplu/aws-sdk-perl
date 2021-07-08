@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::KM
 
 The request was denied due to request throttling. For more information
 about throttling, see Limits
-(http://docs.aws.amazon.com/kms/latest/developerguide/limits.html#requests-per-second)
+(https://docs.aws.amazon.com/kms/latest/developerguide/limits.html#requests-per-second)
 in the I<AWS Key Management Service Developer Guide>.
 
 =head1 ATTRIBUTES

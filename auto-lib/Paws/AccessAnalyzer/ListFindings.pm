@@ -64,7 +64,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acc
 
 =head2 B<REQUIRED> AnalyzerArn => Str
 
-The ARN of the analyzer to retrieve findings from.
+The ARN of the analyzer
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-getting-started.html#permission-resources)
+to retrieve findings from.
 
 
 

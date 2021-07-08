@@ -31,20 +31,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.pricing = Paws->service('Pricing');
+    # To retrieve a list of products
+    # This operation returns a list of products that match the given criteria.
     my $GetProductsResponse = $api . pricing->GetProducts(
-      Filters => [
-        {
-          Field => 'MyString',
-          Type  => 'TERM_MATCH',    # values: TERM_MATCH
-          Value => 'MyString',
+      'Filters' => [
 
+        {
+          'Field' => 'ServiceCode',
+          'Type'  => 'TERM_MATCH',
+          'Value' => 'AmazonEC2'
         },
-        ...
-      ],    # OPTIONAL
-      FormatVersion => 'MyString',    # OPTIONAL
-      MaxResults    => 1,             # OPTIONAL
-      NextToken     => 'MyString',    # OPTIONAL
-      ServiceCode   => 'MyString',    # OPTIONAL
+
+        {
+          'Field' => 'volumeType',
+          'Type'  => 'TERM_MATCH',
+          'Value' => 'Provisioned IOPS'
+        }
+      ],
+      'FormatVersion' => 'aws_v1',
+      'MaxResults'    => 1
     );
 
     # Results:

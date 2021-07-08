@@ -4,6 +4,7 @@ package Paws::ServiceDiscovery::DiscoverInstances;
   has HealthStatus => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NamespaceName => (is => 'ro', isa => 'Str', required => 1);
+  has OptionalParameters => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
   has QueryParameters => (is => 'ro', isa => 'Paws::ServiceDiscovery::Attributes');
   has ServiceName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -32,12 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicediscovery = Paws->service('ServiceDiscovery');
     my $DiscoverInstancesResponse = $servicediscovery->DiscoverInstances(
-      NamespaceName   => 'MyNamespaceName',
-      ServiceName     => 'MyServiceName',
-      HealthStatus    => 'HEALTHY',           # OPTIONAL
-      MaxResults      => 1,                   # OPTIONAL
+      NamespaceName      => 'MyNamespaceName',
+      ServiceName        => 'MyServiceName',
+      HealthStatus       => 'HEALTHY',           # OPTIONAL
+      MaxResults         => 1,                   # OPTIONAL
+      OptionalParameters => {
+        'MyAttrKey' => 'MyAttrValue',    # key: max: 255, value: max: 1024
+      },    # OPTIONAL
       QueryParameters => {
-        'MyAttrKey' => 'MyAttrValue',         # key: max: 255, value: max: 1024
+        'MyAttrKey' => 'MyAttrValue',    # key: max: 255, value: max: 1024
       },    # OPTIONAL
     );
 
@@ -54,9 +58,33 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 HealthStatus => Str
 
-The health status of the instances that you want to discover.
+The health status of the instances that you want to discover. This
+parameter is ignored for services that don't have a health check
+configured, and all instances are returned.
 
-Valid values are: C<"HEALTHY">, C<"UNHEALTHY">, C<"ALL">
+=over
+
+=item HEALTHY
+
+Returns healthy instances.
+
+=item UNHEALTHY
+
+Returns unhealthy instances.
+
+=item ALL
+
+Returns all instances.
+
+=item HEALTHY_OR_ELSE_ALL
+
+Returns healthy instances, unless none are reporting a healthy state.
+In that case, return all instances. This is also called failing open.
+
+=back
+
+
+Valid values are: C<"HEALTHY">, C<"UNHEALTHY">, C<"ALL">, C<"HEALTHY_OR_ELSE_ALL">
 
 =head2 MaxResults => Int
 
@@ -68,17 +96,27 @@ value for C<MaxResults>, Cloud Map returns up to 100 instances.
 
 =head2 B<REQUIRED> NamespaceName => Str
 
-The name of the namespace that you specified when you registered the
-instance.
+The C<HttpName> name of the namespace. It's found in the
+C<HttpProperties> member of the C<Properties> member of the namespace.
+
+
+
+=head2 OptionalParameters => L<Paws::ServiceDiscovery::Attributes>
+
+Opportunistic filters to scope the results based on custom attributes.
+If there are instances that match both the filters specified in both
+the C<QueryParameters> parameter and this parameter, all of these
+instances are returned. Otherwise, the filters are ignored, and only
+instances that match the filters that are specified in the
+C<QueryParameters> parameter are returned.
 
 
 
 =head2 QueryParameters => L<Paws::ServiceDiscovery::Attributes>
 
-A string map that contains attributes with values that you can use to
-filter instances by any custom attribute that you specified when you
-registered the instance. Only instances that match all the specified
-key/value pairs will be returned.
+Filters to scope the results based on custom attributes for the
+instance (for example, C<{version=v1, az=1a}>). Only instances that
+match all the specified key-value pairs are returned.
 
 
 

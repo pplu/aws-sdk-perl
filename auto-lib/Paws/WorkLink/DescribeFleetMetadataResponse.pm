@@ -8,6 +8,7 @@ package Paws::WorkLink::DescribeFleetMetadataResponse;
   has FleetStatus => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has OptimizeForEndUserLocation => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'Paws::WorkLink::TagMap');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -56,6 +57,11 @@ The time that the fleet was last updated.
 The option to optimize for better performance by routing traffic
 through the closest AWS Region to users, which may be outside of your
 home Region.
+
+
+=head2 Tags => L<Paws::WorkLink::TagMap>
+
+The tags attached to the resource. A tag is a key-value pair.
 
 
 =head2 _request_id => Str

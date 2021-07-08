@@ -18,7 +18,7 @@ Paws::IoTAnalytics::ListDatastoresResponse
 
 =head2 DatastoreSummaries => ArrayRef[L<Paws::IoTAnalytics::DatastoreSummary>]
 
-A list of "DatastoreSummary" objects.
+A list of C<DatastoreSummary> objects.
 
 
 =head2 NextToken => Str

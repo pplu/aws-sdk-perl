@@ -3,6 +3,7 @@ package Paws::Athena::WorkGroupConfigurationUpdates;
   use Moose;
   has BytesScannedCutoffPerQuery => (is => 'ro', isa => 'Int');
   has EnforceWorkGroupConfiguration => (is => 'ro', isa => 'Bool');
+  has EngineVersion => (is => 'ro', isa => 'Paws::Athena::EngineVersion');
   has PublishCloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
   has RemoveBytesScannedCutoffPerQuery => (is => 'ro', isa => 'Bool');
   has RequesterPaysEnabled => (is => 'ro', isa => 'Bool');
@@ -61,6 +62,15 @@ If set to "true", the settings for the workgroup override client-side
 settings. If set to "false" client-side settings are used. For more
 information, see Workgroup Settings Override Client-Side Settings
 (https://docs.aws.amazon.com/athena/latest/ug/workgroups-settings-override.html).
+
+
+=head2 EngineVersion => L<Paws::Athena::EngineVersion>
+
+The engine version requested when a workgroup is updated. After the
+update, all queries on the workgroup run on the requested engine
+version. If no value was previously set, the default is Auto. Queries
+on the C<AmazonAthenaPreviewFunctionality> workgroup run on the preview
+engine regardless of this setting.
 
 
 =head2 PublishCloudWatchMetricsEnabled => Bool

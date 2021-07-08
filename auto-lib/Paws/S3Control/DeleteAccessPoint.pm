@@ -55,6 +55,18 @@ The account ID for the account that owns the specified access point.
 
 The name of the access point you want to delete.
 
+For using this parameter with Amazon S3 on Outposts with the REST API,
+you must specify the name and the x-amz-outpost-id as well.
+
+For using this parameter with S3 on Outposts with the AWS SDK and CLI,
+you must specify the ARN of the access point accessed in the format
+C<arn:aws:s3-outposts:E<lt>RegionE<gt>:E<lt>account-idE<gt>:outpost/E<lt>outpost-idE<gt>/accesspoint/E<lt>my-accesspoint-nameE<gt>>.
+For example, to access the access point C<reports-ap> through outpost
+C<my-outpost> owned by account C<123456789012> in Region C<us-west-2>,
+use the URL encoding of
+C<arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/accesspoint/reports-ap>.
+The value must be URL encoded.
+
 
 
 

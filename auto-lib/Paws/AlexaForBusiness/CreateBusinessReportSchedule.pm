@@ -8,6 +8,7 @@ package Paws::AlexaForBusiness::CreateBusinessReportSchedule;
   has S3BucketName => (is => 'ro', isa => 'Str');
   has S3KeyPrefix => (is => 'ro', isa => 'Str');
   has ScheduleName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -36,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateBusinessReportScheduleResponse =
       $a4b->CreateBusinessReportSchedule(
       ContentRange => {
-        Interval =>
-          'ONE_DAY',    # values: ONE_DAY, ONE_WEEK, THIRTY_DAYS; OPTIONAL
+        Interval => 'ONE_DAY',    # values: ONE_DAY, ONE_WEEK, THIRTY_DAYS
+
       },
       Format             => 'CSV',
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
@@ -47,6 +48,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       S3BucketName => 'MyCustomerS3BucketName',          # OPTIONAL
       S3KeyPrefix  => 'MyS3KeyPrefix',                   # OPTIONAL
       ScheduleName => 'MyBusinessReportScheduleName',    # OPTIONAL
+      Tags         => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
       );
 
     # Results:
@@ -103,6 +112,12 @@ The S3 key where the report is delivered.
 =head2 ScheduleName => Str
 
 The name identifier of the schedule.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags for the business report schedule.
 
 
 

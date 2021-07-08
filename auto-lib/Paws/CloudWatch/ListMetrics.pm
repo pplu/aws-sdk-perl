@@ -5,6 +5,7 @@ package Paws::CloudWatch::ListMetrics;
   has MetricName => (is => 'ro', isa => 'Str');
   has Namespace => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
+  has RecentlyActive => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,9 +39,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      MetricName => 'MyMetricName',    # OPTIONAL
-      Namespace  => 'MyNamespace',     # OPTIONAL
-      NextToken  => 'MyNextToken',     # OPTIONAL
+      MetricName     => 'MyMetricName',    # OPTIONAL
+      Namespace      => 'MyNamespace',     # OPTIONAL
+      NextToken      => 'MyNextToken',     # OPTIONAL
+      RecentlyActive => 'PT3H',            # OPTIONAL
     );
 
     # Results:
@@ -57,19 +59,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 Dimensions => ArrayRef[L<Paws::CloudWatch::DimensionFilter>]
 
-The dimensions to filter against.
+The dimensions to filter against. Only the dimensions that match
+exactly will be returned.
 
 
 
 =head2 MetricName => Str
 
-The name of the metric to filter against.
+The name of the metric to filter against. Only the metrics with names
+that match exactly will be returned.
 
 
 
 =head2 Namespace => Str
 
-The namespace to filter against.
+The metric namespace to filter against. Only the namespace that matches
+exactly will be returned.
 
 
 
@@ -79,6 +84,19 @@ The token returned by a previous call to indicate that there is more
 data available.
 
 
+
+=head2 RecentlyActive => Str
+
+To filter the results to show only metrics that have had data points
+published in the past three hours, specify this parameter with a value
+of C<PT3H>. This is the only valid value for this parameter.
+
+The results that are returned are an approximation of the value you
+specify. There is a low probability that the returned results include
+metrics with last published data as much as 40 minutes more than the
+specified time interval.
+
+Valid values are: C<"PT3H">
 
 
 =head1 SEE ALSO

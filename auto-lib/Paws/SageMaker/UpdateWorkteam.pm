@@ -36,9 +36,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MemberDefinitions => [
         {
           CognitoMemberDefinition => {
-            ClientId  => 'MyCognitoClientId',     # min: 1, max: 128
+            ClientId  => 'MyClientId',            # min: 1, max: 1024
             UserGroup => 'MyCognitoUserGroup',    # min: 1, max: 128
             UserPool  => 'MyCognitoUserPool',     # min: 1, max: 55
+
+          },    # OPTIONAL
+          OidcMemberDefinition => {
+            Groups => [
+              'MyGroup', ...    # min: 1, max: 63
+            ],    # min: 1, max: 10
 
           },    # OPTIONAL
         },
@@ -68,8 +74,32 @@ An updated description for the work team.
 
 =head2 MemberDefinitions => ArrayRef[L<Paws::SageMaker::MemberDefinition>]
 
-A list of C<MemberDefinition> objects that contain the updated work
-team members.
+A list of C<MemberDefinition> objects that contains objects that
+identify the workers that make up the work team.
+
+Workforces can be created using Amazon Cognito or your own OIDC
+Identity Provider (IdP). For private workforces created using Amazon
+Cognito use C<CognitoMemberDefinition>. For workforces created using
+your own OIDC identity provider (IdP) use C<OidcMemberDefinition>. You
+should not provide input for both of these parameters in a single
+request.
+
+For workforces created using Amazon Cognito, private work teams
+correspond to Amazon Cognito I<user groups> within the user pool used
+to create a workforce. All of the C<CognitoMemberDefinition> objects
+that make up the member definition must have the same C<ClientId> and
+C<UserPool> values. To add a Amazon Cognito user group to an existing
+worker pool, see Adding groups to a User Pool. For more information
+about user pools, see Amazon Cognito User Pools
+(https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html).
+
+For workforces created using your own OIDC IdP, specify the user groups
+that you want to include in your private work team in
+C<OidcMemberDefinition> by listing those groups in C<Groups>. Be aware
+that user groups that are already in the work team must also be listed
+in C<Groups> when you make this request to remain on the work team. If
+you do not include these user groups, they will no longer be associated
+with the work team you update.
 
 
 

@@ -1077,6 +1077,8 @@ Specifies and starts a remote access session.
 
 =item [Description => Str]
 
+=item [VpcConfig => L<Paws::DeviceFarm::TestGridVpcConfig>]
+
 
 =back
 
@@ -2131,11 +2133,11 @@ endpoint configurations in the AWS account.
 
 =over
 
-=item [OfferingId => Str]
+=item OfferingId => Str
+
+=item Quantity => Int
 
 =item [OfferingPromotionId => Str]
-
-=item [Quantity => Int]
 
 
 =back
@@ -2156,9 +2158,9 @@ invoke this operation, contact aws-devicefarm-support@amazon.com
 
 =over
 
-=item [OfferingId => Str]
+=item OfferingId => Str
 
-=item [Quantity => Int]
+=item Quantity => Int
 
 
 =back
@@ -2444,6 +2446,8 @@ name.
 =item [Description => Str]
 
 =item [Name => Str]
+
+=item [VpcConfig => L<Paws::DeviceFarm::TestGridVpcConfig>]
 
 
 =back

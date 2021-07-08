@@ -7,6 +7,7 @@ package Paws::CloudWatchEvents::PutEventsRequestEntry;
   has Resources => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Source => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
+  has TraceHeader => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchEvents::PutEventsRequestEntry object:
 
-  $service_obj->Method(Att1 => { Detail => $value, ..., Time => $value  });
+  $service_obj->Method(Att1 => { Detail => $value, ..., TraceHeader => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,40 +46,49 @@ Represents an event to be submitted.
 
 =head2 Detail => Str
 
-A valid JSON object. There is no other schema imposed. The JSON object
-can contain fields and nested subobjects.
-
-This field is required.
+A valid JSON string. There is no other schema imposed. The JSON string
+may contain fields and nested subobjects.
 
 
 =head2 DetailType => Str
 
-Free-form string used to decide which fields to expect in the event
-detail. This field is required.
+Free-form string used to decide what fields to expect in the event
+detail.
 
 
 =head2 EventBusName => Str
 
-The event bus that will receive the event. Only the rules that are
-associated with this event bus can match the event.
+The name or ARN of the event bus to receive the event. Only the rules
+that are associated with this event bus are used to match the event. If
+you omit this, the default event bus is used.
 
 
 =head2 Resources => ArrayRef[Str|Undef]
 
-AWS resources, identified by Amazon Resource Name (ARN), that the event
-primarily concerns. Any number, including zero, can be present.
+AWS resources, identified by Amazon Resource Name (ARN), which the
+event primarily concerns. Any number, including zero, may be present.
 
 
 =head2 Source => Str
 
-The source of the event. This field is required.
+The source of the event.
 
 
 =head2 Time => Str
 
-The timestamp of the event, per RFC3339
-(https://www.rfc-editor.org/rfc/rfc3339.txt). If no timestamp is
-provided, the timestamp of the PutEvents call is used.
+The time stamp of the event, per RFC3339
+(https://www.rfc-editor.org/rfc/rfc3339.txt). If no time stamp is
+provided, the time stamp of the PutEvents call is used.
+
+
+=head2 TraceHeader => Str
+
+An AWS X-Ray trade header, which is an http header (X-Amzn-Trace-Id)
+that contains the trace-id associated with the event.
+
+To learn more about X-Ray trace headers, see Tracing header
+(https://docs.aws.amazon.com/xray/latest/devguide/xray-concepts.html#xray-concepts-tracingheader)
+in the AWS X-Ray Developer Guide.
 
 
 

@@ -31,10 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $BatchPutMessageResponse = $data . iotevents->BatchPutMessage(
       Messages => [
         {
-          InputName => 'MyInputName',    # min: 1, max: 128
-          MessageId => 'MyMessageId',    # min: 1, max: 64
+          InputName => 'MyEphemeralInputName',    # min: 1, max: 128
+          MessageId => 'MyMessageId',             # min: 1, max: 64
           Payload   => 'BlobPayload',
-
+          Timestamp => {
+            TimeInMillis => 1,    # min: 1, max: 9223372036854775807; OPTIONAL
+          },    # OPTIONAL
         },
         ...
       ],

@@ -39,6 +39,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::BatchCreateAttendee', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchCreateChannelMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::BatchCreateChannelMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchCreateRoomMembership {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::BatchCreateRoomMembership', @_);
@@ -74,6 +79,21 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateAppInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateAppInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAppInstanceAdmin {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateAppInstanceAdmin', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAttendee {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateAttendee', @_);
@@ -84,14 +104,49 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateBot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateChannelBan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateChannelBan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateChannelMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateChannelMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateChannelModerator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateChannelModerator', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateMeeting {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateMeeting', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateMeetingDialOut {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateMeetingDialOut', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateMeetingWithAttendees {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateMeetingWithAttendees', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreatePhoneNumberOrder {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreatePhoneNumberOrder', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateProxySession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateProxySession', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateRoom {
@@ -102,6 +157,21 @@ package Paws::Chime;
   sub CreateRoomMembership {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::CreateRoomMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSipMediaApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateSipMediaApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSipMediaApplicationCall {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateSipMediaApplicationCall', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateSipRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::CreateSipRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateUser {
@@ -124,9 +194,54 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAppInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAppInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAppInstanceAdmin {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAppInstanceAdmin', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAppInstanceStreamingConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAppInstanceStreamingConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAttendee {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteChannelBan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteChannelBan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteChannelMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteChannelMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteChannelMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteChannelMessage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteChannelModerator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteChannelModerator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteEventsConfiguration {
@@ -144,6 +259,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeletePhoneNumber', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteProxySession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteProxySession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteRoom', @_);
@@ -154,9 +274,24 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteRoomMembership', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteSipMediaApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteSipMediaApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSipRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteSipRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteVoiceConnector {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnector', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVoiceConnectorEmergencyCallingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorEmergencyCallingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVoiceConnectorGroup {
@@ -167,6 +302,11 @@ package Paws::Chime;
   sub DeleteVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorOrigination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteVoiceConnectorProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorProxy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteVoiceConnectorStreamingConfiguration {
@@ -182,6 +322,51 @@ package Paws::Chime;
   sub DeleteVoiceConnectorTerminationCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::DeleteVoiceConnectorTerminationCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAppInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeAppInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAppInstanceAdmin {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeAppInstanceAdmin', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChannelBan {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeChannelBan', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChannelMembership {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeChannelMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChannelMembershipForAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeChannelMembershipForAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChannelModeratedByAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeChannelModeratedByAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeChannelModerator {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::DescribeChannelModerator', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisassociatePhoneNumberFromUser {
@@ -214,6 +399,16 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetAccountSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAppInstanceRetentionSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetAppInstanceRetentionSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAppInstanceStreamingConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetAppInstanceStreamingConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAttendee {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetAttendee', @_);
@@ -222,6 +417,11 @@ package Paws::Chime;
   sub GetBot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetChannelMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetChannelMessage', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetEventsConfiguration {
@@ -239,6 +439,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetMeeting', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMessagingSessionEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetMessagingSessionEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetPhoneNumber {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetPhoneNumber', @_);
@@ -254,9 +459,34 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetPhoneNumberSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetProxySession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetProxySession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRetentionSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetRetentionSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetRoom', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSipMediaApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetSipMediaApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSipMediaApplicationLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetSipMediaApplicationLoggingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetSipRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetSipRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetUser {
@@ -274,6 +504,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnector', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetVoiceConnectorEmergencyCallingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorEmergencyCallingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetVoiceConnectorGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorGroup', @_);
@@ -287,6 +522,11 @@ package Paws::Chime;
   sub GetVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorOrigination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetVoiceConnectorProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::GetVoiceConnectorProxy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetVoiceConnectorStreamingConfiguration {
@@ -314,9 +554,29 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListAccounts', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAppInstanceAdmins {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListAppInstanceAdmins', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAppInstances {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListAppInstances', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAppInstanceUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListAppInstanceUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAttendees {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListAttendees', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAttendeeTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListAttendeeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBots {
@@ -324,9 +584,49 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListBots', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListChannelBans {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannelBans', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChannelMemberships {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannelMemberships', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChannelMembershipsForAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannelMembershipsForAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChannelMessages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannelMessages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChannelModerators {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannelModerators', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChannels {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListChannelsModeratedByAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListChannelsModeratedByAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListMeetings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListMeetings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListMeetingTags {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListMeetingTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPhoneNumberOrders {
@@ -339,6 +639,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListPhoneNumbers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListProxySessions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListProxySessions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListRoomMemberships {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListRoomMemberships', @_);
@@ -347,6 +652,26 @@ package Paws::Chime;
   sub ListRooms {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::ListRooms', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSipMediaApplications {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListSipMediaApplications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSipRules {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListSipRules', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSupportedPhoneNumberCountries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListSupportedPhoneNumberCountries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::ListTagsForResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListUsers {
@@ -374,9 +699,34 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::LogoutUser', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutAppInstanceRetentionSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutAppInstanceRetentionSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAppInstanceStreamingConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutAppInstanceStreamingConfigurations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEventsConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutEventsConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRetentionSettings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutRetentionSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutSipMediaApplicationLoggingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutSipMediaApplicationLoggingConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutVoiceConnectorEmergencyCallingConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorEmergencyCallingConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutVoiceConnectorLoggingConfiguration {
@@ -387,6 +737,11 @@ package Paws::Chime;
   sub PutVoiceConnectorOrigination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorOrigination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutVoiceConnectorProxy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorProxy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutVoiceConnectorStreamingConfiguration {
@@ -402,6 +757,21 @@ package Paws::Chime;
   sub PutVoiceConnectorTerminationCredentials {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::PutVoiceConnectorTerminationCredentials', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RedactChannelMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::RedactChannelMessage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RedactConversationMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::RedactConversationMessage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RedactRoomMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::RedactRoomMessage', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RegenerateSecurityToken {
@@ -424,6 +794,41 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::SearchAvailablePhoneNumbers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub SendChannelMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::SendChannelMessage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagAttendee {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::TagAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagMeeting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::TagMeeting', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagAttendee {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UntagAttendee', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagMeeting {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UntagMeeting', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateAccount', @_);
@@ -434,9 +839,34 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateAccountSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateAppInstance {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateAppInstance', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateAppInstanceUser {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateAppInstanceUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateBot {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateBot', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateChannel {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateChannel', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateChannelMessage {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateChannelMessage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateChannelReadMarker {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateChannelReadMarker', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGlobalSettings {
@@ -454,6 +884,11 @@ package Paws::Chime;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdatePhoneNumberSettings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateProxySession {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateProxySession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateRoom {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateRoom', @_);
@@ -462,6 +897,21 @@ package Paws::Chime;
   sub UpdateRoomMembership {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Chime::UpdateRoomMembership', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSipMediaApplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateSipMediaApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSipMediaApplicationCall {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateSipMediaApplicationCall', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateSipRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Chime::UpdateSipRule', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateUser {
@@ -533,7 +983,7 @@ package Paws::Chime;
   }
 
 
-  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser AssociateSigninDelegateGroupsWithAccount BatchCreateAttendee BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAttendee CreateBot CreateMeeting CreatePhoneNumberOrder CreateRoom CreateRoomMembership CreateUser CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAttendee DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteRoom DeleteRoomMembership DeleteVoiceConnector DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup DisassociateSigninDelegateGroupsFromAccount GetAccount GetAccountSettings GetAttendee GetBot GetEventsConfiguration GetGlobalSettings GetMeeting GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetRoom GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAttendees ListBots ListMeetings ListPhoneNumberOrders ListPhoneNumbers ListRoomMemberships ListRooms ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutEventsConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers UpdateAccount UpdateAccountSettings UpdateBot UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateRoom UpdateRoomMembership UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
+  sub operations { qw/AssociatePhoneNumbersWithVoiceConnector AssociatePhoneNumbersWithVoiceConnectorGroup AssociatePhoneNumberWithUser AssociateSigninDelegateGroupsWithAccount BatchCreateAttendee BatchCreateChannelMembership BatchCreateRoomMembership BatchDeletePhoneNumber BatchSuspendUser BatchUnsuspendUser BatchUpdatePhoneNumber BatchUpdateUser CreateAccount CreateAppInstance CreateAppInstanceAdmin CreateAppInstanceUser CreateAttendee CreateBot CreateChannel CreateChannelBan CreateChannelMembership CreateChannelModerator CreateMeeting CreateMeetingDialOut CreateMeetingWithAttendees CreatePhoneNumberOrder CreateProxySession CreateRoom CreateRoomMembership CreateSipMediaApplication CreateSipMediaApplicationCall CreateSipRule CreateUser CreateVoiceConnector CreateVoiceConnectorGroup DeleteAccount DeleteAppInstance DeleteAppInstanceAdmin DeleteAppInstanceStreamingConfigurations DeleteAppInstanceUser DeleteAttendee DeleteChannel DeleteChannelBan DeleteChannelMembership DeleteChannelMessage DeleteChannelModerator DeleteEventsConfiguration DeleteMeeting DeletePhoneNumber DeleteProxySession DeleteRoom DeleteRoomMembership DeleteSipMediaApplication DeleteSipRule DeleteVoiceConnector DeleteVoiceConnectorEmergencyCallingConfiguration DeleteVoiceConnectorGroup DeleteVoiceConnectorOrigination DeleteVoiceConnectorProxy DeleteVoiceConnectorStreamingConfiguration DeleteVoiceConnectorTermination DeleteVoiceConnectorTerminationCredentials DescribeAppInstance DescribeAppInstanceAdmin DescribeAppInstanceUser DescribeChannel DescribeChannelBan DescribeChannelMembership DescribeChannelMembershipForAppInstanceUser DescribeChannelModeratedByAppInstanceUser DescribeChannelModerator DisassociatePhoneNumberFromUser DisassociatePhoneNumbersFromVoiceConnector DisassociatePhoneNumbersFromVoiceConnectorGroup DisassociateSigninDelegateGroupsFromAccount GetAccount GetAccountSettings GetAppInstanceRetentionSettings GetAppInstanceStreamingConfigurations GetAttendee GetBot GetChannelMessage GetEventsConfiguration GetGlobalSettings GetMeeting GetMessagingSessionEndpoint GetPhoneNumber GetPhoneNumberOrder GetPhoneNumberSettings GetProxySession GetRetentionSettings GetRoom GetSipMediaApplication GetSipMediaApplicationLoggingConfiguration GetSipRule GetUser GetUserSettings GetVoiceConnector GetVoiceConnectorEmergencyCallingConfiguration GetVoiceConnectorGroup GetVoiceConnectorLoggingConfiguration GetVoiceConnectorOrigination GetVoiceConnectorProxy GetVoiceConnectorStreamingConfiguration GetVoiceConnectorTermination GetVoiceConnectorTerminationHealth InviteUsers ListAccounts ListAppInstanceAdmins ListAppInstances ListAppInstanceUsers ListAttendees ListAttendeeTags ListBots ListChannelBans ListChannelMemberships ListChannelMembershipsForAppInstanceUser ListChannelMessages ListChannelModerators ListChannels ListChannelsModeratedByAppInstanceUser ListMeetings ListMeetingTags ListPhoneNumberOrders ListPhoneNumbers ListProxySessions ListRoomMemberships ListRooms ListSipMediaApplications ListSipRules ListSupportedPhoneNumberCountries ListTagsForResource ListUsers ListVoiceConnectorGroups ListVoiceConnectors ListVoiceConnectorTerminationCredentials LogoutUser PutAppInstanceRetentionSettings PutAppInstanceStreamingConfigurations PutEventsConfiguration PutRetentionSettings PutSipMediaApplicationLoggingConfiguration PutVoiceConnectorEmergencyCallingConfiguration PutVoiceConnectorLoggingConfiguration PutVoiceConnectorOrigination PutVoiceConnectorProxy PutVoiceConnectorStreamingConfiguration PutVoiceConnectorTermination PutVoiceConnectorTerminationCredentials RedactChannelMessage RedactConversationMessage RedactRoomMessage RegenerateSecurityToken ResetPersonalPIN RestorePhoneNumber SearchAvailablePhoneNumbers SendChannelMessage TagAttendee TagMeeting TagResource UntagAttendee UntagMeeting UntagResource UpdateAccount UpdateAccountSettings UpdateAppInstance UpdateAppInstanceUser UpdateBot UpdateChannel UpdateChannelMessage UpdateChannelReadMarker UpdateGlobalSettings UpdatePhoneNumber UpdatePhoneNumberSettings UpdateProxySession UpdateRoom UpdateRoomMembership UpdateSipMediaApplication UpdateSipMediaApplicationCall UpdateSipRule UpdateUser UpdateUserSettings UpdateVoiceConnector UpdateVoiceConnectorGroup / }
 
 1;
 
@@ -596,7 +1046,7 @@ Amazon Chime commands, see the Amazon Chime commands
 (https://docs.aws.amazon.com/cli/latest/reference/chime/index.html) in
 the I<AWS CLI Command Reference>.
 
-=item Using REST API
+=item Using REST APIs
 
 If you use REST to make API calls, you must authenticate your request
 by providing a signature. Amazon Chime supports signature version 4.
@@ -624,9 +1074,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 =over
 
-=item VoiceConnectorId => Str
+=item E164PhoneNumbers => ArrayRef[Str|Undef]
 
-=item [E164PhoneNumbers => ArrayRef[Str|Undef]]
+=item VoiceConnectorId => Str
 
 =item [ForceAssociate => Bool]
 
@@ -645,9 +1095,9 @@ Connector.
 
 =over
 
-=item VoiceConnectorGroupId => Str
+=item E164PhoneNumbers => ArrayRef[Str|Undef]
 
-=item [E164PhoneNumbers => ArrayRef[Str|Undef]]
+=item VoiceConnectorGroupId => Str
 
 =item [ForceAssociate => Bool]
 
@@ -723,6 +1173,28 @@ Chime SDK
 I<Amazon Chime Developer Guide>.
 
 
+=head2 BatchCreateChannelMembership
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArns => ArrayRef[Str|Undef]
+
+=item [ChimeBearer => Str]
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::BatchCreateChannelMembership>
+
+Returns: a L<Paws::Chime::BatchCreateChannelMembershipResponse> instance
+
+Adds a specified number of users to a channel.
+
+
 =head2 BatchCreateRoomMembership
 
 =over
@@ -741,9 +1213,9 @@ Each argument is described in detail in: L<Paws::Chime::BatchCreateRoomMembershi
 Returns: a L<Paws::Chime::BatchCreateRoomMembershipResponse> instance
 
 Adds up to 50 members to a chat room in an Amazon Chime Enterprise
-account. Members can be either users or bots. The member role
-designates whether the member is a chat room administrator or a general
-chat room member.
+account. Members can be users or bots. The member role designates
+whether the member is a chat room administrator or a general chat room
+member.
 
 
 =head2 BatchDeletePhoneNumber
@@ -789,7 +1261,7 @@ Managing Your Amazon Chime Accounts
 in the I<Amazon Chime Administration Guide>.
 
 Users suspended from a C<Team> account are disassociated from the
-account, but they can continue to use Amazon Chime as free users. To
+account,but they can continue to use Amazon Chime as free users. To
 remove the suspension from suspended C<Team> account users, invite them
 to the C<Team> account again. You can use the InviteUsers action to do
 so.
@@ -823,7 +1295,7 @@ C<EnterpriseLWA> accounts can be unsuspended using this action. For
 more information about different account types, see Managing Your
 Amazon Chime Accounts
 (https://docs.aws.amazon.com/chime/latest/ag/manage-chime-account.html)
-in the I<Amazon Chime Administration Guide>.
+in the account types, in the I<Amazon Chime Administration Guide>.
 
 Previously suspended users who are unsuspended using this action are
 returned to C<Registered> status. Users who are not previously
@@ -845,11 +1317,11 @@ Returns: a L<Paws::Chime::BatchUpdatePhoneNumberResponse> instance
 
 Updates phone number product types or calling names. You can update one
 attribute at a time for each C<UpdatePhoneNumberRequestItem>. For
-example, you can update either the product type or the calling name.
+example, you can update the product type or the calling name.
 
-For product types, choose from Amazon Chime Business Calling and Amazon
-Chime Voice Connector. For toll-free numbers, you must use the Amazon
-Chime Voice Connector product type.
+For toll-free numbers, you cannot use the Amazon Chime Business Calling
+product type. For numbers outside the U.S., you must use the Amazon
+Chime SIP Media Application Dial-In product type.
 
 Updates to outbound calling names can take up to 72 hours to complete.
 Pending updates to outbound calling names must be complete before you
@@ -897,6 +1369,92 @@ Amazon Chime Accounts
 in the I<Amazon Chime Administration Guide>.
 
 
+=head2 CreateAppInstance
+
+=over
+
+=item ClientRequestToken => Str
+
+=item Name => Str
+
+=item [Metadata => Str]
+
+=item [Tags => ArrayRef[L<Paws::Chime::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateAppInstance>
+
+Returns: a L<Paws::Chime::CreateAppInstanceResponse> instance
+
+Creates an Amazon Chime SDK messaging C<AppInstance> under an AWS
+account. Only SDK messaging customers use this API.
+C<CreateAppInstance> supports idempotency behavior as described in the
+AWS API Standard.
+
+
+=head2 CreateAppInstanceAdmin
+
+=over
+
+=item AppInstanceAdminArn => Str
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateAppInstanceAdmin>
+
+Returns: a L<Paws::Chime::CreateAppInstanceAdminResponse> instance
+
+Promotes an C<AppInstanceUser> to an C<AppInstanceAdmin>. The promoted
+user can perform the following actions.
+
+=over
+
+=item *
+
+C<ChannelModerator> actions across all channels in the C<AppInstance>.
+
+=item *
+
+C<DeleteChannelMessage> actions.
+
+=back
+
+Only an C<AppInstanceUser> can be promoted to an C<AppInstanceAdmin>
+role.
+
+
+=head2 CreateAppInstanceUser
+
+=over
+
+=item AppInstanceArn => Str
+
+=item AppInstanceUserId => Str
+
+=item ClientRequestToken => Str
+
+=item Name => Str
+
+=item [Metadata => Str]
+
+=item [Tags => ArrayRef[L<Paws::Chime::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateAppInstanceUser>
+
+Returns: a L<Paws::Chime::CreateAppInstanceUserResponse> instance
+
+Creates a user under an Amazon Chime C<AppInstance>. The request
+consists of a unique C<appInstanceUserId> and C<Name> for that user.
+
+
 =head2 CreateAttendee
 
 =over
@@ -904,6 +1462,8 @@ in the I<Amazon Chime Administration Guide>.
 =item ExternalUserId => Str
 
 =item MeetingId => Str
+
+=item [Tags => ArrayRef[L<Paws::Chime::Tag>]]
 
 
 =back
@@ -938,17 +1498,201 @@ Returns: a L<Paws::Chime::CreateBotResponse> instance
 Creates a bot for an Amazon Chime Enterprise account.
 
 
+=head2 CreateChannel
+
+=over
+
+=item AppInstanceArn => Str
+
+=item ClientRequestToken => Str
+
+=item Name => Str
+
+=item [ChimeBearer => Str]
+
+=item [Metadata => Str]
+
+=item [Mode => Str]
+
+=item [Privacy => Str]
+
+=item [Tags => ArrayRef[L<Paws::Chime::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateChannel>
+
+Returns: a L<Paws::Chime::CreateChannelResponse> instance
+
+Creates a channel to which you can add users and send messages.
+
+B<Restriction>: You can't change a channel's privacy.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 CreateChannelBan
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateChannelBan>
+
+Returns: a L<Paws::Chime::CreateChannelBanResponse> instance
+
+Permanently bans a member from a channel. Moderators can't add banned
+members to a channel. To undo a ban, you first have to
+C<DeleteChannelBan>, and then C<CreateChannelMembership>. Bans are
+cleaned up when you delete users or channels.
+
+If you ban a user who is already part of a channel, that user is
+automatically kicked from the channel.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 CreateChannelMembership
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArn => Str
+
+=item Type => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateChannelMembership>
+
+Returns: a L<Paws::Chime::CreateChannelMembershipResponse> instance
+
+Adds a user to a channel. The C<InvitedBy> response field is derived
+from the request header. A channel member can:
+
+=over
+
+=item *
+
+List messages
+
+=item *
+
+Send messages
+
+=item *
+
+Receive messages
+
+=item *
+
+Edit their own messages
+
+=item *
+
+Leave the channel
+
+=back
+
+Privacy settings impact this action as follows:
+
+=over
+
+=item *
+
+Public Channels: You do not need to be a member to list messages, but
+you must be a member to send messages.
+
+=item *
+
+Private Channels: You must be a member to list or send messages.
+
+=back
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 CreateChannelModerator
+
+=over
+
+=item ChannelArn => Str
+
+=item ChannelModeratorArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateChannelModerator>
+
+Returns: a L<Paws::Chime::CreateChannelModeratorResponse> instance
+
+Creates a new C<ChannelModerator>. A channel moderator can:
+
+=over
+
+=item *
+
+Add and remove other members of the channel.
+
+=item *
+
+Add and remove other moderators of the channel.
+
+=item *
+
+Add and remove user bans for the channel.
+
+=item *
+
+Redact messages in the channel.
+
+=item *
+
+List messages in the channel.
+
+=back
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
 =head2 CreateMeeting
 
 =over
 
 =item ClientRequestToken => Str
 
+=item [ExternalMeetingId => Str]
+
 =item [MediaRegion => Str]
 
 =item [MeetingHostId => Str]
 
 =item [NotificationsConfiguration => L<Paws::Chime::MeetingNotificationConfiguration>]
+
+=item [Tags => ArrayRef[L<Paws::Chime::Tag>]]
 
 
 =back
@@ -958,10 +1702,77 @@ Each argument is described in detail in: L<Paws::Chime::CreateMeeting>
 Returns: a L<Paws::Chime::CreateMeetingResponse> instance
 
 Creates a new Amazon Chime SDK meeting in the specified media Region
-with no initial attendees. For more information about the Amazon Chime
-SDK, see Using the Amazon Chime SDK
+with no initial attendees. For more information about specifying media
+Regions, see Amazon Chime SDK Media Regions
+(https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html)
+in the I<Amazon Chime Developer Guide> . For more information about the
+Amazon Chime SDK, see Using the Amazon Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
-I<Amazon Chime Developer Guide>.
+I<Amazon Chime Developer Guide> .
+
+
+=head2 CreateMeetingDialOut
+
+=over
+
+=item FromPhoneNumber => Str
+
+=item JoinToken => Str
+
+=item MeetingId => Str
+
+=item ToPhoneNumber => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateMeetingDialOut>
+
+Returns: a L<Paws::Chime::CreateMeetingDialOutResponse> instance
+
+Uses the join token and call metadata in a meeting request (From
+number, To number, and so forth) to initiate an outbound call to a
+public switched telephone network (PSTN) and join them into a Chime
+meeting. Also ensures that the From number belongs to the customer.
+
+To play welcome audio or implement an interactive voice response (IVR),
+use the C<CreateSipMediaApplicationCall> action with the corresponding
+SIP media application ID.
+
+
+=head2 CreateMeetingWithAttendees
+
+=over
+
+=item ClientRequestToken => Str
+
+=item [Attendees => ArrayRef[L<Paws::Chime::CreateAttendeeRequestItem>]]
+
+=item [ExternalMeetingId => Str]
+
+=item [MediaRegion => Str]
+
+=item [MeetingHostId => Str]
+
+=item [NotificationsConfiguration => L<Paws::Chime::MeetingNotificationConfiguration>]
+
+=item [Tags => ArrayRef[L<Paws::Chime::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateMeetingWithAttendees>
+
+Returns: a L<Paws::Chime::CreateMeetingWithAttendeesResponse> instance
+
+Creates a new Amazon Chime SDK meeting in the specified media Region,
+with attendees. For more information about specifying media Regions,
+see Amazon Chime SDK Media Regions
+(https://docs.aws.amazon.com/chime/latest/dg/chime-sdk-meetings-regions.html)
+in the I<Amazon Chime Developer Guide> . For more information about the
+Amazon Chime SDK, see Using the Amazon Chime SDK
+(https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
+I<Amazon Chime Developer Guide> .
 
 
 =head2 CreatePhoneNumberOrder
@@ -979,10 +1790,41 @@ Each argument is described in detail in: L<Paws::Chime::CreatePhoneNumberOrder>
 
 Returns: a L<Paws::Chime::CreatePhoneNumberOrderResponse> instance
 
-Creates an order for phone numbers to be provisioned. Choose from
-Amazon Chime Business Calling and Amazon Chime Voice Connector product
-types. For toll-free numbers, you must use the Amazon Chime Voice
-Connector product type.
+Creates an order for phone numbers to be provisioned. For toll-free
+numbers, you cannot use the Amazon Chime Business Calling product type.
+For numbers outside the U.S., you must use the Amazon Chime SIP Media
+Application Dial-In product type.
+
+
+=head2 CreateProxySession
+
+=over
+
+=item Capabilities => ArrayRef[Str|Undef]
+
+=item ParticipantPhoneNumbers => ArrayRef[Str|Undef]
+
+=item VoiceConnectorId => Str
+
+=item [ExpiryMinutes => Int]
+
+=item [GeoMatchLevel => Str]
+
+=item [GeoMatchParams => L<Paws::Chime::GeoMatchParams>]
+
+=item [Name => Str]
+
+=item [NumberSelectionBehavior => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateProxySession>
+
+Returns: a L<Paws::Chime::CreateProxySessionResponse> instance
+
+Creates a proxy session on the specified Amazon Chime Voice Connector
+for the specified participant phone numbers.
 
 
 =head2 CreateRoom
@@ -1028,6 +1870,73 @@ Adds a member to a chat room in an Amazon Chime Enterprise account. A
 member can be either a user or a bot. The member role designates
 whether the member is a chat room administrator or a general chat room
 member.
+
+
+=head2 CreateSipMediaApplication
+
+=over
+
+=item AwsRegion => Str
+
+=item Endpoints => ArrayRef[L<Paws::Chime::SipMediaApplicationEndpoint>]
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateSipMediaApplication>
+
+Returns: a L<Paws::Chime::CreateSipMediaApplicationResponse> instance
+
+Creates a SIP media application.
+
+
+=head2 CreateSipMediaApplicationCall
+
+=over
+
+=item FromPhoneNumber => Str
+
+=item SipMediaApplicationId => Str
+
+=item ToPhoneNumber => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateSipMediaApplicationCall>
+
+Returns: a L<Paws::Chime::CreateSipMediaApplicationCallResponse> instance
+
+Creates an outbound call to a phone number from the phone number
+specified in the request, and it invokes the endpoint of the specified
+C<sipMediaApplicationId>.
+
+
+=head2 CreateSipRule
+
+=over
+
+=item Name => Str
+
+=item TargetApplications => ArrayRef[L<Paws::Chime::SipRuleTargetApplication>]
+
+=item TriggerType => Str
+
+=item TriggerValue => Str
+
+=item [Disabled => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::CreateSipRule>
+
+Returns: a L<Paws::Chime::CreateSipRuleResponse> instance
+
+Creates a SIP rule which can be used to run a SIP media application as
+a target for a specific trigger type.
 
 
 =head2 CreateUser
@@ -1118,19 +2027,86 @@ Each argument is described in detail in: L<Paws::Chime::DeleteAccount>
 Returns: a L<Paws::Chime::DeleteAccountResponse> instance
 
 Deletes the specified Amazon Chime account. You must suspend all users
-before deleting a C<Team> account. You can use the BatchSuspendUser
-action to do so.
+before deleting C<Team> account. You can use the BatchSuspendUser
+action to dodo.
 
 For C<EnterpriseLWA> and C<EnterpriseAD> accounts, you must release the
 claimed domains for your Amazon Chime account before deletion. As soon
 as you release the domain, all users under that account are suspended.
 
 Deleted accounts appear in your C<Disabled> accounts list for 90 days.
-To restore a deleted account from your C<Disabled> accounts list, you
+To restore deleted account from your C<Disabled> accounts list, you
 must contact AWS Support.
 
 After 90 days, deleted accounts are permanently removed from your
 C<Disabled> accounts list.
+
+
+=head2 DeleteAppInstance
+
+=over
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteAppInstance>
+
+Returns: nothing
+
+Deletes an C<AppInstance> and all associated data asynchronously.
+
+
+=head2 DeleteAppInstanceAdmin
+
+=over
+
+=item AppInstanceAdminArn => Str
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteAppInstanceAdmin>
+
+Returns: nothing
+
+Demotes an C<AppInstanceAdmin> to an C<AppInstanceUser>. This action
+does not delete the user.
+
+
+=head2 DeleteAppInstanceStreamingConfigurations
+
+=over
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteAppInstanceStreamingConfigurations>
+
+Returns: nothing
+
+Deletes the streaming configurations of an C<AppInstance>.
+
+
+=head2 DeleteAppInstanceUser
+
+=over
+
+=item AppInstanceUserArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteAppInstanceUser>
+
+Returns: nothing
+
+Deletes an C<AppInstanceUser>.
 
 
 =head2 DeleteAttendee
@@ -1154,6 +2130,127 @@ Amazon Chime SDK meeting is deleted. For more information about the
 Amazon Chime SDK, see Using the Amazon Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
 I<Amazon Chime Developer Guide>.
+
+
+=head2 DeleteChannel
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteChannel>
+
+Returns: nothing
+
+Immediately makes a channel and its memberships inaccessible and marks
+them for deletion. This is an irreversible process.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DeleteChannelBan
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteChannelBan>
+
+Returns: nothing
+
+Removes a user from a channel's ban list.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DeleteChannelMembership
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteChannelMembership>
+
+Returns: nothing
+
+Removes a member from a channel.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DeleteChannelMessage
+
+=over
+
+=item ChannelArn => Str
+
+=item MessageId => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteChannelMessage>
+
+Returns: nothing
+
+Deletes a channel message. Only admins can perform this action.
+Deletion makes messages inaccessible immediately. A background process
+deletes any revisions created by C<UpdateChannelMessage>.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DeleteChannelModerator
+
+=over
+
+=item ChannelArn => Str
+
+=item ChannelModeratorArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteChannelModerator>
+
+Returns: nothing
+
+Deletes a channel moderator.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
 
 
 =head2 DeleteEventsConfiguration
@@ -1188,10 +2285,10 @@ Each argument is described in detail in: L<Paws::Chime::DeleteMeeting>
 
 Returns: nothing
 
-Deletes the specified Amazon Chime SDK meeting. When a meeting is
-deleted, its attendees are also deleted and clients can no longer join
-it. For more information about the Amazon Chime SDK, see Using the
-Amazon Chime SDK
+Deletes the specified Amazon Chime SDK meeting. The operation deletes
+all attendees, disconnects all clients, and prevents new clients from
+joining the meeting. For more information about the Amazon Chime SDK,
+see Using the Amazon Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
 I<Amazon Chime Developer Guide>.
 
@@ -1215,6 +2312,25 @@ Connectors before it can be deleted.
 
 Deleted phone numbers remain in the B<Deletion queue> for 7 days before
 they are deleted permanently.
+
+
+=head2 DeleteProxySession
+
+=over
+
+=item ProxySessionId => Str
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteProxySession>
+
+Returns: nothing
+
+Deletes the specified proxy session from the specified Amazon Chime
+Voice Connector.
 
 
 =head2 DeleteRoom
@@ -1256,6 +2372,39 @@ Removes a member from a chat room in an Amazon Chime Enterprise
 account.
 
 
+=head2 DeleteSipMediaApplication
+
+=over
+
+=item SipMediaApplicationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteSipMediaApplication>
+
+Returns: nothing
+
+Deletes a SIP media application.
+
+
+=head2 DeleteSipRule
+
+=over
+
+=item SipRuleId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteSipRule>
+
+Returns: nothing
+
+Deletes a SIP rule. You must disable a SIP rule before you can delete
+it.
+
+
 =head2 DeleteVoiceConnector
 
 =over
@@ -1272,6 +2421,23 @@ Returns: nothing
 Deletes the specified Amazon Chime Voice Connector. Any phone numbers
 associated with the Amazon Chime Voice Connector must be disassociated
 from it before it can be deleted.
+
+
+=head2 DeleteVoiceConnectorEmergencyCallingConfiguration
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteVoiceConnectorEmergencyCallingConfiguration>
+
+Returns: nothing
+
+Deletes the emergency calling configuration details from the specified
+Amazon Chime Voice Connector.
 
 
 =head2 DeleteVoiceConnectorGroup
@@ -1308,6 +2474,27 @@ Returns: nothing
 Deletes the origination settings for the specified Amazon Chime Voice
 Connector.
 
+If emergency calling is configured for the Amazon Chime Voice
+Connector, it must be deleted prior to deleting the origination
+settings.
+
+
+=head2 DeleteVoiceConnectorProxy
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DeleteVoiceConnectorProxy>
+
+Returns: nothing
+
+Deletes the proxy configuration from the specified Amazon Chime Voice
+Connector.
+
 
 =head2 DeleteVoiceConnectorStreamingConfiguration
 
@@ -1342,14 +2529,18 @@ Returns: nothing
 Deletes the termination settings for the specified Amazon Chime Voice
 Connector.
 
+If emergency calling is configured for the Amazon Chime Voice
+Connector, it must be deleted prior to deleting the termination
+settings.
+
 
 =head2 DeleteVoiceConnectorTerminationCredentials
 
 =over
 
-=item VoiceConnectorId => Str
+=item Usernames => ArrayRef[Str|Undef]
 
-=item [Usernames => ArrayRef[Str|Undef]]
+=item VoiceConnectorId => Str
 
 
 =back
@@ -1360,6 +2551,201 @@ Returns: nothing
 
 Deletes the specified SIP credentials used by your equipment to
 authenticate during call termination.
+
+
+=head2 DescribeAppInstance
+
+=over
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeAppInstance>
+
+Returns: a L<Paws::Chime::DescribeAppInstanceResponse> instance
+
+Returns the full details of an C<AppInstance>.
+
+
+=head2 DescribeAppInstanceAdmin
+
+=over
+
+=item AppInstanceAdminArn => Str
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeAppInstanceAdmin>
+
+Returns: a L<Paws::Chime::DescribeAppInstanceAdminResponse> instance
+
+Returns the full details of an C<AppInstanceAdmin>.
+
+
+=head2 DescribeAppInstanceUser
+
+=over
+
+=item AppInstanceUserArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeAppInstanceUser>
+
+Returns: a L<Paws::Chime::DescribeAppInstanceUserResponse> instance
+
+Returns the full details of an C<AppInstanceUser> .
+
+
+=head2 DescribeChannel
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeChannel>
+
+Returns: a L<Paws::Chime::DescribeChannelResponse> instance
+
+Returns the full details of a channel in an Amazon Chime
+C<AppInstance>.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DescribeChannelBan
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeChannelBan>
+
+Returns: a L<Paws::Chime::DescribeChannelBanResponse> instance
+
+Returns the full details of a channel ban.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DescribeChannelMembership
+
+=over
+
+=item ChannelArn => Str
+
+=item MemberArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeChannelMembership>
+
+Returns: a L<Paws::Chime::DescribeChannelMembershipResponse> instance
+
+Returns the full details of a user's channel membership.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DescribeChannelMembershipForAppInstanceUser
+
+=over
+
+=item AppInstanceUserArn => Str
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeChannelMembershipForAppInstanceUser>
+
+Returns: a L<Paws::Chime::DescribeChannelMembershipForAppInstanceUserResponse> instance
+
+Returns the details of a channel based on the membership of the
+specified C<AppInstanceUser>.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DescribeChannelModeratedByAppInstanceUser
+
+=over
+
+=item AppInstanceUserArn => Str
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeChannelModeratedByAppInstanceUser>
+
+Returns: a L<Paws::Chime::DescribeChannelModeratedByAppInstanceUserResponse> instance
+
+Returns the full details of a channel moderated by the specified
+C<AppInstanceUser>.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 DescribeChannelModerator
+
+=over
+
+=item ChannelArn => Str
+
+=item ChannelModeratorArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::DescribeChannelModerator>
+
+Returns: a L<Paws::Chime::DescribeChannelModeratorResponse> instance
+
+Returns the full details of a single ChannelModerator.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
 
 
 =head2 DisassociatePhoneNumberFromUser
@@ -1385,9 +2771,9 @@ Amazon Chime user.
 
 =over
 
-=item VoiceConnectorId => Str
+=item E164PhoneNumbers => ArrayRef[Str|Undef]
 
-=item [E164PhoneNumbers => ArrayRef[Str|Undef]]
+=item VoiceConnectorId => Str
 
 
 =back
@@ -1404,9 +2790,9 @@ Chime Voice Connector.
 
 =over
 
-=item VoiceConnectorGroupId => Str
+=item E164PhoneNumbers => ArrayRef[Str|Undef]
 
-=item [E164PhoneNumbers => ArrayRef[Str|Undef]]
+=item VoiceConnectorGroupId => Str
 
 
 =back
@@ -1469,10 +2855,42 @@ Each argument is described in detail in: L<Paws::Chime::GetAccountSettings>
 Returns: a L<Paws::Chime::GetAccountSettingsResponse> instance
 
 Retrieves account settings for the specified Amazon Chime account ID,
-such as remote control and dial out settings. For more information
-about these settings, see Use the Policies Page
+such as remote control and dialout settings. For more information about
+these settings, see Use the Policies Page
 (https://docs.aws.amazon.com/chime/latest/ag/policies.html) in the
 I<Amazon Chime Administration Guide>.
+
+
+=head2 GetAppInstanceRetentionSettings
+
+=over
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetAppInstanceRetentionSettings>
+
+Returns: a L<Paws::Chime::GetAppInstanceRetentionSettingsResponse> instance
+
+Gets the retention settings for an C<AppInstance>.
+
+
+=head2 GetAppInstanceStreamingConfigurations
+
+=over
+
+=item AppInstanceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetAppInstanceStreamingConfigurations>
+
+Returns: a L<Paws::Chime::GetAppInstanceStreamingConfigurationsResponse> instance
+
+Gets the streaming settings for an C<AppInstance>.
 
 
 =head2 GetAttendee
@@ -1494,7 +2912,7 @@ Gets the Amazon Chime SDK attendee details for a specified meeting ID
 and attendee ID. For more information about the Amazon Chime SDK, see
 Using the Amazon Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
-I<Amazon Chime Developer Guide>.
+I<Amazon Chime Developer Guide> .
 
 
 =head2 GetBot
@@ -1514,6 +2932,30 @@ Returns: a L<Paws::Chime::GetBotResponse> instance
 
 Retrieves details for the specified bot, such as bot email address, bot
 type, status, and display name.
+
+
+=head2 GetChannelMessage
+
+=over
+
+=item ChannelArn => Str
+
+=item MessageId => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetChannelMessage>
+
+Returns: a L<Paws::Chime::GetChannelMessageResponse> instance
+
+Gets the full details of a channel message.
+
+The x-amz-chime-bearer request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
 
 
 =head2 GetEventsConfiguration
@@ -1570,7 +3012,21 @@ Gets the Amazon Chime SDK meeting details for the specified meeting ID.
 For more information about the Amazon Chime SDK, see Using the Amazon
 Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
-I<Amazon Chime Developer Guide>.
+I<Amazon Chime Developer Guide> .
+
+
+=head2 GetMessagingSessionEndpoint
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::Chime::GetMessagingSessionEndpoint>
+
+Returns: a L<Paws::Chime::GetMessagingSessionEndpointResponse> instance
+
+The details of the endpoint for the messaging session.
 
 
 =head2 GetPhoneNumber
@@ -1603,9 +3059,9 @@ Each argument is described in detail in: L<Paws::Chime::GetPhoneNumberOrder>
 
 Returns: a L<Paws::Chime::GetPhoneNumberOrderResponse> instance
 
-Retrieves details for the specified phone number order, such as order
-creation timestamp, phone numbers in E.164 format, product type, and
-order status.
+Retrieves details for the specified phone number order, such as the
+order creation timestamp, phone numbers in E.164 format, product type,
+and order status.
 
 
 =head2 GetPhoneNumberSettings
@@ -1623,6 +3079,45 @@ Returns: a L<Paws::Chime::GetPhoneNumberSettingsResponse> instance
 
 Retrieves the phone number settings for the administrator's AWS
 account, such as the default outbound calling name.
+
+
+=head2 GetProxySession
+
+=over
+
+=item ProxySessionId => Str
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetProxySession>
+
+Returns: a L<Paws::Chime::GetProxySessionResponse> instance
+
+Gets the specified proxy session details for the specified Amazon Chime
+Voice Connector.
+
+
+=head2 GetRetentionSettings
+
+=over
+
+=item AccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetRetentionSettings>
+
+Returns: a L<Paws::Chime::GetRetentionSettingsResponse> instance
+
+Gets the retention settings for the specified Amazon Chime Enterprise
+account. For more information about retention settings, see Managing
+Chat Retention Policies
+(https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html) in
+the I<Amazon Chime Administration Guide>.
 
 
 =head2 GetRoom
@@ -1644,6 +3139,57 @@ Retrieves room details, such as the room name, for a room in an Amazon
 Chime Enterprise account.
 
 
+=head2 GetSipMediaApplication
+
+=over
+
+=item SipMediaApplicationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetSipMediaApplication>
+
+Returns: a L<Paws::Chime::GetSipMediaApplicationResponse> instance
+
+Retrieves the information for a SIP media application, including name,
+AWS Region, and endpoints.
+
+
+=head2 GetSipMediaApplicationLoggingConfiguration
+
+=over
+
+=item SipMediaApplicationId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetSipMediaApplicationLoggingConfiguration>
+
+Returns: a L<Paws::Chime::GetSipMediaApplicationLoggingConfigurationResponse> instance
+
+Returns the logging configuration for the specified SIP media
+application.
+
+
+=head2 GetSipRule
+
+=over
+
+=item SipRuleId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetSipRule>
+
+Returns: a L<Paws::Chime::GetSipRuleResponse> instance
+
+Retrieves the details of a SIP rule, such as the rule ID, name,
+triggers, and target endpoints.
+
+
 =head2 GetUser
 
 =over
@@ -1660,7 +3206,7 @@ Each argument is described in detail in: L<Paws::Chime::GetUser>
 Returns: a L<Paws::Chime::GetUserResponse> instance
 
 Retrieves details for the specified user ID, such as primary email
-address, license type, and personal meeting PIN.
+address, license type,and personal meeting PIN.
 
 To retrieve user details with an email address instead of a user ID,
 use the ListUsers action, and then filter by email address.
@@ -1699,7 +3245,24 @@ Each argument is described in detail in: L<Paws::Chime::GetVoiceConnector>
 Returns: a L<Paws::Chime::GetVoiceConnectorResponse> instance
 
 Retrieves details for the specified Amazon Chime Voice Connector, such
-as timestamps, name, outbound host, and encryption requirements.
+as timestamps,name, outbound host, and encryption requirements.
+
+
+=head2 GetVoiceConnectorEmergencyCallingConfiguration
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorEmergencyCallingConfiguration>
+
+Returns: a L<Paws::Chime::GetVoiceConnectorEmergencyCallingConfigurationResponse> instance
+
+Gets the emergency calling configuration details for the specified
+Amazon Chime Voice Connector.
 
 
 =head2 GetVoiceConnectorGroup
@@ -1716,7 +3279,7 @@ Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorGroup>
 Returns: a L<Paws::Chime::GetVoiceConnectorGroupResponse> instance
 
 Retrieves details for the specified Amazon Chime Voice Connector group,
-such as timestamps, name, and associated C<VoiceConnectorItems>.
+such as timestamps,name, and associated C<VoiceConnectorItems>.
 
 
 =head2 GetVoiceConnectorLoggingConfiguration
@@ -1751,6 +3314,23 @@ Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorOrigina
 Returns: a L<Paws::Chime::GetVoiceConnectorOriginationResponse> instance
 
 Retrieves origination setting details for the specified Amazon Chime
+Voice Connector.
+
+
+=head2 GetVoiceConnectorProxy
+
+=over
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::GetVoiceConnectorProxy>
+
+Returns: a L<Paws::Chime::GetVoiceConnectorProxyResponse> instance
+
+Gets the proxy configuration details for the specified Amazon Chime
 Voice Connector.
 
 
@@ -1855,6 +3435,65 @@ Amazon Chime account a user belongs to, you can filter by the user's
 email address, which returns one account result.
 
 
+=head2 ListAppInstanceAdmins
+
+=over
+
+=item AppInstanceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListAppInstanceAdmins>
+
+Returns: a L<Paws::Chime::ListAppInstanceAdminsResponse> instance
+
+Returns a list of the administrators in the C<AppInstance>.
+
+
+=head2 ListAppInstances
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListAppInstances>
+
+Returns: a L<Paws::Chime::ListAppInstancesResponse> instance
+
+Lists all Amazon Chime C<AppInstance>s created under a single AWS
+account.
+
+
+=head2 ListAppInstanceUsers
+
+=over
+
+=item AppInstanceArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListAppInstanceUsers>
+
+Returns: a L<Paws::Chime::ListAppInstanceUsersResponse> instance
+
+List all C<AppInstanceUsers> created under a single C<AppInstance>.
+
+
 =head2 ListAttendees
 
 =over
@@ -1878,6 +3517,24 @@ SDK (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in
 the I<Amazon Chime Developer Guide>.
 
 
+=head2 ListAttendeeTags
+
+=over
+
+=item AttendeeId => Str
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListAttendeeTags>
+
+Returns: a L<Paws::Chime::ListAttendeeTagsResponse> instance
+
+Lists the tags applied to an Amazon Chime SDK attendee resource.
+
+
 =head2 ListBots
 
 =over
@@ -1899,6 +3556,222 @@ Lists the bots associated with the administrator's Amazon Chime
 Enterprise account ID.
 
 
+=head2 ListChannelBans
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannelBans>
+
+Returns: a L<Paws::Chime::ListChannelBansResponse> instance
+
+Lists all the users banned from a particular channel.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 ListChannelMemberships
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Type => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannelMemberships>
+
+Returns: a L<Paws::Chime::ListChannelMembershipsResponse> instance
+
+Lists all channel memberships in a channel.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 ListChannelMembershipsForAppInstanceUser
+
+=over
+
+=item [AppInstanceUserArn => Str]
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannelMembershipsForAppInstanceUser>
+
+Returns: a L<Paws::Chime::ListChannelMembershipsForAppInstanceUserResponse> instance
+
+Lists all channels that a particular C<AppInstanceUser> is a part of.
+Only an C<AppInstanceAdmin> can call the API with a user ARN that is
+not their own.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 ListChannelMessages
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [NotAfter => Str]
+
+=item [NotBefore => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannelMessages>
+
+Returns: a L<Paws::Chime::ListChannelMessagesResponse> instance
+
+List all the messages in a channel. Returns a paginated list of
+C<ChannelMessages>. By default, sorted by creation timestamp in
+descending order.
+
+Redacted messages appear in the results as empty, since they are only
+redacted, not deleted. Deleted messages do not appear in the results.
+This action always returns the latest version of an edited message.
+
+Also, the x-amz-chime-bearer request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 ListChannelModerators
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannelModerators>
+
+Returns: a L<Paws::Chime::ListChannelModeratorsResponse> instance
+
+Lists all the moderators for a channel.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 ListChannels
+
+=over
+
+=item AppInstanceArn => Str
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Privacy => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannels>
+
+Returns: a L<Paws::Chime::ListChannelsResponse> instance
+
+Lists all Channels created under a single Chime App as a paginated
+list. You can specify filters to narrow results.
+
+B<Functionality & restrictions>
+
+=over
+
+=item *
+
+Use privacy = C<PUBLIC> to retrieve all public channels in the account.
+
+=item *
+
+Only an C<AppInstanceAdmin> can set privacy = C<PRIVATE> to list the
+private channels in an account.
+
+=back
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 ListChannelsModeratedByAppInstanceUser
+
+=over
+
+=item [AppInstanceUserArn => Str]
+
+=item [ChimeBearer => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListChannelsModeratedByAppInstanceUser>
+
+Returns: a L<Paws::Chime::ListChannelsModeratedByAppInstanceUserResponse> instance
+
+A list of the channels moderated by an C<AppInstanceUser>.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
 =head2 ListMeetings
 
 =over
@@ -1918,6 +3791,22 @@ Lists up to 100 active Amazon Chime SDK meetings. For more information
 about the Amazon Chime SDK, see Using the Amazon Chime SDK
 (https://docs.aws.amazon.com/chime/latest/dg/meetings-sdk.html) in the
 I<Amazon Chime Developer Guide>.
+
+
+=head2 ListMeetingTags
+
+=over
+
+=item MeetingId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListMeetingTags>
+
+Returns: a L<Paws::Chime::ListMeetingTagsResponse> instance
+
+Lists the tags applied to an Amazon Chime SDK meeting resource.
 
 
 =head2 ListPhoneNumberOrders
@@ -1967,6 +3856,29 @@ Chime user, Amazon Chime Voice Connector, or Amazon Chime Voice
 Connector group.
 
 
+=head2 ListProxySessions
+
+=over
+
+=item VoiceConnectorId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListProxySessions>
+
+Returns: a L<Paws::Chime::ListProxySessionsResponse> instance
+
+Lists the proxy sessions for the specified Amazon Chime Voice
+Connector.
+
+
 =head2 ListRoomMemberships
 
 =over
@@ -2013,6 +3925,76 @@ Returns: a L<Paws::Chime::ListRoomsResponse> instance
 Lists the room details for the specified Amazon Chime Enterprise
 account. Optionally, filter the results by a member ID (user ID or bot
 ID) to see a list of rooms that the member belongs to.
+
+
+=head2 ListSipMediaApplications
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListSipMediaApplications>
+
+Returns: a L<Paws::Chime::ListSipMediaApplicationsResponse> instance
+
+Lists the SIP media applications under the administrator's AWS account.
+
+
+=head2 ListSipRules
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SipMediaApplicationId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListSipRules>
+
+Returns: a L<Paws::Chime::ListSipRulesResponse> instance
+
+Lists the SIP rules under the administrator's AWS account.
+
+
+=head2 ListSupportedPhoneNumberCountries
+
+=over
+
+=item ProductType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListSupportedPhoneNumberCountries>
+
+Returns: a L<Paws::Chime::ListSupportedPhoneNumberCountriesResponse> instance
+
+Lists supported phone number countries.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::ListTagsForResource>
+
+Returns: a L<Paws::Chime::ListTagsForResourceResponse> instance
+
+Lists the tags applied to an Amazon Chime SDK meeting resource.
 
 
 =head2 ListUsers
@@ -2115,6 +4097,43 @@ Logs out the specified user from all of the devices they are currently
 logged into.
 
 
+=head2 PutAppInstanceRetentionSettings
+
+=over
+
+=item AppInstanceArn => Str
+
+=item AppInstanceRetentionSettings => L<Paws::Chime::AppInstanceRetentionSettings>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutAppInstanceRetentionSettings>
+
+Returns: a L<Paws::Chime::PutAppInstanceRetentionSettingsResponse> instance
+
+Sets the amount of time in days that a given C<AppInstance> retains
+data.
+
+
+=head2 PutAppInstanceStreamingConfigurations
+
+=over
+
+=item AppInstanceArn => Str
+
+=item AppInstanceStreamingConfigurations => ArrayRef[L<Paws::Chime::AppInstanceStreamingConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutAppInstanceStreamingConfigurations>
+
+Returns: a L<Paws::Chime::PutAppInstanceStreamingConfigurationsResponse> instance
+
+The data streaming configurations of an C<AppInstance>.
+
+
 =head2 PutEventsConfiguration
 
 =over
@@ -2137,6 +4156,77 @@ Returns: a L<Paws::Chime::PutEventsConfigurationResponse> instance
 Creates an events configuration that allows a bot to receive outgoing
 events sent by Amazon Chime. Choose either an HTTPS endpoint or a
 Lambda function ARN. For more information, see Bot.
+
+
+=head2 PutRetentionSettings
+
+=over
+
+=item AccountId => Str
+
+=item RetentionSettings => L<Paws::Chime::RetentionSettings>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutRetentionSettings>
+
+Returns: a L<Paws::Chime::PutRetentionSettingsResponse> instance
+
+Puts retention settings for the specified Amazon Chime Enterprise
+account. We recommend using AWS CloudTrail to monitor usage of this API
+for your account. For more information, see Logging Amazon Chime API
+Calls with AWS CloudTrail
+(https://docs.aws.amazon.com/chime/latest/ag/cloudtrail.html) in the
+I<Amazon Chime Administration Guide>.
+
+To turn off existing retention settings, remove the number of days from
+the corresponding B<RetentionDays> field in the B<RetentionSettings>
+object. For more information about retention settings, see Managing
+Chat Retention Policies
+(https://docs.aws.amazon.com/chime/latest/ag/chat-retention.html) in
+the I<Amazon Chime Administration Guide>.
+
+
+=head2 PutSipMediaApplicationLoggingConfiguration
+
+=over
+
+=item SipMediaApplicationId => Str
+
+=item [SipMediaApplicationLoggingConfiguration => L<Paws::Chime::SipMediaApplicationLoggingConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutSipMediaApplicationLoggingConfiguration>
+
+Returns: a L<Paws::Chime::PutSipMediaApplicationLoggingConfigurationResponse> instance
+
+Updates the logging configuration for the specified SIP media
+application.
+
+
+=head2 PutVoiceConnectorEmergencyCallingConfiguration
+
+=over
+
+=item EmergencyCallingConfiguration => L<Paws::Chime::EmergencyCallingConfiguration>
+
+=item VoiceConnectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutVoiceConnectorEmergencyCallingConfiguration>
+
+Returns: a L<Paws::Chime::PutVoiceConnectorEmergencyCallingConfigurationResponse> instance
+
+Puts emergency calling configuration details to the specified Amazon
+Chime Voice Connector, such as emergency phone numbers and calling
+countries. Origination and termination settings must be enabled for the
+Amazon Chime Voice Connector before emergency calling can be
+configured.
 
 
 =head2 PutVoiceConnectorLoggingConfiguration
@@ -2177,6 +4267,35 @@ Returns: a L<Paws::Chime::PutVoiceConnectorOriginationResponse> instance
 Adds origination settings for the specified Amazon Chime Voice
 Connector.
 
+If emergency calling is configured for the Amazon Chime Voice
+Connector, it must be deleted prior to turning off origination
+settings.
+
+
+=head2 PutVoiceConnectorProxy
+
+=over
+
+=item DefaultSessionExpiryMinutes => Int
+
+=item PhoneNumberPoolCountries => ArrayRef[Str|Undef]
+
+=item VoiceConnectorId => Str
+
+=item [Disabled => Bool]
+
+=item [FallBackPhoneNumber => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::PutVoiceConnectorProxy>
+
+Returns: a L<Paws::Chime::PutVoiceConnectorProxyResponse> instance
+
+Puts the specified proxy configuration to the specified Amazon Chime
+Voice Connector.
+
 
 =head2 PutVoiceConnectorStreamingConfiguration
 
@@ -2195,7 +4314,7 @@ Returns: a L<Paws::Chime::PutVoiceConnectorStreamingConfigurationResponse> insta
 
 Adds a streaming configuration for the specified Amazon Chime Voice
 Connector. The streaming configuration specifies whether media
-streaming is enabled for sending to Amazon Kinesis. It also sets the
+streaming is enabled for sending to Indonesians. It also sets the
 retention period, in hours, for the Amazon Kinesis data.
 
 
@@ -2217,6 +4336,10 @@ Returns: a L<Paws::Chime::PutVoiceConnectorTerminationResponse> instance
 Adds termination settings for the specified Amazon Chime Voice
 Connector.
 
+If emergency calling is configured for the Amazon Chime Voice
+Connector, it must be deleted prior to turning off termination
+settings.
+
 
 =head2 PutVoiceConnectorTerminationCredentials
 
@@ -2235,6 +4358,73 @@ Returns: nothing
 
 Adds termination SIP credentials for the specified Amazon Chime Voice
 Connector.
+
+
+=head2 RedactChannelMessage
+
+=over
+
+=item ChannelArn => Str
+
+=item MessageId => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::RedactChannelMessage>
+
+Returns: a L<Paws::Chime::RedactChannelMessageResponse> instance
+
+Redacts message content, but not metadata. The message exists in the
+back end, but the action returns null content, and the state shows as
+redacted.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 RedactConversationMessage
+
+=over
+
+=item AccountId => Str
+
+=item ConversationId => Str
+
+=item MessageId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::RedactConversationMessage>
+
+Returns: a L<Paws::Chime::RedactConversationMessageResponse> instance
+
+Redacts the specified message from the specified Amazon Chime
+conversation.
+
+
+=head2 RedactRoomMessage
+
+=over
+
+=item AccountId => Str
+
+=item MessageId => Str
+
+=item RoomId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::RedactRoomMessage>
+
+Returns: a L<Paws::Chime::RedactRoomMessageResponse> instance
+
+Redacts the specified message from the specified Amazon Chime channel.
 
 
 =head2 RegenerateSecurityToken
@@ -2306,6 +4496,8 @@ number B<Inventory>.
 
 =item [NextToken => Str]
 
+=item [PhoneNumberType => Str]
+
 =item [State => Str]
 
 =item [TollFreePrefix => Str]
@@ -2317,7 +4509,161 @@ Each argument is described in detail in: L<Paws::Chime::SearchAvailablePhoneNumb
 
 Returns: a L<Paws::Chime::SearchAvailablePhoneNumbersResponse> instance
 
-Searches phone numbers that can be ordered.
+Searches for phone numbers that can be ordered. For US numbers, provide
+at least one of the following search filters: C<AreaCode>, C<City>,
+C<State>, or C<TollFreePrefix>. If you provide C<City>, you must also
+provide C<State>. Numbers outside the US only support the
+C<PhoneNumberType> filter, which you must use.
+
+
+=head2 SendChannelMessage
+
+=over
+
+=item ChannelArn => Str
+
+=item ClientRequestToken => Str
+
+=item Content => Str
+
+=item Persistence => Str
+
+=item Type => Str
+
+=item [ChimeBearer => Str]
+
+=item [Metadata => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::SendChannelMessage>
+
+Returns: a L<Paws::Chime::SendChannelMessageResponse> instance
+
+Sends a message to a particular channel that the member is a part of.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+Also, C<STANDARD> messages can contain 4KB of data and the 1KB of
+metadata. C<CONTROL> messages can contain 30 bytes of data and no
+metadata.
+
+
+=head2 TagAttendee
+
+=over
+
+=item AttendeeId => Str
+
+=item MeetingId => Str
+
+=item Tags => ArrayRef[L<Paws::Chime::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::TagAttendee>
+
+Returns: nothing
+
+Applies the specified tags to the specified Amazon Chime SDK attendee.
+
+
+=head2 TagMeeting
+
+=over
+
+=item MeetingId => Str
+
+=item Tags => ArrayRef[L<Paws::Chime::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::TagMeeting>
+
+Returns: nothing
+
+Applies the specified tags to the specified Amazon Chime SDK meeting.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::Chime::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::TagResource>
+
+Returns: nothing
+
+Applies the specified tags to the specified Amazon Chime SDK meeting
+resource.
+
+
+=head2 UntagAttendee
+
+=over
+
+=item AttendeeId => Str
+
+=item MeetingId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UntagAttendee>
+
+Returns: nothing
+
+Untags the specified tags from the specified Amazon Chime SDK attendee.
+
+
+=head2 UntagMeeting
+
+=over
+
+=item MeetingId => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UntagMeeting>
+
+Returns: nothing
+
+Untags the specified tags from the specified Amazon Chime SDK meeting.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UntagResource>
+
+Returns: nothing
+
+Untags the specified tags from the specified Amazon Chime SDK meeting
+resource.
 
 
 =head2 UpdateAccount
@@ -2325,6 +4671,8 @@ Searches phone numbers that can be ordered.
 =over
 
 =item AccountId => Str
+
+=item [DefaultLicense => Str]
 
 =item [Name => Str]
 
@@ -2336,7 +4684,8 @@ Each argument is described in detail in: L<Paws::Chime::UpdateAccount>
 Returns: a L<Paws::Chime::UpdateAccountResponse> instance
 
 Updates account details for the specified Amazon Chime account.
-Currently, only account name updates are supported for this action.
+Currently, only account name and default license updates are supported
+for this action.
 
 
 =head2 UpdateAccountSettings
@@ -2362,6 +4711,47 @@ Policies Page
 I<Amazon Chime Administration Guide>.
 
 
+=head2 UpdateAppInstance
+
+=over
+
+=item AppInstanceArn => Str
+
+=item Name => Str
+
+=item [Metadata => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateAppInstance>
+
+Returns: a L<Paws::Chime::UpdateAppInstanceResponse> instance
+
+Updates C<AppInstance> metadata.
+
+
+=head2 UpdateAppInstanceUser
+
+=over
+
+=item AppInstanceUserArn => Str
+
+=item Name => Str
+
+=item [Metadata => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateAppInstanceUser>
+
+Returns: a L<Paws::Chime::UpdateAppInstanceUserResponse> instance
+
+Updates the details of an C<AppInstanceUser>. You can update names and
+metadata.
+
+
 =head2 UpdateBot
 
 =over
@@ -2381,6 +4771,86 @@ Returns: a L<Paws::Chime::UpdateBotResponse> instance
 
 Updates the status of the specified bot, such as starting or stopping
 the bot from running in your Amazon Chime Enterprise account.
+
+
+=head2 UpdateChannel
+
+=over
+
+=item ChannelArn => Str
+
+=item Mode => Str
+
+=item Name => Str
+
+=item [ChimeBearer => Str]
+
+=item [Metadata => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateChannel>
+
+Returns: a L<Paws::Chime::UpdateChannelResponse> instance
+
+Update a channel's attributes.
+
+B<Restriction>: You can't change a channel's privacy.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 UpdateChannelMessage
+
+=over
+
+=item ChannelArn => Str
+
+=item MessageId => Str
+
+=item [ChimeBearer => Str]
+
+=item [Content => Str]
+
+=item [Metadata => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateChannelMessage>
+
+Returns: a L<Paws::Chime::UpdateChannelMessageResponse> instance
+
+Updates the content of a message.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
+
+
+=head2 UpdateChannelReadMarker
+
+=over
+
+=item ChannelArn => Str
+
+=item [ChimeBearer => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateChannelReadMarker>
+
+Returns: a L<Paws::Chime::UpdateChannelReadMarkerResponse> instance
+
+The details of the time when a user last read messages in a channel.
+
+The C<x-amz-chime-bearer> request header is mandatory. Use the
+C<AppInstanceUserArn> of the user that makes the API call as the value
+in the header.
 
 
 =head2 UpdateGlobalSettings
@@ -2425,10 +4895,11 @@ the specified phone number ID. You can update one phone number detail
 at a time. For example, you can update either the product type or the
 calling name in one action.
 
-For toll-free numbers, you must use the Amazon Chime Voice Connector
-product type.
+For toll-free numbers, you cannot use the Amazon Chime Business Calling
+product type. For numbers outside the U.S., you must use the Amazon
+Chime SIP Media Application Dial-In product type.
 
-Updates to outbound calling names can take up to 72 hours to complete.
+Updates to outbound calling names can take 72 hours to complete.
 Pending updates to outbound calling names must be complete before you
 can request another update.
 
@@ -2450,6 +4921,29 @@ Updates the phone number settings for the administrator's AWS account,
 such as the default outbound calling name. You can update the default
 outbound calling name once every seven days. Outbound calling names can
 take up to 72 hours to update.
+
+
+=head2 UpdateProxySession
+
+=over
+
+=item Capabilities => ArrayRef[Str|Undef]
+
+=item ProxySessionId => Str
+
+=item VoiceConnectorId => Str
+
+=item [ExpiryMinutes => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateProxySession>
+
+Returns: a L<Paws::Chime::UpdateProxySessionResponse> instance
+
+Updates the specified proxy session details, such as voice or SMS
+capabilities.
 
 
 =head2 UpdateRoom
@@ -2496,6 +4990,70 @@ Updates room membership details, such as the member role, for a room in
 an Amazon Chime Enterprise account. The member role designates whether
 the member is a chat room administrator or a general chat room member.
 The member role can be updated only for user IDs.
+
+
+=head2 UpdateSipMediaApplication
+
+=over
+
+=item SipMediaApplicationId => Str
+
+=item [Endpoints => ArrayRef[L<Paws::Chime::SipMediaApplicationEndpoint>]]
+
+=item [Name => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateSipMediaApplication>
+
+Returns: a L<Paws::Chime::UpdateSipMediaApplicationResponse> instance
+
+Updates the details of the specified SIP media application.
+
+
+=head2 UpdateSipMediaApplicationCall
+
+=over
+
+=item Arguments => L<Paws::Chime::SMAUpdateCallArgumentsMap>
+
+=item SipMediaApplicationId => Str
+
+=item TransactionId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateSipMediaApplicationCall>
+
+Returns: a L<Paws::Chime::UpdateSipMediaApplicationCallResponse> instance
+
+Allows you to trigger a Lambda function at any time while a call is
+active, and replace the current actions with new actions returned by
+the invocation.
+
+
+=head2 UpdateSipRule
+
+=over
+
+=item Name => Str
+
+=item SipRuleId => Str
+
+=item [Disabled => Bool]
+
+=item [TargetApplications => ArrayRef[L<Paws::Chime::SipRuleTargetApplication>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Chime::UpdateSipRule>
+
+Returns: a L<Paws::Chime::UpdateSipRuleResponse> instance
+
+Updates the details of the specified SIP rule.
 
 
 =head2 UpdateUser
@@ -2581,7 +5139,7 @@ Each argument is described in detail in: L<Paws::Chime::UpdateVoiceConnectorGrou
 
 Returns: a L<Paws::Chime::UpdateVoiceConnectorGroupResponse> instance
 
-Updates details for the specified Amazon Chime Voice Connector group,
+Updates details of the specified Amazon Chime Voice Connector group,
 such as the name and Amazon Chime Voice Connector priority ranking.
 
 

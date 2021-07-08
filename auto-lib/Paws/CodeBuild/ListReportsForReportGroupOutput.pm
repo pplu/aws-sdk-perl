@@ -28,7 +28,7 @@ returned, until no more next tokens are returned.
 
 =head2 Reports => ArrayRef[Str|Undef]
 
-The list of returned report group ARNs.
+The list of report ARNs.
 
 
 =head2 _request_id => Str

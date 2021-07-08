@@ -35,26 +35,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Similar to Channel. A channel is a named input source that training
-algorithms can consume. Refer to Channel for detailed descriptions.
+A channel is a named input source that training algorithms can consume.
+For more information, see .
 
 =head1 ATTRIBUTES
 
 
 =head2 CompressionType => Str
 
-You can use Gzip or None. The default value is None.
+You can use C<Gzip> or C<None>. The default value is C<None>.
 
 
 =head2 B<REQUIRED> DataSource => L<Paws::SageMaker::AutoMLDataSource>
 
-The data source.
+The data source for an AutoML channel.
 
 
 =head2 B<REQUIRED> TargetAttributeName => Str
 
-The name of the target variable in supervised learning, a.k.a.
-E<lsquo>yE<rsquo>.
+The name of the target variable in supervised learning, usually
+represented by 'y'.
 
 
 

@@ -2,7 +2,9 @@
 package Paws::CodeStarConnections::CreateConnection;
   use Moose;
   has ConnectionName => (is => 'ro', isa => 'Str', required => 1);
-  has ProviderType => (is => 'ro', isa => 'Str', required => 1);
+  has HostArn => (is => 'ro', isa => 'Str');
+  has ProviderType => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeStarConnections::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,12 +32,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codestar-connections = Paws->service('CodeStarConnections');
     my $CreateConnectionOutput = $codestar -connections->CreateConnection(
       ConnectionName => 'MyConnectionName',
-      ProviderType   => 'Bitbucket',
+      HostArn        => 'MyHostArn',          # OPTIONAL
+      ProviderType   => 'Bitbucket',          # OPTIONAL
+      Tags           => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
     my $ConnectionArn = $CreateConnectionOutput->ConnectionArn;
+    my $Tags          = $CreateConnectionOutput->Tags;
 
     # Returns a L<Paws::CodeStarConnections::CreateConnectionOutput> object.
 
@@ -52,13 +63,25 @@ the calling AWS account.
 
 
 
-=head2 B<REQUIRED> ProviderType => Str
+=head2 HostArn => Str
+
+The Amazon Resource Name (ARN) of the host associated with the
+connection to be created.
+
+
+
+=head2 ProviderType => Str
 
 The name of the external provider where your third-party code
-repository is configured. Currently, the valid provider type is
-Bitbucket.
+repository is configured.
 
-Valid values are: C<"Bitbucket">
+Valid values are: C<"Bitbucket">, C<"GitHub">, C<"GitHubEnterpriseServer">
+
+=head2 Tags => ArrayRef[L<Paws::CodeStarConnections::Tag>]
+
+The key-value pair to use when tagging the resource.
+
+
 
 
 =head1 SEE ALSO

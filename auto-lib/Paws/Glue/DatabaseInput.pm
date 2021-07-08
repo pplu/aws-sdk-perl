@@ -6,6 +6,7 @@ package Paws::Glue::DatabaseInput;
   has LocationUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has Parameters => (is => 'ro', isa => 'Paws::Glue::ParametersMap');
+  has TargetDatabase => (is => 'ro', isa => 'Paws::Glue::DatabaseIdentifier');
 
 1;
 
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Glue::DatabaseInput object:
 
-  $service_obj->Method(Att1 => { CreateTableDefaultPermissions => $value, ..., Parameters => $value  });
+  $service_obj->Method(Att1 => { CreateTableDefaultPermissions => $value, ..., TargetDatabase => $value  });
 
 =head3 Results returned from an API call
 
@@ -68,6 +69,12 @@ lowercase when it is stored.
 These key-value pairs define parameters and properties of the database.
 
 These key-value pairs define parameters and properties of the database.
+
+
+=head2 TargetDatabase => L<Paws::Glue::DatabaseIdentifier>
+
+A C<DatabaseIdentifier> structure that describes a target database for
+resource linking.
 
 
 

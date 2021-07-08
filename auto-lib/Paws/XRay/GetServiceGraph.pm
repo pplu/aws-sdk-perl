@@ -64,13 +64,14 @@ The end of the timeframe for which to generate a graph.
 
 =head2 GroupARN => Str
 
-The ARN of a group to generate a graph based on.
+The Amazon Resource Name (ARN) of a group based on which you want to
+generate a graph.
 
 
 
 =head2 GroupName => Str
 
-The name of a group to generate a graph based on.
+The name of a group based on which you want to generate a graph.
 
 
 

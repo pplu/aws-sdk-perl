@@ -2,6 +2,7 @@
 package Paws::MediaLive::Channel;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has CdiInputSpecification => (is => 'ro', isa => 'Paws::MediaLive::CdiInputSpecification', request_name => 'cdiInputSpecification', traits => ['NameInRequest']);
   has ChannelClass => (is => 'ro', isa => 'Str', request_name => 'channelClass', traits => ['NameInRequest']);
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', request_name => 'destinations', traits => ['NameInRequest']);
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', request_name => 'egressEndpoints', traits => ['NameInRequest']);
@@ -16,6 +17,7 @@ package Paws::MediaLive::Channel;
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', request_name => 'tags', traits => ['NameInRequest']);
+  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::VpcOutputSettingsDescription', request_name => 'vpc', traits => ['NameInRequest']);
 
 1;
 
@@ -36,7 +38,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::Channel object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Vpc => $value  });
 
 =head3 Results returned from an API call
 
@@ -55,6 +57,11 @@ Placeholder documentation for Channel
 =head2 Arn => Str
 
 The unique arn of the channel.
+
+
+=head2 CdiInputSpecification => L<Paws::MediaLive::CdiInputSpecification>
+
+Specification of CDI inputs for this channel
 
 
 =head2 ChannelClass => Str
@@ -92,7 +99,7 @@ List of input attachments for channel.
 
 =head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
 
-
+Specification of network and file inputs for this channel
 
 
 =head2 LogLevel => Str
@@ -129,6 +136,11 @@ Channel.
 =head2 Tags => L<Paws::MediaLive::Tags>
 
 A collection of key-value pairs.
+
+
+=head2 Vpc => L<Paws::MediaLive::VpcOutputSettingsDescription>
+
+Settings for VPC output
 
 
 

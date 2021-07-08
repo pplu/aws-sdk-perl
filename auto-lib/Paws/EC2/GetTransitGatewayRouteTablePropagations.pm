@@ -83,7 +83,8 @@ C<resource-id> - The ID of the resource.
 
 =item *
 
-C<resource-type> - The resource type (C<vpc> | C<vpn>).
+C<resource-type> - The resource type. Valid values are C<vpc> | C<vpn>
+| C<direct-connect-gateway> | C<peering> | C<connect>.
 
 =item *
 

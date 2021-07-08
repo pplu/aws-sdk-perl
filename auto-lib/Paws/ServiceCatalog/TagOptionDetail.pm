@@ -4,6 +4,7 @@ package Paws::ServiceCatalog::TagOptionDetail;
   has Active => (is => 'ro', isa => 'Bool');
   has Id => (is => 'ro', isa => 'Str');
   has Key => (is => 'ro', isa => 'Str');
+  has Owner => (is => 'ro', isa => 'Str');
   has Value => (is => 'ro', isa => 'Str');
 
 1;
@@ -54,6 +55,11 @@ The TagOption identifier.
 =head2 Key => Str
 
 The TagOption key.
+
+
+=head2 Owner => Str
+
+The AWS account Id of the owner account that created the TagOption.
 
 
 =head2 Value => Str

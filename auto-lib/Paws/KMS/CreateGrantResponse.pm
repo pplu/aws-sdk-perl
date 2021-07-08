@@ -19,7 +19,7 @@ Paws::KMS::CreateGrantResponse
 
 The unique identifier for the grant.
 
-You can use the C<GrantId> in a subsequent RetireGrant or RevokeGrant
+You can use the C<GrantId> in a ListGrants, RetireGrant, or RevokeGrant
 operation.
 
 
@@ -27,7 +27,9 @@ operation.
 
 The grant token.
 
-For more information, see Grant Tokens
+Use a grant token when your permission to call this operation comes
+from a new grant that has not yet achieved I<eventual consistency>. For
+more information, see Grant token
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 

@@ -86,24 +86,28 @@ from reusing.
 
 =head2 RequireLowercaseCharacters => Bool
 
-Specifies whether to require lowercase characters for IAM user
-passwords.
+Specifies whether IAM user passwords must contain at least one
+lowercase character (a to z).
 
 
 =head2 RequireNumbers => Bool
 
-Specifies whether to require numbers for IAM user passwords.
+Specifies whether IAM user passwords must contain at least one numeric
+character (0 to 9).
 
 
 =head2 RequireSymbols => Bool
 
-Specifies whether to require symbols for IAM user passwords.
+Specifies whether IAM user passwords must contain at least one of the
+following symbols:
+
+! @ # $ % ^ & * ( ) _ + - = [ ] { } | '
 
 
 =head2 RequireUppercaseCharacters => Bool
 
-Specifies whether to require uppercase characters for IAM user
-passwords.
+Specifies whether IAM user passwords must contain at least one
+uppercase character (A to Z).
 
 
 

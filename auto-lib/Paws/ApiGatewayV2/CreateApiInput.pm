@@ -5,6 +5,7 @@ package Paws::ApiGatewayV2::CreateApiInput;
   has CorsConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::Cors', request_name => 'corsConfiguration', traits => ['NameInRequest']);
   has CredentialsArn => (is => 'ro', isa => 'Str', request_name => 'credentialsArn', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has DisableExecuteApiEndpoint => (is => 'ro', isa => 'Bool', request_name => 'disableExecuteApiEndpoint', traits => ['NameInRequest']);
   has DisableSchemaValidation => (is => 'ro', isa => 'Bool', request_name => 'disableSchemaValidation', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has ProtocolType => (is => 'ro', isa => 'Str', request_name => 'protocolType', traits => ['NameInRequest'], required => 1);
@@ -79,6 +80,15 @@ HTTP integrations. Supported only for HTTP APIs.
 =head2 Description => Str
 
 The description of the API.
+
+
+=head2 DisableExecuteApiEndpoint => Bool
+
+Specifies whether clients can invoke your API by using the default
+execute-api endpoint. By default, clients can invoke your API with the
+default https://{api_id}.execute-api.{region}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.
 
 
 =head2 DisableSchemaValidation => Bool

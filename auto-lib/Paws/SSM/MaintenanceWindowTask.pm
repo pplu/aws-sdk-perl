@@ -57,7 +57,7 @@ A description of the task.
 
 =head2 LoggingInfo => L<Paws::SSM::LoggingInfo>
 
-Information about an Amazon S3 bucket to write task-level logs to.
+Information about an S3 bucket to write task-level logs to.
 
 C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>

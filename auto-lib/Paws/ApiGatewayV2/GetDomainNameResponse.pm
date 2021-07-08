@@ -4,6 +4,7 @@ package Paws::ApiGatewayV2::GetDomainNameResponse;
   has ApiMappingSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'apiMappingSelectionExpression');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'domainName');
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', traits => ['NameInRequest'], request_name => 'domainNameConfigurations');
+  has MutualTlsAuthentication => (is => 'ro', isa => 'Paws::ApiGatewayV2::MutualTlsAuthentication', traits => ['NameInRequest'], request_name => 'mutualTlsAuthentication');
   has Tags => (is => 'ro', isa => 'Paws::ApiGatewayV2::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -31,6 +32,11 @@ The name of the DomainName resource.
 =head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
 
 The domain name configurations.
+
+
+=head2 MutualTlsAuthentication => L<Paws::ApiGatewayV2::MutualTlsAuthentication>
+
+The mutual TLS authentication configuration for a custom domain name.
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>

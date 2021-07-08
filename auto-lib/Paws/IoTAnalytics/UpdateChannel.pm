@@ -62,10 +62,10 @@ The name of the channel to be updated.
 
 =head2 ChannelStorage => L<Paws::IoTAnalytics::ChannelStorage>
 
-Where channel data is stored. You may choose one of "serviceManagedS3"
-or "customerManagedS3" storage. If not specified, the default is
-"serviceManagedS3". This cannot be changed after creation of the
-channel.
+Where channel data is stored. You can choose one of C<serviceManagedS3>
+or C<customerManagedS3> storage. If not specified, the default is
+C<serviceManagedS3>. You cannot change this storage option after the
+channel is created.
 
 
 

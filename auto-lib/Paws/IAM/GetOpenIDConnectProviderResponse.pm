@@ -3,6 +3,7 @@ package Paws::IAM::GetOpenIDConnectProviderResponse;
   use Moose;
   has ClientIDList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has CreateDate => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
   has ThumbprintList => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Url => (is => 'ro', isa => 'Str');
 
@@ -29,6 +30,15 @@ see CreateOpenIDConnectProvider.
 
 The date and time when the IAM OIDC provider resource object was
 created in the AWS account.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that are attached to the specified IAM OIDC provider.
+The returned list of tags is sorted by tag key. For more information
+about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 =head2 ThumbprintList => ArrayRef[Str|Undef]

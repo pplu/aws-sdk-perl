@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-Information about this specific recommendation, such as the time stamp
+Information about this specific recommendation, such as the timestamp
 for when AWS made a specific recommendation.
 
 =head1 ATTRIBUTES
@@ -42,7 +42,7 @@ for when AWS made a specific recommendation.
 
 =head2 GenerationTimestamp => Str
 
-The time stamp for when AWS made this recommendation.
+The timestamp for when AWS made this recommendation.
 
 
 =head2 RecommendationId => Str

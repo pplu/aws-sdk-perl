@@ -62,8 +62,12 @@ The minimum is 1 and the maximum is 14 days (20160 minutes).
 
 =head2 PageToken => Str
 
-A token used for advancing to a specific page of results from for get
-relational database events request.
+The token to advance to the next page of results from your request.
+
+To get a page token, perform an initial C<GetRelationalDatabaseEvents>
+request. If your results are paginated, the response will return a next
+page token that you can specify as the page token in a subsequent
+request.
 
 
 

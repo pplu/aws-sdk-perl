@@ -74,7 +74,7 @@ and specifies all resources (C<*>), then the parameter is not returned.
 When you make a cross-account request, AWS evaluates the request in the
 trusting account and the trusted account. The request is allowed only
 if both evaluations return C<true>. For more information about how
-policies are evaluated, see Evaluating Policies Within a Single Account
+policies are evaluated, see Evaluating policies within a single account
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_evaluation-logic.html#policy-eval-basics).
 
 If an AWS Organizations SCP included in the evaluation denies access,

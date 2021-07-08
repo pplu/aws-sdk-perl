@@ -17,14 +17,16 @@ Paws::ResourceTagging::GetTagValuesOutput
 
 =head2 PaginationToken => Str
 
-A string that indicates that the response contains more data than can
-be returned in a single response. To receive additional data, specify
-this string for the C<PaginationToken> value in a subsequent request.
+A string that indicates that there is more data available than this
+response contains. To receive the next part of the response, specify
+this response value as the C<PaginationToken> value in the request for
+the next page.
 
 
 =head2 TagValues => ArrayRef[Str|Undef]
 
-A list of all tag values for the specified key in the AWS account.
+A list of all tag values for the specified key currently used in the
+specified AWS Region for the calling AWS account.
 
 
 =head2 _request_id => Str

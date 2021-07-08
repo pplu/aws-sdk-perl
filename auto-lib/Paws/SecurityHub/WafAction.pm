@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 =head1 DESCRIPTION
 
 Details about the action that CloudFront or AWS WAF takes when a web
-request matches the conditions in the Rule.
+request matches the conditions in the rule.
 
 =head1 ATTRIBUTES
 
@@ -42,7 +42,7 @@ request matches the conditions in the Rule.
 =head2 Type => Str
 
 Specifies how you want AWS WAF to respond to requests that match the
-settings in a Rule.
+settings in a rule.
 
 Valid settings include the following:
 

@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> Activate => Bool
 
-A boolean value that indicates whether GuardDuty is to start using the
+A Boolean value that indicates whether GuardDuty is to start using the
 uploaded IPSet.
 
 
@@ -72,8 +72,8 @@ The idempotency token for the create request.
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector of the GuardDuty account for which you
-want to create an IPSet.
+The unique ID of the detector of the GuardDuty account that you want to
+create an IPSet for.
 
 
 
@@ -85,16 +85,17 @@ Valid values are: C<"TXT">, C<"STIX">, C<"OTX_CSV">, C<"ALIEN_VAULT">, C<"PROOF_
 
 =head2 B<REQUIRED> Location => Str
 
-The URI of the file that contains the IPSet. For example
-(https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key)
+The URI of the file that contains the IPSet. For example:
+https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
-The user friendly name to identify the IPSet. This name is displayed in
-all findings that are triggered by activity that involves IP addresses
-included in this IPSet.
+The user-friendly name to identify the IPSet.
+
+Allowed characters are alphanumerics, spaces, hyphens (-), and
+underscores (_).
 
 
 

@@ -1,6 +1,7 @@
 
 package Paws::CloudFormation::GetTemplateSummary;
   use Moose;
+  has CallAs => (is => 'ro', isa => 'Str');
   has StackName => (is => 'ro', isa => 'Str');
   has StackSetName => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
@@ -31,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $GetTemplateSummaryOutput = $cloudformation->GetTemplateSummary(
+      CallAs       => 'SELF',                  # OPTIONAL
       StackName    => 'MyStackNameOrId',       # OPTIONAL
       StackSetName => 'MyStackSetNameOrId',    # OPTIONAL
       TemplateBody => 'MyTemplateBody',        # OPTIONAL
@@ -56,6 +58,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head1 ATTRIBUTES
 
+
+=head2 CallAs => Str
+
+[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, C<SELF> is specified. Use C<SELF> for stack sets with
+self-managed permissions.
+
+=over
+
+=item *
+
+If you are signed in to the management account, specify C<SELF>.
+
+=item *
+
+If you are signed in to a delegated administrator account, specify
+C<DELEGATED_ADMIN>.
+
+Your AWS account must be registered as a delegated administrator in the
+management account. For more information, see Register a delegated
+administrator
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+in the I<AWS CloudFormation User Guide>.
+
+=back
+
+
+Valid values are: C<"SELF">, C<"DELEGATED_ADMIN">
 
 =head2 StackName => Str
 
@@ -96,7 +129,8 @@ C<StackName>, C<StackSetName>, C<TemplateBody>, or C<TemplateURL>.
 
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information about templates, see Template Anatomy
+bucket or a Systems Manager document. For more information about
+templates, see Template Anatomy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 

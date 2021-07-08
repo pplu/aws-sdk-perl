@@ -59,13 +59,13 @@ Photos 2016-08-11>.
 
 =head2 IsMaster => Bool
 
-A value that indicates that this job is a master job. A master job
-represents a successful request to create an export job. Master jobs
-aren't associated with any Snowballs. Instead, each master job will
-have at least one job part, and each job part is associated with a
-Snowball. It might take some time before the job parts associated with
-a particular master job are listed, because they are created after the
-master job is created.
+A value that indicates that this job is a main job. A main job
+represents a successful request to create an export job. Main jobs
+aren't associated with any Snowballs. Instead, each main job will have
+at least one job part, and each job part is associated with a Snowball.
+It might take some time before the job parts associated with a
+particular main job are listed, because they are created after the main
+job is created.
 
 
 =head2 JobId => Str

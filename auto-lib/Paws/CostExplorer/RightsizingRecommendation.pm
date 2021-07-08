@@ -3,6 +3,7 @@ package Paws::CostExplorer::RightsizingRecommendation;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has CurrentInstance => (is => 'ro', isa => 'Paws::CostExplorer::CurrentInstance');
+  has FindingReasonCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has ModifyRecommendationDetail => (is => 'ro', isa => 'Paws::CostExplorer::ModifyRecommendationDetail');
   has RightsizingType => (is => 'ro', isa => 'Str');
   has TerminateRecommendationDetail => (is => 'ro', isa => 'Paws::CostExplorer::TerminateRecommendationDetail');
@@ -50,6 +51,13 @@ The account that this recommendation is for.
 =head2 CurrentInstance => L<Paws::CostExplorer::CurrentInstance>
 
 Context regarding the current instance.
+
+
+=head2 FindingReasonCodes => ArrayRef[Str|Undef]
+
+The list of possible reasons why the recommendation is generated such
+as under or over utilization of specific metrics (for example, CPU,
+Memory, Network).
 
 
 =head2 ModifyRecommendationDetail => L<Paws::CostExplorer::ModifyRecommendationDetail>

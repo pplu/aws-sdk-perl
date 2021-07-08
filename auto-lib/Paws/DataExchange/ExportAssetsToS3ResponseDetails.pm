@@ -3,6 +3,7 @@ package Paws::DataExchange::ExportAssetsToS3ResponseDetails;
   use Moose;
   has AssetDestinations => (is => 'ro', isa => 'ArrayRef[Paws::DataExchange::AssetDestinationEntry]', required => 1);
   has DataSetId => (is => 'ro', isa => 'Str', required => 1);
+  has Encryption => (is => 'ro', isa => 'Paws::DataExchange::ExportServerSideEncryption');
   has RevisionId => (is => 'ro', isa => 'Str', required => 1);
 
 1;
@@ -48,6 +49,11 @@ The destination in Amazon S3 where the asset is exported.
 =head2 B<REQUIRED> DataSetId => Str
 
 The unique identifier for the data set associated with this export job.
+
+
+=head2 Encryption => L<Paws::DataExchange::ExportServerSideEncryption>
+
+Encryption configuration of the export job.
 
 
 =head2 B<REQUIRED> RevisionId => Str

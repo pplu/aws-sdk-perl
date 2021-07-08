@@ -2,6 +2,7 @@
 package Paws::CloudWatchEvents::DescribeRuleResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has CreatedBy => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has EventBusName => (is => 'ro', isa => 'Str');
   has EventPattern => (is => 'ro', isa => 'Str');
@@ -27,6 +28,15 @@ Paws::CloudWatchEvents::DescribeRuleResponse
 The Amazon Resource Name (ARN) of the rule.
 
 
+=head2 CreatedBy => Str
+
+The account ID of the user that created the rule. If you use C<PutRule>
+to put a rule on an event bus in another account, the other account is
+the owner of the rule, and the rule ARN includes the account ID for
+that account. However, the value for C<CreatedBy> is the account ID as
+the account that created the rule in the other account.
+
+
 =head2 Description => Str
 
 The description of the rule.
@@ -34,12 +44,12 @@ The description of the rule.
 
 =head2 EventBusName => Str
 
-The event bus associated with the rule.
+The name of the event bus associated with the rule.
 
 
 =head2 EventPattern => Str
 
-The event pattern. For more information, see Event Patterns
+The event pattern. For more information, see Events and Event Patterns
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 in the I<Amazon EventBridge User Guide>.
 
@@ -64,8 +74,8 @@ rule.
 
 =head2 ScheduleExpression => Str
 
-The scheduling expression: for example, C<"cron(0 20 * * ? *)"> or
-C<"rate(5 minutes)">.
+The scheduling expression. For example, "cron(0 20 * * ? *)", "rate(5
+minutes)".
 
 
 =head2 State => Str

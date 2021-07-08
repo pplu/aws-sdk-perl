@@ -36,8 +36,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       Filters => [
         {
-          Name =>
-            'file-system-id',    # values: file-system-id, backup-type; OPTIONAL
+          Name => 'file-system-id'
+          ,    # values: file-system-id, backup-type, file-system-type; OPTIONAL
           Values => [
             'MyFilterValue', ...    # min: 1, max: 128
           ],    # max: 20; OPTIONAL
@@ -62,34 +62,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 =head2 BackupIds => ArrayRef[Str|Undef]
 
-(Optional) IDs of the backups you want to retrieve (String). This
-overrides any filters. If any IDs are not found, BackupNotFound will be
-thrown.
+IDs of the backups you want to retrieve (String). This overrides any
+filters. If any IDs are not found, BackupNotFound will be thrown.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::FSX::Filter>]
 
-(Optional) Filters structure. Supported names are file-system-id and
-backup-type.
+Filters structure. Supported names are file-system-id and backup-type.
 
 
 
 =head2 MaxResults => Int
 
-(Optional) Maximum number of backups to return in the response
-(integer). This parameter value must be greater than 0. The number of
-items that Amazon FSx returns is the minimum of the C<MaxResults>
-parameter specified in the request and the service's internal maximum
-number of items per page.
+Maximum number of backups to return in the response (integer). This
+parameter value must be greater than 0. The number of items that Amazon
+FSx returns is the minimum of the C<MaxResults> parameter specified in
+the request and the service's internal maximum number of items per
+page.
 
 
 
 =head2 NextToken => Str
 
-(Optional) Opaque pagination token returned from a previous
-C<DescribeBackups> operation (String). If a token present, the action
-continues the list from where the returning call left off.
+Opaque pagination token returned from a previous C<DescribeBackups>
+operation (String). If a token present, the action continues the list
+from where the returning call left off.
 
 
 

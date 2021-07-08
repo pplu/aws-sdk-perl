@@ -43,8 +43,8 @@ The caching configuration for a resolver that has caching enabled.
 
 The caching keys for a resolver that has caching enabled.
 
-Valid values are entries from the C<$context.identity> and
-C<$context.arguments> maps.
+Valid values are entries from the C<$context.arguments>,
+C<$context.source>, and C<$context.identity> maps.
 
 
 =head2 Ttl => Int

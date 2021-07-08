@@ -23,7 +23,8 @@ The rules returned by the operation.
 
 =head2 NextToken => Str
 
-Reserved for future use.
+If this parameter is present, it is a token that marks the start of the
+next batch of returned results.
 
 
 =head2 _request_id => Str

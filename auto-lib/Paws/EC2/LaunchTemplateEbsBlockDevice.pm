@@ -5,6 +5,7 @@ package Paws::EC2::LaunchTemplateEbsBlockDevice;
   has Iops => (is => 'ro', isa => 'Int', request_name => 'iops', traits => ['NameInRequest']);
   has KmsKeyId => (is => 'ro', isa => 'Str', request_name => 'kmsKeyId', traits => ['NameInRequest']);
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
+  has Throughput => (is => 'ro', isa => 'Int', request_name => 'throughput', traits => ['NameInRequest']);
   has VolumeSize => (is => 'ro', isa => 'Int', request_name => 'volumeSize', traits => ['NameInRequest']);
   has VolumeType => (is => 'ro', isa => 'Str', request_name => 'volumeType', traits => ['NameInRequest']);
 1;
@@ -67,6 +68,11 @@ encryption.
 =head2 SnapshotId => Str
 
 The ID of the snapshot.
+
+
+=head2 Throughput => Int
+
+The throughput that the volume supports, in MiB/s.
 
 
 =head2 VolumeSize => Int

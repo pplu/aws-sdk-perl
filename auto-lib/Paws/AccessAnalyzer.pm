@@ -14,6 +14,21 @@ package Paws::AccessAnalyzer;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub ApplyArchiveRule {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ApplyArchiveRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelPolicyGeneration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::CancelPolicyGeneration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateAccessPreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::CreateAccessPreview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAnalyzer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::CreateAnalyzer', @_);
@@ -32,6 +47,11 @@ package Paws::AccessAnalyzer;
   sub DeleteArchiveRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::DeleteArchiveRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAccessPreview {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::GetAccessPreview', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetAnalyzedResource {
@@ -54,6 +74,21 @@ package Paws::AccessAnalyzer;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::GetFinding', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetGeneratedPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::GetGeneratedPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAccessPreviewFindings {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ListAccessPreviewFindings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAccessPreviews {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ListAccessPreviews', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAnalyzedResources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ListAnalyzedResources', @_);
@@ -74,9 +109,19 @@ package Paws::AccessAnalyzer;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ListFindings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListPolicyGenerations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ListPolicyGenerations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartPolicyGeneration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::StartPolicyGeneration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartResourceScan {
@@ -104,10 +149,199 @@ package Paws::AccessAnalyzer;
     my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::UpdateFindings', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ValidatePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::AccessAnalyzer::ValidatePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
+  sub ListAllAccessPreviewFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccessPreviewFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAccessPreviewFindings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->findings }, @{ $next_result->findings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'findings') foreach (@{ $result->findings });
+        $result = $self->ListAccessPreviewFindings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'findings') foreach (@{ $result->findings });
+    }
+
+    return undef
+  }
+  sub ListAllAccessPreviews {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAccessPreviews(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAccessPreviews(@_, nextToken => $next_result->nextToken);
+        push @{ $result->accessPreviews }, @{ $next_result->accessPreviews };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'accessPreviews') foreach (@{ $result->accessPreviews });
+        $result = $self->ListAccessPreviews(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'accessPreviews') foreach (@{ $result->accessPreviews });
+    }
+
+    return undef
+  }
+  sub ListAllAnalyzedResources {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAnalyzedResources(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAnalyzedResources(@_, nextToken => $next_result->nextToken);
+        push @{ $result->analyzedResources }, @{ $next_result->analyzedResources };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'analyzedResources') foreach (@{ $result->analyzedResources });
+        $result = $self->ListAnalyzedResources(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'analyzedResources') foreach (@{ $result->analyzedResources });
+    }
+
+    return undef
+  }
+  sub ListAllAnalyzers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAnalyzers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAnalyzers(@_, nextToken => $next_result->nextToken);
+        push @{ $result->analyzers }, @{ $next_result->analyzers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'analyzers') foreach (@{ $result->analyzers });
+        $result = $self->ListAnalyzers(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'analyzers') foreach (@{ $result->analyzers });
+    }
+
+    return undef
+  }
+  sub ListAllArchiveRules {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListArchiveRules(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListArchiveRules(@_, nextToken => $next_result->nextToken);
+        push @{ $result->archiveRules }, @{ $next_result->archiveRules };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'archiveRules') foreach (@{ $result->archiveRules });
+        $result = $self->ListArchiveRules(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'archiveRules') foreach (@{ $result->archiveRules });
+    }
+
+    return undef
+  }
+  sub ListAllFindings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFindings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListFindings(@_, nextToken => $next_result->nextToken);
+        push @{ $result->findings }, @{ $next_result->findings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'findings') foreach (@{ $result->findings });
+        $result = $self->ListFindings(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'findings') foreach (@{ $result->findings });
+    }
+
+    return undef
+  }
+  sub ListAllPolicyGenerations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListPolicyGenerations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListPolicyGenerations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->policyGenerations }, @{ $next_result->policyGenerations };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'policyGenerations') foreach (@{ $result->policyGenerations });
+        $result = $self->ListPolicyGenerations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'policyGenerations') foreach (@{ $result->policyGenerations });
+    }
+
+    return undef
+  }
+  sub ValidateAllPolicies {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ValidatePolicy(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ValidatePolicy(@_, nextToken => $next_result->nextToken);
+        push @{ $result->findings }, @{ $next_result->findings };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'findings') foreach (@{ $result->findings });
+        $result = $self->ValidatePolicy(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'findings') foreach (@{ $result->findings });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/CreateAnalyzer CreateArchiveRule DeleteAnalyzer DeleteArchiveRule GetAnalyzedResource GetAnalyzer GetArchiveRule GetFinding ListAnalyzedResources ListAnalyzers ListArchiveRules ListFindings ListTagsForResource StartResourceScan TagResource UntagResource UpdateArchiveRule UpdateFindings / }
+  sub operations { qw/ApplyArchiveRule CancelPolicyGeneration CreateAccessPreview CreateAnalyzer CreateArchiveRule DeleteAnalyzer DeleteArchiveRule GetAccessPreview GetAnalyzedResource GetAnalyzer GetArchiveRule GetFinding GetGeneratedPolicy ListAccessPreviewFindings ListAccessPreviews ListAnalyzedResources ListAnalyzers ListArchiveRules ListFindings ListPolicyGenerations ListTagsForResource StartPolicyGeneration StartResourceScan TagResource UntagResource UpdateArchiveRule UpdateFindings ValidatePolicy / }
 
 1;
 
@@ -140,11 +374,14 @@ by enabling you to identify any policies that grant access to an
 external principal. It does this by using logic-based reasoning to
 analyze resource-based policies in your AWS environment. An external
 principal can be another AWS account, a root user, an IAM user or role,
-a federated user, an AWS service, or an anonymous user. This guide
-describes the AWS IAM Access Analyzer operations that you can call
-programmatically. For general information about Access Analyzer, see
-the AWS IAM Access Analyzer section of the IAM User Guide
-(https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html).
+a federated user, an AWS service, or an anonymous user. You can also
+use Access Analyzer to preview and validate public and cross-account
+access to your resources before deploying permissions changes. This
+guide describes the AWS IAM Access Analyzer operations that you can
+call programmatically. For general information about Access Analyzer,
+see AWS IAM Access Analyzer
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html)
+in the B<IAM User Guide>.
 
 To start using Access Analyzer, you first need to create an analyzer.
 
@@ -152,6 +389,64 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acc
 
 
 =head1 METHODS
+
+=head2 ApplyArchiveRule
+
+=over
+
+=item AnalyzerArn => Str
+
+=item RuleName => Str
+
+=item [ClientToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::ApplyArchiveRule>
+
+Returns: nothing
+
+Retroactively applies the archive rule to existing findings that meet
+the archive rule criteria.
+
+
+=head2 CancelPolicyGeneration
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::CancelPolicyGeneration>
+
+Returns: a L<Paws::AccessAnalyzer::CancelPolicyGenerationResponse> instance
+
+Cancels the requested policy generation.
+
+
+=head2 CreateAccessPreview
+
+=over
+
+=item AnalyzerArn => Str
+
+=item Configurations => L<Paws::AccessAnalyzer::ConfigurationsMap>
+
+=item [ClientToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::CreateAccessPreview>
+
+Returns: a L<Paws::AccessAnalyzer::CreateAccessPreviewResponse> instance
+
+Creates an access preview that allows you to preview Access Analyzer
+findings for your resource before deploying resource permissions.
+
 
 =head2 CreateAnalyzer
 
@@ -197,8 +492,13 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::CreateArchiveRu
 Returns: nothing
 
 Creates an archive rule for the specified analyzer. Archive rules
-automatically archive findings that meet the criteria you define when
-you create the rule.
+automatically archive new findings that meet the criteria you define
+when you create the rule.
+
+To learn about filter keys that you can use to create an archive rule,
+see Access Analyzer filter keys
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
+in the B<IAM User Guide>.
 
 
 =head2 DeleteAnalyzer
@@ -217,9 +517,9 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::DeleteAnalyzer>
 Returns: nothing
 
 Deletes the specified analyzer. When you delete an analyzer, Access
-Analyzer is disabled for the account in the current or specific Region.
-All findings that were generated by the analyzer are deleted. You
-cannot undo this action.
+Analyzer is disabled for the account or organization in the current or
+specific Region. All findings that were generated by the analyzer are
+deleted. You cannot undo this action.
 
 
 =head2 DeleteArchiveRule
@@ -240,6 +540,25 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::DeleteArchiveRu
 Returns: nothing
 
 Deletes the specified archive rule.
+
+
+=head2 GetAccessPreview
+
+=over
+
+=item AccessPreviewId => Str
+
+=item AnalyzerArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::GetAccessPreview>
+
+Returns: a L<Paws::AccessAnalyzer::GetAccessPreviewResponse> instance
+
+Retrieves information about an access preview for the specified
+analyzer.
 
 
 =head2 GetAnalyzedResource
@@ -293,6 +612,11 @@ Returns: a L<Paws::AccessAnalyzer::GetArchiveRuleResponse> instance
 
 Retrieves information about an archive rule.
 
+To learn about filter keys that you can use to create an archive rule,
+see Access Analyzer filter keys
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
+in the B<IAM User Guide>.
+
 
 =head2 GetFinding
 
@@ -310,6 +634,71 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::GetFinding>
 Returns: a L<Paws::AccessAnalyzer::GetFindingResponse> instance
 
 Retrieves information about the specified finding.
+
+
+=head2 GetGeneratedPolicy
+
+=over
+
+=item JobId => Str
+
+=item [IncludeResourcePlaceholders => Bool]
+
+=item [IncludeServiceLevelTemplate => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::GetGeneratedPolicy>
+
+Returns: a L<Paws::AccessAnalyzer::GetGeneratedPolicyResponse> instance
+
+Retrieves the policy that was generated using C<StartPolicyGeneration>.
+
+
+=head2 ListAccessPreviewFindings
+
+=over
+
+=item AccessPreviewId => Str
+
+=item AnalyzerArn => Str
+
+=item [Filter => L<Paws::AccessAnalyzer::FilterCriteriaMap>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::ListAccessPreviewFindings>
+
+Returns: a L<Paws::AccessAnalyzer::ListAccessPreviewFindingsResponse> instance
+
+Retrieves a list of access preview findings generated by the specified
+access preview.
+
+
+=head2 ListAccessPreviews
+
+=over
+
+=item AnalyzerArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::ListAccessPreviews>
+
+Returns: a L<Paws::AccessAnalyzer::ListAccessPreviewsResponse> instance
+
+Retrieves a list of access previews for the specified analyzer.
 
 
 =head2 ListAnalyzedResources
@@ -398,6 +787,31 @@ Returns: a L<Paws::AccessAnalyzer::ListFindingsResponse> instance
 
 Retrieves a list of findings generated by the specified analyzer.
 
+To learn about filter keys that you can use to retrieve a list of
+findings, see Access Analyzer filter keys
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-reference-filter-keys.html)
+in the B<IAM User Guide>.
+
+
+=head2 ListPolicyGenerations
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PrincipalArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::ListPolicyGenerations>
+
+Returns: a L<Paws::AccessAnalyzer::ListPolicyGenerationsResponse> instance
+
+Lists all of the policy generations requested in the last seven days.
+
 
 =head2 ListTagsForResource
 
@@ -413,6 +827,26 @@ Each argument is described in detail in: L<Paws::AccessAnalyzer::ListTagsForReso
 Returns: a L<Paws::AccessAnalyzer::ListTagsForResourceResponse> instance
 
 Retrieves a list of tags applied to the specified resource.
+
+
+=head2 StartPolicyGeneration
+
+=over
+
+=item PolicyGenerationDetails => L<Paws::AccessAnalyzer::PolicyGenerationDetails>
+
+=item [ClientToken => Str]
+
+=item [CloudTrailDetails => L<Paws::AccessAnalyzer::CloudTrailDetails>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::StartPolicyGeneration>
+
+Returns: a L<Paws::AccessAnalyzer::StartPolicyGenerationResponse> instance
+
+Starts the policy generation request.
 
 
 =head2 StartResourceScan
@@ -516,11 +950,134 @@ Returns: nothing
 Updates the status for the specified findings.
 
 
+=head2 ValidatePolicy
+
+=over
+
+=item PolicyDocument => Str
+
+=item PolicyType => Str
+
+=item [Locale => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::AccessAnalyzer::ValidatePolicy>
+
+Returns: a L<Paws::AccessAnalyzer::ValidatePolicyResponse> instance
+
+Requests the validation of a policy and returns a list of findings. The
+findings help you identify issues and provide actionable
+recommendations to resolve the issue and enable you to author
+functional policies that meet security best practices.
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 ListAllAccessPreviewFindings(sub { },AccessPreviewId => Str, AnalyzerArn => Str, [Filter => L<Paws::AccessAnalyzer::FilterCriteriaMap>, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccessPreviewFindings(AccessPreviewId => Str, AnalyzerArn => Str, [Filter => L<Paws::AccessAnalyzer::FilterCriteriaMap>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - findings, passing the object as the first parameter, and the string 'findings' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListAccessPreviewFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAccessPreviews(sub { },AnalyzerArn => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAccessPreviews(AnalyzerArn => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - accessPreviews, passing the object as the first parameter, and the string 'accessPreviews' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListAccessPreviewsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAnalyzedResources(sub { },AnalyzerArn => Str, [MaxResults => Int, NextToken => Str, ResourceType => Str])
+
+=head2 ListAllAnalyzedResources(AnalyzerArn => Str, [MaxResults => Int, NextToken => Str, ResourceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - analyzedResources, passing the object as the first parameter, and the string 'analyzedResources' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListAnalyzedResourcesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAnalyzers(sub { },[MaxResults => Int, NextToken => Str, Type => Str])
+
+=head2 ListAllAnalyzers([MaxResults => Int, NextToken => Str, Type => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - analyzers, passing the object as the first parameter, and the string 'analyzers' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListAnalyzersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllArchiveRules(sub { },AnalyzerName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllArchiveRules(AnalyzerName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - archiveRules, passing the object as the first parameter, and the string 'archiveRules' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListArchiveRulesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFindings(sub { },AnalyzerArn => Str, [Filter => L<Paws::AccessAnalyzer::FilterCriteriaMap>, MaxResults => Int, NextToken => Str, Sort => L<Paws::AccessAnalyzer::SortCriteria>])
+
+=head2 ListAllFindings(AnalyzerArn => Str, [Filter => L<Paws::AccessAnalyzer::FilterCriteriaMap>, MaxResults => Int, NextToken => Str, Sort => L<Paws::AccessAnalyzer::SortCriteria>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - findings, passing the object as the first parameter, and the string 'findings' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllPolicyGenerations(sub { },[MaxResults => Int, NextToken => Str, PrincipalArn => Str])
+
+=head2 ListAllPolicyGenerations([MaxResults => Int, NextToken => Str, PrincipalArn => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - policyGenerations, passing the object as the first parameter, and the string 'policyGenerations' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ListPolicyGenerationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ValidateAllPolicies(sub { },PolicyDocument => Str, PolicyType => Str, [Locale => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ValidateAllPolicies(PolicyDocument => Str, PolicyType => Str, [Locale => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - findings, passing the object as the first parameter, and the string 'findings' as the second parameter 
+
+If not, it will return a a L<Paws::AccessAnalyzer::ValidatePolicyResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 
 

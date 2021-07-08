@@ -4,6 +4,7 @@ package Paws::Shield::Protection;
   has HealthCheckIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
+  has ProtectionArn => (is => 'ro', isa => 'Str');
   has ResourceArn => (is => 'ro', isa => 'Str');
 
 1;
@@ -54,8 +55,13 @@ The unique identifier (ID) of the protection.
 
 =head2 Name => Str
 
-The friendly name of the protection. For example, C<My CloudFront
+The name of the protection. For example, C<My CloudFront
 distributions>.
+
+
+=head2 ProtectionArn => Str
+
+The ARN (Amazon Resource Name) of the protection.
 
 
 =head2 ResourceArn => Str

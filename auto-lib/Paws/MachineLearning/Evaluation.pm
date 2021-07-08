@@ -143,7 +143,7 @@ technique to measure performance.
 
 For more information about performance metrics, please see the Amazon
 Machine Learning Developer Guide
-(http://docs.aws.amazon.com/machine-learning/latest/dg).
+(https://docs.aws.amazon.com/machine-learning/latest/dg).
 
 
 =head2 StartedAt => Str
@@ -158,18 +158,27 @@ following values:
 
 =over
 
-=item * C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a
-request to evaluate an C<MLModel>.
+=item *
 
-=item * C<INPROGRESS> - The evaluation is underway.
+C<PENDING> - Amazon Machine Learning (Amazon ML) submitted a request to
+evaluate an C<MLModel>.
 
-=item * C<FAILED> - The request to evaluate an C<MLModel> did not run
-to completion. It is not usable.
+=item *
 
-=item * C<COMPLETED> - The evaluation process completed successfully.
+C<INPROGRESS> - The evaluation is underway.
 
-=item * C<DELETED> - The C<Evaluation> is marked as deleted. It is not
-usable.
+=item *
+
+C<FAILED> - The request to evaluate an C<MLModel> did not run to
+completion. It is not usable.
+
+=item *
+
+C<COMPLETED> - The evaluation process completed successfully.
+
+=item *
+
+C<DELETED> - The C<Evaluation> is marked as deleted. It is not usable.
 
 =back
 

@@ -35,14 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AddLicenseSpecifications => [
         {
           LicenseConfigurationArn => 'MyString',
-
+          AmiAssociationScope     => 'MyString',
         },
         ...
       ],    # OPTIONAL
       RemoveLicenseSpecifications => [
         {
           LicenseConfigurationArn => 'MyString',
-
+          AmiAssociationScope     => 'MyString',
         },
         ...
       ],    # OPTIONAL

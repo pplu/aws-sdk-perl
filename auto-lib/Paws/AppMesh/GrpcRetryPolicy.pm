@@ -39,7 +39,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AppMesh::Gr
 
 An object that represents a retry policy. Specify at least one value
 for at least one of the types of C<RetryEvents>, a value for
-C<maxRetries>, and a value for C<perRetryTimeout>.
+C<maxRetries>, and a value for C<perRetryTimeout>. Both C<server-error>
+and C<gateway-error> under C<httpRetryEvents> include the Envoy
+C<reset> policy. For more information on the C<reset> policy, see the
+Envoy documentation
+(https://www.envoyproxy.io/docs/envoy/latest/configuration/http/http_filters/router_filter#x-envoy-retry-on).
 
 =head1 ATTRIBUTES
 
@@ -83,12 +87,14 @@ The maximum number of retry attempts.
 
 =head2 B<REQUIRED> PerRetryTimeout => L<Paws::AppMesh::Duration>
 
-An object that represents a duration of time.
+The timeout for each retry attempt.
 
 
 =head2 TcpRetryEvents => ArrayRef[Str|Undef]
 
-Specify a valid value.
+Specify a valid value. The event occurs before any processing of a
+request has started and is encountered when the upstream is temporarily
+or permanently unavailable.
 
 
 

@@ -48,7 +48,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],
           DataSetId  => 'MyId',
           RevisionId => 'MyId',
-
+          Encryption => {
+            Type      => 'aws:kms',      # values: aws:kms, AES256
+            KmsKeyArn => 'My__string',
+          },    # OPTIONAL
+        },    # OPTIONAL
+        ExportRevisionsToS3 => {
+          DataSetId            => 'MyId',
+          RevisionDestinations => [
+            {
+              Bucket     => 'My__string',
+              RevisionId => 'MyId',
+              KeyPattern => 'My__string',
+            },
+            ...
+          ],
+          Encryption => {
+            Type      => 'aws:kms',      # values: aws:kms, AES256
+            KmsKeyArn => 'My__string',
+          },    # OPTIONAL
         },    # OPTIONAL
         ImportAssetFromSignedUrl => {
           AssetName => 'MyAssetName',
@@ -104,7 +122,7 @@ The details for the CreateJob request.
 
 The type of job to be created.
 
-Valid values are: C<"IMPORT_ASSETS_FROM_S3">, C<"IMPORT_ASSET_FROM_SIGNED_URL">, C<"EXPORT_ASSETS_TO_S3">, C<"EXPORT_ASSET_TO_SIGNED_URL">
+Valid values are: C<"IMPORT_ASSETS_FROM_S3">, C<"IMPORT_ASSET_FROM_SIGNED_URL">, C<"EXPORT_ASSETS_TO_S3">, C<"EXPORT_ASSET_TO_SIGNED_URL">, C<"EXPORT_REVISIONS_TO_S3">
 
 
 =head1 SEE ALSO

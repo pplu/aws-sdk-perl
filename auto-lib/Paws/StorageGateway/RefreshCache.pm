@@ -59,8 +59,8 @@ The Amazon Resource Name (ARN) of the file share you want to refresh.
 
 A comma-separated list of the paths of folders to refresh in the cache.
 The default is [C<"/">]. The default refreshes objects and folders at
-the root of the Amazon S3 bucket. If C<Recursive> is set to "true", the
-entire S3 bucket that the file share has access to is refreshed.
+the root of the Amazon S3 bucket. If C<Recursive> is set to C<true>,
+the entire S3 bucket that the file share has access to is refreshed.
 
 
 
@@ -69,10 +69,13 @@ entire S3 bucket that the file share has access to is refreshed.
 A value that specifies whether to recursively refresh folders in the
 cache. The refresh includes folders that were in the cache the last
 time the gateway listed the folder's contents. If this value set to
-"true", each folder that is listed in C<FolderList> is recursively
+C<true>, each folder that is listed in C<FolderList> is recursively
 updated. Otherwise, subfolders listed in C<FolderList> are not
 refreshed. Only objects that are in folders listed directly under
-C<FolderList> are found and used for the update. The default is "true".
+C<FolderList> are found and used for the update. The default is
+C<true>.
+
+Valid Values: C<true> | C<false>
 
 
 

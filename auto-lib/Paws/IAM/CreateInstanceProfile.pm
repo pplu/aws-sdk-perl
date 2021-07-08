@@ -3,6 +3,7 @@ package Paws::IAM::CreateInstanceProfile;
   use Moose;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -73,6 +74,20 @@ end with forward slashes. In addition, it can contain any ASCII
 character from the ! (C<\u0021>) through the DEL character (C<\u007F>),
 including most punctuation characters, digits, and upper and lowercased
 letters.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the newly created IAM
+instance profile. Each tag consists of a key name and an associated
+value. For more information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.
 
 
 

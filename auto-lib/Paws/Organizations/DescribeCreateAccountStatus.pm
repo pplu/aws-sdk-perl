@@ -27,11 +27,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+# To get information about a request to create an account
+# The following example shows how to request the status about a previous request
+# to create an account in an organization. This operation can be called only by
+# a principal from the organization's master account. In the example, the
+# specified "createAccountRequestId" comes from the response of the original
+# call to "CreateAccount":
     my $DescribeCreateAccountStatusResponse =
       $organizations->DescribeCreateAccountStatus(
-      CreateAccountRequestId => 'MyCreateAccountRequestId',
-
-      );
+      'CreateAccountRequestId' => 'car-exampleaccountcreationrequestid' );
 
     # Results:
     my $CreateAccountStatus =
@@ -47,9 +51,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 =head2 B<REQUIRED> CreateAccountRequestId => Str
 
-Specifies the C<operationId> that uniquely identifies the request. You
-can get the ID from the response to an earlier CreateAccount request,
-or from the ListCreateAccountStatus operation.
+Specifies the C<Id> value that uniquely identifies the C<CreateAccount>
+request. You can get the value from the C<CreateAccountStatus.Id>
+response in an earlier CreateAccount request, or from the
+ListCreateAccountStatus operation.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a create
 account request ID string requires "car-" followed by from 8 to 32

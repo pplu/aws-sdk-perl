@@ -17,14 +17,21 @@ Paws::Lightsail::GetOperationsResult
 
 =head2 NextPageToken => Str
 
-A token used for advancing to the next page of results from your get
-operations request.
+The token to advance to the next page of results from your request.
+
+A next page token is not returned if there are no more results to
+display.
+
+To get the next page of results, perform another C<GetOperations>
+request and specify the next page token using the C<pageToken>
+parameter.
 
 
 =head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
 
-An array of key-value pairs containing information about the results of
-your get operations request.
+An array of objects that describe the result of the action, such as the
+status of the request, the timestamp of the request, and the resources
+affected by the request.
 
 
 =head2 _request_id => Str

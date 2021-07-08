@@ -78,7 +78,7 @@ provider detail keys for each identity provider type.
 
 =item *
 
-For Google, Facebook and Login with Amazon:
+For Google and Login with Amazon:
 
 =over
 
@@ -93,6 +93,30 @@ client_secret
 =item *
 
 authorize_scopes
+
+=back
+
+=item *
+
+For Facebook:
+
+=over
+
+=item *
+
+client_id
+
+=item *
+
+client_secret
+
+=item *
+
+authorize_scopes
+
+=item *
+
+api_version
 
 =back
 
@@ -170,10 +194,6 @@ oidc_issuer key>
 jwks_uri I<if not available from discovery URL specified by oidc_issuer
 key>
 
-=item *
-
-authorize_scopes
-
 =back
 
 =item *
@@ -188,7 +208,7 @@ MetadataFile OR MetadataURL
 
 =item *
 
-IDPSignOut I<optional>
+IDPSignout I<optional>
 
 =back
 

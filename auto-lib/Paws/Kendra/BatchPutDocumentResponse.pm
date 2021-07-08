@@ -21,7 +21,9 @@ document failed a validation check. Each document contains an error
 message that indicates why the document couldn't be added to the index.
 
 If there was an error adding a document to an index the error is
-reported in your AWS CloudWatch log.
+reported in your AWS CloudWatch log. For more information, see
+Monitoring Amazon Kendra with Amazon CloudWatch Logs
+(https://docs.aws.amazon.com/kendra/latest/dg/cloudwatch-logs.html)
 
 
 =head2 _request_id => Str

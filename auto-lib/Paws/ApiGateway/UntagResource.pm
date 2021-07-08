@@ -43,8 +43,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-[Required] The ARN of a resource that can be tagged. The resource ARN
-must be URL-encoded.
+[Required] The ARN of a resource that can be tagged.
 
 
 

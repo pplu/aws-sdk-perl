@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EFS::Tag ob
 
 A tag is a key-value pair. Allowed characters are letters, white space,
 and numbers that can be represented in UTF-8, and the following
-characters:C< + - = . _ : />
+characters:C< + - = . _ : />.
 
 =head1 ATTRIBUTES
 

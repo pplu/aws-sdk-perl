@@ -11,12 +11,14 @@ package Paws::Kafka::ClusterInfo;
   has CurrentVersion => (is => 'ro', isa => 'Str', request_name => 'currentVersion', traits => ['NameInRequest']);
   has EncryptionInfo => (is => 'ro', isa => 'Paws::Kafka::EncryptionInfo', request_name => 'encryptionInfo', traits => ['NameInRequest']);
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', request_name => 'enhancedMonitoring', traits => ['NameInRequest']);
+  has LoggingInfo => (is => 'ro', isa => 'Paws::Kafka::LoggingInfo', request_name => 'loggingInfo', traits => ['NameInRequest']);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
   has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoring', request_name => 'openMonitoring', traits => ['NameInRequest']);
   has State => (is => 'ro', isa => 'Str', request_name => 'state', traits => ['NameInRequest']);
   has StateInfo => (is => 'ro', isa => 'Paws::Kafka::StateInfo', request_name => 'stateInfo', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::Kafka::__mapOf__string', request_name => 'tags', traits => ['NameInRequest']);
   has ZookeeperConnectString => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectString', traits => ['NameInRequest']);
+  has ZookeeperConnectStringTls => (is => 'ro', isa => 'Str', request_name => 'zookeeperConnectStringTls', traits => ['NameInRequest']);
 
 1;
 
@@ -37,7 +39,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kafka::ClusterInfo object:
 
-  $service_obj->Method(Att1 => { ActiveOperationArn => $value, ..., ZookeeperConnectString => $value  });
+  $service_obj->Method(Att1 => { ActiveOperationArn => $value, ..., ZookeeperConnectStringTls => $value  });
 
 =head3 Results returned from an API call
 
@@ -102,10 +104,16 @@ Includes all encryption-related information.
 =head2 EnhancedMonitoring => Str
 
 Specifies which metrics are gathered for the MSK cluster. This property
-has three possible values: DEFAULT, PER_BROKER, and
-PER_TOPIC_PER_BROKER. For a list of the metrics associated with each of
-these three levels of monitoring, see Monitoring
+has the following possible values: DEFAULT, PER_BROKER,
+PER_TOPIC_PER_BROKER, and PER_TOPIC_PER_PARTITION. For a list of the
+metrics associated with each of these levels of monitoring, see
+Monitoring
 (https://docs.aws.amazon.com/msk/latest/developerguide/monitoring.html).
+
+
+=head2 LoggingInfo => L<Paws::Kafka::LoggingInfo>
+
+
 
 
 =head2 NumberOfBrokerNodes => Int
@@ -120,8 +128,8 @@ Settings for open monitoring using Prometheus.
 
 =head2 State => Str
 
-The state of the cluster. The possible states are CREATING, ACTIVE, and
-FAILED.
+The state of the cluster. The possible states are ACTIVE, CREATING,
+DELETING, FAILED, HEALING, MAINTENANCE, REBOOTING_BROKER, and UPDATING.
 
 
 =head2 StateInfo => L<Paws::Kafka::StateInfo>
@@ -138,6 +146,12 @@ Tags attached to the cluster.
 
 The connection string to use to connect to the Apache ZooKeeper
 cluster.
+
+
+=head2 ZookeeperConnectStringTls => Str
+
+The connection string to use to connect to zookeeper cluster on Tls
+port.
 
 
 

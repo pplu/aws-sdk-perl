@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Atte
 
 =head1 DESCRIPTION
 
-An object representing the details of a container that is part of a job
+An object representing the details of a container that's part of a job
 attempt.
 
 =head1 ATTRIBUTES
@@ -77,9 +77,9 @@ additional details about a running or stopped container.
 
 =head2 TaskArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon ECS task that is
-associated with the job attempt. Each container attempt receives a task
-ARN when they reach the C<STARTING> status.
+The Amazon Resource Name (ARN) of the Amazon ECS task that's associated
+with the job attempt. Each container attempt receives a task ARN when
+they reach the C<STARTING> status.
 
 
 

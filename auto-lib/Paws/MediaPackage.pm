@@ -14,6 +14,11 @@ package Paws::MediaPackage;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub ConfigureLogs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaPackage::ConfigureLogs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaPackage::CreateChannel', @_);
@@ -176,7 +181,7 @@ package Paws::MediaPackage;
   }
 
 
-  sub operations { qw/CreateChannel CreateHarvestJob CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeHarvestJob DescribeOriginEndpoint ListChannels ListHarvestJobs ListOriginEndpoints ListTagsForResource RotateChannelCredentials RotateIngestEndpointCredentials TagResource UntagResource UpdateChannel UpdateOriginEndpoint / }
+  sub operations { qw/ConfigureLogs CreateChannel CreateHarvestJob CreateOriginEndpoint DeleteChannel DeleteOriginEndpoint DescribeChannel DescribeHarvestJob DescribeOriginEndpoint ListChannels ListHarvestJobs ListOriginEndpoints ListTagsForResource RotateChannelCredentials RotateIngestEndpointCredentials TagResource UntagResource UpdateChannel UpdateOriginEndpoint / }
 
 1;
 
@@ -210,6 +215,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 
 =head1 METHODS
+
+=head2 ConfigureLogs
+
+=over
+
+=item Id => Str
+
+=item [EgressAccessLogs => L<Paws::MediaPackage::EgressAccessLogs>]
+
+=item [IngressAccessLogs => L<Paws::MediaPackage::IngressAccessLogs>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaPackage::ConfigureLogs>
+
+Returns: a L<Paws::MediaPackage::ConfigureLogsResponse> instance
+
+Changes the Channel's properities to configure log subscription
+
 
 =head2 CreateChannel
 

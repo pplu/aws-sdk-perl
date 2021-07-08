@@ -48,7 +48,7 @@ Status information for a shipment.
 =head2 TrackingNumber => Str
 
 The tracking number for this job. Using this tracking number with your
-region's carrier's website, you can track a Snowball as the carrier
+region's carrier's website, you can track a Snow device as the carrier
 transports it.
 
 For India, the carrier is Amazon Logistics. For all other regions, UPS

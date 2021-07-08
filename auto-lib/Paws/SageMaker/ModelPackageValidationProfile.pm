@@ -38,7 +38,7 @@ Contains data, such as the inputs and targeted instance types that are
 used in the process of validating the model package.
 
 The data provided in the validation profile is made available to your
-buyers on AWS Marketplace.
+buyers on Amazon Web Services Marketplace.
 
 =head1 ATTRIBUTES
 

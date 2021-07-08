@@ -29,28 +29,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $GetIntentResponse = $models . lex->GetIntent(
-      Name    => 'MyIntentName',
-      Version => 'MyVersion',
-
-    );
+    # To get a information about an intent
+    # This example shows how to get information about an intent.
+    my $GetIntentResponse = $models
+      . lex->GetIntent(
+      'Name'    => 'DocOrderPizza',
+      'Version' => '$LATEST'
+      );
 
     # Results:
-    my $Checksum              = $GetIntentResponse->Checksum;
-    my $ConclusionStatement   = $GetIntentResponse->ConclusionStatement;
-    my $ConfirmationPrompt    = $GetIntentResponse->ConfirmationPrompt;
-    my $CreatedDate           = $GetIntentResponse->CreatedDate;
-    my $Description           = $GetIntentResponse->Description;
-    my $DialogCodeHook        = $GetIntentResponse->DialogCodeHook;
-    my $FollowUpPrompt        = $GetIntentResponse->FollowUpPrompt;
-    my $FulfillmentActivity   = $GetIntentResponse->FulfillmentActivity;
-    my $LastUpdatedDate       = $GetIntentResponse->LastUpdatedDate;
-    my $Name                  = $GetIntentResponse->Name;
-    my $ParentIntentSignature = $GetIntentResponse->ParentIntentSignature;
-    my $RejectionStatement    = $GetIntentResponse->RejectionStatement;
-    my $SampleUtterances      = $GetIntentResponse->SampleUtterances;
-    my $Slots                 = $GetIntentResponse->Slots;
-    my $Version               = $GetIntentResponse->Version;
+    my $checksum            = $GetIntentResponse->checksum;
+    my $conclusionStatement = $GetIntentResponse->conclusionStatement;
+    my $confirmationPrompt  = $GetIntentResponse->confirmationPrompt;
+    my $createdDate         = $GetIntentResponse->createdDate;
+    my $description         = $GetIntentResponse->description;
+    my $fulfillmentActivity = $GetIntentResponse->fulfillmentActivity;
+    my $lastUpdatedDate     = $GetIntentResponse->lastUpdatedDate;
+    my $name                = $GetIntentResponse->name;
+    my $rejectionStatement  = $GetIntentResponse->rejectionStatement;
+    my $sampleUtterances    = $GetIntentResponse->sampleUtterances;
+    my $slots               = $GetIntentResponse->slots;
+    my $version             = $GetIntentResponse->version;
 
     # Returns a L<Paws::LexModels::GetIntentResponse> object.
 

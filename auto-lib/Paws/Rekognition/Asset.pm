@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 =head1 DESCRIPTION
 
 Assets are the images that you use to train and evaluate a model
-version. Assets are referenced by Sagemaker GroundTruth manifest files.
+version. Assets can also contain validation information that you use to
+debug a failed model training.
 
 =head1 ATTRIBUTES
 

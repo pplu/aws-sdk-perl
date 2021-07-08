@@ -26,7 +26,7 @@ Paws::SageMaker::DescribeAppResponse
 
 =head2 AppArn => Str
 
-The app's Amazon Resource Name (ARN).
+The Amazon Resource Name (ARN) of the app.
 
 
 =head2 AppName => Str
@@ -66,7 +66,8 @@ The timestamp of the last user's activity.
 
 =head2 ResourceSpec => L<Paws::SageMaker::ResourceSpec>
 
-The instance type and quantity.
+The instance type and the Amazon Resource Name (ARN) of the SageMaker
+image created on the instance.
 
 
 =head2 Status => Str

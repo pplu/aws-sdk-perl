@@ -17,7 +17,8 @@ Paws::Amplify::CreateDomainAssociationResult
 
 =head2 B<REQUIRED> DomainAssociation => L<Paws::Amplify::DomainAssociation>
 
-Domain Association structure.
+Describes the structure of a domain association, which associates a
+custom domain with an Amplify app.
 
 
 =head2 _request_id => Str

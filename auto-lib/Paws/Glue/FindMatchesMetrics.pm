@@ -2,6 +2,7 @@
 package Paws::Glue::FindMatchesMetrics;
   use Moose;
   has AreaUnderPRCurve => (is => 'ro', isa => 'Num');
+  has ColumnImportances => (is => 'ro', isa => 'ArrayRef[Paws::Glue::ColumnImportance]');
   has ConfusionMatrix => (is => 'ro', isa => 'Paws::Glue::ConfusionMatrix');
   has F1 => (is => 'ro', isa => 'Num');
   has Precision => (is => 'ro', isa => 'Num');
@@ -55,6 +56,12 @@ you have a more attractive precision vs. recall tradeoff.
 
 For more information, see Precision and recall
 (https://en.wikipedia.org/wiki/Precision_and_recall) in Wikipedia.
+
+
+=head2 ColumnImportances => ArrayRef[L<Paws::Glue::ColumnImportance>]
+
+A list of C<ColumnImportance> structures containing column importance
+metrics, sorted in order of descending importance.
 
 
 =head2 ConfusionMatrix => L<Paws::Glue::ConfusionMatrix>

@@ -47,13 +47,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ConnectionId         = $Connection->ConnectionId;
     my $ConnectionName       = $Connection->ConnectionName;
     my $ConnectionState      = $Connection->ConnectionState;
+    my $EncryptionMode       = $Connection->EncryptionMode;
     my $HasLogicalRedundancy = $Connection->HasLogicalRedundancy;
     my $JumboFrameCapable    = $Connection->JumboFrameCapable;
     my $LagId                = $Connection->LagId;
     my $LoaIssueTime         = $Connection->LoaIssueTime;
     my $Location             = $Connection->Location;
+    my $MacSecCapable        = $Connection->MacSecCapable;
+    my $MacSecKeys           = $Connection->MacSecKeys;
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
+    my $PortEncryptionStatus = $Connection->PortEncryptionStatus;
     my $ProviderName         = $Connection->ProviderName;
     my $Region               = $Connection->Region;
     my $Tags                 = $Connection->Tags;

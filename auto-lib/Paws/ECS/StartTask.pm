@@ -4,6 +4,7 @@ package Paws::ECS::StartTask;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has ContainerInstances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'containerInstances' , required => 1);
   has EnableECSManagedTags => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableECSManagedTags' );
+  has EnableExecuteCommand => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableExecuteCommand' );
   has Group => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'group' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
   has Overrides => (is => 'ro', isa => 'Paws::ECS::TaskOverride', traits => ['NameInRequest'], request_name => 'overrides' );
@@ -42,6 +43,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TaskDefinition       => 'MyString',
       Cluster              => 'MyString',            # OPTIONAL
       EnableECSManagedTags => 1,                     # OPTIONAL
+      EnableExecuteCommand => 1,                     # OPTIONAL
       Group                => 'MyString',            # OPTIONAL
       NetworkConfiguration => {
         AwsvpcConfiguration => {
@@ -62,6 +64,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],                                    # OPTIONAL
+            EnvironmentFiles => [
+              {
+                Type  => 's3',                    # values: s3
+                Value => 'MyString',
+
+              },
+              ...
+            ],    # OPTIONAL
             Memory               => 1,            # OPTIONAL
             MemoryReservation    => 1,            # OPTIONAL
             Name                 => 'MyString',
@@ -76,7 +86,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
-        Cpu                           => 'MyString',
+        Cpu              => 'MyString',
+        EphemeralStorage => {
+          SizeInGiB => 1,
+
+        },    # OPTIONAL
         ExecutionRoleArn              => 'MyString',
         InferenceAcceleratorOverrides => [
           {
@@ -134,6 +148,14 @@ Specifies whether to enable Amazon ECS managed tags for the task. For
 more information, see Tagging Your Amazon ECS Resources
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+
+=head2 EnableExecuteCommand => Bool
+
+Whether or not the execute command functionality is enabled for the
+task. If C<true>, this enables execute command functionality on all
+containers in the task.
 
 
 

@@ -9,6 +9,7 @@ package Paws::MediaConvert::Job;
   has CurrentPhase => (is => 'ro', isa => 'Str', request_name => 'currentPhase', traits => ['NameInRequest']);
   has ErrorCode => (is => 'ro', isa => 'Int', request_name => 'errorCode', traits => ['NameInRequest']);
   has ErrorMessage => (is => 'ro', isa => 'Str', request_name => 'errorMessage', traits => ['NameInRequest']);
+  has HopDestinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::HopDestination]', request_name => 'hopDestinations', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has JobPercentComplete => (is => 'ro', isa => 'Int', request_name => 'jobPercentComplete', traits => ['NameInRequest']);
   has JobTemplate => (is => 'ro', isa => 'Str', request_name => 'jobTemplate', traits => ['NameInRequest']);
@@ -16,6 +17,7 @@ package Paws::MediaConvert::Job;
   has OutputGroupDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroupDetail]', request_name => 'outputGroupDetails', traits => ['NameInRequest']);
   has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
   has Queue => (is => 'ro', isa => 'Str', request_name => 'queue', traits => ['NameInRequest']);
+  has QueueTransitions => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::QueueTransition]', request_name => 'queueTransitions', traits => ['NameInRequest']);
   has RetryCount => (is => 'ro', isa => 'Int', request_name => 'retryCount', traits => ['NameInRequest']);
   has Role => (is => 'ro', isa => 'Str', request_name => 'role', traits => ['NameInRequest'], required => 1);
   has Settings => (is => 'ro', isa => 'Paws::MediaConvert::JobSettings', request_name => 'settings', traits => ['NameInRequest'], required => 1);
@@ -57,7 +59,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 Each job converts an input file into an output file or files. For more
 information, see the User Guide at
-http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 
 =head1 ATTRIBUTES
 
@@ -92,12 +94,8 @@ An identifier for this resource that is unique within all of AWS.
 
 =head2 BillingTagsSource => Str
 
-Optional. Choose a tag type that AWS Billing and Cost Management will
-use to sort your AWS Elemental MediaConvert costs on any billing report
-that you set up. Any transcoding outputs that don't have an associated
-tag will appear in your billing report unsorted. If you don't choose a
-valid value for this field, your job outputs will appear on the billing
-report unsorted.
+The tag type that AWS Billing and Cost Management will use to sort your
+AWS Elemental MediaConvert costs on any billing report that you set up.
 
 
 =head2 CreatedAt => Str
@@ -118,6 +116,11 @@ Error code for the job
 =head2 ErrorMessage => Str
 
 Error message of Job
+
+
+=head2 HopDestinations => ArrayRef[L<Paws::MediaConvert::HopDestination>]
+
+Optional list of hop destinations.
 
 
 =head2 Id => Str
@@ -163,10 +166,15 @@ Relative priority on the job.
 
 =head2 Queue => Str
 
-Optional. When you create a job, you can specify a queue to send it to.
-If you don't specify, the job will go to the default queue. For more
-about queues, see the User Guide topic at
-http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+When you create a job, you can specify a queue to send it to. If you
+don't specify, the job will go to the default queue. For more about
+queues, see the User Guide topic at
+https://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
+
+
+=head2 QueueTransitions => ArrayRef[L<Paws::MediaConvert::QueueTransition>]
+
+The job's queue hopping history.
 
 
 =head2 RetryCount => Int
@@ -179,7 +187,7 @@ your job after encountering an error.
 
 The IAM role you use for creating this job. For details about
 permissions, see the User Guide topic at the User Guide at
-http://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html
+https://docs.aws.amazon.com/mediaconvert/latest/ug/iam-role.html
 
 
 =head2 B<REQUIRED> Settings => L<Paws::MediaConvert::JobSettings>

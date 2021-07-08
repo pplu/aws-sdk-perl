@@ -44,8 +44,8 @@ You define featurization using the C<FeaturizationConfig> object. You
 specify an array of transformations, one for each field that you want
 to featurize. You then include the C<FeaturizationConfig> object in
 your C<CreatePredictor> request. Amazon Forecast applies the
-featurization to the C<TARGET_TIME_SERIES> dataset before model
-training.
+featurization to the C<TARGET_TIME_SERIES> and C<RELATED_TIME_SERIES>
+datasets before model training.
 
 You can create multiple featurization configurations. For example, you
 might call the C<CreatePredictor> operation twice by specifying
@@ -57,7 +57,7 @@ different featurization configurations.
 =head2 Featurizations => ArrayRef[L<Paws::Forecast::Featurization>]
 
 An array of featurization (transformation) information for the fields
-of a dataset. Only a single featurization is supported.
+of a dataset.
 
 
 =head2 ForecastDimensions => ArrayRef[Str|Undef]

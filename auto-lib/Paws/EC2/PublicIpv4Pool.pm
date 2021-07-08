@@ -1,6 +1,7 @@
 package Paws::EC2::PublicIpv4Pool;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has NetworkBorderGroup => (is => 'ro', isa => 'Str', request_name => 'networkBorderGroup', traits => ['NameInRequest']);
   has PoolAddressRanges => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PublicIpv4PoolRange]', request_name => 'poolAddressRangeSet', traits => ['NameInRequest']);
   has PoolId => (is => 'ro', isa => 'Str', request_name => 'poolId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -44,6 +45,13 @@ This class has no description
 =head2 Description => Str
 
 A description of the address pool.
+
+
+=head2 NetworkBorderGroup => Str
+
+The name of the location from which the address pool is advertised. A
+network border group is a unique set of Availability Zones or Local
+Zones from where Amazon Web Services advertises public IP addresses.
 
 
 =head2 PoolAddressRanges => ArrayRef[L<Paws::EC2::PublicIpv4PoolRange>]

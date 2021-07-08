@@ -81,13 +81,21 @@ results.
 
 Filters to limit the request results.
 
+For C<GetParametersByPath>, the following filter C<Key> names are
+supported: C<Type>, C<KeyId>, C<Label>, and C<DataType>.
+
+The following C<Key> values are not supported for
+C<GetParametersByPath>: C<tag>, C<Name>, C<Path>, and C<Tier>.
+
 
 
 =head2 B<REQUIRED> Path => Str
 
 The hierarchy for the parameter. Hierarchies start with a forward slash
-(/) and end with the parameter name. A parameter name hierarchy can
-have a maximum of 15 levels. Here is an example of a hierarchy:
+(/). The hierachy is the parameter name except the last part of the
+parameter. For the API call to succeeed, the last part of the parameter
+name cannot be in the path. A parameter name hierarchy can have a
+maximum of 15 levels. Here is an example of a hierarchy:
 C</Finance/Prod/IAD/WinServ2016/license33>
 
 

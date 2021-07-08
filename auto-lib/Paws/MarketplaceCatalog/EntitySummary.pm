@@ -69,16 +69,15 @@ The last time the entity was published, using ISO 8601 format
 =head2 Name => Str
 
 The name for the entity. This value is not unique. It is defined by the
-provider.
+seller.
 
 
 =head2 Visibility => Str
 
-The visibility status of the entity to subscribers. This value can be
+The visibility status of the entity to buyers. This value can be
 C<Public> (everyone can view the entity), C<Limited> (the entity is
 visible to limited accounts only), or C<Restricted> (the entity was
-published and then unpublished and only existing subscribers can view
-it).
+published and then unpublished and only existing buyers can view it).
 
 
 

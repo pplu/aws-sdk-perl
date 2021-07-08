@@ -30,27 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe an IAM instance profile association
+    # This example describes the specified IAM instance profile association.
     my $DescribeIamInstanceProfileAssociationsResult =
       $ec2->DescribeIamInstanceProfileAssociations(
-      AssociationIds => [ 'MyIamInstanceProfileAssociationId', ... ], # OPTIONAL
-      Filters        => [
-        {
-          Name   => 'MyString',                                       # OPTIONAL
-          Values => [
-            'MyString', ...                                           # OPTIONAL
-          ],    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
-      );
+      'AssociationIds' => ['iip-assoc-0db249b1f25fa24b8'] );
 
     # Results:
     my $IamInstanceProfileAssociations =
       $DescribeIamInstanceProfileAssociationsResult
       ->IamInstanceProfileAssociations;
-    my $NextToken = $DescribeIamInstanceProfileAssociationsResult->NextToken;
 
   # Returns a L<Paws::EC2::DescribeIamInstanceProfileAssociationsResult> object.
 
@@ -79,7 +68,7 @@ C<instance-id> - The ID of the instance.
 =item *
 
 C<state> - The state of the association (C<associating> | C<associated>
-| C<disassociating> | C<disassociated>).
+| C<disassociating>).
 
 =back
 

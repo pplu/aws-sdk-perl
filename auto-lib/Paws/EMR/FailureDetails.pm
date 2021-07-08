@@ -49,7 +49,7 @@ originally recorded.
 
 =head2 Message => Str
 
-The descriptive message including the error the EMR service has
+The descriptive message including the error the Amazon EMR service has
 identified as the cause of step failure. This is text from an error log
 that describes the root cause of the failure.
 

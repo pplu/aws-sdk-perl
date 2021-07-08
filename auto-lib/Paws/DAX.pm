@@ -339,6 +339,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dax
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
 
+=item [ClusterEndpointEncryptionType => Str]
+
 =item [Description => Str]
 
 =item [NotificationTopicArn => Str]

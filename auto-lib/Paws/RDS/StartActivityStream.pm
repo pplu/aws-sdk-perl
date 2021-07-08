@@ -2,6 +2,7 @@
 package Paws::RDS::StartActivityStream;
   use Moose;
   has ApplyImmediately => (is => 'ro', isa => 'Bool');
+  has EngineNativeAuditFieldsIncluded => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str', required => 1);
   has Mode => (is => 'ro', isa => 'Str', required => 1);
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
@@ -31,14 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $rds = Paws->service('RDS');
     my $StartActivityStreamResponse = $rds->StartActivityStream(
-      KmsKeyId         => 'MyString',
-      Mode             => 'sync',
-      ResourceArn      => 'MyString',
-      ApplyImmediately => 1,            # OPTIONAL
+      KmsKeyId                        => 'MyString',
+      Mode                            => 'sync',
+      ResourceArn                     => 'MyString',
+      ApplyImmediately                => 1,            # OPTIONAL
+      EngineNativeAuditFieldsIncluded => 1,            # OPTIONAL
     );
 
     # Results:
-    my $ApplyImmediately  = $StartActivityStreamResponse->ApplyImmediately;
+    my $ApplyImmediately = $StartActivityStreamResponse->ApplyImmediately;
+    my $EngineNativeAuditFieldsIncluded =
+      $StartActivityStreamResponse->EngineNativeAuditFieldsIncluded;
     my $KinesisStreamName = $StartActivityStreamResponse->KinesisStreamName;
     my $KmsKeyId          = $StartActivityStreamResponse->KmsKeyId;
     my $Mode              = $StartActivityStreamResponse->Mode;
@@ -60,11 +64,20 @@ database.
 
 
 
+=head2 EngineNativeAuditFieldsIncluded => Bool
+
+Specifies whether the database activity stream includes engine-native
+audit fields. This option only applies to an Oracle DB instance. By
+default, no engine-native audit fields are included.
+
+
+
 =head2 B<REQUIRED> KmsKeyId => Str
 
-The AWS KMS key identifier for encrypting messages in the database
-activity stream. The key identifier can be either a key ID, a key ARN,
-or a key alias.
+The Amazon Web Services KMS key identifier for encrypting messages in
+the database activity stream. The Amazon Web Services KMS key
+identifier is the key ARN, key ID, alias ARN, or alias name for the
+Amazon Web Services KMS customer master key (CMK).
 
 
 
@@ -79,7 +92,7 @@ Valid values are: C<"sync">, C<"async">
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) of the DB cluster, for example
+The Amazon Resource Name (ARN) of the DB cluster, for example,
 C<arn:aws:rds:us-east-1:12345667890:cluster:das-cluster>.
 
 

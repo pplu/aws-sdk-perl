@@ -24,16 +24,15 @@ The events.
 =head2 NextBackwardToken => Str
 
 The token for the next set of items in the backward direction. The
-token expires after 24 hours. This token will never be null. If you
-have reached the end of the stream, it will return the same token you
-passed in.
+token expires after 24 hours. This token is never null. If you have
+reached the end of the stream, it returns the same token you passed in.
 
 
 =head2 NextForwardToken => Str
 
 The token for the next set of items in the forward direction. The token
 expires after 24 hours. If you have reached the end of the stream, it
-will return the same token you passed in.
+returns the same token you passed in.
 
 
 =head2 _request_id => Str

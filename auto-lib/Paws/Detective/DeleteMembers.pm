@@ -52,7 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
 The list of AWS account identifiers for the member accounts to delete
-from the behavior graph.
+from the behavior graph. You can delete up to 50 member accounts at a
+time.
 
 
 

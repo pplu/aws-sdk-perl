@@ -6,6 +6,7 @@ package Paws::CodePipeline::PipelineExecution;
   has PipelineName => (is => 'ro', isa => 'Str', request_name => 'pipelineName', traits => ['NameInRequest']);
   has PipelineVersion => (is => 'ro', isa => 'Int', request_name => 'pipelineVersion', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has StatusSummary => (is => 'ro', isa => 'Str', request_name => 'statusSummary', traits => ['NameInRequest']);
 
 1;
 
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CodePipeline::PipelineExecution object:
 
-  $service_obj->Method(Att1 => { ArtifactRevisions => $value, ..., Status => $value  });
+  $service_obj->Method(Att1 => { ArtifactRevisions => $value, ..., StatusSummary => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,6 +72,11 @@ The status of the pipeline execution.
 
 =item *
 
+Cancelled: The pipelineE<rsquo>s definition was updated before the
+pipeline execution could be completed.
+
+=item *
+
 InProgress: The pipeline execution is currently running.
 
 =item *
@@ -105,6 +111,11 @@ Failed: The pipeline execution was not completed successfully.
 
 =back
 
+
+
+=head2 StatusSummary => Str
+
+A summary that contains a description of the pipeline execution status.
 
 
 

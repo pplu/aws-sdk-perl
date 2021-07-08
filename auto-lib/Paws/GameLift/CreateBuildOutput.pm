@@ -18,7 +18,7 @@ Paws::GameLift::CreateBuildOutput
 
 =head2 Build => L<Paws::GameLift::Build>
 
-The newly created build record, including a unique build IDs and
+The newly created build resource, including a unique build IDs and
 status.
 
 

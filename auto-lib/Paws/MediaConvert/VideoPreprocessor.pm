@@ -4,8 +4,10 @@ package Paws::MediaConvert::VideoPreprocessor;
   has ColorCorrector => (is => 'ro', isa => 'Paws::MediaConvert::ColorCorrector', request_name => 'colorCorrector', traits => ['NameInRequest']);
   has Deinterlacer => (is => 'ro', isa => 'Paws::MediaConvert::Deinterlacer', request_name => 'deinterlacer', traits => ['NameInRequest']);
   has DolbyVision => (is => 'ro', isa => 'Paws::MediaConvert::DolbyVision', request_name => 'dolbyVision', traits => ['NameInRequest']);
+  has Hdr10Plus => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Plus', request_name => 'hdr10Plus', traits => ['NameInRequest']);
   has ImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::ImageInserter', request_name => 'imageInserter', traits => ['NameInRequest']);
   has NoiseReducer => (is => 'ro', isa => 'Paws::MediaConvert::NoiseReducer', request_name => 'noiseReducer', traits => ['NameInRequest']);
+  has PartnerWatermarking => (is => 'ro', isa => 'Paws::MediaConvert::PartnerWatermarking', request_name => 'partnerWatermarking', traits => ['NameInRequest']);
   has TimecodeBurnin => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeBurnin', request_name => 'timecodeBurnin', traits => ['NameInRequest']);
 
 1;
@@ -47,21 +49,28 @@ These features are disabled by default.
 
 =head2 ColorCorrector => L<Paws::MediaConvert::ColorCorrector>
 
-Enable the Color corrector (ColorCorrector) feature if necessary.
-Enable or disable this feature for each output individually. This
-setting is disabled by default.
+Use these settings to convert the color space or to modify properties
+such as hue and contrast for this output. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/converting-the-color-space.html.
 
 
 =head2 Deinterlacer => L<Paws::MediaConvert::Deinterlacer>
 
-Use Deinterlacer (Deinterlacer) to produce smoother motion and a
-clearer picture.
+Use the deinterlacer to produce smoother motion and a clearer picture.
+For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-scan-type.html.
 
 
 =head2 DolbyVision => L<Paws::MediaConvert::DolbyVision>
 
 Enable Dolby Vision feature to produce Dolby Vision compatible video
 output.
+
+
+=head2 Hdr10Plus => L<Paws::MediaConvert::Hdr10Plus>
+
+Enable HDR10+ analyis and metadata injection. Compatible with HEVC
+only.
 
 
 =head2 ImageInserter => L<Paws::MediaConvert::ImageInserter>
@@ -78,10 +87,17 @@ your video output if necessary. Enable or disable this feature for each
 output individually. This setting is disabled by default.
 
 
+=head2 PartnerWatermarking => L<Paws::MediaConvert::PartnerWatermarking>
+
+If you work with a third party video watermarking partner, use the
+group of settings that correspond with your watermarking partner to
+include watermarks in your output.
+
+
 =head2 TimecodeBurnin => L<Paws::MediaConvert::TimecodeBurnin>
 
-Timecode burn-in (TimecodeBurnIn)--Burns the output timecode and
-specified prefix into the output.
+Settings for burning the output timecode and specified prefix into the
+output.
 
 
 

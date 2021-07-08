@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         {
           Name   => 'MyFilterName',    # min: 1, max: 64; OPTIONAL
           Values => [
-            'MyFilterValue', ...       # min: 1, max: 64
+            'MyFilterValue', ...       # min: 1, max: 600
           ],    # OPTIONAL
         },
         ...
@@ -58,8 +58,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 Filters => ArrayRef[L<Paws::Route53Resolver::Filter>]
 
-An optional specification to return a subset of resolver endpoints,
-such as all inbound resolver endpoints.
+An optional specification to return a subset of Resolver endpoints,
+such as all inbound Resolver endpoints.
 
 If you submit a second or subsequent C<ListResolverEndpoints> request
 and specify the C<NextToken> parameter, you must use the same values
@@ -69,9 +69,9 @@ for C<Filters>, if any, as in the previous request.
 
 =head2 MaxResults => Int
 
-The maximum number of resolver endpoints that you want to return in the
+The maximum number of Resolver endpoints that you want to return in the
 response to a C<ListResolverEndpoints> request. If you don't specify a
-value for C<MaxResults>, Resolver returns up to 100 resolver endpoints.
+value for C<MaxResults>, Resolver returns up to 100 Resolver endpoints.
 
 
 
@@ -79,9 +79,9 @@ value for C<MaxResults>, Resolver returns up to 100 resolver endpoints.
 
 For the first C<ListResolverEndpoints> request, omit this value.
 
-If you have more than C<MaxResults> resolver endpoints, you can submit
+If you have more than C<MaxResults> Resolver endpoints, you can submit
 another C<ListResolverEndpoints> request to get the next group of
-resolver endpoints. In the next request, specify the value of
+Resolver endpoints. In the next request, specify the value of
 C<NextToken> from the previous response.
 
 

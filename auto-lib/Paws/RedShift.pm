@@ -19,9 +19,19 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::AcceptReservedNodeExchange', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AddPartner {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::AddPartner', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AuthorizeClusterSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeClusterSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AuthorizeEndpointAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::AuthorizeEndpointAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AuthorizeSnapshotAccess {
@@ -74,6 +84,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateClusterSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateEndpointAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateEndpointAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEventSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateEventSubscription', @_);
@@ -109,6 +124,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::CreateTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateUsageLimit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::CreateUsageLimit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteCluster {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteCluster', @_);
@@ -134,6 +154,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteClusterSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteEndpointAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteEndpointAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEventSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteEventSubscription', @_);
@@ -147,6 +172,11 @@ package Paws::RedShift;
   sub DeleteHsmConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteHsmConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeletePartner {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeletePartner', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteScheduledAction {
@@ -167,6 +197,11 @@ package Paws::RedShift;
   sub DeleteTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteUsageLimit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DeleteUsageLimit', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAccountAttributes {
@@ -224,6 +259,16 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeDefaultClusterParameters', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEndpointAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeEndpointAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeEndpointAuthorization {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeEndpointAuthorization', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeEventCategories {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeEventCategories', @_);
@@ -262,6 +307,11 @@ package Paws::RedShift;
   sub DescribeOrderableClusterOptions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeOrderableClusterOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePartners {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribePartners', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedNodeOfferings {
@@ -309,6 +359,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeTags', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeUsageLimits {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::DescribeUsageLimits', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableLogging {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::DisableLogging', @_);
@@ -337,6 +392,11 @@ package Paws::RedShift;
   sub GetReservedNodeExchangeOfferings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::GetReservedNodeExchangeOfferings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyAquaConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyAquaConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCluster {
@@ -379,6 +439,11 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyClusterSubnetGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyEndpointAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyEndpointAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyEventSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyEventSubscription', @_);
@@ -397,6 +462,16 @@ package Paws::RedShift;
   sub ModifySnapshotSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::ModifySnapshotSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyUsageLimit {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ModifyUsageLimit', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PauseCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::PauseCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PurchaseReservedNodeOffering {
@@ -429,9 +504,19 @@ package Paws::RedShift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RestoreTableFromClusterSnapshot', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResumeCluster {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::ResumeCluster', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RevokeClusterSecurityGroupIngress {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RevokeClusterSecurityGroupIngress', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RevokeEndpointAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::RevokeEndpointAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RevokeSnapshotAccess {
@@ -442,6 +527,11 @@ package Paws::RedShift;
   sub RotateEncryptionKey {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RedShift::RotateEncryptionKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdatePartnerStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RedShift::UpdatePartnerStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -671,6 +761,52 @@ package Paws::RedShift;
         $result = $self->DescribeDefaultClusterParameters(@_, Marker => $result->DefaultClusterParameters->Marker);
       }
       $callback->($_ => 'DefaultClusterParameters.Parameters') foreach (@{ $result->DefaultClusterParameters->Parameters });
+    }
+
+    return undef
+  }
+  sub DescribeAllEndpointAccess {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEndpointAccess(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEndpointAccess(@_, Marker => $next_result->Marker);
+        push @{ $result->EndpointAccessList }, @{ $next_result->EndpointAccessList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'EndpointAccessList') foreach (@{ $result->EndpointAccessList });
+        $result = $self->DescribeEndpointAccess(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'EndpointAccessList') foreach (@{ $result->EndpointAccessList });
+    }
+
+    return undef
+  }
+  sub DescribeAllEndpointAuthorization {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeEndpointAuthorization(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeEndpointAuthorization(@_, Marker => $next_result->Marker);
+        push @{ $result->EndpointAuthorizationList }, @{ $next_result->EndpointAuthorizationList };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'EndpointAuthorizationList') foreach (@{ $result->EndpointAuthorizationList });
+        $result = $self->DescribeEndpointAuthorization(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'EndpointAuthorizationList') foreach (@{ $result->EndpointAuthorizationList });
     }
 
     return undef
@@ -974,6 +1110,29 @@ package Paws::RedShift;
 
     return undef
   }
+  sub DescribeAllUsageLimits {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeUsageLimits(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeUsageLimits(@_, Marker => $next_result->Marker);
+        push @{ $result->UsageLimits }, @{ $next_result->UsageLimits };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'UsageLimits') foreach (@{ $result->UsageLimits });
+        $result = $self->DescribeUsageLimits(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'UsageLimits') foreach (@{ $result->UsageLimits });
+    }
+
+    return undef
+  }
   sub GetAllReservedNodeExchangeOfferings {
     my $self = shift;
 
@@ -999,7 +1158,7 @@ package Paws::RedShift;
   }
 
 
-  sub operations { qw/AcceptReservedNodeExchange AuthorizeClusterSecurityGroupIngress AuthorizeSnapshotAccess BatchDeleteClusterSnapshots BatchModifyClusterSnapshots CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateScheduledAction CreateSnapshotCopyGrant CreateSnapshotSchedule CreateTags DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeleteScheduledAction DeleteSnapshotCopyGrant DeleteSnapshotSchedule DeleteTags DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeNodeConfigurationOptions DescribeOrderableClusterOptions DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeScheduledActions DescribeSnapshotCopyGrants DescribeSnapshotSchedules DescribeStorage DescribeTableRestoreStatus DescribeTags DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSnapshot ModifyClusterSnapshotSchedule ModifyClusterSubnetGroup ModifyEventSubscription ModifyScheduledAction ModifySnapshotCopyRetentionPeriod ModifySnapshotSchedule PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot RevokeClusterSecurityGroupIngress RevokeSnapshotAccess RotateEncryptionKey / }
+  sub operations { qw/AcceptReservedNodeExchange AddPartner AuthorizeClusterSecurityGroupIngress AuthorizeEndpointAccess AuthorizeSnapshotAccess BatchDeleteClusterSnapshots BatchModifyClusterSnapshots CancelResize CopyClusterSnapshot CreateCluster CreateClusterParameterGroup CreateClusterSecurityGroup CreateClusterSnapshot CreateClusterSubnetGroup CreateEndpointAccess CreateEventSubscription CreateHsmClientCertificate CreateHsmConfiguration CreateScheduledAction CreateSnapshotCopyGrant CreateSnapshotSchedule CreateTags CreateUsageLimit DeleteCluster DeleteClusterParameterGroup DeleteClusterSecurityGroup DeleteClusterSnapshot DeleteClusterSubnetGroup DeleteEndpointAccess DeleteEventSubscription DeleteHsmClientCertificate DeleteHsmConfiguration DeletePartner DeleteScheduledAction DeleteSnapshotCopyGrant DeleteSnapshotSchedule DeleteTags DeleteUsageLimit DescribeAccountAttributes DescribeClusterDbRevisions DescribeClusterParameterGroups DescribeClusterParameters DescribeClusters DescribeClusterSecurityGroups DescribeClusterSnapshots DescribeClusterSubnetGroups DescribeClusterTracks DescribeClusterVersions DescribeDefaultClusterParameters DescribeEndpointAccess DescribeEndpointAuthorization DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeHsmClientCertificates DescribeHsmConfigurations DescribeLoggingStatus DescribeNodeConfigurationOptions DescribeOrderableClusterOptions DescribePartners DescribeReservedNodeOfferings DescribeReservedNodes DescribeResize DescribeScheduledActions DescribeSnapshotCopyGrants DescribeSnapshotSchedules DescribeStorage DescribeTableRestoreStatus DescribeTags DescribeUsageLimits DisableLogging DisableSnapshotCopy EnableLogging EnableSnapshotCopy GetClusterCredentials GetReservedNodeExchangeOfferings ModifyAquaConfiguration ModifyCluster ModifyClusterDbRevision ModifyClusterIamRoles ModifyClusterMaintenance ModifyClusterParameterGroup ModifyClusterSnapshot ModifyClusterSnapshotSchedule ModifyClusterSubnetGroup ModifyEndpointAccess ModifyEventSubscription ModifyScheduledAction ModifySnapshotCopyRetentionPeriod ModifySnapshotSchedule ModifyUsageLimit PauseCluster PurchaseReservedNodeOffering RebootCluster ResetClusterParameterGroup ResizeCluster RestoreFromClusterSnapshot RestoreTableFromClusterSnapshot ResumeCluster RevokeClusterSecurityGroupIngress RevokeEndpointAccess RevokeSnapshotAccess RotateEncryptionKey UpdatePartnerStatus / }
 
 1;
 
@@ -1084,6 +1243,31 @@ to the configuration (term, payment type, or number of nodes) and no
 additional costs.
 
 
+=head2 AddPartner
+
+=over
+
+=item AccountId => Str
+
+=item ClusterIdentifier => Str
+
+=item DatabaseName => Str
+
+=item PartnerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::AddPartner>
+
+Returns: a L<Paws::RedShift::PartnerIntegrationOutputMessage> instance
+
+Adds a partner integration to a cluster. This operation authorizes a
+partner to push status updates for the specified database. To complete
+the integration, you also set up the integration on the partner
+website.
+
+
 =head2 AuthorizeClusterSecurityGroupIngress
 
 =over
@@ -1126,6 +1310,26 @@ authorized to connect to the cluster. For information about managing
 security groups, go to Working with Security Groups
 (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
+
+
+=head2 AuthorizeEndpointAccess
+
+=over
+
+=item Account => Str
+
+=item [ClusterIdentifier => Str]
+
+=item [VpcIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::AuthorizeEndpointAccess>
+
+Returns: a L<Paws::RedShift::EndpointAuthorization> instance
+
+Grants access to a cluster.
 
 
 =head2 AuthorizeSnapshotAccess
@@ -1258,9 +1462,13 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item [AllowVersionUpgrade => Bool]
 
+=item [AquaConfigurationStatus => Str]
+
 =item [AutomatedSnapshotRetentionPeriod => Int]
 
 =item [AvailabilityZone => Str]
+
+=item [AvailabilityZoneRelocation => Bool]
 
 =item [ClusterParameterGroupName => Str]
 
@@ -1440,6 +1648,30 @@ Subnet Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
+=head2 CreateEndpointAccess
+
+=over
+
+=item EndpointName => Str
+
+=item SubnetGroupName => Str
+
+=item [ClusterIdentifier => Str]
+
+=item [ResourceOwner => Str]
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::CreateEndpointAccess>
+
+Returns: a L<Paws::RedShift::EndpointAccess> instance
+
+Creates a Redshift-managed VPC endpoint.
+
+
 =head2 CreateEventSubscription
 
 =over
@@ -1517,8 +1749,8 @@ addition to creating the HSM certificate, you must create an Amazon
 Redshift HSM configuration that provides a cluster the information
 needed to store and use encryption keys in the HSM. For more
 information, go to Hardware Security Modules
-(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-HSM.html)
-in the Amazon Redshift Cluster Management Guide.
+(https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html#working-with-HSM)
+in the I<Amazon Redshift Cluster Management Guide>.
 
 
 =head2 CreateHsmConfiguration
@@ -1641,7 +1873,8 @@ Each argument is described in detail in: L<Paws::RedShift::CreateSnapshotSchedul
 
 Returns: a L<Paws::RedShift::SnapshotSchedule> instance
 
-Creates a snapshot schedule with the rate of every 12 hours.
+Create a snapshot schedule that can be associated to a cluster and
+which overrides the default system backup schedule.
 
 
 =head2 CreateTags
@@ -1667,6 +1900,36 @@ fail.
 
 If you specify a key that already exists for the resource, the value
 for that key will be updated with the new value.
+
+
+=head2 CreateUsageLimit
+
+=over
+
+=item Amount => Int
+
+=item ClusterIdentifier => Str
+
+=item FeatureType => Str
+
+=item LimitType => Str
+
+=item [BreachAction => Str]
+
+=item [Period => Str]
+
+=item [Tags => ArrayRef[L<Paws::RedShift::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::CreateUsageLimit>
+
+Returns: a L<Paws::RedShift::UsageLimit> instance
+
+Creates a usage limit for a specified Amazon Redshift feature on a
+cluster. The usage limit is identified by the returned usage limit
+identifier.
 
 
 =head2 DeleteCluster
@@ -1796,6 +2059,22 @@ Returns: nothing
 Deletes the specified cluster subnet group.
 
 
+=head2 DeleteEndpointAccess
+
+=over
+
+=item EndpointName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DeleteEndpointAccess>
+
+Returns: a L<Paws::RedShift::EndpointAccess> instance
+
+Deletes a Redshift-managed VPC endpoint.
+
+
 =head2 DeleteEventSubscription
 
 =over
@@ -1842,6 +2121,29 @@ Each argument is described in detail in: L<Paws::RedShift::DeleteHsmConfiguratio
 Returns: nothing
 
 Deletes the specified Amazon Redshift HSM configuration.
+
+
+=head2 DeletePartner
+
+=over
+
+=item AccountId => Str
+
+=item ClusterIdentifier => Str
+
+=item DatabaseName => Str
+
+=item PartnerName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DeletePartner>
+
+Returns: a L<Paws::RedShift::PartnerIntegrationOutputMessage> instance
+
+Deletes a partner integration from a cluster. Data can still flow to
+the cluster until the integration is deleted at the partner's website.
 
 
 =head2 DeleteScheduledAction
@@ -1909,6 +2211,22 @@ Returns: nothing
 
 Deletes tags from a resource. You must provide the ARN of the resource
 from which you want to delete the tag or tags.
+
+
+=head2 DeleteUsageLimit
+
+=over
+
+=item UsageLimitId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DeleteUsageLimit>
+
+Returns: nothing
+
+Deletes a usage limit from a cluster.
 
 
 =head2 DescribeAccountAttributes
@@ -2274,6 +2592,56 @@ Amazon Redshift Parameter Groups
 in the I<Amazon Redshift Cluster Management Guide>.
 
 
+=head2 DescribeEndpointAccess
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [EndpointName => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [ResourceOwner => Str]
+
+=item [VpcId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeEndpointAccess>
+
+Returns: a L<Paws::RedShift::EndpointAccessList> instance
+
+Describes a Redshift-managed VPC endpoint.
+
+
+=head2 DescribeEndpointAuthorization
+
+=over
+
+=item [Account => Str]
+
+=item [ClusterIdentifier => Str]
+
+=item [Grantee => Bool]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeEndpointAuthorization>
+
+Returns: a L<Paws::RedShift::EndpointAuthorizationList> instance
+
+Describes an endpoint authorization.
+
+
 =head2 DescribeEventCategories
 
 =over
@@ -2511,6 +2879,29 @@ specific region and specify values when creating a cluster. For more
 information about managing clusters, go to Amazon Redshift Clusters
 (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-clusters.html)
 in the I<Amazon Redshift Cluster Management Guide>.
+
+
+=head2 DescribePartners
+
+=over
+
+=item AccountId => Str
+
+=item ClusterIdentifier => Str
+
+=item [DatabaseName => Str]
+
+=item [PartnerName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribePartners>
+
+Returns: a L<Paws::RedShift::DescribePartnersOutputMessage> instance
+
+Returns information about the partner integrations defined for a
+cluster.
 
 
 =head2 DescribeReservedNodeOfferings
@@ -2776,6 +3167,62 @@ returned regardless of whether they have tag keys or values associated
 with them.
 
 
+=head2 DescribeUsageLimits
+
+=over
+
+=item [ClusterIdentifier => Str]
+
+=item [FeatureType => Str]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+=item [TagKeys => ArrayRef[Str|Undef]]
+
+=item [TagValues => ArrayRef[Str|Undef]]
+
+=item [UsageLimitId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::DescribeUsageLimits>
+
+Returns: a L<Paws::RedShift::UsageLimitList> instance
+
+Shows usage limits on a cluster. Results are filtered based on the
+combination of input usage limit identifier, cluster identifier, and
+feature type parameters:
+
+=over
+
+=item *
+
+If usage limit identifier, cluster identifier, and feature type are not
+provided, then all usage limit objects for the current account in the
+current region are returned.
+
+=item *
+
+If usage limit identifier is provided, then the corresponding usage
+limit object is returned.
+
+=item *
+
+If cluster identifier is provided, then all usage limit objects for the
+specified cluster are returned.
+
+=item *
+
+If cluster identifier and feature type are provided, then all usage
+limit objects for the combination of cluster and feature are returned.
+
+=back
+
+
+
 =head2 DisableLogging
 
 =over
@@ -2934,6 +3381,24 @@ Returns an array of DC2 ReservedNodeOfferings that matches the payment
 type, term, and usage price of the given DC1 reserved node.
 
 
+=head2 ModifyAquaConfiguration
+
+=over
+
+=item ClusterIdentifier => Str
+
+=item [AquaConfigurationStatus => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyAquaConfiguration>
+
+Returns: a L<Paws::RedShift::ModifyAquaOutputMessage> instance
+
+Modifies whether a cluster can use AQUA (Advanced Query Accelerator).
+
+
 =head2 ModifyCluster
 
 =over
@@ -2943,6 +3408,10 @@ type, term, and usage price of the given DC1 reserved node.
 =item [AllowVersionUpgrade => Bool]
 
 =item [AutomatedSnapshotRetentionPeriod => Int]
+
+=item [AvailabilityZone => Str]
+
+=item [AvailabilityZoneRelocation => Bool]
 
 =item [ClusterParameterGroupName => Str]
 
@@ -2975,6 +3444,8 @@ type, term, and usage price of the given DC1 reserved node.
 =item [NodeType => Str]
 
 =item [NumberOfNodes => Int]
+
+=item [Port => Int]
 
 =item [PreferredMaintenanceWindow => Str]
 
@@ -3162,6 +3633,24 @@ subnets. The operation replaces the existing list of subnets with the
 new list of subnets.
 
 
+=head2 ModifyEndpointAccess
+
+=over
+
+=item EndpointName => Str
+
+=item [VpcSecurityGroupIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyEndpointAccess>
+
+Returns: a L<Paws::RedShift::EndpointAccess> instance
+
+Modifies a Redshift-managed VPC endpoint.
+
+
 =head2 ModifyEventSubscription
 
 =over
@@ -3266,6 +3755,43 @@ Modifies a snapshot schedule. Any schedule associated with a cluster is
 modified asynchronously.
 
 
+=head2 ModifyUsageLimit
+
+=over
+
+=item UsageLimitId => Str
+
+=item [Amount => Int]
+
+=item [BreachAction => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ModifyUsageLimit>
+
+Returns: a L<Paws::RedShift::UsageLimit> instance
+
+Modifies a usage limit in a cluster. You can't modify the feature type
+or period of a usage limit.
+
+
+=head2 PauseCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::PauseCluster>
+
+Returns: a L<Paws::RedShift::PauseClusterResult> instance
+
+Pauses a cluster.
+
+
 =head2 PurchaseReservedNodeOffering
 
 =over
@@ -3347,13 +3873,13 @@ you must reboot any associated clusters.
 
 =item ClusterIdentifier => Str
 
-=item NumberOfNodes => Int
-
 =item [Classic => Bool]
 
 =item [ClusterType => Str]
 
 =item [NodeType => Str]
+
+=item [NumberOfNodes => Int]
 
 
 =back
@@ -3380,6 +3906,14 @@ You can only resize clusters of the following types:
 
 =item *
 
+dc1.large (if your cluster is in a VPC)
+
+=item *
+
+dc1.8xlarge (if your cluster is in a VPC)
+
+=item *
+
 dc2.large
 
 =item *
@@ -3393,6 +3927,14 @@ ds2.xlarge
 =item *
 
 ds2.8xlarge
+
+=item *
+
+ra3.xlplus
+
+=item *
+
+ra3.4xlarge
 
 =item *
 
@@ -3421,9 +3963,13 @@ cluster.
 
 =item [AllowVersionUpgrade => Bool]
 
+=item [AquaConfigurationStatus => Str]
+
 =item [AutomatedSnapshotRetentionPeriod => Int]
 
 =item [AvailabilityZone => Str]
+
+=item [AvailabilityZoneRelocation => Bool]
 
 =item [ClusterParameterGroupName => Str]
 
@@ -3505,6 +4051,8 @@ in the I<Amazon Redshift Cluster Management Guide>.
 
 =item SourceTableName => Str
 
+=item [EnableCaseSensitiveIdentifier => Bool]
+
 =item [SourceSchemaName => Str]
 
 =item [TargetDatabaseName => Str]
@@ -3534,6 +4082,22 @@ C<RestoreTableFromClusterSnapshot>. This way, you can replace the
 original table with the table created from the snapshot.
 
 
+=head2 ResumeCluster
+
+=over
+
+=item ClusterIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::ResumeCluster>
+
+Returns: a L<Paws::RedShift::ResumeClusterResult> instance
+
+Resumes a paused cluster.
+
+
 =head2 RevokeClusterSecurityGroupIngress
 
 =over
@@ -3560,6 +4124,28 @@ about managing security groups, go to Amazon Redshift Cluster Security
 Groups
 (https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-security-groups.html)
 in the I<Amazon Redshift Cluster Management Guide>.
+
+
+=head2 RevokeEndpointAccess
+
+=over
+
+=item [Account => Str]
+
+=item [ClusterIdentifier => Str]
+
+=item [Force => Bool]
+
+=item [VpcIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::RevokeEndpointAccess>
+
+Returns: a L<Paws::RedShift::EndpointAuthorization> instance
+
+Revokes access to a cluster.
 
 
 =head2 RevokeSnapshotAccess
@@ -3603,6 +4189,32 @@ Each argument is described in detail in: L<Paws::RedShift::RotateEncryptionKey>
 Returns: a L<Paws::RedShift::RotateEncryptionKeyResult> instance
 
 Rotates the encryption keys for a cluster.
+
+
+=head2 UpdatePartnerStatus
+
+=over
+
+=item AccountId => Str
+
+=item ClusterIdentifier => Str
+
+=item DatabaseName => Str
+
+=item PartnerName => Str
+
+=item Status => Str
+
+=item [StatusMessage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RedShift::UpdatePartnerStatus>
+
+Returns: a L<Paws::RedShift::PartnerIntegrationOutputMessage> instance
+
+Updates the status of a partner integration.
 
 
 
@@ -3729,6 +4341,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - DefaultClusterParameters.Parameters, passing the object as the first parameter, and the string 'DefaultClusterParameters.Parameters' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::DescribeDefaultClusterParametersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEndpointAccess(sub { },[ClusterIdentifier => Str, EndpointName => Str, Marker => Str, MaxRecords => Int, ResourceOwner => Str, VpcId => Str])
+
+=head2 DescribeAllEndpointAccess([ClusterIdentifier => Str, EndpointName => Str, Marker => Str, MaxRecords => Int, ResourceOwner => Str, VpcId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EndpointAccessList, passing the object as the first parameter, and the string 'EndpointAccessList' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::EndpointAccessList> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllEndpointAuthorization(sub { },[Account => Str, ClusterIdentifier => Str, Grantee => Bool, Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllEndpointAuthorization([Account => Str, ClusterIdentifier => Str, Grantee => Bool, Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - EndpointAuthorizationList, passing the object as the first parameter, and the string 'EndpointAuthorizationList' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::EndpointAuthorizationList> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllEvents(sub { },[Duration => Int, EndTime => Str, Marker => Str, MaxRecords => Int, SourceIdentifier => Str, SourceType => Str, StartTime => Str])
@@ -3885,6 +4521,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TaggedResources, passing the object as the first parameter, and the string 'TaggedResources' as the second parameter 
 
 If not, it will return a a L<Paws::RedShift::TaggedResourceListMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllUsageLimits(sub { },[ClusterIdentifier => Str, FeatureType => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef], UsageLimitId => Str])
+
+=head2 DescribeAllUsageLimits([ClusterIdentifier => Str, FeatureType => Str, Marker => Str, MaxRecords => Int, TagKeys => ArrayRef[Str|Undef], TagValues => ArrayRef[Str|Undef], UsageLimitId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - UsageLimits, passing the object as the first parameter, and the string 'UsageLimits' as the second parameter 
+
+If not, it will return a a L<Paws::RedShift::UsageLimitList> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllReservedNodeExchangeOfferings(sub { },ReservedNodeId => Str, [Marker => Str, MaxRecords => Int])

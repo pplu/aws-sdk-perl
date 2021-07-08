@@ -1,6 +1,7 @@
 
 package Paws::ImageBuilder::ListComponents;
   use Moose;
+  has ByName => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'byName');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::Filter]', traits => ['NameInRequest'], request_name => 'filters');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'nextToken');
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $imagebuilder = Paws->service('ImageBuilder');
     my $ListComponentsResponse = $imagebuilder->ListComponents(
+      ByName  => 1,    # OPTIONAL
       Filters => [
         {
           Name   => 'MyFilterName',              # OPTIONAL
@@ -39,9 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      MaxResults => 1,                     # OPTIONAL
-      NextToken  => 'MyNonEmptyString',    # OPTIONAL
-      Owner      => 'Self',                # OPTIONAL
+      MaxResults => 1,                      # OPTIONAL
+      NextToken  => 'MyPaginationToken',    # OPTIONAL
+      Owner      => 'Self',                 # OPTIONAL
     );
 
     # Results:
@@ -55,6 +57,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder/ListComponents>
 
 =head1 ATTRIBUTES
+
+
+=head2 ByName => Bool
+
+Returns the list of component build versions for the specified semantic
+version.
+
 
 
 =head2 Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]

@@ -36,7 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-Specifies limits on the messages that a campaign can send.
+For a campaign, specifies limits on the messages that the campaign can
+send. For an application, specifies the default limits for messages
+that campaigns in the application can send.
 
 =head1 ATTRIBUTES
 
@@ -44,7 +46,10 @@ Specifies limits on the messages that a campaign can send.
 =head2 Daily => Int
 
 The maximum number of messages that a campaign can send to a single
-endpoint during a 24-hour period. The maximum value is 100.
+endpoint during a 24-hour period. For an application, this value
+specifies the default limit for the number of messages that campaigns
+and journeys can send to a single endpoint during a 24-hour period. The
+maximum value is 100.
 
 
 =head2 MaximumDuration => Int
@@ -57,13 +62,16 @@ minimum value is 60 seconds.
 =head2 MessagesPerSecond => Int
 
 The maximum number of messages that a campaign can send each second.
-The minimum value is 50. The maximum value is 20,000.
+For an application, this value specifies the default limit for the
+number of messages that campaigns can send each second. The minimum
+value is 50. The maximum value is 20,000.
 
 
 =head2 Total => Int
 
 The maximum number of messages that a campaign can send to a single
-endpoint during the course of the campaign. The maximum value is 100.
+endpoint during the course of the campaign. If a campaign recurs, this
+setting applies to all runs of the campaign. The maximum value is 100.
 
 
 

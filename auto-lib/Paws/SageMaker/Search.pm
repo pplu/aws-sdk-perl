@@ -41,7 +41,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Name     => 'MyResourcePropertyName',    # min: 1, max: 255
             Operator => 'Equals'
-            , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains, Exists, NotExists; OPTIONAL
+            , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains, Exists, NotExists, In; OPTIONAL
             Value => 'MyFilterValue',    # min: 1, max: 1024; OPTIONAL
           },
           ...
@@ -52,7 +52,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               {
                 Name     => 'MyResourcePropertyName',    # min: 1, max: 255
                 Operator => 'Equals'
-                , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains, Exists, NotExists; OPTIONAL
+                , # values: Equals, NotEquals, GreaterThan, GreaterThanOrEqualTo, LessThan, LessThanOrEqualTo, Contains, Exists, NotExists, In; OPTIONAL
                 Value => 'MyFilterValue',    # min: 1, max: 1024; OPTIONAL
               },
               ...
@@ -84,17 +84,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 
 =head2 MaxResults => Int
 
-The maximum number of results to return in a C<SearchResponse>.
+The maximum number of results to return.
 
 
 
 =head2 NextToken => Str
 
-If more than C<MaxResults> resource objects match the specified
-C<SearchExpression>, the C<SearchResponse> includes a C<NextToken>. The
+If more than C<MaxResults> resources match the specified
+C<SearchExpression>, the response includes a C<NextToken>. The
 C<NextToken> can be passed to the next C<SearchRequest> to continue
-retrieving results for the specified C<SearchExpression> and C<Sort>
-parameters.
+retrieving results.
 
 
 
@@ -102,13 +101,13 @@ parameters.
 
 The name of the Amazon SageMaker resource to search for.
 
-Valid values are: C<"TrainingJob">, C<"Experiment">, C<"ExperimentTrial">, C<"ExperimentTrialComponent">
+Valid values are: C<"TrainingJob">, C<"Experiment">, C<"ExperimentTrial">, C<"ExperimentTrialComponent">, C<"Endpoint">, C<"ModelPackage">, C<"ModelPackageGroup">, C<"Pipeline">, C<"PipelineExecution">, C<"FeatureGroup">
 
 =head2 SearchExpression => L<Paws::SageMaker::SearchExpression>
 
-A Boolean conditional statement. Resource objects must satisfy this
-condition to be included in search results. You must provide at least
-one subexpression, filter, or nested filter. The maximum number of
+A Boolean conditional statement. Resources must satisfy this condition
+to be included in search results. You must provide at least one
+subexpression, filter, or nested filter. The maximum number of
 recursive C<SubExpressions>, C<NestedFilters>, and C<Filters> that can
 be included in a C<SearchExpression> object is 50.
 

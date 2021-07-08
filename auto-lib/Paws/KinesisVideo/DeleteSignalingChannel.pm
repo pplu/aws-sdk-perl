@@ -42,7 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 B<REQUIRED> ChannelARN => Str
 
-The ARN of the signaling channel that you want to delete.
+The Amazon Resource Name (ARN) of the signaling channel that you want
+to delete.
 
 
 
@@ -50,7 +51,7 @@ The ARN of the signaling channel that you want to delete.
 
 The current version of the signaling channel that you want to delete.
 You can obtain the current version by invoking the
-C<DescribeSignalingChannel> or C<ListSignalingChannels> APIs.
+C<DescribeSignalingChannel> or C<ListSignalingChannels> API operations.
 
 
 

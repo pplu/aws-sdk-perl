@@ -40,7 +40,8 @@ Specifies JSON as request's output serialization format.
 
 =head2 RecordDelimiter => Str
 
-The value used to separate individual records in the output.
+The value used to separate individual records in the output. If no
+value is specified, Amazon S3 uses a newline character ('\n').
 
 
 

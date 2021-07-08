@@ -66,7 +66,7 @@ to false, the accelerator can be deleted.
 
 =head2 IpAddressType => Str
 
-The value for the address type must be IPv4.
+The IP address type, which must be IPv4.
 
 Valid values are: C<"IPV4">
 

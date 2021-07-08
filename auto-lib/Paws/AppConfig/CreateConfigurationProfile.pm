@@ -5,7 +5,7 @@ package Paws::AppConfig::CreateConfigurationProfile;
   has Description => (is => 'ro', isa => 'Str');
   has LocationUri => (is => 'ro', isa => 'Str', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has RetrievalRoleArn => (is => 'ro', isa => 'Str', required => 1);
+  has RetrievalRoleArn => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::AppConfig::TagMap');
   has Validators => (is => 'ro', isa => 'ArrayRef[Paws::AppConfig::Validator]');
 
@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ApplicationId    => 'MyId',
       LocationUri      => 'MyUri',
       Name             => 'MyName',
-      RetrievalRoleArn => 'MyArn',
       Description      => 'MyDescription',    # OPTIONAL
+      RetrievalRoleArn => 'MyRoleArn',        # OPTIONAL
       Tags             => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
@@ -84,12 +84,15 @@ A description of the configuration profile.
 
 =head2 B<REQUIRED> LocationUri => Str
 
-A URI to locate the configuration. You can specify either a Systems
-Manager (SSM) document or an SSM Parameter Store parameter. For an SSM
-document, specify either the document name in the format
-C<ssm-document://E<lt>Document nameE<gt>> or the Amazon Resource Name
-(ARN). For a parameter, specify either the parameter name in the format
-C<ssm-parameter://E<lt>Parameter nameE<gt>> or the ARN.
+A URI to locate the configuration. You can specify a Systems Manager
+(SSM) document, an SSM Parameter Store parameter, or an Amazon S3
+object. For an SSM document, specify either the document name in the
+format C<ssm-document://E<lt>Document_nameE<gt>> or the Amazon Resource
+Name (ARN). For a parameter, specify either the parameter name in the
+format C<ssm-parameter://E<lt>Parameter_nameE<gt>> or the ARN. For an
+Amazon S3 object, specify the URI in the following format:
+C<s3://E<lt>bucketE<gt>/E<lt>objectKeyE<gt> >. Here is an example:
+s3://my-bucket/my-app/us-east-1/my-config.json
 
 
 
@@ -99,7 +102,7 @@ A name for the configuration profile.
 
 
 
-=head2 B<REQUIRED> RetrievalRoleArn => Str
+=head2 RetrievalRoleArn => Str
 
 The ARN of an IAM role with permission to access the configuration at
 the specified LocationUri.

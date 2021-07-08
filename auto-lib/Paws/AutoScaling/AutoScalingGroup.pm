@@ -4,6 +4,8 @@ package Paws::AutoScaling::AutoScalingGroup;
   has AutoScalingGroupARN => (is => 'ro', isa => 'Str');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has CapacityRebalance => (is => 'ro', isa => 'Bool');
+  has Context => (is => 'ro', isa => 'Str');
   has CreatedTime => (is => 'ro', isa => 'Str', required => 1);
   has DefaultCooldown => (is => 'ro', isa => 'Int', required => 1);
   has DesiredCapacity => (is => 'ro', isa => 'Int', required => 1);
@@ -20,6 +22,7 @@ package Paws::AutoScaling::AutoScalingGroup;
   has MixedInstancesPolicy => (is => 'ro', isa => 'Paws::AutoScaling::MixedInstancesPolicy');
   has NewInstancesProtectedFromScaleIn => (is => 'ro', isa => 'Bool');
   has PlacementGroup => (is => 'ro', isa => 'Str');
+  has PredictedCapacity => (is => 'ro', isa => 'Int');
   has ServiceLinkedRoleARN => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has SuspendedProcesses => (is => 'ro', isa => 'ArrayRef[Paws::AutoScaling::SuspendedProcess]');
@@ -27,6 +30,8 @@ package Paws::AutoScaling::AutoScalingGroup;
   has TargetGroupARNs => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has TerminationPolicies => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VPCZoneIdentifier => (is => 'ro', isa => 'Str');
+  has WarmPoolConfiguration => (is => 'ro', isa => 'Paws::AutoScaling::WarmPoolConfiguration');
+  has WarmPoolSize => (is => 'ro', isa => 'Int');
 
 1;
 
@@ -47,7 +52,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::AutoScalingGroup object:
 
-  $service_obj->Method(Att1 => { AutoScalingGroupARN => $value, ..., VPCZoneIdentifier => $value  });
+  $service_obj->Method(Att1 => { AutoScalingGroupARN => $value, ..., WarmPoolSize => $value  });
 
 =head3 Results returned from an API call
 
@@ -78,6 +83,16 @@ The name of the Auto Scaling group.
 One or more Availability Zones for the group.
 
 
+=head2 CapacityRebalance => Bool
+
+Indicates whether Capacity Rebalancing is enabled.
+
+
+=head2 Context => Str
+
+Reserved.
+
+
 =head2 B<REQUIRED> CreatedTime => Str
 
 The date and time the group was created.
@@ -85,8 +100,7 @@ The date and time the group was created.
 
 =head2 B<REQUIRED> DefaultCooldown => Int
 
-The amount of time, in seconds, after a scaling activity completes
-before another scaling activity can start.
+The duration of the default cooldown period, in seconds.
 
 
 =head2 B<REQUIRED> DesiredCapacity => Int
@@ -109,7 +123,7 @@ service.
 =head2 B<REQUIRED> HealthCheckType => Str
 
 The service to use for the health checks. The valid values are C<EC2>
-and C<ELB>. If you configure an Auto Scaling group to use ELB health
+and C<ELB>. If you configure an Auto Scaling group to use C<ELB> health
 checks, it considers the instance unhealthy if it fails either the EC2
 status checks or the load balancer health checks.
 
@@ -139,7 +153,7 @@ One or more load balancers associated with the group.
 The maximum amount of time, in seconds, that an instance can be in
 service.
 
-Valid Range: Minimum value of 604800.
+Valid Range: Minimum value of 0.
 
 
 =head2 B<REQUIRED> MaxSize => Int
@@ -169,16 +183,22 @@ The name of the placement group into which to launch your instances, if
 any.
 
 
+=head2 PredictedCapacity => Int
+
+The predicted capacity of the group when it has a predictive scaling
+policy.
+
+
 =head2 ServiceLinkedRoleARN => Str
 
 The Amazon Resource Name (ARN) of the service-linked role that the Auto
-Scaling group uses to call other AWS services on your behalf.
+Scaling group uses to call other Amazon Web Services on your behalf.
 
 
 =head2 Status => Str
 
-The current state of the group when DeleteAutoScalingGroup is in
-progress.
+The current state of the group when the DeleteAutoScalingGroup
+operation is in progress.
 
 
 =head2 SuspendedProcesses => ArrayRef[L<Paws::AutoScaling::SuspendedProcess>]
@@ -205,6 +225,16 @@ The termination policies for the group.
 =head2 VPCZoneIdentifier => Str
 
 One or more subnet IDs, if applicable, separated by commas.
+
+
+=head2 WarmPoolConfiguration => L<Paws::AutoScaling::WarmPoolConfiguration>
+
+The warm pool for the group.
+
+
+=head2 WarmPoolSize => Int
+
+The current size of the warm pool.
 
 
 

@@ -32,28 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe a launch template
+    # This example describes the specified launch template.
     my $DescribeLaunchTemplatesResult = $ec2->DescribeLaunchTemplates(
-      DryRun  => 1,    # OPTIONAL
-      Filters => [
-        {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      LaunchTemplateIds   => [ 'MyLaunchTemplateId', ... ],    # OPTIONAL
-      LaunchTemplateNames => [
-        'MyLaunchTemplateName', ...    # min: 3, max: 128
-      ],    # OPTIONAL
-      MaxResults => 1,             # OPTIONAL
-      NextToken  => 'MyString',    # OPTIONAL
-    );
+      'LaunchTemplateIds' => ['lt-01238c059e3466abc'] );
 
     # Results:
     my $LaunchTemplates = $DescribeLaunchTemplatesResult->LaunchTemplates;
-    my $NextToken       = $DescribeLaunchTemplatesResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeLaunchTemplatesResult> object.
 

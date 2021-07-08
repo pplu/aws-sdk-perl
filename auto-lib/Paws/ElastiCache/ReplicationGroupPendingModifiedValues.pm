@@ -3,8 +3,10 @@ package Paws::ElastiCache::ReplicationGroupPendingModifiedValues;
   use Moose;
   has AuthTokenStatus => (is => 'ro', isa => 'Str');
   has AutomaticFailoverStatus => (is => 'ro', isa => 'Str');
+  has LogDeliveryConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::PendingLogDeliveryConfiguration]');
   has PrimaryClusterId => (is => 'ro', isa => 'Str');
   has Resharding => (is => 'ro', isa => 'Paws::ElastiCache::ReshardingStatus');
+  has UserGroups => (is => 'ro', isa => 'Paws::ElastiCache::UserGroupsUpdateStatus');
 
 1;
 
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::ReplicationGroupPendingModifiedValues object:
 
-  $service_obj->Method(Att1 => { AuthTokenStatus => $value, ..., Resharding => $value  });
+  $service_obj->Method(Att1 => { AuthTokenStatus => $value, ..., UserGroups => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,28 +51,13 @@ The auth token status
 
 =head2 AutomaticFailoverStatus => Str
 
-Indicates the status of Multi-AZ with automatic failover for this Redis
-replication group.
+Indicates the status of automatic failover for this Redis replication
+group.
 
-Amazon ElastiCache for Redis does not support Multi-AZ with automatic
-failover on:
 
-=over
+=head2 LogDeliveryConfigurations => ArrayRef[L<Paws::ElastiCache::PendingLogDeliveryConfiguration>]
 
-=item *
-
-Redis versions earlier than 2.8.6.
-
-=item *
-
-Redis (cluster mode disabled): T1 node types.
-
-=item *
-
-Redis (cluster mode enabled): T1 node types.
-
-=back
-
+The log delivery configurations being modified
 
 
 =head2 PrimaryClusterId => Str
@@ -83,6 +70,11 @@ window.
 =head2 Resharding => L<Paws::ElastiCache::ReshardingStatus>
 
 The status of an online resharding operation.
+
+
+=head2 UserGroups => L<Paws::ElastiCache::UserGroupsUpdateStatus>
+
+The user groups being modified.
 
 
 

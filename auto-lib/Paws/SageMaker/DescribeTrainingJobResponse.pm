@@ -12,6 +12,7 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has EnableInterContainerTrafficEncryption => (is => 'ro', isa => 'Bool');
   has EnableManagedSpotTraining => (is => 'ro', isa => 'Bool');
   has EnableNetworkIsolation => (is => 'ro', isa => 'Bool');
+  has Environment => (is => 'ro', isa => 'Paws::SageMaker::TrainingEnvironmentMap');
   has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has FailureReason => (is => 'ro', isa => 'Str');
   has FinalMetricDataList => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::MetricData]');
@@ -21,7 +22,12 @@ package Paws::SageMaker::DescribeTrainingJobResponse;
   has LastModifiedTime => (is => 'ro', isa => 'Str');
   has ModelArtifacts => (is => 'ro', isa => 'Paws::SageMaker::ModelArtifacts', required => 1);
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::OutputDataConfig');
+  has ProfilerConfig => (is => 'ro', isa => 'Paws::SageMaker::ProfilerConfig');
+  has ProfilerRuleConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProfilerRuleConfiguration]');
+  has ProfilerRuleEvaluationStatuses => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::ProfilerRuleEvaluationStatus]');
+  has ProfilingStatus => (is => 'ro', isa => 'Str');
   has ResourceConfig => (is => 'ro', isa => 'Paws::SageMaker::ResourceConfig', required => 1);
+  has RetryStrategy => (is => 'ro', isa => 'Paws::SageMaker::RetryStrategy');
   has RoleArn => (is => 'ro', isa => 'Str');
   has SecondaryStatus => (is => 'ro', isa => 'Str', required => 1);
   has SecondaryStatusTransitions => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::SecondaryStatusTransition]');
@@ -55,12 +61,18 @@ metadata.
 
 =head2 AutoMLJobArn => Str
 
-
+The Amazon Resource Name (ARN) of an AutoML job.
 
 
 =head2 BillableTimeInSeconds => Int
 
-The billable time in seconds.
+The billable time in seconds. Billable time refers to the absolute
+wall-clock time.
+
+Multiply C<BillableTimeInSeconds> by the number of instances
+(C<InstanceCount>) in your training cluster to get the total compute
+time Amazon SageMaker will bill you if you run distributed training.
+The formula is as follows: C<BillableTimeInSeconds * InstanceCount> .
 
 You can calculate the savings from using managed spot training using
 the formula C<(1 - BillableTimeInSeconds / TrainingTimeInSeconds) *
@@ -85,12 +97,13 @@ A timestamp that indicates when the training job was created.
 
 =head2 DebugRuleConfigurations => ArrayRef[L<Paws::SageMaker::DebugRuleConfiguration>]
 
-Configuration information for debugging rules.
+Configuration information for Debugger rules for debugging output
+tensors.
 
 
 =head2 DebugRuleEvaluationStatuses => ArrayRef[L<Paws::SageMaker::DebugRuleEvaluationStatus>]
 
-Status about the debug rule evaluation.
+Evaluation status of Debugger rules for debugging on a training job.
 
 
 =head2 EnableInterContainerTrafficEncryption => Bool
@@ -117,6 +130,11 @@ choose C<True>. If you enable network isolation for training jobs that
 are configured to use a VPC, Amazon SageMaker downloads and uploads
 customer data and model artifacts through the specified VPC, but the
 training container does not have network access.
+
+
+=head2 Environment => L<Paws::SageMaker::TrainingEnvironmentMap>
+
+The environment variables to set in the Docker container.
 
 
 =head2 ExperimentConfig => L<Paws::SageMaker::ExperimentConfig>
@@ -171,16 +189,43 @@ job are stored. Amazon SageMaker creates subfolders for model
 artifacts.
 
 
+=head2 ProfilerConfig => L<Paws::SageMaker::ProfilerConfig>
+
+
+
+
+=head2 ProfilerRuleConfigurations => ArrayRef[L<Paws::SageMaker::ProfilerRuleConfiguration>]
+
+Configuration information for Debugger rules for profiling system and
+framework metrics.
+
+
+=head2 ProfilerRuleEvaluationStatuses => ArrayRef[L<Paws::SageMaker::ProfilerRuleEvaluationStatus>]
+
+Evaluation status of Debugger rules for profiling on a training job.
+
+
+=head2 ProfilingStatus => Str
+
+Profiling status of a training job.
+
+Valid values are: C<"Enabled">, C<"Disabled">
 =head2 B<REQUIRED> ResourceConfig => L<Paws::SageMaker::ResourceConfig>
 
 Resources, including ML compute instances and ML storage volumes, that
 are configured for model training.
 
 
+=head2 RetryStrategy => L<Paws::SageMaker::RetryStrategy>
+
+The number of times to retry the job when the job fails due to an
+C<InternalServerError>.
+
+
 =head2 RoleArn => Str
 
-The AWS Identity and Access Management (IAM) role configured for the
-training job.
+The Amazon Web Services Identity and Access Management (IAM) role
+configured for the training job.
 
 
 =head2 B<REQUIRED> SecondaryStatus => Str
@@ -257,8 +302,8 @@ allowed runtime.
 
 =item *
 
-C<MaxWaitTmeExceeded> - The job stopped because it exceeded the maximum
-allowed wait time.
+C<MaxWaitTimeExceeded> - The job stopped because it exceeded the
+maximum allowed wait time.
 
 =item *
 
@@ -290,7 +335,7 @@ C<LaunchingMLInstances>
 
 =item *
 
-C<PreparingTrainingStack>
+C<PreparingTraining>
 
 =item *
 
@@ -299,7 +344,7 @@ C<DownloadingTrainingImage>
 =back
 
 
-Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">, C<"Interrupted">, C<"MaxWaitTimeExceeded">
+Valid values are: C<"Starting">, C<"LaunchingMLInstances">, C<"PreparingTrainingStack">, C<"Downloading">, C<"DownloadingTrainingImage">, C<"Training">, C<"Uploading">, C<"Stopping">, C<"Stopped">, C<"MaxRuntimeExceeded">, C<"Completed">, C<"Failed">, C<"Interrupted">, C<"MaxWaitTimeExceeded">, C<"Updating">, C<"Restarting">
 =head2 SecondaryStatusTransitions => ArrayRef[L<Paws::SageMaker::SecondaryStatusTransition>]
 
 A history of all of the secondary statuses that the training job has
@@ -309,9 +354,9 @@ transitioned through.
 =head2 B<REQUIRED> StoppingCondition => L<Paws::SageMaker::StoppingCondition>
 
 Specifies a limit to how long a model training job can run. It also
-specifies the maximum time to wait for a spot instance. When the job
-reaches the time limit, Amazon SageMaker ends the training job. Use
-this API to cap model training costs.
+specifies how long a managed Spot training job has to complete. When
+the job reaches the time limit, Amazon SageMaker ends the training job.
+Use this API to cap model training costs.
 
 To stop a job, Amazon SageMaker sends the algorithm the C<SIGTERM>
 signal, which delays job termination for 120 seconds. Algorithms can

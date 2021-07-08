@@ -71,13 +71,13 @@ The registration status of the on-premises instances:
 
 =item *
 
-Deregistered: Include deregistered on-premises instances in the
+C<Deregistered>: Include deregistered on-premises instances in the
 resulting list.
 
 =item *
 
-Registered: Include registered on-premises instances in the resulting
-list.
+C<Registered>: Include registered on-premises instances in the
+resulting list.
 
 =back
 

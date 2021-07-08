@@ -18,14 +18,14 @@ Paws::ElasticBeanstalk::ListPlatformVersionsResult
 
 =head2 NextToken => Str
 
-The starting index into the remaining list of platforms. if this value
-is not C<null>, you can use it in a subsequent C<ListPlatformVersion>
-call.
+In a paginated request, if this value isn't C<null>, it's the token
+that you can pass in a subsequent request to get the next response
+page.
 
 
 =head2 PlatformSummaryList => ArrayRef[L<Paws::ElasticBeanstalk::PlatformSummary>]
 
-Detailed information about the platforms.
+Summary information about the platform versions.
 
 
 =head2 _request_id => Str

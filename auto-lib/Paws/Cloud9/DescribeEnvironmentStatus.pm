@@ -27,14 +27,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloud9 = Paws->service('Cloud9');
+    # DescribeEnvironmentStatus
     my $DescribeEnvironmentStatusResult = $cloud9->DescribeEnvironmentStatus(
-      EnvironmentId => 'MyEnvironmentId',
-
-    );
+      'EnvironmentId' => '8d9967e2f0624182b74e7690ad69ebEX' );
 
     # Results:
-    my $Message = $DescribeEnvironmentStatusResult->Message;
-    my $Status  = $DescribeEnvironmentStatusResult->Status;
+    my $message = $DescribeEnvironmentStatusResult->message;
+    my $status  = $DescribeEnvironmentStatusResult->status;
 
     # Returns a L<Paws::Cloud9::DescribeEnvironmentStatusResult> object.
 

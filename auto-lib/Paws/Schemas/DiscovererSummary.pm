@@ -59,7 +59,7 @@ The ARN of the event bus.
 
 =head2 State => Str
 
-
+The state of the discoverer.
 
 
 =head2 Tags => L<Paws::Schemas::Tags>

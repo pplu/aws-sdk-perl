@@ -18,13 +18,13 @@ Paws::Amplify::ListAppsResult
 
 =head2 B<REQUIRED> Apps => ArrayRef[L<Paws::Amplify::App>]
 
-List of Amplify Apps.
+A list of Amplify apps.
 
 
 =head2 NextToken => Str
 
-Pagination token. Set to null to start listing Apps from start. If
-non-null pagination token is returned in a result, then pass its value
+A pagination token. Set to null to start listing apps from start. If
+non-null, the pagination token is returned in a result. Pass its value
 in here to list more projects.
 
 

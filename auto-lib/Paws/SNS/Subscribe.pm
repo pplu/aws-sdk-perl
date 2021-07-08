@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sns
 A map of attributes with their corresponding values.
 
 The following lists the names, descriptions, and values of the special
-request parameters that the C<SetTopicAttributes> action uses:
+request parameters that the C<Subscribe> action uses:
 
 =over
 
@@ -88,6 +88,36 @@ held in the dead-letter queue for further analysis or reprocessing.
 
 =back
 
+The following attribute applies only to Amazon Kinesis Data Firehose
+delivery stream subscriptions:
+
+=over
+
+=item *
+
+C<SubscriptionRoleArn> E<ndash> The ARN of the IAM role that has the
+following:
+
+=over
+
+=item *
+
+Permission to write to the Kinesis Data Firehose delivery stream
+
+=item *
+
+Amazon SNS listed as a trusted entity
+
+=back
+
+Specifying a valid ARN for this attribute is required for Kinesis Data
+Firehose delivery stream subscriptions. For more information, see
+Fanout to Kinesis Data Firehose delivery streams
+(https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+in the I<Amazon SNS Developer Guide>.
+
+=back
+
 
 
 
@@ -100,30 +130,31 @@ protocol:
 
 =item *
 
-For the C<http> protocol, the endpoint is an URL beginning with
-C<http://>
+For the C<http> protocol, the (public) endpoint is a URL beginning with
+C<http://>.
 
 =item *
 
-For the C<https> protocol, the endpoint is a URL beginning with
-C<https://>
+For the C<https> protocol, the (public) endpoint is a URL beginning
+with C<https://>.
 
 =item *
 
-For the C<email> protocol, the endpoint is an email address
+For the C<email> protocol, the endpoint is an email address.
 
 =item *
 
-For the C<email-json> protocol, the endpoint is an email address
+For the C<email-json> protocol, the endpoint is an email address.
 
 =item *
 
 For the C<sms> protocol, the endpoint is a phone number of an
-SMS-enabled device
+SMS-enabled device.
 
 =item *
 
-For the C<sqs> protocol, the endpoint is the ARN of an Amazon SQS queue
+For the C<sqs> protocol, the endpoint is the ARN of an Amazon SQS
+queue.
 
 =item *
 
@@ -132,8 +163,13 @@ mobile app and device.
 
 =item *
 
-For the C<lambda> protocol, the endpoint is the ARN of an Amazon Lambda
+For the C<lambda> protocol, the endpoint is the ARN of an Lambda
 function.
+
+=item *
+
+For the C<firehose> protocol, the endpoint is the ARN of an Amazon
+Kinesis Data Firehose delivery stream.
 
 =back
 
@@ -142,7 +178,7 @@ function.
 
 =head2 B<REQUIRED> Protocol => Str
 
-The protocol you want to use. Supported protocols include:
+The protocol that you want to use. Supported protocols include:
 
 =over
 
@@ -173,12 +209,17 @@ C<sqs> E<ndash> delivery of JSON-encoded message to an Amazon SQS queue
 =item *
 
 C<application> E<ndash> delivery of JSON-encoded message to an
-EndpointArn for a mobile app and device.
+EndpointArn for a mobile app and device
 
 =item *
 
-C<lambda> E<ndash> delivery of JSON-encoded message to an Amazon Lambda
-function.
+C<lambda> E<ndash> delivery of JSON-encoded message to an Lambda
+function
+
+=item *
+
+C<firehose> E<ndash> delivery of JSON-encoded message to an Amazon
+Kinesis Data Firehose delivery stream.
 
 =back
 
@@ -190,24 +231,12 @@ function.
 Sets whether the response from the C<Subscribe> request includes the
 subscription ARN, even if the subscription is not yet confirmed.
 
-=over
-
-=item *
-
-If you have the subscription ARN returned, the response includes the
-ARN in all cases, even if the subscription is not yet confirmed.
-
-=item *
-
-If you don't have the subscription ARN returned, in addition to the ARN
-for confirmed subscriptions, the response also includes the C<pending
-subscription> ARN value for subscriptions that aren't yet confirmed. A
-subscription becomes confirmed when the subscriber calls the
-C<ConfirmSubscription> action with a confirmation token.
-
-=back
-
-If you set this parameter to C<true>, .
+If you set this parameter to C<true>, the response includes the ARN in
+all cases, even if the subscription is not yet confirmed. In addition
+to the ARN for confirmed subscriptions, the response also includes the
+C<pending subscription> ARN value for subscriptions that aren't yet
+confirmed. A subscription becomes confirmed when the subscriber calls
+the C<ConfirmSubscription> action with a confirmation token.
 
 The default value is C<false>.
 

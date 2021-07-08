@@ -43,8 +43,7 @@ Information about a target group attribute.
 
 The name of the attribute.
 
-The following attribute is supported by both Application Load Balancers
-and Network Load Balancers:
+The following attribute is supported by all load balancers:
 
 =over
 
@@ -58,8 +57,27 @@ Lambda function, this attribute is not supported.
 
 =back
 
-The following attributes are supported by Application Load Balancers if
-the target is not a Lambda function:
+The following attributes are supported by both Application Load
+Balancers and Network Load Balancers:
+
+=over
+
+=item *
+
+C<stickiness.enabled> - Indicates whether sticky sessions are enabled.
+The value is C<true> or C<false>. The default is C<false>.
+
+=item *
+
+C<stickiness.type> - The type of sticky sessions. The possible values
+are C<lb_cookie> and C<app_cookie> for Application Load Balancers or
+C<source_ip> for Network Load Balancers.
+
+=back
+
+The following attributes are supported only if the load balancer is an
+Application Load Balancer and the target is an instance or an IP
+address:
 
 =over
 
@@ -73,20 +91,25 @@ default is C<round_robin>.
 =item *
 
 C<slow_start.duration_seconds> - The time period, in seconds, during
-which a newly registered target receives a linearly increasing share of
-the traffic to the target group. After this time period ends, the
-target receives its full share of traffic. The range is 30-900 seconds
-(15 minutes). Slow start mode is disabled by default.
+which a newly registered target receives an increasing share of the
+traffic to the target group. After this time period ends, the target
+receives its full share of traffic. The range is 30-900 seconds (15
+minutes). The default is 0 seconds (disabled).
 
 =item *
 
-C<stickiness.enabled> - Indicates whether sticky sessions are enabled.
-The value is C<true> or C<false>. The default is C<false>.
+C<stickiness.app_cookie.cookie_name> - Indicates the name of the
+application-based cookie. Names that start with the following prefixes
+are not allowed: C<AWSALB>, C<AWSALBAPP>, and C<AWSALBTG>; they're
+reserved for use by the load balancer.
 
 =item *
 
-C<stickiness.type> - The type of sticky sessions. The possible value is
-C<lb_cookie>.
+C<stickiness.app_cookie.duration_seconds> - The time period, in
+seconds, during which requests from a client should be routed to the
+same target. After this time period expires, the application-based
+cookie is considered stale. The range is 1 second to 1 week (604800
+seconds). The default value is 1 day (86400 seconds).
 
 =item *
 
@@ -98,25 +121,41 @@ seconds). The default value is 1 day (86400 seconds).
 
 =back
 
-The following attribute is supported only if the target is a Lambda
-function.
+The following attribute is supported only if the load balancer is an
+Application Load Balancer and the target is a Lambda function:
 
 =over
 
 =item *
 
 C<lambda.multi_value_headers.enabled> - Indicates whether the request
-and response headers exchanged between the load balancer and the Lambda
-function include arrays of values or strings. The value is C<true> or
-C<false>. The default is C<false>. If the value is C<false> and the
-request contains a duplicate header field name or query parameter key,
-the load balancer uses the last value sent by the client.
+and response headers that are exchanged between the load balancer and
+the Lambda function include arrays of values or strings. The value is
+C<true> or C<false>. The default is C<false>. If the value is C<false>
+and the request contains a duplicate header field name or query
+parameter key, the load balancer uses the last value sent by the
+client.
 
 =back
 
-The following attribute is supported only by Network Load Balancers:
+The following attributes are supported only by Network Load Balancers:
 
 =over
+
+=item *
+
+C<deregistration_delay.connection_termination.enabled> - Indicates
+whether the load balancer terminates connections at the end of the
+deregistration timeout. The value is C<true> or C<false>. The default
+is C<false>.
+
+=item *
+
+C<preserve_client_ip.enabled> - Indicates whether client IP
+preservation is enabled. The value is C<true> or C<false>. The default
+is disabled if the target group type is IP address and the target group
+protocol is TCP or TLS. Otherwise, the default is enabled. Client IP
+preservation cannot be disabled for UDP and TCP_UDP target groups.
 
 =item *
 

@@ -2,12 +2,14 @@
 package Paws::EKS::Nodegroup;
   use Moose;
   has AmiType => (is => 'ro', isa => 'Str', request_name => 'amiType', traits => ['NameInRequest']);
+  has CapacityType => (is => 'ro', isa => 'Str', request_name => 'capacityType', traits => ['NameInRequest']);
   has ClusterName => (is => 'ro', isa => 'Str', request_name => 'clusterName', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has DiskSize => (is => 'ro', isa => 'Int', request_name => 'diskSize', traits => ['NameInRequest']);
   has Health => (is => 'ro', isa => 'Paws::EKS::NodegroupHealth', request_name => 'health', traits => ['NameInRequest']);
   has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest']);
   has Labels => (is => 'ro', isa => 'Paws::EKS::LabelsMap', request_name => 'labels', traits => ['NameInRequest']);
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::EKS::LaunchTemplateSpecification', request_name => 'launchTemplate', traits => ['NameInRequest']);
   has ModifiedAt => (is => 'ro', isa => 'Str', request_name => 'modifiedAt', traits => ['NameInRequest']);
   has NodegroupArn => (is => 'ro', isa => 'Str', request_name => 'nodegroupArn', traits => ['NameInRequest']);
   has NodegroupName => (is => 'ro', isa => 'Str', request_name => 'nodegroupName', traits => ['NameInRequest']);
@@ -19,6 +21,8 @@ package Paws::EKS::Nodegroup;
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'subnets', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::EKS::TagMap', request_name => 'tags', traits => ['NameInRequest']);
+  has Taints => (is => 'ro', isa => 'ArrayRef[Paws::EKS::Taint]', request_name => 'taints', traits => ['NameInRequest']);
+  has UpdateConfig => (is => 'ro', isa => 'Paws::EKS::NodegroupUpdateConfig', request_name => 'updateConfig', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 
 1;
@@ -58,10 +62,15 @@ An object representing an Amazon EKS managed node group.
 
 =head2 AmiType => Str
 
-The AMI type associated with your node group. GPU instance types should
-use the C<AL2_x86_64_GPU> AMI type, which uses the Amazon EKS-optimized
-Linux AMI with GPU support. Non-GPU instances should use the
-C<AL2_x86_64> AMI type, which uses the Amazon EKS-optimized Linux AMI.
+If the node group was deployed using a launch template with a custom
+AMI, then this is C<CUSTOM>. For node groups that weren't deployed
+using a launch template, this is the AMI type that was specified in the
+node group configuration.
+
+
+=head2 CapacityType => Str
+
+The capacity type of your managed node group.
 
 
 =head2 ClusterName => Str
@@ -77,8 +86,9 @@ created.
 
 =head2 DiskSize => Int
 
-The root device disk size (in GiB) for your node group instances. The
-default disk size is 20 GiB.
+If the node group wasn't deployed with a launch template, then this is
+the disk size in the node group configuration. If the node group was
+deployed with a launch template, then this is C<null>.
 
 
 =head2 Health => L<Paws::EKS::NodegroupHealth>
@@ -89,7 +99,9 @@ group's health, they are listed here.
 
 =head2 InstanceTypes => ArrayRef[Str|Undef]
 
-The instance types associated with your node group.
+If the node group wasn't deployed with a launch template, then this is
+the instance type that is associated with the node group. If the node
+group was deployed with a launch template, then this is C<null>.
 
 
 =head2 Labels => L<Paws::EKS::LabelsMap>
@@ -99,6 +111,12 @@ The Kubernetes labels applied to the nodes in the node group.
 Only labels that are applied with the Amazon EKS API are shown here.
 There may be other Kubernetes labels applied to the nodes in this
 group.
+
+
+=head2 LaunchTemplate => L<Paws::EKS::LaunchTemplateSpecification>
+
+If a launch template was used to create the node group, then this is
+the launch template that was used.
 
 
 =head2 ModifiedAt => Str
@@ -119,29 +137,27 @@ The name associated with an Amazon EKS managed node group.
 
 =head2 NodeRole => Str
 
-The IAM role associated with your node group. The Amazon EKS worker
-node C<kubelet> daemon makes calls to AWS APIs on your behalf. Worker
-nodes receive permissions for these API calls through an IAM instance
-profile and associated policies. Before you can launch worker nodes and
-register them into a cluster, you must create an IAM role for those
-worker nodes to use when they are launched. For more information, see
-Amazon EKS Worker Node IAM Role
-(https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
-in the I< I<Amazon EKS User Guide> >.
+The IAM role associated with your node group. The Amazon EKS node
+C<kubelet> daemon makes calls to AWS APIs on your behalf. Nodes receive
+permissions for these API calls through an IAM instance profile and
+associated policies.
 
 
 =head2 ReleaseVersion => Str
 
-The AMI version of the managed node group. For more information, see
-Amazon EKS-Optimized Linux AMI Versions
-(https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
-in the I<Amazon EKS User Guide>.
+If the node group was deployed using a launch template with a custom
+AMI, then this is the AMI ID that was specified in the launch template.
+For node groups that weren't deployed using a launch template, this is
+the version of the Amazon EKS optimized AMI that the node group was
+deployed with.
 
 
 =head2 RemoteAccess => L<Paws::EKS::RemoteAccessConfig>
 
-The remote access (SSH) configuration that is associated with the node
-group.
+If the node group wasn't deployed with a launch template, then this is
+the remote access configuration that is associated with the node group.
+If the node group was deployed with a launch template, then this is
+C<null>.
 
 
 =head2 Resources => L<Paws::EKS::NodegroupResources>
@@ -163,10 +179,8 @@ The current status of the managed node group.
 
 =head2 Subnets => ArrayRef[Str|Undef]
 
-The subnets allowed for the Auto Scaling group that is associated with
-your node group. These subnets must have the following tag:
-C<kubernetes.io/cluster/CLUSTER_NAME>, where C<CLUSTER_NAME> is
-replaced with the name of your cluster.
+The subnets that were specified for the Auto Scaling group that is
+associated with your node group.
 
 
 =head2 Tags => L<Paws::EKS::TagMap>
@@ -176,6 +190,19 @@ and organization. Each tag consists of a key and an optional value,
 both of which you define. Node group tags do not propagate to any other
 resources associated with the node group, such as the Amazon EC2
 instances or subnets.
+
+
+=head2 Taints => ArrayRef[L<Paws::EKS::Taint>]
+
+The Kubernetes taints to be applied to the nodes in the node group when
+they are created. Effect is one of C<NoSchedule>, C<PreferNoSchedule>,
+or C<NoExecute>. Kubernetes taints can be used together with
+tolerations to control how workloads are scheduled to your nodes.
+
+
+=head2 UpdateConfig => L<Paws::EKS::NodegroupUpdateConfig>
+
+
 
 
 =head2 Version => Str

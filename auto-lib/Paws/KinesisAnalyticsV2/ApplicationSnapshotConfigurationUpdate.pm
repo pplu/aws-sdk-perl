@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes updates to whether snapshots are enabled for a Java-based
+Describes updates to whether snapshots are enabled for a Flink-based
 Kinesis Data Analytics application.
 
 =head1 ATTRIBUTES
@@ -41,8 +41,7 @@ Kinesis Data Analytics application.
 
 =head2 B<REQUIRED> SnapshotsEnabledUpdate => Bool
 
-Describes updates to whether snapshots are enabled for a Java-based
-Kinesis Data Analytics application.
+Describes updates to whether snapshots are enabled for an application.
 
 
 

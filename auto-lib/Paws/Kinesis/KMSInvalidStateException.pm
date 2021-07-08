@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::KM
 The request was rejected because the state of the specified resource
 isn't valid for this request. For more information, see How Key State
 Affects Use of a Customer Master Key
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-state.html)
 in the I<AWS Key Management Service Developer Guide>.
 
 =head1 ATTRIBUTES

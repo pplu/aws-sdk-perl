@@ -7,6 +7,7 @@ package Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate;
   has FlinkApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationUpdate');
   has SqlApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::SqlApplicationConfigurationUpdate');
   has VpcConfigurationUpdates => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::VpcConfigurationUpdate]');
+  has ZeppelinApplicationConfigurationUpdate => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ZeppelinApplicationConfigurationUpdate');
 
 1;
 
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::KinesisAnalyticsV2::ApplicationConfigurationUpdate object:
 
-  $service_obj->Method(Att1 => { ApplicationCodeConfigurationUpdate => $value, ..., VpcConfigurationUpdates => $value  });
+  $service_obj->Method(Att1 => { ApplicationCodeConfigurationUpdate => $value, ..., ZeppelinApplicationConfigurationUpdate => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,31 +46,30 @@ Describes updates to an application's configuration.
 
 =head2 ApplicationCodeConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationCodeConfigurationUpdate>
 
-Describes updates to a Java-based Kinesis Data Analytics application's
-code configuration.
+Describes updates to an application's code configuration.
 
 
 =head2 ApplicationSnapshotConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ApplicationSnapshotConfigurationUpdate>
 
-Describes whether snapshots are enabled for a Java-based Kinesis Data
+Describes whether snapshots are enabled for a Flink-based Kinesis Data
 Analytics application.
 
 
 =head2 EnvironmentPropertyUpdates => L<Paws::KinesisAnalyticsV2::EnvironmentPropertyUpdates>
 
-Describes updates to the environment properties for a Java-based
+Describes updates to the environment properties for a Flink-based
 Kinesis Data Analytics application.
 
 
 =head2 FlinkApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::FlinkApplicationConfigurationUpdate>
 
-Describes updates to a Java-based Kinesis Data Analytics application's
+Describes updates to a Flink-based Kinesis Data Analytics application's
 configuration.
 
 
 =head2 SqlApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::SqlApplicationConfigurationUpdate>
 
-Describes updates to an SQL-based Kinesis Data Analytics application's
+Describes updates to a SQL-based Kinesis Data Analytics application's
 configuration.
 
 
@@ -77,6 +77,12 @@ configuration.
 
 Updates to the array of descriptions of VPC configurations available to
 the application.
+
+
+=head2 ZeppelinApplicationConfigurationUpdate => L<Paws::KinesisAnalyticsV2::ZeppelinApplicationConfigurationUpdate>
+
+Updates to the configuration of a Kinesis Data Analytics Studio
+notebook.
 
 
 

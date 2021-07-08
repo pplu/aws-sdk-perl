@@ -78,8 +78,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 The compute statistics for a C<DataSource>. The statistics are
 generated from the observation data referenced by a C<DataSource>.
 Amazon ML uses the statistics internally during C<MLModel> training.
-This parameter must be set to C<true> if the C<>DataSourceC<> needs to
-be used for C<MLModel> training.
+This parameter must be set to C<true> if the C<DataSourceC< needs to be
+used for C<MLModel> training. >>
 
 
 
@@ -109,9 +109,13 @@ DatabaseInformation -
 
 =over
 
-=item * C<DatabaseName> - The name of the Amazon RDS database.
+=item *
 
-=item * C<InstanceIdentifier > - A unique identifier for the Amazon RDS
+C<DatabaseName> - The name of the Amazon RDS database.
+
+=item *
+
+C<InstanceIdentifier > - A unique identifier for the Amazon RDS
 database instance.
 
 =back
@@ -127,7 +131,7 @@ ResourceRole - A role (DataPipelineDefaultResourceRole) assumed by an
 EC2 instance to carry out the copy task from Amazon RDS to Amazon
 Simple Storage Service (Amazon S3). For more information, see Role
 templates
-(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+(https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
 for data pipelines.
 
 =item *
@@ -135,7 +139,7 @@ for data pipelines.
 ServiceRole - A role (DataPipelineDefaultRole) assumed by the AWS Data
 Pipeline service to monitor the progress of the copy task from Amazon
 RDS to Amazon S3. For more information, see Role templates
-(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+(https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
 for data pipelines.
 
 =item *

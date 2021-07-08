@@ -5,6 +5,7 @@ package Paws::IoT::UpdateJob;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has JobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::JobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'jobExecutionsRolloutConfig');
   has JobId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'jobId', required => 1);
+  has NamespaceId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'namespaceId');
   has PresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::PresignedUrlConfig', traits => ['NameInRequest'], request_name => 'presignedUrlConfig');
   has TimeoutConfig => (is => 'ro', isa => 'Paws::IoT::TimeoutConfig', traits => ['NameInRequest'], request_name => 'timeoutConfig');
 
@@ -61,9 +62,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         MaximumPerMinute => 1,    # min: 1; OPTIONAL
       },    # OPTIONAL
+      NamespaceId        => 'MyNamespaceId',    # OPTIONAL
       PresignedUrlConfig => {
-        ExpiresInSec => 1,              # min: 60, max: 3600; OPTIONAL
-        RoleArn      => 'MyRoleArn',    # min: 20, max: 2048; OPTIONAL
+        ExpiresInSec => 1,                      # min: 60, max: 3600; OPTIONAL
+        RoleArn      => 'MyRoleArn',            # min: 20, max: 2048; OPTIONAL
       },    # OPTIONAL
       TimeoutConfig => {
         InProgressTimeoutInMinutes => 1,    # OPTIONAL
@@ -97,6 +99,20 @@ Allows you to create a staged rollout of the job.
 =head2 B<REQUIRED> JobId => Str
 
 The ID of the job to be updated.
+
+
+
+=head2 NamespaceId => Str
+
+The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+C<$aws/things/I<THING_NAME>/jobs/I<JOB_ID>/notify-namespace-I<NAMESPACE_ID>/>
+
+The C<namespaceId> feature is in public preview.
 
 
 

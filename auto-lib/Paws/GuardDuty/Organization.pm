@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Continas information about the ISP organization of the remote IP
+Contains information about the ISP organization of the remote IP
 address.
 
 =head1 ATTRIBUTES
@@ -44,23 +44,23 @@ address.
 
 =head2 Asn => Str
 
-Autonomous system number of the internet provider of the remote IP
-address.
+The Autonomous System Number (ASN) of the internet provider of the
+remote IP address.
 
 
 =head2 AsnOrg => Str
 
-Organization that registered this ASN.
+The organization that registered this ASN.
 
 
 =head2 Isp => Str
 
-ISP information for the internet provider.
+The ISP information for the internet provider.
 
 
 =head2 Org => Str
 
-Name of the internet provider.
+The name of the internet provider.
 
 
 

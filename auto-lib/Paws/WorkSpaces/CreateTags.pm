@@ -49,16 +49,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/wor
 =head2 B<REQUIRED> ResourceId => Str
 
 The identifier of the WorkSpaces resource. The supported resource types
-are WorkSpaces, registered directories, images, custom bundles, and IP
-access control groups.
+are WorkSpaces, registered directories, images, custom bundles, IP
+access control groups, and connection aliases.
 
 
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
 
-The tags. Each WorkSpaces resource can have a maximum of 50 tags. If
-you want to add new tags to a set of existing tags, you must submit all
-of the existing tags along with the new ones.
+The tags. Each WorkSpaces resource can have a maximum of 50 tags.
 
 
 

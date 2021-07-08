@@ -5,6 +5,7 @@ package Paws::MediaLive::HlsInputSettings;
   has BufferSegments => (is => 'ro', isa => 'Int', request_name => 'bufferSegments', traits => ['NameInRequest']);
   has Retries => (is => 'ro', isa => 'Int', request_name => 'retries', traits => ['NameInRequest']);
   has RetryInterval => (is => 'ro', isa => 'Int', request_name => 'retryInterval', traits => ['NameInRequest']);
+  has Scte35Source => (is => 'ro', isa => 'Str', request_name => 'scte35Source', traits => ['NameInRequest']);
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::HlsInputSettings object:
 
-  $service_obj->Method(Att1 => { Bandwidth => $value, ..., RetryInterval => $value  });
+  $service_obj->Method(Att1 => { Bandwidth => $value, ..., Scte35Source => $value  });
 
 =head3 Results returned from an API call
 
@@ -67,6 +68,14 @@ segment must fail before the input is considered unavailable.
 
 The number of seconds between retries when an attempt to read a
 manifest or segment fails.
+
+
+=head2 Scte35Source => Str
+
+Identifies the source for the SCTE-35 messages that MediaLive will
+ingest. Messages can be ingested from the content segments (in the
+stream) or from tags in the playlist (the HLS manifest). MediaLive
+ignores SCTE-35 information in the source that is not selected.
 
 
 

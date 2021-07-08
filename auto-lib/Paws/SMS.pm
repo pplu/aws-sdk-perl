@@ -40,6 +40,11 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::DeleteAppReplicationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAppValidationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::DeleteAppValidationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteReplicationJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::DeleteReplicationJob', @_);
@@ -80,6 +85,16 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::GetAppReplicationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAppValidationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GetAppValidationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAppValidationOutput {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::GetAppValidationOutput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetConnectors {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::GetConnectors', @_);
@@ -100,6 +115,11 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::GetServers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ImportAppCatalog {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::ImportAppCatalog', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportServerCatalog {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::ImportServerCatalog', @_);
@@ -115,6 +135,11 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::ListApps', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub NotifyAppValidationOutput {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::NotifyAppValidationOutput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutAppLaunchConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::PutAppLaunchConfiguration', @_);
@@ -125,9 +150,19 @@ package Paws::SMS;
     my $call_object = $self->new_with_coercions('Paws::SMS::PutAppReplicationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutAppValidationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::PutAppValidationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartAppReplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SMS::StartAppReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartOnDemandAppReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SMS::StartOnDemandAppReplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartOnDemandReplicationRun {
@@ -273,7 +308,7 @@ package Paws::SMS;
   }
 
 
-  sub operations { qw/CreateApp CreateReplicationJob DeleteApp DeleteAppLaunchConfiguration DeleteAppReplicationConfiguration DeleteReplicationJob DeleteServerCatalog DisassociateConnector GenerateChangeSet GenerateTemplate GetApp GetAppLaunchConfiguration GetAppReplicationConfiguration GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportServerCatalog LaunchApp ListApps PutAppLaunchConfiguration PutAppReplicationConfiguration StartAppReplication StartOnDemandReplicationRun StopAppReplication TerminateApp UpdateApp UpdateReplicationJob / }
+  sub operations { qw/CreateApp CreateReplicationJob DeleteApp DeleteAppLaunchConfiguration DeleteAppReplicationConfiguration DeleteAppValidationConfiguration DeleteReplicationJob DeleteServerCatalog DisassociateConnector GenerateChangeSet GenerateTemplate GetApp GetAppLaunchConfiguration GetAppReplicationConfiguration GetAppValidationConfiguration GetAppValidationOutput GetConnectors GetReplicationJobs GetReplicationRuns GetServers ImportAppCatalog ImportServerCatalog LaunchApp ListApps NotifyAppValidationOutput PutAppLaunchConfiguration PutAppReplicationConfiguration PutAppValidationConfiguration StartAppReplication StartOnDemandAppReplication StartOnDemandReplicationRun StopAppReplication TerminateApp UpdateApp UpdateReplicationJob / }
 
 1;
 
@@ -301,32 +336,23 @@ Paws::SMS - Perl Interface to AWS AWS Server Migration Service
 
 =head1 DESCRIPTION
 
-AAWS Sever Migration Service
+AWS Server Migration Service
 
-This is the I<AWS Sever Migration Service API Reference>. It provides
-descriptions, syntax, and usage examples for each of the actions and
-data types for the AWS Sever Migration Service (AWS SMS). The topic for
-each action shows the Query API request parameters and the XML
-response. You can also view the XML request elements in the WSDL.
-
-Alternatively, you can use one of the AWS SDKs to access an API that's
-tailored to the programming language or platform that you're using. For
-more information, see AWS SDKs (http://aws.amazon.com/tools/#SDKs).
-
-To learn more about the Server Migration Service, see the following
-resources:
+AWS Server Migration Service (AWS SMS) makes it easier and faster for
+you to migrate your on-premises workloads to AWS. To learn more about
+AWS SMS, see the following resources:
 
 =over
 
 =item *
 
-AWS Sever Migration Service product page
-(https://aws.amazon.com/server-migration-service/)
+AWS Server Migration Service product page
+(http://aws.amazon.com/server-migration-service/)
 
 =item *
 
-AWS Sever Migration Service User Guide
-(https://docs.aws.amazon.com/server-migration-service/latest/userguide/server-migration.html)
+AWS Server Migration Service User Guide
+(https://docs.aws.amazon.com/server-migration-service/latest/userguide/)
 
 =back
 
@@ -416,9 +442,9 @@ Each argument is described in detail in: L<Paws::SMS::DeleteApp>
 
 Returns: a L<Paws::SMS::DeleteAppResponse> instance
 
-Deletes an existing application. Optionally deletes the launched stack
-associated with the application and all AWS SMS replication jobs for
-servers in the application.
+Deletes the specified application. Optionally deletes the launched
+stack associated with the application and all AWS SMS replication jobs
+for servers in the application.
 
 
 =head2 DeleteAppLaunchConfiguration
@@ -434,7 +460,7 @@ Each argument is described in detail in: L<Paws::SMS::DeleteAppLaunchConfigurati
 
 Returns: a L<Paws::SMS::DeleteAppLaunchConfigurationResponse> instance
 
-Deletes existing launch configuration for an application.
+Deletes the launch configuration for the specified application.
 
 
 =head2 DeleteAppReplicationConfiguration
@@ -450,7 +476,23 @@ Each argument is described in detail in: L<Paws::SMS::DeleteAppReplicationConfig
 
 Returns: a L<Paws::SMS::DeleteAppReplicationConfigurationResponse> instance
 
-Deletes existing replication configuration for an application.
+Deletes the replication configuration for the specified application.
+
+
+=head2 DeleteAppValidationConfiguration
+
+=over
+
+=item AppId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::DeleteAppValidationConfiguration>
+
+Returns: a L<Paws::SMS::DeleteAppValidationConfigurationResponse> instance
+
+Deletes the validation configuration for the specified application.
 
 
 =head2 DeleteReplicationJob
@@ -541,7 +583,7 @@ Each argument is described in detail in: L<Paws::SMS::GenerateTemplate>
 
 Returns: a L<Paws::SMS::GenerateTemplateResponse> instance
 
-Generates an Amazon CloudFormation template based on the current launch
+Generates an AWS CloudFormation template based on the current launch
 configuration and writes it to an Amazon S3 object in the
 customerE<rsquo>s Amazon S3 bucket.
 
@@ -559,7 +601,7 @@ Each argument is described in detail in: L<Paws::SMS::GetApp>
 
 Returns: a L<Paws::SMS::GetAppResponse> instance
 
-Retrieve information about an application.
+Retrieve information about the specified application.
 
 
 =head2 GetAppLaunchConfiguration
@@ -575,8 +617,8 @@ Each argument is described in detail in: L<Paws::SMS::GetAppLaunchConfiguration>
 
 Returns: a L<Paws::SMS::GetAppLaunchConfigurationResponse> instance
 
-Retrieves the application launch configuration associated with an
-application.
+Retrieves the application launch configuration associated with the
+specified application.
 
 
 =head2 GetAppReplicationConfiguration
@@ -592,8 +634,41 @@ Each argument is described in detail in: L<Paws::SMS::GetAppReplicationConfigura
 
 Returns: a L<Paws::SMS::GetAppReplicationConfigurationResponse> instance
 
-Retrieves an application replication configuration associatd with an
+Retrieves the application replication configuration associated with the
+specified application.
+
+
+=head2 GetAppValidationConfiguration
+
+=over
+
+=item AppId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GetAppValidationConfiguration>
+
+Returns: a L<Paws::SMS::GetAppValidationConfigurationResponse> instance
+
+Retrieves information about a configuration for validating an
 application.
+
+
+=head2 GetAppValidationOutput
+
+=over
+
+=item AppId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::GetAppValidationOutput>
+
+Returns: a L<Paws::SMS::GetAppValidationOutputResponse> instance
+
+Retrieves output from validating an application.
 
 
 =head2 GetConnectors
@@ -678,6 +753,22 @@ Before you can describe your servers, you must import them using
 ImportServerCatalog.
 
 
+=head2 ImportAppCatalog
+
+=over
+
+=item [RoleName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::ImportAppCatalog>
+
+Returns: a L<Paws::SMS::ImportAppCatalogResponse> instance
+
+Allows application import from AWS Migration Hub.
+
+
 =head2 ImportServerCatalog
 
 
@@ -690,7 +781,7 @@ Each argument is described in detail in: L<Paws::SMS::ImportServerCatalog>
 Returns: a L<Paws::SMS::ImportServerCatalogResponse> instance
 
 Gathers a complete list of on-premises servers. Connectors must be
-installed and monitoring all servers that you want to import.
+installed and monitoring all servers to import.
 
 This call returns immediately, but might take additional time to
 retrieve all the servers.
@@ -709,7 +800,7 @@ Each argument is described in detail in: L<Paws::SMS::LaunchApp>
 
 Returns: a L<Paws::SMS::LaunchAppResponse> instance
 
-Launches an application stack.
+Launches the specified application as a stack in AWS CloudFormation.
 
 
 =head2 ListApps
@@ -729,7 +820,26 @@ Each argument is described in detail in: L<Paws::SMS::ListApps>
 
 Returns: a L<Paws::SMS::ListAppsResponse> instance
 
-Returns a list of summaries for all applications.
+Retrieves summaries for all applications.
+
+
+=head2 NotifyAppValidationOutput
+
+=over
+
+=item AppId => Str
+
+=item [NotificationContext => L<Paws::SMS::NotificationContext>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::NotifyAppValidationOutput>
+
+Returns: a L<Paws::SMS::NotifyAppValidationOutputResponse> instance
+
+Provides information to AWS SMS about whether application validation is
+successful.
 
 
 =head2 PutAppLaunchConfiguration
@@ -737,6 +847,8 @@ Returns a list of summaries for all applications.
 =over
 
 =item [AppId => Str]
+
+=item [AutoLaunch => Bool]
 
 =item [RoleName => Str]
 
@@ -749,7 +861,8 @@ Each argument is described in detail in: L<Paws::SMS::PutAppLaunchConfiguration>
 
 Returns: a L<Paws::SMS::PutAppLaunchConfigurationResponse> instance
 
-Creates a launch configuration for an application.
+Creates or updates the launch configuration for the specified
+application.
 
 
 =head2 PutAppReplicationConfiguration
@@ -767,7 +880,29 @@ Each argument is described in detail in: L<Paws::SMS::PutAppReplicationConfigura
 
 Returns: a L<Paws::SMS::PutAppReplicationConfigurationResponse> instance
 
-Creates or updates a replication configuration for an application.
+Creates or updates the replication configuration for the specified
+application.
+
+
+=head2 PutAppValidationConfiguration
+
+=over
+
+=item AppId => Str
+
+=item [AppValidationConfigurations => ArrayRef[L<Paws::SMS::AppValidationConfiguration>]]
+
+=item [ServerGroupValidationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupValidationConfiguration>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::PutAppValidationConfiguration>
+
+Returns: a L<Paws::SMS::PutAppValidationConfigurationResponse> instance
+
+Creates or updates a validation configuration for the specified
+application.
 
 
 =head2 StartAppReplication
@@ -783,7 +918,26 @@ Each argument is described in detail in: L<Paws::SMS::StartAppReplication>
 
 Returns: a L<Paws::SMS::StartAppReplicationResponse> instance
 
-Starts replicating an application.
+Starts replicating the specified application by creating replication
+jobs for each server in the application.
+
+
+=head2 StartOnDemandAppReplication
+
+=over
+
+=item AppId => Str
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SMS::StartOnDemandAppReplication>
+
+Returns: a L<Paws::SMS::StartOnDemandAppReplicationResponse> instance
+
+Starts an on-demand replication run for the specified application.
 
 
 =head2 StartOnDemandReplicationRun
@@ -805,8 +959,8 @@ Starts an on-demand replication run for the specified replication job.
 This replication run starts immediately. This replication run is in
 addition to the ones already scheduled.
 
-There is a limit on the number of on-demand replications runs you can
-request in a 24-hour period.
+There is a limit on the number of on-demand replications runs that you
+can request in a 24-hour period.
 
 
 =head2 StopAppReplication
@@ -822,7 +976,8 @@ Each argument is described in detail in: L<Paws::SMS::StopAppReplication>
 
 Returns: a L<Paws::SMS::StopAppReplicationResponse> instance
 
-Stops replicating an application.
+Stops replicating the specified application by deleting the replication
+job for each server in the application.
 
 
 =head2 TerminateApp
@@ -838,7 +993,7 @@ Each argument is described in detail in: L<Paws::SMS::TerminateApp>
 
 Returns: a L<Paws::SMS::TerminateAppResponse> instance
 
-Terminates the stack for an application.
+Terminates the stack for the specified application.
 
 
 =head2 UpdateApp
@@ -864,7 +1019,7 @@ Each argument is described in detail in: L<Paws::SMS::UpdateApp>
 
 Returns: a L<Paws::SMS::UpdateAppResponse> instance
 
-Updates an application.
+Updates the specified application.
 
 
 =head2 UpdateReplicationJob

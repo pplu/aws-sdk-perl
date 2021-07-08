@@ -47,8 +47,10 @@ in the I<Amazon Elastic Container Service Developer Guide>.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the attribute. Up to 128 letters (uppercase and lowercase),
-numbers, hyphens, underscores, and periods are allowed.
+The name of the attribute. The C<name> must contain between 1 and 128
+characters and name may contain letters (uppercase and lowercase),
+numbers, hyphens, underscores, forward slashes, back slashes, or
+periods.
 
 
 =head2 TargetId => Str
@@ -66,9 +68,11 @@ instead of the full ARN.
 
 =head2 Value => Str
 
-The value of the attribute. Up to 128 letters (uppercase and
-lowercase), numbers, hyphens, underscores, periods, at signs (@),
-forward slashes, colons, and spaces are allowed.
+The value of the attribute. The C<value> must contain between 1 and 128
+characters and may contain letters (uppercase and lowercase), numbers,
+hyphens, underscores, periods, at signs (@), forward slashes, back
+slashes, colons, or spaces. The value cannot contain any leading or
+trailing whitespace.
 
 
 

@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::S3Loca
 
 =head1 DESCRIPTION
 
-Location of the Amazon S3 object in the customer's account.
+Location of an Amazon S3 object.
 
 =head1 ATTRIBUTES
 
 
 =head2 Bucket => Str
 
-Amazon S3 bucket name.
+The Amazon S3 bucket name.
 
 
 =head2 Key => Str
 
-Amazon S3 bucket key.
+The Amazon S3 bucket key.
 
 
 

@@ -20,6 +20,11 @@ package Paws::Budgets;
     my $call_object = $self->new_with_coercions('Paws::Budgets::CreateBudget', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateBudgetAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::CreateBudgetAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNotification {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Budgets::CreateNotification', @_);
@@ -35,6 +40,11 @@ package Paws::Budgets;
     my $call_object = $self->new_with_coercions('Paws::Budgets::DeleteBudget', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBudgetAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::DeleteBudgetAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteNotification {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Budgets::DeleteNotification', @_);
@@ -48,6 +58,26 @@ package Paws::Budgets;
   sub DescribeBudget {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBudgetAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudgetAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBudgetActionHistories {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudgetActionHistories', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBudgetActionsForAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudgetActionsForAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBudgetActionsForBudget {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeBudgetActionsForBudget', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeBudgetPerformanceHistory {
@@ -70,9 +100,19 @@ package Paws::Budgets;
     my $call_object = $self->new_with_coercions('Paws::Budgets::DescribeSubscribersForNotification', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ExecuteBudgetAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::ExecuteBudgetAction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateBudget {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Budgets::UpdateBudget', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateBudgetAction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Budgets::UpdateBudgetAction', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateNotification {
@@ -86,6 +126,98 @@ package Paws::Budgets;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllBudgetActionHistories {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBudgetActionHistories(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBudgetActionHistories(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ActionHistories }, @{ $next_result->ActionHistories };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ActionHistories') foreach (@{ $result->ActionHistories });
+        $result = $self->DescribeBudgetActionHistories(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ActionHistories') foreach (@{ $result->ActionHistories });
+    }
+
+    return undef
+  }
+  sub DescribeAllBudgetActionsForAccount {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBudgetActionsForAccount(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBudgetActionsForAccount(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Actions }, @{ $next_result->Actions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Actions') foreach (@{ $result->Actions });
+        $result = $self->DescribeBudgetActionsForAccount(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Actions') foreach (@{ $result->Actions });
+    }
+
+    return undef
+  }
+  sub DescribeAllBudgetActionsForBudget {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBudgetActionsForBudget(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBudgetActionsForBudget(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Actions }, @{ $next_result->Actions };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Actions') foreach (@{ $result->Actions });
+        $result = $self->DescribeBudgetActionsForBudget(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Actions') foreach (@{ $result->Actions });
+    }
+
+    return undef
+  }
+  sub DescribeAllBudgetPerformanceHistory {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeBudgetPerformanceHistory(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeBudgetPerformanceHistory(@_, NextToken => $next_result->NextToken);
+        push @{ $result->BudgetPerformanceHistory }, @{ $next_result->BudgetPerformanceHistory };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'BudgetPerformanceHistory') foreach (@{ $result->BudgetPerformanceHistory });
+        $result = $self->DescribeBudgetPerformanceHistory(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'BudgetPerformanceHistory') foreach (@{ $result->BudgetPerformanceHistory });
+    }
+
+    return undef
+  }
   sub DescribeAllBudgets {
     my $self = shift;
 
@@ -157,7 +289,7 @@ package Paws::Budgets;
   }
 
 
-  sub operations { qw/CreateBudget CreateNotification CreateSubscriber DeleteBudget DeleteNotification DeleteSubscriber DescribeBudget DescribeBudgetPerformanceHistory DescribeBudgets DescribeNotificationsForBudget DescribeSubscribersForNotification UpdateBudget UpdateNotification UpdateSubscriber / }
+  sub operations { qw/CreateBudget CreateBudgetAction CreateNotification CreateSubscriber DeleteBudget DeleteBudgetAction DeleteNotification DeleteSubscriber DescribeBudget DescribeBudgetAction DescribeBudgetActionHistories DescribeBudgetActionsForAccount DescribeBudgetActionsForBudget DescribeBudgetPerformanceHistory DescribeBudgets DescribeNotificationsForBudget DescribeSubscribersForNotification ExecuteBudgetAction UpdateBudget UpdateBudgetAction UpdateNotification UpdateSubscriber / }
 
 1;
 
@@ -292,6 +424,38 @@ C<PlannedBudgetLimits>, see the Examples
 section.
 
 
+=head2 CreateBudgetAction
+
+=over
+
+=item AccountId => Str
+
+=item ActionThreshold => L<Paws::Budgets::ActionThreshold>
+
+=item ActionType => Str
+
+=item ApprovalModel => Str
+
+=item BudgetName => Str
+
+=item Definition => L<Paws::Budgets::Definition>
+
+=item ExecutionRoleArn => Str
+
+=item NotificationType => Str
+
+=item Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::CreateBudgetAction>
+
+Returns: a L<Paws::Budgets::CreateBudgetActionResponse> instance
+
+Creates a budget action.
+
+
 =head2 CreateNotification
 
 =over
@@ -357,6 +521,26 @@ Deletes a budget. You can delete your budget at any time.
 
 Deleting a budget also deletes the notifications and subscribers that
 are associated with that budget.
+
+
+=head2 DeleteBudgetAction
+
+=over
+
+=item AccountId => Str
+
+=item ActionId => Str
+
+=item BudgetName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::DeleteBudgetAction>
+
+Returns: a L<Paws::Budgets::DeleteBudgetActionResponse> instance
+
+Deletes a budget action.
 
 
 =head2 DeleteNotification
@@ -428,6 +612,94 @@ The Request Syntax section shows the C<BudgetLimit> syntax. For
 C<PlannedBudgetLimits>, see the Examples
 (https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_DescribeBudget.html#API_DescribeBudget_Examples)
 section.
+
+
+=head2 DescribeBudgetAction
+
+=over
+
+=item AccountId => Str
+
+=item ActionId => Str
+
+=item BudgetName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::DescribeBudgetAction>
+
+Returns: a L<Paws::Budgets::DescribeBudgetActionResponse> instance
+
+Describes a budget action detail.
+
+
+=head2 DescribeBudgetActionHistories
+
+=over
+
+=item AccountId => Str
+
+=item ActionId => Str
+
+=item BudgetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TimePeriod => L<Paws::Budgets::TimePeriod>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::DescribeBudgetActionHistories>
+
+Returns: a L<Paws::Budgets::DescribeBudgetActionHistoriesResponse> instance
+
+Describes a budget action history detail.
+
+
+=head2 DescribeBudgetActionsForAccount
+
+=over
+
+=item AccountId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::DescribeBudgetActionsForAccount>
+
+Returns: a L<Paws::Budgets::DescribeBudgetActionsForAccountResponse> instance
+
+Describes all of the budget actions for an account.
+
+
+=head2 DescribeBudgetActionsForBudget
+
+=over
+
+=item AccountId => Str
+
+=item BudgetName => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::DescribeBudgetActionsForBudget>
+
+Returns: a L<Paws::Budgets::DescribeBudgetActionsForBudgetResponse> instance
+
+Describes all of the budget actions for a budget.
 
 
 =head2 DescribeBudgetPerformanceHistory
@@ -526,6 +798,28 @@ Returns: a L<Paws::Budgets::DescribeSubscribersForNotificationResponse> instance
 Lists the subscribers that are associated with a notification.
 
 
+=head2 ExecuteBudgetAction
+
+=over
+
+=item AccountId => Str
+
+=item ActionId => Str
+
+=item BudgetName => Str
+
+=item ExecutionType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::ExecuteBudgetAction>
+
+Returns: a L<Paws::Budgets::ExecuteBudgetActionResponse> instance
+
+Executes a budget action.
+
+
 =head2 UpdateBudget
 
 =over
@@ -552,6 +846,38 @@ Request Syntax section shows the C<BudgetLimit> syntax. For
 C<PlannedBudgetLimits>, see the Examples
 (https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_budgets_UpdateBudget.html#API_UpdateBudget_Examples)
 section.
+
+
+=head2 UpdateBudgetAction
+
+=over
+
+=item AccountId => Str
+
+=item ActionId => Str
+
+=item BudgetName => Str
+
+=item [ActionThreshold => L<Paws::Budgets::ActionThreshold>]
+
+=item [ApprovalModel => Str]
+
+=item [Definition => L<Paws::Budgets::Definition>]
+
+=item [ExecutionRoleArn => Str]
+
+=item [NotificationType => Str]
+
+=item [Subscribers => ArrayRef[L<Paws::Budgets::Subscriber>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Budgets::UpdateBudgetAction>
+
+Returns: a L<Paws::Budgets::UpdateBudgetActionResponse> instance
+
+Updates a budget action.
 
 
 =head2 UpdateNotification
@@ -605,6 +931,54 @@ Updates a subscriber.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllBudgetActionHistories(sub { },AccountId => Str, ActionId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str, TimePeriod => L<Paws::Budgets::TimePeriod>])
+
+=head2 DescribeAllBudgetActionHistories(AccountId => Str, ActionId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str, TimePeriod => L<Paws::Budgets::TimePeriod>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ActionHistories, passing the object as the first parameter, and the string 'ActionHistories' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeBudgetActionHistoriesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllBudgetActionsForAccount(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllBudgetActionsForAccount(AccountId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Actions, passing the object as the first parameter, and the string 'Actions' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeBudgetActionsForAccountResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllBudgetActionsForBudget(sub { },AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllBudgetActionsForBudget(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Actions, passing the object as the first parameter, and the string 'Actions' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeBudgetActionsForBudgetResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllBudgetPerformanceHistory(sub { },AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str, TimePeriod => L<Paws::Budgets::TimePeriod>])
+
+=head2 DescribeAllBudgetPerformanceHistory(AccountId => Str, BudgetName => Str, [MaxResults => Int, NextToken => Str, TimePeriod => L<Paws::Budgets::TimePeriod>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - BudgetPerformanceHistory, passing the object as the first parameter, and the string 'BudgetPerformanceHistory' as the second parameter 
+
+If not, it will return a a L<Paws::Budgets::DescribeBudgetPerformanceHistoryResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllBudgets(sub { },AccountId => Str, [MaxResults => Int, NextToken => Str])
 

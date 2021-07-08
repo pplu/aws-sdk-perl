@@ -8,10 +8,12 @@ package Paws::DMS::CreateReplicationTask;
   has ReplicationInstanceArn => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationTaskIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationTaskSettings => (is => 'ro', isa => 'Str');
+  has ResourceIdentifier => (is => 'ro', isa => 'Str');
   has SourceEndpointArn => (is => 'ro', isa => 'Str', required => 1);
   has TableMappings => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
   has TargetEndpointArn => (is => 'ro', isa => 'Str', required => 1);
+  has TaskData => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -37,24 +39,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Create replication task
+    # Creates a replication task using the specified parameters.
     my $CreateReplicationTaskResponse = $dms->CreateReplicationTask(
-      MigrationType             => 'full-load',
-      ReplicationInstanceArn    => 'MyString',
-      ReplicationTaskIdentifier => 'MyString',
-      SourceEndpointArn         => 'MyString',
-      TableMappings             => 'MyString',
-      TargetEndpointArn         => 'MyString',
-      CdcStartPosition          => 'MyString',               # OPTIONAL
-      CdcStartTime              => '1970-01-01T01:00:00',    # OPTIONAL
-      CdcStopPosition           => 'MyString',               # OPTIONAL
-      ReplicationTaskSettings   => 'MyString',               # OPTIONAL
-      Tags                      => [
+      'CdcStartTime'           => '2016-12-14T18:25:43Z',
+      'MigrationType'          => 'full-load',
+      'ReplicationInstanceArn' =>
+        'arn:aws:dms:us-east-1:123456789012:rep:6UTDJGBOUS3VI3SUWA66XFJCJQ',
+      'ReplicationTaskIdentifier' => 'task1',
+      'ReplicationTaskSettings'   => '',
+      'SourceEndpointArn'         =>
+'arn:aws:dms:us-east-1:123456789012:endpoint:ZW5UAN6P4E77EC7YWHK4RZZ3BE',
+      'TableMappings' => 'file://mappingfile.json',
+      'Tags'          => [
+
         {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                     # OPTIONAL
+          'Key'   => 'Acount',
+          'Value' => 24352226
+        }
+      ],
+      'TargetEndpointArn' =>
+        'arn:aws:dms:us-east-1:123456789012:endpoint:ASXWXJZLNWNT5HTWCGV2BUJQ7E'
     );
 
     # Results:
@@ -110,10 +115,10 @@ Indicates when you want a change data capture (CDC) operation to stop.
 The value can be either server time or commit time.
 
 Server time example: --cdc-stop-position
-E<ldquo>server_time:3018-02-09T12:12:12E<rdquo>
+E<ldquo>server_time:2018-02-09T12:12:12E<rdquo>
 
 Commit time example: --cdc-stop-position E<ldquo>commit_time:
-3018-02-09T12:12:12 E<ldquo>
+2018-02-09T12:12:12 E<ldquo>
 
 
 
@@ -140,7 +145,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 255 alphanumeric characters or hyphens.
+Must contain 1-255 alphanumeric characters or hyphens.
 
 =item *
 
@@ -158,9 +163,24 @@ Cannot end with a hyphen or contain two consecutive hyphens.
 =head2 ReplicationTaskSettings => Str
 
 Overall settings for the task, in JSON format. For more information,
-see Task Settings
+see Specifying Task Settings for AWS Database Migration Service Tasks
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
 in the I<AWS Database Migration User Guide.>
+
+
+
+=head2 ResourceIdentifier => Str
+
+A friendly name for the resource identifier at the end of the
+C<EndpointArn> response parameter that is returned in the created
+C<Endpoint> object. The value for this parameter can have up to 31
+characters. It can contain only ASCII letters, digits, and hyphen
+('-'). Also, it can't end with a hyphen or contain two consecutive
+hyphens, and can only begin with a letter, such as C<Example-App-ARN1>.
+For example, this value might result in the C<EndpointArn> value
+C<arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1>. If you
+don't specify a C<ResourceIdentifier> value, AWS DMS generates a
+default identifier value for the end of C<EndpointArn>.
 
 
 
@@ -174,9 +194,9 @@ endpoint.
 =head2 B<REQUIRED> TableMappings => Str
 
 The table mappings for the task, in JSON format. For more information,
-see Table Mapping
+see Using Table Mapping to Specify Task Settings
 (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
-in the I<AWS Database Migration User Guide.>
+in the I<AWS Database Migration Service User Guide.>
 
 
 
@@ -190,6 +210,16 @@ One or more tags to be assigned to the replication task.
 
 An Amazon Resource Name (ARN) that uniquely identifies the target
 endpoint.
+
+
+
+=head2 TaskData => Str
+
+Supplemental information that the task requires to migrate the data for
+certain source and target endpoints. For more information, see
+Specifying Supplemental Data for Task Settings
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.TaskData.html)
+in the I<AWS Database Migration Service User Guide.>
 
 
 

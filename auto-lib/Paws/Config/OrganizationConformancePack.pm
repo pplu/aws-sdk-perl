@@ -2,7 +2,7 @@
 package Paws::Config::OrganizationConformancePack;
   use Moose;
   has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryS3Bucket => (is => 'ro', isa => 'Str');
   has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
   has ExcludedAccounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has LastUpdateTime => (is => 'ro', isa => 'Str', required => 1);
@@ -50,15 +50,18 @@ packs that AWS Config creates in member accounts.
 A list of C<ConformancePackInputParameter> objects.
 
 
-=head2 B<REQUIRED> DeliveryS3Bucket => Str
+=head2 DeliveryS3Bucket => Str
 
-Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-results and conformance pack template that is used to create a pack.
+Amazon S3 bucket where AWS Config stores conformance pack templates.
+
+This field is optional.
 
 
 =head2 DeliveryS3KeyPrefix => Str
 
 Any folder structure you want to add to an Amazon S3 bucket.
+
+This field is optional.
 
 
 =head2 ExcludedAccounts => ArrayRef[Str|Undef]

@@ -57,14 +57,14 @@ specified status.
 =head2 SubmitTimeAfter => Str
 
 Filters the list of jobs based on the time that the job was submitted
-for processing. Returns only jobs submitted before the specified time.
+for processing. Returns only jobs submitted after the specified time.
 Jobs are returned in descending order, newest to oldest.
 
 
 =head2 SubmitTimeBefore => Str
 
 Filters the list of jobs based on the time that the job was submitted
-for processing. Returns only jobs submitted after the specified time.
+for processing. Returns only jobs submitted before the specified time.
 Jobs are returned in ascending order, oldest to newest.
 
 

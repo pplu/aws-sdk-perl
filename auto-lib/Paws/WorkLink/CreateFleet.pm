@@ -4,6 +4,7 @@ package Paws::WorkLink::CreateFleet;
   has DisplayName => (is => 'ro', isa => 'Str');
   has FleetName => (is => 'ro', isa => 'Str', required => 1);
   has OptimizeForEndUserLocation => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'Paws::WorkLink::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -34,6 +35,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FleetName                  => 'MyFleetName',
       DisplayName                => 'MyDisplayName',    # OPTIONAL
       OptimizeForEndUserLocation => 1,                  # OPTIONAL
+      Tags                       => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -64,6 +68,12 @@ A unique name for the fleet.
 The option to optimize for better performance by routing traffic
 through the closest AWS Region to users, which may be outside of your
 home Region.
+
+
+
+=head2 Tags => L<Paws::WorkLink::TagMap>
+
+The tags to add to the resource. A tag is a key-value pair.
 
 
 

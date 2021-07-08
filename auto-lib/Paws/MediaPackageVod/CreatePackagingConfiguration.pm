@@ -7,6 +7,7 @@ package Paws::MediaPackageVod::CreatePackagingConfiguration;
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id', required => 1);
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', traits => ['NameInRequest'], request_name => 'mssPackage');
   has PackagingGroupId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'packagingGroupId', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -62,9 +63,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Url       => 'My__string',
 
           },
-
+          ConstantInitializationVector => 'My__string',
         },    # OPTIONAL
-        SegmentDurationSeconds => 1,    # OPTIONAL
+        IncludeEncoderConfigurationInSegments => 1,    # OPTIONAL
+        SegmentDurationSeconds                => 1,    # OPTIONAL
       },    # OPTIONAL
       DashPackage => {
         DashManifests => [
@@ -91,8 +93,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
 
         },    # OPTIONAL
-        PeriodTriggers => [
-          'ADS', ...    # values: ADS
+        IncludeEncoderConfigurationInSegments => 1,    # OPTIONAL
+        PeriodTriggers                        => [
+          'ADS', ...                                   # values: ADS
         ],    # OPTIONAL
         SegmentDurationSeconds => 1,                       # OPTIONAL
         SegmentTemplateFormat  => 'NUMBER_WITH_TIMELINE'
@@ -153,6 +156,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         SegmentDurationSeconds => 1,    # OPTIONAL
       },    # OPTIONAL
+      Tags => { 'My__string' => 'My__string', },    # OPTIONAL
       );
 
     # Results:
@@ -164,6 +168,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MssPackage  = $CreatePackagingConfigurationResponse->MssPackage;
     my $PackagingGroupId =
       $CreatePackagingConfigurationResponse->PackagingGroupId;
+    my $Tags = $CreatePackagingConfigurationResponse->Tags;
 
 # Returns a L<Paws::MediaPackageVod::CreatePackagingConfigurationResponse> object.
 
@@ -206,6 +211,12 @@ The ID of the PackagingConfiguration.
 =head2 B<REQUIRED> PackagingGroupId => Str
 
 The ID of a PackagingGroup.
+
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 

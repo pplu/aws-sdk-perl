@@ -34,9 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 =head1 DESCRIPTION
 
 Accelerated transcoding can significantly speed up jobs with long,
-visually complex content. Outputs that use this feature incur pro-tier
-pricing. For information about feature limitations, see the AWS
-Elemental MediaConvert User Guide.
+visually complex content.
 
 =head1 ATTRIBUTES
 

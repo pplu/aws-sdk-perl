@@ -41,12 +41,12 @@ Contains information about the location of the remote IP address.
 
 =head2 Lat => Num
 
-Latitude information of remote IP address.
+The latitude information of the remote IP address.
 
 
 =head2 Lon => Num
 
-Longitude information of remote IP address.
+The longitude information of the remote IP address.
 
 
 

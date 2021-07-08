@@ -54,32 +54,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for a branch, part of an Amplify App.
+The name of a branch that is part of an Amplify app.
 
 
 
 =head2 B<REQUIRED> JobId => Str
 
-Unique Id for an Job.
+The unique ID for a job.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of records to list in a single response.
+The maximum number of records to list in a single response.
 
 
 
 =head2 NextToken => Str
 
-Pagination token. Set to null to start listing artifacts from start. If
-non-null pagination token is returned in a result, then pass its value
+A pagination token. Set to null to start listing artifacts from start.
+If a non-null pagination token is returned in a result, pass its value
 in here to list more artifacts.
 
 

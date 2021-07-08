@@ -34,8 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Translate::
 
 =head1 DESCRIPTION
 
-The encryption key used to encrypt the custom terminologies used by
-Amazon Translate.
+The encryption key used to encrypt this object.
 
 =head1 ATTRIBUTES
 

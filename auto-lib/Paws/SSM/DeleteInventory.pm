@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ssm = Paws->service('SSM');
     my $DeleteInventoryResult = $ssm->DeleteInventory(
       TypeName           => 'MyInventoryItemTypeName',
-      ClientToken        => 'MyClientToken',             # OPTIONAL
+      ClientToken        => 'MyUUID',                    # OPTIONAL
       DryRun             => 1,                           # OPTIONAL
       SchemaDeleteOption => 'DisableSchema',             # OPTIONAL
     );
@@ -86,7 +86,7 @@ Valid values are: C<"DisableSchema">, C<"DeleteSchema">
 =head2 B<REQUIRED> TypeName => Str
 
 The name of the custom inventory type for which you want to delete
-either all previously collected data, or the inventory type itself.
+either all previously collected data or the inventory type itself.
 
 
 

@@ -46,82 +46,80 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-A structure that contains information about a requested change for a
-quota.
+Information about a quota increase request.
 
 =head1 ATTRIBUTES
 
 
 =head2 CaseId => Str
 
-The case Id for the service quota increase request.
+The case ID.
 
 
 =head2 Created => Str
 
-The date and time when the service quota increase request was received
-and the case Id was created.
+The date and time when the quota increase request was received and the
+case ID was created.
 
 
 =head2 DesiredValue => Num
 
-New increased value for the service quota.
+The new, increased value for the quota.
 
 
 =head2 GlobalQuota => Bool
 
-Identifies if the quota is global.
+Indicates whether the quota is global.
 
 
 =head2 Id => Str
 
-The unique identifier of a requested service quota change.
+The unique identifier.
 
 
 =head2 LastUpdated => Str
 
-The date and time of the most recent change in the service quota
-increase request.
+The date and time of the most recent change.
 
 
 =head2 QuotaArn => Str
 
-The Amazon Resource Name (ARN) of the service quota.
+The Amazon Resource Name (ARN) of the quota.
 
 
 =head2 QuotaCode => Str
 
-Specifies the service quota that you want to use.
+The quota identifier.
 
 
 =head2 QuotaName => Str
 
-Name of the service quota.
+The quota name.
 
 
 =head2 Requester => Str
 
-The IAM identity who submitted the service quota increase request.
+The IAM identity of the requester.
 
 
 =head2 ServiceCode => Str
 
-Specifies the service that you want to use.
+The service identifier.
 
 
 =head2 ServiceName => Str
 
-The name of the AWS service specified in the increase request.
+The service name.
 
 
 =head2 Status => Str
 
-State of the service quota increase request.
+The state of the quota increase request.
 
 
 =head2 Unit => Str
 
-Specifies the unit used for the quota.
+The unit of measurement.
 
 
 

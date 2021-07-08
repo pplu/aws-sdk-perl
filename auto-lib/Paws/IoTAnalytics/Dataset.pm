@@ -6,6 +6,7 @@ package Paws::IoTAnalytics::Dataset;
   has ContentDeliveryRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::DatasetContentDeliveryRule]', request_name => 'contentDeliveryRules', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
+  has LateDataRules => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::LateDataRule]', request_name => 'lateDataRules', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
@@ -49,7 +50,7 @@ Information about a data set.
 
 =head2 Actions => ArrayRef[L<Paws::IoTAnalytics::DatasetAction>]
 
-The "DatasetAction" objects that automatically create the data set
+The C<DatasetAction> objects that automatically create the data set
 contents.
 
 
@@ -60,7 +61,7 @@ The ARN of the data set.
 
 =head2 ContentDeliveryRules => ArrayRef[L<Paws::IoTAnalytics::DatasetContentDeliveryRule>]
 
-When data set contents are created they are delivered to destinations
+When dataset contents are created they are delivered to destinations
 specified here.
 
 
@@ -74,6 +75,15 @@ When the data set was created.
 The last time the data set was updated.
 
 
+=head2 LateDataRules => ArrayRef[L<Paws::IoTAnalytics::LateDataRule>]
+
+A list of data rules that send notifications to Amazon CloudWatch, when
+data arrives late. To specify C<lateDataRules>, the dataset must use a
+DeltaTimer
+(https://docs.aws.amazon.com/iotanalytics/latest/APIReference/API_DeltaTime.html)
+filter.
+
+
 =head2 Name => Str
 
 The name of the data set.
@@ -81,7 +91,7 @@ The name of the data set.
 
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
-[Optional] How long, in days, message data is kept for the data set.
+Optional. How long, in days, message data is kept for the data set.
 
 
 =head2 Status => Str
@@ -91,18 +101,19 @@ The status of the data set.
 
 =head2 Triggers => ArrayRef[L<Paws::IoTAnalytics::DatasetTrigger>]
 
-The "DatasetTrigger" objects that specify when the data set is
+The C<DatasetTrigger> objects that specify when the data set is
 automatically updated.
 
 
 =head2 VersioningConfiguration => L<Paws::IoTAnalytics::VersioningConfiguration>
 
-[Optional] How many versions of data set contents are kept. If not
+Optional. How many versions of dataset contents are kept. If not
 specified or set to null, only the latest version plus the latest
 succeeded version (if they are different) are kept for the time period
-specified by the "retentionPeriod" parameter. (For more information,
-see
-https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+specified by the C<retentionPeriod> parameter. For more information,
+see Keeping Multiple Versions of AWS IoT Analytics Data Sets
+(https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+in the I<AWS IoT Analytics User Guide>.
 
 
 

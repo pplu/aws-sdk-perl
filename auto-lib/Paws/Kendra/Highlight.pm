@@ -4,6 +4,7 @@ package Paws::Kendra::Highlight;
   has BeginOffset => (is => 'ro', isa => 'Int', required => 1);
   has EndOffset => (is => 'ro', isa => 'Int', required => 1);
   has TopAnswer => (is => 'ro', isa => 'Bool');
+  has Type => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kendra::Highlight object:
 
-  $service_obj->Method(Att1 => { BeginOffset => $value, ..., TopAnswer => $value  });
+  $service_obj->Method(Att1 => { BeginOffset => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -57,6 +58,11 @@ ends.
 
 Indicates whether the response is the best response. True if this is
 the best response; otherwise, false.
+
+
+=head2 Type => Str
+
+The highlight type.
 
 
 

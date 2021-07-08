@@ -118,7 +118,7 @@ timeline most accurately maps to the producer timestamps.
 
 =item *
 
-C<ON_DISCONTIUNITY>: a discontinuity marker is placed between fragments
+C<ON_DISCONTINUITY>: a discontinuity marker is placed between fragments
 that have a gap or overlap of more than 50 milliseconds. For most
 playback scenarios, it is recommended to use a value of
 C<ON_DISCONTINUITY> so that the media player timeline is only reset
@@ -198,9 +198,9 @@ playback. We recommend that a live HLS media playlist have a minimum of
 The default is 5 fragments if C<PlaybackMode> is C<LIVE> or
 C<LIVE_REPLAY>, and 1,000 if C<PlaybackMode> is C<ON_DEMAND>.
 
-The maximum value of 1,000 fragments corresponds to more than 16
-minutes of video on streams with 1-second fragments, and more than 2
-1/2 hours of video on streams with 10-second fragments.
+The maximum value of 5,000 fragments corresponds to more than 80
+minutes of video on streams with 1-second fragments, and more than 13
+hours of video on streams with 10-second fragments.
 
 
 
@@ -260,8 +260,8 @@ display.
 
 In all playback modes, if C<FragmentSelectorType> is
 C<PRODUCER_TIMESTAMP>, and if there are multiple fragments with the
-same start timestamp, the fragment that has the larger fragment number
-(that is, the newer fragment) is included in the HLS media playlist.
+same start timestamp, the fragment that has the largest fragment number
+(that is, the newest fragment) is included in the HLS media playlist.
 The other fragments are not included. Fragments that have different
 timestamps but have overlapping durations are still included in the HLS
 media playlist. This can lead to unexpected behavior in the media

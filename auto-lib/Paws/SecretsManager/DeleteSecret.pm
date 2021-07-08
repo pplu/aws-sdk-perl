@@ -29,10 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+# To delete a secret
+# The following example shows how to delete a secret. The secret stays in your
+# account in a deprecated and inaccessible state until the recovery window ends.
+# After the date and time in the DeletionDate response field has passed, you can
+# no longer recover this secret with restore-secret.
     my $DeleteSecretResponse = $secretsmanager->DeleteSecret(
-      SecretId                   => 'MySecretIdType',
-      ForceDeleteWithoutRecovery => 1,                  # OPTIONAL
-      RecoveryWindowInDays       => 1,                  # OPTIONAL
+      'RecoveryWindowInDays' => 7,
+      'SecretId'             => 'MyTestDatabaseSecret1'
     );
 
     # Results:
@@ -64,25 +68,30 @@ Use this parameter with caution. This parameter causes the operation to
 skip the normal waiting period before the permanent deletion that AWS
 would normally impose with the C<RecoveryWindowInDays> parameter. If
 you delete a secret with the C<ForceDeleteWithouRecovery> parameter,
-then you have no opportunity to recover the secret. It is permanently
-lost.
+then you have no opportunity to recover the secret. You lose the secret
+permanently.
+
+If you use this parameter and include a previously deleted or
+nonexistent secret, the operation does not return the error
+C<ResourceNotFoundException> in order to correctly handle retries.
 
 
 
 =head2 RecoveryWindowInDays => Int
 
 (Optional) Specifies the number of days that Secrets Manager waits
-before it can delete the secret. You can't use both this parameter and
-the C<ForceDeleteWithoutRecovery> parameter in the same API call.
+before Secrets Manager can delete the secret. You can't use both this
+parameter and the C<ForceDeleteWithoutRecovery> parameter in the same
+API call.
 
-This value can range from 7 to 30 days. The default value is 30.
+This value can range from 7 to 30 days with a default value of 30.
 
 
 
 =head2 B<REQUIRED> SecretId => Str
 
-Specifies the secret that you want to delete. You can specify either
-the Amazon Resource Name (ARN) or the friendly name of the secret.
+Specifies the secret to delete. You can specify either the Amazon
+Resource Name (ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN tooE<mdash>for example, if
@@ -95,8 +104,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

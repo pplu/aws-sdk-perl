@@ -52,7 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
 The list of AWS account identifiers for the member account for which to
-return member details.
+return member details. You can request details for up to 50 member
+accounts at a time.
 
 You cannot use C<GetMembers> to retrieve information about member
 accounts that were removed from the behavior graph.

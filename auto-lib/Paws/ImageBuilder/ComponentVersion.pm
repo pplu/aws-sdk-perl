@@ -7,6 +7,7 @@ package Paws::ImageBuilder::ComponentVersion;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has SupportedOsVersions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedOsVersions', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 
@@ -73,6 +74,13 @@ The owner of the component.
 =head2 Platform => Str
 
 The platform of the component.
+
+
+=head2 SupportedOsVersions => ArrayRef[Str|Undef]
+
+he operating system (OS) version supported by the component. If the OS
+information is available, a prefix match is performed against the
+parent image OS version during image recipe creation.
 
 
 =head2 Type => Str

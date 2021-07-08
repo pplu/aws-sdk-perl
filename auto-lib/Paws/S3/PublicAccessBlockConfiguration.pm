@@ -41,7 +41,7 @@ Amazon S3 bucket. You can enable the configuration options in any
 combination. For more information about when Amazon S3 considers a
 bucket or object public, see The Meaning of "Public"
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/access-control-block-public-access.html#access-control-block-public-access-policy-status)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -97,8 +97,8 @@ ACLs and doesn't prevent new public ACLs from being set.
 
 Specifies whether Amazon S3 should restrict public bucket policies for
 this bucket. Setting this element to C<TRUE> restricts access to this
-bucket to only AWS services and authorized users within this account if
-the bucket has a public policy.
+bucket to only AWS service principals and authorized users within this
+account if the bucket has a public policy.
 
 Enabling this setting doesn't affect previously stored bucket policies,
 except that public and cross-account access within any public bucket

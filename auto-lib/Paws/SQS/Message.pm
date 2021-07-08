@@ -108,15 +108,15 @@ digest. For information about MD5, see RFC1321
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+For more information, see Amazon SQS message attributes
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
+in the I<Amazon SQS Developer Guide>.
 
 
 =head2 MessageId => Str
 
 A unique identifier for the message. A C<MessageId>is considered unique
-across all AWS accounts for an extended period of time.
+across all accounts for an extended period of time.
 
 
 =head2 ReceiptHandle => Str

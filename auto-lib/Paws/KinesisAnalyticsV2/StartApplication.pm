@@ -2,7 +2,7 @@
 package Paws::KinesisAnalyticsV2::StartApplication;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has RunConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfiguration', required => 1);
+  has RunConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::RunConfiguration');
 
   use MooseX::ClassAttribute;
 
@@ -50,8 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
-      },
-
+      },    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -66,7 +65,7 @@ The name of the application.
 
 
 
-=head2 B<REQUIRED> RunConfiguration => L<Paws::KinesisAnalyticsV2::RunConfiguration>
+=head2 RunConfiguration => L<Paws::KinesisAnalyticsV2::RunConfiguration>
 
 Identifies the run configuration (start parameters) of a Kinesis Data
 Analytics application.

@@ -1,6 +1,8 @@
 
 package Paws::CloudFormation::ListStackInstances;
   use Moose;
+  has CallAs => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::StackInstanceFilter]');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has StackInstanceAccount => (is => 'ro', isa => 'Str');
@@ -32,11 +34,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $ListStackInstancesOutput = $cloudformation->ListStackInstances(
-      StackSetName         => 'MyStackSetName',
-      MaxResults           => 1,                  # OPTIONAL
-      NextToken            => 'MyNextToken',      # OPTIONAL
-      StackInstanceAccount => 'MyAccount',        # OPTIONAL
-      StackInstanceRegion  => 'MyRegion',         # OPTIONAL
+      StackSetName => 'MyStackSetName',
+      CallAs       => 'SELF',             # OPTIONAL
+      Filters      => [
+        {
+          Name   => 'DETAILED_STATUS',    # values: DETAILED_STATUS; OPTIONAL
+          Values => 'MyStackInstanceFilterValues',   # min: 6, max: 10; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      MaxResults           => 1,                # OPTIONAL
+      NextToken            => 'MyNextToken',    # OPTIONAL
+      StackInstanceAccount => 'MyAccount',      # OPTIONAL
+      StackInstanceRegion  => 'MyRegion',       # OPTIONAL
     );
 
     # Results:
@@ -49,6 +59,43 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudformation/ListStackInstances>
 
 =head1 ATTRIBUTES
+
+
+=head2 CallAs => Str
+
+[Service-managed permissions] Specifies whether you are acting as an
+account administrator in the organization's management account or as a
+delegated administrator in a member account.
+
+By default, C<SELF> is specified. Use C<SELF> for stack sets with
+self-managed permissions.
+
+=over
+
+=item *
+
+If you are signed in to the management account, specify C<SELF>.
+
+=item *
+
+If you are signed in to a delegated administrator account, specify
+C<DELEGATED_ADMIN>.
+
+Your AWS account must be registered as a delegated administrator in the
+management account. For more information, see Register a delegated
+administrator
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+in the I<AWS CloudFormation User Guide>.
+
+=back
+
+
+Valid values are: C<"SELF">, C<"DELEGATED_ADMIN">
+
+=head2 Filters => ArrayRef[L<Paws::CloudFormation::StackInstanceFilter>]
+
+The status that stack instances are filtered by.
+
 
 
 =head2 MaxResults => Int
@@ -79,7 +126,7 @@ The name of the AWS account that you want to list stack instances for.
 
 =head2 StackInstanceRegion => Str
 
-The name of the region where you want to list stack instances.
+The name of the Region where you want to list stack instances.
 
 
 

@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     $gamelift->DeleteBuild(
-      BuildId => 'MyBuildId',
+      BuildId => 'MyBuildIdOrArn',
 
     );
 
@@ -40,8 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> BuildId => Str
 
-A unique identifier for a build to delete. You can use either the build
-ID or ARN value.
+A unique identifier for the build to delete. You can use either the
+build ID or ARN value.
 
 
 

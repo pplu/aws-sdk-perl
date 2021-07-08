@@ -3,6 +3,7 @@ package Paws::SageMakerA2IRuntime::ListHumanLoops;
   use Moose;
   has CreationTimeAfter => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CreationTimeAfter');
   has CreationTimeBefore => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'CreationTimeBefore');
+  has FlowDefinitionArn => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'FlowDefinitionArn', required => 1);
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'MaxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'NextToken');
   has SortOrder => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'SortOrder');
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $a2i-runtime.sagemaker = Paws->service('SageMakerA2IRuntime');
     my $ListHumanLoopsResponse = $a2i -runtime . sagemaker->ListHumanLoops(
+      FlowDefinitionArn  => 'MyFlowDefinitionArn',
       CreationTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
       CreationTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
       MaxResults         => 1,                        # OPTIONAL
@@ -55,14 +57,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a2i
 =head2 CreationTimeAfter => Str
 
 (Optional) The timestamp of the date when you want the human loops to
-begin. For example, C<1551000000>.
+begin in ISO 8601 format. For example, C<2020-02-24>.
 
 
 
 =head2 CreationTimeBefore => Str
 
 (Optional) The timestamp of the date before which you want the human
-loops to begin. For example, C<1550000000>.
+loops to begin in ISO 8601 format. For example, C<2020-02-24>.
+
+
+
+=head2 B<REQUIRED> FlowDefinitionArn => Str
+
+The Amazon Resource Name (ARN) of a flow definition.
 
 
 
@@ -70,21 +78,21 @@ loops to begin. For example, C<1550000000>.
 
 The total number of items to return. If the total number of available
 items is more than the value specified in C<MaxResults>, then a
-C<NextToken> will be provided in the output that you can use to resume
-pagination.
+C<NextToken> is returned in the output. You can use this token to
+display the next page of results.
 
 
 
 =head2 NextToken => Str
 
-A token to resume pagination.
+A token to display the next page of results.
 
 
 
 =head2 SortOrder => Str
 
-An optional value that specifies whether you want the results sorted in
-C<Ascending> or C<Descending> order.
+Optional. The order for displaying results. Valid values: C<Ascending>
+and C<Descending>.
 
 Valid values are: C<"Ascending">, C<"Descending">
 

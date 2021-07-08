@@ -69,8 +69,8 @@ Amazon SNS API action.
 
 You can subscribe email addresses to an Amazon SNS topic through the
 AWS Management Console, or by using the Subscribe
-(https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html) AWS
-Simple Notification Service (SNS) API action.
+(https://docs.aws.amazon.com/sns/latest/api/API_Subscribe.html) Amazon
+Simple Notification Service (Amazon SNS) API action.
 
 
 

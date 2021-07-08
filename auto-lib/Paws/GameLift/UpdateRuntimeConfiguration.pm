@@ -30,7 +30,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $gamelift = Paws->service('GameLift');
     my $UpdateRuntimeConfigurationOutput =
       $gamelift->UpdateRuntimeConfiguration(
-      FleetId              => 'MyFleetId',
+      FleetId              => 'MyFleetIdOrArn',
       RuntimeConfiguration => {
         GameSessionActivationTimeoutSeconds => 1,   # min: 1, max: 600; OPTIONAL
         MaxConcurrentGameSessionActivations =>
@@ -61,7 +61,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to update runtime configuration for.
+A unique identifier for the fleet to update runtime configuration for.
 You can use either the fleet ID or ARN value.
 
 
@@ -71,11 +71,8 @@ You can use either the fleet ID or ARN value.
 Instructions for launching server processes on each instance in the
 fleet. Server processes run either a custom game build executable or a
 Realtime Servers script. The runtime configuration lists the types of
-server processes to run on an instance and includes the following
-configuration settings: the server executable or launch script file,
-launch parameters, and the number of processes to run concurrently on
-each instance. A CreateFleet request must include a runtime
-configuration with at least one server process configuration.
+server processes to run on an instance, how to launch them, and the
+number of processes to run concurrently.
 
 
 

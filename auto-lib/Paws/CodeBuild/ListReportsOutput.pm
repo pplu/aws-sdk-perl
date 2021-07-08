@@ -28,7 +28,8 @@ returned, until no more next tokens are returned.
 
 =head2 Reports => ArrayRef[Str|Undef]
 
-The list of returned ARNs for the reports in the current AWS account.
+The list of returned ARNs for the reports in the current Amazon Web
+Services account.
 
 
 =head2 _request_id => Str

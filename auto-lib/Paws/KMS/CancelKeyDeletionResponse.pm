@@ -16,7 +16,9 @@ Paws::KMS::CancelKeyDeletionResponse
 
 =head2 KeyId => Str
 
-The unique identifier of the master key for which deletion is canceled.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the CMK whose deletion is canceled.
 
 
 =head2 _request_id => Str

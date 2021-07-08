@@ -38,7 +38,7 @@ upload that Amazon S3 will wait before permanently removing all parts
 of the upload. For more information, see Aborting Incomplete Multipart
 Uploads Using a Bucket Lifecycle Policy
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/mpuoverview.html#mpu-abort-incomplete-mpu-lifecycle-config)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 

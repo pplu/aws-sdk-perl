@@ -33,14 +33,16 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-The data source for the AutoPilot job.
+The data source for the Autopilot job.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> S3DataSource => L<Paws::SageMaker::AutoMLS3DataSource>
 
-The Amazon S3 location of the data.
+The Amazon S3 location of the input data.
+
+The input data must be in CSV format and contain at least 500 rows.
 
 
 

@@ -53,8 +53,8 @@ The name of the domain that the billing record applies to. If the
 domain name contains characters other than a-z, 0-9, and - (hyphen),
 such as an internationalized domain name, then this value is in
 Punycode. For more information, see DNS Domain Name Format
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
-in the I<Amazon Route 53 Developer Guidezzz>.
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DomainNameFormat.html)
+in the I<Amazon Route 53 Developer Guide>.
 
 
 =head2 InvoiceId => Str

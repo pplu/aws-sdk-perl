@@ -149,14 +149,14 @@ The version of the database engine to use for the new cluster.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted cluster
-from a DB snapshot or cluster snapshot.
+The KMS key identifier to use when restoring an encrypted cluster from
+a DB snapshot or cluster snapshot.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the
-AWS KMS encryption key. If you are restoring a cluster with the same
-AWS account that owns the AWS KMS encryption key used to encrypt the
-new cluster, then you can use the AWS KMS key alias instead of the ARN
-for the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are restoring a cluster with the same account
+that owns the KMS encryption key used to encrypt the new cluster, then
+you can use the KMS key alias instead of the ARN for the KMS encryption
+key.
 
 If you do not specify a value for the C<KmsKeyId> parameter, then the
 following occurs:
@@ -166,7 +166,7 @@ following occurs:
 =item *
 
 If the snapshot or cluster snapshot in C<SnapshotIdentifier> is
-encrypted, then the restored cluster is encrypted using the AWS KMS key
+encrypted, then the restored cluster is encrypted using the KMS key
 that was used to encrypt the snapshot or the cluster snapshot.
 
 =item *

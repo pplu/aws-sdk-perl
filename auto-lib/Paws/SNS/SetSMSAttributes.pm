@@ -141,7 +141,7 @@ Total number of parts
 =back
 
 To receive the report, the bucket must have a policy that allows the
-Amazon SNS service principle to perform the C<s3:PutObject> and
+Amazon SNS service principal to perform the C<s3:PutObject> and
 C<s3:GetBucketLocation> actions.
 
 For an example bucket policy and usage report, see Monitoring SMS

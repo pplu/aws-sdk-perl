@@ -2,6 +2,7 @@
 package Paws::ComputeOptimizer::Summary;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ReasonCodeSummaries => (is => 'ro', isa => 'ArrayRef[Paws::ComputeOptimizer::ReasonCodeSummary]', request_name => 'reasonCodeSummaries', traits => ['NameInRequest']);
   has Value => (is => 'ro', isa => 'Num', request_name => 'value', traits => ['NameInRequest']);
 
 1;
@@ -42,6 +43,11 @@ The summary of a recommendation.
 =head2 Name => Str
 
 The finding classification of the recommendation.
+
+
+=head2 ReasonCodeSummaries => ArrayRef[L<Paws::ComputeOptimizer::ReasonCodeSummary>]
+
+An array of objects that summarize a finding reason code.
 
 
 =head2 Value => Num

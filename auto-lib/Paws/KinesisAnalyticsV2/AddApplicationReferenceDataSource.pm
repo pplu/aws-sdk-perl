@@ -37,9 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ReferenceSchema => {
           RecordColumns => [
             {
-              Name    => 'MyRecordColumnName',
-              SqlType => 'MyRecordColumnSqlType',    # min: 1
-              Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+              Name    => 'MyRecordColumnName',       # min: 1, max: 256
+              SqlType => 'MyRecordColumnSqlType',    # min: 1, max: 100
+              Mapping => 'MyRecordColumnMapping',    # max: 65535; OPTIONAL
             },
             ...
           ],    # min: 1, max: 1000
@@ -47,17 +47,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             RecordFormatType  => 'JSON',    # values: JSON, CSV
             MappingParameters => {
               CSVMappingParameters => {
-                RecordColumnDelimiter => 'MyRecordColumnDelimiter',    # min: 1
-                RecordRowDelimiter    => 'MyRecordRowDelimiter',       # min: 1
+                RecordColumnDelimiter =>
+                  'MyRecordColumnDelimiter',    # min: 1, max: 1024
+                RecordRowDelimiter =>
+                  'MyRecordRowDelimiter',       # min: 1, max: 1024
 
               },    # OPTIONAL
               JSONMappingParameters => {
-                RecordRowPath => 'MyRecordRowPath',    # min: 1
+                RecordRowPath => 'MyRecordRowPath',    # min: 1, max: 65535
 
               },    # OPTIONAL
             },    # OPTIONAL
           },
-          RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
+          RecordEncoding => 'MyRecordEncoding',    # min: 5, max: 5; OPTIONAL
         },
         TableName             => 'MyInAppTableName',    # min: 1, max: 32
         S3ReferenceDataSource => {

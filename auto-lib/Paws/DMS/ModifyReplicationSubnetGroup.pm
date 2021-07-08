@@ -29,11 +29,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Modify replication subnet group
+    # Modifies the settings for the specified replication subnet group.
     my $ModifyReplicationSubnetGroupResponse =
       $dms->ModifyReplicationSubnetGroup(
-      ReplicationSubnetGroupIdentifier  => 'MyString',
-      SubnetIds                         => [ 'MyString', ... ],
-      ReplicationSubnetGroupDescription => 'MyString',            # OPTIONAL
+      'ReplicationSubnetGroupDescription' => '',
+      'ReplicationSubnetGroupIdentifier'  => '',
+      'SubnetIds'                         => [
+
+      ]
       );
 
     # Results:

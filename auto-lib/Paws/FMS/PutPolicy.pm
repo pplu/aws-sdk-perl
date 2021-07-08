@@ -36,19 +36,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceType              => 'MyResourceType',    # min: 1, max: 128
         SecurityServicePolicyData => {
           Type => 'WAF'
-          , # values: WAF, SHIELD_ADVANCED, SECURITY_GROUPS_COMMON, SECURITY_GROUPS_CONTENT_AUDIT, SECURITY_GROUPS_USAGE_AUDIT
+          , # values: WAF, WAFV2, SHIELD_ADVANCED, SECURITY_GROUPS_COMMON, SECURITY_GROUPS_CONTENT_AUDIT, SECURITY_GROUPS_USAGE_AUDIT, NETWORK_FIREWALL, DNS_FIREWALL
           ManagedServiceData =>
-            'MyManagedServiceData',    # min: 1, max: 1024; OPTIONAL
+            'MyManagedServiceData',    # min: 1, max: 4096; OPTIONAL
         },
         ExcludeMap => {
           'ACCOUNT' => [
             'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
-          ],    # key: values: ACCOUNT
+          ],    # key: values: ACCOUNT, ORG_UNIT
         },    # OPTIONAL
         IncludeMap => {
           'ACCOUNT' => [
             'MyCustomerPolicyScopeId', ...    # min: 1, max: 1024
-          ],    # key: values: ACCOUNT
+          ],    # key: values: ACCOUNT, ORG_UNIT
         },    # OPTIONAL
         PolicyId          => 'MyPolicyId',    # min: 36, max: 36; OPTIONAL
         PolicyUpdateToken =>

@@ -61,15 +61,15 @@ The idempotency token for the request.
 
 =head2 B<REQUIRED> DestinationProperties => L<Paws::GuardDuty::DestinationProperties>
 
-Properties of the publishing destination, including the ARNs for the
-destination and the KMS key used for encryption.
+The properties of the publishing destination, including the ARNs for
+the destination and the KMS key used for encryption.
 
 
 
 =head2 B<REQUIRED> DestinationType => Str
 
-The type of resource for the publishing destination. Currently only S3
-is supported.
+The type of resource for the publishing destination. Currently only
+Amazon S3 buckets are supported.
 
 Valid values are: C<"S3">
 

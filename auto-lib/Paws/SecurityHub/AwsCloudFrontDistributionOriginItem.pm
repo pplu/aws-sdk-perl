@@ -4,6 +4,7 @@ package Paws::SecurityHub::AwsCloudFrontDistributionOriginItem;
   has DomainName => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has OriginPath => (is => 'ro', isa => 'Str');
+  has S3OriginConfig => (is => 'ro', isa => 'Paws::SecurityHub::AwsCloudFrontDistributionOriginS3OriginConfig');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SecurityHub::AwsCloudFrontDistributionOriginItem object:
 
-  $service_obj->Method(Att1 => { DomainName => $value, ..., OriginPath => $value  });
+  $service_obj->Method(Att1 => { DomainName => $value, ..., S3OriginConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,8 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 =head1 DESCRIPTION
 
 A complex type that describes the Amazon S3 bucket, HTTP server (for
-example, a web server), Amazon MediaStore, or other server from which
-CloudFront gets your files.
+example, a web server), Amazon Elemental MediaStore, or other server
+from which CloudFront gets your files.
 
 =head1 ATTRIBUTES
 
@@ -57,6 +58,12 @@ A unique identifier for the origin or origin group.
 
 An optional element that causes CloudFront to request your content from
 a directory in your Amazon S3 bucket or your custom origin.
+
+
+=head2 S3OriginConfig => L<Paws::SecurityHub::AwsCloudFrontDistributionOriginS3OriginConfig>
+
+An origin that is an S3 bucket that is not configured with static
+website hosting.
 
 
 

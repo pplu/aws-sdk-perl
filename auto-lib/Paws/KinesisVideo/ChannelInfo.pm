@@ -47,7 +47,7 @@ properties.
 
 =head2 ChannelARN => Str
 
-The ARN of the signaling channel.
+The Amazon Resource Name (ARN) of the signaling channel.
 
 
 =head2 ChannelName => Str

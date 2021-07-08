@@ -32,13 +32,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DescribeCacheEngineVersions
+    # Lists the details for up to 25 Memcached and Redis cache engine versions.
+    my $CacheEngineVersionMessage = $elasticache->DescribeCacheEngineVersions();
+
+    # Results:
+    my $CacheEngineVersions = $CacheEngineVersionMessage->CacheEngineVersions;
+
+    # Returns a L<Paws::ElastiCache::CacheEngineVersionMessage> object.
+    # DescribeCacheEngineVersions
+    # Lists the details for up to 50 Redis cache engine versions.
     my $CacheEngineVersionMessage = $elasticache->DescribeCacheEngineVersions(
-      CacheParameterGroupFamily => 'MyString',    # OPTIONAL
-      DefaultOnly               => 1,             # OPTIONAL
-      Engine                    => 'MyString',    # OPTIONAL
-      EngineVersion             => 'MyString',    # OPTIONAL
-      Marker                    => 'MyString',    # OPTIONAL
-      MaxRecords                => 1,             # OPTIONAL
+      'DefaultOnly' => 0,
+      'Engine'      => 'redis',
+      'MaxRecords'  => 50
     );
 
     # Results:
@@ -58,8 +65,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 The name of a specific cache parameter group family to return details
 for.
 
-Valid values are: C<memcached1.4> | C<memcached1.5> | C<redis2.6> |
-C<redis2.8> | C<redis3.2> | C<redis4.0> | C<redis5.0> |
+Valid values are: C<memcached1.4> | C<memcached1.5> | C<memcached1.6> |
+C<redis2.6> | C<redis2.8> | C<redis3.2> | C<redis4.0> | C<redis5.0> |
+C<redis6.x> |
 
 Constraints:
 

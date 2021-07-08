@@ -2,6 +2,7 @@
 package Paws::SSM::ParameterHistory;
   use Moose;
   has AllowedPattern => (is => 'ro', isa => 'Str');
+  has DataType => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has Labels => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -56,6 +57,12 @@ Parameter names can include the following letters and symbols.
 a-zA-Z0-9_.-
 
 
+=head2 DataType => Str
+
+The data type of the parameter, such as C<text> or C<aws:ec2:image>.
+The default is C<text>.
+
+
 =head2 Description => Str
 
 Information about the parameter.
@@ -91,7 +98,7 @@ The name of the parameter.
 
 Information about the policies assigned to a parameter.
 
-Working with Parameter Policies
+Assigning parameter policies
 (https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-policies.html)
 in the I<AWS Systems Manager User Guide>.
 

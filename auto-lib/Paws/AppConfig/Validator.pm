@@ -46,7 +46,8 @@ valid.
 
 =head2 B<REQUIRED> Content => Str
 
-Either the JSON Schema content or an AWS Lambda function name.
+Either the JSON Schema content or the Amazon Resource Name (ARN) of an
+AWS Lambda function.
 
 
 =head2 B<REQUIRED> Type => Str

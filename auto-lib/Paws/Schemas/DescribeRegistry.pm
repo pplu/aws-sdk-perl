@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 

@@ -26,6 +26,7 @@ package Paws::RDS::DBSnapshot;
   has SourceRegion => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageType => (is => 'ro', isa => 'Str');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has TdeCredentialArn => (is => 'ro', isa => 'Str');
   has Timezone => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -88,7 +89,7 @@ snapshot was created from.
 =head2 DbiResourceId => Str
 
 The identifier for the source DB instance, which can't be changed and
-which is unique to an AWS Region.
+which is unique to an Amazon Web Services Region.
 
 
 =head2 DBSnapshotArn => Str
@@ -118,14 +119,14 @@ Specifies the version of the database engine.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled, and otherwise false.
 
 
 =head2 InstanceCreateTime => Str
 
-Specifies the time when the snapshot was taken, in Universal
-Coordinated Time (UTC).
+Specifies the time in Coordinated Universal Time (UTC) when the DB
+instance, from which the snapshot was taken, was created.
 
 
 =head2 Iops => Int
@@ -136,8 +137,12 @@ DB instance at the time of the snapshot.
 
 =head2 KmsKeyId => Str
 
-If C<Encrypted> is true, the AWS KMS key identifier for the encrypted
-DB snapshot.
+If C<Encrypted> is true, the Amazon Web Services KMS key identifier for
+the encrypted DB snapshot.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LicenseModel => Str
@@ -174,8 +179,8 @@ instance class of the DB instance when the DB snapshot was created.
 
 =head2 SnapshotCreateTime => Str
 
-Provides the time when the snapshot was taken, in Universal Coordinated
-Time (UTC).
+Specifies when the snapshot was taken in Coordinated Universal Time
+(UTC).
 
 
 =head2 SnapshotType => Str
@@ -192,7 +197,8 @@ cross-region copy.
 
 =head2 SourceRegion => Str
 
-The AWS Region that the DB snapshot was created in or copied from.
+The Amazon Web Services Region that the DB snapshot was created in or
+copied from.
 
 
 =head2 Status => Str
@@ -203,6 +209,11 @@ Specifies the status of this DB snapshot.
 =head2 StorageType => Str
 
 Specifies the storage type associated with DB snapshot.
+
+
+=head2 TagList => ArrayRef[L<Paws::RDS::Tag>]
+
+
 
 
 =head2 TdeCredentialArn => Str

@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 =head1 DESCRIPTION
 
 A complex type that contains information about an operation that
-matches the criteria that you specified in a ListOperations request.
+matches the criteria that you specified in a ListOperations
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_ListOperations.html)
+request.
 
 =head1 ATTRIBUTES
 
@@ -58,7 +60,7 @@ request.
 
 =item *
 
-B<PENDING>: AWS Cloud Map is performing the operation.
+B<PENDING>: Cloud Map is performing the operation.
 
 =item *
 

@@ -33,19 +33,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::DeleteM
 
 =head1 DESCRIPTION
 
-Specifies whether Amazon S3 replicates the delete markers. If you
-specify a C<Filter>, you must specify this element. However, in the
-latest version of replication configuration (when C<Filter> is
-specified), Amazon S3 doesn't replicate delete markers. Therefore, the
-C<DeleteMarkerReplication> element can contain only
-E<lt>StatusE<gt>DisabledE<lt>/StatusE<gt>. For an example
-configuration, see Basic Rule Configuration
+Specifies whether Amazon S3 replicates delete markers. If you specify a
+C<Filter> in your replication configuration, you must also include a
+C<DeleteMarkerReplication> element. If your C<Filter> includes a C<Tag>
+element, the C<DeleteMarkerReplication> C<Status> must be set to
+Disabled, because Amazon S3 does not support replicating delete markers
+for tag-based rules. For an example configuration, see Basic Rule
+Configuration
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-config-min-rule-config).
 
-If you don't specify the C<Filter> element, Amazon S3 assumes that the
-replication configuration is the earlier version, V1. In the earlier
-version, Amazon S3 handled replication of delete markers differently.
-For more information, see Backward Compatibility
+For more information about delete marker replication, see Basic Rule
+Configuration
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/delete-marker-replication.html).
+
+If you are using an earlier version of the replication configuration,
+Amazon S3 handles replication of delete markers differently. For more
+information, see Backward Compatibility
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-add-config.html#replication-backward-compat-considerations).
 
 =head1 ATTRIBUTES
@@ -55,8 +58,7 @@ For more information, see Backward Compatibility
 
 Indicates whether to replicate delete markers.
 
-In the current implementation, Amazon S3 doesn't replicate the delete
-markers. The status must be C<Disabled>.
+Indicates whether to replicate delete markers.
 
 
 

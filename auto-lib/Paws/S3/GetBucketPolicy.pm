@@ -2,6 +2,7 @@
 package Paws::S3::GetBucketPolicy;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
 
 
   use MooseX::ClassAttribute;
@@ -32,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    my $GetBucketPolicyOutput = $s3->GetBucketPolicy(
-      Bucket => 'MyBucketName',
-
-    );
+    # To get bucket policy
+    # The following example returns bucket policy associated with a bucket.
+    my $GetBucketPolicyOutput =
+      $s3->GetBucketPolicy( 'Bucket' => 'examplebucket' );
 
     # Results:
     my $Policy = $GetBucketPolicyOutput->Policy;
@@ -51,6 +52,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 The bucket name for which to get the bucket policy.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

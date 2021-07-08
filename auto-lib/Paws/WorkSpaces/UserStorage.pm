@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WorkSpaces:
 
 =head1 DESCRIPTION
 
-Describes the user storage for a WorkSpace bundle.
+Describes the user volume for a WorkSpace bundle.
 
 =head1 ATTRIBUTES
 
 
 =head2 Capacity => Str
 
-The size of the user storage.
+The size of the user volume.
 
 
 

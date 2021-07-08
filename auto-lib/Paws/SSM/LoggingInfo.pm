@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Loggin
 
 =head1 DESCRIPTION
 
-Information about an Amazon S3 bucket to write instance-level logs to.
+Information about an S3 bucket to write instance-level logs to.
 
 C<LoggingInfo> has been deprecated. To specify an S3 bucket to contain
 logs, instead use the C<OutputS3BucketName> and C<OutputS3KeyPrefix>
@@ -49,17 +49,17 @@ MaintenanceWindowTaskInvocationParameters.
 
 =head2 B<REQUIRED> S3BucketName => Str
 
-The name of an Amazon S3 bucket where execution logs are stored .
+The name of an S3 bucket where execution logs are stored .
 
 
 =head2 S3KeyPrefix => Str
 
-(Optional) The Amazon S3 bucket subfolder.
+(Optional) The S3 bucket subfolder.
 
 
 =head2 B<REQUIRED> S3Region => Str
 
-The region where the Amazon S3 bucket is located.
+The Region where the S3 bucket is located.
 
 
 

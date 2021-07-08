@@ -1,6 +1,7 @@
 
 package Paws::CodeStarConnections::ListConnections;
   use Moose;
+  has HostArnFilter => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ProviderTypeFilter => (is => 'ro', isa => 'Str');
@@ -30,6 +31,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $codestar-connections = Paws->service('CodeStarConnections');
     my $ListConnectionsOutput = $codestar -connections->ListConnections(
+      HostArnFilter      => 'MyHostArn',      # OPTIONAL
       MaxResults         => 1,                # OPTIONAL
       NextToken          => 'MyNextToken',    # OPTIONAL
       ProviderTypeFilter => 'Bitbucket',      # OPTIONAL
@@ -45,6 +47,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codestar-connections/ListConnections>
 
 =head1 ATTRIBUTES
+
+
+=head2 HostArnFilter => Str
+
+Filters the list of connections to those associated with a specified
+host.
+
 
 
 =head2 MaxResults => Int
@@ -67,7 +76,7 @@ which can be used to return the next set of connections in the list.
 Filters the list of connections to those associated with a specified
 provider, such as Bitbucket.
 
-Valid values are: C<"Bitbucket">
+Valid values are: C<"Bitbucket">, C<"GitHub">, C<"GitHubEnterpriseServer">
 
 
 =head1 SEE ALSO

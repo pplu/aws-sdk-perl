@@ -3,6 +3,7 @@ package Paws::Shield::CreateProtection;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ResourceArn => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Shield::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -31,7 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateProtectionResponse = $shield->CreateProtection(
       Name        => 'MyProtectionName',
       ResourceArn => 'MyResourceArn',
-
+      Tags        => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
+          Value => 'MyTagValue',    # max: 256; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -90,6 +97,13 @@ C<arn:aws:ec2:I<region>:I<account-id>:eip-allocation/I<allocation-id>>
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Shield::Tag>]
+
+One or more tag key-value pairs for the Protection object that is
+created.
 
 
 

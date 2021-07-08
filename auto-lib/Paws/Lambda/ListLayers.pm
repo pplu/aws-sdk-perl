@@ -30,15 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    my $ListLayersResponse = $lambda->ListLayers(
-      CompatibleRuntime => 'nodejs',      # OPTIONAL
-      Marker            => 'MyString',    # OPTIONAL
-      MaxItems          => 1,             # OPTIONAL
-    );
+    # To list the layers that are compatible with your function's runtime
+    # The following example returns information about layers that are compatible
+    # with the Python 3.7 runtime.
+    my $ListLayersResponse =
+      $lambda->ListLayers( 'CompatibleRuntime' => 'python3.7' );
 
     # Results:
-    my $Layers     = $ListLayersResponse->Layers;
-    my $NextMarker = $ListLayersResponse->NextMarker;
+    my $Layers = $ListLayersResponse->Layers;
 
     # Returns a L<Paws::Lambda::ListLayersResponse> object.
 
@@ -52,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 
 A runtime identifier. For example, C<go1.x>.
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"nodejs14.x">, C<"java8">, C<"java8.al2">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"dotnetcore3.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">, C<"provided.al2">
 
 =head2 Marker => Str
 

@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Artifacts that are generation during a job.
+The artifacts that are generated during an AutoML job.
 
 =head1 ATTRIBUTES
 
 
 =head2 CandidateDefinitionNotebookLocation => Str
 
-The URL to the notebook location.
+The URL of the notebook location.
 
 
 =head2 DataExplorationNotebookLocation => Str
 
-The URL to the notebook location.
+The URL of the notebook location.
 
 
 

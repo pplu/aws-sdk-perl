@@ -95,7 +95,7 @@ action.
 
 =head2 AllocatedStorage => Int
 
-Specifies the allocated storage size specified in gibibytes.
+Not supported by Neptune.
 
 
 =head2 AutoMinorVersionUpgrade => Bool
@@ -168,9 +168,9 @@ Specifies the current state of this database.
 
 =head2 DbiResourceId => Str
 
-The AWS Region-unique, immutable identifier for the DB instance. This
-identifier is found in AWS CloudTrail log entries whenever the AWS KMS
-key for the DB instance is accessed.
+The Amazon Region-unique, immutable identifier for the DB instance.
+This identifier is found in Amazon CloudTrail log entries whenever the
+Amazon KMS key for the DB instance is accessed.
 
 
 =head2 DBName => Str
@@ -239,7 +239,7 @@ that receives the Enhanced Monitoring metrics data for the DB instance.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if AWS Identity and Access Management (IAM) authentication is
+True if Amazon Identity and Access Management (IAM) authentication is
 enabled, and otherwise false.
 
 
@@ -272,7 +272,7 @@ License model information for this DB instance.
 
 =head2 MasterUsername => Str
 
-Contains the master username for the DB instance.
+Not supported by Neptune.
 
 
 =head2 MonitoringInterval => Int

@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Information which is used to filter message data, to segregate it
-according to the time frame in which it arrives.
+Information that is used to filter message data, to segregate it
+according to the timeframe in which it arrives.
 
 =head1 ATTRIBUTES
 

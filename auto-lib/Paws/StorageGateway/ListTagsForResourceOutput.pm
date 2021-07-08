@@ -24,7 +24,7 @@ the list of tags.
 
 =head2 ResourceARN => Str
 
-he Amazon Resource Name (ARN) of the resource for which you want to
+The Amazon Resource Name (ARN) of the resource for which you want to
 list tags.
 
 

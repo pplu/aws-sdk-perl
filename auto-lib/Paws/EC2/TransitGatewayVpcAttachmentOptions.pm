@@ -1,5 +1,6 @@
 package Paws::EC2::TransitGatewayVpcAttachmentOptions;
   use Moose;
+  has ApplianceModeSupport => (is => 'ro', isa => 'Str', request_name => 'applianceModeSupport', traits => ['NameInRequest']);
   has DnsSupport => (is => 'ro', isa => 'Str', request_name => 'dnsSupport', traits => ['NameInRequest']);
   has Ipv6Support => (is => 'ro', isa => 'Str', request_name => 'ipv6Support', traits => ['NameInRequest']);
 1;
@@ -21,20 +22,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::TransitGatewayVpcAttachmentOptions object:
 
-  $service_obj->Method(Att1 => { DnsSupport => $value, ..., Ipv6Support => $value  });
+  $service_obj->Method(Att1 => { ApplianceModeSupport => $value, ..., Ipv6Support => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::TransitGatewayVpcAttachmentOptions object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DnsSupport
+  $result->Att1->ApplianceModeSupport
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 ApplianceModeSupport => Str
+
+Indicates whether appliance mode support is enabled.
 
 
 =head2 DnsSupport => Str

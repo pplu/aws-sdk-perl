@@ -48,7 +48,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 =head1 DESCRIPTION
 
 A structure that contains information about a stack set. A stack set
-enables you to provision stacks into AWS accounts and across regions by
+enables you to provision stacks into AWS accounts and across Regions by
 using a single CloudFormation template. In the stack set, you specify
 the template to use, as well as any parameters and capabilities that
 the template requires.
@@ -71,9 +71,9 @@ in the I<AWS CloudFormation User Guide>.
 
 =head2 AutoDeployment => L<Paws::CloudFormation::AutoDeployment>
 
-[C<Service-managed> permissions] Describes whether StackSets
-automatically deploys to AWS Organizations accounts that are added to a
-target organization or organizational unit (OU).
+[Service-managed permissions] Describes whether StackSets automatically
+deploys to AWS Organizations accounts that are added to a target
+organization or organizational unit (OU).
 
 
 =head2 Capabilities => ArrayRef[Str|Undef]
@@ -103,9 +103,9 @@ and groups can include in their stack sets.
 
 =head2 OrganizationalUnitIds => ArrayRef[Str|Undef]
 
-[C<Service-managed> permissions] The organization root ID or
-organizational unit (OUs) IDs to which stacks in your stack set have
-been deployed.
+[Service-managed permissions] The organization root ID or
+organizational unit (OU) IDs that you specified for DeploymentTargets
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html).
 
 
 =head2 Parameters => ArrayRef[L<Paws::CloudFormation::Parameter>]

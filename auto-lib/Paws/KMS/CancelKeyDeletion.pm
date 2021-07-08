@@ -45,10 +45,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-The unique identifier for the customer master key (CMK) for which to
-cancel deletion.
+Identifies the customer master key (CMK) whose deletion is being
+canceled.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

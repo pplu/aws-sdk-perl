@@ -34,40 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantC
 
 =head1 DESCRIPTION
 
-Use this structure to allow cryptographic operations in the grant only
-when the operation request includes the specified encryption context
+Use this structure to allow cryptographic operations
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+in the grant only when the operation request includes the specified
+encryption context
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context).
 
-AWS KMS applies the grant constraints only when the grant allows a
-cryptographic operation that accepts an encryption context as input,
-such as the following.
-
-=over
-
-=item *
-
-Encrypt
-
-=item *
-
-Decrypt
-
-=item *
-
-GenerateDataKey
-
-=item *
-
-GenerateDataKeyWithoutPlaintext
-
-=item *
-
-ReEncrypt
-
-=back
-
-AWS KMS does not apply the grant constraints to other operations, such
-as DescribeKey or ScheduleKeyDeletion.
+AWS KMS applies the grant constraints only to cryptographic operations
+that support an encryption context, that is, all cryptographic
+operations with a symmetric CMK
+(https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html#symmetric-cmks).
+Grant constraints are not applied to operations that do not support an
+encryption context, such as cryptographic operations with asymmetric
+CMKs and management operations, such as DescribeKey or RetireGrant.
 
 In a cryptographic operation, the encryption context in the decryption
 operation must be an exact, case-sensitive match for the keys and
@@ -91,18 +70,22 @@ in the I< I<AWS Key Management Service Developer Guide> >.
 =head2 EncryptionContextEquals => L<Paws::KMS::EncryptionContextType>
 
 A list of key-value pairs that must match the encryption context in the
-cryptographic operation request. The grant allows the operation only
-when the encryption context in the request is the same as the
-encryption context specified in this constraint.
+cryptographic operation
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+request. The grant allows the operation only when the encryption
+context in the request is the same as the encryption context specified
+in this constraint.
 
 
 =head2 EncryptionContextSubset => L<Paws::KMS::EncryptionContextType>
 
 A list of key-value pairs that must be included in the encryption
-context of the cryptographic operation request. The grant allows the
-cryptographic operation only when the encryption context in the request
-includes the key-value pairs specified in this constraint, although it
-can include additional key-value pairs.
+context of the cryptographic operation
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+request. The grant allows the cryptographic operation only when the
+encryption context in the request includes the key-value pairs
+specified in this constraint, although it can include additional
+key-value pairs.
 
 
 

@@ -59,7 +59,7 @@ The capabilities of the connector.
 
 =head2 ConnectorId => Str
 
-The identifier of the connector.
+The ID of the connector.
 
 
 =head2 IpAddress => Str
@@ -84,7 +84,7 @@ The connector version.
 
 =head2 VmManagerId => Str
 
-The identifier of the VM manager.
+The ID of the VM manager.
 
 
 =head2 VmManagerName => Str

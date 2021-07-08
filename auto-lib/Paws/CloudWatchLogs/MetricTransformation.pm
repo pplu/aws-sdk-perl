@@ -2,9 +2,11 @@
 package Paws::CloudWatchLogs::MetricTransformation;
   use Moose;
   has DefaultValue => (is => 'ro', isa => 'Num', request_name => 'defaultValue', traits => ['NameInRequest']);
+  has Dimensions => (is => 'ro', isa => 'Paws::CloudWatchLogs::Dimensions', request_name => 'dimensions', traits => ['NameInRequest']);
   has MetricName => (is => 'ro', isa => 'Str', request_name => 'metricName', traits => ['NameInRequest'], required => 1);
   has MetricNamespace => (is => 'ro', isa => 'Str', request_name => 'metricNamespace', traits => ['NameInRequest'], required => 1);
   has MetricValue => (is => 'ro', isa => 'Str', request_name => 'metricValue', traits => ['NameInRequest'], required => 1);
+  has Unit => (is => 'ro', isa => 'Str', request_name => 'unit', traits => ['NameInRequest']);
 
 1;
 
@@ -25,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::CloudWatchLogs::MetricTransformation object:
 
-  $service_obj->Method(Att1 => { DefaultValue => $value, ..., MetricValue => $value  });
+  $service_obj->Method(Att1 => { DefaultValue => $value, ..., Unit => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,6 +50,27 @@ CloudWatch metric.
 event. This value can be null.
 
 
+=head2 Dimensions => L<Paws::CloudWatchLogs::Dimensions>
+
+The fields to use as dimensions for the metric. One metric filter can
+include as many as three dimensions.
+
+Metrics extracted from log events are charged as custom metrics. To
+prevent unexpected high charges, do not specify high-cardinality fields
+such as C<IPAddress> or C<requestID> as dimensions. Each different
+value found for a dimension is treated as a separate metric and accrues
+charges as a separate custom metric.
+
+To help prevent accidental high charges, Amazon disables a metric
+filter if it generates 1000 different name/value pairs for the
+dimensions that you have specified within a certain amount of time.
+
+You can also set up a billing alarm to alert you if your charges are
+higher than expected. For more information, see Creating a Billing
+Alarm to Monitor Your Estimated AWS Charges
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/monitor_estimated_charges_with_cloudwatch.html).
+
+
 =head2 B<REQUIRED> MetricName => Str
 
 The name of the CloudWatch metric.
@@ -55,13 +78,22 @@ The name of the CloudWatch metric.
 
 =head2 B<REQUIRED> MetricNamespace => Str
 
-The namespace of the CloudWatch metric.
+A custom namespace to contain your metric in CloudWatch. Use namespaces
+to group together metrics that are similar. For more information, see
+Namespaces
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Namespace).
 
 
 =head2 B<REQUIRED> MetricValue => Str
 
 The value to publish to the CloudWatch metric when a filter pattern
 matches a log event.
+
+
+=head2 Unit => Str
+
+The unit to assign to the metric. If you omit this, the unit is set as
+C<None>.
 
 
 

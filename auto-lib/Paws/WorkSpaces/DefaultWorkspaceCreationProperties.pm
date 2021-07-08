@@ -47,8 +47,10 @@ more information, see Update Directory Details for Your WorkSpaces
 
 =head2 CustomSecurityGroupId => Str
 
-The identifier of any security groups to apply to WorkSpaces when they
-are created.
+The identifier of the default security group to apply to WorkSpaces
+when they are created. For more information, see Security Groups for
+Your WorkSpaces
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces-security-groups.html).
 
 
 =head2 DefaultOu => Str

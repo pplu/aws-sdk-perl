@@ -43,18 +43,18 @@ key-value pair.
 =head2 Key => Str
 
 The required name of the tag. The string value can be from 1 to 128
-Unicode characters in length and can't be prefixed with "aws:" or
-"rds:". The string can contain only the set of Unicode letters, digits,
-white space, '_', '.', '/', '=', '+', '-' (Java regex:
+Unicode characters in length and can't be prefixed with "C<aws:>" or
+"C<rds:>". The string can contain only the set of Unicode letters,
+digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
 "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
 
 =head2 Value => Str
 
 The optional value of the tag. The string value can be from 1 to 256
-Unicode characters in length and can't be prefixed with "aws:" or
-"rds:". The string can contain only the set of Unicode letters, digits,
-white space, '_', '.', '/', '=', '+', '-' (Java regex:
+Unicode characters in length and can't be prefixed with "C<aws:>" or
+"C<rds:>". The string can contain only the set of Unicode letters,
+digits, white space, '_', '.', '/', '=', '+', '-' (Java regex:
 "^([\\p{L}\\p{Z}\\p{N}_.:/=+\\-]*)$").
 
 

@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $UpdateScriptOutput = $gamelift->UpdateScript(
-      ScriptId        => 'MyScriptId',
+      ScriptId        => 'MyScriptIdOrArn',
       Name            => 'MyNonZeroAndMaxString',    # OPTIONAL
       StorageLocation => {
         Bucket        => 'MyNonEmptyString',         # min: 1; OPTIONAL
@@ -64,8 +64,8 @@ not need to be unique.
 
 =head2 B<REQUIRED> ScriptId => Str
 
-A unique identifier for a Realtime script to update. You can use either
-the script ID or ARN value.
+A unique identifier for the Realtime script to update. You can use
+either the script ID or ARN value.
 
 
 
@@ -84,8 +84,8 @@ C<ObjectVersion> parameter to specify an earlier version.
 
 =head2 Version => Str
 
-The version that is associated with a build or script. Version strings
-do not need to be unique.
+Version information that is associated with a build or script. Version
+strings do not need to be unique.
 
 
 

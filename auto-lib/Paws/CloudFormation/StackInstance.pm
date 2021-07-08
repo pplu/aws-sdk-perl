@@ -8,6 +8,7 @@ package Paws::CloudFormation::StackInstance;
   has ParameterOverrides => (is => 'ro', isa => 'ArrayRef[Paws::CloudFormation::Parameter]');
   has Region => (is => 'ro', isa => 'Str');
   has StackId => (is => 'ro', isa => 'Str');
+  has StackInstanceStatus => (is => 'ro', isa => 'Paws::CloudFormation::StackInstanceComprehensiveStatus');
   has StackSetId => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StatusReason => (is => 'ro', isa => 'Str');
@@ -42,9 +43,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-An AWS CloudFormation stack, in a specific account and region, that's
+An AWS CloudFormation stack, in a specific account and Region, that's
 part of a stack set operation. A stack instance is a reference to an
-attempted or actual stack in a given account within a given region. A
+attempted or actual stack in a given account within a given Region. A
 stack instance can exist without a stackE<mdash>for example, if the
 stack couldn't be created for some reason. A stack instance is
 associated with only one stack set. Each stack instance contains the ID
@@ -102,8 +103,9 @@ stack instance on which drift detection has not yet been performed.
 
 =head2 OrganizationalUnitId => Str
 
-[C<Service-managed> permissions] The organization root ID or
-organizational unit (OU) ID that the stack instance is associated with.
+[Service-managed permissions] The organization root ID or
+organizational unit (OU) IDs that you specified for DeploymentTargets
+(https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DeploymentTargets.html).
 
 
 =head2 ParameterOverrides => ArrayRef[L<Paws::CloudFormation::Parameter>]
@@ -114,12 +116,17 @@ overridden in this stack instance.
 
 =head2 Region => Str
 
-The name of the AWS region that the stack instance is associated with.
+The name of the AWS Region that the stack instance is associated with.
 
 
 =head2 StackId => Str
 
 The ID of the stack instance.
+
+
+=head2 StackInstanceStatus => L<Paws::CloudFormation::StackInstanceComprehensiveStatus>
+
+The detailed status of the stack instance.
 
 
 =head2 StackSetId => Str

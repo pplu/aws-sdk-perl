@@ -33,8 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateWorkGroupOutput = $athena->UpdateWorkGroup(
       WorkGroup            => 'MyWorkGroupName',
       ConfigurationUpdates => {
-        BytesScannedCutoffPerQuery       => 1,    # min: 10000000; OPTIONAL
-        EnforceWorkGroupConfiguration    => 1,    # OPTIONAL
+        BytesScannedCutoffPerQuery    => 1,    # min: 10000000; OPTIONAL
+        EnforceWorkGroupConfiguration => 1,    # OPTIONAL
+        EngineVersion                 => {
+          EffectiveEngineVersion => 'MyNameString', # min: 1, max: 128; OPTIONAL
+          SelectedEngineVersion  => 'MyNameString', # min: 1, max: 128; OPTIONAL
+        },    # OPTIONAL
         PublishCloudWatchMetricsEnabled  => 1,    # OPTIONAL
         RemoveBytesScannedCutoffPerQuery => 1,    # OPTIONAL
         RequesterPaysEnabled             => 1,    # OPTIONAL

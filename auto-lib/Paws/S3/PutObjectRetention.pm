@@ -4,6 +4,7 @@ package Paws::S3::PutObjectRetention;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has BypassGovernanceRetention => (is => 'ro', isa => 'Bool', header_name => 'x-amz-bypass-governance-retention', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has Retention => (is => 'ro', isa => 'Paws::S3::ObjectLockRetention', traits => ['ParamInBody']);
@@ -43,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Key                       => 'MyObjectKey',
       BypassGovernanceRetention => 1,                 # OPTIONAL
       ContentMD5                => 'MyContentMD5',    # OPTIONAL
+      ExpectedBucketOwner       => 'MyAccountId',     # OPTIONAL
       RequestPayer              => 'requester',       # OPTIONAL
       Retention                 => {
         Mode => 'GOVERNANCE',    # values: GOVERNANCE, COMPLIANCE; OPTIONAL
@@ -67,20 +69,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 The bucket name that contains the object you want to apply this Object
 Retention configuration to.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
 
 
 
 =head2 BypassGovernanceRetention => Bool
 
-Indicates whether this operation should bypass Governance-mode
+Indicates whether this action should bypass Governance-mode
 restrictions.
 
 
@@ -88,6 +90,17 @@ restrictions.
 =head2 ContentMD5 => Str
 
 The MD5 hash for the request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

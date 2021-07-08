@@ -48,11 +48,15 @@ The value of the yum repo configuration. For example:
 
 C<[main]>
 
-C<cachedir=/var/cache/yum/$basesearch$releasever>
+C<name=MyCustomRepository>
 
-C<keepcache=0>
+C<baseurl=https://my-custom-repository>
 
-C<debuglevel=2>
+C<enabled=1>
+
+For information about other options available for your yum repository
+configuration, see dnf.conf(5)
+(https://man7.org/linux/man-pages/man5/dnf.conf.5.html).
 
 
 =head2 B<REQUIRED> Name => Str

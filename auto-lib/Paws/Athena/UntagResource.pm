@@ -44,15 +44,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ath
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-Removes one or more tags from the workgroup resource for the specified
-ARN.
+Specifies the ARN of the resource from which tags are to be removed.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-Removes the tags associated with one or more tag keys from the
-workgroup resource.
+A comma-separated list of one or more tag keys whose tags are to be
+removed from the specified resource.
 
 
 

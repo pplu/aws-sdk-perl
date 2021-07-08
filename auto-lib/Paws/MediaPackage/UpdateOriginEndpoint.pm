@@ -49,19 +49,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       CmafPackage => {
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId     => 'My__string',
-            RoleArn        => 'My__string',
-            SystemIds      => [ 'My__string', ... ],
-            Url            => 'My__string',
-            CertificateArn => 'My__string',
+            ResourceId                      => 'My__string',
+            RoleArn                         => 'My__string',
+            SystemIds                       => [ 'My__string', ... ],
+            Url                             => 'My__string',
+            CertificateArn                  => 'My__string',
+            EncryptionContractConfiguration => {
+              PresetSpeke20Audio => 'PRESET-AUDIO-1',   # values: PRESET-AUDIO-1
+              PresetSpeke20Video => 'PRESET-VIDEO-1',   # values: PRESET-VIDEO-1
+
+            },    # OPTIONAL
           },
-          KeyRotationIntervalSeconds => 1,    # OPTIONAL
+          ConstantInitializationVector => 'My__string',
+          KeyRotationIntervalSeconds   => 1,              # OPTIONAL
         },    # OPTIONAL
         HlsManifests => [
           {
             Id        => 'My__string',
-            AdMarkers =>
-              'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+            AdMarkers => 'NONE'
+            ,  # values: NONE, SCTE35_ENHANCED, PASSTHROUGH, DATERANGE; OPTIONAL
             AdTriggers => [
               'SPLICE_INSERT',
               ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
@@ -94,11 +100,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'NONE',    # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId     => 'My__string',
-            RoleArn        => 'My__string',
-            SystemIds      => [ 'My__string', ... ],
-            Url            => 'My__string',
-            CertificateArn => 'My__string',
+            ResourceId                      => 'My__string',
+            RoleArn                         => 'My__string',
+            SystemIds                       => [ 'My__string', ... ],
+            Url                             => 'My__string',
+            CertificateArn                  => 'My__string',
+            EncryptionContractConfiguration => {
+              PresetSpeke20Audio => 'PRESET-AUDIO-1',   # values: PRESET-AUDIO-1
+              PresetSpeke20Video => 'PRESET-VIDEO-1',   # values: PRESET-VIDEO-1
+
+            },    # OPTIONAL
           },
           KeyRotationIntervalSeconds => 1,    # OPTIONAL
         },    # OPTIONAL
@@ -120,11 +131,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           , # values: ORIGINAL, VIDEO_BITRATE_ASCENDING, VIDEO_BITRATE_DESCENDING; OPTIONAL
         },    # OPTIONAL
         SuggestedPresentationDelaySeconds => 1,    # OPTIONAL
+        UtcTiming    => 'NONE',    # values: NONE, HTTP-HEAD, HTTP-ISO; OPTIONAL
+        UtcTimingUri => 'My__string',
       },    # OPTIONAL
       Description => 'My__string',    # OPTIONAL
       HlsPackage  => {
-        AdMarkers =>
-          'NONE',    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH; OPTIONAL
+        AdMarkers => 'NONE'
+        ,    # values: NONE, SCTE35_ENHANCED, PASSTHROUGH, DATERANGE; OPTIONAL
         AdTriggers => [
           'SPLICE_INSERT',
           ... # values: SPLICE_INSERT, BREAK, PROVIDER_ADVERTISEMENT, DISTRIBUTOR_ADVERTISEMENT, PROVIDER_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_PLACEMENT_OPPORTUNITY, PROVIDER_OVERLAY_PLACEMENT_OPPORTUNITY, DISTRIBUTOR_OVERLAY_PLACEMENT_OPPORTUNITY
@@ -133,11 +146,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'NONE',    # values: NONE, RESTRICTED, UNRESTRICTED, BOTH; OPTIONAL
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId     => 'My__string',
-            RoleArn        => 'My__string',
-            SystemIds      => [ 'My__string', ... ],
-            Url            => 'My__string',
-            CertificateArn => 'My__string',
+            ResourceId                      => 'My__string',
+            RoleArn                         => 'My__string',
+            SystemIds                       => [ 'My__string', ... ],
+            Url                             => 'My__string',
+            CertificateArn                  => 'My__string',
+            EncryptionContractConfiguration => {
+              PresetSpeke20Audio => 'PRESET-AUDIO-1',   # values: PRESET-AUDIO-1
+              PresetSpeke20Video => 'PRESET-VIDEO-1',   # values: PRESET-VIDEO-1
+
+            },    # OPTIONAL
           },
           ConstantInitializationVector => 'My__string',
           EncryptionMethod => 'AES_128', # values: AES_128, SAMPLE_AES; OPTIONAL
@@ -161,11 +179,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MssPackage   => {
         Encryption => {
           SpekeKeyProvider => {
-            ResourceId     => 'My__string',
-            RoleArn        => 'My__string',
-            SystemIds      => [ 'My__string', ... ],
-            Url            => 'My__string',
-            CertificateArn => 'My__string',
+            ResourceId                      => 'My__string',
+            RoleArn                         => 'My__string',
+            SystemIds                       => [ 'My__string', ... ],
+            Url                             => 'My__string',
+            CertificateArn                  => 'My__string',
+            EncryptionContractConfiguration => {
+              PresetSpeke20Audio => 'PRESET-AUDIO-1',   # values: PRESET-AUDIO-1
+              PresetSpeke20Video => 'PRESET-VIDEO-1',   # values: PRESET-VIDEO-1
+
+            },    # OPTIONAL
           },
 
         },    # OPTIONAL

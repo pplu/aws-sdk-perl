@@ -2,6 +2,7 @@
 package Paws::Kendra::FaqSummary;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str');
+  has FileFormat => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
@@ -46,6 +47,11 @@ contained in an index.
 =head2 CreatedAt => Str
 
 The UNIX datetime that the FAQ was added to the index.
+
+
+=head2 FileFormat => Str
+
+The file type used to create the FAQ.
 
 
 =head2 Id => Str

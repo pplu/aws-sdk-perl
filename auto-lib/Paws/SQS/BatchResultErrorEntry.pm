@@ -59,7 +59,8 @@ A message explaining why the action failed on this entry.
 
 =head2 B<REQUIRED> SenderFault => Bool
 
-Specifies whether the error happened due to the producer.
+Specifies whether the error happened due to the caller of the batch API
+action.
 
 
 

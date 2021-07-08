@@ -5,6 +5,7 @@ package Paws::ACMPCA::CrlConfiguration;
   has Enabled => (is => 'ro', isa => 'Bool', required => 1);
   has ExpirationInDays => (is => 'ro', isa => 'Int');
   has S3BucketName => (is => 'ro', isa => 'Str');
+  has S3ObjectAcl => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ACMPCA::CrlConfiguration object:
 
-  $service_obj->Method(Att1 => { CustomCname => $value, ..., S3BucketName => $value  });
+  $service_obj->Method(Att1 => { CustomCname => $value, ..., S3ObjectAcl => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,6 +47,10 @@ for the B<CustomCname> parameter. Your private CA copies the CNAME or
 the S3 bucket name to the B<CRL Distribution Points> extension of each
 certificate it issues. Your S3 bucket policy must give write permission
 to ACM Private CA.
+
+ACM Private CA assets that are stored in Amazon S3 can be protected
+with encryption. For more information, see Encrypting Your CRLs
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption).
 
 Your private CA uses the value in the B<ExpirationInDays> parameter to
 calculate the B<nextUpdate> field in the CRL. The CRL is refreshed at
@@ -158,13 +163,16 @@ this value if you don't want the name of your S3 bucket to be public.
 Boolean value that specifies whether certificate revocation lists
 (CRLs) are enabled. You can use this value to enable certificate
 revocation for a new CA when you call the CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
 action or for an existing CA when you call the
-UpdateCertificateAuthority action.
+UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+action.
 
 
 =head2 ExpirationInDays => Int
 
-Number of days until a certificate expires.
+Validity period of the CRL in days.
 
 
 =head2 S3BucketName => Str
@@ -173,8 +181,33 @@ Name of the S3 bucket that contains the CRL. If you do not provide a
 value for the B<CustomCname> argument, the name of your S3 bucket is
 placed into the B<CRL Distribution Points> extension of the issued
 certificate. You can change the name of your bucket by calling the
-UpdateCertificateAuthority action. You must specify a bucket policy
+UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+action. You must specify a bucket policy
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#s3-policies)
 that allows ACM Private CA to write the CRL to your bucket.
+
+
+=head2 S3ObjectAcl => Str
+
+Determines whether the CRL will be publicly readable or privately held
+in the CRL Amazon S3 bucket. If you choose PUBLIC_READ, the CRL will be
+accessible over the public internet. If you choose
+BUCKET_OWNER_FULL_CONTROL, only the owner of the CRL S3 bucket can
+access the CRL, and your PKI clients may need an alternative method of
+access.
+
+If no value is specified, the default is C<PUBLIC_READ>.
+
+I<Note:> This default can cause CA creation to fail in some
+circumstances. If you have have enabled the Block Public Access (BPA)
+feature in your S3 account, then you must specify the value of this
+parameter as C<BUCKET_OWNER_FULL_CONTROL>, and not doing so results in
+an error. If you have disabled BPA in S3, then you can specify either
+C<BUCKET_OWNER_FULL_CONTROL> or C<PUBLIC_READ> as the value.
+
+For more information, see Blocking public access to the S3 bucket
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#s3-bpa).
 
 
 

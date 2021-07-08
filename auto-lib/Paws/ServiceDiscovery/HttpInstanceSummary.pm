@@ -37,9 +37,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceDisc
 
 =head1 DESCRIPTION
 
-In a response to a DiscoverInstance request, C<HttpInstanceSummary>
-contains information about one instance that matches the values that
-you specified in the request.
+In a response to a DiscoverInstances
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_DiscoverInstances.html)
+request, C<HttpInstanceSummary> contains information about one instance
+that matches the values that you specified in the request.
 
 =head1 ATTRIBUTES
 
@@ -64,8 +65,10 @@ request.
 
 =head2 NamespaceName => Str
 
-The name of the namespace that you specified when you registered the
-instance.
+C<C< C< >>>
+
+The C<HttpName> name of the namespace. It's found in the
+C<HttpProperties> member of the C<Properties> member of the namespace.
 
 
 =head2 ServiceName => Str

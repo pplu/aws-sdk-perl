@@ -42,14 +42,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 
 Contains information that must be exchanged to securely establish a
 relationship between two accounts (an I<originator> and a
-I<recipient>). For example, assume that a master account (the
-originator) invites another account (the recipient) to join its
-organization. In that case, the two accounts exchange information as a
-series of handshake requests and responses.
+I<recipient>). For example, when a management account (the originator)
+invites another account (the recipient) to join its organization, the
+two accounts exchange information as a series of handshake requests and
+responses.
 
-B<Note:> Handshakes that are CANCELED, ACCEPTED, or DECLINED show up in
-lists for only 30 days after entering that state. After that, they are
-deleted.
+B<Note:> Handshakes that are C<CANCELED>, C<ACCEPTED>, or C<DECLINED>
+show up in lists for only 30 days after entering that state After that
+they are deleted.
 
 =head1 ATTRIBUTES
 
@@ -64,22 +64,22 @@ accepts the handshake. The following handshake types are supported:
 =item *
 
 B<INVITE>: This type of handshake represents a request to join an
-organization. It is always sent from the master account to only
+organization. It is always sent from the management account to only
 non-member accounts.
 
 =item *
 
 B<ENABLE_ALL_FEATURES>: This type of handshake represents a request to
 enable all features in an organization. It is always sent from the
-master account to only I<invited> member accounts. Created accounts do
-not receive this because those accounts were created by the
-organization's master account and approval is inferred.
+management account to only I<invited> member accounts. Created accounts
+do not receive this because those accounts were created by the
+organization's management account and approval is inferred.
 
 =item *
 
 B<APPROVE_ALL_FEATURES>: This type of handshake is sent from the
 Organizations service when all member accounts have approved the
-C<ENABLE_ALL_FEATURES> invitation. It is sent only to the master
+C<ENABLE_ALL_FEATURES> invitation. It is sent only to the management
 account and signals the master that it can finalize the process to
 enable all features.
 
@@ -93,8 +93,8 @@ The Amazon Resource Name (ARN) of a handshake.
 
 For more information about ARNs in Organizations, see ARN Formats
 Supported by Organizations
-(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_permissions.html#orgs-permissions-arns)
-in the I<AWS Organizations User Guide>.
+(https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsorganizations.html#awsorganizations-resources-for-iam-policies)
+in the I<AWS Service Authorization Reference>.
 
 
 =head2 ExpirationTimestamp => Str
@@ -110,7 +110,7 @@ The unique identifier (ID) of a handshake. The originating account
 creates the ID when it initiates the handshake.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for handshake ID
-string requires "h-" followed by from 8 to 32 lower-case letters or
+string requires "h-" followed by from 8 to 32 lowercase letters or
 digits.
 
 

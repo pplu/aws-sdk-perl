@@ -42,9 +42,47 @@ job.
 
 =head2 B<REQUIRED> ContentType => Str
 
-The multipurpose internet mail extension (MIME) type of the input
-files. Valid values are C<text/plain> for plaintext files and
-C<text/html> for HTML files.
+Describes the format of the data that you submit to Amazon Translate as
+input. You can specify one of the following multipurpose internet mail
+extension (MIME) types:
+
+=over
+
+=item *
+
+C<text/html>: The input data consists of one or more HTML files. Amazon
+Translate translates only the text that resides in the C<html> element
+in each file.
+
+=item *
+
+C<text/plain>: The input data consists of one or more unformatted text
+files. Amazon Translate translates every character in this type of
+input.
+
+=item *
+
+C<application/vnd.openxmlformats-officedocument.wordprocessingml.document>:
+The input data consists of one or more Word documents (.docx).
+
+=item *
+
+C<application/vnd.openxmlformats-officedocument.presentationml.presentation>:
+The input data consists of one or more PowerPoint Presentation files
+(.pptx).
+
+=item *
+
+C<application/vnd.openxmlformats-officedocument.spreadsheetml.sheet>:
+The input data consists of one or more Excel Workbook files (.xlsx).
+
+=back
+
+If you structure your input data as HTML, ensure that you set this
+parameter to C<text/html>. By doing so, you cut costs by limiting the
+translation to the contents of the C<html> element in each file.
+Otherwise, if you set this parameter to C<text/plain>, your costs will
+cover the translation of every character.
 
 
 =head2 B<REQUIRED> S3Uri => Str

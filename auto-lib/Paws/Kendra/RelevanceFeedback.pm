@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Rel
 =head1 DESCRIPTION
 
 Provides feedback on how relevant a document is to a search. Your
-application uses the SubmitFeedback operation to provide relevance
+application uses the C<SubmitFeedback> operation to provide relevance
 information.
 
 =head1 ATTRIBUTES

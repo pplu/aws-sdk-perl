@@ -37,7 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Report       => {
         Enabled => 1,
         Format => 'REPORT_CSV_20191124', # values: REPORT_CSV_20191124; OPTIONAL
-        Path   => 'MyArchivePath',       # min: 3, max: 900; OPTIONAL
+        Path   => 'MyArchivePath',       # min: 3, max: 4357; OPTIONAL
         Scope  => 'FAILED_FILES_ONLY',   # values: FAILED_FILES_ONLY; OPTIONAL
       },
       Type               => 'EXPORT_TO_REPOSITORY',
@@ -47,8 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],    # OPTIONAL
@@ -82,7 +83,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 (Optional) The path or paths on the Amazon FSx file system to use when
 the data repository task is processed. The default path is the file
-system root directory.
+system root directory. The paths you provide need to be relative to the
+mount point of the file system. If the mount point is C</mnt/fsx> and
+C</mnt/fsx/path1> is a directory or file on the file system you want to
+export, then the path to provide is C<path1>. If a path that you
+provide isn't valid, the task fails.
 
 
 
@@ -91,7 +96,9 @@ system root directory.
 Defines whether or not Amazon FSx provides a CompletionReport once the
 task has completed. A CompletionReport provides a detailed report on
 the files that Amazon FSx processed that meet the criteria specified by
-the C<Scope> parameter.
+the C<Scope> parameter. For more information, see Working with Task
+Completion Reports
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/task-completion-report.html).
 
 
 

@@ -69,6 +69,11 @@ package Paws::Batch;
     my $call_object = $self->new_with_coercions('Paws::Batch::ListJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Batch::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterJobDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Batch::RegisterJobDefinition', @_);
@@ -79,9 +84,19 @@ package Paws::Batch;
     my $call_object = $self->new_with_coercions('Paws::Batch::SubmitJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Batch::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TerminateJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Batch::TerminateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Batch::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateComputeEnvironment {
@@ -189,7 +204,7 @@ package Paws::Batch;
   }
 
 
-  sub operations { qw/CancelJob CreateComputeEnvironment CreateJobQueue DeleteComputeEnvironment DeleteJobQueue DeregisterJobDefinition DescribeComputeEnvironments DescribeJobDefinitions DescribeJobQueues DescribeJobs ListJobs RegisterJobDefinition SubmitJob TerminateJob UpdateComputeEnvironment UpdateJobQueue / }
+  sub operations { qw/CancelJob CreateComputeEnvironment CreateJobQueue DeleteComputeEnvironment DeleteJobQueue DeregisterJobDefinition DescribeComputeEnvironments DescribeJobDefinitions DescribeJobQueues DescribeJobs ListJobs ListTagsForResource RegisterJobDefinition SubmitJob TagResource TerminateJob UntagResource UpdateComputeEnvironment UpdateJobQueue / }
 
 1;
 
@@ -217,25 +232,24 @@ Paws::Batch - Perl Interface to AWS AWS Batch
 
 =head1 DESCRIPTION
 
-AWS Batch enables you to run batch computing workloads on the AWS
-Cloud. Batch computing is a common way for developers, scientists, and
-engineers to access large amounts of compute resources, and AWS Batch
-removes the undifferentiated heavy lifting of configuring and managing
-the required infrastructure. AWS Batch will be familiar to users of
-traditional batch computing software. This service can efficiently
-provision resources in response to jobs submitted in order to eliminate
-capacity constraints, reduce compute costs, and deliver results
-quickly.
+Using AWS Batch, you can run batch computing workloads on the AWS
+Cloud. Batch computing is a common means for developers, scientists,
+and engineers to access large amounts of compute resources. AWS Batch
+uses the advantages of this computing workload to remove the
+undifferentiated heavy lifting of configuring and managing required
+infrastructure. At the same time, it also adopts a familiar batch
+computing software approach. Given these advantages, AWS Batch can help
+you to efficiently provision resources in response to jobs submitted,
+thus effectively helping you to eliminate capacity constraints, reduce
+compute costs, and deliver your results more quickly.
 
-As a fully managed service, AWS Batch enables developers, scientists,
-and engineers to run batch computing workloads of any scale. AWS Batch
-automatically provisions compute resources and optimizes the workload
-distribution based on the quantity and scale of the workloads. With AWS
-Batch, there is no need to install or manage batch computing software,
-which allows you to focus on analyzing results and solving problems.
-AWS Batch reduces operational complexities, saves time, and reduces
-costs, which makes it easy for developers, scientists, and engineers to
-run their batch jobs in the AWS Cloud.
+As a fully managed service, AWS Batch can run batch computing workloads
+of any scale. AWS Batch automatically provisions compute resources and
+optimizes workload distribution based on the quantity and scale of your
+specific workloads. With AWS Batch, there's no need to install or
+manage batch computing software. This means that you can focus your
+time and energy on analyzing results and solving your specific
+problems.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10>
 
@@ -258,9 +272,9 @@ Each argument is described in detail in: L<Paws::Batch::CancelJob>
 Returns: a L<Paws::Batch::CancelJobResponse> instance
 
 Cancels a job in an AWS Batch job queue. Jobs that are in the
-C<SUBMITTED>, C<PENDING>, or C<RUNNABLE> state are cancelled. Jobs that
-have progressed to C<STARTING> or C<RUNNING> are not cancelled (but the
-API operation still succeeds, even if no job is cancelled); these jobs
+C<SUBMITTED>, C<PENDING>, or C<RUNNABLE> state are canceled. Jobs that
+have progressed to C<STARTING> or C<RUNNING> aren't canceled, but the
+API operation still succeeds, even if no job is canceled. These jobs
 must be terminated with the TerminateJob operation.
 
 
@@ -270,13 +284,15 @@ must be terminated with the TerminateJob operation.
 
 =item ComputeEnvironmentName => Str
 
-=item ServiceRole => Str
-
 =item Type => Str
 
 =item [ComputeResources => L<Paws::Batch::ComputeResource>]
 
+=item [ServiceRole => Str]
+
 =item [State => Str]
+
+=item [Tags => L<Paws::Batch::TagrisTagsMap>]
 
 
 =back
@@ -286,42 +302,47 @@ Each argument is described in detail in: L<Paws::Batch::CreateComputeEnvironment
 Returns: a L<Paws::Batch::CreateComputeEnvironmentResponse> instance
 
 Creates an AWS Batch compute environment. You can create C<MANAGED> or
-C<UNMANAGED> compute environments.
+C<UNMANAGED> compute environments. C<MANAGED> compute environments can
+use Amazon EC2 or AWS Fargate resources. C<UNMANAGED> compute
+environments can only use EC2 resources.
 
 In a managed compute environment, AWS Batch manages the capacity and
 instance types of the compute resources within the environment. This is
 based on the compute resource specification that you define or the
 launch template
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
-that you specify when you create the compute environment. You can
-choose to use Amazon EC2 On-Demand Instances or Spot Instances in your
-managed compute environment. You can optionally set a maximum price so
-that Spot Instances only launch when the Spot Instance price is below a
+that you specify when you create the compute environment. Either, you
+can choose to use EC2 On-Demand Instances and EC2 Spot Instances. Or,
+you can use Fargate and Fargate Spot capacity in your managed compute
+environment. You can optionally set a maximum price so that Spot
+Instances only launch when the Spot Instance price is less than a
 specified percentage of the On-Demand price.
 
-Multi-node parallel jobs are not supported on Spot Instances.
+Multi-node parallel jobs aren't supported on Spot Instances.
 
-In an unmanaged compute environment, you can manage your own compute
-resources. This provides more compute resource configuration options,
-such as using a custom AMI, but you must ensure that your AMI meets the
-Amazon ECS container instance AMI specification. For more information,
-see Container Instance AMIs
+In an unmanaged compute environment, you can manage your own EC2
+compute resources and have a lot of flexibility with how you configure
+your compute resources. For example, you can use custom AMIs. However,
+you must verify that each of your AMIs meet the Amazon ECS container
+instance AMI specification. For more information, see container
+instance AMIs
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
 in the I<Amazon Elastic Container Service Developer Guide>. After you
-have created your unmanaged compute environment, you can use the
+created your unmanaged compute environment, you can use the
 DescribeComputeEnvironments operation to find the Amazon ECS cluster
-that is associated with it. Then, manually launch your container
-instances into that Amazon ECS cluster. For more information, see
-Launching an Amazon ECS Container Instance
+that's associated with it. Then, launch your container instances into
+that Amazon ECS cluster. For more information, see Launching an Amazon
+ECS container instance
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
 
-AWS Batch does not upgrade the AMIs in a compute environment after it
-is created (for example, when a newer version of the Amazon
-ECS-optimized AMI is available). You are responsible for the management
-of the guest operating system (including updates and security patches)
-and any additional application software or utilities that you install
-on the compute resources. To use a new AMI for your AWS Batch jobs:
+AWS Batch doesn't upgrade the AMIs in a compute environment after the
+environment is created. For example, it doesn't update the AMIs when a
+newer version of the Amazon ECS optimized AMI is available. Therefore,
+you're responsible for managing the guest operating system (including
+its updates and security patches) and any additional application
+software or utilities that you install on the compute resources. To use
+a new AMI for your AWS Batch jobs, complete these steps:
 
 =over
 
@@ -335,11 +356,11 @@ Add the compute environment to an existing job queue.
 
 =item 3.
 
-Remove the old compute environment from your job queue.
+Remove the earlier compute environment from your job queue.
 
 =item 4.
 
-Delete the old compute environment.
+Delete the earlier compute environment.
 
 =back
 
@@ -357,6 +378,8 @@ Delete the old compute environment.
 
 =item [State => Str]
 
+=item [Tags => L<Paws::Batch::TagrisTagsMap>]
+
 
 =back
 
@@ -368,8 +391,8 @@ Creates an AWS Batch job queue. When you create a job queue, you
 associate one or more compute environments to the queue and assign an
 order of preference for the compute environments.
 
-You also set a priority to the job queue that determines the order in
-which the AWS Batch scheduler places jobs onto its associated compute
+You also set a priority to the job queue that determines the order that
+the AWS Batch scheduler places jobs onto its associated compute
 environments. For example, if a compute environment is associated with
 more than one job queue, the job queue with a higher priority is given
 preference for scheduling jobs to that compute environment.
@@ -393,7 +416,10 @@ Deletes an AWS Batch compute environment.
 Before you can delete a compute environment, you must set its state to
 C<DISABLED> with the UpdateComputeEnvironment API operation and
 disassociate it from any job queues with the UpdateJobQueue API
-operation.
+operation. Compute environments that use AWS Fargate resources must
+terminate all active jobs on that compute environment before deleting
+the compute environment. If this isn't done, the compute environment
+enters an invalid state.
 
 
 =head2 DeleteJobQueue
@@ -411,9 +437,10 @@ Returns: a L<Paws::Batch::DeleteJobQueueResponse> instance
 
 Deletes the specified job queue. You must first disable submissions for
 a queue with the UpdateJobQueue operation. All jobs in the queue are
-terminated when you delete a job queue.
+eventually terminated when you delete a job queue. The jobs are
+terminated at a rate of about 16 jobs each second.
 
-It is not necessary to disassociate compute environments from a queue
+It's not necessary to disassociate compute environments from a queue
 before submitting a C<DeleteJobQueue> request.
 
 
@@ -430,7 +457,7 @@ Each argument is described in detail in: L<Paws::Batch::DeregisterJobDefinition>
 
 Returns: a L<Paws::Batch::DeregisterJobDefinitionResponse> instance
 
-Deregisters an AWS Batch job definition. Job definitions will be
+Deregisters an AWS Batch job definition. Job definitions are
 permanently deleted after 180 days.
 
 
@@ -453,7 +480,7 @@ Returns: a L<Paws::Batch::DescribeComputeEnvironmentsResponse> instance
 
 Describes one or more of your compute environments.
 
-If you are using an unmanaged compute environment, you can use the
+If you're using an unmanaged compute environment, you can use the
 C<DescribeComputeEnvironment> operation to determine the
 C<ecsClusterArn> that you should launch your Amazon ECS container
 instances into.
@@ -545,27 +572,46 @@ Returns: a L<Paws::Batch::ListJobsResponse> instance
 
 Returns a list of AWS Batch jobs.
 
-You must specify only one of the following:
+You must specify only one of the following items:
 
 =over
 
 =item *
 
-a job queue ID to return a list of jobs in that job queue
+A job queue ID to return a list of jobs in that job queue
 
 =item *
 
-a multi-node parallel job ID to return a list of that job's nodes
+A multi-node parallel job ID to return a list of nodes for that job
 
 =item *
 
-an array job ID to return a list of that job's children
+An array job ID to return a list of the children for that job
 
 =back
 
 You can filter the results by job status with the C<jobStatus>
-parameter. If you do not specify a status, only C<RUNNING> jobs are
+parameter. If you don't specify a status, only C<RUNNING> jobs are
 returned.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Batch::ListTagsForResource>
+
+Returns: a L<Paws::Batch::ListTagsForResourceResponse> instance
+
+Lists the tags for an AWS Batch resource. AWS Batch resources that
+support tags are compute environments, jobs, job definitions, and job
+queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
+are not supported.
 
 
 =head2 RegisterJobDefinition
@@ -582,7 +628,13 @@ returned.
 
 =item [Parameters => L<Paws::Batch::ParametersMap>]
 
+=item [PlatformCapabilities => ArrayRef[Str|Undef]]
+
+=item [PropagateTags => Bool]
+
 =item [RetryStrategy => L<Paws::Batch::RetryStrategy>]
+
+=item [Tags => L<Paws::Batch::TagrisTagsMap>]
 
 =item [Timeout => L<Paws::Batch::JobTimeout>]
 
@@ -616,7 +668,11 @@ Registers an AWS Batch job definition.
 
 =item [Parameters => L<Paws::Batch::ParametersMap>]
 
+=item [PropagateTags => Bool]
+
 =item [RetryStrategy => L<Paws::Batch::RetryStrategy>]
+
+=item [Tags => L<Paws::Batch::TagrisTagsMap>]
 
 =item [Timeout => L<Paws::Batch::JobTimeout>]
 
@@ -627,8 +683,42 @@ Each argument is described in detail in: L<Paws::Batch::SubmitJob>
 
 Returns: a L<Paws::Batch::SubmitJobResponse> instance
 
-Submits an AWS Batch job from a job definition. Parameters specified
-during SubmitJob override parameters defined in the job definition.
+Submits an AWS Batch job from a job definition. Parameters that are
+specified during SubmitJob override parameters defined in the job
+definition. vCPU and memory requirements that are specified in the
+C<ResourceRequirements> objects in the job definition are the
+exception. They can't be overridden this way using the C<memory> and
+C<vcpus> parameters. Rather, you must specify updates to job definition
+parameters in a C<ResourceRequirements> object that's included in the
+C<containerOverrides> parameter.
+
+Jobs that run on Fargate resources can't be guaranteed to run for more
+than 14 days. This is because, after 14 days, Fargate resources might
+become unavailable and job might be terminated.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::Batch::TagrisTagsMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Batch::TagResource>
+
+Returns: a L<Paws::Batch::TagResourceResponse> instance
+
+Associates the specified tags to a resource with the specified
+C<resourceArn>. If existing tags on a resource aren't specified in the
+request parameters, they aren't changed. When a resource is deleted,
+the tags associated with that resource are deleted as well. AWS Batch
+resources that support tags are compute environments, jobs, job
+definitions, and job queues. ARNs for child jobs of array and
+multi-node parallel (MNP) jobs are not supported.
 
 
 =head2 TerminateJob
@@ -650,6 +740,24 @@ Terminates a job in a job queue. Jobs that are in the C<STARTING> or
 C<RUNNING> state are terminated, which causes them to transition to
 C<FAILED>. Jobs that have not progressed to the C<STARTING> state are
 cancelled.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Batch::UntagResource>
+
+Returns: a L<Paws::Batch::UntagResourceResponse> instance
+
+Deletes specified tags from an AWS Batch resource.
 
 
 =head2 UpdateComputeEnvironment

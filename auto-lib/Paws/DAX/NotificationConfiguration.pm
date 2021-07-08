@@ -48,7 +48,10 @@ The Amazon Resource Name (ARN) that identifies the topic.
 
 =head2 TopicStatus => Str
 
-The current state of the topic.
+The current state of the topic. A value of E<ldquo>activeE<rdquo> means
+that notifications will be sent to the topic. A value of
+E<ldquo>inactiveE<rdquo> means that notifications will not be sent to
+the topic.
 
 
 

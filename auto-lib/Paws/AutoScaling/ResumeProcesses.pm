@@ -51,8 +51,7 @@ The name of the Auto Scaling group.
 
 =head2 ScalingProcesses => ArrayRef[Str|Undef]
 
-One or more of the following processes. If you omit this parameter, all
-processes are specified.
+One or more of the following processes:
 
 =over
 
@@ -66,15 +65,7 @@ C<Terminate>
 
 =item *
 
-C<HealthCheck>
-
-=item *
-
-C<ReplaceUnhealthy>
-
-=item *
-
-C<AZRebalance>
+C<AddToLoadBalancer>
 
 =item *
 
@@ -82,14 +73,27 @@ C<AlarmNotification>
 
 =item *
 
-C<ScheduledActions>
+C<AZRebalance>
 
 =item *
 
-C<AddToLoadBalancer>
+C<HealthCheck>
+
+=item *
+
+C<InstanceRefresh>
+
+=item *
+
+C<ReplaceUnhealthy>
+
+=item *
+
+C<ScheduledActions>
 
 =back
 
+If you omit this parameter, all processes are specified.
 
 
 

@@ -17,8 +17,8 @@ Paws::GuardDuty::StartMonitoringMembersResponse
 
 =head2 B<REQUIRED> UnprocessedAccounts => ArrayRef[L<Paws::GuardDuty::UnprocessedAccount>]
 
-A list of objects containing the unprocessed account and a result
-string explaining why it was unprocessed.
+A list of objects that contain the unprocessed account and a result
+string that explains why it was unprocessed.
 
 
 =head2 _request_id => Str

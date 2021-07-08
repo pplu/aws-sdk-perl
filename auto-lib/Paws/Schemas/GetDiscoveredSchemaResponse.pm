@@ -17,7 +17,7 @@ Paws::Schemas::GetDiscoveredSchemaResponse
 
 =head2 Content => Str
 
-
+The source of the schema definition.
 
 
 =head2 _request_id => Str

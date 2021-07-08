@@ -47,8 +47,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sup
 =head2 B<REQUIRED> CheckId => Str
 
 The unique identifier for the Trusted Advisor check to refresh.
-B<Note:> Specifying the check ID of a check that is automatically
-refreshed causes an C<InvalidParameterValue> error.
+
+Specifying the check ID of a check that is automatically refreshed
+causes an C<InvalidParameterValue> error.
 
 
 

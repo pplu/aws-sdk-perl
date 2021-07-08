@@ -63,12 +63,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qld
 
 =head2 B<REQUIRED> ExclusiveEndTime => Str
 
-The exclusive end date and time for the range of journal contents that
-you want to export.
+The exclusive end date and time for the range of journal contents to
+export.
 
 The C<ExclusiveEndTime> must be in C<ISO 8601> date and time format and
 in Universal Coordinated Time (UTC). For example:
-C<2019-06-13T21:36:34Z>
+C<2019-06-13T21:36:34Z>.
 
 The C<ExclusiveEndTime> must be less than or equal to the current UTC
 date and time.
@@ -77,12 +77,12 @@ date and time.
 
 =head2 B<REQUIRED> InclusiveStartTime => Str
 
-The inclusive start date and time for the range of journal contents
-that you want to export.
+The inclusive start date and time for the range of journal contents to
+export.
 
 The C<InclusiveStartTime> must be in C<ISO 8601> date and time format
 and in Universal Coordinated Time (UTC). For example:
-C<2019-06-13T21:36:34Z>
+C<2019-06-13T21:36:34Z>.
 
 The C<InclusiveStartTime> must be before C<ExclusiveEndTime>.
 

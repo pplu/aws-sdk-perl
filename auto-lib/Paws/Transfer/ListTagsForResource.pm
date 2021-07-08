@@ -21,7 +21,7 @@ Paws::Transfer::ListTagsForResource - Arguments for method ListTagsForResource o
 =head1 DESCRIPTION
 
 This class represents the parameters used for calling the method ListTagsForResource on the
-L<AWS Transfer for SFTP|Paws::Transfer> service. Use the attributes of this class
+L<AWS Transfer Family|Paws::Transfer> service. Use the attributes of this class
 as arguments to method ListTagsForResource.
 
 You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource.
@@ -51,8 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 B<REQUIRED> Arn => Str
 
 Requests the tags associated with a particular Amazon Resource Name
-(ARN). An ARN is an identifier for a specific AWS resource, such as a
-server, user, or role.
+(ARN). An ARN is an identifier for a specific Amazon Web Services
+resource, such as a server, user, or role.
 
 
 

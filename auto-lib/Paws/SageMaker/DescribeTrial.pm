@@ -33,15 +33,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedBy        = $DescribeTrialResponse->CreatedBy;
-    my $CreationTime     = $DescribeTrialResponse->CreationTime;
-    my $DisplayName      = $DescribeTrialResponse->DisplayName;
-    my $ExperimentName   = $DescribeTrialResponse->ExperimentName;
-    my $LastModifiedBy   = $DescribeTrialResponse->LastModifiedBy;
-    my $LastModifiedTime = $DescribeTrialResponse->LastModifiedTime;
-    my $Source           = $DescribeTrialResponse->Source;
-    my $TrialArn         = $DescribeTrialResponse->TrialArn;
-    my $TrialName        = $DescribeTrialResponse->TrialName;
+    my $CreatedBy          = $DescribeTrialResponse->CreatedBy;
+    my $CreationTime       = $DescribeTrialResponse->CreationTime;
+    my $DisplayName        = $DescribeTrialResponse->DisplayName;
+    my $ExperimentName     = $DescribeTrialResponse->ExperimentName;
+    my $LastModifiedBy     = $DescribeTrialResponse->LastModifiedBy;
+    my $LastModifiedTime   = $DescribeTrialResponse->LastModifiedTime;
+    my $MetadataProperties = $DescribeTrialResponse->MetadataProperties;
+    my $Source             = $DescribeTrialResponse->Source;
+    my $TrialArn           = $DescribeTrialResponse->TrialArn;
+    my $TrialName          = $DescribeTrialResponse->TrialName;
 
     # Returns a L<Paws::SageMaker::DescribeTrialResponse> object.
 

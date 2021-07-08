@@ -7,8 +7,9 @@ package Paws::AppSync::UpdateFunction;
   has FunctionId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'functionId', required => 1);
   has FunctionVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'functionVersion', required => 1);
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
-  has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate', required => 1);
+  has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate');
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'responseMappingTemplate');
+  has SyncConfig => (is => 'ro', isa => 'Paws::AppSync::SyncConfig', traits => ['NameInRequest'], request_name => 'syncConfig');
 
   use MooseX::ClassAttribute;
 
@@ -41,9 +42,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       FunctionId              => 'MyResourceName',
       FunctionVersion         => 'MyString',
       Name                    => 'MyResourceName',
-      RequestMappingTemplate  => 'MyMappingTemplate',
       Description             => 'MyString',             # OPTIONAL
+      RequestMappingTemplate  => 'MyMappingTemplate',    # OPTIONAL
       ResponseMappingTemplate => 'MyMappingTemplate',    # OPTIONAL
+      SyncConfig              => {
+        ConflictDetection => 'VERSION',    # values: VERSION, NONE; OPTIONAL
+        ConflictHandler   => 'OPTIMISTIC_CONCURRENCY'
+        ,    # values: OPTIMISTIC_CONCURRENCY, LAMBDA, AUTOMERGE, NONE; OPTIONAL
+        LambdaConflictHandlerConfig =>
+          { LambdaConflictHandlerArn => 'MyString', },    # OPTIONAL
+      },    # OPTIONAL
     );
 
     # Results:
@@ -94,7 +102,7 @@ The C<Function> name.
 
 
 
-=head2 B<REQUIRED> RequestMappingTemplate => Str
+=head2 RequestMappingTemplate => Str
 
 The C<Function> request mapping template. Functions support only the
 2018-05-29 version of the request mapping template.
@@ -104,6 +112,12 @@ The C<Function> request mapping template. Functions support only the
 =head2 ResponseMappingTemplate => Str
 
 The C<Function> request mapping template.
+
+
+
+=head2 SyncConfig => L<Paws::AppSync::SyncConfig>
+
+
 
 
 

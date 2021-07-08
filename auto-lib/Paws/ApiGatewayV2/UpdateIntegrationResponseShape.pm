@@ -10,14 +10,17 @@ package Paws::ApiGatewayV2::UpdateIntegrationResponseShape;
   has IntegrationId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationId');
   has IntegrationMethod => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationMethod');
   has IntegrationResponseSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationResponseSelectionExpression');
+  has IntegrationSubtype => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationSubtype');
   has IntegrationType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationType');
   has IntegrationUri => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'integrationUri');
   has PassthroughBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'passthroughBehavior');
   has PayloadFormatVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'payloadFormatVersion');
   has RequestParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::IntegrationParameters', traits => ['NameInRequest'], request_name => 'requestParameters');
   has RequestTemplates => (is => 'ro', isa => 'Paws::ApiGatewayV2::TemplateMap', traits => ['NameInRequest'], request_name => 'requestTemplates');
+  has ResponseParameters => (is => 'ro', isa => 'Paws::ApiGatewayV2::ResponseParameters', traits => ['NameInRequest'], request_name => 'responseParameters');
   has TemplateSelectionExpression => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateSelectionExpression');
   has TimeoutInMillis => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'timeoutInMillis');
+  has TlsConfig => (is => 'ro', isa => 'Paws::ApiGatewayV2::TlsConfig', traits => ['NameInRequest'], request_name => 'tlsConfig');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -41,14 +44,16 @@ can't delete it.
 
 =head2 ConnectionId => Str
 
-The connection ID.
+The ID of the VPC link for a private integration. Supported only for
+HTTP APIs.
 
 
 =head2 ConnectionType => Str
 
-The type of the network connection to the integration endpoint.
-Currently the only valid value is INTERNET, for connections through the
-public routable internet.
+The type of the network connection to the integration endpoint. Specify
+INTERNET for connections through the public routable internet or
+VPC_LINK for private connections between API Gateway and resources in a
+VPC. The default value is INTERNET.
 
 Valid values are: C<"INTERNET">, C<"VPC_LINK">
 =head2 ContentHandlingStrategy => Str
@@ -101,6 +106,14 @@ Expressions
 (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions).
 
 
+=head2 IntegrationSubtype => Str
+
+Supported only for HTTP API AWS_PROXY integrations. Specifies the AWS
+service action to invoke. To learn more, see Integration subtype
+reference
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services-reference.html).
+
+
 =head2 IntegrationType => Str
 
 The integration type of an integration. One of the following:
@@ -111,15 +124,15 @@ function-invoking action, this is referred to as the Lambda custom
 integration. With any other AWS service action, this is known as AWS
 integration. Supported only for WebSocket APIs.
 
-AWS_PROXY: for integrating the route or method request with the Lambda
-function-invoking action with the client request passed through as-is.
-This integration is also referred to as Lambda proxy integration.
+AWS_PROXY: for integrating the route or method request with a Lambda
+function or other AWS service action. This integration is also referred
+to as a Lambda proxy integration.
 
 HTTP: for integrating the route or method request with an HTTP
 endpoint. This integration is also referred to as the HTTP custom
 integration. Supported only for WebSocket APIs.
 
-HTTP_PROXY: for integrating route or method request with an HTTP
+HTTP_PROXY: for integrating the route or method request with an HTTP
 endpoint, with the client request passed through as-is. This is also
 referred to as HTTP proxy integration.
 
@@ -130,7 +143,19 @@ WebSocket APIs.
 Valid values are: C<"AWS">, C<"HTTP">, C<"MOCK">, C<"HTTP_PROXY">, C<"AWS_PROXY">
 =head2 IntegrationUri => Str
 
-For a Lambda proxy integration, this is the URI of the Lambda function.
+For a Lambda integration, specify the URI of a Lambda function.
+
+For an HTTP integration, specify a fully-qualified URL.
+
+For an HTTP API private integration, specify the ARN of an Application
+Load Balancer listener, Network Load Balancer listener, or AWS Cloud
+Map service. If you specify the ARN of an AWS Cloud Map service, API
+Gateway uses DiscoverInstances to identify resources. You can use query
+parameters to target specific resources. To learn more, see
+DiscoverInstances
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_DiscoverInstances.html).
+For private integrations, all resources must be owned by the same AWS
+account.
 
 
 =head2 PassthroughBehavior => Str
@@ -156,20 +181,39 @@ Valid values are: C<"WHEN_NO_MATCH">, C<"NEVER">, C<"WHEN_NO_TEMPLATES">
 =head2 PayloadFormatVersion => Str
 
 Specifies the format of the payload sent to an integration. Required
-for HTTP APIs. Currently, the only supported value is 1.0.
+for HTTP APIs.
 
 
 =head2 RequestParameters => L<Paws::ApiGatewayV2::IntegrationParameters>
 
-A key-value map specifying request parameters that are passed from the
-method request to the backend. The key is an integration request
-parameter name and the associated value is a method request parameter
-value or static value that must be enclosed within single quotes and
-pre-encoded as required by the backend. The method request parameter
-value must match the pattern of method.request.{location}.{name} ,
-where {location} is querystring, path, or header; and {name} must be a
-valid and unique method request parameter name. Supported only for
-WebSocket APIs.
+For WebSocket APIs, a key-value map specifying request parameters that
+are passed from the method request to the backend. The key is an
+integration request parameter name and the associated value is a method
+request parameter value or static value that must be enclosed within
+single quotes and pre-encoded as required by the backend. The method
+request parameter value must match the pattern of
+method.request.{location}.{name} , where {location} is querystring,
+path, or header; and {name} must be a valid and unique method request
+parameter name.
+
+For HTTP API integrations with a specified integrationSubtype, request
+parameters are a key-value map specifying parameters that are passed to
+AWS_PROXY integrations. You can provide static values, or map request
+data, stage variables, or context variables that are evaluated at
+runtime. To learn more, see Working with AWS service integrations for
+HTTP APIs
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-develop-integrations-aws-services.html).
+
+For HTTP API itegrations, without a specified integrationSubtype
+request parameters are a key-value map specifying how to transform HTTP
+requests before sending them to backend integrations. The key should
+follow the pattern
+E<lt>actionE<gt>:E<lt>header|querystring|pathE<gt>.E<lt>locationE<gt>.
+The action can be append, overwrite or remove. For values, you can
+provide static values, or map request data, stage variables, or context
+variables that are evaluated at runtime. To learn more, see
+Transforming API requests and responses
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
 
 
 =head2 RequestTemplates => L<Paws::ApiGatewayV2::TemplateMap>
@@ -180,6 +224,22 @@ client. The content type value is the key in this map, and the template
 (as a String) is the value. Supported only for WebSocket APIs.
 
 
+=head2 ResponseParameters => L<Paws::ApiGatewayV2::ResponseParameters>
+
+Supported only for HTTP APIs. You use response parameters to transform
+the HTTP response from a backend integration before returning the
+response to clients. Specify a key-value map from a selection key to
+response parameters. The selection key must be a valid HTTP status code
+within the range of 200-599. Response parameters are a key-value map.
+The key must match pattern
+E<lt>actionE<gt>:E<lt>headerE<gt>.E<lt>locationE<gt> or
+overwrite.statuscode. The action can be append, overwrite or remove.
+The value can be a static value, or map to response data, stage
+variables, or context variables that are evaluated at runtime. To learn
+more, see Transforming API requests and responses
+(https://docs.aws.amazon.com/apigateway/latest/developerguide/http-api-parameter-mapping.html).
+
+
 =head2 TemplateSelectionExpression => Str
 
 The template selection expression for the integration. Supported only
@@ -188,9 +248,16 @@ for WebSocket APIs.
 
 =head2 TimeoutInMillis => Int
 
-Custom timeout between 50 and 29,000 milliseconds. The default value is
-29,000 milliseconds or 29 seconds for WebSocket APIs. The default value
-is 5,000 milliseconds, or 5 seconds for HTTP APIs.
+Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs
+and between 50 and 30,000 milliseconds for HTTP APIs. The default
+timeout is 29 seconds for WebSocket APIs and 30 seconds for HTTP APIs.
+
+
+=head2 TlsConfig => L<Paws::ApiGatewayV2::TlsConfig>
+
+The TLS configuration for a private integration. If you specify a TLS
+configuration, private integration traffic uses the HTTPS protocol.
+Supported only for HTTP APIs.
 
 
 =head2 _request_id => Str

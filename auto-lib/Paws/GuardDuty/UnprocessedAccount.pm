@@ -34,14 +34,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the accounts that were not processed.
+Contains information about the accounts that weren't processed.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountId => Str
 
-AWS Account ID.
+The AWS account ID.
 
 
 =head2 B<REQUIRED> Result => Str

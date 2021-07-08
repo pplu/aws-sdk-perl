@@ -35,24 +35,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::Server
 
 =head1 DESCRIPTION
 
-A logical grouping of servers.
+Logical grouping of servers.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-Name of a server group.
+The name of a server group.
 
 
 =head2 ServerGroupId => Str
 
-Identifier of a server group.
+The ID of a server group.
 
 
 =head2 ServerList => ArrayRef[L<Paws::SMS::Server>]
 
-List of servers belonging to a server group.
+The servers that belong to a server group.
 
 
 

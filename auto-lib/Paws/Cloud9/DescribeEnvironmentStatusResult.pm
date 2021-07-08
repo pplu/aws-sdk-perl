@@ -1,8 +1,8 @@
 
 package Paws::Cloud9::DescribeEnvironmentStatusResult;
   use Moose;
-  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message' );
-  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' );
+  has Message => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'message' , required => 1);
+  has Status => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'status' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -15,12 +15,12 @@ Paws::Cloud9::DescribeEnvironmentStatusResult
 =head1 ATTRIBUTES
 
 
-=head2 Message => Str
+=head2 B<REQUIRED> Message => Str
 
 Any informational message about the status of the environment.
 
 
-=head2 Status => Str
+=head2 B<REQUIRED> Status => Str
 
 The status of the environment. Available values include:
 

@@ -50,8 +50,9 @@ The name of the policy to attach.
 =head2 B<REQUIRED> Target => Str
 
 The identity
-(https://docs.aws.amazon.com/iot/latest/developerguide/iot-security-identity.html)
-to which the policy is attached.
+(https://docs.aws.amazon.com/iot/latest/developerguide/security-iam.html)
+to which the policy is attached. For example, a thing group or a
+certificate.
 
 
 

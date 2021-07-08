@@ -17,7 +17,7 @@ Paws::IoTAnalytics::CreateDatasetContentResponse
 
 =head2 VersionId => Str
 
-The version ID of the data set contents which are being created.
+The version ID of the dataset contents that are being created.
 
 
 =head2 _request_id => Str

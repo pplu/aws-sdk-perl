@@ -48,20 +48,27 @@ A brief description of the error.
 
 =item *
 
+B<AccessDenied>: Amazon EKS or one or more of your managed nodes is
+failing to authenticate or authorize with your Kubernetes cluster API
+server.
+
+=item *
+
+B<AsgInstanceLaunchFailures>: Your Auto Scaling group is experiencing
+failures while attempting to launch instances.
+
+=item *
+
 B<AutoScalingGroupNotFound>: We couldn't find the Auto Scaling group
 associated with the managed node group. You may be able to recreate an
 Auto Scaling group with the same settings to recover.
 
 =item *
 
-B<Ec2SecurityGroupNotFound>: We couldn't find the cluster security
-group for the cluster. You must recreate your cluster.
-
-=item *
-
-B<Ec2SecurityGroupDeletionFailure>: We could not delete the remote
-access security group for your managed node group. Remove any
-dependencies from the security group.
+B<ClusterUnreachable>: Amazon EKS or one or more of your managed nodes
+is unable to to communicate with your Kubernetes cluster API server.
+This can happen if there are network disruptions or if API servers are
+timing out processing requests.
 
 =item *
 
@@ -78,6 +85,28 @@ Amazon EKS created to recover.
 
 =item *
 
+B<Ec2SecurityGroupDeletionFailure>: We could not delete the remote
+access security group for your managed node group. Remove any
+dependencies from the security group.
+
+=item *
+
+B<Ec2SecurityGroupNotFound>: We couldn't find the cluster security
+group for the cluster. You must recreate your cluster.
+
+=item *
+
+B<Ec2SubnetInvalidConfiguration>: One or more Amazon EC2 subnets
+specified for a node group do not automatically assign public IP
+addresses to instances launched into it. If you want your instances to
+be assigned a public IP address, then you need to enable the
+C<auto-assign public IP address> setting for the subnet. See Modifying
+the public IPv4 addressing attribute for your subnet
+(https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html#subnet-public-ip)
+in the Amazon VPC User Guide.
+
+=item *
+
 B<IamInstanceProfileNotFound>: We couldn't find the IAM instance
 profile for your managed node group. You may be able to recreate an
 instance profile with the same settings to recover.
@@ -87,19 +116,6 @@ instance profile with the same settings to recover.
 B<IamNodeRoleNotFound>: We couldn't find the IAM role for your managed
 node group. You may be able to recreate an IAM role with the same
 settings to recover.
-
-=item *
-
-B<AsgInstanceLaunchFailures>: Your Auto Scaling group is experiencing
-failures while attempting to launch instances.
-
-=item *
-
-B<NodeCreationFailure>: Your launched instances are unable to register
-with your Amazon EKS cluster. Common causes of this failure are
-insufficient worker node IAM role
-(https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
-permissions or lack of outbound internet access for the nodes.
 
 =item *
 
@@ -115,13 +131,16 @@ addresses for new nodes.
 
 =item *
 
-B<AccessDenied>: Amazon EKS or one or more of your managed nodes is
-unable to communicate with your cluster API server.
+B<InternalFailure>: These errors are usually caused by an Amazon EKS
+server-side issue.
 
 =item *
 
-B<InternalFailure>: These errors are usually caused by an Amazon EKS
-server-side issue.
+B<NodeCreationFailure>: Your launched instances are unable to register
+with your Amazon EKS cluster. Common causes of this failure are
+insufficient node IAM role
+(https://docs.aws.amazon.com/eks/latest/userguide/worker_node_IAM_role.html)
+permissions or lack of outbound internet access for the nodes.
 
 =back
 

@@ -41,12 +41,12 @@ The image format of a code signing platform or profile.
 
 =head2 B<REQUIRED> DefaultFormat => Str
 
-The default format of a code signing signing image.
+The default format of a code signing image.
 
 
 =head2 B<REQUIRED> SupportedFormats => ArrayRef[Str|Undef]
 
-The supported formats of a code signing signing image.
+The supported formats of a code signing image.
 
 
 

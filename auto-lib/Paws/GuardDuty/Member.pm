@@ -39,44 +39,45 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Continas information about the member account
+Contains information about the member account.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AccountId => Str
 
-Member account ID.
+The ID of the member account.
 
 
 =head2 DetectorId => Str
 
-Member account's detector ID.
+The detector ID of the member account.
 
 
 =head2 B<REQUIRED> Email => Str
 
-Member account's email address.
+The email address of the member account.
 
 
 =head2 InvitedAt => Str
 
-Timestamp at which the invitation was sent
+The timestamp when the invitation was sent.
 
 
 =head2 B<REQUIRED> MasterId => Str
 
-Master account ID.
+The administrator account ID.
 
 
 =head2 B<REQUIRED> RelationshipStatus => Str
 
-The status of the relationship between the member and the master.
+The status of the relationship between the member and the
+administrator.
 
 
 =head2 B<REQUIRED> UpdatedAt => Str
 
-Member last updated timestamp.
+The last-updated timestamp of the member.
 
 
 

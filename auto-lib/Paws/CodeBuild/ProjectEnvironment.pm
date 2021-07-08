@@ -47,7 +47,11 @@ Information about the build environment of the build project.
 
 =head2 Certificate => Str
 
-The certificate to use with this build project.
+The ARN of the Amazon S3 bucket, path prefix, and object key that
+contains the PEM-encoded certificate for the build project. For more
+information, see certificate
+(https://docs.aws.amazon.com/codebuild/latest/userguide/create-project-cli.html#cli.environment.certificate)
+in the I<CodeBuild User Guide>.
 
 
 =head2 B<REQUIRED> ComputeType => Str
@@ -101,7 +105,7 @@ and 8 vCPUs on ARM-based processors for builds.
 
 For more information, see Build Environment Compute Types
 (https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
-in the I<AWS CodeBuild User Guide.>
+in the I<CodeBuild User Guide.>
 
 
 =head2 EnvironmentVariables => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]
@@ -119,44 +123,50 @@ for this build project. Use the following formats:
 
 =item *
 
-For an image tag: C<registry/repository:tag>. For example, to specify
-an image with the tag "latest," use C<registry/repository:latest>.
+For an image tag:
+C<E<lt>registryE<gt>/E<lt>repositoryE<gt>:E<lt>tagE<gt>>. For example,
+in the Docker repository that CodeBuild uses to manage its Docker
+images, this would be C<aws/codebuild/standard:4.0>.
 
 =item *
 
-For an image digest: C<registry/repository@digest>. For example, to
-specify an image with the digest
+For an image digest:
+C<E<lt>registryE<gt>/E<lt>repositoryE<gt>@E<lt>digestE<gt>>. For
+example, to specify an image with the digest
 "sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf,"
 use
-C<registry/repository@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf>.
+C<E<lt>registryE<gt>/E<lt>repositoryE<gt>@sha256:cbbf2f9a99b47fc460d422812b6a5adff7dfee951d8fa2e4a98caa0382cfbdbf>.
 
 =back
 
+For more information, see Docker images provided by CodeBuild
+(https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-available.html)
+in the I<CodeBuild user guide>.
 
 
 =head2 ImagePullCredentialsType => Str
 
-The type of credentials AWS CodeBuild uses to pull images in your
-build. There are two valid values:
+The type of credentials CodeBuild uses to pull images in your build.
+There are two valid values:
 
 =over
 
 =item *
 
-C<CODEBUILD> specifies that AWS CodeBuild uses its own credentials.
-This requires that you modify your ECR repository policy to trust AWS
-CodeBuild's service principal.
+C<CODEBUILD> specifies that CodeBuild uses its own credentials. This
+requires that you modify your ECR repository policy to trust CodeBuild
+service principal.
 
 =item *
 
-C<SERVICE_ROLE> specifies that AWS CodeBuild uses your build project's
+C<SERVICE_ROLE> specifies that CodeBuild uses your build project's
 service role.
 
 =back
 
 When you use a cross-account or private registry image, you must use
-SERVICE_ROLE credentials. When you use an AWS CodeBuild curated image,
-you must use CODEBUILD credentials.
+SERVICE_ROLE credentials. When you use an CodeBuild curated image, you
+must use CODEBUILD credentials.
 
 
 =head2 PrivilegedMode => Bool
@@ -208,21 +218,34 @@ EU (Frankfurt).
 
 The environment type C<LINUX_CONTAINER> with compute type
 C<build.general1.2xlarge> is available only in regions US East (N.
-Virginia), US East (N. Virginia), US West (Oregon), Canada (Central),
-EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia
+Virginia), US East (Ohio), US West (Oregon), Canada (Central), EU
+(Ireland), EU (London), EU (Frankfurt), Asia Pacific (Tokyo), Asia
 Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), China
 (Beijing), and China (Ningxia).
 
 =item *
 
 The environment type C<LINUX_GPU_CONTAINER> is available only in
-regions US East (N. Virginia), US East (N. Virginia), US West (Oregon),
-Canada (Central), EU (Ireland), EU (London), EU (Frankfurt), Asia
-Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia
-Pacific (Sydney) , China (Beijing), and China (Ningxia).
+regions US East (N. Virginia), US East (Ohio), US West (Oregon), Canada
+(Central), EU (Ireland), EU (London), EU (Frankfurt), Asia Pacific
+(Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific
+(Sydney) , China (Beijing), and China (Ningxia).
 
 =back
 
+=over
+
+=item *
+
+The environment types C<WINDOWS_CONTAINER> and
+C<WINDOWS_SERVER_2019_CONTAINER> are available only in regions US East
+(N. Virginia), US East (Ohio), US West (Oregon), and EU (Ireland).
+
+=back
+
+For more information, see Build environment compute types
+(https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html)
+in the I<CodeBuild user guide>.
 
 
 

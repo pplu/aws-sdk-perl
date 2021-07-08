@@ -74,6 +74,11 @@ Metering Service API.
 AWS Marketplace sellers can use this API to submit usage data for
 custom usage dimensions.
 
+For information on the permissions you need to use this API, see AWS
+Marketing metering and entitlement API permissions
+(https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html)
+in the I<AWS Marketplace Seller Guide.>
+
 B<Submitting Metering Records>
 
 =over
@@ -163,6 +168,12 @@ BatchMeterUsage.
 
 BatchMeterUsage can process up to 25 UsageRecords at a time.
 
+A UsageRecord can optionally include multiple usage allocations, to
+provide customers with usagedata split into buckets by tags that you
+define (or allow the customer to define).
+
+BatchMeterUsage requests must be less than 1MB in size.
+
 
 =head2 MeterUsage
 
@@ -175,6 +186,8 @@ BatchMeterUsage can process up to 25 UsageRecords at a time.
 =item UsageDimension => Str
 
 =item [DryRun => Bool]
+
+=item [UsageAllocations => ArrayRef[L<Paws::MarketplaceMetering::UsageAllocation>]]
 
 =item [UsageQuantity => Int]
 
@@ -190,6 +203,10 @@ idempotent. It simply returns the metering record ID.
 
 MeterUsage is authenticated on the buyer's AWS account using
 credentials from the EC2 instance, ECS task, or EKS pod.
+
+MeterUsage can optionally include multiple usage allocations, to
+provide customers with usage data split into buckets by tags that you
+define (or allow the customer to define).
 
 
 =head2 RegisterUsage

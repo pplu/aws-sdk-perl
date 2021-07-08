@@ -2,6 +2,7 @@ package Paws::EC2::FleetData;
   use Moose;
   has ActivityStatus => (is => 'ro', isa => 'Str', request_name => 'activityStatus', traits => ['NameInRequest']);
   has ClientToken => (is => 'ro', isa => 'Str', request_name => 'clientToken', traits => ['NameInRequest']);
+  has Context => (is => 'ro', isa => 'Str', request_name => 'context', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest']);
   has Errors => (is => 'ro', isa => 'ArrayRef[Paws::EC2::DescribeFleetError]', request_name => 'errorSet', traits => ['NameInRequest']);
   has ExcessCapacityTerminationPolicy => (is => 'ro', isa => 'Str', request_name => 'excessCapacityTerminationPolicy', traits => ['NameInRequest']);
@@ -75,6 +76,11 @@ Idempotency
 Constraints: Maximum 64 ASCII characters
 
 
+=head2 Context => Str
+
+Reserved.
+
+
 =head2 CreateTime => Str
 
 The creation date and time of the EC2 Fleet.
@@ -133,7 +139,11 @@ The allocation strategy of On-Demand Instances in an EC2 Fleet.
 
 =head2 ReplaceUnhealthyInstances => Bool
 
-Indicates whether EC2 Fleet should replace unhealthy instances.
+Indicates whether EC2 Fleet should replace unhealthy Spot Instances.
+Supported only for fleets of type C<maintain>. For more information,
+see EC2 Fleet health checks
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#ec2-fleet-health-checks)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 SpotOptions => L<Paws::EC2::SpotOptions>

@@ -31,8 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $ModifyClusterSubnetGroupResult = $redshift->ModifyClusterSubnetGroup(
       ClusterSubnetGroupName => 'MyString',
-      SubnetIds              => [ 'MyString', ... ],
-      Description            => 'MyString',            # OPTIONAL
+      SubnetIds              => [
+        'MyString', ...    # max: 2147483647
+      ],
+      Description => 'MyString',    # OPTIONAL
     );
 
     # Results:

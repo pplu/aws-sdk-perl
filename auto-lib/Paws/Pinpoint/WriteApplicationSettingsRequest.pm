@@ -3,6 +3,7 @@ package Paws::Pinpoint::WriteApplicationSettingsRequest;
   use Moose;
   has CampaignHook => (is => 'ro', isa => 'Paws::Pinpoint::CampaignHook');
   has CloudWatchMetricsEnabled => (is => 'ro', isa => 'Bool');
+  has EventTaggingEnabled => (is => 'ro', isa => 'Bool');
   has Limits => (is => 'ro', isa => 'Paws::Pinpoint::CampaignLimits');
   has QuietTime => (is => 'ro', isa => 'Paws::Pinpoint::QuietTime');
 
@@ -43,12 +44,14 @@ Specifies the default settings for an application.
 
 =head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
 
-The settings for the AWS Lambda function to use by default as a code
-hook for campaigns in the application. To override these settings for a
-specific campaign, use the
+The settings for the AWS Lambda function to invoke by default as a code
+hook for campaigns in the application. You can use this hook to
+customize segments that are used by campaigns in the application.
 
-Campaign resource to define custom Lambda function settings for the
-campaign.
+To override these settings and define custom settings for a specific
+campaign, use the CampaignHook object of the
+
+Campaign resource.
 
 
 =head2 CloudWatchMetricsEnabled => Bool
@@ -57,19 +60,25 @@ Specifies whether to enable application-related alarms in Amazon
 CloudWatch.
 
 
+=head2 EventTaggingEnabled => Bool
+
+
+
+
 =head2 Limits => L<Paws::Pinpoint::CampaignLimits>
 
 The default sending limits for campaigns in the application. To
-override these limits for a specific campaign, use the
+override these limits and define custom limits for a specific campaign
+or journey, use the
 
-Campaign resource to define custom limits for the campaign.
+Campaign resource or the Journey resource, respectively.
 
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
 
-The default quiet time for campaigns and journeys in the application.
-Quiet time is a specific time range when messages aren't sent to
-endpoints, if all the following conditions are met:
+The default quiet time for campaigns in the application. Quiet time is
+a specific time range when messages aren't sent to endpoints, if all
+the following conditions are met:
 
 =over
 

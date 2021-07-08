@@ -83,6 +83,10 @@ C<service-name> - The name of the service.
 
 =item *
 
+C<service-type> - The type of service (C<Interface> | C<Gateway>).
+
+=item *
+
 C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
 the resource. Use the tag key in the filter name and the tag value as
 the filter value. For example, to find all resources that have a tag

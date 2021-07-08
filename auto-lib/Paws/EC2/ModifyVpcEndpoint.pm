@@ -78,8 +78,9 @@ the network interface.
 
 =head2 AddSubnetIds => ArrayRef[Str|Undef]
 
-(Interface endpoint) One or more subnet IDs in which to serve the
-endpoint.
+(Interface and Gateway Load Balancer endpoints) One or more subnet IDs
+in which to serve the endpoint. For a Gateway Load Balancer endpoint,
+you can specify only one subnet.
 
 
 
@@ -94,8 +95,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PolicyDocument => Str
 
-A policy to attach to the endpoint that controls access to the service.
-The policy must be in valid JSON format.
+(Interface and gateway endpoints) A policy to attach to the endpoint
+that controls access to the service. The policy must be in valid JSON
+format.
 
 
 

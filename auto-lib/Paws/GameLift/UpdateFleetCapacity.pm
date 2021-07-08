@@ -3,6 +3,7 @@ package Paws::GameLift::UpdateFleetCapacity;
   use Moose;
   has DesiredInstances => (is => 'ro', isa => 'Int');
   has FleetId => (is => 'ro', isa => 'Str', required => 1);
+  has Location => (is => 'ro', isa => 'Str');
   has MaxSize => (is => 'ro', isa => 'Int');
   has MinSize => (is => 'ro', isa => 'Int');
 
@@ -31,14 +32,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $UpdateFleetCapacityOutput = $gamelift->UpdateFleetCapacity(
-      FleetId          => 'MyFleetId',
-      DesiredInstances => 1,             # OPTIONAL
-      MaxSize          => 1,             # OPTIONAL
-      MinSize          => 1,             # OPTIONAL
+      FleetId          => 'MyFleetIdOrArn',
+      DesiredInstances => 1,                          # OPTIONAL
+      Location         => 'MyLocationStringModel',    # OPTIONAL
+      MaxSize          => 1,                          # OPTIONAL
+      MinSize          => 1,                          # OPTIONAL
     );
 
     # Results:
-    my $FleetId = $UpdateFleetCapacityOutput->FleetId;
+    my $FleetArn = $UpdateFleetCapacityOutput->FleetArn;
+    my $FleetId  = $UpdateFleetCapacityOutput->FleetId;
+    my $Location = $UpdateFleetCapacityOutput->Location;
 
     # Returns a L<Paws::GameLift::UpdateFleetCapacityOutput> object.
 
@@ -50,28 +54,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 DesiredInstances => Int
 
-Number of EC2 instances you want this fleet to host.
+The number of EC2 instances you want to maintain in the specified fleet
+location. This value must fall between the minimum and maximum size
+limits.
 
 
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to update capacity for. You can use
-either the fleet ID or ARN value.
+A unique identifier for the fleet to update capacity settings for. You
+can use either the fleet ID or ARN value.
+
+
+
+=head2 Location => Str
+
+The name of a remote location to update fleet capacity settings for, in
+the form of an AWS Region code such as C<us-west-2>.
 
 
 
 =head2 MaxSize => Int
 
-The maximum value allowed for the fleet's instance count. Default if
-not set is 1.
+The maximum number of instances that are allowed in the specified fleet
+location. If this parameter is not set, the default is 1.
 
 
 
 =head2 MinSize => Int
 
-The minimum value allowed for the fleet's instance count. Default if
-not set is 0.
+The minimum number of instances that are allowed in the specified fleet
+location. If this parameter is not set, the default is 0.
 
 
 

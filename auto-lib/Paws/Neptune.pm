@@ -72,6 +72,11 @@ package Paws::Neptune;
     my $call_object = $self->new_with_coercions('Paws::Neptune::CreateDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Neptune::CreateDBClusterEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Neptune::CreateDBClusterParameterGroup', @_);
@@ -107,6 +112,11 @@ package Paws::Neptune;
     my $call_object = $self->new_with_coercions('Paws::Neptune::DeleteDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Neptune::DeleteDBClusterEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Neptune::DeleteDBClusterParameterGroup', @_);
@@ -135,6 +145,11 @@ package Paws::Neptune;
   sub DeleteEventSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Neptune::DeleteEventSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDBClusterEndpoints {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Neptune::DescribeDBClusterEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDBClusterParameterGroups {
@@ -242,6 +257,11 @@ package Paws::Neptune;
     my $call_object = $self->new_with_coercions('Paws::Neptune::ModifyDBCluster', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyDBClusterEndpoint {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Neptune::ModifyDBClusterEndpoint', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyDBClusterParameterGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Neptune::ModifyDBClusterParameterGroup', @_);
@@ -328,6 +348,29 @@ package Paws::Neptune;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllDBClusterEndpoints {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeDBClusterEndpoints(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->Marker) {
+        $next_result = $self->DescribeDBClusterEndpoints(@_, Marker => $next_result->Marker);
+        push @{ $result->DBClusterEndpoints }, @{ $next_result->DBClusterEndpoints };
+      }
+      return $result;
+    } else {
+      while ($result->Marker) {
+        $callback->($_ => 'DBClusterEndpoints') foreach (@{ $result->DBClusterEndpoints });
+        $result = $self->DescribeDBClusterEndpoints(@_, Marker => $result->Marker);
+      }
+      $callback->($_ => 'DBClusterEndpoints') foreach (@{ $result->DBClusterEndpoints });
+    }
+
+    return undef
+  }
   sub DescribeAllDBClusterParameterGroups {
     my $self = shift;
 
@@ -652,7 +695,7 @@ package Paws::Neptune;
   }
 
 
-  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CreateDBCluster CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBParameterGroup CreateDBSubnetGroup CreateEventSubscription DeleteDBCluster DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSubnetGroup DeleteEventSubscription DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBParameterGroups DescribeDBParameters DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeValidDBInstanceModifications FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription PromoteReadReplicaDBCluster RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
+  sub operations { qw/AddRoleToDBCluster AddSourceIdentifierToSubscription AddTagsToResource ApplyPendingMaintenanceAction CopyDBClusterParameterGroup CopyDBClusterSnapshot CopyDBParameterGroup CreateDBCluster CreateDBClusterEndpoint CreateDBClusterParameterGroup CreateDBClusterSnapshot CreateDBInstance CreateDBParameterGroup CreateDBSubnetGroup CreateEventSubscription DeleteDBCluster DeleteDBClusterEndpoint DeleteDBClusterParameterGroup DeleteDBClusterSnapshot DeleteDBInstance DeleteDBParameterGroup DeleteDBSubnetGroup DeleteEventSubscription DescribeDBClusterEndpoints DescribeDBClusterParameterGroups DescribeDBClusterParameters DescribeDBClusters DescribeDBClusterSnapshotAttributes DescribeDBClusterSnapshots DescribeDBEngineVersions DescribeDBInstances DescribeDBParameterGroups DescribeDBParameters DescribeDBSubnetGroups DescribeEngineDefaultClusterParameters DescribeEngineDefaultParameters DescribeEventCategories DescribeEvents DescribeEventSubscriptions DescribeOrderableDBInstanceOptions DescribePendingMaintenanceActions DescribeValidDBInstanceModifications FailoverDBCluster ListTagsForResource ModifyDBCluster ModifyDBClusterEndpoint ModifyDBClusterParameterGroup ModifyDBClusterSnapshotAttribute ModifyDBInstance ModifyDBParameterGroup ModifyDBSubnetGroup ModifyEventSubscription PromoteReadReplicaDBCluster RebootDBInstance RemoveRoleFromDBCluster RemoveSourceIdentifierFromSubscription RemoveTagsFromResource ResetDBClusterParameterGroup ResetDBParameterGroup RestoreDBClusterFromSnapshot RestoreDBClusterToPointInTime StartDBCluster StopDBCluster / }
 
 1;
 
@@ -716,6 +759,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 =item DBClusterIdentifier => Str
 
 =item RoleArn => Str
+
+=item [FeatureName => Str]
 
 
 =back
@@ -877,6 +922,8 @@ Copies the specified DB parameter group.
 
 =item [CharacterSetName => Str]
 
+=item [CopyTagsToSnapshot => Bool]
+
 =item [DatabaseName => Str]
 
 =item [DBClusterParameterGroupName => Str]
@@ -933,6 +980,33 @@ directly, deletion protection is disabled by default (when you create a
 new production cluster in the console, deletion protection is enabled
 by default). You can only delete a DB cluster if its
 C<DeletionProtection> field is set to C<false>.
+
+
+=head2 CreateDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+=item DBClusterIdentifier => Str
+
+=item EndpointType => Str
+
+=item [ExcludedMembers => ArrayRef[Str|Undef]]
+
+=item [StaticMembers => ArrayRef[Str|Undef]]
+
+=item [Tags => ArrayRef[L<Paws::Neptune::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Neptune::CreateDBClusterEndpoint>
+
+Returns: a L<Paws::Neptune::CreateDBClusterEndpointOutput> instance
+
+Creates a new custom endpoint and associates it with an Amazon Neptune
+DB cluster.
 
 
 =head2 CreateDBClusterParameterGroup
@@ -1167,7 +1241,7 @@ Each argument is described in detail in: L<Paws::Neptune::CreateDBSubnetGroup>
 Returns: a L<Paws::Neptune::CreateDBSubnetGroupResult> instance
 
 Creates a new DB subnet group. DB subnet groups must contain at least
-one subnet in at least two AZs in the AWS Region.
+one subnet in at least two AZs in the Amazon Region.
 
 
 =head2 CreateEventSubscription
@@ -1243,6 +1317,23 @@ specified DB cluster are not deleted.
 Note that the DB Cluster cannot be deleted if deletion protection is
 enabled. To delete it, you must first set its C<DeletionProtection>
 field to C<False>.
+
+
+=head2 DeleteDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Neptune::DeleteDBClusterEndpoint>
+
+Returns: a L<Paws::Neptune::DeleteDBClusterEndpointOutput> instance
+
+Deletes a custom endpoint and removes it from an Amazon Neptune DB
+cluster.
 
 
 =head2 DeleteDBClusterParameterGroup
@@ -1370,6 +1461,33 @@ Returns: a L<Paws::Neptune::DeleteEventSubscriptionResult> instance
 Deletes an event notification subscription.
 
 
+=head2 DescribeDBClusterEndpoints
+
+=over
+
+=item [DBClusterEndpointIdentifier => Str]
+
+=item [DBClusterIdentifier => Str]
+
+=item [Filters => ArrayRef[L<Paws::Neptune::Filter>]]
+
+=item [Marker => Str]
+
+=item [MaxRecords => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Neptune::DescribeDBClusterEndpoints>
+
+Returns: a L<Paws::Neptune::DBClusterEndpointMessage> instance
+
+Returns information about endpoints for an Amazon Neptune DB cluster.
+
+This operation can also return information for Amazon RDS clusters and
+Amazon DocDB clusters.
+
+
 =head2 DescribeDBClusterParameterGroups
 
 =over
@@ -1462,16 +1580,17 @@ Returns: a L<Paws::Neptune::DescribeDBClusterSnapshotAttributesResult> instance
 Returns a list of DB cluster snapshot attribute names and values for a
 manual DB cluster snapshot.
 
-When sharing snapshots with other AWS accounts,
+When sharing snapshots with other Amazon accounts,
 C<DescribeDBClusterSnapshotAttributes> returns the C<restore> attribute
-and a list of IDs for the AWS accounts that are authorized to copy or
-restore the manual DB cluster snapshot. If C<all> is included in the
+and a list of IDs for the Amazon accounts that are authorized to copy
+or restore the manual DB cluster snapshot. If C<all> is included in the
 list of values for the C<restore> attribute, then the manual DB cluster
-snapshot is public and can be copied or restored by all AWS accounts.
+snapshot is public and can be copied or restored by all Amazon
+accounts.
 
-To add or remove access for an AWS account to copy or restore a manual
-DB cluster snapshot, or to make the manual DB cluster snapshot public
-or private, use the ModifyDBClusterSnapshotAttribute API action.
+To add or remove access for an Amazon account to copy or restore a
+manual DB cluster snapshot, or to make the manual DB cluster snapshot
+public or private, use the ModifyDBClusterSnapshotAttribute API action.
 
 
 =head2 DescribeDBClusterSnapshots
@@ -1898,6 +2017,8 @@ Lists all tags on an Amazon Neptune resource.
 
 =item [CloudwatchLogsExportConfiguration => L<Paws::Neptune::CloudwatchLogsExportConfiguration>]
 
+=item [CopyTagsToSnapshot => Bool]
+
 =item [DBClusterParameterGroupName => Str]
 
 =item [DeletionProtection => Bool]
@@ -1930,6 +2051,28 @@ Returns: a L<Paws::Neptune::ModifyDBClusterResult> instance
 Modify a setting for a DB cluster. You can change one or more database
 configuration parameters by specifying these parameters and the new
 values in the request.
+
+
+=head2 ModifyDBClusterEndpoint
+
+=over
+
+=item DBClusterEndpointIdentifier => Str
+
+=item [EndpointType => Str]
+
+=item [ExcludedMembers => ArrayRef[Str|Undef]]
+
+=item [StaticMembers => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Neptune::ModifyDBClusterEndpoint>
+
+Returns: a L<Paws::Neptune::ModifyDBClusterEndpointOutput> instance
+
+Modifies the properties of an endpoint in an Amazon Neptune DB cluster.
 
 
 =head2 ModifyDBClusterParameterGroup
@@ -1991,20 +2134,21 @@ Returns: a L<Paws::Neptune::ModifyDBClusterSnapshotAttributeResult> instance
 Adds an attribute and values to, or removes an attribute and values
 from, a manual DB cluster snapshot.
 
-To share a manual DB cluster snapshot with other AWS accounts, specify
-C<restore> as the C<AttributeName> and use the C<ValuesToAdd> parameter
-to add a list of IDs of the AWS accounts that are authorized to restore
-the manual DB cluster snapshot. Use the value C<all> to make the manual
-DB cluster snapshot public, which means that it can be copied or
-restored by all AWS accounts. Do not add the C<all> value for any
-manual DB cluster snapshots that contain private information that you
-don't want available to all AWS accounts. If a manual DB cluster
-snapshot is encrypted, it can be shared, but only by specifying a list
-of authorized AWS account IDs for the C<ValuesToAdd> parameter. You
-can't use C<all> as a value for that parameter in this case.
+To share a manual DB cluster snapshot with other Amazon accounts,
+specify C<restore> as the C<AttributeName> and use the C<ValuesToAdd>
+parameter to add a list of IDs of the Amazon accounts that are
+authorized to restore the manual DB cluster snapshot. Use the value
+C<all> to make the manual DB cluster snapshot public, which means that
+it can be copied or restored by all Amazon accounts. Do not add the
+C<all> value for any manual DB cluster snapshots that contain private
+information that you don't want available to all Amazon accounts. If a
+manual DB cluster snapshot is encrypted, it can be shared, but only by
+specifying a list of authorized Amazon account IDs for the
+C<ValuesToAdd> parameter. You can't use C<all> as a value for that
+parameter in this case.
 
-To view which AWS accounts have access to copy or restore a manual DB
-cluster snapshot, or whether a manual DB cluster snapshot public or
+To view which Amazon accounts have access to copy or restore a manual
+DB cluster snapshot, or whether a manual DB cluster snapshot public or
 private, use the DescribeDBClusterSnapshotAttributes API action.
 
 
@@ -2155,7 +2299,7 @@ Each argument is described in detail in: L<Paws::Neptune::ModifyDBSubnetGroup>
 Returns: a L<Paws::Neptune::ModifyDBSubnetGroupResult> instance
 
 Modifies an existing DB subnet group. DB subnet groups must contain at
-least one subnet in at least two AZs in the AWS Region.
+least one subnet in at least two AZs in the Amazon Region.
 
 
 =head2 ModifyEventSubscription
@@ -2237,6 +2381,8 @@ instance status is set to rebooting.
 =item DBClusterIdentifier => Str
 
 =item RoleArn => Str
+
+=item [FeatureName => Str]
 
 
 =back
@@ -2355,6 +2501,8 @@ or C<RebootDBInstance> request.
 
 =item [AvailabilityZones => ArrayRef[Str|Undef]]
 
+=item [CopyTagsToSnapshot => Bool]
+
 =item [DatabaseName => Str]
 
 =item [DBClusterParameterGroupName => Str]
@@ -2468,7 +2616,8 @@ Each argument is described in detail in: L<Paws::Neptune::StartDBCluster>
 Returns: a L<Paws::Neptune::StartDBClusterResult> instance
 
 Starts an Amazon Neptune DB cluster that was stopped using the AWS
-console, the AWS CLI stop-db-cluster command, or the StopDBCluster API.
+console, the Amazon CLI stop-db-cluster command, or the StopDBCluster
+API.
 
 
 =head2 StopDBCluster
@@ -2497,6 +2646,18 @@ restore if necessary.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllDBClusterEndpoints(sub { },[DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+=head2 DescribeAllDBClusterEndpoints([DBClusterEndpointIdentifier => Str, DBClusterIdentifier => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - DBClusterEndpoints, passing the object as the first parameter, and the string 'DBClusterEndpoints' as the second parameter 
+
+If not, it will return a a L<Paws::Neptune::DBClusterEndpointMessage> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllDBClusterParameterGroups(sub { },[DBClusterParameterGroupName => Str, Filters => ArrayRef[L<Paws::Neptune::Filter>], Marker => Str, MaxRecords => Int])
 

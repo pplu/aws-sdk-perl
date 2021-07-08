@@ -56,7 +56,7 @@ Gets only information about the specified custom key store. Enter the
 key store ID.
 
 By default, this operation gets information about all custom key stores
-in the account and region. To limit the output to a particular custom
+in the account and Region. To limit the output to a particular custom
 key store, you can use either the C<CustomKeyStoreId> or
 C<CustomKeyStoreName> parameter, but not both.
 
@@ -68,7 +68,7 @@ Gets only information about the specified custom key store. Enter the
 friendly name of the custom key store.
 
 By default, this operation gets information about all custom key stores
-in the account and region. To limit the output to a particular custom
+in the account and Region. To limit the output to a particular custom
 key store, you can use either the C<CustomKeyStoreId> or
 C<CustomKeyStoreName> parameter, but not both.
 

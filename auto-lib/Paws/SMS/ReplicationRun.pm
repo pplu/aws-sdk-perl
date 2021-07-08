@@ -50,8 +50,7 @@ Represents a replication run.
 
 =head2 AmiId => Str
 
-The identifier of the Amazon Machine Image (AMI) from the replication
-run.
+The ID of the Amazon Machine Image (AMI) from the replication run.
 
 
 =head2 CompletedTime => Str
@@ -66,14 +65,13 @@ The description of the replication run.
 
 =head2 Encrypted => Bool
 
-Whether the replication run should produce encrypted AMI or not. See
-also C<KmsKeyId> below.
+Indicates whether the replication run should produce an encrypted AMI.
 
 
 =head2 KmsKeyId => Str
 
-KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-of the following:
+The ID of the KMS key for replication jobs that produce encrypted AMIs.
+This value can be any of the following:
 
 =over
 
@@ -87,21 +85,21 @@ KMS key alias
 
 =item *
 
-ARN referring to KMS key ID
+ARN referring to the KMS key ID
 
 =item *
 
-ARN referring to KMS key alias
+ARN referring to the KMS key alias
 
 =back
 
-If encrypted is I<true> but a KMS key id is not specified, the
-customer's default KMS key for EBS is used.
+If encrypted is I<true> but a KMS key ID is not specified, the
+customer's default KMS key for Amazon EBS is used.
 
 
 =head2 ReplicationRunId => Str
 
-The identifier of the replication run.
+The ID of the replication run.
 
 
 =head2 ScheduledStartTime => Str
@@ -111,7 +109,7 @@ The start time of the next replication run.
 
 =head2 StageDetails => L<Paws::SMS::ReplicationRunStageDetails>
 
-Details of the current stage of the replication run.
+Details about the current stage of the replication run.
 
 
 =head2 State => Str

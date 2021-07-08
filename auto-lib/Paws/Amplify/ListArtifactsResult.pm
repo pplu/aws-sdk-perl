@@ -18,13 +18,13 @@ Paws::Amplify::ListArtifactsResult
 
 =head2 B<REQUIRED> Artifacts => ArrayRef[L<Paws::Amplify::Artifact>]
 
-List of artifacts.
+A list of artifacts.
 
 
 =head2 NextToken => Str
 
-Pagination token. If non-null pagination token is returned in a result,
-then pass its value in another request to fetch more entries.
+A pagination token. If a non-null pagination token is returned in a
+result, pass its value in another request to retrieve more entries.
 
 
 =head2 _request_id => Str

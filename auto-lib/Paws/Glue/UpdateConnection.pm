@@ -33,13 +33,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConnectionInput => {
         ConnectionProperties => {
           'HOST' => 'MyValueString'
-          , # key: values: HOST, PORT, USERNAME, PASSWORD, ENCRYPTED_PASSWORD, JDBC_DRIVER_JAR_URI, JDBC_DRIVER_CLASS_NAME, JDBC_ENGINE, JDBC_ENGINE_VERSION, CONFIG_FILES, INSTANCE_ID, JDBC_CONNECTION_URL, JDBC_ENFORCE_SSL, CUSTOM_JDBC_CERT, SKIP_CUSTOM_JDBC_CERT_VALIDATION, CUSTOM_JDBC_CERT_STRING, value: max: 1024
+          , # key: values: HOST, PORT, USERNAME, PASSWORD, ENCRYPTED_PASSWORD, JDBC_DRIVER_JAR_URI, JDBC_DRIVER_CLASS_NAME, JDBC_ENGINE, JDBC_ENGINE_VERSION, CONFIG_FILES, INSTANCE_ID, JDBC_CONNECTION_URL, JDBC_ENFORCE_SSL, CUSTOM_JDBC_CERT, SKIP_CUSTOM_JDBC_CERT_VALIDATION, CUSTOM_JDBC_CERT_STRING, CONNECTION_URL, KAFKA_BOOTSTRAP_SERVERS, KAFKA_SSL_ENABLED, KAFKA_CUSTOM_CERT, KAFKA_SKIP_CUSTOM_CERT_VALIDATION, KAFKA_CLIENT_KEYSTORE, KAFKA_CLIENT_KEYSTORE_PASSWORD, KAFKA_CLIENT_KEY_PASSWORD, ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD, ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD, SECRET_ID, CONNECTOR_URL, CONNECTOR_TYPE, CONNECTOR_CLASS_NAME, value: max: 1024
         },    # max: 100
-        ConnectionType => 'JDBC',                   # values: JDBC, SFTP
-        Name           => 'MyNameString',           # min: 1, max: 255
-        Description    => 'MyDescriptionString',    # max: 2048; OPTIONAL
-        MatchCriteria  => [
-          'MyNameString', ...                       # min: 1, max: 255
+        ConnectionType => 'JDBC'
+        ,     # values: JDBC, SFTP, MONGODB, KAFKA, NETWORK, MARKETPLACE, CUSTOM
+        Name          => 'MyNameString',           # min: 1, max: 255
+        Description   => 'MyDescriptionString',    # max: 2048; OPTIONAL
+        MatchCriteria => [
+          'MyNameString', ...                      # min: 1, max: 255
         ],    # max: 10; OPTIONAL
         PhysicalConnectionRequirements => {
           AvailabilityZone    => 'MyNameString',    # min: 1, max: 255
@@ -62,7 +63,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog in which the connection resides. If none is
-provided, the AWS account ID is used by default.
+provided, the Amazon Web Services account ID is used by default.
 
 
 

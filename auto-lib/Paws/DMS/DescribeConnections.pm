@@ -29,17 +29,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+# Describe connections
+# Describes the status of the connections that have been made between the
+# replication instance and an endpoint. Connections are created when you test an
+# endpoint.
     my $DescribeConnectionsResponse = $dms->DescribeConnections(
-      Filters => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],
+      'Filters' => [
 
-        },
-        ...
-      ],    # OPTIONAL
-      Marker     => 'MyString',    # OPTIONAL
-      MaxRecords => 1,             # OPTIONAL
+        {
+          'Name'   => 'string',
+          'Values' => [ 'string', 'string' ]
+        }
+      ],
+      'Marker'     => '',
+      'MaxRecords' => 123
     );
 
     # Results:

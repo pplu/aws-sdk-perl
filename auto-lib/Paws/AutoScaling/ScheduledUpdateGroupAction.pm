@@ -11,6 +11,7 @@ package Paws::AutoScaling::ScheduledUpdateGroupAction;
   has ScheduledActionName => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has Time => (is => 'ro', isa => 'Str');
+  has TimeZone => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -31,7 +32,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AutoScaling::ScheduledUpdateGroupAction object:
 
-  $service_obj->Method(Att1 => { AutoScalingGroupName => $value, ..., Time => $value  });
+  $service_obj->Method(Att1 => { AutoScalingGroupName => $value, ..., TimeZone => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,8 +43,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a scheduled scaling action. Used in response to
-DescribeScheduledActions.
+Describes a scheduled scaling action.
 
 =head1 ATTRIBUTES
 
@@ -55,7 +55,9 @@ The name of the Auto Scaling group.
 
 =head2 DesiredCapacity => Int
 
-The number of instances you prefer to maintain in the group.
+The desired capacity is the initial capacity of the Auto Scaling group
+after the scheduled action runs and the capacity it attempts to
+maintain.
 
 
 =head2 EndTime => Str
@@ -66,12 +68,12 @@ example, C<"2019-06-01T00:00:00Z">.
 
 =head2 MaxSize => Int
 
-The maximum number of instances in the Auto Scaling group.
+The maximum size of the Auto Scaling group.
 
 
 =head2 MinSize => Int
 
-The minimum number of instances in the Auto Scaling group.
+The minimum size of the Auto Scaling group.
 
 
 =head2 Recurrence => Str
@@ -101,6 +103,11 @@ C<"2019-06-01T00:00:00Z">.
 =head2 Time => Str
 
 This parameter is no longer used.
+
+
+=head2 TimeZone => Str
+
+The time zone for the cron expression.
 
 
 

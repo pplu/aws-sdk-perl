@@ -61,8 +61,9 @@ applies to.
 
 =head2 ConfigurationSet => Str
 
-The configuration set that's applied to email that's sent through the
-channel by using the Amazon Pinpoint Email API.
+The Amazon SES configuration set
+(https://docs.aws.amazon.com/ses/latest/APIReference/API_ConfigurationSet.html)
+that's applied to messages that are sent through the channel.
 
 
 =head2 CreationDate => Str
@@ -78,7 +79,7 @@ Specifies whether the email channel is enabled for the application.
 
 =head2 FromAddress => Str
 
-The verified email address that you send email from when you send email
+The verified email address that email is sent from when you send email
 through the channel.
 
 
@@ -96,7 +97,7 @@ retained only for backward compatibility.
 =head2 Identity => Str
 
 The Amazon Resource Name (ARN) of the identity, verified with Amazon
-Simple Email Service (Amazon SES), that you use when you send email
+Simple Email Service (Amazon SES), that's used when you send email
 through the channel.
 
 
@@ -118,7 +119,7 @@ modified.
 
 =head2 MessagesPerSecond => Int
 
-The maximum number of emails that you can send through the channel each
+The maximum number of emails that can be sent through the channel each
 second.
 
 

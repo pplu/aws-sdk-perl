@@ -1,10 +1,15 @@
 
 package Paws::SSM::CreateOpsItem;
   use Moose;
+  has ActualEndTime => (is => 'ro', isa => 'Str');
+  has ActualStartTime => (is => 'ro', isa => 'Str');
   has Category => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str', required => 1);
   has Notifications => (is => 'ro', isa => 'ArrayRef[Paws::SSM::OpsItemNotification]');
   has OperationalData => (is => 'ro', isa => 'Paws::SSM::OpsItemOperationalData');
+  has OpsItemType => (is => 'ro', isa => 'Str');
+  has PlannedEndTime => (is => 'ro', isa => 'Str');
+  has PlannedStartTime => (is => 'ro', isa => 'Str');
   has Priority => (is => 'ro', isa => 'Int');
   has RelatedOpsItems => (is => 'ro', isa => 'ArrayRef[Paws::SSM::RelatedOpsItem]');
   has Severity => (is => 'ro', isa => 'Str');
@@ -37,13 +42,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ssm = Paws->service('SSM');
     my $CreateOpsItemResponse = $ssm->CreateOpsItem(
-      Description   => 'MyOpsItemDescription',
-      Source        => 'MyOpsItemSource',
-      Title         => 'MyOpsItemTitle',
-      Category      => 'MyOpsItemCategory',      # OPTIONAL
-      Notifications => [
+      Description     => 'MyOpsItemDescription',
+      Source          => 'MyOpsItemSource',
+      Title           => 'MyOpsItemTitle',
+      ActualEndTime   => '1970-01-01T01:00:00',    # OPTIONAL
+      ActualStartTime => '1970-01-01T01:00:00',    # OPTIONAL
+      Category        => 'MyOpsItemCategory',      # OPTIONAL
+      Notifications   => [
         {
-          Arn => 'MyString',                     # OPTIONAL
+          Arn => 'MyString',                       # OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -54,10 +61,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Value => 'MyOpsItemDataValueString',    # OPTIONAL
         },    # key: min: 1, max: 128
       },    # OPTIONAL
-      Priority        => 1,    # OPTIONAL
-      RelatedOpsItems => [
+      OpsItemType      => 'MyOpsItemType',          # OPTIONAL
+      PlannedEndTime   => '1970-01-01T01:00:00',    # OPTIONAL
+      PlannedStartTime => '1970-01-01T01:00:00',    # OPTIONAL
+      Priority         => 1,                        # OPTIONAL
+      RelatedOpsItems  => [
         {
-          OpsItemId => 'MyString',    # OPTIONAL
+          OpsItemId => 'MyString',                  # OPTIONAL
 
         },
         ...
@@ -82,6 +92,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm/CreateOpsItem>
 
 =head1 ATTRIBUTES
+
+
+=head2 ActualEndTime => Str
+
+The time a runbook workflow ended. Currently reported only for the
+OpsItem type C</aws/changerequest>.
+
+
+
+=head2 ActualStartTime => Str
+
+The time a runbook workflow started. Currently reported only for the
+OpsItem type C</aws/changerequest>.
+
 
 
 =head2 Category => Str
@@ -125,9 +149,30 @@ Use the C</aws/resources> key in OperationalData to specify a related
 resource in the request. Use the C</aws/automations> key in
 OperationalData to associate an Automation runbook with the OpsItem. To
 view AWS CLI example commands that use these keys, see Creating
-OpsItems Manually
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
+OpsItems manually
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-creating-OpsItems.html#OpsCenter-manually-create-OpsItems)
 in the I<AWS Systems Manager User Guide>.
+
+
+
+=head2 OpsItemType => Str
+
+The type of OpsItem to create. Currently, the only valid values are
+C</aws/changerequest> and C</aws/issue>.
+
+
+
+=head2 PlannedEndTime => Str
+
+The time specified in a change request for a runbook workflow to end.
+Currently supported only for the OpsItem type C</aws/changerequest>.
+
+
+
+=head2 PlannedStartTime => Str
+
+The time specified in a change request for a runbook workflow to start.
+Currently supported only for the OpsItem type C</aws/changerequest>.
 
 
 
@@ -155,7 +200,10 @@ Specify a severity to assign to an OpsItem.
 
 =head2 B<REQUIRED> Source => Str
 
-The origin of the OpsItem, such as Amazon EC2 or AWS Systems Manager.
+The origin of the OpsItem, such as Amazon EC2 or Systems Manager.
+
+The source name can't contain the following strings: aws, amazon, and
+amzn.
 
 
 
@@ -163,8 +211,8 @@ The origin of the OpsItem, such as Amazon EC2 or AWS Systems Manager.
 
 Optional metadata that you assign to a resource. You can restrict
 access to OpsItems by using an inline IAM policy that specifies tags.
-For more information, see Getting Started with OpsCenter
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions)
+For more information, see Getting started with OpsCenter
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-getting-started.html#OpsCenter-getting-started-user-permissions)
 in the I<AWS Systems Manager User Guide>.
 
 Tags use a key-value pair. For example:

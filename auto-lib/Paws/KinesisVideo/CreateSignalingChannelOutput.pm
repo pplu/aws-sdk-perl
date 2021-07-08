@@ -17,7 +17,7 @@ Paws::KinesisVideo::CreateSignalingChannelOutput
 
 =head2 ChannelARN => Str
 
-The ARN of the created channel.
+The Amazon Resource Name (ARN) of the created channel.
 
 
 =head2 _request_id => Str

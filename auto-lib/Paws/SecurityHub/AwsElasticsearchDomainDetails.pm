@@ -9,7 +9,9 @@ package Paws::SecurityHub::AwsElasticsearchDomainDetails;
   has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainEncryptionAtRestOptions');
   has Endpoint => (is => 'ro', isa => 'Str');
   has Endpoints => (is => 'ro', isa => 'Paws::SecurityHub::FieldMap');
+  has LogPublishingOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainLogPublishingOptions');
   has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainNodeToNodeEncryptionOptions');
+  has ServiceSoftwareOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainServiceSoftwareOptions');
   has VPCOptions => (is => 'ro', isa => 'Paws::SecurityHub::AwsElasticsearchDomainVPCOptions');
 
 1;
@@ -100,9 +102,20 @@ The key-value pair that exists if the Amazon ES domain uses VPC
 endpoints.
 
 
+=head2 LogPublishingOptions => L<Paws::SecurityHub::AwsElasticsearchDomainLogPublishingOptions>
+
+Configures the CloudWatch Logs to publish for the Elasticsearch domain.
+
+
 =head2 NodeToNodeEncryptionOptions => L<Paws::SecurityHub::AwsElasticsearchDomainNodeToNodeEncryptionOptions>
 
 Details about the configuration for node-to-node encryption.
+
+
+=head2 ServiceSoftwareOptions => L<Paws::SecurityHub::AwsElasticsearchDomainServiceSoftwareOptions>
+
+Information about the status of a domain relative to the latest service
+software.
 
 
 =head2 VPCOptions => L<Paws::SecurityHub::AwsElasticsearchDomainVPCOptions>

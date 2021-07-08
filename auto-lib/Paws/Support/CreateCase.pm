@@ -61,69 +61,80 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sup
 =head2 AttachmentSetId => Str
 
 The ID of a set of one or more attachments for the case. Create the set
-by using AddAttachmentsToSet.
+by using the AddAttachmentsToSet operation.
 
 
 
 =head2 CategoryCode => Str
 
-The category of problem for the AWS Support case.
+The category of problem for the support case. You also use the
+DescribeServices operation to get the category code for a service. Each
+AWS service defines its own set of category codes.
 
 
 
 =head2 CcEmailAddresses => ArrayRef[Str|Undef]
 
 A list of email addresses that AWS Support copies on case
-correspondence.
+correspondence. AWS Support identifies the account that creates the
+case when you specify your AWS credentials in an HTTP POST method or
+use the AWS SDKs (http://aws.amazon.com/tools/).
 
 
 
 =head2 B<REQUIRED> CommunicationBody => Str
 
-The communication body text when you create an AWS Support case by
-calling CreateCase.
+The communication body text that describes the issue. This text appears
+in the B<Description> field on the AWS Support Center Create Case
+(https://console.aws.amazon.com/support/home#/case/create) page.
 
 
 
 =head2 IssueType => Str
 
-The type of issue for the case. You can specify either
-"customer-service" or "technical." If you do not indicate a value, the
-default is "technical."
-
-Service limit increases are not supported by the Support API; you must
-submit service limit increase requests in Support Center
-(https://console.aws.amazon.com/support).
+The type of issue for the case. You can specify C<customer-service> or
+C<technical>. If you don't specify a value, the default is
+C<technical>.
 
 
 
 =head2 Language => Str
 
-The ISO 639-1 code for the language in which AWS provides support. AWS
-Support currently supports English ("en") and Japanese ("ja"). Language
-parameters must be passed explicitly for operations that take them.
+The language in which AWS Support handles the case. You must specify
+the ISO 639-1 code for the C<language> parameter if you want support in
+that language. Currently, English ("en") and Japanese ("ja") are
+supported.
 
 
 
 =head2 ServiceCode => Str
 
-The code for the AWS service returned by the call to DescribeServices.
+The code for the AWS service. You can use the DescribeServices
+operation to get the possible C<serviceCode> values.
 
 
 
 =head2 SeverityCode => Str
 
-The code for the severity level returned by the call to
-DescribeSeverityLevels.
+A value that indicates the urgency of the case. This value determines
+the response time according to your service level agreement with AWS
+Support. You can use the DescribeSeverityLevels operation to get the
+possible values for C<severityCode>.
+
+For more information, see SeverityLevel and Choosing a Severity
+(https://docs.aws.amazon.com/awssupport/latest/user/getting-started.html#choosing-severity)
+in the I<AWS Support User Guide>.
 
 The availability of severity levels depends on the support plan for the
-account.
+AWS account.
 
 
 
 =head2 B<REQUIRED> Subject => Str
 
-The title of the AWS Support case.
+The title of the support case. The title appears in the B<Subject>
+field on the AWS Support Center Create Case
+(https://console.aws.amazon.com/support/home#/case/create) page.
 
 
 

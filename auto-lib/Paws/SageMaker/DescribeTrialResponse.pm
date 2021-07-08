@@ -7,6 +7,7 @@ package Paws::SageMaker::DescribeTrialResponse;
   has ExperimentName => (is => 'ro', isa => 'Str');
   has LastModifiedBy => (is => 'ro', isa => 'Paws::SageMaker::UserContext');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
+  has MetadataProperties => (is => 'ro', isa => 'Paws::SageMaker::MetadataProperties');
   has Source => (is => 'ro', isa => 'Paws::SageMaker::TrialSource');
   has TrialArn => (is => 'ro', isa => 'Str');
   has TrialName => (is => 'ro', isa => 'Str');
@@ -51,6 +52,11 @@ Who last modified the trial.
 =head2 LastModifiedTime => Str
 
 When the trial was last modified.
+
+
+=head2 MetadataProperties => L<Paws::SageMaker::MetadataProperties>
+
+
 
 
 =head2 Source => L<Paws::SageMaker::TrialSource>

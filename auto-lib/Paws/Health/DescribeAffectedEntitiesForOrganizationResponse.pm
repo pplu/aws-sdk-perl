@@ -20,7 +20,7 @@ Paws::Health::DescribeAffectedEntitiesForOrganizationResponse
 
 A JSON set of elements including the C<awsAccountId> and its
 C<entityArn>, C<entityValue> and its C<entityArn>, C<lastUpdatedTime>,
-C<statusCode>, and C<tags>.
+and C<statusCode>.
 
 
 =head2 FailedSet => ArrayRef[L<Paws::Health::OrganizationAffectedEntitiesErrorItem>]

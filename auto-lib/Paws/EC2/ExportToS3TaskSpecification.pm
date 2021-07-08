@@ -52,15 +52,15 @@ The format for the exported image.
 
 =head2 S3Bucket => Str
 
-The S3 bucket for the destination image. The destination bucket must
-exist and grant WRITE and READ_ACP permissions to the AWS account
+The Amazon S3 bucket for the destination image. The destination bucket
+must exist and grant WRITE and READ_ACP permissions to the AWS account
 C<vm-import-export@amazon.com>.
 
 
 =head2 S3Prefix => Str
 
-The image is written to a single object in the S3 bucket at the S3 key
-s3prefix + exportTaskId + '.' + diskImageFormat.
+The image is written to a single object in the Amazon S3 bucket at the
+S3 key s3prefix + exportTaskId + '.' + diskImageFormat.
 
 
 

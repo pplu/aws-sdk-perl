@@ -36,6 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::Comman
 
 Describes a command filter.
 
+An instance ID can't be specified when a command status is C<Pending>
+because the command hasn't run on the instance yet.
+
 =head1 ATTRIBUTES
 
 

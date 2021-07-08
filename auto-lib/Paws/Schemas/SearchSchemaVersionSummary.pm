@@ -3,6 +3,7 @@ package Paws::Schemas::SearchSchemaVersionSummary;
   use Moose;
   has CreatedDate => (is => 'ro', isa => 'Str');
   has SchemaVersion => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Schemas::SearchSchemaVersionSummary object:
 
-  $service_obj->Method(Att1 => { CreatedDate => $value, ..., SchemaVersion => $value  });
+  $service_obj->Method(Att1 => { CreatedDate => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,12 +42,17 @@ This class has no description
 
 =head2 CreatedDate => Str
 
-
+The date the schema version was created.
 
 
 =head2 SchemaVersion => Str
 
 The version number of the schema
+
+
+=head2 Type => Str
+
+The type of schema.
 
 
 

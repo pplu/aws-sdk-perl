@@ -31,11 +31,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $applicationinsights = Paws->service('ApplicationInsights');
     my $UpdateComponentResponse = $applicationinsights->UpdateComponent(
-      ComponentName     => 'MyComponentName',
+      ComponentName     => 'MyCustomComponentName',
       ResourceGroupName => 'MyResourceGroupName',
-      NewComponentName  => 'MyNewComponentName',    # OPTIONAL
+      NewComponentName  => 'MyCustomComponentName',    # OPTIONAL
       ResourceList      => [
-        'MyResourceARN', ...                        # min: 1, max: 1011
+        'MyResourceARN', ...                           # min: 1, max: 1011
       ],    # OPTIONAL
     );
 

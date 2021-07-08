@@ -159,18 +159,27 @@ the following values:
 
 =over
 
-=item * PENDING - Amazon Machine Learning (Amazon ML) submitted a
-request to create a C<DataSource>.
+=item *
 
-=item * INPROGRESS - The creation process is underway.
+PENDING - Amazon Machine Learning (Amazon ML) submitted a request to
+create a C<DataSource>.
 
-=item * FAILED - The request to create a C<DataSource> did not run to
+=item *
+
+INPROGRESS - The creation process is underway.
+
+=item *
+
+FAILED - The request to create a C<DataSource> did not run to
 completion. It is not usable.
 
-=item * COMPLETED - The creation process completed successfully.
+=item *
 
-=item * DELETED - The C<DataSource> is marked as deleted. It is not
-usable.
+COMPLETED - The creation process completed successfully.
+
+=item *
+
+DELETED - The C<DataSource> is marked as deleted. It is not usable.
 
 =back
 

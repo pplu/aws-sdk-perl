@@ -81,7 +81,7 @@ channel, e.g. '2345678' (a channel ID)
 
 =head2 Codec => Str
 
-Filter by codec, 'AVC', 'HEVC', 'MPEG2', or 'AUDIO'
+Filter by codec, 'AVC', 'HEVC', 'MPEG2', 'AUDIO', or 'LINK'
 
 
 

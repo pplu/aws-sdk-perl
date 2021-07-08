@@ -34,10 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     $personalize -events->PutEvents(
       EventList => [
         {
-          EventType  => 'MyStringType',             # min: 1, max: 256
-          Properties => 'MyEventPropertiesJSON',    # min: 1, max: 1024
+          EventType  => 'MyStringType',          # min: 1, max: 256
           SentAt     => '1970-01-01T01:00:00',
-          EventId    => 'MyStringType',             # min: 1, max: 256
+          EventId    => 'MyStringType',          # min: 1, max: 256
+          EventValue => 1.0,                     # OPTIONAL
+          Impression => [
+            'MyItemId', ...                      # min: 1, max: 256
+          ],    # min: 1, max: 25; OPTIONAL
+          ItemId     => 'MyItemId',                # min: 1, max: 256
+          Properties => 'MyEventPropertiesJSON',   # min: 1, max: 1024; OPTIONAL
+          RecommendationId => 'MyRecommendationId',  # min: 1, max: 40; OPTIONAL
         },
         ...
       ],
@@ -60,7 +66,12 @@ A list of event data from the session.
 
 =head2 B<REQUIRED> SessionId => Str
 
-The session ID associated with the user's visit.
+The session ID associated with the user's visit. Your application
+generates the sessionId when a user first visits your website or uses
+your application. Amazon Personalize uses the sessionId to associate
+events with the user before they log in. For more information, see
+Recording Events
+(https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
 
 
 

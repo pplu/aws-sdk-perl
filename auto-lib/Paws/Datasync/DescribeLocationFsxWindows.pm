@@ -52,8 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dat
 
 =head2 B<REQUIRED> LocationArn => Str
 
-The Amazon Resource Name (ARN) of the FSx for Windows location to
-describe.
+The Amazon Resource Name (ARN) of the FSx for Windows File Server
+location to describe.
 
 
 

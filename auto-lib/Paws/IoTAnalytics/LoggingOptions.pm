@@ -47,7 +47,7 @@ If true, logging is enabled for AWS IoT Analytics.
 
 =head2 B<REQUIRED> Level => Str
 
-The logging level. Currently, only "ERROR" is supported.
+The logging level. Currently, only ERROR is supported.
 
 
 =head2 B<REQUIRED> RoleArn => Str

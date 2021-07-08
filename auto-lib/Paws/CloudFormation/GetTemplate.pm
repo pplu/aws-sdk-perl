@@ -86,7 +86,7 @@ all transforms, specify C<Processed>.
 
 If the template doesn't include transforms, C<Original> and
 C<Processed> return the same template. By default, AWS CloudFormation
-specifies C<Original>.
+specifies C<Processed>.
 
 Valid values are: C<"Original">, C<"Processed">
 

@@ -20,7 +20,7 @@ Paws::Quicksight::ListDashboardsResponse
 
 =head2 DashboardSummaryList => ArrayRef[L<Paws::Quicksight::DashboardSummary>]
 
-A structure that contains all of the dashboards shared with the user.
+A structure that contains all of the dashboards in your AWS account.
 This structure provides basic information about the dashboards.
 
 

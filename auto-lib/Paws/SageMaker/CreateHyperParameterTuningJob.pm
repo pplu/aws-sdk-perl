@@ -114,7 +114,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceConfig => {
           InstanceCount => 1,                     # min: 1
           InstanceType  => 'ml.m4.xlarge'
-          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+          , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.p4d.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5n.xlarge, ml.c5n.2xlarge, ml.c5n.4xlarge, ml.c5n.9xlarge, ml.c5n.18xlarge
           VolumeSizeInGB => 1,               # min: 1
           VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
         },
@@ -197,9 +197,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # min: 1, max: 20; OPTIONAL
+        RetryStrategy => {
+          MaximumRetryAttempts => 1,    # min: 1, max: 30
+
+        },    # OPTIONAL
         StaticHyperParameters => {
-          'MyParameterKey' =>
-            'MyParameterValue',    # key: max: 256, value: max: 256
+          'MyHyperParameterKey' =>
+            'MyHyperParameterValue',    # key: max: 256, value: max: 2500
         },    # max: 100; OPTIONAL
         TuningObjective => {
           MetricName => 'MyMetricName',    # min: 1, max: 255
@@ -238,7 +242,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ResourceConfig => {
             InstanceCount => 1,                     # min: 1
             InstanceType  => 'ml.m4.xlarge'
-            , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+            , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.p4d.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5n.xlarge, ml.c5n.2xlarge, ml.c5n.4xlarge, ml.c5n.9xlarge, ml.c5n.18xlarge
             VolumeSizeInGB => 1,               # min: 1
             VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
           },
@@ -321,9 +325,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },
             ...
           ],    # min: 1, max: 20; OPTIONAL
+          RetryStrategy => {
+            MaximumRetryAttempts => 1,    # min: 1, max: 30
+
+          },    # OPTIONAL
           StaticHyperParameters => {
-            'MyParameterKey' =>
-              'MyParameterValue',    # key: max: 256, value: max: 256
+            'MyHyperParameterKey' =>
+              'MyHyperParameterValue',    # key: max: 256, value: max: 2500
           },    # max: 100; OPTIONAL
           TuningObjective => {
             MetricName => 'MyMetricName',    # min: 1, max: 255
@@ -373,7 +381,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 The HyperParameterTuningJobConfig object that describes the tuning job,
 including the search strategy, the objective metric used to evaluate
 training jobs, ranges of parameters to search, and resource limits for
-the tuning job. For more information, see automatic-model-tuning
+the tuning job. For more information, see How Hyperparameter Tuning
+Works
+(https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
 
 
 
@@ -381,18 +391,20 @@ the tuning job. For more information, see automatic-model-tuning
 
 The name of the tuning job. This name is the prefix for the names of
 all training jobs that this tuning job launches. The name must be
-unique within the same AWS account and AWS Region. The name must have {
-} to { } characters. Valid characters are a-z, A-Z, 0-9, and : + = @ _
-% - (hyphen). The name is not case sensitive.
+unique within the same Amazon Web Services account and Amazon Web
+Services Region. The name must have 1 to 32 characters. Valid
+characters are a-z, A-Z, 0-9, and : + = @ _ % - (hyphen). The name is
+not case sensitive.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
-An array of key-value pairs. You can use tags to categorize your AWS
-resources in different ways, for example, by purpose, owner, or
-environment. For more information, see AWS Tagging Strategies
-(https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 Tags that you specify for the tuning job are also added to all training
 jobs that the tuning job launches.
@@ -410,7 +422,8 @@ resource configuration, and stopping condition.
 
 =head2 TrainingJobDefinitions => ArrayRef[L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
 
-
+A list of the HyperParameterTrainingJobDefinition objects launched for
+this tuning job.
 
 
 

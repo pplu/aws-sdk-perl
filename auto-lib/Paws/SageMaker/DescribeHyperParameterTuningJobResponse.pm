@@ -100,7 +100,8 @@ definition of the training jobs that this tuning job launches.
 
 =head2 TrainingJobDefinitions => ArrayRef[L<Paws::SageMaker::HyperParameterTrainingJobDefinition>]
 
-
+A list of the HyperParameterTrainingJobDefinition objects launched for
+this tuning job.
 
 
 =head2 B<REQUIRED> TrainingJobStatusCounters => L<Paws::SageMaker::TrainingJobStatusCounters>

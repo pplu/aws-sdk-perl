@@ -10,6 +10,7 @@ package Paws::ImageBuilder::InfrastructureConfiguration;
   has KeyPair => (is => 'ro', isa => 'Str', request_name => 'keyPair', traits => ['NameInRequest']);
   has Logging => (is => 'ro', isa => 'Paws::ImageBuilder::Logging', request_name => 'logging', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ResourceTags => (is => 'ro', isa => 'Paws::ImageBuilder::ResourceTagMap', request_name => 'resourceTags', traits => ['NameInRequest']);
   has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIds', traits => ['NameInRequest']);
   has SnsTopicArn => (is => 'ro', isa => 'Str', request_name => 'snsTopicArn', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
@@ -83,7 +84,7 @@ The instance types of the infrastructure configuration.
 
 =head2 KeyPair => Str
 
-The EC2 key pair of the infrastructure configuration.
+The Amazon EC2 key pair of the infrastructure configuration.
 
 
 =head2 Logging => L<Paws::ImageBuilder::Logging>
@@ -94,6 +95,11 @@ The logging configuration of the infrastructure configuration.
 =head2 Name => Str
 
 The name of the infrastructure configuration.
+
+
+=head2 ResourceTags => L<Paws::ImageBuilder::ResourceTagMap>
+
+The tags attached to the resource created by Image Builder.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]

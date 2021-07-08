@@ -2,6 +2,7 @@
 package Paws::ConnectParticipant::Item;
   use Moose;
   has AbsoluteTime => (is => 'ro', isa => 'Str');
+  has Attachments => (is => 'ro', isa => 'ArrayRef[Paws::ConnectParticipant::AttachmentItem]');
   has Content => (is => 'ro', isa => 'Str');
   has ContentType => (is => 'ro', isa => 'Str');
   has DisplayName => (is => 'ro', isa => 'Str');
@@ -51,6 +52,11 @@ The time when the message or event was sent.
 
 It's specified in ISO 8601 format: yyyy-MM-ddThh:mm:ss.SSSZ. For
 example, 2019-11-08T02:41:28.172Z.
+
+
+=head2 Attachments => ArrayRef[L<Paws::ConnectParticipant::AttachmentItem>]
+
+Provides information about the attachments.
 
 
 =head2 Content => Str

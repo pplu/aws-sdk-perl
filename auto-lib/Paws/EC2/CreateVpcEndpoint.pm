@@ -50,7 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TagSpecifications => [
         {
           ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
           Tags => [
             {
               Key   => 'MyString',
@@ -96,10 +96,10 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 PolicyDocument => Str
 
-A policy to attach to the endpoint that controls access to the service.
-The policy must be in valid JSON format. If this parameter is not
-specified, we attach a default policy that allows full access to the
-service.
+(Interface and gateway endpoints) A policy to attach to the endpoint
+that controls access to the service. The policy must be in valid JSON
+format. If this parameter is not specified, we attach a default policy
+that allows full access to the service.
 
 
 
@@ -145,8 +145,9 @@ provider.
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-(Interface endpoint) The ID of one or more subnets in which to create
-an endpoint network interface.
+(Interface and Gateway Load Balancer endpoints) The ID of one or more
+subnets in which to create an endpoint network interface. For a Gateway
+Load Balancer endpoint, you can specify one subnet only.
 
 
 
@@ -162,7 +163,7 @@ The type of endpoint.
 
 Default: Gateway
 
-Valid values are: C<"Interface">, C<"Gateway">
+Valid values are: C<"Interface">, C<"Gateway">, C<"GatewayLoadBalancer">
 
 =head2 B<REQUIRED> VpcId => Str
 

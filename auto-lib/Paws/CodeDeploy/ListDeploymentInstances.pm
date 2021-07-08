@@ -68,28 +68,29 @@ A subset of instances to list by status:
 
 =item *
 
-Pending: Include those instances with pending deployments.
+C<Pending>: Include those instances with pending deployments.
 
 =item *
 
-InProgress: Include those instances where deployments are still in
+C<InProgress>: Include those instances where deployments are still in
 progress.
 
 =item *
 
-Succeeded: Include those instances with successful deployments.
+C<Succeeded>: Include those instances with successful deployments.
 
 =item *
 
-Failed: Include those instances with failed deployments.
+C<Failed>: Include those instances with failed deployments.
 
 =item *
 
-Skipped: Include those instances with skipped deployments.
+C<Skipped>: Include those instances with skipped deployments.
 
 =item *
 
-Unknown: Include those instances with deployments in an unknown state.
+C<Unknown>: Include those instances with deployments in an unknown
+state.
 
 =back
 

@@ -111,10 +111,10 @@ A comma-separated list that specifies the types of AWS resources for
 which AWS Config records configuration changes (for example,
 C<AWS::EC2::Instance> or C<AWS::CloudTrail::Trail>).
 
-Before you can set this option to C<true>, you must set the
-C<allSupported> option to C<false>.
+To record all configuration changes, you must set the C<allSupported>
+option to C<true>.
 
-If you set this option to C<true>, when AWS Config adds support for a
+If you set this option to C<false>, when AWS Config adds support for a
 new type of resource, it will not record resources of that type unless
 you manually add that type to your recording group.
 

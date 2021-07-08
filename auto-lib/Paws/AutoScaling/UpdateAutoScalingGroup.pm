@@ -3,6 +3,8 @@ package Paws::AutoScaling::UpdateAutoScalingGroup;
   use Moose;
   has AutoScalingGroupName => (is => 'ro', isa => 'Str', required => 1);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has CapacityRebalance => (is => 'ro', isa => 'Bool');
+  has Context => (is => 'ro', isa => 'Str');
   has DefaultCooldown => (is => 'ro', isa => 'Int');
   has DesiredCapacity => (is => 'ro', isa => 'Int');
   has HealthCheckGracePeriod => (is => 'ro', isa => 'Int');
@@ -86,16 +88,28 @@ One or more Availability Zones for the group.
 
 
 
+=head2 CapacityRebalance => Bool
+
+Enables or disables Capacity Rebalancing. For more information, see
+Amazon EC2 Auto Scaling Capacity Rebalancing
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/capacity-rebalance.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
+
+
+
+=head2 Context => Str
+
+Reserved.
+
+
+
 =head2 DefaultCooldown => Int
 
 The amount of time, in seconds, after a scaling activity completes
 before another scaling activity can start. The default value is C<300>.
-This cooldown period is not used when a scaling-specific cooldown is
-specified.
-
-Cooldown periods are not supported for target tracking scaling
-policies, step scaling policies, or scheduled scaling. For more
-information, see Scaling Cooldowns
+This setting applies when using simple scaling policies, but not when
+using other scaling policies or scheduled scaling. For more
+information, see Scaling cooldowns for Amazon EC2 Auto Scaling
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/Cooldown.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -103,9 +117,10 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 DesiredCapacity => Int
 
-The number of EC2 instances that should be running in the Auto Scaling
-group. This number must be greater than or equal to the minimum size of
-the group and less than or equal to the maximum size of the group.
+The desired capacity is the initial capacity of the Auto Scaling group
+after this operation completes and the capacity it attempts to
+maintain. This number must be greater than or equal to the minimum size
+of the group and less than or equal to the maximum size of the group.
 
 
 
@@ -113,21 +128,19 @@ the group and less than or equal to the maximum size of the group.
 
 The amount of time, in seconds, that Amazon EC2 Auto Scaling waits
 before checking the health status of an EC2 instance that has come into
-service. The default value is C<0>.
-
-For more information, see Health Check Grace Period
+service. The default value is C<0>. For more information, see Health
+check grace period
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/healthcheck.html#health-check-grace-period)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
-Conditional: This parameter is required if you are adding an C<ELB>
-health check.
+Conditional: Required if you are adding an C<ELB> health check.
 
 
 
 =head2 HealthCheckType => Str
 
 The service to use for the health checks. The valid values are C<EC2>
-and C<ELB>. If you configure an Auto Scaling group to use ELB health
+and C<ELB>. If you configure an Auto Scaling group to use C<ELB> health
 checks, it considers the instance unhealthy if it fails either the EC2
 status checks or the load balancer health checks.
 
@@ -147,29 +160,30 @@ The launch template and version to use to specify the updates. If you
 specify C<LaunchTemplate> in your update request, you can't specify
 C<LaunchConfigurationName> or C<MixedInstancesPolicy>.
 
-For more information, see LaunchTemplateSpecification
-(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_LaunchTemplateSpecification.html)
-in the I<Amazon EC2 Auto Scaling API Reference>.
-
 
 
 =head2 MaxInstanceLifetime => Int
 
 The maximum amount of time, in seconds, that an instance can be in
-service.
-
-For more information, see Replacing Auto Scaling Instances Based on
-Maximum Instance Lifetime
+service. The default is null. If specified, the value must be either 0
+or a number equal to or greater than 86,400 seconds (1 day). To clear a
+previously set value, specify a new value of 0. For more information,
+see Replacing Auto Scaling instances based on maximum instance lifetime
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-max-instance-lifetime.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
-
-Valid Range: Minimum value of 604800.
 
 
 
 =head2 MaxSize => Int
 
 The maximum size of the Auto Scaling group.
+
+With a mixed instances policy that uses instance weighting, Amazon EC2
+Auto Scaling may need to go above C<MaxSize> to meet your capacity
+requirements. In this event, Amazon EC2 Auto Scaling will never go
+above C<MaxSize> by more than your largest instance weight (weights
+that define how many units each instance contributes to the desired
+capacity of the group).
 
 
 
@@ -181,16 +195,10 @@ The minimum size of the Auto Scaling group.
 
 =head2 MixedInstancesPolicy => L<Paws::AutoScaling::MixedInstancesPolicy>
 
-An embedded object that specifies a mixed instances policy.
-
-In your call to C<UpdateAutoScalingGroup>, you can make changes to the
-policy that is specified. All optional parameters are left unchanged if
-not specified.
-
-For more information, see MixedInstancesPolicy
-(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_MixedInstancesPolicy.html)
-in the I<Amazon EC2 Auto Scaling API Reference> and Auto Scaling Groups
-with Multiple Instance Types and Purchase Options
+An embedded object that specifies a mixed instances policy. When you
+make changes to an existing policy, all optional properties are left
+unchanged if not specified. For more information, see Auto Scaling
+groups with multiple instance types and purchase options
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-purchase-options.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -199,10 +207,9 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 =head2 NewInstancesProtectedFromScaleIn => Bool
 
 Indicates whether newly launched instances are protected from
-termination by Amazon EC2 Auto Scaling when scaling in.
-
-For more information about preventing instances from terminating on
-scale in, see Instance Protection
+termination by Amazon EC2 Auto Scaling when scaling in. For more
+information about preventing instances from terminating on scale in,
+see Instance scale-in protection
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html#instance-protection)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -210,10 +217,11 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 PlacementGroup => Str
 
-The name of the placement group into which to launch your instances, if
-any. A placement group is a logical grouping of instances within a
-single Availability Zone. You cannot specify multiple Availability
-Zones and a placement group. For more information, see Placement Groups
+The name of an existing placement group into which to launch your
+instances, if any. A placement group is a logical grouping of instances
+within a single Availability Zone. You cannot specify multiple
+Availability Zones and a placement group. For more information, see
+Placement Groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -222,8 +230,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 =head2 ServiceLinkedRoleARN => Str
 
 The Amazon Resource Name (ARN) of the service-linked role that the Auto
-Scaling group uses to call other AWS services on your behalf. For more
-information, see Service-Linked Roles
+Scaling group uses to call other Amazon Web Services on your behalf.
+For more information, see Service-linked roles
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-service-linked-role.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -231,12 +239,10 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 TerminationPolicies => ArrayRef[Str|Undef]
 
-A standalone termination policy or a list of termination policies used
-to select the instance to terminate. The policies are executed in the
-order that they are listed.
-
-For more information, see Controlling Which Instances Auto Scaling
-Terminates During Scale In
+A policy or a list of policies that are used to select the instances to
+terminate. The policies are executed in the order that you list them.
+For more information, see Controlling which Auto Scaling instances
+terminate during scale in
 (https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-instance-termination.html)
 in the I<Amazon EC2 Auto Scaling User Guide>.
 
@@ -244,8 +250,7 @@ in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head2 VPCZoneIdentifier => Str
 
-A comma-separated list of subnet IDs for virtual private cloud (VPC).
-
+A comma-separated list of subnet IDs for a virtual private cloud (VPC).
 If you specify C<VPCZoneIdentifier> with C<AvailabilityZones>, the
 subnets that you specify for this parameter must reside in those
 Availability Zones.

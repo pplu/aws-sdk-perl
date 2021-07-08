@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::Instan
 An instance type configuration for each instance type in an instance
 fleet, which determines the EC2 instances Amazon EMR attempts to
 provision to fulfill On-Demand and Spot target capacities. There can be
-a maximum of 5 instance type configurations in a fleet.
+a maximum of five instance type configurations in a fleet.
 
 The instance fleet configuration is available only in Amazon EMR
 versions 4.8.0 and later, excluding 5.0.x versions.
@@ -51,7 +51,7 @@ versions 4.8.0 and later, excluding 5.0.x versions.
 
 =head2 BidPrice => Str
 
-The bid price for each EC2 Spot instance type as defined by
+The bid price for each EC2 Spot Instance type as defined by
 C<InstanceType>. Expressed in USD. If neither C<BidPrice> nor
 C<BidPriceAsPercentageOfOnDemandPrice> is provided,
 C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
@@ -60,7 +60,7 @@ C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
 =head2 BidPriceAsPercentageOfOnDemandPrice => Num
 
 The bid price, as a percentage of On-Demand price, for each EC2 Spot
-instance as defined by C<InstanceType>. Expressed as a number (for
+Instance as defined by C<InstanceType>. Expressed as a number (for
 example, 20 specifies 20%). If neither C<BidPrice> nor
 C<BidPriceAsPercentageOfOnDemandPrice> is provided,
 C<BidPriceAsPercentageOfOnDemandPrice> defaults to 100%.
@@ -75,8 +75,8 @@ software that run on the cluster.
 
 =head2 EbsConfiguration => L<Paws::EMR::EbsConfiguration>
 
-The configuration of Amazon Elastic Block Storage (EBS) attached to
-each instance as defined by C<InstanceType>.
+The configuration of Amazon Elastic Block Storage (Amazon EBS) attached
+to each instance as defined by C<InstanceType>.
 
 
 =head2 B<REQUIRED> InstanceType => Str

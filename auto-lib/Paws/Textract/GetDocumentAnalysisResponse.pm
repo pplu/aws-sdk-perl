@@ -51,7 +51,8 @@ of text detection results.
 
 =head2 StatusMessage => Str
 
-The current status of an asynchronous document-analysis operation.
+Returns if the detection job could not be completed. Contains
+explanation for what error occured.
 
 
 =head2 Warnings => ArrayRef[L<Paws::Textract::Warning>]

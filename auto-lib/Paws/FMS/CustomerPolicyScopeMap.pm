@@ -7,6 +7,7 @@ package Paws::FMS::CustomerPolicyScopeMap;
   class_has xml_values =>(is => 'ro', default => 'value');
 
   has ACCOUNT => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has ORG_UNIT => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 1;
 
 ### main pod documentation begin ###
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::FMS::CustomerPolicyScopeMap object:
 
-  $service_obj->Method(Att1 => { ACCOUNT => $value, ..., ACCOUNT => $value  });
+  $service_obj->Method(Att1 => { ACCOUNT => $value, ..., ORG_UNIT => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,6 +44,9 @@ This class has no description
 
 
 =head2 ACCOUNT => ArrayRef[Str|Undef]
+
+
+=head2 ORG_UNIT => ArrayRef[Str|Undef]
 
 
 

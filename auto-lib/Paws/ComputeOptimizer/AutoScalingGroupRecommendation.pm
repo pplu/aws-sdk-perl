@@ -69,7 +69,7 @@ Scaling group.
 
 =head2 Finding => Str
 
-The finding classification for the Auto Scaling group.
+The finding classification of the Auto Scaling group.
 
 Findings for Auto Scaling groups include:
 
@@ -91,7 +91,6 @@ instance type.
 
 =back
 
-The values that are returned might be C<NOT_OPTIMIZED> or C<OPTIMIZED>.
 
 
 =head2 LastRefreshTimestamp => Str

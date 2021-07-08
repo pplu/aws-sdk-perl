@@ -50,15 +50,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> ClusterId => Str
 
-The C<ClusterID> for which specified steps will be canceled. Use
+The C<ClusterID> for the specified steps that will be canceled. Use
 RunJobFlow and ListClusters to get ClusterIDs.
 
 
 
 =head2 StepCancellationOption => Str
 
-The option to choose for cancelling C<RUNNING> steps. By default, the
-value is C<SEND_INTERRUPT>.
+The option to choose to cancel C<RUNNING> steps. By default, the value
+is C<SEND_INTERRUPT>.
 
 Valid values are: C<"SEND_INTERRUPT">, C<"TERMINATE_PROCESS">
 

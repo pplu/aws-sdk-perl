@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 =head1 DESCRIPTION
 
 When you update a reference data source configuration for a SQL-based
-Amazon Kinesis Data Analytics application, this object provides all the
+Kinesis Data Analytics application, this object provides all the
 updated values (such as the source bucket name and object key name),
 the in-application table name that is created, and updated mapping
 information that maps the data in the Amazon S3 object to the

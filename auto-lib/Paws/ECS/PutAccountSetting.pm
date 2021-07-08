@@ -70,6 +70,9 @@ unless an IAM user or role explicitly overrides these settings. If this
 field is omitted, the setting is changed only for the authenticated
 user.
 
+Federated users assume the account setting of the root user and can't
+have explicit account settings set for them.
+
 
 
 =head2 B<REQUIRED> Value => Str

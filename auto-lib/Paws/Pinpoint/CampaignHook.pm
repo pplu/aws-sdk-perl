@@ -35,7 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Pinpoint::C
 
 =head1 DESCRIPTION
 
-Specifies the AWS Lambda function to use as a code hook for a campaign.
+Specifies settings for invoking an AWS Lambda function that customizes
+a segment for a campaign.
 
 =head1 ATTRIBUTES
 
@@ -43,13 +44,31 @@ Specifies the AWS Lambda function to use as a code hook for a campaign.
 =head2 LambdaFunctionName => Str
 
 The name or Amazon Resource Name (ARN) of the AWS Lambda function that
-Amazon Pinpoint invokes to send messages for a campaign.
+Amazon Pinpoint invokes to customize a segment for a campaign.
 
 
 =head2 Mode => Str
 
-Specifies which Lambda mode to use when invoking the AWS Lambda
-function.
+The mode that Amazon Pinpoint uses to invoke the AWS Lambda function.
+Possible values are:
+
+=over
+
+=item *
+
+FILTER - Invoke the function to customize the segment that's used by a
+campaign.
+
+=item *
+
+DELIVERY - (Deprecated) Previously, invoked the function to send a
+campaign through a custom channel. This functionality is not supported
+anymore. To send a campaign through a custom channel, use the
+CustomDeliveryConfiguration and CampaignCustomMessage objects of the
+campaign.
+
+=back
+
 
 
 =head2 WebUrl => Str

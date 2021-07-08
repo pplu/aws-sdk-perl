@@ -38,7 +38,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DocDB::Cert
 
 =head1 DESCRIPTION
 
-A certificate authority (CA) certificate for an AWS account.
+A certificate authority (CA) certificate for an account.
 
 =head1 ATTRIBUTES
 

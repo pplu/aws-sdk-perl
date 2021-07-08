@@ -93,7 +93,7 @@ The name of the stage.
 
 A map that defines the stage variables for a Stage. Variable names can
 have alphanumeric and underscore characters, and the values must match
-[A-Za-z0-9-._~:/?#&=,]+. Supported only for WebSocket APIs.
+[A-Za-z0-9-._~:/?#&=,]+.
 
 
 =head2 Tags => L<Paws::ApiGatewayV2::Tags>

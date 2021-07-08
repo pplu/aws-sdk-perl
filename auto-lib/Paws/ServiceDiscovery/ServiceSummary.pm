@@ -10,6 +10,7 @@ package Paws::ServiceDiscovery::ServiceSummary;
   has Id => (is => 'ro', isa => 'Str');
   has InstanceCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -30,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceDiscovery::ServiceSummary object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -48,8 +49,8 @@ A complex type that contains information about a specified service.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) that AWS Cloud Map assigns to the
-service when you create it.
+The Amazon Resource Name (ARN) that Cloud Map assigns to the service
+when you create it.
 
 
 =head2 CreateDate => Str
@@ -64,34 +65,86 @@ The description that you specify when you create the service.
 
 =head2 DnsConfig => L<Paws::ServiceDiscovery::DnsConfig>
 
-
+Information about the Route 53 DNS records that you want Cloud Map to
+create when you register an instance.
 
 
 =head2 HealthCheckConfig => L<Paws::ServiceDiscovery::HealthCheckConfig>
 
-
+I<Public DNS and HTTP namespaces only.> Settings for an optional health
+check. If you specify settings for a health check, Cloud Map associates
+the health check with the records that you specify in C<DnsConfig>.
 
 
 =head2 HealthCheckCustomConfig => L<Paws::ServiceDiscovery::HealthCheckCustomConfig>
 
+Information about an optional custom health check. A custom health
+check, which requires that you use a third-party health checker to
+evaluate the health of your resources, is useful in the following
+circumstances:
 
+=over
+
+=item *
+
+You can't use a health check that's defined by C<HealthCheckConfig>
+because the resource isn't available over the internet. For example,
+you can use a custom health check when the instance is in an Amazon
+VPC. (To check the health of resources in a VPC, the health checker
+must also be in the VPC.)
+
+=item *
+
+You want to use a third-party health checker regardless of where your
+resources are located.
+
+=back
+
+If you specify a health check configuration, you can specify either
+C<HealthCheckCustomConfig> or C<HealthCheckConfig> but not both.
 
 
 =head2 Id => Str
 
-The ID that AWS Cloud Map assigned to the service when you created it.
+The ID that Cloud Map assigned to the service when you created it.
 
 
 =head2 InstanceCount => Int
 
 The number of instances that are currently associated with the service.
-Instances that were previously associated with the service but that
-have been deleted are not included in the count.
+Instances that were previously associated with the service but that are
+deleted aren't included in the count. The count might not reflect
+pending registrations and deregistrations.
 
 
 =head2 Name => Str
 
 The name of the service.
+
+
+=head2 Type => Str
+
+Describes the systems that can be used to discover the service
+instances.
+
+=over
+
+=item DNS_HTTP
+
+The service instances can be discovered using either DNS queries or the
+C<DiscoverInstances> API operation.
+
+=item HTTP
+
+The service instances can only be discovered using the
+C<DiscoverInstances> API operation.
+
+=item DNS
+
+Reserved.
+
+=back
+
 
 
 

@@ -10,6 +10,7 @@ package Paws::EC2::ClientVpnConnection;
   has EgressPackets => (is => 'ro', isa => 'Str', request_name => 'egressPackets', traits => ['NameInRequest']);
   has IngressBytes => (is => 'ro', isa => 'Str', request_name => 'ingressBytes', traits => ['NameInRequest']);
   has IngressPackets => (is => 'ro', isa => 'Str', request_name => 'ingressPackets', traits => ['NameInRequest']);
+  has PostureComplianceStatuses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'postureComplianceStatusSet', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnConnectionStatus', request_name => 'status', traits => ['NameInRequest']);
   has Timestamp => (is => 'ro', isa => 'Str', request_name => 'timestamp', traits => ['NameInRequest']);
   has Username => (is => 'ro', isa => 'Str', request_name => 'username', traits => ['NameInRequest']);
@@ -97,6 +98,12 @@ The number of bytes sent by the client.
 =head2 IngressPackets => Str
 
 The number of packets sent by the client.
+
+
+=head2 PostureComplianceStatuses => ArrayRef[Str|Undef]
+
+The statuses returned by the client connect handler for posture
+compliance, if applicable.
 
 
 =head2 Status => L<Paws::EC2::ClientVpnConnectionStatus>

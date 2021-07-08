@@ -36,39 +36,31 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-A structure that uses CloudWatch metrics to gather data about the
-service quota.
+Information about the CloudWatch metric that reflects quota usage.
 
 =head1 ATTRIBUTES
 
 
 =head2 MetricDimensions => L<Paws::ServiceQuotas::MetricDimensionsMapDefinition>
 
-A dimension is a name/value pair that is part of the identity of a
-metric. Every metric has specific characteristics that describe it, and
-you can think of dimensions as categories for those characteristics.
-These dimensions are part of the CloudWatch Metric Identity that
-measures usage against a particular service quota.
+The metric dimension. This is a name/value pair that is part of the
+identity of a metric.
 
 
 =head2 MetricName => Str
 
-The name of the CloudWatch metric that measures usage of a service
-quota. This is a required field.
+The name of the metric.
 
 
 =head2 MetricNamespace => Str
 
-The namespace of the metric. The namespace is a container for
-CloudWatch metrics. You can specify a name for the namespace when you
-create a metric.
+The namespace of the metric.
 
 
 =head2 MetricStatisticRecommendation => Str
 
-Statistics are metric data aggregations over specified periods of time.
-This is the recommended statistic to use when comparing usage in the
-CloudWatch Metric against your Service Quota.
+The metric statistic that we recommend you use when determining quota
+usage.
 
 
 

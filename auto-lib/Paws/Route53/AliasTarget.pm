@@ -53,7 +53,7 @@ resource record sets in a private hosted zone is unsupported.
 
 For information about creating failover resource record sets in a
 private hosted zone, see Configuring Failover in a Private Hosted Zone
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html).
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-private-hosted-zones.html).
 
 =back
 
@@ -111,7 +111,7 @@ of the resource record set is I<acme.example.com>, your CloudFront
 distribution must include I<acme.example.com> as one of the alternate
 domain names. For more information, see Using Alternate Domain Names
 (CNAMEs)
-(http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html)
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html)
 in the I<Amazon CloudFront Developer Guide>.
 
 You can't create a resource record set in a private hosted zone to
@@ -151,7 +151,7 @@ following methods to get the value of the CNAME attribute:
 I<AWS Management Console>: For information about how to get the value
 by using the console, see Using Custom Domains with AWS Elastic
 Beanstalk
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customdomains.html)
 in the I<AWS Elastic Beanstalk Developer Guide>.
 
 =item *
@@ -159,7 +159,7 @@ in the I<AWS Elastic Beanstalk Developer Guide>.
 I<Elastic Beanstalk API>: Use the C<DescribeEnvironments> action to get
 the value of the C<CNAME> attribute. For more information, see
 DescribeEnvironments
-(http://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_DescribeEnvironments.html)
+(https://docs.aws.amazon.com/elasticbeanstalk/latest/api/API_DescribeEnvironments.html)
 in the I<AWS Elastic Beanstalk API Reference>.
 
 =item *
@@ -167,8 +167,8 @@ in the I<AWS Elastic Beanstalk API Reference>.
 I<AWS CLI>: Use the C<describe-environments> command to get the value
 of the C<CNAME> attribute. For more information, see
 describe-environments
-(http://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/describe-environments.html)
-in the I<AWS Command Line Interface Reference>.
+(https://docs.aws.amazon.com/cli/latest/reference/elasticbeanstalk/describe-environments.html)
+in the I<AWS CLI Command Reference>.
 
 =back
 
@@ -201,12 +201,12 @@ value of C<DNSName>. For more information, see the applicable guide:
 =item *
 
 Classic Load Balancers: DescribeLoadBalancers
-(http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html)
 
 =item *
 
 Application and Network Load Balancers: DescribeLoadBalancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
 
 =back
 
@@ -231,18 +231,35 @@ Application and Network Load Balancers: describe-load-balancers
 
 =back
 
+=item AWS Global Accelerator accelerator
+
+Specify the DNS name for your accelerator:
+
+=over
+
+=item *
+
+B<Global Accelerator API:> To get the DNS name, use DescribeAccelerator
+(https://docs.aws.amazon.com/global-accelerator/latest/api/API_DescribeAccelerator.html).
+
+=item *
+
+B<AWS CLI:> To get the DNS name, use describe-accelerator
+(https://docs.aws.amazon.com/cli/latest/reference/globalaccelerator/describe-accelerator.html).
+
+=back
+
 =item Amazon S3 bucket that is configured as a static website
 
 Specify the domain name of the Amazon S3 website endpoint that you
 created the bucket in, for example,
 C<s3-website.us-east-2.amazonaws.com>. For more information about valid
-values, see the table Amazon Simple Storage Service (S3) Website
-Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region) in
-the I<Amazon Web Services General Reference>. For more information
+values, see the table Amazon S3 Website Endpoints
+(https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_website_region_endpoints)
+in the I<Amazon Web Services General Reference>. For more information
 about using S3 buckets for websites, see Getting Started with Amazon
 Route 53
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/getting-started.html)
 in the I<Amazon Route 53 Developer Guide.>
 
 =item Another Route 53 resource record set
@@ -351,14 +368,14 @@ group of records (for example, a group of weighted records) but is not
 another alias record, we recommend that you associate a health check
 with all of the records in the alias target. For more information, see
 What Happens When You Omit Health Checks?
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-complex-configs.html#dns-failover-complex-configs-hc-omitting)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-complex-configs.html#dns-failover-complex-configs-hc-omitting)
 in the I<Amazon Route 53 Developer Guide>.
 
 =back
 
 For more information and examples, see Amazon Route 53 Health Checks
 and DNS Failover
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 
@@ -407,10 +424,9 @@ zone.
 Specify the hosted zone ID for the region that you created the
 environment in. The environment must have a regionalized subdomain. For
 a list of regions and the corresponding hosted zone IDs, see AWS
-Elastic Beanstalk
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
-in the "AWS Regions and Endpoints" chapter of the I<Amazon Web Services
-General Reference>.
+Elastic Beanstalk endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/elasticbeanstalk.html)
+in the the I<Amazon Web Services General Reference>.
 
 =item ELB load balancer
 
@@ -421,13 +437,12 @@ following methods to get the hosted zone ID:
 
 =item *
 
-Elastic Load Balancing
-(https://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region)
-table in the "AWS Regions and Endpoints" chapter of the I<Amazon Web
-Services General Reference>: Use the value that corresponds with the
-region that you created your load balancer in. Note that there are
-separate columns for Application and Classic Load Balancers and for
-Network Load Balancers.
+Elastic Load Balancing endpoints and quotas
+(https://docs.aws.amazon.com/general/latest/gr/elb.html) topic in the
+I<Amazon Web Services General Reference>: Use the value that
+corresponds with the region that you created your load balancer in.
+Note that there are separate columns for Application and Classic Load
+Balancers and for Network Load Balancers.
 
 =item *
 
@@ -445,13 +460,13 @@ applicable value. For more information, see the applicable guide:
 =item *
 
 Classic Load Balancers: Use DescribeLoadBalancers
-(http://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/2012-06-01/APIReference/API_DescribeLoadBalancers.html)
 to get the value of C<CanonicalHostedZoneNameId>.
 
 =item *
 
 Application and Network Load Balancers: Use DescribeLoadBalancers
-(http://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
 to get the value of C<CanonicalHostedZoneId>.
 
 =back
@@ -479,14 +494,17 @@ to get the value of C<CanonicalHostedZoneId>.
 
 =back
 
+=item AWS Global Accelerator accelerator
+
+Specify C<Z2BJ6XQ5FK7U4H>.
+
 =item An Amazon S3 bucket configured as a static website
 
 Specify the hosted zone ID for the region that you created the bucket
-in. For more information about valid values, see the Amazon Simple
-Storage Service Website Endpoints
-(http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region)
-table in the "AWS Regions and Endpoints" chapter of the I<Amazon Web
-Services General Reference>.
+in. For more information about valid values, see the table Amazon S3
+Website Endpoints
+(https://docs.aws.amazon.com/general/latest/gr/s3.html#s3_website_region_endpoints)
+in the I<Amazon Web Services General Reference>.
 
 =item Another Route 53 resource record set in your hosted zone
 

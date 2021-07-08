@@ -62,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> Content => Str
 
-
+The source of the schema definition.
 
 
 
@@ -74,13 +74,13 @@ A description of the schema.
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 
 =head2 B<REQUIRED> SchemaName => Str
 
-
+The name of the schema.
 
 
 
@@ -92,9 +92,9 @@ Tags associated with the schema.
 
 =head2 B<REQUIRED> Type => Str
 
+The type of schema.
 
-
-Valid values are: C<"OpenApi3">
+Valid values are: C<"OpenApi3">, C<"JSONSchemaDraft4">
 
 
 =head1 SEE ALSO

@@ -4,6 +4,7 @@ package Paws::IoTAnalytics::ChannelSummary;
   has ChannelName => (is => 'ro', isa => 'Str', request_name => 'channelName', traits => ['NameInRequest']);
   has ChannelStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::ChannelStorageSummary', request_name => 'channelStorage', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
+  has LastMessageArrivalTime => (is => 'ro', isa => 'Str', request_name => 'lastMessageArrivalTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
 
@@ -55,6 +56,18 @@ Where channel data is stored.
 =head2 CreationTime => Str
 
 When the channel was created.
+
+
+=head2 LastMessageArrivalTime => Str
+
+The last time when a new message arrived in the channel.
+
+AWS IoT Analytics updates this value at most once per minute for one
+channel. Hence, the C<lastMessageArrivalTime> value is an
+approximation.
+
+This feature only applies to messages that arrived in the data store
+after October 23, 2020.
 
 
 =head2 LastUpdateTime => Str

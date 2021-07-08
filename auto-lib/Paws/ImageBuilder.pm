@@ -24,6 +24,11 @@ package Paws::ImageBuilder;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::CreateComponent', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateContainerRecipe {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::CreateContainerRecipe', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDistributionConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::CreateDistributionConfiguration', @_);
@@ -52,6 +57,11 @@ package Paws::ImageBuilder;
   sub DeleteComponent {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::DeleteComponent', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteContainerRecipe {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::DeleteContainerRecipe', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteDistributionConfiguration {
@@ -87,6 +97,16 @@ package Paws::ImageBuilder;
   sub GetComponentPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::GetComponentPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerRecipe {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::GetContainerRecipe', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetContainerRecipePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::GetContainerRecipePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDistributionConfiguration {
@@ -139,6 +159,11 @@ package Paws::ImageBuilder;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::ListComponents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListContainerRecipes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::ListContainerRecipes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDistributionConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::ListDistributionConfigurations', @_);
@@ -147,6 +172,11 @@ package Paws::ImageBuilder;
   sub ListImageBuildVersions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::ListImageBuildVersions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListImagePackages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::ListImagePackages', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListImagePipelineImages {
@@ -182,6 +212,11 @@ package Paws::ImageBuilder;
   sub PutComponentPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ImageBuilder::PutComponentPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutContainerRecipePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ImageBuilder::PutContainerRecipePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutImagePolicy {
@@ -227,7 +262,7 @@ package Paws::ImageBuilder;
   
 
 
-  sub operations { qw/CancelImageCreation CreateComponent CreateDistributionConfiguration CreateImage CreateImagePipeline CreateImageRecipe CreateInfrastructureConfiguration DeleteComponent DeleteDistributionConfiguration DeleteImage DeleteImagePipeline DeleteImageRecipe DeleteInfrastructureConfiguration GetComponent GetComponentPolicy GetDistributionConfiguration GetImage GetImagePipeline GetImagePolicy GetImageRecipe GetImageRecipePolicy GetInfrastructureConfiguration ImportComponent ListComponentBuildVersions ListComponents ListDistributionConfigurations ListImageBuildVersions ListImagePipelineImages ListImagePipelines ListImageRecipes ListImages ListInfrastructureConfigurations ListTagsForResource PutComponentPolicy PutImagePolicy PutImageRecipePolicy StartImagePipelineExecution TagResource UntagResource UpdateDistributionConfiguration UpdateImagePipeline UpdateInfrastructureConfiguration / }
+  sub operations { qw/CancelImageCreation CreateComponent CreateContainerRecipe CreateDistributionConfiguration CreateImage CreateImagePipeline CreateImageRecipe CreateInfrastructureConfiguration DeleteComponent DeleteContainerRecipe DeleteDistributionConfiguration DeleteImage DeleteImagePipeline DeleteImageRecipe DeleteInfrastructureConfiguration GetComponent GetComponentPolicy GetContainerRecipe GetContainerRecipePolicy GetDistributionConfiguration GetImage GetImagePipeline GetImagePolicy GetImageRecipe GetImageRecipePolicy GetInfrastructureConfiguration ImportComponent ListComponentBuildVersions ListComponents ListContainerRecipes ListDistributionConfigurations ListImageBuildVersions ListImagePackages ListImagePipelineImages ListImagePipelines ListImageRecipes ListImages ListInfrastructureConfigurations ListTagsForResource PutComponentPolicy PutContainerRecipePolicy PutImagePolicy PutImageRecipePolicy StartImagePipelineExecution TagResource UntagResource UpdateDistributionConfiguration UpdateImagePipeline UpdateInfrastructureConfiguration / }
 
 1;
 
@@ -255,9 +290,9 @@ Paws::ImageBuilder - Perl Interface to AWS EC2 Image Builder
 
 =head1 DESCRIPTION
 
-EC2 Image Builder is a fully managed AWS service that makes it easier
-to automate the creation, management, and deployment of customized,
-secure, and up-to-date E<ldquo>goldenE<rdquo> server images that are
+EC2 Image Builder is a fully managed Amazon Web Services service that
+makes it easier to automate the creation, management, and deployment of
+customized, secure, and up-to-date "golden" server images that are
 pre-installed and pre-configured with software and settings to meet
 specific IT standards.
 
@@ -305,6 +340,8 @@ only be used on images in a non-terminal state.
 
 =item [KmsKeyId => Str]
 
+=item [SupportedOsVersions => ArrayRef[Str|Undef]]
+
 =item [Tags => L<Paws::ImageBuilder::TagMap>]
 
 =item [Uri => Str]
@@ -318,6 +355,53 @@ Returns: a L<Paws::ImageBuilder::CreateComponentResponse> instance
 
 Creates a new component that can be used to build, validate, test, and
 assess your image.
+
+
+=head2 CreateContainerRecipe
+
+=over
+
+=item ClientToken => Str
+
+=item Components => ArrayRef[L<Paws::ImageBuilder::ComponentConfiguration>]
+
+=item ContainerType => Str
+
+=item Name => Str
+
+=item ParentImage => Str
+
+=item SemanticVersion => Str
+
+=item TargetRepository => L<Paws::ImageBuilder::TargetContainerRepository>
+
+=item [Description => Str]
+
+=item [DockerfileTemplateData => Str]
+
+=item [DockerfileTemplateUri => Str]
+
+=item [ImageOsVersionOverride => Str]
+
+=item [InstanceConfiguration => L<Paws::ImageBuilder::InstanceConfiguration>]
+
+=item [KmsKeyId => Str]
+
+=item [PlatformOverride => Str]
+
+=item [Tags => L<Paws::ImageBuilder::TagMap>]
+
+=item [WorkingDirectory => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::CreateContainerRecipe>
+
+Returns: a L<Paws::ImageBuilder::CreateContainerRecipeResponse> instance
+
+Creates a new container recipe. Container recipes define how images are
+configured, tested, and assessed.
 
 
 =head2 CreateDistributionConfiguration
@@ -351,11 +435,15 @@ define and configure the outputs of your pipeline.
 
 =item ClientToken => Str
 
-=item ImageRecipeArn => Str
-
 =item InfrastructureConfigurationArn => Str
 
+=item [ContainerRecipeArn => Str]
+
 =item [DistributionConfigurationArn => Str]
+
+=item [EnhancedImageMetadataEnabled => Bool]
+
+=item [ImageRecipeArn => Str]
 
 =item [ImageTestsConfiguration => L<Paws::ImageBuilder::ImageTestsConfiguration>]
 
@@ -370,7 +458,8 @@ Returns: a L<Paws::ImageBuilder::CreateImageResponse> instance
 
 Creates a new image. This request will create a new image along with
 all of the configured output resources defined in the distribution
-configuration.
+configuration. You must specify exactly one recipe for your image,
+using either a ContainerRecipeArn or an ImageRecipeArn.
 
 
 =head2 CreateImagePipeline
@@ -379,15 +468,19 @@ configuration.
 
 =item ClientToken => Str
 
-=item ImageRecipeArn => Str
-
 =item InfrastructureConfigurationArn => Str
 
 =item Name => Str
 
+=item [ContainerRecipeArn => Str]
+
 =item [Description => Str]
 
 =item [DistributionConfigurationArn => Str]
+
+=item [EnhancedImageMetadataEnabled => Bool]
+
+=item [ImageRecipeArn => Str]
 
 =item [ImageTestsConfiguration => L<Paws::ImageBuilder::ImageTestsConfiguration>]
 
@@ -422,11 +515,15 @@ the creation and distribution of images.
 
 =item SemanticVersion => Str
 
+=item [AdditionalInstanceConfiguration => L<Paws::ImageBuilder::AdditionalInstanceConfiguration>]
+
 =item [BlockDeviceMappings => ArrayRef[L<Paws::ImageBuilder::InstanceBlockDeviceMapping>]]
 
 =item [Description => Str]
 
 =item [Tags => L<Paws::ImageBuilder::TagMap>]
+
+=item [WorkingDirectory => Str]
 
 
 =back
@@ -456,6 +553,8 @@ configured, tested, and assessed.
 =item [KeyPair => Str]
 
 =item [Logging => L<Paws::ImageBuilder::Logging>]
+
+=item [ResourceTags => L<Paws::ImageBuilder::ResourceTagMap>]
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 
@@ -493,6 +592,22 @@ Each argument is described in detail in: L<Paws::ImageBuilder::DeleteComponent>
 Returns: a L<Paws::ImageBuilder::DeleteComponentResponse> instance
 
 Deletes a component build version.
+
+
+=head2 DeleteContainerRecipe
+
+=over
+
+=item ContainerRecipeArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::DeleteContainerRecipe>
+
+Returns: a L<Paws::ImageBuilder::DeleteContainerRecipeResponse> instance
+
+Deletes a container recipe.
 
 
 =head2 DeleteDistributionConfiguration
@@ -605,6 +720,38 @@ Each argument is described in detail in: L<Paws::ImageBuilder::GetComponentPolic
 Returns: a L<Paws::ImageBuilder::GetComponentPolicyResponse> instance
 
 Gets a component policy.
+
+
+=head2 GetContainerRecipe
+
+=over
+
+=item ContainerRecipeArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::GetContainerRecipe>
+
+Returns: a L<Paws::ImageBuilder::GetContainerRecipeResponse> instance
+
+Retrieves a container recipe.
+
+
+=head2 GetContainerRecipePolicy
+
+=over
+
+=item ContainerRecipeArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::GetContainerRecipePolicy>
+
+Returns: a L<Paws::ImageBuilder::GetContainerRecipePolicyResponse> instance
+
+Retrieves the policy for a container recipe.
 
 
 =head2 GetDistributionConfiguration
@@ -782,6 +929,8 @@ version.
 
 =over
 
+=item [ByName => Bool]
+
 =item [Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]]
 
 =item [MaxResults => Int]
@@ -799,6 +948,28 @@ Returns: a L<Paws::ImageBuilder::ListComponentsResponse> instance
 
 Returns the list of component build versions for the specified semantic
 version.
+
+
+=head2 ListContainerRecipes
+
+=over
+
+=item [Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Owner => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::ListContainerRecipes>
+
+Returns: a L<Paws::ImageBuilder::ListContainerRecipesResponse> instance
+
+Returns a list of container recipes.
 
 
 =head2 ListDistributionConfigurations
@@ -840,7 +1011,28 @@ Each argument is described in detail in: L<Paws::ImageBuilder::ListImageBuildVer
 
 Returns: a L<Paws::ImageBuilder::ListImageBuildVersionsResponse> instance
 
-Returns a list of distribution configurations.
+Returns a list of image build versions.
+
+
+=head2 ListImagePackages
+
+=over
+
+=item ImageBuildVersionArn => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::ListImagePackages>
+
+Returns: a L<Paws::ImageBuilder::ListImagePackagesResponse> instance
+
+List the Packages that are associated with an Image Build Version, as
+determined by Amazon EC2 Systems Manager Inventory at build time.
 
 
 =head2 ListImagePipelineImages
@@ -911,7 +1103,11 @@ Returns a list of image recipes.
 
 =over
 
+=item [ByName => Bool]
+
 =item [Filters => ArrayRef[L<Paws::ImageBuilder::Filter>]]
+
+=item [IncludeDeprecated => Bool]
 
 =item [MaxResults => Int]
 
@@ -926,8 +1122,7 @@ Each argument is described in detail in: L<Paws::ImageBuilder::ListImages>
 
 Returns: a L<Paws::ImageBuilder::ListImagesResponse> instance
 
-Returns the list of image build versions for the specified semantic
-version.
+Returns the list of images that you have access to.
 
 
 =head2 ListInfrastructureConfigurations
@@ -981,7 +1176,41 @@ Each argument is described in detail in: L<Paws::ImageBuilder::PutComponentPolic
 
 Returns: a L<Paws::ImageBuilder::PutComponentPolicyResponse> instance
 
-Applies a policy to a component.
+Applies a policy to a component. We recommend that you call the RAM API
+CreateResourceShare
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+to share resources. If you call the Image Builder API
+C<PutComponentPolicy>, you must also call the RAM API
+PromoteResourceShareCreatedFromPolicy
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+in order for the resource to be visible to all principals with whom the
+resource is shared.
+
+
+=head2 PutContainerRecipePolicy
+
+=over
+
+=item ContainerRecipeArn => Str
+
+=item Policy => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ImageBuilder::PutContainerRecipePolicy>
+
+Returns: a L<Paws::ImageBuilder::PutContainerRecipePolicyResponse> instance
+
+Applies a policy to a container image. We recommend that you call the
+RAM API CreateResourceShare
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+to share resources. If you call the Image Builder API
+C<PutContainerImagePolicy>, you must also call the RAM API
+PromoteResourceShareCreatedFromPolicy
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+in order for the resource to be visible to all principals with whom the
+resource is shared.
 
 
 =head2 PutImagePolicy
@@ -999,7 +1228,15 @@ Each argument is described in detail in: L<Paws::ImageBuilder::PutImagePolicy>
 
 Returns: a L<Paws::ImageBuilder::PutImagePolicyResponse> instance
 
-Applies a policy to an image.
+Applies a policy to an image. We recommend that you call the RAM API
+CreateResourceShare
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+to share resources. If you call the Image Builder API
+C<PutImagePolicy>, you must also call the RAM API
+PromoteResourceShareCreatedFromPolicy
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+in order for the resource to be visible to all principals with whom the
+resource is shared.
 
 
 =head2 PutImageRecipePolicy
@@ -1017,7 +1254,15 @@ Each argument is described in detail in: L<Paws::ImageBuilder::PutImageRecipePol
 
 Returns: a L<Paws::ImageBuilder::PutImageRecipePolicyResponse> instance
 
-Applies a policy to an image recipe.
+Applies a policy to an image recipe. We recommend that you call the RAM
+API CreateResourceShare
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_CreateResourceShare.html)
+to share resources. If you call the Image Builder API
+C<PutImageRecipePolicy>, you must also call the RAM API
+PromoteResourceShareCreatedFromPolicy
+(https://docs.aws.amazon.com/ram/latest/APIReference/API_PromoteResourceShareCreatedFromPolicy.html)
+in order for the resource to be visible to all principals with whom the
+resource is shared.
 
 
 =head2 StartImagePipelineExecution
@@ -1105,13 +1350,17 @@ define and configure the outputs of your pipeline.
 
 =item ImagePipelineArn => Str
 
-=item ImageRecipeArn => Str
-
 =item InfrastructureConfigurationArn => Str
+
+=item [ContainerRecipeArn => Str]
 
 =item [Description => Str]
 
 =item [DistributionConfigurationArn => Str]
+
+=item [EnhancedImageMetadataEnabled => Bool]
+
+=item [ImageRecipeArn => Str]
 
 =item [ImageTestsConfiguration => L<Paws::ImageBuilder::ImageTestsConfiguration>]
 
@@ -1126,8 +1375,12 @@ Each argument is described in detail in: L<Paws::ImageBuilder::UpdateImagePipeli
 
 Returns: a L<Paws::ImageBuilder::UpdateImagePipelineResponse> instance
 
-Updates a new image pipeline. Image pipelines enable you to automate
-the creation and distribution of images.
+Updates an image pipeline. Image pipelines enable you to automate the
+creation and distribution of images.
+
+UpdateImagePipeline does not support selective updates for the
+pipeline. You must specify all of the required properties in the update
+request, not just the properties that have changed.
 
 
 =head2 UpdateInfrastructureConfiguration
@@ -1147,6 +1400,8 @@ the creation and distribution of images.
 =item [KeyPair => Str]
 
 =item [Logging => L<Paws::ImageBuilder::Logging>]
+
+=item [ResourceTags => L<Paws::ImageBuilder::ResourceTagMap>]
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
 

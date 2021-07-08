@@ -62,7 +62,9 @@ Limit the results to billing groups whose names have the given prefix.
 
 =head2 NextToken => Str
 
-The token to retrieve the next set of results.
+To retrieve the next set of results, the C<nextToken> value from a
+previous response; otherwise B<null> to receive the first set of
+results.
 
 
 

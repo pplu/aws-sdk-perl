@@ -5,8 +5,10 @@ package Paws::MediaConvert::JobTemplateSettings;
   has AvailBlanking => (is => 'ro', isa => 'Paws::MediaConvert::AvailBlanking', request_name => 'availBlanking', traits => ['NameInRequest']);
   has Esam => (is => 'ro', isa => 'Paws::MediaConvert::EsamSettings', request_name => 'esam', traits => ['NameInRequest']);
   has Inputs => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::InputTemplate]', request_name => 'inputs', traits => ['NameInRequest']);
+  has KantarWatermark => (is => 'ro', isa => 'Paws::MediaConvert::KantarWatermarkSettings', request_name => 'kantarWatermark', traits => ['NameInRequest']);
   has MotionImageInserter => (is => 'ro', isa => 'Paws::MediaConvert::MotionImageInserter', request_name => 'motionImageInserter', traits => ['NameInRequest']);
   has NielsenConfiguration => (is => 'ro', isa => 'Paws::MediaConvert::NielsenConfiguration', request_name => 'nielsenConfiguration', traits => ['NameInRequest']);
+  has NielsenNonLinearWatermark => (is => 'ro', isa => 'Paws::MediaConvert::NielsenNonLinearWatermarkSettings', request_name => 'nielsenNonLinearWatermark', traits => ['NameInRequest']);
   has OutputGroups => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::OutputGroup]', request_name => 'outputGroups', traits => ['NameInRequest']);
   has TimecodeConfig => (is => 'ro', isa => 'Paws::MediaConvert::TimecodeConfig', request_name => 'timecodeConfig', traits => ['NameInRequest']);
   has TimedMetadataInsertion => (is => 'ro', isa => 'Paws::MediaConvert::TimedMetadataInsertion', request_name => 'timedMetadataInsertion', traits => ['NameInRequest']);
@@ -61,7 +63,8 @@ an image, and audio muted during SCTE-35 triggered ad avails.
 
 =head2 Esam => L<Paws::MediaConvert::EsamSettings>
 
-Settings for Event Signaling And Messaging (ESAM).
+Settings for Event Signaling And Messaging (ESAM). If you don't do ad
+insertion, you can ignore these settings.
 
 
 =head2 Inputs => ArrayRef[L<Paws::MediaConvert::InputTemplate>]
@@ -71,10 +74,22 @@ job. There can only be one input in a job template. Using the API, you
 can include multiple inputs when referencing a job template.
 
 
+=head2 KantarWatermark => L<Paws::MediaConvert::KantarWatermarkSettings>
+
+Use these settings only when you use Kantar watermarking. Specify the
+values that MediaConvert uses to generate and place Kantar watermarks
+in your output audio. These settings apply to every output in your job.
+In addition to specifying these values, you also need to store your
+Kantar credentials in AWS Secrets Manager. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/kantar-watermarking.html.
+
+
 =head2 MotionImageInserter => L<Paws::MediaConvert::MotionImageInserter>
 
 Overlay motion graphics on top of your video. The motion graphics that
-you specify here appear on all outputs in all output groups.
+you specify here appear on all outputs in all output groups. For more
+information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
 
 
 =head2 NielsenConfiguration => L<Paws::MediaConvert::NielsenConfiguration>
@@ -87,6 +102,18 @@ configuration programmatically, include an instance of
 nielsenConfiguration in your JSON job specification. Even if you don't
 include any children of nielsenConfiguration, you still enable the
 setting.
+
+
+=head2 NielsenNonLinearWatermark => L<Paws::MediaConvert::NielsenNonLinearWatermarkSettings>
+
+Ignore these settings unless you are using Nielsen non-linear
+watermarking. Specify the values that MediaConvert uses to generate and
+place Nielsen watermarks in your output audio. In addition to
+specifying these values, you also need to set up your cloud TIC server.
+These settings apply to every output in your job. The MediaConvert
+implementation is currently with the following Nielsen versions:
+Nielsen Watermark SDK Version 5.2.1 Nielsen NLM Watermark Engine
+Version 1.2.7 Nielsen Watermark Authenticator [SID_TIC] Version [5.0.0]
 
 
 =head2 OutputGroups => ArrayRef[L<Paws::MediaConvert::OutputGroup>]
@@ -106,16 +133,16 @@ CmafGroupSettings
 
 =head2 TimecodeConfig => L<Paws::MediaConvert::TimecodeConfig>
 
-Contains settings used to acquire and adjust timecode information from
-inputs.
+These settings control how the service handles timecodes throughout the
+job. These settings don't affect input clipping.
 
 
 =head2 TimedMetadataInsertion => L<Paws::MediaConvert::TimedMetadataInsertion>
 
 Enable Timed metadata insertion (TimedMetadataInsertion) to include ID3
-tags in your job. To include timed metadata, you must enable it here,
-enable it in each output container, and specify tags and timecodes in
-ID3 insertion (Id3Insertion) objects.
+tags in any HLS outputs. To include timed metadata, you must enable it
+here, enable it in each output container, and specify tags and
+timecodes in ID3 insertion (Id3Insertion) objects.
 
 
 

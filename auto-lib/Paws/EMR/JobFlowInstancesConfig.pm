@@ -51,10 +51,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EMR::JobFlo
 
 A description of the Amazon EC2 instance on which the cluster (job
 flow) runs. A valid JobFlowInstancesConfig must contain either
-InstanceGroups or InstanceFleets, which is the recommended
-configuration. They cannot be used together. You may also have
-MasterInstanceType, SlaveInstanceType, and InstanceCount (all three
-must be present), but we don't recommend this configuration.
+InstanceGroups or InstanceFleets. They cannot be used together. You may
+also have MasterInstanceType, SlaveInstanceType, and InstanceCount (all
+three must be present), but we don't recommend this configuration.
 
 =head1 ATTRIBUTES
 
@@ -72,8 +71,8 @@ task nodes.
 
 =head2 Ec2KeyName => Str
 
-The name of the EC2 key pair that can be used to ssh to the master node
-as the user called "hadoop."
+The name of the EC2 key pair that can be used to connect to the master
+node using SSH as the user called "hadoop."
 
 
 =head2 Ec2SubnetId => Str
@@ -109,11 +108,12 @@ nodes.
 =head2 HadoopVersion => Str
 
 Applies only to Amazon EMR release versions earlier than 4.0. The
-Hadoop version for the cluster. Valid inputs are "0.18" (deprecated),
-"0.20" (deprecated), "0.20.205" (deprecated), "1.0.3", "2.2.0", or
-"2.4.0". If you do not set this value, the default of 0.18 is used,
-unless the C<AmiVersion> parameter is set in the RunJobFlow call, in
-which case the default version of Hadoop for that AMI version is used.
+Hadoop version for the cluster. Valid inputs are "0.18" (no longer
+maintained), "0.20" (no longer maintained), "0.20.205" (no longer
+maintained), "1.0.3", "2.2.0", or "2.4.0". If you do not set this
+value, the default of 0.18 is used, unless the C<AmiVersion> parameter
+is set in the RunJobFlow call, in which case the default version of
+Hadoop for that AMI version is used.
 
 
 =head2 InstanceCount => Int

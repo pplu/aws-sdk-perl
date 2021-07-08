@@ -3,6 +3,7 @@ package Paws::EC2::ServiceConfiguration;
   has AcceptanceRequired => (is => 'ro', isa => 'Bool', request_name => 'acceptanceRequired', traits => ['NameInRequest']);
   has AvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'availabilityZoneSet', traits => ['NameInRequest']);
   has BaseEndpointDnsNames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'baseEndpointDnsNameSet', traits => ['NameInRequest']);
+  has GatewayLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'gatewayLoadBalancerArnSet', traits => ['NameInRequest']);
   has ManagesVpcEndpoints => (is => 'ro', isa => 'Bool', request_name => 'managesVpcEndpoints', traits => ['NameInRequest']);
   has NetworkLoadBalancerArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'networkLoadBalancerArnSet', traits => ['NameInRequest']);
   has PrivateDnsName => (is => 'ro', isa => 'Str', request_name => 'privateDnsName', traits => ['NameInRequest']);
@@ -61,6 +62,12 @@ The Availability Zones in which the service is available.
 =head2 BaseEndpointDnsNames => ArrayRef[Str|Undef]
 
 The DNS names for the service.
+
+
+=head2 GatewayLoadBalancerArns => ArrayRef[Str|Undef]
+
+The Amazon Resource Names (ARNs) of the Gateway Load Balancers for the
+service.
 
 
 =head2 ManagesVpcEndpoints => Bool

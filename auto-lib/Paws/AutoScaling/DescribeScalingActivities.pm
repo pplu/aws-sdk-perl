@@ -3,6 +3,7 @@ package Paws::AutoScaling::DescribeScalingActivities;
   use Moose;
   has ActivityIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has AutoScalingGroupName => (is => 'ro', isa => 'Str');
+  has IncludeDeletedGroups => (is => 'ro', isa => 'Bool');
   has MaxRecords => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -49,17 +50,26 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 =head2 ActivityIds => ArrayRef[Str|Undef]
 
-The activity IDs of the desired scaling activities. You can specify up
-to 50 IDs. If you omit this parameter, all activities for the past six
-weeks are described. If unknown activities are requested, they are
-ignored with no error. If you specify an Auto Scaling group, the
-results are limited to that group.
+The activity IDs of the desired scaling activities. If you omit this
+parameter, all activities for the past six weeks are described. If
+unknown activities are requested, they are ignored with no error. If
+you specify an Auto Scaling group, the results are limited to that
+group.
+
+Array Members: Maximum number of 50 IDs.
 
 
 
 =head2 AutoScalingGroupName => Str
 
 The name of the Auto Scaling group.
+
+
+
+=head2 IncludeDeletedGroups => Bool
+
+Indicates whether to include scaling activity from deleted Auto Scaling
+groups.
 
 
 

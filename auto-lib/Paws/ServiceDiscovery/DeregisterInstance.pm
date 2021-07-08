@@ -47,7 +47,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The value that you specified for C<Id> in the RegisterInstance request.
+The value that you specified for C<Id> in the RegisterInstance
+(https://docs.aws.amazon.com/cloud-map/latest/api/API_RegisterInstance.html)
+request.
 
 
 

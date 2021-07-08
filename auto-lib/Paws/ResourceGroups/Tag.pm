@@ -51,16 +51,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =head2 B<REQUIRED> Arn => Str
 
-The ARN of the resource to which to add tags.
+The ARN of the resource group to which to add tags.
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::ResourceGroups::Tags>
 
-The tags to add to the specified resource. A tag is a string-to-string
-map of key-value pairs. Tag keys can have a maximum character length of
-128 characters, and tag values can have a maximum length of 256
-characters.
+The tags to add to the specified resource group. A tag is a
+string-to-string map of key-value pairs.
 
 
 

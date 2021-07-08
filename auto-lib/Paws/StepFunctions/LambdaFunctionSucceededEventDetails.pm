@@ -2,6 +2,7 @@
 package Paws::StepFunctions::LambdaFunctionSucceededEventDetails;
   use Moose;
   has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
+  has OutputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'outputDetails', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StepFunctions::LambdaFunctionSucceededEventDetails object:
 
-  $service_obj->Method(Att1 => { Output => $value, ..., Output => $value  });
+  $service_obj->Method(Att1 => { Output => $value, ..., OutputDetails => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,7 +42,13 @@ during an execution.
 
 =head2 Output => Str
 
-The JSON data output by the lambda function.
+The JSON data output by the lambda function. Length constraints apply
+to the payload size, and are expressed as bytes in UTF-8 encoding.
+
+
+=head2 OutputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the output of an execution history event.
 
 
 

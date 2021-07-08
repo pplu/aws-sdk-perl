@@ -16,7 +16,7 @@ Paws::SageMaker::UpdateDomainResponse
 
 =head2 DomainArn => Str
 
-The domain Amazon Resource Name (ARN).
+The Amazon Resource Name (ARN) of the domain.
 
 
 =head2 _request_id => Str

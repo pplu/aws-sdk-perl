@@ -1,6 +1,7 @@
 
 package Paws::Glue::GetResourcePolicy;
   use Moose;
+  has ResourceArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -26,7 +27,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $glue = Paws->service('Glue');
-    my $GetResourcePolicyResponse = $glue->GetResourcePolicy();
+    my $GetResourcePolicyResponse = $glue->GetResourcePolicy(
+      ResourceArn => 'MyGlueResourceArn',    # OPTIONAL
+    );
 
     # Results:
     my $CreateTime   = $GetResourcePolicyResponse->CreateTime;
@@ -40,6 +43,16 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glue/GetResourcePolicy>
 
 =head1 ATTRIBUTES
+
+
+=head2 ResourceArn => Str
+
+The ARN of the Glue resource for which to retrieve the resource policy.
+If not supplied, the Data Catalog resource policy is returned. Use
+C<GetResourcePolicies> to view all existing resource policies. For more
+information see Specifying Glue Resource ARNs
+(https://docs.aws.amazon.com/glue/latest/dg/glue-specifying-resource-arns.html).
+
 
 
 

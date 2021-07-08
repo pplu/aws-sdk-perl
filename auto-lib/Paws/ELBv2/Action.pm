@@ -42,6 +42,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ELBv2::Acti
 
 Information about an action.
 
+Each rule must include exactly one of the following types of actions:
+C<forward>, C<fixed-response>, or C<redirect>, and it must be the last
+action to be performed.
+
 =head1 ATTRIBUTES
 
 
@@ -79,9 +83,7 @@ target group specified in C<TargetGroupArn>.
 
 The order for the action. This value is required for rules with
 multiple actions. The action with the lowest value for order is
-performed first. The last action to be performed must be one of the
-following types of actions: a C<forward>, C<fixed-response>, or
-C<redirect>.
+performed first.
 
 
 =head2 RedirectConfig => L<Paws::ELBv2::RedirectActionConfig>

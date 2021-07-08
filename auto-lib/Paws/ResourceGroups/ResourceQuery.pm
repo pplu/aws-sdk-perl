@@ -35,7 +35,80 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceGro
 =head1 DESCRIPTION
 
 The query that is used to define a resource group or a search for
-resources.
+resources. A query specifies both a query type and a query string as a
+JSON object. See the examples section for example JSON strings.
+
+The examples that follow are shown as standard JSON strings. If you
+include such a string as a parameter to the AWS CLI or an SDK API, you
+might need to 'escape' the string into a single line. For example, see
+the Quoting strings
+(https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-parameters-quoting-strings.html)
+in the I<AWS CLI User Guide>.
+
+B<Example 1>
+
+The following generic example shows a resource query JSON string that
+includes only resources that meet the following criteria:
+
+=over
+
+=item *
+
+The resource type must be either C<resource_type1> or
+C<resource_type2>.
+
+=item *
+
+The resource must have a tag C<Key1> with a value of either C<ValueA>
+or C<ValueB>.
+
+=item *
+
+The resource must have a tag C<Key2> with a value of either C<ValueC>
+or C<ValueD>.
+
+=back
+
+C<{ "Type": "TAG_FILTERS_1_0", "Query": { "ResourceTypeFilters": [
+"resource_type1", "resource_type2"], "TagFilters": [ { "Key": "Key1",
+"Values": ["ValueA","ValueB"] }, { "Key":"Key2",
+"Values":["ValueC","ValueD"] } ] } }>
+
+This has the equivalent "shortcut" syntax of the following:
+
+C<{ "Type": "TAG_FILTERS_1_0", "Query": { "ResourceTypeFilters": [
+"resource_type1", "resource_type2"], "TagFilters": [ { "Key1":
+["ValueA","ValueB"] }, { "Key2": ["ValueC","ValueD"] } ] } }>
+
+B<Example 2>
+
+The following example shows a resource query JSON string that includes
+only Amazon EC2 instances that are tagged C<Stage> with a value of
+C<Test>.
+
+C<{ "Type": "TAG_FILTERS_1_0", "Query": "{ "ResourceTypeFilters":
+"AWS::EC2::Instance", "TagFilters": { "Stage": "Test" } } }>
+
+B<Example 3>
+
+The following example shows a resource query JSON string that includes
+resource of any supported type as long as it is tagged C<Stage> with a
+value of C<Prod>.
+
+C<{ "Type": "TAG_FILTERS_1_0", "Query": { "ResourceTypeFilters":
+"AWS::AllSupported", "TagFilters": { "Stage": "Prod" } } }>
+
+B<Example 4>
+
+The following example shows a resource query JSON string that includes
+only Amazon EC2 instances and Amazon S3 buckets that are part of the
+specified AWS CloudFormation stack.
+
+C<{ "Type": "CLOUDFORMATION_STACK_1_0", "Query": {
+"ResourceTypeFilters": [ "AWS::EC2::Instance", "AWS::S3::Bucket" ],
+"StackIdentifier":
+"arn:aws:cloudformation:us-west-2:123456789012:stack/AWStestuseraccount/fb0d5000-aba8-00e8-aa9e-50d5cEXAMPLE"
+} }>
 
 =head1 ATTRIBUTES
 
@@ -47,62 +120,78 @@ The query that defines a group or a search.
 
 =head2 B<REQUIRED> Type => Str
 
-The type of the query. The valid values in this release are
-C<TAG_FILTERS_1_0> and C<CLOUDFORMATION_STACK_1_0>.
+The type of the query. You can use the following values:
 
-I<C<TAG_FILTERS_1_0:> > A JSON syntax that lets you specify a
-collection of simple tag filters for resource types and tags, as
-supported by the AWS Tagging API GetResources
+=over
+
+=item *
+
+I<C<CLOUDFORMATION_STACK_1_0:> >Specifies that the C<Query> contains an
+ARN for a CloudFormation stack.
+
+=item *
+
+I<C<TAG_FILTERS_1_0:> >Specifies that the C<Query> parameter contains a
+JSON string that represents a collection of simple tag filters for
+resource types and tags. The JSON string uses a syntax similar to the
+C< GetResources
 (https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_GetResources.html)
-operation. If you specify more than one tag key, only resources that
+> operation, but uses only the C< ResourceTypeFilters
+(https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_GetResources.html#resourcegrouptagging-GetResources-request-ResourceTypeFilters)
+> and C< TagFilters
+(https://docs.aws.amazon.com/resourcegroupstagging/latest/APIReference/API_GetResources.html#resourcegrouptagging-GetResources-request-TagFiltersTagFilters)
+> fields. If you specify more than one tag key, only resources that
 match all tag keys, and at least one value of each specified tag key,
 are returned in your query. If you specify more than one value for a
 tag key, a resource matches the filter if it has a tag key value that
 matches I<any> of the specified values.
 
 For example, consider the following sample query for resources that
-have two tags, C<Stage> and C<Version>, with two values each.
-(C<[{"Key":"Stage","Values":["Test","Deploy"]},{"Key":"Version","Values":["1","2"]}]>)
-The results of this query might include the following.
+have two tags, C<Stage> and C<Version>, with two values each:
+
+C<[{"Stage":["Test","Deploy"]},{"Version":["1","2"]}]>
+
+The results of this query could include the following.
 
 =over
 
 =item *
 
-An EC2 instance that has the following two tags:
-C<{"Key":"Stage","Value":"Deploy"}>, and
-C<{"Key":"Version","Value":"2"}>
+An EC2 instance that has the following two tags: C<{"Stage":"Deploy"}>,
+and C<{"Version":"2"}>
 
 =item *
 
-An S3 bucket that has the following two tags:
-{"Key":"Stage","Value":"Test"}, and {"Key":"Version","Value":"1"}
+An S3 bucket that has the following two tags: C<{"Stage":"Test"}>, and
+C<{"Version":"1"}>
 
 =back
 
-The query would not return the following results, however. The
-following EC2 instance does not have all tag keys specified in the
-filter, so it is rejected. The RDS database has all of the tag keys,
-but no values that match at least one of the specified tag key values
-in the filter.
+The query would not include the following items in the results,
+however.
 
 =over
 
 =item *
 
-An EC2 instance that has only the following tag:
-C<{"Key":"Stage","Value":"Deploy"}>.
+An EC2 instance that has only the following tag: C<{"Stage":"Deploy"}>.
+
+The instance does not have B<all> of the tag keys specified in the
+filter, so it is excluded from the results.
 
 =item *
 
 An RDS database that has the following two tags:
-C<{"Key":"Stage","Value":"Archived"}>, and
-C<{"Key":"Version","Value":"4"}>
+C<{"Stage":"Archived"}> and C<{"Version":"4"}>
+
+The database has all of the tag keys, but none of those keys has an
+associated value that matches at least one of the specified values in
+the filter.
 
 =back
 
-I<C<CLOUDFORMATION_STACK_1_0:> > A JSON syntax that lets you specify a
-CloudFormation stack ARN.
+=back
+
 
 
 

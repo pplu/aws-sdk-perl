@@ -15,9 +15,19 @@ package Paws::FSX;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::JsonCaller';
 
   
+  sub AssociateFileSystemAliases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::AssociateFileSystemAliases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelDataRepositoryTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FSX::CancelDataRepositoryTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CopyBackup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::CopyBackup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateBackup {
@@ -60,9 +70,19 @@ package Paws::FSX;
     my $call_object = $self->new_with_coercions('Paws::FSX::DescribeDataRepositoryTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeFileSystemAliases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::DescribeFileSystemAliases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeFileSystems {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FSX::DescribeFileSystems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisassociateFileSystemAliases {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FSX::DisassociateFileSystemAliases', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListTagsForResource {
@@ -157,7 +177,7 @@ package Paws::FSX;
   }
 
 
-  sub operations { qw/CancelDataRepositoryTask CreateBackup CreateDataRepositoryTask CreateFileSystem CreateFileSystemFromBackup DeleteBackup DeleteFileSystem DescribeBackups DescribeDataRepositoryTasks DescribeFileSystems ListTagsForResource TagResource UntagResource UpdateFileSystem / }
+  sub operations { qw/AssociateFileSystemAliases CancelDataRepositoryTask CopyBackup CreateBackup CreateDataRepositoryTask CreateFileSystem CreateFileSystemFromBackup DeleteBackup DeleteFileSystem DescribeBackups DescribeDataRepositoryTasks DescribeFileSystemAliases DescribeFileSystems DisassociateFileSystemAliases ListTagsForResource TagResource UntagResource UpdateFileSystem / }
 
 1;
 
@@ -192,6 +212,41 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fsx
 
 
 =head1 METHODS
+
+=head2 AssociateFileSystemAliases
+
+=over
+
+=item Aliases => ArrayRef[Str|Undef]
+
+=item FileSystemId => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::AssociateFileSystemAliases>
+
+Returns: a L<Paws::FSX::AssociateFileSystemAliasesResponse> instance
+
+Use this action to associate one or more Domain Name Server (DNS)
+aliases with an existing Amazon FSx for Windows File Server file
+system. A file systen can have a maximum of 50 DNS aliases associated
+with it at any one time. If you try to associate a DNS alias that is
+already associated with the file system, FSx takes no action on that
+alias in the request. For more information, see Working with DNS
+Aliases
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html)
+and Walkthrough 5: Using DNS aliases to access your file system
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/walkthrough05-file-system-custom-CNAME.html),
+including additional steps you must take to be able to access your file
+system using a DNS alias.
+
+The system response shows the DNS aliases that Amazon FSx is attempting
+to associate with the file system. Use the API operation to monitor the
+status of the aliases Amazon FSx is associating with the file system.
+
 
 =head2 CancelDataRepositoryTask
 
@@ -229,6 +284,59 @@ FSx does not export any files that have not yet been exported.
 
 
 
+=head2 CopyBackup
+
+=over
+
+=item SourceBackupId => Str
+
+=item [ClientRequestToken => Str]
+
+=item [CopyTags => Bool]
+
+=item [KmsKeyId => Str]
+
+=item [SourceRegion => Str]
+
+=item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::CopyBackup>
+
+Returns: a L<Paws::FSX::CopyBackupResponse> instance
+
+Copies an existing backup within the same AWS account to another Region
+(cross-Region copy) or within the same Region (in-Region copy). You can
+have up to five backup copy requests in progress to a single
+destination Region per account.
+
+You can use cross-Region backup copies for cross-region disaster
+recovery. You periodically take backups and copy them to another Region
+so that in the event of a disaster in the primary Region, you can
+restore from backup and recover availability quickly in the other
+Region. You can make cross-Region copies only within your AWS
+partition.
+
+You can also use backup copies to clone your file data set to another
+Region or within the same Region.
+
+You can use the C<SourceRegion> parameter to specify the AWS Region
+from which the backup will be copied. For example, if you make the call
+from the C<us-west-1> Region and want to copy a backup from the
+C<us-east-2> Region, you specify C<us-east-2> in the C<SourceRegion>
+parameter to make a cross-Region copy. If you don't specify a Region,
+the backup copy is created in the same Region where the request is sent
+from (in-Region copy).
+
+For more information on creating backup copies, see Copying backups
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html#copy-backups)
+in the I<Amazon FSx for Windows User Guide> and Copying backups
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html#copy-backups)
+in the I<Amazon FSx for Lustre User Guide>.
+
+
 =head2 CreateBackup
 
 =over
@@ -246,11 +354,33 @@ Each argument is described in detail in: L<Paws::FSX::CreateBackup>
 
 Returns: a L<Paws::FSX::CreateBackupResponse> instance
 
-Creates a backup of an existing Amazon FSx for Windows File Server file
-system. Creating regular backups for your file system is a best
-practice that complements the replication that Amazon FSx for Windows
-File Server performs for your file system. It also enables you to
-restore from user modification of data.
+Creates a backup of an existing Amazon FSx file system. Creating
+regular backups for your file system is a best practice, enabling you
+to restore a file system from a backup if an issue arises with the
+original file system.
+
+For Amazon FSx for Lustre file systems, you can create a backup only
+for file systems with the following configuration:
+
+=over
+
+=item *
+
+a Persistent deployment type
+
+=item *
+
+is I<not> linked to a data respository.
+
+=back
+
+For more information about backing up Amazon FSx for Lustre file
+systems, see Working with FSx for Lustre backups
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/using-backups-fsx.html).
+
+For more information about backing up Amazon FSx for Windows file
+systems, see Working with FSx for Windows backups
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/using-backups.html).
 
 If a backup with the specified client request token exists, and the
 parameters match, this operation returns the description of the
@@ -279,10 +409,10 @@ whether a backup was created. If you use the same client request token
 and the initial call created a backup, the operation returns a
 successful result because all the parameters are the same.
 
-The C<CreateFileSystem> operation returns while the backup's lifecycle
-state is still C<CREATING>. You can check the file system creation
-status by calling the DescribeBackups operation, which returns the
-backup state along with other information.
+The C<CreateBackup> operation returns while the backup's lifecycle
+state is still C<CREATING>. You can check the backup creation status by
+calling the DescribeBackups operation, which returns the backup state
+along with other information.
 
 
 =head2 CreateDataRepositoryTask
@@ -316,11 +446,11 @@ POSIX metadata, to files, directories, and symbolic links (symlinks)
 from your FSx file system to its linked data repository. A
 C<CreateDataRepositoryTask> operation will fail if a data repository is
 not linked to the FSx file system. To learn more about data repository
-tasks, see Using Data Repository Tasks
+tasks, see Data Repository Tasks
 (https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html).
 To learn more about linking a data repository to your file system, see
-Step 1: Create Your Amazon FSx for Lustre File System
-(https://docs.aws.amazon.com/fsx/latest/LustreGuide/getting-started-step1.html).
+Linking your file system to an S3 bucket
+(https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-fs-linked-data-repo.html).
 
 
 =head2 CreateFileSystem
@@ -340,6 +470,8 @@ Step 1: Create Your Amazon FSx for Lustre File System
 =item [LustreConfiguration => L<Paws::FSX::CreateFileSystemLustreConfiguration>]
 
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [StorageType => Str]
 
 =item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
 
@@ -403,7 +535,13 @@ file system state along with other information.
 
 =item [ClientRequestToken => Str]
 
+=item [KmsKeyId => Str]
+
+=item [LustreConfiguration => L<Paws::FSX::CreateFileSystemLustreConfiguration>]
+
 =item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [StorageType => Str]
 
 =item [Tags => ArrayRef[L<Paws::FSX::Tag>]]
 
@@ -416,8 +554,8 @@ Each argument is described in detail in: L<Paws::FSX::CreateFileSystemFromBackup
 
 Returns: a L<Paws::FSX::CreateFileSystemFromBackupResponse> instance
 
-Creates a new Amazon FSx file system from an existing Amazon FSx for
-Windows File Server backup.
+Creates a new Amazon FSx file system from an existing Amazon FSx
+backup.
 
 If a file system with the specified client request token exists and the
 parameters match, this operation returns the description of the file
@@ -474,9 +612,8 @@ Each argument is described in detail in: L<Paws::FSX::DeleteBackup>
 
 Returns: a L<Paws::FSX::DeleteBackupResponse> instance
 
-Deletes an Amazon FSx for Windows File Server backup, deleting its
-contents. After deletion, the backup no longer exists, and its data is
-gone.
+Deletes an Amazon FSx backup, deleting its contents. After deletion,
+the backup no longer exists, and its data is gone.
 
 The C<DeleteBackup> call returns instantly. The backup will not show up
 in later C<DescribeBackups> calls.
@@ -492,6 +629,8 @@ any means.
 =item FileSystemId => Str
 
 =item [ClientRequestToken => Str]
+
+=item [LustreConfiguration => L<Paws::FSX::DeleteFileSystemLustreConfiguration>]
 
 =item [WindowsConfiguration => L<Paws::FSX::DeleteFileSystemWindowsConfiguration>]
 
@@ -545,10 +684,10 @@ Each argument is described in detail in: L<Paws::FSX::DescribeBackups>
 
 Returns: a L<Paws::FSX::DescribeBackupsResponse> instance
 
-Returns the description of specific Amazon FSx for Windows File Server
-backups, if a C<BackupIds> value is provided for that backup.
-Otherwise, it returns all backups owned by your AWS account in the AWS
-Region of the endpoint that you're calling.
+Returns the description of specific Amazon FSx backups, if a
+C<BackupIds> value is provided for that backup. Otherwise, it returns
+all backups owned by your AWS account in the AWS Region of the endpoint
+that you're calling.
 
 When retrieving all backups, you can optionally specify the
 C<MaxResults> parameter to limit the number of backups in a response.
@@ -617,6 +756,32 @@ C<NextToken> request parameter set to the value of C<NextToken> from
 the last response.
 
 
+=head2 DescribeFileSystemAliases
+
+=over
+
+=item FileSystemId => Str
+
+=item [ClientRequestToken => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::DescribeFileSystemAliases>
+
+Returns: a L<Paws::FSX::DescribeFileSystemAliasesResponse> instance
+
+Returns the DNS aliases that are associated with the specified Amazon
+FSx for Windows File Server file system. A history of all DNS aliases
+that have been associated with and disassociated from the file system
+is available in the list of AdministrativeAction provided in the
+DescribeFileSystems operation response.
+
+
 =head2 DescribeFileSystems
 
 =over
@@ -669,6 +834,36 @@ across the responses of a multicall iteration is unspecified.
 
 =back
 
+
+
+=head2 DisassociateFileSystemAliases
+
+=over
+
+=item Aliases => ArrayRef[Str|Undef]
+
+=item FileSystemId => Str
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FSX::DisassociateFileSystemAliases>
+
+Returns: a L<Paws::FSX::DisassociateFileSystemAliasesResponse> instance
+
+Use this action to disassociate, or remove, one or more Domain Name
+Service (DNS) aliases from an Amazon FSx for Windows File Server file
+system. If you attempt to disassociate a DNS alias that is not
+associated with the file system, Amazon FSx responds with a 400 Bad
+Request. For more information, see Working with DNS Aliases
+(https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-dns-aliases.html).
+
+The system generated response showing the DNS aliases that Amazon FSx
+is attempting to disassociate from the file system. Use the API
+operation to monitor the status of the aliases Amazon FSx is
+disassociating with the file system.
 
 
 =head2 ListTagsForResource
@@ -768,6 +963,8 @@ This action removes a tag from an Amazon FSx resource.
 
 =item [LustreConfiguration => L<Paws::FSX::UpdateFileSystemLustreConfiguration>]
 
+=item [StorageCapacity => Int]
+
 =item [WindowsConfiguration => L<Paws::FSX::UpdateFileSystemWindowsConfiguration>]
 
 
@@ -777,7 +974,76 @@ Each argument is described in detail in: L<Paws::FSX::UpdateFileSystem>
 
 Returns: a L<Paws::FSX::UpdateFileSystemResponse> instance
 
-Updates a file system configuration.
+Use this operation to update the configuration of an existing Amazon
+FSx file system. You can update multiple properties in a single
+request.
+
+For Amazon FSx for Windows File Server file systems, you can update the
+following properties:
+
+=over
+
+=item *
+
+AuditLogConfiguration
+
+=item *
+
+AutomaticBackupRetentionDays
+
+=item *
+
+DailyAutomaticBackupStartTime
+
+=item *
+
+SelfManagedActiveDirectoryConfiguration
+
+=item *
+
+StorageCapacity
+
+=item *
+
+ThroughputCapacity
+
+=item *
+
+WeeklyMaintenanceStartTime
+
+=back
+
+For Amazon FSx for Lustre file systems, you can update the following
+properties:
+
+=over
+
+=item *
+
+AutoImportPolicy
+
+=item *
+
+AutomaticBackupRetentionDays
+
+=item *
+
+DailyAutomaticBackupStartTime
+
+=item *
+
+DataCompressionType
+
+=item *
+
+StorageCapacity
+
+=item *
+
+WeeklyMaintenanceStartTime
+
+=back
+
 
 
 

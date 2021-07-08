@@ -41,13 +41,13 @@ Contains information about the criteria used for sorting findings.
 
 =head2 AttributeName => Str
 
-Represents the finding attribute (for example, accountId) by which to
-sort findings.
+Represents the finding attribute (for example, accountId) to sort
+findings by.
 
 
 =head2 OrderBy => Str
 
-Order by which the sorted findings are to be displayed.
+The order by which the sorted findings are to be displayed.
 
 
 

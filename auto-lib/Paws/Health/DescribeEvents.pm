@@ -46,7 +46,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyentityArn', ...    # max: 1600
         ],    # min: 1, max: 100; OPTIONAL
         EntityValues => [
-          'MyentityValue', ...    # max: 256
+          'MyentityValue', ...    # max: 1224
         ],    # min: 1, max: 100; OPTIONAL
         EventArns => [
           'MyeventArn', ...    # max: 1600

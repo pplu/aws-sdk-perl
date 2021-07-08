@@ -3,6 +3,7 @@ package Paws::Athena::WorkGroupSummary;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has EngineVersion => (is => 'ro', isa => 'Paws::Athena::EngineVersion');
   has Name => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
 
@@ -50,6 +51,13 @@ The workgroup creation date and time.
 =head2 Description => Str
 
 The workgroup description.
+
+
+=head2 EngineVersion => L<Paws::Athena::EngineVersion>
+
+The engine version setting for all queries on the workgroup. Queries on
+the C<AmazonAthenaPreviewFunctionality> workgroup run on the preview
+engine regardless of this setting.
 
 
 =head2 Name => Str

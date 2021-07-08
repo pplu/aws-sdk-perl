@@ -4,6 +4,7 @@ package Paws::Kafka::UpdateMonitoring;
   has ClusterArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'clusterArn', required => 1);
   has CurrentVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'currentVersion', required => 1);
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'enhancedMonitoring');
+  has LoggingInfo => (is => 'ro', isa => 'Paws::Kafka::LoggingInfo', traits => ['NameInRequest'], request_name => 'loggingInfo');
   has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoringInfo', traits => ['NameInRequest'], request_name => 'openMonitoring');
 
   use MooseX::ClassAttribute;
@@ -35,7 +36,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClusterArn         => 'My__string',
       CurrentVersion     => 'My__string',
       EnhancedMonitoring => 'DEFAULT',      # OPTIONAL
-      OpenMonitoring     => {
+      LoggingInfo        => {
+        BrokerLogs => {
+          CloudWatchLogs => {
+            Enabled  => 1,
+            LogGroup => 'My__string',
+          },    # OPTIONAL
+          Firehose => {
+            Enabled        => 1,
+            DeliveryStream => 'My__string',
+          },    # OPTIONAL
+          S3 => {
+            Enabled => 1,
+            Bucket  => 'My__string',
+            Prefix  => 'My__string',
+          },    # OPTIONAL
+        },
+
+      },    # OPTIONAL
+      OpenMonitoring => {
         Prometheus => {
           JmxExporter => {
             EnabledInBroker => 1,
@@ -82,7 +101,13 @@ version.
 Specifies which Apache Kafka metrics Amazon MSK gathers and sends to
 Amazon CloudWatch for this cluster.
 
-Valid values are: C<"DEFAULT">, C<"PER_BROKER">, C<"PER_TOPIC_PER_BROKER">
+Valid values are: C<"DEFAULT">, C<"PER_BROKER">, C<"PER_TOPIC_PER_BROKER">, C<"PER_TOPIC_PER_PARTITION">
+
+=head2 LoggingInfo => L<Paws::Kafka::LoggingInfo>
+
+
+
+
 
 =head2 OpenMonitoring => L<Paws::Kafka::OpenMonitoringInfo>
 

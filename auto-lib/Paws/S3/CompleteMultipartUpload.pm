@@ -2,6 +2,7 @@
 package Paws::S3::CompleteMultipartUpload;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has MultipartUpload => (is => 'ro', isa => 'Paws::S3::CompletedMultipartUpload', request_name => 'CompleteMultipartUpload', traits => ['NameInRequest','ParamInBody']);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
@@ -36,33 +37,34 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To complete multipart upload
+    # The following example completes a multipart upload.
     my $CompleteMultipartUploadOutput = $s3->CompleteMultipartUpload(
-      Bucket          => 'MyBucketName',
-      Key             => 'MyObjectKey',
-      UploadId        => 'MyMultipartUploadId',
-      MultipartUpload => {
-        Parts => [
+      'Bucket'          => 'examplebucket',
+      'Key'             => 'bigobject',
+      'MultipartUpload' => {
+        'Parts' => [
+
           {
-            ETag       => 'MyETag',    # OPTIONAL
-            PartNumber => 1,           # OPTIONAL
+            'ETag'       => '"d8c2eafd90c266e19ab9dcacc479f8af"',
+            'PartNumber' => 1
           },
-          ...
-        ],    # OPTIONAL
-      },    # OPTIONAL
-      RequestPayer => 'requester',    # OPTIONAL
+
+          {
+            'ETag'       => '"d8c2eafd90c266e19ab9dcacc479f8af"',
+            'PartNumber' => 2
+          }
+        ]
+      },
+      'UploadId' =>
+'7YPBOJuoFiQ9cz4P3Pe6FIZwO4f7wN93uHsNBEw97pl5eNwzExg0LAT2dUN91cOmrEQHDsP3WA60CEg--'
     );
 
     # Results:
-    my $Bucket         = $CompleteMultipartUploadOutput->Bucket;
-    my $ETag           = $CompleteMultipartUploadOutput->ETag;
-    my $Expiration     = $CompleteMultipartUploadOutput->Expiration;
-    my $Key            = $CompleteMultipartUploadOutput->Key;
-    my $Location       = $CompleteMultipartUploadOutput->Location;
-    my $RequestCharged = $CompleteMultipartUploadOutput->RequestCharged;
-    my $SSEKMSKeyId    = $CompleteMultipartUploadOutput->SSEKMSKeyId;
-    my $ServerSideEncryption =
-      $CompleteMultipartUploadOutput->ServerSideEncryption;
-    my $VersionId = $CompleteMultipartUploadOutput->VersionId;
+    my $Bucket   = $CompleteMultipartUploadOutput->Bucket;
+    my $ETag     = $CompleteMultipartUploadOutput->ETag;
+    my $Key      = $CompleteMultipartUploadOutput->Key;
+    my $Location = $CompleteMultipartUploadOutput->Location;
 
     # Returns a L<Paws::S3::CompleteMultipartUploadOutput> object.
 
@@ -75,6 +77,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 =head2 B<REQUIRED> Bucket => Str
 
 Name of the bucket to which the multipart upload was initiated.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

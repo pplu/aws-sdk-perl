@@ -1,6 +1,7 @@
 package Paws::EC2::CapacityReservationTargetResponse;
   use Moose;
   has CapacityReservationId => (is => 'ro', isa => 'Str', request_name => 'capacityReservationId', traits => ['NameInRequest']);
+  has CapacityReservationResourceGroupArn => (is => 'ro', isa => 'Str', request_name => 'capacityReservationResourceGroupArn', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -20,7 +21,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::CapacityReservationTargetResponse object:
 
-  $service_obj->Method(Att1 => { CapacityReservationId => $value, ..., CapacityReservationId => $value  });
+  $service_obj->Method(Att1 => { CapacityReservationId => $value, ..., CapacityReservationResourceGroupArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -38,7 +39,12 @@ This class has no description
 
 =head2 CapacityReservationId => Str
 
-The ID of the Capacity Reservation.
+The ID of the targeted Capacity Reservation.
+
+
+=head2 CapacityReservationResourceGroupArn => Str
+
+The ARN of the targeted Capacity Reservation group.
 
 
 

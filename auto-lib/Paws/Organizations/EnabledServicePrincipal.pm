@@ -34,8 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Organizatio
 
 =head1 DESCRIPTION
 
-A structure that contains details of a service principal that is
-enabled to integrate with AWS Organizations.
+A structure that contains details of a service principal that
+represents an AWS service that is enabled to integrate with AWS
+Organizations.
 
 =head1 ATTRIBUTES
 

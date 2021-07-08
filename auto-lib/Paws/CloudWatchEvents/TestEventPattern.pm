@@ -47,13 +47,49 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eve
 
 =head2 B<REQUIRED> Event => Str
 
-The event, in JSON format, to test against the event pattern.
+The event, in JSON format, to test against the event pattern. The JSON
+must follow the format specified in AWS Events
+(https://docs.aws.amazon.com/eventbridge/latest/userguide/aws-events.html),
+and the following fields are mandatory:
+
+=over
+
+=item *
+
+C<id>
+
+=item *
+
+C<account>
+
+=item *
+
+C<source>
+
+=item *
+
+C<time>
+
+=item *
+
+C<region>
+
+=item *
+
+C<resources>
+
+=item *
+
+C<detail-type>
+
+=back
+
 
 
 
 =head2 B<REQUIRED> EventPattern => Str
 
-The event pattern. For more information, see Event Patterns
+The event pattern. For more information, see Events and Event Patterns
 (https://docs.aws.amazon.com/eventbridge/latest/userguide/eventbridge-and-event-patterns.html)
 in the I<Amazon EventBridge User Guide>.
 

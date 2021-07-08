@@ -9,6 +9,7 @@ package Paws::AppSync::FunctionConfiguration;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RequestMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'requestMappingTemplate', traits => ['NameInRequest']);
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', request_name => 'responseMappingTemplate', traits => ['NameInRequest']);
+  has SyncConfig => (is => 'ro', isa => 'Paws::AppSync::SyncConfig', request_name => 'syncConfig', traits => ['NameInRequest']);
 
 1;
 
@@ -29,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppSync::FunctionConfiguration object:
 
-  $service_obj->Method(Att1 => { DataSourceName => $value, ..., ResponseMappingTemplate => $value  });
+  $service_obj->Method(Att1 => { DataSourceName => $value, ..., SyncConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -86,6 +87,11 @@ The C<Function> request mapping template. Functions support only the
 =head2 ResponseMappingTemplate => Str
 
 The C<Function> response mapping template.
+
+
+=head2 SyncConfig => L<Paws::AppSync::SyncConfig>
+
+
 
 
 

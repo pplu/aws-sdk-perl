@@ -43,8 +43,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         [
           {
             Name     => 'MyParameterName',    # OPTIONAL
-            TypeHint =>
-              'DATE',    # values: DATE, DECIMAL, TIME, TIMESTAMP; OPTIONAL
+            TypeHint => 'JSON'
+            ,    # values: JSON, UUID, TIMESTAMP, DATE, TIME, DECIMAL; OPTIONAL
             Value => {
               ArrayValue => {
                 ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
@@ -90,7 +90,24 @@ The name of the database.
 
 The parameter set for the batch operation.
 
-The maximum number of parameters in a parameter set is 1,000.
+The SQL statement is executed as many times as the number of parameter
+sets provided. To execute a SQL statement with no parameters, use one
+of the following options:
+
+=over
+
+=item *
+
+Specify one or more empty parameter sets.
+
+=item *
+
+Use the C<ExecuteStatement> operation instead of the
+C<BatchExecuteStatement> operation.
+
+=back
+
+Array parameters are not supported.
 
 
 

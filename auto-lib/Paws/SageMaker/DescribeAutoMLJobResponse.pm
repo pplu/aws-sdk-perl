@@ -15,7 +15,10 @@ package Paws::SageMaker::DescribeAutoMLJobResponse;
   has GenerateCandidateDefinitionsOnly => (is => 'ro', isa => 'Bool');
   has InputDataConfig => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AutoMLChannel]', required => 1);
   has LastModifiedTime => (is => 'ro', isa => 'Str', required => 1);
+  has ModelDeployConfig => (is => 'ro', isa => 'Paws::SageMaker::ModelDeployConfig');
+  has ModelDeployResult => (is => 'ro', isa => 'Paws::SageMaker::ModelDeployResult');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::SageMaker::AutoMLOutputDataConfig', required => 1);
+  has PartialFailureReasons => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::AutoMLPartialFailureReason]');
   has ProblemType => (is => 'ro', isa => 'Str');
   has ResolvedAttributes => (is => 'ro', isa => 'Paws::SageMaker::ResolvedAttributes');
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -33,22 +36,23 @@ Paws::SageMaker::DescribeAutoMLJobResponse
 
 =head2 B<REQUIRED> AutoMLJobArn => Str
 
-Returns the job's ARN.
+Returns the ARN of the AutoML job.
 
 
 =head2 AutoMLJobArtifacts => L<Paws::SageMaker::AutoMLJobArtifacts>
 
-Returns information on the job's artifacts found in AutoMLJobArtifacts.
+Returns information on the job's artifacts found in
+C<AutoMLJobArtifacts>.
 
 
 =head2 AutoMLJobConfig => L<Paws::SageMaker::AutoMLJobConfig>
 
-Returns the job's config.
+Returns the configuration for the AutoML job.
 
 
 =head2 B<REQUIRED> AutoMLJobName => Str
 
-Returns the name of a job.
+Returns the name of the AutoML job.
 
 
 =head2 AutoMLJobObjective => L<Paws::SageMaker::AutoMLJobObjective>
@@ -58,42 +62,43 @@ Returns the job's objective.
 
 =head2 B<REQUIRED> AutoMLJobSecondaryStatus => Str
 
-Returns the job's AutoMLJobSecondaryStatus.
+Returns the secondary status of the AutoML job.
 
-Valid values are: C<"Starting">, C<"AnalyzingData">, C<"FeatureEngineering">, C<"ModelTuning">, C<"MaxCandidatesReached">, C<"Failed">, C<"Stopped">, C<"MaxAutoMLJobRuntimeReached">, C<"Stopping">, C<"CandidateDefinitionsGenerated">
+Valid values are: C<"Starting">, C<"AnalyzingData">, C<"FeatureEngineering">, C<"ModelTuning">, C<"MaxCandidatesReached">, C<"Failed">, C<"Stopped">, C<"MaxAutoMLJobRuntimeReached">, C<"Stopping">, C<"CandidateDefinitionsGenerated">, C<"GeneratingExplainabilityReport">, C<"Completed">, C<"ExplainabilityError">, C<"DeployingModel">, C<"ModelDeploymentError">
 =head2 B<REQUIRED> AutoMLJobStatus => Str
 
-Returns the job's AutoMLJobStatus.
+Returns the status of the AutoML job.
 
 Valid values are: C<"Completed">, C<"InProgress">, C<"Failed">, C<"Stopped">, C<"Stopping">
 =head2 BestCandidate => L<Paws::SageMaker::AutoMLCandidate>
 
-Returns the job's BestCandidate.
+Returns the job's best C<AutoMLCandidate>.
 
 
 =head2 B<REQUIRED> CreationTime => Str
 
-Returns the job's creation time.
+Returns the creation time of the AutoML job.
 
 
 =head2 EndTime => Str
 
-Returns the job's end time.
+Returns the end time of the AutoML job.
 
 
 =head2 FailureReason => Str
 
-Returns the job's FailureReason.
+Returns the failure reason for an AutoML job, when applicable.
 
 
 =head2 GenerateCandidateDefinitionsOnly => Bool
 
-Returns the job's output from GenerateCandidateDefinitionsOnly.
+Indicates whether the output for an AutoML job generates candidate
+definitions only.
 
 
 =head2 B<REQUIRED> InputDataConfig => ArrayRef[L<Paws::SageMaker::AutoMLChannel>]
 
-Returns the job's input data config.
+Returns the input data configuration for the AutoML job..
 
 
 =head2 B<REQUIRED> LastModifiedTime => Str
@@ -101,9 +106,25 @@ Returns the job's input data config.
 Returns the job's last modified time.
 
 
+=head2 ModelDeployConfig => L<Paws::SageMaker::ModelDeployConfig>
+
+Indicates whether the model was deployed automatically to an endpoint
+and the name of that endpoint if deployed automatically.
+
+
+=head2 ModelDeployResult => L<Paws::SageMaker::ModelDeployResult>
+
+Provides information about endpoint for the model deployment.
+
+
 =head2 B<REQUIRED> OutputDataConfig => L<Paws::SageMaker::AutoMLOutputDataConfig>
 
 Returns the job's output data config.
+
+
+=head2 PartialFailureReasons => ArrayRef[L<Paws::SageMaker::AutoMLPartialFailureReason>]
+
+Returns a list of reasons for partial failures within an AutoML job.
 
 
 =head2 ProblemType => Str
@@ -113,15 +134,16 @@ Returns the job's problem type.
 Valid values are: C<"BinaryClassification">, C<"MulticlassClassification">, C<"Regression">
 =head2 ResolvedAttributes => L<Paws::SageMaker::ResolvedAttributes>
 
-This contains ProblemType, AutoMLJobObjective and CompletionCriteria.
-TheyE<rsquo>re auto-inferred values, if not provided by you. If you do
-provide them, then theyE<rsquo>ll be the same as provided.
+This contains C<ProblemType>, C<AutoMLJobObjective> and
+C<CompletionCriteria>. If you do not provide these values, they are
+auto-inferred. If you do provide them, the values used are the ones you
+provide.
 
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The Amazon Resource Name (ARN) of the AWS Identity and Access
-Management (IAM) role that has read permission to the input data
+The Amazon Resource Name (ARN) of the Amazon Web Services Identity and
+Access Management (IAM) role that has read permission to the input data
 location and write permission to the output data location in Amazon S3.
 
 

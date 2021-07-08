@@ -36,15 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $pi = Paws->service('PerformanceInsights');
     my $GetResourceMetricsResponse = $pi->GetResourceMetrics(
       EndTime       => '1970-01-01T01:00:00',
-      Identifier    => 'MyString',
+      Identifier    => 'MyRequestString',
       MetricQueries => [
         {
-          Metric  => 'MyString',
-          Filter  => { 'MyString' => 'MyString', },    # OPTIONAL
+          Metric => 'MyRequestString',    # max: 256
+          Filter => {
+            'MyRequestString' =>
+              'MyRequestString',          # key: max: 256, value: max: 256
+          },    # OPTIONAL
           GroupBy => {
-            Group      => 'MyString',
-            Dimensions => [ 'MyString', ... ],    # min: 1, max: 10; OPTIONAL
-            Limit      => 1,                      # min: 1, max: 10; OPTIONAL
+            Group      => 'MyRequestString',    # max: 256
+            Dimensions => [
+              'MyRequestString', ...            # max: 256
+            ],    # min: 1, max: 10; OPTIONAL
+            Limit => 1,    # min: 1, max: 10; OPTIONAL
           },    # OPTIONAL
         },
         ...
@@ -52,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ServiceType     => 'RDS',
       StartTime       => '1970-01-01T01:00:00',
       MaxResults      => 1,                       # OPTIONAL
-      NextToken       => 'MyString',              # OPTIONAL
+      NextToken       => 'MyNextToken',           # OPTIONAL
       PeriodInSeconds => 1,                       # OPTIONAL
     );
 
@@ -73,9 +78,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/pi/
 
 =head2 B<REQUIRED> EndTime => Str
 
-The date and time specifiying the end of the requested time series
-data. The value specified is I<exclusive> - data points less than (but
-not equal to) C<EndTime> will be returned.
+The date and time specifying the end of the requested time series data.
+The value specified is I<exclusive> - data points less than (but not
+equal to) C<EndTime> will be returned.
 
 The value for C<EndTime> must be later than the value for C<StartTime>.
 
@@ -86,8 +91,8 @@ The value for C<EndTime> must be later than the value for C<StartTime>.
 An immutable, AWS Region-unique identifier for a data source.
 Performance Insights gathers metrics from this data source.
 
-To use an Amazon RDS instance as a data source, you specify its
-C<DbiResourceId> value - for example: C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>
+To use a DB instance as a data source, specify its C<DbiResourceId>
+value. For example, specify C<db-FAIHNTYBKTGAUSUZQYPDS2GW4A>.
 
 
 
@@ -154,8 +159,8 @@ points in the response.
 
 =head2 B<REQUIRED> ServiceType => Str
 
-The AWS service for which Performance Insights will return metrics. The
-only valid value for I<ServiceType> is: C<RDS>
+The AWS service for which Performance Insights returns metrics. The
+only valid value for I<ServiceType> is C<RDS>.
 
 Valid values are: C<"RDS">
 

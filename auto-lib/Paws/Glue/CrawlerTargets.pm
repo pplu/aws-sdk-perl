@@ -4,6 +4,7 @@ package Paws::Glue::CrawlerTargets;
   has CatalogTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::CatalogTarget]');
   has DynamoDBTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::DynamoDBTarget]');
   has JdbcTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::JdbcTarget]');
+  has MongoDBTargets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::MongoDBTarget]');
   has S3Targets => (is => 'ro', isa => 'ArrayRef[Paws::Glue::S3Target]');
 
 1;
@@ -43,7 +44,7 @@ Specifies data stores to crawl.
 
 =head2 CatalogTargets => ArrayRef[L<Paws::Glue::CatalogTarget>]
 
-Specifies AWS Glue Data Catalog targets.
+Specifies Glue Data Catalog targets.
 
 
 =head2 DynamoDBTargets => ArrayRef[L<Paws::Glue::DynamoDBTarget>]
@@ -54,6 +55,11 @@ Specifies Amazon DynamoDB targets.
 =head2 JdbcTargets => ArrayRef[L<Paws::Glue::JdbcTarget>]
 
 Specifies JDBC targets.
+
+
+=head2 MongoDBTargets => ArrayRef[L<Paws::Glue::MongoDBTarget>]
+
+Specifies Amazon DocumentDB or MongoDB targets.
 
 
 =head2 S3Targets => ArrayRef[L<Paws::Glue::S3Target>]

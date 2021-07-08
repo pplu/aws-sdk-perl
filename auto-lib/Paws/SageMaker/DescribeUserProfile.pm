@@ -66,7 +66,7 @@ The domain ID.
 
 =head2 B<REQUIRED> UserProfileName => Str
 
-The user profile name.
+The user profile name. This value is not case sensitive.
 
 
 

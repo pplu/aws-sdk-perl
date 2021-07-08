@@ -1,5 +1,6 @@
 package Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification;
   use Moose;
+  has AssociateCarrierIpAddress => (is => 'ro', isa => 'Bool', request_name => 'associateCarrierIpAddress', traits => ['NameInRequest']);
   has AssociatePublicIpAddress => (is => 'ro', isa => 'Bool', request_name => 'associatePublicIpAddress', traits => ['NameInRequest']);
   has DeleteOnTermination => (is => 'ro', isa => 'Bool', request_name => 'deleteOnTermination', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
@@ -8,6 +9,7 @@ package Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification;
   has InterfaceType => (is => 'ro', isa => 'Str', request_name => 'interfaceType', traits => ['NameInRequest']);
   has Ipv6AddressCount => (is => 'ro', isa => 'Int', request_name => 'ipv6AddressCount', traits => ['NameInRequest']);
   has Ipv6Addresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::InstanceIpv6Address]', request_name => 'ipv6AddressesSet', traits => ['NameInRequest']);
+  has NetworkCardIndex => (is => 'ro', isa => 'Int', request_name => 'networkCardIndex', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has PrivateIpAddress => (is => 'ro', isa => 'Str', request_name => 'privateIpAddress', traits => ['NameInRequest']);
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', request_name => 'privateIpAddressesSet', traits => ['NameInRequest']);
@@ -32,20 +34,32 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification object:
 
-  $service_obj->Method(Att1 => { AssociatePublicIpAddress => $value, ..., SubnetId => $value  });
+  $service_obj->Method(Att1 => { AssociateCarrierIpAddress => $value, ..., SubnetId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::LaunchTemplateInstanceNetworkInterfaceSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->AssociatePublicIpAddress
+  $result->Att1->AssociateCarrierIpAddress
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 AssociateCarrierIpAddress => Bool
+
+Indicates whether to associate a Carrier IP address with eth0 for a new
+network interface.
+
+Use this option when you launch an instance in a Wavelength Zone and
+want to associate a Carrier IP address with the network interface. For
+more information about Carrier IP addresses, see Carrier IP addresses
+(https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#provider-owned-ip)
+in the I<AWS Wavelength Developer Guide>.
 
 
 =head2 AssociatePublicIpAddress => Bool
@@ -88,6 +102,11 @@ The number of IPv6 addresses for the network interface.
 =head2 Ipv6Addresses => ArrayRef[L<Paws::EC2::InstanceIpv6Address>]
 
 The IPv6 addresses for the network interface.
+
+
+=head2 NetworkCardIndex => Int
+
+The index of the network card.
 
 
 =head2 NetworkInterfaceId => Str

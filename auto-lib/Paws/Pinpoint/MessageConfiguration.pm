@@ -4,6 +4,7 @@ package Paws::Pinpoint::MessageConfiguration;
   has ADMMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
   has APNSMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
   has BaiduMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
+  has CustomMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignCustomMessage');
   has DefaultMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
   has EmailMessage => (is => 'ro', isa => 'Paws::Pinpoint::CampaignEmailMessage');
   has GCMMessage => (is => 'ro', isa => 'Paws::Pinpoint::Message');
@@ -47,20 +48,30 @@ Specifies the message configuration settings for a campaign.
 =head2 ADMMessage => L<Paws::Pinpoint::Message>
 
 The message that the campaign sends through the ADM (Amazon Device
-Messaging) channel. This message overrides the default message.
+Messaging) channel. If specified, this message overrides the default
+message.
 
 
 =head2 APNSMessage => L<Paws::Pinpoint::Message>
 
 The message that the campaign sends through the APNs (Apple Push
-Notification service) channel. This message overrides the default
-message.
+Notification service) channel. If specified, this message overrides the
+default message.
 
 
 =head2 BaiduMessage => L<Paws::Pinpoint::Message>
 
 The message that the campaign sends through the Baidu (Baidu Cloud
-Push) channel. This message overrides the default message.
+Push) channel. If specified, this message overrides the default
+message.
+
+
+=head2 CustomMessage => L<Paws::Pinpoint::CampaignCustomMessage>
+
+The message that the campaign sends through a custom channel, as
+specified by the delivery configuration (CustomDeliveryConfiguration)
+settings for the campaign. If specified, this message overrides the
+default message.
 
 
 =head2 DefaultMessage => L<Paws::Pinpoint::Message>
@@ -71,7 +82,8 @@ that are configured for the campaign.
 
 =head2 EmailMessage => L<Paws::Pinpoint::CampaignEmailMessage>
 
-The message that the campaign sends through the email channel.
+The message that the campaign sends through the email channel. If
+specified, this message overrides the default message.
 
 
 =head2 GCMMessage => L<Paws::Pinpoint::Message>
@@ -79,12 +91,13 @@ The message that the campaign sends through the email channel.
 The message that the campaign sends through the GCM channel, which
 enables Amazon Pinpoint to send push notifications through the Firebase
 Cloud Messaging (FCM), formerly Google Cloud Messaging (GCM), service.
-This message overrides the default message.
+If specified, this message overrides the default message.
 
 
 =head2 SMSMessage => L<Paws::Pinpoint::CampaignSmsMessage>
 
-The message that the campaign sends through the SMS channel.
+The message that the campaign sends through the SMS channel. If
+specified, this message overrides the default message.
 
 
 

@@ -26,7 +26,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $autoscaling = Paws->service('AutoScaling');
-    # To describe the Auto Scaling adjustment types
+    # To describe the Amazon EC2 Auto Scaling adjustment types
     # This example describes the available adjustment types.
     my $DescribeAdjustmentTypesAnswer = $autoscaling->DescribeAdjustmentTypes();
 

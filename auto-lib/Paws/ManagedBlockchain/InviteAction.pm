@@ -37,6 +37,8 @@ An action to invite a specific AWS account to create a member and join
 the network. The C<InviteAction> is carried out when a C<Proposal> is
 C<APPROVED>.
 
+Applies only to Hyperledger Fabric.
+
 =head1 ATTRIBUTES
 
 

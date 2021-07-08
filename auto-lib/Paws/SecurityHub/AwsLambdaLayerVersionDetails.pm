@@ -42,18 +42,22 @@ Details about a Lambda layer version.
 
 =head2 CompatibleRuntimes => ArrayRef[Str|Undef]
 
-The layer's compatible runtimes. Maximum number of 5 items.
+The layer's compatible runtimes. Maximum number of five items.
 
-Valid values: C<nodejs8.10> | C<nodejs10.x> | C<nodejs12.x> | C<java8>
-| C<java11> | C<python2.7> | C<python3.6> | C<python3.7> | C<python3.8>
-| C<dotnetcore1.0> | C<dotnetcore2.1> | C<go1.x> | C<ruby2.5> |
+Valid values: C<nodejs10.x> | C<nodejs12.x> | C<java8> | C<java11> |
+C<python2.7> | C<python3.6> | C<python3.7> | C<python3.8> |
+C<dotnetcore1.0> | C<dotnetcore2.1> | C<go1.x> | C<ruby2.5> |
 C<provided>
 
 
 =head2 CreatedDate => Str
 
-The date that the version was created, in ISO 8601 format. For example,
-2018-11-27T15:10:45.123+0000.
+Indicates when the version was created.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
 
 
 =head2 Version => Int

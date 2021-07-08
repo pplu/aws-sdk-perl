@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about a tag associated with the Ec2 instance.
+Contains information about a tag associated with the EC2 instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-EC2 instance tag key.
+The EC2 instance tag key.
 
 
 =head2 Value => Str
 
-EC2 instance tag value.
+The EC2 instance tag value.
 
 
 

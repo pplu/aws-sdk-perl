@@ -1,7 +1,10 @@
 
 package Paws::MediaPackageVod::CreatePackagingGroup;
   use Moose;
+  has Authorization => (is => 'ro', isa => 'Paws::MediaPackageVod::Authorization', traits => ['NameInRequest'], request_name => 'authorization');
+  has EgressAccessLogs => (is => 'ro', isa => 'Paws::MediaPackageVod::EgressAccessLogs', traits => ['NameInRequest'], request_name => 'egressAccessLogs');
   has Id => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'id', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -29,14 +32,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mediapackage-vod = Paws->service('MediaPackageVod');
     my $CreatePackagingGroupResponse = $mediapackage -vod->CreatePackagingGroup(
-      Id => 'My__string',
+      Id            => 'My__string',
+      Authorization => {
+        CdnIdentifierSecret => 'My__string',
+        SecretsRoleArn      => 'My__string',
 
+      },    # OPTIONAL
+      EgressAccessLogs => { LogGroupName => 'My__string', },    # OPTIONAL
+      Tags             => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
-    my $Arn        = $CreatePackagingGroupResponse->Arn;
-    my $DomainName = $CreatePackagingGroupResponse->DomainName;
-    my $Id         = $CreatePackagingGroupResponse->Id;
+    my $Arn              = $CreatePackagingGroupResponse->Arn;
+    my $Authorization    = $CreatePackagingGroupResponse->Authorization;
+    my $DomainName       = $CreatePackagingGroupResponse->DomainName;
+    my $EgressAccessLogs = $CreatePackagingGroupResponse->EgressAccessLogs;
+    my $Id               = $CreatePackagingGroupResponse->Id;
+    my $Tags             = $CreatePackagingGroupResponse->Tags;
 
     # Returns a L<Paws::MediaPackageVod::CreatePackagingGroupResponse> object.
 
@@ -46,9 +58,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head1 ATTRIBUTES
 
 
+=head2 Authorization => L<Paws::MediaPackageVod::Authorization>
+
+
+
+
+
+=head2 EgressAccessLogs => L<Paws::MediaPackageVod::EgressAccessLogs>
+
+
+
+
+
 =head2 B<REQUIRED> Id => Str
 
 The ID of the PackagingGroup.
+
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 

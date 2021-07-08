@@ -89,37 +89,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application to update.
+The ID of the application.
 
 
 
 =head2 Description => Str
 
-New description of the application.
+The new description of the application.
 
 
 
 =head2 Name => Str
 
-New name of the application.
+The new name of the application.
 
 
 
 =head2 RoleName => Str
 
-Name of the service role in the customer's account used by AWS SMS.
+The name of the service role in the customer's account used by AWS SMS.
 
 
 
 =head2 ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]
 
-List of server groups in the application to update.
+The server groups in the application to update.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::SMS::Tag>]
 
-List of tags to associate with the application.
+The tags to associate with the application.
 
 
 

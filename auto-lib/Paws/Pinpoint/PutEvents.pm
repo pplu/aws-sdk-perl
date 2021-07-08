@@ -38,8 +38,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               Address    => 'My__string',
               Attributes => { 'My__string' => [ 'My__string', ... ], }
               ,    # OPTIONAL
-              ChannelType => 'GCM'
-              , # values: GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
+              ChannelType => 'PUSH'
+              , # values: PUSH, GCM, APNS, APNS_SANDBOX, APNS_VOIP, APNS_VOIP_SANDBOX, ADM, SMS, VOICE, EMAIL, BAIDU, CUSTOM; OPTIONAL
               Demographic => {
                 AppVersion      => 'My__string',
                 Locale          => 'My__string',

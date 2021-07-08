@@ -46,7 +46,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::XRay::Servi
 =head1 DESCRIPTION
 
 Information about an application that processed requests, users that
-made requests, or downstream services, resources and applications that
+made requests, or downstream services, resources, and applications that
 an application used.
 
 =head1 ATTRIBUTES
@@ -121,7 +121,7 @@ The type of service.
 =item *
 
 AWS Resource - The type of an AWS resource. For example,
-C<AWS::EC2::Instance> for a application running on Amazon EC2 or
+C<AWS::EC2::Instance> for an application running on Amazon EC2 or
 C<AWS::DynamoDB::Table> for an Amazon DynamoDB table that the
 application used.
 

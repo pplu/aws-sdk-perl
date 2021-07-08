@@ -35,12 +35,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-A JSON string that you can use to limit the event bus permissions that
-you're granting to only accounts that fulfill the condition. Currently,
+A JSON string which you can use to limit the event bus permissions you
+are granting to only accounts that fulfill the condition. Currently,
 the only supported condition is membership in a certain AWS
 organization. The string must contain C<Type>, C<Key>, and C<Value>
 fields. The C<Value> field specifies the ID of the AWS organization.
-The following is an example value for C<Condition>:
+Following is an example value for C<Condition>:
 
 C<'{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value":
 "o-1234567890"}'>
@@ -50,19 +50,19 @@ C<'{"Type" : "StringEquals", "Key": "aws:PrincipalOrgID", "Value":
 
 =head2 B<REQUIRED> Key => Str
 
-The key for the condition. Currently, the only supported key is
-C<aws:PrincipalOrgID>.
+Specifies the key for the condition. Currently the only supported key
+is C<aws:PrincipalOrgID>.
 
 
 =head2 B<REQUIRED> Type => Str
 
-The type of condition. Currently, the only supported value is
+Specifies the type of condition. Currently the only supported value is
 C<StringEquals>.
 
 
 =head2 B<REQUIRED> Value => Str
 
-The value for the key. Currently, this must be the ID of the
+Specifies the value for the key. Currently, this must be the ID of the
 organization.
 
 

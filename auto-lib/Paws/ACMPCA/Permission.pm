@@ -43,8 +43,13 @@ AWS service or entity. In order for ACM to automatically renew private
 certificates, you must give the ACM service principal all available
 permissions (C<IssueCertificate>, C<GetCertificate>, and
 C<ListPermissions>). Permissions can be assigned with the
-CreatePermission action, removed with the DeletePermission action, and
-listed with the ListPermissions action.
+CreatePermission
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreatePermission.html)
+action, removed with the DeletePermission
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePermission.html)
+action, and listed with the ListPermissions
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html)
+action.
 
 =head1 ATTRIBUTES
 

@@ -35,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about a publishing destination, including the ID,
-type, and status.
+Contains information about the publishing destination, including the
+ID, type, and status.
 
 =head1 ATTRIBUTES
 
@@ -49,7 +49,7 @@ The unique ID of the publishing destination.
 =head2 B<REQUIRED> DestinationType => Str
 
 The type of resource used for the publishing destination. Currently,
-only S3 is supported.
+only Amazon S3 buckets are supported.
 
 
 =head2 B<REQUIRED> Status => Str

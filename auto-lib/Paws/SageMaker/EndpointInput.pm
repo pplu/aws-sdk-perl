@@ -2,9 +2,15 @@
 package Paws::SageMaker::EndpointInput;
   use Moose;
   has EndpointName => (is => 'ro', isa => 'Str', required => 1);
+  has EndTimeOffset => (is => 'ro', isa => 'Str');
+  has FeaturesAttribute => (is => 'ro', isa => 'Str');
+  has InferenceAttribute => (is => 'ro', isa => 'Str');
   has LocalPath => (is => 'ro', isa => 'Str', required => 1);
+  has ProbabilityAttribute => (is => 'ro', isa => 'Str');
+  has ProbabilityThresholdAttribute => (is => 'ro', isa => 'Num');
   has S3DataDistributionType => (is => 'ro', isa => 'Str');
   has S3InputMode => (is => 'ro', isa => 'Str');
+  has StartTimeOffset => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -25,7 +31,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::EndpointInput object:
 
-  $service_obj->Method(Att1 => { EndpointName => $value, ..., S3InputMode => $value  });
+  $service_obj->Method(Att1 => { EndpointName => $value, ..., StartTimeOffset => $value  });
 
 =head3 Results returned from an API call
 
@@ -47,16 +53,46 @@ An endpoint in customer's account which has enabled
 C<DataCaptureConfig> enabled.
 
 
+=head2 EndTimeOffset => Str
+
+If specified, monitoring jobs substract this time from the end time.
+For information about using offsets for scheduling monitoring jobs, see
+Schedule Model Quality Monitoring Jobs
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-schedule.html).
+
+
+=head2 FeaturesAttribute => Str
+
+The attributes of the input data that are the input features.
+
+
+=head2 InferenceAttribute => Str
+
+The attribute of the input data that represents the ground truth label.
+
+
 =head2 B<REQUIRED> LocalPath => Str
 
 Path to the filesystem where the endpoint data is available to the
 container.
 
 
+=head2 ProbabilityAttribute => Str
+
+In a classification problem, the attribute that represents the class
+probability.
+
+
+=head2 ProbabilityThresholdAttribute => Num
+
+The threshold for the class probability to be evaluated as a positive
+result.
+
+
 =head2 S3DataDistributionType => Str
 
 Whether input data distributed in Amazon S3 is fully replicated or
-sharded by an S3 key. Defauts to C<FullyReplicated>
+sharded by an S3 key. Defaults to C<FullyReplicated>
 
 
 =head2 S3InputMode => Str
@@ -65,6 +101,14 @@ Whether the C<Pipe> or C<File> is used as the input mode for
 transfering data for the monitoring job. C<Pipe> mode is recommended
 for large datasets. C<File> mode is useful for small files that fit in
 memory. Defaults to C<File>.
+
+
+=head2 StartTimeOffset => Str
+
+If specified, monitoring jobs substract this time from the start time.
+For information about using offsets for scheduling monitoring jobs, see
+Schedule Model Quality Monitoring Jobs
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-model-quality-schedule.html).
 
 
 

@@ -2,6 +2,8 @@
 package Paws::MediaLive::Fmp4HlsSettings;
   use Moose;
   has AudioRenditionSets => (is => 'ro', isa => 'Str', request_name => 'audioRenditionSets', traits => ['NameInRequest']);
+  has NielsenId3Behavior => (is => 'ro', isa => 'Str', request_name => 'nielsenId3Behavior', traits => ['NameInRequest']);
+  has TimedMetadataBehavior => (is => 'ro', isa => 'Str', request_name => 'timedMetadataBehavior', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaLive::Fmp4HlsSettings object:
 
-  $service_obj->Method(Att1 => { AudioRenditionSets => $value, ..., AudioRenditionSets => $value  });
+  $service_obj->Method(Att1 => { AudioRenditionSets => $value, ..., TimedMetadataBehavior => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,6 +45,19 @@ Fmp4 Hls Settings
 List all the audio groups that are used with the video output stream.
 Input all the audio GROUP-IDs that are associated to the video,
 separate by ','.
+
+
+=head2 NielsenId3Behavior => Str
+
+If set to passthrough, Nielsen inaudible tones for media tracking will
+be detected in the input audio and an equivalent ID3 tag will be
+inserted in the output.
+
+
+=head2 TimedMetadataBehavior => Str
+
+When set to passthrough, timed metadata is passed through from input to
+output.
 
 
 

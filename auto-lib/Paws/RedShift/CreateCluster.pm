@@ -3,8 +3,10 @@ package Paws::RedShift::CreateCluster;
   use Moose;
   has AdditionalInfo => (is => 'ro', isa => 'Str');
   has AllowVersionUpgrade => (is => 'ro', isa => 'Bool');
+  has AquaConfigurationStatus => (is => 'ro', isa => 'Str');
   has AutomatedSnapshotRetentionPeriod => (is => 'ro', isa => 'Int');
   has AvailabilityZone => (is => 'ro', isa => 'Str');
+  has AvailabilityZoneRelocation => (is => 'ro', isa => 'Bool');
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterParameterGroupName => (is => 'ro', isa => 'Str');
   has ClusterSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -61,38 +63,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MasterUserPassword               => 'MyString',
       MasterUsername                   => 'MyString',
       NodeType                         => 'MyString',
-      AdditionalInfo                   => 'MyString',             # OPTIONAL
-      AllowVersionUpgrade              => 1,                      # OPTIONAL
-      AutomatedSnapshotRetentionPeriod => 1,                      # OPTIONAL
-      AvailabilityZone                 => 'MyString',             # OPTIONAL
-      ClusterParameterGroupName        => 'MyString',             # OPTIONAL
-      ClusterSecurityGroups            => [ 'MyString', ... ],    # OPTIONAL
-      ClusterSubnetGroupName           => 'MyString',             # OPTIONAL
-      ClusterType                      => 'MyString',             # OPTIONAL
-      ClusterVersion                   => 'MyString',             # OPTIONAL
-      DBName                           => 'MyString',             # OPTIONAL
-      ElasticIp                        => 'MyString',             # OPTIONAL
-      Encrypted                        => 1,                      # OPTIONAL
-      EnhancedVpcRouting               => 1,                      # OPTIONAL
-      HsmClientCertificateIdentifier   => 'MyString',             # OPTIONAL
-      HsmConfigurationIdentifier       => 'MyString',             # OPTIONAL
-      IamRoles                         => [ 'MyString', ... ],    # OPTIONAL
-      KmsKeyId                         => 'MyString',             # OPTIONAL
-      MaintenanceTrackName             => 'MyString',             # OPTIONAL
-      ManualSnapshotRetentionPeriod    => 1,                      # OPTIONAL
-      NumberOfNodes                    => 1,                      # OPTIONAL
-      Port                             => 1,                      # OPTIONAL
-      PreferredMaintenanceWindow       => 'MyString',             # OPTIONAL
-      PubliclyAccessible               => 1,                      # OPTIONAL
-      SnapshotScheduleIdentifier       => 'MyString',             # OPTIONAL
-      Tags                             => [
+      AdditionalInfo                   => 'MyString',    # OPTIONAL
+      AllowVersionUpgrade              => 1,             # OPTIONAL
+      AquaConfigurationStatus          => 'enabled',     # OPTIONAL
+      AutomatedSnapshotRetentionPeriod => 1,             # OPTIONAL
+      AvailabilityZone                 => 'MyString',    # OPTIONAL
+      AvailabilityZoneRelocation       => 1,             # OPTIONAL
+      ClusterParameterGroupName        => 'MyString',    # OPTIONAL
+      ClusterSecurityGroups            => [
+        'MyString', ...                                  # max: 2147483647
+      ],    # OPTIONAL
+      ClusterSubnetGroupName         => 'MyString',    # OPTIONAL
+      ClusterType                    => 'MyString',    # OPTIONAL
+      ClusterVersion                 => 'MyString',    # OPTIONAL
+      DBName                         => 'MyString',    # OPTIONAL
+      ElasticIp                      => 'MyString',    # OPTIONAL
+      Encrypted                      => 1,             # OPTIONAL
+      EnhancedVpcRouting             => 1,             # OPTIONAL
+      HsmClientCertificateIdentifier => 'MyString',    # OPTIONAL
+      HsmConfigurationIdentifier     => 'MyString',    # OPTIONAL
+      IamRoles                       => [
+        'MyString', ...                                # max: 2147483647
+      ],    # OPTIONAL
+      KmsKeyId                      => 'MyString',    # OPTIONAL
+      MaintenanceTrackName          => 'MyString',    # OPTIONAL
+      ManualSnapshotRetentionPeriod => 1,             # OPTIONAL
+      NumberOfNodes                 => 1,             # OPTIONAL
+      Port                          => 1,             # OPTIONAL
+      PreferredMaintenanceWindow    => 'MyString',    # OPTIONAL
+      PubliclyAccessible            => 1,             # OPTIONAL
+      SnapshotScheduleIdentifier    => 'MyString',    # OPTIONAL
+      Tags                          => [
         {
-          Key   => 'MyString',
-          Value => 'MyString',
+          Key   => 'MyString',    # max: 2147483647
+          Value => 'MyString',    # max: 2147483647
         },
         ...
-      ],                                                          # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],                 # OPTIONAL
+      ],    # OPTIONAL
+      VpcSecurityGroupIds => [
+        'MyString', ...    # max: 2147483647
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -127,12 +137,41 @@ Default: C<true>
 
 
 
+=head2 AquaConfigurationStatus => Str
+
+The value represents how the cluster is configured to use AQUA
+(Advanced Query Accelerator) when it is created. Possible values
+include the following.
+
+=over
+
+=item *
+
+enabled - Use AQUA if it is available for the current AWS Region and
+Amazon Redshift node type.
+
+=item *
+
+disabled - Don't use AQUA.
+
+=item *
+
+auto - Amazon Redshift determines whether to use AQUA.
+
+=back
+
+
+Valid values are: C<"enabled">, C<"disabled">, C<"auto">
+
 =head2 AutomatedSnapshotRetentionPeriod => Int
 
 The number of days that automated snapshots are retained. If the value
 is 0, automated snapshots are disabled. Even if automated snapshots are
 disabled, you can still create manual snapshots when you want with
 CreateClusterSnapshot.
+
+You can't disable automated snapshots for RA3 node types. Set the
+automated retention period from 1-35 days.
 
 Default: C<1>
 
@@ -155,6 +194,13 @@ Example: C<us-east-2d>
 
 Constraint: The specified Availability Zone must be in the same region
 as the current endpoint.
+
+
+
+=head2 AvailabilityZoneRelocation => Bool
+
+The option to enable relocation for an Amazon Redshift cluster between
+Availability Zones after the cluster is created.
 
 
 
@@ -474,7 +520,8 @@ node types, go to Working with Clusters
 in the I<Amazon Redshift Cluster Management Guide>.
 
 Valid Values: C<ds2.xlarge> | C<ds2.8xlarge> | C<dc1.large> |
-C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.16xlarge>
+C<dc1.8xlarge> | C<dc2.large> | C<dc2.8xlarge> | C<ra3.xlplus> |
+C<ra3.4xlarge> | C<ra3.16xlarge>
 
 
 

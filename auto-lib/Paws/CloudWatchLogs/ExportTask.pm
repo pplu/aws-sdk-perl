@@ -48,7 +48,7 @@ Represents an export task.
 
 =head2 Destination => Str
 
-The name of Amazon S3 bucket to which the log data was exported.
+The name of the S3 bucket to which the log data was exported.
 
 
 =head2 DestinationPrefix => Str
@@ -59,7 +59,7 @@ exported.
 
 =head2 ExecutionInfo => L<Paws::CloudWatchLogs::ExportTaskExecutionInfo>
 
-Execution info about the export task.
+Execution information about the export task.
 
 
 =head2 From => Int

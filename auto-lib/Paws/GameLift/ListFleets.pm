@@ -31,10 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $ListFleetsOutput = $gamelift->ListFleets(
-      BuildId   => 'MyBuildId',                # OPTIONAL
+      BuildId   => 'MyBuildIdOrArn',           # OPTIONAL
       Limit     => 1,                          # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
-      ScriptId  => 'MyScriptId',               # OPTIONAL
+      ScriptId  => 'MyScriptIdOrArn',          # OPTIONAL
     );
 
     # Results:
@@ -51,10 +51,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 BuildId => Str
 
-A unique identifier for a build to return fleets for. Use this
-parameter to return only fleets using the specified build. Use either
-the build ID or ARN value.To retrieve all fleets, leave this parameter
-empty.
+A unique identifier for the build to request fleets for. Use this
+parameter to return only fleets using a specified build. Use either the
+build ID or ARN value.
 
 
 
@@ -67,18 +66,18 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value.
 
 
 
 =head2 ScriptId => Str
 
-A unique identifier for a Realtime script to return fleets for. Use
-this parameter to return only fleets using the specified script. Use
-either the script ID or ARN value.To retrieve all fleets, leave this
-parameter empty.
+A unique identifier for the Realtime script to request fleets for. Use
+this parameter to return only fleets using a specified script. Use
+either the script ID or ARN value.
 
 
 

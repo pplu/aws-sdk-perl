@@ -28,10 +28,10 @@ The friendly name of the secret for which rotation was canceled.
 
 =head2 VersionId => Str
 
-The unique identifier of the version of the secret that was created
-during the rotation. This version might not be complete, and should be
-evaluated for possible deletion. At the very least, you should remove
-the C<VersionStage> value C<AWSPENDING> to enable this version to be
+The unique identifier of the version of the secret created during the
+rotation. This version might not be complete, and should be evaluated
+for possible deletion. At the very least, you should remove the
+C<VersionStage> value C<AWSPENDING> to enable this version to be
 deleted. Failing to clean up a cancelled rotation can block you from
 successfully starting future rotations.
 

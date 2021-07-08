@@ -2,6 +2,7 @@ package Paws::EC2::SnapshotInfo;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Encrypted => (is => 'ro', isa => 'Bool', request_name => 'encrypted', traits => ['NameInRequest']);
+  has OutpostArn => (is => 'ro', isa => 'Str', request_name => 'outpostArn', traits => ['NameInRequest']);
   has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has Progress => (is => 'ro', isa => 'Str', request_name => 'progress', traits => ['NameInRequest']);
   has SnapshotId => (is => 'ro', isa => 'Str', request_name => 'snapshotId', traits => ['NameInRequest']);
@@ -54,6 +55,14 @@ applied to all snapshots.
 =head2 Encrypted => Bool
 
 Indicates whether the snapshot is encrypted.
+
+
+=head2 OutpostArn => Str
+
+The ARN of the AWS Outpost on which the snapshot is stored. For more
+information, see EBS Local Snapshot on Outposts
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 OwnerId => Str

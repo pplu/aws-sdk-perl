@@ -104,6 +104,11 @@ package Paws::RAM;
     my $call_object = $self->new_with_coercions('Paws::RAM::ListResourceSharePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListResourceTypes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::RAM::ListResourceTypes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PromoteResourceShareCreatedFromPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::RAM::PromoteResourceShareCreatedFromPolicy', @_);
@@ -270,7 +275,7 @@ package Paws::RAM;
   }
 
 
-  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare AssociateResourceSharePermission CreateResourceShare DeleteResourceShare DisassociateResourceShare DisassociateResourceSharePermission EnableSharingWithAwsOrganization GetPermission GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPermissions ListPrincipals ListResources ListResourceSharePermissions PromoteResourceShareCreatedFromPolicy RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
+  sub operations { qw/AcceptResourceShareInvitation AssociateResourceShare AssociateResourceSharePermission CreateResourceShare DeleteResourceShare DisassociateResourceShare DisassociateResourceSharePermission EnableSharingWithAwsOrganization GetPermission GetResourcePolicies GetResourceShareAssociations GetResourceShareInvitations GetResourceShares ListPendingInvitationResources ListPermissions ListPrincipals ListResources ListResourceSharePermissions ListResourceTypes PromoteResourceShareCreatedFromPolicy RejectResourceShareInvitation TagResource UntagResource UpdateResourceShare / }
 
 1;
 
@@ -363,6 +368,8 @@ and resources.
 =item ResourceShareArn => Str
 
 =item [ClientToken => Str]
+
+=item [PermissionVersion => Int]
 
 =item [Replace => Bool]
 
@@ -569,7 +576,7 @@ Each argument is described in detail in: L<Paws::RAM::GetResourceShareInvitation
 
 Returns: a L<Paws::RAM::GetResourceShareInvitationsResponse> instance
 
-Gets the invitations for resource sharing that you've received.
+Gets the invitations that you have received for resource shares.
 
 
 =head2 GetResourceShares
@@ -583,6 +590,8 @@ Gets the invitations for resource sharing that you've received.
 =item [Name => Str]
 
 =item [NextToken => Str]
+
+=item [PermissionArn => Str]
 
 =item [ResourceShareArns => ArrayRef[Str|Undef]]
 
@@ -719,6 +728,24 @@ Returns: a L<Paws::RAM::ListResourceSharePermissionsResponse> instance
 
 Lists the AWS RAM permissions that are associated with a resource
 share.
+
+
+=head2 ListResourceTypes
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::RAM::ListResourceTypes>
+
+Returns: a L<Paws::RAM::ListResourceTypesResponse> instance
+
+Lists the shareable resource types supported by AWS RAM.
 
 
 =head2 PromoteResourceShareCreatedFromPolicy
@@ -874,9 +901,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::RAM::GetResourceShareInvitationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+=head2 GetAllResourceShares(sub { },ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, PermissionArn => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
 
-=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
+=head2 GetAllResourceShares(ResourceOwner => Str, [MaxResults => Int, Name => Str, NextToken => Str, PermissionArn => Str, ResourceShareArns => ArrayRef[Str|Undef], ResourceShareStatus => Str, TagFilters => ArrayRef[L<Paws::RAM::TagFilter>]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

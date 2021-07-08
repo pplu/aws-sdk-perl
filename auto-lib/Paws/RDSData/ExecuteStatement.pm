@@ -47,8 +47,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Parameters            => [
         {
           Name     => 'MyParameterName',    # OPTIONAL
-          TypeHint => 'DATE', # values: DATE, DECIMAL, TIME, TIMESTAMP; OPTIONAL
-          Value    => {
+          TypeHint => 'JSON'
+          ,    # values: JSON, UUID, TIMESTAMP, DATE, TIME, DECIMAL; OPTIONAL
+          Value => {
             ArrayValue => {
               ArrayValues   => [ <ArrayValue>, ... ],    # OPTIONAL
               BooleanValues => [ 1,            ... ],    # OPTIONAL
@@ -68,7 +69,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       ResultSetOptions => {
         DecimalReturnType =>
-          'DOUBLE_OR_LONG',    # values: DOUBLE_OR_LONG, STRING; OPTIONAL
+          'STRING',    # values: STRING, DOUBLE_OR_LONG; OPTIONAL
       },    # OPTIONAL
       Schema        => 'MyDbName',    # OPTIONAL
       TransactionId => 'MyId',        # OPTIONAL
@@ -118,6 +119,8 @@ A value that indicates whether to include metadata in the results.
 
 The parameters for the SQL statement.
 
+Array parameters are not supported.
+
 
 
 =head2 B<REQUIRED> ResourceArn => Str
@@ -135,6 +138,8 @@ Options that control how the result set is returned.
 =head2 Schema => Str
 
 The name of the database schema.
+
+Currently, the C<schema> parameter isn't supported.
 
 
 

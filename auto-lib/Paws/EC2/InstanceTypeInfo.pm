@@ -19,8 +19,10 @@ package Paws::EC2::InstanceTypeInfo;
   has NetworkInfo => (is => 'ro', isa => 'Paws::EC2::NetworkInfo', request_name => 'networkInfo', traits => ['NameInRequest']);
   has PlacementGroupInfo => (is => 'ro', isa => 'Paws::EC2::PlacementGroupInfo', request_name => 'placementGroupInfo', traits => ['NameInRequest']);
   has ProcessorInfo => (is => 'ro', isa => 'Paws::EC2::ProcessorInfo', request_name => 'processorInfo', traits => ['NameInRequest']);
+  has SupportedBootModes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedBootModes', traits => ['NameInRequest']);
   has SupportedRootDeviceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedRootDeviceTypes', traits => ['NameInRequest']);
   has SupportedUsageClasses => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedUsageClasses', traits => ['NameInRequest']);
+  has SupportedVirtualizationTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'supportedVirtualizationTypes', traits => ['NameInRequest']);
   has VCpuInfo => (is => 'ro', isa => 'Paws::EC2::VCpuInfo', request_name => 'vCpuInfo', traits => ['NameInRequest']);
 1;
 
@@ -64,7 +66,7 @@ Indicates whether auto recovery is supported.
 
 =head2 BareMetal => Bool
 
-Indicates whether the instance is bare metal.
+Indicates whether the instance is a bare metal instance type.
 
 
 =head2 BurstablePerformanceSupported => Bool
@@ -75,7 +77,7 @@ type.
 
 =head2 CurrentGeneration => Bool
 
-Indicates whether the instance type is a current generation.
+Indicates whether the instance type is current generation.
 
 
 =head2 DedicatedHostsSupported => Bool
@@ -110,7 +112,7 @@ Indicates whether On-Demand hibernation is supported.
 
 =head2 Hypervisor => Str
 
-Indicates the hypervisor used for the instance type.
+The hypervisor for the instance type.
 
 
 =head2 InferenceAcceleratorInfo => L<Paws::EC2::InferenceAcceleratorInfo>
@@ -120,7 +122,7 @@ Describes the Inference accelerator settings for the instance type.
 
 =head2 InstanceStorageInfo => L<Paws::EC2::InstanceStorageInfo>
 
-Describes the disks for the instance type.
+Describes the instance storage for the instance type.
 
 
 =head2 InstanceStorageSupported => Bool
@@ -130,9 +132,9 @@ Indicates whether instance storage is supported.
 
 =head2 InstanceType => Str
 
-The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 MemoryInfo => L<Paws::EC2::MemoryInfo>
@@ -155,14 +157,26 @@ Describes the placement group settings for the instance type.
 Describes the processor.
 
 
+=head2 SupportedBootModes => ArrayRef[Str|Undef]
+
+The supported boot modes. For more information, see Boot modes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in
+the I<Amazon EC2 User Guide>.
+
+
 =head2 SupportedRootDeviceTypes => ArrayRef[Str|Undef]
 
-Indicates the supported root device types.
+The supported root device types.
 
 
 =head2 SupportedUsageClasses => ArrayRef[Str|Undef]
 
 Indicates whether the instance type is offered for spot or On-Demand.
+
+
+=head2 SupportedVirtualizationTypes => ArrayRef[Str|Undef]
+
+The supported virtualization types.
 
 
 =head2 VCpuInfo => L<Paws::EC2::VCpuInfo>

@@ -7,43 +7,29 @@ use Getopt::Long;
 use Data::Printer;
 use Data::Dumper;
 use Cwd;
-use JSON::MaybeXS;
-use File::Slurper 'read_binary';
-use Module::Runtime qw/require_module/;
+
 use Parallel::ForkManager;
 
-use lib 'builder-lib', 't/lib';
+use lib 'builder-lib';
 
 use Paws::API::Builder::Paws;
-use Paws::API::ServiceToClass;
 
 my $gen_paws_pm    = 0;
 my $gen_classes    = 0;
 my $gen_docu_links = 0;
-my $gen_class_mapping = 0;
 
 GetOptions ("paws_pm"    => \$gen_paws_pm,
             "classes"    => \$gen_classes,
             "docu_links" => \$gen_docu_links,
-            "class_mapping" => \$gen_class_mapping,
            )
 or die "Error in command line arguments\n";
 
 my (@files) = @ARGV;
 
-# If no files specified, get the last version of each json for each service
-if (not @files) {
-  my @dirs = glob('botocore/botocore/data/*') or
-    die "Cannot find botocore data files - try: make pull-other-sdks\n";
-
-  foreach my $class_dir (@dirs) {
-    my @class_defs = grep { -f $_ } glob("$class_dir/*/service-2.json");
-    next if (not @class_defs);
-    @class_defs = sort @class_defs;
-    my $class_version = pop @class_defs;
-    push @files, $class_version;
-  }
-}
+my $p = Paws::API::Builder::Paws->new(
+  template_path => [ getcwd() . "/templates" ],
+  (@files > 0) ? (boto_service_files => \@files) : (),
+);
 
 my $pm = Parallel::ForkManager->new($ENV{MAX_PROCESSES} || 16);
 
@@ -61,18 +47,6 @@ $pm->run_on_finish(
     push @failures, $fail if ($fail);
   }
 );
-
-if ($gen_class_mapping) {
-  foreach my $file (@files) {
-    eval {
-      my ($f, $ns, undef) = get_ns_and_builder($file);
-      print "$f maps to $ns\n";
-    };
-    if ($@) {
-      push @failures, "$file: $@";
-    }
-  }
-}
 
 if ($gen_paws_pm) {
   $pm->start_child(
@@ -92,17 +66,15 @@ if ($gen_paws_pm) {
 }
 
 if ($gen_docu_links || $gen_classes) {
-  foreach my $file (@files) {
+  foreach my $file_info (values %{ $p->boto_file_information }) {
     $pm->start_child(
-      $file,
+      $file_info->{ file },
       sub {
-        print "Processing $file\n";
+        print "Processing $file_info->{ file }\n";
         eval {
-          my (undef, undef, $builder) = get_ns_and_builder($file);
-          if ($builder) {
-            $builder->write_documentation_file if ($gen_docu_links);
-            $builder->process_api if ($gen_classes);
-          }
+	  my $builder = $p->get_builder_for($file_info->{ service });
+          $builder->write_documentation_file if ($gen_docu_links);
+          $builder->process_api if ($gen_classes);
         };
         my $ret = $@ ? ["$@"] : undef;
         return $ret;
@@ -120,40 +92,4 @@ if (@failures) {
     print "\n" unless ($l =~ /\n$/);
   }
   exit(1) if ($gen_classes);
-}
-
-sub get_ns_and_builder {
-  my ($file) = @_;
-
-  if (my ($f, $version) = ($file =~ m/data\/(.*?)\/(.*?)\/service-2.json/)) {
-    return if ($f eq '_retry' or $f eq '_regions');
-    my $ns = Paws::API::ServiceToClass::service_to_class($f);
-    my $builder = get_builder("Paws::$ns", $file);
-    return ($ns, $f, $builder);
-  }
-  return;
-}
-
-sub get_builder {
-  my ($api, $file) = @_;
-
-  my $struct = decode_json(read_binary($file));
-  my $type = $struct->{metadata}->{protocol} or die "Type of API call not found";
-
-  # Map classes to be generated with special builders
-  my $overrides = {
-    'Paws::EC2'        => 'EC2',
-    'Paws::Kinesis'    => 'Kinesis',
-  };
-  $type = $overrides->{ $api } if (defined $overrides->{ $api });
-  $type =~ s/\-//;
-
-  my $class_maker = "Paws::API::Builder::${type}";
-  require_module $class_maker;
-
-  my $c = $class_maker->new(api_file => $file, api => $api, template_path => [
-                                getcwd() . "/templates/${type}",
-                                getcwd() . '/templates/default',
-                            ]);
-  return $c;
 }

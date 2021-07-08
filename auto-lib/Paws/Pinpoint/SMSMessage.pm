@@ -2,11 +2,14 @@
 package Paws::Pinpoint::SMSMessage;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
+  has EntityId => (is => 'ro', isa => 'Str');
   has Keyword => (is => 'ro', isa => 'Str');
+  has MediaUrl => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
   has OriginationNumber => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
   has Substitutions => (is => 'ro', isa => 'Paws::Pinpoint::MapOfListOf__string');
+  has TemplateId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -27,7 +30,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::SMSMessage object:
 
-  $service_obj->Method(Att1 => { Body => $value, ..., Substitutions => $value  });
+  $service_obj->Method(Att1 => { Body => $value, ..., TemplateId => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,18 +52,29 @@ directly to an endpoint.
 The body of the SMS message.
 
 
+=head2 EntityId => Str
+
+The entity ID or Principal Entity (PE) id received from the regulatory
+body for sending SMS in your country.
+
+
 =head2 Keyword => Str
 
 The SMS program name that you provided to AWS Support when you
 requested your dedicated number.
 
 
+=head2 MediaUrl => Str
+
+This field is reserved for future use.
+
+
 =head2 MessageType => Str
 
-The SMS message type. Valid values are: TRANSACTIONAL, the message is
-critical or time-sensitive, such as a one-time password that supports a
-customer transaction; and, PROMOTIONAL, the message is not critical or
-time-sensitive, such as a marketing message.
+The SMS message type. Valid values are TRANSACTIONAL (for messages that
+are critical or time-sensitive, such as a one-time passwords) and
+PROMOTIONAL (for messsages that aren't critical or time-sensitive, such
+as marketing messages).
 
 
 =head2 OriginationNumber => Str
@@ -82,6 +96,12 @@ device. Support for sender IDs varies by country or region.
 
 The message variables to use in the SMS message. You can override the
 default variables with individual address variables.
+
+
+=head2 TemplateId => Str
+
+The template ID received from the regulatory body for sending SMS in
+your country.
 
 
 

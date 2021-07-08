@@ -4,6 +4,7 @@ package Paws::DMS::Endpoint;
   has CertificateArn => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has DmsTransferSettings => (is => 'ro', isa => 'Paws::DMS::DmsTransferSettings');
+  has DocDbSettings => (is => 'ro', isa => 'Paws::DMS::DocDbSettings');
   has DynamoDbSettings => (is => 'ro', isa => 'Paws::DMS::DynamoDbSettings');
   has ElasticsearchSettings => (is => 'ro', isa => 'Paws::DMS::ElasticsearchSettings');
   has EndpointArn => (is => 'ro', isa => 'Str');
@@ -14,16 +15,24 @@ package Paws::DMS::Endpoint;
   has ExternalId => (is => 'ro', isa => 'Str');
   has ExternalTableDefinition => (is => 'ro', isa => 'Str');
   has ExtraConnectionAttributes => (is => 'ro', isa => 'Str');
+  has IBMDb2Settings => (is => 'ro', isa => 'Paws::DMS::IBMDb2Settings');
+  has KafkaSettings => (is => 'ro', isa => 'Paws::DMS::KafkaSettings');
   has KinesisSettings => (is => 'ro', isa => 'Paws::DMS::KinesisSettings');
   has KmsKeyId => (is => 'ro', isa => 'Str');
+  has MicrosoftSQLServerSettings => (is => 'ro', isa => 'Paws::DMS::MicrosoftSQLServerSettings');
   has MongoDbSettings => (is => 'ro', isa => 'Paws::DMS::MongoDbSettings');
+  has MySQLSettings => (is => 'ro', isa => 'Paws::DMS::MySQLSettings');
+  has NeptuneSettings => (is => 'ro', isa => 'Paws::DMS::NeptuneSettings');
+  has OracleSettings => (is => 'ro', isa => 'Paws::DMS::OracleSettings');
   has Port => (is => 'ro', isa => 'Int');
+  has PostgreSQLSettings => (is => 'ro', isa => 'Paws::DMS::PostgreSQLSettings');
   has RedshiftSettings => (is => 'ro', isa => 'Paws::DMS::RedshiftSettings');
   has S3Settings => (is => 'ro', isa => 'Paws::DMS::S3Settings');
   has ServerName => (is => 'ro', isa => 'Str');
   has ServiceAccessRoleArn => (is => 'ro', isa => 'Str');
   has SslMode => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has SybaseSettings => (is => 'ro', isa => 'Paws::DMS::SybaseSettings');
   has Username => (is => 'ro', isa => 'Str');
 
 1;
@@ -56,7 +65,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Endpoi
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes an endpoint of a database instance in response to operations
+such as the following:
+
+=over
+
+=item *
+
+C<CreateEndpoint>
+
+=item *
+
+C<DescribeEndpoint>
+
+=item *
+
+C<DescribeEndpointTypes>
+
+=item *
+
+C<ModifyEndpoint>
+
+=back
+
 
 =head1 ATTRIBUTES
 
@@ -105,9 +136,14 @@ JSON syntax for these settings is as follows: C<{
 "CompressionType": "none"|"gzip" }>
 
 
+=head2 DocDbSettings => L<Paws::DMS::DocDbSettings>
+
+
+
+
 =head2 DynamoDbSettings => L<Paws::DMS::DynamoDbSettings>
 
-The settings for the target DynamoDB database. For more information,
+The settings for the DynamoDB target endpoint. For more information,
 see the C<DynamoDBSettings> structure.
 
 
@@ -125,9 +161,9 @@ endpoint.
 
 =head2 EndpointIdentifier => Str
 
-The database endpoint identifier. Identifiers must begin with a letter;
-must contain only ASCII letters, digits, and hyphens; and must not end
-with a hyphen or contain two consecutive hyphens.
+The database endpoint identifier. Identifiers must begin with a letter
+and must contain only ASCII letters, digits, and hyphens. They can't
+end with a hyphen or contain two consecutive hyphens.
 
 
 =head2 EndpointType => Str
@@ -145,8 +181,11 @@ MySQL."
 =head2 EngineName => Str
 
 The database engine name. Valid values, depending on the EndpointType,
-include mysql, oracle, postgres, mariadb, aurora, aurora-postgresql,
-redshift, s3, db2, azuredb, sybase, dynamodb, mongodb, and sqlserver.
+include C<"mysql">, C<"oracle">, C<"postgres">, C<"mariadb">,
+C<"aurora">, C<"aurora-postgresql">, C<"redshift">, C<"s3">, C<"db2">,
+C<"azuredb">, C<"sybase">, C<"dynamodb">, C<"mongodb">, C<"kinesis">,
+C<"kafka">, C<"elasticsearch">, C<"documentdb">, C<"sqlserver">, and
+C<"neptune">.
 
 
 =head2 ExternalId => Str
@@ -166,9 +205,21 @@ The external table definition.
 Additional connection attributes used to connect to the endpoint.
 
 
+=head2 IBMDb2Settings => L<Paws::DMS::IBMDb2Settings>
+
+The settings for the IBM Db2 LUW source endpoint. For more information,
+see the C<IBMDb2Settings> structure.
+
+
+=head2 KafkaSettings => L<Paws::DMS::KafkaSettings>
+
+The settings for the Apache Kafka target endpoint. For more
+information, see the C<KafkaSettings> structure.
+
+
 =head2 KinesisSettings => L<Paws::DMS::KinesisSettings>
 
-The settings for the Amazon Kinesis source endpoint. For more
+The settings for the Amazon Kinesis target endpoint. For more
 information, see the C<KinesisSettings> structure.
 
 
@@ -184,15 +235,45 @@ AWS KMS creates the default encryption key for your AWS account. Your
 AWS account has a different default encryption key for each AWS Region.
 
 
+=head2 MicrosoftSQLServerSettings => L<Paws::DMS::MicrosoftSQLServerSettings>
+
+The settings for the Microsoft SQL Server source and target endpoint.
+For more information, see the C<MicrosoftSQLServerSettings> structure.
+
+
 =head2 MongoDbSettings => L<Paws::DMS::MongoDbSettings>
 
 The settings for the MongoDB source endpoint. For more information, see
 the C<MongoDbSettings> structure.
 
 
+=head2 MySQLSettings => L<Paws::DMS::MySQLSettings>
+
+The settings for the MySQL source and target endpoint. For more
+information, see the C<MySQLSettings> structure.
+
+
+=head2 NeptuneSettings => L<Paws::DMS::NeptuneSettings>
+
+The settings for the Amazon Neptune target endpoint. For more
+information, see the C<NeptuneSettings> structure.
+
+
+=head2 OracleSettings => L<Paws::DMS::OracleSettings>
+
+The settings for the Oracle source and target endpoint. For more
+information, see the C<OracleSettings> structure.
+
+
 =head2 Port => Int
 
 The port value used to access the endpoint.
+
+
+=head2 PostgreSQLSettings => L<Paws::DMS::PostgreSQLSettings>
+
+The settings for the PostgreSQL source and target endpoint. For more
+information, see the C<PostgreSQLSettings> structure.
 
 
 =head2 RedshiftSettings => L<Paws::DMS::RedshiftSettings>
@@ -225,6 +306,12 @@ C<none>.
 =head2 Status => Str
 
 The status of the endpoint.
+
+
+=head2 SybaseSettings => L<Paws::DMS::SybaseSettings>
+
+The settings for the SAP ASE source and target endpoint. For more
+information, see the C<SybaseSettings> structure.
 
 
 =head2 Username => Str

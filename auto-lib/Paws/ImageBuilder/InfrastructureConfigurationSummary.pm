@@ -5,7 +5,10 @@ package Paws::ImageBuilder::InfrastructureConfigurationSummary;
   has DateCreated => (is => 'ro', isa => 'Str', request_name => 'dateCreated', traits => ['NameInRequest']);
   has DateUpdated => (is => 'ro', isa => 'Str', request_name => 'dateUpdated', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has InstanceProfileName => (is => 'ro', isa => 'Str', request_name => 'instanceProfileName', traits => ['NameInRequest']);
+  has InstanceTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'instanceTypes', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ResourceTags => (is => 'ro', isa => 'Paws::ImageBuilder::ResourceTagMap', request_name => 'resourceTags', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
@@ -38,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ImageBuilde
 
 =head1 DESCRIPTION
 
-The infrastructure used when building EC2 AMIs.
+The infrastructure used when building Amazon EC2 AMIs.
 
 =head1 ATTRIBUTES
 
@@ -63,9 +66,24 @@ The date on which the infrastructure configuration was last updated.
 The description of the infrastructure configuration.
 
 
+=head2 InstanceProfileName => Str
+
+The instance profile of the infrastructure configuration.
+
+
+=head2 InstanceTypes => ArrayRef[Str|Undef]
+
+The instance types of the infrastructure configuration.
+
+
 =head2 Name => Str
 
 The name of the infrastructure configuration.
+
+
+=head2 ResourceTags => L<Paws::ImageBuilder::ResourceTagMap>
+
+The tags attached to the image created by Image Builder.
 
 
 =head2 Tags => L<Paws::ImageBuilder::TagMap>

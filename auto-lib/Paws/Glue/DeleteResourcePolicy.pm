@@ -2,6 +2,7 @@
 package Paws::Glue::DeleteResourcePolicy;
   use Moose;
   has PolicyHashCondition => (is => 'ro', isa => 'Str');
+  has ResourceArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -28,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $DeleteResourcePolicyResponse = $glue->DeleteResourcePolicy(
-      PolicyHashCondition => 'MyHashString',    # OPTIONAL
+      PolicyHashCondition => 'MyHashString',         # OPTIONAL
+      ResourceArn         => 'MyGlueResourceArn',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -40,6 +42,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 PolicyHashCondition => Str
 
 The hash value returned when this policy was set.
+
+
+
+=head2 ResourceArn => Str
+
+The ARN of the Glue resource for the resource policy to be deleted.
 
 
 

@@ -46,29 +46,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> AgentProfile => Str
 
-
+The submitted profiling data.
 
 
 
 =head2 B<REQUIRED> ContentType => Str
 
-The content type of the agent profile in the payload. Recommended to
-send the profile gzipped with content-type application/octet-stream.
-Other accepted values are application/x-amzn-ion and application/json
-for unzipped Ion and JSON respectively.
+The format of the submitted profiling data. The format maps to the
+C<Accept> and C<Content-Type> headers of the HTTP request. You can
+specify one of the following: or the default .
+
+ <ul> <li> <p> <code>application/json</code> - standard JSON format </p> </li> <li> <p> <code>application/x-amzn-ion</code> - the Amazon Ion data format. For more information, see <a href="http://amzn.github.io/ion-docs/">Amazon Ion</a>. </p> </li> </ul>
 
 
 
 =head2 ProfileToken => Str
 
-Client generated token to deduplicate the agent profile during
-aggregation.
+Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
+to prevent the accidental submission of duplicate profiling data if
+there are failures and retries.
 
 
 
 =head2 B<REQUIRED> ProfilingGroupName => Str
 
-
+The name of the profiling group with the aggregated profile that
+receives the submitted profiling data.
 
 
 

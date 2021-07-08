@@ -49,9 +49,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 MaxResults => Int
 
-The maximum number of instances that you want AWS Cloud Map to return
-in the response to a C<ListInstances> request. If you don't specify a
-value for C<MaxResults>, AWS Cloud Map returns up to 100 instances.
+The maximum number of instances that you want Cloud Map to return in
+the response to a C<ListInstances> request. If you don't specify a
+value for C<MaxResults>, Cloud Map returns up to 100 instances.
 
 
 

@@ -76,6 +76,10 @@ list of results.
 
 (Optional) Lists commands issued against this instance ID.
 
+You can't specify an instance ID in the same command that you specify
+C<Status> = C<Pending>. This is because the command has not reached the
+instance yet.
+
 
 
 =head2 MaxResults => Int

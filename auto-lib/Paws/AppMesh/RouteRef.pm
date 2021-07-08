@@ -2,8 +2,13 @@
 package Paws::AppMesh::RouteRef;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest'], required => 1);
+  has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest'], required => 1);
+  has LastUpdatedAt => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedAt', traits => ['NameInRequest'], required => 1);
   has MeshName => (is => 'ro', isa => 'Str', request_name => 'meshName', traits => ['NameInRequest'], required => 1);
+  has MeshOwner => (is => 'ro', isa => 'Str', request_name => 'meshOwner', traits => ['NameInRequest'], required => 1);
+  has ResourceOwner => (is => 'ro', isa => 'Str', request_name => 'resourceOwner', traits => ['NameInRequest'], required => 1);
   has RouteName => (is => 'ro', isa => 'Str', request_name => 'routeName', traits => ['NameInRequest'], required => 1);
+  has Version => (is => 'ro', isa => 'Int', request_name => 'version', traits => ['NameInRequest'], required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', request_name => 'virtualRouterName', traits => ['NameInRequest'], required => 1);
 
 1;
@@ -46,14 +51,49 @@ An object that represents a route returned by a list operation.
 The full Amazon Resource Name (ARN) for the route.
 
 
+=head2 B<REQUIRED> CreatedAt => Str
+
+The Unix epoch timestamp in seconds for when the resource was created.
+
+
+=head2 B<REQUIRED> LastUpdatedAt => Str
+
+The Unix epoch timestamp in seconds for when the resource was last
+updated.
+
+
 =head2 B<REQUIRED> MeshName => Str
 
 The name of the service mesh that the route resides in.
 
 
+=head2 B<REQUIRED> MeshOwner => Str
+
+The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it's the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see Working with
+shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+
+
+=head2 B<REQUIRED> ResourceOwner => Str
+
+The AWS IAM account ID of the resource owner. If the account ID is not
+your own, then it's the ID of the mesh owner or of another account that
+the mesh is shared with. For more information about mesh sharing, see
+Working with shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
+
+
 =head2 B<REQUIRED> RouteName => Str
 
 The name of the route.
+
+
+=head2 B<REQUIRED> Version => Int
+
+The version of the resource. Resources are created at version 1, and
+this version is incremented each time that they're updated.
 
 
 =head2 B<REQUIRED> VirtualRouterName => Str

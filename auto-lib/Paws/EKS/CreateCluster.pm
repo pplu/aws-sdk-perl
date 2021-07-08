@@ -2,6 +2,8 @@
 package Paws::EKS::CreateCluster;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
+  has EncryptionConfig => (is => 'ro', isa => 'ArrayRef[Paws::EKS::EncryptionConfig]', traits => ['NameInRequest'], request_name => 'encryptionConfig');
+  has KubernetesNetworkConfig => (is => 'ro', isa => 'Paws::EKS::KubernetesNetworkConfigRequest', traits => ['NameInRequest'], request_name => 'kubernetesNetworkConfig');
   has Logging => (is => 'ro', isa => 'Paws::EKS::Logging', traits => ['NameInRequest'], request_name => 'logging');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ResourcesVpcConfig => (is => 'ro', isa => 'Paws::EKS::VpcConfigRequest', traits => ['NameInRequest'], request_name => 'resourcesVpcConfig', required => 1);
@@ -34,39 +36,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $eks = Paws->service('EKS');
+    # To create a new cluster
+    # The following example creates an Amazon EKS cluster called prod.
     my $CreateClusterResponse = $eks->CreateCluster(
-      Name               => 'MyClusterName',
-      ResourcesVpcConfig => {
-        EndpointPrivateAccess => 1,                      # OPTIONAL
-        EndpointPublicAccess  => 1,                      # OPTIONAL
-        PublicAccessCidrs     => [ 'MyString', ... ],    # OPTIONAL
-        SecurityGroupIds      => [ 'MyString', ... ],    # OPTIONAL
-        SubnetIds             => [ 'MyString', ... ],    # OPTIONAL
+      'ClientRequestToken' => '1d2129a1-3d38-460a-9756-e5b91fddb951',
+      'Name'               => 'prod',
+      'ResourcesVpcConfig' => {
+        'SecurityGroupIds' => ['sg-6979fe18'],
+        'SubnetIds'        => [ 'subnet-6782e71e', 'subnet-e7e761ac' ]
       },
-      RoleArn            => 'MyString',
-      ClientRequestToken => 'MyString',                  # OPTIONAL
-      Logging            => {
-        ClusterLogging => [
-          {
-            Enabled => 1,    # OPTIONAL
-            Types   => [
-              'api',
-              ... # values: api, audit, authenticator, controllerManager, scheduler
-            ],    # OPTIONAL
-          },
-          ...
-        ],    # OPTIONAL
-      },    # OPTIONAL
-      Tags => {
-        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
-      },    # OPTIONAL
-      Version => 'MyString',    # OPTIONAL
+      'RoleArn' =>
+'arn:aws:iam::012345678910:role/eks-service-role-AWSServiceRoleForAmazonEKS-J7ONKE3BQ4PI',
+      'Version' => 1.10
     );
 
-    # Results:
-    my $Cluster = $CreateClusterResponse->Cluster;
-
-    # Returns a L<Paws::EKS::CreateClusterResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks/CreateCluster>
@@ -78,6 +61,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks
 
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.
+
+
+
+=head2 EncryptionConfig => ArrayRef[L<Paws::EKS::EncryptionConfig>]
+
+The encryption configuration for the cluster.
+
+
+
+=head2 KubernetesNetworkConfig => L<Paws::EKS::KubernetesNetworkConfigRequest>
+
+The Kubernetes network configuration for the cluster.
 
 
 
@@ -119,8 +114,9 @@ use a dedicated security group for your cluster control plane.
 =head2 B<REQUIRED> RoleArn => Str
 
 The Amazon Resource Name (ARN) of the IAM role that provides
-permissions for Amazon EKS to make calls to other AWS API operations on
-your behalf. For more information, see Amazon EKS Service IAM Role
+permissions for the Kubernetes control plane to make calls to AWS API
+operations on your behalf. For more information, see Amazon EKS Service
+IAM Role
 (https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
 in the I< I<Amazon EKS User Guide> >.
 

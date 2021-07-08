@@ -100,7 +100,9 @@ The search filters.
 When the key is C<SearchQuery>, the searchable fields are C<arn>,
 C<createdTime>, C<id>, C<lastRecordId>, C<idempotencyToken>, C<name>,
 C<physicalId>, C<productId>, C<provisioningArtifact>, C<type>,
-C<status>, C<tags>, C<userArn>, and C<userArnSession>.
+C<status>, C<tags>, C<userArn>, C<userArnSession>,
+C<lastProvisioningRecordId>, C<lastSuccessfulProvisioningRecordId>,
+C<productName>, and C<provisioningArtifactName>.
 
 Example: C<"SearchQuery":["status:AVAILABLE"]>
 

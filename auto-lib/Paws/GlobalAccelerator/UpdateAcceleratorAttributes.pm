@@ -81,9 +81,14 @@ write to the bucket.
 =head2 FlowLogsS3Prefix => Str
 
 Update the prefix for the location in the Amazon S3 bucket for the flow
-logs. Attribute is required if C<FlowLogsEnabled> is C<true>. If you
-donE<rsquo>t specify a prefix, the flow logs are stored in the root of
-the bucket.
+logs. Attribute is required if C<FlowLogsEnabled> is C<true>.
+
+If you donE<rsquo>t specify a prefix, the flow logs are stored in the
+root of the bucket. If you specify slash (/) for the S3 bucket prefix,
+the log file bucket folder structure will include a double slash (//),
+like the following:
+
+s3-bucket_name//AWSLogs/aws_account_id
 
 
 

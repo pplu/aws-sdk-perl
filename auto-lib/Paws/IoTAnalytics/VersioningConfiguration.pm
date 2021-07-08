@@ -34,20 +34,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Information about the versioning of data set contents.
+Information about the versioning of dataset contents.
 
 =head1 ATTRIBUTES
 
 
 =head2 MaxVersions => Int
 
-How many versions of data set contents will be kept. The "unlimited"
-parameter must be false.
+How many versions of dataset contents are kept. The C<unlimited>
+parameter must be C<false>.
 
 
 =head2 Unlimited => Bool
 
-If true, unlimited versions of data set contents will be kept.
+If true, unlimited versions of dataset contents are kept.
 
 
 

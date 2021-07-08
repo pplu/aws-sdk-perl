@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tra
 =head2 B<REQUIRED> VocabularyName => Str
 
 The name of the vocabulary to return information about. The name is
-case-sensitive.
+case sensitive.
 
 
 

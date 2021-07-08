@@ -35,9 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an adjustment based on the difference between the value of
-the aggregated CloudWatch metric and the breach threshold that you've
-defined for the alarm. Used in combination with PutScalingPolicy.
+Describes information used to create a step adjustment for a step
+scaling policy.
 
 For the following examples, suppose that you have an alarm with a
 breach threshold of 50:
@@ -84,6 +83,9 @@ The upper and lower bound can't be null in the same step adjustment.
 
 =back
 
+For more information, see Step adjustments
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-scaling-simple-step.html#as-scaling-steps)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 

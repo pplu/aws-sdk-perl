@@ -37,9 +37,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Connec
 
 =head1 DESCRIPTION
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 Specifies the settings that control the size and behavior of the
 connection pool associated with a C<DBProxyTargetGroup>.
 

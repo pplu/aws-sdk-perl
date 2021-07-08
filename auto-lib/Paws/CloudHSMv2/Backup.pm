@@ -7,6 +7,7 @@ package Paws::CloudHSMv2::Backup;
   has CopyTimestamp => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
   has DeleteTimestamp => (is => 'ro', isa => 'Str');
+  has NeverExpires => (is => 'ro', isa => 'Bool');
   has SourceBackup => (is => 'ro', isa => 'Str');
   has SourceCluster => (is => 'ro', isa => 'Str');
   has SourceRegion => (is => 'ro', isa => 'Str');
@@ -43,11 +44,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudHSMv2:
 =head1 DESCRIPTION
 
 Contains information about a backup of an AWS CloudHSM cluster. All
-backup objects contain the BackupId, BackupState, ClusterId, and
-CreateTimestamp parameters. Backups that were copied into a destination
-region additionally contain the CopyTimestamp, SourceBackup,
-SourceCluster, and SourceRegion paramters. A backup that is pending
-deletion will include the DeleteTimestamp parameter.
+backup objects contain the C<BackupId>, C<BackupState>, C<ClusterId>,
+and C<CreateTimestamp> parameters. Backups that were copied into a
+destination region additionally contain the C<CopyTimestamp>,
+C<SourceBackup>, C<SourceCluster>, and C<SourceRegion> parameters. A
+backup that is pending deletion will include the C<DeleteTimestamp>
+parameter.
 
 =head1 ATTRIBUTES
 
@@ -82,6 +84,14 @@ The date and time when the backup was created.
 The date and time when the backup will be permanently deleted.
 
 
+=head2 NeverExpires => Bool
+
+Specifies whether the service should exempt a backup from the retention
+policy for the cluster. C<True> exempts a backup from the retention
+policy. C<False> means the service applies the backup retention policy
+defined at the cluster.
+
+
 =head2 SourceBackup => Str
 
 The identifier (ID) of the source backup from which the new backup was
@@ -91,18 +101,18 @@ copied.
 =head2 SourceCluster => Str
 
 The identifier (ID) of the cluster containing the source backup from
-which the new backup was copied. .
+which the new backup was copied.
 
 
 =head2 SourceRegion => Str
 
-The AWS region that contains the source backup from which the new
+The AWS Region that contains the source backup from which the new
 backup was copied.
 
 
 =head2 TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
 
-
+The list of tags for the backup.
 
 
 

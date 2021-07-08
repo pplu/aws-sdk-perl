@@ -1,8 +1,10 @@
 
 package Paws::EC2::CreateRoute;
   use Moose;
+  has CarrierGatewayId => (is => 'ro', isa => 'Str');
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' );
   has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationIpv6CidrBlock' );
+  has DestinationPrefixListId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has EgressOnlyInternetGatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'egressOnlyInternetGatewayId' );
   has GatewayId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'gatewayId' );
@@ -12,6 +14,7 @@ package Paws::EC2::CreateRoute;
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
   has TransitGatewayId => (is => 'ro', isa => 'Str');
+  has VpcEndpointId => (is => 'ro', isa => 'Str');
   has VpcPeeringConnectionId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcPeeringConnectionId' );
 
   use MooseX::ClassAttribute;
@@ -54,10 +57,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
+=head2 CarrierGatewayId => Str
+
+The ID of the carrier gateway.
+
+You can only use this option when the VPC contains a subnet which is
+associated with a Wavelength Zone.
+
+
+
 =head2 DestinationCidrBlock => Str
 
 The IPv4 CIDR address block used for the destination match. Routing
-decisions are based on the most specific match.
+decisions are based on the most specific match. We modify the specified
+CIDR block to its canonical form; for example, if you specify
+C<100.68.0.18/18>, we modify it to C<100.68.0.0/18>.
 
 
 
@@ -65,6 +79,12 @@ decisions are based on the most specific match.
 
 The IPv6 CIDR block used for the destination match. Routing decisions
 are based on the most specific match.
+
+
+
+=head2 DestinationPrefixListId => Str
+
+The ID of a prefix list used for the destination match.
 
 
 
@@ -125,6 +145,13 @@ The ID of the route table for the route.
 =head2 TransitGatewayId => Str
 
 The ID of a transit gateway.
+
+
+
+=head2 VpcEndpointId => Str
+
+The ID of a VPC endpoint. Supported for Gateway Load Balancer endpoints
+only.
 
 
 

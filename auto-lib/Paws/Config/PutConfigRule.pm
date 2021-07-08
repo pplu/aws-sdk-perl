@@ -44,9 +44,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ...
           ],    # max: 25; OPTIONAL
         },
-        ConfigRuleArn  => 'MyString',                # OPTIONAL
-        ConfigRuleId   => 'MyString',                # OPTIONAL
-        ConfigRuleName => 'MyStringWithCharLimit64', # min: 1, max: 64; OPTIONAL
+        ConfigRuleArn => 'MyStringWithCharLimit256', # min: 1, max: 256
+        ConfigRuleId  => 'MyStringWithCharLimit64',  # min: 1, max: 64; OPTIONAL
+        ConfigRuleName  => 'MyConfigRuleName',    # min: 1, max: 128; OPTIONAL
         ConfigRuleState => 'ACTIVE'
         ,    # values: ACTIVE, DELETING, DELETING_RESULTS, EVALUATING; OPTIONAL
         CreatedBy   => 'MyStringWithCharLimit256',          # min: 1, max: 256

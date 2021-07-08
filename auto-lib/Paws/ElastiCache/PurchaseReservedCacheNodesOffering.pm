@@ -4,6 +4,7 @@ package Paws::ElastiCache::PurchaseReservedCacheNodesOffering;
   has CacheNodeCount => (is => 'ro', isa => 'Int');
   has ReservedCacheNodeId => (is => 'ro', isa => 'Str');
   has ReservedCacheNodesOfferingId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -29,18 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # PurchaseReservedCacheNodesOfferings
+    # Allows you to purchase a reserved cache node offering.
     my $PurchaseReservedCacheNodesOfferingResult =
       $elasticache->PurchaseReservedCacheNodesOffering(
-      ReservedCacheNodesOfferingId => 'MyString',
-      CacheNodeCount               => 1,             # OPTIONAL
-      ReservedCacheNodeId          => 'MyString',    # OPTIONAL
-      );
+      'ReservedCacheNodesOfferingId' =>
+        '1ef01f5b-94ff-433f-a530-61a56bfc8e7a' );
 
-    # Results:
-    my $ReservedCacheNode =
-      $PurchaseReservedCacheNodesOfferingResult->ReservedCacheNode;
-
-# Returns a L<Paws::ElastiCache::PurchaseReservedCacheNodesOfferingResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/PurchaseReservedCacheNodesOffering>
@@ -73,6 +69,14 @@ Example: myreservationID
 The ID of the reserved cache node offering to purchase.
 
 Example: C<438012d3-4052-4cc7-b2e3-8d3372e0e706>
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 

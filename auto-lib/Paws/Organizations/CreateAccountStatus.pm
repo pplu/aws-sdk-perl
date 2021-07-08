@@ -75,8 +75,13 @@ If the request failed, a description of the reason for the failure.
 
 =item *
 
-ACCOUNT_LIMIT_EXCEEDED: The account could not be created because you
-have reached the limit on the number of accounts in your organization.
+ACCOUNT_LIMIT_EXCEEDED: The account couldn't be created because you
+reached the limit on the number of accounts in your organization.
+
+=item *
+
+CONCURRENT_ACCOUNT_MODIFICATION: You already submitted a request with
+the same information.
 
 =item *
 
@@ -85,9 +90,20 @@ AWS account with that email address already exists.
 
 =item *
 
+FAILED_BUSINESS_VALIDATION: The AWS account that owns your organization
+failed to receive business license validation.
+
+=item *
+
 GOVCLOUD_ACCOUNT_ALREADY_EXISTS: The account in the AWS GovCloud (US)
 Region could not be created because this Region already includes an
 account with that email address.
+
+=item *
+
+IDENTITY_INVALID_BUSINESS_VALIDATION: The AWS account that owns your
+organization can't complete business license validation because it
+doesn't have valid identity data.
 
 =item *
 
@@ -103,7 +119,28 @@ address you provided is not valid.
 
 INTERNAL_FAILURE: The account could not be created because of an
 internal failure. Try again later. If the problem persists, contact AWS
-Support.
+Customer Support.
+
+=item *
+
+MISSING_BUSINESS_VALIDATION: The AWS account that owns your
+organization has not received Business Validation.
+
+=item *
+
+MISSING_PAYMENT_INSTRUMENT: You must configure the management account
+with a valid payment method, such as a credit card.
+
+=item *
+
+PENDING_BUSINESS_VALIDATION: The AWS account that owns your
+organization is still in the process of completing business license
+validation.
+
+=item *
+
+UNKNOWN_BUSINESS_VALIDATION: The AWS account that owns your
+organization has an unknown issue with business license validation.
 
 =back
 
@@ -123,7 +160,7 @@ the account.
 
 The regex pattern (http://wikipedia.org/wiki/regex) for a create
 account request ID string requires "car-" followed by from 8 to 32
-lower-case letters or digits.
+lowercase letters or digits.
 
 
 =head2 RequestedTimestamp => Str
@@ -133,7 +170,7 @@ The date and time that the request was made for the account creation.
 
 =head2 State => Str
 
-The status of the request.
+The status of the asynchronous request to create an AWS account.
 
 
 

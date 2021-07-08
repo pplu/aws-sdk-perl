@@ -3,6 +3,7 @@ package Paws::Chime::StreamingConfiguration;
   use Moose;
   has DataRetentionInHours => (is => 'ro', isa => 'Int', required => 1);
   has Disabled => (is => 'ro', isa => 'Bool');
+  has StreamingNotificationTargets => (is => 'ro', isa => 'ArrayRef[Paws::Chime::StreamingNotificationTarget]');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Chime::StreamingConfiguration object:
 
-  $service_obj->Method(Att1 => { DataRetentionInHours => $value, ..., Disabled => $value  });
+  $service_obj->Method(Att1 => { DataRetentionInHours => $value, ..., StreamingNotificationTargets => $value  });
 
 =head3 Results returned from an API call
 
@@ -50,6 +51,11 @@ The retention period, in hours, for the Amazon Kinesis data.
 =head2 Disabled => Bool
 
 When true, media streaming to Amazon Kinesis is turned off.
+
+
+=head2 StreamingNotificationTargets => ArrayRef[L<Paws::Chime::StreamingNotificationTarget>]
+
+The streaming notification targets.
 
 
 

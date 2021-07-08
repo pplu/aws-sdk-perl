@@ -5,6 +5,7 @@ package Paws::SageMaker::CreateAlgorithm;
   has AlgorithmName => (is => 'ro', isa => 'Str', required => 1);
   has CertifyForMarketplace => (is => 'ro', isa => 'Bool');
   has InferenceSpecification => (is => 'ro', isa => 'Paws::SageMaker::InferenceSpecification');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TrainingSpecification => (is => 'ro', isa => 'Paws::SageMaker::TrainingSpecification', required => 1);
   has ValidationSpecification => (is => 'ro', isa => 'Paws::SageMaker::AlgorithmValidationSpecification');
 
@@ -37,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TrainingSpecification => {
         SupportedTrainingInstanceTypes => [
           'ml.m4.xlarge',
-          ... # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+          ... # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.p4d.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5n.xlarge, ml.c5n.2xlarge, ml.c5n.4xlarge, ml.c5n.9xlarge, ml.c5n.18xlarge
         ],
         TrainingChannels => [
           {
@@ -56,7 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # min: 1, max: 8
-        TrainingImage     => 'MyImage',    # max: 255
+        TrainingImage     => 'MyContainerImage',    # max: 255
         MetricDefinitions => [
           {
             Name  => 'MyMetricName',     # min: 1, max: 255
@@ -70,25 +71,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Name => 'MyParameterName',    # max: 256
             Type =>
               'Integer',    # values: Integer, Continuous, Categorical, FreeText
-            DefaultValue => 'MyParameterValue',       # max: 256; OPTIONAL
-            Description  => 'MyEntityDescription',    # max: 1024; OPTIONAL
-            IsRequired   => 1,                        # OPTIONAL
-            IsTunable    => 1,                        # OPTIONAL
+            DefaultValue => 'MyHyperParameterValue',    # max: 2500; OPTIONAL
+            Description  => 'MyEntityDescription',      # max: 1024; OPTIONAL
+            IsRequired   => 1,                          # OPTIONAL
+            IsTunable    => 1,                          # OPTIONAL
             Range        => {
               CategoricalParameterRangeSpecification => {
                 Values => [
-                  'MyParameterValue', ...    # max: 256; OPTIONAL
+                  'MyParameterValue', ...    # max: 256
                 ],    # min: 1, max: 20
 
               },    # OPTIONAL
               ContinuousParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
-                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MaxValue => 'MyParameterValue',    # max: 256
+                MinValue => 'MyParameterValue',    # max: 256
 
               },    # OPTIONAL
               IntegerParameterRangeSpecification => {
-                MaxValue => 'MyParameterValue',    # max: 256; OPTIONAL
-                MinValue => 'MyParameterValue',    # max: 256; OPTIONAL
+                MaxValue => 'MyParameterValue',    # max: 256
+                MinValue => 'MyParameterValue',    # max: 256
 
               },    # OPTIONAL
             },    # OPTIONAL
@@ -111,30 +112,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       InferenceSpecification => {
         Containers => [
           {
-            Image             => 'MyImage',                # max: 255
+            Image             => 'MyContainerImage',       # max: 255
             ContainerHostname => 'MyContainerHostname',    # max: 63; OPTIONAL
-            ImageDigest       => 'MyImageDigest',          # max: 72; OPTIONAL
-            ModelDataUrl      => 'MyUrl',                  # max: 1024; OPTIONAL
-            ProductId         => 'MyProductId',            # max: 256; OPTIONAL
+            Environment       => {
+              'MyEnvironmentKey' =>
+                'MyEnvironmentValue',    # key: max: 1024, value: max: 1024
+            },    # max: 16; OPTIONAL
+            ImageDigest  => 'MyImageDigest',    # max: 72; OPTIONAL
+            ModelDataUrl => 'MyUrl',            # max: 1024; OPTIONAL
+            ProductId    => 'MyProductId',      # max: 256; OPTIONAL
           },
           ...
-        ],    # min: 1, max: 1
+        ],    # min: 1, max: 5
         SupportedContentTypes => [
           'MyContentType', ...    # max: 256
-        ],
-        SupportedRealtimeInferenceInstanceTypes => [
-          'ml.t2.medium',
-          ... # values: ml.t2.medium, ml.t2.large, ml.t2.xlarge, ml.t2.2xlarge, ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.m5d.large, ml.m5d.xlarge, ml.m5d.2xlarge, ml.m5d.4xlarge, ml.m5d.12xlarge, ml.m5d.24xlarge, ml.c4.large, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5d.large, ml.c5d.xlarge, ml.c5d.2xlarge, ml.c5d.4xlarge, ml.c5d.9xlarge, ml.c5d.18xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.r5.large, ml.r5.xlarge, ml.r5.2xlarge, ml.r5.4xlarge, ml.r5.12xlarge, ml.r5.24xlarge, ml.r5d.large, ml.r5d.xlarge, ml.r5d.2xlarge, ml.r5d.4xlarge, ml.r5d.12xlarge, ml.r5d.24xlarge, ml.inf1.xlarge, ml.inf1.2xlarge, ml.inf1.6xlarge, ml.inf1.24xlarge
         ],
         SupportedResponseMIMETypes => [
           'MyResponseMIMEType', ...    # max: 1024
         ],
+        SupportedRealtimeInferenceInstanceTypes => [
+          'ml.t2.medium',
+          ... # values: ml.t2.medium, ml.t2.large, ml.t2.xlarge, ml.t2.2xlarge, ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.m5d.large, ml.m5d.xlarge, ml.m5d.2xlarge, ml.m5d.4xlarge, ml.m5d.12xlarge, ml.m5d.24xlarge, ml.c4.large, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.large, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5d.large, ml.c5d.xlarge, ml.c5d.2xlarge, ml.c5d.4xlarge, ml.c5d.9xlarge, ml.c5d.18xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.r5.large, ml.r5.xlarge, ml.r5.2xlarge, ml.r5.4xlarge, ml.r5.12xlarge, ml.r5.24xlarge, ml.r5d.large, ml.r5d.xlarge, ml.r5d.2xlarge, ml.r5d.4xlarge, ml.r5d.12xlarge, ml.r5d.24xlarge, ml.inf1.xlarge, ml.inf1.2xlarge, ml.inf1.6xlarge, ml.inf1.24xlarge
+        ],    # OPTIONAL
         SupportedTransformInstanceTypes => [
           'ml.m4.xlarge',
-          ... # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
-        ],    # min: 1
-
+          ... # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge
+        ],    # min: 1; OPTIONAL
       },    # OPTIONAL
+      Tags => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
       ValidationSpecification => {
         ValidationProfiles => [
           {
@@ -181,7 +193,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ResourceConfig => {
                 InstanceCount => 1,                # min: 1
                 InstanceType  => 'ml.m4.xlarge'
-                , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge
+                , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.p3dn.24xlarge, ml.p4d.24xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.c5n.xlarge, ml.c5n.2xlarge, ml.c5n.4xlarge, ml.c5n.9xlarge, ml.c5n.18xlarge
                 VolumeSizeInGB => 1,               # min: 1
                 VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
               },
@@ -191,8 +203,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               TrainingInputMode => 'Pipe',         # values: Pipe, File
               HyperParameters   => {
-                'MyParameterKey' =>
-                  'MyParameterValue', # key: max: 256, value: max: 256; OPTIONAL
+                'MyHyperParameterKey' => 'MyHyperParameterValue'
+                ,    # key: max: 256, value: max: 2500; OPTIONAL
               },    # max: 100; OPTIONAL
             },
             TransformJobDefinition => {
@@ -220,7 +232,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               TransformResources => {
                 InstanceCount => 1,                # min: 1
                 InstanceType  => 'ml.m4.xlarge'
-                , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
+                , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge
                 VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
               },
               BatchStrategy =>
@@ -265,8 +277,8 @@ The name of the algorithm.
 
 =head2 CertifyForMarketplace => Bool
 
-Whether to certify the algorithm so that it can be listed in AWS
-Marketplace.
+Whether to certify the algorithm so that it can be listed in Amazon Web
+Services Marketplace.
 
 
 
@@ -294,6 +306,16 @@ inference.
 
 =back
 
+
+
+
+=head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
+
+An array of key-value pairs. You can use tags to categorize your Amazon
+Web Services resources in different ways, for example, by purpose,
+owner, or environment. For more information, see Tagging Amazon Web
+Services Resources
+(https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html).
 
 
 

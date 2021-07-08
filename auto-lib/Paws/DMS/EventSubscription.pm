@@ -41,7 +41,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::EventS
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes an event notification subscription created by the
+C<CreateEventSubscription> operation.
 
 =head1 ATTRIBUTES
 
@@ -102,7 +103,7 @@ created.
 
 =head2 SubscriptionCreationTime => Str
 
-The time the RDS event notification subscription was created.
+The time the AWS DMS event notification subscription was created.
 
 
 

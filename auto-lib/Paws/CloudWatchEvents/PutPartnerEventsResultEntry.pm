@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatchE
 
 =head1 DESCRIPTION
 
-Represents an event that a partner tried to generate but failed.
+Represents an event that a partner tried to generate, but failed.
 
 =head1 ATTRIBUTES
 

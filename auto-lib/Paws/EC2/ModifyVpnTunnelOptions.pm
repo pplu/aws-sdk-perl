@@ -32,10 +32,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     my $ModifyVpnTunnelOptionsResult = $ec2->ModifyVpnTunnelOptions(
       TunnelOptions => {
-        DPDTimeoutSeconds => 1,    # OPTIONAL
+        DPDTimeoutAction  => 'MyString',    # OPTIONAL
+        DPDTimeoutSeconds => 1,             # OPTIONAL
         IKEVersions       => [
           {
-            Value => 'MyString',    # OPTIONAL
+            Value => 'MyString',            # OPTIONAL
           },
           ...
         ],    # OPTIONAL
@@ -81,7 +82,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         RekeyFuzzPercentage    => 1,             # OPTIONAL
         RekeyMarginTimeSeconds => 1,             # OPTIONAL
         ReplayWindowSize       => 1,             # OPTIONAL
+        StartupAction          => 'MyString',    # OPTIONAL
         TunnelInsideCidr       => 'MyString',    # OPTIONAL
+        TunnelInsideIpv6Cidr   => 'MyString',    # OPTIONAL
       },
       VpnConnectionId           => 'MyVpnConnectionId',
       VpnTunnelOutsideIpAddress => 'MyString',

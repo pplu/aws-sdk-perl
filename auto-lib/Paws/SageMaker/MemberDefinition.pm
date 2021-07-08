@@ -2,6 +2,7 @@
 package Paws::SageMaker::MemberDefinition;
   use Moose;
   has CognitoMemberDefinition => (is => 'ro', isa => 'Paws::SageMaker::CognitoMemberDefinition');
+  has OidcMemberDefinition => (is => 'ro', isa => 'Paws::SageMaker::OidcMemberDefinition');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::MemberDefinition object:
 
-  $service_obj->Method(Att1 => { CognitoMemberDefinition => $value, ..., CognitoMemberDefinition => $value  });
+  $service_obj->Method(Att1 => { CognitoMemberDefinition => $value, ..., OidcMemberDefinition => $value  });
 
 =head3 Results returned from an API call
 
@@ -33,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Defines the Amazon Cognito user group that is part of a work team.
+Defines an Amazon Cognito or your own OIDC IdP user group that is part
+of a work team.
 
 =head1 ATTRIBUTES
 
@@ -41,6 +43,16 @@ Defines the Amazon Cognito user group that is part of a work team.
 =head2 CognitoMemberDefinition => L<Paws::SageMaker::CognitoMemberDefinition>
 
 The Amazon Cognito user group that is part of the work team.
+
+
+=head2 OidcMemberDefinition => L<Paws::SageMaker::OidcMemberDefinition>
+
+A list user groups that exist in your OIDC Identity Provider (IdP). One
+to ten groups can be used to create a single private work team. When
+you add a user group to the list of C<Groups>, you can add that user
+group to one or more private work teams. If you add a user group to a
+private work team, all workers in that user group are added to the work
+team.
 
 
 

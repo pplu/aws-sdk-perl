@@ -30,14 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lambda = Paws->service('Lambda');
     # To retrieve a Lambda function policy
-    # This operation retrieves a Lambda function policy
+    # The following example returns the resource-based policy for version 1 of a
+    # Lambda function named my-function.
     my $GetPolicyResponse = $lambda->GetPolicy(
-      'FunctionName' => 'myFunction',
+      'FunctionName' => 'my-function',
       'Qualifier'    => 1
     );
 
     # Results:
-    my $Policy = $GetPolicyResponse->Policy;
+    my $Policy     = $GetPolicyResponse->Policy;
+    my $RevisionId = $GetPolicyResponse->RevisionId;
 
     # Returns a L<Paws::Lambda::GetPolicyResponse> object.
 

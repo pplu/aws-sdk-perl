@@ -34,6 +34,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAFRegional
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 The C<Id> and C<Name> of a C<SqlInjectionMatchSet>.
 
 =head1 ATTRIBUTES

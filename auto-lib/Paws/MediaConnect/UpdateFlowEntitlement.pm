@@ -4,6 +4,7 @@ package Paws::MediaConnect::UpdateFlowEntitlement;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Encryption => (is => 'ro', isa => 'Paws::MediaConnect::UpdateEncryption', traits => ['NameInRequest'], request_name => 'encryption');
   has EntitlementArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'entitlementArn', required => 1);
+  has EntitlementStatus => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'entitlementStatus');
   has FlowArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'flowArn', required => 1);
   has Subscribers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'subscribers');
 
@@ -40,14 +41,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
         ConstantInitializationVector => 'My__string',
         DeviceId                     => 'My__string',
-        KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+        KeyType => 'speke',  # values: speke, static-key, srt-password; OPTIONAL
         Region     => 'My__string',
         ResourceId => 'My__string',
         RoleArn    => 'My__string',
         SecretArn  => 'My__string',
         Url        => 'My__string',
       },    # OPTIONAL
-      Subscribers => [ 'My__string', ... ],    # OPTIONAL
+      EntitlementStatus => 'ENABLED',                # OPTIONAL
+      Subscribers       => [ 'My__string', ... ],    # OPTIONAL
     );
 
     # Results:
@@ -82,6 +84,16 @@ this entitlement.
 The ARN of the entitlement that you want to update.
 
 
+
+=head2 EntitlementStatus => Str
+
+An indication of whether you want to enable the entitlement to allow
+access, or disable it to stop streaming content to the
+subscriberE<rsquo>s flow temporarily. If you donE<rsquo>t specify the
+entitlementStatus field in your request, MediaConnect leaves the value
+unchanged.
+
+Valid values are: C<"ENABLED">, C<"DISABLED">
 
 =head2 B<REQUIRED> FlowArn => Str
 

@@ -47,7 +47,7 @@ A list of 1-50 attributes to remove from the message.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'removeAttributes' activity.
+The name of the C<removeAttributes> activity.
 
 
 =head2 Next => Str

@@ -3,6 +3,7 @@ package Paws::SecurityHub::AwsKmsKeyDetails;
   use Moose;
   has AWSAccountId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Num');
+  has Description => (is => 'ro', isa => 'Str');
   has KeyId => (is => 'ro', isa => 'Str');
   has KeyManager => (is => 'ro', isa => 'Str');
   has KeyState => (is => 'ro', isa => 'Str');
@@ -50,7 +51,17 @@ The twelve-digit account ID of the AWS account that owns the CMK.
 
 =head2 CreationDate => Num
 
-The date and time when the CMK was created.
+Indicates when the CMK was created.
+
+Uses the C<date-time> format specified in RFC 3339 section 5.6,
+Internet Date/Time Format
+(https://tools.ietf.org/html/rfc3339#section-5.6). The value cannot
+contain spaces. For example, C<2020-03-22T13:22:13.933Z>.
+
+
+=head2 Description => Str
+
+A description of the key.
 
 
 =head2 KeyId => Str

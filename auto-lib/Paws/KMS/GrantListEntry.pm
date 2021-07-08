@@ -41,7 +41,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KMS::GrantL
 
 =head1 DESCRIPTION
 
-Contains information about an entry in a list of grants.
+Contains information about a grant.
 
 =head1 ATTRIBUTES
 
@@ -59,7 +59,14 @@ The date and time when the grant was created.
 
 =head2 GranteePrincipal => Str
 
-The principal that receives the grant's permissions.
+The identity that gets the permissions in the grant.
+
+The C<GranteePrincipal> field in the C<ListGrants> response usually
+contains the user or role designated as the grantee principal in the
+grant. However, when the grantee principal in the grant is an AWS
+service, the C<GranteePrincipal> field contains the service principal
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_principal.html#principal-services),
+which might represent several different grantee principals.
 
 
 =head2 GrantId => Str

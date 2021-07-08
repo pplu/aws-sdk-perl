@@ -106,8 +106,8 @@ segment.
 
 =head2 SegmentName => Str
 
-The custom name for the segment that's created by the import job, if
-the value of the DefineSegment property is true.
+A custom name for the segment that's created by the import job, if the
+value of the DefineSegment property is true.
 
 
 

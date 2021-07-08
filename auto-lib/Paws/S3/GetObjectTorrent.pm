@@ -2,6 +2,7 @@
 package Paws::S3::GetObjectTorrent;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
   has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
 
@@ -34,17 +35,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To retrieve torrent files for an object
+    # The following example retrieves torrent files of an object.
     my $GetObjectTorrentOutput = $s3->GetObjectTorrent(
-      Bucket       => 'MyBucketName',
-      Key          => 'MyObjectKey',
-      RequestPayer => 'requester',      # OPTIONAL
+      'Bucket' => 'examplebucket',
+      'Key'    => 'HappyFace.jpg'
     );
 
-    # Results:
-    my $Body           = $GetObjectTorrentOutput->Body;
-    my $RequestCharged = $GetObjectTorrentOutput->RequestCharged;
-
-    # Returns a L<Paws::S3::GetObjectTorrentOutput> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/GetObjectTorrent>
@@ -56,6 +53,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The name of the bucket containing the object for which to get the
 torrent files.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

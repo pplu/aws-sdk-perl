@@ -42,9 +42,10 @@ artifacts).
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt the model artifacts at rest using Amazon S3 server-side
-encryption. The C<KmsKeyId> can be any of the following formats:
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt the model artifacts at
+rest using Amazon S3 server-side encryption. The C<KmsKeyId> can be any
+of the following formats:
 
 =over
 
@@ -83,15 +84,15 @@ C<OutputDataConfig>. If you use a bucket policy with an C<s3:PutObject>
 permission that only allows objects with server-side encryption, set
 the condition key of C<s3:x-amz-server-side-encryption> to
 C<"aws:kms">. For more information, see KMS-Managed Encryption Keys
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingKMSEncryption.html)
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingKMSEncryption.html)
 in the I<Amazon Simple Storage Service Developer Guide.>
 
 The KMS key policy must grant permission to the IAM role that you
 specify in your C<CreateTrainingJob>, C<CreateTransformJob>, or
 C<CreateHyperParameterTuningJob> requests. For more information, see
-Using Key Policies in AWS KMS
-(http://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
-in the I<AWS Key Management Service Developer Guide>.
+Using Key Policies in Amazon Web Services KMS
+(https://docs.aws.amazon.com/kms/latest/developerguide/key-policies.html)
+in the I<Amazon Web Services Key Management Service Developer Guide>.
 
 
 =head2 B<REQUIRED> S3OutputPath => Str

@@ -2,7 +2,8 @@
 package Paws::KinesisAnalyticsV2::AddApplicationVpcConfiguration;
   use Moose;
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
-  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  has ConditionalToken => (is => 'ro', isa => 'Str');
+  has CurrentApplicationVersionId => (is => 'ro', isa => 'Int');
   has VpcConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::VpcConfiguration', required => 1);
 
   use MooseX::ClassAttribute;
@@ -31,14 +32,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $kinesisanalytics = Paws->service('KinesisAnalyticsV2');
     my $AddApplicationVpcConfigurationResponse =
       $kinesisanalytics->AddApplicationVpcConfiguration(
-      ApplicationName             => 'MyApplicationName',
-      CurrentApplicationVersionId => 1,
-      VpcConfiguration            => {
+      ApplicationName  => 'MyApplicationName',
+      VpcConfiguration => {
         SecurityGroupIds => [ 'MySecurityGroupId', ... ],    # min: 1, max: 5
         SubnetIds        => [ 'MySubnetId',        ... ],    # min: 1, max: 16
 
       },
-
+      ConditionalToken            => 'MyConditionalToken',    # OPTIONAL
+      CurrentApplicationVersionId => 1,                       # OPTIONAL
       );
 
     # Results:
@@ -63,13 +64,26 @@ The name of an existing application.
 
 
 
-=head2 B<REQUIRED> CurrentApplicationVersionId => Int
+=head2 ConditionalToken => Str
 
-The version of the application to which you want to add the input
-processing configuration. You can use the DescribeApplication operation
+A value you use to implement strong concurrency for application
+updates. You must provide the C<ApplicationVersionID> or the
+C<ConditionalToken>. You get the application's current
+C<ConditionalToken> using DescribeApplication. For better concurrency
+support, use the C<ConditionalToken> parameter instead of
+C<CurrentApplicationVersionId>.
+
+
+
+=head2 CurrentApplicationVersionId => Int
+
+The version of the application to which you want to add the VPC
+configuration. You must provide the C<CurrentApplicationVersionId> or
+the C<ConditionalToken>. You can use the DescribeApplication operation
 to get the current application version. If the version specified is not
 the current version, the C<ConcurrentModificationException> is
-returned.
+returned. For better concurrency support, use the C<ConditionalToken>
+parameter instead of C<CurrentApplicationVersionId>.
 
 
 

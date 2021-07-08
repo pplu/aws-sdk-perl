@@ -2,6 +2,7 @@
 package Paws::DLM::Parameters;
   use Moose;
   has ExcludeBootVolume => (is => 'ro', isa => 'Bool');
+  has NoReboot => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DLM::Parameters object:
 
-  $service_obj->Method(Att1 => { ExcludeBootVolume => $value, ..., ExcludeBootVolume => $value  });
+  $service_obj->Method(Att1 => { ExcludeBootVolume => $value, ..., NoReboot => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,6 +47,15 @@ whether to exclude the root volume from snapshots created using
 CreateSnapshots
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateSnapshots.html).
 The default is false.
+
+
+=head2 NoReboot => Bool
+
+Applies to AMI lifecycle policies only. Indicates whether targeted
+instances are rebooted when the lifecycle policy runs. C<true>
+indicates that targeted instances are not rebooted when the policy
+runs. C<false> indicates that target instances are rebooted when the
+policy runs. The default is C<true> (instances are not rebooted).
 
 
 

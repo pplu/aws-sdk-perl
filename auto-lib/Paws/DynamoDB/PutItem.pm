@@ -230,6 +230,10 @@ If you specify any attributes that are part of an index key, then the
 data types for those attributes must match those of the schema in the
 table's attribute definition.
 
+Empty String and Binary attribute values are allowed. Attribute values
+of type String and Binary must have a length greater than zero if the
+attribute is used as a key attribute for a table or index.
+
 For more information about primary keys, see Primary Key
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.CoreComponents.html#HowItWorks.CoreComponents.PrimaryKey)
 in the I<Amazon DynamoDB Developer Guide>.

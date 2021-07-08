@@ -2,6 +2,7 @@
 package Paws::Robomaker::CreateSimulationJob;
   use Moose;
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
+  has Compute => (is => 'ro', isa => 'Paws::Robomaker::Compute', traits => ['NameInRequest'], request_name => 'compute');
   has DataSources => (is => 'ro', isa => 'ArrayRef[Paws::Robomaker::DataSourceConfig]', traits => ['NameInRequest'], request_name => 'dataSources');
   has FailureBehavior => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'failureBehavior');
   has IamRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'iamRole', required => 1);
@@ -42,7 +43,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IamRole                 => 'MyIamRole',
       MaxJobDurationInSeconds => 1,
       ClientRequestToken      => 'MyClientRequestToken',    # OPTIONAL
-      DataSources             => [
+      Compute                 => {
+        SimulationUnitLimit => 1,    # min: 1, max: 15; OPTIONAL
+      },    # OPTIONAL
+      DataSources => [
         {
           Name     => 'MyName',        # min: 1, max: 255
           S3Bucket => 'MyS3Bucket',    # min: 3, max: 63
@@ -82,8 +86,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ...
               ],    # max: 10; OPTIONAL
             },    # OPTIONAL
+            StreamUI => 1,    # OPTIONAL
           },
           ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
+          Tools              => [
+            {
+              Command      => 'MyUnrestrictedCommand',    # min: 1, max: 1024
+              Name         => 'MyName',                   # min: 1, max: 255
+              ExitBehavior => 'FAIL',    # values: FAIL, RESTART; OPTIONAL
+              StreamOutputToCloudWatch => 1,
+              StreamUI                 => 1,
+            },
+            ...
+          ],    # max: 10; OPTIONAL
+          UploadConfigurations => [
+            {
+              Name           => 'MyName',               # min: 1, max: 255
+              Path           => 'MyPath',               # min: 1, max: 1024
+              UploadBehavior => 'UPLOAD_ON_TERMINATE'
+              ,    # values: UPLOAD_ON_TERMINATE, UPLOAD_ROLLING_AUTO_REMOVE
+
+            },
+            ...
+          ],    # max: 10; OPTIONAL
+          UseDefaultTools                => 1,
+          UseDefaultUploadConfigurations => 1,
         },
         ...
       ],    # OPTIONAL
@@ -107,8 +134,37 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ...
               ],    # max: 10; OPTIONAL
             },    # OPTIONAL
+            StreamUI => 1,    # OPTIONAL
           },
           ApplicationVersion => 'MyVersion',    # min: 1, max: 255; OPTIONAL
+          Tools              => [
+            {
+              Command      => 'MyUnrestrictedCommand',    # min: 1, max: 1024
+              Name         => 'MyName',                   # min: 1, max: 255
+              ExitBehavior => 'FAIL',    # values: FAIL, RESTART; OPTIONAL
+              StreamOutputToCloudWatch => 1,
+              StreamUI                 => 1,
+            },
+            ...
+          ],    # max: 10; OPTIONAL
+          UploadConfigurations => [
+            {
+              Name           => 'MyName',               # min: 1, max: 255
+              Path           => 'MyPath',               # min: 1, max: 1024
+              UploadBehavior => 'UPLOAD_ON_TERMINATE'
+              ,    # values: UPLOAD_ON_TERMINATE, UPLOAD_ROLLING_AUTO_REMOVE
+
+            },
+            ...
+          ],    # max: 10; OPTIONAL
+          UseDefaultTools                => 1,
+          UseDefaultUploadConfigurations => 1,
+          WorldConfigs                   => [
+            {
+              World => 'MyArn',    # min: 1, max: 1224
+            },
+            ...
+          ],    # max: 1; OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -129,6 +185,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $Arn                = $CreateSimulationJobResponse->Arn;
     my $ClientRequestToken = $CreateSimulationJobResponse->ClientRequestToken;
+    my $Compute            = $CreateSimulationJobResponse->Compute;
     my $DataSources        = $CreateSimulationJobResponse->DataSources;
     my $FailureBehavior    = $CreateSimulationJobResponse->FailureBehavior;
     my $FailureCode        = $CreateSimulationJobResponse->FailureCode;
@@ -160,6 +217,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rob
 
 Unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request.
+
+
+
+=head2 Compute => L<Paws::Robomaker::Compute>
+
+Compute information for the simulation job.
 
 
 

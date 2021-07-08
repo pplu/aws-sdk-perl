@@ -22,7 +22,7 @@ Paws::EC2::PurchaseHostReservationResult
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see How to Ensure
+idempotency of the request. For more information, see Ensuring
 Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 

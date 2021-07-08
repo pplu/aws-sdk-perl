@@ -52,14 +52,14 @@ environment for a blue/green deployment.
 Information about the groups of EC2 instance tags that an instance must
 be identified by in order for it to be included in the replacement
 environment for a blue/green deployment. Cannot be used in the same
-call as tagFilters.
+call as C<tagFilters>.
 
 
 =head2 TagFilters => ArrayRef[L<Paws::CodeDeploy::EC2TagFilter>]
 
 The tag filter key, type, and value used to identify Amazon EC2
 instances in a replacement environment for a blue/green deployment.
-Cannot be used in the same call as ec2TagSet.
+Cannot be used in the same call as C<ec2TagSet>.
 
 
 

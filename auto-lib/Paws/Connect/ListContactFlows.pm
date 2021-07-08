@@ -62,13 +62,14 @@ The type of contact flow.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 
 =head2 MaxResults => Int
 
-The maximimum number of results to return per page.
+The maximum number of results to return per page.
 
 
 

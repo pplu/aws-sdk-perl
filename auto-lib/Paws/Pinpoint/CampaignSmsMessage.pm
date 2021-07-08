@@ -2,8 +2,11 @@
 package Paws::Pinpoint::CampaignSmsMessage;
   use Moose;
   has Body => (is => 'ro', isa => 'Str');
+  has EntityId => (is => 'ro', isa => 'Str');
   has MessageType => (is => 'ro', isa => 'Str');
+  has OriginationNumber => (is => 'ro', isa => 'Str');
   has SenderId => (is => 'ro', isa => 'Str');
+  has TemplateId => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -24,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Pinpoint::CampaignSmsMessage object:
 
-  $service_obj->Method(Att1 => { Body => $value, ..., SenderId => $value  });
+  $service_obj->Method(Att1 => { Body => $value, ..., TemplateId => $value  });
 
 =head3 Results returned from an API call
 
@@ -46,18 +49,39 @@ recipients of a campaign.
 The body of the SMS message.
 
 
+=head2 EntityId => Str
+
+The entity ID or Principal Entity (PE) id received from the regulatory
+body for sending SMS in your country.
+
+
 =head2 MessageType => Str
 
-The type of SMS message. Valid values are: TRANSACTIONAL, the message
-is critical or time-sensitive, such as a one-time password that
-supports a customer transaction; and, PROMOTIONAL, the message isn't
-critical or time-sensitive, such as a marketing message.
+The SMS message type. Valid values are TRANSACTIONAL (for messages that
+are critical or time-sensitive, such as a one-time passwords) and
+PROMOTIONAL (for messsages that aren't critical or time-sensitive, such
+as marketing messages).
+
+
+=head2 OriginationNumber => Str
+
+The long code to send the SMS message from. This value should be one of
+the dedicated long codes that's assigned to your AWS account. Although
+it isn't required, we recommend that you specify the long code using an
+E.164 format to ensure prompt and accurate delivery of the message. For
+example, +12065550100.
 
 
 =head2 SenderId => Str
 
 The sender ID to display on recipients' devices when they receive the
 SMS message.
+
+
+=head2 TemplateId => Str
+
+The template ID received from the regulatory body for sending SMS in
+your country.
 
 
 

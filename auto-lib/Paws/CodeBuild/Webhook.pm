@@ -2,6 +2,7 @@
 package Paws::CodeBuild::Webhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', request_name => 'branchFilter', traits => ['NameInRequest']);
+  has BuildType => (is => 'ro', isa => 'Str', request_name => 'buildType', traits => ['NameInRequest']);
   has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', request_name => 'filterGroups', traits => ['NameInRequest']);
   has LastModifiedSecret => (is => 'ro', isa => 'Str', request_name => 'lastModifiedSecret', traits => ['NameInRequest']);
   has PayloadUrl => (is => 'ro', isa => 'Str', request_name => 'payloadUrl', traits => ['NameInRequest']);
@@ -39,7 +40,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 =head1 DESCRIPTION
 
 Information about a webhook that connects repository events to a build
-project in AWS CodeBuild.
+project in CodeBuild.
 
 =head1 ATTRIBUTES
 
@@ -53,6 +54,11 @@ all branches are built.
 
 It is recommended that you use C<filterGroups> instead of
 C<branchFilter>.
+
+
+=head2 BuildType => Str
+
+Specifies the type of build this webhook will trigger.
 
 
 =head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
@@ -74,7 +80,7 @@ was modified.
 
 =head2 PayloadUrl => Str
 
-The AWS CodeBuild endpoint where webhook events are sent.
+The CodeBuild endpoint where webhook events are sent.
 
 
 =head2 Secret => Str

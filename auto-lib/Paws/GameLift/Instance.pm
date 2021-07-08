@@ -3,9 +3,11 @@ package Paws::GameLift::Instance;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
   has DnsName => (is => 'ro', isa => 'Str');
+  has FleetArn => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has InstanceId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
   has OperatingSystem => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
@@ -40,23 +42,27 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::I
 
 =head1 DESCRIPTION
 
-Properties that describe an instance of a virtual computing resource
-that hosts one or more game servers. A fleet may contain zero or more
+Represents an EC2 instance of virtual computing resources that hosts
+one or more game servers. In GameLift, a fleet can contain zero or more
 instances.
+
+B<Related actions>
+
+DescribeInstances
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Str
 
-Time stamp indicating when this data object was created. Format is a
+A time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 DnsName => Str
 
-DNS identifier assigned to the instance that is running the game
+The DNS identifier assigned to the instance that is running the game
 session. Values have the following format:
 
 =over
@@ -79,19 +85,34 @@ When connecting to a game session that is running on a TLS-enabled
 fleet, you must use the DNS name, not the IP address.
 
 
+=head2 FleetArn => Str
+
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
+that is assigned to a GameLift fleet resource and uniquely identifies
+it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::fleet/fleet-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
+
+
 =head2 FleetId => Str
 
-A unique identifier for a fleet that the instance is in.
+A unique identifier for the fleet that the instance is in.
 
 
 =head2 InstanceId => Str
 
-A unique identifier for an instance.
+A unique identifier for the instance.
 
 
 =head2 IpAddress => Str
 
 IP address that is assigned to the instance.
+
+
+=head2 Location => Str
+
+The fleet location of the instance, expressed as an AWS Region code,
+such as C<us-west-2>.
 
 
 =head2 OperatingSystem => Str
@@ -116,8 +137,8 @@ configuration.
 
 B<ACTIVE> -- The instance has been successfully created and at least
 one server process has successfully launched and reported back to
-Amazon GameLift that it is ready to host a game session. The instance
-is now considered ready to host game sessions.
+GameLift that it is ready to host a game session. The instance is now
+considered ready to host game sessions.
 
 =item *
 

@@ -54,12 +54,17 @@ element can have one of the following values:
 
 =over
 
-=item * C<NONE> - Endpoint does not exist or was previously deleted.
+=item *
 
-=item * C<READY> - Endpoint is ready to be used for real-time
-predictions.
+C<NONE> - Endpoint does not exist or was previously deleted.
 
-=item * C<UPDATING> - Updating/creating the endpoint.
+=item *
+
+C<READY> - Endpoint is ready to be used for real-time predictions.
+
+=item *
+
+C<UPDATING> - Updating/creating the endpoint.
 
 =back
 
@@ -70,8 +75,8 @@ predictions.
 The URI that specifies where to send real-time prediction requests for
 the C<MLModel>.
 
-The application must wait until the real-time endpoint is ready before
-using this URI.
+B<Note:> The application must wait until the real-time endpoint is
+ready before using this URI.
 
 
 =head2 PeakRequestsPerSecond => Int

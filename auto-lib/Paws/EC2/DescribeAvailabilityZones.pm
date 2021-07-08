@@ -49,8 +49,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AllAvailabilityZones => Bool
 
-Include all Availability Zones and Local Zones regardless of your opt
-in status.
+Include all Availability Zones, Local Zones, and Wavelength Zones
+regardless of your opt-in status.
 
 If you do not use this parameter, the results include only the zones
 for the Regions where you have chosen the option to opt in.
@@ -76,37 +76,59 @@ The filters.
 
 C<group-name> - For Availability Zones, use the Region name. For Local
 Zones, use the name of the group associated with the Local Zone (for
-example, C<us-west-2-lax-1>).
+example, C<us-west-2-lax-1>) For Wavelength Zones, use the name of the
+group associated with the Wavelength Zone (for example,
+C<us-east-1-wl1-bos-wlz-1>).
 
 =item *
 
-C<message> - The Availability Zone or Local Zone message.
+C<message> - The Zone message.
 
 =item *
 
-C<opt-in-status> - The opt in status (C<opted-in>, and C<not-opted-in>
+C<opt-in-status> - The opt-in status (C<opted-in>, and C<not-opted-in>
 | C<opt-in-not-required>).
 
 =item *
 
-C<region-name> - The name of the Region for the Availability Zone or
-Local Zone (for example, C<us-east-1>).
+C<parent-zoneID> - The ID of the zone that handles some of the Local
+Zone and Wavelength Zone control plane operations, such as API calls.
 
 =item *
 
-C<state> - The state of the Availability Zone or Local Zone
-(C<available> | C<information> | C<impaired> | C<unavailable>).
+C<parent-zoneName> - The ID of the zone that handles some of the Local
+Zone and Wavelength Zone control plane operations, such as API calls.
 
 =item *
 
-C<zone-id> - The ID of the Availability Zone (for example, C<use1-az1>)
-or the Local Zone (for example, use C<usw2-lax1-az1>).
+C<region-name> - The name of the Region for the Zone (for example,
+C<us-east-1>).
+
+=item *
+
+C<state> - The state of the Availability Zone, the Local Zone, or the
+Wavelength Zone (C<available> | C<information> | C<impaired> |
+C<unavailable>).
+
+=item *
+
+C<zone-id> - The ID of the Availability Zone (for example,
+C<use1-az1>), the Local Zone (for example, C<usw2-lax1-az1>), or the
+Wavelength Zone (for example, C<us-east-1-wl1-bos-wlz-1>).
+
+=item *
+
+C<zone-type> - The type of zone, for example, C<local-zone>.
 
 =item *
 
 C<zone-name> - The name of the Availability Zone (for example,
-C<us-east-1a>) or the Local Zone (for example, use
-C<us-west-2-lax-1a>).
+C<us-east-1a>), the Local Zone (for example, C<us-west-2-lax-1a>), or
+the Wavelength Zone (for example, C<us-east-1-wl1-bos-wlz-1>).
+
+=item *
+
+C<zone-type> - The type of zone, for example, C<local-zone>.
 
 =back
 
@@ -115,13 +137,13 @@ C<us-west-2-lax-1a>).
 
 =head2 ZoneIds => ArrayRef[Str|Undef]
 
-The IDs of the Availability Zones and Local Zones.
+The IDs of the Availability Zones, Local Zones, and Wavelength Zones.
 
 
 
 =head2 ZoneNames => ArrayRef[Str|Undef]
 
-The names of the Availability Zones and Local Zones.
+The names of the Availability Zones, Local Zones, and Wavelength Zones.
 
 
 

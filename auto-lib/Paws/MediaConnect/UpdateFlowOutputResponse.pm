@@ -23,7 +23,7 @@ The ARN of the flow that is associated with the updated output.
 
 =head2 Output => L<Paws::MediaConnect::Output>
 
-
+The new settings of the output that you updated.
 
 
 =head2 _request_id => Str

@@ -27,10 +27,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    my $DescribeAccountResponse = $organizations->DescribeAccount(
-      AccountId => 'MyAccountId',
-
-    );
+# To get the details about an account
+# The following example shows a user in the master account (111111111111) asking
+# for details about account 555555555555:
+    my $DescribeAccountResponse =
+      $organizations->DescribeAccount( 'AccountId' => 555555555555 );
 
     # Results:
     my $Account = $DescribeAccountResponse->Account;

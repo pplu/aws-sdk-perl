@@ -59,7 +59,7 @@ Logical database name.
 
 =head2 DbClusterIdentifier => Str
 
-Amazon RDS cluster identifier.
+Amazon RDS cluster ARN.
 
 
 =head2 Schema => Str

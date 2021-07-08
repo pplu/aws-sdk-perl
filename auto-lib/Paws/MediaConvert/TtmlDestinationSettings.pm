@@ -33,8 +33,13 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Settings specific to TTML caption outputs, including Pass style
-information (TtmlStylePassthrough).
+Settings related to TTML captions. TTML is a sidecar format that holds
+captions in a file that is separate from the video container. Set up
+sidecar captions in the same output group, but different output from
+your video. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/ttml-and-webvtt-output-captions.html.
+When you work directly in your JSON job specification, include this
+object and any required children when you set destinationType to TTML.
 
 =head1 ATTRIBUTES
 
@@ -42,7 +47,7 @@ information (TtmlStylePassthrough).
 =head2 StylePassthrough => Str
 
 Pass through style and position information from a TTML-like input
-source (TTML, SMPTE-TT, CFF-TT) to the CFF-TT output or TTML output.
+source (TTML, IMSC, SMPTE-TT) to the TTML output.
 
 
 

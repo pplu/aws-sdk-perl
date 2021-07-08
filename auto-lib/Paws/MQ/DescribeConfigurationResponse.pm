@@ -2,6 +2,7 @@
 package Paws::MQ::DescribeConfigurationResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
+  has AuthenticationStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationStrategy');
   has Created => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'created');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
@@ -28,6 +29,11 @@ Paws::MQ::DescribeConfigurationResponse
 Required. The ARN of the configuration.
 
 
+=head2 AuthenticationStrategy => Str
+
+The authentication strategy associated with the configuration.
+
+Valid values are: C<"SIMPLE">, C<"LDAP">
 =head2 Created => Str
 
 Required. The date and time of the configuration revision.
@@ -41,9 +47,9 @@ Required. The description of the configuration.
 =head2 EngineType => Str
 
 Required. The type of broker engine. Note: Currently, Amazon MQ
-supports only ACTIVEMQ.
+supports ACTIVEMQ and RABBITMQ.
 
-Valid values are: C<"ACTIVEMQ">
+Valid values are: C<"ACTIVEMQ">, C<"RABBITMQ">
 =head2 EngineVersion => Str
 
 Required. The version of the broker engine. For a list of supported

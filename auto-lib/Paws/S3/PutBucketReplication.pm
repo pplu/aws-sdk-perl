@@ -4,6 +4,7 @@ package Paws::S3::PutBucketReplication;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has ReplicationConfiguration => (is => 'ro', isa => 'Paws::S3::ReplicationConfiguration', traits => ['ParamInBody'], required => 1);
   has Token => (is => 'ro', isa => 'Str', header_name => 'x-amz-bucket-object-lock-token', traits => ['ParamInHeader']);
 
@@ -36,84 +37,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # Set replication configuration on a bucket
+    # The following example sets replication configuration on a bucket.
     $s3->PutBucketReplication(
-      Bucket                   => 'MyBucketName',
-      ReplicationConfiguration => {
-        Role  => 'MyRole',
-        Rules => [
+      'Bucket'                   => 'examplebucket',
+      'ReplicationConfiguration' => {
+        'Role'  => 'arn:aws:iam::123456789012:role/examplerole',
+        'Rules' => [
+
           {
-            Destination => {
-              Bucket                   => 'MyBucketName',
-              AccessControlTranslation => {
-                Owner => 'Destination',    # values: Destination
-
-              },    # OPTIONAL
-              Account                 => 'MyAccountId',    # OPTIONAL
-              EncryptionConfiguration => {
-                ReplicaKmsKeyID => 'MyReplicaKmsKeyID',    # OPTIONAL
-              },    # OPTIONAL
-              Metrics => {
-                EventThreshold => {
-                  Minutes => 1,    # OPTIONAL
-                },
-                Status => 'Enabled',    # values: Enabled, Disabled
-
-              },    # OPTIONAL
-              ReplicationTime => {
-                Status => 'Enabled',    # values: Enabled, Disabled
-                Time   => {
-                  Minutes => 1,         # OPTIONAL
-                },
-
-              },    # OPTIONAL
-              StorageClass => 'STANDARD'
-              , # values: STANDARD, REDUCED_REDUNDANCY, STANDARD_IA, ONEZONE_IA, INTELLIGENT_TIERING, GLACIER, DEEP_ARCHIVE; OPTIONAL
+            'Destination' => {
+              'Bucket'       => 'arn:aws:s3:::destinationbucket',
+              'StorageClass' => 'STANDARD'
             },
-            Status                  => 'Enabled',    # values: Enabled, Disabled
-            DeleteMarkerReplication => {
-              Status => 'Enabled',    # values: Enabled, Disabled; OPTIONAL
-            },    # OPTIONAL
-            ExistingObjectReplication => {
-              Status => 'Enabled',    # values: Enabled, Disabled
-
-            },    # OPTIONAL
-            Filter => {
-              And => {
-                Prefix => 'MyPrefix',    # OPTIONAL
-                Tags   => [
-                  {
-                    Key   => 'MyObjectKey',    # min: 1
-                    Value => 'MyValue',
-
-                  },
-                  ...
-                ],    # OPTIONAL
-              },    # OPTIONAL
-              Prefix => 'MyPrefix',    # OPTIONAL
-              Tag    => {
-                Key   => 'MyObjectKey',    # min: 1
-                Value => 'MyValue',
-
-              },
-            },    # OPTIONAL
-            ID                      => 'MyID',        # OPTIONAL
-            Prefix                  => 'MyPrefix',    # OPTIONAL
-            Priority                => 1,             # OPTIONAL
-            SourceSelectionCriteria => {
-              SseKmsEncryptedObjects => {
-                Status => 'Enabled',    # values: Enabled, Disabled
-
-              },    # OPTIONAL
-            },    # OPTIONAL
-          },
-          ...
-        ],
-
-      },
-      ContentLength => 1,                      # OPTIONAL
-      ContentMD5    => 'MyContentMD5',         # OPTIONAL
-      Token         => 'MyObjectLockToken',    # OPTIONAL
+            'Prefix' => '',
+            'Status' => 'Enabled'
+          }
+        ]
+      }
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketReplication>
@@ -140,6 +83,17 @@ header as a message integrity check to verify that the request body was
 not corrupted in transit. For more information, see RFC 1864
 (http://www.ietf.org/rfc/rfc1864.txt).
 
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
 
 
 =head2 B<REQUIRED> ReplicationConfiguration => L<Paws::S3::ReplicationConfiguration>
@@ -150,7 +104,7 @@ not corrupted in transit. For more information, see RFC 1864
 
 =head2 Token => Str
 
-
+A token to allow Object Lock to be enabled for an existing bucket.
 
 
 

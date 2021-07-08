@@ -63,10 +63,10 @@ Contains information about a job run.
 
 This field is deprecated. Use C<MaxCapacity> instead.
 
-The number of AWS Glue data processing units (DPUs) allocated to this
+The number of Glue data processing units (DPUs) allocated to this
 JobRun. From 2 to 100 DPUs can be allocated; the default is 10. A DPU
 is a relative measure of processing power that consists of 4 vCPUs of
-compute capacity and 16 GB of memory. For more information, see the AWS
+compute capacity and 16 GB of memory. For more information, see the
 Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
@@ -76,15 +76,15 @@ The job arguments associated with this run. For this job run, they
 replace the default arguments set in the job definition itself.
 
 You can specify arguments here that your own job-execution script
-consumes, as well as arguments that AWS Glue itself consumes.
+consumes, as well as arguments that Glue itself consumes.
 
 For information about how to specify and consume your own job
-arguments, see the Calling AWS Glue APIs in Python
+arguments, see the Calling Glue APIs in Python
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
-For information about the key-value pairs that AWS Glue consumes to set
-up your job, see the Special Parameters Used by AWS Glue
+For information about the key-value pairs that Glue consumes to set up
+your job, see the Special Parameters Used by Glue
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
@@ -112,10 +112,10 @@ The amount of time (in seconds) that the job run consumed resources.
 =head2 GlueVersion => Str
 
 Glue version determines the versions of Apache Spark and Python that
-AWS Glue supports. The Python version indicates the version supported
-for jobs of type Spark.
+Glue supports. The Python version indicates the version supported for
+jobs of type Spark.
 
-For more information about the available AWS Glue versions and
+For more information about the available Glue versions and
 corresponding Spark and Python versions, see Glue version
 (https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
 developer guide.
@@ -136,7 +136,10 @@ The name of the job definition being used in this run.
 
 =head2 JobRunState => Str
 
-The current state of the job run.
+The current state of the job run. For more information about the
+statuses of jobs that have terminated abnormally, see Glue Job Run
+Statuses
+(https://docs.aws.amazon.com/glue/latest/dg/job-run-statuses.html).
 
 
 =head2 LastModifiedOn => Str
@@ -147,7 +150,7 @@ The last time that this job run was modified.
 =head2 LogGroupName => Str
 
 The name of the log group for secure logging that can be server-side
-encrypted in Amazon CloudWatch using AWS KMS. This name can be
+encrypted in Amazon CloudWatch using KMS. This name can be
 C</aws-glue/jobs/>, in which case the default encryption is C<NONE>. If
 you add a role name and C<SecurityConfiguration> name (in other words,
 C</aws-glue/jobs-yourRoleName-yourSecurityConfigurationName/>), then
@@ -156,11 +159,11 @@ that security configuration is used to encrypt the log group.
 
 =head2 MaxCapacity => Num
 
-The number of AWS Glue data processing units (DPUs) that can be
-allocated when this job runs. A DPU is a relative measure of processing
-power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
-For more information, see the AWS Glue pricing page
-(https://docs.aws.amazon.com/https:/aws.amazon.com/glue/pricing/).
+The number of Glue data processing units (DPUs) that can be allocated
+when this job runs. A DPU is a relative measure of processing power
+that consists of 4 vCPUs of compute capacity and 16 GB of memory. For
+more information, see the Glue pricing page
+(https://aws.amazon.com/glue/pricing/).
 
 Do not set C<Max Capacity> if using C<WorkerType> and
 C<NumberOfWorkers>.

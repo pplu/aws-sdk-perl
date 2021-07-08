@@ -44,13 +44,39 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the resource to remove the tag from.
+The ID of the resource to remove a tag from.
+
+You can specify any of the following taggable resources.
+
+=over
+
+=item *
+
+AWS account E<ndash> specify the account ID number.
+
+=item *
+
+Organizational unit E<ndash> specify the OU ID that begins with C<ou->
+and looks similar to: C<ou-I<1a2b-34uvwxyz>>
+
+=item *
+
+Root E<ndash> specify the root ID that begins with C<r-> and looks
+similar to: C<r-I<1a2b>>
+
+=item *
+
+Policy E<ndash> specify the policy ID that begins with C<p-> andlooks
+similar to: C<p-I<12abcdefg3>>
+
+=back
+
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The tag to remove from the specified resource.
+The list of keys for tags to remove from the specified resource.
 
 
 

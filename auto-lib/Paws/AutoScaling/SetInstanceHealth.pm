@@ -66,7 +66,9 @@ call respects the grace period. Set this to C<False>, to have the call
 not respect the grace period associated with the group.
 
 For more information about the health check grace period, see
-CreateAutoScalingGroup.
+CreateAutoScalingGroup
+(https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_CreateAutoScalingGroup.html)
+in the I<Amazon EC2 Auto Scaling API Reference>.
 
 
 

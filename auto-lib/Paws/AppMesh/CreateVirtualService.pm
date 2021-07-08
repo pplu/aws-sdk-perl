@@ -3,6 +3,7 @@ package Paws::AppMesh::CreateVirtualService;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
+  has MeshOwner => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'meshOwner');
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::VirtualServiceSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::TagRef]', traits => ['NameInRequest'], request_name => 'tags');
   has VirtualServiceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'virtualServiceName', required => 1);
@@ -48,10 +49,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       VirtualServiceName => 'MyServiceName',
       ClientToken        => 'MyString',        # OPTIONAL
+      MeshOwner          => 'MyAccountId',     # OPTIONAL
       Tags               => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],    # OPTIONAL
@@ -79,6 +82,17 @@ underscores are allowed.
 =head2 B<REQUIRED> MeshName => Str
 
 The name of the service mesh to create the virtual service in.
+
+
+
+=head2 MeshOwner => Str
+
+The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then the account that you specify must share the mesh
+with your account before you can create the resource in the service
+mesh. For more information about mesh sharing, see Working with shared
+meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 
 
 

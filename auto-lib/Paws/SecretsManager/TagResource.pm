@@ -28,17 +28,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+  # To add tags to a secret
+  # The following example shows how to attach two tags each with a Key and Value
+  # to a secret. There is no output from this API. To see the result, use the
+  # DescribeSecret operation.
     $secretsmanager->TagResource(
-      SecretId => 'MySecretIdType',
-      Tags     => [
-        {
-          Key   => 'MyTagKeyType',      # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValueType',    # max: 256; OPTIONAL
-        },
-        ...
-      ],
+      'SecretId' => 'MyExampleSecret',
+      'Tags'     => [
 
+        {
+          'Key'   => 'FirstTag',
+          'Value' => 'SomeValue'
+        },
+
+        {
+          'Key'   => 'SecondTag',
+          'Value' => 'AnotherValue'
+        }
+      ]
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager/TagResource>
@@ -63,8 +72,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 
@@ -78,8 +93,8 @@ information on how to format a JSON parameter for the various command
 line tool environments, see Using JSON for Parameters
 (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>. For the AWS CLI, you can also use the
-syntax: C<--Tags
-Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,E<hellip>]>
+syntax: C<--Tags Key="Key1",Value="Value1"
+Key="Key2",Value="Value2"[,E<hellip>]>
 
 
 

@@ -36,9 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Forecast::F
 
 Provides information about the method that featurizes (transforms) a
 dataset field. The method is part of the C<FeaturizationPipeline> of
-the Featurization object. If you don't specify
-C<FeaturizationMethodParameters>, Amazon Forecast uses default
-parameters.
+the Featurization object.
 
 The following is an example of how you specify a C<FeaturizationMethod>
 object.
@@ -47,8 +45,8 @@ C<{>
 
 C<"FeaturizationMethodName": "filling",>
 
-C<"FeaturizationMethodParameters": {"aggregation": "avg", "backfill":
-"nan"}>
+C<"FeaturizationMethodParameters": {"aggregation": "sum", "middlefill":
+"zero", "backfill": "zero"}>
 
 C<}>
 
@@ -63,9 +61,13 @@ method.
 
 =head2 FeaturizationMethodParameters => L<Paws::Forecast::FeaturizationMethodParameters>
 
-The method parameters (key-value pairs). Specify these parameters to
-override the default values. The following list shows the parameters
-and their valid values. Bold signifies the default value.
+The method parameters (key-value pairs), which are a map of override
+parameters. Specify these parameters to override the default values.
+Related Time Series attributes do not accept aggregation parameters.
+
+The following list shows the parameters and their valid values for the
+"filling" featurization method for a B<Target Time Series> dataset.
+Bold signifies the default value.
 
 =over
 
@@ -79,14 +81,39 @@ C<frontfill>: B<none>
 
 =item *
 
-C<middlefill>: B<zero>, C<nan> (not a number)
+C<middlefill>: B<zero>, C<nan> (not a number), C<value>, C<median>,
+C<mean>, C<min>, C<max>
 
 =item *
 
-C<backfill>: B<zero>, C<nan>
+C<backfill>: B<zero>, C<nan>, C<value>, C<median>, C<mean>, C<min>,
+C<max>
 
 =back
 
+The following list shows the parameters and their valid values for a
+B<Related Time Series> featurization method (there are no defaults):
+
+=over
+
+=item *
+
+C<middlefill>: C<zero>, C<value>, C<median>, C<mean>, C<min>, C<max>
+
+=item *
+
+C<backfill>: C<zero>, C<value>, C<median>, C<mean>, C<min>, C<max>
+
+=item *
+
+C<futurefill>: C<zero>, C<value>, C<median>, C<mean>, C<min>, C<max>
+
+=back
+
+To set a filling method to a specific value, set the fill parameter to
+C<value> and define the value in a corresponding C<_value> parameter.
+For example, to set backfilling to a value of 2, include the following:
+C<"backfill": "value"> and C<"backfill_value":"2">.
 
 
 

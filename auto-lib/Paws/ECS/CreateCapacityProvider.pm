@@ -33,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutoScalingGroupProvider => {
         AutoScalingGroupArn => 'MyString',
         ManagedScaling      => {
+          InstanceWarmupPeriod   => 1,    # max: 10000; OPTIONAL
           MaximumScalingStepSize => 1,    # min: 1, max: 10000; OPTIONAL
           MinimumScalingStepSize => 1,    # min: 1, max: 10000; OPTIONAL
           Status         => 'ENABLED',    # values: ENABLED, DISABLED; OPTIONAL

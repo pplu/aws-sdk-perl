@@ -1,6 +1,7 @@
 
 package Paws::Backup::StartBackupJob;
   use Moose;
+  has BackupOptions => (is => 'ro', isa => 'Paws::Backup::BackupOptions');
   has BackupVaultName => (is => 'ro', isa => 'Str', required => 1);
   has CompleteWindowMinutes => (is => 'ro', isa => 'Int');
   has IamRoleArn => (is => 'ro', isa => 'Str', required => 1);
@@ -36,14 +37,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $backup = Paws->service('Backup');
     my $StartBackupJobOutput = $backup->StartBackupJob(
-      BackupVaultName       => 'MyBackupVaultName',
-      IamRoleArn            => 'MyIAMRoleArn',
-      ResourceArn           => 'MyARN',
-      CompleteWindowMinutes => 1,                     # OPTIONAL
-      IdempotencyToken      => 'Mystring',            # OPTIONAL
+      BackupVaultName => 'MyBackupVaultName',
+      IamRoleArn      => 'MyIAMRoleArn',
+      ResourceArn     => 'MyARN',
+      BackupOptions   => { 'MyBackupOptionKey' => 'MyBackupOptionValue', }
+      ,                                       # OPTIONAL
+      CompleteWindowMinutes => 1,             # OPTIONAL
+      IdempotencyToken      => 'Mystring',    # OPTIONAL
       Lifecycle             => {
-        DeleteAfterDays            => 1,              # OPTIONAL
-        MoveToColdStorageAfterDays => 1,              # OPTIONAL
+        DeleteAfterDays            => 1,      # OPTIONAL
+        MoveToColdStorageAfterDays => 1,      # OPTIONAL
       },    # OPTIONAL
       RecoveryPointTags  => { 'MyTagKey' => 'MyTagValue', },    # OPTIONAL
       StartWindowMinutes => 1,                                  # OPTIONAL
@@ -62,6 +65,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/bac
 =head1 ATTRIBUTES
 
 
+=head2 BackupOptions => L<Paws::Backup::BackupOptions>
+
+Specifies the backup option for a selected resource. This option is
+only available for Windows VSS backup jobs.
+
+Valid values: Set to C<"WindowsVSSE<rdquo>:E<ldquo>enabled"> to enable
+WindowsVSS backup option and create a VSS Windows backup. Set to
+E<ldquo>WindowsVSSE<rdquo>:E<rdquo>disabledE<rdquo> to create a regular
+backup. The WindowsVSS option is not enabled by default.
+
+
+
 =head2 B<REQUIRED> BackupVaultName => Str
 
 The name of a logical container where backups are stored. Backup vaults
@@ -73,8 +88,11 @@ lowercase letters, numbers, and hyphens.
 
 =head2 CompleteWindowMinutes => Int
 
-The amount of time AWS Backup attempts a backup before canceling the
-job and returning an error.
+A value in minutes during which a successfully started backup must
+complete, or else AWS Backup will cancel the job. This value is
+optional. This value begins counting down from when the backup was
+scheduled. It does not add additional time for C<StartWindowMinutes>,
+or if the backup started later than scheduled.
 
 
 
@@ -105,6 +123,9 @@ after daysE<rdquo> setting. The E<ldquo>transition to cold after
 daysE<rdquo> setting cannot be changed after a backup has been
 transitioned to cold.
 
+Only Amazon EFS file system backups can be transitioned to cold
+storage.
+
 
 
 =head2 RecoveryPointTags => L<Paws::Backup::Tags>
@@ -123,7 +144,9 @@ format of the ARN depends on the resource type.
 
 =head2 StartWindowMinutes => Int
 
-The amount of time in minutes before beginning a backup.
+A value in minutes after a backup is scheduled before a job will be
+canceled if it doesn't start successfully. This value is optional, and
+the default is 8 hours.
 
 
 

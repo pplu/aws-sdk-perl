@@ -11,6 +11,7 @@ package Paws::GameLift::GameSession;
   has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionId => (is => 'ro', isa => 'Str');
   has IpAddress => (is => 'ro', isa => 'Str');
+  has Location => (is => 'ro', isa => 'Str');
   has MatchmakerData => (is => 'ro', isa => 'Str');
   has MaximumPlayerSessionCount => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str');
@@ -59,63 +60,22 @@ Once the session ends, the game session object is retained for 30 days.
 This means you can reuse idempotency token values after this time. Game
 session logs are retained for 14 days.
 
-=over
+B<Related actions>
 
-=item *
-
-CreateGameSession
-
-=item *
-
-DescribeGameSessions
-
-=item *
-
-DescribeGameSessionDetails
-
-=item *
-
-SearchGameSessions
-
-=item *
-
-UpdateGameSession
-
-=item *
-
-GetGameSessionLogUrl
-
-=item *
-
-Game session placements
-
-=over
-
-=item *
-
-StartGameSessionPlacement
-
-=item *
-
-DescribeGameSessionPlacement
-
-=item *
-
-StopGameSessionPlacement
-
-=back
-
-=back
-
+CreateGameSession | DescribeGameSessions | DescribeGameSessionDetails |
+SearchGameSessions | UpdateGameSession | GetGameSessionLogUrl |
+StartGameSessionPlacement | DescribeGameSessionPlacement |
+StopGameSessionPlacement | All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
 
 =head2 CreationTime => Str
 
-Time stamp indicating when this data object was created. Format is a
+A time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 CreatorId => Str
@@ -132,7 +92,7 @@ Number of players currently in the game session.
 
 =head2 DnsName => Str
 
-DNS identifier assigned to the instance that is running the game
+The DNS identifier assigned to the instance that is running the game
 session. Values have the following format:
 
 =over
@@ -158,34 +118,30 @@ fleet, you must use the DNS name, not the IP address.
 =head2 FleetArn => Str
 
 The Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 associated with the GameLift fleet that this game session is running
 on.
 
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet that the game session is running on.
+A unique identifier for the fleet that the game session is running on.
 
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of custom properties for a game session, formatted as key:value
+A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
-GameSession object with a request to start a new game session (see
-Start a Game Session
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
-You can search for active game sessions based on this custom data with
+GameSession object with a request to start a new game session. You can
+search for active game sessions based on this custom data with
 SearchGameSessions.
 
 
 =head2 GameSessionData => Str
 
-Set of custom game session properties, formatted as a single string
+A set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
-object with a request to start a new game session (see Start a Game
-Session
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
+object with a request to start a new game session.
 
 
 =head2 GameSessionId => Str
@@ -198,9 +154,15 @@ IDE<gt>/E<lt>custom ID string or idempotency tokenE<gt>>.
 
 =head2 IpAddress => Str
 
-IP address of the instance that is running the game session. When
-connecting to a Amazon GameLift game server, a client needs to
-reference an IP address (or DNS name) and port number.
+The IP address of the game session. To connect to a GameLift game
+server, an app needs both the IP address and port number.
+
+
+=head2 Location => Str
+
+The fleet location where the game session is running. This value might
+specify the fleet's home Region or a remote location. Location is
+expressed as an AWS Region code such as C<us-west-2>.
 
 
 =head2 MatchmakerData => Str
@@ -210,7 +172,7 @@ game session. It is in JSON syntax, formatted as a string. In addition
 the matchmaking configuration used, it contains data on all players
 assigned to the match, including player attributes and team
 assignments. For more details on matchmaker data, see Match Data
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+(https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-server.html#match-server-data).
 Matchmaker data is useful when requesting match backfills, and is
 updated whenever new players are added during a successful backfill
 (see StartMatchBackfill).
@@ -235,7 +197,7 @@ Indicates whether or not the game session is accepting new players.
 
 =head2 Port => Int
 
-Port number for the game session. To connect to a Amazon GameLift game
+The port number for the game session. To connect to a GameLift game
 server, an app needs both the IP address and port number.
 
 
@@ -255,9 +217,9 @@ terminated.
 
 =head2 TerminationTime => Str
 
-Time stamp indicating when this data object was terminated. Format is a
-number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+A time stamp indicating when this data object was terminated. Format is
+a number expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 

@@ -33,56 +33,557 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $route53 = Paws->service('Route53');
+    # To create a basic resource record set
+    # The following example creates a resource record set that routes Internet
+    # traffic to a resource with an IP address of 192.0.2.44.
     my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
-      ChangeBatch => {
-        Changes => [
+      'ChangeBatch' => {
+        'Changes' => [
+
           {
-            Action            => 'CREATE',    # values: CREATE, DELETE, UPSERT
-            ResourceRecordSet => {
-              Name => 'MyDNSName',            # max: 1024
-              Type => 'SOA'
-              , # values: SOA, A, TXT, NS, CNAME, MX, NAPTR, PTR, SRV, SPF, AAAA, CAA
-              AliasTarget => {
-                DNSName              => 'MyDNSName',       # max: 1024
-                EvaluateTargetHealth => 1,
-                HostedZoneId         => 'MyResourceId',    # max: 32
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
 
-              },    # OPTIONAL
-              Failover    => 'PRIMARY',   # values: PRIMARY, SECONDARY; OPTIONAL
-              GeoLocation => {
-                ContinentCode =>
-                  'MyGeoLocationContinentCode',    # min: 2, max: 2; OPTIONAL
-                CountryCode =>
-                  'MyGeoLocationCountryCode',      # min: 1, max: 2; OPTIONAL
-                SubdivisionCode =>
-                  'MyGeoLocationSubdivisionCode',    # min: 1, max: 3; OPTIONAL
-              },    # OPTIONAL
-              HealthCheckId    => 'MyHealthCheckId',    # max: 64; OPTIONAL
-              MultiValueAnswer => 1,                    # OPTIONAL
-              Region           => 'us-east-1'
-              , # values: us-east-1, us-east-2, us-west-1, us-west-2, ca-central-1, eu-west-1, eu-west-2, eu-west-3, eu-central-1, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2, ap-northeast-3, eu-north-1, sa-east-1, cn-north-1, cn-northwest-1, ap-east-1, me-south-1, ap-south-1min: 1, max: 64; OPTIONAL
-              ResourceRecords => [
                 {
-                  Value => 'MyRData',    # max: 4000
-
-                },
-                ...
-              ],    # min: 1; OPTIONAL
-              SetIdentifier =>
-                'MyResourceRecordSetIdentifier',    # min: 1, max: 128; OPTIONAL
-              TTL                     => 1,         # max: 2147483647; OPTIONAL
-              TrafficPolicyInstanceId =>
-                'MyTrafficPolicyInstanceId',        # min: 1, max: 36; OPTIONAL
-              Weight => 1,                          # max: 255; OPTIONAL
-            },
-
-          },
-          ...
-        ],    # min: 1
-        Comment => 'MyResourceDescription',    # max: 256; OPTIONAL
+                  'Value' => '192.0.2.44'
+                }
+              ],
+              'TTL'  => 60,
+              'Type' => 'A'
+            }
+          }
+        ],
+        'Comment' => 'Web server for example.com'
       },
-      HostedZoneId => 'MyResourceId',
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
 
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+ # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+ # To create weighted resource record sets
+ # The following example creates two weighted resource record sets. The resource
+ # with a Weight of 100 will get 1/3rd of traffic (100/100+200), and the other
+ # resource will get the rest of the traffic for example.com.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'HealthCheckId'   => 'abcdef11-2222-3333-4444-555555fedcba',
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.44'
+                }
+              ],
+              'SetIdentifier' => 'Seattle data center',
+              'TTL'           => 60,
+              'Type'          => 'A',
+              'Weight'        => 100
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'HealthCheckId'   => 'abcdef66-7777-8888-9999-000000fedcba',
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.45'
+                }
+              ],
+              'SetIdentifier' => 'Portland data center',
+              'TTL'           => 60,
+              'Type'          => 'A',
+              'Weight'        => 200
+            }
+          }
+        ],
+        'Comment' => 'Web servers for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create an alias resource record set
+# The following example creates an alias resource record set that routes traffic
+# to a CloudFront distribution.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName'              => 'd123rk29d0stfj.cloudfront.net',
+                'EvaluateTargetHealth' => 0,
+                'HostedZoneId'         => 'Z2FDTNDATAQYW2'
+              },
+              'Name' => 'example.com',
+              'Type' => 'A'
+            }
+          }
+        ],
+        'Comment' => 'CloudFront distribution for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+  # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+  # To create weighted alias resource record sets
+  # The following example creates two weighted alias resource record sets that
+  # route traffic to ELB load balancers. The resource with a Weight of 100 will
+  # get 1/3rd of traffic (100/100+200), and the other resource will get the rest
+  # of the traffic for example.com.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-123456789.us-east-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z3AADJGX6KTTL2'
+              },
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'Ohio region',
+              'Type'          => 'A',
+              'Weight'        => 100
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-987654321.us-west-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z1H1FL5HABSF5'
+              },
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'Oregon region',
+              'Type'          => 'A',
+              'Weight'        => 200
+            }
+          }
+        ],
+        'Comment' => 'ELB load balancers for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create latency resource record sets
+# The following example creates two latency resource record sets that route
+# traffic to EC2 instances. Traffic for example.com is routed either to the Ohio
+# region or the Oregon region, depending on the latency between the user and
+# those regions.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'HealthCheckId'   => 'abcdef11-2222-3333-4444-555555fedcba',
+              'Name'            => 'example.com',
+              'Region'          => 'us-east-2',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.44'
+                }
+              ],
+              'SetIdentifier' => 'Ohio region',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'HealthCheckId'   => 'abcdef66-7777-8888-9999-000000fedcba',
+              'Name'            => 'example.com',
+              'Region'          => 'us-west-2',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.45'
+                }
+              ],
+              'SetIdentifier' => 'Oregon region',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          }
+        ],
+        'Comment' => 'EC2 instances for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+    # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+    # To create latency alias resource record sets
+    # The following example creates two latency alias resource record sets that
+    # route traffic for example.com to ELB load balancers. Requests are routed
+    # either to the Ohio region or the Oregon region, depending on the latency
+    # between the user and those regions.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-123456789.us-east-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z3AADJGX6KTTL2'
+              },
+              'Name'          => 'example.com',
+              'Region'        => 'us-east-2',
+              'SetIdentifier' => 'Ohio region',
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-987654321.us-west-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z1H1FL5HABSF5'
+              },
+              'Name'          => 'example.com',
+              'Region'        => 'us-west-2',
+              'SetIdentifier' => 'Oregon region',
+              'Type'          => 'A'
+            }
+          }
+        ],
+        'Comment' => 'ELB load balancers for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create failover resource record sets
+# The following example creates primary and secondary failover resource record
+# sets that route traffic to EC2 instances. Traffic is generally routed to the
+# primary resource, in the Ohio region. If that resource is unavailable, traffic
+# is routed to the secondary resource, in the Oregon region.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'Failover'        => 'PRIMARY',
+              'HealthCheckId'   => 'abcdef11-2222-3333-4444-555555fedcba',
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.44'
+                }
+              ],
+              'SetIdentifier' => 'Ohio region',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'Failover'        => 'SECONDARY',
+              'HealthCheckId'   => 'abcdef66-7777-8888-9999-000000fedcba',
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.45'
+                }
+              ],
+              'SetIdentifier' => 'Oregon region',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          }
+        ],
+        'Comment' => 'Failover configuration for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+   # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+   # To create failover alias resource record sets
+   # The following example creates primary and secondary failover alias resource
+   # record sets that route traffic to ELB load balancers. Traffic is generally
+   # routed to the primary resource, in the Ohio region. If that resource is
+   # unavailable, traffic is routed to the secondary resource, in the Oregon
+   # region.
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-123456789.us-east-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z3AADJGX6KTTL2'
+              },
+              'Failover'      => 'PRIMARY',
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'Ohio region',
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-987654321.us-west-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z1H1FL5HABSF5'
+              },
+              'Failover'      => 'SECONDARY',
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'Oregon region',
+              'Type'          => 'A'
+            }
+          }
+        ],
+        'Comment' => 'Failover alias configuration for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+  # Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+  # To create geolocation resource record sets
+  # The following example creates four geolocation resource record sets that use
+  # IPv4 addresses to route traffic to resources such as web servers running on
+  # EC2 instances. Traffic is routed to one of four IP addresses, for North
+  # America (NA), for South America (SA), for Europe (EU), and for all other
+  # locations (*).
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'GeoLocation' => {
+                'ContinentCode' => 'NA'
+              },
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.44'
+                }
+              ],
+              'SetIdentifier' => 'North America',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'GeoLocation' => {
+                'ContinentCode' => 'SA'
+              },
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.45'
+                }
+              ],
+              'SetIdentifier' => 'South America',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'GeoLocation' => {
+                'ContinentCode' => 'EU'
+              },
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.46'
+                }
+              ],
+              'SetIdentifier' => 'Europe',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'GeoLocation' => {
+                'CountryCode' => '*'
+              },
+              'Name'            => 'example.com',
+              'ResourceRecords' => [
+
+                {
+                  'Value' => '192.0.2.47'
+                }
+              ],
+              'SetIdentifier' => 'Other locations',
+              'TTL'           => 60,
+              'Type'          => 'A'
+            }
+          }
+        ],
+        'Comment' => 'Geolocation configuration for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
+    );
+
+    # Results:
+    my $ChangeInfo = $ChangeResourceRecordSetsResponse->ChangeInfo;
+
+# Returns a L<Paws::Route53::ChangeResourceRecordSetsResponse> object.
+# To create geolocation alias resource record sets
+# The following example creates four geolocation alias resource record sets that
+# route traffic to ELB load balancers. Traffic is routed to one of four IP
+# addresses, for North America (NA), for South America (SA), for Europe (EU),
+# and for all other locations (*).
+    my $ChangeResourceRecordSetsResponse = $route53->ChangeResourceRecordSets(
+      'ChangeBatch' => {
+        'Changes' => [
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-123456789.us-east-2.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z3AADJGX6KTTL2'
+              },
+              'GeoLocation' => {
+                'ContinentCode' => 'NA'
+              },
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'North America',
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-234567890.sa-east-1.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z2P70J7HTTTPLU'
+              },
+              'GeoLocation' => {
+                'ContinentCode' => 'SA'
+              },
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'South America',
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-234567890.eu-central-1.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z215JYRZR1TBD5'
+              },
+              'GeoLocation' => {
+                'ContinentCode' => 'EU'
+              },
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'Europe',
+              'Type'          => 'A'
+            }
+          },
+
+          {
+            'Action'            => 'CREATE',
+            'ResourceRecordSet' => {
+              'AliasTarget' => {
+                'DNSName' =>
+                  'example-com-234567890.ap-southeast-1.elb.amazonaws.com ',
+                'EvaluateTargetHealth' => 1,
+                'HostedZoneId'         => 'Z1LMS91P8CMLE5'
+              },
+              'GeoLocation' => {
+                'CountryCode' => '*'
+              },
+              'Name'          => 'example.com',
+              'SetIdentifier' => 'Other locations',
+              'Type'          => 'A'
+            }
+          }
+        ],
+        'Comment' => 'Geolocation alias configuration for example.com'
+      },
+      'HostedZoneId' => 'Z3M3LMPEXAMPLE'
     );
 
     # Results:

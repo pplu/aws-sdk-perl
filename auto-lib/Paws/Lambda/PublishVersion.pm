@@ -40,19 +40,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Description  = $FunctionConfiguration->Description;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $Role         = $FunctionConfiguration->Role;
-    my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $Version      = $FunctionConfiguration->Version;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $CodeSha256       = $FunctionConfiguration->CodeSha256;
+    my $CodeSize         = $FunctionConfiguration->CodeSize;
+    my $Description      = $FunctionConfiguration->Description;
+    my $Environment      = $FunctionConfiguration->Environment;
+    my $FunctionArn      = $FunctionConfiguration->FunctionArn;
+    my $FunctionName     = $FunctionConfiguration->FunctionName;
+    my $Handler          = $FunctionConfiguration->Handler;
+    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
+    my $LastModified     = $FunctionConfiguration->LastModified;
+    my $LastUpdateStatus = $FunctionConfiguration->LastUpdateStatus;
+    my $MemorySize       = $FunctionConfiguration->MemorySize;
+    my $RevisionId       = $FunctionConfiguration->RevisionId;
+    my $Role             = $FunctionConfiguration->Role;
+    my $Runtime          = $FunctionConfiguration->Runtime;
+    my $State            = $FunctionConfiguration->State;
+    my $Timeout          = $FunctionConfiguration->Timeout;
+    my $TracingConfig    = $FunctionConfiguration->TracingConfig;
+    my $Version          = $FunctionConfiguration->Version;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 

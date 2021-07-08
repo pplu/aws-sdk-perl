@@ -29,6 +29,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::CreateAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::CreateCodeSigningConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateEventSourceMapping {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::CreateEventSourceMapping', @_);
@@ -44,6 +49,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteCodeSigningConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteEventSourceMapping {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteEventSourceMapping', @_);
@@ -52,6 +62,11 @@ package Paws::Lambda;
   sub DeleteFunction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteFunctionCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::DeleteFunctionCodeSigningConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteFunctionConcurrency {
@@ -84,6 +99,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetCodeSigningConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetEventSourceMapping {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetEventSourceMapping', @_);
@@ -92,6 +112,11 @@ package Paws::Lambda;
   sub GetFunction {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetFunctionCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::GetFunctionCodeSigningConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetFunctionConcurrency {
@@ -149,6 +174,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListAliases', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCodeSigningConfigs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListCodeSigningConfigs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListEventSourceMappings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListEventSourceMappings', @_);
@@ -162,6 +192,11 @@ package Paws::Lambda;
   sub ListFunctions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListFunctionsByCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::ListFunctionsByCodeSigningConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListLayers {
@@ -197,6 +232,11 @@ package Paws::Lambda;
   sub PublishVersion {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::PublishVersion', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutFunctionCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::PutFunctionCodeSigningConfig', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutFunctionConcurrency {
@@ -239,6 +279,11 @@ package Paws::Lambda;
     my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateAlias', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateCodeSigningConfig {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateCodeSigningConfig', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateEventSourceMapping {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Lambda::UpdateEventSourceMapping', @_);
@@ -279,6 +324,29 @@ package Paws::Lambda;
         $result = $self->ListAliases(@_, Marker => $result->NextMarker);
       }
       $callback->($_ => 'Aliases') foreach (@{ $result->Aliases });
+    }
+
+    return undef
+  }
+  sub ListAllCodeSigningConfigs {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCodeSigningConfigs(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListCodeSigningConfigs(@_, Marker => $next_result->NextMarker);
+        push @{ $result->CodeSigningConfigs }, @{ $next_result->CodeSigningConfigs };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'CodeSigningConfigs') foreach (@{ $result->CodeSigningConfigs });
+        $result = $self->ListCodeSigningConfigs(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'CodeSigningConfigs') foreach (@{ $result->CodeSigningConfigs });
     }
 
     return undef
@@ -348,6 +416,29 @@ package Paws::Lambda;
         $result = $self->ListFunctions(@_, Marker => $result->NextMarker);
       }
       $callback->($_ => 'Functions') foreach (@{ $result->Functions });
+    }
+
+    return undef
+  }
+  sub ListAllFunctionsByCodeSigningConfig {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListFunctionsByCodeSigningConfig(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextMarker) {
+        $next_result = $self->ListFunctionsByCodeSigningConfig(@_, Marker => $next_result->NextMarker);
+        push @{ $result->FunctionArns }, @{ $next_result->FunctionArns };
+      }
+      return $result;
+    } else {
+      while ($result->NextMarker) {
+        $callback->($_ => 'FunctionArns') foreach (@{ $result->FunctionArns });
+        $result = $self->ListFunctionsByCodeSigningConfig(@_, Marker => $result->NextMarker);
+      }
+      $callback->($_ => 'FunctionArns') foreach (@{ $result->FunctionArns });
     }
 
     return undef
@@ -446,7 +537,7 @@ package Paws::Lambda;
   }
 
 
-  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateEventSourceMapping CreateFunction DeleteAlias DeleteEventSourceMapping DeleteFunction DeleteFunctionConcurrency DeleteFunctionEventInvokeConfig DeleteLayerVersion DeleteProvisionedConcurrencyConfig GetAccountSettings GetAlias GetEventSourceMapping GetFunction GetFunctionConcurrency GetFunctionConfiguration GetFunctionEventInvokeConfig GetLayerVersion GetLayerVersionByArn GetLayerVersionPolicy GetPolicy GetProvisionedConcurrencyConfig Invoke InvokeAsync ListAliases ListEventSourceMappings ListFunctionEventInvokeConfigs ListFunctions ListLayers ListLayerVersions ListProvisionedConcurrencyConfigs ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionConcurrency PutFunctionEventInvokeConfig PutProvisionedConcurrencyConfig RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration UpdateFunctionEventInvokeConfig / }
+  sub operations { qw/AddLayerVersionPermission AddPermission CreateAlias CreateCodeSigningConfig CreateEventSourceMapping CreateFunction DeleteAlias DeleteCodeSigningConfig DeleteEventSourceMapping DeleteFunction DeleteFunctionCodeSigningConfig DeleteFunctionConcurrency DeleteFunctionEventInvokeConfig DeleteLayerVersion DeleteProvisionedConcurrencyConfig GetAccountSettings GetAlias GetCodeSigningConfig GetEventSourceMapping GetFunction GetFunctionCodeSigningConfig GetFunctionConcurrency GetFunctionConfiguration GetFunctionEventInvokeConfig GetLayerVersion GetLayerVersionByArn GetLayerVersionPolicy GetPolicy GetProvisionedConcurrencyConfig Invoke InvokeAsync ListAliases ListCodeSigningConfigs ListEventSourceMappings ListFunctionEventInvokeConfigs ListFunctions ListFunctionsByCodeSigningConfig ListLayers ListLayerVersions ListProvisionedConcurrencyConfigs ListTags ListVersionsByFunction PublishLayerVersion PublishVersion PutFunctionCodeSigningConfig PutFunctionConcurrency PutFunctionEventInvokeConfig PutProvisionedConcurrencyConfig RemoveLayerVersionPermission RemovePermission TagResource UntagResource UpdateAlias UpdateCodeSigningConfig UpdateEventSourceMapping UpdateFunctionCode UpdateFunctionConfiguration UpdateFunctionEventInvokeConfig / }
 
 1;
 
@@ -474,17 +565,16 @@ Paws::Lambda - Perl Interface to AWS AWS Lambda
 
 =head1 DESCRIPTION
 
-AWS Lambda
+Lambda
 
 B<Overview>
 
-This is the I<AWS Lambda API Reference>. The AWS Lambda Developer Guide
+This is the I<Lambda API Reference>. The Lambda Developer Guide
 provides additional information. For the service overview, see What is
-AWS Lambda (https://docs.aws.amazon.com/lambda/latest/dg/welcome.html),
-and for information about how the service works, see AWS Lambda: How it
-Works
+Lambda (https://docs.aws.amazon.com/lambda/latest/dg/welcome.html), and
+for information about how the service works, see Lambda: How it Works
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-introduction.html)
-in the B<AWS Lambda Developer Guide>.
+in the B<Lambda Developer Guide>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lambda-2015-03-31>
 
@@ -516,12 +606,12 @@ Each argument is described in detail in: L<Paws::Lambda::AddLayerVersionPermissi
 
 Returns: a L<Paws::Lambda::AddLayerVersionPermissionResponse> instance
 
-Adds permissions to the resource-based policy of a version of an AWS
-Lambda layer
+Adds permissions to the resource-based policy of a version of an Lambda
+layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 Use this action to grant layer usage permission to other accounts. You
-can grant permission to a single account, all AWS accounts, or all
-accounts in an organization.
+can grant permission to a single account, all accounts in an
+organization, or all Amazon Web Services accounts.
 
 To revoke permission, call RemoveLayerVersionPermission with the
 statement ID that you specified when you added it.
@@ -556,18 +646,18 @@ Each argument is described in detail in: L<Paws::Lambda::AddPermission>
 
 Returns: a L<Paws::Lambda::AddPermissionResponse> instance
 
-Grants an AWS service or another account permission to use a function.
-You can apply the policy at the function level, or specify a qualifier
-to restrict access to a single version or alias. If you use a
-qualifier, the invoker must use the full Amazon Resource Name (ARN) of
-that version or alias to invoke the function.
+Grants an Amazon Web Services service or another account permission to
+use a function. You can apply the policy at the function level, or
+specify a qualifier to restrict access to a single version or alias. If
+you use a qualifier, the invoker must use the full Amazon Resource Name
+(ARN) of that version or alias to invoke the function.
 
 To grant permission to another account, specify the account ID as the
-C<Principal>. For AWS services, the principal is a domain-style
-identifier defined by the service, like C<s3.amazonaws.com> or
-C<sns.amazonaws.com>. For AWS services, you can also specify the ARN or
-owning account of the associated resource as the C<SourceArn> or
-C<SourceAccount>. If you grant permission to a service principal
+C<Principal>. For Amazon Web Services services, the principal is a
+domain-style identifier defined by the service, like
+C<s3.amazonaws.com> or C<sns.amazonaws.com>. For Amazon Web Services
+services, you can also specify the ARN of the associated resource as
+the C<SourceArn>. If you grant permission to a service principal
 without specifying the source, other accounts could potentially
 configure resources in their account to invoke your Lambda function.
 
@@ -608,11 +698,33 @@ versions. Use the C<RoutingConfig> parameter to specify a second
 version and the percentage of invocation requests that it receives.
 
 
-=head2 CreateEventSourceMapping
+=head2 CreateCodeSigningConfig
 
 =over
 
-=item EventSourceArn => Str
+=item AllowedPublishers => L<Paws::Lambda::AllowedPublishers>
+
+=item [CodeSigningPolicies => L<Paws::Lambda::CodeSigningPolicies>]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::CreateCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::CreateCodeSigningConfigResponse> instance
+
+Creates a code signing configuration. A code signing configuration
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-trustedcode.html)
+defines a list of allowed signing profiles and defines the code-signing
+validation policy (action to be taken if deployment validation checks
+fail).
+
+
+=head2 CreateEventSourceMapping
+
+=over
 
 =item FunctionName => Str
 
@@ -624,6 +736,10 @@ version and the percentage of invocation requests that it receives.
 
 =item [Enabled => Bool]
 
+=item [EventSourceArn => Str]
+
+=item [FunctionResponseTypes => ArrayRef[Str|Undef]]
+
 =item [MaximumBatchingWindowInSeconds => Int]
 
 =item [MaximumRecordAgeInSeconds => Int]
@@ -632,9 +748,19 @@ version and the percentage of invocation requests that it receives.
 
 =item [ParallelizationFactor => Int]
 
+=item [Queues => ArrayRef[Str|Undef]]
+
+=item [SelfManagedEventSource => L<Paws::Lambda::SelfManagedEventSource>]
+
+=item [SourceAccessConfigurations => ArrayRef[L<Paws::Lambda::SourceAccessConfiguration>]]
+
 =item [StartingPosition => Str]
 
 =item [StartingPositionTimestamp => Str]
+
+=item [Topics => ArrayRef[Str|Undef]]
+
+=item [TumblingWindowInSeconds => Int]
 
 
 =back
@@ -643,27 +769,44 @@ Each argument is described in detail in: L<Paws::Lambda::CreateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Creates a mapping between an event source and an AWS Lambda function.
+Creates a mapping between an event source and an Lambda function.
 Lambda reads items from the event source and triggers the function.
 
-For details about each event source type, see the following topics.
+For details about each event source type, see the following topics. In
+particular, each of the topics describes the required and optional
+parameters for the specific event source.
 
 =over
 
 =item *
 
-Using AWS Lambda with Amazon DynamoDB
-(https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html)
+Configuring a Dynamo DB stream as an event source
+(https://docs.aws.amazon.com/lambda/latest/dg/with-ddb.html#services-dynamodb-eventsourcemapping)
 
 =item *
 
-Using AWS Lambda with Amazon Kinesis
-(https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html)
+Configuring a Kinesis stream as an event source
+(https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html#services-kinesis-eventsourcemapping)
 
 =item *
 
-Using AWS Lambda with Amazon SQS
-(https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html)
+Configuring an SQS queue as an event source
+(https://docs.aws.amazon.com/lambda/latest/dg/with-sqs.html#events-sqs-eventsource)
+
+=item *
+
+Configuring an MQ broker as an event source
+(https://docs.aws.amazon.com/lambda/latest/dg/with-mq.html#services-mq-eventsourcemapping)
+
+=item *
+
+Configuring MSK as an event source
+(https://docs.aws.amazon.com/lambda/latest/dg/with-msk.html)
+
+=item *
+
+Configuring Self-Managed Apache Kafka as an event source
+(https://docs.aws.amazon.com/lambda/latest/dg/kafka-smaa.html)
 
 =back
 
@@ -685,12 +828,14 @@ Amazon SNS topic.
 =item *
 
 C<MaximumRecordAgeInSeconds> - Discard records older than the specified
-age.
+age. The default value is infinite (-1). When set to infinite (-1),
+failed records are retried until the record expires
 
 =item *
 
 C<MaximumRetryAttempts> - Discard records after the specified number of
-retries.
+retries. The default value is infinite (-1). When set to infinite (-1),
+failed records are retried until the record expires.
 
 =item *
 
@@ -709,11 +854,9 @@ concurrently.
 
 =item FunctionName => Str
 
-=item Handler => Str
-
 =item Role => Str
 
-=item Runtime => Str
+=item [CodeSigningConfigArn => Str]
 
 =item [DeadLetterConfig => L<Paws::Lambda::DeadLetterConfig>]
 
@@ -721,13 +864,23 @@ concurrently.
 
 =item [Environment => L<Paws::Lambda::Environment>]
 
+=item [FileSystemConfigs => ArrayRef[L<Paws::Lambda::FileSystemConfig>]]
+
+=item [Handler => Str]
+
+=item [ImageConfig => L<Paws::Lambda::ImageConfig>]
+
 =item [KMSKeyArn => Str]
 
 =item [Layers => ArrayRef[Str|Undef]]
 
 =item [MemorySize => Int]
 
+=item [PackageType => Str]
+
 =item [Publish => Bool]
+
+=item [Runtime => Str]
 
 =item [Tags => L<Paws::Lambda::Tags>]
 
@@ -746,12 +899,27 @@ Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
 Creates a Lambda function. To create a function, you need a deployment
 package
-(https://docs.aws.amazon.com/lambda/latest/dg/deployment-package-v2.html)
+(https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html)
 and an execution role
 (https://docs.aws.amazon.com/lambda/latest/dg/intro-permission-model.html#lambda-intro-execution-role).
-The deployment package contains your function code. The execution role
-grants the function permission to use AWS services, such as Amazon
-CloudWatch Logs for log streaming and AWS X-Ray for request tracing.
+The deployment package is a .zip file archive or container image that
+contains your function code. The execution role grants the function
+permission to use Amazon Web Services services, such as Amazon
+CloudWatch Logs for log streaming and X-Ray for request tracing.
+
+You set the package type to C<Image> if the deployment package is a
+container image
+(https://docs.aws.amazon.com/lambda/latest/dg/lambda-images.html). For
+a container image, the code property must include the URI of a
+container image in the Amazon ECR registry. You do not need to specify
+the handler and runtime properties.
+
+You set the package type to C<Zip> if the deployment package is a .zip
+file archive
+(https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip).
+For a .zip file archive, the code property specifies the location of
+the .zip file. You must also specify the handler and runtime
+properties.
 
 When you create a function, Lambda provisions an instance of the
 function and its supporting resources. If your function connects to a
@@ -777,15 +945,24 @@ the unpublished and published versions of the function, and include
 tags (TagResource) and per-function concurrency limits
 (PutFunctionConcurrency).
 
-If another account or an AWS service invokes your function, use
-AddPermission to grant permission by creating a resource-based IAM
-policy. You can grant permissions at the function level, on a version,
-or on an alias.
+You can use code signing if your deployment package is a .zip file
+archive. To enable code signing for this function, specify the ARN of a
+code-signing configuration. When a user attempts to deploy a code
+package with UpdateFunctionCode, Lambda checks that the code package
+has a valid signature from a trusted publisher. The code-signing
+configuration includes set set of signing profiles, which define the
+trusted publishers for this function.
+
+If another account or an Amazon Web Services service invokes your
+function, use AddPermission to grant permission by creating a
+resource-based IAM policy. You can grant permissions at the function
+level, on a version, or on an alias.
 
 To invoke your function directly, use Invoke. To invoke your function
-in response to events in other AWS services, create an event source
-mapping (CreateEventSourceMapping), or configure a function trigger in
-the other service. For more information, see Invoking Functions
+in response to events in other Amazon Web Services services, create an
+event source mapping (CreateEventSourceMapping), or configure a
+function trigger in the other service. For more information, see
+Invoking Functions
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-invocation.html).
 
 
@@ -806,6 +983,23 @@ Returns: nothing
 
 Deletes a Lambda function alias
 (https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+
+
+=head2 DeleteCodeSigningConfig
+
+=over
+
+=item CodeSigningConfigArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::DeleteCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::DeleteCodeSigningConfigResponse> instance
+
+Deletes the code signing configuration. You can delete the code signing
+configuration only if no function is using it.
 
 
 =head2 DeleteEventSourceMapping
@@ -850,9 +1044,25 @@ the C<Qualifier> parameter. Otherwise, all versions and aliases are
 deleted.
 
 To delete Lambda event source mappings that invoke a function, use
-DeleteEventSourceMapping. For AWS services and resources that invoke
-your function directly, delete the trigger in the service where you
-originally configured it.
+DeleteEventSourceMapping. For Amazon Web Services services and
+resources that invoke your function directly, delete the trigger in the
+service where you originally configured it.
+
+
+=head2 DeleteFunctionCodeSigningConfig
+
+=over
+
+=item FunctionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::DeleteFunctionCodeSigningConfig>
+
+Returns: nothing
+
+Removes the code signing configuration from the function.
 
 
 =head2 DeleteFunctionConcurrency
@@ -908,7 +1118,7 @@ Each argument is described in detail in: L<Paws::Lambda::DeleteLayerVersion>
 
 Returns: nothing
 
-Deletes a version of an AWS Lambda layer
+Deletes a version of an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 Deleted versions can no longer be viewed or added to functions. To
 avoid breaking functions, a copy of the version remains in Lambda until
@@ -946,7 +1156,7 @@ Returns: a L<Paws::Lambda::GetAccountSettingsResponse> instance
 
 Retrieves details about your account's limits
 (https://docs.aws.amazon.com/lambda/latest/dg/limits.html) and usage in
-an AWS Region.
+an Amazon Web Services Region.
 
 
 =head2 GetAlias
@@ -966,6 +1176,22 @@ Returns: a L<Paws::Lambda::AliasConfiguration> instance
 
 Returns details about a Lambda function alias
 (https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
+
+
+=head2 GetCodeSigningConfig
+
+=over
+
+=item CodeSigningConfigArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::GetCodeSigningConfigResponse> instance
+
+Returns information about the specified code signing configuration.
 
 
 =head2 GetEventSourceMapping
@@ -1004,6 +1230,22 @@ Returns information about the function or function version, with a link
 to download the deployment package that's valid for 10 minutes. If you
 specify a function version, only details that are specific to that
 version are returned.
+
+
+=head2 GetFunctionCodeSigningConfig
+
+=over
+
+=item FunctionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::GetFunctionCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::GetFunctionCodeSigningConfigResponse> instance
+
+Returns the code signing configuration for the specified function.
 
 
 =head2 GetFunctionConcurrency
@@ -1084,7 +1326,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetLayerVersion>
 
 Returns: a L<Paws::Lambda::GetLayerVersionResponse> instance
 
-Returns information about a version of an AWS Lambda layer
+Returns information about a version of an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
 with a link to download the layer archive that's valid for 10 minutes.
 
@@ -1102,7 +1344,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetLayerVersionByArn>
 
 Returns: a L<Paws::Lambda::GetLayerVersionResponse> instance
 
-Returns information about a version of an AWS Lambda layer
+Returns information about a version of an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html),
 with a link to download the layer archive that's valid for 10 minutes.
 
@@ -1122,7 +1364,7 @@ Each argument is described in detail in: L<Paws::Lambda::GetLayerVersionPolicy>
 
 Returns: a L<Paws::Lambda::GetLayerVersionPolicyResponse> instance
 
-Returns the permission policy for a version of an AWS Lambda layer
+Returns the permission policy for a version of an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 For more information, see AddLayerVersionPermission.
 
@@ -1233,7 +1475,8 @@ during synchronous invocation while it waits for a response. Configure
 your HTTP client, SDK, firewall, proxy, or operating system to allow
 for long connections with timeout or keep-alive settings.
 
-This operation requires permission for the C<lambda:InvokeFunction>
+This operation requires permission for the lambda:InvokeFunction
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/list_awslambda.html)
 action.
 
 
@@ -1279,6 +1522,27 @@ Returns: a L<Paws::Lambda::ListAliasesResponse> instance
 Returns a list of aliases
 (https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html)
 for a Lambda function.
+
+
+=head2 ListCodeSigningConfigs
+
+=over
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::ListCodeSigningConfigs>
+
+Returns: a L<Paws::Lambda::ListCodeSigningConfigsResponse> instance
+
+Returns a list of code signing configurations
+(https://docs.aws.amazon.com/lambda/latest/dg/configuring-codesigning.html).
+A request returns up to 10,000 configurations per call. You can use the
+C<MaxItems> parameter to return fewer configurations per call.
 
 
 =head2 ListEventSourceMappings
@@ -1351,8 +1615,34 @@ Returns a list of Lambda functions, with the version-specific
 configuration of each. Lambda returns up to 50 functions per call.
 
 Set C<FunctionVersion> to C<ALL> to include all published versions of
-each function in addition to the unpublished version. To get more
-information about a function or version, use GetFunction.
+each function in addition to the unpublished version.
+
+The C<ListFunctions> action returns a subset of the
+FunctionConfiguration fields. To get the additional fields (State,
+StateReasonCode, StateReason, LastUpdateStatus, LastUpdateStatusReason,
+LastUpdateStatusReasonCode) for a function or version, use GetFunction.
+
+
+=head2 ListFunctionsByCodeSigningConfig
+
+=over
+
+=item CodeSigningConfigArn => Str
+
+=item [Marker => Str]
+
+=item [MaxItems => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::ListFunctionsByCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::ListFunctionsByCodeSigningConfigResponse> instance
+
+List the functions that use the specified code signing configuration.
+You can use this method prior to deleting a code signing configuration,
+to verify that no functions are using it.
 
 
 =head2 ListLayers
@@ -1372,7 +1662,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListLayers>
 
 Returns: a L<Paws::Lambda::ListLayersResponse> instance
 
-Lists AWS Lambda layers
+Lists Lambda layers
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 and shows information about the latest version of each. Specify a
 runtime identifier
@@ -1400,7 +1690,7 @@ Each argument is described in detail in: L<Paws::Lambda::ListLayerVersions>
 
 Returns: a L<Paws::Lambda::ListLayerVersionsResponse> instance
 
-Lists the versions of an AWS Lambda layer
+Lists the versions of an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 Versions that have been deleted aren't listed. Specify a runtime
 identifier
@@ -1492,7 +1782,7 @@ Each argument is described in detail in: L<Paws::Lambda::PublishLayerVersion>
 
 Returns: a L<Paws::Lambda::PublishLayerVersionResponse> instance
 
-Creates an AWS Lambda layer
+Creates an Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html)
 from a ZIP archive. Each time you call C<PublishLayerVersion> with the
 same layer name, a new version is created.
@@ -1526,13 +1816,33 @@ from the current code and configuration of a function. Use versions to
 create a snapshot of your function code and configuration that doesn't
 change.
 
-AWS Lambda doesn't publish a version if the function's configuration
-and code haven't changed since the last version. Use UpdateFunctionCode
-or UpdateFunctionConfiguration to update the function before publishing
-a version.
+Lambda doesn't publish a version if the function's configuration and
+code haven't changed since the last version. Use UpdateFunctionCode or
+UpdateFunctionConfiguration to update the function before publishing a
+version.
 
 Clients can invoke versions directly or with an alias. To create an
 alias, use CreateAlias.
+
+
+=head2 PutFunctionCodeSigningConfig
+
+=over
+
+=item CodeSigningConfigArn => Str
+
+=item FunctionName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::PutFunctionCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::PutFunctionCodeSigningConfigResponse> instance
+
+Update the code signing configuration for the function. Changes to the
+code signing configuration take effect the next time a user tries to
+deploy a code package to the function.
 
 
 =head2 PutFunctionConcurrency
@@ -1594,7 +1904,7 @@ a function, version, or alias. If a configuration already exists for a
 function, version, or alias, this operation overwrites it. If you
 exclude any settings, they are removed. To set one option without
 affecting existing settings for other options, use
-PutFunctionEventInvokeConfig.
+UpdateFunctionEventInvokeConfig.
 
 By default, Lambda retries an asynchronous invocation twice if the
 function returns an error. It retains events in a queue for up to six
@@ -1652,7 +1962,7 @@ Each argument is described in detail in: L<Paws::Lambda::RemoveLayerVersionPermi
 
 Returns: nothing
 
-Removes a statement from the permissions policy for a version of an AWS
+Removes a statement from the permissions policy for a version of an
 Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 For more information, see AddLayerVersionPermission.
@@ -1677,8 +1987,9 @@ Each argument is described in detail in: L<Paws::Lambda::RemovePermission>
 
 Returns: nothing
 
-Revokes function-use permission from an AWS service or another account.
-You can get the ID of the statement from the output of GetPolicy.
+Revokes function-use permission from an Amazon Web Services service or
+another account. You can get the ID of the statement from the output of
+GetPolicy.
 
 
 =head2 TagResource
@@ -1747,6 +2058,30 @@ Updates the configuration of a Lambda function alias
 (https://docs.aws.amazon.com/lambda/latest/dg/versioning-aliases.html).
 
 
+=head2 UpdateCodeSigningConfig
+
+=over
+
+=item CodeSigningConfigArn => Str
+
+=item [AllowedPublishers => L<Paws::Lambda::AllowedPublishers>]
+
+=item [CodeSigningPolicies => L<Paws::Lambda::CodeSigningPolicies>]
+
+=item [Description => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Lambda::UpdateCodeSigningConfig>
+
+Returns: a L<Paws::Lambda::UpdateCodeSigningConfigResponse> instance
+
+Update the code signing configuration. Changes to the code signing
+configuration take effect the next time a user tries to deploy a code
+package to the function.
+
+
 =head2 UpdateEventSourceMapping
 
 =over
@@ -1763,6 +2098,8 @@ Updates the configuration of a Lambda function alias
 
 =item [FunctionName => Str]
 
+=item [FunctionResponseTypes => ArrayRef[Str|Undef]]
+
 =item [MaximumBatchingWindowInSeconds => Int]
 
 =item [MaximumRecordAgeInSeconds => Int]
@@ -1771,6 +2108,10 @@ Updates the configuration of a Lambda function alias
 
 =item [ParallelizationFactor => Int]
 
+=item [SourceAccessConfigurations => ArrayRef[L<Paws::Lambda::SourceAccessConfiguration>]]
+
+=item [TumblingWindowInSeconds => Int]
+
 
 =back
 
@@ -1778,7 +2119,7 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateEventSourceMappin
 
 Returns: a L<Paws::Lambda::EventSourceMappingConfiguration> instance
 
-Updates an event source mapping. You can change the function that AWS
+Updates an event source mapping. You can change the function that
 Lambda invokes, or pause invocation and resume later from the same
 location.
 
@@ -1800,12 +2141,14 @@ Amazon SNS topic.
 =item *
 
 C<MaximumRecordAgeInSeconds> - Discard records older than the specified
-age.
+age. The default value is infinite (-1). When set to infinite (-1),
+failed records are retried until the record expires
 
 =item *
 
 C<MaximumRetryAttempts> - Discard records after the specified number of
-retries.
+retries. The default value is infinite (-1). When set to infinite (-1),
+failed records are retried until the record expires.
 
 =item *
 
@@ -1823,6 +2166,8 @@ concurrently.
 =item FunctionName => Str
 
 =item [DryRun => Bool]
+
+=item [ImageUri => Str]
 
 =item [Publish => Bool]
 
@@ -1843,10 +2188,17 @@ Each argument is described in detail in: L<Paws::Lambda::UpdateFunctionCode>
 
 Returns: a L<Paws::Lambda::FunctionConfiguration> instance
 
-Updates a Lambda function's code.
+Updates a Lambda function's code. If code signing is enabled for the
+function, the code package must be signed by a trusted publisher. For
+more information, see Configuring code signing
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-trustedcode.html).
 
 The function's code is locked when you publish a version. You can't
 modify the code of a published version, only the unpublished version.
+
+For a function defined as a container image, Lambda resolves the image
+tag to an image digest. In Amazon ECR, if you update the image tag to a
+new image, Lambda does not automatically update the function.
 
 
 =head2 UpdateFunctionConfiguration
@@ -1861,7 +2213,11 @@ modify the code of a published version, only the unpublished version.
 
 =item [Environment => L<Paws::Lambda::Environment>]
 
+=item [FileSystemConfigs => ArrayRef[L<Paws::Lambda::FileSystemConfig>]]
+
 =item [Handler => Str]
+
+=item [ImageConfig => L<Paws::Lambda::ImageConfig>]
 
 =item [KMSKeyArn => Str]
 
@@ -1905,7 +2261,8 @@ when you publish a version. You can't modify the configuration of a
 published version, only the unpublished version.
 
 To configure function concurrency, use PutFunctionConcurrency. To grant
-invoke permissions to an account or AWS service, use AddPermission.
+invoke permissions to an account or Amazon Web Services service, use
+AddPermission.
 
 
 =head2 UpdateFunctionEventInvokeConfig
@@ -1954,6 +2311,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Lambda::ListAliasesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllCodeSigningConfigs(sub { },[Marker => Str, MaxItems => Int])
+
+=head2 ListAllCodeSigningConfigs([Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CodeSigningConfigs, passing the object as the first parameter, and the string 'CodeSigningConfigs' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListCodeSigningConfigsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllEventSourceMappings(sub { },[EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
 
 =head2 ListAllEventSourceMappings([EventSourceArn => Str, FunctionName => Str, Marker => Str, MaxItems => Int])
@@ -1988,6 +2357,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Functions, passing the object as the first parameter, and the string 'Functions' as the second parameter 
 
 If not, it will return a a L<Paws::Lambda::ListFunctionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllFunctionsByCodeSigningConfig(sub { },CodeSigningConfigArn => Str, [Marker => Str, MaxItems => Int])
+
+=head2 ListAllFunctionsByCodeSigningConfig(CodeSigningConfigArn => Str, [Marker => Str, MaxItems => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - FunctionArns, passing the object as the first parameter, and the string 'FunctionArns' as the second parameter 
+
+If not, it will return a a L<Paws::Lambda::ListFunctionsByCodeSigningConfigResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllLayers(sub { },[CompatibleRuntime => Str, Marker => Str, MaxItems => Int])

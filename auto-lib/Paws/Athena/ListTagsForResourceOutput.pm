@@ -22,7 +22,7 @@ A token to be used by the next request if this request is truncated.
 
 =head2 Tags => ArrayRef[L<Paws::Athena::Tag>]
 
-The list of tags associated with this workgroup.
+The list of tags associated with the specified resource.
 
 
 =head2 _request_id => Str

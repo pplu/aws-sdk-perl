@@ -5,6 +5,7 @@ package Paws::DS::CertificateInfo;
   has CommonName => (is => 'ro', isa => 'Str');
   has ExpiryDateTime => (is => 'ro', isa => 'Str');
   has State => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DS::CertificateInfo object:
 
-  $service_obj->Method(Att1 => { CertificateId => $value, ..., State => $value  });
+  $service_obj->Method(Att1 => { CertificateId => $value, ..., Type => $value  });
 
 =head3 Results returned from an API call
 
@@ -59,6 +60,13 @@ The date and time when the certificate will expire.
 =head2 State => Str
 
 The state of the certificate.
+
+
+=head2 Type => Str
+
+The function that the registered certificate performs. Valid values
+include C<ClientLDAPS> or C<ClientCertAuth>. The default value is
+C<ClientLDAPS>.
 
 
 

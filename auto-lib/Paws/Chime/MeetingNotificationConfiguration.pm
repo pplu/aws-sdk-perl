@@ -34,8 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Chime::Meet
 
 =head1 DESCRIPTION
 
-The configuration for resource targets to receive notifications when
-Amazon Chime SDK meeting and attendee events occur.
+The resource target configurations for receiving Amazon Chime SDK
+meeting and attendee event notifications. The Amazon Chime SDK supports
+resource targets located in the US East (N. Virginia) AWS Region
+(C<us-east-1>).
 
 =head1 ATTRIBUTES
 

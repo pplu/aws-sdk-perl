@@ -1,6 +1,7 @@
 package Paws::EC2::CoipPool;
   use Moose;
   has LocalGatewayRouteTableId => (is => 'ro', isa => 'Str', request_name => 'localGatewayRouteTableId', traits => ['NameInRequest']);
+  has PoolArn => (is => 'ro', isa => 'Str', request_name => 'poolArn', traits => ['NameInRequest']);
   has PoolCidrs => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'poolCidrSet', traits => ['NameInRequest']);
   has PoolId => (is => 'ro', isa => 'Str', request_name => 'poolId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
@@ -42,6 +43,11 @@ This class has no description
 =head2 LocalGatewayRouteTableId => Str
 
 The ID of the local gateway route table.
+
+
+=head2 PoolArn => Str
+
+The ARN of the address pool.
 
 
 =head2 PoolCidrs => ArrayRef[Str|Undef]

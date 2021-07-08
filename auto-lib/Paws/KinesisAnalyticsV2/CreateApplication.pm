@@ -3,6 +3,7 @@ package Paws::KinesisAnalyticsV2::CreateApplication;
   use Moose;
   has ApplicationConfiguration => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfiguration');
   has ApplicationDescription => (is => 'ro', isa => 'Str');
+  has ApplicationMode => (is => 'ro', isa => 'Str');
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has CloudWatchLoggingOptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOption]');
   has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
@@ -44,12 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             S3ContentLocation => {
               BucketARN     => 'MyBucketARN',        # min: 1, max: 2048
               FileKey       => 'MyFileKey',          # min: 1, max: 1024
-              ObjectVersion => 'MyObjectVersion',    # OPTIONAL
+              ObjectVersion => 'MyObjectVersion',    # max: 1024; OPTIONAL
             },    # OPTIONAL
             TextContent    => 'MyTextContent',         # max: 102400; OPTIONAL
             ZipFileContent => 'BlobZipFileContent',    # max: 52428800; OPTIONAL
           },    # OPTIONAL
-        },
+        },    # OPTIONAL
         ApplicationSnapshotConfiguration => {
           SnapshotsEnabled => 1,
 
@@ -94,9 +95,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               InputSchema => {
                 RecordColumns => [
                   {
-                    Name    => 'MyRecordColumnName',
-                    SqlType => 'MyRecordColumnSqlType',    # min: 1
-                    Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+                    Name    => 'MyRecordColumnName',      # min: 1, max: 256
+                    SqlType => 'MyRecordColumnSqlType',   # min: 1, max: 100
+                    Mapping => 'MyRecordColumnMapping',   # max: 65535; OPTIONAL
                   },
                   ...
                 ],    # min: 1, max: 1000
@@ -105,17 +106,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',    # min: 1
-                      RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1, max: 1024
+                      RecordRowDelimiter =>
+                        'MyRecordRowDelimiter',       # min: 1, max: 1024
 
                     },    # OPTIONAL
                     JSONMappingParameters => {
-                      RecordRowPath => 'MyRecordRowPath',    # min: 1
+                      RecordRowPath => 'MyRecordRowPath',   # min: 1, max: 65535
 
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },
-                RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
+                RecordEncoding => 'MyRecordEncoding', # min: 5, max: 5; OPTIONAL
               },
               NamePrefix       => 'MyInAppStreamName',    # min: 1, max: 32
               InputParallelism => {
@@ -166,9 +168,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               ReferenceSchema => {
                 RecordColumns => [
                   {
-                    Name    => 'MyRecordColumnName',
-                    SqlType => 'MyRecordColumnSqlType',    # min: 1
-                    Mapping => 'MyRecordColumnMapping',    # OPTIONAL
+                    Name    => 'MyRecordColumnName',      # min: 1, max: 256
+                    SqlType => 'MyRecordColumnSqlType',   # min: 1, max: 100
+                    Mapping => 'MyRecordColumnMapping',   # max: 65535; OPTIONAL
                   },
                   ...
                 ],    # min: 1, max: 1000
@@ -177,17 +179,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                   MappingParameters => {
                     CSVMappingParameters => {
                       RecordColumnDelimiter =>
-                        'MyRecordColumnDelimiter',    # min: 1
-                      RecordRowDelimiter => 'MyRecordRowDelimiter',    # min: 1
+                        'MyRecordColumnDelimiter',    # min: 1, max: 1024
+                      RecordRowDelimiter =>
+                        'MyRecordRowDelimiter',       # min: 1, max: 1024
 
                     },    # OPTIONAL
                     JSONMappingParameters => {
-                      RecordRowPath => 'MyRecordRowPath',    # min: 1
+                      RecordRowPath => 'MyRecordRowPath',   # min: 1, max: 65535
 
                     },    # OPTIONAL
                   },    # OPTIONAL
                 },
-                RecordEncoding => 'MyRecordEncoding',    # OPTIONAL
+                RecordEncoding => 'MyRecordEncoding', # min: 5, max: 5; OPTIONAL
               },
               TableName             => 'MyInAppTableName',    # min: 1, max: 32
               S3ReferenceDataSource => {
@@ -206,8 +209,46 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
+        ZeppelinApplicationConfiguration => {
+          CatalogConfiguration => {
+            GlueDataCatalogConfiguration => {
+              DatabaseARN => 'MyDatabaseARN',    # min: 1, max: 2048
+
+            },
+
+          },    # OPTIONAL
+          CustomArtifactsConfiguration => [
+            {
+              ArtifactType   => 'UDF',    # values: UDF, DEPENDENCY_JAR
+              MavenReference => {
+                ArtifactId => 'MyMavenArtifactId',    # min: 1, max: 256
+                GroupId    => 'MyMavenGroupId',       # min: 1, max: 256
+                Version    => 'MyMavenVersion',       # min: 1, max: 256
+
+              },    # OPTIONAL
+              S3ContentLocation => {
+                BucketARN     => 'MyBucketARN',        # min: 1, max: 2048
+                FileKey       => 'MyFileKey',          # min: 1, max: 1024
+                ObjectVersion => 'MyObjectVersion',    # max: 1024; OPTIONAL
+              },    # OPTIONAL
+            },
+            ...
+          ],    # max: 50; OPTIONAL
+          DeployAsApplicationConfiguration => {
+            S3ContentLocation => {
+              BucketARN => 'MyBucketARN',    # min: 1, max: 2048
+              BasePath  => 'MyBasePath',     # min: 1, max: 1024; OPTIONAL
+            },
+
+          },    # OPTIONAL
+          MonitoringConfiguration => {
+            LogLevel => 'INFO',    # values: INFO, WARN, ERROR, DEBUG; OPTIONAL
+
+          },    # OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
       ApplicationDescription   => 'MyApplicationDescription',    # OPTIONAL
+      ApplicationMode          => 'STREAMING',                   # OPTIONAL
       CloudWatchLoggingOptions => [
         {
           LogStreamARN => 'MyLogStreamARN',    # min: 1, max: 2048
@@ -247,6 +288,14 @@ A summary description of the application.
 
 
 
+=head2 ApplicationMode => Str
+
+Use the C<STREAMING> mode to create a Kinesis Data Analytics Studio
+notebook. To create a Kinesis Data Analytics Studio notebook, use the
+C<INTERACTIVE> mode.
+
+Valid values are: C<"STREAMING">, C<"INTERACTIVE">
+
 =head2 B<REQUIRED> ApplicationName => Str
 
 The name of your application (for example, C<sample-app>).
@@ -262,10 +311,10 @@ monitor application configuration errors.
 
 =head2 B<REQUIRED> RuntimeEnvironment => Str
 
-The runtime environment for the application (C<SQL-1.0> or
-C<FLINK-1_6>).
+The runtime environment for the application (C<SQL-1_0>, C<FLINK-1_6>,
+C<FLINK-1_8>, or C<FLINK-1_11>).
 
-Valid values are: C<"SQL-1_0">, C<"FLINK-1_6">, C<"FLINK-1_8">
+Valid values are: C<"SQL-1_0">, C<"FLINK-1_6">, C<"FLINK-1_8">, C<"FLINK-1_11">, C<"ZEPPELIN-FLINK-1_0">
 
 =head2 B<REQUIRED> ServiceExecutionRole => Str
 

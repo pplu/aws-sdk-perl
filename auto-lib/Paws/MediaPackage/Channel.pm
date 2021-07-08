@@ -3,8 +3,10 @@ package Paws::MediaPackage::Channel;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has EgressAccessLogs => (is => 'ro', isa => 'Paws::MediaPackage::EgressAccessLogs', request_name => 'egressAccessLogs', traits => ['NameInRequest']);
   has HlsIngest => (is => 'ro', isa => 'Paws::MediaPackage::HlsIngest', request_name => 'hlsIngest', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
+  has IngressAccessLogs => (is => 'ro', isa => 'Paws::MediaPackage::IngressAccessLogs', request_name => 'ingressAccessLogs', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::MediaPackage::Tags', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
@@ -52,6 +54,11 @@ The Amazon Resource Name (ARN) assigned to the Channel.
 A short text description of the Channel.
 
 
+=head2 EgressAccessLogs => L<Paws::MediaPackage::EgressAccessLogs>
+
+
+
+
 =head2 HlsIngest => L<Paws::MediaPackage::HlsIngest>
 
 
@@ -60,6 +67,11 @@ A short text description of the Channel.
 =head2 Id => Str
 
 The ID of the Channel.
+
+
+=head2 IngressAccessLogs => L<Paws::MediaPackage::IngressAccessLogs>
+
+
 
 
 =head2 Tags => L<Paws::MediaPackage::Tags>

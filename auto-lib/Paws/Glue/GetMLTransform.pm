@@ -33,24 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedOn         = $GetMLTransformResponse->CreatedOn;
-    my $Description       = $GetMLTransformResponse->Description;
-    my $EvaluationMetrics = $GetMLTransformResponse->EvaluationMetrics;
-    my $GlueVersion       = $GetMLTransformResponse->GlueVersion;
-    my $InputRecordTables = $GetMLTransformResponse->InputRecordTables;
-    my $LabelCount        = $GetMLTransformResponse->LabelCount;
-    my $LastModifiedOn    = $GetMLTransformResponse->LastModifiedOn;
-    my $MaxCapacity       = $GetMLTransformResponse->MaxCapacity;
-    my $MaxRetries        = $GetMLTransformResponse->MaxRetries;
-    my $Name              = $GetMLTransformResponse->Name;
-    my $NumberOfWorkers   = $GetMLTransformResponse->NumberOfWorkers;
-    my $Parameters        = $GetMLTransformResponse->Parameters;
-    my $Role              = $GetMLTransformResponse->Role;
-    my $Schema            = $GetMLTransformResponse->Schema;
-    my $Status            = $GetMLTransformResponse->Status;
-    my $Timeout           = $GetMLTransformResponse->Timeout;
-    my $TransformId       = $GetMLTransformResponse->TransformId;
-    my $WorkerType        = $GetMLTransformResponse->WorkerType;
+    my $CreatedOn           = $GetMLTransformResponse->CreatedOn;
+    my $Description         = $GetMLTransformResponse->Description;
+    my $EvaluationMetrics   = $GetMLTransformResponse->EvaluationMetrics;
+    my $GlueVersion         = $GetMLTransformResponse->GlueVersion;
+    my $InputRecordTables   = $GetMLTransformResponse->InputRecordTables;
+    my $LabelCount          = $GetMLTransformResponse->LabelCount;
+    my $LastModifiedOn      = $GetMLTransformResponse->LastModifiedOn;
+    my $MaxCapacity         = $GetMLTransformResponse->MaxCapacity;
+    my $MaxRetries          = $GetMLTransformResponse->MaxRetries;
+    my $Name                = $GetMLTransformResponse->Name;
+    my $NumberOfWorkers     = $GetMLTransformResponse->NumberOfWorkers;
+    my $Parameters          = $GetMLTransformResponse->Parameters;
+    my $Role                = $GetMLTransformResponse->Role;
+    my $Schema              = $GetMLTransformResponse->Schema;
+    my $Status              = $GetMLTransformResponse->Status;
+    my $Timeout             = $GetMLTransformResponse->Timeout;
+    my $TransformEncryption = $GetMLTransformResponse->TransformEncryption;
+    my $TransformId         = $GetMLTransformResponse->TransformId;
+    my $WorkerType          = $GetMLTransformResponse->WorkerType;
 
     # Returns a L<Paws::Glue::GetMLTransformResponse> object.
 

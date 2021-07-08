@@ -61,8 +61,7 @@ The IP ranges. Not applicable for stale security group rules.
 
 =head2 PrefixListIds => ArrayRef[Str|Undef]
 
-The prefix list IDs for an AWS service. Not applicable for stale
-security group rules.
+The prefix list IDs. Not applicable for stale security group rules.
 
 
 =head2 ToPort => Int

@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) for the given GuardDuty resource
+The Amazon Resource Name (ARN) for the given GuardDuty resource.
 
 
 

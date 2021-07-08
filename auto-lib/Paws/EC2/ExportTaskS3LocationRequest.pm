@@ -39,7 +39,7 @@ This class has no description
 
 =head2 B<REQUIRED> S3Bucket => Str
 
-The destination S3 bucket.
+The destination Amazon S3 bucket.
 
 
 =head2 S3Prefix => Str

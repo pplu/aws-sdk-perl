@@ -76,7 +76,9 @@ must be for the same VPC as subnet specified.
 
 =head2 B<REQUIRED> SubnetId => Str
 
-The ID of the subnet to add the mount target in.
+The ID of the subnet to add the mount target in. For file systems that
+use One Zone storage classes, use the subnet that is associated with
+the file system's Availability Zone.
 
 
 

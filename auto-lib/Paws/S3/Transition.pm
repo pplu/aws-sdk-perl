@@ -35,7 +35,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Transit
 
 =head1 DESCRIPTION
 
-Specifies when an object transitions to a specified storage class.
+Specifies when an object transitions to a specified storage class. For
+more information about Amazon S3 lifecycle configuration rules, see
+Transitioning Objects Using Amazon S3 Lifecycle
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/lifecycle-transition-general-considerations.html)
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 

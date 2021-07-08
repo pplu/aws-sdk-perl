@@ -4,7 +4,9 @@ package Paws::S3::PutObjectTagging;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str', uri_name => 'Key', traits => ['ParamInURI'], required => 1);
+  has RequestPayer => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-payer', traits => ['ParamInHeader']);
   has Tagging => (is => 'ro', isa => 'Paws::S3::Tagging', traits => ['ParamInBody'], required => 1);
   has VersionId => (is => 'ro', isa => 'Str', query_name => 'versionId', traits => ['ParamInQuery']);
 
@@ -37,23 +39,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To add tags to an existing object
+    # The following example adds tags to an existing object.
     my $PutObjectTaggingOutput = $s3->PutObjectTagging(
-      Bucket  => 'MyBucketName',
-      Key     => 'MyObjectKey',
-      Tagging => {
-        TagSet => [
+      'Bucket'  => 'examplebucket',
+      'Key'     => 'HappyFace.jpg',
+      'Tagging' => {
+        'TagSet' => [
+
           {
-            Key   => 'MyObjectKey',    # min: 1
-            Value => 'MyValue',
-
+            'Key'   => 'Key3',
+            'Value' => 'Value3'
           },
-          ...
-        ],
 
-      },
-      ContentLength => 1,                      # OPTIONAL
-      ContentMD5    => 'MyContentMD5',         # OPTIONAL
-      VersionId     => 'MyObjectVersionId',    # OPTIONAL
+          {
+            'Key'   => 'Key4',
+            'Value' => 'Value4'
+          }
+        ]
+      }
     );
 
     # Results:
@@ -71,14 +75,24 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The bucket name containing the object.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 
@@ -92,13 +106,30 @@ Size of the body in bytes.
 
 The MD5 hash for the request body.
 
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
+
 
 
 =head2 B<REQUIRED> Key => Str
 
-Name of the tag.
+Name of the object key.
 
 
+
+=head2 RequestPayer => Str
+
+
+
+Valid values are: C<"requester">
 
 =head2 B<REQUIRED> Tagging => L<Paws::S3::Tagging>
 

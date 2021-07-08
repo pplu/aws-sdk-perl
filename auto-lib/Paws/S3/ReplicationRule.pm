@@ -80,31 +80,24 @@ An object key name prefix that identifies the object or objects to
 which the rule applies. The maximum prefix length is 1,024 characters.
 To include all objects in a bucket, specify an empty string.
 
+Replacement must be made for object keys containing special characters
+(such as carriage returns) when using XML requests. For more
+information, see XML related object key constraints
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
+
 
 =head2 Priority => Int
 
-The priority associated with the rule. If you specify multiple rules in
-a replication configuration, Amazon S3 prioritizes the rules to prevent
-conflicts when filtering. If two or more rules identify the same object
-based on a specified filter, the rule with higher priority takes
-precedence. For example:
+The priority indicates which rule has precedence whenever two or more
+replication rules conflict. Amazon S3 will attempt to replicate objects
+according to all replication rules. However, if there are two or more
+rules with the same destination bucket, then objects will be replicated
+according to the rule with the highest priority. The higher the number,
+the higher the priority.
 
-=over
-
-=item *
-
-Same object quality prefix-based filter criteria if prefixes you
-specified in multiple rules overlap
-
-=item *
-
-Same object qualify tag-based filter criteria specified in multiple
-rules
-
-=back
-
-For more information, see Replication in the I<Amazon Simple Storage
-Service Developer Guide>.
+For more information, see Replication
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/replication.html) in
+the I<Amazon S3 User Guide>.
 
 
 =head2 SourceSelectionCriteria => L<Paws::S3::SourceSelectionCriteria>

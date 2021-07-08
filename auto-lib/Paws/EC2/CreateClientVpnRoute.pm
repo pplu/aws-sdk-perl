@@ -93,10 +93,12 @@ To add a route for a peered VPC, enter the peered VPC's IPv4 CIDR range
 To add a route for an on-premises network, enter the AWS Site-to-Site
 VPN connection's IPv4 CIDR range
 
+=item *
+
+To add a route for the local network, enter the client CIDR range
+
 =back
 
-Route address ranges cannot overlap with the CIDR range specified for
-client allocation.
 
 
 
@@ -114,6 +116,9 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 The ID of the subnet through which you want to route traffic. The
 specified subnet must be an existing target network of the Client VPN
 endpoint.
+
+Alternatively, if you're adding a route for the local network, specify
+C<local>.
 
 
 

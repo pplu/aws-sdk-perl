@@ -8,6 +8,7 @@ package Paws::StorageGateway::CreateTapeWithBarcode;
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StorageGateway::Tag]');
   has TapeBarcode => (is => 'ro', isa => 'Str', required => 1);
   has TapeSizeInBytes => (is => 'ro', isa => 'Int', required => 1);
+  has Worm => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -63,16 +64,19 @@ return a list of gateways for your account and AWS Region.
 
 =head2 KMSEncrypted => Bool
 
-True to use Amazon S3 server side encryption with your own AWS KMS key,
-or false to use a key managed by Amazon S3. Optional.
+Set to C<true> to use Amazon S3 server-side encryption with your own
+AWS KMS key, or C<false> to use a key managed by Amazon S3. Optional.
+
+Valid Values: C<true> | C<false>
 
 
 
 =head2 KMSKey => Str
 
-The Amazon Resource Name (ARN) of the AWS KMS Key used for Amazon S3
-server side encryption. This value can only be set when KMSEncrypted is
-true. Optional.
+The Amazon Resource Name (ARN) of a symmetric customer master key (CMK)
+used for Amazon S3 server-side encryption. Storage Gateway does not
+support asymmetric CMKs. This value can only be set when
+C<KMSEncrypted> is C<true>. Optional.
 
 
 
@@ -81,10 +85,10 @@ true. Optional.
 The ID of the pool that you want to add your tape to for archiving. The
 tape in this pool is archived in the S3 storage class that is
 associated with the pool. When you use your backup application to eject
-the tape, the tape is archived directly into the storage class (Glacier
-or Deep Archive) that corresponds to the pool.
+the tape, the tape is archived directly into the storage class (S3
+Glacier or S3 Deep Archive) that corresponds to the pool.
 
-Valid values: "GLACIER", "DEEP_ARCHIVE"
+Valid Values: C<GLACIER> | C<DEEP_ARCHIVE>
 
 
 
@@ -113,7 +117,14 @@ have been deleted.
 
 The size, in bytes, of the virtual tape that you want to create.
 
-The size must be aligned by gigabyte (1024*1024*1024 byte).
+The size must be aligned by gigabyte (1024*1024*1024 bytes).
+
+
+
+=head2 Worm => Bool
+
+Set to C<TRUE> if the tape you are creating is to be configured as a
+write-once-read-many (WORM) tape.
 
 
 

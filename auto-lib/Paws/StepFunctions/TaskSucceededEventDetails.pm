@@ -2,6 +2,7 @@
 package Paws::StepFunctions::TaskSucceededEventDetails;
   use Moose;
   has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
+  has OutputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'outputDetails', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
 
@@ -43,7 +44,14 @@ Contains details about the successful completion of a task state.
 =head2 Output => Str
 
 The full JSON response from a resource when a task has succeeded. This
-response becomes the output of the related task.
+response becomes the output of the related task. Length constraints
+apply to the payload size, and are expressed as bytes in UTF-8
+encoding.
+
+
+=head2 OutputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the output of an execution history event.
 
 
 =head2 B<REQUIRED> Resource => Str

@@ -51,11 +51,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tag
 
 =head2 B<REQUIRED> ResourceARNList => ArrayRef[Str|Undef]
 
-A list of ARNs. An ARN (Amazon Resource Name) uniquely identifies a
-resource. You can specify a minimum of 1 and a maximum of 20 ARNs
-(resources) to untag. An ARN can be set to a maximum of 1600
-characters. For more information, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+Specifies a list of ARNs of the resources that you want to remove tags
+from.
+
+An ARN (Amazon Resource Name) uniquely identifies a resource. For more
+information, see Amazon Resource Names (ARNs) and AWS Service
+Namespaces
 (http://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -63,7 +64,7 @@ in the I<AWS General Reference>.
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-A list of the tag keys that you want to remove from the specified
+Specifies a list of tag keys that you want to remove from the specified
 resources.
 
 

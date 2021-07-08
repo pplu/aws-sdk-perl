@@ -18,7 +18,7 @@ Paws::IoTAnalytics::ListDatasetsResponse
 
 =head2 DatasetSummaries => ArrayRef[L<Paws::IoTAnalytics::DatasetSummary>]
 
-A list of "DatasetSummary" objects.
+A list of C<DatasetSummary> objects.
 
 
 =head2 NextToken => Str

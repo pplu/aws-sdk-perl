@@ -5,6 +5,7 @@ package Paws::Organizations::CreateAccount;
   has Email => (is => 'ro', isa => 'Str', required => 1);
   has IamUserAccessToBilling => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -30,11 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+# To create a new account that is automatically part of the organization
+# The owner of an organization creates a member account in the organization. The
+# following example shows that when the organization owner creates the member
+# account, the account is preconfigured with the name "Production Account" and
+# an owner email address of susan@example.com.	An IAM role is automatically
+# created using the default name because the roleName parameter is not used. AWS
+# Organizations sends Susan a "Welcome to AWS" email:
+
     my $CreateAccountResponse = $organizations->CreateAccount(
-      AccountName            => 'MyAccountName',
-      Email                  => 'MyEmail',
-      IamUserAccessToBilling => 'ALLOW',           # OPTIONAL
-      RoleName               => 'MyRoleName',      # OPTIONAL
+      'AccountName' => 'Production Account',
+      'Email'       => 'susan@example.com'
     );
 
     # Results:
@@ -74,9 +81,9 @@ Billing and Cost Management Console
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/grantaccess.html#ControllingAccessWebsite-Activate)
 in the I<AWS Billing and Cost Management User Guide>.
 
-If you don't specify this parameter, the value defaults to C<ALLOW>.
-This value allows IAM users and roles with the required permissions to
-access billing information for the new account.
+If you don't specify this parameter, the value defaults to C<ALLOW>,
+and IAM users and roles with the required permissions can access
+billing information for the new account.
 
 Valid values are: C<"ALLOW">, C<"DENY">
 
@@ -85,27 +92,54 @@ Valid values are: C<"ALLOW">, C<"DENY">
 (Optional)
 
 The name of an IAM role that AWS Organizations automatically
-preconfigures in the new member account. This role trusts the master
-account, allowing users in the master account to assume the role, as
-permitted by the master account administrator. The role has
-administrator permissions in the new member account.
+preconfigures in the new member account. This role trusts the
+management account, allowing users in the management account to assume
+the role, as permitted by the management account administrator. The
+role has administrator permissions in the new member account.
 
 If you don't specify this parameter, the role name defaults to
 C<OrganizationAccountAccessRole>.
 
 For more information about how to use this role to access the member
-account, see Accessing and Administering the Member Accounts in Your
-Organization
+account, see the following links:
+
+=over
+
+=item *
+
+Accessing and Administering the Member Accounts in Your Organization
 (https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-in the I<AWS Organizations User Guide>. Also see steps 2 and 3 in
-Tutorial: Delegate Access Across AWS Accounts Using IAM Roles
+in the I<AWS Organizations User Guide>
+
+=item *
+
+Steps 2 and 3 in Tutorial: Delegate Access Across AWS Accounts Using
+IAM Roles
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-in the I<IAM User Guide.>
+in the I<IAM User Guide>
+
+=back
 
 The regex pattern (http://wikipedia.org/wiki/regex) that is used to
 validate this parameter. The pattern can include uppercase letters,
 lowercase letters, digits with no spaces, and any of the following
 characters: =,.@-
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Organizations::Tag>]
+
+A list of tags that you want to attach to the newly created account.
+For each tag in the list, you must specify both a tag key and a value.
+You can set the value to an empty string, but you can't set it to
+C<null>. For more information about tagging, see Tagging AWS
+Organizations resources
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
+in the AWS Organizations User Guide.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags for an account, then the entire request fails and the account
+is not created.
 
 
 

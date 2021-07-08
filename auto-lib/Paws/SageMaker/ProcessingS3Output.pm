@@ -35,17 +35,18 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Information about where and how you want to store the results of an
-processing job.
+Configuration for uploading output data to Amazon S3 from the
+processing container.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> LocalPath => Str
 
-The local path to the Amazon S3 bucket where you want Amazon SageMaker
-to save the results of an processing job. C<LocalPath> is an absolute
-path to the input data.
+The local path of a directory where you want Amazon SageMaker to upload
+its contents to Amazon S3. C<LocalPath> is an absolute path to a
+directory containing output files. This directory will be created by
+the platform and exist when your container's entrypoint is invoked.
 
 
 =head2 B<REQUIRED> S3UploadMode => Str

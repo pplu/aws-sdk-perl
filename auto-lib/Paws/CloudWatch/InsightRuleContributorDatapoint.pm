@@ -36,8 +36,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudWatch:
 
 One data point related to one contributor.
 
-For more information, see GetInsightRuleReport and
-InsightRuleContributor.
+For more information, see GetInsightRuleReport
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_GetInsightRuleReport.html)
+and InsightRuleContributor
+(https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_InsightRuleContributor.html).
 
 =head1 ATTRIBUTES
 

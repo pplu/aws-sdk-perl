@@ -6,6 +6,7 @@ package Paws::Rekognition::CreateStreamProcessor;
   has Output => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorOutput', required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', required => 1);
   has Settings => (is => 'ro', isa => 'Paws::Rekognition::StreamProcessorSettings', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Rekognition::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -50,7 +51,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           FaceMatchThreshold => 1.0,                # max: 100; OPTIONAL
         },    # OPTIONAL
       },
-
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
     );
 
     # Results:
@@ -100,6 +103,13 @@ ARN of the IAM role that allows access to the stream processor.
 Face recognition input parameters to be used by the stream processor.
 Includes the collection to use for face recognition and the face
 attributes to detect.
+
+
+
+=head2 Tags => L<Paws::Rekognition::TagMap>
+
+A set of tags (key-value pairs) that you want to attach to the stream
+processor.
 
 
 

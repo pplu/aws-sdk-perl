@@ -37,6 +37,8 @@ An action to remove a member from a Managed Blockchain network as the
 result of a removal proposal that is C<APPROVED>. The member and all
 associated resources are deleted from the network.
 
+Applies only to Hyperledger Fabric.
+
 =head1 ATTRIBUTES
 
 

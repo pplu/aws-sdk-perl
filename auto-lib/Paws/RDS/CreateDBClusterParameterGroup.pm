@@ -39,6 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'Description'                 => 'My DB cluster parameter group'
       );
 
+    # Results:
+    my $DBClusterParameterGroup =
+      $CreateDBClusterParameterGroupResult->DBClusterParameterGroup;
+
+    # Returns a L<Paws::RDS::CreateDBClusterParameterGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CreateDBClusterParameterGroup>
@@ -79,6 +84,39 @@ Example: C<aurora5.6>, C<aurora-mysql5.7>
 B<Aurora PostgreSQL>
 
 Example: C<aurora-postgresql9.6>
+
+To list all of the available parameter group families for a DB engine,
+use the following command:
+
+C<aws rds describe-db-engine-versions --query
+"DBEngineVersions[].DBParameterGroupFamily" --engine E<lt>engineE<gt>>
+
+For example, to list all of the available parameter group families for
+the Aurora PostgreSQL DB engine, use the following command:
+
+C<aws rds describe-db-engine-versions --query
+"DBEngineVersions[].DBParameterGroupFamily" --engine aurora-postgresql>
+
+The output contains duplicates.
+
+The following are the valid DB engine values:
+
+=over
+
+=item *
+
+C<aurora> (for MySQL 5.6-compatible Aurora)
+
+=item *
+
+C<aurora-mysql> (for MySQL 5.7-compatible Aurora)
+
+=item *
+
+C<aurora-postgresql>
+
+=back
+
 
 
 

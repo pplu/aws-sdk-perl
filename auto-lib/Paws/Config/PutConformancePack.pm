@@ -3,7 +3,7 @@ package Paws::Config::PutConformancePack;
   use Moose;
   has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
   has ConformancePackName => (is => 'ro', isa => 'Str', required => 1);
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryS3Bucket => (is => 'ro', isa => 'Str');
   has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
   has TemplateBody => (is => 'ro', isa => 'Str');
   has TemplateS3Uri => (is => 'ro', isa => 'Str');
@@ -34,7 +34,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $config = Paws->service('Config');
     my $PutConformancePackResponse = $config->PutConformancePack(
       ConformancePackName            => 'MyConformancePackName',
-      DeliveryS3Bucket               => 'MyDeliveryS3Bucket',
       ConformancePackInputParameters => [
         {
           ParameterName  => 'MyParameterName',     # max: 255
@@ -43,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      DeliveryS3Bucket    => 'MyDeliveryS3Bucket',       # OPTIONAL
       DeliveryS3KeyPrefix => 'MyDeliveryS3KeyPrefix',    # OPTIONAL
       TemplateBody        => 'MyTemplateBody',           # OPTIONAL
       TemplateS3Uri       => 'MyTemplateS3Uri',          # OPTIONAL
@@ -71,16 +71,19 @@ Name of the conformance pack you want to create.
 
 
 
-=head2 B<REQUIRED> DeliveryS3Bucket => Str
+=head2 DeliveryS3Bucket => Str
 
-AWS Config stores intermediate files while processing conformance pack
-template.
+Amazon S3 bucket where AWS Config stores conformance pack templates.
+
+This field is optional.
 
 
 
 =head2 DeliveryS3KeyPrefix => Str
 
 The prefix for the Amazon S3 bucket.
+
+This field is optional.
 
 
 

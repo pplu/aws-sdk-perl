@@ -4,6 +4,9 @@ package Paws::Kafka::MutableClusterInfo;
   has BrokerEBSVolumeInfo => (is => 'ro', isa => 'ArrayRef[Paws::Kafka::BrokerEBSVolumeInfo]', request_name => 'brokerEBSVolumeInfo', traits => ['NameInRequest']);
   has ConfigurationInfo => (is => 'ro', isa => 'Paws::Kafka::ConfigurationInfo', request_name => 'configurationInfo', traits => ['NameInRequest']);
   has EnhancedMonitoring => (is => 'ro', isa => 'Str', request_name => 'enhancedMonitoring', traits => ['NameInRequest']);
+  has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
+  has KafkaVersion => (is => 'ro', isa => 'Str', request_name => 'kafkaVersion', traits => ['NameInRequest']);
+  has LoggingInfo => (is => 'ro', isa => 'Paws::Kafka::LoggingInfo', request_name => 'loggingInfo', traits => ['NameInRequest']);
   has NumberOfBrokerNodes => (is => 'ro', isa => 'Int', request_name => 'numberOfBrokerNodes', traits => ['NameInRequest']);
   has OpenMonitoring => (is => 'ro', isa => 'Paws::Kafka::OpenMonitoring', request_name => 'openMonitoring', traits => ['NameInRequest']);
 
@@ -58,6 +61,21 @@ Information about the changes in the configuration of the brokers.
 
 Specifies which Apache Kafka metrics Amazon MSK gathers and sends to
 Amazon CloudWatch for this cluster.
+
+
+=head2 InstanceType => Str
+
+Information about the Amazon MSK broker type.
+
+
+=head2 KafkaVersion => Str
+
+The Kafka version.
+
+
+=head2 LoggingInfo => L<Paws::Kafka::LoggingInfo>
+
+
 
 
 =head2 NumberOfBrokerNodes => Int

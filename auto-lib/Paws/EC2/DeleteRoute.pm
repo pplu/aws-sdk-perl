@@ -3,6 +3,7 @@ package Paws::EC2::DeleteRoute;
   use Moose;
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationCidrBlock' );
   has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'destinationIpv6CidrBlock' );
+  has DestinationPrefixListId => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has RouteTableId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'routeTableId' , required => 1);
 
@@ -55,6 +56,12 @@ CIDR for the route exactly.
 
 The IPv6 CIDR range for the route. The value you specify must match the
 CIDR for the route exactly.
+
+
+
+=head2 DestinationPrefixListId => Str
+
+The ID of the prefix list for the route.
 
 
 

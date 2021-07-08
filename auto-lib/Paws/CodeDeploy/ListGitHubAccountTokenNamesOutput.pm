@@ -18,7 +18,7 @@ Paws::CodeDeploy::ListGitHubAccountTokenNamesOutput
 =head2 NextToken => Str
 
 If a large amount of information is returned, an identifier is also
-returned. It can be used in a subsequent ListGitHubAccountTokenNames
+returned. It can be used in a subsequent C<ListGitHubAccountTokenNames>
 call to return the next set of names in the list.
 
 

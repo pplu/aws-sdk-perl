@@ -40,9 +40,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the customer master key (CMK).
+Identifies the customer master key (CMK) to disable.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 

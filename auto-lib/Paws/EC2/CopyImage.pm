@@ -3,6 +3,7 @@ package Paws::EC2::CopyImage;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has DestinationOutpostArn => (is => 'ro', isa => 'Str');
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Encrypted => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'encrypted' );
   has KmsKeyId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kmsKeyId' );
@@ -34,15 +35,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+# To copy an AMI to another region
+# This example copies the specified AMI from the us-east-1 region to the current
+# region.
     my $CopyImageResult = $ec2->CopyImage(
-      Name          => 'MyString',
-      SourceImageId => 'MyString',
-      SourceRegion  => 'MyString',
-      ClientToken   => 'MyString',      # OPTIONAL
-      Description   => 'MyString',      # OPTIONAL
-      DryRun        => 1,               # OPTIONAL
-      Encrypted     => 1,               # OPTIONAL
-      KmsKeyId      => 'MyKmsKeyId',    # OPTIONAL
+      'Description'   => '',
+      'Name'          => 'My server',
+      'SourceImageId' => 'ami-5731123e',
+      'SourceRegion'  => 'us-east-1'
     );
 
     # Results:
@@ -59,15 +59,29 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier you provide to ensure idempotency of
-the request. For more information, see How to Ensure Idempotency
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Run_Instance_Idempotency.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+the request. For more information, see Ensuring idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html)
+in the I<Amazon EC2 API Reference>.
 
 
 
 =head2 Description => Str
 
 A description for the new AMI in the destination Region.
+
+
+
+=head2 DestinationOutpostArn => Str
+
+The Amazon Resource Name (ARN) of the Outpost to which to copy the AMI.
+Only specify this parameter when copying an AMI from an AWS Region to
+an Outpost. The AMI must be in the Region of the destination Outpost.
+You cannot copy an AMI from an Outpost to a Region, from one Outpost to
+another, or within the same Outpost.
+
+For more information, see Copying AMIs from an AWS Region to an Outpost
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#copy-amis)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 
@@ -95,43 +109,40 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =head2 KmsKeyId => Str
 
-An identifier for the symmetric AWS Key Management Service (AWS KMS)
-customer master key (CMK) to use when creating the encrypted volume.
-This parameter is only required if you want to use a non-default CMK;
-if this parameter is not specified, the default CMK for EBS is used. If
-a C<KmsKeyId> is specified, the C<Encrypted> flag must also be set.
+The identifier of the symmetric AWS Key Management Service (AWS KMS)
+customer master key (CMK) to use when creating encrypted volumes. If
+this parameter is not specified, your AWS managed CMK for EBS is used.
+If you specify a CMK, you must also set the encrypted state to C<true>.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with "alias/".
-For example:
+You can specify a CMK using any of the following:
 
 =over
 
 =item *
 
-Key ID: C<1234abcd-12ab-34cd-56ef-1234567890ab>
+Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
-Key ARN:
-C<arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab>
+Key alias. For example, alias/ExampleAlias.
 
 =item *
 
-Alias name: C<alias/ExampleAlias>
+Key ARN. For example,
+arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
-Alias ARN: C<arn:aws:kms:us-east-2:111122223333:alias/ExampleAlias>
+Alias ARN. For example,
+arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 
 =back
 
-AWS parses C<KmsKeyId> asynchronously, meaning that the action you call
-may appear to complete even though you provided an invalid identifier.
-This action will eventually report failure.
+AWS authenticates the CMK asynchronously. Therefore, if you specify an
+identifier that is not valid, the action can appear to complete, but
+eventually fails.
 
-The specified CMK must exist in the Region that the snapshot is being
-copied to.
+The specified CMK must exist in the destination Region.
 
 Amazon EBS does not support asymmetric CMKs.
 

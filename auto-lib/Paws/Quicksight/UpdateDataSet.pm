@@ -3,7 +3,9 @@ package Paws::Quicksight::UpdateDataSet;
   use Moose;
   has AwsAccountId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'AwsAccountId', required => 1);
   has ColumnGroups => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnGroup]');
+  has ColumnLevelPermissionRules => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnLevelPermissionRule]');
   has DataSetId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DataSetId', required => 1);
+  has FieldFolders => (is => 'ro', isa => 'Paws::Quicksight::FieldFolderMap');
   has ImportMode => (is => 'ro', isa => 'Str', required => 1);
   has LogicalTableMap => (is => 'ro', isa => 'Paws::Quicksight::LogicalTableMap');
   has Name => (is => 'ro', isa => 'Str', required => 1);
@@ -67,8 +69,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],    # min: 1, max: 2048; OPTIONAL
-            Name   => 'MyRelationalTableName',      # min: 1, max: 64
-            Schema => 'MyRelationalTableSchema',    # max: 64; OPTIONAL
+            Name    => 'MyRelationalTableName',       # min: 1, max: 64
+            Catalog => 'MyRelationalTableCatalog',    # max: 256; OPTIONAL
+            Schema  => 'MyRelationalTableSchema',     # max: 64; OPTIONAL
           },    # OPTIONAL
           S3Source => {
             DataSourceArn => 'MyArn',
@@ -106,6 +109,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      ColumnLevelPermissionRules => [
+        {
+          ColumnNames => [ 'MyString', ... ],    # min: 1; OPTIONAL
+          Principals  => [ 'MyString', ... ],    # min: 1, max: 100; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      FieldFolders => {
+        'MyFieldFolderPath' => {
+          Columns     => [ 'MyString', ... ],           # max: 5000; OPTIONAL
+          Description => 'MyFieldFolderDescription',    # max: 500; OPTIONAL
+        },    # key: min: 1, max: 1000
+      },    # OPTIONAL
       LogicalTableMap => {
         'MyLogicalTableId' => {
           Alias  => 'MyLogicalTableAlias',    # min: 1, max: 64
@@ -115,7 +131,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               OnClause     => 'MyOnClause',          # min: 1, max: 512
               RightOperand => 'MyLogicalTableId',    # min: 1, max: 64
               Type         => 'INNER',    # values: INNER, OUTER, LEFT, RIGHT
-
+              LeftJoinKeyProperties => {
+                UniqueKey => 1,           # OPTIONAL
+              },    # OPTIONAL
+              RightJoinKeyProperties => {
+                UniqueKey => 1,    # OPTIONAL
+              },    # OPTIONAL
             },    # OPTIONAL
             PhysicalTableId => 'MyPhysicalTableId',    # min: 1, max: 64
           },
@@ -156,6 +177,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 ColumnName => 'MyColumnName',    # min: 1, max: 128
                 Tags       => [
                   {
+                    ColumnDescription => {
+                      Text => 'MyColumnDescriptiveText',    # max: 500; OPTIONAL
+                    },    # OPTIONAL
                     ColumnGeographicRole => 'COUNTRY'
                     , # values: COUNTRY, STATE, COUNTY, CITY, POSTCODE, LONGITUDE, LATITUDE; OPTIONAL
                   },
@@ -171,7 +195,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RowLevelPermissionDataSet => {
         Arn              => 'MyArn',
         PermissionPolicy => 'GRANT_ACCESS',  # values: GRANT_ACCESS, DENY_ACCESS
-
+        FormatVersion => 'VERSION_1',   # values: VERSION_1, VERSION_2; OPTIONAL
+        Namespace     => 'MyNamespace', # max: 64; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -204,10 +229,22 @@ Currently, only geospatial hierarchy is supported.
 
 
 
+=head2 ColumnLevelPermissionRules => ArrayRef[L<Paws::Quicksight::ColumnLevelPermissionRule>]
+
+A set of one or more definitions of a C< ColumnLevelPermissionRule >.
+
+
+
 =head2 B<REQUIRED> DataSetId => Str
 
 The ID for the dataset that you want to update. This ID is unique per
 AWS Region for each AWS account.
+
+
+
+=head2 FieldFolders => L<Paws::Quicksight::FieldFolderMap>
+
+The folder that contains fields and nested subfolders for your dataset.
 
 
 

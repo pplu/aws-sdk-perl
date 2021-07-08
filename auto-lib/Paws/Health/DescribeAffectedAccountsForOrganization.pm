@@ -39,6 +39,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AffectedAccounts =
       $DescribeAffectedAccountsForOrganizationResponse->AffectedAccounts;
+    my $EventScopeCode =
+      $DescribeAffectedAccountsForOrganizationResponse->EventScopeCode;
     my $NextToken = $DescribeAffectedAccountsForOrganizationResponse->NextToken;
 
 # Returns a L<Paws::Health::DescribeAffectedAccountsForOrganizationResponse> object.
@@ -51,10 +53,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/hea
 
 =head2 B<REQUIRED> EventArn => Str
 
-The unique identifier for the event. Format:
+The unique identifier for the event. The event ARN has the
 C<arn:aws:health:I<event-region>::event/I<SERVICE>/I<EVENT_TYPE_CODE>/I<EVENT_TYPE_PLUS_ID>
->. Example: C<Example:
-arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
+> format.
+
+For example, an event ARN might look like the following:
+
+C<arn:aws:health:us-east-1::event/EC2/EC2_INSTANCE_RETIREMENT_SCHEDULED/EC2_INSTANCE_RETIREMENT_SCHEDULED_ABC123-DEF456>
 
 
 

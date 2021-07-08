@@ -32,13 +32,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $health->DescribeEventDetailsForOrganization(
       OrganizationEventDetailFilters => [
         {
-          AwsAccountId => 'MyaccountId',    # max: 12
           EventArn     => 'MyeventArn',     # max: 1600
-
+          AwsAccountId => 'MyaccountId',    # max: 12; OPTIONAL
         },
         ...
       ],
-      Locale => 'Mylocale',    # OPTIONAL
+      Locale => 'Mylocale',                 # OPTIONAL
       );
 
     # Results:

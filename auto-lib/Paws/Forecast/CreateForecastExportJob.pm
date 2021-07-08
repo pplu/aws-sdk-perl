@@ -4,6 +4,7 @@ package Paws::Forecast::CreateForecastExportJob;
   has Destination => (is => 'ro', isa => 'Paws::Forecast::DataDestination', required => 1);
   has ForecastArn => (is => 'ro', isa => 'Str', required => 1);
   has ForecastExportJobName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Forecast::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -40,7 +41,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },
       ForecastArn           => 'MyArn',
       ForecastExportJobName => 'MyName',
+      Tags                  => [
+        {
+          Key   => 'MyTagKey',           # min: 1, max: 128
+          Value => 'MyTagValue',         # max: 256
 
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -77,6 +85,60 @@ The Amazon Resource Name (ARN) of the forecast that you want to export.
 =head2 B<REQUIRED> ForecastExportJobName => Str
 
 The name for the forecast export job.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Forecast::Tag>]
+
+The optional metadata that you apply to the forecast export job to help
+you categorize and organize them. Each tag consists of a key and an
+optional value, both of which you define.
+
+The following basic restrictions apply to tags:
+
+=over
+
+=item *
+
+Maximum number of tags per resource - 50.
+
+=item *
+
+For each resource, each tag key must be unique, and each tag key can
+have only one value.
+
+=item *
+
+Maximum key length - 128 Unicode characters in UTF-8.
+
+=item *
+
+Maximum value length - 256 Unicode characters in UTF-8.
+
+=item *
+
+If your tagging schema is used across multiple services and resources,
+remember that other services may have restrictions on allowed
+characters. Generally allowed characters are: letters, numbers, and
+spaces representable in UTF-8, and the following characters: + - = . _
+: / @.
+
+=item *
+
+Tag keys and values are case sensitive.
+
+=item *
+
+Do not use C<aws:>, C<AWS:>, or any upper or lowercase combination of
+such as a prefix for keys as it is reserved for AWS use. You cannot
+edit or delete tag keys with this prefix. Values can have this prefix.
+If a tag value has C<aws> as its prefix but the key does not, then
+Forecast considers it to be a user tag and will count against the limit
+of 50 tags. Tags with only the key prefix of C<aws> do not count
+against your tags per resource limit.
+
+=back
+
 
 
 

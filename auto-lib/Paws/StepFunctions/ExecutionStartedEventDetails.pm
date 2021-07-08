@@ -2,6 +2,7 @@
 package Paws::StepFunctions::ExecutionStartedEventDetails;
   use Moose;
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has InputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'inputDetails', traits => ['NameInRequest']);
   has RoleArn => (is => 'ro', isa => 'Str', request_name => 'roleArn', traits => ['NameInRequest']);
 
 1;
@@ -41,7 +42,13 @@ Contains details about the start of the execution.
 
 =head2 Input => Str
 
-The JSON data input to the execution.
+The JSON data input to the execution. Length constraints apply to the
+payload size, and are expressed as bytes in UTF-8 encoding.
+
+
+=head2 InputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the input for an execution history event.
 
 
 =head2 RoleArn => Str

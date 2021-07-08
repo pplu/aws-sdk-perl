@@ -47,7 +47,8 @@ Default: 1
 =head2 B<REQUIRED> Type => Str
 
 The type of elastic inference accelerator. The possible values are
-C<eia1.medium>, C<eia1.large>, and C<eia1.xlarge>.
+C<eia1.medium>, C<eia1.large>, C<eia1.xlarge>, C<eia2.medium>,
+C<eia2.large>, and C<eia2.xlarge>.
 
 
 

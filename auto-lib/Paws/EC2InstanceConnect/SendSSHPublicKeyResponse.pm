@@ -17,13 +17,13 @@ Paws::EC2InstanceConnect::SendSSHPublicKeyResponse
 
 =head2 RequestId => Str
 
-The request ID as logged by EC2 Connect. Please provide this when
-contacting AWS Support.
+The ID of the request. Please provide this ID when contacting AWS
+Support for assistance.
 
 
 =head2 Success => Bool
 
-Indicates request success.
+Is true if the request succeeds and an error otherwise.
 
 
 =head2 _request_id => Str

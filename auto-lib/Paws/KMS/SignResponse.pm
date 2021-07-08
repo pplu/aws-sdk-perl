@@ -18,8 +18,9 @@ Paws::KMS::SignResponse
 
 =head2 KeyId => Str
 
-The Amazon Resource Name (ARN) of the asymmetric CMK that was used to
-sign the message.
+The Amazon Resource Name (key ARN
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-id-key-ARN))
+of the asymmetric CMK that was used to sign the message.
 
 
 =head2 Signature => Str

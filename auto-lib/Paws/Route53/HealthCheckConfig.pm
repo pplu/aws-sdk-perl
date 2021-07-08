@@ -136,7 +136,7 @@ The number of consecutive health checks that an endpoint must pass or
 fail for Amazon Route 53 to change the current status of the endpoint
 from unhealthy to healthy or vice versa. For more information, see How
 Amazon Route 53 Determines Whether an Endpoint Is Healthy
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 If you don't specify a value for C<FailureThreshold>, the default value
@@ -357,9 +357,11 @@ health check.
 
 =head2 Port => Int
 
-The port on the endpoint on which you want Amazon Route 53 to perform
-health checks. Specify a value for C<Port> only when you specify a
-value for C<IPAddress>.
+The port on the endpoint that you want Amazon Route 53 to perform
+health checks on.
+
+Don't specify a value for C<Port> when you specify a value for C<Type>
+of C<CLOUDWATCH_METRIC> or C<CALCULATED>.
 
 
 =head2 Regions => ArrayRef[Str|Undef]
@@ -405,7 +407,7 @@ parameters, for example, C</welcome.html?language=jp&login=y>.
 
 =head2 SearchString => Str
 
-If the value of Type is C<HTTP_STR_MATCH> or C<HTTP_STR_MATCH>, the
+If the value of Type is C<HTTP_STR_MATCH> or C<HTTPS_STR_MATCH>, the
 string that you want Amazon Route 53 to search for in the response body
 from the specified resource. If the string appears in the response
 body, Route 53 considers the resource healthy.

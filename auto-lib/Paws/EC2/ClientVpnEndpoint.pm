@@ -3,6 +3,7 @@ package Paws::EC2::ClientVpnEndpoint;
   has AssociatedTargetNetworks => (is => 'ro', isa => 'ArrayRef[Paws::EC2::AssociatedTargetNetwork]', request_name => 'associatedTargetNetwork', traits => ['NameInRequest']);
   has AuthenticationOptions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ClientVpnAuthentication]', request_name => 'authenticationOptions', traits => ['NameInRequest']);
   has ClientCidrBlock => (is => 'ro', isa => 'Str', request_name => 'clientCidrBlock', traits => ['NameInRequest']);
+  has ClientConnectOptions => (is => 'ro', isa => 'Paws::EC2::ClientConnectResponseOptions', request_name => 'clientConnectOptions', traits => ['NameInRequest']);
   has ClientVpnEndpointId => (is => 'ro', isa => 'Str', request_name => 'clientVpnEndpointId', traits => ['NameInRequest']);
   has ConnectionLogOptions => (is => 'ro', isa => 'Paws::EC2::ConnectionLogResponseOptions', request_name => 'connectionLogOptions', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
@@ -10,11 +11,14 @@ package Paws::EC2::ClientVpnEndpoint;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has DnsName => (is => 'ro', isa => 'Str', request_name => 'dnsName', traits => ['NameInRequest']);
   has DnsServers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'dnsServer', traits => ['NameInRequest']);
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'securityGroupIdSet', traits => ['NameInRequest']);
+  has SelfServicePortalUrl => (is => 'ro', isa => 'Str', request_name => 'selfServicePortalUrl', traits => ['NameInRequest']);
   has ServerCertificateArn => (is => 'ro', isa => 'Str', request_name => 'serverCertificateArn', traits => ['NameInRequest']);
   has SplitTunnel => (is => 'ro', isa => 'Bool', request_name => 'splitTunnel', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Paws::EC2::ClientVpnEndpointStatus', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
   has TransportProtocol => (is => 'ro', isa => 'Str', request_name => 'transportProtocol', traits => ['NameInRequest']);
+  has VpcId => (is => 'ro', isa => 'Str', request_name => 'vpcId', traits => ['NameInRequest']);
   has VpnPort => (is => 'ro', isa => 'Int', request_name => 'vpnPort', traits => ['NameInRequest']);
   has VpnProtocol => (is => 'ro', isa => 'Str', request_name => 'vpnProtocol', traits => ['NameInRequest']);
 1;
@@ -70,6 +74,12 @@ The IPv4 address range, in CIDR notation, from which client IP
 addresses are assigned.
 
 
+=head2 ClientConnectOptions => L<Paws::EC2::ClientConnectResponseOptions>
+
+The options for managing connection authorization for new client
+connections.
+
+
 =head2 ClientVpnEndpointId => Str
 
 The ID of the Client VPN endpoint.
@@ -107,6 +117,16 @@ endpoint.
 Information about the DNS servers to be used for DNS resolution.
 
 
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+The IDs of the security groups for the target network.
+
+
+=head2 SelfServicePortalUrl => Str
+
+The URL of the self-service portal.
+
+
 =head2 ServerCertificateArn => Str
 
 The ARN of the server certificate.
@@ -136,6 +156,11 @@ Any tags assigned to the Client VPN endpoint.
 =head2 TransportProtocol => Str
 
 The transport protocol used by the Client VPN endpoint.
+
+
+=head2 VpcId => Str
+
+The ID of the VPC.
 
 
 =head2 VpnPort => Int

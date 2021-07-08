@@ -4,6 +4,7 @@ package Paws::LakeFormation::DataLakeSettings;
   has CreateDatabaseDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::PrincipalPermissions]');
   has CreateTableDefaultPermissions => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::PrincipalPermissions]');
   has DataLakeAdmins => (is => 'ro', isa => 'ArrayRef[Paws::LakeFormation::DataLakePrincipal]');
+  has TrustedResourceOwners => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::LakeFormation::DataLakeSettings object:
 
-  $service_obj->Method(Att1 => { CreateDatabaseDefaultPermissions => $value, ..., DataLakeAdmins => $value  });
+  $service_obj->Method(Att1 => { CreateDatabaseDefaultPermissions => $value, ..., TrustedResourceOwners => $value  });
 
 =head3 Results returned from an API call
 
@@ -35,26 +36,40 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LakeFormati
 
 =head1 DESCRIPTION
 
-The AWS Lake Formation principal.
+A structure representing a list of AWS Lake Formation principals
+designated as data lake administrators and lists of principal
+permission entries for default create database and default create table
+permissions.
 
 =head1 ATTRIBUTES
 
 
 =head2 CreateDatabaseDefaultPermissions => ArrayRef[L<Paws::LakeFormation::PrincipalPermissions>]
 
-A list of up to three principal permissions entries for default create
-database permissions.
+A structure representing a list of up to three principal permissions
+entries for default create database permissions.
 
 
 =head2 CreateTableDefaultPermissions => ArrayRef[L<Paws::LakeFormation::PrincipalPermissions>]
 
-A list of up to three principal permissions entries for default create
-table permissions.
+A structure representing a list of up to three principal permissions
+entries for default create table permissions.
 
 
 =head2 DataLakeAdmins => ArrayRef[L<Paws::LakeFormation::DataLakePrincipal>]
 
-A list of AWS Lake Formation principals.
+A list of AWS Lake Formation principals. Supported principals are IAM
+users or IAM roles.
+
+
+=head2 TrustedResourceOwners => ArrayRef[Str|Undef]
+
+A list of the resource-owning account IDs that the caller's account can
+use to share their user access details (user ARNs). The user ARNs can
+be logged in the resource owner's AWS CloudTrail log.
+
+You may want to specify this property when you are in a high-trust
+boundary, such as the same team or company.
 
 
 

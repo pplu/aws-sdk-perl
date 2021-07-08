@@ -43,6 +43,17 @@ Information about a load balancer attribute.
 
 The name of the attribute.
 
+The following attribute is supported by all load balancers:
+
+=over
+
+=item *
+
+C<deletion_protection.enabled> - Indicates whether deletion protection
+is enabled. The value is C<true> or C<false>. The default is C<false>.
+
+=back
+
 The following attributes are supported by both Application Load
 Balancers and Network Load Balancers:
 
@@ -66,11 +77,6 @@ bucket.
 C<access_logs.s3.prefix> - The prefix for the location in the S3 bucket
 for the access logs.
 
-=item *
-
-C<deletion_protection.enabled> - Indicates whether deletion protection
-is enabled. The value is C<true> or C<false>. The default is C<false>.
-
 =back
 
 The following attributes are supported by only Application Load
@@ -85,6 +91,13 @@ The valid range is 1-4000 seconds. The default is 60 seconds.
 
 =item *
 
+C<routing.http.desync_mitigation_mode> - Determines how the load
+balancer handles requests that might pose a security risk to your
+application. The possible values are C<monitor>, C<defensive>, and
+C<strictest>. The default is C<defensive>.
+
+=item *
+
 C<routing.http.drop_invalid_header_fields.enabled> - Indicates whether
 HTTP headers with invalid header fields are removed by the load
 balancer (C<true>) or routed to targets (C<false>). The default is
@@ -93,11 +106,21 @@ C<false>.
 =item *
 
 C<routing.http2.enabled> - Indicates whether HTTP/2 is enabled. The
-value is C<true> or C<false>. The default is C<true>.
+value is C<true> or C<false>. The default is C<true>. Elastic Load
+Balancing requires that message header names contain only alphanumeric
+characters and hyphens.
+
+=item *
+
+C<waf.fail_open.enabled> - Indicates whether to allow a WAF-enabled
+load balancer to route requests to targets if it is unable to forward
+the request to Amazon Web Services WAF. The value is C<true> or
+C<false>. The default is C<false>.
 
 =back
 
-The following attributes are supported by only Network Load Balancers:
+The following attribute is supported by Network Load Balancers and
+Gateway Load Balancers:
 
 =over
 

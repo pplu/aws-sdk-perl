@@ -6,7 +6,10 @@ package Paws::SageMakerRuntime::InvokeEndpoint;
   has ContentType => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Content-Type');
   has CustomAttributes => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Custom-Attributes');
   has EndpointName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'EndpointName', required => 1);
+  has InferenceId => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Inference-Id');
+  has TargetContainerHostname => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Target-Container-Hostname');
   has TargetModel => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Target-Model');
+  has TargetVariant => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-SageMaker-Target-Variant');
 
   use MooseX::ClassAttribute;
   class_has _stream_param => (is => 'ro', default => 'Body');
@@ -34,12 +37,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $runtime.sagemaker = Paws->service('SageMakerRuntime');
     my $InvokeEndpointOutput = $runtime . sagemaker->InvokeEndpoint(
-      Body             => 'BlobBodyBlob',
-      EndpointName     => 'MyEndpointName',
-      Accept           => 'MyHeader',                    # OPTIONAL
-      ContentType      => 'MyHeader',                    # OPTIONAL
-      CustomAttributes => 'MyCustomAttributesHeader',    # OPTIONAL
-      TargetModel      => 'MyTargetModelHeader',         # OPTIONAL
+      Body                    => 'BlobBodyBlob',
+      EndpointName            => 'MyEndpointName',
+      Accept                  => 'MyHeader',                          # OPTIONAL
+      ContentType             => 'MyHeader',                          # OPTIONAL
+      CustomAttributes        => 'MyCustomAttributesHeader',          # OPTIONAL
+      InferenceId             => 'MyInferenceId',                     # OPTIONAL
+      TargetContainerHostname => 'MyTargetContainerHostnameHeader',   # OPTIONAL
+      TargetModel             => 'MyTargetModelHeader',               # OPTIONAL
+      TargetVariant           => 'MyTargetVariantHeader',             # OPTIONAL
     );
 
     # Results:
@@ -70,7 +76,7 @@ request header. Amazon SageMaker passes all of the data in the body to
 the model.
 
 For information about the format of the request body, see Common Data
-FormatsE<mdash>Inference
+Formats-Inference
 (https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
 
 
@@ -91,8 +97,16 @@ a request or to provide other metadata that a service endpoint was
 programmed to process. The value must consist of no more than 1024
 visible US-ASCII characters as specified in Section 3.3.6. Field Value
 Components (https://tools.ietf.org/html/rfc7230#section-3.2.6) of the
-Hypertext Transfer Protocol (HTTP/1.1). This feature is currently
-supported in the AWS SDKs but not in the Amazon SageMaker Python SDK.
+Hypertext Transfer Protocol (HTTP/1.1).
+
+The code in your model is responsible for setting or updating any
+custom attributes in the response. If your code does not set this value
+in the response, an empty value is returned. For example, if a custom
+attribute represents the trace ID, your model can prepend the custom
+attribute with C<Trace ID:> in your post-processing function.
+
+This feature is currently supported in the AWS SDKs but not in the
+Amazon SageMaker Python SDK.
 
 
 
@@ -105,10 +119,40 @@ API.
 
 
 
+=head2 InferenceId => Str
+
+If you provide a value, it is added to the captured data when you
+enable data capture on the endpoint. For information about data
+capture, see Capture Data
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor-data-capture.html).
+
+
+
+=head2 TargetContainerHostname => Str
+
+If the endpoint hosts multiple containers and is configured to use
+direct invocation, this parameter specifies the host name of the
+container to invoke.
+
+
+
 =head2 TargetModel => Str
 
-Specifies the model to be requested for an inference when invoking a
-multi-model endpoint.
+The model to request for inference when invoking a multi-model
+endpoint.
+
+
+
+=head2 TargetVariant => Str
+
+Specify the production variant to send the inference request to when
+invoking an endpoint that is running two or more variants. Note that
+this parameter overrides the default behavior for the endpoint, which
+is to distribute the invocation traffic based on the variant weights.
+
+For information about how to use variant targeting to perform a/b
+testing, see Test models in production
+(https://docs.aws.amazon.com/sagemaker/latest/dg/model-ab-testing.html)
 
 
 

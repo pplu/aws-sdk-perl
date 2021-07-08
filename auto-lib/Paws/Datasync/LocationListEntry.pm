@@ -36,7 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::L
 
 Represents a single entry in a list of locations. C<LocationListEntry>
 returns an array that contains a list of locations when the
-ListLocations operation is called.
+ListLocations
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_ListLocations.html)
+operation is called.
 
 =head1 ATTRIBUTES
 
@@ -53,6 +55,7 @@ root of the location.
 
 Represents a list of URLs of a location. C<LocationUri> returns an
 array that contains a list of locations when the ListLocations
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_ListLocations.html)
 operation is called.
 
 Format: C<TYPE://GLOBAL_ID/SUBDIR>.

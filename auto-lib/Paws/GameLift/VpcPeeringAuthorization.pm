@@ -43,34 +43,13 @@ access to. This authorization must exist and be valid for the peering
 connection to be established. Authorizations are valid for 24 hours
 after they are issued.
 
-=over
+B<Related actions>
 
-=item *
-
-CreateVpcPeeringAuthorization
-
-=item *
-
-DescribeVpcPeeringAuthorizations
-
-=item *
-
-DeleteVpcPeeringAuthorization
-
-=item *
-
-CreateVpcPeeringConnection
-
-=item *
-
-DescribeVpcPeeringConnections
-
-=item *
-
-DeleteVpcPeeringConnection
-
-=back
-
+CreateVpcPeeringAuthorization | DescribeVpcPeeringAuthorizations |
+DeleteVpcPeeringAuthorization | CreateVpcPeeringConnection |
+DescribeVpcPeeringConnections | DeleteVpcPeeringConnection | All APIs
+by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
@@ -79,21 +58,21 @@ DeleteVpcPeeringConnection
 
 Time stamp indicating when this authorization was issued. Format is a
 number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 ExpirationTime => Str
 
 Time stamp indicating when this authorization expires (24 hours after
 issuance). Format is a number expressed in Unix time as milliseconds
-(for example "1469498468.057").
+(for example C<"1469498468.057">).
 
 
 =head2 GameLiftAwsAccountId => Str
 
 A unique identifier for the AWS account that you use to manage your
-Amazon GameLift fleet. You can find your Account ID in the AWS
-Management Console under account settings.
+GameLift fleet. You can find your Account ID in the AWS Management
+Console under account settings.
 
 
 =head2 PeerVpcAwsAccountId => Str
@@ -104,10 +83,10 @@ Management Console under account settings.
 =head2 PeerVpcId => Str
 
 A unique identifier for a VPC with resources to be accessed by your
-Amazon GameLift fleet. The VPC must be in the same Region where your
-fleet is deployed. Look up a VPC ID using the VPC Dashboard
+GameLift fleet. The VPC must be in the same Region as your fleet. To
+look up a VPC ID, use the VPC Dashboard
 (https://console.aws.amazon.com/vpc/) in the AWS Management Console.
-Learn more about VPC peering in VPC Peering with Amazon GameLift Fleets
+Learn more about VPC peering in VPC Peering with GameLift Fleets
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/vpc-peering.html).
 
 

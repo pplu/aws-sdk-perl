@@ -2,6 +2,7 @@
 package Paws::Signer::SigningPlatformOverrides;
   use Moose;
   has SigningConfiguration => (is => 'ro', isa => 'Paws::Signer::SigningConfigurationOverrides', request_name => 'signingConfiguration', traits => ['NameInRequest']);
+  has SigningImageFormat => (is => 'ro', isa => 'Str', request_name => 'signingImageFormat', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Signer::SigningPlatformOverrides object:
 
-  $service_obj->Method(Att1 => { SigningConfiguration => $value, ..., SigningConfiguration => $value  });
+  $service_obj->Method(Att1 => { SigningConfiguration => $value, ..., SigningImageFormat => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,6 +44,16 @@ signing platform.
 
 A signing configuration that overrides the default encryption or hash
 algorithm of a signing job.
+
+
+=head2 SigningImageFormat => Str
+
+A signed image is a JSON object. When overriding the default signing
+platform configuration, a customer can select either of two signing
+formats, C<JSONEmbedded> or C<JSONDetached>. (A third format value,
+C<JSON>, is reserved for future use.) With C<JSONEmbedded>, the signing
+image has the payload embedded in it. With C<JSONDetached>, the payload
+is not be embedded in the signing image.
 
 
 

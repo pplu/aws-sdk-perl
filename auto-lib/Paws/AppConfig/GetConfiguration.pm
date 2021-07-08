@@ -55,14 +55,32 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 
 =head2 B<REQUIRED> Application => Str
 
-The application to get.
+The application to get. Specify either the application name or the
+application ID.
 
 
 
 =head2 ClientConfigurationVersion => Str
 
-The configuration version returned in the most recent GetConfiguration
-response.
+The configuration version returned in the most recent
+C<GetConfiguration> response.
+
+AWS AppConfig uses the value of the C<ClientConfigurationVersion>
+parameter to identify the configuration version on your clients. If you
+donE<rsquo>t send C<ClientConfigurationVersion> with each call to
+C<GetConfiguration>, your clients receive the current configuration.
+You are charged each time your clients receive a configuration.
+
+To avoid excess charges, we recommend that you include the
+C<ClientConfigurationVersion> value with every call to
+C<GetConfiguration>. This value must be saved on your client.
+Subsequent calls to C<GetConfiguration> must pass this value by using
+the C<ClientConfigurationVersion> parameter.
+
+For more information about working with configurations, see Retrieving
+the Configuration
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/appconfig-retrieving-the-configuration.html)
+in the I<AWS AppConfig User Guide>.
 
 
 
@@ -76,13 +94,15 @@ in the deployment strategy.
 
 =head2 B<REQUIRED> Configuration => Str
 
-The configuration to get.
+The configuration to get. Specify either the configuration name or the
+configuration ID.
 
 
 
 =head2 B<REQUIRED> Environment => Str
 
-The environment to get.
+The environment to get. Specify either the environment name or the
+environment ID.
 
 
 

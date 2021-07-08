@@ -3,7 +3,9 @@ package Paws::CodeGuruProfiler::CreateProfilingGroup;
   use Moose;
   has AgentOrchestrationConfig => (is => 'ro', isa => 'Paws::CodeGuruProfiler::AgentOrchestrationConfig', traits => ['NameInRequest'], request_name => 'agentOrchestrationConfig');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'clientToken', required => 1);
+  has ComputePlatform => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'computePlatform');
   has ProfilingGroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'profilingGroupName', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::CodeGuruProfiler::TagsMap', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
 
@@ -38,6 +40,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ProfilingEnabled => 1,
 
       },    # OPTIONAL
+      ComputePlatform => 'Default',                        # OPTIONAL
+      Tags            => { 'MyString' => 'MyString', },    # OPTIONAL
       );
 
     # Results:
@@ -53,19 +57,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 AgentOrchestrationConfig => L<Paws::CodeGuruProfiler::AgentOrchestrationConfig>
 
-
+Specifies whether profiling is enabled or disabled for the created
+profiling group.
 
 
 
 =head2 B<REQUIRED> ClientToken => Str
 
+Amazon CodeGuru Profiler uses this universally unique identifier (UUID)
+to prevent the accidental creation of duplicate profiling groups if
+there are failures and retries.
 
 
 
+=head2 ComputePlatform => Str
+
+The compute platform of the profiling group. Use C<AWSLambda> if your
+application runs on AWS Lambda. Use C<Default> if your application runs
+on a compute platform that is not AWS Lambda, such an Amazon EC2
+instance, an on-premises server, or a different platform. If not
+specified, C<Default> is used.
+
+Valid values are: C<"Default">, C<"AWSLambda">
 
 =head2 B<REQUIRED> ProfilingGroupName => Str
 
+The name of the profiling group to create.
 
+
+
+=head2 Tags => L<Paws::CodeGuruProfiler::TagsMap>
+
+A list of tags to add to the created profiling group.
 
 
 

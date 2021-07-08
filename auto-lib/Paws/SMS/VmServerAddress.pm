@@ -41,12 +41,12 @@ Represents a VM server location.
 
 =head2 VmId => Str
 
-The identifier of the VM.
+The ID of the VM.
 
 
 =head2 VmManagerId => Str
 
-The identifier of the VM manager.
+The ID of the VM manager.
 
 
 

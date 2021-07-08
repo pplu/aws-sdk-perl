@@ -37,6 +37,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Application
 Represents a predefined metric for a target tracking scaling policy to
 use with Application Auto Scaling.
 
+Only the AWS services that you're using send metrics to Amazon
+CloudWatch. To determine whether a desired metric already exists by
+looking up its namespace and dimension using the CloudWatch metrics
+dashboard in the console, follow the procedure in Building dashboards
+with CloudWatch
+(https://docs.aws.amazon.com/autoscaling/application/userguide/monitoring-cloudwatch.html)
+in the I<Application Auto Scaling User Guide>.
+
 =head1 ATTRIBUTES
 
 
@@ -53,7 +61,9 @@ specify a resource label unless the metric type is
 C<ALBRequestCountPerTarget> and there is a target group attached to the
 Spot Fleet request or ECS service.
 
-The format is
+You create the resource label by appending the final portion of the
+load balancer ARN and the final portion of the target group ARN into a
+single value, separated by a forward slash (/). The format is
 app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt>/targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt>,
 where:
 
@@ -71,6 +81,16 @@ the final portion of the target group ARN.
 
 =back
 
+This is an example:
+app/EC2Co-EcsEl-1TKLTMITMM0EO/f37c06a68c1748aa/targetgroup/EC2Co-Defau-LDNM7Q3ZH1ZN/6d4ea56ca2d6a18d.
+
+To find the ARN for an Application Load Balancer, use the
+DescribeLoadBalancers
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
+API operation. To find the ARN for the target group, use the
+DescribeTargetGroups
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html)
+API operation.
 
 
 

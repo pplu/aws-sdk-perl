@@ -43,7 +43,7 @@ A container for information about access control for replicas.
 Specifies the replica ownership. For default and valid values, see PUT
 bucket replication
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html)
-in the I<Amazon Simple Storage Service API Reference>.
+in the I<Amazon S3 API Reference>.
 
 
 

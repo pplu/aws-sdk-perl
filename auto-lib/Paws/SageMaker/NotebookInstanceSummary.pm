@@ -51,8 +51,8 @@ Provides summary information for an Amazon SageMaker notebook instance.
 
 An array of up to three Git repositories associated with the notebook
 instance. These can be either the names of Git repositories stored as
-resources in your account, or the URL of Git repositories in AWS
-CodeCommit
+resources in your account, or the URL of Git repositories in Amazon Web
+Services CodeCommit
 (https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository. These repositories are cloned at the
 same level as the default repository of your notebook instance. For
@@ -70,8 +70,8 @@ A timestamp that shows when the notebook instance was created.
 
 The Git repository associated with the notebook instance as its default
 code repository. This can be either the name of a Git repository stored
-as a resource in your account, or the URL of a Git repository in AWS
-CodeCommit
+as a resource in your account, or the URL of a Git repository in Amazon
+Web Services CodeCommit
 (https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
 or in any other Git repository. When you open a notebook instance, it
 opens in the directory that contains this repository. For more

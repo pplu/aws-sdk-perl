@@ -138,8 +138,8 @@ C<engine> - Accepts names of database engines.
 =head2 IncludePublic => Bool
 
 A value that indicates whether to include manual DB cluster snapshots
-that are public and can be copied or restored by any AWS account. By
-default, the public snapshots are not included.
+that are public and can be copied or restored by any Amazon Web
+Services account. By default, the public snapshots are not included.
 
 You can share a manual DB snapshot as public by using the
 ModifyDBSnapshotAttribute API.
@@ -149,13 +149,13 @@ ModifyDBSnapshotAttribute API.
 =head2 IncludeShared => Bool
 
 A value that indicates whether to include shared manual DB cluster
-snapshots from other AWS accounts that this AWS account has been given
-permission to copy or restore. By default, these snapshots are not
-included.
+snapshots from other Amazon Web Services accounts that this Amazon Web
+Services account has been given permission to copy or restore. By
+default, these snapshots are not included.
 
-You can give an AWS account permission to restore a manual DB snapshot
-from another AWS account by using the C<ModifyDBSnapshotAttribute> API
-action.
+You can give an Amazon Web Services account permission to restore a
+manual DB snapshot from another Amazon Web Services account by using
+the C<ModifyDBSnapshotAttribute> API action.
 
 
 
@@ -191,17 +191,17 @@ following values:
 =item *
 
 C<automated> - Return all DB snapshots that have been automatically
-taken by Amazon RDS for my AWS account.
+taken by Amazon RDS for my Amazon Web Services account.
 
 =item *
 
-C<manual> - Return all DB snapshots that have been taken by my AWS
-account.
+C<manual> - Return all DB snapshots that have been taken by my Amazon
+Web Services account.
 
 =item *
 
 C<shared> - Return all manual DB snapshots that have been shared to my
-AWS account.
+Amazon Web Services account.
 
 =item *
 
@@ -209,11 +209,11 @@ C<public> - Return all DB snapshots that have been marked as public.
 
 =item *
 
-C<awsbackup> - Return the DB snapshots managed by the AWS Backup
-service.
+C<awsbackup> - Return the DB snapshots managed by the Amazon Web
+Services Backup service.
 
-For information about AWS Backup, see the I<AWS Backup Developer
-Guide.>
+For information about Amazon Web Services Backup, see the I<Amazon Web
+Services Backup Developer Guide.>
 (https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html)
 
 The C<awsbackup> type does not apply to Aurora.

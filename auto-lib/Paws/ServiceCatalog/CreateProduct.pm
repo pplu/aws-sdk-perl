@@ -47,10 +47,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Info => {
           'MyProvisioningArtifactInfoKey' => 'MyProvisioningArtifactInfoValue',
         },    # min: 1, max: 100
-        Description => 'MyProvisioningArtifactDescription',    # OPTIONAL
-        DisableTemplateValidation => 1,                               # OPTIONAL
-        Name                      => 'MyProvisioningArtifactName',    # OPTIONAL
-        Type                      => 'CLOUD_FORMATION_TEMPLATE'
+        Description =>
+          'MyProvisioningArtifactDescription',    # max: 8192; OPTIONAL
+        DisableTemplateValidation => 1,           # OPTIONAL
+        Name => 'MyProvisioningArtifactName',     # max: 8192; OPTIONAL
+        Type => 'CLOUD_FORMATION_TEMPLATE'
         , # values: CLOUD_FORMATION_TEMPLATE, MARKETPLACE_AMI, MARKETPLACE_CAR; OPTIONAL
       },
       AcceptLanguage     => 'MyAcceptLanguage',                 # OPTIONAL
@@ -165,6 +166,8 @@ The contact email for product support.
 =head2 SupportUrl => Str
 
 The contact URL for product support.
+
+C<^https?:\/\// >/ is the pattern used to validate SupportUrl.
 
 
 

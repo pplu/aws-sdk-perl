@@ -46,7 +46,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 PlatformArn => Str
 
-The ARN of the version of the platform.
+The ARN of the platform version.
 
 
 

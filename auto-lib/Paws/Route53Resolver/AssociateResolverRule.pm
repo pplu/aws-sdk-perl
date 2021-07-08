@@ -49,21 +49,22 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 Name => Str
 
-A name for the association that you're creating between a resolver rule
+A name for the association that you're creating between a Resolver rule
 and a VPC.
 
 
 
 =head2 B<REQUIRED> ResolverRuleId => Str
 
-The ID of the resolver rule that you want to associate with the VPC. To
-list the existing resolver rules, use ListResolverRules.
+The ID of the Resolver rule that you want to associate with the VPC. To
+list the existing Resolver rules, use ListResolverRules
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverRules.html).
 
 
 
 =head2 B<REQUIRED> VPCId => Str
 
-The ID of the VPC that you want to associate the resolver rule with.
+The ID of the VPC that you want to associate the Resolver rule with.
 
 
 

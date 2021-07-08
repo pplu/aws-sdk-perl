@@ -2,6 +2,7 @@
 package Paws::MediaLive::CreateInput;
   use Moose;
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDestinationRequest]', traits => ['NameInRequest'], request_name => 'destinations');
+  has InputDevices => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::InputDeviceSettings]', traits => ['NameInRequest'], request_name => 'inputDevices');
   has InputSecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputSecurityGroups');
   has MediaConnectFlows => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MediaConnectFlowRequest]', traits => ['NameInRequest'], request_name => 'mediaConnectFlows');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -44,6 +45,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      InputDevices => [
+        {
+          Id => 'My__string',    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
       InputSecurityGroups => [
         'My__string', ...    # OPTIONAL
       ],    # OPTIONAL
@@ -80,6 +87,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     # Results:
     my $Destinations        = $CreateInputResponse->Destinations;
+    my $InputDevices        = $CreateInputResponse->InputDevices;
     my $InputSecurityGroups = $CreateInputResponse->InputSecurityGroups;
     my $MediaConnectFlows   = $CreateInputResponse->MediaConnectFlows;
     my $Name                = $CreateInputResponse->Name;
@@ -101,6 +109,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 =head2 Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]
 
 Destination settings for PUSH type inputs.
+
+
+
+=head2 InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceSettings>]
+
+Settings for the devices.
 
 
 
@@ -158,7 +172,7 @@ A collection of key-value pairs.
 
 
 
-Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">
+Valid values are: C<"UDP_PUSH">, C<"RTP_PUSH">, C<"RTMP_PUSH">, C<"RTMP_PULL">, C<"URL_PULL">, C<"MP4_FILE">, C<"MEDIACONNECT">, C<"INPUT_DEVICE">, C<"AWS_CDI">
 
 =head2 Vpc => L<Paws::MediaLive::InputVpcRequest>
 

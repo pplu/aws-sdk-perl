@@ -6,9 +6,12 @@ package Paws::Batch::JobDefinition;
   has JobDefinitionName => (is => 'ro', isa => 'Str', request_name => 'jobDefinitionName', traits => ['NameInRequest'], required => 1);
   has NodeProperties => (is => 'ro', isa => 'Paws::Batch::NodeProperties', request_name => 'nodeProperties', traits => ['NameInRequest']);
   has Parameters => (is => 'ro', isa => 'Paws::Batch::ParametersMap', request_name => 'parameters', traits => ['NameInRequest']);
+  has PlatformCapabilities => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'platformCapabilities', traits => ['NameInRequest']);
+  has PropagateTags => (is => 'ro', isa => 'Bool', request_name => 'propagateTags', traits => ['NameInRequest']);
   has RetryStrategy => (is => 'ro', isa => 'Paws::Batch::RetryStrategy', request_name => 'retryStrategy', traits => ['NameInRequest']);
   has Revision => (is => 'ro', isa => 'Int', request_name => 'revision', traits => ['NameInRequest'], required => 1);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'Paws::Batch::TagrisTagsMap', request_name => 'tags', traits => ['NameInRequest']);
   has Timeout => (is => 'ro', isa => 'Paws::Batch::JobTimeout', request_name => 'timeout', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest'], required => 1);
 
@@ -66,6 +69,9 @@ The name of the job definition.
 
 An object with various properties specific to multi-node parallel jobs.
 
+If the job runs on Fargate resources, then you must not specify
+C<nodeProperties>; use C<containerProperties> instead.
+
 
 =head2 Parameters => L<Paws::Batch::ParametersMap>
 
@@ -76,6 +82,24 @@ corresponding parameter defaults from the job definition. For more
 information about specifying parameters, see Job Definition Parameters
 (https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html)
 in the I<AWS Batch User Guide>.
+
+
+=head2 PlatformCapabilities => ArrayRef[Str|Undef]
+
+The platform capabilities required by the job definition. If no value
+is specified, it defaults to C<EC2>. Jobs run on Fargate resources
+specify C<FARGATE>.
+
+
+=head2 PropagateTags => Bool
+
+Specifies whether to propagate the tags from the job or job definition
+to the corresponding Amazon ECS task. If no value is specified, the
+tags aren't propagated. Tags can only be propagated to the tasks during
+task creation. For tags with the same name, job tags are given priority
+over job definitions tags. If the total number of combined tags from
+the job and job definition is over 50, the job is moved to the
+C<FAILED> state.
 
 
 =head2 RetryStrategy => L<Paws::Batch::RetryStrategy>
@@ -94,16 +118,26 @@ The revision of the job definition.
 The status of the job definition.
 
 
+=head2 Tags => L<Paws::Batch::TagrisTagsMap>
+
+The tags applied to the job definition.
+
+
 =head2 Timeout => L<Paws::Batch::JobTimeout>
 
 The timeout configuration for jobs that are submitted with this job
 definition. You can specify a timeout duration after which AWS Batch
-terminates your jobs if they have not finished.
+terminates your jobs if they haven't finished.
 
 
 =head2 B<REQUIRED> Type => Str
 
-The type of job definition.
+The type of job definition. If the job is run on Fargate resources,
+then C<multinode> isn't supported. For more information about
+multi-node parallel jobs, see Creating a multi-node parallel job
+definition
+(https://docs.aws.amazon.com/batch/latest/userguide/multi-node-job-def.html)
+in the I<AWS Batch User Guide>.
 
 
 

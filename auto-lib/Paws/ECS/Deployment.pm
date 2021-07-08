@@ -4,11 +4,14 @@ package Paws::ECS::Deployment;
   has CapacityProviderStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::CapacityProviderStrategyItem]', request_name => 'capacityProviderStrategy', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has DesiredCount => (is => 'ro', isa => 'Int', request_name => 'desiredCount', traits => ['NameInRequest']);
+  has FailedTasks => (is => 'ro', isa => 'Int', request_name => 'failedTasks', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has LaunchType => (is => 'ro', isa => 'Str', request_name => 'launchType', traits => ['NameInRequest']);
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
   has PendingCount => (is => 'ro', isa => 'Int', request_name => 'pendingCount', traits => ['NameInRequest']);
   has PlatformVersion => (is => 'ro', isa => 'Str', request_name => 'platformVersion', traits => ['NameInRequest']);
+  has RolloutState => (is => 'ro', isa => 'Str', request_name => 'rolloutState', traits => ['NameInRequest']);
+  has RolloutStateReason => (is => 'ro', isa => 'Str', request_name => 'rolloutStateReason', traits => ['NameInRequest']);
   has RunningCount => (is => 'ro', isa => 'Int', request_name => 'runningCount', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has TaskDefinition => (is => 'ro', isa => 'Str', request_name => 'taskDefinition', traits => ['NameInRequest']);
@@ -66,6 +69,17 @@ The most recent desired count of tasks that was specified for the
 service to deploy or maintain.
 
 
+=head2 FailedTasks => Int
+
+The number of consecutively failed tasks in the deployment. A task is
+considered a failure if the service scheduler can't launch the task,
+the task doesn't transition to a C<RUNNING> state, or if it fails any
+of its defined health checks and is stopped.
+
+Once a service deployment has one or more successfully running tasks,
+the failed task count resets to zero and stops being evaluated.
+
+
 =head2 Id => Str
 
 The ID of the deployment.
@@ -100,6 +114,26 @@ type. If one is not specified, the C<LATEST> platform version is used
 by default. For more information, see AWS Fargate Platform Versions
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/platform_versions.html)
 in the I<Amazon Elastic Container Service Developer Guide>.
+
+
+=head2 RolloutState => Str
+
+The C<rolloutState> of a service is only returned for services that use
+the rolling update (C<ECS>) deployment type that are not behind a
+Classic Load Balancer.
+
+The rollout state of the deployment. When a service deployment is
+started, it begins in an C<IN_PROGRESS> state. When the service reaches
+a steady state, the deployment will transition to a C<COMPLETED> state.
+If the service fails to reach a steady state and circuit breaker is
+enabled, the deployment will transition to a C<FAILED> state. A
+deployment in C<FAILED> state will launch no new tasks. For more
+information, see DeploymentCircuitBreaker.
+
+
+=head2 RolloutStateReason => Str
+
+A description of the rollout state of a deployment.
 
 
 =head2 RunningCount => Int

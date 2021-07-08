@@ -21,9 +21,9 @@ If the response contains C<NextToken>, submit another C<ListOperations>
 request to get the next group of results. Specify the value of
 C<NextToken> from the previous response in the next request.
 
-AWS Cloud Map gets C<MaxResults> operations and then filters them based
-on the specified criteria. It's possible that no operations in the
-first C<MaxResults> operations matched the specified criteria but that
+Cloud Map gets C<MaxResults> operations and then filters them based on
+the specified criteria. It's possible that no operations in the first
+C<MaxResults> operations matched the specified criteria but that
 subsequent groups of C<MaxResults> operations do contain operations
 that match the criteria.
 

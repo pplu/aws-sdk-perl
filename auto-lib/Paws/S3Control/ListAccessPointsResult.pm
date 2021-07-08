@@ -27,9 +27,9 @@ access points associated with the specified bucket.
 =head2 NextToken => Str
 
 If the specified bucket has more access points than can be returned in
-one call to this API, then this field contains a continuation token
-that you can provide in subsequent calls to this API to retrieve
-additional access points.
+one call to this API, this field contains a continuation token that you
+can provide in subsequent calls to this API to retrieve additional
+access points.
 
 
 

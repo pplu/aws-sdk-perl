@@ -26,12 +26,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+# Describe acount attributes
+# Lists all of the AWS DMS attributes for a customer account. The attributes
+# include AWS DMS quotas for the account, such as the number of replication
+# instances allowed. The description for a quota includes the quota name,
+# current usage toward that quota, and the quota's maximum value. This operation
+# does not take any parameters.
     my $DescribeAccountAttributesResponse = $dms->DescribeAccountAttributes();
 
     # Results:
     my $AccountQuotas = $DescribeAccountAttributesResponse->AccountQuotas;
-    my $UniqueAccountIdentifier =
-      $DescribeAccountAttributesResponse->UniqueAccountIdentifier;
 
     # Returns a L<Paws::DMS::DescribeAccountAttributesResponse> object.
 

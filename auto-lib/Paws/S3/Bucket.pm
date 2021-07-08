@@ -43,7 +43,8 @@ accounts.
 
 =head2 CreationDate => Str
 
-Date the bucket was created.
+Date the bucket was created. This date can change when making changes
+to your bucket, such as editing its bucket policy.
 
 
 =head2 Name => Str

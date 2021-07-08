@@ -1,12 +1,14 @@
 
 package Paws::ELBv2::CreateListener;
   use Moose;
+  has AlpnPolicy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Certificate]');
   has DefaultActions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Action]', required => 1);
   has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
-  has Port => (is => 'ro', isa => 'Int', required => 1);
-  has Protocol => (is => 'ro', isa => 'Str', required => 1);
+  has Port => (is => 'ro', isa => 'Int');
+  has Protocol => (is => 'ro', isa => 'Str');
   has SslPolicy => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -96,39 +98,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
+=head2 AlpnPolicy => ArrayRef[Str|Undef]
+
+[TLS listeners] The name of the Application-Layer Protocol Negotiation
+(ALPN) policy. You can specify one policy name. The following are the
+possible values:
+
+=over
+
+=item *
+
+C<HTTP1Only>
+
+=item *
+
+C<HTTP2Only>
+
+=item *
+
+C<HTTP2Optional>
+
+=item *
+
+C<HTTP2Preferred>
+
+=item *
+
+C<None>
+
+=back
+
+For more information, see ALPN policies
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+in the I<Network Load Balancers Guide>.
+
+
+
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
 [HTTPS and TLS listeners] The default certificate for the listener. You
 must provide exactly one certificate. Set C<CertificateArn> to the
 certificate ARN but do not set C<IsDefault>.
 
-To create a certificate list for the listener, use
-AddListenerCertificates.
-
 
 
 =head2 B<REQUIRED> DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions for the default rule. The rule must include one forward
-action or one or more fixed-response actions.
-
-If the action type is C<forward>, you specify one or more target
-groups. The protocol of the target group must be HTTP or HTTPS for an
-Application Load Balancer. The protocol of the target group must be
-TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
-
-[HTTPS listeners] If the action type is C<authenticate-oidc>, you
-authenticate users through an identity provider that is OpenID Connect
-(OIDC) compliant.
-
-[HTTPS listeners] If the action type is C<authenticate-cognito>, you
-authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is C<redirect>, you
-redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is C<fixed-response>,
-you drop specified client requests and return a custom HTTP response.
+The actions for the default rule.
 
 
 
@@ -138,26 +154,40 @@ The Amazon Resource Name (ARN) of the load balancer.
 
 
 
-=head2 B<REQUIRED> Port => Int
+=head2 Port => Int
 
-The port on which the load balancer is listening.
+The port on which the load balancer is listening. You cannot specify a
+port for a Gateway Load Balancer.
 
 
 
-=head2 B<REQUIRED> Protocol => Str
+=head2 Protocol => Str
 
 The protocol for connections from clients to the load balancer. For
 Application Load Balancers, the supported protocols are HTTP and HTTPS.
 For Network Load Balancers, the supported protocols are TCP, TLS, UDP,
-and TCP_UDP.
+and TCP_UDP. You canE<rsquo>t specify the UDP or TCP_UDP protocol if
+dual-stack mode is enabled. You cannot specify a protocol for a Gateway
+Load Balancer.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">, C<"GENEVE">
 
 =head2 SslPolicy => Str
 
 [HTTPS and TLS listeners] The security policy that defines which
-ciphers and protocols are supported. The default is the current
-predefined security policy.
+protocols and ciphers are supported.
+
+For more information, see Security policies
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
+in the I<Application Load Balancers Guide> and Security policies
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+in the I<Network Load Balancers Guide>.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ELBv2::Tag>]
+
+The tags to assign to the listener.
 
 
 

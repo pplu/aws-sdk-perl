@@ -8,6 +8,7 @@ package Paws::WorkLink::FleetSummary;
   has FleetName => (is => 'ro', isa => 'Str');
   has FleetStatus => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::WorkLink::TagMap');
 
 1;
 
@@ -28,7 +29,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::WorkLink::FleetSummary object:
 
-  $service_obj->Method(Att1 => { CompanyCode => $value, ..., LastUpdatedTime => $value  });
+  $service_obj->Method(Att1 => { CompanyCode => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -56,12 +57,12 @@ The time when the fleet was created.
 
 =head2 DisplayName => Str
 
-The name to display.
+The name of the fleet to display.
 
 
 =head2 FleetArn => Str
 
-The ARN of the fleet.
+The Amazon Resource Name (ARN) of the fleet.
 
 
 =head2 FleetName => Str
@@ -77,6 +78,11 @@ The status of the fleet.
 =head2 LastUpdatedTime => Str
 
 The time when the fleet was last updated.
+
+
+=head2 Tags => L<Paws::WorkLink::TagMap>
+
+The tags attached to the resource. A tag is a key-value pair.
 
 
 

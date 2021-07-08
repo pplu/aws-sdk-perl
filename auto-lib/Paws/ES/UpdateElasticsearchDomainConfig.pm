@@ -4,12 +4,15 @@ package Paws::ES::UpdateElasticsearchDomainConfig;
   has AccessPolicies => (is => 'ro', isa => 'Str');
   has AdvancedOptions => (is => 'ro', isa => 'Paws::ES::AdvancedOptions');
   has AdvancedSecurityOptions => (is => 'ro', isa => 'Paws::ES::AdvancedSecurityOptionsInput');
+  has AutoTuneOptions => (is => 'ro', isa => 'Paws::ES::AutoTuneOptions');
   has CognitoOptions => (is => 'ro', isa => 'Paws::ES::CognitoOptions');
   has DomainEndpointOptions => (is => 'ro', isa => 'Paws::ES::DomainEndpointOptions');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'DomainName', required => 1);
   has EBSOptions => (is => 'ro', isa => 'Paws::ES::EBSOptions');
   has ElasticsearchClusterConfig => (is => 'ro', isa => 'Paws::ES::ElasticsearchClusterConfig');
+  has EncryptionAtRestOptions => (is => 'ro', isa => 'Paws::ES::EncryptionAtRestOptions');
   has LogPublishingOptions => (is => 'ro', isa => 'Paws::ES::LogPublishingOptions');
+  has NodeToNodeEncryptionOptions => (is => 'ro', isa => 'Paws::ES::NodeToNodeEncryptionOptions');
   has SnapshotOptions => (is => 'ro', isa => 'Paws::ES::SnapshotOptions');
   has VPCOptions => (is => 'ro', isa => 'Paws::ES::VPCOptions');
 
@@ -51,6 +54,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MasterUserName     => 'MyUsername',    # min: 1; OPTIONAL
           MasterUserPassword => 'MyPassword',    # min: 8; OPTIONAL
         },    # OPTIONAL
+        SAMLOptions => {
+          Enabled => 1,    # OPTIONAL
+          Idp     => {
+            EntityId        => 'MySAMLEntityId',    # min: 8, max: 512
+            MetadataContent => 'MySAMLMetadata',    # min: 1, max: 1048576
+
+          },    # OPTIONAL
+          MasterBackendRole     => 'MyBackendRole', # min: 1, max: 256; OPTIONAL
+          MasterUserName        => 'MyUsername',    # min: 1; OPTIONAL
+          RolesKey              => 'MyString',
+          SessionTimeoutMinutes => 1,               # OPTIONAL
+          SubjectKey            => 'MyString',
+        },    # OPTIONAL
+      },    # OPTIONAL
+      AutoTuneOptions => {
+        DesiredState         => 'ENABLED', # values: ENABLED, DISABLED; OPTIONAL
+        MaintenanceSchedules => [
+          {
+            CronExpressionForRecurrence => 'MyString',
+            Duration                    => {
+              Unit  => 'HOURS',    # values: HOURS; OPTIONAL
+              Value => 1,          # min: 1, max: 24; OPTIONAL
+            },    # OPTIONAL
+            StartAt => '1970-01-01T01:00:00',    # OPTIONAL
+          },
+          ...
+        ],    # max: 100; OPTIONAL
+        RollbackOnDisable =>
+          'NO_ROLLBACK',    # values: NO_ROLLBACK, DEFAULT_ROLLBACK; OPTIONAL
       },    # OPTIONAL
       CognitoOptions => {
         Enabled        => 1,                     # OPTIONAL
@@ -59,8 +91,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         UserPoolId     => 'MyUserPoolId',        # min: 1, max: 55; OPTIONAL
       },    # OPTIONAL
       DomainEndpointOptions => {
-        EnforceHTTPS      => 1,                             # OPTIONAL
-        TLSSecurityPolicy => 'Policy-Min-TLS-1-0-2019-07'
+        CustomEndpoint => 'MyDomainNameFqdn',    # min: 1, max: 255; OPTIONAL
+        CustomEndpointCertificateArn => 'MyARN',                      # OPTIONAL
+        CustomEndpointEnabled        => 1,                            # OPTIONAL
+        EnforceHTTPS                 => 1,                            # OPTIONAL
+        TLSSecurityPolicy            => 'Policy-Min-TLS-1-0-2019-07'
         , # values: Policy-Min-TLS-1-0-2019-07, Policy-Min-TLS-1-2-2019-07; OPTIONAL
       },    # OPTIONAL
       EBSOptions => {
@@ -70,6 +105,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         VolumeType => 'standard',    # values: standard, gp2, io1; OPTIONAL
       },    # OPTIONAL
       ElasticsearchClusterConfig => {
+        ColdStorageOptions => {
+          Enabled => 1,    # OPTIONAL
+
+        },    # OPTIONAL
         DedicatedMasterCount   => 1,                          # OPTIONAL
         DedicatedMasterEnabled => 1,                          # OPTIONAL
         DedicatedMasterType    => 'm3.medium.elasticsearch'
@@ -86,11 +125,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         ZoneAwarenessEnabled => 1,    # OPTIONAL
       },    # OPTIONAL
+      EncryptionAtRestOptions => {
+        Enabled  => 1,               # OPTIONAL
+        KmsKeyId => 'MyKmsKeyId',    # min: 1, max: 500; OPTIONAL
+      },    # OPTIONAL
       LogPublishingOptions => {
         'INDEX_SLOW_LOGS' => {
           CloudWatchLogsLogGroupArn => 'MyCloudWatchLogsLogGroupArn', # OPTIONAL
           Enabled                   => 1,                             # OPTIONAL
-        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS
+        }, # key: values: INDEX_SLOW_LOGS, SEARCH_SLOW_LOGS, ES_APPLICATION_LOGS, AUDIT_LOGS
+      },    # OPTIONAL
+      NodeToNodeEncryptionOptions => {
+        Enabled => 1,    # OPTIONAL
       },    # OPTIONAL
       SnapshotOptions => {
         AutomatedSnapshotStartHour => 1,    # OPTIONAL
@@ -135,6 +181,12 @@ Specifies advanced security options.
 
 
 
+=head2 AutoTuneOptions => L<Paws::ES::AutoTuneOptions>
+
+Specifies Auto-Tune options.
+
+
+
 =head2 CognitoOptions => L<Paws::ES::CognitoOptions>
 
 Options to specify the Cognito user and identity pools for Kibana
@@ -169,10 +221,22 @@ The type and number of instances to instantiate for the domain cluster.
 
 
 
+=head2 EncryptionAtRestOptions => L<Paws::ES::EncryptionAtRestOptions>
+
+Specifies the Encryption At Rest Options.
+
+
+
 =head2 LogPublishingOptions => L<Paws::ES::LogPublishingOptions>
 
 Map of C<LogType> and C<LogPublishingOption>, each containing options
 to publish a given type of Elasticsearch log.
+
+
+
+=head2 NodeToNodeEncryptionOptions => L<Paws::ES::NodeToNodeEncryptionOptions>
+
+Specifies the NodeToNodeEncryptionOptions.
 
 
 

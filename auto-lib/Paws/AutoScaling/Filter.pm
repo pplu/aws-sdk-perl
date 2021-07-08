@@ -34,20 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a filter.
+Describes a filter that is used to return a more specific list of
+results when describing tags.
+
+For more information, see Tagging Auto Scaling groups and instances
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/autoscaling-tagging.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 
 
 =head2 Name => Str
 
-The name of the filter. The valid values are: C<"auto-scaling-group">,
-C<"key">, C<"value">, and C<"propagate-at-launch">.
+The name of the filter. The valid values are: C<auto-scaling-group>,
+C<key>, C<value>, and C<propagate-at-launch>.
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
-The value of the filter.
+One or more filter values. Filter values are case-sensitive.
 
 
 

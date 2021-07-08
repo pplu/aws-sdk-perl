@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DynamoDB::C
 
 =head1 DESCRIPTION
 
-Represents a Contributor Insights summary entry..
+Represents a Contributor Insights summary entry.
 
 =head1 ATTRIBUTES
 

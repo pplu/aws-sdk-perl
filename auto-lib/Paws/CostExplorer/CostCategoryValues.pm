@@ -2,6 +2,7 @@
 package Paws::CostExplorer::CostCategoryValues;
   use Moose;
   has Key => (is => 'ro', isa => 'Str');
+  has MatchOptions => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Values => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -34,12 +35,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CostExplore
 
 =head1 DESCRIPTION
 
-I<B<Cost Category is in public beta for AWS Billing and Cost Management
-and is subject to change. Your use of Cost Categories is subject to the
-Beta Service Participation terms of the AWS Service Terms
-(https://aws.amazon.com/service-terms/) (Section 1.10).>>
+The Cost Categories values used for filtering the costs.
 
-The values that are available for Cost Categories.
+If C<Values> and C<Key> are not specified, the C<ABSENT> C<MatchOption>
+is applied to all Cost Categories. That is, filtering on resources that
+are not mapped to any Cost Categories.
+
+If C<Values> is provided and C<Key> is not specified, the C<ABSENT>
+C<MatchOption> is applied to the Cost Categories C<Key> only. That is,
+filtering on resources without the given Cost Categories key.
 
 =head1 ATTRIBUTES
 
@@ -47,6 +51,13 @@ The values that are available for Cost Categories.
 =head2 Key => Str
 
 
+
+
+=head2 MatchOptions => ArrayRef[Str|Undef]
+
+The match options that you can use to filter your results. MatchOptions
+is only applicable for actions related to cost category. The default
+values for C<MatchOptions> is C<EQUALS> and C<CASE_SENSITIVE>.
 
 
 =head2 Values => ArrayRef[Str|Undef]

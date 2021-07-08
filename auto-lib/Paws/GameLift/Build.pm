@@ -42,55 +42,35 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::B
 
 Properties describing a custom game build.
 
-B<Related operations>
+B<Related actions>
 
-=over
-
-=item *
-
-CreateBuild
-
-=item *
-
-ListBuilds
-
-=item *
-
-DescribeBuild
-
-=item *
-
-UpdateBuild
-
-=item *
-
-DeleteBuild
-
-=back
-
+CreateBuild | ListBuilds | DescribeBuild | UpdateBuild | DeleteBuild |
+All APIs by task
+(https://docs.aws.amazon.com/gamelift/latest/developerguide/reference-awssdk.html#reference-awssdk-resources-fleets)
 
 =head1 ATTRIBUTES
 
 
 =head2 BuildArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a GameLift build resource and uniquely identifies
-it. ARNs are unique across all Regions. In a GameLift build ARN, the
-resource ID matches the I<BuildId> value.
+it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::build/build-a1234567-b8c9-0d1e-2fa3-b45c6d7e8912>.
+In a GameLift build ARN, the resource ID matches the I<BuildId> value.
 
 
 =head2 BuildId => Str
 
-A unique identifier for a build.
+A unique identifier for the build.
 
 
 =head2 CreationTime => Str
 
-Time stamp indicating when this data object was created. Format is a
+A time stamp indicating when this data object was created. Format is a
 number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 Name => Str

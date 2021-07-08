@@ -54,7 +54,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 Textual description of the snapshot that appears in the Amazon EC2
 console, Elastic Block Store snapshots panel in the B<Description>
 field, and in the AWS Storage Gateway snapshot B<Details> pane,
-B<Description> field
+B<Description> field.
 
 
 

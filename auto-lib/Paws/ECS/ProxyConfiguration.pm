@@ -45,10 +45,6 @@ version C<20190301> or later, then they contain the required versions
 of the container agent and C<ecs-init>. For more information, see
 Amazon ECS-optimized Linux AMI
 (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-optimized_AMI.html)
-in the I<Amazon Elastic Container Service Developer Guide>.
-
-For tasks using the Fargate launch type, the task or service requires
-platform version 1.3.0 or later.
 
 =head1 ATTRIBUTES
 

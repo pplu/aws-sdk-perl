@@ -2,6 +2,7 @@
 package Paws::S3Control::S3CopyObjectOperation;
   use Moose;
   has AccessControlGrants => (is => 'ro', isa => 'ArrayRef[Paws::S3Control::S3Grant]');
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool');
   has CannedAccessControlList => (is => 'ro', isa => 'Str');
   has MetadataDirective => (is => 'ro', isa => 'Str');
   has ModifiedSinceConstraint => (is => 'ro', isa => 'Str');
@@ -49,8 +50,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 =head1 DESCRIPTION
 
 Contains the configuration parameters for a PUT Copy object operation.
-Amazon S3 batch operations passes each value through to the underlying
-PUT Copy object API. For more information about the parameters for this
+S3 Batch Operations passes every object to the underlying PUT Copy
+object API. For more information about the parameters for this
 operation, see PUT Object - Copy
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTObjectCOPY.html).
 
@@ -60,6 +61,17 @@ operation, see PUT Object - Copy
 =head2 AccessControlGrants => ArrayRef[L<Paws::S3Control::S3Grant>]
 
 
+
+
+=head2 BucketKeyEnabled => Bool
+
+Specifies whether Amazon S3 should use an S3 Bucket Key for object
+encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
+this header to C<true> causes Amazon S3 to use an S3 Bucket Key for
+object encryption with SSE-KMS.
+
+Specifying this header with an I<object> action doesnE<rsquo>t affect
+I<bucket-level> settings for S3 Bucket Key.
 
 
 =head2 CannedAccessControlList => Str
@@ -89,22 +101,27 @@ operation, see PUT Object - Copy
 
 =head2 ObjectLockLegalHoldStatus => Str
 
-
+The legal hold status to be applied to all objects in the Batch
+Operations job.
 
 
 =head2 ObjectLockMode => Str
 
-
+The retention mode to be applied to all objects in the Batch Operations
+job.
 
 
 =head2 ObjectLockRetainUntilDate => Str
 
-
+The date when the applied object retention configuration expires on all
+objects in the Batch Operations job.
 
 
 =head2 RedirectLocation => Str
 
-
+Specifies an optional metadata property for website redirects,
+C<x-amz-website-redirect-location>. Allows webpage redirects if the
+object is accessed through a website endpoint.
 
 
 =head2 RequesterPays => Bool
@@ -124,12 +141,16 @@ operation, see PUT Object - Copy
 
 =head2 TargetKeyPrefix => Str
 
-
+Specifies the folder prefix into which you would like the objects to be
+copied. For example, to copy objects into a folder named "Folder1" in
+the destination bucket, set the TargetKeyPrefix to "Folder1/".
 
 
 =head2 TargetResource => Str
 
-
+Specifies the destination bucket ARN for the batch copy operation. For
+example, to copy objects to a bucket named "destinationBucket", set the
+TargetResource to "arn:aws:s3:::destinationBucket".
 
 
 =head2 UnModifiedSinceConstraint => Str

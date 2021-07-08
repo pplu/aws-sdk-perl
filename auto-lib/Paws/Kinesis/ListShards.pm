@@ -4,6 +4,7 @@ package Paws::Kinesis::ListShards;
   has ExclusiveStartShardId => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ShardFilter => (is => 'ro', isa => 'Paws::Kinesis::ShardFilter');
   has StreamCreationTimestamp => (is => 'ro', isa => 'Str');
   has StreamName => (is => 'ro', isa => 'Str');
 
@@ -32,9 +33,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $kinesis = Paws->service('Kinesis');
     my $ListShardsOutput = $kinesis->ListShards(
-      ExclusiveStartShardId   => 'MyShardId',              # OPTIONAL
-      MaxResults              => 1,                        # OPTIONAL
-      NextToken               => 'MyNextToken',            # OPTIONAL
+      ExclusiveStartShardId => 'MyShardId',      # OPTIONAL
+      MaxResults            => 1,                # OPTIONAL
+      NextToken             => 'MyNextToken',    # OPTIONAL
+      ShardFilter           => {
+        Type => 'AFTER_SHARD_ID'
+        , # values: AFTER_SHARD_ID, AT_TRIM_HORIZON, FROM_TRIM_HORIZON, AT_LATEST, AT_TIMESTAMP, FROM_TIMESTAMP
+        ShardId   => 'MyShardId',              # min: 1, max: 128
+        Timestamp => '1970-01-01T01:00:00',    # OPTIONAL
+      },    # OPTIONAL
       StreamCreationTimestamp => '1970-01-01T01:00:00',    # OPTIONAL
       StreamName              => 'MyStreamName',           # OPTIONAL
     );
@@ -69,7 +76,7 @@ You cannot specify this parameter if you specify C<NextToken>.
 
 The maximum number of shards to return in a single call to
 C<ListShards>. The minimum value you can specify for this parameter is
-1, and the maximum is 1,000, which is also the default.
+1, and the maximum is 10,000, which is also the default.
 
 When the number of shards to be listed is greater than the value of
 C<MaxResults>, the response contains a C<NextToken> value that you can
@@ -102,6 +109,12 @@ Tokens expire after 300 seconds. When you obtain a value for
 C<NextToken> in the response to a call to C<ListShards>, you have 300
 seconds to use that value. If you specify an expired token in a call to
 C<ListShards>, you get C<ExpiredNextTokenException>.
+
+
+
+=head2 ShardFilter => L<Paws::Kinesis::ShardFilter>
+
+
 
 
 

@@ -33,6 +33,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::WAF::WafAct
 
 =head1 DESCRIPTION
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 For the action that is associated with a rule in a C<WebACL>, specifies
 the action that you want AWS WAF to perform when a web request matches
 all of the conditions in a rule. For the default action in a C<WebACL>,

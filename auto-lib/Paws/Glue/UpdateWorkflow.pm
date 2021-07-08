@@ -3,6 +3,7 @@ package Paws::Glue::UpdateWorkflow;
   use Moose;
   has DefaultRunProperties => (is => 'ro', isa => 'Paws::Glue::WorkflowRunProperties');
   has Description => (is => 'ro', isa => 'Str');
+  has MaxConcurrentRuns => (is => 'ro', isa => 'Int');
   has Name => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -34,7 +35,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DefaultRunProperties => {
         'MyIdString' => 'MyGenericString',    # key: min: 1, max: 255
       },    # OPTIONAL
-      Description => 'MyGenericString',    # OPTIONAL
+      Description       => 'MyGenericString',    # OPTIONAL
+      MaxConcurrentRuns => 1,                    # OPTIONAL
     );
 
     # Results:
@@ -58,6 +60,16 @@ workflow.
 =head2 Description => Str
 
 The description of the workflow.
+
+
+
+=head2 MaxConcurrentRuns => Int
+
+You can use this parameter to prevent unwanted multiple updates to
+data, to control costs, or in some cases, to prevent exceeding the
+maximum number of concurrent runs of any of the component jobs. If you
+leave this parameter blank, there is no limit to the number of
+concurrent workflow runs.
 
 
 

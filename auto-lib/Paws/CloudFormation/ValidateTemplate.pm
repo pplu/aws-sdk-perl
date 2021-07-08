@@ -28,14 +28,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloudformation = Paws->service('CloudFormation');
-    # To validate an AWS CloudFormation template
-    # This example validates the specified template.
-    my $ValidateTemplateOutput =
-      $cloudformation->ValidateTemplate( 'TemplateBody' => 'MyTemplate.json' );
+    my $ValidateTemplateOutput = $cloudformation->ValidateTemplate(
+      TemplateBody => 'MyTemplateBody',    # OPTIONAL
+      TemplateURL  => 'MyTemplateURL',     # OPTIONAL
+    );
 
     # Results:
     my $Capabilities       = $ValidateTemplateOutput->Capabilities;
     my $CapabilitiesReason = $ValidateTemplateOutput->CapabilitiesReason;
+    my $DeclaredTransforms = $ValidateTemplateOutput->DeclaredTransforms;
     my $Description        = $ValidateTemplateOutput->Description;
     my $Parameters         = $ValidateTemplateOutput->Parameters;
 
@@ -64,7 +65,8 @@ are passed, only C<TemplateBody> is used.
 
 Location of file containing the template body. The URL must point to a
 template (max size: 460,800 bytes) that is located in an Amazon S3
-bucket. For more information, go to Template Anatomy
+bucket or a Systems Manager document. For more information, go to
+Template Anatomy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 

@@ -13,6 +13,7 @@ package Paws::RDS::DBProxy;
   has RoleArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has UpdatedDate => (is => 'ro', isa => 'Str');
+  has VpcId => (is => 'ro', isa => 'Str');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcSubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -46,9 +47,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::DBProx
 
 =head1 DESCRIPTION
 
-This is prerelease documentation for the RDS Database Proxy feature in
-preview release. It is subject to change.
-
 The data structure representing a proxy managed by the RDS Proxy.
 
 This data type is used as a response element in the
@@ -76,7 +74,8 @@ The Amazon Resource Name (ARN) for the proxy.
 =head2 DBProxyName => Str
 
 The identifier for the proxy. This name must be unique for all proxies
-owned by your AWS account in the specified AWS Region.
+owned by your Amazon Web Services account in the specified Amazon Web
+Services Region.
 
 
 =head2 DebugLogging => Bool
@@ -92,15 +91,15 @@ safeguard any sensitive information that appears in the logs.
 
 =head2 Endpoint => Str
 
-The endpoint that you can use to connect to the proxy. You include the
-endpoint value in the connection string for a database client
+The endpoint that you can use to connect to the DB proxy. You include
+the endpoint value in the connection string for a database client
 application.
 
 
 =head2 EngineFamily => Str
 
-Currently, this value is always C<MYSQL>. The engine family applies to
-both RDS MySQL and Aurora MySQL.
+The engine family applies to MySQL and PostgreSQL for both RDS and
+Aurora.
 
 
 =head2 IdleClientTimeout => Int
@@ -138,6 +137,11 @@ issue.
 =head2 UpdatedDate => Str
 
 The date and time when the proxy was last updated.
+
+
+=head2 VpcId => Str
+
+Provides the VPC ID of the DB proxy.
 
 
 =head2 VpcSecurityGroupIds => ArrayRef[Str|Undef]

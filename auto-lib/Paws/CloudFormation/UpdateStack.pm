@@ -42,95 +42,53 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloudformation = Paws->service('CloudFormation');
-    # To update an AWS CloudFormation stack
-    # This example updates the template and input parameters for the specified
-    # stack.
     my $UpdateStackOutput = $cloudformation->UpdateStack(
-      'NotificationARNs' => [
-
-      ],
-      'Parameters' => [
-
+      StackName    => 'MyStackName',
+      Capabilities => [
+        'CAPABILITY_IAM',
+        ... # values: CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_AUTO_EXPAND
+      ],    # OPTIONAL
+      ClientRequestToken => 'MyClientRequestToken',          # OPTIONAL
+      NotificationARNs   => [ 'MyNotificationARN', ... ],    # OPTIONAL
+      Parameters         => [
         {
-          'ParameterKey'   => 'KeyPairName',
-          'ParameterValue' => 'ExampleKeyPair'
+          ParameterKey     => 'MyParameterKey',      # OPTIONAL
+          ParameterValue   => 'MyParameterValue',    # OPTIONAL
+          ResolvedValue    => 'MyParameterValue',    # OPTIONAL
+          UsePreviousValue => 1,                     # OPTIONAL
         },
+        ...
+      ],    # OPTIONAL
+      ResourceTypes => [
+        'MyResourceType', ...    # min: 1, max: 256
+      ],    # OPTIONAL
+      RoleARN               => 'MyRoleARN',    # OPTIONAL
+      RollbackConfiguration => {
+        MonitoringTimeInMinutes => 1,          # max: 180; OPTIONAL
+        RollbackTriggers        => [
+          {
+            Arn  => 'MyArn',
+            Type => 'MyType',
 
+          },
+          ...
+        ],                                     # max: 5; OPTIONAL
+      },    # OPTIONAL
+      StackPolicyBody             => 'MyStackPolicyBody',             # OPTIONAL
+      StackPolicyDuringUpdateBody => 'MyStackPolicyDuringUpdateBody', # OPTIONAL
+      StackPolicyDuringUpdateURL  => 'MyStackPolicyDuringUpdateURL',  # OPTIONAL
+      StackPolicyURL              => 'MyStackPolicyURL',              # OPTIONAL
+      Tags                        => [
         {
-          'ParameterKey'   => 'SubnetIDs',
-          'ParameterValue' => 'ExampleSubnetID1, ExampleSubnetID2'
-        }
-      ],
-      'ResourceTypes' => [
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256
 
-      ],
-      'StackName' => 'MyStack',
-      'Tags'      => [
-
-      ],
-      'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template'
-    );
-
-    # Results:
-    my $StackId = $UpdateStackOutput->StackId;
-
- # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
- # To update an AWS CloudFormation stack
- # This example updates only the the specified parameter value for the specified
- # stack. If you don't specify a parameter value, AWS CloudFormation uses the
- # default value from the template.
-    my $UpdateStackOutput = $cloudformation->UpdateStack(
-      'NotificationARNs' => [
-
-      ],
-      'Parameters' => [
-
-        {
-          'ParameterKey'     => 'KeyPairName',
-          'UsePreviousValue' => 1
         },
-
-        {
-          'ParameterKey'   => 'SubnetIDs',
-          'ParameterValue' => 'SampleSubnetID1, UpdatedSampleSubnetID2'
-        }
-      ],
-      'ResourceTypes' => [
-
-      ],
-      'StackName' => 'MyStack',
-      'Tags'      => [
-
-      ],
-      'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template'
-    );
-
-    # Results:
-    my $StackId = $UpdateStackOutput->StackId;
-
-    # Returns a L<Paws::CloudFormation::UpdateStackOutput> object.
-    # To update an AWS CloudFormation stack
-    # This example adds two stack notification topics to the specified stack.
-    my $UpdateStackOutput = $cloudformation->UpdateStack(
-      'Capabilities' => [
-
-      ],
-      'NotificationARNs' => [
-        'arn:aws:sns:use-east-1:123456789012:mytopic1',
-        'arn:aws:sns:us-east-1:123456789012:mytopic2'
-      ],
-      'Parameters' => [
-
-      ],
-      'ResourceTypes' => [
-
-      ],
-      'StackName' => 'MyStack',
-      'Tags'      => [
-
-      ],
-      'TemplateURL' => 'https://s3.amazonaws.com/example/updated.template',
-      'UsePreviousTemplate' => 1
+        ...
+      ],    # OPTIONAL
+      TemplateBody        => 'MyTemplateBody',    # OPTIONAL
+      TemplateURL         => 'MyTemplateURL',     # OPTIONAL
+      UsePreviousTemplate => 1,                   # OPTIONAL
     );
 
     # Results:
@@ -248,10 +206,9 @@ and AWS::Serverless
 (http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
 transforms, which are macros hosted by AWS CloudFormation.
 
-Change sets do not currently support nested stacks. If you want to
-update a stack from a stack template that contains macros I<and> nested
-stacks, you must update the stack directly from the template using this
-capability.
+If you want to update a stack from a stack template that contains
+macros I<and> nested stacks, you must update the stack directly from
+the template using this capability.
 
 You should only update stacks directly from a stack template that
 contains macros if you know what processing the macro performs.
@@ -389,7 +346,7 @@ be used.
 
 Location of a file containing the temporary overriding stack policy.
 The URL must point to a policy (max size: 16KB) located in an S3 bucket
-in the same region as the stack. You can specify either the
+in the same Region as the stack. You can specify either the
 C<StackPolicyDuringUpdateBody> or the C<StackPolicyDuringUpdateURL>
 parameter, but not both.
 
@@ -404,7 +361,7 @@ be used.
 
 Location of a file containing the updated stack policy. The URL must
 point to a policy (max size: 16KB) located in an S3 bucket in the same
-region as the stack. You can specify either the C<StackPolicyBody> or
+Region as the stack. You can specify either the C<StackPolicyBody> or
 the C<StackPolicyURL> parameter, but not both.
 
 You might update the stack policy, for example, in order to protect a
@@ -443,8 +400,8 @@ C<true>.
 =head2 TemplateURL => Str
 
 Location of file containing the template body. The URL must point to a
-template that is located in an Amazon S3 bucket. For more information,
-go to Template Anatomy
+template that is located in an Amazon S3 bucket or a Systems Manager
+document. For more information, go to Template Anatomy
 (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html)
 in the AWS CloudFormation User Guide.
 

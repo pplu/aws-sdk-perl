@@ -3,6 +3,7 @@ package Paws::S3::CopyObject;
   use Moose;
   has ACL => (is => 'ro', isa => 'Str', header_name => 'x-amz-acl', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has CacheControl => (is => 'ro', isa => 'Str', header_name => 'Cache-Control', traits => ['ParamInHeader']);
   has ContentDisposition => (is => 'ro', isa => 'Str', header_name => 'Content-Disposition', traits => ['ParamInHeader']);
   has ContentEncoding => (is => 'ro', isa => 'Str', header_name => 'Content-Encoding', traits => ['ParamInHeader']);
@@ -16,6 +17,8 @@ package Paws::S3::CopyObject;
   has CopySourceSSECustomerAlgorithm => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-algorithm', traits => ['ParamInHeader']);
   has CopySourceSSECustomerKey => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key', traits => ['ParamInHeader']);
   has CopySourceSSECustomerKeyMD5 => (is => 'ro', isa => 'Str', header_name => 'x-amz-copy-source-server-side-encryption-customer-key-MD5', traits => ['ParamInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
+  has ExpectedSourceBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-source-expected-bucket-owner', traits => ['ParamInHeader']);
   has Expires => (is => 'ro', isa => 'Str', header_name => 'Expires', traits => ['ParamInHeader']);
   has GrantFullControl => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-full-control', traits => ['ParamInHeader']);
   has GrantRead => (is => 'ro', isa => 'Str', header_name => 'x-amz-grant-read', traits => ['ParamInHeader']);
@@ -68,58 +71,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+    # To copy an object
+    # The following example copies an object from one bucket to another.
     my $CopyObjectOutput = $s3->CopyObject(
-      Bucket                         => 'MyBucketName',
-      CopySource                     => 'MyCopySource',
-      Key                            => 'MyObjectKey',
-      ACL                            => 'private',                    # OPTIONAL
-      CacheControl                   => 'MyCacheControl',             # OPTIONAL
-      ContentDisposition             => 'MyContentDisposition',       # OPTIONAL
-      ContentEncoding                => 'MyContentEncoding',          # OPTIONAL
-      ContentLanguage                => 'MyContentLanguage',          # OPTIONAL
-      ContentType                    => 'MyContentType',              # OPTIONAL
-      CopySourceIfMatch              => 'MyCopySourceIfMatch',        # OPTIONAL
-      CopySourceIfModifiedSince      => '1970-01-01T01:00:00',        # OPTIONAL
-      CopySourceIfNoneMatch          => 'MyCopySourceIfNoneMatch',    # OPTIONAL
-      CopySourceIfUnmodifiedSince    => '1970-01-01T01:00:00',        # OPTIONAL
-      CopySourceSSECustomerAlgorithm =>
-        'MyCopySourceSSECustomerAlgorithm',                           # OPTIONAL
-      CopySourceSSECustomerKey    => 'MyCopySourceSSECustomerKey',    # OPTIONAL
-      CopySourceSSECustomerKeyMD5 => 'MyCopySourceSSECustomerKeyMD5', # OPTIONAL
-      Expires                     => '1970-01-01T01:00:00',           # OPTIONAL
-      GrantFullControl            => 'MyGrantFullControl',            # OPTIONAL
-      GrantRead                   => 'MyGrantRead',                   # OPTIONAL
-      GrantReadACP                => 'MyGrantReadACP',                # OPTIONAL
-      GrantWriteACP               => 'MyGrantWriteACP',               # OPTIONAL
-      Metadata          => { 'MyMetadataKey' => 'MyMetadataValue', }, # OPTIONAL
-      MetadataDirective => 'COPY',                                    # OPTIONAL
-      ObjectLockLegalHoldStatus => 'ON',                              # OPTIONAL
-      ObjectLockMode            => 'GOVERNANCE',                      # OPTIONAL
-      ObjectLockRetainUntilDate => '1970-01-01T01:00:00',             # OPTIONAL
-      RequestPayer              => 'requester',                       # OPTIONAL
-      SSECustomerAlgorithm      => 'MySSECustomerAlgorithm',          # OPTIONAL
-      SSECustomerKey            => 'MySSECustomerKey',                # OPTIONAL
-      SSECustomerKeyMD5         => 'MySSECustomerKeyMD5',             # OPTIONAL
-      SSEKMSEncryptionContext   => 'MySSEKMSEncryptionContext',       # OPTIONAL
-      SSEKMSKeyId               => 'MySSEKMSKeyId',                   # OPTIONAL
-      ServerSideEncryption      => 'AES256',                          # OPTIONAL
-      StorageClass              => 'STANDARD',                        # OPTIONAL
-      Tagging                   => 'MyTaggingHeader',                 # OPTIONAL
-      TaggingDirective          => 'COPY',                            # OPTIONAL
-      WebsiteRedirectLocation   => 'MyWebsiteRedirectLocation',       # OPTIONAL
+      'Bucket'     => 'destinationbucket',
+      'CopySource' => '/sourcebucket/HappyFacejpg',
+      'Key'        => 'HappyFaceCopyjpg'
     );
 
     # Results:
-    my $CopyObjectResult        = $CopyObjectOutput->CopyObjectResult;
-    my $CopySourceVersionId     = $CopyObjectOutput->CopySourceVersionId;
-    my $Expiration              = $CopyObjectOutput->Expiration;
-    my $RequestCharged          = $CopyObjectOutput->RequestCharged;
-    my $SSECustomerAlgorithm    = $CopyObjectOutput->SSECustomerAlgorithm;
-    my $SSECustomerKeyMD5       = $CopyObjectOutput->SSECustomerKeyMD5;
-    my $SSEKMSEncryptionContext = $CopyObjectOutput->SSEKMSEncryptionContext;
-    my $SSEKMSKeyId             = $CopyObjectOutput->SSEKMSKeyId;
-    my $ServerSideEncryption    = $CopyObjectOutput->ServerSideEncryption;
-    my $VersionId               = $CopyObjectOutput->VersionId;
+    my $CopyObjectResult = $CopyObjectOutput->CopyObjectResult;
 
     # Returns a L<Paws::S3::CopyObjectOutput> object.
 
@@ -133,11 +94,44 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 The canned ACL to apply to the object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 Valid values are: C<"private">, C<"public-read">, C<"public-read-write">, C<"authenticated-read">, C<"aws-exec-read">, C<"bucket-owner-read">, C<"bucket-owner-full-control">
 
 =head2 B<REQUIRED> Bucket => Str
 
 The name of the destination bucket.
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 BucketKeyEnabled => Bool
+
+Specifies whether Amazon S3 should use an S3 Bucket Key for object
+encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
+this header to C<true> causes Amazon S3 to use an S3 Bucket Key for
+object encryption with SSE-KMS.
+
+Specifying this header with a COPY action doesnE<rsquo>t affect
+bucket-level settings for S3 Bucket Key.
 
 
 
@@ -175,8 +169,52 @@ A standard MIME type describing the format of the object data.
 
 =head2 B<REQUIRED> CopySource => Str
 
-The name of the source bucket and key name of the source object,
-separated by a slash (/). Must be URL-encoded.
+Specifies the source object for the copy operation. You specify the
+value in one of two formats, depending on whether you want to access
+the source object through an access point
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html):
+
+=over
+
+=item *
+
+For objects not accessed through an access point, specify the name of
+the source bucket and the key of the source object, separated by a
+slash (/). For example, to copy the object C<reports/january.pdf> from
+the bucket C<awsexamplebucket>, use
+C<awsexamplebucket/reports/january.pdf>. The value must be URL encoded.
+
+=item *
+
+For objects accessed through access points, specify the Amazon Resource
+Name (ARN) of the object as accessed through the access point, in the
+format
+C<arn:aws:s3:E<lt>RegionE<gt>:E<lt>account-idE<gt>:accesspoint/E<lt>access-point-nameE<gt>/object/E<lt>keyE<gt>>.
+For example, to copy the object C<reports/january.pdf> through access
+point C<my-access-point> owned by account C<123456789012> in Region
+C<us-west-2>, use the URL encoding of
+C<arn:aws:s3:us-west-2:123456789012:accesspoint/my-access-point/object/reports/january.pdf>.
+The value must be URL encoded.
+
+Amazon S3 supports copy operations using access points only when the
+source and destination buckets are in the same AWS Region.
+
+Alternatively, for objects accessed through Amazon S3 on Outposts,
+specify the ARN of the object as accessed in the format
+C<arn:aws:s3-outposts:E<lt>RegionE<gt>:E<lt>account-idE<gt>:outpost/E<lt>outpost-idE<gt>/object/E<lt>keyE<gt>>.
+For example, to copy the object C<reports/january.pdf> through outpost
+C<my-outpost> owned by account C<123456789012> in Region C<us-west-2>,
+use the URL encoding of
+C<arn:aws:s3-outposts:us-west-2:123456789012:outpost/my-outpost/object/reports/january.pdf>.
+The value must be URL encoded.
+
+=back
+
+To copy a specific version of an object, append
+C<?versionId=E<lt>version-idE<gt>> to the value (for example,
+C<awsexamplebucket/reports/january.pdf?versionId=QUpfdndhfd8438MNFDN93jdnJFkdmqnh893>).
+If you don't specify a version ID, Amazon S3 copies the latest version
+of the source object.
 
 
 
@@ -228,6 +266,22 @@ ensure that the encryption key was transmitted without error.
 
 
 
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected destination bucket owner. If the
+destination bucket is owned by a different account, the request will
+fail with an HTTP C<403 (Access Denied)> error.
+
+
+
+=head2 ExpectedSourceBucketOwner => Str
+
+The account ID of the expected source bucket owner. If the source
+bucket is owned by a different account, the request will fail with an
+HTTP C<403 (Access Denied)> error.
+
+
+
 =head2 Expires => Str
 
 The date and time at which the object is no longer cacheable.
@@ -239,11 +293,15 @@ The date and time at which the object is no longer cacheable.
 Gives the grantee READ, READ_ACP, and WRITE_ACP permissions on the
 object.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantRead => Str
 
 Allows grantee to read the object data and its metadata.
+
+This action is not supported by Amazon S3 on Outposts.
 
 
 
@@ -251,11 +309,15 @@ Allows grantee to read the object data and its metadata.
 
 Allows grantee to read the object ACL.
 
+This action is not supported by Amazon S3 on Outposts.
+
 
 
 =head2 GrantWriteACP => Str
 
 Allows grantee to write the ACL for the applicable object.
+
+This action is not supported by Amazon S3 on Outposts.
 
 
 
@@ -351,15 +413,21 @@ via SSL or using SigV4. For information about configuring using any of
 the officially supported AWS SDKs and AWS CLI, see Specifying the
 Signature Version in Request Authentication
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#specify-signature-version)
-in the I<Amazon S3 Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 
 =head2 StorageClass => Str
 
-The type of storage to use for the object. Defaults to 'STANDARD'.
+By default, Amazon S3 uses the STANDARD Storage Class to store newly
+created objects. The STANDARD storage class provides high durability
+and high availability. Depending on performance needs, you can specify
+a different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
+Storage Class. For more information, see Storage Classes
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/storage-class-intro.html)
+in the I<Amazon S3 User Guide>.
 
-Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">
+Valid values are: C<"STANDARD">, C<"REDUCED_REDUNDANCY">, C<"STANDARD_IA">, C<"ONEZONE_IA">, C<"INTELLIGENT_TIERING">, C<"GLACIER">, C<"DEEP_ARCHIVE">, C<"OUTPOSTS">
 
 =head2 Tagging => Str
 

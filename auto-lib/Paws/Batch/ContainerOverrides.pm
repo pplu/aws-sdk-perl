@@ -63,27 +63,55 @@ service.
 
 =head2 InstanceType => Str
 
-The instance type to use for a multi-node parallel job. This parameter
-is not valid for single-node container jobs.
+The instance type to use for a multi-node parallel job.
+
+This parameter isn't applicable to single-node container jobs or for
+jobs running on Fargate resources and shouldn't be provided.
 
 
 =head2 Memory => Int
 
-The number of MiB of memory reserved for the job. This value overrides
-the value set in the job definition.
+This parameter indicates the amount of memory (in MiB) that's reserved
+for the job. It overrides the C<memory> parameter set in the job
+definition, but doesn't override any memory requirement specified in
+the C<ResourceRequirement> structure in the job definition.
+
+This parameter is supported for jobs that run on EC2 resources, but
+isn't supported for jobs that run on Fargate resources. For these
+resources, use C<resourceRequirement> instead.
 
 
 =head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
 
-The type and amount of a resource to assign to a container. This value
-overrides the value set in the job definition. Currently, the only
-supported resource is C<GPU>.
+The type and amount of resources to assign to a container. This
+overrides the settings in the job definition. The supported resources
+include C<GPU>, C<MEMORY>, and C<VCPU>.
 
 
 =head2 Vcpus => Int
 
-The number of vCPUs to reserve for the container. This value overrides
-the value set in the job definition.
+This parameter indicates the number of vCPUs reserved for the
+container.It overrides the C<vcpus> parameter that's set in the job
+definition, but doesn't override any vCPU requirement specified in the
+C<resourceRequirement> structure in the job definition.
+
+This parameter is supported for jobs that run on EC2 resources, but
+isn't supported for jobs that run on Fargate resources. For Fargate
+resources, you can only use C<resourceRequirement>. For EC2 resources,
+you can use either this parameter or C<resourceRequirement> but not
+both.
+
+This parameter maps to C<CpuShares> in the Create a container
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
+and the C<--cpu-shares> option to docker run
+(https://docs.docker.com/engine/reference/run/). Each vCPU is
+equivalent to 1,024 CPU shares. You must specify at least one vCPU.
+
+This parameter isn't applicable to jobs that run on Fargate resources
+and shouldn't be provided. For jobs that run on Fargate resources, you
+must specify the vCPU requirement for the job using
+C<resourceRequirements>.
 
 
 

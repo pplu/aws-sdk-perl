@@ -45,7 +45,11 @@ prefix (optional) where inventory results are published.
 
 =head2 AccountId => Str
 
-The ID of the account that owns the destination bucket.
+The account ID that owns the destination S3 bucket. If no account ID is
+provided, the owner is not validated before exporting data.
+
+Although this value is optional, we strongly recommend that you set it
+to help prevent problems if the destination bucket ownership changes.
 
 
 =head2 B<REQUIRED> Bucket => Str

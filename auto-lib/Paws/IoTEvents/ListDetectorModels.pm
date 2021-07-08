@@ -49,13 +49,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 MaxResults => Int
 
-The maximum number of results to return at one time.
+The maximum number of results to be returned per request.
 
 
 
 =head2 NextToken => Str
 
-The token for the next set of results.
+The token that you can use to return the next set of results.
 
 
 

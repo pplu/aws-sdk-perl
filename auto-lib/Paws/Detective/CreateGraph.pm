@@ -1,6 +1,7 @@
 
 package Paws::Detective::CreateGraph;
   use Moose;
+  has Tags => (is => 'ro', isa => 'Paws::Detective::TagMap');
 
   use MooseX::ClassAttribute;
 
@@ -27,7 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.detective = Paws->service('Detective');
-    my $CreateGraphResponse = $api . detective->CreateGraph();
+    my $CreateGraphResponse = $api . detective->CreateGraph(
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
+    );
 
     # Results:
     my $GraphArn = $CreateGraphResponse->GraphArn;
@@ -38,6 +43,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.detective/CreateGraph>
 
 =head1 ATTRIBUTES
+
+
+=head2 Tags => L<Paws::Detective::TagMap>
+
+The tags to assign to the new behavior graph. You can add up to 50
+tags. For each tag, you provide the tag key and the tag value. Each tag
+key can contain up to 128 characters. Each tag value can contain up to
+256 characters.
+
 
 
 

@@ -33,8 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Identifies an Amazon Kinesis data stream as the streaming source. You
-provide the stream's Amazon Resource Name (ARN).
+Identifies a Kinesis data stream as the streaming source. You provide
+the stream's Amazon Resource Name (ARN).
 
 =head1 ATTRIBUTES
 

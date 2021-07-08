@@ -5,6 +5,7 @@ package Paws::IAM::CreatePolicy;
   has Path => (is => 'ro', isa => 'Str');
   has PolicyDocument => (is => 'ro', isa => 'Str', required => 1);
   has PolicyName => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -35,6 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PolicyName     => 'MypolicyNameType',
       Description    => 'MypolicyDescriptionType',    # OPTIONAL
       Path           => 'MypolicyPathType',           # OPTIONAL
+      Tags           => [
+        {
+          Key   => 'MytagKeyType',      # min: 1, max: 128
+          Value => 'MytagValueType',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -64,7 +73,7 @@ cannot be changed.
 
 The path for the policy.
 
-For more information about paths, see IAM Identifiers
+For more information about paths, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -90,6 +99,11 @@ You must provide policies in JSON format in IAM. However, for AWS
 CloudFormation templates formatted in YAML, you can provide the policy
 in JSON or YAML format. AWS CloudFormation always converts a YAML
 policy to JSON format before submitting it to IAM.
+
+To learn more about JSON policy grammar, see Grammar of the IAM JSON
+policy language
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_grammar.html)
+in the I<IAM User Guide>.
 
 The regex pattern (http://wikipedia.org/wiki/regex) used to validate
 this parameter is a string of characters consisting of the following:
@@ -123,6 +137,20 @@ The friendly name of the policy.
 IAM user, group, role, and policy names must be unique within the
 account. Names are not distinguished by case. For example, you cannot
 create resources named both "MyResource" and "myresource".
+
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that you want to attach to the new IAM customer managed
+policy. Each tag consists of a key name and an associated value. For
+more information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
+
+If any one of the tags is invalid or if you exceed the allowed maximum
+number of tags, then the entire request fails and the resource is not
+created.
 
 
 

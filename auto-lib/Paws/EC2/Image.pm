@@ -2,7 +2,9 @@ package Paws::EC2::Image;
   use Moose;
   has Architecture => (is => 'ro', isa => 'Str', request_name => 'architecture', traits => ['NameInRequest']);
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest']);
+  has BootMode => (is => 'ro', isa => 'Str', request_name => 'bootMode', traits => ['NameInRequest']);
   has CreationDate => (is => 'ro', isa => 'Str', request_name => 'creationDate', traits => ['NameInRequest']);
+  has DeprecationTime => (is => 'ro', isa => 'Str', request_name => 'deprecationTime', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has EnaSupport => (is => 'ro', isa => 'Bool', request_name => 'enaSupport', traits => ['NameInRequest']);
   has Hypervisor => (is => 'ro', isa => 'Str', request_name => 'hypervisor', traits => ['NameInRequest']);
@@ -71,9 +73,23 @@ The architecture of the image.
 Any block device mapping entries.
 
 
+=head2 BootMode => Str
+
+The boot mode of the image. For more information, see Boot modes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-boot.html) in
+the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 CreationDate => Str
 
 The date and time the image was created.
+
+
+=head2 DeprecationTime => Str
+
+The date and time to deprecate the AMI, in UTC, in the following
+format: I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z. If you specified a
+value for seconds, Amazon EC2 rounds the seconds to the nearest minute.
 
 
 =head2 Description => Str

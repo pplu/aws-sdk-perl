@@ -6,6 +6,7 @@ package Paws::MediaConvert::JobTemplate;
   has Category => (is => 'ro', isa => 'Str', request_name => 'category', traits => ['NameInRequest']);
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has HopDestinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConvert::HopDestination]', request_name => 'hopDestinations', traits => ['NameInRequest']);
   has LastUpdated => (is => 'ro', isa => 'Str', request_name => 'lastUpdated', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Priority => (is => 'ro', isa => 'Int', request_name => 'priority', traits => ['NameInRequest']);
@@ -74,6 +75,11 @@ The timestamp in epoch seconds for Job template creation.
 =head2 Description => Str
 
 An optional description you create for each job template.
+
+
+=head2 HopDestinations => ArrayRef[L<Paws::MediaConvert::HopDestination>]
+
+Optional list of hop destinations.
 
 
 =head2 LastUpdated => Str

@@ -51,7 +51,7 @@ The name of the resource record set that you submitted a request for.
 
 The type of the resource record set that you submitted a request for.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">, C<"DS">
 
 =head2 B<REQUIRED> ResponseCode => Str
 

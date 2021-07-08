@@ -36,6 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Eve
 =head1 DESCRIPTION
 
 The values to use to filter results from the DescribeEventTypes
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventTypes.html)
 operation.
 
 =head1 ATTRIBUTES

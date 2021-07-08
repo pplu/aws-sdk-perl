@@ -73,7 +73,7 @@ The status an AWS Lambda deployment's target Lambda function.
 
 =head2 TargetArn => Str
 
-The ARN of the target.
+The Amazon Resource Name (ARN) of the target.
 
 
 =head2 TargetId => Str

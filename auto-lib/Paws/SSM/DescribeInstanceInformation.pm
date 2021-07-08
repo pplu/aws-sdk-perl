@@ -72,21 +72,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 Filters => ArrayRef[L<Paws::SSM::InstanceInformationStringFilter>]
 
 One or more filters. Use a filter to return a more specific list of
-instances. You can filter on Amazon EC2 tag. Specify tags by using a
-key-value mapping.
+instances. You can filter based on tags applied to EC2 instances. Use
+this C<Filters> data type instead of C<InstanceInformationFilterList>,
+which is deprecated.
 
 
 
 =head2 InstanceInformationFilterList => ArrayRef[L<Paws::SSM::InstanceInformationFilter>]
 
 This is a legacy method. We recommend that you don't use this method.
-Instead, use the InstanceInformationFilter action. The
-C<InstanceInformationFilter> action enables you to return instance
-information by using tags that are specified as a key-value mapping.
+Instead, use the C<Filters> data type. C<Filters> enables you to return
+instance information by filtering based on tags applied to managed
+instances.
 
-If you do use this method, then you can't use the
-C<InstanceInformationFilter> action. Using this method and the
-C<InstanceInformationFilter> action causes an exception error.
+Attempting to use C<InstanceInformationFilterList> and C<Filters> leads
+to an exception error.
 
 
 

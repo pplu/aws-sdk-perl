@@ -78,23 +78,25 @@ following:
 
 =item *
 
-C<database> - Export all the data of the snapshot.
+C<database> - Export all the data from a specified database.
 
 =item *
 
-C<database.table [table-name]> - Export a table of the snapshot.
+C<database.table> I<table-name> - Export a table of the snapshot. This
+format is valid only for RDS for MySQL, RDS for MariaDB, and Aurora
+MySQL.
 
 =item *
 
-C<database.schema [schema-name]> - Export a database schema of the
-snapshot. This value isn't valid for RDS for MySQL, RDS for MariaDB, or
-Aurora MySQL.
+C<database.schema> I<schema-name> - Export a database schema of the
+snapshot. This format is valid only for RDS for PostgreSQL and Aurora
+PostgreSQL.
 
 =item *
 
-C<database.schema.table [table-name]> - Export a table of the database
-schema. This value isn't valid for RDS for MySQL, RDS for MariaDB, or
-Aurora MySQL.
+C<database.schema.table> I<table-name> - Export a table of the database
+schema. This format is valid only for RDS for PostgreSQL and Aurora
+PostgreSQL.
 
 =back
 
@@ -118,11 +120,53 @@ when exporting a snapshot.
 
 =head2 B<REQUIRED> KmsKeyId => Str
 
-The ID of the AWS KMS key to use to encrypt the snapshot exported to
-Amazon S3. The KMS key ID is the Amazon Resource Name (ARN), the KMS
-key identifier, or the KMS key alias for the KMS encryption key. The
-IAM role used for the snapshot export must have encryption and
-decryption permissions to use this KMS key.
+The ID of the Amazon Web Services KMS customer master key (CMK) to use
+to encrypt the snapshot exported to Amazon S3. The Amazon Web Services
+KMS key identifier is the key ARN, key ID, alias ARN, or alias name for
+the Amazon Web Services KMS customer master key (CMK). The caller of
+this operation must be authorized to execute the following operations.
+These can be set in the Amazon Web Services KMS key policy:
+
+=over
+
+=item *
+
+GrantOperation.Encrypt
+
+=item *
+
+GrantOperation.Decrypt
+
+=item *
+
+GrantOperation.GenerateDataKey
+
+=item *
+
+GrantOperation.GenerateDataKeyWithoutPlaintext
+
+=item *
+
+GrantOperation.ReEncryptFrom
+
+=item *
+
+GrantOperation.ReEncryptTo
+
+=item *
+
+GrantOperation.CreateGrant
+
+=item *
+
+GrantOperation.DescribeKey
+
+=item *
+
+GrantOperation.RetireGrant
+
+=back
+
 
 
 

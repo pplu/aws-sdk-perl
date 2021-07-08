@@ -17,7 +17,7 @@ Paws::CodeBuild::ListCuratedEnvironmentImagesOutput
 =head2 Platforms => ArrayRef[L<Paws::CodeBuild::EnvironmentPlatform>]
 
 Information about supported platforms for Docker images that are
-managed by AWS CodeBuild.
+managed by CodeBuild.
 
 
 =head2 _request_id => Str

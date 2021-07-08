@@ -74,6 +74,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/per
 
 =item [Context => L<Paws::PersonalizeRuntime::Context>]
 
+=item [FilterArn => Str]
+
+=item [FilterValues => L<Paws::PersonalizeRuntime::FilterValues>]
+
 
 =back
 
@@ -96,6 +100,10 @@ of type PERSONALIZED_RANKING.
 =item CampaignArn => Str
 
 =item [Context => L<Paws::PersonalizeRuntime::Context>]
+
+=item [FilterArn => Str]
+
+=item [FilterValues => L<Paws::PersonalizeRuntime::FilterValues>]
 
 =item [ItemId => Str]
 

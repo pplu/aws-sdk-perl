@@ -8,12 +8,14 @@ package Paws::Amplify::App;
   has BasicAuthCredentials => (is => 'ro', isa => 'Str', request_name => 'basicAuthCredentials', traits => ['NameInRequest']);
   has BuildSpec => (is => 'ro', isa => 'Str', request_name => 'buildSpec', traits => ['NameInRequest']);
   has CreateTime => (is => 'ro', isa => 'Str', request_name => 'createTime', traits => ['NameInRequest'], required => 1);
+  has CustomHeaders => (is => 'ro', isa => 'Str', request_name => 'customHeaders', traits => ['NameInRequest']);
   has CustomRules => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::CustomRule]', request_name => 'customRules', traits => ['NameInRequest']);
   has DefaultDomain => (is => 'ro', isa => 'Str', request_name => 'defaultDomain', traits => ['NameInRequest'], required => 1);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest'], required => 1);
   has EnableAutoBranchCreation => (is => 'ro', isa => 'Bool', request_name => 'enableAutoBranchCreation', traits => ['NameInRequest']);
   has EnableBasicAuth => (is => 'ro', isa => 'Bool', request_name => 'enableBasicAuth', traits => ['NameInRequest'], required => 1);
   has EnableBranchAutoBuild => (is => 'ro', isa => 'Bool', request_name => 'enableBranchAutoBuild', traits => ['NameInRequest'], required => 1);
+  has EnableBranchAutoDeletion => (is => 'ro', isa => 'Bool', request_name => 'enableBranchAutoDeletion', traits => ['NameInRequest']);
   has EnvironmentVariables => (is => 'ro', isa => 'Paws::Amplify::EnvironmentVariables', request_name => 'environmentVariables', traits => ['NameInRequest'], required => 1);
   has IamServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'iamServiceRoleArn', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
@@ -53,115 +55,130 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::Ap
 
 =head1 DESCRIPTION
 
-Amplify App represents different branches of a repository for building,
-deploying, and hosting.
+Represents the different branches of a repository for building,
+deploying, and hosting an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> AppArn => Str
 
-ARN for the Amplify App.
+The Amazon Resource Name (ARN) of the Amplify app.
 
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for the Amplify App.
+The unique ID of the Amplify app.
 
 
 =head2 AutoBranchCreationConfig => L<Paws::Amplify::AutoBranchCreationConfig>
 
-Automated branch creation config for the Amplify App.
+Describes the automated branch creation configuration for the Amplify
+app.
 
 
 =head2 AutoBranchCreationPatterns => ArrayRef[Str|Undef]
 
-Automated branch creation glob patterns for the Amplify App.
+Describes the automated branch creation glob patterns for the Amplify
+app.
 
 
 =head2 BasicAuthCredentials => Str
 
-Basic Authorization credentials for branches for the Amplify App.
+The basic authorization credentials for branches for the Amplify app.
 
 
 =head2 BuildSpec => Str
 
-BuildSpec content for Amplify App.
+Describes the content of the build specification (build spec) for the
+Amplify app.
 
 
 =head2 B<REQUIRED> CreateTime => Str
 
-Create date / time for the Amplify App.
+Creates a date and time for the Amplify app.
+
+
+=head2 CustomHeaders => Str
+
+Describes the custom HTTP headers for the Amplify app.
 
 
 =head2 CustomRules => ArrayRef[L<Paws::Amplify::CustomRule>]
 
-Custom redirect / rewrite rules for the Amplify App.
+Describes the custom redirect and rewrite rules for the Amplify app.
 
 
 =head2 B<REQUIRED> DefaultDomain => Str
 
-Default domain for the Amplify App.
+The default domain for the Amplify app.
 
 
 =head2 B<REQUIRED> Description => Str
 
-Description for the Amplify App.
+The description for the Amplify app.
 
 
 =head2 EnableAutoBranchCreation => Bool
 
-Enables automated branch creation for the Amplify App.
+Enables automated branch creation for the Amplify app.
 
 
 =head2 B<REQUIRED> EnableBasicAuth => Bool
 
-Enables Basic Authorization for branches for the Amplify App.
+Enables basic authorization for the Amplify app's branches.
 
 
 =head2 B<REQUIRED> EnableBranchAutoBuild => Bool
 
-Enables auto-building of branches for the Amplify App.
+Enables the auto-building of branches for the Amplify app.
+
+
+=head2 EnableBranchAutoDeletion => Bool
+
+Automatically disconnect a branch in the Amplify Console when you
+delete a branch from your Git repository.
 
 
 =head2 B<REQUIRED> EnvironmentVariables => L<Paws::Amplify::EnvironmentVariables>
 
-Environment Variables for the Amplify App.
+The environment variables for the Amplify app.
 
 
 =head2 IamServiceRoleArn => Str
 
-IAM service role ARN for the Amplify App.
+The AWS Identity and Access Management (IAM) service role for the
+Amazon Resource Name (ARN) of the Amplify app.
 
 
 =head2 B<REQUIRED> Name => Str
 
-Name for the Amplify App.
+The name for the Amplify app.
 
 
 =head2 B<REQUIRED> Platform => Str
 
-Platform for the Amplify App.
+The platform for the Amplify app.
 
 
 =head2 ProductionBranch => L<Paws::Amplify::ProductionBranch>
 
-Structure with Production Branch information.
+Describes the information about a production branch of the Amplify app.
 
 
 =head2 B<REQUIRED> Repository => Str
 
-Repository for the Amplify App.
+The repository for the Amplify app.
 
 
 =head2 Tags => L<Paws::Amplify::TagMap>
 
-Tag for Amplify App.
+The tag for the Amplify app.
 
 
 =head2 B<REQUIRED> UpdateTime => Str
 
-Update date / time for the Amplify App.
+Updates the date and time for the Amplify app.
 
 
 

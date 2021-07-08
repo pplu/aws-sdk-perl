@@ -2,6 +2,7 @@
 package Paws::S3::GetBucketNotification;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
 
 
   use MooseX::ClassAttribute;
@@ -32,14 +33,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
-    my $NotificationConfigurationDeprecated = $s3->GetBucketNotification(
-      Bucket => 'MyBucketName',
-
-    );
+    # To get notification configuration set on a bucket
+    # The following example returns notification configuration set on a bucket.
+    my $NotificationConfigurationDeprecated =
+      $s3->GetBucketNotification( 'Bucket' => 'examplebucket' );
 
     # Results:
-    my $CloudFunctionConfiguration =
-      $NotificationConfigurationDeprecated->CloudFunctionConfiguration;
+    my $QueueConfiguration =
+      $NotificationConfigurationDeprecated->QueueConfiguration;
+    my $TopicConfiguration =
+      $NotificationConfigurationDeprecated->TopicConfiguration;
+
+    # Returns a L<Paws::S3::NotificationConfigurationDeprecated> object.
+    # To get notification configuration set on a bucket
+    # The following example returns notification configuration set on a bucket.
+    my $NotificationConfigurationDeprecated =
+      $s3->GetBucketNotification( 'Bucket' => 'examplebucket' );
+
+    # Results:
     my $QueueConfiguration =
       $NotificationConfigurationDeprecated->QueueConfiguration;
     my $TopicConfiguration =
@@ -55,7 +66,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/
 
 =head2 B<REQUIRED> Bucket => Str
 
-Name of the bucket for which to get the notification configuration
+The name of the bucket for which to get the notification configuration.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $frauddetector = Paws->service('FraudDetector');
     my $GetRulesResult = $frauddetector->GetRules(
       DetectorId  => 'Myidentifier',
-      MaxResults  => 1,                     # OPTIONAL
-      NextToken   => 'Mystring',            # OPTIONAL
-      RuleId      => 'Myidentifier',        # OPTIONAL
-      RuleVersion => 'MynonEmptyString',    # OPTIONAL
+      MaxResults  => 1,                               # OPTIONAL
+      NextToken   => 'Mystring',                      # OPTIONAL
+      RuleId      => 'Myidentifier',                  # OPTIONAL
+      RuleVersion => 'MywholeNumberVersionString',    # OPTIONAL
     );
 
     # Results:

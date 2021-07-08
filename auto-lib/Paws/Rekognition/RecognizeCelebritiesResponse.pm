@@ -19,7 +19,7 @@ Paws::Rekognition::RecognizeCelebritiesResponse
 =head2 CelebrityFaces => ArrayRef[L<Paws::Rekognition::Celebrity>]
 
 Details about each celebrity found in the image. Amazon Rekognition can
-detect a maximum of 15 celebrities in an image.
+detect a maximum of 64 celebrities in an image.
 
 
 =head2 OrientationCorrection => Str

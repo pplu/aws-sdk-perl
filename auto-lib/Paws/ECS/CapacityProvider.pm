@@ -6,6 +6,8 @@ package Paws::ECS::CapacityProvider;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ECS::Tag]', request_name => 'tags', traits => ['NameInRequest']);
+  has UpdateStatus => (is => 'ro', isa => 'Str', request_name => 'updateStatus', traits => ['NameInRequest']);
+  has UpdateStatusReason => (is => 'ro', isa => 'Str', request_name => 'updateStatusReason', traits => ['NameInRequest']);
 
 1;
 
@@ -26,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ECS::CapacityProvider object:
 
-  $service_obj->Method(Att1 => { AutoScalingGroupProvider => $value, ..., Tags => $value  });
+  $service_obj->Method(Att1 => { AutoScalingGroupProvider => $value, ..., UpdateStatusReason => $value  });
 
 =head3 Results returned from an API call
 
@@ -60,7 +62,8 @@ The name of the capacity provider.
 =head2 Status => Str
 
 The current status of the capacity provider. Only capacity providers in
-an C<ACTIVE> state can be used in a cluster.
+an C<ACTIVE> state can be used in a cluster. When a capacity provider
+is successfully deleted, it will have an C<INACTIVE> status.
 
 
 =head2 Tags => ArrayRef[L<Paws::ECS::Tag>]
@@ -112,6 +115,37 @@ limit.
 
 =back
 
+
+
+=head2 UpdateStatus => Str
+
+The update status of the capacity provider. The following are the
+possible states that will be returned.
+
+=over
+
+=item DELETE_IN_PROGRESS
+
+The capacity provider is in the process of being deleted.
+
+=item DELETE_COMPLETE
+
+The capacity provider has been successfully deleted and will have an
+C<INACTIVE> status.
+
+=item DELETE_FAILED
+
+The capacity provider was unable to be deleted. The update status
+reason will provide further details about why the delete failed.
+
+=back
+
+
+
+=head2 UpdateStatusReason => Str
+
+The update status reason. This provides further details about the
+update status for the capacity provider.
 
 
 

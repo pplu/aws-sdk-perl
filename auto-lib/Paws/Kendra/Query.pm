@@ -2,6 +2,7 @@
 package Paws::Kendra::Query;
   use Moose;
   has AttributeFilter => (is => 'ro', isa => 'Paws::Kendra::AttributeFilter');
+  has DocumentRelevanceOverrideConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::DocumentRelevanceConfiguration]');
   has Facets => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::Facet]');
   has IndexId => (is => 'ro', isa => 'Str', required => 1);
   has PageNumber => (is => 'ro', isa => 'Int');
@@ -9,6 +10,9 @@ package Paws::Kendra::Query;
   has QueryResultTypeFilter => (is => 'ro', isa => 'Str');
   has QueryText => (is => 'ro', isa => 'Str', required => 1);
   has RequestedDocumentAttributes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SortingConfiguration => (is => 'ro', isa => 'Paws::Kendra::SortingConfiguration');
+  has UserContext => (is => 'ro', isa => 'Paws::Kendra::UserContext');
+  has VisitorId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -38,15 +42,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       IndexId         => 'MyIndexId',
       QueryText       => 'MyQueryText',
       AttributeFilter => {
-        AndAllFilters => [ <AttributeFilter>, ... ],  # min: 1, max: 5; OPTIONAL
+        AndAllFilters => [ <AttributeFilter>, ... ],    # OPTIONAL
         ContainsAll   => {
-          Key   => 'MyDocumentAttributeKey',          # min: 1, max: 200
+          Key   => 'MyDocumentAttributeKey',            # min: 1, max: 200
           Value => {
             DateValue       => '1970-01-01T01:00:00',    # OPTIONAL
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -59,7 +63,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -72,7 +76,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -85,7 +89,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -98,7 +102,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -111,7 +115,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
@@ -124,15 +128,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             LongValue       => 1,                        # OPTIONAL
             StringListValue => [
               'MyString', ...                            # min: 1, max: 2048
-            ],    # min: 1, max: 5; OPTIONAL
+            ],    # OPTIONAL
             StringValue =>
               'MyDocumentAttributeStringValue',    # min: 1, max: 2048; OPTIONAL
           },
 
         },    # OPTIONAL
         NotFilter    => <AttributeFilter>,
-        OrAllFilters => [ <AttributeFilter>, ... ],   # min: 1, max: 5; OPTIONAL
+        OrAllFilters => [ <AttributeFilter>, ... ],    # OPTIONAL
       },    # OPTIONAL
+      DocumentRelevanceOverrideConfigurations => [
+        {
+          Name      => 'MyDocumentMetadataConfigurationName',  # min: 1, max: 30
+          Relevance => {
+            Duration   => 'MyDuration',    # min: 1, max: 10; OPTIONAL
+            Freshness  => 1,               # OPTIONAL
+            Importance => 1,               # min: 1, max: 10; OPTIONAL
+            RankOrder  => 'ASCENDING', # values: ASCENDING, DESCENDING; OPTIONAL
+            ValueImportanceMap => {
+              'MyValueImportanceMapKey' =>
+                1,    # key: min: 1, max: 50, value: min: 1, max: 10; OPTIONAL
+            },    # OPTIONAL
+          },
+
+        },
+        ...
+      ],    # OPTIONAL
       Facets => [
         {
           DocumentAttributeKey => 'MyDocumentAttributeKey',   # min: 1, max: 200
@@ -145,6 +166,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RequestedDocumentAttributes => [
         'MyDocumentAttributeKey', ...               # min: 1, max: 200
       ],    # OPTIONAL
+      SortingConfiguration => {
+        DocumentAttributeKey => 'MyDocumentAttributeKey',    # min: 1, max: 200
+        SortOrder            => 'DESC',                      # values: DESC, ASC
+
+      },    # OPTIONAL
+      UserContext => {
+        Token => 'MyToken',    # min: 1, max: 100000; OPTIONAL
+      },    # OPTIONAL
+      VisitorId => 'MyVisitorId',    # OPTIONAL
     );
 
     # Results:
@@ -174,6 +204,26 @@ query results.
 
 
 
+=head2 DocumentRelevanceOverrideConfigurations => ArrayRef[L<Paws::Kendra::DocumentRelevanceConfiguration>]
+
+Overrides relevance tuning configurations of fields or attributes set
+at the index level.
+
+If you use this API to override the relevance tuning configured at the
+index level, but there is no relevance tuning configured at the index
+level, then Amazon Kendra does not apply any relevance tuning.
+
+If there is relevance tuning configured at the index level, but you do
+not use this API to override any relevance tuning in the index, then
+Amazon Kendra uses the relevance tuning that is configured at the index
+level.
+
+If there is relevance tuning configured for fields at the index level,
+but you use this API to override only some of these fields, then for
+the fields you did not override, the importance is set to 1.
+
+
+
 =head2 Facets => ArrayRef[L<Paws::Kendra::Facet>]
 
 An array of documents attributes. Amazon Kendra returns a count for
@@ -185,7 +235,7 @@ narrow the search for your user.
 =head2 B<REQUIRED> IndexId => Str
 
 The unique identifier of the index to search. The identifier is
-returned in the response from the operation.
+returned in the response from the C<CreateIndex> operation.
 
 
 
@@ -200,7 +250,8 @@ Use this parameter to get result pages after the first one.
 =head2 PageSize => Int
 
 Sets the number of results that are returned in each page of results.
-The default page size is 100.
+The default page size is 10. The maximum number of results returned is
+100. If you ask for more than 100 results, only 100 are returned.
 
 
 
@@ -222,6 +273,33 @@ The text to search for.
 An array of document attributes to include in the response. No other
 document attributes are included in the response. By default all
 document attributes are included in the response.
+
+
+
+=head2 SortingConfiguration => L<Paws::Kendra::SortingConfiguration>
+
+Provides information that determines how the results of the query are
+sorted. You can set the field that Amazon Kendra should sort the
+results on, and specify whether the results should be sorted in
+ascending or descending order. In the case of ties in sorting the
+results, the results are sorted by relevance.
+
+If you don't provide sorting configuration, the results are sorted by
+the relevance that Amazon Kendra determines for the result.
+
+
+
+=head2 UserContext => L<Paws::Kendra::UserContext>
+
+The user context token.
+
+
+
+=head2 VisitorId => Str
+
+Provides an identifier for a specific user. The C<VisitorId> should be
+a unique identifier, such as a GUID. Don't use personally identifiable
+information, such as the user's email address, as the C<VisitorId>.
 
 
 

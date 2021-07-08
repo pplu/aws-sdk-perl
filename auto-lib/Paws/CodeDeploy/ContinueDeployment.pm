@@ -48,10 +48,10 @@ rerouting traffic to the replacement environment.
 
 =head2 DeploymentWaitType => Str
 
-The status of the deployment's waiting period. READY_WAIT indicates the
-deployment is ready to start shifting traffic. TERMINATION_WAIT
-indicates the traffic is shifted, but the original target is not
-terminated.
+The status of the deployment's waiting period. C<READY_WAIT> indicates
+that the deployment is ready to start shifting traffic.
+C<TERMINATION_WAIT> indicates that the traffic is shifted, but the
+original target is not terminated.
 
 Valid values are: C<"READY_WAIT">, C<"TERMINATION_WAIT">
 

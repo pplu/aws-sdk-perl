@@ -109,6 +109,11 @@ package Paws::WorkLink;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::ListFleets', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListWebsiteAuthorizationProviders {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::ListWebsiteAuthorizationProviders', @_);
@@ -132,6 +137,16 @@ package Paws::WorkLink;
   sub SignOutUser {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WorkLink::SignOutUser', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WorkLink::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateAuditStreamConfiguration {
@@ -167,7 +182,7 @@ package Paws::WorkLink;
   
 
 
-  sub operations { qw/AssociateDomain AssociateWebsiteAuthorizationProvider AssociateWebsiteCertificateAuthority CreateFleet DeleteFleet DescribeAuditStreamConfiguration DescribeCompanyNetworkConfiguration DescribeDevice DescribeDevicePolicyConfiguration DescribeDomain DescribeFleetMetadata DescribeIdentityProviderConfiguration DescribeWebsiteCertificateAuthority DisassociateDomain DisassociateWebsiteAuthorizationProvider DisassociateWebsiteCertificateAuthority ListDevices ListDomains ListFleets ListWebsiteAuthorizationProviders ListWebsiteCertificateAuthorities RestoreDomainAccess RevokeDomainAccess SignOutUser UpdateAuditStreamConfiguration UpdateCompanyNetworkConfiguration UpdateDevicePolicyConfiguration UpdateDomainMetadata UpdateFleetMetadata UpdateIdentityProviderConfiguration / }
+  sub operations { qw/AssociateDomain AssociateWebsiteAuthorizationProvider AssociateWebsiteCertificateAuthority CreateFleet DeleteFleet DescribeAuditStreamConfiguration DescribeCompanyNetworkConfiguration DescribeDevice DescribeDevicePolicyConfiguration DescribeDomain DescribeFleetMetadata DescribeIdentityProviderConfiguration DescribeWebsiteCertificateAuthority DisassociateDomain DisassociateWebsiteAuthorizationProvider DisassociateWebsiteCertificateAuthority ListDevices ListDomains ListFleets ListTagsForResource ListWebsiteAuthorizationProviders ListWebsiteCertificateAuthorities RestoreDomainAccess RevokeDomainAccess SignOutUser TagResource UntagResource UpdateAuditStreamConfiguration UpdateCompanyNetworkConfiguration UpdateDevicePolicyConfiguration UpdateDomainMetadata UpdateFleetMetadata UpdateIdentityProviderConfiguration / }
 
 1;
 
@@ -196,14 +211,14 @@ Paws::WorkLink - Perl Interface to AWS Amazon WorkLink
 =head1 DESCRIPTION
 
 Amazon WorkLink is a cloud-based service that provides secure access to
-internal websites and web apps from iOS phones. In a single step, your
-users, such as employees, can access internal websites as efficiently
-as they access any other public website. They enter a URL in their web
-browser, or choose a link to an internal website in an email. Amazon
-WorkLink authenticates the user's access and securely renders
-authorized internal web content in a secure rendering service in the
-AWS cloud. Amazon WorkLink doesn't download or store any internal web
-content on mobile devices.
+internal websites and web apps from iOS and Android phones. In a single
+step, your users, such as employees, can access internal websites as
+efficiently as they access any other public website. They enter a URL
+in their web browser, or choose a link to an internal website in an
+email. Amazon WorkLink authenticates the user's access and securely
+renders authorized internal web content in a secure rendering service
+in the AWS cloud. Amazon WorkLink doesn't download or store any
+internal web content on mobile devices.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/worklink-2018-09-25>
 
@@ -285,6 +300,8 @@ network.
 =item [DisplayName => Str]
 
 =item [OptimizeForEndUserLocation => Bool]
+
+=item [Tags => L<Paws::WorkLink::TagMap>]
 
 
 =back
@@ -567,6 +584,22 @@ Returns: a L<Paws::WorkLink::ListFleetsResponse> instance
 Retrieves a list of fleets for the current account and Region.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::ListTagsForResource>
+
+Returns: a L<Paws::WorkLink::ListTagsForResourceResponse> instance
+
+Retrieves a list of tags for the specified resource.
+
+
 =head2 ListWebsiteAuthorizationProviders
 
 =over
@@ -662,6 +695,45 @@ Returns: a L<Paws::WorkLink::SignOutUserResponse> instance
 
 Signs the user out from all of their devices. The user can sign in
 again if they have valid credentials.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => L<Paws::WorkLink::TagMap>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::TagResource>
+
+Returns: a L<Paws::WorkLink::TagResourceResponse> instance
+
+Adds or overwrites one or more tags for the specified resource, such as
+a fleet. Each tag consists of a key and an optional value. If a
+resource already has a tag with the same key, this operation updates
+its value.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WorkLink::UntagResource>
+
+Returns: a L<Paws::WorkLink::UntagResourceResponse> instance
+
+Removes one or more tags from the specified resource.
 
 
 =head2 UpdateAuditStreamConfiguration

@@ -37,8 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ElasticBean
 =head1 DESCRIPTION
 
 A specification identifying an individual configuration option along
-with its current value. For a list of possible option values, go to
-Option Values
+with its current value. For a list of possible namespaces and option
+values, see Option Values
 (https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/command-options.html)
 in the I<AWS Elastic Beanstalk Developer Guide>.
 
@@ -47,7 +47,8 @@ in the I<AWS Elastic Beanstalk Developer Guide>.
 
 =head2 Namespace => Str
 
-A unique namespace identifying the option's associated AWS resource.
+A unique namespace that identifies the option's associated AWS
+resource.
 
 
 =head2 OptionName => Str
@@ -57,7 +58,8 @@ The name of the configuration option.
 
 =head2 ResourceName => Str
 
-A unique resource name for a time-based scaling configuration option.
+A unique resource name for the option setting. Use it for a
+timeE<ndash>based scaling configuration option.
 
 
 =head2 Value => Str

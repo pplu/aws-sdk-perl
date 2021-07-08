@@ -45,7 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The ARN of the signaling channel from which you want to remove tags.
+The Amazon Resource Name (ARN) of the signaling channel from which you
+want to remove tags.
 
 
 

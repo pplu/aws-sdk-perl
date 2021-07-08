@@ -12,6 +12,7 @@ package Paws::EC2::RunInstances;
   has EbsOptimized => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'ebsOptimized' );
   has ElasticGpuSpecification => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticGpuSpecification]');
   has ElasticInferenceAccelerators => (is => 'ro', isa => 'ArrayRef[Paws::EC2::ElasticInferenceAccelerator]', traits => ['NameInRequest'], request_name => 'ElasticInferenceAccelerator' );
+  has EnclaveOptions => (is => 'ro', isa => 'Paws::EC2::EnclaveOptionsRequest');
   has HibernationOptions => (is => 'ro', isa => 'Paws::EC2::HibernationOptionsRequest');
   has IamInstanceProfile => (is => 'ro', isa => 'Paws::EC2::IamInstanceProfileSpecification', traits => ['NameInRequest'], request_name => 'iamInstanceProfile' );
   has ImageId => (is => 'ro', isa => 'Str');
@@ -62,166 +63,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To launch an instance
+    # This example launches an instance using the specified AMI, instance type,
+    # security group, subnet, block device mapping, and tags.
     my $Reservation = $ec2->RunInstances(
-      MaxCount            => 1,
-      MinCount            => 1,
-      AdditionalInfo      => 'MyString',    # OPTIONAL
-      BlockDeviceMappings => [
-        {
-          DeviceName => 'MyString',
-          Ebs        => {
-            DeleteOnTermination => 1,            # OPTIONAL
-            Encrypted           => 1,            # OPTIONAL
-            Iops                => 1,
-            KmsKeyId            => 'MyString',
-            SnapshotId          => 'MyString',
-            VolumeSize          => 1,
-            VolumeType          =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
-          },    # OPTIONAL
-          NoDevice    => 'MyString',
-          VirtualName => 'MyString',
-        },
-        ...
-      ],    # OPTIONAL
-      CapacityReservationSpecification => {
-        CapacityReservationPreference => 'open',  # values: open, none; OPTIONAL
-        CapacityReservationTarget     => {
-          CapacityReservationId => 'MyCapacityReservationId',    # OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      ClientToken => 'MyString',    # OPTIONAL
-      CpuOptions  => {
-        CoreCount      => 1,
-        ThreadsPerCore => 1,
-      },                            # OPTIONAL
-      CreditSpecification => {
-        CpuCredits => 'MyString',
+      'BlockDeviceMappings' => [
 
-      },                            # OPTIONAL
-      DisableApiTermination   => 1, # OPTIONAL
-      DryRun                  => 1, # OPTIONAL
-      EbsOptimized            => 1, # OPTIONAL
-      ElasticGpuSpecification => [
         {
-          Type => 'MyString',
+          'DeviceName' => '/dev/sdh',
+          'Ebs'        => {
+            'VolumeSize' => 100
+          }
+        }
+      ],
+      'ImageId'           => 'ami-abc12345',
+      'InstanceType'      => 't2.micro',
+      'KeyName'           => 'my-key-pair',
+      'MaxCount'          => 1,
+      'MinCount'          => 1,
+      'SecurityGroupIds'  => ['sg-1a2b3c4d'],
+      'SubnetId'          => 'subnet-6e7f829e',
+      'TagSpecifications' => [
 
-        },
-        ...
-      ],                            # OPTIONAL
-      ElasticInferenceAccelerators => [
         {
-          Type  => 'MyString',
-          Count => 1,               # min: 1; OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      HibernationOptions => {
-        Configured => 1,    # OPTIONAL
-      },    # OPTIONAL
-      IamInstanceProfile => {
-        Arn  => 'MyString',
-        Name => 'MyString',
-      },    # OPTIONAL
-      ImageId                           => 'MyImageId',    # OPTIONAL
-      InstanceInitiatedShutdownBehavior => 'stop',         # OPTIONAL
-      InstanceMarketOptions             => {
-        MarketType  => 'spot',    # values: spot; OPTIONAL
-        SpotOptions => {
-          BlockDurationMinutes         => 1,
-          InstanceInterruptionBehavior =>
-            'hibernate',          # values: hibernate, stop, terminate; OPTIONAL
-          MaxPrice         => 'MyString',
-          SpotInstanceType =>
-            'one-time',           # values: one-time, persistent; OPTIONAL
-          ValidUntil => '1970-01-01T01:00:00',    # OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      InstanceType     => 't1.micro',                                 # OPTIONAL
-      Ipv6AddressCount => 1,                                          # OPTIONAL
-      Ipv6Addresses    => [ { Ipv6Address => 'MyString', }, ... ],    # OPTIONAL
-      KernelId         => 'MyString',                                 # OPTIONAL
-      KeyName          => 'MyKeyPairName',                            # OPTIONAL
-      LaunchTemplate   => {
-        LaunchTemplateId   => 'MyLaunchTemplateId',                   # OPTIONAL
-        LaunchTemplateName => 'MyString',
-        Version            => 'MyString',
-      },    # OPTIONAL
-      LicenseSpecifications =>
-        [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
-      MetadataOptions => {
-        HttpEndpoint => 'disabled',    # values: disabled, enabled; OPTIONAL
-        HttpPutResponseHopLimit => 1,
-        HttpTokens => 'optional',      # values: optional, required; OPTIONAL
-      },    # OPTIONAL
-      Monitoring => {
-        Enabled => 1,    # OPTIONAL
+          'ResourceType' => 'instance',
+          'Tags'         => [
 
-      },    # OPTIONAL
-      NetworkInterfaces => [
-        {
-          AssociatePublicIpAddress => 1,                              # OPTIONAL
-          DeleteOnTermination      => 1,                              # OPTIONAL
-          Description              => 'MyString',
-          DeviceIndex              => 1,
-          Groups                   => [ 'MySecurityGroupId', ... ],   # OPTIONAL
-          InterfaceType            => 'MyString',
-          Ipv6AddressCount         => 1,
-          Ipv6Addresses            => [ { Ipv6Address => 'MyString', }, ... ],
-          NetworkInterfaceId       => 'MyString',
-          PrivateIpAddress         => 'MyString',
-          PrivateIpAddresses       => [
             {
-              Primary          => 1,            # OPTIONAL
-              PrivateIpAddress => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-          SecondaryPrivateIpAddressCount => 1,
-          SubnetId                       => 'MyString',
-        },
-        ...
-      ],    # OPTIONAL
-      Placement => {
-        Affinity             => 'MyString',
-        AvailabilityZone     => 'MyString',
-        GroupName            => 'MyString',
-        HostId               => 'MyString',
-        HostResourceGroupArn => 'MyString',
-        PartitionNumber      => 1,
-        SpreadDomain         => 'MyString',
-        Tenancy => 'default',    # values: default, dedicated, host; OPTIONAL
-      },    # OPTIONAL
-      PrivateIpAddress  => 'MyString',                        # OPTIONAL
-      RamdiskId         => 'MyString',                        # OPTIONAL
-      SecurityGroupIds  => [ 'MySecurityGroupId',   ... ],    # OPTIONAL
-      SecurityGroups    => [ 'MySecurityGroupName', ... ],    # OPTIONAL
-      SubnetId          => 'MyString',                        # OPTIONAL
-      TagSpecifications => [
-        {
-          ResourceType => 'client-vpn-endpoint'
-          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, elastic-ip, fleet, fpga-image, host-reservation, image, instance, internet-gateway, key-pair, launch-template, natgateway, network-acl, network-interface, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway; OPTIONAL
-          Tags => [
-            {
-              Key   => 'MyString',
-              Value => 'MyString',
-            },
-            ...
-          ],    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      UserData => 'MyString',    # OPTIONAL
+              'Key'   => 'Purpose',
+              'Value' => 'test'
+            }
+          ]
+        }
+      ]
     );
 
-    # Results:
-    my $Groups        = $Reservation->Groups;
-    my $Instances     = $Reservation->Instances;
-    my $OwnerId       = $Reservation->OwnerId;
-    my $RequesterId   = $Reservation->RequesterId;
-    my $ReservationId = $Reservation->ReservationId;
-
-    # Returns a L<Paws::EC2::Reservation> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/RunInstances>
@@ -254,7 +130,10 @@ platform, Availability Zone).
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier you provide to ensure the idempotency
-of the request. For more information, see Ensuring Idempotency
+of the request. If you do not specify a client token, a randomly
+generated token is used for the request to ensure idempotency.
+
+For more information, see Ensuring Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
 Constraints: Maximum 64 ASCII characters
@@ -264,9 +143,9 @@ Constraints: Maximum 64 ASCII characters
 =head2 CpuOptions => L<Paws::EC2::CpuOptionsRequest>
 
 The CPU options for the instance. For more information, see Optimizing
-CPU Options
+CPU options
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-optimize-cpu.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 
@@ -276,9 +155,9 @@ The credit option for CPU usage of the burstable performance instance.
 Valid values are C<standard> and C<unlimited>. To change this attribute
 after launch, use ModifyInstanceCreditSpecification
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyInstanceCreditSpecification.html).
-For more information, see Burstable Performance Instances
+For more information, see Burstable performance instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 Default: C<standard> (T2 instances) or C<unlimited> (T3/T3a instances)
 
@@ -326,7 +205,7 @@ resource that you can attach to your Windows instance to accelerate the
 graphics performance of your applications. For more information, see
 Amazon EC2 Elastic GPUs
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-graphics.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 
@@ -337,20 +216,39 @@ Elastic inference accelerators are a resource you can attach to your
 Amazon EC2 instances to accelerate your Deep Learning (DL) inference
 workloads.
 
+You cannot specify accelerators from different generations in the same
+request.
+
+
+
+=head2 EnclaveOptions => L<Paws::EC2::EnclaveOptionsRequest>
+
+Indicates whether the instance is enabled for Amazon Web Services Nitro
+Enclaves. For more information, see What is Amazon Web Services Nitro
+Enclaves?
+(https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave.html)
+in the I<Amazon Web Services Nitro Enclaves User Guide>.
+
+You can't enable Amazon Web Services Nitro Enclaves and hibernation on
+the same instance.
+
 
 
 =head2 HibernationOptions => L<Paws::EC2::HibernationOptionsRequest>
 
 Indicates whether an instance is enabled for hibernation. For more
-information, see Hibernate Your Instance
+information, see Hibernate your instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
-the I<Amazon Elastic Compute Cloud User Guide>.
+the I<Amazon EC2 User Guide>.
+
+You can't enable hibernation and Amazon Web Services Nitro Enclaves on
+the same instance.
 
 
 
 =head2 IamInstanceProfile => L<Paws::EC2::IamInstanceProfileSpecification>
 
-The IAM instance profile.
+The name or Amazon Resource Name (ARN) of an IAM instance profile.
 
 
 
@@ -383,13 +281,13 @@ C<stop>.
 
 =head2 InstanceType => Str
 
-The instance type. For more information, see Instance Types
+The instance type. For more information, see Instance types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 Default: C<m1.small>
 
-Valid values are: C<"t1.micro">, C<"t2.nano">, C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"t2.xlarge">, C<"t2.2xlarge">, C<"t3.nano">, C<"t3.micro">, C<"t3.small">, C<"t3.medium">, C<"t3.large">, C<"t3.xlarge">, C<"t3.2xlarge">, C<"t3a.nano">, C<"t3a.micro">, C<"t3a.small">, C<"t3a.medium">, C<"t3a.large">, C<"t3a.xlarge">, C<"t3a.2xlarge">, C<"m1.small">, C<"m1.medium">, C<"m1.large">, C<"m1.xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">, C<"m4.16xlarge">, C<"m2.xlarge">, C<"m2.2xlarge">, C<"m2.4xlarge">, C<"cr1.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"r4.large">, C<"r4.xlarge">, C<"r4.2xlarge">, C<"r4.4xlarge">, C<"r4.8xlarge">, C<"r4.16xlarge">, C<"r5.large">, C<"r5.xlarge">, C<"r5.2xlarge">, C<"r5.4xlarge">, C<"r5.8xlarge">, C<"r5.12xlarge">, C<"r5.16xlarge">, C<"r5.24xlarge">, C<"r5.metal">, C<"r5a.large">, C<"r5a.xlarge">, C<"r5a.2xlarge">, C<"r5a.4xlarge">, C<"r5a.8xlarge">, C<"r5a.12xlarge">, C<"r5a.16xlarge">, C<"r5a.24xlarge">, C<"r5d.large">, C<"r5d.xlarge">, C<"r5d.2xlarge">, C<"r5d.4xlarge">, C<"r5d.8xlarge">, C<"r5d.12xlarge">, C<"r5d.16xlarge">, C<"r5d.24xlarge">, C<"r5d.metal">, C<"r5ad.large">, C<"r5ad.xlarge">, C<"r5ad.2xlarge">, C<"r5ad.4xlarge">, C<"r5ad.8xlarge">, C<"r5ad.12xlarge">, C<"r5ad.16xlarge">, C<"r5ad.24xlarge">, C<"x1.16xlarge">, C<"x1.32xlarge">, C<"x1e.xlarge">, C<"x1e.2xlarge">, C<"x1e.4xlarge">, C<"x1e.8xlarge">, C<"x1e.16xlarge">, C<"x1e.32xlarge">, C<"i2.xlarge">, C<"i2.2xlarge">, C<"i2.4xlarge">, C<"i2.8xlarge">, C<"i3.large">, C<"i3.xlarge">, C<"i3.2xlarge">, C<"i3.4xlarge">, C<"i3.8xlarge">, C<"i3.16xlarge">, C<"i3.metal">, C<"i3en.large">, C<"i3en.xlarge">, C<"i3en.2xlarge">, C<"i3en.3xlarge">, C<"i3en.6xlarge">, C<"i3en.12xlarge">, C<"i3en.24xlarge">, C<"i3en.metal">, C<"hi1.4xlarge">, C<"hs1.8xlarge">, C<"c1.medium">, C<"c1.xlarge">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"c5.large">, C<"c5.xlarge">, C<"c5.2xlarge">, C<"c5.4xlarge">, C<"c5.9xlarge">, C<"c5.12xlarge">, C<"c5.18xlarge">, C<"c5.24xlarge">, C<"c5.metal">, C<"c5d.large">, C<"c5d.xlarge">, C<"c5d.2xlarge">, C<"c5d.4xlarge">, C<"c5d.9xlarge">, C<"c5d.12xlarge">, C<"c5d.18xlarge">, C<"c5d.24xlarge">, C<"c5d.metal">, C<"c5n.large">, C<"c5n.xlarge">, C<"c5n.2xlarge">, C<"c5n.4xlarge">, C<"c5n.9xlarge">, C<"c5n.18xlarge">, C<"cc1.4xlarge">, C<"cc2.8xlarge">, C<"g2.2xlarge">, C<"g2.8xlarge">, C<"g3.4xlarge">, C<"g3.8xlarge">, C<"g3.16xlarge">, C<"g3s.xlarge">, C<"g4dn.xlarge">, C<"g4dn.2xlarge">, C<"g4dn.4xlarge">, C<"g4dn.8xlarge">, C<"g4dn.12xlarge">, C<"g4dn.16xlarge">, C<"cg1.4xlarge">, C<"p2.xlarge">, C<"p2.8xlarge">, C<"p2.16xlarge">, C<"p3.2xlarge">, C<"p3.8xlarge">, C<"p3.16xlarge">, C<"p3dn.24xlarge">, C<"d2.xlarge">, C<"d2.2xlarge">, C<"d2.4xlarge">, C<"d2.8xlarge">, C<"f1.2xlarge">, C<"f1.4xlarge">, C<"f1.16xlarge">, C<"m5.large">, C<"m5.xlarge">, C<"m5.2xlarge">, C<"m5.4xlarge">, C<"m5.8xlarge">, C<"m5.12xlarge">, C<"m5.16xlarge">, C<"m5.24xlarge">, C<"m5.metal">, C<"m5a.large">, C<"m5a.xlarge">, C<"m5a.2xlarge">, C<"m5a.4xlarge">, C<"m5a.8xlarge">, C<"m5a.12xlarge">, C<"m5a.16xlarge">, C<"m5a.24xlarge">, C<"m5d.large">, C<"m5d.xlarge">, C<"m5d.2xlarge">, C<"m5d.4xlarge">, C<"m5d.8xlarge">, C<"m5d.12xlarge">, C<"m5d.16xlarge">, C<"m5d.24xlarge">, C<"m5d.metal">, C<"m5ad.large">, C<"m5ad.xlarge">, C<"m5ad.2xlarge">, C<"m5ad.4xlarge">, C<"m5ad.8xlarge">, C<"m5ad.12xlarge">, C<"m5ad.16xlarge">, C<"m5ad.24xlarge">, C<"h1.2xlarge">, C<"h1.4xlarge">, C<"h1.8xlarge">, C<"h1.16xlarge">, C<"z1d.large">, C<"z1d.xlarge">, C<"z1d.2xlarge">, C<"z1d.3xlarge">, C<"z1d.6xlarge">, C<"z1d.12xlarge">, C<"z1d.metal">, C<"u-6tb1.metal">, C<"u-9tb1.metal">, C<"u-12tb1.metal">, C<"u-18tb1.metal">, C<"u-24tb1.metal">, C<"a1.medium">, C<"a1.large">, C<"a1.xlarge">, C<"a1.2xlarge">, C<"a1.4xlarge">, C<"a1.metal">, C<"m5dn.large">, C<"m5dn.xlarge">, C<"m5dn.2xlarge">, C<"m5dn.4xlarge">, C<"m5dn.8xlarge">, C<"m5dn.12xlarge">, C<"m5dn.16xlarge">, C<"m5dn.24xlarge">, C<"m5n.large">, C<"m5n.xlarge">, C<"m5n.2xlarge">, C<"m5n.4xlarge">, C<"m5n.8xlarge">, C<"m5n.12xlarge">, C<"m5n.16xlarge">, C<"m5n.24xlarge">, C<"r5dn.large">, C<"r5dn.xlarge">, C<"r5dn.2xlarge">, C<"r5dn.4xlarge">, C<"r5dn.8xlarge">, C<"r5dn.12xlarge">, C<"r5dn.16xlarge">, C<"r5dn.24xlarge">, C<"r5n.large">, C<"r5n.xlarge">, C<"r5n.2xlarge">, C<"r5n.4xlarge">, C<"r5n.8xlarge">, C<"r5n.12xlarge">, C<"r5n.16xlarge">, C<"r5n.24xlarge">, C<"inf1.xlarge">, C<"inf1.2xlarge">, C<"inf1.6xlarge">, C<"inf1.24xlarge">
+Valid values are: C<"t1.micro">, C<"t2.nano">, C<"t2.micro">, C<"t2.small">, C<"t2.medium">, C<"t2.large">, C<"t2.xlarge">, C<"t2.2xlarge">, C<"t3.nano">, C<"t3.micro">, C<"t3.small">, C<"t3.medium">, C<"t3.large">, C<"t3.xlarge">, C<"t3.2xlarge">, C<"t3a.nano">, C<"t3a.micro">, C<"t3a.small">, C<"t3a.medium">, C<"t3a.large">, C<"t3a.xlarge">, C<"t3a.2xlarge">, C<"t4g.nano">, C<"t4g.micro">, C<"t4g.small">, C<"t4g.medium">, C<"t4g.large">, C<"t4g.xlarge">, C<"t4g.2xlarge">, C<"m1.small">, C<"m1.medium">, C<"m1.large">, C<"m1.xlarge">, C<"m3.medium">, C<"m3.large">, C<"m3.xlarge">, C<"m3.2xlarge">, C<"m4.large">, C<"m4.xlarge">, C<"m4.2xlarge">, C<"m4.4xlarge">, C<"m4.10xlarge">, C<"m4.16xlarge">, C<"m2.xlarge">, C<"m2.2xlarge">, C<"m2.4xlarge">, C<"cr1.8xlarge">, C<"r3.large">, C<"r3.xlarge">, C<"r3.2xlarge">, C<"r3.4xlarge">, C<"r3.8xlarge">, C<"r4.large">, C<"r4.xlarge">, C<"r4.2xlarge">, C<"r4.4xlarge">, C<"r4.8xlarge">, C<"r4.16xlarge">, C<"r5.large">, C<"r5.xlarge">, C<"r5.2xlarge">, C<"r5.4xlarge">, C<"r5.8xlarge">, C<"r5.12xlarge">, C<"r5.16xlarge">, C<"r5.24xlarge">, C<"r5.metal">, C<"r5a.large">, C<"r5a.xlarge">, C<"r5a.2xlarge">, C<"r5a.4xlarge">, C<"r5a.8xlarge">, C<"r5a.12xlarge">, C<"r5a.16xlarge">, C<"r5a.24xlarge">, C<"r5b.large">, C<"r5b.xlarge">, C<"r5b.2xlarge">, C<"r5b.4xlarge">, C<"r5b.8xlarge">, C<"r5b.12xlarge">, C<"r5b.16xlarge">, C<"r5b.24xlarge">, C<"r5b.metal">, C<"r5d.large">, C<"r5d.xlarge">, C<"r5d.2xlarge">, C<"r5d.4xlarge">, C<"r5d.8xlarge">, C<"r5d.12xlarge">, C<"r5d.16xlarge">, C<"r5d.24xlarge">, C<"r5d.metal">, C<"r5ad.large">, C<"r5ad.xlarge">, C<"r5ad.2xlarge">, C<"r5ad.4xlarge">, C<"r5ad.8xlarge">, C<"r5ad.12xlarge">, C<"r5ad.16xlarge">, C<"r5ad.24xlarge">, C<"r6g.metal">, C<"r6g.medium">, C<"r6g.large">, C<"r6g.xlarge">, C<"r6g.2xlarge">, C<"r6g.4xlarge">, C<"r6g.8xlarge">, C<"r6g.12xlarge">, C<"r6g.16xlarge">, C<"r6gd.metal">, C<"r6gd.medium">, C<"r6gd.large">, C<"r6gd.xlarge">, C<"r6gd.2xlarge">, C<"r6gd.4xlarge">, C<"r6gd.8xlarge">, C<"r6gd.12xlarge">, C<"r6gd.16xlarge">, C<"x1.16xlarge">, C<"x1.32xlarge">, C<"x1e.xlarge">, C<"x1e.2xlarge">, C<"x1e.4xlarge">, C<"x1e.8xlarge">, C<"x1e.16xlarge">, C<"x1e.32xlarge">, C<"i2.xlarge">, C<"i2.2xlarge">, C<"i2.4xlarge">, C<"i2.8xlarge">, C<"i3.large">, C<"i3.xlarge">, C<"i3.2xlarge">, C<"i3.4xlarge">, C<"i3.8xlarge">, C<"i3.16xlarge">, C<"i3.metal">, C<"i3en.large">, C<"i3en.xlarge">, C<"i3en.2xlarge">, C<"i3en.3xlarge">, C<"i3en.6xlarge">, C<"i3en.12xlarge">, C<"i3en.24xlarge">, C<"i3en.metal">, C<"hi1.4xlarge">, C<"hs1.8xlarge">, C<"c1.medium">, C<"c1.xlarge">, C<"c3.large">, C<"c3.xlarge">, C<"c3.2xlarge">, C<"c3.4xlarge">, C<"c3.8xlarge">, C<"c4.large">, C<"c4.xlarge">, C<"c4.2xlarge">, C<"c4.4xlarge">, C<"c4.8xlarge">, C<"c5.large">, C<"c5.xlarge">, C<"c5.2xlarge">, C<"c5.4xlarge">, C<"c5.9xlarge">, C<"c5.12xlarge">, C<"c5.18xlarge">, C<"c5.24xlarge">, C<"c5.metal">, C<"c5a.large">, C<"c5a.xlarge">, C<"c5a.2xlarge">, C<"c5a.4xlarge">, C<"c5a.8xlarge">, C<"c5a.12xlarge">, C<"c5a.16xlarge">, C<"c5a.24xlarge">, C<"c5ad.large">, C<"c5ad.xlarge">, C<"c5ad.2xlarge">, C<"c5ad.4xlarge">, C<"c5ad.8xlarge">, C<"c5ad.12xlarge">, C<"c5ad.16xlarge">, C<"c5ad.24xlarge">, C<"c5d.large">, C<"c5d.xlarge">, C<"c5d.2xlarge">, C<"c5d.4xlarge">, C<"c5d.9xlarge">, C<"c5d.12xlarge">, C<"c5d.18xlarge">, C<"c5d.24xlarge">, C<"c5d.metal">, C<"c5n.large">, C<"c5n.xlarge">, C<"c5n.2xlarge">, C<"c5n.4xlarge">, C<"c5n.9xlarge">, C<"c5n.18xlarge">, C<"c5n.metal">, C<"c6g.metal">, C<"c6g.medium">, C<"c6g.large">, C<"c6g.xlarge">, C<"c6g.2xlarge">, C<"c6g.4xlarge">, C<"c6g.8xlarge">, C<"c6g.12xlarge">, C<"c6g.16xlarge">, C<"c6gd.metal">, C<"c6gd.medium">, C<"c6gd.large">, C<"c6gd.xlarge">, C<"c6gd.2xlarge">, C<"c6gd.4xlarge">, C<"c6gd.8xlarge">, C<"c6gd.12xlarge">, C<"c6gd.16xlarge">, C<"c6gn.medium">, C<"c6gn.large">, C<"c6gn.xlarge">, C<"c6gn.2xlarge">, C<"c6gn.4xlarge">, C<"c6gn.8xlarge">, C<"c6gn.12xlarge">, C<"c6gn.16xlarge">, C<"cc1.4xlarge">, C<"cc2.8xlarge">, C<"g2.2xlarge">, C<"g2.8xlarge">, C<"g3.4xlarge">, C<"g3.8xlarge">, C<"g3.16xlarge">, C<"g3s.xlarge">, C<"g4ad.4xlarge">, C<"g4ad.8xlarge">, C<"g4ad.16xlarge">, C<"g4dn.xlarge">, C<"g4dn.2xlarge">, C<"g4dn.4xlarge">, C<"g4dn.8xlarge">, C<"g4dn.12xlarge">, C<"g4dn.16xlarge">, C<"g4dn.metal">, C<"cg1.4xlarge">, C<"p2.xlarge">, C<"p2.8xlarge">, C<"p2.16xlarge">, C<"p3.2xlarge">, C<"p3.8xlarge">, C<"p3.16xlarge">, C<"p3dn.24xlarge">, C<"p4d.24xlarge">, C<"d2.xlarge">, C<"d2.2xlarge">, C<"d2.4xlarge">, C<"d2.8xlarge">, C<"d3.xlarge">, C<"d3.2xlarge">, C<"d3.4xlarge">, C<"d3.8xlarge">, C<"d3en.xlarge">, C<"d3en.2xlarge">, C<"d3en.4xlarge">, C<"d3en.6xlarge">, C<"d3en.8xlarge">, C<"d3en.12xlarge">, C<"f1.2xlarge">, C<"f1.4xlarge">, C<"f1.16xlarge">, C<"m5.large">, C<"m5.xlarge">, C<"m5.2xlarge">, C<"m5.4xlarge">, C<"m5.8xlarge">, C<"m5.12xlarge">, C<"m5.16xlarge">, C<"m5.24xlarge">, C<"m5.metal">, C<"m5a.large">, C<"m5a.xlarge">, C<"m5a.2xlarge">, C<"m5a.4xlarge">, C<"m5a.8xlarge">, C<"m5a.12xlarge">, C<"m5a.16xlarge">, C<"m5a.24xlarge">, C<"m5d.large">, C<"m5d.xlarge">, C<"m5d.2xlarge">, C<"m5d.4xlarge">, C<"m5d.8xlarge">, C<"m5d.12xlarge">, C<"m5d.16xlarge">, C<"m5d.24xlarge">, C<"m5d.metal">, C<"m5ad.large">, C<"m5ad.xlarge">, C<"m5ad.2xlarge">, C<"m5ad.4xlarge">, C<"m5ad.8xlarge">, C<"m5ad.12xlarge">, C<"m5ad.16xlarge">, C<"m5ad.24xlarge">, C<"m5zn.large">, C<"m5zn.xlarge">, C<"m5zn.2xlarge">, C<"m5zn.3xlarge">, C<"m5zn.6xlarge">, C<"m5zn.12xlarge">, C<"m5zn.metal">, C<"h1.2xlarge">, C<"h1.4xlarge">, C<"h1.8xlarge">, C<"h1.16xlarge">, C<"z1d.large">, C<"z1d.xlarge">, C<"z1d.2xlarge">, C<"z1d.3xlarge">, C<"z1d.6xlarge">, C<"z1d.12xlarge">, C<"z1d.metal">, C<"u-6tb1.56xlarge">, C<"u-6tb1.112xlarge">, C<"u-9tb1.112xlarge">, C<"u-12tb1.112xlarge">, C<"u-6tb1.metal">, C<"u-9tb1.metal">, C<"u-12tb1.metal">, C<"u-18tb1.metal">, C<"u-24tb1.metal">, C<"a1.medium">, C<"a1.large">, C<"a1.xlarge">, C<"a1.2xlarge">, C<"a1.4xlarge">, C<"a1.metal">, C<"m5dn.large">, C<"m5dn.xlarge">, C<"m5dn.2xlarge">, C<"m5dn.4xlarge">, C<"m5dn.8xlarge">, C<"m5dn.12xlarge">, C<"m5dn.16xlarge">, C<"m5dn.24xlarge">, C<"m5dn.metal">, C<"m5n.large">, C<"m5n.xlarge">, C<"m5n.2xlarge">, C<"m5n.4xlarge">, C<"m5n.8xlarge">, C<"m5n.12xlarge">, C<"m5n.16xlarge">, C<"m5n.24xlarge">, C<"m5n.metal">, C<"r5dn.large">, C<"r5dn.xlarge">, C<"r5dn.2xlarge">, C<"r5dn.4xlarge">, C<"r5dn.8xlarge">, C<"r5dn.12xlarge">, C<"r5dn.16xlarge">, C<"r5dn.24xlarge">, C<"r5dn.metal">, C<"r5n.large">, C<"r5n.xlarge">, C<"r5n.2xlarge">, C<"r5n.4xlarge">, C<"r5n.8xlarge">, C<"r5n.12xlarge">, C<"r5n.16xlarge">, C<"r5n.24xlarge">, C<"r5n.metal">, C<"inf1.xlarge">, C<"inf1.2xlarge">, C<"inf1.6xlarge">, C<"inf1.24xlarge">, C<"m6g.metal">, C<"m6g.medium">, C<"m6g.large">, C<"m6g.xlarge">, C<"m6g.2xlarge">, C<"m6g.4xlarge">, C<"m6g.8xlarge">, C<"m6g.12xlarge">, C<"m6g.16xlarge">, C<"m6gd.metal">, C<"m6gd.medium">, C<"m6gd.large">, C<"m6gd.xlarge">, C<"m6gd.2xlarge">, C<"m6gd.4xlarge">, C<"m6gd.8xlarge">, C<"m6gd.12xlarge">, C<"m6gd.16xlarge">, C<"mac1.metal">, C<"x2gd.medium">, C<"x2gd.large">, C<"x2gd.xlarge">, C<"x2gd.2xlarge">, C<"x2gd.4xlarge">, C<"x2gd.8xlarge">, C<"x2gd.12xlarge">, C<"x2gd.16xlarge">, C<"x2gd.metal">
 
 =head2 Ipv6AddressCount => Int
 
@@ -424,7 +322,7 @@ The ID of the kernel.
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 
@@ -475,7 +373,7 @@ in the Amazon EC2 FAQ.
 =head2 MetadataOptions => L<Paws::EC2::InstanceMetadataOptionsRequest>
 
 The metadata options for the instance. For more information, see
-Instance Metadata and User Data
+Instance metadata and user data
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).
 
 
@@ -536,12 +434,13 @@ same request.
 The ID of the RAM disk to select. Some kernels require additional
 drivers at launch. Check the kernel requirements for information about
 whether you need to specify a RAM disk. To find kernel requirements, go
-to the AWS Resource Center and search for the kernel ID.
+to the Amazon Web Services Resource Center and search for the kernel
+ID.
 
 We recommend that you use PV-GRUB instead of kernels and RAM disks. For
 more information, see PV-GRUB
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/UserProvidedkernels.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 
@@ -590,7 +489,7 @@ after it has been created, see CreateTags
 =head2 UserData => Str
 
 The user data to make available to the instance. For more information,
-see Running Commands on Your Linux Instance at Launch
+see Running commands on your Linux instance at launch
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/user-data.html)
 (Linux) and Adding User Data
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-instance-metadata.html#instancedata-add-user-data)

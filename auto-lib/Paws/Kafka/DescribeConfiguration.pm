@@ -40,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $KafkaVersions  = $DescribeConfigurationResponse->KafkaVersions;
     my $LatestRevision = $DescribeConfigurationResponse->LatestRevision;
     my $Name           = $DescribeConfigurationResponse->Name;
+    my $State          = $DescribeConfigurationResponse->State;
 
     # Returns a L<Paws::Kafka::DescribeConfigurationResponse> object.
 

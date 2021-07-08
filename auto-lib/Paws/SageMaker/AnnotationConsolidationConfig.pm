@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Configures how labels are consolidated across human workers.
+Configures how labels are consolidated across human workers and
+processes output data.
 
 =head1 ATTRIBUTES
 
@@ -41,288 +42,1270 @@ Configures how labels are consolidated across human workers.
 =head2 B<REQUIRED> AnnotationConsolidationLambdaArn => Str
 
 The Amazon Resource Name (ARN) of a Lambda function implements the
-logic for annotation consolidation.
+logic for annotation consolidation
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html)
+and to process output data.
 
-For the built-in bounding box, image classification, semantic
-segmentation, and text classification task types, Amazon SageMaker
-Ground Truth provides the following Lambda functions:
+This parameter is required for all labeling jobs. For built-in task
+types
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-task-types.html),
+use one of the following Amazon SageMaker Ground Truth Lambda function
+ARNs for C<AnnotationConsolidationLambdaArn>. For custom labeling
+workflows, see Post-annotation Lambda
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-custom-templates-step3.html#sms-custom-templates-step3-postlambda).
+
+B<Bounding box> - Finds the most similar boxes from different workers
+based on the Jaccard index of the boxes.
 
 =over
 
 =item *
 
-I<Bounding box> - Finds the most similar boxes from different workers
-based on the Jaccard index of the boxes.
-
 C<arn:aws:lambda:us-east-1:432418664414:function:ACS-BoundingBox>
+
+=item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:ACS-BoundingBox>
 
+=item *
+
 C<arn:aws:lambda:us-west-2:081040173940:function:ACS-BoundingBox>
+
+=item *
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-BoundingBox>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-BoundingBox>
+
+=item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-BoundingBox>
 
+=item *
+
 C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-BoundingBox>
+
+=item *
 
 C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-BoundingBox>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-BoundingBox>
+
+=item *
 
 C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-BoundingBox>
 
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-BoundingBox>
+
+=item *
 
 C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-BoundingBox>
 
-=item *
+=back
 
-I<Image classification> - Uses a variant of the Expectation
+B<Image classification> - Uses a variant of the Expectation
 Maximization approach to estimate the true class of an image based on
 annotations from individual workers.
 
+=over
+
+=item *
+
 C<arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClass>
+
+=item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClass>
 
+=item *
+
 C<arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClass>
+
+=item *
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClass>
+
+=item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClass>
+
+=item *
 
 C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClass>
+
+=item *
 
 C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClass>
+
+=item *
 
 C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClass>
 
+=back
+
+B<Multi-label image classification> - Uses a variant of the Expectation
+Maximization approach to estimate the true classes of an image based on
+annotations from individual workers.
+
+=over
+
 =item *
 
-I<Semantic segmentation> - Treats each pixel in an image as a
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-ImageMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-ImageMultiClassMultiLabel>
+
+=back
+
+B<Semantic segmentation> - Treats each pixel in an image as a
 multi-class classification and treats pixel annotations from workers as
 "votes" for the correct label.
 
+=over
+
+=item *
+
 C<arn:aws:lambda:us-east-1:432418664414:function:ACS-SemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:ACS-SemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:us-west-2:081040173940:function:ACS-SemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-SemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-SemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-SemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-SemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-SemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-SemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-SemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-SemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-SemanticSegmentation>
 
-=item *
+=back
 
-I<Text classification> - Uses a variant of the Expectation Maximization
+B<Text classification> - Uses a variant of the Expectation Maximization
 approach to estimate the true class of text based on annotations from
 individual workers.
 
-C<arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass>
+=over
+
+=item *
+
+C<rn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClass>
+
+=item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClass>
 
+=item *
+
 C<arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClass>
+
+=item *
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClass>
+
+=item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClass>
+
+=item *
 
 C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClass>
+
+=item *
 
 C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClass>
 
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClass>
+
+=item *
 
 C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClass>
 
+=back
+
+B<Multi-label text classification> - Uses a variant of the Expectation
+Maximization approach to estimate the true classes of text based on
+annotations from individual workers.
+
+=over
+
 =item *
 
-I<Named entity recognition> - Groups similar selections and calculates
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-TextMultiClassMultiLabel>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-TextMultiClassMultiLabel>
+
+=back
+
+B<Named entity recognition> - Groups similar selections and calculates
 aggregate boundaries, resolving to most-assigned label.
+
+=over
+
+=item *
 
 C<arn:aws:lambda:us-east-1:432418664414:function:ACS-NamedEntityRecognition>
 
+=item *
+
 C<arn:aws:lambda:us-east-2:266458841044:function:ACS-NamedEntityRecognition>
+
+=item *
 
 C<arn:aws:lambda:us-west-2:081040173940:function:ACS-NamedEntityRecognition>
 
+=item *
+
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-NamedEntityRecognition>
+
+=item *
 
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-NamedEntityRecognition>
 
+=item *
+
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-NamedEntityRecognition>
+
+=item *
 
 C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-NamedEntityRecognition>
 
+=item *
+
 C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-NamedEntityRecognition>
+
+=item *
 
 C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-NamedEntityRecognition>
 
+=item *
+
 C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-NamedEntityRecognition>
+
+=item *
 
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-NamedEntityRecognition>
 
+=item *
+
 C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-NamedEntityRecognition>
 
-=item *
+=back
 
-I<Bounding box verification> - Uses a variant of the Expectation
-Maximization approach to estimate the true class of verification
-judgement for bounding box labels based on annotations from individual
-workers.
+B<Video Classification> - Use this task type when you need workers to
+classify videos using predefined labels that you specify. Workers are
+shown videos and are asked to choose one label for each video.
 
-C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationBoundingBox>
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationBoundingBox>
+=over
 
 =item *
 
-I<Semantic segmentation verification> - Uses a variant of the
-Expectation Maximization approach to estimate the true class of
-verification judgement for semantic segmentation labels based on
-annotations from individual workers.
-
-C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationSemanticSegmentation>
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationSemanticSegmentation>
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoMultiClass>
 
 =item *
 
-I<Bounding box adjustment> - Finds the most similar boxes from
-different workers based on the Jaccard index of the adjusted
-annotations.
-
-C<arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentBoundingBox>
-
-C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentBoundingBox>
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoMultiClass>
 
 =item *
 
-I<Semantic segmentation adjustment> - Treats each pixel in an image as
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoMultiClass>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoMultiClass>
+
+=back
+
+B<Video Frame Object Detection> - Use this task type to have workers
+identify and locate objects in a sequence of video frames (images
+extracted from a video) using bounding boxes. For example, you can use
+this task to ask workers to identify and localize various objects in a
+series of video frames, such as cars, bikes, and pedestrians.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectDetection>
+
+=back
+
+B<Video Frame Object Tracking> - Use this task type to have workers
+track the movement of objects in a sequence of video frames (images
+extracted from a video) using bounding boxes. For example, you can use
+this task to ask workers to track the movement of objects, such as
+cars, bikes, and pedestrians.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VideoObjectTracking>
+
+=back
+
+B<3D Point Cloud Object Detection> - Use this task type when you want
+workers to classify objects in a 3D point cloud by drawing 3D cuboids
+around objects. For example, you can use this task type to ask workers
+to identify different types of objects in a point cloud, such as cars,
+bikes, and pedestrians.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectDetection>
+
+=back
+
+B<3D Point Cloud Object Tracking> - Use this task type when you want
+workers to draw 3D cuboids around objects that appear in a sequence of
+3D point cloud frames. For example, you can use this task type to ask
+workers to track the movement of vehicles across multiple point cloud
+frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudObjectTracking>
+
+=back
+
+B<3D Point Cloud Semantic Segmentation> - Use this task type when you
+want workers to create a point-level semantic segmentation masks by
+painting objects in a 3D point cloud using different colors where each
+color is assigned to one of the classes you specify.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-3DPointCloudSemanticSegmentation>
+
+=back
+
+B<Use the following ARNs for Label Verification and Adjustment Jobs>
+
+Use label verification and adjustment jobs to review and adjust labels.
+To learn more, see Verify and Adjust Labels
+(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-verification-data.html).
+
+B<Semantic Segmentation Adjustment> - Treats each pixel in an image as
 a multi-class classification and treats pixel adjusted annotations from
 workers as "votes" for the correct label.
 
+=over
+
+=item *
+
 C<arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentSemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentSemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentSemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentSemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentSemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentSemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentSemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentSemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentSemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentSemanticSegmentation>
 
+=item *
+
 C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentSemanticSegmentation>
+
+=item *
 
 C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentSemanticSegmentation>
 
 =back
 
-For more information, see Annotation Consolidation
-(https://docs.aws.amazon.com/sagemaker/latest/dg/sms-annotation-consolidation.html).
+B<Semantic Segmentation Verification> - Uses a variant of the
+Expectation Maximization approach to estimate the true class of
+verification judgment for semantic segmentation labels based on
+annotations from individual workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationSemanticSegmentation>
+
+=back
+
+B<Bounding Box Adjustment> - Finds the most similar boxes from
+different workers based on the Jaccard index of the adjusted
+annotations.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentBoundingBox>
+
+=back
+
+B<Bounding Box Verification> - Uses a variant of the Expectation
+Maximization approach to estimate the true class of verification
+judgement for bounding box labels based on annotations from individual
+workers.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-VerificationBoundingBox>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-VerificationBoundingBox>
+
+=back
+
+B<Video Frame Object Detection Adjustment> - Use this task type when
+you want workers to adjust bounding boxes that workers have added to
+video frames to classify and localize objects in a sequence of video
+frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectDetection>
+
+=back
+
+B<Video Frame Object Tracking Adjustment> - Use this task type when you
+want workers to adjust bounding boxes that workers have added to video
+frames to track object movement across a sequence of video frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-AdjustmentVideoObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-AdjustmentVideoObjectTracking>
+
+=back
+
+B<3D Point Cloud Object Detection Adjustment> - Use this task type when
+you want workers to adjust 3D cuboids around objects in a 3D point
+cloud.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectDetection>
+
+=back
+
+B<3D Point Cloud Object Tracking Adjustment> - Use this task type when
+you want workers to adjust 3D cuboids around objects that appear in a
+sequence of 3D point cloud frames.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudObjectTracking>
+
+=back
+
+B<3D Point Cloud Semantic Segmentation Adjustment> - Use this task type
+when you want workers to adjust a point-level semantic segmentation
+masks using a paint tool.
+
+=over
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-1:432418664414:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-east-2:266458841044:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:us-west-2:081040173940:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-1:568282634449:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-1:477331159723:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-2:454466003867:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-south-1:565803892007:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-central-1:203001061592:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-northeast-2:845288260483:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:eu-west-2:487402164563:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ap-southeast-1:377565633583:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=item *
+
+C<arn:aws:lambda:ca-central-1:918755190332:function:ACS-Adjustment3DPointCloudSemanticSegmentation>
+
+=back
+
 
 
 

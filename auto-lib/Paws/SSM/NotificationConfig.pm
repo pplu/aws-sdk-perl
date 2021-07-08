@@ -52,8 +52,9 @@ status changes to this topic.
 The different events for which you can receive notifications. These
 events include the following: All (events), InProgress, Success,
 TimedOut, Cancelled, Failed. To learn more about these events, see
-Configuring Amazon SNS Notifications for AWS Systems Manager
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html)
+Monitoring Systems Manager status changes using Amazon SNS
+notifications
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/monitoring-sns-notifications.html)
 in the I<AWS Systems Manager User Guide>.
 
 

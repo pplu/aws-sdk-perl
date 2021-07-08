@@ -59,14 +59,14 @@ The time that this classifier was registered.
 
 Optional custom grok patterns defined by this classifier. For more
 information, see custom patterns in Writing Custom Classifiers
-(http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html).
+(https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html).
 
 
 =head2 B<REQUIRED> GrokPattern => Str
 
 The grok pattern applied to a data store by this classifier. For more
 information, see built-in patterns in Writing Custom Classifiers
-(http://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html).
+(https://docs.aws.amazon.com/glue/latest/dg/custom-classifier.html).
 
 
 =head2 LastUpdated => Str

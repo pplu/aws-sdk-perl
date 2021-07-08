@@ -18,12 +18,16 @@ Paws::CodeGuruProfiler::ListProfileTimesResponse
 
 =head2 NextToken => Str
 
-
+The C<nextToken> value to include in a future C<ListProfileTimes>
+request. When the results of a C<ListProfileTimes> request exceed
+C<maxResults>, this value can be used to retrieve the next page of
+results. This value is C<null> when there are no more results to
+return.
 
 
 =head2 B<REQUIRED> ProfileTimes => ArrayRef[L<Paws::CodeGuruProfiler::ProfileTime>]
 
-List of start times of the available profiles for the aggregation
+The list of start times of the available profiles for the aggregation
 period in the specified time range.
 
 

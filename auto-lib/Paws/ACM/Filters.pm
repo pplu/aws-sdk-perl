@@ -50,10 +50,11 @@ Specify one or more ExtendedKeyUsage extension values.
 
 Specify one or more algorithms that can be used to generate key pairs.
 
-Default filtering returns only C<RSA_2048> certificates. To return
-other certificate types, provide the desired type signatures in a
-comma-separated list. For example, C<"keyTypes": ["RSA_2048,RSA_4096"]>
-returns both C<RSA_2048> and C<RSA_4096> certificates.
+Default filtering returns only C<RSA_1024> and C<RSA_2048> certificates
+that have at least one domain. To return other certificate types,
+provide the desired type signatures in a comma-separated list. For
+example, C<"keyTypes": ["RSA_2048,RSA_4096"]> returns both C<RSA_2048>
+and C<RSA_4096> certificates.
 
 
 =head2 KeyUsage => ArrayRef[Str|Undef]

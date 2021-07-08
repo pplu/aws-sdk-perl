@@ -6,6 +6,8 @@ package Paws::CodeBuild::ReportGroup;
   has ExportConfig => (is => 'ro', isa => 'Paws::CodeBuild::ReportExportConfig', request_name => 'exportConfig', traits => ['NameInRequest']);
   has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest']);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::CodeBuild::Tag]', request_name => 'tags', traits => ['NameInRequest']);
   has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
 
 1;
@@ -48,7 +50,7 @@ paths to the test case files.
 
 =head2 Arn => Str
 
-The ARN of a C<ReportGroup>.
+The ARN of the C<ReportGroup>.
 
 
 =head2 Created => Str
@@ -69,12 +71,54 @@ The date and time this C<ReportGroup> was last modified.
 
 =head2 Name => Str
 
-The name of a C<ReportGroup>.
+The name of the C<ReportGroup>.
+
+
+=head2 Status => Str
+
+The status of the report group. This property is read-only.
+
+This can be one of the following values:
+
+=over
+
+=item ACTIVE
+
+The report group is active.
+
+=item DELETING
+
+The report group is in the process of being deleted.
+
+=back
+
+
+
+=head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
+
+A list of tag key and value pairs associated with this report group.
+
+These tags are available for use by Amazon Web Services services that
+support CodeBuild report group tags.
 
 
 =head2 Type => Str
 
-The type of the C<ReportGroup>. The one valid value is C<TEST>.
+The type of the C<ReportGroup>. This can be one of the following
+values:
+
+=over
+
+=item CODE_COVERAGE
+
+The report group contains code coverage reports.
+
+=item TEST
+
+The report group contains test reports.
+
+=back
+
 
 
 

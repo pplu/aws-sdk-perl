@@ -1,6 +1,7 @@
 
 package Paws::ImageBuilder::CreateImageRecipe;
   use Moose;
+  has AdditionalInstanceConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::AdditionalInstanceConfiguration', traits => ['NameInRequest'], request_name => 'additionalInstanceConfiguration');
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::InstanceBlockDeviceMapping]', traits => ['NameInRequest'], request_name => 'blockDeviceMappings');
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken', required => 1);
   has Components => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::ComponentConfiguration]', traits => ['NameInRequest'], request_name => 'components', required => 1);
@@ -9,6 +10,7 @@ package Paws::ImageBuilder::CreateImageRecipe;
   has ParentImage => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentImage', required => 1);
   has SemanticVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'semanticVersion', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', traits => ['NameInRequest'], request_name => 'tags');
+  has WorkingDirectory => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'workingDirectory');
 
   use MooseX::ClassAttribute;
 
@@ -40,13 +42,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Components  => [
         {
           ComponentArn => 'MyComponentVersionArnOrBuildVersionArn',
+          Parameters   => [
+            {
+              Name  => 'MyComponentParameterName',    # min: 1, max: 256
+              Value => [
+                'MyComponentParameterValue', ...      # min: 1
+              ],
 
+            },
+            ...
+          ],    # min: 1; OPTIONAL
         },
         ...
       ],
-      Name                => 'MyResourceName',
-      ParentImage         => 'MyNonEmptyString',
-      SemanticVersion     => 'MyVersionNumber',
+      Name                            => 'MyResourceName',
+      ParentImage                     => 'MyNonEmptyString',
+      SemanticVersion                 => 'MyVersionNumber',
+      AdditionalInstanceConfiguration => {
+        SystemsManagerAgent => {
+          UninstallAfterBuild => 1,    # OPTIONAL
+        },    # OPTIONAL
+        UserDataOverride => 'MyUserDataOverride', # min: 1, max: 21847; OPTIONAL
+      },    # OPTIONAL
       BlockDeviceMappings => [
         {
           DeviceName => 'MyNonEmptyString',    # min: 1, max: 1024
@@ -57,8 +74,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             KmsKeyId   => 'MyNonEmptyString',    # min: 1, max: 1024
             SnapshotId => 'MyNonEmptyString',    # min: 1, max: 1024
             VolumeSize => 1,                     # min: 1, max: 16000; OPTIONAL
-            VolumeType =>
-              'standard',    # values: standard, io1, gp2, sc1, st1; OPTIONAL
+            VolumeType => 'standard'
+            ,    # values: standard, io1, io2, gp2, gp3, sc1, st1; OPTIONAL
           },    # OPTIONAL
           NoDevice    => 'MyEmptyString',       # OPTIONAL
           VirtualName => 'MyNonEmptyString',    # min: 1, max: 1024
@@ -69,6 +86,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Tags        => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
+      WorkingDirectory => 'MyNonEmptyString',    # OPTIONAL
     );
 
     # Results:
@@ -82,6 +100,13 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/imagebuilder/CreateImageRecipe>
 
 =head1 ATTRIBUTES
+
+
+=head2 AdditionalInstanceConfiguration => L<Paws::ImageBuilder::AdditionalInstanceConfiguration>
+
+Specify additional settings and launch scripts for your build
+instances.
+
 
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::ImageBuilder::InstanceBlockDeviceMapping>]
@@ -116,7 +141,14 @@ The name of the image recipe.
 
 =head2 B<REQUIRED> ParentImage => Str
 
-The parent image of the image recipe.
+The parent image of the image recipe. The value of the string can be
+the ARN of the parent image or an AMI ID. The format for the ARN
+follows this example:
+C<arn:aws:imagebuilder:us-west-2:aws:image/windows-server-2016-english-full-base-x86/x.x.x>.
+You can provide the specific version that you want to use, or you can
+use a wildcard in all of the fields. If you enter an AMI ID for the
+string value, you must have access to the AMI, and the AMI must be in
+the same Region in which you are using Image Builder.
 
 
 
@@ -129,6 +161,12 @@ The semantic version of the image recipe.
 =head2 Tags => L<Paws::ImageBuilder::TagMap>
 
 The tags of the image recipe.
+
+
+
+=head2 WorkingDirectory => Str
+
+The working directory used during build and test workflows.
 
 
 

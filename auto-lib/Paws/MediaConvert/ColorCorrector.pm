@@ -6,6 +6,7 @@ package Paws::MediaConvert::ColorCorrector;
   has Contrast => (is => 'ro', isa => 'Int', request_name => 'contrast', traits => ['NameInRequest']);
   has Hdr10Metadata => (is => 'ro', isa => 'Paws::MediaConvert::Hdr10Metadata', request_name => 'hdr10Metadata', traits => ['NameInRequest']);
   has Hue => (is => 'ro', isa => 'Int', request_name => 'hue', traits => ['NameInRequest']);
+  has SampleRangeConversion => (is => 'ro', isa => 'Str', request_name => 'sampleRangeConversion', traits => ['NameInRequest']);
   has Saturation => (is => 'ro', isa => 'Int', request_name => 'saturation', traits => ['NameInRequest']);
 
 1;
@@ -51,10 +52,12 @@ Brightness level.
 =head2 ColorSpaceConversion => Str
 
 Specify the color space you want for this output. The service supports
-conversion between HDR formats, between SDR formats, and from SDR to
-HDR. The service doesn't support conversion from HDR to SDR. SDR to HDR
-conversion doesn't upgrade the dynamic range. The converted video has
-an HDR format, but visually appears the same as an unconverted output.
+conversion between HDR formats, between SDR formats, from SDR to HDR,
+and from HDR to SDR. SDR to HDR conversion doesn't upgrade the dynamic
+range. The converted video has an HDR format, but visually appears the
+same as an unconverted output. HDR to SDR conversion uses Elemental
+tone mapping technology to approximate the outcome of manually
+regrading from HDR to SDR.
 
 
 =head2 Contrast => Int
@@ -82,6 +85,21 @@ jobs, see https://docs.aws.amazon.com/console/mediaconvert/hdr.
 =head2 Hue => Int
 
 Hue in degrees.
+
+
+=head2 SampleRangeConversion => Str
+
+Specify the video color sample range for this output. To create a full
+range output, you must start with a full range YUV input and keep the
+default value, None (NONE). To create a limited range output from a
+full range input, choose Limited range (LIMITED_RANGE_SQUEEZE). With
+RGB inputs, your output is always limited range, regardless of your
+choice here. When you create a limited range output from a full range
+input, MediaConvert limits the active pixel values in a way that
+depends on the output's bit depth: 8-bit outputs contain only values
+from 16 through 235 and 10-bit outputs contain only values from 64
+through 940. With this conversion, MediaConvert also changes the output
+metadata to note the limited range.
 
 
 =head2 Saturation => Int

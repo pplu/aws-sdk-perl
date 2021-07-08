@@ -75,13 +75,19 @@ underscore characters.
 A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. The token is valid for 7 days after
 creation. If a contact is already started, the contact ID is returned.
-If the contact is disconnected, a new contact is started.
 
 
 
 =head2 B<REQUIRED> ContactFlowId => Str
 
-The identifier of the contact flow for the outbound call.
+The identifier of the contact flow for the outbound call. To see the
+ContactFlowId in the Amazon Connect console user interface, on the
+navigation menu go to B<Routing>, B<Contact Flows>. Choose the contact
+flow. On the contact flow page, under the name of the contact flow,
+choose B<Show additional flow information>. The ContactFlowId is the
+last part of the ARN, shown here in bold:
+
+arn:aws:connect:us-west-2:xxxxxxxxxxxx:instance/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/contact-flow/B<846ec553-a005-41c0-8341-xxxxxxxxxxxx>
 
 
 
@@ -93,7 +99,8 @@ The phone number of the customer, in E.164 format.
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The identifier of the Amazon Connect instance.
+The identifier of the Amazon Connect instance. You can find the
+instanceId in the ARN of the instance.
 
 
 

@@ -52,15 +52,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3-
 
 =head2 B<REQUIRED> AccountId => Str
 
-The account ID for the Amazon Web Services account whose
-C<PublicAccessBlock> configuration you want to set.
+The account ID for the AWS account whose C<PublicAccessBlock>
+configuration you want to set.
 
 
 
 =head2 B<REQUIRED> PublicAccessBlockConfiguration => L<Paws::S3Control::PublicAccessBlockConfiguration>
 
 The C<PublicAccessBlock> configuration that you want to apply to the
-specified Amazon Web Services account.
+specified AWS account.
 
 
 

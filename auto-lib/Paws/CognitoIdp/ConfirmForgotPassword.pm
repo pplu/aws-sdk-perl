@@ -120,7 +120,8 @@ use it to provide sensitive information.
 =head2 B<REQUIRED> ConfirmationCode => Str
 
 The confirmation code sent by a user's request to retrieve a forgotten
-password. For more information, see
+password. For more information, see ForgotPassword
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_ForgotPassword.html).
 
 
 

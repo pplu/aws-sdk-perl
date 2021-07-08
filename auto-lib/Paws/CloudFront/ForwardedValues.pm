@@ -36,6 +36,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include values in the cache key, use a cache policy. For
+more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send values to the origin but not include them in the
+cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
 A complex type that specifies how CloudFront handles query strings,
 cookies, and HTTP headers.
 
@@ -43,6 +57,20 @@ cookies, and HTTP headers.
 
 
 =head2 B<REQUIRED> Cookies => L<Paws::CloudFront::CookiePreference>
+
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include cookies in the cache key, use a cache policy.
+For more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send cookies to the origin but not include them in the
+cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
 
 A complex type that specifies whether you want CloudFront to forward
 cookies to the origin and, if so, which ones. For more information
@@ -53,6 +81,20 @@ in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 Headers => L<Paws::CloudFront::Headers>
+
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include headers in the cache key, use a cache policy.
+For more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send headers to the origin but not include them in the
+cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
 
 A complex type that specifies the C<Headers>, if any, that you want
 CloudFront to forward to the origin for this cache behavior
@@ -66,6 +108,20 @@ in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> QueryString => Bool
+
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include query strings in the cache key, use a cache
+policy. For more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send query strings to the origin but not include them in
+the cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
 
 Indicates whether you want CloudFront to forward query strings to the
 origin that is associated with this cache behavior and cache based on
@@ -96,6 +152,20 @@ in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 QueryStringCacheKeys => L<Paws::CloudFront::QueryStringCacheKeys>
+
+This field is deprecated. We recommend that you use a cache policy or
+an origin request policy instead of this field.
+
+If you want to include query strings in the cache key, use a cache
+policy. For more information, see Creating cache policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-the-cache-key.html#cache-key-create-cache-policy)
+in the I<Amazon CloudFront Developer Guide>.
+
+If you want to send query strings to the origin but not include them in
+the cache key, use an origin request policy. For more information, see
+Creating origin request policies
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/controlling-origin-requests.html#origin-request-create-origin-request-policy)
+in the I<Amazon CloudFront Developer Guide>.
 
 A complex type that contains information about the query string
 parameters that you want CloudFront to use for caching for this cache

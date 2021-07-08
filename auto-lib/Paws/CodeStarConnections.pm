@@ -20,9 +20,19 @@ package Paws::CodeStarConnections;
     my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::CreateConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateHost {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::CreateHost', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteConnection {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::DeleteConnection', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteHost {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::DeleteHost', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetConnection {
@@ -30,15 +40,45 @@ package Paws::CodeStarConnections;
     my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::GetConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetHost {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::GetHost', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListConnections {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::ListConnections', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListHosts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::ListHosts', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateHost {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeStarConnections::UpdateHost', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/CreateConnection DeleteConnection GetConnection ListConnections / }
+  sub operations { qw/CreateConnection CreateHost DeleteConnection DeleteHost GetConnection GetHost ListConnections ListHosts ListTagsForResource TagResource UntagResource UpdateHost / }
 
 1;
 
@@ -66,9 +106,11 @@ Paws::CodeStarConnections - Perl Interface to AWS AWS CodeStar connections
 
 =head1 DESCRIPTION
 
+AWS CodeStar Connections
+
 This AWS CodeStar Connections API Reference provides descriptions and
 usage examples of the operations and data types for the AWS CodeStar
-Connections API. You can use the Connections API to work with
+Connections API. You can use the connections API to work with
 connections and installations.
 
 I<Connections> are configurations that you use to connect AWS resources
@@ -82,8 +124,11 @@ associated with a unique ARN that is used to reference the connection.
 When you create a connection, the console initiates a third-party
 connection handshake. I<Installations> are the apps that are used to
 conduct this handshake. For example, the installation for the Bitbucket
-provider type is the Bitbucket Cloud app. When you create a connection,
-you can choose an existing installation or create one.
+provider type is the Bitbucket app. When you create a connection, you
+can choose an existing installation or create one.
+
+When you want to create a connection to an installed provider type such
+as GitHub Enterprise Server, you create a I<host> for your connections.
 
 You can work with connections by calling:
 
@@ -110,9 +155,55 @@ account.
 
 =back
 
-For information about how to use AWS CodeStar Connections, see the AWS
-CodePipeline User Guide
-(https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
+You can work with hosts by calling:
+
+=over
+
+=item *
+
+CreateHost, which creates a host that represents the infrastructure
+where your provider is installed.
+
+=item *
+
+DeleteHost, which deletes the specified host.
+
+=item *
+
+GetHost, which returns information about the host, including the setup
+status.
+
+=item *
+
+ListHosts, which lists the hosts associated with your account.
+
+=back
+
+You can work with tags in AWS CodeStar Connections by calling the
+following:
+
+=over
+
+=item *
+
+ListTagsForResource, which gets information about AWS tags for a
+specified Amazon Resource Name (ARN) in AWS CodeStar Connections.
+
+=item *
+
+TagResource, which adds or updates tags for a resource in AWS CodeStar
+Connections.
+
+=item *
+
+UntagResource, which removes tags for a resource in AWS CodeStar
+Connections.
+
+=back
+
+For information about how to use AWS CodeStar Connections, see the
+Developer Tools User Guide
+(https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codestar-connections-2019-12-01>
 
@@ -125,7 +216,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =item ConnectionName => Str
 
-=item ProviderType => Str
+=item [HostArn => Str]
+
+=item [ProviderType => Str]
+
+=item [Tags => ArrayRef[L<Paws::CodeStarConnections::Tag>]]
 
 
 =back
@@ -138,6 +233,38 @@ Creates a connection that can then be given to other AWS services like
 CodePipeline so that it can access third-party code repositories. The
 connection is in pending status until the third-party connection
 handshake is completed from the console.
+
+
+=head2 CreateHost
+
+=over
+
+=item Name => Str
+
+=item ProviderEndpoint => Str
+
+=item ProviderType => Str
+
+=item [Tags => ArrayRef[L<Paws::CodeStarConnections::Tag>]]
+
+=item [VpcConfiguration => L<Paws::CodeStarConnections::VpcConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::CreateHost>
+
+Returns: a L<Paws::CodeStarConnections::CreateHostOutput> instance
+
+Creates a resource that represents the infrastructure where a
+third-party provider is installed. The host is used when you create
+connections to an installed third-party provider type, such as GitHub
+Enterprise Server. You create one host for all connections to that
+provider.
+
+A host created through the CLI or the SDK is in `PENDING` status by
+default. You can make its status `AVAILABLE` by setting up the host in
+the console.
 
 
 =head2 DeleteConnection
@@ -154,6 +281,26 @@ Each argument is described in detail in: L<Paws::CodeStarConnections::DeleteConn
 Returns: a L<Paws::CodeStarConnections::DeleteConnectionOutput> instance
 
 The connection to be deleted.
+
+
+=head2 DeleteHost
+
+=over
+
+=item HostArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::DeleteHost>
+
+Returns: a L<Paws::CodeStarConnections::DeleteHostOutput> instance
+
+The host to be deleted. Before you delete a host, all connections
+associated to the host must be deleted.
+
+A host cannot be deleted if it is in the VPC_CONFIG_INITIALIZING or
+VPC_CONFIG_DELETING state.
 
 
 =head2 GetConnection
@@ -173,9 +320,28 @@ Returns the connection ARN and details such as status, owner, and
 provider type.
 
 
+=head2 GetHost
+
+=over
+
+=item HostArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::GetHost>
+
+Returns: a L<Paws::CodeStarConnections::GetHostOutput> instance
+
+Returns the host ARN and details such as status, provider type,
+endpoint, and, if applicable, the VPC configuration.
+
+
 =head2 ListConnections
 
 =over
+
+=item [HostArnFilter => Str]
 
 =item [MaxResults => Int]
 
@@ -191,6 +357,98 @@ Each argument is described in detail in: L<Paws::CodeStarConnections::ListConnec
 Returns: a L<Paws::CodeStarConnections::ListConnectionsOutput> instance
 
 Lists the connections associated with your account.
+
+
+=head2 ListHosts
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::ListHosts>
+
+Returns: a L<Paws::CodeStarConnections::ListHostsOutput> instance
+
+Lists the hosts associated with your account.
+
+
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::ListTagsForResource>
+
+Returns: a L<Paws::CodeStarConnections::ListTagsForResourceOutput> instance
+
+Gets the set of key-value pairs (metadata) that are used to manage the
+resource.
+
+
+=head2 TagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item Tags => ArrayRef[L<Paws::CodeStarConnections::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::TagResource>
+
+Returns: a L<Paws::CodeStarConnections::TagResourceOutput> instance
+
+Adds to or modifies the tags of the given resource. Tags are metadata
+that can be used to manage a resource.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceArn => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::UntagResource>
+
+Returns: a L<Paws::CodeStarConnections::UntagResourceOutput> instance
+
+Removes tags from an AWS resource.
+
+
+=head2 UpdateHost
+
+=over
+
+=item HostArn => Str
+
+=item [ProviderEndpoint => Str]
+
+=item [VpcConfiguration => L<Paws::CodeStarConnections::VpcConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeStarConnections::UpdateHost>
+
+Returns: a L<Paws::CodeStarConnections::UpdateHostOutput> instance
+
+Updates a specified host with the provided configurations.
 
 
 

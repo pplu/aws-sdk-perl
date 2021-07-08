@@ -52,8 +52,8 @@ The message associated with the error.
 
 =head2 MessageId => Str
 
-The ID of the message that caused the error. (See the value
-corresponding to the "messageId" key in the message object.)
+The ID of the message that caused the error. See the value
+corresponding to the C<messageId> key in the message object.
 
 
 

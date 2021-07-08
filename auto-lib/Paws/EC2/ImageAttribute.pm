@@ -2,6 +2,7 @@
 package Paws::EC2::ImageAttribute;
   use Moose;
   has BlockDeviceMappings => (is => 'ro', isa => 'ArrayRef[Paws::EC2::BlockDeviceMapping]', request_name => 'blockDeviceMapping', traits => ['NameInRequest',]);
+  has BootMode => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'bootMode', traits => ['NameInRequest',]);
   has Description => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'description', traits => ['NameInRequest',]);
   has ImageId => (is => 'ro', isa => 'Str', request_name => 'imageId', traits => ['NameInRequest',]);
   has KernelId => (is => 'ro', isa => 'Paws::EC2::AttributeValue', request_name => 'kernel', traits => ['NameInRequest',]);
@@ -25,6 +26,11 @@ Paws::EC2::ImageAttribute
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]
 
 The block device mapping entries.
+
+
+=head2 BootMode => L<Paws::EC2::AttributeValue>
+
+
 
 
 =head2 Description => L<Paws::EC2::AttributeValue>

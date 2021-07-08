@@ -94,6 +94,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             MaxParallelTrainingJobs => 'MyHPOResource',    # max: 256; OPTIONAL
           },    # OPTIONAL
         },    # OPTIONAL
+        OptimizationObjective => {
+          ItemAttribute => 'MyItemAttribute',    # min: 1, max: 150; OPTIONAL
+          ObjectiveSensitivity =>
+            'LOW',    # values: LOW, MEDIUM, HIGH, OFF; OPTIONAL
+        },    # OPTIONAL
       },    # OPTIONAL
     );
 
@@ -120,6 +125,9 @@ training data.
 When your have multiple event types (using an C<EVENT_TYPE> schema
 field), this parameter specifies which event type (for example, 'click'
 or 'like') is used for training the model.
+
+If you do not provide an C<eventType>, Amazon Personalize will use all
+interactions for training with equal weight regardless of type.
 
 
 
@@ -165,6 +173,9 @@ C<performAutoML> is false.
 The configuration to use with the solution. When C<performAutoML> is
 set to true, Amazon Personalize only evaluates the C<autoMLConfig>
 section of the solution configuration.
+
+Amazon Personalize doesn't support configuring the C<hpoObjective> at
+this time.
 
 
 

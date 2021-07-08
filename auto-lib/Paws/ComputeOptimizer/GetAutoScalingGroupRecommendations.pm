@@ -37,8 +37,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AutoScalingGroupArns => [ 'MyAutoScalingGroupArn', ... ],    # OPTIONAL
       Filters              => [
         {
-          Name =>
-            'Finding',    # values: Finding, RecommendationSourceType; OPTIONAL
+          Name => 'Finding'
+          , # values: Finding, FindingReasonCodes, RecommendationSourceType; OPTIONAL
           Values => [ 'MyFilterValue', ... ],    # OPTIONAL
         },
         ...
@@ -64,8 +64,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/com
 
 =head2 AccountIds => ArrayRef[Str|Undef]
 
-The AWS account IDs for which to return Auto Scaling group
+The ID of the AWS account for which to return Auto Scaling group
 recommendations.
+
+If your account is the management account of an organization, use this
+parameter to specify the member account for which you want to return
+Auto Scaling group recommendations.
 
 Only one account ID can be specified per request.
 
@@ -88,10 +92,10 @@ list of Auto Scaling group recommendations.
 =head2 MaxResults => Int
 
 The maximum number of Auto Scaling group recommendations to return with
-a single call.
+a single request.
 
-To retrieve the remaining results, make another call with the returned
-C<NextToken> value.
+To retrieve the remaining results, make another request with the
+returned C<NextToken> value.
 
 
 

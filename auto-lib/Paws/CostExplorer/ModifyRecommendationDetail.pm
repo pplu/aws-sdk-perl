@@ -40,8 +40,8 @@ Details on the modification recommendation.
 
 =head2 TargetInstances => ArrayRef[L<Paws::CostExplorer::TargetInstance>]
 
-Identifies whether this instance type is the Amazon Web Services
-default recommendation.
+Identifies whether this instance type is the AWS default
+recommendation.
 
 
 

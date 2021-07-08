@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MQ::Configu
 
 =head1 DESCRIPTION
 
-A list of information about the configuration.
+A list of information about the configuration. Does not apply to
+RabbitMQ brokers.
 
 =head1 ATTRIBUTES
 

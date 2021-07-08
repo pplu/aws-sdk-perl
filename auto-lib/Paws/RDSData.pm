@@ -86,10 +86,6 @@ for Aurora Serverless
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 in the I<Amazon Aurora User Guide>.
 
-If you have questions or comments related to the Data API, send email
-to Rds-data-api-feedback@amazon.com
-(mailto:Rds-data-api-feedback@amazon.com).
-
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds-data-2018-08-01>
 
 
@@ -241,9 +237,8 @@ If a call isn't part of a transaction because it doesn't include the
 C<transactionID> parameter, changes that result from the call are
 committed automatically.
 
-The response size limit is 1 MB or 1,000 records. If the call returns
-more than 1 MB of response data or over 1,000 records, the call is
-terminated.
+The response size limit is 1 MB. If the call returns more than 1 MB of
+response data, the call is terminated.
 
 
 =head2 RollbackTransaction

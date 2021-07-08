@@ -5,7 +5,7 @@ package Paws::RedShift::ResizeClusterMessage;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterType => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int', required => 1);
+  has NumberOfNodes => (is => 'ro', isa => 'Int');
 
 1;
 
@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RedShift::R
 
 =head1 DESCRIPTION
 
-This class has no description
+Describes a resize cluster operation. For example, a scheduled action
+to run the C<ResizeCluster> API operation.
 
 =head1 ATTRIBUTES
 
@@ -65,9 +66,10 @@ The new node type for the nodes you are adding. If not specified, the
 cluster's current node type is used.
 
 
-=head2 B<REQUIRED> NumberOfNodes => Int
+=head2 NumberOfNodes => Int
 
-The new number of nodes for the cluster.
+The new number of nodes for the cluster. If not specified, the
+cluster's current number of nodes is used.
 
 
 

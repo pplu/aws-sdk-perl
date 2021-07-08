@@ -5,6 +5,7 @@ package Paws::S3::PutBucketLogging;
   has BucketLoggingStatus => (is => 'ro', isa => 'Paws::S3::BucketLoggingStatus', traits => ['ParamInBody'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
 
 
   use MooseX::ClassAttribute;
@@ -35,32 +36,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+  # Set logging configuration for a bucket
+  # The following example sets logging policy on a bucket. For the Log Delivery
+  # group to deliver logs to the destination bucket, it needs permission for the
+  # READ_ACP action which the policy grants.
     $s3->PutBucketLogging(
-      Bucket              => 'MyBucketName',
-      BucketLoggingStatus => {
-        LoggingEnabled => {
-          TargetBucket => 'MyTargetBucket',
-          TargetPrefix => 'MyTargetPrefix',
-          TargetGrants => [
+      'Bucket'              => 'sourcebucket',
+      'BucketLoggingStatus' => {
+        'LoggingEnabled' => {
+          'TargetBucket' => 'targetbucket',
+          'TargetGrants' => [
+
             {
-              Grantee => {
-                Type => 'CanonicalUser'
-                ,    # values: CanonicalUser, AmazonCustomerByEmail, Group
-                DisplayName  => 'MyDisplayName',     # OPTIONAL
-                EmailAddress => 'MyEmailAddress',    # OPTIONAL
-                ID           => 'MyID',              # OPTIONAL
-                URI          => 'MyURI',             # OPTIONAL
-              },    # OPTIONAL
-              Permission =>
-                'FULL_CONTROL',    # values: FULL_CONTROL, READ, WRITE; OPTIONAL
-            },
-            ...
-          ],    # OPTIONAL
-        },    # OPTIONAL
-      },
-      ContentLength => 1,                 # OPTIONAL
-      ContentMD5    => 'MyContentMD5',    # OPTIONAL
+              'Grantee' => {
+                'Type' => 'Group',
+                'URI'  => 'http://acs.amazonaws.com/groups/global/AllUsers'
+              },
+              'Permission' => 'READ'
+            }
+          ],
+          'TargetPrefix' => 'MyBucketLogs/'
+        }
+      }
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketLogging>
@@ -89,6 +88,17 @@ Size of the body in bytes.
 =head2 ContentMD5 => Str
 
 The MD5 hash of the C<PutBucketLogging> request body.
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

@@ -3,6 +3,7 @@ package Paws::XRay::TimeSeriesServiceStatistics;
   use Moose;
   has EdgeSummaryStatistics => (is => 'ro', isa => 'Paws::XRay::EdgeStatistics');
   has ResponseTimeHistogram => (is => 'ro', isa => 'ArrayRef[Paws::XRay::HistogramEntry]');
+  has ServiceForecastStatistics => (is => 'ro', isa => 'Paws::XRay::ForecastStatistics');
   has ServiceSummaryStatistics => (is => 'ro', isa => 'Paws::XRay::ServiceStatistics');
   has Timestamp => (is => 'ro', isa => 'Str');
 
@@ -49,6 +50,11 @@ A list of TimeSeriesStatistic structures.
 =head2 ResponseTimeHistogram => ArrayRef[L<Paws::XRay::HistogramEntry>]
 
 The response time histogram for the selected entities.
+
+
+=head2 ServiceForecastStatistics => L<Paws::XRay::ForecastStatistics>
+
+The forecasted high and low fault count values.
 
 
 =head2 ServiceSummaryStatistics => L<Paws::XRay::ServiceStatistics>

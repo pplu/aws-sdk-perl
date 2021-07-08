@@ -7,6 +7,7 @@ package Paws::SSM::PutComplianceItems;
   has Items => (is => 'ro', isa => 'ArrayRef[Paws::SSM::ComplianceItemEntry]', required => 1);
   has ResourceId => (is => 'ro', isa => 'Str', required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', required => 1);
+  has UploadType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -56,6 +57,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ResourceId      => 'MyComplianceResourceId',
       ResourceType    => 'MyComplianceResourceType',
       ItemContentHash => 'MyComplianceItemContentHash',    # OPTIONAL
+      UploadType      => 'COMPLETE',                       # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -92,7 +94,7 @@ hashes match, the request to put compliance information is ignored.
 
 Information about the compliance as defined by the resource type. For
 example, for a patch compliance type, C<Items> includes information
-about the PatchSeverity, Classification, etc.
+about the PatchSeverity, Classification, and so on.
 
 
 
@@ -109,6 +111,22 @@ Specify the type of resource. C<ManagedInstance> is currently the only
 supported resource type.
 
 
+
+=head2 UploadType => Str
+
+The mode for uploading compliance items. You can specify C<COMPLETE> or
+C<PARTIAL>. In C<COMPLETE> mode, the system overwrites all existing
+compliance information for the resource. You must provide a full list
+of compliance items each time you send the request.
+
+In C<PARTIAL> mode, the system overwrites compliance information for a
+specific association. The association must be configured with
+C<SyncCompliance> set to C<MANUAL>. By default, all requests use
+C<COMPLETE> mode.
+
+This attribute is only valid for association compliance.
+
+Valid values are: C<"COMPLETE">, C<"PARTIAL">
 
 
 =head1 SEE ALSO

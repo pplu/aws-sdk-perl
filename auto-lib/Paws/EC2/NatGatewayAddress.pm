@@ -41,8 +41,8 @@ This class has no description
 
 =head2 AllocationId => Str
 
-The allocation ID of the Elastic IP address that's associated with the
-NAT gateway.
+[Public NAT gateway only] The allocation ID of the Elastic IP address
+that's associated with the NAT gateway.
 
 
 =head2 NetworkInterfaceId => Str
@@ -52,12 +52,13 @@ The ID of the network interface associated with the NAT gateway.
 
 =head2 PrivateIp => Str
 
-The private IP address associated with the Elastic IP address.
+The private IP address associated with the NAT gateway.
 
 
 =head2 PublicIp => Str
 
-The Elastic IP address associated with the NAT gateway.
+[Public NAT gateway only] The Elastic IP address associated with the
+NAT gateway.
 
 
 

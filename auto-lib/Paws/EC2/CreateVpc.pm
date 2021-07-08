@@ -8,6 +8,7 @@ package Paws::EC2::CreateVpc;
   has Ipv6CidrBlock => (is => 'ro', isa => 'Str');
   has Ipv6CidrBlockNetworkBorderGroup => (is => 'ro', isa => 'Str');
   has Ipv6Pool => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -59,7 +60,9 @@ of the CIDR block.
 =head2 B<REQUIRED> CidrBlock => Str
 
 The IPv4 network range for the VPC, in CIDR notation. For example,
-C<10.0.0.0/16>.
+C<10.0.0.0/16>. We modify the specified CIDR block to its canonical
+form; for example, if you specify C<100.68.0.18/18>, we modify it to
+C<100.68.0.0/18>.
 
 
 
@@ -111,6 +114,12 @@ parameter.
 
 The ID of an IPv6 address pool from which to allocate the IPv6 CIDR
 block.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to assign to the VPC.
 
 
 

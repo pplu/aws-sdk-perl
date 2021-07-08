@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ManagedBloc
 
 =head1 DESCRIPTION
 
-Attributes of Hyperledger Fabric for a peer node on a Managed
-Blockchain network that uses Hyperledger Fabric.
+Attributes of Hyperledger Fabric for a peer node on a Hyperledger
+Fabric network on Managed Blockchain.
 
 =head1 ATTRIBUTES
 

@@ -1,7 +1,7 @@
 
 package Paws::Cloud9::CreateEnvironmentMembershipResult;
   use Moose;
-  has Membership => (is => 'ro', isa => 'Paws::Cloud9::EnvironmentMember', traits => ['NameInRequest'], request_name => 'membership' );
+  has Membership => (is => 'ro', isa => 'Paws::Cloud9::EnvironmentMember', traits => ['NameInRequest'], request_name => 'membership' , required => 1);
 
   has _request_id => (is => 'ro', isa => 'Str');
 
@@ -14,7 +14,7 @@ Paws::Cloud9::CreateEnvironmentMembershipResult
 =head1 ATTRIBUTES
 
 
-=head2 Membership => L<Paws::Cloud9::EnvironmentMember>
+=head2 B<REQUIRED> Membership => L<Paws::Cloud9::EnvironmentMember>
 
 Information about the environment member that was added.
 

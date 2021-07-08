@@ -28,10 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+  # Describe orderable replication instances
+  # Returns information about the replication instance types that can be created
+  # in the specified region.
     my $DescribeOrderableReplicationInstancesResponse =
       $dms->DescribeOrderableReplicationInstances(
-      Marker     => 'MyString',    # OPTIONAL
-      MaxRecords => 1,             # OPTIONAL
+      'Marker'     => '',
+      'MaxRecords' => 123
       );
 
     # Results:

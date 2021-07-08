@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceGro
 
 =head1 DESCRIPTION
 
-The ARN and group name of a group.
+The unique identifiers for a resource group.
 
 =head1 ATTRIBUTES
 
 
 =head2 GroupArn => Str
 
-The ARN of a resource group.
+The ARN of the resource group.
 
 
 =head2 GroupName => Str
 
-The name of a resource group.
+The name of the resource group.
 
 
 

@@ -40,32 +40,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeBuild::
 
 =head1 DESCRIPTION
 
-Information about build logs in Amazon CloudWatch Logs.
+Information about build logs in CloudWatch Logs.
 
 =head1 ATTRIBUTES
 
 
 =head2 CloudWatchLogs => L<Paws::CodeBuild::CloudWatchLogsConfig>
 
-Information about Amazon CloudWatch Logs for a build project.
+Information about CloudWatch Logs for a build project.
 
 
 =head2 CloudWatchLogsArn => Str
 
-The ARN of Amazon CloudWatch Logs for a build project. Its format is
+The ARN of CloudWatch Logs for a build project. Its format is
 C<arn:${Partition}:logs:${Region}:${Account}:log-group:${LogGroupName}:log-stream:${LogStreamName}>.
-For more information, see Resources Defined by Amazon CloudWatch Logs
+For more information, see Resources Defined by CloudWatch Logs
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/list_amazoncloudwatchlogs.html#amazoncloudwatchlogs-resources-for-iam-policies).
 
 
 =head2 DeepLink => Str
 
-The URL to an individual build log in Amazon CloudWatch Logs.
+The URL to an individual build log in CloudWatch Logs.
 
 
 =head2 GroupName => Str
 
-The name of the Amazon CloudWatch Logs group for the build logs.
+The name of the CloudWatch Logs group for the build logs.
 
 
 =head2 S3DeepLink => Str
@@ -88,7 +88,7 @@ information, see Resources Defined by Amazon S3
 
 =head2 StreamName => Str
 
-The name of the Amazon CloudWatch Logs stream for the build logs.
+The name of the CloudWatch Logs stream for the build logs.
 
 
 

@@ -32,13 +32,41 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+    # To update the description of a secret
+    # The following example shows how to modify the description of a secret.
     my $UpdateSecretResponse = $secretsmanager->UpdateSecret(
-      SecretId           => 'MySecretIdType',
-      ClientRequestToken => 'MyClientRequestTokenType',    # OPTIONAL
-      Description        => 'MyDescriptionType',           # OPTIONAL
-      KmsKeyId           => 'MyKmsKeyIdType',              # OPTIONAL
-      SecretBinary       => 'BlobSecretBinaryType',        # OPTIONAL
-      SecretString       => 'MySecretStringType',          # OPTIONAL
+      'ClientRequestToken' => 'EXAMPLE1-90ab-cdef-fedc-ba987EXAMPLE',
+      'Description'        => 'This is a new description for the secret.',
+      'SecretId'           => 'MyTestDatabaseSecret'
+    );
+
+    # Results:
+    my $ARN  = $UpdateSecretResponse->ARN;
+    my $Name = $UpdateSecretResponse->Name;
+
+   # Returns a L<Paws::SecretsManager::UpdateSecretResponse> object.
+   # To update the KMS key associated with a secret
+   # This example shows how to update the KMS customer managed key (CMK) used to
+   # encrypt the secret value. The KMS CMK must be in the same region as the
+   # secret.
+    my $UpdateSecretResponse = $secretsmanager->UpdateSecret(
+      'KmsKeyId' =>
+'arn:aws:kms:us-west-2:123456789012:key/EXAMPLE2-90ab-cdef-fedc-ba987EXAMPLE',
+      'SecretId' => 'MyTestDatabaseSecret'
+    );
+
+    # Results:
+    my $ARN  = $UpdateSecretResponse->ARN;
+    my $Name = $UpdateSecretResponse->Name;
+
+    # Returns a L<Paws::SecretsManager::UpdateSecretResponse> object.
+    # To create a new version of the encrypted secret value
+    # The following example shows how to create a new version of the secret by
+    # updating the SecretString field. Alternatively, you can use the
+    # put-secret-value operation.
+    my $UpdateSecretResponse = $secretsmanager->UpdateSecret(
+      'SecretId'     => 'MyTestDatabaseSecret',
+      'SecretString' => '{JSON STRING WITH CREDENTIALS}'
     );
 
     # Results:
@@ -156,8 +184,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

@@ -47,7 +47,7 @@ which the filtering rule applies. The maximum length is 1,024
 characters. Overlapping prefixes and suffixes are not supported. For
 more information, see Configuring Event Notifications
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/NotificationHowTo.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 =head2 Value => Str

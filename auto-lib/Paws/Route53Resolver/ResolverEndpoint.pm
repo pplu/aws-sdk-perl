@@ -44,17 +44,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Reso
 
 =head1 DESCRIPTION
 
-In the response to a CreateResolverEndpoint, DeleteResolverEndpoint,
-GetResolverEndpoint, ListResolverEndpoints, or UpdateResolverEndpoint
+In the response to a CreateResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverEndpoint.html),
+DeleteResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_DeleteResolverEndpoint.html),
+GetResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_GetResolverEndpoint.html),
+ListResolverEndpoints
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_ListResolverEndpoints.html),
+or UpdateResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_UpdateResolverEndpoint.html)
 request, a complex type that contains settings for an existing inbound
-or outbound resolver endpoint.
+or outbound Resolver endpoint.
 
 =head1 ATTRIBUTES
 
 
 =head2 Arn => Str
 
-The ARN (Amazon Resource Name) for the resolver endpoint.
+The ARN (Amazon Resource Name) for the Resolver endpoint.
 
 
 =head2 CreationTime => Str
@@ -65,27 +73,25 @@ and Coordinated Universal Time (UTC).
 
 =head2 CreatorRequestId => Str
 
-A unique string that identifies the request that created the resolver
+A unique string that identifies the request that created the Resolver
 endpoint. The C<CreatorRequestId> allows failed requests to be retried
-without the risk of executing the operation twice.
+without the risk of running the operation twice.
 
 
 =head2 Direction => Str
 
-Indicates whether the resolver endpoint allows inbound or outbound DNS
+Indicates whether the Resolver endpoint allows inbound or outbound DNS
 queries:
 
 =over
 
 =item *
 
-C<INBOUND>: allows DNS queries to your VPC from your network or another
-VPC
+C<INBOUND>: allows DNS queries to your VPC from your network
 
 =item *
 
-C<OUTBOUND>: allows DNS queries from your VPC to your network or
-another VPC
+C<OUTBOUND>: allows DNS queries from your VPC to your network
 
 =back
 
@@ -93,17 +99,17 @@ another VPC
 
 =head2 HostVPCId => Str
 
-The ID of the VPC that you want to create the resolver endpoint in.
+The ID of the VPC that you want to create the Resolver endpoint in.
 
 
 =head2 Id => Str
 
-The ID of the resolver endpoint.
+The ID of the Resolver endpoint.
 
 
 =head2 IpAddressCount => Int
 
-The number of IP addresses that the resolver endpoint can use for DNS
+The number of IP addresses that the Resolver endpoint can use for DNS
 queries.
 
 
@@ -115,24 +121,90 @@ format and Coordinated Universal Time (UTC).
 
 =head2 Name => Str
 
-The name that you assigned to the resolver endpoint when you submitted
-a CreateResolverEndpoint request.
+The name that you assigned to the Resolver endpoint when you submitted
+a CreateResolverEndpoint
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_route53resolver_CreateResolverEndpoint.html)
+request.
 
 
 =head2 SecurityGroupIds => ArrayRef[Str|Undef]
 
 The ID of one or more security groups that control access to this VPC.
-The security group must include one or more inbound resolver rules.
+The security group must include one or more inbound rules (for inbound
+endpoints) or outbound rules (for outbound endpoints). Inbound and
+outbound rules must allow TCP and UDP access. For inbound access, open
+port 53. For outbound access, open the port that you're using for DNS
+queries on your network.
 
 
 =head2 Status => Str
 
-A code that specifies the current status of the resolver endpoint.
+A code that specifies the current status of the Resolver endpoint.
+Valid values include the following:
+
+=over
+
+=item *
+
+C<CREATING>: Resolver is creating and configuring one or more Amazon
+VPC network interfaces for this endpoint.
+
+=item *
+
+C<OPERATIONAL>: The Amazon VPC network interfaces for this endpoint are
+correctly configured and able to pass inbound or outbound DNS queries
+between your network and Resolver.
+
+=item *
+
+C<UPDATING>: Resolver is associating or disassociating one or more
+network interfaces with this endpoint.
+
+=item *
+
+C<AUTO_RECOVERING>: Resolver is trying to recover one or more of the
+network interfaces that are associated with this endpoint. During the
+recovery process, the endpoint functions with limited capacity because
+of the limit on the number of DNS queries per IP address (per network
+interface). For the current limit, see Limits on Route 53 Resolver
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html#limits-api-entities-resolver).
+
+=item *
+
+C<ACTION_NEEDED>: This endpoint is unhealthy, and Resolver can't
+automatically recover it. To resolve the problem, we recommend that you
+check each IP address that you associated with the endpoint. For each
+IP address that isn't available, add another IP address and then delete
+the IP address that isn't available. (An endpoint must always include
+at least two IP addresses.) A status of C<ACTION_NEEDED> can have a
+variety of causes. Here are two common causes:
+
+=over
+
+=item *
+
+One or more of the network interfaces that are associated with the
+endpoint were deleted using Amazon VPC.
+
+=item *
+
+The network interface couldn't be created for some reason that's
+outside the control of Resolver.
+
+=back
+
+=item *
+
+C<DELETING>: Resolver is deleting this endpoint and the associated
+network interfaces.
+
+=back
+
 
 
 =head2 StatusMessage => Str
 
-A detailed description of the status of the resolver endpoint.
+A detailed description of the status of the Resolver endpoint.
 
 
 

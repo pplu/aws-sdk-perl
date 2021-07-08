@@ -4,8 +4,10 @@ package Paws::ImageBuilder::ImageVersion;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has DateCreated => (is => 'ro', isa => 'Str', request_name => 'dateCreated', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has OsVersion => (is => 'ro', isa => 'Str', request_name => 'osVersion', traits => ['NameInRequest']);
   has Owner => (is => 'ro', isa => 'Str', request_name => 'owner', traits => ['NameInRequest']);
   has Platform => (is => 'ro', isa => 'Str', request_name => 'platform', traits => ['NameInRequest']);
+  has Type => (is => 'ro', isa => 'Str', request_name => 'type', traits => ['NameInRequest']);
   has Version => (is => 'ro', isa => 'Str', request_name => 'version', traits => ['NameInRequest']);
 
 1;
@@ -58,6 +60,12 @@ The date at which this image semantic version was created.
 The name of the image semantic version.
 
 
+=head2 OsVersion => Str
+
+The operating system version of the instance. For example, Amazon Linux
+2, Ubuntu 18, or Microsoft Windows Server 2019.
+
+
 =head2 Owner => Str
 
 The owner of the image semantic version.
@@ -66,6 +74,11 @@ The owner of the image semantic version.
 =head2 Platform => Str
 
 The platform of the image semantic version.
+
+
+=head2 Type => Str
+
+Specifies whether this is an AMI or container image.
 
 
 =head2 Version => Str

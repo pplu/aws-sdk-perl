@@ -16,7 +16,7 @@ Paws::Route53Resolver::GetResolverRuleAssociationResponse
 
 =head2 ResolverRuleAssociation => L<Paws::Route53Resolver::ResolverRuleAssociation>
 
-Information about the resolver rule association that you specified in a
+Information about the Resolver rule association that you specified in a
 C<GetResolverRuleAssociation> request.
 
 

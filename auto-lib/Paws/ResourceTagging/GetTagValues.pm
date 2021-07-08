@@ -47,17 +47,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/tag
 
 =head2 B<REQUIRED> Key => Str
 
-The key for which you want to list all existing values in the specified
-Region for the AWS account.
+Specifies the tag key for which you want to list all existing values
+that are currently used in the specified AWS Region for the calling AWS
+account.
 
 
 
 =head2 PaginationToken => Str
 
-A string that indicates that additional data is available. Leave this
-value empty for your initial request. If the response includes a
-C<PaginationToken>, use that string for this value to request an
-additional page of data.
+Specifies a C<PaginationToken> response value from a previous request
+to indicate that you want the next page of results. Leave this
+parameter empty in your initial request.
 
 
 

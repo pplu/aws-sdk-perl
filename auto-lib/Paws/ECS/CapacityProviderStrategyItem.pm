@@ -35,7 +35,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ECS::Capaci
 
 =head1 DESCRIPTION
 
-The details of a capacity provider strategy.
+The details of a capacity provider strategy. A capacity provider
+strategy can be set when using the RunTask or CreateCluster APIs or as
+the default capacity provider strategy for a cluster with the
+CreateCluster API.
+
+Only capacity providers that are already associated with a cluster and
+have an C<ACTIVE> or C<UPDATING> status can be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New Auto Scaling group
+capacity providers can be created with the CreateCapacityProvider API
+operation.
+
+To use a AWS Fargate capacity provider, specify either the C<FARGATE>
+or C<FARGATE_SPOT> capacity providers. The AWS Fargate capacity
+providers are available to all accounts and only need to be associated
+with a cluster to be used in a capacity provider strategy.
 
 =head1 ATTRIBUTES
 
@@ -44,28 +62,38 @@ The details of a capacity provider strategy.
 
 The I<base> value designates how many tasks, at a minimum, to run on
 the specified capacity provider. Only one capacity provider in a
-capacity provider strategy can have a I<base> defined.
+capacity provider strategy can have a I<base> defined. If no value is
+specified, the default value of C<0> is used.
 
 
 =head2 B<REQUIRED> CapacityProvider => Str
 
-The short name or full Amazon Resource Name (ARN) of the capacity
-provider.
+The short name of the capacity provider.
 
 
 =head2 Weight => Int
 
 The I<weight> value designates the relative percentage of the total
 number of tasks launched that should use the specified capacity
-provider.
+provider. The C<weight> value is taken into consideration after the
+C<base> value, if defined, is satisfied.
 
-For example, if you have a strategy that contains two capacity
-providers and both have a weight of C<1>, then when the C<base> is
-satisfied, the tasks will be split evenly across the two capacity
-providers. Using that same logic, if you specify a weight of C<1> for
-I<capacityProviderA> and a weight of C<4> for I<capacityProviderB>,
-then for every one task that is run using I<capacityProviderA>, four
-tasks would use I<capacityProviderB>.
+If no C<weight> value is specified, the default value of C<0> is used.
+When multiple capacity providers are specified within a capacity
+provider strategy, at least one of the capacity providers must have a
+weight value greater than zero and any capacity providers with a weight
+of C<0> will not be used to place tasks. If you specify multiple
+capacity providers in a strategy that all have a weight of C<0>, any
+C<RunTask> or C<CreateService> actions using the capacity provider
+strategy will fail.
+
+An example scenario for using weights is defining a strategy that
+contains two capacity providers and both have a weight of C<1>, then
+when the C<base> is satisfied, the tasks will be split evenly across
+the two capacity providers. Using that same logic, if you specify a
+weight of C<1> for I<capacityProviderA> and a weight of C<4> for
+I<capacityProviderB>, then for every one task that is run using
+I<capacityProviderA>, four tasks would use I<capacityProviderB>.
 
 
 

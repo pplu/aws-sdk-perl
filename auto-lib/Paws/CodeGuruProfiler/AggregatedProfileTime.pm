@@ -34,19 +34,49 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeGuruPro
 
 =head1 DESCRIPTION
 
-The time range of an aggregated profile.
+Specifies the aggregation period and aggregation start time for an
+aggregated profile. An aggregated profile is used to collect posted
+agent profiles during an aggregation period. There are three possible
+aggregation periods (1 day, 1 hour, or 5 minutes).
 
 =head1 ATTRIBUTES
 
 
 =head2 Period => Str
 
-The aggregation period of the aggregated profile.
+The aggregation period. This indicates the period during which an
+aggregation profile collects posted agent profiles for a profiling
+group. Use one of three valid durations that are specified using the
+ISO 8601 format.
+
+=over
+
+=item *
+
+C<P1D> - 1 day
+
+=item *
+
+C<PT1H> - 1 hour
+
+=item *
+
+C<PT5M> - 5 minutes
+
+=back
+
 
 
 =head2 Start => Str
 
-The start time of the aggregated profile.
+The time that aggregation of posted agent profiles for a profiling
+group starts. The aggregation profile contains profiles posted by the
+agent starting at this time for an aggregation period specified by the
+C<period> property of the C<AggregatedProfileTime> object.
+
+Specify C<start> using the ISO 8601 format. For example,
+2020-06-01T13:15:02.001Z represents 1 millisecond past June 1, 2020
+1:15:02 PM UTC.
 
 
 

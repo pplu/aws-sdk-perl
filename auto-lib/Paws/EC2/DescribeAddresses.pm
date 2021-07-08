@@ -120,8 +120,9 @@ if any.
 
 =item *
 
-C<network-border-group> - The location from where the IP address is
-advertised.
+C<network-border-group> - A unique set of Availability Zones, Local
+Zones, or Wavelength Zones from where Amazon Web Services advertises IP
+addresses.
 
 =item *
 
@@ -130,7 +131,7 @@ that the address is associated with, if any.
 
 =item *
 
-C<network-interface-owner-id> - The AWS account ID of the owner.
+C<network-interface-owner-id> - The account ID of the owner.
 
 =item *
 
@@ -139,7 +140,7 @@ with the Elastic IP address.
 
 =item *
 
-C<public-ip> - The Elastic IP address.
+C<public-ip> - The Elastic IP address, or the carrier IP address.
 
 =item *
 

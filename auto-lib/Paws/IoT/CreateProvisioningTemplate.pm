@@ -3,6 +3,7 @@ package Paws::IoT::CreateProvisioningTemplate;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
+  has PreProvisioningHook => (is => 'ro', isa => 'Paws::IoT::ProvisioningHook', traits => ['NameInRequest'], request_name => 'preProvisioningHook');
   has ProvisioningRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provisioningRoleArn', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Tag]', traits => ['NameInRequest'], request_name => 'tags');
   has TemplateBody => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'templateBody', required => 1);
@@ -39,10 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TemplateName        => 'MyTemplateName',
       Description         => 'MyTemplateDescription',    # OPTIONAL
       Enabled             => 1,                          # OPTIONAL
-      Tags                => [
+      PreProvisioningHook => {
+        TargetArn      => 'MyTargetArn',         # max: 2048
+        PayloadVersion => 'MyPayloadVersion',    # min: 10, max: 32; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -71,6 +76,12 @@ The description of the fleet provisioning template.
 =head2 Enabled => Bool
 
 True to enable the fleet provisioning template, otherwise false.
+
+
+
+=head2 PreProvisioningHook => L<Paws::IoT::ProvisioningHook>
+
+Creates a pre-provisioning hook template.
 
 
 

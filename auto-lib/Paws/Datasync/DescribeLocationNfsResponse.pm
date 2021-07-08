@@ -25,7 +25,7 @@ The time that the NFS location was created.
 
 =head2 LocationArn => Str
 
-The Amazon resource Name (ARN) of the NFS location that was described.
+The Amazon Resource Name (ARN) of the NFS location that was described.
 
 
 =head2 LocationUri => Str

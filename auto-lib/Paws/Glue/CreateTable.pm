@@ -3,6 +3,7 @@ package Paws::Glue::CreateTable;
   use Moose;
   has CatalogId => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has PartitionIndexes => (is => 'ro', isa => 'ArrayRef[Paws::Glue::PartitionIndex]');
   has TableInput => (is => 'ro', isa => 'Paws::Glue::TableInput', required => 1);
 
   use MooseX::ClassAttribute;
@@ -79,6 +80,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             'MyKeyString' => 'MyParametersMapValue'
             ,    # key: min: 1, max: 255, value: max: 512000
           },    # OPTIONAL
+          SchemaReference => {
+            SchemaId => {
+              RegistryName =>
+                'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
+              SchemaArn  => 'MyGlueResourceArn', # min: 1, max: 10240; OPTIONAL
+              SchemaName =>
+                'MySchemaRegistryNameString',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            SchemaVersionId =>
+              'MySchemaVersionIdString',    # min: 36, max: 36; OPTIONAL
+            SchemaVersionNumber => 1,       # min: 1, max: 100000; OPTIONAL
+          },    # OPTIONAL
           SerdeInfo => {
             Name       => 'MyNameString',    # min: 1, max: 255
             Parameters => {
@@ -105,11 +118,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ],    # OPTIONAL
           StoredAsSubDirectories => 1,    # OPTIONAL
         },    # OPTIONAL
-        TableType        => 'MyTableTypeString',    # max: 255; OPTIONAL
-        ViewExpandedText => 'MyViewTextString',     # max: 409600; OPTIONAL
-        ViewOriginalText => 'MyViewTextString',     # max: 409600; OPTIONAL
+        TableType   => 'MyTableTypeString',    # max: 255; OPTIONAL
+        TargetTable => {
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+          DatabaseName => 'MyNameString',         # min: 1, max: 255
+          Name         => 'MyNameString',         # min: 1, max: 255
+        },    # OPTIONAL
+        ViewExpandedText => 'MyViewTextString',    # max: 409600; OPTIONAL
+        ViewOriginalText => 'MyViewTextString',    # max: 409600; OPTIONAL
       },
-      CatalogId => 'MyCatalogIdString',             # OPTIONAL
+      CatalogId        => 'MyCatalogIdString',     # OPTIONAL
+      PartitionIndexes => [
+        {
+          IndexName => 'MyNameString',             # min: 1, max: 255
+          Keys      => [
+            'MyNameString', ...                    # min: 1, max: 255
+          ],    # min: 1
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -121,7 +149,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog in which to create the C<Table>. If none is
-supplied, the AWS account ID is used by default.
+supplied, the Amazon Web Services account ID is used by default.
 
 
 
@@ -129,6 +157,13 @@ supplied, the AWS account ID is used by default.
 
 The catalog database in which to create the new table. For Hive
 compatibility, this name is entirely lowercase.
+
+
+
+=head2 PartitionIndexes => ArrayRef[L<Paws::Glue::PartitionIndex>]
+
+A list of partition indexes, C<PartitionIndex> structures, to create in
+the table.
 
 
 

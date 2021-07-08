@@ -65,7 +65,7 @@ Represents the provisioned throughput settings for the specified global
 secondary index.
 
 For current minimum and maximum provisioned throughput values, see
-Limits
+Service, Account, and Table Quotas
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 in the I<Amazon DynamoDB Developer Guide>.
 

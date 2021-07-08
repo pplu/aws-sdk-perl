@@ -33,9 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-When you update the input configuration for an SQL-based Amazon Kinesis
-Data Analytics application, provides information about an Amazon
-Kinesis stream as the streaming source.
+When you update the input configuration for a SQL-based Kinesis Data
+Analytics application, provides information about a Kinesis stream as
+the streaming source.
 
 =head1 ATTRIBUTES
 

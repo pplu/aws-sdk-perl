@@ -36,7 +36,7 @@ Usually, C<TimeWindow> is the time range that you specified in the
 C<GetSampledRequests> request. However, if your AWS resource received
 more than 5,000 requests during the time range that you specified in
 the request, C<GetSampledRequests> returns the time range for the first
-5,000 requests.
+5,000 requests. Times are in Coordinated Universal Time (UTC) format.
 
 
 =head2 _request_id => Str

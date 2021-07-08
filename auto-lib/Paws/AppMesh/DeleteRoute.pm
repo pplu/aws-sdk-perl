@@ -2,6 +2,7 @@
 package Paws::AppMesh::DeleteRoute;
   use Moose;
   has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
+  has MeshOwner => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'meshOwner');
   has RouteName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeName', required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
 
@@ -34,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MeshName          => 'MyResourceName',
       RouteName         => 'MyResourceName',
       VirtualRouterName => 'MyResourceName',
-
+      MeshOwner         => 'MyAccountId',      # OPTIONAL
     );
 
     # Results:
@@ -51,6 +52,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head2 B<REQUIRED> MeshName => Str
 
 The name of the service mesh to delete the route in.
+
+
+
+=head2 MeshOwner => Str
+
+The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it's the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see Working with
+shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 
 
 

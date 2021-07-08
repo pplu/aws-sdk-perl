@@ -33,14 +33,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Glue::DataL
 
 =head1 DESCRIPTION
 
-The AWS Lake Formation principal.
+The Lake Formation principal.
 
 =head1 ATTRIBUTES
 
 
 =head2 DataLakePrincipalIdentifier => Str
 
-An identifier for the AWS Lake Formation principal.
+An identifier for the Lake Formation principal.
 
 
 

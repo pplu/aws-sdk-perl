@@ -62,8 +62,7 @@ The description of the replication job.
 
 =head2 Encrypted => Bool
 
-Whether the replication job should produce encrypted AMIs or not. See
-also C<KmsKeyId> below.
+Indicates whether the replication job should produce encrypted AMIs.
 
 
 =head2 Frequency => Int
@@ -73,8 +72,8 @@ The time between consecutive replication runs, in hours.
 
 =head2 KmsKeyId => Str
 
-KMS key ID for replication jobs that produce encrypted AMIs. Can be any
-of the following:
+The ID of the KMS key for replication jobs that produce encrypted AMIs.
+This value can be any of the following:
 
 =over
 
@@ -88,16 +87,16 @@ KMS key alias
 
 =item *
 
-ARN referring to KMS key ID
+ARN referring to the KMS key ID
 
 =item *
 
-ARN referring to KMS key alias
+ARN referring to the KMS key alias
 
 =back
 
-If encrypted is I<true> but a KMS key id is not specified, the
-customer's default KMS key for EBS is used.
+If encrypted is enabled but a KMS key ID is not specified, the
+customer's default KMS key for Amazon EBS is used.
 
 
 =head2 LatestAmiId => Str
@@ -118,14 +117,14 @@ The start time of the next replication run.
 
 =head2 NumberOfRecentAmisToKeep => Int
 
-Number of recent AMIs to keep in the customer's account for a
-replication job. By default the value is set to zero, meaning that all
+The number of recent AMIs to keep in the customer's account for a
+replication job. By default, the value is set to zero, meaning that all
 AMIs are kept.
 
 
 =head2 ReplicationJobId => Str
 
-The identifier of the replication job.
+The ID of the replication job.
 
 
 =head2 ReplicationRunList => ArrayRef[L<Paws::SMS::ReplicationRun>]
@@ -135,12 +134,12 @@ Information about the replication runs.
 
 =head2 RoleName => Str
 
-The name of the IAM role to be used by the Server Migration Service.
+The name of the IAM role to be used by AWS SMS.
 
 
 =head2 RunOnce => Bool
 
-
+Indicates whether to run the replication job one time.
 
 
 =head2 SeedReplicationTime => Str
@@ -150,7 +149,7 @@ The seed replication time.
 
 =head2 ServerId => Str
 
-The identifier of the server.
+The ID of the server.
 
 
 =head2 ServerType => Str

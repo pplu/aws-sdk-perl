@@ -6,6 +6,7 @@ package Paws::EC2::TransitGatewayRequestOptions;
   has DefaultRouteTablePropagation => (is => 'ro', isa => 'Str');
   has DnsSupport => (is => 'ro', isa => 'Str');
   has MulticastSupport => (is => 'ro', isa => 'Str');
+  has TransitGatewayCidrBlocks => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpnEcmpSupport => (is => 'ro', isa => 'Str');
 1;
 
@@ -46,30 +47,30 @@ This class has no description
 
 A private Autonomous System Number (ASN) for the Amazon side of a BGP
 session. The range is 64512 to 65534 for 16-bit ASNs and 4200000000 to
-4294967294 for 32-bit ASNs.
+4294967294 for 32-bit ASNs. The default is C<64512>.
 
 
 =head2 AutoAcceptSharedAttachments => Str
 
-Enable or disable automatic acceptance of attachment requests. The
-default is C<disable>.
+Enable or disable automatic acceptance of attachment requests. Disabled
+by default.
 
 
 =head2 DefaultRouteTableAssociation => Str
 
 Enable or disable automatic association with the default association
-route table. The default is C<enable>.
+route table. Enabled by default.
 
 
 =head2 DefaultRouteTablePropagation => Str
 
 Enable or disable automatic propagation of routes to the default
-propagation route table. The default is C<enable>.
+propagation route table. Enabled by default.
 
 
 =head2 DnsSupport => Str
 
-Enable or disable DNS support.
+Enable or disable DNS support. Enabled by default.
 
 
 =head2 MulticastSupport => Str
@@ -77,9 +78,17 @@ Enable or disable DNS support.
 Indicates whether multicast is enabled on the transit gateway
 
 
+=head2 TransitGatewayCidrBlocks => ArrayRef[Str|Undef]
+
+One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a
+size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or
+larger for IPv6.
+
+
 =head2 VpnEcmpSupport => Str
 
-Enable or disable Equal Cost Multipath Protocol support.
+Enable or disable Equal Cost Multipath Protocol support. Enabled by
+default.
 
 
 

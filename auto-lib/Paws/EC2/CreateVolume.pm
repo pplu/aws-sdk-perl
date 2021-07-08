@@ -11,6 +11,7 @@ package Paws::EC2::CreateVolume;
   has Size => (is => 'ro', isa => 'Int');
   has SnapshotId => (is => 'ro', isa => 'Str');
   has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
+  has Throughput => (is => 'ro', isa => 'Int');
   has VolumeType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -105,34 +106,55 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 =head2 Encrypted => Bool
 
-Specifies whether the volume should be encrypted. The effect of setting
+Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to C<true> depends on the volume origin (new or
 from a snapshot), starting encryption state, ownership, and whether
 encryption by default is enabled. For more information, see Encryption
-by Default
+by default
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#encryption-by-default)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Encrypted Amazon EBS volumes must be attached to instances that support
-Amazon EBS encryption. For more information, see Supported Instance
-Types
+Amazon EBS encryption. For more information, see Supported instance
+types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
 
 
 
 =head2 Iops => Int
 
-The number of I/O operations per second (IOPS) to provision for the
-volume, with a maximum ratio of 50 IOPS/GiB. Range is 100 to 64,000
-IOPS for volumes in most Regions. Maximum IOPS of 64,000 is guaranteed
-only on Nitro-based instances
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
-Other instance families guarantee performance up to 32,000 IOPS. For
-more information, see Amazon EBS Volume Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+The number of I/O operations per second (IOPS). For C<gp3>, C<io1>, and
+C<io2> volumes, this represents the number of IOPS that are provisioned
+for the volume. For C<gp2> volumes, this represents the baseline
+performance of the volume and the rate at which the volume accumulates
+I/O credits for bursting.
 
-This parameter is valid only for Provisioned IOPS SSD (io1) volumes.
+The following are the supported values for each volume type:
+
+=over
+
+=item *
+
+C<gp3>: 3,000-16,000 IOPS
+
+=item *
+
+C<io1>: 100-64,000 IOPS
+
+=item *
+
+C<io2>: 100-64,000 IOPS
+
+=back
+
+For C<io1> and C<io2> volumes, we guarantee 64,000 IOPS only for
+Instances built on the Nitro System
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances).
+Other instance families guarantee performance up to 32,000 IOPS.
+
+This parameter is required for C<io1> and C<io2> volumes. The default
+for C<gp3> volumes is 3,000 IOPS. This parameter is not supported for
+C<gp2>, C<st1>, C<sc1>, or C<standard> volumes.
 
 
 
@@ -149,7 +171,7 @@ You can specify the CMK using any of the following:
 
 =item *
 
-Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
+Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
@@ -158,12 +180,12 @@ Key alias. For example, alias/ExampleAlias.
 =item *
 
 Key ARN. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
+arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
 Alias ARN. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
+arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 
 =back
 
@@ -175,11 +197,12 @@ but eventually fails.
 
 =head2 MultiAttachEnabled => Bool
 
-Specifies whether to enable Amazon EBS Multi-Attach. If you enable
-Multi-Attach, you can attach the volume to up to 16 Nitro-based
-instances
+Indicates whether to enable Amazon EBS Multi-Attach. If you enable
+Multi-Attach, you can attach the volume to up to 16 Instances built on
+the Nitro System
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html#ec2-nitro-instances)
-in the same Availability Zone. For more information, see Amazon EBS
+in the same Availability Zone. This parameter is supported with C<io1>
+and C<io2> volumes only. For more information, see Amazon EBS
 Multi-Attach
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volumes-multi.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
@@ -195,15 +218,32 @@ The Amazon Resource Name (ARN) of the Outpost.
 =head2 Size => Int
 
 The size of the volume, in GiBs. You must specify either a snapshot ID
-or a volume size.
+or a volume size. If you specify a snapshot, the default is the
+snapshot size. You can specify a volume size that is equal to or larger
+than the snapshot size.
 
-Constraints: 1-16,384 for C<gp2>, 4-16,384 for C<io1>, 500-16,384 for
-C<st1>, 500-16,384 for C<sc1>, and 1-1,024 for C<standard>. If you
-specify a snapshot, the volume size must be equal to or larger than the
-snapshot size.
+The following are the supported volumes sizes for each volume type:
 
-Default: If you're creating the volume from a snapshot and don't
-specify a volume size, the default is the snapshot size.
+=over
+
+=item *
+
+C<gp2> and C<gp3>: 1-16,384
+
+=item *
+
+C<io1> and C<io2>: 4-16,384
+
+=item *
+
+C<st1> and C<sc1>: 125-16,384
+
+=item *
+
+C<standard>: 1-1,024
+
+=back
+
 
 
 
@@ -220,15 +260,52 @@ The tags to apply to the volume during creation.
 
 
 
+=head2 Throughput => Int
+
+The throughput to provision for a volume, with a maximum of 1,000
+MiB/s.
+
+This parameter is valid only for C<gp3> volumes.
+
+Valid Range: Minimum value of 125. Maximum value of 1000.
+
+
+
 =head2 VolumeType => Str
 
-The volume type. This can be C<gp2> for General Purpose SSD, C<io1> for
-Provisioned IOPS SSD, C<st1> for Throughput Optimized HDD, C<sc1> for
-Cold HDD, or C<standard> for Magnetic volumes.
+The volume type. This parameter can be one of the following values:
+
+=over
+
+=item *
+
+General Purpose SSD: C<gp2> | C<gp3>
+
+=item *
+
+Provisioned IOPS SSD: C<io1> | C<io2>
+
+=item *
+
+Throughput Optimized HDD: C<st1>
+
+=item *
+
+Cold HDD: C<sc1>
+
+=item *
+
+Magnetic: C<standard>
+
+=back
+
+For more information, see Amazon EBS volume types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Default: C<gp2>
 
-Valid values are: C<"standard">, C<"io1">, C<"gp2">, C<"sc1">, C<"st1">
+Valid values are: C<"standard">, C<"io1">, C<"io2">, C<"gp2">, C<"sc1">, C<"st1">, C<"gp3">
 
 
 =head1 SEE ALSO

@@ -61,16 +61,16 @@ Specifies a job definition.
 
 This field is deprecated. Use C<MaxCapacity> instead.
 
-The number of AWS Glue data processing units (DPUs) allocated to runs
-of this job. You can allocate from 2 to 100 DPUs; the default is 10. A
-DPU is a relative measure of processing power that consists of 4 vCPUs
-of compute capacity and 16 GB of memory. For more information, see the
-AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
+The number of Glue data processing units (DPUs) allocated to runs of
+this job. You can allocate from 2 to 100 DPUs; the default is 10. A DPU
+is a relative measure of processing power that consists of 4 vCPUs of
+compute capacity and 16 GB of memory. For more information, see the
+Glue pricing page (https://aws.amazon.com/glue/pricing/).
 
 
 =head2 Command => L<Paws::Glue::JobCommand>
 
-The C<JobCommand> that executes this job.
+The C<JobCommand> that runs this job.
 
 
 =head2 Connections => L<Paws::Glue::ConnectionsList>
@@ -88,15 +88,15 @@ The time and date that this job definition was created.
 The default arguments for this job, specified as name-value pairs.
 
 You can specify arguments here that your own job-execution script
-consumes, as well as arguments that AWS Glue itself consumes.
+consumes, as well as arguments that Glue itself consumes.
 
 For information about how to specify and consume your own Job
-arguments, see the Calling AWS Glue APIs in Python
+arguments, see the Calling Glue APIs in Python
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-python-calling.html)
 topic in the developer guide.
 
-For information about the key-value pairs that AWS Glue consumes to set
-up your job, see the Special Parameters Used by AWS Glue
+For information about the key-value pairs that Glue consumes to set up
+your job, see the Special Parameters Used by Glue
 (https://docs.aws.amazon.com/glue/latest/dg/aws-glue-programming-etl-glue-arguments.html)
 topic in the developer guide.
 
@@ -115,10 +115,10 @@ runs allowed for this job.
 =head2 GlueVersion => Str
 
 Glue version determines the versions of Apache Spark and Python that
-AWS Glue supports. The Python version indicates the version supported
-for jobs of type Spark.
+Glue supports. The Python version indicates the version supported for
+jobs of type Spark.
 
-For more information about the available AWS Glue versions and
+For more information about the available Glue versions and
 corresponding Spark and Python versions, see Glue version
 (https://docs.aws.amazon.com/glue/latest/dg/add-job.html) in the
 developer guide.
@@ -139,17 +139,19 @@ This field is reserved for future use.
 
 =head2 MaxCapacity => Num
 
-The number of AWS Glue data processing units (DPUs) that can be
-allocated when this job runs. A DPU is a relative measure of processing
-power that consists of 4 vCPUs of compute capacity and 16 GB of memory.
-For more information, see the AWS Glue pricing page
+For Glue version 1.0 or earlier jobs, using the standard worker type,
+the number of Glue data processing units (DPUs) that can be allocated
+when this job runs. A DPU is a relative measure of processing power
+that consists of 4 vCPUs of compute capacity and 16 GB of memory. For
+more information, see the Glue pricing page
 (https://aws.amazon.com/glue/pricing/).
 
 Do not set C<Max Capacity> if using C<WorkerType> and
 C<NumberOfWorkers>.
 
 The value that can be allocated for C<MaxCapacity> depends on whether
-you are running a Python shell job or an Apache Spark ETL job:
+you are running a Python shell job, an Apache Spark ETL job, or an
+Apache Spark streaming ETL job:
 
 =over
 
@@ -160,13 +162,16 @@ you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
 
 =item *
 
-When you specify an Apache Spark ETL job
-(C<JobCommand.Name>="glueetl"), you can allocate from 2 to 100 DPUs.
-The default is 10 DPUs. This job type cannot have a fractional DPU
-allocation.
+When you specify an Apache Spark ETL job (C<JobCommand.Name>="glueetl")
+or Apache Spark streaming ETL job (C<JobCommand.Name>="gluestreaming"),
+you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+type cannot have a fractional DPU allocation.
 
 =back
 
+For Glue version 2.0 jobs, you cannot instead specify a C<Maximum
+capacity>. Instead, you should specify a C<Worker type> and the
+C<Number of workers>.
 
 
 =head2 MaxRetries => Int

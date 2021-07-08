@@ -124,15 +124,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 B<REQUIRED> PipelineActivities => ArrayRef[L<Paws::IoTAnalytics::PipelineActivity>]
 
-A list of "PipelineActivity" objects. Activities perform
+A list of C<PipelineActivity> objects. Activities perform
 transformations on your messages, such as removing, renaming or adding
 message attributes; filtering messages based on attribute values;
 invoking your Lambda functions on messages for advanced processing; or
 performing mathematical transformations to normalize device data.
 
-The list can be 2-25 B<PipelineActivity> objects and must contain both
+The list can be 2-25 C<PipelineActivity> objects and must contain both
 a C<channel> and a C<datastore> activity. Each entry in the list must
-contain only one activity, for example:
+contain only one activity. For example:
 
 C<pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } },
 ... ]>

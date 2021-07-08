@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Permissions => [
               'ALL',
-              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
             ],    # OPTIONAL
             Principal => {
               DataLakePrincipalIdentifier =>
@@ -47,7 +47,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           {
             Permissions => [
               'ALL',
-              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS
+              ... # values: ALL, SELECT, ALTER, DROP, DELETE, INSERT, DESCRIBE, CREATE_DATABASE, CREATE_TABLE, DATA_LOCATION_ACCESS, CREATE_TAG, ALTER_TAG, DELETE_TAG, DESCRIBE_TAG, ASSOCIATE_TAG
             ],    # OPTIONAL
             Principal => {
               DataLakePrincipalIdentifier =>
@@ -63,6 +63,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...                                 # OPTIONAL
         ],    # max: 10; OPTIONAL
+        TrustedResourceOwners => [
+          'MyCatalogIdString', ...    # min: 1, max: 255
+        ],    # OPTIONAL
       },
       CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
@@ -84,7 +87,8 @@ your AWS Lake Formation environment.
 
 =head2 B<REQUIRED> DataLakeSettings => L<Paws::LakeFormation::DataLakeSettings>
 
-A list of AWS Lake Formation principals.
+A structure representing a list of AWS Lake Formation principals
+designated as data lake administrators.
 
 
 

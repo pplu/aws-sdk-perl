@@ -59,7 +59,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 
 =head2 B<REQUIRED> Address => L<Paws::Snowball::Address>
 
-The address that you want the Snowball shipped to.
+The address that you want the Snow device shipped to.
 
 
 

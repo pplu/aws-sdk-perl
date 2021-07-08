@@ -16,7 +16,7 @@ Paws::GameLift::UpdateBuildOutput
 
 =head2 Build => L<Paws::GameLift::Build>
 
-The updated build record.
+The updated build resource.
 
 
 =head2 _request_id => Str

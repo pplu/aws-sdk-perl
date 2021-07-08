@@ -63,7 +63,7 @@ The Amazon Resource Name (ARN) of the resource.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::ELBv2::Tag>]
 
-The tags. Each resource can have a maximum of 10 tags.
+The tags.
 
 
 

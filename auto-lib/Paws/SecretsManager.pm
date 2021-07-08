@@ -75,6 +75,16 @@ package Paws::SecretsManager;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::PutSecretValue', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RemoveRegionsFromReplication {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::RemoveRegionsFromReplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ReplicateSecretToRegions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::ReplicateSecretToRegions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RestoreSecret {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::RestoreSecret', @_);
@@ -83,6 +93,11 @@ package Paws::SecretsManager;
   sub RotateSecret {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::RotateSecret', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopReplicationToReplica {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::StopReplicationToReplica', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -103,6 +118,11 @@ package Paws::SecretsManager;
   sub UpdateSecretVersionStage {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SecretsManager::UpdateSecretVersionStage', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ValidateResourcePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SecretsManager::ValidateResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -131,7 +151,7 @@ package Paws::SecretsManager;
   }
 
 
-  sub operations { qw/CancelRotateSecret CreateSecret DeleteResourcePolicy DeleteSecret DescribeSecret GetRandomPassword GetResourcePolicy GetSecretValue ListSecrets ListSecretVersionIds PutResourcePolicy PutSecretValue RestoreSecret RotateSecret TagResource UntagResource UpdateSecret UpdateSecretVersionStage / }
+  sub operations { qw/CancelRotateSecret CreateSecret DeleteResourcePolicy DeleteSecret DescribeSecret GetRandomPassword GetResourcePolicy GetSecretValue ListSecrets ListSecretVersionIds PutResourcePolicy PutSecretValue RemoveRegionsFromReplication ReplicateSecretToRegions RestoreSecret RotateSecret StopReplicationToReplica TagResource UntagResource UpdateSecret UpdateSecretVersionStage ValidateResourcePolicy / }
 
 1;
 
@@ -161,7 +181,7 @@ Paws::SecretsManager - Perl Interface to AWS AWS Secrets Manager
 
 AWS Secrets Manager API Reference
 
-AWS Secrets Manager is a web service that enables you to store, manage,
+AWS Secrets Manager provides a service to enable you to store, manage,
 and retrieve, secrets.
 
 This guide provides descriptions of the Secrets Manager API. For more
@@ -174,28 +194,28 @@ B<API Version>
 This version of the Secrets Manager API Reference documents the Secrets
 Manager API version 2017-10-17.
 
-As an alternative to using the API directly, you can use one of the AWS
-SDKs, which consist of libraries and sample code for various
-programming languages and platforms (such as Java, Ruby, .NET, iOS, and
-Android). The SDKs provide a convenient way to create programmatic
-access to AWS Secrets Manager. For example, the SDKs take care of
-cryptographically signing requests, managing errors, and retrying
-requests automatically. For more information about the AWS SDKs,
-including how to download and install them, see Tools for Amazon Web
-Services (http://aws.amazon.com/tools/).
+As an alternative to using the API, you can use one of the AWS SDKs,
+which consist of libraries and sample code for various programming
+languages and platforms such as Java, Ruby, .NET, iOS, and Android. The
+SDKs provide a convenient way to create programmatic access to AWS
+Secrets Manager. For example, the SDKs provide cryptographically
+signing requests, managing errors, and retrying requests automatically.
+For more information about the AWS SDKs, including downloading and
+installing them, see Tools for Amazon Web Services
+(http://aws.amazon.com/tools/).
 
-We recommend that you use the AWS SDKs to make programmatic API calls
-to Secrets Manager. However, you also can use the Secrets Manager HTTP
+We recommend you use the AWS SDKs to make programmatic API calls to
+Secrets Manager. However, you also can use the Secrets Manager HTTP
 Query API to make direct calls to the Secrets Manager web service. To
 learn more about the Secrets Manager HTTP Query API, see Making Query
 Requests
 (https://docs.aws.amazon.com/secretsmanager/latest/userguide/query-requests.html)
 in the I<AWS Secrets Manager User Guide>.
 
-Secrets Manager supports GET and POST requests for all actions. That
-is, the API doesn't require you to use GET for some actions and POST
-for others. However, GET requests are subject to the limitation size of
-a URL. Therefore, for operations that require larger sizes, use a POST
+Secrets Manager API supports GET and POST requests for all actions, and
+doesn't require you to use GET for some actions and POST for others.
+However, GET requests are subject to the limitation size of a URL.
+Therefore, for operations that require larger sizes, use a POST
 request.
 
 B<Support and Feedback for AWS Secrets Manager>
@@ -211,27 +231,27 @@ information about the AWS Discussion Forums, see Forums Help
 B<How examples are presented>
 
 The JSON that AWS Secrets Manager expects as your request parameters
-and that the service returns as a response to HTTP query requests are
+and the service returns as a response to HTTP query requests contain
 single, long strings without line breaks or white space formatting. The
-JSON shown in the examples is formatted with both line breaks and white
-space to improve readability. When example input parameters would also
-result in long strings that extend beyond the screen, we insert line
-breaks to enhance readability. You should always submit the input as a
-single JSON text string.
+JSON shown in the examples displays the code formatted with both line
+breaks and white space to improve readability. When example input
+parameters can also cause long strings extending beyond the screen, you
+can insert line breaks to enhance readability. You should always submit
+the input as a single JSON text string.
 
 B<Logging API Requests>
 
 AWS Secrets Manager supports AWS CloudTrail, a service that records AWS
 API calls for your AWS account and delivers log files to an Amazon S3
 bucket. By using information that's collected by AWS CloudTrail, you
-can determine which requests were successfully made to Secrets Manager,
-who made the request, when it was made, and so on. For more about AWS
-Secrets Manager and its support for AWS CloudTrail, see Logging AWS
-Secrets Manager Events with AWS CloudTrail
+can determine the requests successfully made to Secrets Manager, who
+made the request, when it was made, and so on. For more about AWS
+Secrets Manager and support for AWS CloudTrail, see Logging AWS Secrets
+Manager Events with AWS CloudTrail
 (http://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html#monitoring_cloudtrail)
 in the I<AWS Secrets Manager User Guide>. To learn more about
-CloudTrail, including how to turn it on and find your log files, see
-the AWS CloudTrail User Guide
+CloudTrail, including enabling it and find your log files, see the AWS
+CloudTrail User Guide
 (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/secretsmanager-2017-10-17>
@@ -253,21 +273,20 @@ Each argument is described in detail in: L<Paws::SecretsManager::CancelRotateSec
 Returns: a L<Paws::SecretsManager::CancelRotateSecretResponse> instance
 
 Disables automatic scheduled rotation and cancels the rotation of a
-secret if one is currently in progress.
+secret if currently in progress.
 
 To re-enable scheduled rotation, call RotateSecret with
 C<AutomaticallyRotateAfterDays> set to a value greater than 0. This
-will immediately rotate your secret and then enable the automatic
+immediately rotates your secret and then enables the automatic
 schedule.
 
-If you cancel a rotation that is in progress, it can leave the
-C<VersionStage> labels in an unexpected state. Depending on what step
-of the rotation was in progress, you might need to remove the staging
-label C<AWSPENDING> from the partially created version, specified by
-the C<VersionId> response value. You should also evaluate the partially
+If you cancel a rotation while in progress, it can leave the
+C<VersionStage> labels in an unexpected state. Depending on the step of
+the rotation in progress, you might need to remove the staging label
+C<AWSPENDING> from the partially created version, specified by the
+C<VersionId> response value. You should also evaluate the partially
 rotated new version to see if it should be deleted, which you can do by
-removing all staging labels from the new version's C<VersionStage>
-field.
+removing all staging labels from the new version C<VersionStage> field.
 
 To successfully start a rotation, the staging label C<AWSPENDING> must
 be in one of the following states:
@@ -276,7 +295,7 @@ be in one of the following states:
 
 =item *
 
-Not be attached to any version at all
+Not attached to any version at all
 
 =item *
 
@@ -284,8 +303,8 @@ Attached to the same version as the staging label C<AWSCURRENT>
 
 =back
 
-If the staging label C<AWSPENDING> is attached to a different version
-than the version with C<AWSCURRENT> then the attempt to rotate fails.
+If the staging label C<AWSPENDING> attached to a different version than
+the version with C<AWSCURRENT> then the attempt to rotate fails.
 
 B<Minimum permissions>
 
@@ -332,9 +351,13 @@ ListSecretVersionIds.
 
 =item Name => Str
 
+=item [AddReplicaRegions => ArrayRef[L<Paws::SecretsManager::ReplicaRegionType>]]
+
 =item [ClientRequestToken => Str]
 
 =item [Description => Str]
+
+=item [ForceOverwriteReplicaSecret => Bool]
 
 =item [KmsKeyId => Str]
 
@@ -362,7 +385,7 @@ more "staging labels" that identify where the version is in the
 rotation cycle. The C<SecretVersionsToStages> field of the secret
 contains the mapping of staging labels to the active versions of the
 secret. Versions without a staging label are considered deprecated and
-are not included in the list.
+not included in the list.
 
 You provide the secret data to be encrypted by putting text in either
 the C<SecretString> parameter or binary data in the C<SecretBinary>
@@ -375,21 +398,21 @@ the new version.
 
 =item *
 
-If you call an operation that needs to encrypt or decrypt the
-C<SecretString> or C<SecretBinary> for a secret in the same account as
-the calling user and that secret doesn't specify a AWS KMS encryption
-key, Secrets Manager uses the account's default AWS managed customer
-master key (CMK) with the alias C<aws/secretsmanager>. If this key
-doesn't already exist in your account then Secrets Manager creates it
-for you automatically. All users and roles in the same AWS account
+If you call an operation to encrypt or decrypt the C<SecretString> or
+C<SecretBinary> for a secret in the same account as the calling user
+and that secret doesn't specify a AWS KMS encryption key, Secrets
+Manager uses the account's default AWS managed customer master key
+(CMK) with the alias C<aws/secretsmanager>. If this key doesn't already
+exist in your account then Secrets Manager creates it for you
+automatically. All users and roles in the same AWS account
 automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS having to create the account's
+Secrets Manager API call results in AWS creating the account's
 AWS-managed CMK, it can result in a one-time significant delay in
 returning the result.
 
 =item *
 
-If the secret is in a different AWS account from the credentials
+If the secret resides in a different AWS account from the credentials
 calling an API that requires encryption or decryption of the secret
 value then you must create and use a custom AWS KMS CMK because you
 can't access the default CMK for the account using credentials from a
@@ -417,13 +440,13 @@ secretsmanager:CreateSecret
 
 kms:GenerateDataKey - needed only if you use a customer-managed AWS KMS
 key to encrypt the secret. You do not need this permission to use the
-account's default AWS managed CMK for Secrets Manager.
+account default AWS managed CMK for Secrets Manager.
 
 =item *
 
 kms:Decrypt - needed only if you use a customer-managed AWS KMS key to
-encrypt the secret. You do not need this permission to use the
-account's default AWS managed CMK for Secrets Manager.
+encrypt the secret. You do not need this permission to use the account
+default AWS managed CMK for Secrets Manager.
 
 =item *
 
@@ -481,8 +504,7 @@ Each argument is described in detail in: L<Paws::SecretsManager::DeleteResourceP
 
 Returns: a L<Paws::SecretsManager::DeleteResourcePolicyResponse> instance
 
-Deletes the resource-based permission policy that's attached to the
-secret.
+Deletes the resource-based permission policy attached to the secret.
 
 B<Minimum permissions>
 
@@ -506,8 +528,8 @@ To attach a resource policy to a secret, use PutResourcePolicy.
 
 =item *
 
-To retrieve the current resource-based policy that's attached to a
-secret, use GetResourcePolicy.
+To retrieve the current resource-based policy attached to a secret, use
+GetResourcePolicy.
 
 =item *
 
@@ -534,7 +556,7 @@ Each argument is described in detail in: L<Paws::SecretsManager::DeleteSecret>
 
 Returns: a L<Paws::SecretsManager::DeleteSecretResponse> instance
 
-Deletes an entire secret and all of its versions. You can optionally
+Deletes an entire secret and all of the versions. You can optionally
 include a recovery window during which you can restore the secret. If
 you don't specify a recovery window value, the operation defaults to 30
 days. Secrets Manager attaches a C<DeletionDate> stamp to the secret
@@ -544,8 +566,8 @@ recovery window, Secrets Manager deletes the secret permanently.
 At any time before recovery window ends, you can use RestoreSecret to
 remove the C<DeletionDate> and cancel the deletion of the secret.
 
-You cannot access the encrypted secret information in any secret that
-is scheduled for deletion. If you need to access that information, you
+You cannot access the encrypted secret information in any secret
+scheduled for deletion. If you need to access that information, you
 must cancel the deletion with RestoreSecret and then retrieve the
 information.
 
@@ -556,8 +578,8 @@ information.
 There is no explicit operation to delete a version of a secret.
 Instead, remove all staging labels from the C<VersionStage> field of a
 version. That marks the version as deprecated and allows Secrets
-Manager to delete it as needed. Versions that do not have any staging
-labels do not show up in ListSecretVersionIds unless you specify
+Manager to delete it as needed. Versions without any staging labels do
+not show up in ListSecretVersionIds unless you specify
 C<IncludeDeprecated>.
 
 =item *
@@ -612,8 +634,8 @@ Each argument is described in detail in: L<Paws::SecretsManager::DescribeSecret>
 Returns: a L<Paws::SecretsManager::DescribeSecretResponse> instance
 
 Retrieves the details of a secret. It does not include the encrypted
-fields. Only those fields that are populated with a value are returned
-in the response.
+fields. Secrets Manager only returns fields populated with a value in
+the response.
 
 B<Minimum permissions>
 
@@ -712,10 +734,10 @@ Each argument is described in detail in: L<Paws::SecretsManager::GetResourcePoli
 
 Returns: a L<Paws::SecretsManager::GetResourcePolicyResponse> instance
 
-Retrieves the JSON text of the resource-based policy document that's
-attached to the specified secret. The JSON request string input and
-response output are shown formatted with white space and line breaks
-for better readability. Submit your input as a single line JSON string.
+Retrieves the JSON text of the resource-based policy document attached
+to the specified secret. The JSON request string input and response
+output displays formatted code with white space and line breaks for
+better readability. Submit your input as a single line JSON string.
 
 B<Minimum permissions>
 
@@ -739,7 +761,7 @@ To attach a resource policy to a secret, use PutResourcePolicy.
 
 =item *
 
-To delete the resource-based policy that's attached to a secret, use
+To delete the resource-based policy attached to a secret, use
 DeleteResourcePolicy.
 
 =item *
@@ -811,9 +833,13 @@ DescribeSecret.
 
 =over
 
+=item [Filters => ArrayRef[L<Paws::SecretsManager::Filter>]]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [SortOrder => Str]
 
 
 =back
@@ -830,8 +856,8 @@ information, call the GetSecretValue operation.
 
 Always check the C<NextToken> response parameter when calling any of
 the C<List*> operations. These operations can occasionally return an
-empty or shorter than expected list of results even when there are more
-results available. When this happens, the C<NextToken> response
+empty or shorter than expected list of results even when there more
+results become available. When this happens, the C<NextToken> response
 parameter contains a value to pass to the next call to the same API to
 request the next part of the list.
 
@@ -885,8 +911,8 @@ label in C<VersionStage> attached.
 
 Always check the C<NextToken> response parameter when calling any of
 the C<List*> operations. These operations can occasionally return an
-empty or shorter than expected list of results even when there are more
-results available. When this happens, the C<NextToken> response
+empty or shorter than expected list of results even when there more
+results become available. When this happens, the C<NextToken> response
 parameter contains a value to pass to the next call to the same API to
 request the next part of the list.
 
@@ -921,6 +947,8 @@ To list the secrets in an account, use ListSecrets.
 =item ResourcePolicy => Str
 
 =item SecretId => Str
+
+=item [BlockPublicPolicy => Bool]
 
 
 =back
@@ -961,12 +989,12 @@ B<Related operations>
 
 =item *
 
-To retrieve the resource policy that's attached to a secret, use
+To retrieve the resource policy attached to a secret, use
 GetResourcePolicy.
 
 =item *
 
-To delete the resource-based policy that's attached to a secret, use
+To delete the resource-based policy attached to a secret, use
 DeleteResourcePolicy.
 
 =item *
@@ -1018,17 +1046,16 @@ new version.
 
 =item *
 
-If another version of this secret already exists, then this operation
-does not automatically move any staging labels other than those that
-you explicitly specify in the C<VersionStages> parameter.
+If you do not specify a value for VersionStages then Secrets Manager
+automatically moves the staging label C<AWSCURRENT> to this new
+version.
 
 =item *
 
 If this operation moves the staging label C<AWSCURRENT> from another
-version to this version (because you included it in the
-C<StagingLabels> parameter) then Secrets Manager also automatically
-moves the staging label C<AWSPREVIOUS> to the version that
-C<AWSCURRENT> was removed from.
+version to this version, then Secrets Manager also automatically moves
+the staging label C<AWSPREVIOUS> to the version that C<AWSCURRENT> was
+removed from.
 
 =item *
 
@@ -1045,21 +1072,21 @@ create new ones.
 
 =item *
 
-If you call an operation that needs to encrypt or decrypt the
-C<SecretString> or C<SecretBinary> for a secret in the same account as
-the calling user and that secret doesn't specify a AWS KMS encryption
-key, Secrets Manager uses the account's default AWS managed customer
-master key (CMK) with the alias C<aws/secretsmanager>. If this key
-doesn't already exist in your account then Secrets Manager creates it
-for you automatically. All users and roles in the same AWS account
+If you call an operation to encrypt or decrypt the C<SecretString> or
+C<SecretBinary> for a secret in the same account as the calling user
+and that secret doesn't specify a AWS KMS encryption key, Secrets
+Manager uses the account's default AWS managed customer master key
+(CMK) with the alias C<aws/secretsmanager>. If this key doesn't already
+exist in your account then Secrets Manager creates it for you
+automatically. All users and roles in the same AWS account
 automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS having to create the account's
+Secrets Manager API call results in AWS creating the account's
 AWS-managed CMK, it can result in a one-time significant delay in
 returning the result.
 
 =item *
 
-If the secret is in a different AWS account from the credentials
+If the secret resides in a different AWS account from the credentials
 calling an API that requires encryption or decryption of the secret
 value then you must create and use a custom AWS KMS CMK because you
 can't access the default CMK for the account using credentials from a
@@ -1114,6 +1141,45 @@ To list the versions attached to a secret, use ListSecretVersionIds.
 
 =back
 
+
+
+=head2 RemoveRegionsFromReplication
+
+=over
+
+=item RemoveReplicaRegions => ArrayRef[Str|Undef]
+
+=item SecretId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::RemoveRegionsFromReplication>
+
+Returns: a L<Paws::SecretsManager::RemoveRegionsFromReplicationResponse> instance
+
+Remove regions from replication.
+
+
+=head2 ReplicateSecretToRegions
+
+=over
+
+=item AddReplicaRegions => ArrayRef[L<Paws::SecretsManager::ReplicaRegionType>]
+
+=item SecretId => Str
+
+=item [ForceOverwriteReplicaSecret => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::ReplicateSecretToRegions>
+
+Returns: a L<Paws::SecretsManager::ReplicateSecretToRegionsResponse> instance
+
+Converts an existing secret to a multi-Region secret and begins
+replication the secret to a list of new regions.
 
 
 =head2 RestoreSecret
@@ -1196,8 +1262,8 @@ protected service, see Rotating Secrets in AWS Secrets Manager
 (https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 in the I<AWS Secrets Manager User Guide>.
 
-Secrets Manager schedules the next rotation when the previous one is
-complete. Secrets Manager schedules the date by adding the rotation
+Secrets Manager schedules the next rotation when the previous one
+completes. Secrets Manager schedules the date by adding the rotation
 interval (number of days) to the actual date of the last rotation. The
 service chooses the hour within that 24-hour date window randomly. The
 minute is also chosen somewhat randomly, but weighted towards the top
@@ -1221,9 +1287,9 @@ secret.
 
 =back
 
-If instead the C<AWSPENDING> staging label is present but is not
-attached to the same version as C<AWSCURRENT> then any later invocation
-of C<RotateSecret> assumes that a previous rotation request is still in
+If the C<AWSPENDING> staging label is present but not attached to the
+same version as C<AWSCURRENT> then any later invocation of
+C<RotateSecret> assumes that a previous rotation request is still in
 progress and returns an error.
 
 B<Minimum permissions>
@@ -1266,6 +1332,23 @@ a secret, use UpdateSecretVersionStage.
 
 =back
 
+
+
+=head2 StopReplicationToReplica
+
+=over
+
+=item SecretId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::StopReplicationToReplica>
+
+Returns: a L<Paws::SecretsManager::StopReplicationToReplicaResponse> instance
+
+Removes the secret from replication and promotes the secret to a
+regional secret in the replica Region.
 
 
 =head2 TagResource
@@ -1311,18 +1394,18 @@ Tag keys and values are case sensitive.
 
 =item *
 
-Do not use the C<aws:> prefix in your tag names or values because it is
-reserved for AWS use. You can't edit or delete tag names or values with
-this prefix. Tags with this prefix do not count against your tags per
-secret limit.
+Do not use the C<aws:> prefix in your tag names or values because AWS
+reserves it for AWS use. You can't edit or delete tag names or values
+with this prefix. Tags with this prefix do not count against your tags
+per secret limit.
 
 =item *
 
-If your tagging schema will be used across multiple services and
-resources, remember that other services might have restrictions on
-allowed characters. Generally allowed characters are: letters, spaces,
-and numbers representable in UTF-8, plus the following special
-characters: + - = . _ : / @.
+If you use your tagging schema across multiple services and resources,
+remember other services might have restrictions on allowed characters.
+Generally allowed characters: letters, spaces, and numbers
+representable in UTF-8, plus the following special characters: + - = .
+_ : / @.
 
 =back
 
@@ -1470,21 +1553,21 @@ label C<AWSCURRENT> to the new version.
 
 =item *
 
-If you call an operation that needs to encrypt or decrypt the
-C<SecretString> or C<SecretBinary> for a secret in the same account as
-the calling user and that secret doesn't specify a AWS KMS encryption
-key, Secrets Manager uses the account's default AWS managed customer
-master key (CMK) with the alias C<aws/secretsmanager>. If this key
-doesn't already exist in your account then Secrets Manager creates it
-for you automatically. All users and roles in the same AWS account
+If you call an operation to encrypt or decrypt the C<SecretString> or
+C<SecretBinary> for a secret in the same account as the calling user
+and that secret doesn't specify a AWS KMS encryption key, Secrets
+Manager uses the account's default AWS managed customer master key
+(CMK) with the alias C<aws/secretsmanager>. If this key doesn't already
+exist in your account then Secrets Manager creates it for you
+automatically. All users and roles in the same AWS account
 automatically have access to use the default CMK. Note that if an
-Secrets Manager API call results in AWS having to create the account's
+Secrets Manager API call results in AWS creating the account's
 AWS-managed CMK, it can result in a one-time significant delay in
 returning the result.
 
 =item *
 
-If the secret is in a different AWS account from the credentials
+If the secret resides in a different AWS account from the credentials
 calling an API that requires encryption or decryption of the secret
 value then you must create and use a custom AWS KMS CMK because you
 can't access the default CMK for the account using credentials from a
@@ -1616,15 +1699,75 @@ C<SecretVersionsToStages> response value.
 
 
 
+=head2 ValidateResourcePolicy
+
+=over
+
+=item ResourcePolicy => Str
+
+=item [SecretId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SecretsManager::ValidateResourcePolicy>
+
+Returns: a L<Paws::SecretsManager::ValidateResourcePolicyResponse> instance
+
+Validates that the resource policy does not grant a wide range of IAM
+principals access to your secret. The JSON request string input and
+response output displays formatted code with white space and line
+breaks for better readability. Submit your input as a single line JSON
+string. A resource-based policy is optional for secrets.
+
+The API performs three checks when validating the secret:
+
+=over
+
+=item *
+
+Sends a call to Zelkova
+(https://aws.amazon.com/blogs/security/protect-sensitive-data-in-the-cloud-with-automated-reasoning-zelkova/),
+an automated reasoning engine, to ensure your Resource Policy does not
+allow broad access to your secret.
+
+=item *
+
+Checks for correct syntax in a policy.
+
+=item *
+
+Verifies the policy does not lock out a caller.
+
+=back
+
+B<Minimum Permissions>
+
+You must have the permissions required to access the following APIs:
+
+=over
+
+=item *
+
+C<secretsmanager:PutResourcePolicy>
+
+=item *
+
+C<secretsmanager:ValidateResourcePolicy>
+
+=back
+
+
+
 
 
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllSecrets(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllSecrets(sub { },[Filters => ArrayRef[L<Paws::SecretsManager::Filter>], MaxResults => Int, NextToken => Str, SortOrder => Str])
 
-=head2 ListAllSecrets([MaxResults => Int, NextToken => Str])
+=head2 ListAllSecrets([Filters => ArrayRef[L<Paws::SecretsManager::Filter>], MaxResults => Int, NextToken => Str, SortOrder => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

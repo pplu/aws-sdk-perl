@@ -3,6 +3,7 @@ package Paws::IoTAnalytics::Channel;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
+  has LastMessageArrivalTime => (is => 'ro', isa => 'Str', request_name => 'lastMessageArrivalTime', traits => ['NameInRequest']);
   has LastUpdateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdateTime', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', request_name => 'retentionPeriod', traits => ['NameInRequest']);
@@ -55,6 +56,18 @@ The ARN of the channel.
 When the channel was created.
 
 
+=head2 LastMessageArrivalTime => Str
+
+The last time when a new message arrived in the channel.
+
+AWS IoT Analytics updates this value at most once per minute for one
+channel. Hence, the C<lastMessageArrivalTime> value is an
+approximation.
+
+This feature only applies to messages that arrived in the data store
+after October 23, 2020.
+
+
 =head2 LastUpdateTime => Str
 
 When the channel was last updated.
@@ -77,10 +90,10 @@ The status of the channel.
 
 =head2 Storage => L<Paws::IoTAnalytics::ChannelStorage>
 
-Where channel data is stored. You may choose one of "serviceManagedS3"
-or "customerManagedS3" storage. If not specified, the default is
-"serviceManagedS3". This cannot be changed after creation of the
-channel.
+Where channel data is stored. You can choose one of C<serviceManagedS3>
+or C<customerManagedS3> storage. If not specified, the default is
+C<serviceManagedS3>. You cannot change this storage option after the
+channel is created.
 
 
 

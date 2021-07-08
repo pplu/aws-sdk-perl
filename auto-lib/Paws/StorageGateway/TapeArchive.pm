@@ -3,7 +3,9 @@ package Paws::StorageGateway::TapeArchive;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Str');
   has KMSKey => (is => 'ro', isa => 'Str');
+  has PoolEntryDate => (is => 'ro', isa => 'Str');
   has PoolId => (is => 'ro', isa => 'Str');
+  has RetentionStartDate => (is => 'ro', isa => 'Str');
   has RetrievedTo => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
@@ -11,6 +13,7 @@ package Paws::StorageGateway::TapeArchive;
   has TapeSizeInBytes => (is => 'ro', isa => 'Int');
   has TapeStatus => (is => 'ro', isa => 'Str');
   has TapeUsedInBytes => (is => 'ro', isa => 'Int');
+  has Worm => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -31,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::TapeArchive object:
 
-  $service_obj->Method(Att1 => { CompletionTime => $value, ..., TapeUsedInBytes => $value  });
+  $service_obj->Method(Att1 => { CompletionTime => $value, ..., Worm => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,7 +55,7 @@ Represents a virtual tape that is archived in the virtual tape shelf
 
 The time that the archiving of the virtual tape was completed.
 
-The default time stamp format is in the ISO8601 extended
+The default timestamp format is in the ISO8601 extended
 YYYY-MM-DD'T'HH:MM:SS'Z' format.
 
 
@@ -61,13 +64,27 @@ YYYY-MM-DD'T'HH:MM:SS'Z' format.
 
 
 
+=head2 PoolEntryDate => Str
+
+The time that the tape entered the custom tape pool.
+
+The default timestamp format is in the ISO8601 extended
+YYYY-MM-DD'T'HH:MM:SS'Z' format.
+
+
 =head2 PoolId => Str
 
 The ID of the pool that was used to archive the tape. The tapes in this
 pool are archived in the S3 storage class that is associated with the
 pool.
 
-Valid values: "GLACIER", "DEEP_ARCHIVE"
+Valid Values: C<GLACIER> | C<DEEP_ARCHIVE>
+
+
+=head2 RetentionStartDate => Str
+
+If the archived tape is subject to tape retention lock, the date that
+the archived tape started being retained.
 
 
 =head2 RetrievedTo => Str
@@ -108,6 +125,12 @@ The current state of the archived virtual tape.
 The size, in bytes, of data stored on the virtual tape.
 
 This value is not available for tapes created prior to May 13, 2015.
+
+
+=head2 Worm => Bool
+
+Set to C<true> if the archived tape is stored as write-once-read-many
+(WORM).
 
 
 

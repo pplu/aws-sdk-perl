@@ -14,6 +14,11 @@ package Paws::KinesisVideoArchivedMedia;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub GetClip {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::KinesisVideoArchivedMedia::GetClip', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetDASHStreamingSessionURL {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::KinesisVideoArchivedMedia::GetDASHStreamingSessionURL', @_);
@@ -60,7 +65,7 @@ package Paws::KinesisVideoArchivedMedia;
   }
 
 
-  sub operations { qw/GetDASHStreamingSessionURL GetHLSStreamingSessionURL GetMediaForFragmentList ListFragments / }
+  sub operations { qw/GetClip GetDASHStreamingSessionURL GetHLSStreamingSessionURL GetMediaForFragmentList ListFragments / }
 
 1;
 
@@ -94,6 +99,79 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 
 =head1 METHODS
+
+=head2 GetClip
+
+=over
+
+=item ClipFragmentSelector => L<Paws::KinesisVideoArchivedMedia::ClipFragmentSelector>
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::KinesisVideoArchivedMedia::GetClip>
+
+Returns: a L<Paws::KinesisVideoArchivedMedia::GetClipOutput> instance
+
+Downloads an MP4 file (clip) containing the archived, on-demand media
+from the specified video stream over the specified time range.
+
+Both the StreamName and the StreamARN parameters are optional, but you
+must specify either the StreamName or the StreamARN when invoking this
+API operation.
+
+As a prerequisite to using GetCLip API, you must obtain an endpoint
+using C<GetDataEndpoint>, specifying GET_CLIP forC< the C<APIName>
+parameter.>
+
+An Amazon Kinesis video stream has the following requirements for
+providing data through MP4:
+
+=over
+
+=item *
+
+The media must contain h.264 or h.265 encoded video and, optionally,
+AAC or G.711 encoded audio. Specifically, the codec ID of track 1
+should be C<V_MPEG/ISO/AVC> (for h.264) or V_MPEGH/ISO/HEVC (for
+H.265). Optionally, the codec ID of track 2 should be C<A_AAC> (for
+AAC) or A_MS/ACM (for G.711).
+
+=item *
+
+Data retention must be greater than 0.
+
+=item *
+
+The video track of each fragment must contain codec private data in the
+Advanced Video Coding (AVC) for H.264 format and HEVC for H.265 format.
+For more information, see MPEG-4 specification ISO/IEC 14496-15
+(https://www.iso.org/standard/55980.html). For information about
+adapting stream data to a given format, see NAL Adaptation Flags
+(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/producer-reference-nal.html).
+
+=item *
+
+The audio track (if present) of each fragment must contain codec
+private data in the AAC format (AAC specification ISO/IEC 13818-7
+(https://www.iso.org/standard/43345.html)) or the MS Wave format
+(http://www-mmsp.ece.mcgill.ca/Documents/AudioFormats/WAVE/WAVE.html).
+
+=back
+
+You can monitor the amount of outgoing data by monitoring the
+C<GetClip.OutgoingBytes> Amazon CloudWatch metric. For information
+about using CloudWatch to monitor Kinesis Video Streams, see Monitoring
+Kinesis Video Streams
+(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/monitoring.html).
+For pricing information, see Amazon Kinesis Video Streams Pricing
+(https://aws.amazon.com/kinesis/video-streams/pricing/) and AWS Pricing
+(https://aws.amazon.com/pricing/). Charges for outgoing AWS data apply.
+
 
 =head2 GetDASHStreamingSessionURL
 
@@ -186,10 +264,10 @@ C<GetDASHStreamingSessionURL> returns an authenticated URL (that
 includes an encrypted session token) for the session's MPEG-DASH
 I<manifest> (the root resource needed for streaming with MPEG-DASH).
 
-Don't share or store this token where an unauthorized entity could
-access it. The token provides access to the content of the stream.
-Safeguard the token with the same measures that you would use with your
-AWS credentials.
+Don't share or store this token where an unauthorized entity can access
+it. The token provides access to the content of the stream. Safeguard
+the token with the same measures that you use with your AWS
+credentials.
 
 The media that is made available through the manifest consists only of
 the requested stream, time range, and format. No other media data (such
@@ -253,31 +331,9 @@ Data retrieved with this action is billable. See Pricing
 
 =back
 
-The following restrictions apply to MPEG-DASH sessions:
-
-=over
-
-=item *
-
-A streaming session URL should not be shared between players. The
-service might throttle a session if multiple media players are sharing
-it. For connection limits, see Kinesis Video Streams Limits
+For restrictions that apply to MPEG-DASH sessions, see Kinesis Video
+Streams Limits
 (http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
-
-=item *
-
-A Kinesis video stream can have a maximum of ten active MPEG-DASH
-streaming sessions. If a new session is created when the maximum number
-of sessions is already active, the oldest (earliest created) session is
-closed. The number of active C<GetMedia> connections on a Kinesis video
-stream does not count against this limit, and the number of active
-MPEG-DASH sessions does not count against the active C<GetMedia>
-connection limit.
-
-The maximum limits for active HLS and MPEG-DASH streaming sessions are
-independent of each other.
-
-=back
 
 You can monitor the amount of data that the media player consumes by
 monitoring the C<GetMP4MediaFragment.OutgoingBytes> Amazon CloudWatch
@@ -517,31 +573,10 @@ Kinesis Video Streams pricing
 
 =back
 
-The following restrictions apply to HLS sessions:
-
-=over
-
-=item *
-
-A streaming session URL should not be shared between players. The
-service might throttle a session if multiple media players are sharing
-it. For connection limits, see Kinesis Video Streams Limits
+A streaming session URL must not be shared between players. The service
+might throttle a session if multiple media players are sharing it. For
+connection limits, see Kinesis Video Streams Limits
 (http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
-
-=item *
-
-A Kinesis video stream can have a maximum of ten active HLS streaming
-sessions. If a new session is created when the maximum number of
-sessions is already active, the oldest (earliest created) session is
-closed. The number of active C<GetMedia> connections on a Kinesis video
-stream does not count against this limit, and the number of active HLS
-sessions does not count against the active C<GetMedia> connection
-limit.
-
-The maximum limits for active HLS and MPEG-DASH streaming sessions are
-independent of each other.
-
-=back
 
 You can monitor the amount of data that the media player consumes by
 monitoring the C<GetMP4MediaFragment.OutgoingBytes> Amazon CloudWatch
@@ -593,7 +628,9 @@ topic, as well as Common Errors
 
 =item Fragments => ArrayRef[Str|Undef]
 
-=item StreamName => Str
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
 
 
 =back
@@ -610,23 +647,8 @@ send the C<GetMediaForFragmentList> requests to this endpoint using the
 --endpoint-url parameter
 (https://docs.aws.amazon.com/cli/latest/reference/).
 
-The following limits apply when using the C<GetMediaForFragmentList>
-API:
-
-=over
-
-=item *
-
-A client can call C<GetMediaForFragmentList> up to five times per
-second per stream.
-
-=item *
-
-Kinesis Video Streams sends media data at a rate of up to 25 megabytes
-per second (or 200 megabits per second) during a
-C<GetMediaForFragmentList> session.
-
-=back
+For limits, see Kinesis Video Streams Limits
+(http://docs.aws.amazon.com/kinesisvideostreams/latest/dg/limits.html).
 
 If an error is thrown after invoking a Kinesis Video Streams archived
 media API, in addition to the HTTP status code and the response body,
@@ -662,13 +684,15 @@ topic, as well as Common Errors
 
 =over
 
-=item StreamName => Str
-
 =item [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>]
 
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
+
+=item [StreamARN => Str]
+
+=item [StreamName => Str]
 
 
 =back
@@ -727,9 +751,9 @@ topic, as well as Common Errors
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllFragments(sub { },StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+=head2 ListAllFragments(sub { },[FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str, StreamARN => Str, StreamName => Str])
 
-=head2 ListAllFragments(StreamName => Str, [FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str])
+=head2 ListAllFragments([FragmentSelector => L<Paws::KinesisVideoArchivedMedia::FragmentSelector>, MaxResults => Int, NextToken => Str, StreamARN => Str, StreamName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

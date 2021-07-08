@@ -16,8 +16,7 @@ Paws::Cloud9::ListTagsForResourceResponse
 
 =head2 Tags => ArrayRef[L<Paws::Cloud9::Tag>]
 
-The list of tags associated with the AWS Cloud9 development
-environment.
+The list of tags associated with the Cloud9 development environment.
 
 
 =head2 _request_id => Str

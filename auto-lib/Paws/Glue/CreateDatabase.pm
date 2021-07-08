@@ -50,6 +50,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyKeyString' =>
             'MyParametersMapValue',  # key: min: 1, max: 255, value: max: 512000
         },    # OPTIONAL
+        TargetDatabase => {
+          CatalogId    => 'MyCatalogIdString',    # min: 1, max: 255; OPTIONAL
+          DatabaseName => 'MyNameString',         # min: 1, max: 255
+        },    # OPTIONAL
       },
       CatalogId => 'MyCatalogIdString',    # OPTIONAL
     );
@@ -63,7 +67,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog in which to create the database. If none is
-provided, the AWS account ID is used by default.
+provided, the Amazon Web Services account ID is used by default.
 
 
 

@@ -140,7 +140,7 @@ criteria.
 
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str|Undef]
 
-A list of OpendID Connect provider ARNs.
+The ARNs of the OpenID Connect providers.
 
 
 

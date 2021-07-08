@@ -17,7 +17,8 @@ Paws::ResourceGroups::UpdateGroupQueryOutput
 
 =head2 GroupQuery => L<Paws::ResourceGroups::GroupQuery>
 
-The resource query associated with the resource group after the update.
+The updated resource query associated with the resource group after the
+update.
 
 
 =head2 _request_id => Str

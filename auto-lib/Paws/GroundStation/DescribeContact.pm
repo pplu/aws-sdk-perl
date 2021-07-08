@@ -36,6 +36,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $ContactId         = $DescribeContactResponse->ContactId;
     my $ContactStatus     = $DescribeContactResponse->ContactStatus;
+    my $DataflowList      = $DescribeContactResponse->DataflowList;
     my $EndTime           = $DescribeContactResponse->EndTime;
     my $ErrorMessage      = $DescribeContactResponse->ErrorMessage;
     my $GroundStation     = $DescribeContactResponse->GroundStation;

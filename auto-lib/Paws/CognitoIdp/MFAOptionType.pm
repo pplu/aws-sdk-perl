@@ -38,13 +38,6 @@ I<This data type is no longer supported.> You can use it only for SMS
 MFA configurations. You can't use it for TOTP software token MFA
 configurations.
 
-To set either type of MFA configuration, use the
-AdminSetUserMFAPreference or SetUserMFAPreference actions.
-
-To look up information about either type of MFA configuration, use the
-AdminGetUserResponse$UserMFASettingList or
-GetUserResponse$UserMFASettingList responses.
-
 =head1 ATTRIBUTES
 
 

@@ -48,7 +48,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 Activate => Bool
 
-The updated boolean value that specifies whether the IPSet is active or
+The updated Boolean value that specifies whether the IPSet is active or
 not.
 
 
@@ -68,8 +68,8 @@ The unique ID that specifies the IPSet that you want to update.
 
 =head2 Location => Str
 
-The updated URI of the file that contains the IPSet. For example
-(https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key).
+The updated URI of the file that contains the IPSet. For example:
+https://s3.us-west-2.amazonaws.com/my-bucket/my-object-key.
 
 
 

@@ -34,30 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Defines a list of C<NestedFilters> objects. To satisfy the conditions
-specified in the C<NestedFilters> call, a resource must satisfy the
-conditions of all of the filters.
+A list of nested Filter objects. A resource must satisfy the conditions
+of all filters to be included in the results returned from the Search
+API.
 
-For example, you could define a C<NestedFilters> using the training
-job's C<InputDataConfig> property to filter on C<Channel> objects.
-
-A C<NestedFilters> object contains multiple filters. For example, to
-find all training jobs whose name contains C<train> and that have
-C<cat/data> in their C<S3Uri> (specified in C<InputDataConfig>), you
-need to create a C<NestedFilters> object that specifies the
-C<InputDataConfig> property with the following C<Filter> objects:
+For example, to filter on a training job's C<InputDataConfig> property
+with a specific channel name and C<S3Uri> prefix, define the following
+filters:
 
 =over
 
 =item *
 
-C<'{Name:"InputDataConfig.ChannelName", "Operator":"EQUALS",
+C<'{Name:"InputDataConfig.ChannelName", "Operator":"Equals",
 "Value":"train"}',>
 
 =item *
 
 C<'{Name:"InputDataConfig.DataSource.S3DataSource.S3Uri",
-"Operator":"CONTAINS", "Value":"cat/data"}'>
+"Operator":"Contains", "Value":"mybucket/catdata"}'>
 
 =back
 

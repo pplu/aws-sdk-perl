@@ -43,13 +43,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gua
 
 =head2 B<REQUIRED> DetectorId => Str
 
-The unique ID of the detector the filter is associated with.
+The unique ID of the detector that the filter is associated with.
 
 
 
 =head2 B<REQUIRED> FilterName => Str
 
-The name of the filter you want to delete.
+The name of the filter that you want to delete.
 
 
 

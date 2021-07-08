@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Fac
 
 =head1 DESCRIPTION
 
-Information a document attribute
+Information about a document attribute
 
 =head1 ATTRIBUTES
 

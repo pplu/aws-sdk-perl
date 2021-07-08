@@ -41,9 +41,9 @@ The output configuration for monitoring jobs.
 
 =head2 KmsKeyId => Str
 
-The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses
-to encrypt the model artifacts at rest using Amazon S3 server-side
-encryption.
+The Amazon Web Services Key Management Service (Amazon Web Services
+KMS) key that Amazon SageMaker uses to encrypt the model artifacts at
+rest using Amazon S3 server-side encryption.
 
 
 =head2 B<REQUIRED> MonitoringOutputs => ArrayRef[L<Paws::SageMaker::MonitoringOutput>]

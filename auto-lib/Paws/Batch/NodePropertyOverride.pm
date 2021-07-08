@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Node
 
 =head1 DESCRIPTION
 
-Object representing any node overrides to a job definition that is used
+Object representing any node overrides to a job definition that's used
 in a SubmitJob API operation.
 
 =head1 ATTRIBUTES
@@ -47,7 +47,7 @@ The overrides that should be sent to a node range.
 
 =head2 B<REQUIRED> TargetNodes => Str
 
-The range of nodes, using node index values, with which to override. A
+The range of nodes, using node index values, that's used to override. A
 range of C<0:3> indicates nodes with index values of C<0> through C<3>.
 If the starting range value is omitted (C<:n>), then C<0> is used to
 start the range. If the ending range value is omitted (C<n:>), then the

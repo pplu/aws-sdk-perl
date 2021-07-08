@@ -57,18 +57,36 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 Constraints => L<Paws::KMS::GrantConstraints>
 
-Allows a cryptographic operation only when the encryption context
-matches or includes the encryption context specified in this structure.
-For more information about encryption context, see Encryption Context
+Specifies a grant constraint.
+
+AWS KMS supports the C<EncryptionContextEquals> and
+C<EncryptionContextSubset> grant constraints. Each constraint value can
+include up to 8 encryption context pairs. The encryption context value
+in each constraint cannot exceed 384 characters.
+
+These grant constraints allow a cryptographic operation
+(https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#cryptographic-operations)
+only when the encryption context in the request matches
+(C<EncryptionContextEquals>) or includes (C<EncryptionContextSubset>)
+the encryption context specified in this structure. For more
+information about encryption context, see Encryption Context
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context)
-in the I< I<AWS Key Management Service Developer Guide> >.
+in the I< I<AWS Key Management Service Developer Guide> >. For
+information about grant constraints, see Using grant constraints
+(https://docs.aws.amazon.com/kms/latest/developerguide/create-grant-overview.html#grant-constraints)
+in the I<AWS Key Management Service Developer Guide>.
+
+The encryption context grant constraints are supported only on
+operations that include an encryption context. You cannot use an
+encryption context grant constraint for cryptographic operations with
+asymmetric CMKs or for management operations, such as DescribeKey or
+RetireGrant.
 
 
 
 =head2 B<REQUIRED> GranteePrincipal => Str
 
-The principal that is given permission to perform the operations that
-the grant permits.
+The identity that gets the permissions specified in the grant.
 
 To specify the principal, use the Amazon Resource Name (ARN)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
@@ -85,7 +103,9 @@ in the Example ARNs section of the I<AWS General Reference>.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens
+Use a grant token when your permission to call this operation comes
+from a new grant that has not yet achieved I<eventual consistency>. For
+more information, see Grant token
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -93,11 +113,11 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 B<REQUIRED> KeyId => Str
 
-The unique identifier for the customer master key (CMK) that the grant
-applies to.
+Identifies the customer master key (CMK) for the grant. The grant gives
+principals permission to use this CMK.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK. To
-specify a CMK in a different AWS account, you must use the key ARN.
+Specify the key ID or key ARN of the CMK. To specify a CMK in a
+different AWS account, you must use the key ARN.
 
 For example:
 
@@ -120,8 +140,8 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 =head2 Name => Str
 
-A friendly name for identifying the grant. Use this value to prevent
-the unintended creation of duplicate grants when retrying this request.
+A friendly name for the grant. Use this value to prevent the unintended
+creation of duplicate grants when retrying this request.
 
 When this value is absent, all C<CreateGrant> requests result in a new
 grant with a unique C<GrantId> even if all the supplied parameters are
@@ -132,14 +152,22 @@ When this value is present, you can retry a C<CreateGrant> request with
 identical parameters; if the grant already exists, the original
 C<GrantId> is returned without creating a new grant. Note that the
 returned grant token is unique with every C<CreateGrant> request, even
-when a duplicate C<GrantId> is returned. All grant tokens obtained in
-this way can be used interchangeably.
+when a duplicate C<GrantId> is returned. All grant tokens for the same
+grant ID can be used interchangeably.
 
 
 
 =head2 B<REQUIRED> Operations => ArrayRef[Str|Undef]
 
 A list of operations that the grant permits.
+
+The operation must be supported on the CMK. For example, you cannot
+create a grant for a symmetric CMK that allows the Sign operation, or a
+grant for an asymmetric CMK that allows the GenerateDataKey operation.
+If you try, AWS KMS returns a C<ValidationError> exception. For
+details, see Grant operations
+(https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#terms-grant-operations)
+in the I<AWS Key Management Service Developer Guide>.
 
 
 

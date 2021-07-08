@@ -2,6 +2,7 @@
 package Paws::ECR::Repository;
   use Moose;
   has CreatedAt => (is => 'ro', isa => 'Str', request_name => 'createdAt', traits => ['NameInRequest']);
+  has EncryptionConfiguration => (is => 'ro', isa => 'Paws::ECR::EncryptionConfiguration', request_name => 'encryptionConfiguration', traits => ['NameInRequest']);
   has ImageScanningConfiguration => (is => 'ro', isa => 'Paws::ECR::ImageScanningConfiguration', request_name => 'imageScanningConfiguration', traits => ['NameInRequest']);
   has ImageTagMutability => (is => 'ro', isa => 'Str', request_name => 'imageTagMutability', traits => ['NameInRequest']);
   has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
@@ -50,6 +51,12 @@ The date and time, in JavaScript date format, when the repository was
 created.
 
 
+=head2 EncryptionConfiguration => L<Paws::ECR::EncryptionConfiguration>
+
+The encryption configuration for the repository. This determines how
+the contents of your repository are encrypted at rest.
+
+
 =head2 ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>
 
 
@@ -82,8 +89,8 @@ The name of the repository.
 
 =head2 RepositoryUri => Str
 
-The URI for the repository. You can use this URI for Docker C<push> or
-C<pull> operations.
+The URI for the repository. You can use this URI for container image
+C<push> and C<pull> operations.
 
 
 

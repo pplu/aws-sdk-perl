@@ -36,7 +36,21 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComputeOpti
 =head1 DESCRIPTION
 
 Describes a projected utilization metric of a recommendation option,
-such as an Amazon EC2 instance.
+such as an Amazon EC2 instance. This represents the projected
+utilization of a recommendation option had you used that resource
+during the analyzed period.
+
+Compare the utilization metric data of your resource against its
+projected utilization metric data to determine the performance
+difference between your current resource and the recommended option.
+
+The C<Cpu> and C<Memory> metrics are the only projected utilization
+metrics returned when you run the
+C<GetEC2RecommendationProjectedMetrics> action. Additionally, the
+C<Memory> metric is returned only for resources that have the unified
+CloudWatch agent installed on them. For more information, see Enabling
+Memory Utilization with the CloudWatch Agent
+(https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent).
 
 =head1 ATTRIBUTES
 
@@ -45,10 +59,39 @@ such as an Amazon EC2 instance.
 
 The name of the projected utilization metric.
 
-Memory metrics are only returned for resources that have the unified
-CloudWatch agent installed on them. For more information, see Enabling
-Memory Utilization with the CloudWatch Agent
-(https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Install-CloudWatch-Agent.html).
+The following projected utilization metrics are returned:
+
+=over
+
+=item *
+
+C<Cpu> - The projected percentage of allocated EC2 compute units that
+would be in use on the recommendation option had you used that resource
+during the analyzed period. This metric identifies the processing power
+required to run an application on the recommendation option.
+
+Depending on the instance type, tools in your operating system can show
+a lower percentage than CloudWatch when the instance is not allocated a
+full processor core.
+
+Units: Percent
+
+=item *
+
+C<Memory> - The percentage of memory that would be in use on the
+recommendation option had you used that resource during the analyzed
+period. This metric identifies the amount of memory required to run an
+application on the recommendation option.
+
+Units: Percent
+
+The C<Memory> metric is returned only for resources that have the
+unified CloudWatch agent installed on them. For more information, see
+Enabling Memory Utilization with the CloudWatch Agent
+(https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent).
+
+=back
+
 
 
 =head2 Timestamps => ArrayRef[Str|Undef]

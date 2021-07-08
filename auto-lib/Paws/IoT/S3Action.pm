@@ -55,7 +55,9 @@ by the object key. For more information, see S3 canned ACLs
 
 =head2 B<REQUIRED> Key => Str
 
-The object key.
+The object key. For more information, see Actions, resources, and
+condition keys for Amazon S3
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/list_amazons3.html).
 
 
 =head2 B<REQUIRED> RoleArn => Str

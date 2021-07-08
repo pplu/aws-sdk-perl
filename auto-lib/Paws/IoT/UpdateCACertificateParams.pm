@@ -41,7 +41,7 @@ CA certificate to inactive.
 
 =head2 B<REQUIRED> Action => Str
 
-The action that you want to apply to the CA cerrtificate. The only
+The action that you want to apply to the CA certificate. The only
 supported value is C<DEACTIVATE>.
 
 

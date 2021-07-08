@@ -46,7 +46,7 @@ The key identifier, or name, of the tag.
 
 =head2 Value => Str
 
-The string value that's associated with the key of the tag.
+The string value associated with the key of the tag.
 
 
 

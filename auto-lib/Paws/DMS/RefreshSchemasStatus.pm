@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Refres
 
 =head1 DESCRIPTION
 
-This class has no description
+Provides information that describes status of a schema at an endpoint
+specified by the C<DescribeRefreshSchemaStatus> operation.
 
 =head1 ATTRIBUTES
 

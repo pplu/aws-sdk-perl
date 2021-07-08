@@ -40,18 +40,26 @@ This class has no description
 
 =head2 LaunchTemplateId => Str
 
-The ID of the launch template.
+The ID of the launch template. If you specify the template ID, you
+can't specify the template name.
 
 
 =head2 LaunchTemplateName => Str
 
-The name of the launch template.
+The name of the launch template. If you specify the template name, you
+can't specify the template ID.
 
 
 =head2 Version => Str
 
-The version number of the launch template. Note: This is a required
-parameter and will be updated soon.
+The launch template version number, C<$Latest>, or C<$Default>. You
+must specify a value, otherwise the request fails.
+
+If the value is C<$Latest>, Amazon EC2 uses the latest version of the
+launch template.
+
+If the value is C<$Default>, Amazon EC2 uses the default version of the
+launch template.
 
 
 

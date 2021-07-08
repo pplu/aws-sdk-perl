@@ -41,7 +41,7 @@ Attributes for Kerberos configuration when Kerberos authentication is
 enabled using a security configuration. For more information see Use
 Kerberos Authentication
 (https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-kerberos.html)
-in the I<EMR Management Guide>.
+in the I<Amazon EMR Management Guide>.
 
 =head1 ATTRIBUTES
 

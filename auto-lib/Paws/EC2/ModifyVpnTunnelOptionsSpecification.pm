@@ -1,5 +1,6 @@
 package Paws::EC2::ModifyVpnTunnelOptionsSpecification;
   use Moose;
+  has DPDTimeoutAction => (is => 'ro', isa => 'Str');
   has DPDTimeoutSeconds => (is => 'ro', isa => 'Int');
   has IKEVersions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IKEVersionsRequestListValue]', request_name => 'IKEVersion', traits => ['NameInRequest']);
   has Phase1DHGroupNumbers => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Phase1DHGroupNumbersRequestListValue]', request_name => 'Phase1DHGroupNumber', traits => ['NameInRequest']);
@@ -14,7 +15,9 @@ package Paws::EC2::ModifyVpnTunnelOptionsSpecification;
   has RekeyFuzzPercentage => (is => 'ro', isa => 'Int');
   has RekeyMarginTimeSeconds => (is => 'ro', isa => 'Int');
   has ReplayWindowSize => (is => 'ro', isa => 'Int');
+  has StartupAction => (is => 'ro', isa => 'Str');
   has TunnelInsideCidr => (is => 'ro', isa => 'Str');
+  has TunnelInsideIpv6Cidr => (is => 'ro', isa => 'Str');
 1;
 
 ### main pod documentation begin ###
@@ -34,20 +37,30 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::ModifyVpnTunnelOptionsSpecification object:
 
-  $service_obj->Method(Att1 => { DPDTimeoutSeconds => $value, ..., TunnelInsideCidr => $value  });
+  $service_obj->Method(Att1 => { DPDTimeoutAction => $value, ..., TunnelInsideIpv6Cidr => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::ModifyVpnTunnelOptionsSpecification object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DPDTimeoutSeconds
+  $result->Att1->DPDTimeoutAction
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 DPDTimeoutAction => Str
+
+The action to take after DPD timeout occurs. Specify C<restart> to
+restart the IKE initiation. Specify C<clear> to end the IKE session.
+
+Valid Values: C<clear> | C<none> | C<restart>
+
+Default: C<clear>
 
 
 =head2 DPDTimeoutSeconds => Int
@@ -71,8 +84,8 @@ Valid values: C<ikev1> | C<ikev2>
 One or more Diffie-Hellman group numbers that are permitted for the VPN
 tunnel for phase 1 IKE negotiations.
 
-Valid values: C<2> | C<14> | C<15> | C<16> | C<17> | C<18> | C<22> |
-C<23> | C<24>
+Valid values: C<2> | C<14> | C<15> | C<16> | C<17> | C<18> | C<19> |
+C<20> | C<21> | C<22> | C<23> | C<24>
 
 
 =head2 Phase1EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase1EncryptionAlgorithmsRequestListValue>]
@@ -80,7 +93,8 @@ C<23> | C<24>
 One or more encryption algorithms that are permitted for the VPN tunnel
 for phase 1 IKE negotiations.
 
-Valid values: C<AES128> | C<AES256>
+Valid values: C<AES128> | C<AES256> | C<AES128-GCM-16> |
+C<AES256-GCM-16>
 
 
 =head2 Phase1IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase1IntegrityAlgorithmsRequestListValue>]
@@ -88,7 +102,7 @@ Valid values: C<AES128> | C<AES256>
 One or more integrity algorithms that are permitted for the VPN tunnel
 for phase 1 IKE negotiations.
 
-Valid values: C<SHA1> | C<SHA2-256>
+Valid values: C<SHA1> | C<SHA2-256> | C<SHA2-384> | C<SHA2-512>
 
 
 =head2 Phase1LifetimeSeconds => Int
@@ -106,7 +120,7 @@ One or more Diffie-Hellman group numbers that are permitted for the VPN
 tunnel for phase 2 IKE negotiations.
 
 Valid values: C<2> | C<5> | C<14> | C<15> | C<16> | C<17> | C<18> |
-C<22> | C<23> | C<24>
+C<19> | C<20> | C<21> | C<22> | C<23> | C<24>
 
 
 =head2 Phase2EncryptionAlgorithms => ArrayRef[L<Paws::EC2::Phase2EncryptionAlgorithmsRequestListValue>]
@@ -114,7 +128,8 @@ C<22> | C<23> | C<24>
 One or more encryption algorithms that are permitted for the VPN tunnel
 for phase 2 IKE negotiations.
 
-Valid values: C<AES128> | C<AES256>
+Valid values: C<AES128> | C<AES256> | C<AES128-GCM-16> |
+C<AES256-GCM-16>
 
 
 =head2 Phase2IntegrityAlgorithms => ArrayRef[L<Paws::EC2::Phase2IntegrityAlgorithmsRequestListValue>]
@@ -122,7 +137,7 @@ Valid values: C<AES128> | C<AES256>
 One or more integrity algorithms that are permitted for the VPN tunnel
 for phase 2 IKE negotiations.
 
-Valid values: C<SHA1> | C<SHA2-256>
+Valid values: C<SHA1> | C<SHA2-256> | C<SHA2-384> | C<SHA2-512>
 
 
 =head2 Phase2LifetimeSeconds => Int
@@ -177,9 +192,21 @@ Constraints: A value between 64 and 2048.
 Default: C<1024>
 
 
+=head2 StartupAction => Str
+
+The action to take when the establishing the tunnel for the VPN
+connection. By default, your customer gateway device must initiate the
+IKE negotiation and bring up the tunnel. Specify C<start> for AWS to
+initiate the IKE negotiation.
+
+Valid Values: C<add> | C<start>
+
+Default: C<add>
+
+
 =head2 TunnelInsideCidr => Str
 
-The range of inside IP addresses for the tunnel. Any specified CIDR
+The range of inside IPv4 addresses for the tunnel. Any specified CIDR
 blocks must be unique across all VPN connections that use the same
 virtual private gateway.
 
@@ -218,6 +245,15 @@ C<169.254.169.252/30>
 
 =back
 
+
+
+=head2 TunnelInsideIpv6Cidr => Str
+
+The range of inside IPv6 addresses for the tunnel. Any specified CIDR
+blocks must be unique across all VPN connections that use the same
+transit gateway.
+
+Constraints: A size /126 CIDR block from the local C<fd00::/8> range.
 
 
 

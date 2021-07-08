@@ -9,7 +9,10 @@ package Paws::LexModels::PutIntent;
   has DialogCodeHook => (is => 'ro', isa => 'Paws::LexModels::CodeHook', traits => ['NameInRequest'], request_name => 'dialogCodeHook');
   has FollowUpPrompt => (is => 'ro', isa => 'Paws::LexModels::FollowUpPrompt', traits => ['NameInRequest'], request_name => 'followUpPrompt');
   has FulfillmentActivity => (is => 'ro', isa => 'Paws::LexModels::FulfillmentActivity', traits => ['NameInRequest'], request_name => 'fulfillmentActivity');
+  has InputContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::InputContext]', traits => ['NameInRequest'], request_name => 'inputContexts');
+  has KendraConfiguration => (is => 'ro', isa => 'Paws::LexModels::KendraConfiguration', traits => ['NameInRequest'], request_name => 'kendraConfiguration');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
+  has OutputContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::OutputContext]', traits => ['NameInRequest'], request_name => 'outputContexts');
   has ParentIntentSignature => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'parentIntentSignature');
   has RejectionStatement => (is => 'ro', isa => 'Paws::LexModels::Statement', traits => ['NameInRequest'], request_name => 'rejectionStatement');
   has SampleUtterances => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'sampleUtterances');
@@ -40,142 +43,186 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $PutIntentResponse = $models . lex->PutIntent(
-      Name                => 'MyIntentName',
-      Checksum            => 'MyString',       # OPTIONAL
-      ConclusionStatement => {
-        Messages => [
-          {
-            Content     => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
-          },
-          ...
-        ],    # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-      },    # OPTIONAL
-      ConfirmationPrompt => {
-        MaxAttempts => 1,    # min: 1, max: 5
-        Messages    => [
-          {
-            Content     => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
-          },
-          ...
-        ],    # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-      },    # OPTIONAL
-      CreateVersion  => 1,                  # OPTIONAL
-      Description    => 'MyDescription',    # OPTIONAL
-      DialogCodeHook => {
-        MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
-        Uri            => 'MyLambdaARN',         # min: 20, max: 2048
+# To create an intent
+# This example shows how to create an intent for ordering pizzas.
+my $PutIntentResponse = $models.lex->PutIntent(
+'ConclusionStatement' => 
+{
+'Messages' => 
+[
 
-      },    # OPTIONAL
-      FollowUpPrompt => {
-        Prompt => {
-          MaxAttempts => 1,    # min: 1, max: 5
-          Messages    => [
-            {
-              Content     => 'MyContentString',    # min: 1, max: 1000
-              ContentType =>
-                'PlainText',    # values: PlainText, SSML, CustomPayload
-              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
-            },
-            ...
-          ],    # min: 1, max: 15
-          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-        },
-        RejectionStatement => {
-          Messages => [
-            {
-              Content     => 'MyContentString',    # min: 1, max: 1000
-              ContentType =>
-                'PlainText',    # values: PlainText, SSML, CustomPayload
-              GroupNumber => 1, # min: 1, max: 5; OPTIONAL
-            },
-            ...
-          ],    # min: 1, max: 15
-          ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-        },
+{
+'Content' => 'All right, I ordered  you a {Crust} crust {Type} pizza with {Sauce} sauce.',
+'ContentType' => 'PlainText'
+},
 
-      },    # OPTIONAL
-      FulfillmentActivity => {
-        Type     => 'ReturnIntent',    # values: ReturnIntent, CodeHook
-        CodeHook => {
-          MessageVersion => 'MyMessageVersion',    # min: 1, max: 5
-          Uri            => 'MyLambdaARN',         # min: 20, max: 2048
+{
+'Content' => 'OK, your {Crust} crust {Type} pizza with {Sauce} sauce is on the way.',
+'ContentType' => 'PlainText'
+}
+],
+'ResponseCard' => 'foo'
+},
+'ConfirmationPrompt' => 
+{
+'MaxAttempts' => 1,
+'Messages' => 
+[
 
-        },
-      },    # OPTIONAL
-      ParentIntentSignature => 'MyBuiltinIntentSignature',    # OPTIONAL
-      RejectionStatement    => {
-        Messages => [
-          {
-            Content     => 'MyContentString',    # min: 1, max: 1000
-            ContentType => 'PlainText', # values: PlainText, SSML, CustomPayload
-            GroupNumber => 1,           # min: 1, max: 5; OPTIONAL
-          },
-          ...
-        ],    # min: 1, max: 15
-        ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-      },    # OPTIONAL
-      SampleUtterances => [
-        'MyUtterance', ...    # min: 1, max: 200
-      ],    # OPTIONAL
-      Slots => [
-        {
-          Name               => 'MySlotName',       # min: 1, max: 100
-          SlotConstraint     => 'Required',         # values: Required, Optional
-          Description        => 'MyDescription',    # max: 200
-          ObfuscationSetting =>
-            'NONE',    # values: NONE, DEFAULT_OBFUSCATION; OPTIONAL
-          Priority         => 1,                  # max: 100; OPTIONAL
-          ResponseCard     => 'MyResponseCard',   # min: 1, max: 50000; OPTIONAL
-          SampleUtterances => [
-            'MyUtterance', ...                    # min: 1, max: 200
-          ],    # max: 10; OPTIONAL
-          SlotType =>
-            'MyCustomOrBuiltinSlotTypeName',    # min: 1, max: 100; OPTIONAL
-          SlotTypeVersion        => 'MyVersion',    # min: 1, max: 64; OPTIONAL
-          ValueElicitationPrompt => {
-            MaxAttempts => 1,                       # min: 1, max: 5
-            Messages    => [
-              {
-                Content     => 'MyContentString',    # min: 1, max: 1000
-                ContentType =>
-                  'PlainText',    # values: PlainText, SSML, CustomPayload
-                GroupNumber => 1, # min: 1, max: 5; OPTIONAL
-              },
-              ...
-            ],    # min: 1, max: 15
-            ResponseCard => 'MyResponseCard',    # min: 1, max: 50000; OPTIONAL
-          },
-        },
-        ...
-      ],    # OPTIONAL
-    );
+{
+'Content' => 'Should I order  your {Crust} crust {Type} pizza with {Sauce} sauce?',
+'ContentType' => 'PlainText'
+}
+]
+},
+'Description' => 'Order a pizza from a local pizzeria.',
+'FulfillmentActivity' => 
+{
+'Type' => 'ReturnIntent'
+},
+'Name' => 'DocOrderPizza',
+'RejectionStatement' => 
+{
+'Messages' => 
+[
 
-    # Results:
-    my $Checksum              = $PutIntentResponse->Checksum;
-    my $ConclusionStatement   = $PutIntentResponse->ConclusionStatement;
-    my $ConfirmationPrompt    = $PutIntentResponse->ConfirmationPrompt;
-    my $CreateVersion         = $PutIntentResponse->CreateVersion;
-    my $CreatedDate           = $PutIntentResponse->CreatedDate;
-    my $Description           = $PutIntentResponse->Description;
-    my $DialogCodeHook        = $PutIntentResponse->DialogCodeHook;
-    my $FollowUpPrompt        = $PutIntentResponse->FollowUpPrompt;
-    my $FulfillmentActivity   = $PutIntentResponse->FulfillmentActivity;
-    my $LastUpdatedDate       = $PutIntentResponse->LastUpdatedDate;
-    my $Name                  = $PutIntentResponse->Name;
-    my $ParentIntentSignature = $PutIntentResponse->ParentIntentSignature;
-    my $RejectionStatement    = $PutIntentResponse->RejectionStatement;
-    my $SampleUtterances      = $PutIntentResponse->SampleUtterances;
-    my $Slots                 = $PutIntentResponse->Slots;
-    my $Version               = $PutIntentResponse->Version;
+{
+'Content' => 'Ok, I'll cancel your order.',
+'ContentType' => 'PlainText'
+},
 
-    # Returns a L<Paws::LexModels::PutIntentResponse> object.
+{
+'Content' => 'I cancelled your order.',
+'ContentType' => 'PlainText'
+}
+]
+},
+'SampleUtterances' => 
+[
+'Order me a pizza.',
+'Order me a {Type} pizza.',
+'I want a {Crust} crust {Type} pizza',
+'I want a {Crust} crust {Type} pizza with {Sauce} sauce.'
+],
+'Slots' => 
+[
+
+{
+'Description' => 'The type of pizza to order.',
+'Name' => 'Type',
+'Priority' => 1,
+'SampleUtterances' => 
+[
+'Get me a {Type} pizza.',
+'A {Type} pizza please.',
+'I'd like a {Type} pizza.'
+],
+'SlotConstraint' => 'Required',
+'SlotType' => 'DocPizzaType',
+'SlotTypeVersion' => '$LATEST',
+'ValueElicitationPrompt' => 
+{
+'MaxAttempts' => 1,
+'Messages' => 
+[
+
+{
+'Content' => 'What type of pizza would you like?',
+'ContentType' => 'PlainText'
+},
+
+{
+'Content' => 'Vegie or cheese pizza?',
+'ContentType' => 'PlainText'
+},
+
+{
+'Content' => 'I can get you a vegie or a cheese pizza.',
+'ContentType' => 'PlainText'
+}
+]
+}
+},
+
+{
+'Description' => 'The type of pizza crust to order.',
+'Name' => 'Crust',
+'Priority' => 2,
+'SampleUtterances' => 
+[
+'Make it a {Crust} crust.',
+'I'd like a {Crust} crust.'
+],
+'SlotConstraint' => 'Required',
+'SlotType' => 'DocPizzaCrustType',
+'SlotTypeVersion' => '$LATEST',
+'ValueElicitationPrompt' => 
+{
+'MaxAttempts' => 1,
+'Messages' => 
+[
+
+{
+'Content' => 'What type of crust would you like?',
+'ContentType' => 'PlainText'
+},
+
+{
+'Content' => 'Thick or thin crust?',
+'ContentType' => 'PlainText'
+}
+]
+}
+},
+
+{
+'Description' => 'The type of sauce to use on the pizza.',
+'Name' => 'Sauce',
+'Priority' => 3,
+'SampleUtterances' => 
+[
+'Make it {Sauce} sauce.',
+'I'd like {Sauce} sauce.'
+],
+'SlotConstraint' => 'Required',
+'SlotType' => 'DocPizzaSauceType',
+'SlotTypeVersion' => '$LATEST',
+'ValueElicitationPrompt' => 
+{
+'MaxAttempts' => 1,
+'Messages' => 
+[
+
+{
+'Content' => 'White or red sauce?',
+'ContentType' => 'PlainText'
+},
+
+{
+'Content' => 'Garlic or tomato sauce?',
+'ContentType' => 'PlainText'
+}
+]
+}
+}
+]
+);
+
+# Results:
+my $checksum = $PutIntentResponse->checksum;
+my $conclusionStatement = $PutIntentResponse->conclusionStatement;
+my $confirmationPrompt = $PutIntentResponse->confirmationPrompt;
+my $createdDate = $PutIntentResponse->createdDate;
+my $description = $PutIntentResponse->description;
+my $fulfillmentActivity = $PutIntentResponse->fulfillmentActivity;
+my $lastUpdatedDate = $PutIntentResponse->lastUpdatedDate;
+my $name = $PutIntentResponse->name;
+my $rejectionStatement = $PutIntentResponse->rejectionStatement;
+my $sampleUtterances = $PutIntentResponse->sampleUtterances;
+my $slots = $PutIntentResponse->slots;
+my $version = $PutIntentResponse->version;
+
+# Returns a L<Paws::LexModels::PutIntentResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/models.lex/PutIntent>
@@ -309,6 +356,23 @@ pizzeria).
 
 
 
+=head2 InputContexts => ArrayRef[L<Paws::LexModels::InputContext>]
+
+An array of C<InputContext> objects that lists the contexts that must
+be active for Amazon Lex to choose the intent in a conversation with
+the user.
+
+
+
+=head2 KendraConfiguration => L<Paws::LexModels::KendraConfiguration>
+
+Configuration information required to use the
+C<AMAZON.KendraSearchIntent> intent to connect to an Amazon Kendra
+index. For more information, see AMAZON.KendraSearchIntent
+(http://docs.aws.amazon.com/lex/latest/dg/built-in-intent-kendra-search.html).
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 The name of the intent. The name is I<not> case sensitive.
@@ -321,6 +385,13 @@ C<HelpIntent>.
 For a list of built-in intents, see Standard Built-in Intents
 (https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/standard-intents)
 in the I<Alexa Skills Kit>.
+
+
+
+=head2 OutputContexts => ArrayRef[L<Paws::LexModels::OutputContext>]
+
+An array of C<OutputContext> objects that lists the contexts that the
+intent activates when the intent is fulfilled.
 
 
 

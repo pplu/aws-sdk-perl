@@ -74,7 +74,8 @@ Contains a list of C<IPRange> elements.
 
 =head2 OwnerId => Str
 
-Provides the AWS ID of the owner of a specific DB security group.
+Provides the Amazon Web Services ID of the owner of a specific DB
+security group.
 
 
 =head2 VpcId => Str

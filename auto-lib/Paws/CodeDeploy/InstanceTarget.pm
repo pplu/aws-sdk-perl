@@ -73,7 +73,7 @@ The status an EC2/On-premises deployment's target instance.
 
 =head2 TargetArn => Str
 
-The ARN of the target.
+The Amazon Resource Name (ARN) of the target.
 
 
 =head2 TargetId => Str

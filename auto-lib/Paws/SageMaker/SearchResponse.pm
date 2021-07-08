@@ -24,7 +24,7 @@ the token in the next request.
 
 =head2 Results => ArrayRef[L<Paws::SageMaker::SearchRecord>]
 
-A list of C<SearchResult> objects.
+A list of C<SearchRecord> objects.
 
 
 =head2 _request_id => Str

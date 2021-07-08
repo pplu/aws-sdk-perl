@@ -48,8 +48,8 @@ Information about an AWS CodeBuild project.
 The AWS Key Management Service (AWS KMS) customer master key (CMK) used
 to encrypt the build output artifacts.
 
-You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK alias (using the format alias/alias-name).
+You can specify either the ARN of the CMK or, if available, the CMK
+alias (using the format alias/alias-name).
 
 
 =head2 Environment => L<Paws::SecurityHub::AwsCodeBuildProjectEnvironment>

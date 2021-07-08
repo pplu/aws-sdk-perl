@@ -3,6 +3,7 @@ package Paws::FSX::ActiveDirectoryBackupAttributes;
   use Moose;
   has ActiveDirectoryId => (is => 'ro', isa => 'Str');
   has DomainName => (is => 'ro', isa => 'Str');
+  has ResourceARN => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::FSX::ActiveDirectoryBackupAttributes object:
 
-  $service_obj->Method(Att1 => { ActiveDirectoryId => $value, ..., DomainName => $value  });
+  $service_obj->Method(Att1 => { ActiveDirectoryId => $value, ..., ResourceARN => $value  });
 
 =head3 Results returned from an API call
 
@@ -49,6 +50,11 @@ the file system is joined.
 =head2 DomainName => Str
 
 The fully qualified domain name of the self-managed AD directory.
+
+
+=head2 ResourceARN => Str
+
+
 
 
 

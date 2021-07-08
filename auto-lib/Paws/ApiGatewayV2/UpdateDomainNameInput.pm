@@ -2,6 +2,7 @@
 package Paws::ApiGatewayV2::UpdateDomainNameInput;
   use Moose;
   has DomainNameConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ApiGatewayV2::DomainNameConfiguration]', request_name => 'domainNameConfigurations', traits => ['NameInRequest']);
+  has MutualTlsAuthentication => (is => 'ro', isa => 'Paws::ApiGatewayV2::MutualTlsAuthenticationInput', request_name => 'mutualTlsAuthentication', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ApiGatewayV2::UpdateDomainNameInput object:
 
-  $service_obj->Method(Att1 => { DomainNameConfigurations => $value, ..., DomainNameConfigurations => $value  });
+  $service_obj->Method(Att1 => { DomainNameConfigurations => $value, ..., MutualTlsAuthentication => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,6 +42,11 @@ Represents the input parameters for an UpdateDomainName request.
 =head2 DomainNameConfigurations => ArrayRef[L<Paws::ApiGatewayV2::DomainNameConfiguration>]
 
 The domain name configurations.
+
+
+=head2 MutualTlsAuthentication => L<Paws::ApiGatewayV2::MutualTlsAuthenticationInput>
+
+The mutual TLS authentication configuration for a custom domain name.
 
 
 

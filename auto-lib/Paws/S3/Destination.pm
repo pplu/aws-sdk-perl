@@ -64,7 +64,7 @@ C<AccessControlTranslation> property, this is the account ID of the
 destination bucket owner. For more information, see Replication
 Additional Configuration: Changing the Replica Owner
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/replication-change-owner.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 
 =head2 B<REQUIRED> Bucket => Str
@@ -82,8 +82,7 @@ C<SourceSelectionCriteria> is specified, you must specify this element.
 =head2 Metrics => L<Paws::S3::Metrics>
 
 A container specifying replication metrics-related settings enabling
-metrics and Amazon S3 events for S3 Replication Time Control (S3 RTC).
-Must be specified together with a C<ReplicationTime> block.
+replication metrics and events.
 
 
 =head2 ReplicationTime => L<Paws::S3::ReplicationTime>
@@ -96,14 +95,14 @@ C<Metrics> block.
 
 =head2 StorageClass => Str
 
-The storage class to use when replicating objects, such as standard or
-reduced redundancy. By default, Amazon S3 uses the storage class of the
-source object to create the object replica.
+The storage class to use when replicating objects, such as S3 Standard
+or reduced redundancy. By default, Amazon S3 uses the storage class of
+the source object to create the object replica.
 
 For valid values, see the C<StorageClass> element of the PUT Bucket
 replication
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTreplication.html)
-action in the I<Amazon Simple Storage Service API Reference>.
+action in the I<Amazon S3 API Reference>.
 
 
 

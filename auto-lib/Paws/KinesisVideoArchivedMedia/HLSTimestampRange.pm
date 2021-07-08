@@ -38,18 +38,13 @@ The start and end of the timestamp range for the requested media.
 
 This value should not be present if C<PlaybackType> is C<LIVE>.
 
-The values in the C<HLSTimestampRange> are inclusive. Fragments that
-begin before the start time but continue past it, or fragments that
-begin before the end time but continue past it, are included in the
-session.
-
 =head1 ATTRIBUTES
 
 
 =head2 EndTimestamp => Str
 
 The end of the timestamp range for the requested media. This value must
-be within 3 hours of the specified C<StartTimestamp>, and it must be
+be within 24 hours of the specified C<StartTimestamp>, and it must be
 later than the C<StartTimestamp> value.
 
 If C<FragmentSelectorType> for the request is C<SERVER_TIMESTAMP>, this
@@ -72,8 +67,9 @@ The start of the timestamp range for the requested media.
 If the C<HLSTimestampRange> value is specified, the C<StartTimestamp>
 value is required.
 
-This value is inclusive. Fragments that start before the
-C<StartTimestamp> and continue past it are included in the session. If
+Only fragments that start exactly at or after C<StartTimestamp> are
+included in the session. Fragments that start before C<StartTimestamp>
+and continue past it aren't included in the session. If
 C<FragmentSelectorType> is C<SERVER_TIMESTAMP>, the C<StartTimestamp>
 must be later than the stream head.
 

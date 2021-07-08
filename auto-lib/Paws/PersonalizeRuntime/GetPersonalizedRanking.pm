@@ -3,6 +3,8 @@ package Paws::PersonalizeRuntime::GetPersonalizedRanking;
   use Moose;
   has CampaignArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'campaignArn', required => 1);
   has Context => (is => 'ro', isa => 'Paws::PersonalizeRuntime::Context', traits => ['NameInRequest'], request_name => 'context');
+  has FilterArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterArn');
+  has FilterValues => (is => 'ro', isa => 'Paws::PersonalizeRuntime::FilterValues', traits => ['NameInRequest'], request_name => 'filterValues');
   has InputList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'inputList', required => 1);
   has UserId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'userId', required => 1);
 
@@ -42,11 +44,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyAttributeName' =>
           'MyAttributeValue',    # key: max: 150, value: max: 1000
       },    # OPTIONAL
+      FilterArn    => 'MyArn',    # OPTIONAL
+      FilterValues => {
+        'MyFilterAttributeName' =>
+          'MyFilterAttributeValue',    # key: max: 50, value: max: 1000
+      },    # OPTIONAL
       );
 
     # Results:
     my $PersonalizedRanking =
       $GetPersonalizedRankingResponse->PersonalizedRanking;
+    my $RecommendationId = $GetPersonalizedRankingResponse->RecommendationId;
 
  # Returns a L<Paws::PersonalizeRuntime::GetPersonalizedRankingResponse> object.
 
@@ -68,15 +76,43 @@ the personalized ranking.
 The contextual metadata to use when getting recommendations. Contextual
 metadata includes any interaction information that might be relevant
 when getting a user's recommendations, such as the user's current
-location or device type. For more information, see Contextual Metadata.
+location or device type.
+
+
+
+=head2 FilterArn => Str
+
+The Amazon Resource Name (ARN) of a filter you created to include items
+or exclude items from recommendations for a given user. For more
+information, see Filtering Recommendations
+(https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
+
+
+
+=head2 FilterValues => L<Paws::PersonalizeRuntime::FilterValues>
+
+The values to use when filtering recommendations. For each placeholder
+parameter in your filter expression, provide the parameter name (in
+matching case) as a key and the filter value(s) as the corresponding
+value. Separate multiple values for one parameter with a comma.
+
+For filter expressions that use an C<INCLUDE> element to include items,
+you must provide values for all parameters that are defined in the
+expression. For filters with expressions that use an C<EXCLUDE> element
+to exclude items, you can omit the C<filter-values>.In this case,
+Amazon Personalize doesn't use that portion of the expression to filter
+recommendations.
+
+For more information, see Filtering Recommendations
+(https://docs.aws.amazon.com/personalize/latest/dg/filter.html).
 
 
 
 =head2 B<REQUIRED> InputList => ArrayRef[Str|Undef]
 
-A list of items (itemId's) to rank. If an item was not included in the
-training dataset, the item is appended to the end of the reranked list.
-The maximum is 500.
+A list of items (by C<itemId>) to rank. If an item was not included in
+the training dataset, the item is appended to the end of the reranked
+list. The maximum is 500.
 
 
 

@@ -125,8 +125,12 @@ Valid values are: C<"Sha256">, C<"Sha1">
 
 =head2 B<REQUIRED> DocumentName => Str
 
-Required. The name of the Systems Manager document to run. This can be
-a public document or a custom document.
+The name of the Systems Manager document to run. This can be a public
+document or a custom document. To run a shared document belonging to
+another account, specify the document ARN. For more information about
+how to use shared documents, see Using shared SSM documents
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-using-shared.html)
+in the I<AWS Systems Manager User Guide>.
 
 
 
@@ -148,12 +152,19 @@ use the backslash. For example:
 
 =head2 InstanceIds => ArrayRef[Str|Undef]
 
-The instance IDs where the command should run. You can specify a
-maximum of 50 IDs. If you prefer not to list individual instance IDs,
-you can instead send commands to a fleet of instances using the Targets
-parameter, which accepts EC2 tags. For more information about how to
-use targets, see Sending Commands to a Fleet
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+The IDs of the instances where the command should run. Specifying
+instance IDs is most useful when you are targeting a limited number of
+instances, though you can specify up to 50 IDs.
+
+To target a larger number of instances, or if you prefer not to list
+individual instance IDs, we recommend using the C<Targets> option
+instead. Using C<Targets>, which accepts tag key-value pairs to
+identify the instances to send commands to, you can a send command to
+tens, hundreds, or thousands of instances at once.
+
+For more information about how to use targets, see Using targets and
+rate controls to send commands to a fleet
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -163,8 +174,8 @@ in the I<AWS Systems Manager User Guide>.
 (Optional) The maximum number of instances that are allowed to run the
 command at the same time. You can specify a number such as 10 or a
 percentage such as 10%. The default value is 50. For more information
-about how to use MaxConcurrency, see Using Concurrency Controls
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
+about how to use MaxConcurrency, see Using concurrency controls
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-velocity)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -175,9 +186,9 @@ The maximum number of errors allowed without the command failing. When
 the command fails one more time beyond the value of MaxErrors, the
 systems stops sending the command to additional targets. You can
 specify a number like 10 or a percentage like 10%. The default value is
-0. For more information about how to use MaxErrors, see Using Error
-Controls
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
+0. For more information about how to use MaxErrors, see Using error
+controls
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html#send-commands-maxerrors)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -206,7 +217,7 @@ be stored.
 
 (Deprecated) You can no longer specify this parameter. The system
 ignores it. Instead, Systems Manager automatically determines the
-Amazon S3 bucket region.
+Region of the S3 bucket.
 
 
 
@@ -227,11 +238,19 @@ commands.
 
 =head2 Targets => ArrayRef[L<Paws::SSM::Target>]
 
-(Optional) An array of search criteria that targets instances using a
-Key,Value combination that you specify. Targets is required if you
-don't provide one or more instance IDs in the call. For more
-information about how to use targets, see Sending Commands to a Fleet
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
+An array of search criteria that targets instances using a C<Key,Value>
+combination that you specify. Specifying targets is most useful when
+you want to send a command to a large number of instances at once.
+Using C<Targets>, which accepts tag key-value pairs to identify
+instances, you can send a command to tens, hundreds, or thousands of
+instances at once.
+
+To send a command to a smaller number of instances, you can use the
+C<InstanceIds> option instead.
+
+For more information about how to use targets, see Sending commands to
+a fleet
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/send-commands-multiple.html)
 in the I<AWS Systems Manager User Guide>.
 
 

@@ -52,7 +52,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> Keywords => Str
 
-
+Specifying this limits the results to only schemas that include the
+provided keywords.
 
 
 
@@ -64,13 +65,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 NextToken => Str
 
-
+The token that specifies the next page of results to return. To request
+the first page, leave NextToken empty. The token will expire in 24
+hours, and cannot be shared with other accounts.
 
 
 
 =head2 B<REQUIRED> RegistryName => Str
 
-
+The name of the registry.
 
 
 

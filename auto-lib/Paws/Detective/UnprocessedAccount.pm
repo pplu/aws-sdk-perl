@@ -34,8 +34,6 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Detective::
 
 =head1 DESCRIPTION
 
-Amazon Detective is currently in preview.
-
 A member account that was included in a request but for which the
 request could not be processed.
 

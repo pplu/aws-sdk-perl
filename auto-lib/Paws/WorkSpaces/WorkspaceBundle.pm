@@ -3,6 +3,7 @@ package Paws::WorkSpaces::WorkspaceBundle;
   use Moose;
   has BundleId => (is => 'ro', isa => 'Str');
   has ComputeType => (is => 'ro', isa => 'Paws::WorkSpaces::ComputeType');
+  has CreationTime => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ImageId => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
@@ -48,23 +49,29 @@ Describes a WorkSpace bundle.
 
 =head2 BundleId => Str
 
-The bundle identifier.
+The identifier of the bundle.
 
 
 =head2 ComputeType => L<Paws::WorkSpaces::ComputeType>
 
-The compute type. For more information, see Amazon WorkSpaces Bundles
+The compute type of the bundle. For more information, see Amazon
+WorkSpaces Bundles
 (http://aws.amazon.com/workspaces/details/#Amazon_WorkSpaces_Bundles).
+
+
+=head2 CreationTime => Str
+
+The time when the bundle was created.
 
 
 =head2 Description => Str
 
-A description.
+The description of the bundle.
 
 
 =head2 ImageId => Str
 
-The image identifier of the bundle.
+The identifier of the image that was used to create the bundle.
 
 
 =head2 LastUpdatedTime => Str
@@ -90,7 +97,7 @@ The size of the root volume.
 
 =head2 UserStorage => L<Paws::WorkSpaces::UserStorage>
 
-The size of the user storage.
+The size of the user volume.
 
 
 

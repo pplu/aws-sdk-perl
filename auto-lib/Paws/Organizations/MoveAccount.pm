@@ -29,12 +29,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
+  # To move an OU or account to another OU or the root
+  # The following example shows how to move a member account from the root to an
+  # OU:/n/n
     $organizations->MoveAccount(
-      AccountId           => 'MyAccountId',
-      DestinationParentId => 'MyParentId',
-      SourceParentId      => 'MyParentId',
-
+      'AccountId'           => 333333333333,
+      'DestinationParentId' => 'ou-examplerootid111-exampleouid111',
+      'SourceParentId'      => 'r-examplerootid111'
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/MoveAccount>

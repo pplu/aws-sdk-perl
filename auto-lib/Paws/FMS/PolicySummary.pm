@@ -55,7 +55,7 @@ The ID of the specified policy.
 
 =head2 PolicyName => Str
 
-The friendly name of the specified policy.
+The name of the specified policy.
 
 
 =head2 RemediationEnabled => Bool
@@ -76,7 +76,8 @@ valid values are C<AWS::EC2::NetworkInterface> and
 C<AWS::EC2::Instance>. For a security group content audit policy, valid
 values are C<AWS::EC2::SecurityGroup>, C<AWS::EC2::NetworkInterface>,
 and C<AWS::EC2::Instance>. For a security group usage audit policy, the
-value is C<AWS::EC2::SecurityGroup>.
+value is C<AWS::EC2::SecurityGroup>. For an AWS Network Firewall
+policy, the value is C<AWS::EC2::VPC>.
 
 
 =head2 SecurityServiceType => Str

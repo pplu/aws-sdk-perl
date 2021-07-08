@@ -35,25 +35,50 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SecurityHub
 
 =head1 DESCRIPTION
 
-The map filter for querying findings.
+A map filter for querying findings. Each map filter provides the field
+to check, the value to look for, and the comparison operator.
 
 =head1 ATTRIBUTES
 
 
 =head2 Comparison => Str
 
-The condition to apply to a key value when querying for findings with a
-map filter.
+The condition to apply to the key value when querying for findings with
+a map filter.
+
+To search for values that exactly match the filter value, use
+C<EQUALS>. For example, for the C<ResourceTags> field, the filter
+C<Department EQUALS Security> matches findings that have the value
+C<Security> for the tag C<Department>.
+
+To search for values other than the filter value, use C<NOT_EQUALS>.
+For example, for the C<ResourceTags> field, the filter C<Department
+NOT_EQUALS Finance> matches findings that do not have the value
+C<Finance> for the tag C<Department>.
+
+C<EQUALS> filters on the same field are joined by C<OR>. A finding
+matches if it matches any one of those filters.
+
+C<NOT_EQUALS> filters on the same field are joined by C<AND>. A finding
+matches only if it matches all of those filters.
+
+You cannot have both an C<EQUALS> filter and a C<NOT_EQUALS> filter on
+the same field.
 
 
 =head2 Key => Str
 
-The key of the map filter.
+The key of the map filter. For example, for C<ResourceTags>, C<Key>
+identifies the name of the tag. For C<UserDefinedFields>, C<Key> is the
+name of the field.
 
 
 =head2 Value => Str
 
-The value for the key in the map filter.
+The value for the key in the map filter. Filter values are case
+sensitive. For example, one of the values for a tag called
+C<Department> might be C<Security>. If you provide C<security> as the
+filter value, then there is no match.
 
 
 

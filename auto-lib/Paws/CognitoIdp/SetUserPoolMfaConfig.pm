@@ -63,7 +63,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cog
 
 =head2 MfaConfiguration => Str
 
-The MFA configuration. Valid values include:
+The MFA configuration. Users who don't have an MFA factor set up won't
+be able to sign-in if you set the MfaConfiguration value to
+E<lsquo>ONE<rsquo>. See Adding Multi-Factor Authentication (MFA) to a
+User Pool to learn more. Valid values include:
 
 =over
 

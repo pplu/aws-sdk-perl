@@ -4,15 +4,20 @@ package Paws::Snowball::CreateJob;
   has AddressId => (is => 'ro', isa => 'Str');
   has ClusterId => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::Snowball::DeviceConfiguration');
   has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has KmsKeyARN => (is => 'ro', isa => 'Str');
+  has LongTermPricingId => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
+  has OnDeviceServiceConfiguration => (is => 'ro', isa => 'Paws::Snowball::OnDeviceServiceConfiguration');
+  has RemoteManagement => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingOption => (is => 'ro', isa => 'Str');
   has SnowballCapacityPreference => (is => 'ro', isa => 'Str');
   has SnowballType => (is => 'ro', isa => 'Str');
+  has TaxDocuments => (is => 'ro', isa => 'Paws::Snowball::TaxDocuments');
 
   use MooseX::ClassAttribute;
 
@@ -86,7 +91,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sno
 
 =head2 AddressId => Str
 
-The ID for the address that you want the Snowball shipped to.
+The ID for the address that you want the Snow device shipped to.
 
 
 
@@ -105,10 +110,22 @@ C<Important Photos 2016-08-11>.
 
 
 
+=head2 DeviceConfiguration => L<Paws::Snowball::DeviceConfiguration>
+
+Defines the device configuration for an AWS Snowcone job.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
+
+
+
 =head2 ForwardingAddressId => Str
 
 The forwarding address ID for a job. This field is not supported in
-most regions.
+most Regions.
 
 
 
@@ -127,12 +144,36 @@ AWS Key Management Service (KMS) API action.
 
 
 
+=head2 LongTermPricingId => Str
+
+The ID of the long-term pricing type for the device.
+
+
+
 =head2 Notification => L<Paws::Snowball::Notification>
 
 Defines the Amazon Simple Notification Service (Amazon SNS)
 notification settings for this job.
 
 
+
+=head2 OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>
+
+Specifies the service or services on the Snow Family device that your
+transferred data will be exported from or imported into. AWS Snow
+Family supports Amazon S3 and NFS (Network File System).
+
+
+
+=head2 RemoteManagement => Str
+
+Allows you to securely operate and manage Snowcone devices remotely
+from outside of your internal network. When set to
+C<INSTALLED_AUTOSTART>, remote management will automatically be
+available when the device arrives at your location. Otherwise, you need
+to use the Snowball Client to manage the device.
+
+Valid values are: C<"INSTALLED_ONLY">, C<"INSTALLED_AUTOSTART">
 
 =head2 Resources => L<Paws::Snowball::JobResource>
 
@@ -162,27 +203,27 @@ AWS Identity and Access Management (IAM) API action.
 =head2 ShippingOption => Str
 
 The shipping speed for this job. This speed doesn't dictate how soon
-you'll get the Snowball, rather it represents how quickly the Snowball
-moves to its destination while in transit. Regional shipping speeds are
-as follows:
+you'll get the Snow device, rather it represents how quickly the Snow
+device moves to its destination while in transit. Regional shipping
+speeds are as follows:
 
 =over
 
 =item *
 
-In Australia, you have access to express shipping. Typically, Snowballs
-shipped express are delivered in about a day.
+In Australia, you have access to express shipping. Typically, Snow
+devices shipped express are delivered in about a day.
 
 =item *
 
 In the European Union (EU), you have access to express shipping.
-Typically, Snowballs shipped express are delivered in about a day. In
-addition, most countries in the EU have access to standard shipping,
+Typically, Snow devices shipped express are delivered in about a day.
+In addition, most countries in the EU have access to standard shipping,
 which typically takes less than a week, one way.
 
 =item *
 
-In India, Snowballs are delivered in one to seven days.
+In India, Snow devices are delivered in one to seven days.
 
 =item *
 
@@ -196,17 +237,44 @@ Valid values are: C<"SECOND_DAY">, C<"NEXT_DAY">, C<"EXPRESS">, C<"STANDARD">
 =head2 SnowballCapacityPreference => Str
 
 If your job is being created in one of the US regions, you have the
-option of specifying what size Snowball you'd like for this job. In all
-other regions, Snowballs come with 80 TB in storage capacity.
+option of specifying what size Snow device you'd like for this job. In
+all other regions, Snowballs come with 80 TB in storage capacity.
 
-Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"NoPreference">
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
+
+Valid values are: C<"T50">, C<"T80">, C<"T100">, C<"T42">, C<"T98">, C<"T8">, C<"T14">, C<"NoPreference">
 
 =head2 SnowballType => Str
 
-The type of AWS Snowball device to use for this job. Currently, the
-only supported device type for cluster jobs is C<EDGE>.
+The type of AWS Snow Family device to use for this job.
 
-Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">
+For cluster jobs, AWS Snow Family currently supports only the C<EDGE>
+device type.
+
+The type of AWS Snow device to use for this job. Currently, the only
+supported device type for cluster jobs is C<EDGE>.
+
+For more information, see Snowball Edge Device Options
+(https://docs.aws.amazon.com/snowball/latest/developer-guide/device-differences.html)
+in the Snowball Edge Developer Guide.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
+
+Valid values are: C<"STANDARD">, C<"EDGE">, C<"EDGE_C">, C<"EDGE_CG">, C<"EDGE_S">, C<"SNC1_HDD">, C<"SNC1_SSD">
+
+=head2 TaxDocuments => L<Paws::Snowball::TaxDocuments>
+
+The tax documents required in your AWS Region.
+
+
 
 
 =head1 SEE ALSO

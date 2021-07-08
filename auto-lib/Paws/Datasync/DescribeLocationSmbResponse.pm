@@ -38,12 +38,12 @@ The name of the Windows domain that the SMB server belongs to.
 
 =head2 LocationArn => Str
 
-The Amazon resource Name (ARN) of the SMB location that was described.
+The Amazon Resource Name (ARN) of the SMB location that was described.
 
 
 =head2 LocationUri => Str
 
-The URL of the source SBM location that was described.
+The URL of the source SMB location that was described.
 
 
 =head2 MountOptions => L<Paws::Datasync::SmbMountOptions>

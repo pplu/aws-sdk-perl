@@ -1,6 +1,7 @@
 
 package Paws::CloudWatch::DescribeAlarmsOutput;
   use Moose;
+  has CompositeAlarms => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::CompositeAlarm]');
   has MetricAlarms => (is => 'ro', isa => 'ArrayRef[Paws::CloudWatch::MetricAlarm]');
   has NextToken => (is => 'ro', isa => 'Str');
 
@@ -16,9 +17,14 @@ Paws::CloudWatch::DescribeAlarmsOutput
 =head1 ATTRIBUTES
 
 
+=head2 CompositeAlarms => ArrayRef[L<Paws::CloudWatch::CompositeAlarm>]
+
+The information about any composite alarms returned by the operation.
+
+
 =head2 MetricAlarms => ArrayRef[L<Paws::CloudWatch::MetricAlarm>]
 
-The information for the specified alarms.
+The information about any metric alarms returned by the operation.
 
 
 =head2 NextToken => Str

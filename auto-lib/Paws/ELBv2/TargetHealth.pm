@@ -78,12 +78,13 @@ following values:
 =item *
 
 C<Target.ResponseCodeMismatch> - The health checks did not return an
-expected HTTP code. Applies only to Application Load Balancers.
+expected HTTP code. Applies only to Application Load Balancers and
+Gateway Load Balancers.
 
 =item *
 
 C<Target.Timeout> - The health check requests timed out. Applies only
-to Application Load Balancers.
+to Application Load Balancers and Gateway Load Balancers.
 
 =item *
 

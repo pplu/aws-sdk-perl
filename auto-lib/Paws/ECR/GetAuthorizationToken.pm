@@ -27,12 +27,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.ecr = Paws->service('ECR');
-    # To obtain an authorization token
-    # This example gets an authorization token for your default registry.
-    my $GetAuthorizationTokenResponse = $api . ecr->GetAuthorizationToken();
+    my $GetAuthorizationTokenResponse = $api . ecr->GetAuthorizationToken(
+      RegistryIds => [ 'MyRegistryId', ... ],    # OPTIONAL
+    );
 
     # Results:
-    my $authorizationData = $GetAuthorizationTokenResponse->authorizationData;
+    my $AuthorizationData = $GetAuthorizationTokenResponse->AuthorizationData;
 
     # Returns a L<Paws::ECR::GetAuthorizationTokenResponse> object.
 

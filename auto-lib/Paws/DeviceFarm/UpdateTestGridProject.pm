@@ -4,6 +4,7 @@ package Paws::DeviceFarm::UpdateTestGridProject;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has ProjectArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectArn' , required => 1);
+  has VpcConfig => (is => 'ro', isa => 'Paws::DeviceFarm::TestGridVpcConfig', traits => ['NameInRequest'], request_name => 'vpcConfig' );
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ProjectArn  => 'MyDeviceFarmArn',
       Description => 'MyResourceDescription',    # OPTIONAL
       Name        => 'MyResourceName',           # OPTIONAL
+      VpcConfig   => {
+        SecurityGroupIds => [
+          'MyNonEmptyString', ...                # min: 1, max: 4096
+        ],    # min: 1, max: 5
+        SubnetIds => [
+          'MyNonEmptyString', ...    # min: 1, max: 4096
+        ],    # min: 1, max: 8
+        VpcId => 'MyNonEmptyString',    # min: 1, max: 4096
+
+      },    # OPTIONAL
     );
 
     # Results:
@@ -61,6 +72,12 @@ Human-readable name for the project.
 =head2 B<REQUIRED> ProjectArn => Str
 
 ARN of the project to update.
+
+
+
+=head2 VpcConfig => L<Paws::DeviceFarm::TestGridVpcConfig>
+
+The VPC security groups and subnets that are attached to a project.
 
 
 

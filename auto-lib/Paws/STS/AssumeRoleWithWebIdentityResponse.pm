@@ -6,6 +6,7 @@ package Paws::STS::AssumeRoleWithWebIdentityResponse;
   has Credentials => (is => 'ro', isa => 'Paws::STS::Credentials');
   has PackedPolicySize => (is => 'ro', isa => 'Int');
   has Provider => (is => 'ro', isa => 'Str');
+  has SourceIdentity => (is => 'ro', isa => 'Str');
   has SubjectFromWebIdentityToken => (is => 'ro', isa => 'Str');
 
   has _request_id => (is => 'ro', isa => 'Str');
@@ -61,6 +62,36 @@ The issuing authority of the web identity token presented. For OpenID
 Connect ID tokens, this contains the value of the C<iss> field. For
 OAuth 2.0 access tokens, this contains the value of the C<ProviderId>
 parameter that was passed in the C<AssumeRoleWithWebIdentity> request.
+
+
+=head2 SourceIdentity => Str
+
+The value of the source identity that is returned in the JSON web token
+(JWT) from the identity provider.
+
+You can require users to set a source identity value when they assume a
+role. You do this by using the C<sts:SourceIdentity> condition key in a
+role trust policy. That way, actions that are taken with the role are
+associated with that user. After the source identity is set, the value
+cannot be changed. It is present in the request for all actions that
+are taken by the role and persists across chained role
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts#iam-term-role-chaining)
+sessions. You can configure your identity provider to use an attribute
+associated with your users, like user name or email, as the source
+identity when calling C<AssumeRoleWithWebIdentity>. You do this by
+adding a claim to the JSON web token. To learn more about OIDC tokens
+and claims, see Using Tokens with User Pools
+(https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-with-identity-providers.html)
+in the I<Amazon Cognito Developer Guide>. For more information about
+using source identity, see Monitor and control actions taken with
+assumed roles
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_control-access_monitor.html)
+in the I<IAM User Guide>.
+
+The regex used to validate this parameter is a string of characters
+consisting of upper- and lower-case alphanumeric characters with no
+spaces. You can also include underscores or any of the following
+characters: =,.@-
 
 
 =head2 SubjectFromWebIdentityToken => Str

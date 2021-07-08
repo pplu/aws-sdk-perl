@@ -40,7 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Filters => [
         {
           Name   => 'cluster-identifier', # values: cluster-identifier, iam-role
-          Values => [ 'MyString', ... ],
+          Values => [
+            'MyString', ...               # max: 2147483647
+          ],
 
         },
         ...
@@ -126,7 +128,7 @@ scheduled actions that have invocations after this time are retrieved.
 
 The type of the scheduled actions to retrieve.
 
-Valid values are: C<"ResizeCluster">
+Valid values are: C<"ResizeCluster">, C<"PauseCluster">, C<"ResumeCluster">
 
 
 =head1 SEE ALSO

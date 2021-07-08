@@ -6,6 +6,7 @@ package Paws::IoT::ListThings;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has ThingTypeName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'thingTypeName');
+  has UsePrefixAttributeValue => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'usePrefixAttributeValue');
 
   use MooseX::ClassAttribute;
 
@@ -33,11 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListThingsResponse = $iot->ListThings(
-      AttributeName  => 'MyAttributeName',     # OPTIONAL
-      AttributeValue => 'MyAttributeValue',    # OPTIONAL
-      MaxResults     => 1,                     # OPTIONAL
-      NextToken      => 'MyNextToken',         # OPTIONAL
-      ThingTypeName  => 'MyThingTypeName',     # OPTIONAL
+      AttributeName           => 'MyAttributeName',     # OPTIONAL
+      AttributeValue          => 'MyAttributeValue',    # OPTIONAL
+      MaxResults              => 1,                     # OPTIONAL
+      NextToken               => 'MyNextToken',         # OPTIONAL
+      ThingTypeName           => 'MyThingTypeName',     # OPTIONAL
+      UsePrefixAttributeValue => 1,                     # OPTIONAL
     );
 
     # Results:
@@ -72,13 +74,26 @@ The maximum number of results to return in this operation.
 
 =head2 NextToken => Str
 
-The token to retrieve the next set of results.
+To retrieve the next set of results, the C<nextToken> value from a
+previous response; otherwise B<null> to receive the first set of
+results.
 
 
 
 =head2 ThingTypeName => Str
 
 The name of the thing type used to search for things.
+
+
+
+=head2 UsePrefixAttributeValue => Bool
+
+When C<true>, the action returns the thing resources with attribute
+values that start with the C<attributeValue> provided.
+
+When C<false>, or not present, the action returns only the thing
+resources with attribute values that match the entire C<attributeValue>
+provided.
 
 
 

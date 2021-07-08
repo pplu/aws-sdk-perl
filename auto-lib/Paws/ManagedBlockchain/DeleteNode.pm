@@ -1,14 +1,14 @@
 
 package Paws::ManagedBlockchain::DeleteNode;
   use Moose;
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
+  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'memberId');
   has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
   has NodeId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodeId', required => 1);
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'DeleteNode');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes/{nodeId}');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/nodes/{nodeId}');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'DELETE');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::DeleteNodeOutput');
 1;
@@ -31,10 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $managedblockchain = Paws->service('ManagedBlockchain');
     my $DeleteNodeOutput = $managedblockchain->DeleteNode(
-      MemberId  => 'MyResourceIdString',
       NetworkId => 'MyResourceIdString',
       NodeId    => 'MyResourceIdString',
-
+      MemberId  => 'MyResourceIdString',    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -43,15 +42,37 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/man
 =head1 ATTRIBUTES
 
 
-=head2 B<REQUIRED> MemberId => Str
+=head2 MemberId => Str
 
 The unique identifier of the member that owns this node.
+
+Applies only to Hyperledger Fabric and is required for Hyperledger
+Fabric.
 
 
 
 =head2 B<REQUIRED> NetworkId => Str
 
-The unique identifier of the network that the node belongs to.
+The unique identifier of the network that the node is on.
+
+Ethereum public networks have the following C<NetworkId>s:
+
+=over
+
+=item *
+
+C<n-ethereum-mainnet>
+
+=item *
+
+C<n-ethereum-rinkeby>
+
+=item *
+
+C<n-ethereum-ropsten>
+
+=back
+
 
 
 

@@ -66,9 +66,9 @@ Settings for system actions when input is lost.
 
 =head2 OutputLockingMode => Str
 
-Indicates how MediaLive pipelines are synchronized. PIPELINELOCKING -
+Indicates how MediaLive pipelines are synchronized. PIPELINE_LOCKING -
 MediaLive will attempt to synchronize the output of each pipeline to
-the other. EPOCHLOCKING - MediaLive will attempt to synchronize the
+the other. EPOCH_LOCKING - MediaLive will attempt to synchronize the
 output of each pipeline to the Unix epoch.
 
 

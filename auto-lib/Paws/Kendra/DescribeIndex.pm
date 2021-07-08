@@ -33,10 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $CreatedAt   = $DescribeIndexResponse->CreatedAt;
-    my $Description = $DescribeIndexResponse->Description;
+    my $CapacityUnits = $DescribeIndexResponse->CapacityUnits;
+    my $CreatedAt     = $DescribeIndexResponse->CreatedAt;
+    my $Description   = $DescribeIndexResponse->Description;
     my $DocumentMetadataConfigurations =
       $DescribeIndexResponse->DocumentMetadataConfigurations;
+    my $Edition         = $DescribeIndexResponse->Edition;
     my $ErrorMessage    = $DescribeIndexResponse->ErrorMessage;
     my $Id              = $DescribeIndexResponse->Id;
     my $IndexStatistics = $DescribeIndexResponse->IndexStatistics;
@@ -44,8 +46,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RoleArn         = $DescribeIndexResponse->RoleArn;
     my $ServerSideEncryptionConfiguration =
       $DescribeIndexResponse->ServerSideEncryptionConfiguration;
-    my $Status    = $DescribeIndexResponse->Status;
-    my $UpdatedAt = $DescribeIndexResponse->UpdatedAt;
+    my $Status            = $DescribeIndexResponse->Status;
+    my $UpdatedAt         = $DescribeIndexResponse->UpdatedAt;
+    my $UserContextPolicy = $DescribeIndexResponse->UserContextPolicy;
+    my $UserTokenConfigurations =
+      $DescribeIndexResponse->UserTokenConfigurations;
 
     # Returns a L<Paws::Kendra::DescribeIndexResponse> object.
 

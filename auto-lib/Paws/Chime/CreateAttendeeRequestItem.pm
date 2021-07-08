@@ -2,6 +2,7 @@
 package Paws::Chime::CreateAttendeeRequestItem;
   use Moose;
   has ExternalUserId => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Chime::Tag]');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Chime::CreateAttendeeRequestItem object:
 
-  $service_obj->Method(Att1 => { ExternalUserId => $value, ..., ExternalUserId => $value  });
+  $service_obj->Method(Att1 => { ExternalUserId => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -41,8 +42,13 @@ BatchCreateAttendee action.
 
 =head2 B<REQUIRED> ExternalUserId => Str
 
-The Amazon Chime SDK external user ID. Links the attendee to an
-identity managed by a builder application.
+The Amazon Chime SDK external user ID. An idempotency token. Links the
+attendee to an identity managed by a builder application.
+
+
+=head2 Tags => ArrayRef[L<Paws::Chime::Tag>]
+
+The tag key-value pairs.
 
 
 

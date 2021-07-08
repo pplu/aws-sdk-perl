@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Comprehend:
 =head1 DESCRIPTION
 
 Configuration parameters for an optional private Virtual Private Cloud
-(VPC) containing the resources you are using for the job. For For more
+(VPC) containing the resources you are using for the job. For more
 information, see Amazon VPC
 (https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html).
 

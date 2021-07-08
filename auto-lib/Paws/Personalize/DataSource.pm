@@ -44,7 +44,7 @@ dataset.
 The path to the Amazon S3 bucket where the data that you want to upload
 to your dataset is stored. For example:
 
-C<s3://bucket-name/training-data.csv>
+C<s3://bucket-name/folder-name/>
 
 
 

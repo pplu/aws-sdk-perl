@@ -34,7 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $imagebuilder->ListComponentBuildVersions(
       ComponentVersionArn => 'MyComponentVersionArn',
       MaxResults          => 1,                         # OPTIONAL
-      NextToken           => 'MyNonEmptyString',        # OPTIONAL
+      NextToken           => 'MyPaginationToken',       # OPTIONAL
       );
 
     # Results:

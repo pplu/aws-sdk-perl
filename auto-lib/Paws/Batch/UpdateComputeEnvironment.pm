@@ -62,22 +62,32 @@ to update.
 =head2 ComputeResources => L<Paws::Batch::ComputeResourceUpdate>
 
 Details of the compute resources managed by the compute environment.
-Required for a managed compute environment.
+Required for a managed compute environment. For more information, see
+Compute Environments
+(https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+in the I<AWS Batch User Guide>.
 
 
 
 =head2 ServiceRole => Str
 
 The full Amazon Resource Name (ARN) of the IAM role that allows AWS
-Batch to make calls to other AWS services on your behalf.
+Batch to make calls to other AWS services on your behalf. For more
+information, see AWS Batch service IAM role
+(https://docs.aws.amazon.com/batch/latest/userguide/service_IAM_role.html)
+in the I<AWS Batch User Guide>.
+
+If the compute environment has a service-linked role, it cannot be
+changed to use a regular IAM role. If the compute environment has a
+regular IAM role, it cannot be changed to use a service-linked role.
 
 If your specified role has a path other than C</>, then you must either
 specify the full role ARN (this is recommended) or prefix the role name
 with the path.
 
-Depending on how you created your AWS Batch service role, its ARN may
+Depending on how you created your AWS Batch service role, its ARN might
 contain the C<service-role> path prefix. When you only specify the name
-of the service role, AWS Batch assumes that your ARN does not use the
+of the service role, AWS Batch assumes that your ARN doesn't use the
 C<service-role> path prefix. Because of this, we recommend that you
 specify the full ARN of your service role when you create compute
 environments.
@@ -89,6 +99,18 @@ environments.
 The state of the compute environment. Compute environments in the
 C<ENABLED> state can accept jobs from a queue and scale in or out
 automatically based on the workload demand of its associated queues.
+
+If the state is C<ENABLED>, then the AWS Batch scheduler can attempt to
+place jobs from an associated job queue on the compute resources within
+the environment. If the compute environment is managed, then it can
+scale its instances out or in automatically, based on the job queue
+demand.
+
+If the state is C<DISABLED>, then the AWS Batch scheduler doesn't
+attempt to place jobs within the environment. Jobs in a C<STARTING> or
+C<RUNNING> state continue to progress normally. Managed compute
+environments in the C<DISABLED> state don't scale out. However, they
+scale in to C<minvCpus> value after instances become idle.
 
 Valid values are: C<"ENABLED">, C<"DISABLED">
 

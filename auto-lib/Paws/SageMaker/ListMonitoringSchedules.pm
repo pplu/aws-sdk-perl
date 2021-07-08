@@ -7,6 +7,8 @@ package Paws::SageMaker::ListMonitoringSchedules;
   has LastModifiedTimeAfter => (is => 'ro', isa => 'Str');
   has LastModifiedTimeBefore => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
+  has MonitoringJobDefinitionName => (is => 'ro', isa => 'Str');
+  has MonitoringTypeEquals => (is => 'ro', isa => 'Str');
   has NameContains => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has SortBy => (is => 'ro', isa => 'Str');
@@ -39,17 +41,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $api.sagemaker = Paws->service('SageMaker');
     my $ListMonitoringSchedulesResponse =
       $api . sagemaker->ListMonitoringSchedules(
-      CreationTimeAfter      => '1970-01-01T01:00:00',    # OPTIONAL
-      CreationTimeBefore     => '1970-01-01T01:00:00',    # OPTIONAL
-      EndpointName           => 'MyEndpointName',         # OPTIONAL
-      LastModifiedTimeAfter  => '1970-01-01T01:00:00',    # OPTIONAL
-      LastModifiedTimeBefore => '1970-01-01T01:00:00',    # OPTIONAL
-      MaxResults             => 1,                        # OPTIONAL
-      NameContains           => 'MyNameContains',         # OPTIONAL
-      NextToken              => 'MyNextToken',            # OPTIONAL
-      SortBy                 => 'Name',                   # OPTIONAL
-      SortOrder              => 'Ascending',              # OPTIONAL
-      StatusEquals           => 'Pending',                # OPTIONAL
+      CreationTimeAfter           => '1970-01-01T01:00:00',           # OPTIONAL
+      CreationTimeBefore          => '1970-01-01T01:00:00',           # OPTIONAL
+      EndpointName                => 'MyEndpointName',                # OPTIONAL
+      LastModifiedTimeAfter       => '1970-01-01T01:00:00',           # OPTIONAL
+      LastModifiedTimeBefore      => '1970-01-01T01:00:00',           # OPTIONAL
+      MaxResults                  => 1,                               # OPTIONAL
+      MonitoringJobDefinitionName => 'MyMonitoringJobDefinitionName', # OPTIONAL
+      MonitoringTypeEquals        => 'DataQuality',                   # OPTIONAL
+      NameContains                => 'MyNameContains',                # OPTIONAL
+      NextToken                   => 'MyNextToken',                   # OPTIONAL
+      SortBy                      => 'Name',                          # OPTIONAL
+      SortOrder                   => 'Ascending',                     # OPTIONAL
+      StatusEquals                => 'Pending',                       # OPTIONAL
       );
 
     # Results:
@@ -105,6 +109,20 @@ The maximum number of jobs to return in the response. The default value
 is 10.
 
 
+
+=head2 MonitoringJobDefinitionName => Str
+
+Gets a list of the monitoring schedules for the specified monitoring
+job definition.
+
+
+
+=head2 MonitoringTypeEquals => Str
+
+A filter that returns only the monitoring schedules for the specified
+monitoring type.
+
+Valid values are: C<"DataQuality">, C<"ModelQuality">, C<"ModelBias">, C<"ModelExplainability">
 
 =head2 NameContains => Str
 

@@ -2,6 +2,7 @@
 package Paws::Personalize::Campaign;
   use Moose;
   has CampaignArn => (is => 'ro', isa => 'Str', request_name => 'campaignArn', traits => ['NameInRequest']);
+  has CampaignConfig => (is => 'ro', isa => 'Paws::Personalize::CampaignConfig', request_name => 'campaignConfig', traits => ['NameInRequest']);
   has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
   has LastUpdatedDateTime => (is => 'ro', isa => 'Str', request_name => 'lastUpdatedDateTime', traits => ['NameInRequest']);
@@ -50,6 +51,11 @@ For more information on campaigns, see CreateCampaign.
 =head2 CampaignArn => Str
 
 The Amazon Resource Name (ARN) of the campaign.
+
+
+=head2 CampaignConfig => L<Paws::Personalize::CampaignConfig>
+
+The configuration details of a campaign.
 
 
 =head2 CreationDateTime => Str

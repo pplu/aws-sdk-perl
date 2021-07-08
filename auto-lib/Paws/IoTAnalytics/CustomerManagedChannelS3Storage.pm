@@ -36,29 +36,29 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 =head1 DESCRIPTION
 
 Use this to store channel data in an S3 bucket that you manage. If
-customer managed storage is selected, the "retentionPeriod" parameter
-is ignored. The choice of service-managed or customer-managed S3
-storage cannot be changed after creation of the channel.
+customer managed storage is selected, the C<retentionPeriod> parameter
+is ignored. You cannot change the choice of service-managed or
+customer-managed S3 storage after the channel is created.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Bucket => Str
 
-The name of the Amazon S3 bucket in which channel data is stored.
+The name of the S3 bucket in which channel data is stored.
 
 
 =head2 KeyPrefix => Str
 
-[Optional] The prefix used to create the keys of the channel data
-objects. Each object in an Amazon S3 bucket has a key that is its
-unique identifier within the bucket (each object in a bucket has
-exactly one key). The prefix must end with a '/'.
+Optional. The prefix used to create the keys of the channel data
+objects. Each object in an S3 bucket has a key that is its unique
+identifier in the bucket. Each object in a bucket has exactly one key.
+The prefix must end with a forward slash (/).
 
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The ARN of the role which grants AWS IoT Analytics permission to
+The ARN of the role that grants AWS IoT Analytics permission to
 interact with your Amazon S3 resources.
 
 

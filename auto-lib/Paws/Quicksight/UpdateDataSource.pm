@@ -39,10 +39,123 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DataSourceId => 'MyResourceId',
       Name         => 'MyResourceName',
       Credentials  => {
+        CopySourceArn  => 'MyCopySourceArn',    # OPTIONAL
         CredentialPair => {
-          Password => 'MyPassword',    # min: 1, max: 1024
-          Username => 'MyUsername',    # min: 1, max: 64
+          Password                      => 'MyPassword',    # min: 1, max: 1024
+          Username                      => 'MyUsername',    # min: 1, max: 64
+          AlternateDataSourceParameters => [
+            {
+              AmazonElasticsearchParameters => {
+                Domain => 'MyDomain',    # min: 1, max: 64
 
+              },    # OPTIONAL
+              AthenaParameters => {
+                WorkGroup => 'MyWorkGroup',    # min: 1, max: 128; OPTIONAL
+              },    # OPTIONAL
+              AuroraParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              AuroraPostgreSqlParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              AwsIotAnalyticsParameters => {
+                DataSetName => 'MyDataSetName',    # min: 1, max: 128
+
+              },    # OPTIONAL
+              JiraParameters => {
+                SiteBaseUrl => 'MySiteBaseUrl',    # min: 1, max: 1024
+
+              },    # OPTIONAL
+              MariaDbParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              MySqlParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              OracleParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              PostgreSqlParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              PrestoParameters => {
+                Catalog => 'MyCatalog',    # max: 128
+                Host    => 'MyHost',       # min: 1, max: 256
+                Port    => 1,              # min: 1, max: 65535
+
+              },    # OPTIONAL
+              RdsParameters => {
+                Database   => 'MyDatabase',      # min: 1, max: 128
+                InstanceId => 'MyInstanceId',    # min: 1, max: 64
+
+              },    # OPTIONAL
+              RedshiftParameters => {
+                Database  => 'MyDatabase',     # min: 1, max: 128
+                ClusterId => 'MyClusterId',    # min: 1, max: 64; OPTIONAL
+                Host      => 'MyHost',         # min: 1, max: 256
+                Port      => 1,                # max: 65535; OPTIONAL
+              },    # OPTIONAL
+              S3Parameters => {
+                ManifestFileLocation => {
+                  Bucket => 'MyS3Bucket',    # min: 1, max: 1024
+                  Key    => 'MyS3Key',       # min: 1, max: 1024
+
+                },
+
+              },    # OPTIONAL
+              ServiceNowParameters => {
+                SiteBaseUrl => 'MySiteBaseUrl',    # min: 1, max: 1024
+
+              },    # OPTIONAL
+              SnowflakeParameters => {
+                Database  => 'MyDatabase',     # min: 1, max: 128
+                Host      => 'MyHost',         # min: 1, max: 256
+                Warehouse => 'MyWarehouse',    # max: 128
+
+              },    # OPTIONAL
+              SparkParameters => {
+                Host => 'MyHost',    # min: 1, max: 256
+                Port => 1,           # min: 1, max: 65535
+
+              },    # OPTIONAL
+              SqlServerParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              TeradataParameters => {
+                Database => 'MyDatabase',    # min: 1, max: 128
+                Host     => 'MyHost',        # min: 1, max: 256
+                Port     => 1,               # min: 1, max: 65535
+
+              },    # OPTIONAL
+              TwitterParameters => {
+                MaxRows => 1,            # min: 1
+                Query   => 'MyQuery',    # min: 1, max: 256
+
+              },    # OPTIONAL
+            },
+            ...
+          ],    # min: 1, max: 50; OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       DataSourceParameters => {
@@ -80,6 +193,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
         },    # OPTIONAL
         MySqlParameters => {
+          Database => 'MyDatabase',    # min: 1, max: 128
+          Host     => 'MyHost',        # min: 1, max: 256
+          Port     => 1,               # min: 1, max: 65535
+
+        },    # OPTIONAL
+        OracleParameters => {
           Database => 'MyDatabase',    # min: 1, max: 128
           Host     => 'MyHost',        # min: 1, max: 256
           Port     => 1,               # min: 1, max: 65535

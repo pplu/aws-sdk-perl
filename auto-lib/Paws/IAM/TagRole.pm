@@ -49,7 +49,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iam
 
 =head2 B<REQUIRED> RoleName => Str
 
-The name of the role that you want to add tags to.
+The name of the IAM role to which you want to add tags.
 
 This parameter accepts (through its regex pattern
 (http://wikipedia.org/wiki/regex)) a string of characters that consist
@@ -60,9 +60,8 @@ also include any of the following characters: _+=,.@-
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-The list of tags that you want to attach to the role. Each tag consists
-of a key name and an associated value. You can specify this with a JSON
-string.
+The list of tags that you want to attach to the IAM role. Each tag
+consists of a key name and an associated value.
 
 
 

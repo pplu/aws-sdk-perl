@@ -31,13 +31,13 @@ The instances.
 
 =head2 OwnerId => Str
 
-The ID of the AWS account that owns the reservation.
+The ID of the account that owns the reservation.
 
 
 =head2 RequesterId => Str
 
 The ID of the requester that launched the instances on your behalf (for
-example, AWS Management Console or Auto Scaling).
+example, Management Console or Auto Scaling).
 
 
 =head2 ReservationId => Str

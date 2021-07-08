@@ -34,15 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudTrail:
 
 =head1 DESCRIPTION
 
-The Amazon S3 buckets or AWS Lambda functions that you specify in your
-event selectors for your trail to log data events. Data events provide
-information about the resource operations performed on or within a
-resource itself. These are also known as data plane operations. You can
-specify up to 250 data resources for a trail.
+The Amazon S3 buckets, AWS Lambda functions, or Amazon DynamoDB tables
+that you specify in your event selectors for your trail to log data
+events. Data events provide information about the resource operations
+performed on or within a resource itself. These are also known as data
+plane operations. You can specify up to 250 data resources for a trail.
 
 The total number of allowed data resources is 250. This number can be
 distributed between 1 and 5 event selectors, but the total cannot
 exceed 250 across all selectors.
+
+If you are using advanced event selectors, the maximum total number of
+values for all conditions, across all advanced event selectors for the
+trail, is 500.
 
 The following example demonstrates how logging works when you configure
 logging of all data events for an S3 bucket named C<bucket-1>. In this
@@ -112,7 +116,13 @@ trail. The trail doesnE<rsquo>t log the event.
 =head2 Type => Str
 
 The resource type in which you want to log data events. You can specify
-C<AWS::S3::Object> or C<AWS::Lambda::Function> resources.
+C<AWS::S3::Object>, C<AWS::Lambda::Function>, or
+C<AWS::DynamoDB::Table> resources.
+
+The C<AWS::S3Outposts::Object>, C<AWS::ManagedBlockchain::Node>, and
+C<AWS::S3ObjectLambda::AccessPoint> resource types are not valid in
+basic event selectors. To log data events on these resource types, use
+advanced event selectors.
 
 
 =head2 Values => ArrayRef[Str|Undef]
@@ -146,8 +156,8 @@ prefix.
 
 =item *
 
-To log data events for all functions in your AWS account, specify the
-prefix as C<arn:aws:lambda>.
+To log data events for all Lambda functions in your AWS account,
+specify the prefix as C<arn:aws:lambda>.
 
 This will also enable logging of C<Invoke> activity performed by any
 user or role in your AWS account, even if that activity is performed on
@@ -164,6 +174,11 @@ events will only be logged for
 I<arn:aws:lambda:us-west-2:111111111111:function:helloworld>. They will
 not be logged for
 I<arn:aws:lambda:us-west-2:111111111111:function:helloworld2>.
+
+=item *
+
+To log data events for all DynamoDB tables in your AWS account, specify
+the prefix as C<arn:aws:dynamodb>.
 
 =back
 

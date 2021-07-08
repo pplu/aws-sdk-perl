@@ -44,11 +44,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         'MyOwner', ...               # min: 1, max: 100
       ],    # OPTIONAL
       ProviderTypes => [
-        'CodeCommit', ...    # values: CodeCommit, GitHub
+        'CodeCommit',
+        ... # values: CodeCommit, GitHub, Bitbucket, GitHubEnterpriseServer, S3Bucket
       ],    # OPTIONAL
       States => [
         'Associated',
-        ...    # values: Associated, Associating, Failed, Disassociating
+        ... # values: Associated, Associating, Failed, Disassociating, Disassociated
       ],    # OPTIONAL
       );
 
@@ -70,18 +71,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 The maximum number of repository association results returned by
 C<ListRepositoryAssociations> in paginated output. When this parameter
 is used, C<ListRepositoryAssociations> only returns C<maxResults>
-results in a single page along with a C<nextToken> response element.
-The remaining results of the initial request can be seen by sending
-another C<ListRepositoryAssociations> request with the returned
-C<nextToken> value. This value can be between 1 and 100. If this
-parameter is not used, then C<ListRepositoryAssociations> returns up to
-100 results and a C<nextToken> value if applicable.
+results in a single page with a C<nextToken> response element. The
+remaining results of the initial request can be seen by sending another
+C<ListRepositoryAssociations> request with the returned C<nextToken>
+value. This value can be between 1 and 100. If this parameter is not
+used, C<ListRepositoryAssociations> returns up to 100 results and a
+C<nextToken> value if applicable.
 
 
 
 =head2 Names => ArrayRef[Str|Undef]
 
-List of names to use as a filter.
+List of repository names to use as a filter.
 
 
 
@@ -93,16 +94,18 @@ the results exceeded the value of that parameter. Pagination continues
 from the end of the previous results that returned the C<nextToken>
 value.
 
-This token should be treated as an opaque identifier that is only used
-to retrieve the next items in a list and not for other programmatic
-purposes.
+Treat this token as an opaque identifier that is only used to retrieve
+the next items in a list and not for other programmatic purposes.
 
 
 
 =head2 Owners => ArrayRef[Str|Undef]
 
-List of owners to use as a filter. For AWS CodeCommit, the owner is the
-AWS account id. For GitHub, it is the GitHub account name.
+List of owners to use as a filter. For AWS CodeCommit, it is the name
+of the CodeCommit account that was used to associate the repository.
+For other repository source providers, such as Bitbucket and GitHub
+Enterprise Server, this is name of the account that was used to
+associate the repository.
 
 
 
@@ -114,7 +117,61 @@ List of provider types to use as a filter.
 
 =head2 States => ArrayRef[Str|Undef]
 
-List of states to use as a filter.
+List of repository association states to use as a filter.
+
+The valid repository association states are:
+
+=over
+
+=item *
+
+B<Associated>: The repository association is complete.
+
+=item *
+
+B<Associating>: CodeGuru Reviewer is:
+
+=over
+
+=item *
+
+Setting up pull request notifications. This is required for pull
+requests to trigger a CodeGuru Reviewer review.
+
+If your repository C<ProviderType> is C<GitHub>, C<GitHub Enterprise
+Server>, or C<Bitbucket>, CodeGuru Reviewer creates webhooks in your
+repository to trigger CodeGuru Reviewer reviews. If you delete these
+webhooks, reviews of code in your repository cannot be triggered.
+
+=item *
+
+Setting up source code access. This is required for CodeGuru Reviewer
+to securely clone code in your repository.
+
+=back
+
+=item *
+
+B<Failed>: The repository failed to associate or disassociate.
+
+=item *
+
+B<Disassociating>: CodeGuru Reviewer is removing the repository's pull
+request notifications and source code access.
+
+=item *
+
+B<Disassociated>: CodeGuru Reviewer successfully disassociated the
+repository. You can create a new association with this repository if
+you want to review source code in it later. You can control access to
+code reviews created in an associated repository with tags after it has
+been disassociated. For more information, see Using tags to control
+access to associated repositories
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/auth-and-access-control-using-tags.html)
+in the I<Amazon CodeGuru Reviewer User Guide>.
+
+=back
+
 
 
 

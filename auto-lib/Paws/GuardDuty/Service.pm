@@ -49,7 +49,7 @@ Contains additional information about the generated finding.
 
 =head2 Action => L<Paws::GuardDuty::Action>
 
-Information about the activity described in a finding.
+Information about the activity that is described in a finding.
 
 
 =head2 Archived => Bool
@@ -59,24 +59,24 @@ Indicates whether this finding is archived.
 
 =head2 Count => Int
 
-Total count of the occurrences of this finding type.
+The total count of the occurrences of this finding type.
 
 
 =head2 DetectorId => Str
 
-Detector ID for the GuardDuty service.
+The detector ID for the GuardDuty service.
 
 
 =head2 EventFirstSeen => Str
 
-First seen timestamp of the activity that prompted GuardDuty to
+The first-seen timestamp of the activity that prompted GuardDuty to
 generate this finding.
 
 
 =head2 EventLastSeen => Str
 
-Last seen timestamp of the activity that prompted GuardDuty to generate
-this finding.
+The last-seen timestamp of the activity that prompted GuardDuty to
+generate this finding.
 
 
 =head2 Evidence => L<Paws::GuardDuty::Evidence>
@@ -86,7 +86,7 @@ An evidence object associated with the service.
 
 =head2 ResourceRole => Str
 
-Resource role information for this finding.
+The resource role information for this finding.
 
 
 =head2 ServiceName => Str
@@ -96,7 +96,7 @@ The name of the AWS service (GuardDuty) that generated a finding.
 
 =head2 UserFeedback => Str
 
-Feedback left about the finding.
+Feedback that was submitted about the finding.
 
 
 

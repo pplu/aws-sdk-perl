@@ -47,16 +47,43 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 =head2 NextToken => Str
 
-Use this parameter if you receive a C<NextToken> response in a previous
-request that indicates that there is more output available. Set it to
-the value of the previous call's C<NextToken> response to indicate
-where the output should continue from.
+The parameter for receiving additional results if you receive a
+C<NextToken> response in a previous request. A C<NextToken> response
+indicates that more output is available. Set this parameter to the
+value of the previous call's C<NextToken> response to indicate where
+the output should continue from.
 
 
 
 =head2 B<REQUIRED> ResourceId => Str
 
-The ID of the resource that you want to retrieve tags for.
+The ID of the resource with the tags to list.
+
+You can specify any of the following taggable resources.
+
+=over
+
+=item *
+
+AWS account E<ndash> specify the account ID number.
+
+=item *
+
+Organizational unit E<ndash> specify the OU ID that begins with C<ou->
+and looks similar to: C<ou-I<1a2b-34uvwxyz>>
+
+=item *
+
+Root E<ndash> specify the root ID that begins with C<r-> and looks
+similar to: C<r-I<1a2b>>
+
+=item *
+
+Policy E<ndash> specify the policy ID that begins with C<p-> andlooks
+similar to: C<p-I<12abcdefg3>>
+
+=back
+
 
 
 

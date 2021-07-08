@@ -6,6 +6,7 @@ package Paws::Chime::SearchAvailablePhoneNumbers;
   has Country => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'country');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'max-results');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'next-token');
+  has PhoneNumberType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'phone-number-type');
   has State => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'state');
   has TollFreePrefix => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'toll-free-prefix');
 
@@ -36,18 +37,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $chime = Paws->service('Chime');
     my $SearchAvailablePhoneNumbersResponse =
       $chime->SearchAvailablePhoneNumbers(
-      AreaCode       => 'MyString',            # OPTIONAL
-      City           => 'MyString',            # OPTIONAL
-      Country        => 'MyString',            # OPTIONAL
-      MaxResults     => 1,                     # OPTIONAL
-      NextToken      => 'MyString',            # OPTIONAL
-      State          => 'MyString',            # OPTIONAL
-      TollFreePrefix => 'MyTollFreePrefix',    # OPTIONAL
+      AreaCode        => 'MyString',               # OPTIONAL
+      City            => 'MyString',               # OPTIONAL
+      Country         => 'MyAlpha2CountryCode',    # OPTIONAL
+      MaxResults      => 1,                        # OPTIONAL
+      NextToken       => 'MyString',               # OPTIONAL
+      PhoneNumberType => 'Local',                  # OPTIONAL
+      State           => 'MyString',               # OPTIONAL
+      TollFreePrefix  => 'MyTollFreePrefix',       # OPTIONAL
       );
 
     # Results:
     my $E164PhoneNumbers =
       $SearchAvailablePhoneNumbersResponse->E164PhoneNumbers;
+    my $NextToken = $SearchAvailablePhoneNumbersResponse->NextToken;
 
     # Returns a L<Paws::Chime::SearchAvailablePhoneNumbersResponse> object.
 
@@ -59,19 +62,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 
 =head2 AreaCode => Str
 
-The area code used to filter results.
+The area code used to filter results. Only applies to the US.
 
 
 
 =head2 City => Str
 
-The city used to filter results.
+The city used to filter results. Only applies to the US.
 
 
 
 =head2 Country => Str
 
-The country used to filter results.
+The country used to filter results. Defaults to the US Format: ISO
+3166-1 alpha-2.
 
 
 
@@ -83,19 +87,28 @@ The maximum number of results to return in a single call.
 
 =head2 NextToken => Str
 
-The token to use to retrieve the next page of results.
+The token used to retrieve the next page of results.
 
 
+
+=head2 PhoneNumberType => Str
+
+The phone number type used to filter results. Required for non-US
+numbers.
+
+Valid values are: C<"Local">, C<"TollFree">
 
 =head2 State => Str
 
-The state used to filter results.
+The state used to filter results. Required only if you provide C<City>.
+Only applies to the US.
 
 
 
 =head2 TollFreePrefix => Str
 
-The toll-free prefix that you use to filter results.
+The toll-free prefix that you use to filter results. Only applies to
+the US.
 
 
 

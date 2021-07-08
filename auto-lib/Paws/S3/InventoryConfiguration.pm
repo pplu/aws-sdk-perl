@@ -42,7 +42,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Invento
 Specifies the inventory configuration for an Amazon S3 bucket. For more
 information, see GET Bucket inventory
 (https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketGETInventoryConfig.html)
-in the I<Amazon Simple Storage Service API Reference>.
+in the I<Amazon S3 API Reference>.
 
 =head1 ATTRIBUTES
 

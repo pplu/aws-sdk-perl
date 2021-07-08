@@ -30,7 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     $redshift->DeleteTags(
       ResourceName => 'MyString',
-      TagKeys      => [ 'MyString', ... ],
+      TagKeys      => [
+        'MyString', ...    # max: 2147483647
+      ],
 
     );
 

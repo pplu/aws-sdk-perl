@@ -3,6 +3,7 @@ package Paws::DataExchange::ResponseDetails;
   use Moose;
   has ExportAssetsToS3 => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetsToS3ResponseDetails');
   has ExportAssetToSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ExportAssetToSignedUrlResponseDetails');
+  has ExportRevisionsToS3 => (is => 'ro', isa => 'Paws::DataExchange::ExportRevisionsToS3ResponseDetails');
   has ImportAssetFromSignedUrl => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails');
   has ImportAssetsFromS3 => (is => 'ro', isa => 'Paws::DataExchange::ImportAssetsFromS3ResponseDetails');
 
@@ -49,6 +50,11 @@ Details for the export to Amazon S3 response.
 =head2 ExportAssetToSignedUrl => L<Paws::DataExchange::ExportAssetToSignedUrlResponseDetails>
 
 Details for the export to signed URL response.
+
+
+=head2 ExportRevisionsToS3 => L<Paws::DataExchange::ExportRevisionsToS3ResponseDetails>
+
+Details for the export revisions to Amazon S3 response.
 
 
 =head2 ImportAssetFromSignedUrl => L<Paws::DataExchange::ImportAssetFromSignedUrlResponseDetails>

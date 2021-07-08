@@ -10,7 +10,9 @@ package Paws::AccessAnalyzer::Finding;
   has IsPublic => (is => 'ro', isa => 'Bool', request_name => 'isPublic', traits => ['NameInRequest']);
   has Principal => (is => 'ro', isa => 'Paws::AccessAnalyzer::PrincipalMap', request_name => 'principal', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest']);
+  has ResourceOwnerAccount => (is => 'ro', isa => 'Str', request_name => 'resourceOwnerAccount', traits => ['NameInRequest'], required => 1);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest'], required => 1);
+  has Sources => (is => 'ro', isa => 'ArrayRef[Paws::AccessAnalyzer::FindingSource]', request_name => 'sources', traits => ['NameInRequest']);
   has Status => (is => 'ro', isa => 'Str', request_name => 'status', traits => ['NameInRequest'], required => 1);
   has UpdatedAt => (is => 'ro', isa => 'Str', request_name => 'updatedAt', traits => ['NameInRequest'], required => 1);
 
@@ -98,9 +100,21 @@ trust.
 The resource that an external principal has access to.
 
 
+=head2 B<REQUIRED> ResourceOwnerAccount => Str
+
+The AWS account ID that owns the resource.
+
+
 =head2 B<REQUIRED> ResourceType => Str
 
-The type of the resource reported in the finding.
+The type of the resource identified in the finding.
+
+
+=head2 Sources => ArrayRef[L<Paws::AccessAnalyzer::FindingSource>]
+
+The sources of the finding. This indicates how the access that
+generated the finding is granted. It is populated for Amazon S3 bucket
+findings.
 
 
 =head2 B<REQUIRED> Status => Str

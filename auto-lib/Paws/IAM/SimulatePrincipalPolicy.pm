@@ -109,8 +109,7 @@ C<PolicySourceArn> is not the ARN for an IAM user. This is required so
 that the resource-based policy's C<Principal> element has a value to
 use in evaluating the policy.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -155,9 +154,9 @@ input only one permissions boundary when you pass a policy to this
 operation. An IAM entity can only have one permissions boundary in
 effect at a time. For example, if a permissions boundary is attached to
 an entity and you pass in a different permissions boundary policy using
-this parameter, then the new permission boundary policy is used for the
-simulation. For more information about permissions boundaries, see
-Permissions Boundaries for IAM Entities
+this parameter, then the new permissions boundary policy is used for
+the simulation. For more information about permissions boundaries, see
+Permissions boundaries for IAM entities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>. The policy input is specified as a string
 containing the complete, valid JSON text of a permissions boundary
@@ -227,8 +226,7 @@ role, the simulation includes all policies that are associated with
 that entity. If you specify a user, the simulation also includes all
 policies that are attached to any groups the user belongs to.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -241,14 +239,14 @@ parameter is not provided, then the value defaults to C<*> (all
 resources). Each API in the C<ActionNames> parameter is evaluated for
 each resource in this list. The simulation determines the access result
 (allowed or denied) of each combination and reports it in the response.
+You can simulate resources that don't exist in your account.
 
 The simulation does not automatically retrieve policies for the
 specified resources. If you want to include a resource policy in the
 simulation, then you must include the policy as a string in the
 C<ResourcePolicy> parameter.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 
@@ -271,7 +269,7 @@ then you must specify that volume as a resource. If the EC2 scenario
 includes VPC, then you must supply the network interface resource. If
 it includes an IP subnet, then you must specify the subnet resource.
 For more information on the EC2 scenario options, see Supported
-Platforms
+platforms
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-supported-platforms.html)
 in the I<Amazon EC2 User Guide>.
 

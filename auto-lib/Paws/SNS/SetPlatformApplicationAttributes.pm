@@ -50,36 +50,38 @@ include the following:
 =item *
 
 C<PlatformCredential> E<ndash> The credential received from the
-notification service. For APNS/APNS_SANDBOX, PlatformCredential is
-private key. For FCM, PlatformCredential is "API key". For ADM,
-PlatformCredential is "client secret".
+notification service. For C<APNS> and C<APNS_SANDBOX>,
+C<PlatformCredential> is C<private key>. For C<GCM> (Firebase Cloud
+Messaging), C<PlatformCredential> is C<API key>. For C<ADM>,
+C<PlatformCredential> is C<client secret>.
 
 =item *
 
 C<PlatformPrincipal> E<ndash> The principal received from the
-notification service. For APNS/APNS_SANDBOX, PlatformPrincipal is SSL
-certificate. For FCM, PlatformPrincipal is not applicable. For ADM,
-PlatformPrincipal is "client id".
+notification service. For C<APNS> and C<APNS_SANDBOX>,
+C<PlatformPrincipal> is C<SSL certificate>. For C<GCM> (Firebase Cloud
+Messaging), there is no C<PlatformPrincipal>. For C<ADM>,
+C<PlatformPrincipal> is C<client id>.
 
 =item *
 
-C<EventEndpointCreated> E<ndash> Topic ARN to which EndpointCreated
-event notifications should be sent.
+C<EventEndpointCreated> E<ndash> Topic ARN to which C<EndpointCreated>
+event notifications are sent.
 
 =item *
 
-C<EventEndpointDeleted> E<ndash> Topic ARN to which EndpointDeleted
-event notifications should be sent.
+C<EventEndpointDeleted> E<ndash> Topic ARN to which C<EndpointDeleted>
+event notifications are sent.
 
 =item *
 
-C<EventEndpointUpdated> E<ndash> Topic ARN to which EndpointUpdate
-event notifications should be sent.
+C<EventEndpointUpdated> E<ndash> Topic ARN to which C<EndpointUpdate>
+event notifications are sent.
 
 =item *
 
-C<EventDeliveryFailure> E<ndash> Topic ARN to which DeliveryFailure
-event notifications should be sent upon Direct Publish delivery failure
+C<EventDeliveryFailure> E<ndash> Topic ARN to which C<DeliveryFailure>
+event notifications are sent upon Direct Publish delivery failure
 (permanent) to one of the application's endpoints.
 
 =item *

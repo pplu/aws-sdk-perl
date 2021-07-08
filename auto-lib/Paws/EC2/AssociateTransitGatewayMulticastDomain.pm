@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $AssociateTransitGatewayMulticastDomainResult =
       $ec2->AssociateTransitGatewayMulticastDomain(
       DryRun                     => 1,                                # OPTIONAL
-      SubnetIds                  => [ 'MyString', ... ],              # OPTIONAL
+      SubnetIds                  => [ 'MySubnetId', ... ],            # OPTIONAL
       TransitGatewayAttachmentId => 'MyTransitGatewayAttachmentId',   # OPTIONAL
       TransitGatewayMulticastDomainId =>
         'MyTransitGatewayMulticastDomainId',                          # OPTIONAL

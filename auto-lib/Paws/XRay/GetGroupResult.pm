@@ -18,7 +18,8 @@ Paws::XRay::GetGroupResult
 =head2 Group => L<Paws::XRay::Group>
 
 The group that was requested. Contains the name of the group, the ARN
-of the group, and the filter expression that assigned to the group.
+of the group, the filter expression, and the insight configuration
+assigned to the group.
 
 
 =head2 _request_id => Str

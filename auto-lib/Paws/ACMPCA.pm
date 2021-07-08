@@ -40,6 +40,11 @@ package Paws::ACMPCA;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::DeletePermission', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeletePolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACMPCA::DeletePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeCertificateAuthority {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::DescribeCertificateAuthority', @_);
@@ -65,6 +70,11 @@ package Paws::ACMPCA;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::GetCertificateAuthorityCsr', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACMPCA::GetPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ImportCertificateAuthorityCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::ImportCertificateAuthorityCertificate', @_);
@@ -88,6 +98,11 @@ package Paws::ACMPCA;
   sub ListTags {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACMPCA::ListTags', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACMPCA::PutPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RestoreCertificateAuthority {
@@ -187,7 +202,7 @@ package Paws::ACMPCA;
   }
 
 
-  sub operations { qw/CreateCertificateAuthority CreateCertificateAuthorityAuditReport CreatePermission DeleteCertificateAuthority DeletePermission DescribeCertificateAuthority DescribeCertificateAuthorityAuditReport GetCertificate GetCertificateAuthorityCertificate GetCertificateAuthorityCsr ImportCertificateAuthorityCertificate IssueCertificate ListCertificateAuthorities ListPermissions ListTags RestoreCertificateAuthority RevokeCertificate TagCertificateAuthority UntagCertificateAuthority UpdateCertificateAuthority / }
+  sub operations { qw/CreateCertificateAuthority CreateCertificateAuthorityAuditReport CreatePermission DeleteCertificateAuthority DeletePermission DeletePolicy DescribeCertificateAuthority DescribeCertificateAuthorityAuditReport GetCertificate GetCertificateAuthorityCertificate GetCertificateAuthorityCsr GetPolicy ImportCertificateAuthorityCertificate IssueCertificate ListCertificateAuthorities ListPermissions ListTags PutPolicy RestoreCertificateAuthority RevokeCertificate TagCertificateAuthority UntagCertificateAuthority UpdateCertificateAuthority / }
 
 1;
 
@@ -226,9 +241,9 @@ AWS SDKs to access an API that's tailored to the programming language
 or platform that you're using. For more information, see AWS SDKs
 (https://aws.amazon.com/tools/#SDKs).
 
-Each ACM Private CA API action has a throttling limit which determines
-the number of times the action can be called per second. For more
-information, see API Rate Limits in ACM Private CA
+Each ACM Private CA API action has a quota that determines the number
+of times the action can be called per second. For more information, see
+API Rate Quotas in ACM Private CA
 (https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaLimits.html#PcaLimits-api)
 in the ACM Private CA user guide.
 
@@ -246,6 +261,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm
 =item CertificateAuthorityType => Str
 
 =item [IdempotencyToken => Str]
+
+=item [KeyStorageSecurityStandard => Str]
 
 =item [RevocationConfiguration => L<Paws::ACMPCA::RevocationConfiguration>]
 
@@ -271,6 +288,16 @@ bucket that is included in certificates issued by the CA. If
 successful, this action returns the Amazon Resource Name (ARN) of the
 CA.
 
+ACM Private CA assets that are stored in Amazon S3 can be protected
+with encryption. For more information, see Encrypting Your CRLs
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption).
+
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown.
+For more information, see Configure Access to ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuthAccess.html).
+
 
 =head2 CreateCertificateAuthorityAuditReport
 
@@ -291,8 +318,22 @@ Returns: a L<Paws::ACMPCA::CreateCertificateAuthorityAuditReportResponse> instan
 
 Creates an audit report that lists every time that your CA private key
 is used. The report is saved in the Amazon S3 bucket that you specify
-on input. The IssueCertificate and RevokeCertificate actions use the
-private key.
+on input. The IssueCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
+and RevokeCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html)
+actions use the private key.
+
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown.
+For more information, see Configure Access to ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuthAccess.html).
+
+ACM Private CA assets that are stored in Amazon S3 can be protected
+with encryption. For more information, see Encrypting Your Audit
+Reports
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption).
 
 
 =head2 CreatePermission
@@ -314,17 +355,43 @@ Each argument is described in detail in: L<Paws::ACMPCA::CreatePermission>
 
 Returns: nothing
 
-Assigns permissions from a private CA to a designated AWS service.
-Services are specified by their service principals and can be given
-permission to create and retrieve certificates on a private CA.
-Services can also be given permission to list the active permissions
-that the private CA has granted. For ACM to automatically renew your
-private CA's certificates, you must assign all possible permissions
-from the CA to the ACM service principal.
+Grants one or more permissions on a private CA to the AWS Certificate
+Manager (ACM) service principal (C<acm.amazonaws.com>). These
+permissions allow ACM to issue and renew ACM certificates that reside
+in the same AWS account as the CA.
 
-At this time, you can only assign permissions to ACM
-(C<acm.amazonaws.com>). Permissions can be revoked with the
-DeletePermission action and listed with the ListPermissions action.
+You can list current permissions with the ListPermissions
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html)
+action and revoke them with the DeletePermission
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePermission.html)
+action.
+
+B<About Permissions>
+
+=over
+
+=item *
+
+If the private CA and the certificates it issues reside in the same
+account, you can use C<CreatePermission> to grant permissions for ACM
+to carry out automatic certificate renewals.
+
+=item *
+
+For automatic certificate renewal to succeed, the ACM service principal
+needs permissions to create, retrieve, and list certificates.
+
+=item *
+
+If the private CA and the ACM certificates reside in different
+accounts, then permissions cannot be used to enable automatic renewals.
+Instead, the ACM certificate owner must set up a resource-based policy
+to enable cross-account issuance and renewals. For more information,
+see Using a Resource Based Policy with ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+
+=back
+
 
 
 =head2 DeleteCertificateAuthority
@@ -344,14 +411,18 @@ Returns: nothing
 
 Deletes a private certificate authority (CA). You must provide the
 Amazon Resource Name (ARN) of the private CA that you want to delete.
-You can find the ARN by calling the ListCertificateAuthorities action.
+You can find the ARN by calling the ListCertificateAuthorities
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+action.
 
 Deleting a CA will invalidate other CAs and certificates below it in
 your CA hierarchy.
 
 Before you can delete a CA that you have created and activated, you
-must disable it. To do this, call the UpdateCertificateAuthority action
-and set the B<CertificateAuthorityStatus> parameter to C<DISABLED>.
+must disable it. To do this, call the UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+action and set the B<CertificateAuthorityStatus> parameter to
+C<DISABLED>.
 
 Additionally, you can delete a CA if you are waiting for it to be
 created (that is, the status of the CA is C<CREATING>). You can also
@@ -359,14 +430,19 @@ delete it if the CA has been created but you haven't yet imported the
 signed certificate into ACM Private CA (that is, the status of the CA
 is C<PENDING_CERTIFICATE>).
 
-When you successfully call DeleteCertificateAuthority, the CA's status
-changes to C<DELETED>. However, the CA won't be permanently deleted
-until the restoration period has passed. By default, if you do not set
-the C<PermanentDeletionTimeInDays> parameter, the CA remains restorable
-for 30 days. You can set the parameter from 7 to 30 days. The
-DescribeCertificateAuthority action returns the time remaining in the
-restoration window of a private CA in the C<DELETED> state. To restore
-an eligible CA, call the RestoreCertificateAuthority action.
+When you successfully call DeleteCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthority.html),
+the CA's status changes to C<DELETED>. However, the CA won't be
+permanently deleted until the restoration period has passed. By
+default, if you do not set the C<PermanentDeletionTimeInDays>
+parameter, the CA remains restorable for 30 days. You can set the
+parameter from 7 to 30 days. The DescribeCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DescribeCertificateAuthority.html)
+action returns the time remaining in the restoration window of a
+private CA in the C<DELETED> state. To restore an eligible CA, call the
+RestoreCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RestoreCertificateAuthority.html)
+action.
 
 
 =head2 DeletePermission
@@ -386,9 +462,111 @@ Each argument is described in detail in: L<Paws::ACMPCA::DeletePermission>
 
 Returns: nothing
 
-Revokes permissions that a private CA assigned to a designated AWS
-service. Permissions can be created with the CreatePermission action
-and listed with the ListPermissions action.
+Revokes permissions on a private CA granted to the AWS Certificate
+Manager (ACM) service principal (acm.amazonaws.com).
+
+These permissions allow ACM to issue and renew ACM certificates that
+reside in the same AWS account as the CA. If you revoke these
+permissions, ACM will no longer renew the affected certificates
+automatically.
+
+Permissions can be granted with the CreatePermission
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreatePermission.html)
+action and listed with the ListPermissions
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListPermissions.html)
+action.
+
+B<About Permissions>
+
+=over
+
+=item *
+
+If the private CA and the certificates it issues reside in the same
+account, you can use C<CreatePermission> to grant permissions for ACM
+to carry out automatic certificate renewals.
+
+=item *
+
+For automatic certificate renewal to succeed, the ACM service principal
+needs permissions to create, retrieve, and list certificates.
+
+=item *
+
+If the private CA and the ACM certificates reside in different
+accounts, then permissions cannot be used to enable automatic renewals.
+Instead, the ACM certificate owner must set up a resource-based policy
+to enable cross-account issuance and renewals. For more information,
+see Using a Resource Based Policy with ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+
+=back
+
+
+
+=head2 DeletePolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACMPCA::DeletePolicy>
+
+Returns: nothing
+
+Deletes the resource-based policy attached to a private CA. Deletion
+will remove any access that the policy has granted. If there is no
+policy attached to the private CA, this action will return successful.
+
+If you delete a policy that was applied through AWS Resource Access
+Manager (RAM), the CA will be removed from all shares in which it was
+included.
+
+The AWS Certificate Manager Service Linked Role that the policy
+supports is not affected when you delete the policy.
+
+The current policy can be shown with GetPolicy
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetPolicy.html)
+and updated with PutPolicy
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html).
+
+B<About Policies>
+
+=over
+
+=item *
+
+A policy grants access on a private CA to an AWS customer account, to
+AWS Organizations, or to an AWS Organizations unit. Policies are under
+the control of a CA administrator. For more information, see Using a
+Resource Based Policy with ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+
+=item *
+
+A policy permits a user of AWS Certificate Manager (ACM) to issue ACM
+certificates signed by a CA in another account.
+
+=item *
+
+For ACM to manage automatic renewal of these certificates, the ACM user
+must configure a Service Linked Role (SLR). The SLR allows the ACM
+service to assume the identity of the user, subject to confirmation
+against the ACM Private CA policy. For more information, see Using a
+Service Linked Role with ACM
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
+
+=item *
+
+Updates made in AWS Resource Manager (RAM) are reflected in policies.
+For more information, see Attach a Policy for Cross-Account Access
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+
+=back
+
 
 
 =head2 DescribeCertificateAuthority
@@ -404,10 +582,10 @@ Each argument is described in detail in: L<Paws::ACMPCA::DescribeCertificateAuth
 
 Returns: a L<Paws::ACMPCA::DescribeCertificateAuthorityResponse> instance
 
-Lists information about your private certificate authority (CA). You
-specify the private CA on input by its ARN (Amazon Resource Name). The
-output contains the status of your CA. This can be any of the
-following:
+Lists information about your private certificate authority (CA) or one
+that has been shared with you. You specify the private CA on input by
+its ARN (Amazon Resource Name). The output contains the status of your
+CA. This can be any of the following:
 
 =over
 
@@ -437,7 +615,7 @@ C<EXPIRED> - Your private CA certificate has expired.
 =item *
 
 C<FAILED> - Your private CA has failed. Your CA can fail because of
-problems such a network outage or backend AWS failure or other errors.
+problems such a network outage or back-end AWS failure or other errors.
 A failed CA can never return to the pending state. You must create a
 new CA.
 
@@ -467,10 +645,15 @@ Each argument is described in detail in: L<Paws::ACMPCA::DescribeCertificateAuth
 Returns: a L<Paws::ACMPCA::DescribeCertificateAuthorityAuditReportResponse> instance
 
 Lists information about a specific audit report created by calling the
-CreateCertificateAuthorityAuditReport action. Audit information is
-created every time the certificate authority (CA) private key is used.
-The private key is used when you call the IssueCertificate action or
-the RevokeCertificate action.
+CreateCertificateAuthorityAuditReport
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
+action. Audit information is created every time the certificate
+authority (CA) private key is used. The private key is used when you
+call the IssueCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
+action or the RevokeCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_RevokeCertificate.html)
+action.
 
 
 =head2 GetCertificate
@@ -488,14 +671,17 @@ Each argument is described in detail in: L<Paws::ACMPCA::GetCertificate>
 
 Returns: a L<Paws::ACMPCA::GetCertificateResponse> instance
 
-Retrieves a certificate from your private CA. The ARN of the
-certificate is returned when you call the IssueCertificate action. You
-must specify both the ARN of your private CA and the ARN of the issued
-certificate when calling the B<GetCertificate> action. You can retrieve
-the certificate if it is in the B<ISSUED> state. You can call the
-CreateCertificateAuthorityAuditReport action to create a report that
-contains information about all of the certificates issued and revoked
-by your private CA.
+Retrieves a certificate from your private CA or one that has been
+shared with you. The ARN of the certificate is returned when you call
+the IssueCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_IssueCertificate.html)
+action. You must specify both the ARN of your private CA and the ARN of
+the issued certificate when calling the B<GetCertificate> action. You
+can retrieve the certificate if it is in the B<ISSUED> state. You can
+call the CreateCertificateAuthorityAuditReport
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html)
+action to create a report that contains information about all of the
+certificates issued and revoked by your private CA.
 
 
 =head2 GetCertificateAuthorityCertificate
@@ -512,9 +698,10 @@ Each argument is described in detail in: L<Paws::ACMPCA::GetCertificateAuthority
 Returns: a L<Paws::ACMPCA::GetCertificateAuthorityCertificateResponse> instance
 
 Retrieves the certificate and certificate chain for your private
-certificate authority (CA). Both the certificate and the chain are
-base64 PEM-encoded. The chain does not include the CA certificate. Each
-certificate in the chain signs the one before it.
+certificate authority (CA) or one that has been shared with you. Both
+the certificate and the chain are base64 PEM-encoded. The chain does
+not include the CA certificate. Each certificate in the chain signs the
+one before it.
 
 
 =head2 GetCertificateAuthorityCsr
@@ -532,11 +719,71 @@ Returns: a L<Paws::ACMPCA::GetCertificateAuthorityCsrResponse> instance
 
 Retrieves the certificate signing request (CSR) for your private
 certificate authority (CA). The CSR is created when you call the
-CreateCertificateAuthority action. Sign the CSR with your ACM Private
-CA-hosted or on-premises root or subordinate CA. Then import the signed
-certificate back into ACM Private CA by calling the
-ImportCertificateAuthorityCertificate action. The CSR is returned as a
-base64 PEM-encoded string.
+CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+action. Sign the CSR with your ACM Private CA-hosted or on-premises
+root or subordinate CA. Then import the signed certificate back into
+ACM Private CA by calling the ImportCertificateAuthorityCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html)
+action. The CSR is returned as a base64 PEM-encoded string.
+
+
+=head2 GetPolicy
+
+=over
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACMPCA::GetPolicy>
+
+Returns: a L<Paws::ACMPCA::GetPolicyResponse> instance
+
+Retrieves the resource-based policy attached to a private CA. If either
+the private CA resource or the policy cannot be found, this action
+returns a C<ResourceNotFoundException>.
+
+The policy can be attached or updated with PutPolicy
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_PutPolicy.html)
+and removed with DeletePolicy
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePolicy.html).
+
+B<About Policies>
+
+=over
+
+=item *
+
+A policy grants access on a private CA to an AWS customer account, to
+AWS Organizations, or to an AWS Organizations unit. Policies are under
+the control of a CA administrator. For more information, see Using a
+Resource Based Policy with ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+
+=item *
+
+A policy permits a user of AWS Certificate Manager (ACM) to issue ACM
+certificates signed by a CA in another account.
+
+=item *
+
+For ACM to manage automatic renewal of these certificates, the ACM user
+must configure a Service Linked Role (SLR). The SLR allows the ACM
+service to assume the identity of the user, subject to confirmation
+against the ACM Private CA policy. For more information, see Using a
+Service Linked Role with ACM
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
+
+=item *
+
+Updates made in AWS Resource Manager (RAM) are reflected in policies.
+For more information, see Attach a Policy for Cross-Account Access
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+
+=back
+
 
 
 =head2 ImportCertificateAuthorityCertificate
@@ -565,19 +812,21 @@ following preparations must in place:
 
 =item 1.
 
-In ACM Private CA, call the CreateCertificateAuthority action to create
-the private CA that that you plan to back with the imported
+In ACM Private CA, call the CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+action to create the private CA that you plan to back with the imported
 certificate.
 
 =item 2.
 
-Call the GetCertificateAuthorityCsr action to generate a certificate
-signing request (CSR).
+Call the GetCertificateAuthorityCsr
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificateAuthorityCsr.html)
+action to generate a certificate signing request (CSR).
 
 =item 3.
 
-Sign the CSR using a root or intermediate CA hosted either by an
-on-premises PKI hierarchy or a commercial CA..
+Sign the CSR using a root or intermediate CA hosted by either an
+on-premises PKI hierarchy or by a commercial CA.
 
 =item 4.
 
@@ -586,18 +835,39 @@ certificate chain to your working directory.
 
 =back
 
-The following requirements apply when you import a CA certificate.
+ACM Private CA supports three scenarios for installing a CA
+certificate:
 
 =over
 
 =item *
 
-You cannot import a non-self-signed certificate for use as a root CA.
+Installing a certificate for a root CA hosted by ACM Private CA.
 
 =item *
 
-You cannot import a self-signed certificate for use as a subordinate
-CA.
+Installing a subordinate CA certificate whose parent authority is
+hosted by ACM Private CA.
+
+=item *
+
+Installing a subordinate CA certificate whose parent authority is
+externally hosted.
+
+=back
+
+The following additional requirements apply when you import a CA
+certificate.
+
+=over
+
+=item *
+
+Only a self-signed certificate can be imported as a root CA.
+
+=item *
+
+A self-signed certificate cannot be imported as a subordinate CA.
 
 =item *
 
@@ -606,15 +876,110 @@ you are importing.
 
 =item *
 
-Your ACM Private CA-hosted or on-premises CA certificate must be the
-last certificate in your chain. The subordinate certificate, if any,
-that your root CA signed must be next to last. The subordinate
-certificate signed by the preceding subordinate CA must come next, and
-so on until your chain is built.
+Your root CA must be the last certificate in your chain. The
+subordinate certificate, if any, that your root CA signed must be next
+to last. The subordinate certificate signed by the preceding
+subordinate CA must come next, and so on until your chain is built.
 
 =item *
 
 The chain must be PEM-encoded.
+
+=item *
+
+The maximum allowed size of a certificate is 32 KB.
+
+=item *
+
+The maximum allowed size of a certificate chain is 2 MB.
+
+=back
+
+I<Enforcement of Critical Constraints>
+
+ACM Private CA allows the following extensions to be marked critical in
+the imported CA certificate or chain.
+
+=over
+
+=item *
+
+Basic constraints (I<must> be marked critical)
+
+=item *
+
+Subject alternative names
+
+=item *
+
+Key usage
+
+=item *
+
+Extended key usage
+
+=item *
+
+Authority key identifier
+
+=item *
+
+Subject key identifier
+
+=item *
+
+Issuer alternative name
+
+=item *
+
+Subject directory attributes
+
+=item *
+
+Subject information access
+
+=item *
+
+Certificate policies
+
+=item *
+
+Policy mappings
+
+=item *
+
+Inhibit anyPolicy
+
+=back
+
+ACM Private CA rejects the following extensions when they are marked
+critical in an imported CA certificate or chain.
+
+=over
+
+=item *
+
+Name constraints
+
+=item *
+
+Policy constraints
+
+=item *
+
+CRL distribution points
+
+=item *
+
+Authority information access
+
+=item *
+
+Freshest CRL
+
+=item *
+
+Any other extension
 
 =back
 
@@ -632,9 +997,13 @@ The chain must be PEM-encoded.
 
 =item Validity => L<Paws::ACMPCA::Validity>
 
+=item [ApiPassthrough => L<Paws::ACMPCA::ApiPassthrough>]
+
 =item [IdempotencyToken => Str]
 
 =item [TemplateArn => Str]
+
+=item [ValidityNotBefore => L<Paws::ACMPCA::Validity>]
 
 
 =back
@@ -643,10 +1012,12 @@ Each argument is described in detail in: L<Paws::ACMPCA::IssueCertificate>
 
 Returns: a L<Paws::ACMPCA::IssueCertificateResponse> instance
 
-Uses your private certificate authority (CA) to issue a client
-certificate. This action returns the Amazon Resource Name (ARN) of the
-certificate. You can retrieve the certificate by calling the
-GetCertificate action and specifying the ARN.
+Uses your private certificate authority (CA), or one that has been
+shared with you, to issue a client certificate. This action returns the
+Amazon Resource Name (ARN) of the certificate. You can retrieve the
+certificate by calling the GetCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetCertificate.html)
+action and specifying the ARN.
 
 You cannot use the ACM B<ListCertificateAuthorities> action to retrieve
 the ARNs of the certificates that you issue by using ACM Private CA.
@@ -660,6 +1031,8 @@ the ARNs of the certificates that you issue by using ACM Private CA.
 
 =item [NextToken => Str]
 
+=item [ResourceOwner => Str]
+
 
 =back
 
@@ -668,7 +1041,9 @@ Each argument is described in detail in: L<Paws::ACMPCA::ListCertificateAuthorit
 Returns: a L<Paws::ACMPCA::ListCertificateAuthoritiesResponse> instance
 
 Lists the private certificate authorities that you created by using the
-CreateCertificateAuthority action.
+CreateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthority.html)
+action.
 
 
 =head2 ListPermissions
@@ -688,9 +1063,44 @@ Each argument is described in detail in: L<Paws::ACMPCA::ListPermissions>
 
 Returns: a L<Paws::ACMPCA::ListPermissionsResponse> instance
 
-Lists all the permissions, if any, that have been assigned by a private
-CA. Permissions can be granted with the CreatePermission action and
-revoked with the DeletePermission action.
+List all permissions on a private CA, if any, granted to the AWS
+Certificate Manager (ACM) service principal (acm.amazonaws.com).
+
+These permissions allow ACM to issue and renew ACM certificates that
+reside in the same AWS account as the CA.
+
+Permissions can be granted with the CreatePermission
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreatePermission.html)
+action and revoked with the DeletePermission
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePermission.html)
+action.
+
+B<About Permissions>
+
+=over
+
+=item *
+
+If the private CA and the certificates it issues reside in the same
+account, you can use C<CreatePermission> to grant permissions for ACM
+to carry out automatic certificate renewals.
+
+=item *
+
+For automatic certificate renewal to succeed, the ACM service principal
+needs permissions to create, retrieve, and list certificates.
+
+=item *
+
+If the private CA and the ACM certificates reside in different
+accounts, then permissions cannot be used to enable automatic renewals.
+Instead, the ACM certificate owner must set up a resource-based policy
+to enable cross-account issuance and renewals. For more information,
+see Using a Resource Based Policy with ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+
+=back
+
 
 
 =head2 ListTags
@@ -710,11 +1120,78 @@ Each argument is described in detail in: L<Paws::ACMPCA::ListTags>
 
 Returns: a L<Paws::ACMPCA::ListTagsResponse> instance
 
-Lists the tags, if any, that are associated with your private CA. Tags
-are labels that you can use to identify and organize your CAs. Each tag
-consists of a key and an optional value. Call the
-TagCertificateAuthority action to add one or more tags to your CA. Call
-the UntagCertificateAuthority action to remove tags.
+Lists the tags, if any, that are associated with your private CA or one
+that has been shared with you. Tags are labels that you can use to
+identify and organize your CAs. Each tag consists of a key and an
+optional value. Call the TagCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html)
+action to add one or more tags to your CA. Call the
+UntagCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html)
+action to remove tags.
+
+
+=head2 PutPolicy
+
+=over
+
+=item Policy => Str
+
+=item ResourceArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACMPCA::PutPolicy>
+
+Returns: nothing
+
+Attaches a resource-based policy to a private CA.
+
+A policy can also be applied by sharing a private CA through AWS
+Resource Access Manager (RAM). For more information, see Attach a
+Policy for Cross-Account Access
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+
+The policy can be displayed with GetPolicy
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_GetPolicy.html)
+and removed with DeletePolicy
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeletePolicy.html).
+
+B<About Policies>
+
+=over
+
+=item *
+
+A policy grants access on a private CA to an AWS customer account, to
+AWS Organizations, or to an AWS Organizations unit. Policies are under
+the control of a CA administrator. For more information, see Using a
+Resource Based Policy with ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-rbp.html).
+
+=item *
+
+A policy permits a user of AWS Certificate Manager (ACM) to issue ACM
+certificates signed by a CA in another account.
+
+=item *
+
+For ACM to manage automatic renewal of these certificates, the ACM user
+must configure a Service Linked Role (SLR). The SLR allows the ACM
+service to assume the identity of the user, subject to confirmation
+against the ACM Private CA policy. For more information, see Using a
+Service Linked Role with ACM
+(https://docs.aws.amazon.com/acm/latest/userguide/acm-slr.html).
+
+=item *
+
+Updates made in AWS Resource Manager (RAM) are reflected in policies.
+For more information, see Attach a Policy for Cross-Account Access
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/pca-ram.html).
+
+=back
+
 
 
 =head2 RestoreCertificateAuthority
@@ -733,19 +1210,26 @@ Returns: nothing
 Restores a certificate authority (CA) that is in the C<DELETED> state.
 You can restore a CA during the period that you defined in the
 B<PermanentDeletionTimeInDays> parameter of the
-DeleteCertificateAuthority action. Currently, you can specify 7 to 30
-days. If you did not specify a B<PermanentDeletionTimeInDays> value, by
-default you can restore the CA at any time in a 30 day period. You can
-check the time remaining in the restoration period of a private CA in
-the C<DELETED> state by calling the DescribeCertificateAuthority or
-ListCertificateAuthorities actions. The status of a restored CA is set
-to its pre-deletion status when the B<RestoreCertificateAuthority>
-action returns. To change its status to C<ACTIVE>, call the
-UpdateCertificateAuthority action. If the private CA was in the
-C<PENDING_CERTIFICATE> state at deletion, you must use the
-ImportCertificateAuthorityCertificate action to import a certificate
-authority into the private CA before it can be activated. You cannot
-restore a CA after the restoration period has ended.
+DeleteCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DeleteCertificateAuthority.html)
+action. Currently, you can specify 7 to 30 days. If you did not specify
+a B<PermanentDeletionTimeInDays> value, by default you can restore the
+CA at any time in a 30 day period. You can check the time remaining in
+the restoration period of a private CA in the C<DELETED> state by
+calling the DescribeCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_DescribeCertificateAuthority.html)
+or ListCertificateAuthorities
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListCertificateAuthorities.html)
+actions. The status of a restored CA is set to its pre-deletion status
+when the B<RestoreCertificateAuthority> action returns. To change its
+status to C<ACTIVE>, call the UpdateCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UpdateCertificateAuthority.html)
+action. If the private CA was in the C<PENDING_CERTIFICATE> state at
+deletion, you must use the ImportCertificateAuthorityCertificate
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ImportCertificateAuthorityCertificate.html)
+action to import a certificate authority into the private CA before it
+can be activated. You cannot restore a CA after the restoration period
+has ended.
 
 
 =head2 RevokeCertificate
@@ -769,10 +1253,23 @@ Revokes a certificate that was issued inside ACM Private CA. If you
 enable a certificate revocation list (CRL) when you create or update
 your private CA, information about the revoked certificates will be
 included in the CRL. ACM Private CA writes the CRL to an S3 bucket that
-you specify. For more information about revocation, see the
-CrlConfiguration structure. ACM Private CA also writes revocation
-information to the audit report. For more information, see
-CreateCertificateAuthorityAuditReport.
+you specify. A CRL is typically updated approximately 30 minutes after
+a certificate is revoked. If for any reason the CRL update fails, ACM
+Private CA attempts makes further attempts every 15 minutes. With
+Amazon CloudWatch, you can create alarms for the metrics
+C<CRLGenerated> and C<MisconfiguredCRLBucket>. For more information,
+see Supported CloudWatch Metrics
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCloudWatch.html).
+
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown.
+For more information, see Configure Access to ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuthAccess.html).
+
+ACM Private CA also writes revocation information to the audit report.
+For more information, see CreateCertificateAuthorityAuditReport
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_CreateCertificateAuthorityAuditReport.html).
 
 You cannot revoke a root CA self-signed certificate.
 
@@ -800,8 +1297,11 @@ pair. You can apply a tag to just one private CA if you want to
 identify a specific characteristic of that CA, or you can apply the
 same tag to multiple private CAs if you want to filter for a common
 relationship among those CAs. To remove one or more tags, use the
-UntagCertificateAuthority action. Call the ListTags action to see what
-tags are associated with your CA.
+UntagCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_UntagCertificateAuthority.html)
+action. Call the ListTags
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListTags.html)
+action to see what tags are associated with your CA.
 
 
 =head2 UntagCertificateAuthority
@@ -824,8 +1324,11 @@ key-value pair. If you do not specify the value portion of the tag when
 calling this action, the tag will be removed regardless of value. If
 you specify a value, the tag is removed only if it is associated with
 the specified value. To add tags to a private CA, use the
-TagCertificateAuthority. Call the ListTags action to see what tags are
-associated with your CA.
+TagCertificateAuthority
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_TagCertificateAuthority.html).
+Call the ListTags
+(https://docs.aws.amazon.com/acm-pca/latest/APIReference/API_ListTags.html)
+action to see what tags are associated with your CA.
 
 
 =head2 UpdateCertificateAuthority
@@ -851,6 +1354,12 @@ before you can update it. You can disable a private CA that is in the
 C<ACTIVE> state or make a CA that is in the C<DISABLED> state active
 again.
 
+Both PCA and the IAM principal must have permission to write to the S3
+bucket that you specify. If the IAM principal making the call does not
+have permission to write to the bucket, then an exception is thrown.
+For more information, see Configure Access to ACM Private CA
+(https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuthAccess.html).
+
 
 
 
@@ -858,9 +1367,9 @@ again.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllCertificateAuthorities(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllCertificateAuthorities(sub { },[MaxResults => Int, NextToken => Str, ResourceOwner => Str])
 
-=head2 ListAllCertificateAuthorities([MaxResults => Int, NextToken => Str])
+=head2 ListAllCertificateAuthorities([MaxResults => Int, NextToken => Str, ResourceOwner => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

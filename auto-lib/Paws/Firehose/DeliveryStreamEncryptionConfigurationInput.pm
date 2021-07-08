@@ -34,8 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::D
 
 =head1 DESCRIPTION
 
-Used to specify the type and Amazon Resource Name (ARN) of the CMK
-needed for Server-Side Encryption (SSE).
+Specifies the type and Amazon Resource Name (ARN) of the CMK to use for
+Server-Side Encryption (SSE).
 
 =head1 ATTRIBUTES
 
@@ -62,9 +62,19 @@ the customer managed CMK to perform encryption and decryption. Kinesis
 Data Firehose manages that grant.
 
 When you invoke StartDeliveryStreamEncryption to change the CMK for a
-delivery stream that is already encrypted with a customer managed CMK,
-Kinesis Data Firehose schedules the grant it had on the old CMK for
-retirement.
+delivery stream that is encrypted with a customer managed CMK, Kinesis
+Data Firehose schedules the grant it had on the old CMK for retirement.
+
+You can use a CMK of type CUSTOMER_MANAGED_CMK to encrypt up to 500
+delivery streams. If a CreateDeliveryStream or
+StartDeliveryStreamEncryption operation exceeds this limit, Kinesis
+Data Firehose throws a C<LimitExceededException>.
+
+To encrypt your delivery stream, use symmetric CMKs. Kinesis Data
+Firehose doesn't support asymmetric CMKs. For information about
+symmetric and asymmetric CMKs, see About Symmetric and Asymmetric CMKs
+(https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-concepts.html)
+in the AWS Key Management Service developer guide.
 
 
 

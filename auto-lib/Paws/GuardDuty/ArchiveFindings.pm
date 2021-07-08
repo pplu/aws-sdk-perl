@@ -52,7 +52,7 @@ findings you want to archive.
 
 =head2 B<REQUIRED> FindingIds => ArrayRef[Str|Undef]
 
-IDs of the findings that you want to archive.
+The IDs of the findings that you want to archive.
 
 
 

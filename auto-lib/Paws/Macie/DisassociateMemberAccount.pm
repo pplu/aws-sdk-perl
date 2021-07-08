@@ -40,7 +40,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mac
 
 =head2 B<REQUIRED> MemberAccountId => Str
 
-The ID of the member account that you want to remove from Amazon Macie.
+The ID of the member account that you want to remove from Amazon Macie
+Classic.
 
 
 

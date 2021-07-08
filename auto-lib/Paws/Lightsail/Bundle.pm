@@ -91,7 +91,7 @@ value of 500.
 
 =head2 Price => Num
 
-The price in US dollars (e.g., C<5.0>).
+The price in US dollars (e.g., C<5.0>) of the bundle.
 
 
 =head2 RamSizeInGb => Num

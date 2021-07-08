@@ -1,5 +1,6 @@
 package Paws::EC2::TunnelOption;
   use Moose;
+  has DpdTimeoutAction => (is => 'ro', isa => 'Str', request_name => 'dpdTimeoutAction', traits => ['NameInRequest']);
   has DpdTimeoutSeconds => (is => 'ro', isa => 'Int', request_name => 'dpdTimeoutSeconds', traits => ['NameInRequest']);
   has IkeVersions => (is => 'ro', isa => 'ArrayRef[Paws::EC2::IKEVersionsListValue]', request_name => 'ikeVersionSet', traits => ['NameInRequest']);
   has OutsideIpAddress => (is => 'ro', isa => 'Str', request_name => 'outsideIpAddress', traits => ['NameInRequest']);
@@ -15,7 +16,9 @@ package Paws::EC2::TunnelOption;
   has RekeyFuzzPercentage => (is => 'ro', isa => 'Int', request_name => 'rekeyFuzzPercentage', traits => ['NameInRequest']);
   has RekeyMarginTimeSeconds => (is => 'ro', isa => 'Int', request_name => 'rekeyMarginTimeSeconds', traits => ['NameInRequest']);
   has ReplayWindowSize => (is => 'ro', isa => 'Int', request_name => 'replayWindowSize', traits => ['NameInRequest']);
+  has StartupAction => (is => 'ro', isa => 'Str', request_name => 'startupAction', traits => ['NameInRequest']);
   has TunnelInsideCidr => (is => 'ro', isa => 'Str', request_name => 'tunnelInsideCidr', traits => ['NameInRequest']);
+  has TunnelInsideIpv6Cidr => (is => 'ro', isa => 'Str', request_name => 'tunnelInsideIpv6Cidr', traits => ['NameInRequest']);
 1;
 
 ### main pod documentation begin ###
@@ -35,20 +38,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::TunnelOption object:
 
-  $service_obj->Method(Att1 => { DpdTimeoutSeconds => $value, ..., TunnelInsideCidr => $value  });
+  $service_obj->Method(Att1 => { DpdTimeoutAction => $value, ..., TunnelInsideIpv6Cidr => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::TunnelOption object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DpdTimeoutSeconds
+  $result->Att1->DpdTimeoutAction
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 DpdTimeoutAction => Str
+
+The action to take after a DPD timeout occurs.
 
 
 =head2 DpdTimeoutSeconds => Int
@@ -136,9 +144,20 @@ during which the AWS side of the VPN connection performs an IKE rekey.
 The number of packets in an IKE replay window.
 
 
+=head2 StartupAction => Str
+
+The action to take when the establishing the VPN tunnels for a VPN
+connection.
+
+
 =head2 TunnelInsideCidr => Str
 
-The range of inside IP addresses for the tunnel.
+The range of inside IPv4 addresses for the tunnel.
+
+
+=head2 TunnelInsideIpv6Cidr => Str
+
+The range of inside IPv6 addresses for the tunnel.
 
 
 

@@ -39,6 +39,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::CreatePlatformEndpoint', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateSMSSandboxPhoneNumber {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::CreateSMSSandboxPhoneNumber', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTopic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::CreateTopic', @_);
@@ -52,6 +57,11 @@ package Paws::SNS;
   sub DeletePlatformApplication {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::DeletePlatformApplication', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteSMSSandboxPhoneNumber {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::DeleteSMSSandboxPhoneNumber', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTopic {
@@ -74,6 +84,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::GetSMSAttributes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSMSSandboxAccountStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::GetSMSSandboxAccountStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSubscriptionAttributes {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::GetSubscriptionAttributes', @_);
@@ -89,6 +104,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::ListEndpointsByPlatformApplication', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListOriginationNumbers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListOriginationNumbers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListPhoneNumbersOptedOut {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::ListPhoneNumbersOptedOut', @_);
@@ -97,6 +117,11 @@ package Paws::SNS;
   sub ListPlatformApplications {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::SNS::ListPlatformApplications', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListSMSSandboxPhoneNumbers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::ListSMSSandboxPhoneNumbers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSubscriptions {
@@ -179,6 +204,11 @@ package Paws::SNS;
     my $call_object = $self->new_with_coercions('Paws::SNS::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub VerifySMSSandboxPhoneNumber {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::SNS::VerifySMSSandboxPhoneNumber', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
   sub ListAllEndpointsByPlatformApplication {
     my $self = shift;
@@ -199,6 +229,29 @@ package Paws::SNS;
         $result = $self->ListEndpointsByPlatformApplication(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Endpoints') foreach (@{ $result->Endpoints });
+    }
+
+    return undef
+  }
+  sub ListAllOriginationNumbers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOriginationNumbers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOriginationNumbers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PhoneNumbers }, @{ $next_result->PhoneNumbers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PhoneNumbers') foreach (@{ $result->PhoneNumbers });
+        $result = $self->ListOriginationNumbers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PhoneNumbers') foreach (@{ $result->PhoneNumbers });
     }
 
     return undef
@@ -245,6 +298,29 @@ package Paws::SNS;
         $result = $self->ListPlatformApplications(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'PlatformApplications') foreach (@{ $result->PlatformApplications });
+    }
+
+    return undef
+  }
+  sub ListAllSMSSandboxPhoneNumbers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSMSSandboxPhoneNumbers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListSMSSandboxPhoneNumbers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PhoneNumbers }, @{ $next_result->PhoneNumbers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PhoneNumbers') foreach (@{ $result->PhoneNumbers });
+        $result = $self->ListSMSSandboxPhoneNumbers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PhoneNumbers') foreach (@{ $result->PhoneNumbers });
     }
 
     return undef
@@ -320,7 +396,7 @@ package Paws::SNS;
   }
 
 
-  sub operations { qw/AddPermission CheckIfPhoneNumberIsOptedOut ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateTopic DeleteEndpoint DeletePlatformApplication DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSMSAttributes GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListPhoneNumbersOptedOut ListPlatformApplications ListSubscriptions ListSubscriptionsByTopic ListTagsForResource ListTopics OptInPhoneNumber Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSMSAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe TagResource Unsubscribe UntagResource / }
+  sub operations { qw/AddPermission CheckIfPhoneNumberIsOptedOut ConfirmSubscription CreatePlatformApplication CreatePlatformEndpoint CreateSMSSandboxPhoneNumber CreateTopic DeleteEndpoint DeletePlatformApplication DeleteSMSSandboxPhoneNumber DeleteTopic GetEndpointAttributes GetPlatformApplicationAttributes GetSMSAttributes GetSMSSandboxAccountStatus GetSubscriptionAttributes GetTopicAttributes ListEndpointsByPlatformApplication ListOriginationNumbers ListPhoneNumbersOptedOut ListPlatformApplications ListSMSSandboxPhoneNumbers ListSubscriptions ListSubscriptionsByTopic ListTagsForResource ListTopics OptInPhoneNumber Publish RemovePermission SetEndpointAttributes SetPlatformApplicationAttributes SetSMSAttributes SetSubscriptionAttributes SetTopicAttributes Subscribe TagResource Unsubscribe UntagResource VerifySMSSandboxPhoneNumber / }
 
 1;
 
@@ -354,10 +430,15 @@ Amazon Simple Notification Service (Amazon SNS) is a web service that
 enables you to build distributed web-enabled applications. Applications
 can use Amazon SNS to easily push real-time notification messages to
 interested subscribers over multiple delivery protocols. For more
-information about this product see https://aws.amazon.com/sns
+information about this product see the Amazon SNS product page
 (http://aws.amazon.com/sns/). For detailed information about Amazon SNS
 features and their associated API calls, see the Amazon SNS Developer
 Guide (https://docs.aws.amazon.com/sns/latest/dg/).
+
+For information on the permissions you need to use this API, see
+Identity and access management in Amazon SNS
+(https://docs.aws.amazon.com/sns/latest/dg/sns-authentication-and-access-control.html)
+in the I<Amazon SNS Developer Guide.>
 
 We also provide SDKs that enable you to access Amazon SNS from your
 preferred programming language. The SDKs contain functionality that
@@ -391,7 +472,7 @@ Each argument is described in detail in: L<Paws::SNS::AddPermission>
 Returns: nothing
 
 Adds a statement to a topic's access control policy, granting access
-for the specified AWS accounts to the specified actions.
+for the specified accounts to the specified actions.
 
 
 =head2 CheckIfPhoneNumberIsOptedOut
@@ -457,24 +538,50 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformApplication>
 Returns: a L<Paws::SNS::CreatePlatformApplicationResponse> instance
 
 Creates a platform application object for one of the supported push
-notification services, such as APNS and FCM, to which devices and
-mobile apps may register. You must specify PlatformPrincipal and
-PlatformCredential attributes when using the
-C<CreatePlatformApplication> action. The PlatformPrincipal is received
-from the notification service. For APNS/APNS_SANDBOX, PlatformPrincipal
-is "SSL certificate". For FCM, PlatformPrincipal is not applicable. For
-ADM, PlatformPrincipal is "client id". The PlatformCredential is also
-received from the notification service. For WNS, PlatformPrincipal is
-"Package Security Identifier". For MPNS, PlatformPrincipal is "TLS
-certificate". For Baidu, PlatformPrincipal is "API key".
+notification services, such as APNS and GCM (Firebase Cloud Messaging),
+to which devices and mobile apps may register. You must specify
+C<PlatformPrincipal> and C<PlatformCredential> attributes when using
+the C<CreatePlatformApplication> action.
 
-For APNS/APNS_SANDBOX, PlatformCredential is "private key". For FCM,
-PlatformCredential is "API key". For ADM, PlatformCredential is "client
-secret". For WNS, PlatformCredential is "secret key". For MPNS,
-PlatformCredential is "private key". For Baidu, PlatformCredential is
-"secret key". The PlatformApplicationArn that is returned when using
-C<CreatePlatformApplication> is then used as an attribute for the
-C<CreatePlatformEndpoint> action.
+C<PlatformPrincipal> and C<PlatformCredential> are received from the
+notification service.
+
+=over
+
+=item *
+
+For C<ADM>, C<PlatformPrincipal> is C<client id> and
+C<PlatformCredential> is C<client secret>.
+
+=item *
+
+For C<Baidu>, C<PlatformPrincipal> is C<API key> and
+C<PlatformCredential> is C<secret key>.
+
+=item *
+
+For C<APNS> and C<APNS_SANDBOX>, C<PlatformPrincipal> is C<SSL
+certificate> and C<PlatformCredential> is C<private key>.
+
+=item *
+
+For C<GCM> (Firebase Cloud Messaging), there is no C<PlatformPrincipal>
+and the C<PlatformCredential> is C<API key>.
+
+=item *
+
+For C<MPNS>, C<PlatformPrincipal> is C<TLS certificate> and
+C<PlatformCredential> is C<private key>.
+
+=item *
+
+For C<WNS>, C<PlatformPrincipal> is C<Package Security Identifier> and
+C<PlatformCredential> is C<secret key>.
+
+=back
+
+You can use the returned C<PlatformApplicationArn> as an attribute for
+the C<CreatePlatformEndpoint> action.
 
 
 =head2 CreatePlatformEndpoint
@@ -497,11 +604,10 @@ Each argument is described in detail in: L<Paws::SNS::CreatePlatformEndpoint>
 Returns: a L<Paws::SNS::CreateEndpointResponse> instance
 
 Creates an endpoint for a device and mobile app on one of the supported
-push notification services, such as FCM and APNS.
-C<CreatePlatformEndpoint> requires the PlatformApplicationArn that is
-returned from C<CreatePlatformApplication>. The EndpointArn that is
-returned when using C<CreatePlatformEndpoint> can then be used by the
-C<Publish> action to send a message to a mobile app or by the
+push notification services, such as GCM (Firebase Cloud Messaging) and
+APNS. C<CreatePlatformEndpoint> requires the C<PlatformApplicationArn>
+that is returned from C<CreatePlatformApplication>. You can use the
+returned C<EndpointArn> to send a message to a mobile app or by the
 C<Subscribe> action for subscription to a topic. The
 C<CreatePlatformEndpoint> action is idempotent, so if the requester
 already owns an endpoint with the same device token and attributes,
@@ -514,6 +620,36 @@ provided: ChannelId and UserId. The token field must also contain the
 ChannelId. For more information, see Creating an Amazon SNS Endpoint
 for Baidu
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePushBaiduEndpoint.html).
+
+
+=head2 CreateSMSSandboxPhoneNumber
+
+=over
+
+=item PhoneNumber => Str
+
+=item [LanguageCode => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SNS::CreateSMSSandboxPhoneNumber>
+
+Returns: a L<Paws::SNS::CreateSMSSandboxPhoneNumberResult> instance
+
+Adds a destination phone number to an account in the SMS sandbox and
+sends a one-time password (OTP) to that phone number.
+
+When you start using Amazon SNS to send SMS messages, your account is
+in the I<SMS sandbox>. The SMS sandbox provides a safe environment for
+you to try Amazon SNS features without risking your reputation as an
+SMS sender. While your account is in the SMS sandbox, you can use all
+of the features of Amazon SNS. However, you can send SMS messages only
+to verified destination phone numbers. For more information, including
+how to move out of the sandbox to send messages without restrictions,
+see SMS sandbox
+(https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html) in the
+I<Amazon SNS Developer Guide>.
 
 
 =head2 CreateTopic
@@ -534,10 +670,12 @@ Each argument is described in detail in: L<Paws::SNS::CreateTopic>
 Returns: a L<Paws::SNS::CreateTopicResponse> instance
 
 Creates a topic to which notifications can be published. Users can
-create at most 100,000 topics. For more information, see
-https://aws.amazon.com/sns (http://aws.amazon.com/sns/). This action is
-idempotent, so if the requester already owns a topic with the specified
-name, that topic's ARN is returned without creating a new topic.
+create at most 100,000 standard topics (at most 1,000 FIFO topics). For
+more information, see Creating an Amazon SNS topic
+(https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html) in
+the I<Amazon SNS Developer Guide>. This action is idempotent, so if the
+requester already owns a topic with the specified name, that topic's
+ARN is returned without creating a new topic.
 
 
 =head2 DeleteEndpoint
@@ -576,9 +714,37 @@ Each argument is described in detail in: L<Paws::SNS::DeletePlatformApplication>
 Returns: nothing
 
 Deletes a platform application object for one of the supported push
-notification services, such as APNS and FCM. For more information, see
-Using Amazon SNS Mobile Push Notifications
+notification services, such as APNS and GCM (Firebase Cloud Messaging).
+For more information, see Using Amazon SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
+
+
+=head2 DeleteSMSSandboxPhoneNumber
+
+=over
+
+=item PhoneNumber => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SNS::DeleteSMSSandboxPhoneNumber>
+
+Returns: a L<Paws::SNS::DeleteSMSSandboxPhoneNumberResult> instance
+
+Deletes an account's verified or pending phone number from the SMS
+sandbox.
+
+When you start using Amazon SNS to send SMS messages, your account is
+in the I<SMS sandbox>. The SMS sandbox provides a safe environment for
+you to try Amazon SNS features without risking your reputation as an
+SMS sender. While your account is in the SMS sandbox, you can use all
+of the features of Amazon SNS. However, you can send SMS messages only
+to verified destination phone numbers. For more information, including
+how to move out of the sandbox to send messages without restrictions,
+see SMS sandbox
+(https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html) in the
+I<Amazon SNS Developer Guide>.
 
 
 =head2 DeleteTopic
@@ -614,8 +780,9 @@ Each argument is described in detail in: L<Paws::SNS::GetEndpointAttributes>
 Returns: a L<Paws::SNS::GetEndpointAttributesResponse> instance
 
 Retrieves the endpoint attributes for a device on one of the supported
-push notification services, such as FCM and APNS. For more information,
-see Using Amazon SNS Mobile Push Notifications
+push notification services, such as GCM (Firebase Cloud Messaging) and
+APNS. For more information, see Using Amazon SNS Mobile Push
+Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -633,8 +800,9 @@ Each argument is described in detail in: L<Paws::SNS::GetPlatformApplicationAttr
 Returns: a L<Paws::SNS::GetPlatformApplicationAttributesResponse> instance
 
 Retrieves the attributes of the platform application object for the
-supported push notification services, such as APNS and FCM. For more
-information, see Using Amazon SNS Mobile Push Notifications
+supported push notification services, such as APNS and GCM (Firebase
+Cloud Messaging). For more information, see Using Amazon SNS Mobile
+Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -654,6 +822,32 @@ Returns: a L<Paws::SNS::GetSMSAttributesResponse> instance
 Returns the settings for sending SMS messages from your account.
 
 These settings are set with the C<SetSMSAttributes> action.
+
+
+=head2 GetSMSSandboxAccountStatus
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::SNS::GetSMSSandboxAccountStatus>
+
+Returns: a L<Paws::SNS::GetSMSSandboxAccountStatusResult> instance
+
+Retrieves the SMS sandbox status for the calling account in the target
+Region.
+
+When you start using Amazon SNS to send SMS messages, your account is
+in the I<SMS sandbox>. The SMS sandbox provides a safe environment for
+you to try Amazon SNS features without risking your reputation as an
+SMS sender. While your account is in the SMS sandbox, you can use all
+of the features of Amazon SNS. However, you can send SMS messages only
+to verified destination phone numbers. For more information, including
+how to move out of the sandbox to send messages without restrictions,
+see SMS sandbox
+(https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html) in the
+I<Amazon SNS Developer Guide>.
 
 
 =head2 GetSubscriptionAttributes
@@ -705,11 +899,11 @@ Each argument is described in detail in: L<Paws::SNS::ListEndpointsByPlatformApp
 Returns: a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance
 
 Lists the endpoints and endpoint attributes for devices in a supported
-push notification service, such as FCM and APNS. The results for
-C<ListEndpointsByPlatformApplication> are paginated and return a
-limited list of endpoints, up to 100. If additional records are
-available after the first page results, then a NextToken string will be
-returned. To receive the next page, you call
+push notification service, such as GCM (Firebase Cloud Messaging) and
+APNS. The results for C<ListEndpointsByPlatformApplication> are
+paginated and return a limited list of endpoints, up to 100. If
+additional records are available after the first page results, then a
+NextToken string will be returned. To receive the next page, you call
 C<ListEndpointsByPlatformApplication> again using the NextToken string
 received from the previous call. When there are no more records to
 return, NextToken will be null. For more information, see Using Amazon
@@ -717,6 +911,28 @@ SNS Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 This action is throttled at 30 transactions per second (TPS).
+
+
+=head2 ListOriginationNumbers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SNS::ListOriginationNumbers>
+
+Returns: a L<Paws::SNS::ListOriginationNumbersResult> instance
+
+Lists the calling account's dedicated origination numbers and their
+metadata. For more information about origination numbers, see
+Origination numbers
+(https://docs.aws.amazon.com/sns/latest/dg/channels-sms-originating-identities-origination-numbers.html)
+in the I<Amazon SNS Developer Guide>.
 
 
 =head2 ListPhoneNumbersOptedOut
@@ -758,17 +974,48 @@ Each argument is described in detail in: L<Paws::SNS::ListPlatformApplications>
 Returns: a L<Paws::SNS::ListPlatformApplicationsResponse> instance
 
 Lists the platform application objects for the supported push
-notification services, such as APNS and FCM. The results for
-C<ListPlatformApplications> are paginated and return a limited list of
-applications, up to 100. If additional records are available after the
-first page results, then a NextToken string will be returned. To
-receive the next page, you call C<ListPlatformApplications> using the
-NextToken string received from the previous call. When there are no
-more records to return, NextToken will be null. For more information,
-see Using Amazon SNS Mobile Push Notifications
+notification services, such as APNS and GCM (Firebase Cloud Messaging).
+The results for C<ListPlatformApplications> are paginated and return a
+limited list of applications, up to 100. If additional records are
+available after the first page results, then a NextToken string will be
+returned. To receive the next page, you call
+C<ListPlatformApplications> using the NextToken string received from
+the previous call. When there are no more records to return,
+C<NextToken> will be null. For more information, see Using Amazon SNS
+Mobile Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 This action is throttled at 15 transactions per second (TPS).
+
+
+=head2 ListSMSSandboxPhoneNumbers
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SNS::ListSMSSandboxPhoneNumbers>
+
+Returns: a L<Paws::SNS::ListSMSSandboxPhoneNumbersResult> instance
+
+Lists the calling account's current verified and pending destination
+phone numbers in the SMS sandbox.
+
+When you start using Amazon SNS to send SMS messages, your account is
+in the I<SMS sandbox>. The SMS sandbox provides a safe environment for
+you to try Amazon SNS features without risking your reputation as an
+SMS sender. While your account is in the SMS sandbox, you can use all
+of the features of Amazon SNS. However, you can send SMS messages only
+to verified destination phone numbers. For more information, including
+how to move out of the sandbox to send messages without restrictions,
+see SMS sandbox
+(https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html) in the
+I<Amazon SNS Developer Guide>.
 
 
 =head2 ListSubscriptions
@@ -883,6 +1130,10 @@ You can opt in a phone number only once every 30 days.
 
 =item [MessageAttributes => L<Paws::SNS::MessageAttributeMap>]
 
+=item [MessageDeduplicationId => Str]
+
+=item [MessageGroupId => Str]
+
 =item [MessageStructure => Str]
 
 =item [PhoneNumber => Str]
@@ -900,8 +1151,9 @@ Each argument is described in detail in: L<Paws::SNS::Publish>
 
 Returns: a L<Paws::SNS::PublishResponse> instance
 
-Sends a message to an Amazon SNS topic or sends a text message (SMS
-message) directly to a phone number.
+Sends a message to an Amazon SNS topic, a text message (SMS message)
+directly to a phone number, or a message to a mobile platform endpoint
+(when you specify the C<TargetArn>).
 
 If you send a message to a topic, Amazon SNS delivers the message to
 each endpoint that is subscribed to the topic. The format of the
@@ -919,6 +1171,9 @@ returned when making a call with the C<CreatePlatformEndpoint> action.
 For more information about formatting messages, see Send Custom
 Platform-Specific Payloads in Messages to Mobile Devices
 (https://docs.aws.amazon.com/sns/latest/dg/mobile-push-send-custommessage.html).
+
+You can publish messages only to topics and endpoints in the same
+Region.
 
 
 =head2 RemovePermission
@@ -955,8 +1210,9 @@ Each argument is described in detail in: L<Paws::SNS::SetEndpointAttributes>
 Returns: nothing
 
 Sets the attributes for an endpoint for a device on one of the
-supported push notification services, such as FCM and APNS. For more
-information, see Using Amazon SNS Mobile Push Notifications
+supported push notification services, such as GCM (Firebase Cloud
+Messaging) and APNS. For more information, see Using Amazon SNS Mobile
+Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html).
 
 
@@ -976,8 +1232,9 @@ Each argument is described in detail in: L<Paws::SNS::SetPlatformApplicationAttr
 Returns: nothing
 
 Sets the attributes of the platform application object for the
-supported push notification services, such as APNS and FCM. For more
-information, see Using Amazon SNS Mobile Push Notifications
+supported push notification services, such as APNS and GCM (Firebase
+Cloud Messaging). For more information, see Using Amazon SNS Mobile
+Push Notifications
 (https://docs.aws.amazon.com/sns/latest/dg/SNSMobilePush.html). For
 information on configuring attributes for message delivery status, see
 Using Amazon SNS Application Attributes for Message Delivery Status
@@ -1002,9 +1259,13 @@ and receiving daily SMS usage reports.
 
 You can override some of these settings for a single message when you
 use the C<Publish> action with the C<MessageAttributes.entry.N>
-parameter. For more information, see Sending an SMS Message
+parameter. For more information, see Publishing to a mobile phone
 (https://docs.aws.amazon.com/sns/latest/dg/sms_publish-to-phone.html)
 in the I<Amazon SNS Developer Guide>.
+
+To use this operation, you must grant the Amazon SNS service principal
+(C<sns.amazonaws.com>) permission to perform the C<s3:ListBucket>
+action.
 
 
 =head2 SetSubscriptionAttributes
@@ -1069,10 +1330,13 @@ Each argument is described in detail in: L<Paws::SNS::Subscribe>
 
 Returns: a L<Paws::SNS::SubscribeResponse> instance
 
-Prepares to subscribe an endpoint by sending the endpoint a
-confirmation message. To actually create a subscription, the endpoint
-owner must call the C<ConfirmSubscription> action with the token from
-the confirmation message. Confirmation tokens are valid for three days.
+Subscribes an endpoint to an Amazon SNS topic. If the endpoint type is
+HTTP/S or email, or if the endpoint and the topic are not in the same
+account, the endpoint owner must run the C<ConfirmSubscription> action
+to confirm the subscription.
+
+You call the C<ConfirmSubscription> action with the token from the
+subscription response. Confirmation tokens are valid for three days.
 
 This action is throttled at 100 transactions per second (TPS).
 
@@ -1120,9 +1384,9 @@ the existing tag.
 
 =item *
 
-Tagging actions are limited to 10 TPS per AWS account, per AWS region.
-If your application requires a higher throughput, file a technical
-support request
+Tagging actions are limited to 10 TPS per account, per Region. If your
+application requires a higher throughput, file a technical support
+request
 (https://console.aws.amazon.com/support/home#/case/create?issueType=technical).
 
 =back
@@ -1144,11 +1408,11 @@ Returns: nothing
 
 Deletes a subscription. If the subscription requires authentication for
 deletion, only the owner of the subscription or the topic's owner can
-unsubscribe, and an AWS signature is required. If the C<Unsubscribe>
-call does not require authentication and the requester is not the
-subscription owner, a final cancellation message is delivered to the
-endpoint, so that the endpoint owner can easily resubscribe to the
-topic if the C<Unsubscribe> request was unintended.
+unsubscribe, and an Amazon Web Services signature is required. If the
+C<Unsubscribe> call does not require authentication and the requester
+is not the subscription owner, a final cancellation message is
+delivered to the endpoint, so that the endpoint owner can easily
+resubscribe to the topic if the C<Unsubscribe> request was unintended.
 
 This action is throttled at 100 transactions per second (TPS).
 
@@ -1174,6 +1438,36 @@ Amazon SNS Tags
 I<Amazon SNS Developer Guide>.
 
 
+=head2 VerifySMSSandboxPhoneNumber
+
+=over
+
+=item OneTimePassword => Str
+
+=item PhoneNumber => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::SNS::VerifySMSSandboxPhoneNumber>
+
+Returns: a L<Paws::SNS::VerifySMSSandboxPhoneNumberResult> instance
+
+Verifies a destination phone number with a one-time password (OTP) for
+the calling account.
+
+When you start using Amazon SNS to send SMS messages, your account is
+in the I<SMS sandbox>. The SMS sandbox provides a safe environment for
+you to try Amazon SNS features without risking your reputation as an
+SMS sender. While your account is in the SMS sandbox, you can use all
+of the features of Amazon SNS. However, you can send SMS messages only
+to verified destination phone numbers. For more information, including
+how to move out of the sandbox to send messages without restrictions,
+see SMS sandbox
+(https://docs.aws.amazon.com/sns/latest/dg/sns-sms-sandbox.html) in the
+I<Amazon SNS Developer Guide>.
+
+
 
 
 =head1 PAGINATORS
@@ -1190,6 +1484,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Endpoints, passing the object as the first parameter, and the string 'Endpoints' as the second parameter 
 
 If not, it will return a a L<Paws::SNS::ListEndpointsByPlatformApplicationResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOriginationNumbers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOriginationNumbers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PhoneNumbers, passing the object as the first parameter, and the string 'PhoneNumbers' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListOriginationNumbersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllPhoneNumbersOptedOut(sub { },[NextToken => Str])
@@ -1214,6 +1520,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - PlatformApplications, passing the object as the first parameter, and the string 'PlatformApplications' as the second parameter 
 
 If not, it will return a a L<Paws::SNS::ListPlatformApplicationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSMSSandboxPhoneNumbers(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllSMSSandboxPhoneNumbers([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PhoneNumbers, passing the object as the first parameter, and the string 'PhoneNumbers' as the second parameter 
+
+If not, it will return a a L<Paws::SNS::ListSMSSandboxPhoneNumbersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllSubscriptions(sub { },[NextToken => Str])

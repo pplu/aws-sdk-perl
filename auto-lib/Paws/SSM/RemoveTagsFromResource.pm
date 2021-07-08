@@ -54,6 +54,14 @@ MaintenanceWindow: mw-012345abcde
 
 PatchBaseline: pb-012345abcde
 
+OpsMetadata object: C<ResourceID> for tagging is created from the
+Amazon Resource Name (ARN) for the object. Specifically, C<ResourceID>
+is created from the strings that come after the word C<opsmetadata> in
+the ARN. For example, an OpsMetadata object with an ARN of
+C<arn:aws:ssm:us-east-2:1234567890:opsmetadata/aws/ssm/MyGroup/appmanager>
+has a C<ResourceID> of either C<aws/ssm/MyGroup/appmanager> or
+C</aws/ssm/MyGroup/appmanager>.
+
 For the Document and Parameter values, use the name of the resource.
 
 The ManagedInstance type for this API action is only for on-premises
@@ -70,7 +78,7 @@ The ManagedInstance type for this API action is only for on-premises
 managed instances. Specify the name of the managed instance in the
 following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.
 
-Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">, C<"OpsItem">
+Valid values are: C<"Document">, C<"ManagedInstance">, C<"MaintenanceWindow">, C<"Parameter">, C<"PatchBaseline">, C<"OpsItem">, C<"OpsMetadata">
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 

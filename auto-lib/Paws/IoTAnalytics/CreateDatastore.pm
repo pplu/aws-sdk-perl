@@ -2,7 +2,9 @@
 package Paws::IoTAnalytics::CreateDatastore;
   use Moose;
   has DatastoreName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'datastoreName', required => 1);
+  has DatastorePartitions => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastorePartitions', traits => ['NameInRequest'], request_name => 'datastorePartitions');
   has DatastoreStorage => (is => 'ro', isa => 'Paws::IoTAnalytics::DatastoreStorage', traits => ['NameInRequest'], request_name => 'datastoreStorage');
+  has FileFormatConfiguration => (is => 'ro', isa => 'Paws::IoTAnalytics::FileFormatConfiguration', traits => ['NameInRequest'], request_name => 'fileFormatConfiguration');
   has RetentionPeriod => (is => 'ro', isa => 'Paws::IoTAnalytics::RetentionPeriod', traits => ['NameInRequest'], request_name => 'retentionPeriod');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IoTAnalytics::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
@@ -32,7 +34,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iotanalytics = Paws->service('IoTAnalytics');
     my $CreateDatastoreResponse = $iotanalytics->CreateDatastore(
-      DatastoreName    => 'MyDatastoreName',
+      DatastoreName       => 'MyDatastoreName',
+      DatastorePartitions => {
+        Partitions => [
+          {
+            AttributePartition => {
+              AttributeName => 'MyPartitionAttributeName',    # min: 1, max: 128
+
+            },    # OPTIONAL
+            TimestampPartition => {
+              AttributeName   => 'MyPartitionAttributeName',  # min: 1, max: 128
+              TimestampFormat =>
+                'MyTimestampFormat',    # min: 1, max: 50; OPTIONAL
+            },    # OPTIONAL
+          },
+          ...
+        ],    # max: 25; OPTIONAL
+      },    # OPTIONAL
       DatastoreStorage => {
         CustomerManagedS3 => {
           Bucket    => 'MyBucketName',     # min: 3, max: 255
@@ -41,6 +59,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         ServiceManagedS3 => {
 
+        },    # OPTIONAL
+      },    # OPTIONAL
+      FileFormatConfiguration => {
+        JsonConfiguration => {
+
+        },    # OPTIONAL
+        ParquetConfiguration => {
+          SchemaDefinition => {
+            Columns => [
+              {
+                Name => 'MyColumnName',        # min: 1, max: 255
+                Type => 'MyColumnDataType',    # min: 1, max: 131072
+
+              },
+              ...
+            ],    # OPTIONAL
+          },    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       RetentionPeriod => {
@@ -76,19 +111,37 @@ The name of the data store.
 
 
 
+=head2 DatastorePartitions => L<Paws::IoTAnalytics::DatastorePartitions>
+
+Contains information about the partitions in a data store.
+
+
+
 =head2 DatastoreStorage => L<Paws::IoTAnalytics::DatastoreStorage>
 
-Where data store data is stored. You may choose one of
-"serviceManagedS3" or "customerManagedS3" storage. If not specified,
-the default is "serviceManagedS3". This cannot be changed after the
-data store is created.
+Where data store data is stored. You can choose one of
+C<serviceManagedS3> or C<customerManagedS3> storage. If not specified,
+the default is C<serviceManagedS3>. You cannot change this storage
+option after the data store is created.
+
+
+
+=head2 FileFormatConfiguration => L<Paws::IoTAnalytics::FileFormatConfiguration>
+
+Contains the configuration information of file formats. AWS IoT
+Analytics data stores support JSON and Parquet
+(https://parquet.apache.org/).
+
+The default file format is JSON. You can specify only one format.
+
+You can't change the file format after you create the data store.
 
 
 
 =head2 RetentionPeriod => L<Paws::IoTAnalytics::RetentionPeriod>
 
 How long, in days, message data is kept for the data store. When
-"customerManagedS3" storage is selected, this parameter is ignored.
+C<customerManagedS3> storage is selected, this parameter is ignored.
 
 
 

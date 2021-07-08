@@ -47,8 +47,9 @@ The maximum number of requests that can be made in a given time period.
 
 =head2 Offset => Int
 
-The number of requests subtracted from the given limit in the initial
-time period.
+The day that a time period starts. For example, with a time period of
+C<WEEK>, an offset of C<0> starts on Sunday, and an offset of C<1>
+starts on Monday.
 
 
 =head2 Period => Str

@@ -78,7 +78,7 @@ The keyspace for this node group (shard).
 =head2 Status => Str
 
 The current state of this replication group - C<creating>,
-C<available>, etc.
+C<available>, C<modifying>, C<deleting>.
 
 
 

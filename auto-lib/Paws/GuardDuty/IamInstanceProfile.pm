@@ -41,12 +41,12 @@ Contains information about the EC2 instance profile.
 
 =head2 Arn => Str
 
-AWS EC2 instance profile ARN.
+The profile ARN of the EC2 instance.
 
 
 =head2 Id => Str
 
-AWS EC2 instance profile ID.
+The profile ID of the EC2 instance.
 
 
 

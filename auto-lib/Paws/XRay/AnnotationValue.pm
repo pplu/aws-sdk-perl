@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::XRay::Annot
 =head1 DESCRIPTION
 
 Value of a segment annotation. Has one of three value types: Number,
-Boolean or String.
+Boolean, or String.
 
 =head1 ATTRIBUTES
 

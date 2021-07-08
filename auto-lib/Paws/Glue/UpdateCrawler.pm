@@ -6,7 +6,9 @@ package Paws::Glue::UpdateCrawler;
   has CrawlerSecurityConfiguration => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has LineageConfiguration => (is => 'ro', isa => 'Paws::Glue::LineageConfiguration');
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has RecrawlPolicy => (is => 'ro', isa => 'Paws::Glue::RecrawlPolicy');
   has Role => (is => 'ro', isa => 'Str');
   has Schedule => (is => 'ro', isa => 'Str');
   has SchemaChangePolicy => (is => 'ro', isa => 'Paws::Glue::SchemaChangePolicy');
@@ -45,10 +47,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Configuration                => 'MyCrawlerConfiguration',    # OPTIONAL
       CrawlerSecurityConfiguration =>
         'MyCrawlerSecurityConfiguration',                          # OPTIONAL
-      DatabaseName       => 'MyDatabaseName',                      # OPTIONAL
-      Description        => 'MyDescriptionStringRemovable',        # OPTIONAL
-      Role               => 'MyRole',                              # OPTIONAL
-      Schedule           => 'MyCronExpression',                    # OPTIONAL
+      DatabaseName         => 'MyDatabaseName',                    # OPTIONAL
+      Description          => 'MyDescriptionStringRemovable',      # OPTIONAL
+      LineageConfiguration => {
+        CrawlerLineageSettings => 'ENABLE',  # values: ENABLE, DISABLE; OPTIONAL
+      },    # OPTIONAL
+      RecrawlPolicy => {
+        RecrawlBehavior => 'CRAWL_EVERYTHING'
+        ,    # values: CRAWL_EVERYTHING, CRAWL_NEW_FOLDERS_ONLY; OPTIONAL
+      },    # OPTIONAL
+      Role               => 'MyRole',              # OPTIONAL
+      Schedule           => 'MyCronExpression',    # OPTIONAL
       SchemaChangePolicy => {
         DeleteBehavior => 'LOG'
         ,   # values: LOG, DELETE_FROM_DATABASE, DEPRECATE_IN_DATABASE; OPTIONAL
@@ -68,7 +77,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ],    # OPTIONAL
         DynamoDBTargets => [
           {
-            Path => 'MyPath',    # OPTIONAL
+            Path     => 'MyPath',    # OPTIONAL
+            ScanAll  => 1,           # OPTIONAL
+            ScanRate => 1,           # OPTIONAL
           },
           ...
         ],    # OPTIONAL
@@ -82,12 +93,22 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           },
           ...
         ],    # OPTIONAL
+        MongoDBTargets => [
+          {
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Path           => 'MyPath',              # OPTIONAL
+            ScanAll        => 1,                     # OPTIONAL
+          },
+          ...
+        ],    # OPTIONAL
         S3Targets => [
           {
-            Exclusions => [
-              'MyPath', ...    # OPTIONAL
+            ConnectionName => 'MyConnectionName',    # OPTIONAL
+            Exclusions     => [
+              'MyPath', ...                          # OPTIONAL
             ],    # OPTIONAL
-            Path => 'MyPath',    # OPTIONAL
+            Path       => 'MyPath',    # OPTIONAL
+            SampleSize => 1,           # OPTIONAL
           },
           ...
         ],    # OPTIONAL
@@ -111,10 +132,10 @@ classification.
 
 =head2 Configuration => Str
 
-The crawler configuration information. This versioned JSON string
-allows users to specify aspects of a crawler's behavior. For more
-information, see Configuring a Crawler
-(http://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
+Crawler configuration information. This versioned JSON string allows
+users to specify aspects of a crawler's behavior. For more information,
+see Configuring a Crawler
+(https://docs.aws.amazon.com/glue/latest/dg/crawler-configuration.html).
 
 
 
@@ -127,7 +148,7 @@ crawler.
 
 =head2 DatabaseName => Str
 
-The AWS Glue database where results are stored, such as:
+The Glue database where results are stored, such as:
 C<arn:aws:daylight:us-east-1::database/sometable/*>.
 
 
@@ -138,9 +159,22 @@ A description of the new crawler.
 
 
 
+=head2 LineageConfiguration => L<Paws::Glue::LineageConfiguration>
+
+Specifies data lineage configuration settings for the crawler.
+
+
+
 =head2 B<REQUIRED> Name => Str
 
 Name of the new crawler.
+
+
+
+=head2 RecrawlPolicy => L<Paws::Glue::RecrawlPolicy>
+
+A policy that specifies whether to crawl the entire dataset again, or
+to crawl only folders that were added since the last crawler run.
 
 
 
@@ -153,11 +187,11 @@ by the new crawler to access customer resources.
 
 =head2 Schedule => Str
 
-A C<cron> expression used to specify the schedule. For more
-information, see Time-Based Schedules for Jobs and Crawlers
-(http://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
-For example, to run something every day at 12:15 UTC, specify C<cron(15
-12 * * ? *)>.
+A C<cron> expression used to specify the schedule (see Time-Based
+Schedules for Jobs and Crawlers
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-data-warehouse-schedule.html).
+For example, to run something every day at 12:15 UTC, you would
+specify: C<cron(15 12 * * ? *)>.
 
 
 

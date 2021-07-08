@@ -29,15 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    my $ListPoliciesResponse = $organizations->ListPolicies(
-      Filter     => 'SERVICE_CONTROL_POLICY',
-      MaxResults => 1,                          # OPTIONAL
-      NextToken  => 'MyNextToken',              # OPTIONAL
-    );
+    # To retrieve a list policies in the organization
+    # The following example shows how to get a list of service control policies
+    # (SCPs):/n/n
+    my $ListPoliciesResponse =
+      $organizations->ListPolicies( 'Filter' => 'SERVICE_CONTROL_POLICY' );
 
     # Results:
-    my $NextToken = $ListPoliciesResponse->NextToken;
-    my $Policies  = $ListPoliciesResponse->Policies;
+    my $Policies = $ListPoliciesResponse->Policies;
 
     # Returns a L<Paws::Organizations::ListPoliciesResponse> object.
 
@@ -50,30 +49,57 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 =head2 B<REQUIRED> Filter => Str
 
 Specifies the type of policy that you want to include in the response.
+You must specify one of the following values:
 
-Valid values are: C<"SERVICE_CONTROL_POLICY">, C<"TAG_POLICY">
+=over
+
+=item *
+
+AISERVICES_OPT_OUT_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out.html)
+
+=item *
+
+BACKUP_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_backup.html)
+
+=item *
+
+SERVICE_CONTROL_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scp.html)
+
+=item *
+
+TAG_POLICY
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
+
+=back
+
+
+Valid values are: C<"SERVICE_CONTROL_POLICY">, C<"TAG_POLICY">, C<"BACKUP_POLICY">, C<"AISERVICES_OPT_OUT_POLICY">
 
 =head2 MaxResults => Int
 
-(Optional) Use this to limit the number of results you want included
-per page in the response. If you do not include this parameter, it
-defaults to a value that is specific to the operation. If additional
-items exist beyond the maximum you specify, the C<NextToken> response
-element is present and has a value (is not null). Include that value as
-the C<NextToken> request parameter in the next call to the operation to
-get the next part of the results. Note that Organizations might return
-fewer results than the maximum even when there are more results
-available. You should check C<NextToken> after every operation to
-ensure that you receive all of the results.
+The total number of results that you want included on each page of the
+response. If you do not include this parameter, it defaults to a value
+that is specific to the operation. If additional items exist beyond the
+maximum you specify, the C<NextToken> response element is present and
+has a value (is not null). Include that value as the C<NextToken>
+request parameter in the next call to the operation to get the next
+part of the results. Note that Organizations might return fewer results
+than the maximum even when there are more results available. You should
+check C<NextToken> after every operation to ensure that you receive all
+of the results.
 
 
 
 =head2 NextToken => Str
 
-Use this parameter if you receive a C<NextToken> response in a previous
-request that indicates that there is more output available. Set it to
-the value of the previous call's C<NextToken> response to indicate
-where the output should continue from.
+The parameter for receiving additional results if you receive a
+C<NextToken> response in a previous request. A C<NextToken> response
+indicates that more output is available. Set this parameter to the
+value of the previous call's C<NextToken> response to indicate where
+the output should continue from.
 
 
 

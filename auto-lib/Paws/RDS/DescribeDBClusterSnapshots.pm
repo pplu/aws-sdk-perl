@@ -127,8 +127,8 @@ C<engine> - Accepts names of database engines.
 =head2 IncludePublic => Bool
 
 A value that indicates whether to include manual DB cluster snapshots
-that are public and can be copied or restored by any AWS account. By
-default, the public snapshots are not included.
+that are public and can be copied or restored by any Amazon Web
+Services account. By default, the public snapshots are not included.
 
 You can share a manual DB cluster snapshot as public by using the
 ModifyDBClusterSnapshotAttribute API action.
@@ -138,13 +138,13 @@ ModifyDBClusterSnapshotAttribute API action.
 =head2 IncludeShared => Bool
 
 A value that indicates whether to include shared manual DB cluster
-snapshots from other AWS accounts that this AWS account has been given
-permission to copy or restore. By default, these snapshots are not
-included.
+snapshots from other Amazon Web Services accounts that this Amazon Web
+Services account has been given permission to copy or restore. By
+default, these snapshots are not included.
 
-You can give an AWS account permission to restore a manual DB cluster
-snapshot from another AWS account by the
-C<ModifyDBClusterSnapshotAttribute> API action.
+You can give an Amazon Web Services account permission to restore a
+manual DB cluster snapshot from another Amazon Web Services account by
+the C<ModifyDBClusterSnapshotAttribute> API action.
 
 
 
@@ -180,17 +180,17 @@ the following values:
 =item *
 
 C<automated> - Return all DB cluster snapshots that have been
-automatically taken by Amazon RDS for my AWS account.
+automatically taken by Amazon RDS for my Amazon Web Services account.
 
 =item *
 
 C<manual> - Return all DB cluster snapshots that have been taken by my
-AWS account.
+Amazon Web Services account.
 
 =item *
 
 C<shared> - Return all manual DB cluster snapshots that have been
-shared to my AWS account.
+shared to my Amazon Web Services account.
 
 =item *
 

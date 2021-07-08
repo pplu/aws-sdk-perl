@@ -3,6 +3,7 @@ package Paws::EC2::CreateKeyPair;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has KeyName => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -53,6 +54,12 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 A unique name for the key pair.
 
 Constraints: Up to 255 ASCII characters
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the new key pair.
 
 
 

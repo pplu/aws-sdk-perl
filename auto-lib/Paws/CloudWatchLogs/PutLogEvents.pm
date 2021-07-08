@@ -79,9 +79,11 @@ The name of the log stream.
 The sequence token obtained from the response of the previous
 C<PutLogEvents> call. An upload in a newly created log stream does not
 require a sequence token. You can also get the sequence token using
-DescribeLogStreams. If you call C<PutLogEvents> twice within a narrow
-time period using the same value for C<sequenceToken>, both calls may
-be successful, or one may be rejected.
+DescribeLogStreams
+(https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogStreams.html).
+If you call C<PutLogEvents> twice within a narrow time period using the
+same value for C<sequenceToken>, both calls might be successful or one
+might be rejected.
 
 
 

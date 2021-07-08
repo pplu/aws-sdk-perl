@@ -40,6 +40,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MetricNamespace => 'MyMetricNamespace',    # max: 255
           MetricValue     => 'MyMetricValue',        # max: 100
           DefaultValue    => 1,                      # OPTIONAL
+          Dimensions      => {
+            'MyDimensionsKey' =>
+              'MyDimensionsValue',    # key: max: 255, value: max: 255
+          },    # OPTIONAL
+          Unit => 'Seconds'
+          , # values: Seconds, Microseconds, Milliseconds, Bytes, Kilobytes, Megabytes, Gigabytes, Terabytes, Bits, Kilobits, Megabits, Gigabits, Terabits, Percent, Count, Bytes/Second, Kilobytes/Second, Megabytes/Second, Gigabytes/Second, Terabytes/Second, Bits/Second, Kilobits/Second, Megabits/Second, Gigabits/Second, Terabits/Second, Count/Second, None; OPTIONAL
         },
         ...
       ],

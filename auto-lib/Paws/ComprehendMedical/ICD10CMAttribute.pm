@@ -2,9 +2,11 @@
 package Paws::ComprehendMedical::ICD10CMAttribute;
   use Moose;
   has BeginOffset => (is => 'ro', isa => 'Int');
+  has Category => (is => 'ro', isa => 'Str');
   has EndOffset => (is => 'ro', isa => 'Int');
   has Id => (is => 'ro', isa => 'Int');
   has RelationshipScore => (is => 'ro', isa => 'Num');
+  has RelationshipType => (is => 'ro', isa => 'Str');
   has Score => (is => 'ro', isa => 'Num');
   has Text => (is => 'ro', isa => 'Str');
   has Traits => (is => 'ro', isa => 'ArrayRef[Paws::ComprehendMedical::ICD10CMTrait]');
@@ -55,6 +57,12 @@ attribute begins. The offset returns the UTF-8 code point in the
 string.
 
 
+=head2 Category => Str
+
+The category of attribute. Can be either of C<DX_NAME> or
+C<TIME_EXPRESSION>.
+
+
 =head2 EndOffset => Int
 
 The 0-based character offset in the input text that shows where the
@@ -72,6 +80,12 @@ identifier.
 
 The level of confidence that Amazon Comprehend Medical has that this
 attribute is correctly related to this entity.
+
+
+=head2 RelationshipType => Str
+
+The type of relationship between the entity and attribute. Type for the
+relationship can be either of C<OVERLAP> or C<SYSTEM_ORGAN_SITE>.
 
 
 =head2 Score => Num

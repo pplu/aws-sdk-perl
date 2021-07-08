@@ -30,15 +30,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
-    my $GetIntentsResponse = $models . lex->GetIntents(
-      MaxResults   => 1,                 # OPTIONAL
-      NameContains => 'MyIntentName',    # OPTIONAL
-      NextToken    => 'MyNextToken',     # OPTIONAL
-    );
+   # To get a list of intents
+   # This example shows how to get a list of all of the intents in your account.
+    my $GetIntentsResponse = $models
+      . lex->GetIntents(
+      'MaxResults' => 10,
+      'NextToken'  => ''
+      );
 
     # Results:
-    my $Intents   = $GetIntentsResponse->Intents;
-    my $NextToken = $GetIntentsResponse->NextToken;
+    my $intents = $GetIntentsResponse->intents;
 
     # Returns a L<Paws::LexModels::GetIntentsResponse> object.
 

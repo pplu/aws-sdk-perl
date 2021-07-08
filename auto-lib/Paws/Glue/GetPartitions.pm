@@ -3,6 +3,7 @@ package Paws::Glue::GetPartitions;
   use Moose;
   has CatalogId => (is => 'ro', isa => 'Str');
   has DatabaseName => (is => 'ro', isa => 'Str', required => 1);
+  has ExcludeColumnSchema => (is => 'ro', isa => 'Bool');
   has Expression => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -34,15 +35,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $GetPartitionsResponse = $glue->GetPartitions(
-      DatabaseName => 'MyNameString',
-      TableName    => 'MyNameString',
-      CatalogId    => 'MyCatalogIdString',    # OPTIONAL
-      Expression   => 'MyPredicateString',    # OPTIONAL
-      MaxResults   => 1,                      # OPTIONAL
-      NextToken    => 'MyToken',              # OPTIONAL
-      Segment      => {
+      DatabaseName        => 'MyNameString',
+      TableName           => 'MyNameString',
+      CatalogId           => 'MyCatalogIdString',    # OPTIONAL
+      ExcludeColumnSchema => 1,                      # OPTIONAL
+      Expression          => 'MyPredicateString',    # OPTIONAL
+      MaxResults          => 1,                      # OPTIONAL
+      NextToken           => 'MyToken',              # OPTIONAL
+      Segment             => {
         SegmentNumber => 1,
-        TotalSegments => 1,                   # min: 1, max: 10
+        TotalSegments => 1,                          # min: 1, max: 10
 
       },    # OPTIONAL
     );
@@ -62,13 +64,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog where the partitions in question reside. If
-none is provided, the AWS account ID is used by default.
+none is provided, the Amazon Web Services account ID is used by
+default.
 
 
 
 =head2 B<REQUIRED> DatabaseName => Str
 
 The name of the catalog database where the partitions reside.
+
+
+
+=head2 ExcludeColumnSchema => Bool
+
+
 
 
 
@@ -180,7 +189,7 @@ C<decimal>
 
 =back
 
-If an invalid type is encountered, an exception is thrown.
+If an type is encountered that is not valid, an exception is thrown.
 
 The following list shows the valid operators on each type. When you
 define a crawler, the C<partitionKey> type is created as a C<STRING>,

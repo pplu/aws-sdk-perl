@@ -4,8 +4,10 @@ package Paws::Lambda::UpdateFunctionConfiguration;
   has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
+  has FileSystemConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::FileSystemConfig]');
   has FunctionName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'FunctionName', required => 1);
   has Handler => (is => 'ro', isa => 'Str');
+  has ImageConfig => (is => 'ro', isa => 'Paws::Lambda::ImageConfig');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MemorySize => (is => 'ro', isa => 'Int');
@@ -42,34 +44,28 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $lambda = Paws->service('Lambda');
     # To update a Lambda function's configuration
-    # This operation updates a Lambda function's configuration
+    # The following example modifies the memory size to be 256 MB for the
+    # unpublished ($LATEST) version of a function named my-function.
     my $FunctionConfiguration = $lambda->UpdateFunctionConfiguration(
-      'Description'  => '',
-      'FunctionName' => 'myFunction',
-      'Handler'      => 'index.handler',
-      'MemorySize'   => 128,
-      'Role'         => 'arn:aws:iam::123456789012:role/lambda_basic_execution',
-      'Runtime'      => 'python2.7',
-      'Timeout'      => 123,
-      'VpcConfig'    => {
-
-      }
+      'FunctionName' => 'my-function',
+      'MemorySize'   => 256
     );
 
     # Results:
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Description  = $FunctionConfiguration->Description;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $Role         = $FunctionConfiguration->Role;
-    my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $Version      = $FunctionConfiguration->Version;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $CodeSha256    = $FunctionConfiguration->CodeSha256;
+    my $CodeSize      = $FunctionConfiguration->CodeSize;
+    my $Description   = $FunctionConfiguration->Description;
+    my $FunctionArn   = $FunctionConfiguration->FunctionArn;
+    my $FunctionName  = $FunctionConfiguration->FunctionName;
+    my $Handler       = $FunctionConfiguration->Handler;
+    my $LastModified  = $FunctionConfiguration->LastModified;
+    my $MemorySize    = $FunctionConfiguration->MemorySize;
+    my $RevisionId    = $FunctionConfiguration->RevisionId;
+    my $Role          = $FunctionConfiguration->Role;
+    my $Runtime       = $FunctionConfiguration->Runtime;
+    my $Timeout       = $FunctionConfiguration->Timeout;
+    my $TracingConfig = $FunctionConfiguration->TracingConfig;
+    my $Version       = $FunctionConfiguration->Version;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -98,6 +94,12 @@ A description of the function.
 
 Environment variables that are accessible from function code during
 execution.
+
+
+
+=head2 FileSystemConfigs => ArrayRef[L<Paws::Lambda::FileSystemConfig>]
+
+Connection settings for an Amazon EFS file system.
 
 
 
@@ -139,11 +141,19 @@ information, see Programming Model
 
 
 
+=head2 ImageConfig => L<Paws::Lambda::ImageConfig>
+
+Container image configuration values
+(https://docs.aws.amazon.com/lambda/latest/dg/images-parms.html) that
+override the values in the container image Dockerfile.
+
+
+
 =head2 KMSKeyArn => Str
 
-The ARN of the AWS Key Management Service (AWS KMS) key that's used to
-encrypt your function's environment variables. If it's not provided,
-AWS Lambda uses a default service key.
+The ARN of the Amazon Web Services Key Management Service (KMS) key
+that's used to encrypt your function's environment variables. If it's
+not provided, Lambda uses a default service key.
 
 
 
@@ -158,9 +168,11 @@ its ARN, including the version.
 
 =head2 MemorySize => Int
 
-The amount of memory that your function has access to. Increasing the
-function's memory also increases its CPU allocation. The default value
-is 128 MB. The value must be a multiple of 64 MB.
+The amount of memory available to the function
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html)
+at runtime. Increasing the function memory also increases its CPU
+allocation. The default value is 128 MB. The value can be any multiple
+of 1 MB.
 
 
 
@@ -183,28 +195,31 @@ The Amazon Resource Name (ARN) of the function's execution role.
 The identifier of the function's runtime
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"nodejs14.x">, C<"java8">, C<"java8.al2">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"dotnetcore3.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">, C<"provided.al2">
 
 =head2 Timeout => Int
 
 The amount of time that Lambda allows a function to run before stopping
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.
+For additional information, see Lambda execution environment
+(https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html).
 
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfig>
 
 Set C<Mode> to C<Active> to sample and trace a subset of incoming
-requests with AWS X-Ray.
+requests with X-Ray
+(https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
 
 
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfig>
 
-For network connectivity to AWS resources in a VPC, specify a list of
-security groups and subnets in the VPC. When you connect a function to
-a VPC, it can only access resources and the internet through that VPC.
-For more information, see VPC Settings
+For network connectivity to Amazon Web Services resources in a VPC,
+specify a list of security groups and subnets in the VPC. When you
+connect a function to a VPC, it can only access resources and the
+internet through that VPC. For more information, see VPC Settings
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 
 

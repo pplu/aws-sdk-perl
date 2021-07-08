@@ -35,20 +35,27 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $route53 = Paws->service('Route53');
+  # To add or remove tags from a hosted zone or health check
+  # The following example adds two tags and removes one tag from the hosted zone
+  # with ID Z3M3LMPEXAMPLE.
     my $ChangeTagsForResourceResponse = $route53->ChangeTagsForResource(
-      ResourceId   => 'MyTagResourceId',
-      ResourceType => 'healthcheck',
-      AddTags      => [
+      'AddTags' => [
+
         {
-          Key   => 'MyTagKey',      # max: 128; OPTIONAL
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          'Key'   => 'apex',
+          'Value' => 3874
         },
-        ...
-      ],    # OPTIONAL
-      RemoveTagKeys => [
-        'MyTagKey', ...    # max: 128; OPTIONAL
-      ],    # OPTIONAL
+
+        {
+          'Key'   => 'acme',
+          'Value' => 4938
+        }
+      ],
+      'RemoveTagKeys' => ['Nadir'],
+      'ResourceId'    => 'Z3M3LMPEXAMPLE',
+      'ResourceType'  => 'hostedzone'
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/route53/ChangeTagsForResource>

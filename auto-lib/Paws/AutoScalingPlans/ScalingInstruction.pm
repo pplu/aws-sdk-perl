@@ -46,12 +46,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes a scaling instruction for a scalable resource.
-
-The scaling instruction is used in combination with a scaling plan,
-which is a set of instructions for configuring dynamic scaling and
-predictive scaling for the scalable resources in your application. Each
-scaling instruction applies to one resource.
+Describes a scaling instruction for a scalable resource in a scaling
+plan. Each scaling instruction applies to one resource.
 
 AWS Auto Scaling creates target tracking scaling policies based on the
 scaling instructions. Target tracking scaling policies adjust the
@@ -70,10 +66,10 @@ capacity to match the forecast.
 
 We recommend waiting a minimum of 24 hours after creating an Auto
 Scaling group to configure predictive scaling. At minimum, there must
-be 24 hours of historical data to generate a forecast.
-
-For more information, see Getting Started with AWS Auto Scaling
-(https://docs.aws.amazon.com/autoscaling/plans/userguide/auto-scaling-getting-started.html).
+be 24 hours of historical data to generate a forecast. For more
+information, see Best Practices for AWS Auto Scaling
+(https://docs.aws.amazon.com/autoscaling/plans/userguide/gs-best-practices.html)
+in the I<AWS Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 
@@ -307,17 +303,8 @@ The namespace of the AWS service.
 
 =head2 B<REQUIRED> TargetTrackingConfigurations => ArrayRef[L<Paws::AutoScalingPlans::TargetTrackingConfiguration>]
 
-The structure that defines new target tracking configurations (up to
-10). Each of these structures includes a specific scaling metric and a
-target value for the metric, along with various parameters to use with
-dynamic scaling.
-
-With predictive scaling and dynamic scaling, the resource scales based
-on the target tracking configuration that provides the largest capacity
-for both scale in and scale out.
-
-Condition: The scaling metric must be unique across target tracking
-configurations.
+The target tracking configurations (up to 10). Each of these structures
+must specify a unique scaling metric and a target value for the metric.
 
 
 

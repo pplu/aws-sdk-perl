@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::CreateProfile;
   use Moose;
   has Address => (is => 'ro', isa => 'Str', required => 1);
   has ClientRequestToken => (is => 'ro', isa => 'Str');
+  has DataRetentionOptIn => (is => 'ro', isa => 'Bool');
   has DistanceUnit => (is => 'ro', isa => 'Str', required => 1);
   has Locale => (is => 'ro', isa => 'Str');
   has MaxVolumeLimit => (is => 'ro', isa => 'Int');
@@ -10,6 +11,7 @@ package Paws::AlexaForBusiness::CreateProfile;
   has ProfileName => (is => 'ro', isa => 'Str', required => 1);
   has PSTNEnabled => (is => 'ro', isa => 'Bool');
   has SetupModeDisabled => (is => 'ro', isa => 'Bool');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::AlexaForBusiness::Tag]');
   has TemperatureUnit => (is => 'ro', isa => 'Str', required => 1);
   has Timezone => (is => 'ro', isa => 'Str', required => 1);
   has WakeWord => (is => 'ro', isa => 'Str', required => 1);
@@ -46,6 +48,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Timezone                 => 'MyTimezone',
       WakeWord                 => 'ALEXA',
       ClientRequestToken       => 'MyClientRequestToken',    # OPTIONAL
+      DataRetentionOptIn       => 1,                         # OPTIONAL
       Locale                   => 'MyDeviceLocale',          # OPTIONAL
       MaxVolumeLimit           => 1,                         # OPTIONAL
       MeetingRoomConfiguration => {
@@ -70,6 +73,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       },    # OPTIONAL
       PSTNEnabled       => 1,    # OPTIONAL
       SetupModeDisabled => 1,    # OPTIONAL
+      Tags              => [
+        {
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -92,6 +103,12 @@ The valid address for the room.
 =head2 ClientRequestToken => Str
 
 The user-specified token that is used during the creation of a profile.
+
+
+
+=head2 DataRetentionOptIn => Bool
+
+Whether data retention of the profile is enabled.
 
 
 
@@ -135,6 +152,12 @@ Whether PSTN calling is enabled.
 =head2 SetupModeDisabled => Bool
 
 Whether room profile setup is enabled.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::AlexaForBusiness::Tag>]
+
+The tags for the profile.
 
 
 

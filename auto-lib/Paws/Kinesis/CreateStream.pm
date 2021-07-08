@@ -46,8 +46,6 @@ The number of shards that the stream will use. The throughput of the
 stream is a function of the number of shards; more shards are required
 for greater provisioned throughput.
 
-DefaultShardLimit;
-
 
 
 =head2 B<REQUIRED> StreamName => Str

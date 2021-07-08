@@ -50,24 +50,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 
 =head2 B<REQUIRED> ApplicationName => Str
 
-The name of the application.
-
-Constraint: This name must be unique within your account. If the
-specified name already exists, the action returns an
-C<InvalidParameterValue> error.
+The name of the application. Must be unique within your account.
 
 
 
 =head2 Description => Str
 
-Describes the application.
+Your description of the application.
 
 
 
 =head2 ResourceLifecycleConfig => L<Paws::ElasticBeanstalk::ApplicationResourceLifecycleConfig>
 
-Specify an application resource lifecycle configuration to prevent your
-application from accumulating too many versions.
+Specifies an application resource lifecycle configuration to prevent
+your application from accumulating too many versions.
 
 
 

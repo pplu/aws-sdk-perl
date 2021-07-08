@@ -3,6 +3,8 @@ package Paws::FraudDetector::PutDetector;
   use Moose;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'detectorId' , required => 1);
+  has EventTypeName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'eventTypeName' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +31,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $frauddetector = Paws->service('FraudDetector');
     my $PutDetectorResult = $frauddetector->PutDetector(
-      DetectorId  => 'Myidentifier',
-      Description => 'Mydescription',    # OPTIONAL
+      DetectorId    => 'Myidentifier',
+      EventTypeName => 'Myidentifier',
+      Description   => 'Mydescription',    # OPTIONAL
+      Tags          => [
+        {
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -48,6 +59,18 @@ The description of the detector.
 =head2 B<REQUIRED> DetectorId => Str
 
 The detector ID.
+
+
+
+=head2 B<REQUIRED> EventTypeName => Str
+
+The name of the event type.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
 
 
 

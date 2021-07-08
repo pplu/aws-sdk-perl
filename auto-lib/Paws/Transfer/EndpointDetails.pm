@@ -2,6 +2,7 @@
 package Paws::Transfer::EndpointDetails;
   use Moose;
   has AddressAllocationIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has SecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has VpcEndpointId => (is => 'ro', isa => 'Str');
   has VpcId => (is => 'ro', isa => 'Str');
@@ -37,10 +38,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Transfer::E
 =head1 DESCRIPTION
 
 The virtual private cloud (VPC) endpoint settings that are configured
-for your SFTP server. With a VPC endpoint, you can restrict access to
-your SFTP server and resources only within your VPC. To control
-incoming internet traffic, invoke the C<UpdateServer> API and attach an
-Elastic IP to your server's endpoint.
+for your file transfer protocol-enabled server. With a VPC endpoint,
+you can restrict access to your server and resources only within your
+VPC. To control incoming internet traffic, invoke the C<UpdateServer>
+API and attach an Elastic IP address to your server's endpoint.
+
+After May 19, 2021, you won't be able to create a server using
+C<EndpointType=VPC_ENDPOINT> in your Amazon Web Servicesaccount if your
+account hasn't already done so before May 19, 2021. If you have already
+created servers with C<EndpointType=VPC_ENDPOINT> in your Amazon Web
+Servicesaccount on or before May 19, 2021, you will not be affected.
+After this date, use C<EndpointType>=C<VPC>.
+
+For more information, see
+https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint.
 
 =head1 ATTRIBUTES
 
@@ -48,27 +59,53 @@ Elastic IP to your server's endpoint.
 =head2 AddressAllocationIds => ArrayRef[Str|Undef]
 
 A list of address allocation IDs that are required to attach an Elastic
-IP address to your SFTP server's endpoint. This is only valid in the
-C<UpdateServer> API.
+IP address to your server's endpoint.
 
-This property can only be use when C<EndpointType> is set to C<VPC>.
+This property can only be set when C<EndpointType> is set to C<VPC> and
+it is only valid in the C<UpdateServer> API.
+
+
+=head2 SecurityGroupIds => ArrayRef[Str|Undef]
+
+A list of security groups IDs that are available to attach to your
+server's endpoint.
+
+This property can only be set when C<EndpointType> is set to C<VPC>.
+
+You can edit the C<SecurityGroupIds> property in the UpdateServer
+(https://docs.aws.amazon.com/transfer/latest/userguide/API_UpdateServer.html)
+API only if you are changing the C<EndpointType> from C<PUBLIC> or
+C<VPC_ENDPOINT> to C<VPC>. To change security groups associated with
+your server's VPC endpoint after creation, use the Amazon EC2
+ModifyVpcEndpoint
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_ModifyVpcEndpoint.html)
+API.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]
 
-A list of subnet IDs that are required to host your SFTP server
-endpoint in your VPC.
+A list of subnet IDs that are required to host your server endpoint in
+your VPC.
+
+This property can only be set when C<EndpointType> is set to C<VPC>.
 
 
 =head2 VpcEndpointId => Str
 
 The ID of the VPC endpoint.
 
+This property can only be set when C<EndpointType> is set to
+C<VPC_ENDPOINT>.
+
+For more information, see
+https://docs.aws.amazon.com/transfer/latest/userguide/create-server-in-vpc.html#deprecate-vpc-endpoint.
+
 
 =head2 VpcId => Str
 
-The VPC ID of the virtual private cloud in which the SFTP server's
-endpoint will be hosted.
+The VPC ID of the VPC in which a server's endpoint will be hosted.
+
+This property can only be set when C<EndpointType> is set to C<VPC>.
 
 
 

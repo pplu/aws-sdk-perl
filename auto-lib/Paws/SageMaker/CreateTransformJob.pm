@@ -7,6 +7,7 @@ package Paws::SageMaker::CreateTransformJob;
   has ExperimentConfig => (is => 'ro', isa => 'Paws::SageMaker::ExperimentConfig');
   has MaxConcurrentTransforms => (is => 'ro', isa => 'Int');
   has MaxPayloadInMB => (is => 'ro', isa => 'Int');
+  has ModelClientConfig => (is => 'ro', isa => 'Paws::SageMaker::ModelClientConfig');
   has ModelName => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TransformInput => (is => 'ro', isa => 'Paws::SageMaker::TransformInput', required => 1);
@@ -64,7 +65,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       TransformResources => {
         InstanceCount => 1,                # min: 1
         InstanceType  => 'ml.m4.xlarge'
-        , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge
+        , # values: ml.m4.xlarge, ml.m4.2xlarge, ml.m4.4xlarge, ml.m4.10xlarge, ml.m4.16xlarge, ml.c4.xlarge, ml.c4.2xlarge, ml.c4.4xlarge, ml.c4.8xlarge, ml.p2.xlarge, ml.p2.8xlarge, ml.p2.16xlarge, ml.p3.2xlarge, ml.p3.8xlarge, ml.p3.16xlarge, ml.c5.xlarge, ml.c5.2xlarge, ml.c5.4xlarge, ml.c5.9xlarge, ml.c5.18xlarge, ml.m5.large, ml.m5.xlarge, ml.m5.2xlarge, ml.m5.4xlarge, ml.m5.12xlarge, ml.m5.24xlarge, ml.g4dn.xlarge, ml.g4dn.2xlarge, ml.g4dn.4xlarge, ml.g4dn.8xlarge, ml.g4dn.12xlarge, ml.g4dn.16xlarge
         VolumeKmsKeyId => 'MyKmsKeyId',    # max: 2048; OPTIONAL
       },
       BatchStrategy  => 'MultiRecord',     # OPTIONAL
@@ -78,14 +79,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           'MyTransformEnvironmentValue',    # key: max: 1024, value: max: 10240
       },    # OPTIONAL
       ExperimentConfig => {
-        ExperimentName => 'MyExperimentConfigName',  # min: 1, max: 64; OPTIONAL
+        ExperimentName => 'MyExperimentEntityName', # min: 1, max: 120; OPTIONAL
         TrialComponentDisplayName =>
-          'MyExperimentConfigName',                  # min: 1, max: 64; OPTIONAL
-        TrialName => 'MyExperimentConfigName',       # min: 1, max: 64; OPTIONAL
+          'MyExperimentEntityName',                 # min: 1, max: 120; OPTIONAL
+        TrialName => 'MyExperimentEntityName',      # min: 1, max: 120; OPTIONAL
       },    # OPTIONAL
       MaxConcurrentTransforms => 1,    # OPTIONAL
       MaxPayloadInMB          => 1,    # OPTIONAL
-      Tags                    => [
+      ModelClientConfig       => {
+        InvocationsMaxRetries       => 1,    # max: 3; OPTIONAL
+        InvocationsTimeoutInSeconds => 1,    # min: 1, max: 3600; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256
@@ -113,8 +118,8 @@ inference request. A I<record> I< is a single unit of input data that
 inference can be made on. For example, a single line in a CSV file is a
 record.>
 
-To enable the batch strategy, you must set the C<SplitType> property of
-the DataProcessing object to C<Line>, C<RecordIO>, or C<TFRecord>.
+To enable the batch strategy, you must set the C<SplitType> property to
+C<Line>, C<RecordIO>, or C<TFRecord>.
 
 To use only one record when making an HTTP invocation request to a
 container, set C<BatchStrategy> to C<SingleRecord> and C<SplitType> to
@@ -185,11 +190,18 @@ built-in algorithms do not support HTTP chunked encoding.
 
 
 
+=head2 ModelClientConfig => L<Paws::SageMaker::ModelClientConfig>
+
+Configures the timeout and maximum number of retries for processing a
+transform job invocation.
+
+
+
 =head2 B<REQUIRED> ModelName => Str
 
 The name of the model that you want to use for the transform job.
 C<ModelName> must be the name of an existing Amazon SageMaker model
-within an AWS Region in an AWS account.
+within an Amazon Web Services Region in an Amazon Web Services account.
 
 
 
@@ -198,7 +210,7 @@ within an AWS Region in an AWS account.
 (Optional) An array of key-value pairs. For more information, see Using
 Cost Allocation Tags
 (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
-in the I<AWS Billing and Cost Management User Guide>.
+in the I<Amazon Web Services Billing and Cost Management User Guide>.
 
 
 
@@ -210,8 +222,8 @@ Describes the input source and the way the transform job consumes it.
 
 =head2 B<REQUIRED> TransformJobName => Str
 
-The name of the transform job. The name must be unique within an AWS
-Region in an AWS account.
+The name of the transform job. The name must be unique within an Amazon
+Web Services Region in an Amazon Web Services account.
 
 
 

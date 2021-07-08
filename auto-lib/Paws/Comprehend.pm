@@ -45,6 +45,11 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ClassifyDocument', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ContainsPiiEntities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ContainsPiiEntities', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDocumentClassifier {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::CreateDocumentClassifier', @_);
@@ -105,9 +110,19 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeEntityRecognizer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeEventsDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeEventsDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeKeyPhrasesDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribeKeyPhrasesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribePiiEntitiesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DescribePiiEntitiesDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeSentimentDetectionJob {
@@ -133,6 +148,11 @@ package Paws::Comprehend;
   sub DetectKeyPhrases {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::DetectKeyPhrases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DetectPiiEntities {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::DetectPiiEntities', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DetectSentiment {
@@ -175,9 +195,19 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListEntityRecognizers', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListEventsDetectionJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListEventsDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListKeyPhrasesDetectionJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::ListKeyPhrasesDetectionJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListPiiEntitiesDetectionJobs {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::ListPiiEntitiesDetectionJobs', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSentimentDetectionJobs {
@@ -210,9 +240,19 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StartEntitiesDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartEventsDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartEventsDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartKeyPhrasesDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StartKeyPhrasesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartPiiEntitiesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StartPiiEntitiesDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartSentimentDetectionJob {
@@ -235,9 +275,19 @@ package Paws::Comprehend;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StopEntitiesDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StopEventsDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopEventsDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopKeyPhrasesDetectionJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Comprehend::StopKeyPhrasesDetectionJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopPiiEntitiesDetectionJob {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Comprehend::StopPiiEntitiesDetectionJob', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StopSentimentDetectionJob {
@@ -457,7 +507,7 @@ package Paws::Comprehend;
   }
 
 
-  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax ClassifyDocument CreateDocumentClassifier CreateEndpoint CreateEntityRecognizer DeleteDocumentClassifier DeleteEndpoint DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEndpoint DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeKeyPhrasesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEndpoints ListEntitiesDetectionJobs ListEntityRecognizers ListKeyPhrasesDetectionJobs ListSentimentDetectionJobs ListTagsForResource ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartKeyPhrasesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopKeyPhrasesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer TagResource UntagResource UpdateEndpoint / }
+  sub operations { qw/BatchDetectDominantLanguage BatchDetectEntities BatchDetectKeyPhrases BatchDetectSentiment BatchDetectSyntax ClassifyDocument ContainsPiiEntities CreateDocumentClassifier CreateEndpoint CreateEntityRecognizer DeleteDocumentClassifier DeleteEndpoint DeleteEntityRecognizer DescribeDocumentClassificationJob DescribeDocumentClassifier DescribeDominantLanguageDetectionJob DescribeEndpoint DescribeEntitiesDetectionJob DescribeEntityRecognizer DescribeEventsDetectionJob DescribeKeyPhrasesDetectionJob DescribePiiEntitiesDetectionJob DescribeSentimentDetectionJob DescribeTopicsDetectionJob DetectDominantLanguage DetectEntities DetectKeyPhrases DetectPiiEntities DetectSentiment DetectSyntax ListDocumentClassificationJobs ListDocumentClassifiers ListDominantLanguageDetectionJobs ListEndpoints ListEntitiesDetectionJobs ListEntityRecognizers ListEventsDetectionJobs ListKeyPhrasesDetectionJobs ListPiiEntitiesDetectionJobs ListSentimentDetectionJobs ListTagsForResource ListTopicsDetectionJobs StartDocumentClassificationJob StartDominantLanguageDetectionJob StartEntitiesDetectionJob StartEventsDetectionJob StartKeyPhrasesDetectionJob StartPiiEntitiesDetectionJob StartSentimentDetectionJob StartTopicsDetectionJob StopDominantLanguageDetectionJob StopEntitiesDetectionJob StopEventsDetectionJob StopKeyPhrasesDetectionJob StopPiiEntitiesDetectionJob StopSentimentDetectionJob StopTrainingDocumentClassifier StopTrainingEntityRecognizer TagResource UntagResource UpdateEndpoint / }
 
 1;
 
@@ -612,6 +662,26 @@ document in real-time, using a previously created and trained custom
 model and an endpoint.
 
 
+=head2 ContainsPiiEntities
+
+=over
+
+=item LanguageCode => Str
+
+=item Text => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ContainsPiiEntities>
+
+Returns: a L<Paws::Comprehend::ContainsPiiEntitiesResponse> instance
+
+Analyzes input text for the presence of personally identifiable
+information (PII) and returns the labels of identified PII entity types
+such as name, address, bank account number, or phone number.
+
+
 =head2 CreateDocumentClassifier
 
 =over
@@ -627,6 +697,8 @@ model and an endpoint.
 =item [ClientRequestToken => Str]
 
 =item [Mode => Str]
+
+=item [ModelKmsKeyId => Str]
 
 =item [OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>]
 
@@ -644,7 +716,7 @@ Each argument is described in detail in: L<Paws::Comprehend::CreateDocumentClass
 Returns: a L<Paws::Comprehend::CreateDocumentClassifierResponse> instance
 
 Creates a new document classifier that you can use to categorize
-documents. To create a classifier you provide a set of training
+documents. To create a classifier, you provide a set of training
 documents that labeled with the categories that you want to use. After
 the classifier is trained you can use it to categorize a set of labeled
 documents into the categories. For more information, see
@@ -662,6 +734,8 @@ how-document-classification.
 =item ModelArn => Str
 
 =item [ClientRequestToken => Str]
+
+=item [DataAccessRoleArn => Str]
 
 =item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
 
@@ -689,6 +763,8 @@ previously trained custom model
 =item RecognizerName => Str
 
 =item [ClientRequestToken => Str]
+
+=item [ModelKmsKeyId => Str]
 
 =item [Tags => ArrayRef[L<Paws::Comprehend::Tag>]]
 
@@ -878,6 +954,22 @@ buckets containing training data, recognizer metadata, metrics, and so
 on.
 
 
+=head2 DescribeEventsDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribeEventsDetectionJob>
+
+Returns: a L<Paws::Comprehend::DescribeEventsDetectionJobResponse> instance
+
+Gets the status and details of an events detection job.
+
+
 =head2 DescribeKeyPhrasesDetectionJob
 
 =over
@@ -893,6 +985,23 @@ Returns: a L<Paws::Comprehend::DescribeKeyPhrasesDetectionJobResponse> instance
 
 Gets the properties associated with a key phrases detection job. Use
 this operation to get the status of a detection job.
+
+
+=head2 DescribePiiEntitiesDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DescribePiiEntitiesDetectionJob>
+
+Returns: a L<Paws::Comprehend::DescribePiiEntitiesDetectionJobResponse> instance
+
+Gets the properties associated with a PII entities detection job. For
+example, you can use this operation to get the job status.
 
 
 =head2 DescribeSentimentDetectionJob
@@ -952,9 +1061,11 @@ Supported Languages
 
 =over
 
-=item LanguageCode => Str
-
 =item Text => Str
+
+=item [EndpointArn => Str]
+
+=item [LanguageCode => Str]
 
 
 =back
@@ -983,6 +1094,25 @@ Each argument is described in detail in: L<Paws::Comprehend::DetectKeyPhrases>
 Returns: a L<Paws::Comprehend::DetectKeyPhrasesResponse> instance
 
 Detects the key noun phrases found in the text.
+
+
+=head2 DetectPiiEntities
+
+=over
+
+=item LanguageCode => Str
+
+=item Text => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::DetectPiiEntities>
+
+Returns: a L<Paws::Comprehend::DetectPiiEntitiesResponse> instance
+
+Inspects the input text for entities that contain personally
+identifiable information (PII) and returns information about them.
 
 
 =head2 DetectSentiment
@@ -1152,6 +1282,26 @@ The results of this list are not in any particular order. Please get
 the list and sort locally if needed.
 
 
+=head2 ListEventsDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::EventsDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListEventsDetectionJobs>
+
+Returns: a L<Paws::Comprehend::ListEventsDetectionJobsResponse> instance
+
+Gets a list of the events detection jobs that you have submitted.
+
+
 =head2 ListKeyPhrasesDetectionJobs
 
 =over
@@ -1170,6 +1320,26 @@ Each argument is described in detail in: L<Paws::Comprehend::ListKeyPhrasesDetec
 Returns: a L<Paws::Comprehend::ListKeyPhrasesDetectionJobsResponse> instance
 
 Get a list of key phrase detection jobs that you have submitted.
+
+
+=head2 ListPiiEntitiesDetectionJobs
+
+=over
+
+=item [Filter => L<Paws::Comprehend::PiiEntitiesDetectionJobFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::ListPiiEntitiesDetectionJobs>
+
+Returns: a L<Paws::Comprehend::ListPiiEntitiesDetectionJobsResponse> instance
+
+Gets a list of the PII entity detection jobs that you have submitted.
 
 
 =head2 ListSentimentDetectionJobs
@@ -1326,6 +1496,35 @@ the optional C<EntityRecognizerArn> must be used in order to provide
 access to the recognizer being used to detect the custom entity.
 
 
+=head2 StartEventsDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item LanguageCode => Str
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item TargetEventTypes => ArrayRef[Str|Undef]
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartEventsDetectionJob>
+
+Returns: a L<Paws::Comprehend::StartEventsDetectionJobResponse> instance
+
+Starts an asynchronous event detection job for a collection of
+documents.
+
+
 =head2 StartKeyPhrasesDetectionJob
 
 =over
@@ -1355,6 +1554,37 @@ Returns: a L<Paws::Comprehend::StartKeyPhrasesDetectionJobResponse> instance
 
 Starts an asynchronous key phrase detection job for a collection of
 documents. Use the operation to track the status of a job.
+
+
+=head2 StartPiiEntitiesDetectionJob
+
+=over
+
+=item DataAccessRoleArn => Str
+
+=item InputDataConfig => L<Paws::Comprehend::InputDataConfig>
+
+=item LanguageCode => Str
+
+=item Mode => Str
+
+=item OutputDataConfig => L<Paws::Comprehend::OutputDataConfig>
+
+=item [ClientRequestToken => Str]
+
+=item [JobName => Str]
+
+=item [RedactionConfig => L<Paws::Comprehend::RedactionConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StartPiiEntitiesDetectionJob>
+
+Returns: a L<Paws::Comprehend::StartPiiEntitiesDetectionJobResponse> instance
+
+Starts an asynchronous PII entity detection job for a collection of
+documents.
 
 
 =head2 StartSentimentDetectionJob
@@ -1475,6 +1705,22 @@ When a job is stopped, any documents already processed are written to
 the output location.
 
 
+=head2 StopEventsDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopEventsDetectionJob>
+
+Returns: a L<Paws::Comprehend::StopEventsDetectionJobResponse> instance
+
+Stops an events detection job in progress.
+
+
 =head2 StopKeyPhrasesDetectionJob
 
 =over
@@ -1501,6 +1747,22 @@ C<StopDominantLanguageDetectionJob> operation, the operation returns a
 
 When a job is stopped, any documents already processed are written to
 the output location.
+
+
+=head2 StopPiiEntitiesDetectionJob
+
+=over
+
+=item JobId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Comprehend::StopPiiEntitiesDetectionJob>
+
+Returns: a L<Paws::Comprehend::StopPiiEntitiesDetectionJobResponse> instance
+
+Stops a PII entities detection job in progress.
 
 
 =head2 StopSentimentDetectionJob

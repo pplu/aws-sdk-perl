@@ -40,11 +40,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     # Results:
     my $AttachmentsContent = $GetDocumentResult->AttachmentsContent;
     my $Content            = $GetDocumentResult->Content;
+    my $CreatedDate        = $GetDocumentResult->CreatedDate;
+    my $DisplayName        = $GetDocumentResult->DisplayName;
     my $DocumentFormat     = $GetDocumentResult->DocumentFormat;
     my $DocumentType       = $GetDocumentResult->DocumentType;
     my $DocumentVersion    = $GetDocumentResult->DocumentVersion;
     my $Name               = $GetDocumentResult->Name;
     my $Requires           = $GetDocumentResult->Requires;
+    my $ReviewStatus       = $GetDocumentResult->ReviewStatus;
     my $Status             = $GetDocumentResult->Status;
     my $StatusInformation  = $GetDocumentResult->StatusInformation;
     my $VersionName        = $GetDocumentResult->VersionName;
@@ -80,7 +83,7 @@ The name of the Systems Manager document.
 
 An optional field specifying the version of the artifact associated
 with the document. For example, "Release 12, Update 6". This value is
-unique across all versions of a document, and cannot be changed.
+unique across all versions of a document and can't be changed.
 
 
 

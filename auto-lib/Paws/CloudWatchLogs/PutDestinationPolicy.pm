@@ -43,7 +43,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/log
 =head2 B<REQUIRED> AccessPolicy => Str
 
 An IAM policy document that authorizes cross-account users to deliver
-their log events to the associated destination.
+their log events to the associated destination. This can be up to 5120
+bytes.
 
 
 

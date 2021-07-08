@@ -5,6 +5,7 @@ package Paws::CloudFormation::ListTypeVersions;
   has DeprecatedStatus => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has PublisherId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
 
@@ -33,12 +34,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $ListTypeVersionsOutput = $cloudformation->ListTypeVersions(
-      Arn              => 'MyPrivateTypeArn',    # OPTIONAL
-      DeprecatedStatus => 'LIVE',                # OPTIONAL
-      MaxResults       => 1,                     # OPTIONAL
-      NextToken        => 'MyNextToken',         # OPTIONAL
-      Type             => 'RESOURCE',            # OPTIONAL
-      TypeName         => 'MyTypeName',          # OPTIONAL
+      Arn              => 'MyTypeArn',        # OPTIONAL
+      DeprecatedStatus => 'LIVE',             # OPTIONAL
+      MaxResults       => 1,                  # OPTIONAL
+      NextToken        => 'MyNextToken',      # OPTIONAL
+      PublisherId      => 'MyPublisherId',    # OPTIONAL
+      Type             => 'RESOURCE',         # OPTIONAL
+      TypeName         => 'MyTypeName',       # OPTIONAL
     );
 
     # Results:
@@ -55,8 +57,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the type for which you want version
-summary information.
+The Amazon Resource Name (ARN) of the extension for which you want
+version summary information.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
@@ -65,7 +67,7 @@ C<Arn>.
 
 =head2 DeprecatedStatus => Str
 
-The deprecation status of the type versions that you want to get
+The deprecation status of the extension versions that you want to get
 summary information about.
 
 Valid values include:
@@ -74,14 +76,14 @@ Valid values include:
 
 =item *
 
-C<LIVE>: The type version is registered and can be used in
+C<LIVE>: The extension version is registered and can be used in
 CloudFormation operations, dependent on its provisioning behavior and
 visibility scope.
 
 =item *
 
-C<DEPRECATED>: The type version has been deregistered and can no longer
-be used in CloudFormation operations.
+C<DEPRECATED>: The extension version has been deregistered and can no
+longer be used in CloudFormation operations.
 
 =back
 
@@ -109,20 +111,27 @@ C<NextToken> parameter is set to C<null>.
 
 
 
+=head2 PublisherId => Str
+
+The publisher ID of the extension publisher.
+
+Extensions published by Amazon are not assigned a publisher ID.
+
+
+
 =head2 Type => Str
 
-The kind of the type.
-
-Currently the only valid value is C<RESOURCE>.
+The kind of the extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
 
-Valid values are: C<"RESOURCE">
+Valid values are: C<"RESOURCE">, C<"MODULE">
 
 =head2 TypeName => Str
 
-The name of the type for which you want version summary information.
+The name of the extension for which you want version summary
+information.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.

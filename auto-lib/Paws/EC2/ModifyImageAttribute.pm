@@ -36,33 +36,35 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To make an AMI public
+    # This example makes the specified AMI public.
     $ec2->ModifyImageAttribute(
-      ImageId          => 'MyImageId',
-      Attribute        => 'MyString',                  # OPTIONAL
-      Description      => { Value => 'MyString', },    # OPTIONAL
-      DryRun           => 1,                           # OPTIONAL
-      LaunchPermission => {
-        Add => [
+      'ImageId'          => 'ami-5731123e',
+      'LaunchPermission' => {
+        'Add' => [
+
           {
-            Group  => 'all',        # values: all; OPTIONAL
-            UserId => 'MyString',
-          },
-          ...
-        ],    # OPTIONAL
-        Remove => [
-          {
-            Group  => 'all',        # values: all; OPTIONAL
-            UserId => 'MyString',
-          },
-          ...
-        ],    # OPTIONAL
-      },    # OPTIONAL
-      OperationType => 'add',                  # OPTIONAL
-      ProductCodes  => [ 'MyString', ... ],    # OPTIONAL
-      UserGroups    => [ 'MyString', ... ],    # OPTIONAL
-      UserIds       => [ 'MyString', ... ],    # OPTIONAL
-      Value         => 'MyString',             # OPTIONAL
+            'Group' => 'all'
+          }
+        ]
+      }
     );
+
+ # To grant launch permissions
+ # This example grants launch permissions for the specified AMI to the specified
+ # AWS account.
+    $ec2->ModifyImageAttribute(
+      'ImageId'          => 'ami-5731123e',
+      'LaunchPermission' => {
+        'Add' => [
+
+          {
+            'UserId' => 123456789012
+          }
+        ]
+      }
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyImageAttribute>

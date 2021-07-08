@@ -60,10 +60,33 @@ data used to train the predictor.
 
 =head2 LastModificationTime => Str
 
-Initially, the same as C<CreationTime> (status is C<CREATE_PENDING>).
-Updated when training starts (status changed to C<CREATE_IN_PROGRESS>),
-and when training is complete (status changed to C<ACTIVE>) or fails
-(status changed to C<CREATE_FAILED>).
+The last time the resource was modified. The timestamp depends on the
+status of the job:
+
+=over
+
+=item *
+
+C<CREATE_PENDING> - The C<CreationTime>.
+
+=item *
+
+C<CREATE_IN_PROGRESS> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPING> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPED> - When the job stopped.
+
+=item *
+
+C<ACTIVE> or C<CREATE_FAILED> - When the job finished or failed.
+
+=back
+
 
 
 =head2 Message => Str
@@ -101,7 +124,7 @@ C<DELETE_PENDING>, C<DELETE_IN_PROGRESS>, C<DELETE_FAILED>
 
 =item *
 
-C<UPDATE_PENDING>, C<UPDATE_IN_PROGRESS>, C<UPDATE_FAILED>
+C<CREATE_STOPPING>, C<CREATE_STOPPED>
 
 =back
 

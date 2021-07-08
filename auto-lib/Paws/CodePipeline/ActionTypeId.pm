@@ -47,10 +47,43 @@ A category defines what kind of action can be taken in the stage, and
 constrains the provider type for the action. Valid categories are
 limited to one of the following values.
 
+=over
+
+=item *
+
+Source
+
+=item *
+
+Build
+
+=item *
+
+Test
+
+=item *
+
+Deploy
+
+=item *
+
+Invoke
+
+=item *
+
+Approval
+
+=back
+
+
 
 =head2 B<REQUIRED> Owner => Str
 
-The creator of the action being called.
+The creator of the action being called. There are three valid values
+for the C<Owner> field in the action category section within your
+pipeline structure: C<AWS>, C<ThirdParty>, and C<Custom>. For more
+information, see Valid Action Types and Providers in CodePipeline
+(https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#actions-valid-providers).
 
 
 =head2 B<REQUIRED> Provider => Str

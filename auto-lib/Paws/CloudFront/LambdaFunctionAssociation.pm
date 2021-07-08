@@ -55,9 +55,9 @@ object is in the edge cache.
 
 =item *
 
-C<origin-request>: The function executes only when CloudFront forwards
-a request to your origin. When the requested object is in the edge
-cache, the function doesn't execute.
+C<origin-request>: The function executes only when CloudFront sends a
+request to your origin. When the requested object is in the edge cache,
+the function doesn't execute.
 
 =item *
 

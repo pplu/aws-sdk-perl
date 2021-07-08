@@ -65,7 +65,7 @@ The number of years that you want to renew the domain for. The maximum
 number of years depends on the top-level domain. For the range of valid
 values for your domain, see Domains that You Can Register with Amazon
 Route 53
-(http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
+(https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html)
 in the I<Amazon Route 53 Developer Guide>.
 
 Default: 1

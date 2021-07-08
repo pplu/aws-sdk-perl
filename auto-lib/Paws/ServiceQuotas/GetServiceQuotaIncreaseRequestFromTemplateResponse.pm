@@ -16,7 +16,7 @@ Paws::ServiceQuotas::GetServiceQuotaIncreaseRequestFromTemplateResponse
 
 =head2 ServiceQuotaIncreaseRequestInTemplate => L<Paws::ServiceQuotas::ServiceQuotaIncreaseRequestInTemplate>
 
-This object contains the details about the quota increase request.
+Information about the quota increase request.
 
 
 =head2 _request_id => Str

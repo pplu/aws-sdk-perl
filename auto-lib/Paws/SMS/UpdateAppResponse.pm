@@ -18,17 +18,17 @@ Paws::SMS::UpdateAppResponse
 
 =head2 AppSummary => L<Paws::SMS::AppSummary>
 
-Summary description of the application.
+A summary description of the application.
 
 
 =head2 ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]
 
-List of updated server groups in the application.
+The updated server groups in the application.
 
 
 =head2 Tags => ArrayRef[L<Paws::SMS::Tag>]
 
-List of tags associated with the application.
+The tags associated with the application.
 
 
 =head2 _request_id => Str

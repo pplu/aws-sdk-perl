@@ -23,12 +23,12 @@ Information about the application.
 
 =head2 ServerGroups => ArrayRef[L<Paws::SMS::ServerGroup>]
 
-List of server groups belonging to the application.
+The server groups that belong to the application.
 
 
 =head2 Tags => ArrayRef[L<Paws::SMS::Tag>]
 
-List of tags associated with the application.
+The tags associated with the application.
 
 
 =head2 _request_id => Str

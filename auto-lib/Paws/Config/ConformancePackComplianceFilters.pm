@@ -45,6 +45,7 @@ names.
 Filters the results by compliance.
 
 The allowed values are C<COMPLIANT> and C<NON_COMPLIANT>.
+C<INSUFFICIENT_DATA> is not supported.
 
 
 =head2 ConfigRuleNames => ArrayRef[Str|Undef]

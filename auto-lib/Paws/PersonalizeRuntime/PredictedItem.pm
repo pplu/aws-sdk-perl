@@ -2,6 +2,7 @@
 package Paws::PersonalizeRuntime::PredictedItem;
   use Moose;
   has ItemId => (is => 'ro', isa => 'Str', request_name => 'itemId', traits => ['NameInRequest']);
+  has Score => (is => 'ro', isa => 'Num', request_name => 'score', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::PersonalizeRuntime::PredictedItem object:
 
-  $service_obj->Method(Att1 => { ItemId => $value, ..., ItemId => $value  });
+  $service_obj->Method(Att1 => { ItemId => $value, ..., Score => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,6 +44,13 @@ The and APIs return a list of C<PredictedItem>s.
 =head2 ItemId => Str
 
 The recommended item ID.
+
+
+=head2 Score => Num
+
+A numeric representation of the model's certainty that the item will be
+the next user selection. For more information on scoring logic, see
+how-scores-work.
 
 
 

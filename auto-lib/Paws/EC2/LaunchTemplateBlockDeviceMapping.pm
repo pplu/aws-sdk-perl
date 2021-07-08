@@ -51,8 +51,8 @@ Information about the block device for an EBS volume.
 
 =head2 NoDevice => Str
 
-Suppresses the specified device included in the block device mapping of
-the AMI.
+To omit the device from the block device mapping, specify an empty
+string.
 
 
 =head2 VirtualName => Str

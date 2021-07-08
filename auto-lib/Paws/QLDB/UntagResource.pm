@@ -45,8 +45,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/qld
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-The Amazon Resource Name (ARN) from which you want to remove the tags.
-For example:
+The Amazon Resource Name (ARN) from which to remove the tags. For
+example:
 
 C<arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger>
 
@@ -54,7 +54,7 @@ C<arn:aws:qldb:us-east-1:123456789012:ledger/exampleLedger>
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The list of tag keys that you want to remove.
+The list of tag keys to remove.
 
 
 

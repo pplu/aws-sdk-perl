@@ -17,7 +17,7 @@ Paws::GuardDuty::GetMasterAccountResponse
 
 =head2 B<REQUIRED> Master => L<Paws::GuardDuty::Master>
 
-Master account details.
+The administrator account details.
 
 
 =head2 _request_id => Str

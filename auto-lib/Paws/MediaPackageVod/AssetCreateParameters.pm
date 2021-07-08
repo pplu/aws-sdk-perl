@@ -6,6 +6,7 @@ package Paws::MediaPackageVod::AssetCreateParameters;
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
   has SourceArn => (is => 'ro', isa => 'Str', request_name => 'sourceArn', traits => ['NameInRequest'], required => 1);
   has SourceRoleArn => (is => 'ro', isa => 'Str', request_name => 'sourceRoleArn', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
 
@@ -26,7 +27,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackageVod::AssetCreateParameters object:
 
-  $service_obj->Method(Att1 => { Id => $value, ..., SourceRoleArn => $value  });
+  $service_obj->Method(Att1 => { Id => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -65,6 +66,11 @@ ARN of the source object in S3.
 =head2 B<REQUIRED> SourceRoleArn => Str
 
 The IAM role ARN used to access the source S3 bucket.
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 

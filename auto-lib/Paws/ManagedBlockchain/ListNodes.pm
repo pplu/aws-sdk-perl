@@ -2,7 +2,7 @@
 package Paws::ManagedBlockchain::ListNodes;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
-  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'memberId', required => 1);
+  has MemberId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'memberId');
   has NetworkId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'networkId', required => 1);
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
@@ -10,7 +10,7 @@ package Paws::ManagedBlockchain::ListNodes;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListNodes');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/members/{memberId}/nodes');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/networks/{networkId}/nodes');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::ManagedBlockchain::ListNodesOutput');
 1;
@@ -33,11 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $managedblockchain = Paws->service('ManagedBlockchain');
     my $ListNodesOutput = $managedblockchain->ListNodes(
-      MemberId   => 'MyResourceIdString',
       NetworkId  => 'MyResourceIdString',
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyPaginationToken',    # OPTIONAL
-      Status     => 'CREATING',             # OPTIONAL
+      MaxResults => 1,                       # OPTIONAL
+      MemberId   => 'MyResourceIdString',    # OPTIONAL
+      NextToken  => 'MyPaginationToken',     # OPTIONAL
+      Status     => 'CREATING',              # OPTIONAL
     );
 
     # Results:
@@ -58,9 +58,12 @@ The maximum number of nodes to list.
 
 
 
-=head2 B<REQUIRED> MemberId => Str
+=head2 MemberId => Str
 
 The unique identifier of the member who owns the nodes to list.
+
+Applies only to Hyperledger Fabric and is required for Hyperledger
+Fabric.
 
 
 
@@ -82,7 +85,7 @@ retrieve.
 An optional status specifier. If provided, only nodes currently in this
 status are listed.
 
-Valid values are: C<"CREATING">, C<"AVAILABLE">, C<"CREATE_FAILED">, C<"DELETING">, C<"DELETED">, C<"FAILED">
+Valid values are: C<"CREATING">, C<"AVAILABLE">, C<"UNHEALTHY">, C<"CREATE_FAILED">, C<"UPDATING">, C<"DELETING">, C<"DELETED">, C<"FAILED">, C<"INACCESSIBLE_ENCRYPTION_KEY">
 
 
 =head1 SEE ALSO

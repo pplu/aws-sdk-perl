@@ -30,7 +30,7 @@ The HTTP status of the request.
 
 =head2 User => L<Paws::Quicksight::User>
 
-The user name.
+The user's user name.
 
 
 =head2 UserInvitationUrl => Str

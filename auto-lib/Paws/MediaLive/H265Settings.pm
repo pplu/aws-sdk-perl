@@ -8,6 +8,7 @@ package Paws::MediaLive::H265Settings;
   has BufSize => (is => 'ro', isa => 'Int', request_name => 'bufSize', traits => ['NameInRequest']);
   has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
   has ColorSpaceSettings => (is => 'ro', isa => 'Paws::MediaLive::H265ColorSpaceSettings', request_name => 'colorSpaceSettings', traits => ['NameInRequest']);
+  has FilterSettings => (is => 'ro', isa => 'Paws::MediaLive::H265FilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has FixedAfd => (is => 'ro', isa => 'Str', request_name => 'fixedAfd', traits => ['NameInRequest']);
   has FlickerAq => (is => 'ro', isa => 'Str', request_name => 'flickerAq', traits => ['NameInRequest']);
   has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest'], required => 1);
@@ -108,6 +109,11 @@ Includes colorspace metadata in the output.
 =head2 ColorSpaceSettings => L<Paws::MediaLive::H265ColorSpaceSettings>
 
 Color Space settings
+
+
+=head2 FilterSettings => L<Paws::MediaLive::H265FilterSettings>
+
+Optional filters that you can apply to an encode.
 
 
 =head2 FixedAfd => Str
@@ -214,7 +220,11 @@ Rate control mode. QVBR: Quality will match the specified quality level
 except when it is constrained by the maximum bitrate. Recommended if
 you or your viewers pay for bandwidth. CBR: Quality varies, depending
 on the video complexity. Recommended only if you distribute your assets
-to devices that cannot handle variable bitrates.
+to devices that cannot handle variable bitrates. Multiplex: This rate
+control mode is only supported (and is required) when the video is
+being delivered to a MediaLive Multiplex in which case the rate control
+configuration is controlled by the properties within the Multiplex
+Program.
 
 
 =head2 ScanType => Str

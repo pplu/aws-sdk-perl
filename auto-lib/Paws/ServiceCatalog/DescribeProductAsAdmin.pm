@@ -2,7 +2,9 @@
 package Paws::ServiceCatalog::DescribeProductAsAdmin;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has Id => (is => 'ro', isa => 'Str', required => 1);
+  has Id => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str');
+  has SourcePortfolioId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -29,8 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DescribeProductAsAdminOutput = $servicecatalog->DescribeProductAsAdmin(
-      Id             => 'MyId',
-      AcceptLanguage => 'MyAcceptLanguage',    # OPTIONAL
+      AcceptLanguage    => 'MyAcceptLanguage',     # OPTIONAL
+      Id                => 'MyId',                 # OPTIONAL
+      Name              => 'MyProductViewName',    # OPTIONAL
+      SourcePortfolioId => 'MyId',                 # OPTIONAL
     );
 
     # Results:
@@ -72,9 +76,28 @@ C<zh> - Chinese
 
 
 
-=head2 B<REQUIRED> Id => Str
+=head2 Id => Str
 
 The product identifier.
+
+
+
+=head2 Name => Str
+
+The product name.
+
+
+
+=head2 SourcePortfolioId => Str
+
+The unique identifier of the shared portfolio that the specified
+product is associated with.
+
+You can provide this parameter to retrieve the shared TagOptions
+associated with the product. If this parameter is provided and if
+TagOptions sharing is enabled in the portfolio share, the API returns
+both local and shared TagOptions associated with the product. Otherwise
+only local TagOptions will be returned.
 
 
 

@@ -41,12 +41,12 @@ Contains information about the remote port.
 
 =head2 Port => Int
 
-Port number of the remote connection.
+The port number of the remote connection.
 
 
 =head2 PortName => Str
 
-Port name of the remote connection.
+The port name of the remote connection.
 
 
 

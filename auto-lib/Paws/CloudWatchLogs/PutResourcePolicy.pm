@@ -52,8 +52,8 @@ string. This parameter is required.
 
 The following example creates a resource policy enabling the Route 53
 service to put DNS query logs in to the specified log group. Replace
-"logArn" with the ARN of your CloudWatch Logs resource, such as a log
-group or log stream.
+C<"logArn"> with the ARN of your CloudWatch Logs resource, such as a
+log group or log stream.
 
 C<{ "Version": "2012-10-17", "Statement": [ { "Sid":
 "Route53LogsToCloudWatchLogs", "Effect": "Allow", "Principal": {

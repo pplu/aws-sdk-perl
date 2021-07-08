@@ -75,6 +75,28 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 One or more filters.
 
+=over
+
+=item *
+
+C<local-gateway-id> - The ID of a local gateway.
+
+=item *
+
+C<local-gateway-route-table-id> - The ID of a local gateway route
+table.
+
+=item *
+
+C<outpost-arn> - The Amazon Resource Name (ARN) of the Outpost.
+
+=item *
+
+C<state> - The state of the local gateway route table.
+
+=back
+
+
 
 
 =head2 LocalGatewayRouteTableIds => ArrayRef[Str|Undef]

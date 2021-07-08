@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-The 'datastore' activity that specifies where to store the processed
+The datastore activity that specifies where to store the processed
 data.
 
 =head1 ATTRIBUTES
@@ -47,7 +47,7 @@ The name of the data store where processed messages are stored.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the 'datastore' activity.
+The name of the datastore activity.
 
 
 

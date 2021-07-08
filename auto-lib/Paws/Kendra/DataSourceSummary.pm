@@ -39,7 +39,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Dat
 =head1 DESCRIPTION
 
 Summary information for a Amazon Kendra data source. Returned in a call
-to .
+to the C<DescribeDataSource> operation.
 
 =head1 ATTRIBUTES
 
@@ -61,7 +61,7 @@ The name of the data source.
 
 =head2 Status => Str
 
-The status of the data source. When the status is C<ATIVE> the data
+The status of the data source. When the status is C<ACTIVE> the data
 source is ready to use.
 
 

@@ -44,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $MaxConcurrentTransforms =
       $DescribeTransformJobResponse->MaxConcurrentTransforms;
     my $MaxPayloadInMB     = $DescribeTransformJobResponse->MaxPayloadInMB;
+    my $ModelClientConfig  = $DescribeTransformJobResponse->ModelClientConfig;
     my $ModelName          = $DescribeTransformJobResponse->ModelName;
     my $TransformEndTime   = $DescribeTransformJobResponse->TransformEndTime;
     my $TransformInput     = $DescribeTransformJobResponse->TransformInput;

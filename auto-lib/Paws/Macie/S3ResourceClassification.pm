@@ -35,29 +35,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Macie::S3Re
 
 =head1 DESCRIPTION
 
-The S3 resources that you want to associate with Amazon Macie for
-monitoring and data classification. This data type is used as a request
-parameter in the AssociateS3Resources action and a response parameter
-in the ListS3Resources action.
+The S3 resources that you want to associate with Amazon Macie Classic
+for monitoring and data classification. This data type is used as a
+request parameter in the AssociateS3Resources action and a response
+parameter in the ListS3Resources action.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BucketName => Str
 
-The name of the S3 bucket that you want to associate with Amazon Macie.
+The name of the S3 bucket that you want to associate with Amazon Macie
+Classic.
 
 
 =head2 B<REQUIRED> ClassificationType => L<Paws::Macie::ClassificationType>
 
 The classification type that you want to specify for the resource
-associated with Amazon Macie.
+associated with Amazon Macie Classic.
 
 
 =head2 Prefix => Str
 
 The prefix of the S3 bucket that you want to associate with Amazon
-Macie.
+Macie Classic.
 
 
 

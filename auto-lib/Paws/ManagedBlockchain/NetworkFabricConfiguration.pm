@@ -42,7 +42,7 @@ Hyperledger Fabric configuration properties for the network.
 
 The edition of Amazon Managed Blockchain that the network uses. For
 more information, see Amazon Managed Blockchain Pricing
-(https://aws.amazon.com/managed-blockchain/pricing/).
+(http://aws.amazon.com/managed-blockchain/pricing/).
 
 
 

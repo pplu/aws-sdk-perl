@@ -46,7 +46,7 @@ Units of an EIRP.
 
 =head2 B<REQUIRED> Value => Num
 
-Value of an EIRP.
+Value of an EIRP. Valid values are between 20.0 to 50.0 dBW.
 
 
 

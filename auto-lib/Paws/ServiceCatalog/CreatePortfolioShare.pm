@@ -5,6 +5,7 @@ package Paws::ServiceCatalog::CreatePortfolioShare;
   has AccountId => (is => 'ro', isa => 'Str');
   has OrganizationNode => (is => 'ro', isa => 'Paws::ServiceCatalog::OrganizationNode');
   has PortfolioId => (is => 'ro', isa => 'Str', required => 1);
+  has ShareTagOptions => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
 
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ,    # values: ORGANIZATION, ORGANIZATIONAL_UNIT, ACCOUNT; OPTIONAL
         Value => 'MyOrganizationNodeValue',    # OPTIONAL
       },    # OPTIONAL
+      ShareTagOptions => 1,    # OPTIONAL
     );
 
     # Results:
@@ -85,15 +87,23 @@ The AWS account ID. For example, C<123456789012>.
 
 The organization node to whom you are going to share. If
 C<OrganizationNode> is passed in, C<PortfolioShare> will be created for
-the node and its children (when applies), and a C<PortfolioShareToken>
-will be returned in the output in order for the administrator to
-monitor the status of the C<PortfolioShare> creation process.
+the node an ListOrganizationPortfolioAccessd its children (when
+applies), and a C<PortfolioShareToken> will be returned in the output
+in order for the administrator to monitor the status of the
+C<PortfolioShare> creation process.
 
 
 
 =head2 B<REQUIRED> PortfolioId => Str
 
 The portfolio identifier.
+
+
+
+=head2 ShareTagOptions => Bool
+
+Enables or disables C<TagOptions > sharing when creating the portfolio
+share. If this flag is not provided, TagOptions sharing is disabled.
 
 
 

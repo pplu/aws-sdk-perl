@@ -41,7 +41,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $RoleArn         = $DescribeStateMachineOutput->RoleArn;
     my $StateMachineArn = $DescribeStateMachineOutput->StateMachineArn;
     my $Status          = $DescribeStateMachineOutput->Status;
-    my $Type            = $DescribeStateMachineOutput->Type;
+    my $TracingConfiguration =
+      $DescribeStateMachineOutput->TracingConfiguration;
+    my $Type = $DescribeStateMachineOutput->Type;
 
     # Returns a L<Paws::StepFunctions::DescribeStateMachineOutput> object.
 

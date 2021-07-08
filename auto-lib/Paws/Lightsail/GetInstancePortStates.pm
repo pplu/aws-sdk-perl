@@ -45,7 +45,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lig
 
 =head2 B<REQUIRED> InstanceName => Str
 
-The name of the instance.
+The name of the instance for which to return firewall port states.
 
 
 

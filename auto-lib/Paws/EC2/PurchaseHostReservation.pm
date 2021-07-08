@@ -6,6 +6,7 @@ package Paws::EC2::PurchaseHostReservation;
   has HostIdSet => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has LimitPrice => (is => 'ro', isa => 'Str');
   has OfferingId => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -32,11 +33,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $PurchaseHostReservationResult = $ec2->PurchaseHostReservation(
-      HostIdSet    => [ 'MyDedicatedHostId', ... ],
-      OfferingId   => 'MyOfferingId',
-      ClientToken  => 'MyString',                     # OPTIONAL
-      CurrencyCode => 'USD',                          # OPTIONAL
-      LimitPrice   => 'MyString',                     # OPTIONAL
+      HostIdSet         => [ 'MyDedicatedHostId', ... ],
+      OfferingId        => 'MyOfferingId',
+      ClientToken       => 'MyString',                     # OPTIONAL
+      CurrencyCode      => 'USD',                          # OPTIONAL
+      LimitPrice        => 'MyString',                     # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -57,7 +72,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head2 ClientToken => Str
 
 Unique, case-sensitive identifier that you provide to ensure the
-idempotency of the request. For more information, see How to Ensure
+idempotency of the request. For more information, see Ensuring
 Idempotency
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
 
@@ -93,6 +108,12 @@ indicate a limit price of USD 100, specify 100.00.
 =head2 B<REQUIRED> OfferingId => Str
 
 The ID of the offering.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the Dedicated Host Reservation during purchase.
 
 
 

@@ -33,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AssociationFilterList => [
         {
           Key => 'InstanceId'
-          , # values: InstanceId, Name, AssociationId, AssociationStatusName, LastExecutedBefore, LastExecutedAfter, AssociationName
+          , # values: InstanceId, Name, AssociationId, AssociationStatusName, LastExecutedBefore, LastExecutedAfter, AssociationName, ResourceGroupName
           Value => 'MyAssociationFilterValue',    # min: 1
 
         },
@@ -59,6 +59,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 One or more filters. Use a filter to return a more specific list of
 results.
+
+Filtering associations using the C<InstanceID> attribute only returns
+legacy associations created using the C<InstanceID> attribute.
+Associations targeting the instance that are part of the Target
+Attributes C<ResourceGroup> or C<Tags> are not returned.
 
 
 

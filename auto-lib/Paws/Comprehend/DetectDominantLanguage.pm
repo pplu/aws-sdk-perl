@@ -28,7 +28,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $comprehend = Paws->service('Comprehend');
     my $DetectDominantLanguageResponse = $comprehend->DetectDominantLanguage(
-      Text => 'MyString',
+      Text => 'MyCustomerInputString',
 
     );
 

@@ -98,16 +98,20 @@ either a key name prefix or a manifest. For example:
 =item *
 
 A key name prefix might look like this:
-C<s3://bucketname/exampleprefix>.
+C<s3://bucketname/exampleprefix>
 
 =item *
 
 A manifest might look like this: C<s3://bucketname/example.manifest>
 
-The manifest is an S3 object which is a JSON file with the following
-format:
+A manifest is an S3 object which is a JSON file consisting of an array
+of elements. The first element is a prefix which is followed by one or
+more suffixes. SageMaker appends the suffix elements to the prefix to
+get a full set of C<S3Uri>. Note that the prefix must be a valid
+non-empty C<S3Uri> that precludes users from specifying a manifest
+whose individual C<S3Uri> is sourced from different S3 buckets.
 
-The preceding JSON matches the following C<s3Uris>:
+The following code example shows a valid manifest format:
 
 C<[ {"prefix": "s3://customer_bucket/some/prefix/"},>
 
@@ -121,7 +125,7 @@ C<"relative/path/custdata-N">
 
 C<]>
 
-The preceding JSON matches the following C<s3Uris>:
+This JSON is equivalent to the following C<S3Uri> list:
 
 C<s3://customer_bucket/some/prefix/relative/path/to/custdata-1>
 
@@ -131,10 +135,10 @@ C<...>
 
 C<s3://customer_bucket/some/prefix/relative/path/custdata-N>
 
-The complete set of C<s3uris> in this manifest is the input data for
-the channel for this datasource. The object that each C<s3uris> points
-to must be readable by the IAM role that Amazon SageMaker uses to
-perform tasks on your behalf.
+The complete set of C<S3Uri> in this manifest is the input data for the
+channel for this data source. The object that each C<S3Uri> points to
+must be readable by the IAM role that Amazon SageMaker uses to perform
+tasks on your behalf.
 
 =back
 

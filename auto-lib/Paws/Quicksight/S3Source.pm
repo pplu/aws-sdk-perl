@@ -35,19 +35,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Quicksight:
 
 =head1 DESCRIPTION
 
-A physical table type for as S3 data source.
+A physical table type for an S3 data source.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> DataSourceArn => Str
 
-The amazon Resource Name (ARN) for the data source.
+The Amazon Resource Name (ARN) for the data source.
 
 
 =head2 B<REQUIRED> InputColumns => ArrayRef[L<Paws::Quicksight::InputColumn>]
 
-A physical table type for as S3 data source.
+A physical table type for an S3 data source.
+
+For non-JSON files, only C<STRING> data types are supported in input
+columns.
 
 
 =head2 UploadSettings => L<Paws::Quicksight::UploadSettings>

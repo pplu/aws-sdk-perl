@@ -36,34 +36,30 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::S
 =head1 DESCRIPTION
 
 A set of instructions for launching server processes on each instance
-in a fleet. Server processes run either a custom game build executable
-or a Realtime Servers script. Each instruction set identifies the
-location of the custom game build executable or Realtime launch script,
-optional launch parameters, and the number of server processes with
-this configuration to maintain concurrently on the instance. Server
-process configurations make up a fleet's C< RuntimeConfiguration >.
+in a fleet. Server processes run either an executable in a custom game
+build or a Realtime Servers script. Server process configurations are
+part of a fleet's RuntimeConfiguration.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ConcurrentExecutions => Int
 
-The number of server processes that use this configuration to run
-concurrently on an instance.
+The number of server processes using this configuration that run
+concurrently on each instance.
 
 
 =head2 B<REQUIRED> LaunchPath => Str
 
-The location of the server executable in a custom game build or the
-name of the Realtime script file that contains the C<Init()> function.
-Game builds and Realtime scripts are installed on instances at the
-root:
+The location of a game build executable or the Realtime script file
+that contains the C<Init()> function. Game builds and Realtime scripts
+are installed on instances at the root:
 
 =over
 
 =item *
 
-Windows (for custom game builds only): C<C:\game>. Example:
+Windows (custom game builds only): C<C:\game>. Example:
 "C<C:\game\MyGame\server.exe>"
 
 =item *

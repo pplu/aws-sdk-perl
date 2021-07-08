@@ -45,6 +45,11 @@ package Paws::ECR;
     my $call_object = $self->new_with_coercions('Paws::ECR::DeleteLifecyclePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteRegistryPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::DeleteRegistryPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteRepository {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::DeleteRepository', @_);
@@ -63,6 +68,11 @@ package Paws::ECR;
   sub DescribeImageScanFindings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::DescribeImageScanFindings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeRegistry {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::DescribeRegistry', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeRepositories {
@@ -88,6 +98,11 @@ package Paws::ECR;
   sub GetLifecyclePolicyPreview {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::GetLifecyclePolicyPreview', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRegistryPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::GetRegistryPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetRepositoryPolicy {
@@ -128,6 +143,16 @@ package Paws::ECR;
   sub PutLifecyclePolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ECR::PutLifecyclePolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutRegistryPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::PutRegistryPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutReplicationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ECR::PutReplicationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub SetRepositoryPolicy {
@@ -278,7 +303,7 @@ package Paws::ECR;
   }
 
 
-  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeImageScanFindings DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutImageScanningConfiguration PutImageTagMutability PutLifecyclePolicy SetRepositoryPolicy StartImageScan StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
+  sub operations { qw/BatchCheckLayerAvailability BatchDeleteImage BatchGetImage CompleteLayerUpload CreateRepository DeleteLifecyclePolicy DeleteRegistryPolicy DeleteRepository DeleteRepositoryPolicy DescribeImages DescribeImageScanFindings DescribeRegistry DescribeRepositories GetAuthorizationToken GetDownloadUrlForLayer GetLifecyclePolicy GetLifecyclePolicyPreview GetRegistryPolicy GetRepositoryPolicy InitiateLayerUpload ListImages ListTagsForResource PutImage PutImageScanningConfiguration PutImageTagMutability PutLifecyclePolicy PutRegistryPolicy PutReplicationConfiguration SetRepositoryPolicy StartImageScan StartLifecyclePolicyPreview TagResource UntagResource UploadLayerPart / }
 
 1;
 
@@ -308,13 +333,13 @@ Paws::ECR - Perl Interface to AWS Amazon EC2 Container Registry
 
 Amazon Elastic Container Registry
 
-Amazon Elastic Container Registry (Amazon ECR) is a managed Docker
-registry service. Customers can use the familiar Docker CLI to push,
-pull, and manage images. Amazon ECR provides a secure, scalable, and
-reliable registry. Amazon ECR supports private Docker repositories with
-resource-based permissions using IAM so that specific users or Amazon
-EC2 instances can access repositories and images. Developers can use
-the Docker CLI to author and manage images.
+Amazon Elastic Container Registry (Amazon ECR) is a managed container
+image registry service. Customers can use the familiar Docker CLI, or
+their preferred client, to push, pull, and manage images. Amazon ECR
+provides a secure, scalable, and reliable registry for your Docker or
+Open Container Initiative (OCI) images. Amazon ECR supports private
+repositories with resource-based permissions using IAM so that specific
+users or Amazon EC2 instances can access repositories and images.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api.ecr-2015-09-21>
 
@@ -341,15 +366,12 @@ Returns: a L<Paws::ECR::BatchCheckLayerAvailabilityResponse> instance
 Checks the availability of one or more image layers in a repository.
 
 When an image is pushed to a repository, each image layer is checked to
-verify if it has been uploaded before. If it is, then the image layer
-is skipped.
+verify if it has been uploaded before. If it has been uploaded, then
+the image layer is skipped.
 
-When an image is pulled from a repository, each image layer is checked
-once to verify it is available to be pulled.
-
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the C<docker> CLI to pull, tag, and push images.
+This operation is used by the Amazon ECR proxy and is not generally
+used by customers for pulling and pushing images. In most cases, you
+should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 BatchDeleteImage
@@ -433,9 +455,9 @@ purposes.
 When an image is pushed, the CompleteLayerUpload API is called once per
 each new image layer to verify that the upload has completed.
 
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the C<docker> CLI to pull, tag, and push images.
+This operation is used by the Amazon ECR proxy and is not generally
+used by customers for pulling and pushing images. In most cases, you
+should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 CreateRepository
@@ -443,6 +465,8 @@ cases, you should use the C<docker> CLI to pull, tag, and push images.
 =over
 
 =item RepositoryName => Str
+
+=item [EncryptionConfiguration => L<Paws::ECR::EncryptionConfiguration>]
 
 =item [ImageScanningConfiguration => L<Paws::ECR::ImageScanningConfiguration>]
 
@@ -478,6 +502,20 @@ Each argument is described in detail in: L<Paws::ECR::DeleteLifecyclePolicy>
 Returns: a L<Paws::ECR::DeleteLifecyclePolicyResponse> instance
 
 Deletes the lifecycle policy associated with the specified repository.
+
+
+=head2 DeleteRegistryPolicy
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ECR::DeleteRegistryPolicy>
+
+Returns: a L<Paws::ECR::DeleteRegistryPolicyResponse> instance
+
+Deletes the registry permissions policy.
 
 
 =head2 DeleteRepository
@@ -576,6 +614,22 @@ Returns: a L<Paws::ECR::DescribeImageScanFindingsResponse> instance
 Returns the scan findings for the specified image.
 
 
+=head2 DescribeRegistry
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ECR::DescribeRegistry>
+
+Returns: a L<Paws::ECR::DescribeRegistryResponse> instance
+
+Describes the settings for a registry. The replication configuration
+for a repository can be created or updated with the
+PutReplicationConfiguration API action.
+
+
 =head2 DescribeRepositories
 
 =over
@@ -647,11 +701,11 @@ image layer. You can only get URLs for image layers that are referenced
 in an image.
 
 When an image is pulled, the GetDownloadUrlForLayer API is called once
-per image layer.
+per image layer that is not already cached.
 
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the C<docker> CLI to pull, tag, and push images.
+This operation is used by the Amazon ECR proxy and is not generally
+used by customers for pulling and pushing images. In most cases, you
+should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 GetLifecyclePolicy
@@ -699,6 +753,20 @@ Retrieves the results of the lifecycle policy preview request for the
 specified repository.
 
 
+=head2 GetRegistryPolicy
+
+
+
+
+
+
+Each argument is described in detail in: L<Paws::ECR::GetRegistryPolicy>
+
+Returns: a L<Paws::ECR::GetRegistryPolicyResponse> instance
+
+Retrieves the permissions policy for a registry.
+
+
 =head2 GetRepositoryPolicy
 
 =over
@@ -735,13 +803,13 @@ Returns: a L<Paws::ECR::InitiateLayerUploadResponse> instance
 Notifies Amazon ECR that you intend to upload an image layer.
 
 When an image is pushed, the InitiateLayerUpload API is called once per
-image layer that has not already been uploaded. Whether an image layer
-has been uploaded before is determined by the
+image layer that has not already been uploaded. Whether or not an image
+layer has been uploaded is determined by the
 BatchCheckLayerAvailability API action.
 
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the C<docker> CLI to pull, tag, and push images.
+This operation is used by the Amazon ECR proxy and is not generally
+used by customers for pulling and pushing images. In most cases, you
+should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 ListImages
@@ -799,6 +867,10 @@ List the tags for an Amazon ECR resource.
 
 =item RepositoryName => Str
 
+=item [ImageDigest => Str]
+
+=item [ImageManifestMediaType => Str]
+
 =item [ImageTag => Str]
 
 =item [RegistryId => Str]
@@ -815,11 +887,11 @@ image.
 
 When an image is pushed and all new image layers have been uploaded,
 the PutImage API is called once to create or update the image manifest
-and tags associated with the image.
+and the tags associated with the image.
 
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the C<docker> CLI to pull, tag, and push images.
+This operation is used by the Amazon ECR proxy and is not generally
+used by customers for pulling and pushing images. In most cases, you
+should use the C<docker> CLI to pull, tag, and push images.
 
 
 =head2 PutImageScanningConfiguration
@@ -887,6 +959,56 @@ For more information, see Lifecycle Policy Template
 (https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html).
 
 
+=head2 PutRegistryPolicy
+
+=over
+
+=item PolicyText => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::PutRegistryPolicy>
+
+Returns: a L<Paws::ECR::PutRegistryPolicyResponse> instance
+
+Creates or updates the permissions policy for your registry.
+
+A registry policy is used to specify permissions for another AWS
+account and is used when configuring cross-account replication. For
+more information, see Registry permissions
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry-permissions.html)
+in the I<Amazon Elastic Container Registry User Guide>.
+
+
+=head2 PutReplicationConfiguration
+
+=over
+
+=item ReplicationConfiguration => L<Paws::ECR::ReplicationConfiguration>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ECR::PutReplicationConfiguration>
+
+Returns: a L<Paws::ECR::PutReplicationConfigurationResponse> instance
+
+Creates or updates the replication configuration for a registry. The
+existing replication configuration for a repository can be retrieved
+with the DescribeRegistry API action. The first time the
+PutReplicationConfiguration API is called, a service-linked IAM role is
+created in your account for the replication process. For more
+information, see Using Service-Linked Roles for Amazon ECR
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/using-service-linked-roles.html)
+in the I<Amazon Elastic Container Registry User Guide>.
+
+When configuring cross-account replication, the destination account
+must grant the source account permission to replicate. This permission
+is controlled using a registry permissions policy. For more
+information, see PutRegistryPolicy.
+
+
 =head2 SetRepositoryPolicy
 
 =over
@@ -909,7 +1031,7 @@ Returns: a L<Paws::ECR::SetRepositoryPolicyResponse> instance
 Applies a repository policy to the specified repository to control
 access permissions. For more information, see Amazon ECR Repository
 Policies
-(https://docs.aws.amazon.com/AmazonECR/latest/userguide/RepositoryPolicies.html)
+(https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html)
 in the I<Amazon Elastic Container Registry User Guide>.
 
 
@@ -1027,9 +1149,9 @@ maximum size of each image layer part can be 20971520 bytes (or about
 20MB). The UploadLayerPart API is called once per each new image layer
 part.
 
-This operation is used by the Amazon ECR proxy, and it is not intended
-for general use by customers for pulling and pushing images. In most
-cases, you should use the C<docker> CLI to pull, tag, and push images.
+This operation is used by the Amazon ECR proxy and is not generally
+used by customers for pulling and pushing images. In most cases, you
+should use the C<docker> CLI to pull, tag, and push images.
 
 
 

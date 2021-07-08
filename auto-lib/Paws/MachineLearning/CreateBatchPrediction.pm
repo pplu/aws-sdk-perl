@@ -87,7 +87,7 @@ field: ':', '//', '/./', '/../'.
 Amazon ML needs permissions to store and retrieve the logs on your
 behalf. For information about how to set permissions, see the Amazon
 Machine Learning Developer Guide
-(http://docs.aws.amazon.com/machine-learning/latest/dg).
+(https://docs.aws.amazon.com/machine-learning/latest/dg).
 
 
 

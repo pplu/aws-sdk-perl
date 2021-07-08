@@ -5,9 +5,12 @@ package Paws::ECS::UpdateService;
   has Cluster => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'cluster' );
   has DeploymentConfiguration => (is => 'ro', isa => 'Paws::ECS::DeploymentConfiguration', traits => ['NameInRequest'], request_name => 'deploymentConfiguration' );
   has DesiredCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'desiredCount' );
+  has EnableExecuteCommand => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableExecuteCommand' );
   has ForceNewDeployment => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'forceNewDeployment' );
   has HealthCheckGracePeriodSeconds => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'healthCheckGracePeriodSeconds' );
   has NetworkConfiguration => (is => 'ro', isa => 'Paws::ECS::NetworkConfiguration', traits => ['NameInRequest'], request_name => 'networkConfiguration' );
+  has PlacementConstraints => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementConstraint]', traits => ['NameInRequest'], request_name => 'placementConstraints' );
+  has PlacementStrategy => (is => 'ro', isa => 'ArrayRef[Paws::ECS::PlacementStrategy]', traits => ['NameInRequest'], request_name => 'placementStrategy' );
   has PlatformVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'platformVersion' );
   has Service => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'service' , required => 1);
   has TaskDefinition => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'taskDefinition' );
@@ -64,9 +67,30 @@ The capacity provider strategy to update the service to use.
 
 If the service is using the default capacity provider strategy for the
 cluster, the service can be updated to use one or more capacity
-providers. However, when a service is using a non-default capacity
-provider strategy, the service cannot be updated to use the cluster's
-default capacity provider strategy.
+providers as opposed to the default capacity provider strategy.
+However, when a service is using a capacity provider strategy that is
+not the default capacity provider strategy, the service cannot be
+updated to use the cluster's default capacity provider strategy.
+
+A capacity provider strategy consists of one or more capacity providers
+along with the C<base> and C<weight> to assign to them. A capacity
+provider must be associated with the cluster to be used in a capacity
+provider strategy. The PutClusterCapacityProviders API is used to
+associate a capacity provider with a cluster. Only capacity providers
+with an C<ACTIVE> or C<UPDATING> status can be used.
+
+If specifying a capacity provider that uses an Auto Scaling group, the
+capacity provider must already be created. New capacity providers can
+be created with the CreateCapacityProvider API operation.
+
+To use a AWS Fargate capacity provider, specify either the C<FARGATE>
+or C<FARGATE_SPOT> capacity providers. The AWS Fargate capacity
+providers are available to all accounts and only need to be associated
+with a cluster to be used.
+
+The PutClusterCapacityProviders API operation is used to update the
+list of available capacity providers for a cluster after the cluster is
+created.
 
 
 
@@ -89,6 +113,16 @@ the deployment and the ordering of stopping and starting tasks.
 
 The number of instantiations of the task to place and keep running in
 your service.
+
+
+
+=head2 EnableExecuteCommand => Bool
+
+If C<true>, this enables execute command functionality on all task
+containers.
+
+If you do not want to override the value that was set when the service
+was created, you can set this to C<null> when performing this action.
 
 
 
@@ -120,7 +154,33 @@ before they have time to come up.
 
 =head2 NetworkConfiguration => L<Paws::ECS::NetworkConfiguration>
 
+An object representing the network configuration for the service.
 
+
+
+=head2 PlacementConstraints => ArrayRef[L<Paws::ECS::PlacementConstraint>]
+
+An array of task placement constraint objects to update the service to
+use. If no value is specified, the existing placement constraints for
+the service will remain unchanged. If this value is specified, it will
+override any existing placement constraints defined for the service. To
+remove all existing placement constraints, specify an empty array.
+
+You can specify a maximum of 10 constraints per task (this limit
+includes constraints in the task definition and those specified at
+runtime).
+
+
+
+=head2 PlacementStrategy => ArrayRef[L<Paws::ECS::PlacementStrategy>]
+
+The task placement strategy objects to update the service to use. If no
+value is specified, the existing placement strategy for the service
+will remain unchanged. If this value is specified, it will override the
+existing placement strategy defined for the service. To remove an
+existing placement strategy, specify an empty object.
+
+You can specify a maximum of five strategy rules per service.
 
 
 

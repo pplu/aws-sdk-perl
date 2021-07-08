@@ -51,8 +51,9 @@ as the B<Project ID> on the Amazon Pinpoint console.
 
 =head2 CampaignHook => L<Paws::Pinpoint::CampaignHook>
 
-The settings for the AWS Lambda function to use by default as a code
-hook for campaigns in the application.
+The settings for the AWS Lambda function to invoke by default as a code
+hook for campaigns in the application. You can use this hook to
+customize segments that are used by campaigns in the application.
 
 
 =head2 LastModifiedDate => Str
@@ -68,9 +69,9 @@ The default sending limits for campaigns in the application.
 
 =head2 QuietTime => L<Paws::Pinpoint::QuietTime>
 
-The default quiet time for campaigns and journeys in the application.
-Quiet time is a specific time range when messages aren't sent to
-endpoints, if all the following conditions are met:
+The default quiet time for campaigns in the application. Quiet time is
+a specific time range when messages aren't sent to endpoints, if all
+the following conditions are met:
 
 =over
 

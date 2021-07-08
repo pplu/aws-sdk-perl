@@ -51,7 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kin
 
 The name of the API action for which to get an endpoint.
 
-Valid values are: C<"PUT_MEDIA">, C<"GET_MEDIA">, C<"LIST_FRAGMENTS">, C<"GET_MEDIA_FOR_FRAGMENT_LIST">, C<"GET_HLS_STREAMING_SESSION_URL">, C<"GET_DASH_STREAMING_SESSION_URL">
+Valid values are: C<"PUT_MEDIA">, C<"GET_MEDIA">, C<"LIST_FRAGMENTS">, C<"GET_MEDIA_FOR_FRAGMENT_LIST">, C<"GET_HLS_STREAMING_SESSION_URL">, C<"GET_DASH_STREAMING_SESSION_URL">, C<"GET_CLIP">
 
 =head2 StreamARN => Str
 

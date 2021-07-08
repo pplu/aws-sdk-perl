@@ -50,14 +50,19 @@ register.
 
 =head2 RoleArn => Str
 
-The identifier for the role.
+The identifier for the role that registers the resource.
 
 
 
 =head2 UseServiceLinkedRole => Bool
 
-Designates a trusted caller, an IAM principal, by registering this
-caller with the Data Catalog.
+Designates an AWS Identity and Access Management (IAM) service-linked
+role by registering this role with the Data Catalog. A service-linked
+role is a unique type of IAM role that is linked directly to Lake
+Formation.
+
+For more information, see Using Service-Linked Roles for Lake Formation
+(https://docs-aws.amazon.com/lake-formation/latest/dg/service-linked-roles.html).
 
 
 

@@ -6,10 +6,13 @@ package Paws::Lambda::UpdateEventSourceMapping;
   has DestinationConfig => (is => 'ro', isa => 'Paws::Lambda::DestinationConfig');
   has Enabled => (is => 'ro', isa => 'Bool');
   has FunctionName => (is => 'ro', isa => 'Str');
+  has FunctionResponseTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MaximumBatchingWindowInSeconds => (is => 'ro', isa => 'Int');
   has MaximumRecordAgeInSeconds => (is => 'ro', isa => 'Int');
   has MaximumRetryAttempts => (is => 'ro', isa => 'Int');
   has ParallelizationFactor => (is => 'ro', isa => 'Int');
+  has SourceAccessConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::SourceAccessConfiguration]');
+  has TumblingWindowInSeconds => (is => 'ro', isa => 'Int');
   has UUID => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'UUID', required => 1);
 
   use MooseX::ClassAttribute;
@@ -82,7 +85,16 @@ B<Amazon DynamoDB Streams> - Default 100. Max 1,000.
 
 =item *
 
-B<Amazon Simple Queue Service> - Default 10. Max 10.
+B<Amazon Simple Queue Service> - Default 10. For standard queues the
+max is 10,000. For FIFO queues the max is 10.
+
+=item *
+
+B<Amazon Managed Streaming for Apache Kafka> - Default 100. Max 10,000.
+
+=item *
+
+B<Self-Managed Apache Kafka> - Default 100. Max 10,000.
 
 =back
 
@@ -91,21 +103,22 @@ B<Amazon Simple Queue Service> - Default 10. Max 10.
 
 =head2 BisectBatchOnFunctionError => Bool
 
-(Streams) If the function returns an error, split the batch in two and
-retry.
+(Streams only) If the function returns an error, split the batch in two
+and retry.
 
 
 
 =head2 DestinationConfig => L<Paws::Lambda::DestinationConfig>
 
-(Streams) An Amazon SQS queue or Amazon SNS topic destination for
+(Streams only) An Amazon SQS queue or Amazon SNS topic destination for
 discarded records.
 
 
 
 =head2 Enabled => Bool
 
-Disables the event source mapping to pause polling and invocation.
+If true, the event source mapping is active. Set to false to pause
+polling and invocation.
 
 
 
@@ -142,31 +155,53 @@ the function name, it's limited to 64 characters in length.
 
 
 
+=head2 FunctionResponseTypes => ArrayRef[Str|Undef]
+
+(Streams only) A list of current response type enums applied to the
+event source mapping.
+
+
+
 =head2 MaximumBatchingWindowInSeconds => Int
 
-The maximum amount of time to gather records before invoking the
-function, in seconds.
+(Streams and SQS standard queues) The maximum amount of time to gather
+records before invoking the function, in seconds.
 
 
 
 =head2 MaximumRecordAgeInSeconds => Int
 
-(Streams) The maximum age of a record that Lambda sends to a function
-for processing.
+(Streams only) Discard records older than the specified age. The
+default value is infinite (-1).
 
 
 
 =head2 MaximumRetryAttempts => Int
 
-(Streams) The maximum number of times to retry when the function
-returns an error.
+(Streams only) Discard records after the specified number of retries.
+The default value is infinite (-1). When set to infinite (-1), failed
+records will be retried until the record expires.
 
 
 
 =head2 ParallelizationFactor => Int
 
-(Streams) The number of batches to process from each shard
+(Streams only) The number of batches to process from each shard
 concurrently.
+
+
+
+=head2 SourceAccessConfigurations => ArrayRef[L<Paws::Lambda::SourceAccessConfiguration>]
+
+An array of the authentication protocol, or the VPC components to
+secure your event source.
+
+
+
+=head2 TumblingWindowInSeconds => Int
+
+(Streams only) The duration in seconds of a processing window. The
+range is between 1 second up to 900 seconds.
 
 
 

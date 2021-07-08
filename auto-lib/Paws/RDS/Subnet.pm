@@ -3,6 +3,7 @@ package Paws::RDS::Subnet;
   use Moose;
   has SubnetAvailabilityZone => (is => 'ro', isa => 'Paws::RDS::AvailabilityZone');
   has SubnetIdentifier => (is => 'ro', isa => 'Str');
+  has SubnetOutpost => (is => 'ro', isa => 'Paws::RDS::Outpost');
   has SubnetStatus => (is => 'ro', isa => 'Str');
 
 1;
@@ -35,8 +36,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::RDS::Subnet
 
 =head1 DESCRIPTION
 
-This data type is used as a response element in the
-C<DescribeDBSubnetGroups> action.
+This data type is used as a response element for the
+C<DescribeDBSubnetGroups> operation.
 
 =head1 ATTRIBUTES
 
@@ -48,12 +49,23 @@ C<DescribeDBSubnetGroups> action.
 
 =head2 SubnetIdentifier => Str
 
-Specifies the identifier of the subnet.
+The identifier of the subnet.
+
+
+=head2 SubnetOutpost => L<Paws::RDS::Outpost>
+
+If the subnet is associated with an Outpost, this value specifies the
+Outpost.
+
+For more information about RDS on Outposts, see Amazon RDS on Amazon
+Web Services Outposts
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+in the I<Amazon RDS User Guide.>
 
 
 =head2 SubnetStatus => Str
 
-Specifies the status of the subnet.
+The status of the subnet.
 
 
 

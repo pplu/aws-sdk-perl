@@ -130,11 +130,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/aut
 
 A CloudFormation stack or set of tags.
 
+For more information, see ApplicationSource
+(https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ApplicationSource.html)
+in the I<AWS Auto Scaling API Reference>.
+
 
 
 =head2 ScalingInstructions => ArrayRef[L<Paws::AutoScalingPlans::ScalingInstruction>]
 
 The scaling instructions.
+
+For more information, see ScalingInstruction
+(https://docs.aws.amazon.com/autoscaling/plans/APIReference/API_ScalingInstruction.html)
+in the I<AWS Auto Scaling API Reference>.
 
 
 
@@ -146,7 +154,8 @@ The name of the scaling plan.
 
 =head2 B<REQUIRED> ScalingPlanVersion => Int
 
-The version number of the scaling plan.
+The version number of the scaling plan. The only valid value is C<1>.
+Currently, you cannot have multiple scaling plan versions.
 
 
 

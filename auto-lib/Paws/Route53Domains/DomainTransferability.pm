@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Route53Doma
 =head1 DESCRIPTION
 
 A complex type that contains information about whether the specified
-domain can be transferred to Amazon Route 53.
+domain can be transferred to Route 53.
 
 =head1 ATTRIBUTES
 

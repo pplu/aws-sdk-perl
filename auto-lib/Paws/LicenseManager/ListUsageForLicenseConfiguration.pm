@@ -71,9 +71,9 @@ operators are C<EQUALS> | C<NOT_EQUALS>.
 
 =item *
 
-C<resourceType> - The resource type (EC2_INSTANCE | EC2_HOST | EC2_AMI
-| SYSTEMS_MANAGER_MANAGED_INSTANCE). Logical operators are C<EQUALS> |
-C<NOT_EQUALS>.
+C<resourceType> - The resource type (C<EC2_INSTANCE> | C<EC2_HOST> |
+C<EC2_AMI> | C<SYSTEMS_MANAGER_MANAGED_INSTANCE>). Logical operators
+are C<EQUALS> | C<NOT_EQUALS>.
 
 =item *
 

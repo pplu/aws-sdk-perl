@@ -34,10 +34,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Where data store data is stored. You may choose one of
-"serviceManagedS3" or "customerManagedS3" storage. If not specified,
-the default is "serviceManagedS3". This cannot be changed after the
-data store is created.
+Where data store data is stored. You can choose one of
+C<serviceManagedS3> or C<customerManagedS3> storage. If not specified,
+the default is C<serviceManagedS3>. You cannot change this storage
+option after the data store is created.
 
 =head1 ATTRIBUTES
 
@@ -45,17 +45,16 @@ data store is created.
 =head2 CustomerManagedS3 => L<Paws::IoTAnalytics::CustomerManagedDatastoreS3Storage>
 
 Use this to store data store data in an S3 bucket that you manage. When
-customer managed storage is selected, the "retentionPeriod" parameter
+customer managed storage is selected, the C<retentionPeriod> parameter
 is ignored. The choice of service-managed or customer-managed S3
 storage cannot be changed after creation of the data store.
 
 
 =head2 ServiceManagedS3 => L<Paws::IoTAnalytics::ServiceManagedDatastoreS3Storage>
 
-Use this to store data store data in an S3 bucket managed by the AWS
-IoT Analytics service. The choice of service-managed or
-customer-managed S3 storage cannot be changed after creation of the
-data store.
+Use this to store data store data in an S3 bucket managed by AWS IoT
+Analytics. You cannot change the choice of service-managed or
+customer-managed S3 storage after the data store is created.
 
 
 

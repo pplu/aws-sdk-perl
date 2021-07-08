@@ -53,7 +53,8 @@ The name of the domain that the summary information applies to.
 
 =head2 Expiry => Str
 
-Expiration date of the domain in Coordinated Universal Time (UTC).
+Expiration date of the domain in Unix time format and Coordinated
+Universal Time (UTC).
 
 
 =head2 TransferLock => Bool

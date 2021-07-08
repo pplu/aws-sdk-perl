@@ -5,6 +5,7 @@ package Paws::WorkSpaces::WorkspaceCreationProperties;
   has DefaultOu => (is => 'ro', isa => 'Str');
   has EnableInternetAccess => (is => 'ro', isa => 'Bool');
   has EnableMaintenanceMode => (is => 'ro', isa => 'Bool');
+  has EnableWorkDocs => (is => 'ro', isa => 'Bool');
   has UserEnabledAsLocalAdministrator => (is => 'ro', isa => 'Bool');
 
 1;
@@ -51,7 +52,29 @@ The identifier of your custom security group.
 
 =head2 DefaultOu => Str
 
-The default organizational unit (OU) for your WorkSpace directories.
+The default organizational unit (OU) for your WorkSpaces directories.
+This string must be the full Lightweight Directory Access Protocol
+(LDAP) distinguished name for the target domain and OU. It must be in
+the form C<"OU=I<value>,DC=I<value>,DC=I<value>">, where I<value> is
+any string of characters, and the number of domain components (DCs) is
+two or more. For example,
+C<OU=WorkSpaces_machines,DC=machines,DC=example,DC=com>.
+
+=over
+
+=item *
+
+To avoid errors, certain characters in the distinguished name must be
+escaped. For more information, see Distinguished Names
+(https://docs.microsoft.com/previous-versions/windows/desktop/ldap/distinguished-names)
+in the Microsoft documentation.
+
+=item *
+
+The API doesn't validate whether the OU exists.
+
+=back
+
 
 
 =head2 EnableInternetAccess => Bool
@@ -64,6 +87,27 @@ Indicates whether internet access is enabled for your WorkSpaces.
 Indicates whether maintenance mode is enabled for your WorkSpaces. For
 more information, see WorkSpace Maintenance
 (https://docs.aws.amazon.com/workspaces/latest/adminguide/workspace-maintenance.html).
+
+
+=head2 EnableWorkDocs => Bool
+
+Indicates whether Amazon WorkDocs is enabled for your WorkSpaces.
+
+If WorkDocs is already enabled for a WorkSpaces directory and you
+disable it, new WorkSpaces launched in the directory will not have
+WorkDocs enabled. However, WorkDocs remains enabled for any existing
+WorkSpaces, unless you either disable users' access to WorkDocs or you
+delete the WorkDocs site. To disable users' access to WorkDocs, see
+Disabling Users
+(https://docs.aws.amazon.com/workdocs/latest/adminguide/inactive-user.html)
+in the I<Amazon WorkDocs Administration Guide>. To delete a WorkDocs
+site, see Deleting a Site
+(https://docs.aws.amazon.com/workdocs/latest/adminguide/manage-sites.html)
+in the I<Amazon WorkDocs Administration Guide>.
+
+If you enable WorkDocs on a directory that already has existing
+WorkSpaces, the existing WorkSpaces and any new WorkSpaces that are
+launched in the directory will have WorkDocs enabled.
 
 
 =head2 UserEnabledAsLocalAdministrator => Bool

@@ -2,6 +2,8 @@
 package Paws::Amplify::UpdateDomainAssociation;
   use Moose;
   has AppId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'appId', required => 1);
+  has AutoSubDomainCreationPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'autoSubDomainCreationPatterns');
+  has AutoSubDomainIAMRole => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'autoSubDomainIAMRole');
   has DomainName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'domainName', required => 1);
   has EnableAutoSubDomain => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enableAutoSubDomain');
   has SubDomainSettings => (is => 'ro', isa => 'ArrayRef[Paws::Amplify::SubDomainSetting]', traits => ['NameInRequest'], request_name => 'subDomainSettings', required => 1);
@@ -42,7 +44,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      EnableAutoSubDomain => 1,    # OPTIONAL
+      AutoSubDomainCreationPatterns => [
+        'MyAutoSubDomainCreationPattern',
+        ...    # min: 1, max: 2048
+      ],    # OPTIONAL
+      AutoSubDomainIAMRole => 'MyAutoSubDomainIAMRole',    # OPTIONAL
+      EnableAutoSubDomain  => 1,                           # OPTIONAL
     );
 
     # Results:
@@ -58,26 +65,38 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
+
+
+
+=head2 AutoSubDomainCreationPatterns => ArrayRef[Str|Undef]
+
+Sets the branch patterns for automatic subdomain creation.
+
+
+
+=head2 AutoSubDomainIAMRole => Str
+
+The required AWS Identity and Access Management (IAM) service role for
+the Amazon Resource Name (ARN) for automatically creating subdomains.
 
 
 
 =head2 B<REQUIRED> DomainName => Str
 
-Name of the domain.
+The name of the domain.
 
 
 
 =head2 EnableAutoSubDomain => Bool
 
-Enables automated creation of Subdomains for branches. (Currently not
-supported)
+Enables the automated creation of subdomains for branches.
 
 
 
 =head2 B<REQUIRED> SubDomainSettings => ArrayRef[L<Paws::Amplify::SubDomainSetting>]
 
-Setting structure for the Subdomain.
+Describes the settings for the subdomain.
 
 
 

@@ -30,12 +30,51 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+  # To add a staging label attached to a version of a secret
+  # The following example shows you how to add a staging label to a version of a
+  # secret. You can review the results by running the operation
+  # ListSecretVersionIds and viewing the VersionStages response field for the
+  # affected version.
     my $UpdateSecretVersionStageResponse =
       $secretsmanager->UpdateSecretVersionStage(
-      SecretId            => 'MySecretIdType',
-      VersionStage        => 'MySecretVersionStageType',
-      MoveToVersionId     => 'MySecretVersionIdType',      # OPTIONAL
-      RemoveFromVersionId => 'MySecretVersionIdType',      # OPTIONAL
+      'MoveToVersionId' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
+      'SecretId'        => 'MyTestDatabaseSecret',
+      'VersionStage'    => 'STAGINGLABEL1'
+      );
+
+    # Results:
+    my $ARN  = $UpdateSecretVersionStageResponse->ARN;
+    my $Name = $UpdateSecretVersionStageResponse->Name;
+
+# Returns a L<Paws::SecretsManager::UpdateSecretVersionStageResponse> object.
+# To delete a staging label attached to a version of a secret
+# The following example shows you how to delete a staging label that is attached
+# to a version of a secret. You can review the results by running the operation
+# ListSecretVersionIds and viewing the VersionStages response field for the
+# affected version.
+    my $UpdateSecretVersionStageResponse =
+      $secretsmanager->UpdateSecretVersionStage(
+      'RemoveFromVersionId' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
+      'SecretId'            => 'MyTestDatabaseSecret',
+      'VersionStage'        => 'STAGINGLABEL1'
+      );
+
+    # Results:
+    my $ARN  = $UpdateSecretVersionStageResponse->ARN;
+    my $Name = $UpdateSecretVersionStageResponse->Name;
+
+ # Returns a L<Paws::SecretsManager::UpdateSecretVersionStageResponse> object.
+ # To move a staging label from one version of a secret to another
+ # The following example shows you how to move a staging label that is attached
+ # to one version of a secret to a different version. You can review the results
+ # by running the operation ListSecretVersionIds and viewing the VersionStages
+ # response field for the affected version.
+    my $UpdateSecretVersionStageResponse =
+      $secretsmanager->UpdateSecretVersionStage(
+      'MoveToVersionId'     => 'EXAMPLE2-90ab-cdef-fedc-ba987SECRET2',
+      'RemoveFromVersionId' => 'EXAMPLE1-90ab-cdef-fedc-ba987SECRET1',
+      'SecretId'            => 'MyTestDatabaseSecret',
+      'VersionStage'        => 'AWSCURRENT'
       );
 
     # Results:
@@ -52,9 +91,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 
 =head2 MoveToVersionId => Str
 
-(Optional) The secret version ID that you want to add the staging label
-to. If you want to remove a label from a version, then do not specify
-this parameter.
+(Optional) The secret version ID that you want to add the staging
+label. If you want to remove a label from a version, then do not
+specify this parameter.
 
 If the staging label is already attached to a different version of the
 secret, then you must also specify the C<RemoveFromVersionId>
@@ -76,9 +115,9 @@ fails.
 
 =head2 B<REQUIRED> SecretId => Str
 
-Specifies the secret with the version whose list of staging labels you
-want to modify. You can specify either the Amazon Resource Name (ARN)
-or the friendly name of the secret.
+Specifies the secret with the version with the list of staging labels
+you want to modify. You can specify either the Amazon Resource Name
+(ARN) or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN tooE<mdash>for example, if
@@ -91,8 +130,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

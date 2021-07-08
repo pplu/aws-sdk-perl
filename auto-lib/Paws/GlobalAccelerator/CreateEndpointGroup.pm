@@ -9,6 +9,7 @@ package Paws::GlobalAccelerator::CreateEndpointGroup;
   has HealthCheckProtocol => (is => 'ro', isa => 'Str');
   has IdempotencyToken => (is => 'ro', isa => 'Str', required => 1);
   has ListenerArn => (is => 'ro', isa => 'Str', required => 1);
+  has PortOverrides => (is => 'ro', isa => 'ArrayRef[Paws::GlobalAccelerator::PortOverride]');
   has ThresholdCount => (is => 'ro', isa => 'Int');
   has TrafficDialPercentage => (is => 'ro', isa => 'Num');
 
@@ -48,12 +49,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
-      HealthCheckIntervalSeconds => 1,                    # OPTIONAL
-      HealthCheckPath            => 'MyGenericString',    # OPTIONAL
-      HealthCheckPort            => 1,                    # OPTIONAL
-      HealthCheckProtocol        => 'TCP',                # OPTIONAL
-      ThresholdCount             => 1,                    # OPTIONAL
-      TrafficDialPercentage      => 1.0,                  # OPTIONAL
+      HealthCheckIntervalSeconds => 1,                      # OPTIONAL
+      HealthCheckPath            => 'MyHealthCheckPath',    # OPTIONAL
+      HealthCheckPort            => 1,                      # OPTIONAL
+      HealthCheckProtocol        => 'TCP',                  # OPTIONAL
+      PortOverrides              => [
+        {
+          EndpointPort => 1,    # min: 1, max: 65535; OPTIONAL
+          ListenerPort => 1,    # min: 1, max: 65535; OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      ThresholdCount        => 1,      # OPTIONAL
+      TrafficDialPercentage => 1.0,    # OPTIONAL
     );
 
     # Results:
@@ -75,8 +83,8 @@ The list of endpoint objects.
 
 =head2 B<REQUIRED> EndpointGroupRegion => Str
 
-The name of the AWS Region where the endpoint group is located. A
-listener can have only one endpoint group in a specific Region.
+The AWS Region where the endpoint group is located. A listener can have
+only one endpoint group in a specific Region.
 
 
 
@@ -122,6 +130,20 @@ idempotencyE<mdash>that is, the uniquenessE<mdash>of the request.
 =head2 B<REQUIRED> ListenerArn => Str
 
 The Amazon Resource Name (ARN) of the listener.
+
+
+
+=head2 PortOverrides => ArrayRef[L<Paws::GlobalAccelerator::PortOverride>]
+
+Override specific listener ports used to route traffic to endpoints
+that are part of this endpoint group. For example, you can create a
+port override in which the listener receives user traffic on ports 80
+and 443, but your accelerator routes that traffic to ports 1080 and
+1443, respectively, on the endpoints.
+
+For more information, see Port overrides
+(https://docs.aws.amazon.com/global-accelerator/latest/dg/about-endpoint-groups-port-override.html)
+in the I<AWS Global Accelerator Developer Guide>.
 
 
 

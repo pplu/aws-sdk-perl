@@ -78,7 +78,7 @@ StopGameSessionPlacement
 
 =head2 DnsName => Str
 
-DNS identifier assigned to the instance that is running the game
+The DNS identifier assigned to the instance that is running the game
 session. Values have the following format:
 
 =over
@@ -109,7 +109,7 @@ timed out.
 
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-Set of custom properties for a game session, formatted as key:value
+A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
@@ -126,7 +126,7 @@ use this value as a C<GameSessionId> value as needed.
 
 =head2 GameSessionData => Str
 
-Set of custom game session properties, formatted as a single string
+A set of custom game session properties, formatted as a single string
 value. This data is passed to a game server process in the GameSession
 object with a request to start a new game session (see Start a Game
 Session
@@ -160,9 +160,8 @@ placed (placement status is C<FULFILLED>).
 
 =head2 IpAddress => Str
 
-IP address of the instance that is running the game session. When
-connecting to a Amazon GameLift game server, a client needs to
-reference an IP address (or DNS name) and port number. This value is
+The IP address of the game session. To connect to a GameLift game
+server, an app needs both the IP address and port number. This value is
 set once the new game session is placed (placement status is
 C<FULFILLED>).
 
@@ -174,7 +173,7 @@ syntax, formatted as a string. It identifies the matchmaking
 configuration used to create the match, and contains data on all
 players assigned to the match, including player attributes and team
 assignments. For more details on matchmaker data, see Match Data
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+(https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-server.html#match-server-data).
 
 
 =head2 MaximumPlayerSessionCount => Int
@@ -201,13 +200,13 @@ A unique identifier for a game session placement.
 
 =head2 PlayerLatencies => ArrayRef[L<Paws::GameLift::PlayerLatency>]
 
-Set of values, expressed in milliseconds, indicating the amount of
-latency that a player experiences when connected to AWS Regions.
+A set of values, expressed in milliseconds, that indicates the amount
+of latency that a player experiences when connected to AWS Regions.
 
 
 =head2 Port => Int
 
-Port number for the game session. To connect to a Amazon GameLift game
+The port number for the game session. To connect to a GameLift game
 server, an app needs both the IP address and port number. This value is
 set once the new game session is placed (placement status is
 C<FULFILLED>).
@@ -217,7 +216,7 @@ C<FULFILLED>).
 
 Time stamp indicating when this request was placed in the queue. Format
 is a number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+C<"1469498468.057">).
 
 
 =head2 Status => Str

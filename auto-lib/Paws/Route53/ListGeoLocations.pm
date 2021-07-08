@@ -91,22 +91,18 @@ returned a page or more of results, if C<IsTruncated> is C<true>, and
 if C<NextCountryCode> from the previous response has a value, enter
 that value in C<startcountrycode> to return the next page of results.
 
-Route 53 uses the two-letter country codes that are specified in ISO
-standard 3166-1 alpha-2
-(https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-
 
 
 =head2 StartSubdivisionCode => Str
 
-The code for the subdivision (for example, state or province) with
-which you want to start listing locations that Amazon Route 53 supports
-for geolocation. If Route 53 has already returned a page or more of
-results, if C<IsTruncated> is C<true>, and if C<NextSubdivisionCode>
-from the previous response has a value, enter that value in
+The code for the state of the United States with which you want to
+start listing locations that Amazon Route 53 supports for geolocation.
+If Route 53 has already returned a page or more of results, if
+C<IsTruncated> is C<true>, and if C<NextSubdivisionCode> from the
+previous response has a value, enter that value in
 C<startsubdivisioncode> to return the next page of results.
 
-To list subdivisions of a country, you must include both
+To list subdivisions (U.S. states), you must include both
 C<startcountrycode> and C<startsubdivisioncode>.
 
 

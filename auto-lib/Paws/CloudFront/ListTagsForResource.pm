@@ -7,7 +7,7 @@ package Paws::CloudFront::ListTagsForResource;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'ListTagsForResource');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/tagging');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2020-05-31/tagging');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'GET');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::ListTagsForResourceResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -23,11 +23,11 @@ Paws::CloudFront::ListTagsForResource - Arguments for method ListTagsForResource
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method ListTagsForResource2019_03_26 on the
+This class represents the parameters used for calling the method ListTagsForResource2020_05_31 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method ListTagsForResource2019_03_26.
+as arguments to method ListTagsForResource2020_05_31.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource2019_03_26.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to ListTagsForResource2020_05_31.
 
 =head1 SYNOPSIS
 
@@ -57,7 +57,7 @@ An ARN of a CloudFront resource.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method ListTagsForResource2019_03_26 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method ListTagsForResource2020_05_31 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

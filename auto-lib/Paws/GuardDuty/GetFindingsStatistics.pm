@@ -75,13 +75,13 @@ findings' statistics you want to retrieve.
 
 =head2 FindingCriteria => L<Paws::GuardDuty::FindingCriteria>
 
-Represents the criteria used for querying findings.
+Represents the criteria that is used for querying findings.
 
 
 
 =head2 B<REQUIRED> FindingStatisticTypes => ArrayRef[Str|Undef]
 
-Types of finding statistics to retrieve.
+The types of finding statistics to retrieve.
 
 
 

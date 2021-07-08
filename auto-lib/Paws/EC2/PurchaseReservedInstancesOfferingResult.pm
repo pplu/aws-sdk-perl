@@ -17,7 +17,11 @@ Paws::EC2::PurchaseReservedInstancesOfferingResult
 
 =head2 ReservedInstancesId => Str
 
-The IDs of the purchased Reserved Instances.
+The IDs of the purchased Reserved Instances. If your purchase crosses
+into a discounted pricing tier, the final Reserved Instances IDs might
+change. For more information, see Crossing pricing tiers
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-reserved-instances-application.html#crossing-pricing-tiers)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 _request_id => Str

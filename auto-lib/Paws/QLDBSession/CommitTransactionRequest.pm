@@ -46,10 +46,15 @@ active transaction, the commit digest must be passed. QLDB validates
 C<CommitDigest> and rejects the commit with an error if the digest
 computed on the client does not match the digest computed by QLDB.
 
+The purpose of the C<CommitDigest> parameter is to ensure that QLDB
+commits a transaction if and only if the server has processed the exact
+set of statements sent by the client, in the same order that client
+sent them, and with no duplicates.
+
 
 =head2 B<REQUIRED> TransactionId => Str
 
-Specifies the transaction id of the transaction to commit.
+Specifies the transaction ID of the transaction to commit.
 
 
 

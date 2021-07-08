@@ -77,7 +77,7 @@ The ID of the AWS Firewall Manager policy.
 
 =head2 PolicyName => Str
 
-The friendly name of the AWS Firewall Manager policy.
+The name of the AWS Firewall Manager policy.
 
 
 =head2 PolicyOwner => Str

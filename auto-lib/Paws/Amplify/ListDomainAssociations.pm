@@ -50,20 +50,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 MaxResults => Int
 
-Maximum number of records to list in a single response.
+The maximum number of records to list in a single response.
 
 
 
 =head2 NextToken => Str
 
-Pagination token. Set to null to start listing Apps from start. If
-non-null pagination token is returned in a result, then pass its value
+A pagination token. Set to null to start listing apps from the start.
+If non-null, a pagination token is returned in a result. Pass its value
 in here to list more projects.
 
 

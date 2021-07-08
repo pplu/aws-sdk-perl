@@ -35,7 +35,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Updates           => [
         {
           Action             => 'INSERT',               # values: INSERT, DELETE
-          RegexPatternString => 'MyRegexPatternString', # min: 1
+          RegexPatternString => 'MyRegexPatternString', # min: 1, max: 512
 
         },
         ...

@@ -2,6 +2,7 @@
 package Paws::Detective::CreateMembers;
   use Moose;
   has Accounts => (is => 'ro', isa => 'ArrayRef[Paws::Detective::Account]', required => 1);
+  has DisableEmailNotification => (is => 'ro', isa => 'Bool');
   has GraphArn => (is => 'ro', isa => 'Str', required => 1);
   has Message => (is => 'ro', isa => 'Str');
 
@@ -39,8 +40,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      GraphArn => 'MyGraphArn',
-      Message  => 'MyEmailMessage',    # OPTIONAL
+      GraphArn                 => 'MyGraphArn',
+      DisableEmailNotification => 1,                   # OPTIONAL
+      Message                  => 'MyEmailMessage',    # OPTIONAL
     );
 
     # Results:
@@ -58,8 +60,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head2 B<REQUIRED> Accounts => ArrayRef[L<Paws::Detective::Account>]
 
 The list of AWS accounts to invite to become member accounts in the
-behavior graph. For each invited account, the account list contains the
-account identifier and the AWS account root user email address.
+behavior graph. You can invite up to 50 accounts at a time. For each
+invited account, the account list contains the account identifier and
+the AWS account root user email address.
+
+
+
+=head2 DisableEmailNotification => Bool
+
+if set to C<true>, then the member accounts do not receive email
+notifications. By default, this is set to C<false>, and the member
+accounts receive email notifications.
 
 
 

@@ -119,7 +119,7 @@ traffic policy instances.
 If the value of C<IsTruncated> in the previous response was C<false>,
 there are no more traffic policy instances to get.
 
-Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">
+Valid values are: C<"SOA">, C<"A">, C<"TXT">, C<"NS">, C<"CNAME">, C<"MX">, C<"NAPTR">, C<"PTR">, C<"SRV">, C<"SPF">, C<"AAAA">, C<"CAA">, C<"DS">
 
 
 =head1 SEE ALSO

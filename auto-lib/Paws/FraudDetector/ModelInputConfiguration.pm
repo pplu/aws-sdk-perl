@@ -2,9 +2,10 @@
 package Paws::FraudDetector::ModelInputConfiguration;
   use Moose;
   has CsvInputTemplate => (is => 'ro', isa => 'Str', request_name => 'csvInputTemplate', traits => ['NameInRequest']);
+  has EventTypeName => (is => 'ro', isa => 'Str', request_name => 'eventTypeName', traits => ['NameInRequest']);
   has Format => (is => 'ro', isa => 'Str', request_name => 'format', traits => ['NameInRequest']);
-  has IsOpaque => (is => 'ro', isa => 'Bool', request_name => 'isOpaque', traits => ['NameInRequest'], required => 1);
   has JsonInputTemplate => (is => 'ro', isa => 'Str', request_name => 'jsonInputTemplate', traits => ['NameInRequest']);
+  has UseEventVariables => (is => 'ro', isa => 'Bool', request_name => 'useEventVariables', traits => ['NameInRequest'], required => 1);
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::FraudDetector::ModelInputConfiguration object:
 
-  $service_obj->Method(Att1 => { CsvInputTemplate => $value, ..., JsonInputTemplate => $value  });
+  $service_obj->Method(Att1 => { CsvInputTemplate => $value, ..., UseEventVariables => $value  });
 
 =head3 Results returned from an API call
 
@@ -36,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FraudDetect
 
 =head1 DESCRIPTION
 
-The model input configuration.
+The Amazon SageMaker model input configuration.
 
 =head1 ATTRIBUTES
 
@@ -49,19 +50,16 @@ will be replaced with the variable values before being sent to
 SageMaker.
 
 
+=head2 EventTypeName => Str
+
+The event type name.
+
+
 =head2 Format => Str
 
 The format of the model input configuration. The format differs
 depending on if it is passed through to SageMaker or constructed by
 Amazon Fraud Detector.
-
-
-=head2 B<REQUIRED> IsOpaque => Bool
-
-For an opaque-model, the input to the model will be a ByteBuffer blob
-provided in the getPrediction request, and will be passed to SageMaker
-as-is. For non-opaque models, the input will be constructed by Amazon
-Fraud Detector based on the model-configuration.
 
 
 =head2 JsonInputTemplate => Str
@@ -70,6 +68,11 @@ Template for constructing the JSON input-data sent to SageMaker. At
 event-evaluation, the placeholders for variable names in the template
 will be replaced with the variable values before being sent to
 SageMaker.
+
+
+=head2 B<REQUIRED> UseEventVariables => Bool
+
+The event variables.
 
 
 

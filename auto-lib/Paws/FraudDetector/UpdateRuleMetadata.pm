@@ -31,9 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $UpdateRuleMetadataResult = $frauddetector->UpdateRuleMetadata(
       Description => 'Mydescription',
       Rule        => {
-        DetectorId  => 'Myidentifier',        # min: 1, max: 64
-        RuleId      => 'Myidentifier',        # min: 1, max: 64
-        RuleVersion => 'MynonEmptyString',    # min: 1
+        DetectorId  => 'Myidentifier',                  # min: 1, max: 64
+        RuleId      => 'Myidentifier',                  # min: 1, max: 64
+        RuleVersion => 'MywholeNumberVersionString',    # min: 1, max: 5
 
       },
 

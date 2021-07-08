@@ -55,6 +55,11 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::AssociateHostedConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateMacSecKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::AssociateMacSecKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateVirtualInterface {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::AssociateVirtualInterface', @_);
@@ -255,6 +260,26 @@ package Paws::DirectConnect;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::DisassociateConnectionFromLag', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateMacSecKey {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::DisassociateMacSecKey', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListVirtualInterfaceTestHistory {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::ListVirtualInterfaceTestHistory', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StartBgpFailoverTest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::StartBgpFailoverTest', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopBgpFailoverTest {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::StopBgpFailoverTest', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub TagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::TagResource', @_);
@@ -263,6 +288,11 @@ package Paws::DirectConnect;
   sub UntagResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DirectConnect::UntagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateConnection {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DirectConnect::UpdateConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDirectConnectGatewayAssociation {
@@ -352,7 +382,7 @@ package Paws::DirectConnect;
   }
 
 
-  sub operations { qw/AcceptDirectConnectGatewayAssociationProposal AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AllocateTransitVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface ConfirmTransitVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateDirectConnectGatewayAssociationProposal CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface CreateTransitVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteDirectConnectGatewayAssociationProposal DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociationProposals DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag TagResource UntagResource UpdateDirectConnectGatewayAssociation UpdateLag UpdateVirtualInterfaceAttributes / }
+  sub operations { qw/AcceptDirectConnectGatewayAssociationProposal AllocateConnectionOnInterconnect AllocateHostedConnection AllocatePrivateVirtualInterface AllocatePublicVirtualInterface AllocateTransitVirtualInterface AssociateConnectionWithLag AssociateHostedConnection AssociateMacSecKey AssociateVirtualInterface ConfirmConnection ConfirmPrivateVirtualInterface ConfirmPublicVirtualInterface ConfirmTransitVirtualInterface CreateBGPPeer CreateConnection CreateDirectConnectGateway CreateDirectConnectGatewayAssociation CreateDirectConnectGatewayAssociationProposal CreateInterconnect CreateLag CreatePrivateVirtualInterface CreatePublicVirtualInterface CreateTransitVirtualInterface DeleteBGPPeer DeleteConnection DeleteDirectConnectGateway DeleteDirectConnectGatewayAssociation DeleteDirectConnectGatewayAssociationProposal DeleteInterconnect DeleteLag DeleteVirtualInterface DescribeConnectionLoa DescribeConnections DescribeConnectionsOnInterconnect DescribeDirectConnectGatewayAssociationProposals DescribeDirectConnectGatewayAssociations DescribeDirectConnectGatewayAttachments DescribeDirectConnectGateways DescribeHostedConnections DescribeInterconnectLoa DescribeInterconnects DescribeLags DescribeLoa DescribeLocations DescribeTags DescribeVirtualGateways DescribeVirtualInterfaces DisassociateConnectionFromLag DisassociateMacSecKey ListVirtualInterfaceTestHistory StartBgpFailoverTest StopBgpFailoverTest TagResource UntagResource UpdateConnection UpdateDirectConnectGatewayAssociation UpdateLag UpdateVirtualInterfaceAttributes / }
 
 1;
 
@@ -634,6 +664,38 @@ hosted connection's connectivity to AWS as it is being migrated.
 Intended for use by AWS Direct Connect Partners only.
 
 
+=head2 AssociateMacSecKey
+
+=over
+
+=item ConnectionId => Str
+
+=item [Cak => Str]
+
+=item [Ckn => Str]
+
+=item [SecretARN => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::AssociateMacSecKey>
+
+Returns: a L<Paws::DirectConnect::AssociateMacSecKeyResponse> instance
+
+Associates a MAC Security (MACsec) Connection Key Name (CKN)/
+Connectivity Association Key (CAK) pair with an AWS Direct Connect
+dedicated connection.
+
+You must supply either the C<secretARN,> or the CKN/CAK (C<ckn> and
+C<cak>) pair in the request.
+
+For information about MAC Security (MACsec) key considerations, see
+MACsec pre-shared CKN/CAK key considerations
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-key-consideration)
+in the I<AWS Direct Connect User Guide>.
+
+
 =head2 AssociateVirtualInterface
 
 =over
@@ -786,7 +848,7 @@ address. IPv6 addresses are automatically assigned from the Amazon pool
 of IPv6 addresses; you cannot specify custom IPv6 addresses.
 
 For a public virtual interface, the Autonomous System Number (ASN) must
-be private or already whitelisted for the virtual interface.
+be private or already on the allow list for the virtual interface.
 
 
 =head2 CreateConnection
@@ -802,6 +864,8 @@ be private or already whitelisted for the virtual interface.
 =item [LagId => Str]
 
 =item [ProviderName => Str]
+
+=item [RequestMACSec => Bool]
 
 =item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
@@ -902,10 +966,8 @@ Returns: a L<Paws::DirectConnect::CreateDirectConnectGatewayAssociationProposalR
 Creates a proposal to associate the specified virtual private gateway
 or transit gateway with the specified Direct Connect gateway.
 
-You can only associate a Direct Connect gateway and virtual private
-gateway or transit gateway when the account that owns the Direct
-Connect gateway and the account that owns the virtual private gateway
-or transit gateway have the same AWS Payer ID.
+You can associate a Direct Connect gateway and virtual private gateway
+or transit gateway that is owned by any AWS account.
 
 
 =head2 CreateInterconnect
@@ -975,6 +1037,8 @@ Intended for use by AWS Direct Connect Partners only.
 
 =item [ProviderName => Str]
 
+=item [RequestMACSec => Bool]
+
 =item [Tags => ArrayRef[L<Paws::DirectConnect::Tag>]]
 
 
@@ -985,26 +1049,27 @@ Each argument is described in detail in: L<Paws::DirectConnect::CreateLag>
 Returns: a L<Paws::DirectConnect::Lag> instance
 
 Creates a link aggregation group (LAG) with the specified number of
-bundled physical connections between the customer network and a
-specific AWS Direct Connect location. A LAG is a logical interface that
-uses the Link Aggregation Control Protocol (LACP) to aggregate multiple
-interfaces, enabling you to treat them as a single interface.
+bundled physical dedicated connections between the customer network and
+a specific AWS Direct Connect location. A LAG is a logical interface
+that uses the Link Aggregation Control Protocol (LACP) to aggregate
+multiple interfaces, enabling you to treat them as a single interface.
 
-All connections in a LAG must use the same bandwidth and must terminate
-at the same AWS Direct Connect endpoint.
+All connections in a LAG must use the same bandwidth (either 1Gbps or
+10Gbps) and must terminate at the same AWS Direct Connect endpoint.
 
-You can have up to 10 connections per LAG. Regardless of this limit, if
-you request more connections for the LAG than AWS Direct Connect can
-allocate on a single endpoint, no LAG is created.
+You can have up to 10 dedicated connections per LAG. Regardless of this
+limit, if you request more connections for the LAG than AWS Direct
+Connect can allocate on a single endpoint, no LAG is created.
 
-You can specify an existing physical connection or interconnect to
-include in the LAG (which counts towards the total number of
-connections). Doing so interrupts the current physical connection or
-hosted connections, and re-establishes them as a member of the LAG. The
-LAG will be created on the same AWS Direct Connect endpoint to which
-the connection terminates. Any virtual interfaces associated with the
-connection are automatically disassociated and re-associated with the
-LAG. The connection ID does not change.
+You can specify an existing physical dedicated connection or
+interconnect to include in the LAG (which counts towards the total
+number of connections). Doing so interrupts the current physical
+dedicated connection, and re-establishes them as a member of the LAG.
+The LAG will be created on the same AWS Direct Connect endpoint to
+which the dedicated connection terminates. Any virtual interfaces
+associated with the dedicated connection are automatically
+disassociated and re-associated with the LAG. The connection ID does
+not change.
 
 If the AWS account used to create a LAG is a registered AWS Direct
 Connect Partner, the LAG is automatically enabled to host
@@ -1035,6 +1100,14 @@ Direct Connect gateway enables the possibility for connecting to
 multiple VPCs, including VPCs in different AWS Regions. Connecting the
 private virtual interface to a VGW only provides access to a single VPC
 within the same Region.
+
+Setting the MTU of a virtual interface to 9001 (jumbo frames) can cause
+an update to the underlying physical connection if it wasn't updated to
+support jumbo frames. Updating the connection disrupts network
+connectivity for all virtual interfaces associated with the connection
+for up to 30 seconds. To check whether your connection supports jumbo
+frames, call DescribeConnections. To check whether your virtual
+interface supports jumbo frames, call DescribeVirtualInterfaces.
 
 
 =head2 CreatePublicVirtualInterface
@@ -1087,6 +1160,14 @@ gateways, the Autonomous System Number (ASN) used by the transit
 gateway and the Direct Connect gateway must be different. For example,
 if you use the default ASN 64512 for both your the transit gateway and
 Direct Connect gateway, the association request fails.
+
+Setting the MTU of a virtual interface to 8500 (jumbo frames) can cause
+an update to the underlying physical connection if it wasn't updated to
+support jumbo frames. Updating the connection disrupts network
+connectivity for all virtual interfaces associated with the connection
+for up to 30 seconds. To check whether your connection supports jumbo
+frames, call DescribeConnections. To check whether your virtual
+interface supports jumbo frames, call DescribeVirtualInterfaces.
 
 
 =head2 DeleteBGPPeer
@@ -1365,14 +1446,46 @@ Each argument is described in detail in: L<Paws::DirectConnect::DescribeDirectCo
 Returns: a L<Paws::DirectConnect::DescribeDirectConnectGatewayAssociationsResult> instance
 
 Lists the associations between your Direct Connect gateways and virtual
-private gateways. You must specify a Direct Connect gateway, a virtual
-private gateway, or both. If you specify a Direct Connect gateway, the
-response contains all virtual private gateways associated with the
-Direct Connect gateway. If you specify a virtual private gateway, the
-response contains all Direct Connect gateways associated with the
-virtual private gateway. If you specify both, the response contains the
-association between the Direct Connect gateway and the virtual private
-gateway.
+private gateways and transit gateways. You must specify one of the
+following:
+
+=over
+
+=item *
+
+A Direct Connect gateway
+
+The response contains all virtual private gateways and transit gateways
+associated with the Direct Connect gateway.
+
+=item *
+
+A virtual private gateway
+
+The response contains the Direct Connect gateway.
+
+=item *
+
+A transit gateway
+
+The response contains the Direct Connect gateway.
+
+=item *
+
+A Direct Connect gateway and a virtual private gateway
+
+The response contains the association between the Direct Connect
+gateway and virtual private gateway.
+
+=item *
+
+A Direct Connect gateway and a transit gateway
+
+The response contains the association between the Direct Connect
+gateway and transit gateway.
+
+=back
+
 
 
 =head2 DescribeDirectConnectGatewayAttachments
@@ -1643,6 +1756,101 @@ are disassociated, the LAG continues to exist as an empty LAG with no
 physical connections.
 
 
+=head2 DisassociateMacSecKey
+
+=over
+
+=item ConnectionId => Str
+
+=item SecretARN => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::DisassociateMacSecKey>
+
+Returns: a L<Paws::DirectConnect::DisassociateMacSecKeyResponse> instance
+
+Removes the association between a MAC Security (MACsec) security key
+and an AWS Direct Connect dedicated connection.
+
+
+=head2 ListVirtualInterfaceTestHistory
+
+=over
+
+=item [BgpPeers => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Status => Str]
+
+=item [TestId => Str]
+
+=item [VirtualInterfaceId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::ListVirtualInterfaceTestHistory>
+
+Returns: a L<Paws::DirectConnect::ListVirtualInterfaceTestHistoryResponse> instance
+
+Lists the virtual interface failover test history.
+
+
+=head2 StartBgpFailoverTest
+
+=over
+
+=item VirtualInterfaceId => Str
+
+=item [BgpPeers => ArrayRef[Str|Undef]]
+
+=item [TestDurationInMinutes => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::StartBgpFailoverTest>
+
+Returns: a L<Paws::DirectConnect::StartBgpFailoverTestResponse> instance
+
+Starts the virtual interface failover test that verifies your
+configuration meets your resiliency requirements by placing the BGP
+peering session in the DOWN state. You can then send traffic to verify
+that there are no outages.
+
+You can run the test on public, private, transit, and hosted virtual
+interfaces.
+
+You can use ListVirtualInterfaceTestHistory
+(https://docs.aws.amazon.com/directconnect/latest/APIReference/API_ListVirtualInterfaceTestHistory.html)
+to view the virtual interface test history.
+
+If you need to stop the test before the test interval completes, use
+StopBgpFailoverTest
+(https://docs.aws.amazon.com/directconnect/latest/APIReference/API_StopBgpFailoverTest.html).
+
+
+=head2 StopBgpFailoverTest
+
+=over
+
+=item VirtualInterfaceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::StopBgpFailoverTest>
+
+Returns: a L<Paws::DirectConnect::StopBgpFailoverTestResponse> instance
+
+Stops the virtual interface failover test.
+
+
 =head2 TagResource
 
 =over
@@ -1685,6 +1893,41 @@ Removes one or more tags from the specified AWS Direct Connect
 resource.
 
 
+=head2 UpdateConnection
+
+=over
+
+=item ConnectionId => Str
+
+=item [ConnectionName => Str]
+
+=item [EncryptionMode => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DirectConnect::UpdateConnection>
+
+Returns: a L<Paws::DirectConnect::Connection> instance
+
+Updates the AWS Direct Connect dedicated connection configuration.
+
+You can update the following parameters for a connection:
+
+=over
+
+=item *
+
+The connection name
+
+=item *
+
+The connection's MAC Security (MACsec) encryption mode.
+
+=back
+
+
+
 =head2 UpdateDirectConnectGatewayAssociation
 
 =over
@@ -1714,6 +1957,8 @@ Add or remove prefixes from the association.
 
 =item LagId => Str
 
+=item [EncryptionMode => Str]
+
 =item [LagName => Str]
 
 =item [MinimumLinks => Int]
@@ -1727,7 +1972,7 @@ Returns: a L<Paws::DirectConnect::Lag> instance
 
 Updates the attributes of the specified link aggregation group (LAG).
 
-You can update the following attributes:
+You can update the following LAG attributes:
 
 =over
 
@@ -1740,15 +1985,21 @@ The name of the LAG.
 The value for the minimum number of connections that must be
 operational for the LAG itself to be operational.
 
+=item *
+
+The LAG's MACsec encryption mode.
+
+AWS assigns this value to each connection which is part of the LAG.
+
+=item *
+
+The tags
+
 =back
 
-When you create a LAG, the default value for the minimum number of
-operational connections is zero (0). If you update this value and the
-number of operational connections falls below the specified value, the
-LAG automatically goes down to avoid over-utilization of the remaining
-connections. Adjust this value with care, as it could force the LAG
-down if it is set higher than the current number of operational
-connections.
+If you adjust the threshold value for the minimum number of operational
+connections, ensure that the new value does not cause the LAG to fall
+below the threshold and become non-operational.
 
 
 =head2 UpdateVirtualInterfaceAttributes
@@ -1774,7 +2025,7 @@ an update to the underlying physical connection if it wasn't updated to
 support jumbo frames. Updating the connection disrupts network
 connectivity for all virtual interfaces associated with the connection
 for up to 30 seconds. To check whether your connection supports jumbo
-frames, call DescribeConnections. To check whether your virtual
+frames, call DescribeConnections. To check whether your virtual q
 interface supports jumbo frames, call DescribeVirtualInterfaces.
 
 

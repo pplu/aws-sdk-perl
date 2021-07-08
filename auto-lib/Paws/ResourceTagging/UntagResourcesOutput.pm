@@ -16,8 +16,11 @@ Paws::ResourceTagging::UntagResourcesOutput
 
 =head2 FailedResourcesMap => L<Paws::ResourceTagging::FailedResourcesMap>
 
-Details of resources that could not be untagged. An error code, status
-code, and error message are returned for each failed item.
+A map containing a key-value pair for each failed item that couldn't be
+untagged. The key is the ARN of the failed resource. The value is a
+C<FailureInfo> object that contains an error code, a status code, and
+an error message. If there are no errors, the C<FailedResourcesMap> is
+empty.
 
 
 =head2 _request_id => Str

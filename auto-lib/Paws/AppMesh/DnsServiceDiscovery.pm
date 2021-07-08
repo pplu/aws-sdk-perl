@@ -2,6 +2,7 @@
 package Paws::AppMesh::DnsServiceDiscovery;
   use Moose;
   has Hostname => (is => 'ro', isa => 'Str', request_name => 'hostname', traits => ['NameInRequest'], required => 1);
+  has ResponseType => (is => 'ro', isa => 'Str', request_name => 'responseType', traits => ['NameInRequest']);
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::AppMesh::DnsServiceDiscovery object:
 
-  $service_obj->Method(Att1 => { Hostname => $value, ..., Hostname => $value  });
+  $service_obj->Method(Att1 => { Hostname => $value, ..., ResponseType => $value  });
 
 =head3 Results returned from an API call
 
@@ -42,6 +43,11 @@ your virtual node.
 =head2 B<REQUIRED> Hostname => Str
 
 Specifies the DNS service discovery hostname for the virtual node.
+
+
+=head2 ResponseType => Str
+
+Specifies the DNS response type for the virtual node.
 
 
 

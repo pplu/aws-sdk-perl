@@ -2,9 +2,13 @@
 package Paws::Transcribe::TranscriptionJobSummary;
   use Moose;
   has CompletionTime => (is => 'ro', isa => 'Str');
+  has ContentRedaction => (is => 'ro', isa => 'Paws::Transcribe::ContentRedaction');
   has CreationTime => (is => 'ro', isa => 'Str');
   has FailureReason => (is => 'ro', isa => 'Str');
+  has IdentifiedLanguageScore => (is => 'ro', isa => 'Num');
+  has IdentifyLanguage => (is => 'ro', isa => 'Bool');
   has LanguageCode => (is => 'ro', isa => 'Str');
+  has ModelSettings => (is => 'ro', isa => 'Paws::Transcribe::ModelSettings');
   has OutputLocationType => (is => 'ro', isa => 'Str');
   has StartTime => (is => 'ro', isa => 'Str');
   has TranscriptionJobName => (is => 'ro', isa => 'Str');
@@ -50,6 +54,11 @@ Provides a summary of information about a transcription job.
 A timestamp that shows when the job was completed.
 
 
+=head2 ContentRedaction => L<Paws::Transcribe::ContentRedaction>
+
+The content redaction settings of the transcription job.
+
+
 =head2 CreationTime => Str
 
 A timestamp that shows when the job was created.
@@ -61,9 +70,27 @@ If the C<TranscriptionJobStatus> field is C<FAILED>, a description of
 the error.
 
 
+=head2 IdentifiedLanguageScore => Num
+
+A value between zero and one that Amazon Transcribe assigned to the
+language it identified in the source audio. A higher score indicates
+that Amazon Transcribe is more confident in the language it identified.
+
+
+=head2 IdentifyLanguage => Bool
+
+Whether automatic language identification was enabled for a
+transcription job.
+
+
 =head2 LanguageCode => Str
 
 The language code for the input speech.
+
+
+=head2 ModelSettings => L<Paws::Transcribe::ModelSettings>
+
+
 
 
 =head2 OutputLocationType => Str

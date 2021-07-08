@@ -1,5 +1,6 @@
 package Paws::EC2::Route;
   use Moose;
+  has CarrierGatewayId => (is => 'ro', isa => 'Str', request_name => 'carrierGatewayId', traits => ['NameInRequest']);
   has DestinationCidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationCidrBlock', traits => ['NameInRequest']);
   has DestinationIpv6CidrBlock => (is => 'ro', isa => 'Str', request_name => 'destinationIpv6CidrBlock', traits => ['NameInRequest']);
   has DestinationPrefixListId => (is => 'ro', isa => 'Str', request_name => 'destinationPrefixListId', traits => ['NameInRequest']);
@@ -33,20 +34,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::Route object:
 
-  $service_obj->Method(Att1 => { DestinationCidrBlock => $value, ..., VpcPeeringConnectionId => $value  });
+  $service_obj->Method(Att1 => { CarrierGatewayId => $value, ..., VpcPeeringConnectionId => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::Route object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->DestinationCidrBlock
+  $result->Att1->CarrierGatewayId
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 CarrierGatewayId => Str
+
+The ID of the carrier gateway.
 
 
 =head2 DestinationCidrBlock => Str

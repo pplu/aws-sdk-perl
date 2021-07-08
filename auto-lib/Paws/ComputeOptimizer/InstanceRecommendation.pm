@@ -4,6 +4,7 @@ package Paws::ComputeOptimizer::InstanceRecommendation;
   has AccountId => (is => 'ro', isa => 'Str', request_name => 'accountId', traits => ['NameInRequest']);
   has CurrentInstanceType => (is => 'ro', isa => 'Str', request_name => 'currentInstanceType', traits => ['NameInRequest']);
   has Finding => (is => 'ro', isa => 'Str', request_name => 'finding', traits => ['NameInRequest']);
+  has FindingReasonCodes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'findingReasonCodes', traits => ['NameInRequest']);
   has InstanceArn => (is => 'ro', isa => 'Str', request_name => 'instanceArn', traits => ['NameInRequest']);
   has InstanceName => (is => 'ro', isa => 'Str', request_name => 'instanceName', traits => ['NameInRequest']);
   has LastRefreshTimestamp => (is => 'ro', isa => 'Str', request_name => 'lastRefreshTimestamp', traits => ['NameInRequest']);
@@ -49,7 +50,7 @@ Describes an Amazon EC2 instance recommendation.
 
 =head2 AccountId => Str
 
-The AWS account ID of the instance recommendation.
+The AWS account ID of the instance.
 
 
 =head2 CurrentInstanceType => Str
@@ -59,7 +60,7 @@ The instance type of the current instance.
 
 =head2 Finding => Str
 
-The finding classification for the instance.
+The finding classification of the instance.
 
 Findings for instances include:
 
@@ -87,14 +88,177 @@ infrastructure cost.
 B<C<Optimized> >E<mdash>An instance is considered optimized when all
 specifications of your instance, such as CPU, memory, and network, meet
 the performance requirements of your workload and is not over
-provisioned. An optimized instance runs your workloads with optimal
-performance and infrastructure cost. For optimized resources, AWS
-Compute Optimizer might recommend a new generation instance type.
+provisioned. For optimized resources, AWS Compute Optimizer might
+recommend a new generation instance type.
 
 =back
 
-The values that are returned might be C<UNDER_PROVISIONED>,
-C<OVER_PROVISIONED>, or C<OPTIMIZED>.
+
+
+=head2 FindingReasonCodes => ArrayRef[Str|Undef]
+
+The reason for the finding classification of the instance.
+
+Finding reason codes for instances include:
+
+=over
+
+=item *
+
+B<C<CPUOverprovisioned> > E<mdash> The instanceE<rsquo>s CPU
+configuration can be sized down while still meeting the performance
+requirements of your workload. This is identified by analyzing the
+C<CPUUtilization> metric of the current instance during the look-back
+period.
+
+=item *
+
+B<C<CPUUnderprovisioned> > E<mdash> The instanceE<rsquo>s CPU
+configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+CPU performance. This is identified by analyzing the C<CPUUtilization>
+metric of the current instance during the look-back period.
+
+=item *
+
+B<C<MemoryOverprovisioned> > E<mdash> The instanceE<rsquo>s memory
+configuration can be sized down while still meeting the performance
+requirements of your workload. This is identified by analyzing the
+memory utilization metric of the current instance during the look-back
+period.
+
+=item *
+
+B<C<MemoryUnderprovisioned> > E<mdash> The instanceE<rsquo>s memory
+configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+memory performance. This is identified by analyzing the memory
+utilization metric of the current instance during the look-back period.
+
+Memory utilization is analyzed only for resources that have the unified
+CloudWatch agent installed on them. For more information, see Enabling
+memory utilization with the Amazon CloudWatch Agent
+(https://docs.aws.amazon.com/compute-optimizer/latest/ug/metrics.html#cw-agent)
+in the I<AWS Compute Optimizer User Guide>. On Linux instances, Compute
+Optimizer analyses the C<mem_used_percent> metric in the C<CWAgent>
+namespace, or the legacy C<MemoryUtilization> metric in the
+C<System/Linux> namespace. On Windows instances, Compute Optimizer
+analyses the C<Memory % Committed Bytes In Use> metric in the
+C<CWAgent> namespace.
+
+=item *
+
+B<C<EBSThroughputOverprovisioned> > E<mdash> The instanceE<rsquo>s EBS
+throughput configuration can be sized down while still meeting the
+performance requirements of your workload. This is identified by
+analyzing the C<VolumeReadOps> and C<VolumeWriteOps> metrics of EBS
+volumes attached to the current instance during the look-back period.
+
+=item *
+
+B<C<EBSThroughputUnderprovisioned> > E<mdash> The instanceE<rsquo>s EBS
+throughput configuration doesn't meet the performance requirements of
+your workload and there is an alternative instance type that provides
+better EBS throughput performance. This is identified by analyzing the
+C<VolumeReadOps> and C<VolumeWriteOps> metrics of EBS volumes attached
+to the current instance during the look-back period.
+
+=item *
+
+B<C<EBSIOPSOverprovisioned> > E<mdash> The instanceE<rsquo>s EBS IOPS
+configuration can be sized down while still meeting the performance
+requirements of your workload. This is identified by analyzing the
+C<VolumeReadBytes> and C<VolumeWriteBytes> metric of EBS volumes
+attached to the current instance during the look-back period.
+
+=item *
+
+B<C<EBSIOPSUnderprovisioned> > E<mdash> The instanceE<rsquo>s EBS IOPS
+configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+EBS IOPS performance. This is identified by analyzing the
+C<VolumeReadBytes> and C<VolumeWriteBytes> metric of EBS volumes
+attached to the current instance during the look-back period.
+
+=item *
+
+B<C<NetworkBandwidthOverprovisioned> > E<mdash> The instanceE<rsquo>s
+network bandwidth configuration can be sized down while still meeting
+the performance requirements of your workload. This is identified by
+analyzing the C<NetworkIn> and C<NetworkOut> metrics of the current
+instance during the look-back period.
+
+=item *
+
+B<C<NetworkBandwidthUnderprovisioned> > E<mdash> The instanceE<rsquo>s
+network bandwidth configuration doesn't meet the performance
+requirements of your workload and there is an alternative instance type
+that provides better network bandwidth performance. This is identified
+by analyzing the C<NetworkIn> and C<NetworkOut> metrics of the current
+instance during the look-back period. This finding reason happens when
+the C<NetworkIn> or C<NetworkOut> performance of an instance is
+impacted.
+
+=item *
+
+B<C<NetworkPPSOverprovisioned> > E<mdash> The instanceE<rsquo>s network
+PPS (packets per second) configuration can be sized down while still
+meeting the performance requirements of your workload. This is
+identified by analyzing the C<NetworkPacketsIn> and C<NetworkPacketsIn>
+metrics of the current instance during the look-back period.
+
+=item *
+
+B<C<NetworkPPSUnderprovisioned> > E<mdash> The instanceE<rsquo>s
+network PPS (packets per second) configuration doesn't meet the
+performance requirements of your workload and there is an alternative
+instance type that provides better network PPS performance. This is
+identified by analyzing the C<NetworkPacketsIn> and C<NetworkPacketsIn>
+metrics of the current instance during the look-back period.
+
+=item *
+
+B<C<DiskIOPSOverprovisioned> > E<mdash> The instanceE<rsquo>s disk IOPS
+configuration can be sized down while still meeting the performance
+requirements of your workload. This is identified by analyzing the
+C<DiskReadOps> and C<DiskWriteOps> metrics of the current instance
+during the look-back period.
+
+=item *
+
+B<C<DiskIOPSUnderprovisioned> > E<mdash> The instanceE<rsquo>s disk
+IOPS configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+disk IOPS performance. This is identified by analyzing the
+C<DiskReadOps> and C<DiskWriteOps> metrics of the current instance
+during the look-back period.
+
+=item *
+
+B<C<DiskThroughputOverprovisioned> > E<mdash> The instanceE<rsquo>s
+disk throughput configuration can be sized down while still meeting the
+performance requirements of your workload. This is identified by
+analyzing the C<DiskReadBytes> and C<DiskWriteBytes> metrics of the
+current instance during the look-back period.
+
+=item *
+
+B<C<DiskThroughputUnderprovisioned> > E<mdash> The instanceE<rsquo>s
+disk throughput configuration doesn't meet the performance requirements
+of your workload and there is an alternative instance type that
+provides better disk throughput performance. This is identified by
+analyzing the C<DiskReadBytes> and C<DiskWriteBytes> metrics of the
+current instance during the look-back period.
+
+=back
+
+For more information about instance metrics, see List the available
+CloudWatch metrics for your instances
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html)
+in the I<Amazon Elastic Compute Cloud User Guide>. For more information
+about EBS volume metrics, see Amazon CloudWatch metrics for Amazon EBS
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using_cloudwatch_ebs.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 InstanceArn => Str

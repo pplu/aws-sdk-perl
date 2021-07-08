@@ -59,7 +59,7 @@ next set of results.
 
 =head2 B<REQUIRED> Name => Str
 
-The name of a parameter you want to query.
+The name of the parameter for which you want to review history.
 
 
 

@@ -30,12 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $api.pricing = Paws->service('Pricing');
-    my $GetAttributeValuesResponse = $api . pricing->GetAttributeValues(
-      AttributeName => 'MyString',
-      ServiceCode   => 'MyString',
-      MaxResults    => 1,             # OPTIONAL
-      NextToken     => 'MyString',    # OPTIONAL
-    );
+    # To retrieve a list of attribute values
+    # This operation returns a list of values available for the given attribute.
+    my $GetAttributeValuesResponse = $api
+      . pricing->GetAttributeValues(
+      'AttributeName' => 'volumeType',
+      'MaxResults'    => 2,
+      'ServiceCode'   => 'AmazonEC2'
+      );
 
     # Results:
     my $AttributeValues = $GetAttributeValuesResponse->AttributeValues;

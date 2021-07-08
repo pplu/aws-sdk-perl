@@ -18,8 +18,8 @@ Paws::IoT::ListThingGroupsResponse
 
 =head2 NextToken => Str
 
-The token used to get the next set of results, or B<null> if there are
-no additional results.
+The token to use to get the next set of results. Will not be returned
+if operation has returned all results.
 
 
 =head2 ThingGroups => ArrayRef[L<Paws::IoT::GroupNameAndArn>]

@@ -1,6 +1,7 @@
 
 package Paws::Backup::CreateBackupPlanOutput;
   use Moose;
+  has AdvancedBackupSettings => (is => 'ro', isa => 'ArrayRef[Paws::Backup::AdvancedBackupSetting]');
   has BackupPlanArn => (is => 'ro', isa => 'Str');
   has BackupPlanId => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
@@ -16,6 +17,12 @@ package Paws::Backup::CreateBackupPlanOutput;
 Paws::Backup::CreateBackupPlanOutput
 
 =head1 ATTRIBUTES
+
+
+=head2 AdvancedBackupSettings => ArrayRef[L<Paws::Backup::AdvancedBackupSetting>]
+
+A list of C<BackupOptions> settings for a resource type. This option is
+only available for Windows VSS backup jobs.
 
 
 =head2 BackupPlanArn => Str
@@ -41,7 +48,7 @@ represents Friday, January 26, 2018 12:11:30.087 AM.
 =head2 VersionId => Str
 
 Unique, randomly generated, Unicode, UTF-8 encoded strings that are at
-most 1024 bytes long. They cannot be edited.
+most 1,024 bytes long. They cannot be edited.
 
 
 =head2 _request_id => Str

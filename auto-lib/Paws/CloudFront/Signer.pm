@@ -34,36 +34,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A complex type that lists the AWS accounts that were included in the
-C<TrustedSigners> complex type, as well as their active CloudFront key
-pair IDs, if any.
+A list of AWS accounts and the active CloudFront key pairs in each
+account that CloudFront can use to verify the signatures of signed URLs
+and signed cookies.
 
 =head1 ATTRIBUTES
 
 
 =head2 AwsAccountNumber => Str
 
-An AWS account that is included in the C<TrustedSigners> complex type
-for this distribution. Valid values include:
-
-=over
-
-=item *
-
-C<self>, which is the AWS account used to create the distribution.
-
-=item *
-
-An AWS account number.
-
-=back
-
+An AWS account number that contains active CloudFront key pairs that
+CloudFront can use to verify the signatures of signed URLs and signed
+cookies. If the AWS account that owns the key pairs is the same account
+that owns the CloudFront distribution, the value of this field is
+C<self>.
 
 
 =head2 KeyPairIds => L<Paws::CloudFront::KeyPairIds>
 
-A complex type that lists the active CloudFront key pairs, if any, that
-are associated with C<AwsAccountNumber>.
+A list of CloudFront key pair identifiers.
 
 
 

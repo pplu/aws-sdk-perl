@@ -8,9 +8,13 @@ package Paws::MediaConnect::UpdateFlowSource;
   has IngestPort => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'ingestPort');
   has MaxBitrate => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxBitrate');
   has MaxLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxLatency');
+  has MaxSyncBuffer => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'maxSyncBuffer');
+  has MediaStreamSourceConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::MediaConnect::MediaStreamSourceConfigurationRequest]', traits => ['NameInRequest'], request_name => 'mediaStreamSourceConfigurations');
+  has MinLatency => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'minLatency');
   has Protocol => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocol');
   has SourceArn => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'sourceArn', required => 1);
   has StreamId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'streamId');
+  has VpcInterfaceName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'vpcInterfaceName');
   has WhitelistCidr => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'whitelistCidr');
 
   use MooseX::ClassAttribute;
@@ -45,21 +49,42 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Algorithm => 'aes128',    # values: aes128, aes192, aes256; OPTIONAL
         ConstantInitializationVector => 'My__string',
         DeviceId                     => 'My__string',
-        KeyType    => 'speke',        # values: speke, static-key; OPTIONAL
+        KeyType => 'speke',  # values: speke, static-key, srt-password; OPTIONAL
         Region     => 'My__string',
         ResourceId => 'My__string',
         RoleArn    => 'My__string',
         SecretArn  => 'My__string',
         Url        => 'My__string',
       },    # OPTIONAL
-      Description    => 'My__string',    # OPTIONAL
-      EntitlementArn => 'My__string',    # OPTIONAL
-      IngestPort     => 1,               # OPTIONAL
-      MaxBitrate     => 1,               # OPTIONAL
-      MaxLatency     => 1,               # OPTIONAL
-      Protocol       => 'zixi-push',     # OPTIONAL
-      StreamId       => 'My__string',    # OPTIONAL
-      WhitelistCidr  => 'My__string',    # OPTIONAL
+      Description                     => 'My__string',    # OPTIONAL
+      EntitlementArn                  => 'My__string',    # OPTIONAL
+      IngestPort                      => 1,               # OPTIONAL
+      MaxBitrate                      => 1,               # OPTIONAL
+      MaxLatency                      => 1,               # OPTIONAL
+      MaxSyncBuffer                   => 1,               # OPTIONAL
+      MediaStreamSourceConfigurations => [
+        {
+          EncodingName        => 'jxsv',      # values: jxsv, raw, smpte291, pcm
+          MediaStreamName     => 'My__string',
+          InputConfigurations => [
+            {
+              InputPort => 1,
+              Interface => {
+                Name => 'My__string',
+
+              },
+
+            },
+            ...
+          ],                                  # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      MinLatency       => 1,               # OPTIONAL
+      Protocol         => 'zixi-push',     # OPTIONAL
+      StreamId         => 'My__string',    # OPTIONAL
+      VpcInterfaceName => 'My__string',    # OPTIONAL
+      WhitelistCidr    => 'My__string',    # OPTIONAL
     );
 
     # Results:
@@ -120,11 +145,36 @@ RIST-based and Zixi-based streams.
 
 
 
+=head2 MaxSyncBuffer => Int
+
+The size of the buffer (in milliseconds) to use to sync incoming source
+data.
+
+
+
+=head2 MediaStreamSourceConfigurations => ArrayRef[L<Paws::MediaConnect::MediaStreamSourceConfigurationRequest>]
+
+The media streams that are associated with the source, and the
+parameters for those associations.
+
+
+
+=head2 MinLatency => Int
+
+The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the senderE<rsquo>s minimum latency and the receiverE<rsquo>s
+minimum latency.
+
+
+
 =head2 Protocol => Str
 
 The protocol that is used by the source.
 
-Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">, C<"zixi-pull">, C<"rist">
+Valid values are: C<"zixi-push">, C<"rtp-fec">, C<"rtp">, C<"zixi-pull">, C<"rist">, C<"st2110-jpegxs">, C<"cdi">, C<"srt-listener">
 
 =head2 B<REQUIRED> SourceArn => Str
 
@@ -136,6 +186,12 @@ The ARN of the source that you want to update.
 
 The stream ID that you want to use for this transport. This parameter
 applies only to Zixi-based streams.
+
+
+
+=head2 VpcInterfaceName => Str
+
+The name of the VPC interface to use for this source.
 
 
 

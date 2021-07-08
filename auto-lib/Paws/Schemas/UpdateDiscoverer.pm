@@ -58,7 +58,7 @@ The description of the discoverer to update.
 
 =head2 B<REQUIRED> DiscovererId => Str
 
-
+The ID of the discoverer.
 
 
 

@@ -2,8 +2,10 @@
 package Paws::StorageGateway::Tape;
   use Moose;
   has KMSKey => (is => 'ro', isa => 'Str');
+  has PoolEntryDate => (is => 'ro', isa => 'Str');
   has PoolId => (is => 'ro', isa => 'Str');
   has Progress => (is => 'ro', isa => 'Num');
+  has RetentionStartDate => (is => 'ro', isa => 'Str');
   has TapeARN => (is => 'ro', isa => 'Str');
   has TapeBarcode => (is => 'ro', isa => 'Str');
   has TapeCreatedDate => (is => 'ro', isa => 'Str');
@@ -11,6 +13,7 @@ package Paws::StorageGateway::Tape;
   has TapeStatus => (is => 'ro', isa => 'Str');
   has TapeUsedInBytes => (is => 'ro', isa => 'Int');
   has VTLDevice => (is => 'ro', isa => 'Str');
+  has Worm => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -31,7 +34,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StorageGateway::Tape object:
 
-  $service_obj->Method(Att1 => { KMSKey => $value, ..., VTLDevice => $value  });
+  $service_obj->Method(Att1 => { KMSKey => $value, ..., Worm => $value  });
 
 =head3 Results returned from an API call
 
@@ -52,15 +55,20 @@ Describes a virtual tape object.
 
 
 
+=head2 PoolEntryDate => Str
+
+The date that the tape enters a custom tape pool.
+
+
 =head2 PoolId => Str
 
 The ID of the pool that contains tapes that will be archived. The tapes
 in this pool are archived in the S3 storage class that is associated
 with the pool. When you use your backup application to eject the tape,
-the tape is archived directly into the storage class (Glacier or Deep
-Archive) that corresponds to the pool.
+the tape is archived directly into the storage class (S3 Glacier or S3
+Glacier Deep Archive) that corresponds to the pool.
 
-Valid values: "GLACIER", "DEEP_ARCHIVE"
+Valid Values: C<GLACIER> | C<DEEP_ARCHIVE>
 
 
 =head2 Progress => Num
@@ -69,6 +77,12 @@ For archiving virtual tapes, indicates how much data remains to be
 uploaded before archiving is complete.
 
 Range: 0 (not started) to 100 (complete).
+
+
+=head2 RetentionStartDate => Str
+
+The date that the tape is first archived with tape retention lock
+enabled.
 
 
 =head2 TapeARN => Str
@@ -107,6 +121,12 @@ This value is not available for tapes created prior to May 13, 2015.
 
 The virtual tape library (VTL) device that the virtual tape is
 associated with.
+
+
+=head2 Worm => Bool
+
+If the tape is archived as write-once-read-many (WORM), this value is
+C<true>.
 
 
 

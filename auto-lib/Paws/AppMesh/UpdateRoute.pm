@@ -3,6 +3,7 @@ package Paws::AppMesh::UpdateRoute;
   use Moose;
   has ClientToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientToken');
   has MeshName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'meshName', required => 1);
+  has MeshOwner => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'meshOwner');
   has RouteName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'routeName', required => 1);
   has Spec => (is => 'ro', isa => 'Paws::AppMesh::RouteSpec', traits => ['NameInRequest'], request_name => 'spec', required => 1);
   has VirtualRouterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'virtualRouterName', required => 1);
@@ -73,8 +74,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           RetryPolicy => {
             MaxRetries      => 1,
             PerRetryTimeout => {
-              Unit  => 'ms',    # values: ms, s; OPTIONAL
-              Value => 1,       # OPTIONAL
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
             },
             GrpcRetryEvents => [
               'cancelled',
@@ -86,6 +87,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TcpRetryEvents => [
               'connection-error', ...    # values: connection-error
             ],    # min: 1, max: 1; OPTIONAL
+          },    # OPTIONAL
+          Timeout => {
+            Idle => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
+            PerRequest => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
           },    # OPTIONAL
         },    # OPTIONAL
         Http2Route => {
@@ -101,7 +112,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           Match => {
-            Prefix  => 'MyString',
             Headers => [
               {
                 Name   => 'MyHeaderName',    # min: 1, max: 50
@@ -120,15 +130,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],    # min: 1, max: 10; OPTIONAL
-            Method => 'CONNECT'
-            , # values: CONNECT, DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE; OPTIONAL
+            Method => 'GET'
+            , # values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH; OPTIONAL
+            Path => {
+              Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              Regex => 'MyHttpPathRegex',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            Prefix          => 'MyString',    # OPTIONAL
+            QueryParameters => [
+              {
+                Name  => 'MyQueryParameterName',
+                Match => {
+                  Exact => 'MyString',    # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
             Scheme => 'http',    # values: http, https; OPTIONAL
           },
           RetryPolicy => {
             MaxRetries      => 1,
             PerRetryTimeout => {
-              Unit  => 'ms',    # values: ms, s; OPTIONAL
-              Value => 1,       # OPTIONAL
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
             },
             HttpRetryEvents => [
               'MyHttpRetryPolicyEvent', ...    # min: 1, max: 25
@@ -136,6 +160,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TcpRetryEvents => [
               'connection-error', ...    # values: connection-error
             ],    # min: 1, max: 1; OPTIONAL
+          },    # OPTIONAL
+          Timeout => {
+            Idle => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
+            PerRequest => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
           },    # OPTIONAL
         },    # OPTIONAL
         HttpRoute => {
@@ -151,7 +185,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
           },
           Match => {
-            Prefix  => 'MyString',
             Headers => [
               {
                 Name   => 'MyHeaderName',    # min: 1, max: 50
@@ -170,15 +203,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
               },
               ...
             ],    # min: 1, max: 10; OPTIONAL
-            Method => 'CONNECT'
-            , # values: CONNECT, DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT, TRACE; OPTIONAL
+            Method => 'GET'
+            , # values: GET, HEAD, POST, PUT, DELETE, CONNECT, OPTIONS, TRACE, PATCH; OPTIONAL
+            Path => {
+              Exact => 'MyHttpPathExact',    # min: 1, max: 255; OPTIONAL
+              Regex => 'MyHttpPathRegex',    # min: 1, max: 255; OPTIONAL
+            },    # OPTIONAL
+            Prefix          => 'MyString',    # OPTIONAL
+            QueryParameters => [
+              {
+                Name  => 'MyQueryParameterName',
+                Match => {
+                  Exact => 'MyString',    # OPTIONAL
+                },    # OPTIONAL
+              },
+              ...
+            ],    # min: 1, max: 10; OPTIONAL
             Scheme => 'http',    # values: http, https; OPTIONAL
           },
           RetryPolicy => {
             MaxRetries      => 1,
             PerRetryTimeout => {
-              Unit  => 'ms',    # values: ms, s; OPTIONAL
-              Value => 1,       # OPTIONAL
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
             },
             HttpRetryEvents => [
               'MyHttpRetryPolicyEvent', ...    # min: 1, max: 25
@@ -186,6 +233,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             TcpRetryEvents => [
               'connection-error', ...    # values: connection-error
             ],    # min: 1, max: 1; OPTIONAL
+          },    # OPTIONAL
+          Timeout => {
+            Idle => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
+            PerRequest => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
           },    # OPTIONAL
         },    # OPTIONAL
         Priority => 1,    # max: 1000; OPTIONAL
@@ -201,11 +258,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             ],    # min: 1, max: 10
 
           },
-
+          Timeout => {
+            Idle => {
+              Unit  => 's',    # values: s, ms; OPTIONAL
+              Value => 1,      # OPTIONAL
+            },
+          },    # OPTIONAL
         },    # OPTIONAL
       },
       VirtualRouterName => 'MyResourceName',
       ClientToken       => 'MyString',         # OPTIONAL
+      MeshOwner         => 'MyAccountId',      # OPTIONAL
     );
 
     # Results:
@@ -230,6 +293,16 @@ underscores are allowed.
 =head2 B<REQUIRED> MeshName => Str
 
 The name of the service mesh that the route resides in.
+
+
+
+=head2 MeshOwner => Str
+
+The AWS IAM account ID of the service mesh owner. If the account ID is
+not your own, then it's the ID of the account that shared the mesh with
+your account. For more information about mesh sharing, see Working with
+shared meshes
+(https://docs.aws.amazon.com/app-mesh/latest/userguide/sharing.html).
 
 
 

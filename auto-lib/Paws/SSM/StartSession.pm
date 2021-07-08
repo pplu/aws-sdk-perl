@@ -56,8 +56,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 
 The name of the SSM document to define the parameters and plugin
 settings for the session. For example, C<SSM-SessionManagerRunShell>.
-If no document name is provided, a shell to the instance is launched by
-default.
+You can call the GetDocument API to verify the document exists before
+attempting to start a session. If no document name is provided, a shell
+to the instance is launched by default.
 
 
 

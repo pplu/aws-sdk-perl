@@ -41,7 +41,7 @@ device certificate to inactive.
 
 =head2 B<REQUIRED> Action => Str
 
-The action that you want to apply to the device cerrtificate. The only
+The action that you want to apply to the device certificate. The only
 supported value is C<DEACTIVATE>.
 
 

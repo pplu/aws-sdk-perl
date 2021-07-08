@@ -30,17 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To retrieve a list of Lambda function versions
-    # This operation retrieves a Lambda function versions
-    my $ListVersionsByFunctionResponse = $lambda->ListVersionsByFunction(
-      'FunctionName' => 'myFunction',
-      'Marker'       => '',
-      'MaxItems'     => 123
-    );
+    # To list versions of a function
+    # The following example returns a list of versions of a function named
+    # my-function
+    my $ListVersionsByFunctionResponse =
+      $lambda->ListVersionsByFunction( 'FunctionName' => 'my-function' );
 
     # Results:
-    my $NextMarker = $ListVersionsByFunctionResponse->NextMarker;
-    my $Versions   = $ListVersionsByFunctionResponse->Versions;
+    my $Versions = $ListVersionsByFunctionResponse->Versions;
 
     # Returns a L<Paws::Lambda::ListVersionsByFunctionResponse> object.
 
@@ -87,7 +84,9 @@ retrieve the next page of results.
 
 =head2 MaxItems => Int
 
-The maximum number of versions to return.
+The maximum number of versions to return. Note that
+C<ListVersionsByFunction> returns a maximum of 50 items in each
+response, even if you set the number higher.
 
 
 

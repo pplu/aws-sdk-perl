@@ -69,6 +69,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CancelCertificateTransfer', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CancelDetectMitigationActionsTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CancelDetectMitigationActionsTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CancelJob', @_);
@@ -89,6 +94,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ConfirmTopicRuleDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateAuditSuppression {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateAuditSuppression', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateAuthorizer', @_);
@@ -104,6 +114,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateCertificateFromCsr', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCustomMetric {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateCustomMetric', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateDimension {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateDimension', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateDomainConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateDomainConfiguration', @_);
@@ -117,6 +137,11 @@ package Paws::IoT;
   sub CreateJob {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::CreateJob', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateJobTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::CreateJobTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateKeysAndCertificate {
@@ -209,6 +234,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteAccountAuditConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAuditSuppression {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteAuditSuppression', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteAuthorizer', @_);
@@ -229,6 +259,16 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteCustomMetric {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteCustomMetric', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteDimension {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteDimension', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteDomainConfiguration {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteDomainConfiguration', @_);
@@ -247,6 +287,11 @@ package Paws::IoT;
   sub DeleteJobExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DeleteJobExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteJobTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DeleteJobTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteMitigationAction {
@@ -354,6 +399,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditMitigationActionsTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAuditSuppression {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditSuppression', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeAuditTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeAuditTask', @_);
@@ -379,9 +429,24 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCustomMetric {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeCustomMetric', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeDefaultAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeDefaultAuthorizer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDetectMitigationActionsTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeDetectMitigationActionsTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeDimension {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeDimension', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeDomainConfiguration {
@@ -412,6 +477,11 @@ package Paws::IoT;
   sub DescribeJobExecution {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::DescribeJobExecution', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeJobTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::DescribeJobTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeMitigationAction {
@@ -497,6 +567,11 @@ package Paws::IoT;
   sub EnableTopicRule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::EnableTopicRule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetBehaviorModelTrainingSummaries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::GetBehaviorModelTrainingSummaries', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetCardinality {
@@ -594,6 +669,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditMitigationActionsTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListAuditSuppressions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditSuppressions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListAuditTasks {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListAuditTasks', @_);
@@ -624,6 +704,26 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListCertificatesByCA', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListCustomMetrics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListCustomMetrics', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDetectMitigationActionsExecutions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListDetectMitigationActionsExecutions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDetectMitigationActionsTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListDetectMitigationActionsTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListDimensions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListDimensions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListDomainConfigurations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListDomainConfigurations', @_);
@@ -647,6 +747,11 @@ package Paws::IoT;
   sub ListJobs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::ListJobs', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListJobTemplates {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::ListJobTemplates', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListMitigationActions {
@@ -814,6 +919,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::RegisterCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterCertificateWithoutCA {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::RegisterCertificateWithoutCA', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterThing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::RegisterThing', @_);
@@ -874,6 +984,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::StartAuditMitigationActionsTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartDetectMitigationActionsTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::StartDetectMitigationActionsTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartOnDemandAuditTask {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::StartOnDemandAuditTask', @_);
@@ -919,6 +1034,11 @@ package Paws::IoT;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateAccountAuditConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateAuditSuppression {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateAuditSuppression', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateAuthorizer {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateAuthorizer', @_);
@@ -937,6 +1057,16 @@ package Paws::IoT;
   sub UpdateCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::IoT::UpdateCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateCustomMetric {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateCustomMetric', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateDimension {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::IoT::UpdateDimension', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateDomainConfiguration {
@@ -1020,6 +1150,29 @@ package Paws::IoT;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub GetAllBehaviorModelTrainingSummaries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetBehaviorModelTrainingSummaries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->GetBehaviorModelTrainingSummaries(@_, nextToken => $next_result->nextToken);
+        push @{ $result->summaries }, @{ $next_result->summaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'summaries') foreach (@{ $result->summaries });
+        $result = $self->GetBehaviorModelTrainingSummaries(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'summaries') foreach (@{ $result->summaries });
+    }
+
+    return undef
+  }
   sub ListAllActiveViolations {
     my $self = shift;
 
@@ -1085,6 +1238,75 @@ package Paws::IoT;
         $result = $self->ListAuditFindings(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'findings') foreach (@{ $result->findings });
+    }
+
+    return undef
+  }
+  sub ListAllAuditMitigationActionsExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAuditMitigationActionsExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAuditMitigationActionsExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->actionsExecutions }, @{ $next_result->actionsExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'actionsExecutions') foreach (@{ $result->actionsExecutions });
+        $result = $self->ListAuditMitigationActionsExecutions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'actionsExecutions') foreach (@{ $result->actionsExecutions });
+    }
+
+    return undef
+  }
+  sub ListAllAuditMitigationActionsTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAuditMitigationActionsTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAuditMitigationActionsTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tasks }, @{ $next_result->tasks };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tasks') foreach (@{ $result->tasks });
+        $result = $self->ListAuditMitigationActionsTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tasks') foreach (@{ $result->tasks });
+    }
+
+    return undef
+  }
+  sub ListAllAuditSuppressions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListAuditSuppressions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListAuditSuppressions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->suppressions }, @{ $next_result->suppressions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'suppressions') foreach (@{ $result->suppressions });
+        $result = $self->ListAuditSuppressions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'suppressions') foreach (@{ $result->suppressions });
     }
 
     return undef
@@ -1227,6 +1449,121 @@ package Paws::IoT;
 
     return undef
   }
+  sub ListAllCustomMetrics {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListCustomMetrics(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListCustomMetrics(@_, nextToken => $next_result->nextToken);
+        push @{ $result->metricNames }, @{ $next_result->metricNames };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'metricNames') foreach (@{ $result->metricNames });
+        $result = $self->ListCustomMetrics(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'metricNames') foreach (@{ $result->metricNames });
+    }
+
+    return undef
+  }
+  sub ListAllDetectMitigationActionsExecutions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDetectMitigationActionsExecutions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDetectMitigationActionsExecutions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->actionsExecutions }, @{ $next_result->actionsExecutions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'actionsExecutions') foreach (@{ $result->actionsExecutions });
+        $result = $self->ListDetectMitigationActionsExecutions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'actionsExecutions') foreach (@{ $result->actionsExecutions });
+    }
+
+    return undef
+  }
+  sub ListAllDetectMitigationActionsTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDetectMitigationActionsTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDetectMitigationActionsTasks(@_, nextToken => $next_result->nextToken);
+        push @{ $result->tasks }, @{ $next_result->tasks };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'tasks') foreach (@{ $result->tasks });
+        $result = $self->ListDetectMitigationActionsTasks(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'tasks') foreach (@{ $result->tasks });
+    }
+
+    return undef
+  }
+  sub ListAllDimensions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDimensions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListDimensions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->dimensionNames }, @{ $next_result->dimensionNames };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'dimensionNames') foreach (@{ $result->dimensionNames });
+        $result = $self->ListDimensions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'dimensionNames') foreach (@{ $result->dimensionNames });
+    }
+
+    return undef
+  }
+  sub ListAllDomainConfigurations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListDomainConfigurations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextMarker) {
+        $next_result = $self->ListDomainConfigurations(@_, marker => $next_result->nextMarker);
+        push @{ $result->domainConfigurations }, @{ $next_result->domainConfigurations };
+      }
+      return $result;
+    } else {
+      while ($result->nextMarker) {
+        $callback->($_ => 'domainConfigurations') foreach (@{ $result->domainConfigurations });
+        $result = $self->ListDomainConfigurations(@_, marker => $result->nextMarker);
+      }
+      $callback->($_ => 'domainConfigurations') foreach (@{ $result->domainConfigurations });
+    }
+
+    return undef
+  }
   sub ListAllIndices {
     my $self = shift;
 
@@ -1315,6 +1652,29 @@ package Paws::IoT;
         $result = $self->ListJobs(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'jobs') foreach (@{ $result->jobs });
+    }
+
+    return undef
+  }
+  sub ListAllMitigationActions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListMitigationActions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListMitigationActions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->actionIdentifiers }, @{ $next_result->actionIdentifiers };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'actionIdentifiers') foreach (@{ $result->actionIdentifiers });
+        $result = $self->ListMitigationActions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'actionIdentifiers') foreach (@{ $result->actionIdentifiers });
     }
 
     return undef
@@ -1453,6 +1813,52 @@ package Paws::IoT;
         $result = $self->ListPrincipalThings(@_, nextToken => $result->nextToken);
       }
       $callback->($_ => 'things') foreach (@{ $result->things });
+    }
+
+    return undef
+  }
+  sub ListAllProvisioningTemplates {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisioningTemplates(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProvisioningTemplates(@_, nextToken => $next_result->nextToken);
+        push @{ $result->templates }, @{ $next_result->templates };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'templates') foreach (@{ $result->templates });
+        $result = $self->ListProvisioningTemplates(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'templates') foreach (@{ $result->templates });
+    }
+
+    return undef
+  }
+  sub ListAllProvisioningTemplateVersions {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListProvisioningTemplateVersions(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListProvisioningTemplateVersions(@_, nextToken => $next_result->nextToken);
+        push @{ $result->versions }, @{ $next_result->versions };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'versions') foreach (@{ $result->versions });
+        $result = $self->ListProvisioningTemplateVersions(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'versions') foreach (@{ $result->versions });
     }
 
     return undef
@@ -1687,6 +2093,52 @@ package Paws::IoT;
 
     return undef
   }
+  sub ListAllThingPrincipals {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingPrincipals(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingPrincipals(@_, nextToken => $next_result->nextToken);
+        push @{ $result->principals }, @{ $next_result->principals };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'principals') foreach (@{ $result->principals });
+        $result = $self->ListThingPrincipals(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'principals') foreach (@{ $result->principals });
+    }
+
+    return undef
+  }
+  sub ListAllThingRegistrationTaskReports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListThingRegistrationTaskReports(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListThingRegistrationTaskReports(@_, nextToken => $next_result->nextToken);
+        push @{ $result->resourceLinks }, @{ $next_result->resourceLinks };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'resourceLinks') foreach (@{ $result->resourceLinks });
+        $result = $self->ListThingRegistrationTaskReports(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'resourceLinks') foreach (@{ $result->resourceLinks });
+    }
+
+    return undef
+  }
   sub ListAllThingRegistrationTasks {
     my $self = shift;
 
@@ -1802,6 +2254,29 @@ package Paws::IoT;
 
     return undef
   }
+  sub ListAllTopicRuleDestinations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListTopicRuleDestinations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListTopicRuleDestinations(@_, nextToken => $next_result->nextToken);
+        push @{ $result->destinationSummaries }, @{ $next_result->destinationSummaries };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'destinationSummaries') foreach (@{ $result->destinationSummaries });
+        $result = $self->ListTopicRuleDestinations(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'destinationSummaries') foreach (@{ $result->destinationSummaries });
+    }
+
+    return undef
+  }
   sub ListAllTopicRules {
     my $self = shift;
 
@@ -1873,7 +2348,7 @@ package Paws::IoT;
   }
 
 
-  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateDomainConfiguration CreateDynamicThingGroup CreateJob CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateProvisioningClaim CreateProvisioningTemplate CreateProvisioningTemplateVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteDomainConfiguration DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteProvisioningTemplate DeleteProvisioningTemplateVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeDefaultAuthorizer DescribeDomainConfiguration DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeMitigationAction DescribeProvisioningTemplate DescribeProvisioningTemplateVersion DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListDomainConfigurations ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListProvisioningTemplates ListProvisioningTemplateVersions ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateDomainConfiguration UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateProvisioningTemplate UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
+  sub operations { qw/AcceptCertificateTransfer AddThingToBillingGroup AddThingToThingGroup AssociateTargetsWithJob AttachPolicy AttachPrincipalPolicy AttachSecurityProfile AttachThingPrincipal CancelAuditMitigationActionsTask CancelAuditTask CancelCertificateTransfer CancelDetectMitigationActionsTask CancelJob CancelJobExecution ClearDefaultAuthorizer ConfirmTopicRuleDestination CreateAuditSuppression CreateAuthorizer CreateBillingGroup CreateCertificateFromCsr CreateCustomMetric CreateDimension CreateDomainConfiguration CreateDynamicThingGroup CreateJob CreateJobTemplate CreateKeysAndCertificate CreateMitigationAction CreateOTAUpdate CreatePolicy CreatePolicyVersion CreateProvisioningClaim CreateProvisioningTemplate CreateProvisioningTemplateVersion CreateRoleAlias CreateScheduledAudit CreateSecurityProfile CreateStream CreateThing CreateThingGroup CreateThingType CreateTopicRule CreateTopicRuleDestination DeleteAccountAuditConfiguration DeleteAuditSuppression DeleteAuthorizer DeleteBillingGroup DeleteCACertificate DeleteCertificate DeleteCustomMetric DeleteDimension DeleteDomainConfiguration DeleteDynamicThingGroup DeleteJob DeleteJobExecution DeleteJobTemplate DeleteMitigationAction DeleteOTAUpdate DeletePolicy DeletePolicyVersion DeleteProvisioningTemplate DeleteProvisioningTemplateVersion DeleteRegistrationCode DeleteRoleAlias DeleteScheduledAudit DeleteSecurityProfile DeleteStream DeleteThing DeleteThingGroup DeleteThingType DeleteTopicRule DeleteTopicRuleDestination DeleteV2LoggingLevel DeprecateThingType DescribeAccountAuditConfiguration DescribeAuditFinding DescribeAuditMitigationActionsTask DescribeAuditSuppression DescribeAuditTask DescribeAuthorizer DescribeBillingGroup DescribeCACertificate DescribeCertificate DescribeCustomMetric DescribeDefaultAuthorizer DescribeDetectMitigationActionsTask DescribeDimension DescribeDomainConfiguration DescribeEndpoint DescribeEventConfigurations DescribeIndex DescribeJob DescribeJobExecution DescribeJobTemplate DescribeMitigationAction DescribeProvisioningTemplate DescribeProvisioningTemplateVersion DescribeRoleAlias DescribeScheduledAudit DescribeSecurityProfile DescribeStream DescribeThing DescribeThingGroup DescribeThingRegistrationTask DescribeThingType DetachPolicy DetachPrincipalPolicy DetachSecurityProfile DetachThingPrincipal DisableTopicRule EnableTopicRule GetBehaviorModelTrainingSummaries GetCardinality GetEffectivePolicies GetIndexingConfiguration GetJobDocument GetLoggingOptions GetOTAUpdate GetPercentiles GetPolicy GetPolicyVersion GetRegistrationCode GetStatistics GetTopicRule GetTopicRuleDestination GetV2LoggingOptions ListActiveViolations ListAttachedPolicies ListAuditFindings ListAuditMitigationActionsExecutions ListAuditMitigationActionsTasks ListAuditSuppressions ListAuditTasks ListAuthorizers ListBillingGroups ListCACertificates ListCertificates ListCertificatesByCA ListCustomMetrics ListDetectMitigationActionsExecutions ListDetectMitigationActionsTasks ListDimensions ListDomainConfigurations ListIndices ListJobExecutionsForJob ListJobExecutionsForThing ListJobs ListJobTemplates ListMitigationActions ListOTAUpdates ListOutgoingCertificates ListPolicies ListPolicyPrincipals ListPolicyVersions ListPrincipalPolicies ListPrincipalThings ListProvisioningTemplates ListProvisioningTemplateVersions ListRoleAliases ListScheduledAudits ListSecurityProfiles ListSecurityProfilesForTarget ListStreams ListTagsForResource ListTargetsForPolicy ListTargetsForSecurityProfile ListThingGroups ListThingGroupsForThing ListThingPrincipals ListThingRegistrationTaskReports ListThingRegistrationTasks ListThings ListThingsInBillingGroup ListThingsInThingGroup ListThingTypes ListTopicRuleDestinations ListTopicRules ListV2LoggingLevels ListViolationEvents RegisterCACertificate RegisterCertificate RegisterCertificateWithoutCA RegisterThing RejectCertificateTransfer RemoveThingFromBillingGroup RemoveThingFromThingGroup ReplaceTopicRule SearchIndex SetDefaultAuthorizer SetDefaultPolicyVersion SetLoggingOptions SetV2LoggingLevel SetV2LoggingOptions StartAuditMitigationActionsTask StartDetectMitigationActionsTask StartOnDemandAuditTask StartThingRegistrationTask StopThingRegistrationTask TagResource TestAuthorization TestInvokeAuthorizer TransferCertificate UntagResource UpdateAccountAuditConfiguration UpdateAuditSuppression UpdateAuthorizer UpdateBillingGroup UpdateCACertificate UpdateCertificate UpdateCustomMetric UpdateDimension UpdateDomainConfiguration UpdateDynamicThingGroup UpdateEventConfigurations UpdateIndexingConfiguration UpdateJob UpdateMitigationAction UpdateProvisioningTemplate UpdateRoleAlias UpdateScheduledAudit UpdateSecurityProfile UpdateStream UpdateThing UpdateThingGroup UpdateThingGroupsForThing UpdateTopicRuleDestination ValidateSecurityProfileBehaviors / }
 
 1;
 
@@ -1910,6 +2385,16 @@ custom IoT-Data endpoint to communicate with, configure rules for data
 processing and integration with other services, organize resources
 associated with each device (Registry), configure logging, and create
 and manage policies and credentials to authenticate devices.
+
+The service endpoints that expose this API are listed in AWS IoT Core
+Endpoints and Quotas
+(https://docs.aws.amazon.com/general/latest/gr/iot-core.html). You must
+use the endpoint for the region that has the resources you want to
+access.
+
+The service name used by AWS Signature Version 4
+(https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)
+to sign the request is: I<execute-api>.
 
 For more information about how AWS IoT works, see the Developer Guide
 (https://docs.aws.amazon.com/iot/latest/developerguide/aws-iot-how-it-works.html).
@@ -2000,6 +2485,8 @@ Adds a thing to a thing group.
 =item Targets => ArrayRef[Str|Undef]
 
 =item [Comment => Str]
+
+=item [NamespaceId => Str]
 
 
 =back
@@ -2140,7 +2627,7 @@ Each argument is described in detail in: L<Paws::IoT::CancelAuditTask>
 Returns: a L<Paws::IoT::CancelAuditTaskResponse> instance
 
 Cancels an audit that is in progress. The audit can be either scheduled
-or on-demand. If the audit is not in progress, an
+or on demand. If the audit isn't in progress, an
 "InvalidRequestException" occurs.
 
 
@@ -2168,6 +2655,22 @@ cancelled.
 
 After a certificate transfer is cancelled, the status of the
 certificate changes from PENDING_TRANSFER to INACTIVE.
+
+
+=head2 CancelDetectMitigationActionsTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CancelDetectMitigationActionsTask>
+
+Returns: a L<Paws::IoT::CancelDetectMitigationActionsTaskResponse> instance
+
+Cancels a Device Defender ML Detect mitigation action.
 
 
 =head2 CancelJob
@@ -2250,6 +2753,32 @@ back when calling C<ConfirmTopicRuleDestination> to confirm that you
 own or have access to the endpoint.
 
 
+=head2 CreateAuditSuppression
+
+=over
+
+=item CheckName => Str
+
+=item ClientRequestToken => Str
+
+=item ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
+
+=item [Description => Str]
+
+=item [ExpirationDate => Str]
+
+=item [SuppressIndefinitely => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateAuditSuppression>
+
+Returns: a L<Paws::IoT::CreateAuditSuppressionResponse> instance
+
+Creates a Device Defender audit suppression.
+
+
 =head2 CreateAuthorizer
 
 =over
@@ -2261,6 +2790,8 @@ own or have access to the endpoint.
 =item [SigningDisabled => Bool]
 
 =item [Status => Str]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 =item [TokenKeyName => Str]
 
@@ -2359,6 +2890,59 @@ E<gt> forfiles /p my-csr-directory /c "cmd /c aws iot
 create-certificate-from-csr --certificate-signing-request file://@path"
 
 
+=head2 CreateCustomMetric
+
+=over
+
+=item ClientRequestToken => Str
+
+=item MetricName => Str
+
+=item MetricType => Str
+
+=item [DisplayName => Str]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateCustomMetric>
+
+Returns: a L<Paws::IoT::CreateCustomMetricResponse> instance
+
+Use this API to define a Custom Metric published by your devices to
+Device Defender.
+
+
+=head2 CreateDimension
+
+=over
+
+=item ClientRequestToken => Str
+
+=item Name => Str
+
+=item StringValues => ArrayRef[Str|Undef]
+
+=item Type => Str
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateDimension>
+
+Returns: a L<Paws::IoT::CreateDimensionResponse> instance
+
+Create a dimension that you can use to limit the scope of a metric used
+in a security profile for AWS IoT Device Defender. For example, using a
+C<TOPIC_FILTER> dimension, you can narrow down the scope of the metric
+only to MQTT topics whose name match the pattern specified in the
+dimension.
+
+
 =head2 CreateDomainConfiguration
 
 =over
@@ -2373,6 +2957,8 @@ create-certificate-from-csr --certificate-signing-request file://@path"
 
 =item [ServiceType => Str]
 
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
 =item [ValidationCertificateArn => Str]
 
 
@@ -2383,9 +2969,6 @@ Each argument is described in detail in: L<Paws::IoT::CreateDomainConfiguration>
 Returns: a L<Paws::IoT::CreateDomainConfigurationResponse> instance
 
 Creates a domain configuration.
-
-The domain configuration feature is in public preview and is subject to
-change.
 
 
 =head2 CreateDynamicThingGroup
@@ -2432,6 +3015,10 @@ Creates a dynamic thing group.
 
 =item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
 
+=item [JobTemplateArn => Str]
+
+=item [NamespaceId => Str]
+
 =item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
 
 =item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
@@ -2448,6 +3035,40 @@ Each argument is described in detail in: L<Paws::IoT::CreateJob>
 Returns: a L<Paws::IoT::CreateJobResponse> instance
 
 Creates a job.
+
+
+=head2 CreateJobTemplate
+
+=over
+
+=item Description => Str
+
+=item JobTemplateId => Str
+
+=item [AbortConfig => L<Paws::IoT::AbortConfig>]
+
+=item [Document => Str]
+
+=item [DocumentSource => Str]
+
+=item [JobArn => Str]
+
+=item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
+
+=item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
+
+=item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::CreateJobTemplate>
+
+Returns: a L<Paws::IoT::CreateJobTemplateResponse> instance
+
+Creates a job template.
 
 
 =head2 CreateKeysAndCertificate
@@ -2493,8 +3114,11 @@ Each argument is described in detail in: L<Paws::IoT::CreateMitigationAction>
 Returns: a L<Paws::IoT::CreateMitigationActionResponse> instance
 
 Defines an action that can be applied to audit findings by using
-StartAuditMitigationActionsTask. Each mitigation action can apply only
-one type of change.
+StartAuditMitigationActionsTask. Only certain types of mitigation
+actions can be applied to specific check names. For more information,
+see Mitigation actions
+(https://docs.aws.amazon.com/iot/latest/developerguide/device-defender-mitigation-actions.html).
+Each mitigation action can apply only one type of change.
 
 
 =head2 CreateOTAUpdate
@@ -2511,9 +3135,13 @@ one type of change.
 
 =item [AdditionalParameters => L<Paws::IoT::AdditionalParameterMap>]
 
+=item [AwsJobAbortConfig => L<Paws::IoT::AwsJobAbortConfig>]
+
 =item [AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>]
 
 =item [AwsJobPresignedUrlConfig => L<Paws::IoT::AwsJobPresignedUrlConfig>]
+
+=item [AwsJobTimeoutConfig => L<Paws::IoT::AwsJobTimeoutConfig>]
 
 =item [Description => Str]
 
@@ -2540,6 +3168,8 @@ Creates an AWS IoT OTAUpdate on a target group of things or groups.
 =item PolicyDocument => Str
 
 =item PolicyName => Str
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 
 =back
@@ -2614,6 +3244,8 @@ Creates a provisioning claim.
 
 =item [Enabled => Bool]
 
+=item [PreProvisioningHook => L<Paws::IoT::ProvisioningHook>]
+
 =item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 
@@ -2655,6 +3287,8 @@ Creates a new version of a fleet provisioning template.
 =item RoleArn => Str
 
 =item [CredentialDurationSeconds => Int]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 
 =back
@@ -2699,6 +3333,8 @@ Creates a scheduled audit that is run at a specified time interval.
 =item SecurityProfileName => Str
 
 =item [AdditionalMetricsToRetain => ArrayRef[Str|Undef]]
+
+=item [AdditionalMetricsToRetainV2 => ArrayRef[L<Paws::IoT::MetricToRetain>]]
 
 =item [AlertTargets => L<Paws::IoT::AlertTargets>]
 
@@ -2770,7 +3406,7 @@ succeed. If this call is made with the same thing name but different
 configuration a C<ResourceAlreadyExistsException> is thrown.
 
 This is a control plane operation. See Authorization
-(https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html)
 for information about authorizing control plane actions.
 
 
@@ -2796,7 +3432,7 @@ Returns: a L<Paws::IoT::CreateThingGroupResponse> instance
 Create a thing group.
 
 This is a control plane operation. See Authorization
-(https://docs.aws.amazon.com/iot/latest/developerguide/authorization.html)
+(https://docs.aws.amazon.com/iot/latest/developerguide/iot-authorization.html)
 for information about authorizing control plane actions.
 
 
@@ -2877,6 +3513,24 @@ account. Any configuration data you entered is deleted and all audit
 checks are reset to disabled.
 
 
+=head2 DeleteAuditSuppression
+
+=over
+
+=item CheckName => Str
+
+=item ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteAuditSuppression>
+
+Returns: a L<Paws::IoT::DeleteAuditSuppressionResponse> instance
+
+Deletes a Device Defender audit suppression.
+
+
 =head2 DeleteAuthorizer
 
 =over
@@ -2951,6 +3605,45 @@ policies. Next, use the UpdateCertificate API to set the certificate to
 the INACTIVE status.
 
 
+=head2 DeleteCustomMetric
+
+=over
+
+=item MetricName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteCustomMetric>
+
+Returns: a L<Paws::IoT::DeleteCustomMetricResponse> instance
+
+Before you can delete a custom metric, you must first remove the custom
+metric from all security profiles it's a part of. The security profile
+associated with the custom metric can be found using the
+ListSecurityProfiles
+(https://docs.aws.amazon.com/iot/latest/apireference/API_ListSecurityProfiles.html)
+API with C<metricName> set to your custom metric name.
+
+Deletes a Device Defender detect custom metric.
+
+
+=head2 DeleteDimension
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteDimension>
+
+Returns: a L<Paws::IoT::DeleteDimensionResponse> instance
+
+Removes the specified dimension from your AWS account.
+
+
 =head2 DeleteDomainConfiguration
 
 =over
@@ -2965,9 +3658,6 @@ Each argument is described in detail in: L<Paws::IoT::DeleteDomainConfiguration>
 Returns: a L<Paws::IoT::DeleteDomainConfigurationResponse> instance
 
 Deletes the specified domain configuration.
-
-The domain configuration feature is in public preview and is subject to
-change.
 
 
 =head2 DeleteDynamicThingGroup
@@ -2995,6 +3685,8 @@ Deletes a dynamic thing group.
 =item JobId => Str
 
 =item [Force => Bool]
+
+=item [NamespaceId => Str]
 
 
 =back
@@ -3027,6 +3719,8 @@ or a LimitExceededException will occur.
 
 =item [Force => Bool]
 
+=item [NamespaceId => Str]
+
 
 =back
 
@@ -3035,6 +3729,22 @@ Each argument is described in detail in: L<Paws::IoT::DeleteJobExecution>
 Returns: nothing
 
 Deletes a job execution.
+
+
+=head2 DeleteJobTemplate
+
+=over
+
+=item JobTemplateId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DeleteJobTemplate>
+
+Returns: nothing
+
+Deletes the specified job template.
 
 
 =head2 DeleteMitigationAction
@@ -3393,8 +4103,8 @@ Each argument is described in detail in: L<Paws::IoT::DescribeAuditFinding>
 Returns: a L<Paws::IoT::DescribeAuditFindingResponse> instance
 
 Gets information about a single audit finding. Properties include the
-reason for noncompliance, the severity of the issue, and when the audit
-that returned the finding was started.
+reason for noncompliance, the severity of the issue, and the start time
+when the audit that returned the finding.
 
 
 =head2 DescribeAuditMitigationActionsTask
@@ -3414,6 +4124,24 @@ Gets information about an audit mitigation task that is used to apply
 mitigation actions to a set of audit findings. Properties include the
 actions being applied, the audit checks to which they're being applied,
 the task status, and aggregated task statistics.
+
+
+=head2 DescribeAuditSuppression
+
+=over
+
+=item CheckName => Str
+
+=item ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeAuditSuppression>
+
+Returns: a L<Paws::IoT::DescribeAuditSuppressionResponse> instance
+
+Gets information about a Device Defender audit suppression.
 
 
 =head2 DescribeAuditTask
@@ -3496,6 +4224,22 @@ Returns: a L<Paws::IoT::DescribeCertificateResponse> instance
 Gets information about the specified certificate.
 
 
+=head2 DescribeCustomMetric
+
+=over
+
+=item MetricName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeCustomMetric>
+
+Returns: a L<Paws::IoT::DescribeCustomMetricResponse> instance
+
+Gets information about a Device Defender detect custom metric.
+
+
 =head2 DescribeDefaultAuthorizer
 
 
@@ -3508,6 +4252,38 @@ Each argument is described in detail in: L<Paws::IoT::DescribeDefaultAuthorizer>
 Returns: a L<Paws::IoT::DescribeDefaultAuthorizerResponse> instance
 
 Describes the default authorizer.
+
+
+=head2 DescribeDetectMitigationActionsTask
+
+=over
+
+=item TaskId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeDetectMitigationActionsTask>
+
+Returns: a L<Paws::IoT::DescribeDetectMitigationActionsTaskResponse> instance
+
+Gets information about a Device Defender ML Detect mitigation action.
+
+
+=head2 DescribeDimension
+
+=over
+
+=item Name => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeDimension>
+
+Returns: a L<Paws::IoT::DescribeDimensionResponse> instance
+
+Provides details about a dimension that is defined in your AWS account.
 
 
 =head2 DescribeDomainConfiguration
@@ -3524,9 +4300,6 @@ Each argument is described in detail in: L<Paws::IoT::DescribeDomainConfiguratio
 Returns: a L<Paws::IoT::DescribeDomainConfigurationResponse> instance
 
 Gets summary information about a domain configuration.
-
-The domain configuration feature is in public preview and is subject to
-change.
 
 
 =head2 DescribeEndpoint
@@ -3609,6 +4382,22 @@ Each argument is described in detail in: L<Paws::IoT::DescribeJobExecution>
 Returns: a L<Paws::IoT::DescribeJobExecutionResponse> instance
 
 Describes a job execution.
+
+
+=head2 DescribeJobTemplate
+
+=over
+
+=item JobTemplateId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::DescribeJobTemplate>
+
+Returns: a L<Paws::IoT::DescribeJobTemplateResponse> instance
+
+Returns information about a job template.
 
 
 =head2 DescribeMitigationAction
@@ -3901,6 +4690,27 @@ Returns: nothing
 Enables the rule.
 
 
+=head2 GetBehaviorModelTrainingSummaries
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SecurityProfileName => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::GetBehaviorModelTrainingSummaries>
+
+Returns: a L<Paws::IoT::GetBehaviorModelTrainingSummariesResponse> instance
+
+Returns a Device Defender's ML Detect Security Profile training model's
+status.
+
+
 =head2 GetCardinality
 
 =over
@@ -4167,6 +4977,10 @@ Gets the fine grained logging options.
 
 =over
 
+=item [BehaviorCriteriaType => Str]
+
+=item [ListSuppressedAlerts => Bool]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -4216,6 +5030,8 @@ Lists the policies attached to the specified thing group.
 
 =item [EndTime => Str]
 
+=item [ListSuppressedFindings => Bool]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -4235,7 +5051,7 @@ Returns: a L<Paws::IoT::ListAuditFindingsResponse> instance
 
 Lists the findings (results) of a Device Defender audit or of the
 audits performed during a specified time period. (Findings are retained
-for 180 days.)
+for 90 days.)
 
 
 =head2 ListAuditMitigationActionsExecutions
@@ -4289,6 +5105,30 @@ Returns: a L<Paws::IoT::ListAuditMitigationActionsTasksResponse> instance
 
 Gets a list of audit mitigation action tasks that match the specified
 filters.
+
+
+=head2 ListAuditSuppressions
+
+=over
+
+=item [AscendingOrder => Bool]
+
+=item [CheckName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListAuditSuppressions>
+
+Returns: a L<Paws::IoT::ListAuditSuppressionsResponse> instance
+
+Lists your Device Defender audit listings.
 
 
 =head2 ListAuditTasks
@@ -4428,6 +5268,93 @@ Returns: a L<Paws::IoT::ListCertificatesByCAResponse> instance
 List the device certificates signed by the specified CA certificate.
 
 
+=head2 ListCustomMetrics
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListCustomMetrics>
+
+Returns: a L<Paws::IoT::ListCustomMetricsResponse> instance
+
+Lists your Device Defender detect custom metrics.
+
+
+=head2 ListDetectMitigationActionsExecutions
+
+=over
+
+=item [EndTime => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [StartTime => Str]
+
+=item [TaskId => Str]
+
+=item [ThingName => Str]
+
+=item [ViolationId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListDetectMitigationActionsExecutions>
+
+Returns: a L<Paws::IoT::ListDetectMitigationActionsExecutionsResponse> instance
+
+Lists mitigation actions executions for a Device Defender ML Detect
+Security Profile.
+
+
+=head2 ListDetectMitigationActionsTasks
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListDetectMitigationActionsTasks>
+
+Returns: a L<Paws::IoT::ListDetectMitigationActionsTasksResponse> instance
+
+List of Device Defender ML Detect mitigation actions tasks.
+
+
+=head2 ListDimensions
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListDimensions>
+
+Returns: a L<Paws::IoT::ListDimensionsResponse> instance
+
+List the set of dimensions that are defined for your AWS account.
+
+
 =head2 ListDomainConfigurations
 
 =over
@@ -4447,9 +5374,6 @@ Returns: a L<Paws::IoT::ListDomainConfigurationsResponse> instance
 
 Gets a list of domain configurations for the user. This list is sorted
 alphabetically by domain configuration name.
-
-The domain configuration feature is in public preview and is subject to
-change.
 
 
 =head2 ListIndices
@@ -4500,6 +5424,8 @@ Lists the job executions for a job.
 
 =item [MaxResults => Int]
 
+=item [NamespaceId => Str]
+
 =item [NextToken => Str]
 
 =item [Status => Str]
@@ -4520,6 +5446,8 @@ Lists the job executions for the specified thing.
 
 =item [MaxResults => Int]
 
+=item [NamespaceId => Str]
+
 =item [NextToken => Str]
 
 =item [Status => Str]
@@ -4538,6 +5466,24 @@ Each argument is described in detail in: L<Paws::IoT::ListJobs>
 Returns: a L<Paws::IoT::ListJobsResponse> instance
 
 Lists jobs.
+
+
+=head2 ListJobTemplates
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::ListJobTemplates>
+
+Returns: a L<Paws::IoT::ListJobTemplatesResponse> instance
+
+Returns a list of job templates.
 
 
 =head2 ListMitigationActions
@@ -4792,7 +5738,11 @@ Lists all of your scheduled audits.
 
 =over
 
+=item [DimensionName => Str]
+
 =item [MaxResults => Int]
+
+=item [MetricName => Str]
 
 =item [NextToken => Str]
 
@@ -4803,9 +5753,10 @@ Each argument is described in detail in: L<Paws::IoT::ListSecurityProfiles>
 
 Returns: a L<Paws::IoT::ListSecurityProfilesResponse> instance
 
-Lists the Device Defender security profiles you have created. You can
-use filters to list only those security profiles associated with a
-thing group or only those associated with your account.
+Lists the Device Defender security profiles you've created. You can
+filter security profiles by dimension or custom metric.
+
+C<dimensionName> and C<metricName> cannot be used in the same request.
 
 
 =head2 ListSecurityProfilesForTarget
@@ -4960,6 +5911,10 @@ List the thing groups to which the specified thing belongs.
 
 =item ThingName => Str
 
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
 
 =back
 
@@ -5028,6 +5983,8 @@ List bulk thing provisioning tasks.
 
 =item [ThingTypeName => Str]
 
+=item [UsePrefixAttributeValue => Bool]
+
 
 =back
 
@@ -5039,6 +5996,11 @@ Lists your things. Use the B<attributeName> and B<attributeValue>
 parameters to filter your things. For example, calling C<ListThings>
 with attributeName=Color and attributeValue=Red retrieves all things in
 the registry that contain an attribute B<Color> with the value B<Red>.
+
+You will not be charged for calling this API if an C<Access denied>
+error is returned. You will also not be charged if no attributes or
+pagination token was provided in request and no pagination token and no
+results were returned.
 
 
 =head2 ListThingsInBillingGroup
@@ -5171,6 +6133,10 @@ Lists logging levels.
 
 =item StartTime => Str
 
+=item [BehaviorCriteriaType => Str]
+
+=item [ListSuppressedAlerts => Bool]
+
 =item [MaxResults => Int]
 
 =item [NextToken => Str]
@@ -5205,6 +6171,8 @@ thing (device).
 =item [RegistrationConfig => L<Paws::IoT::RegistrationConfig>]
 
 =item [SetAsActive => Bool]
+
+=item [Tags => ArrayRef[L<Paws::IoT::Tag>]]
 
 
 =back
@@ -5246,6 +6214,24 @@ Registers a device certificate with AWS IoT. If you have more than one
 CA certificate that has the same subject field, you must specify the CA
 certificate that was used to sign the device certificate being
 registered.
+
+
+=head2 RegisterCertificateWithoutCA
+
+=over
+
+=item CertificatePem => Str
+
+=item [Status => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::RegisterCertificateWithoutCA>
+
+Returns: a L<Paws::IoT::RegisterCertificateWithoutCAResponse> instance
+
+Register a certificate that does not have a certificate authority (CA).
 
 
 =head2 RegisterThing
@@ -5341,6 +6327,10 @@ Each argument is described in detail in: L<Paws::IoT::RemoveThingFromThingGroup>
 Returns: a L<Paws::IoT::RemoveThingFromThingGroupResponse> instance
 
 Remove the specified thing from the specified group.
+
+You must specify either a C<thingGroupArn> or a C<thingGroupName> to
+identify the thing group and either a C<thingArn> or a C<thingName> to
+identify the thing to remove from the thing group.
 
 
 =head2 ReplaceTopicRule
@@ -5504,6 +6494,34 @@ Returns: a L<Paws::IoT::StartAuditMitigationActionsTaskResponse> instance
 
 Starts a task that applies a set of mitigation actions to the specified
 target.
+
+
+=head2 StartDetectMitigationActionsTask
+
+=over
+
+=item Actions => ArrayRef[Str|Undef]
+
+=item ClientRequestToken => Str
+
+=item Target => L<Paws::IoT::DetectMitigationActionsTaskTarget>
+
+=item TaskId => Str
+
+=item [IncludeOnlyActiveViolations => Bool]
+
+=item [IncludeSuppressedAlerts => Bool]
+
+=item [ViolationEventOccurrenceRange => L<Paws::IoT::ViolationEventOccurrenceRange>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::StartDetectMitigationActionsTask>
+
+Returns: a L<Paws::IoT::StartDetectMitigationActionsTaskResponse> instance
+
+Starts a Device Defender ML Detect mitigation actions task.
 
 
 =head2 StartOnDemandAuditTask
@@ -5707,6 +6725,30 @@ account. Settings include how audit notifications are sent and which
 audit checks are enabled or disabled.
 
 
+=head2 UpdateAuditSuppression
+
+=over
+
+=item CheckName => Str
+
+=item ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>
+
+=item [Description => Str]
+
+=item [ExpirationDate => Str]
+
+=item [SuppressIndefinitely => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateAuditSuppression>
+
+Returns: a L<Paws::IoT::UpdateAuditSuppressionResponse> instance
+
+Updates a Device Defender audit suppression.
+
+
 =head2 UpdateAuthorizer
 
 =over
@@ -5793,12 +6835,50 @@ Returns: nothing
 Updates the status of the specified certificate. This operation is
 idempotent.
 
-Moving a certificate from the ACTIVE state (including REVOKED) will not
-disconnect currently connected devices, but these devices will be
-unable to reconnect.
+Certificates must be in the ACTIVE state to authenticate devices that
+use a certificate to connect to AWS IoT.
 
-The ACTIVE state is required to authenticate devices connecting to AWS
-IoT using a certificate.
+Within a few minutes of updating a certificate from the ACTIVE state to
+any other state, AWS IoT disconnects all devices that used that
+certificate to connect. Devices cannot use a certificate that is not in
+the ACTIVE state to reconnect.
+
+
+=head2 UpdateCustomMetric
+
+=over
+
+=item DisplayName => Str
+
+=item MetricName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateCustomMetric>
+
+Returns: a L<Paws::IoT::UpdateCustomMetricResponse> instance
+
+Updates a Device Defender detect custom metric.
+
+
+=head2 UpdateDimension
+
+=over
+
+=item Name => Str
+
+=item StringValues => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::IoT::UpdateDimension>
+
+Returns: a L<Paws::IoT::UpdateDimensionResponse> instance
+
+Updates the definition for a dimension. You cannot change the type of a
+dimension after it is created (you can delete it and recreate it).
 
 
 =head2 UpdateDomainConfiguration
@@ -5822,9 +6902,6 @@ Returns: a L<Paws::IoT::UpdateDomainConfigurationResponse> instance
 
 Updates values stored in the domain configuration. Domain
 configurations for default endpoints can't be updated.
-
-The domain configuration feature is in public preview and is subject to
-change.
 
 
 =head2 UpdateDynamicThingGroup
@@ -5899,6 +6976,8 @@ Updates the search configuration.
 
 =item [JobExecutionsRolloutConfig => L<Paws::IoT::JobExecutionsRolloutConfig>]
 
+=item [NamespaceId => Str]
+
 =item [PresignedUrlConfig => L<Paws::IoT::PresignedUrlConfig>]
 
 =item [TimeoutConfig => L<Paws::IoT::TimeoutConfig>]
@@ -5945,7 +7024,11 @@ Updates the definition for the specified mitigation action.
 
 =item [Enabled => Bool]
 
+=item [PreProvisioningHook => L<Paws::IoT::ProvisioningHook>]
+
 =item [ProvisioningRoleArn => Str]
+
+=item [RemovePreProvisioningHook => Bool]
 
 
 =back
@@ -6009,6 +7092,8 @@ often the audit takes place.
 =item SecurityProfileName => Str
 
 =item [AdditionalMetricsToRetain => ArrayRef[Str|Undef]]
+
+=item [AdditionalMetricsToRetainV2 => ArrayRef[L<Paws::IoT::MetricToRetain>]]
 
 =item [AlertTargets => L<Paws::IoT::AlertTargets>]
 
@@ -6164,9 +7249,21 @@ Validates a Device Defender security profile behaviors specification.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllActiveViolations(sub { },[MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+=head2 GetAllBehaviorModelTrainingSummaries(sub { },[MaxResults => Int, NextToken => Str, SecurityProfileName => Str])
 
-=head2 ListAllActiveViolations([MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+=head2 GetAllBehaviorModelTrainingSummaries([MaxResults => Int, NextToken => Str, SecurityProfileName => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - summaries, passing the object as the first parameter, and the string 'summaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::GetBehaviorModelTrainingSummariesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllActiveViolations(sub { },[BehaviorCriteriaType => Str, ListSuppressedAlerts => Bool, MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+
+=head2 ListAllActiveViolations([BehaviorCriteriaType => Str, ListSuppressedAlerts => Bool, MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6188,9 +7285,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListAttachedPoliciesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllAuditFindings(sub { },[CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
+=head2 ListAllAuditFindings(sub { },[CheckName => Str, EndTime => Str, ListSuppressedFindings => Bool, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
 
-=head2 ListAllAuditFindings([CheckName => Str, EndTime => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
+=head2 ListAllAuditFindings([CheckName => Str, EndTime => Str, ListSuppressedFindings => Bool, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>, StartTime => Str, TaskId => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6198,6 +7295,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - findings, passing the object as the first parameter, and the string 'findings' as the second parameter 
 
 If not, it will return a a L<Paws::IoT::ListAuditFindingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAuditMitigationActionsExecutions(sub { },FindingId => Str, TaskId => Str, [ActionStatus => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllAuditMitigationActionsExecutions(FindingId => Str, TaskId => Str, [ActionStatus => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - actionsExecutions, passing the object as the first parameter, and the string 'actionsExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAuditMitigationActionsExecutionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAuditMitigationActionsTasks(sub { },EndTime => Str, StartTime => Str, [AuditTaskId => Str, FindingId => Str, MaxResults => Int, NextToken => Str, TaskStatus => Str])
+
+=head2 ListAllAuditMitigationActionsTasks(EndTime => Str, StartTime => Str, [AuditTaskId => Str, FindingId => Str, MaxResults => Int, NextToken => Str, TaskStatus => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tasks, passing the object as the first parameter, and the string 'tasks' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAuditMitigationActionsTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllAuditSuppressions(sub { },[AscendingOrder => Bool, CheckName => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>])
+
+=head2 ListAllAuditSuppressions([AscendingOrder => Bool, CheckName => Str, MaxResults => Int, NextToken => Str, ResourceIdentifier => L<Paws::IoT::ResourceIdentifier>])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - suppressions, passing the object as the first parameter, and the string 'suppressions' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListAuditSuppressionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllAuditTasks(sub { },EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, TaskStatus => Str, TaskType => Str])
@@ -6272,6 +7405,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListCertificatesByCAResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllCustomMetrics(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllCustomMetrics([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - metricNames, passing the object as the first parameter, and the string 'metricNames' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListCustomMetricsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDetectMitigationActionsExecutions(sub { },[EndTime => Str, MaxResults => Int, NextToken => Str, StartTime => Str, TaskId => Str, ThingName => Str, ViolationId => Str])
+
+=head2 ListAllDetectMitigationActionsExecutions([EndTime => Str, MaxResults => Int, NextToken => Str, StartTime => Str, TaskId => Str, ThingName => Str, ViolationId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - actionsExecutions, passing the object as the first parameter, and the string 'actionsExecutions' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListDetectMitigationActionsExecutionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDetectMitigationActionsTasks(sub { },EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDetectMitigationActionsTasks(EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - tasks, passing the object as the first parameter, and the string 'tasks' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListDetectMitigationActionsTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDimensions(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllDimensions([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - dimensionNames, passing the object as the first parameter, and the string 'dimensionNames' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListDimensionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllDomainConfigurations(sub { },[Marker => Str, PageSize => Int, ServiceType => Str])
+
+=head2 ListAllDomainConfigurations([Marker => Str, PageSize => Int, ServiceType => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - domainConfigurations, passing the object as the first parameter, and the string 'domainConfigurations' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListDomainConfigurationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllIndices(sub { },[MaxResults => Int, NextToken => Str])
 
 =head2 ListAllIndices([MaxResults => Int, NextToken => Str])
@@ -6296,9 +7489,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListJobExecutionsForJobResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllJobExecutionsForThing(sub { },ThingName => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListAllJobExecutionsForThing(sub { },ThingName => Str, [MaxResults => Int, NamespaceId => Str, NextToken => Str, Status => Str])
 
-=head2 ListAllJobExecutionsForThing(ThingName => Str, [MaxResults => Int, NextToken => Str, Status => Str])
+=head2 ListAllJobExecutionsForThing(ThingName => Str, [MaxResults => Int, NamespaceId => Str, NextToken => Str, Status => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6308,9 +7501,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListJobExecutionsForThingResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllJobs(sub { },[MaxResults => Int, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
+=head2 ListAllJobs(sub { },[MaxResults => Int, NamespaceId => Str, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
 
-=head2 ListAllJobs([MaxResults => Int, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
+=head2 ListAllJobs([MaxResults => Int, NamespaceId => Str, NextToken => Str, Status => Str, TargetSelection => Str, ThingGroupId => Str, ThingGroupName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6318,6 +7511,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - jobs, passing the object as the first parameter, and the string 'jobs' as the second parameter 
 
 If not, it will return a a L<Paws::IoT::ListJobsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllMitigationActions(sub { },[ActionType => Str, MaxResults => Int, NextToken => Str])
+
+=head2 ListAllMitigationActions([ActionType => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - actionIdentifiers, passing the object as the first parameter, and the string 'actionIdentifiers' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListMitigationActionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllOTAUpdates(sub { },[MaxResults => Int, NextToken => Str, OtaUpdateStatus => Str])
@@ -6392,6 +7597,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListPrincipalThingsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllProvisioningTemplates(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProvisioningTemplates([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - templates, passing the object as the first parameter, and the string 'templates' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListProvisioningTemplatesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllProvisioningTemplateVersions(sub { },TemplateName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllProvisioningTemplateVersions(TemplateName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - versions, passing the object as the first parameter, and the string 'versions' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListProvisioningTemplateVersionsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllRoleAliases(sub { },[AscendingOrder => Bool, Marker => Str, PageSize => Int])
 
 =head2 ListAllRoleAliases([AscendingOrder => Bool, Marker => Str, PageSize => Int])
@@ -6416,9 +7645,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListScheduledAuditsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllSecurityProfiles(sub { },[MaxResults => Int, NextToken => Str])
+=head2 ListAllSecurityProfiles(sub { },[DimensionName => Str, MaxResults => Int, MetricName => Str, NextToken => Str])
 
-=head2 ListAllSecurityProfiles([MaxResults => Int, NextToken => Str])
+=head2 ListAllSecurityProfiles([DimensionName => Str, MaxResults => Int, MetricName => Str, NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6512,6 +7741,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListThingGroupsForThingResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllThingPrincipals(sub { },ThingName => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllThingPrincipals(ThingName => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - principals, passing the object as the first parameter, and the string 'principals' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingPrincipalsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllThingRegistrationTaskReports(sub { },ReportType => Str, TaskId => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllThingRegistrationTaskReports(ReportType => Str, TaskId => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - resourceLinks, passing the object as the first parameter, and the string 'resourceLinks' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListThingRegistrationTaskReportsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllThingRegistrationTasks(sub { },[MaxResults => Int, NextToken => Str, Status => Str])
 
 =head2 ListAllThingRegistrationTasks([MaxResults => Int, NextToken => Str, Status => Str])
@@ -6524,9 +7777,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListThingRegistrationTasksResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllThings(sub { },[AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+=head2 ListAllThings(sub { },[AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str, UsePrefixAttributeValue => Bool])
 
-=head2 ListAllThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str])
+=head2 ListAllThings([AttributeName => Str, AttributeValue => Str, MaxResults => Int, NextToken => Str, ThingTypeName => Str, UsePrefixAttributeValue => Bool])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -6572,6 +7825,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListThingTypesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 ListAllTopicRuleDestinations(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllTopicRuleDestinations([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - destinationSummaries, passing the object as the first parameter, and the string 'destinationSummaries' as the second parameter 
+
+If not, it will return a a L<Paws::IoT::ListTopicRuleDestinationsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 ListAllTopicRules(sub { },[MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
 
 =head2 ListAllTopicRules([MaxResults => Int, NextToken => Str, RuleDisabled => Bool, Topic => Str])
@@ -6596,9 +7861,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::IoT::ListV2LoggingLevelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllViolationEvents(sub { },EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+=head2 ListAllViolationEvents(sub { },EndTime => Str, StartTime => Str, [BehaviorCriteriaType => Str, ListSuppressedAlerts => Bool, MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
 
-=head2 ListAllViolationEvents(EndTime => Str, StartTime => Str, [MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
+=head2 ListAllViolationEvents(EndTime => Str, StartTime => Str, [BehaviorCriteriaType => Str, ListSuppressedAlerts => Bool, MaxResults => Int, NextToken => Str, SecurityProfileName => Str, ThingName => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

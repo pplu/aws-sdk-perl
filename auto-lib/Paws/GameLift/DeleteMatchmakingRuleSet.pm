@@ -40,7 +40,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-A unique identifier for a matchmaking rule set to be deleted. (Note:
+A unique identifier for the matchmaking rule set to be deleted. (Note:
 The rule set name is different from the optional "name" field in the
 rule set body.) You can use either the rule set name or ARN value.
 

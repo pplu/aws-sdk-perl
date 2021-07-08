@@ -77,8 +77,8 @@ SUCCESSFUL - The message was successfully delivered to the endpoint.
 
 =item *
 
-TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint will
-attempt to deliver the message again later.
+TEMPORARY_FAILURE - A temporary error occurred. Amazon Pinpoint won't
+attempt to send the message again.
 
 =item *
 

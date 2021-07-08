@@ -33,7 +33,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::LakeFormati
 
 =head1 DESCRIPTION
 
-The AWS Lake Formation principal.
+The AWS Lake Formation principal. Supported principals are IAM users or
+IAM roles.
 
 =head1 ATTRIBUTES
 

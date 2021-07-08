@@ -2,6 +2,7 @@
 package Paws::ManagedBlockchain::Proposal;
   use Moose;
   has Actions => (is => 'ro', isa => 'Paws::ManagedBlockchain::ProposalActions');
+  has Arn => (is => 'ro', isa => 'Str');
   has CreationDate => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has ExpirationDate => (is => 'ro', isa => 'Str');
@@ -12,6 +13,7 @@ package Paws::ManagedBlockchain::Proposal;
   has ProposedByMemberId => (is => 'ro', isa => 'Str');
   has ProposedByMemberName => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'Paws::ManagedBlockchain::OutputTagMap');
   has YesVoteCount => (is => 'ro', isa => 'Int');
 
 1;
@@ -46,12 +48,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ManagedBloc
 
 Properties of a proposal on a Managed Blockchain network.
 
+Applies only to Hyperledger Fabric.
+
 =head1 ATTRIBUTES
 
 
 =head2 Actions => L<Paws::ManagedBlockchain::ProposalActions>
 
 The actions to perform on the network if the proposal is C<APPROVED>.
+
+
+=head2 Arn => Str
+
+The Amazon Resource Name (ARN) of the proposal. For more information
+about ARNs and their format, see Amazon Resource Names (ARNs)
+(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
+in the I<AWS General Reference>.
 
 
 =head2 CreationDate => Str
@@ -138,9 +150,24 @@ specified C<ProposalActions> are not carried out.
 
 C<ACTION_FAILED> - One or more of the specified C<ProposalActions> in a
 proposal that was approved could not be completed because of an error.
+The C<ACTION_FAILED> status occurs even if only one ProposalAction
+fails and other actions are successful.
 
 =back
 
+
+
+=head2 Tags => L<Paws::ManagedBlockchain::OutputTagMap>
+
+Tags assigned to the proposal. Each tag consists of a key and optional
+value.
+
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Ethereum Developer Guide>, or
+Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
 
 
 =head2 YesVoteCount => Int

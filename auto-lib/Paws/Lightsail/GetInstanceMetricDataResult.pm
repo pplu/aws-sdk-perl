@@ -17,15 +17,14 @@ Paws::Lightsail::GetInstanceMetricDataResult
 
 =head2 MetricData => ArrayRef[L<Paws::Lightsail::MetricDatapoint>]
 
-An array of key-value pairs containing information about the results of
-your get instance metric data request.
+An array of objects that describe the metric data returned.
 
 
 =head2 MetricName => Str
 
-The metric name to return data for.
+The name of the metric returned.
 
-Valid values are: C<"CPUUtilization">, C<"NetworkIn">, C<"NetworkOut">, C<"StatusCheckFailed">, C<"StatusCheckFailed_Instance">, C<"StatusCheckFailed_System">
+Valid values are: C<"CPUUtilization">, C<"NetworkIn">, C<"NetworkOut">, C<"StatusCheckFailed">, C<"StatusCheckFailed_Instance">, C<"StatusCheckFailed_System">, C<"BurstCapacityTime">, C<"BurstCapacityPercentage">
 =head2 _request_id => Str
 
 

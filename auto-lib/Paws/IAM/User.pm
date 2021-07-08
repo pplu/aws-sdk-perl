@@ -85,7 +85,7 @@ The date and time, in ISO 8601 date-time format
 The date and time, in ISO 8601 date-time format
 (http://www.iso.org/iso/iso8601), when the user's password was last
 used to sign in to an AWS website. For a list of AWS websites that
-capture a user's last sign-in time, see the Credential Reports
+capture a user's last sign-in time, see the Credential reports
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/credential-reports.html)
 topic in the I<IAM User Guide>. If a password is used more than once in
 a five-minute span, only the first use is returned in this field. If
@@ -116,26 +116,26 @@ This value is returned only in the GetUser and ListUsers operations.
 =head2 B<REQUIRED> Path => Str
 
 The path to the user. For more information about paths, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
-
-
-=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
 
 The ARN of the policy used to set the permissions boundary for the
 user.
 
+
+=head2 PermissionsBoundary => L<Paws::IAM::AttachedPermissionsBoundary>
+
 For more information about permissions boundaries, see Permissions
-Boundaries for IAM Identities
+boundaries for IAM identities
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html)
 in the I<IAM User Guide>.
 
 
 =head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
 
-A list of tags that are associated with the specified user. For more
-information about tagging, see Tagging IAM Identities
+A list of tags that are associated with the user. For more information
+about tagging, see Tagging IAM resources
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
 I<IAM User Guide>.
 
@@ -143,7 +143,7 @@ I<IAM User Guide>.
 =head2 B<REQUIRED> UserId => Str
 
 The stable and unique string identifying the user. For more information
-about IDs, see IAM Identifiers
+about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

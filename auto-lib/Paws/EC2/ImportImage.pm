@@ -14,6 +14,7 @@ package Paws::EC2::ImportImage;
   has LicenseType => (is => 'ro', isa => 'Str');
   has Platform => (is => 'ro', isa => 'Str');
   has RoleName => (is => 'ro', isa => 'Str');
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -69,9 +70,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       KmsKeyId              => 'MyKmsKeyId',                    # OPTIONAL
       LicenseSpecifications =>
         [ { LicenseConfigurationArn => 'MyString', }, ... ],    # OPTIONAL
-      LicenseType => 'MyString',                                # OPTIONAL
-      Platform    => 'MyString',                                # OPTIONAL
-      RoleName    => 'MyString',                                # OPTIONAL
+      LicenseType       => 'MyString',                          # OPTIONAL
+      Platform          => 'MyString',                          # OPTIONAL
+      RoleName          => 'MyString',                          # OPTIONAL
+      TagSpecifications => [
+        {
+          ResourceType => 'client-vpn-endpoint'
+          , # values: client-vpn-endpoint, customer-gateway, dedicated-host, dhcp-options, egress-only-internet-gateway, elastic-ip, elastic-gpu, export-image-task, export-instance-task, fleet, fpga-image, host-reservation, image, import-image-task, import-snapshot-task, instance, internet-gateway, key-pair, launch-template, local-gateway-route-table-vpc-association, natgateway, network-acl, network-interface, network-insights-analysis, network-insights-path, placement-group, reserved-instances, route-table, security-group, snapshot, spot-fleet-request, spot-instances-request, subnet, traffic-mirror-filter, traffic-mirror-session, traffic-mirror-target, transit-gateway, transit-gateway-attachment, transit-gateway-connect-peer, transit-gateway-multicast-domain, transit-gateway-route-table, volume, vpc, vpc-peering-connection, vpn-connection, vpn-gateway, vpc-flow-log; OPTIONAL
+          Tags => [
+            {
+              Key   => 'MyString',
+              Value => 'MyString',
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
     );
 
     # Results:
@@ -89,6 +104,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $SnapshotDetails       = $ImportImageResult->SnapshotDetails;
     my $Status                = $ImportImageResult->Status;
     my $StatusMessage         = $ImportImageResult->StatusMessage;
+    my $Tags                  = $ImportImageResult->Tags;
 
     # Returns a L<Paws::EC2::ImportImageResult> object.
 
@@ -244,6 +260,12 @@ Valid values: C<Windows> | C<Linux>
 
 The name of the role to use when not using the default role,
 'vmimport'.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the import image task during creation.
 
 
 

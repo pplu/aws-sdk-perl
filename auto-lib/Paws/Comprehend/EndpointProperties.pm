@@ -3,6 +3,7 @@ package Paws::Comprehend::EndpointProperties;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
   has CurrentInferenceUnits => (is => 'ro', isa => 'Int');
+  has DataAccessRoleArn => (is => 'ro', isa => 'Str');
   has DesiredInferenceUnits => (is => 'ro', isa => 'Int');
   has EndpointArn => (is => 'ro', isa => 'Str');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
@@ -54,6 +55,14 @@ The creation date and time of the endpoint.
 
 The number of inference units currently used by the model using this
 endpoint.
+
+
+=head2 DataAccessRoleArn => Str
+
+The Amazon Resource Name (ARN) of the AWS identity and Access
+Management (IAM) role that grants Amazon Comprehend read access to
+trained custom models encrypted with a customer managed key
+(ModelKmsKeyId).
 
 
 =head2 DesiredInferenceUnits => Int

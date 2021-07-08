@@ -32,7 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $DescribeFleetEventsOutput = $gamelift->DescribeFleetEvents(
-      FleetId   => 'MyFleetId',
+      FleetId   => 'MyFleetIdOrArn',
       EndTime   => '1970-01-01T01:00:00',      # OPTIONAL
       Limit     => 1,                          # OPTIONAL
       NextToken => 'MyNonZeroAndMaxString',    # OPTIONAL
@@ -53,7 +53,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 EndTime => Str
 
-Most recent date to retrieve event logs for. If no end time is
+The most recent date to retrieve event logs for. If no end time is
 specified, this call returns entries from the specified start time up
 to the present. Format is a number expressed in Unix time as
 milliseconds (ex: "1469498468.057").
@@ -62,7 +62,7 @@ milliseconds (ex: "1469498468.057").
 
 =head2 B<REQUIRED> FleetId => Str
 
-A unique identifier for a fleet to get event logs for. You can use
+A unique identifier for the fleet to get event logs for. You can use
 either the fleet ID or ARN value.
 
 
@@ -76,15 +76,16 @@ C<NextToken> to get results as a set of sequential pages.
 
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value.
 
 
 
 =head2 StartTime => Str
 
-Earliest date to retrieve event logs for. If no start time is
+The earliest date to retrieve event logs for. If no start time is
 specified, this call returns entries starting from when the fleet was
 created to the specified end time. Format is a number expressed in Unix
 time as milliseconds (ex: "1469498468.057").

@@ -2,11 +2,16 @@
 package Paws::Kendra::SharePointConfiguration;
   use Moose;
   has CrawlAttachments => (is => 'ro', isa => 'Bool');
+  has DisableLocalGroups => (is => 'ro', isa => 'Bool');
   has DocumentTitleFieldName => (is => 'ro', isa => 'Str');
+  has ExclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has FieldMappings => (is => 'ro', isa => 'ArrayRef[Paws::Kendra::DataSourceToIndexFieldMapping]');
+  has InclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has SecretArn => (is => 'ro', isa => 'Str', required => 1);
   has SharePointVersion => (is => 'ro', isa => 'Str', required => 1);
+  has SslCertificateS3Path => (is => 'ro', isa => 'Paws::Kendra::S3Path');
   has Urls => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has UseChangeLog => (is => 'ro', isa => 'Bool');
   has VpcConfiguration => (is => 'ro', isa => 'Paws::Kendra::DataSourceVpcConfiguration');
 
 1;
@@ -51,20 +56,48 @@ C<TRUE> to include attachments to documents stored in your Microsoft
 SharePoint site in the index; otherwise, C<FALSE>.
 
 
+=head2 DisableLocalGroups => Bool
+
+A Boolean value that specifies whether local groups are disabled
+(C<True>) or enabled (C<False>).
+
+
 =head2 DocumentTitleFieldName => Str
 
 The Microsoft SharePoint attribute field that contains the title of the
 document.
 
 
+=head2 ExclusionPatterns => ArrayRef[Str|Undef]
+
+A list of regular expression patterns. Documents that match the
+patterns are excluded from the index. Documents that don't match the
+patterns are included in the index. If a document matches both an
+exclusion pattern and an inclusion pattern, the document is not
+included in the index.
+
+The regex is applied to the display URL of the SharePoint document.
+
+
 =head2 FieldMappings => ArrayRef[L<Paws::Kendra::DataSourceToIndexFieldMapping>]
 
 A list of C<DataSourceToIndexFieldMapping> objects that map Microsoft
 SharePoint attributes to custom fields in the Amazon Kendra index. You
-must first create the index fields using the operation before you map
-SharePoint attributes. For more information, see Mapping Data Source
-Fields
+must first create the index fields using the C<UpdateIndex> operation
+before you map SharePoint attributes. For more information, see Mapping
+Data Source Fields
 (https://docs.aws.amazon.com/kendra/latest/dg/field-mapping.html).
+
+
+=head2 InclusionPatterns => ArrayRef[Str|Undef]
+
+A list of regular expression patterns. Documents that match the
+patterns are included in the index. Documents that don't match the
+patterns are excluded from the index. If a document matches both an
+inclusion pattern and an exclusion pattern, the document is not
+included in the index.
+
+The regex is applied to the display URL of the SharePoint document.
 
 
 =head2 B<REQUIRED> SecretArn => Str
@@ -85,10 +118,24 @@ The version of Microsoft SharePoint that you are using as a data
 source.
 
 
+=head2 SslCertificateS3Path => L<Paws::Kendra::S3Path>
+
+
+
+
 =head2 B<REQUIRED> Urls => ArrayRef[Str|Undef]
 
 The URLs of the Microsoft SharePoint site that contains the documents
 that should be indexed.
+
+
+=head2 UseChangeLog => Bool
+
+Set to C<TRUE> to use the Microsoft SharePoint change log to determine
+the documents that need to be updated in the index. Depending on the
+size of the SharePoint change log, it may take longer for Amazon Kendra
+to use the change log than it takes it to determine the changed
+documents using the Amazon Kendra document crawler.
 
 
 =head2 VpcConfiguration => L<Paws::Kendra::DataSourceVpcConfiguration>

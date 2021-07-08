@@ -43,8 +43,8 @@ Rule sets are used in MatchmakingConfiguration objects.
 
 A rule set may define the following elements for a match. For detailed
 information and examples showing how to construct a rule set, see Build
-a FlexMatch Rule Set
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-rulesets.html).
+a FlexMatch rule set
+(https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rulesets.html).
 
 =over
 
@@ -90,19 +90,20 @@ variance between players after 30 seconds.
 
 =head2 CreationTime => Str
 
-The time stamp indicating when this data object was created. The format
-is a number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+A time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 =head2 RuleSetArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a GameLift matchmaking rule set resource and
-uniquely identifies it. ARNs are unique across all Regions. In a
-GameLift rule set ARN, the resource ID matches the I<RuleSetName>
-value.
+uniquely identifies it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::matchmakingruleset/E<lt>ruleset
+nameE<gt>>. In a GameLift rule set ARN, the resource ID matches the
+I<RuleSetName> value.
 
 
 =head2 B<REQUIRED> RuleSetBody => Str
@@ -113,7 +114,7 @@ are not allowed in JSON, but most elements support a description field.
 
 =head2 RuleSetName => Str
 
-A unique identifier for a matchmaking rule set
+A unique identifier for the matchmaking rule set
 
 
 

@@ -3,6 +3,7 @@ package Paws::Forecast::DescribeForecastResponse;
   use Moose;
   has CreationTime => (is => 'ro', isa => 'Str');
   has DatasetGroupArn => (is => 'ro', isa => 'Str');
+  has EstimatedTimeRemainingInMinutes => (is => 'ro', isa => 'Int');
   has ForecastArn => (is => 'ro', isa => 'Str');
   has ForecastName => (is => 'ro', isa => 'Str');
   has ForecastTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -33,6 +34,12 @@ The ARN of the dataset group that provided the data used to train the
 predictor.
 
 
+=head2 EstimatedTimeRemainingInMinutes => Int
+
+The estimated time remaining in minutes for the forecast job to
+complete.
+
+
 =head2 ForecastArn => Str
 
 The forecast ARN as specified in the request.
@@ -45,15 +52,38 @@ The name of the forecast.
 
 =head2 ForecastTypes => ArrayRef[Str|Undef]
 
-The quantiles at which proababilistic forecasts were generated.
+The quantiles at which probabilistic forecasts were generated.
 
 
 =head2 LastModificationTime => Str
 
-Initially, the same as C<CreationTime> (status is C<CREATE_PENDING>).
-Updated when inference (creating the forecast) starts (status changed
-to C<CREATE_IN_PROGRESS>), and when inference is complete (status
-changed to C<ACTIVE>) or fails (status changed to C<CREATE_FAILED>).
+The last time the resource was modified. The timestamp depends on the
+status of the job:
+
+=over
+
+=item *
+
+C<CREATE_PENDING> - The C<CreationTime>.
+
+=item *
+
+C<CREATE_IN_PROGRESS> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPING> - The current timestamp.
+
+=item *
+
+C<CREATE_STOPPED> - When the job stopped.
+
+=item *
+
+C<ACTIVE> or C<CREATE_FAILED> - When the job finished or failed.
+
+=back
+
 
 
 =head2 Message => Str
@@ -79,6 +109,10 @@ C<ACTIVE>
 =item *
 
 C<CREATE_PENDING>, C<CREATE_IN_PROGRESS>, C<CREATE_FAILED>
+
+=item *
+
+C<CREATE_STOPPING>, C<CREATE_STOPPED>
 
 =item *
 

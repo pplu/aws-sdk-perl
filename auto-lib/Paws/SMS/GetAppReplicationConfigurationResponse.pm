@@ -16,7 +16,7 @@ Paws::SMS::GetAppReplicationConfigurationResponse
 
 =head2 ServerGroupReplicationConfigurations => ArrayRef[L<Paws::SMS::ServerGroupReplicationConfiguration>]
 
-Replication configurations associated with server groups in this
+The replication configurations associated with server groups in this
 application.
 
 

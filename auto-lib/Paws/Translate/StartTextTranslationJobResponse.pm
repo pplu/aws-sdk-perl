@@ -42,8 +42,8 @@ available.
 
 =item *
 
-C<COMPLETED_WITH_ERRORS> - The job was completed with errors. The
-errors can be analyzed in the job's output.
+C<COMPLETED_WITH_ERROR> - The job was completed with errors. The errors
+can be analyzed in the job's output.
 
 =item *
 

@@ -1,8 +1,8 @@
 
 package Paws::DeviceFarm::RenewOffering;
   use Moose;
-  has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId' );
-  has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' );
+  has OfferingId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'offeringId' , required => 1);
+  has Quantity => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'quantity' , required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -46,13 +46,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dev
 =head1 ATTRIBUTES
 
 
-=head2 OfferingId => Str
+=head2 B<REQUIRED> OfferingId => Str
 
 The ID of a request to renew an offering.
 
 
 
-=head2 Quantity => Int
+=head2 B<REQUIRED> Quantity => Int
 
 The quantity requested in an offering renewal.
 

@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes the inputs, outputs, and reference data sources for an
+Describes the inputs, outputs, and reference data sources for a
 SQL-based Kinesis Data Analytics application.
 
 =head1 ATTRIBUTES

@@ -42,12 +42,14 @@ contained within a shard.
 
 =head2 EndingSequenceNumber => Str
 
-The last sequence number.
+The last sequence number for the stream records contained within a
+shard. String contains numeric characters only.
 
 
 =head2 StartingSequenceNumber => Str
 
-The first sequence number.
+The first sequence number for the stream records contained within a
+shard. String contains numeric characters only.
 
 
 

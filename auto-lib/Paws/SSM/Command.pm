@@ -24,6 +24,7 @@ package Paws::SSM::Command;
   has StatusDetails => (is => 'ro', isa => 'Str');
   has TargetCount => (is => 'ro', isa => 'Int');
   has Targets => (is => 'ro', isa => 'ArrayRef[Paws::SSM::Target]');
+  has TimeoutSeconds => (is => 'ro', isa => 'Int');
 
 1;
 
@@ -44,7 +45,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SSM::Command object:
 
-  $service_obj->Method(Att1 => { CloudWatchOutputConfig => $value, ..., Targets => $value  });
+  $service_obj->Method(Att1 => { CloudWatchOutputConfig => $value, ..., TimeoutSeconds => $value  });
 
 =head3 Results returned from an API call
 
@@ -123,9 +124,9 @@ The instance IDs against which this command was requested.
 The maximum number of instances that are allowed to run the command at
 the same time. You can specify a number of instances, such as 10, or a
 percentage of instances, such as 10%. The default value is 50. For more
-information about how to use MaxConcurrency, see Running Commands Using
+information about how to use MaxConcurrency, see Running commands using
 Systems Manager Run Command
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -135,8 +136,8 @@ The maximum number of errors allowed before the system stops sending
 the command to additional targets. You can specify a number of errors,
 such as 10, or a percentage or errors, such as 10%. The default value
 is 0. For more information about how to use MaxErrors, see Running
-Commands Using Systems Manager Run Command
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
+commands using Systems Manager Run Command
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/run-command.html)
 in the I<AWS Systems Manager User Guide>.
 
 
@@ -162,7 +163,7 @@ the command.
 
 (Deprecated) You can no longer specify this parameter. The system
 ignores it. Instead, Systems Manager automatically determines the
-Amazon S3 bucket region.
+Region of the S3 bucket.
 
 
 =head2 Parameters => L<Paws::SSM::Parameters>
@@ -193,8 +194,8 @@ A detailed status of the command execution. StatusDetails includes more
 information than Status because it includes states resulting from error
 and concurrency control parameters. StatusDetails can show different
 results than Status. For more information about these statuses, see
-Understanding Command Statuses
-(http://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
+Understanding command statuses
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/monitor-commands.html)
 in the I<AWS Systems Manager User Guide>. StatusDetails can be one of
 the following values:
 
@@ -260,6 +261,11 @@ The number of targets for the command.
 An array of search criteria that targets instances using a Key,Value
 combination that you specify. Targets is required if you don't provide
 one or more instance IDs in the call.
+
+
+=head2 TimeoutSeconds => Int
+
+The C<TimeoutSeconds> value specified for a command.
 
 
 

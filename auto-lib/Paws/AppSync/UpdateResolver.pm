@@ -7,7 +7,7 @@ package Paws::AppSync::UpdateResolver;
   has FieldName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'fieldName', required => 1);
   has Kind => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'kind');
   has PipelineConfig => (is => 'ro', isa => 'Paws::AppSync::PipelineConfig', traits => ['NameInRequest'], request_name => 'pipelineConfig');
-  has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate', required => 1);
+  has RequestMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'requestMappingTemplate');
   has ResponseMappingTemplate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'responseMappingTemplate');
   has SyncConfig => (is => 'ro', isa => 'Paws::AppSync::SyncConfig', traits => ['NameInRequest'], request_name => 'syncConfig');
   has TypeName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'typeName', required => 1);
@@ -38,11 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $appsync = Paws->service('AppSync');
     my $UpdateResolverResponse = $appsync->UpdateResolver(
-      ApiId                  => 'MyString',
-      FieldName              => 'MyResourceName',
-      RequestMappingTemplate => 'MyMappingTemplate',
-      TypeName               => 'MyResourceName',
-      CachingConfig          => {
+      ApiId         => 'MyString',
+      FieldName     => 'MyResourceName',
+      TypeName      => 'MyResourceName',
+      CachingConfig => {
         CachingKeys => [ 'MyString', ... ],    # OPTIONAL
         Ttl         => 1,                      # OPTIONAL
       },    # OPTIONAL
@@ -51,6 +50,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       PipelineConfig => {
         Functions => [ 'MyString', ... ],    # OPTIONAL
       },    # OPTIONAL
+      RequestMappingTemplate  => 'MyMappingTemplate',    # OPTIONAL
       ResponseMappingTemplate => 'MyMappingTemplate',    # OPTIONAL
       SyncConfig              => {
         ConflictDetection => 'VERSION',    # values: VERSION, NONE; OPTIONAL
@@ -126,9 +126,17 @@ The C<PipelineConfig>.
 
 
 
-=head2 B<REQUIRED> RequestMappingTemplate => Str
+=head2 RequestMappingTemplate => Str
 
 The new request mapping template.
+
+A resolver uses a request mapping template to convert a GraphQL
+expression into a format that a data source can understand. Mapping
+templates are written in Apache Velocity Template Language (VTL).
+
+VTL request mapping templates are optional when using a Lambda data
+source. For all other data sources, VTL request and response mapping
+templates are required.
 
 
 

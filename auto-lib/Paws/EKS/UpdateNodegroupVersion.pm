@@ -4,6 +4,7 @@ package Paws::EKS::UpdateNodegroupVersion;
   has ClientRequestToken => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'clientRequestToken');
   has ClusterName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
   has Force => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'force');
+  has LaunchTemplate => (is => 'ro', isa => 'Paws::EKS::LaunchTemplateSpecification', traits => ['NameInRequest'], request_name => 'launchTemplate');
   has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'nodegroupName', required => 1);
   has ReleaseVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'releaseVersion');
   has Version => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'version');
@@ -38,8 +39,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       NodegroupName      => 'MyString',
       ClientRequestToken => 'MyString',    # OPTIONAL
       Force              => 1,             # OPTIONAL
-      ReleaseVersion     => 'MyString',    # OPTIONAL
-      Version            => 'MyString',    # OPTIONAL
+      LaunchTemplate     => {
+        Id      => 'MyString',
+        Name    => 'MyString',
+        Version => 'MyString',
+      },                                   # OPTIONAL
+      ReleaseVersion => 'MyString',        # OPTIONAL
+      Version        => 'MyString',        # OPTIONAL
     );
 
     # Results:
@@ -77,6 +83,14 @@ the node.
 
 
 
+=head2 LaunchTemplate => L<Paws::EKS::LaunchTemplateSpecification>
+
+An object representing a node group's launch template specification.
+You can only update a node group using a launch template if the node
+group was originally deployed with a launch template.
+
+
+
 =head2 B<REQUIRED> NodegroupName => Str
 
 The name of the managed node group to update.
@@ -85,12 +99,18 @@ The name of the managed node group to update.
 
 =head2 ReleaseVersion => Str
 
-The AMI version of the Amazon EKS-optimized AMI to use for the update.
+The AMI version of the Amazon EKS optimized AMI to use for the update.
 By default, the latest available AMI version for the node group's
-Kubernetes version is used. For more information, see Amazon
-EKS-Optimized Linux AMI Versions
+Kubernetes version is used. For more information, see Amazon EKS
+optimized Amazon Linux 2 AMI versions
 (https://docs.aws.amazon.com/eks/latest/userguide/eks-linux-ami-versions.html)
-in the I<Amazon EKS User Guide>.
+in the I<Amazon EKS User Guide>. If you specify C<launchTemplate>, and
+your launch template uses a custom AMI, then don't specify
+C<releaseVersion>, or the node group update will fail. For more
+information about using launch templates with Amazon EKS, see Launch
+template support
+(https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+in the Amazon EKS User Guide.
 
 
 
@@ -99,7 +119,13 @@ in the I<Amazon EKS User Guide>.
 The Kubernetes version to update to. If no version is specified, then
 the Kubernetes version of the node group does not change. You can
 specify the Kubernetes version of the cluster to update the node group
-to the latest AMI version of the cluster's Kubernetes version.
+to the latest AMI version of the cluster's Kubernetes version. If you
+specify C<launchTemplate>, and your launch template uses a custom AMI,
+then don't specify C<version>, or the node group update will fail. For
+more information about using launch templates with Amazon EKS, see
+Launch template support
+(https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
+in the Amazon EKS User Guide.
 
 
 

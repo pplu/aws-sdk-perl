@@ -2,6 +2,7 @@
 package Paws::Signer::GetSigningProfile;
   use Moose;
   has ProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'profileName', required => 1);
+  has ProfileOwner => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'profileOwner');
 
   use MooseX::ClassAttribute;
 
@@ -29,18 +30,25 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $signer = Paws->service('Signer');
     my $GetSigningProfileResponse = $signer->GetSigningProfile(
-      ProfileName => 'MyProfileName',
-
+      ProfileName  => 'MyProfileName',
+      ProfileOwner => 'MyAccountId',     # OPTIONAL
     );
 
     # Results:
-    my $Arn               = $GetSigningProfileResponse->Arn;
-    my $Overrides         = $GetSigningProfileResponse->Overrides;
-    my $PlatformId        = $GetSigningProfileResponse->PlatformId;
-    my $ProfileName       = $GetSigningProfileResponse->ProfileName;
+    my $Arn                 = $GetSigningProfileResponse->Arn;
+    my $Overrides           = $GetSigningProfileResponse->Overrides;
+    my $PlatformDisplayName = $GetSigningProfileResponse->PlatformDisplayName;
+    my $PlatformId          = $GetSigningProfileResponse->PlatformId;
+    my $ProfileName         = $GetSigningProfileResponse->ProfileName;
+    my $ProfileVersion      = $GetSigningProfileResponse->ProfileVersion;
+    my $ProfileVersionArn   = $GetSigningProfileResponse->ProfileVersionArn;
+    my $RevocationRecord    = $GetSigningProfileResponse->RevocationRecord;
+    my $SignatureValidityPeriod =
+      $GetSigningProfileResponse->SignatureValidityPeriod;
     my $SigningMaterial   = $GetSigningProfileResponse->SigningMaterial;
     my $SigningParameters = $GetSigningProfileResponse->SigningParameters;
     my $Status            = $GetSigningProfileResponse->Status;
+    my $StatusReason      = $GetSigningProfileResponse->StatusReason;
     my $Tags              = $GetSigningProfileResponse->Tags;
 
     # Returns a L<Paws::Signer::GetSigningProfileResponse> object.
@@ -54,6 +62,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sig
 =head2 B<REQUIRED> ProfileName => Str
 
 The name of the target signing profile.
+
+
+
+=head2 ProfileOwner => Str
+
+The AWS account ID of the profile owner.
 
 
 

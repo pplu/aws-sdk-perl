@@ -20,6 +20,11 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchDeleteBuilds', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub BatchGetBuildBatches {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchGetBuildBatches', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetBuilds {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::BatchGetBuilds', @_);
@@ -55,6 +60,11 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::CreateWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteBuildBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteBuildBatch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteProject {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteProject', @_);
@@ -85,9 +95,19 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DeleteWebhook', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeCodeCoverages {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::DescribeCodeCoverages', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTestCases {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::DescribeTestCases', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetReportGroupTrend {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::GetReportGroupTrend', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetResourcePolicy {
@@ -103,6 +123,16 @@ package Paws::CodeBuild;
   sub InvalidateProjectCache {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::InvalidateProjectCache', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBuildBatches {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListBuildBatches', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListBuildBatchesForProject {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::ListBuildBatchesForProject', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListBuilds {
@@ -160,14 +190,34 @@ package Paws::CodeBuild;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::PutResourcePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RetryBuild {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::RetryBuild', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RetryBuildBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::RetryBuildBatch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartBuild {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::StartBuild', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartBuildBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::StartBuildBatch', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StopBuild {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeBuild::StopBuild', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub StopBuildBatch {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeBuild::StopBuildBatch', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateProject {
@@ -186,6 +236,98 @@ package Paws::CodeBuild;
     return $self->caller->do_call($self, $call_object);
   }
   
+  sub DescribeAllCodeCoverages {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCodeCoverages(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeCodeCoverages(@_, nextToken => $next_result->nextToken);
+        push @{ $result->codeCoverages }, @{ $next_result->codeCoverages };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'codeCoverages') foreach (@{ $result->codeCoverages });
+        $result = $self->DescribeCodeCoverages(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'codeCoverages') foreach (@{ $result->codeCoverages });
+    }
+
+    return undef
+  }
+  sub DescribeAllTestCases {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTestCases(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->DescribeTestCases(@_, nextToken => $next_result->nextToken);
+        push @{ $result->testCases }, @{ $next_result->testCases };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'testCases') foreach (@{ $result->testCases });
+        $result = $self->DescribeTestCases(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'testCases') foreach (@{ $result->testCases });
+    }
+
+    return undef
+  }
+  sub ListAllBuildBatches {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBuildBatches(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBuildBatches(@_, nextToken => $next_result->nextToken);
+        push @{ $result->ids }, @{ $next_result->ids };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'ids') foreach (@{ $result->ids });
+        $result = $self->ListBuildBatches(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'ids') foreach (@{ $result->ids });
+    }
+
+    return undef
+  }
+  sub ListAllBuildBatchesForProject {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListBuildBatchesForProject(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListBuildBatchesForProject(@_, nextToken => $next_result->nextToken);
+        push @{ $result->ids }, @{ $next_result->ids };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'ids') foreach (@{ $result->ids });
+        $result = $self->ListBuildBatchesForProject(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'ids') foreach (@{ $result->ids });
+    }
+
+    return undef
+  }
   sub ListAllBuilds {
     my $self = shift;
 
@@ -255,9 +397,124 @@ package Paws::CodeBuild;
 
     return undef
   }
+  sub ListAllReportGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReportGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListReportGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->reportGroups }, @{ $next_result->reportGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'reportGroups') foreach (@{ $result->reportGroups });
+        $result = $self->ListReportGroups(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'reportGroups') foreach (@{ $result->reportGroups });
+    }
+
+    return undef
+  }
+  sub ListAllReports {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReports(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListReports(@_, nextToken => $next_result->nextToken);
+        push @{ $result->reports }, @{ $next_result->reports };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'reports') foreach (@{ $result->reports });
+        $result = $self->ListReports(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'reports') foreach (@{ $result->reports });
+    }
+
+    return undef
+  }
+  sub ListAllReportsForReportGroup {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListReportsForReportGroup(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListReportsForReportGroup(@_, nextToken => $next_result->nextToken);
+        push @{ $result->reports }, @{ $next_result->reports };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'reports') foreach (@{ $result->reports });
+        $result = $self->ListReportsForReportGroup(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'reports') foreach (@{ $result->reports });
+    }
+
+    return undef
+  }
+  sub ListAllSharedProjects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSharedProjects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSharedProjects(@_, nextToken => $next_result->nextToken);
+        push @{ $result->projects }, @{ $next_result->projects };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'projects') foreach (@{ $result->projects });
+        $result = $self->ListSharedProjects(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'projects') foreach (@{ $result->projects });
+    }
+
+    return undef
+  }
+  sub ListAllSharedReportGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListSharedReportGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->nextToken) {
+        $next_result = $self->ListSharedReportGroups(@_, nextToken => $next_result->nextToken);
+        push @{ $result->reportGroups }, @{ $next_result->reportGroups };
+      }
+      return $result;
+    } else {
+      while ($result->nextToken) {
+        $callback->($_ => 'reportGroups') foreach (@{ $result->reportGroups });
+        $result = $self->ListSharedReportGroups(@_, nextToken => $result->nextToken);
+      }
+      $callback->($_ => 'reportGroups') foreach (@{ $result->reportGroups });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/BatchDeleteBuilds BatchGetBuilds BatchGetProjects BatchGetReportGroups BatchGetReports CreateProject CreateReportGroup CreateWebhook DeleteProject DeleteReport DeleteReportGroup DeleteResourcePolicy DeleteSourceCredentials DeleteWebhook DescribeTestCases GetResourcePolicy ImportSourceCredentials InvalidateProjectCache ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListReportGroups ListReports ListReportsForReportGroup ListSharedProjects ListSharedReportGroups ListSourceCredentials PutResourcePolicy StartBuild StopBuild UpdateProject UpdateReportGroup UpdateWebhook / }
+  sub operations { qw/BatchDeleteBuilds BatchGetBuildBatches BatchGetBuilds BatchGetProjects BatchGetReportGroups BatchGetReports CreateProject CreateReportGroup CreateWebhook DeleteBuildBatch DeleteProject DeleteReport DeleteReportGroup DeleteResourcePolicy DeleteSourceCredentials DeleteWebhook DescribeCodeCoverages DescribeTestCases GetReportGroupTrend GetResourcePolicy ImportSourceCredentials InvalidateProjectCache ListBuildBatches ListBuildBatchesForProject ListBuilds ListBuildsForProject ListCuratedEnvironmentImages ListProjects ListReportGroups ListReports ListReportsForReportGroup ListSharedProjects ListSharedReportGroups ListSourceCredentials PutResourcePolicy RetryBuild RetryBuildBatch StartBuild StartBuildBatch StopBuild StopBuildBatch UpdateProject UpdateReportGroup UpdateWebhook / }
 
 1;
 
@@ -285,195 +542,17 @@ Paws::CodeBuild - Perl Interface to AWS AWS CodeBuild
 
 =head1 DESCRIPTION
 
-AWS CodeBuild
-
-AWS CodeBuild is a fully managed build service in the cloud. AWS
-CodeBuild compiles your source code, runs unit tests, and produces
-artifacts that are ready to deploy. AWS CodeBuild eliminates the need
-to provision, manage, and scale your own build servers. It provides
-prepackaged build environments for the most popular programming
-languages and build tools, such as Apache Maven, Gradle, and more. You
-can also fully customize build environments in AWS CodeBuild to use
-your own build tools. AWS CodeBuild scales automatically to meet peak
-build requests. You pay only for the build time you consume. For more
-information about AWS CodeBuild, see the I< AWS CodeBuild User Guide
+CodeBuild is a fully managed build service in the cloud. CodeBuild
+compiles your source code, runs unit tests, and produces artifacts that
+are ready to deploy. CodeBuild eliminates the need to provision,
+manage, and scale your own build servers. It provides prepackaged build
+environments for the most popular programming languages and build
+tools, such as Apache Maven, Gradle, and more. You can also fully
+customize build environments in CodeBuild to use your own build tools.
+CodeBuild scales automatically to meet peak build requests. You pay
+only for the build time you consume. For more information about
+CodeBuild, see the I< CodeBuild User Guide
 (https://docs.aws.amazon.com/codebuild/latest/userguide/welcome.html).>
-
-AWS CodeBuild supports these operations:
-
-=over
-
-=item *
-
-C<BatchDeleteBuilds>: Deletes one or more builds.
-
-=item *
-
-C<BatchGetBuilds>: Gets information about one or more builds.
-
-=item *
-
-C<BatchGetProjects>: Gets information about one or more build projects.
-A I<build project> defines how AWS CodeBuild runs a build. This
-includes information such as where to get the source code to build, the
-build environment to use, the build commands to run, and where to store
-the build output. A I<build environment> is a representation of
-operating system, programming language runtime, and tools that AWS
-CodeBuild uses to run a build. You can add tags to build projects to
-help manage your resources and costs.
-
-=item *
-
-C<BatchGetReportGroups>: Returns an array of report groups.
-
-=item *
-
-C<BatchGetReports>: Returns an array of reports.
-
-=item *
-
-C<CreateProject>: Creates a build project.
-
-=item *
-
-C<CreateReportGroup>: Creates a report group. A report group contains a
-collection of reports.
-
-=item *
-
-C<CreateWebhook>: For an existing AWS CodeBuild build project that has
-its source code stored in a GitHub or Bitbucket repository, enables AWS
-CodeBuild to start rebuilding the source code every time a code change
-is pushed to the repository.
-
-=item *
-
-C<DeleteProject>: Deletes a build project.
-
-=item *
-
-C<DeleteReport>: Deletes a report.
-
-=item *
-
-C<DeleteReportGroup>: Deletes a report group.
-
-=item *
-
-C<DeleteResourcePolicy>: Deletes a resource policy that is identified
-by its resource ARN.
-
-=item *
-
-C<DeleteSourceCredentials>: Deletes a set of GitHub, GitHub Enterprise,
-or Bitbucket source credentials.
-
-=item *
-
-C<DeleteWebhook>: For an existing AWS CodeBuild build project that has
-its source code stored in a GitHub or Bitbucket repository, stops AWS
-CodeBuild from rebuilding the source code every time a code change is
-pushed to the repository.
-
-=item *
-
-C<DescribeTestCases>: Returns a list of details about test cases for a
-report.
-
-=item *
-
-C<GetResourcePolicy>: Gets a resource policy that is identified by its
-resource ARN.
-
-=item *
-
-C<ImportSourceCredentials>: Imports the source repository credentials
-for an AWS CodeBuild project that has its source code stored in a
-GitHub, GitHub Enterprise, or Bitbucket repository.
-
-=item *
-
-C<InvalidateProjectCache>: Resets the cache for a project.
-
-=item *
-
-C<ListBuilds>: Gets a list of build IDs, with each build ID
-representing a single build.
-
-=item *
-
-C<ListBuildsForProject>: Gets a list of build IDs for the specified
-build project, with each build ID representing a single build.
-
-=item *
-
-C<ListCuratedEnvironmentImages>: Gets information about Docker images
-that are managed by AWS CodeBuild.
-
-=item *
-
-C<ListProjects>: Gets a list of build project names, with each build
-project name representing a single build project.
-
-=item *
-
-C<ListReportGroups>: Gets a list ARNs for the report groups in the
-current AWS account.
-
-=item *
-
-C<ListReports>: Gets a list ARNs for the reports in the current AWS
-account.
-
-=item *
-
-C<ListReportsForReportGroup>: Returns a list of ARNs for the reports
-that belong to a C<ReportGroup>.
-
-=item *
-
-C<ListSharedProjects>: Gets a list of ARNs associated with projects
-shared with the current AWS account or user.
-
-=item *
-
-C<ListSharedReportGroups>: Gets a list of ARNs associated with report
-groups shared with the current AWS account or user
-
-=item *
-
-C<ListSourceCredentials>: Returns a list of C<SourceCredentialsInfo>
-objects. Each C<SourceCredentialsInfo> object includes the
-authentication type, token ARN, and type of source provider for one set
-of credentials.
-
-=item *
-
-C<PutResourcePolicy>: Stores a resource policy for the ARN of a
-C<Project> or C<ReportGroup> object.
-
-=item *
-
-C<StartBuild>: Starts running a build.
-
-=item *
-
-C<StopBuild>: Attempts to stop running a build.
-
-=item *
-
-C<UpdateProject>: Changes the settings of an existing build project.
-
-=item *
-
-C<UpdateReportGroup>: Changes a report group.
-
-=item *
-
-C<UpdateWebhook>: Changes the settings of an existing webhook.
-
-=back
-
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/codebuild-2016-10-06>
 
@@ -494,6 +573,22 @@ Each argument is described in detail in: L<Paws::CodeBuild::BatchDeleteBuilds>
 Returns: a L<Paws::CodeBuild::BatchDeleteBuildsOutput> instance
 
 Deletes one or more builds.
+
+
+=head2 BatchGetBuildBatches
+
+=over
+
+=item Ids => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::BatchGetBuildBatches>
+
+Returns: a L<Paws::CodeBuild::BatchGetBuildBatchesOutput> instance
+
+Retrieves information about one or more batch builds.
 
 
 =head2 BatchGetBuilds
@@ -576,7 +671,11 @@ Returns an array of reports.
 
 =item [BadgeEnabled => Bool]
 
+=item [BuildBatchConfig => L<Paws::CodeBuild::ProjectBuildBatchConfig>]
+
 =item [Cache => L<Paws::CodeBuild::ProjectCache>]
+
+=item [ConcurrentBuildLimit => Int]
 
 =item [Description => Str]
 
@@ -622,6 +721,8 @@ Creates a build project.
 
 =item Type => Str
 
+=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+
 
 =back
 
@@ -641,6 +742,8 @@ reports.
 
 =item [BranchFilter => Str]
 
+=item [BuildType => Str]
+
 =item [FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]]
 
 
@@ -650,20 +753,36 @@ Each argument is described in detail in: L<Paws::CodeBuild::CreateWebhook>
 
 Returns: a L<Paws::CodeBuild::CreateWebhookOutput> instance
 
-For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to
-start rebuilding the source code every time a code change is pushed to
-the repository.
+For an existing CodeBuild build project that has its source code stored
+in a GitHub or Bitbucket repository, enables CodeBuild to start
+rebuilding the source code every time a code change is pushed to the
+repository.
 
-If you enable webhooks for an AWS CodeBuild project, and the project is
-used as a build step in AWS CodePipeline, then two identical builds are
+If you enable webhooks for an CodeBuild project, and the project is
+used as a build step in CodePipeline, then two identical builds are
 created for each commit. One build is triggered through webhooks, and
-one through AWS CodePipeline. Because billing is on a per-build basis,
-you are billed for both builds. Therefore, if you are using AWS
-CodePipeline, we recommend that you disable webhooks in AWS CodeBuild.
-In the AWS CodeBuild console, clear the Webhook box. For more
-information, see step 5 in Change a Build Project's Settings
+one through CodePipeline. Because billing is on a per-build basis, you
+are billed for both builds. Therefore, if you are using CodePipeline,
+we recommend that you disable webhooks in CodeBuild. In the CodeBuild
+console, clear the Webhook box. For more information, see step 5 in
+Change a Build Project's Settings
 (https://docs.aws.amazon.com/codebuild/latest/userguide/change-project.html#change-project-console).
+
+
+=head2 DeleteBuildBatch
+
+=over
+
+=item Id => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DeleteBuildBatch>
+
+Returns: a L<Paws::CodeBuild::DeleteBuildBatchOutput> instance
+
+Deletes a batch build.
 
 
 =head2 DeleteProject
@@ -705,6 +824,8 @@ Deletes a report.
 
 =item Arn => Str
 
+=item [DeleteReports => Bool]
+
 
 =back
 
@@ -712,14 +833,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteReportGroup>
 
 Returns: a L<Paws::CodeBuild::DeleteReportGroupOutput> instance
 
-C<DeleteReportGroup>: Deletes a report group. Before you delete a
-report group, you must delete its reports. Use
-ListReportsForReportGroup
-(https://docs.aws.amazon.com/codebuild/latest/APIReference/API_ListReportsForReportGroup.html)
-to get the reports in a report group. Use DeleteReport
-(https://docs.aws.amazon.com/codebuild/latest/APIReference/API_DeleteReport.html)
-to delete the reports. If you call C<DeleteReportGroup> for a report
-group that contains one or more reports, an exception is thrown.
+Deletes a report group. Before you delete a report group, you must
+delete its reports.
 
 
 =head2 DeleteResourcePolicy
@@ -768,10 +883,37 @@ Each argument is described in detail in: L<Paws::CodeBuild::DeleteWebhook>
 
 Returns: a L<Paws::CodeBuild::DeleteWebhookOutput> instance
 
-For an existing AWS CodeBuild build project that has its source code
-stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
-rebuilding the source code every time a code change is pushed to the
-repository.
+For an existing CodeBuild build project that has its source code stored
+in a GitHub or Bitbucket repository, stops CodeBuild from rebuilding
+the source code every time a code change is pushed to the repository.
+
+
+=head2 DescribeCodeCoverages
+
+=over
+
+=item ReportArn => Str
+
+=item [MaxLineCoveragePercentage => Num]
+
+=item [MaxResults => Int]
+
+=item [MinLineCoveragePercentage => Num]
+
+=item [NextToken => Str]
+
+=item [SortBy => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::DescribeCodeCoverages>
+
+Returns: a L<Paws::CodeBuild::DescribeCodeCoveragesOutput> instance
+
+Retrieves one or more code coverage reports.
 
 
 =head2 DescribeTestCases
@@ -794,6 +936,27 @@ Each argument is described in detail in: L<Paws::CodeBuild::DescribeTestCases>
 Returns: a L<Paws::CodeBuild::DescribeTestCasesOutput> instance
 
 Returns a list of details about test cases for a report.
+
+
+=head2 GetReportGroupTrend
+
+=over
+
+=item ReportGroupArn => Str
+
+=item TrendField => Str
+
+=item [NumOfReports => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::GetReportGroupTrend>
+
+Returns: a L<Paws::CodeBuild::GetReportGroupTrendOutput> instance
+
+Analyzes and accumulates test report values for the specified test
+reports.
 
 
 =head2 GetResourcePolicy
@@ -833,9 +996,9 @@ Each argument is described in detail in: L<Paws::CodeBuild::ImportSourceCredenti
 
 Returns: a L<Paws::CodeBuild::ImportSourceCredentialsOutput> instance
 
-Imports the source repository credentials for an AWS CodeBuild project
-that has its source code stored in a GitHub, GitHub Enterprise, or
-Bitbucket repository.
+Imports the source repository credentials for an CodeBuild project that
+has its source code stored in a GitHub, GitHub Enterprise, or Bitbucket
+repository.
 
 
 =head2 InvalidateProjectCache
@@ -852,6 +1015,52 @@ Each argument is described in detail in: L<Paws::CodeBuild::InvalidateProjectCac
 Returns: a L<Paws::CodeBuild::InvalidateProjectCacheOutput> instance
 
 Resets the cache for a project.
+
+
+=head2 ListBuildBatches
+
+=over
+
+=item [Filter => L<Paws::CodeBuild::BuildBatchFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListBuildBatches>
+
+Returns: a L<Paws::CodeBuild::ListBuildBatchesOutput> instance
+
+Retrieves the identifiers of your build batches in the current region.
+
+
+=head2 ListBuildBatchesForProject
+
+=over
+
+=item [Filter => L<Paws::CodeBuild::BuildBatchFilter>]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ProjectName => Str]
+
+=item [SortOrder => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::ListBuildBatchesForProject>
+
+Returns: a L<Paws::CodeBuild::ListBuildBatchesForProjectOutput> instance
+
+Retrieves the identifiers of the build batches for a specific project.
 
 
 =head2 ListBuilds
@@ -890,8 +1099,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListBuildsForProject
 
 Returns: a L<Paws::CodeBuild::ListBuildsForProjectOutput> instance
 
-Gets a list of build IDs for the specified build project, with each
-build ID representing a single build.
+Gets a list of build identifiers for the specified build project, with
+each build identifier representing a single build.
 
 
 =head2 ListCuratedEnvironmentImages
@@ -905,7 +1114,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListCuratedEnvironme
 
 Returns: a L<Paws::CodeBuild::ListCuratedEnvironmentImagesOutput> instance
 
-Gets information about Docker images that are managed by AWS CodeBuild.
+Gets information about Docker images that are managed by CodeBuild.
 
 
 =head2 ListProjects
@@ -948,7 +1157,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListReportGroups>
 
 Returns: a L<Paws::CodeBuild::ListReportGroupsOutput> instance
 
-Gets a list ARNs for the report groups in the current AWS account.
+Gets a list ARNs for the report groups in the current Amazon Web
+Services account.
 
 
 =head2 ListReports
@@ -970,7 +1180,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListReports>
 
 Returns: a L<Paws::CodeBuild::ListReportsOutput> instance
 
-Returns a list of ARNs for the reports in the current AWS account.
+Returns a list of ARNs for the reports in the current Amazon Web
+Services account.
 
 
 =head2 ListReportsForReportGroup
@@ -1016,8 +1227,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListSharedProjects>
 
 Returns: a L<Paws::CodeBuild::ListSharedProjectsOutput> instance
 
-Gets a list of projects that are shared with other AWS accounts or
-users.
+Gets a list of projects that are shared with other Amazon Web Services
+accounts or users.
 
 
 =head2 ListSharedReportGroups
@@ -1039,8 +1250,8 @@ Each argument is described in detail in: L<Paws::CodeBuild::ListSharedReportGrou
 
 Returns: a L<Paws::CodeBuild::ListSharedReportGroupsOutput> instance
 
-Gets a list of report groups that are shared with other AWS accounts or
-users.
+Gets a list of report groups that are shared with other Amazon Web
+Services accounts or users.
 
 
 =head2 ListSourceCredentials
@@ -1076,6 +1287,45 @@ Stores a resource policy for the ARN of a C<Project> or C<ReportGroup>
 object.
 
 
+=head2 RetryBuild
+
+=over
+
+=item [Id => Str]
+
+=item [IdempotencyToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::RetryBuild>
+
+Returns: a L<Paws::CodeBuild::RetryBuildOutput> instance
+
+Restarts a build.
+
+
+=head2 RetryBuildBatch
+
+=over
+
+=item [Id => Str]
+
+=item [IdempotencyToken => Str]
+
+=item [RetryType => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::RetryBuildBatch>
+
+Returns: a L<Paws::CodeBuild::RetryBuildBatchOutput> instance
+
+Restarts a failed batch build. Only batch builds that have failed can
+be retried.
+
+
 =head2 StartBuild
 
 =over
@@ -1086,11 +1336,15 @@ object.
 
 =item [BuildspecOverride => Str]
 
+=item [BuildStatusConfigOverride => L<Paws::CodeBuild::BuildStatusConfig>]
+
 =item [CacheOverride => L<Paws::CodeBuild::ProjectCache>]
 
 =item [CertificateOverride => Str]
 
 =item [ComputeTypeOverride => Str]
+
+=item [DebugSessionEnabled => Bool]
 
 =item [EncryptionKeyOverride => Str]
 
@@ -1148,6 +1402,82 @@ Returns: a L<Paws::CodeBuild::StartBuildOutput> instance
 Starts running a build.
 
 
+=head2 StartBuildBatch
+
+=over
+
+=item ProjectName => Str
+
+=item [ArtifactsOverride => L<Paws::CodeBuild::ProjectArtifacts>]
+
+=item [BuildBatchConfigOverride => L<Paws::CodeBuild::ProjectBuildBatchConfig>]
+
+=item [BuildspecOverride => Str]
+
+=item [BuildTimeoutInMinutesOverride => Int]
+
+=item [CacheOverride => L<Paws::CodeBuild::ProjectCache>]
+
+=item [CertificateOverride => Str]
+
+=item [ComputeTypeOverride => Str]
+
+=item [DebugSessionEnabled => Bool]
+
+=item [EncryptionKeyOverride => Str]
+
+=item [EnvironmentTypeOverride => Str]
+
+=item [EnvironmentVariablesOverride => ArrayRef[L<Paws::CodeBuild::EnvironmentVariable>]]
+
+=item [GitCloneDepthOverride => Int]
+
+=item [GitSubmodulesConfigOverride => L<Paws::CodeBuild::GitSubmodulesConfig>]
+
+=item [IdempotencyToken => Str]
+
+=item [ImageOverride => Str]
+
+=item [ImagePullCredentialsTypeOverride => Str]
+
+=item [InsecureSslOverride => Bool]
+
+=item [LogsConfigOverride => L<Paws::CodeBuild::LogsConfig>]
+
+=item [PrivilegedModeOverride => Bool]
+
+=item [QueuedTimeoutInMinutesOverride => Int]
+
+=item [RegistryCredentialOverride => L<Paws::CodeBuild::RegistryCredential>]
+
+=item [ReportBuildBatchStatusOverride => Bool]
+
+=item [SecondaryArtifactsOverride => ArrayRef[L<Paws::CodeBuild::ProjectArtifacts>]]
+
+=item [SecondarySourcesOverride => ArrayRef[L<Paws::CodeBuild::ProjectSource>]]
+
+=item [SecondarySourcesVersionOverride => ArrayRef[L<Paws::CodeBuild::ProjectSourceVersion>]]
+
+=item [ServiceRoleOverride => Str]
+
+=item [SourceAuthOverride => L<Paws::CodeBuild::SourceAuth>]
+
+=item [SourceLocationOverride => Str]
+
+=item [SourceTypeOverride => Str]
+
+=item [SourceVersion => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::StartBuildBatch>
+
+Returns: a L<Paws::CodeBuild::StartBuildBatchOutput> instance
+
+Starts a batch build for a project.
+
+
 =head2 StopBuild
 
 =over
@@ -1164,6 +1494,22 @@ Returns: a L<Paws::CodeBuild::StopBuildOutput> instance
 Attempts to stop running a build.
 
 
+=head2 StopBuildBatch
+
+=over
+
+=item Id => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeBuild::StopBuildBatch>
+
+Returns: a L<Paws::CodeBuild::StopBuildBatchOutput> instance
+
+Stops a running batch build.
+
+
 =head2 UpdateProject
 
 =over
@@ -1174,7 +1520,11 @@ Attempts to stop running a build.
 
 =item [BadgeEnabled => Bool]
 
+=item [BuildBatchConfig => L<Paws::CodeBuild::ProjectBuildBatchConfig>]
+
 =item [Cache => L<Paws::CodeBuild::ProjectCache>]
+
+=item [ConcurrentBuildLimit => Int]
 
 =item [Description => Str]
 
@@ -1224,6 +1574,8 @@ Changes the settings of a build project.
 
 =item [ExportConfig => L<Paws::CodeBuild::ReportExportConfig>]
 
+=item [Tags => ArrayRef[L<Paws::CodeBuild::Tag>]]
+
 
 =back
 
@@ -1242,6 +1594,8 @@ Updates a report group.
 
 =item [BranchFilter => Str]
 
+=item [BuildType => Str]
+
 =item [FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]]
 
 =item [RotateSecret => Bool]
@@ -1253,7 +1607,7 @@ Each argument is described in detail in: L<Paws::CodeBuild::UpdateWebhook>
 
 Returns: a L<Paws::CodeBuild::UpdateWebhookOutput> instance
 
-Updates the webhook associated with an AWS CodeBuild build project.
+Updates the webhook associated with an CodeBuild build project.
 
 If you use Bitbucket for your repository, C<rotateSecret> is ignored.
 
@@ -1263,6 +1617,54 @@ If you use Bitbucket for your repository, C<rotateSecret> is ignored.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllCodeCoverages(sub { },ReportArn => Str, [MaxLineCoveragePercentage => Num, MaxResults => Int, MinLineCoveragePercentage => Num, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 DescribeAllCodeCoverages(ReportArn => Str, [MaxLineCoveragePercentage => Num, MaxResults => Int, MinLineCoveragePercentage => Num, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - codeCoverages, passing the object as the first parameter, and the string 'codeCoverages' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::DescribeCodeCoveragesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTestCases(sub { },ReportArn => Str, [Filter => L<Paws::CodeBuild::TestCaseFilter>, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllTestCases(ReportArn => Str, [Filter => L<Paws::CodeBuild::TestCaseFilter>, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - testCases, passing the object as the first parameter, and the string 'testCases' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::DescribeTestCasesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBuildBatches(sub { },[Filter => L<Paws::CodeBuild::BuildBatchFilter>, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+=head2 ListAllBuildBatches([Filter => L<Paws::CodeBuild::BuildBatchFilter>, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ids, passing the object as the first parameter, and the string 'ids' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListBuildBatchesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllBuildBatchesForProject(sub { },[Filter => L<Paws::CodeBuild::BuildBatchFilter>, MaxResults => Int, NextToken => Str, ProjectName => Str, SortOrder => Str])
+
+=head2 ListAllBuildBatchesForProject([Filter => L<Paws::CodeBuild::BuildBatchFilter>, MaxResults => Int, NextToken => Str, ProjectName => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ids, passing the object as the first parameter, and the string 'ids' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListBuildBatchesForProjectOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 ListAllBuilds(sub { },[NextToken => Str, SortOrder => Str])
 
@@ -1298,6 +1700,66 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
 
 If not, it will return a a L<Paws::CodeBuild::ListProjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReportGroups(sub { },[MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllReportGroups([MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - reportGroups, passing the object as the first parameter, and the string 'reportGroups' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListReportGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReports(sub { },[Filter => L<Paws::CodeBuild::ReportFilter>, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+=head2 ListAllReports([Filter => L<Paws::CodeBuild::ReportFilter>, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - reports, passing the object as the first parameter, and the string 'reports' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListReportsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllReportsForReportGroup(sub { },ReportGroupArn => Str, [Filter => L<Paws::CodeBuild::ReportFilter>, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+=head2 ListAllReportsForReportGroup(ReportGroupArn => Str, [Filter => L<Paws::CodeBuild::ReportFilter>, MaxResults => Int, NextToken => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - reports, passing the object as the first parameter, and the string 'reports' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListReportsForReportGroupOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSharedProjects(sub { },[MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllSharedProjects([MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - projects, passing the object as the first parameter, and the string 'projects' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListSharedProjectsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllSharedReportGroups(sub { },[MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+=head2 ListAllSharedReportGroups([MaxResults => Int, NextToken => Str, SortBy => Str, SortOrder => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - reportGroups, passing the object as the first parameter, and the string 'reportGroups' as the second parameter 
+
+If not, it will return a a L<Paws::CodeBuild::ListSharedReportGroupsOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

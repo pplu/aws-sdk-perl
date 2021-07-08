@@ -46,24 +46,23 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ACMPCA::ASN
 
 =head1 DESCRIPTION
 
-Contains information about the certificate subject. The certificate can
-be one issued by your private certificate authority (CA) or it can be
-your private CA certificate. The B<Subject> field in the certificate
-identifies the entity that owns or controls the public key in the
-certificate. The entity can be a user, computer, device, or service.
-The B<Subject> must contain an X.500 distinguished name (DN). A DN is a
-sequence of relative distinguished names (RDNs). The RDNs are separated
-by commas in the certificate. The DN must be unique for each entity,
-but your private CA can issue more than one certificate with the same
-DN to the same entity.
+Contains information about the certificate subject. The C<Subject>
+field in the certificate identifies the entity that owns or controls
+the public key in the certificate. The entity can be a user, computer,
+device, or service. The C<Subject >must contain an X.500 distinguished
+name (DN). A DN is a sequence of relative distinguished names (RDNs).
+The RDNs are separated by commas in the certificate.
 
 =head1 ATTRIBUTES
 
 
 =head2 CommonName => Str
 
-Fully qualified domain name (FQDN) associated with the certificate
-subject.
+For CA and end-entity certificates in a private PKI, the common name
+(CN) can be any string within the length limit.
+
+Note: In publicly trusted certificates, the common name must be a fully
+qualified domain name (FQDN) associated with the certificate subject.
 
 
 =head2 Country => Str
@@ -92,7 +91,7 @@ First name.
 
 Concatenation that typically contains the first letter of the
 B<GivenName>, the first letter of the middle name if one exists, and
-the first letter of the B<SurName>.
+the first letter of the B<Surname>.
 
 
 =head2 Locality => Str

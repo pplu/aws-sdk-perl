@@ -4,6 +4,7 @@ package Paws::SageMaker::CreateTrialComponent;
   has DisplayName => (is => 'ro', isa => 'Str');
   has EndTime => (is => 'ro', isa => 'Str');
   has InputArtifacts => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentArtifacts');
+  has MetadataProperties => (is => 'ro', isa => 'Paws::SageMaker::MetadataProperties');
   has OutputArtifacts => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentArtifacts');
   has Parameters => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentParameters');
   has StartTime => (is => 'ro', isa => 'Str');
@@ -45,6 +46,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           MediaType => 'MyMediaType',                      # max: 64; OPTIONAL
         },    # key: max: 64
       },    # OPTIONAL
+      MetadataProperties => {
+        CommitId    => 'MyMetadataPropertyValue',    # max: 1024; OPTIONAL
+        GeneratedBy => 'MyMetadataPropertyValue',    # max: 1024; OPTIONAL
+        ProjectId   => 'MyMetadataPropertyValue',    # max: 1024; OPTIONAL
+        Repository  => 'MyMetadataPropertyValue',    # max: 1024; OPTIONAL
+      },    # OPTIONAL
       OutputArtifacts => {
         'MyTrialComponentKey64' => {
           Value     => 'MyTrialComponentArtifactValue',    # max: 2048
@@ -60,8 +67,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL
       Status    => {
         Message       => 'MyTrialComponentStatusMessage',  # max: 1024; OPTIONAL
-        PrimaryStatus =>
-          'InProgress',    # values: InProgress, Completed, Failed; OPTIONAL
+        PrimaryStatus => 'InProgress'
+        ,   # values: InProgress, Completed, Failed, Stopping, Stopped; OPTIONAL
       },    # OPTIONAL
       Tags => [
         {
@@ -102,6 +109,12 @@ When the component ended.
 
 The input artifacts for the component. Examples of input artifacts are
 datasets, algorithms, hyperparameters, source code, and instance types.
+
+
+
+=head2 MetadataProperties => L<Paws::SageMaker::MetadataProperties>
+
+
 
 
 
@@ -156,8 +169,8 @@ to search on the tags.
 
 =head2 B<REQUIRED> TrialComponentName => Str
 
-The name of the component. The name must be unique in your AWS account
-and is not case-sensitive.
+The name of the component. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.
 
 
 

@@ -30,11 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To delete a launch template version
+    # This example deletes the specified launch template version.
     my $DeleteLaunchTemplateVersionsResult = $ec2->DeleteLaunchTemplateVersions(
-      Versions           => [ 'MyString', ... ],
-      DryRun             => 1,                         # OPTIONAL
-      LaunchTemplateId   => 'MyLaunchTemplateId',      # OPTIONAL
-      LaunchTemplateName => 'MyLaunchTemplateName',    # OPTIONAL
+      'LaunchTemplateId' => 'lt-0abcd290751193123',
+      'Versions'         => [1]
     );
 
     # Results:

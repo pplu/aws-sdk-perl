@@ -49,6 +49,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreatePushTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateRecommenderConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateRecommenderConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::CreateSegment', @_);
@@ -137,6 +142,11 @@ package Paws::Pinpoint;
   sub DeletePushTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeletePushTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteRecommenderConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::DeleteRecommenderConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteSegment {
@@ -322,6 +332,16 @@ package Paws::Pinpoint;
   sub GetPushTemplate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetPushTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRecommenderConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetRecommenderConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetRecommenderConfigurations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::GetRecommenderConfigurations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetSegment {
@@ -519,6 +539,11 @@ package Paws::Pinpoint;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdatePushTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub UpdateRecommenderConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateRecommenderConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateSegment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Pinpoint::UpdateSegment', @_);
@@ -552,7 +577,7 @@ package Paws::Pinpoint;
   
 
 
-  sub operations { qw/CreateApp CreateCampaign CreateEmailTemplate CreateExportJob CreateImportJob CreateJourney CreatePushTemplate CreateSegment CreateSmsTemplate CreateVoiceTemplate DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEmailTemplate DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteJourney DeletePushTemplate DeleteSegment DeleteSmsChannel DeleteSmsTemplate DeleteUserEndpoints DeleteVoiceChannel DeleteVoiceTemplate GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationDateRangeKpi GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaignDateRangeKpi GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEmailTemplate GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetJourney GetJourneyDateRangeKpi GetJourneyExecutionActivityMetrics GetJourneyExecutionMetrics GetPushTemplate GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetSmsTemplate GetUserEndpoints GetVoiceChannel GetVoiceTemplate ListJourneys ListTagsForResource ListTemplates ListTemplateVersions PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages TagResource UntagResource UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEmailTemplate UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateJourney UpdateJourneyState UpdatePushTemplate UpdateSegment UpdateSmsChannel UpdateSmsTemplate UpdateTemplateActiveVersion UpdateVoiceChannel UpdateVoiceTemplate / }
+  sub operations { qw/CreateApp CreateCampaign CreateEmailTemplate CreateExportJob CreateImportJob CreateJourney CreatePushTemplate CreateRecommenderConfiguration CreateSegment CreateSmsTemplate CreateVoiceTemplate DeleteAdmChannel DeleteApnsChannel DeleteApnsSandboxChannel DeleteApnsVoipChannel DeleteApnsVoipSandboxChannel DeleteApp DeleteBaiduChannel DeleteCampaign DeleteEmailChannel DeleteEmailTemplate DeleteEndpoint DeleteEventStream DeleteGcmChannel DeleteJourney DeletePushTemplate DeleteRecommenderConfiguration DeleteSegment DeleteSmsChannel DeleteSmsTemplate DeleteUserEndpoints DeleteVoiceChannel DeleteVoiceTemplate GetAdmChannel GetApnsChannel GetApnsSandboxChannel GetApnsVoipChannel GetApnsVoipSandboxChannel GetApp GetApplicationDateRangeKpi GetApplicationSettings GetApps GetBaiduChannel GetCampaign GetCampaignActivities GetCampaignDateRangeKpi GetCampaigns GetCampaignVersion GetCampaignVersions GetChannels GetEmailChannel GetEmailTemplate GetEndpoint GetEventStream GetExportJob GetExportJobs GetGcmChannel GetImportJob GetImportJobs GetJourney GetJourneyDateRangeKpi GetJourneyExecutionActivityMetrics GetJourneyExecutionMetrics GetPushTemplate GetRecommenderConfiguration GetRecommenderConfigurations GetSegment GetSegmentExportJobs GetSegmentImportJobs GetSegments GetSegmentVersion GetSegmentVersions GetSmsChannel GetSmsTemplate GetUserEndpoints GetVoiceChannel GetVoiceTemplate ListJourneys ListTagsForResource ListTemplates ListTemplateVersions PhoneNumberValidate PutEvents PutEventStream RemoveAttributes SendMessages SendUsersMessages TagResource UntagResource UpdateAdmChannel UpdateApnsChannel UpdateApnsSandboxChannel UpdateApnsVoipChannel UpdateApnsVoipSandboxChannel UpdateApplicationSettings UpdateBaiduChannel UpdateCampaign UpdateEmailChannel UpdateEmailTemplate UpdateEndpoint UpdateEndpointsBatch UpdateGcmChannel UpdateJourney UpdateJourneyState UpdatePushTemplate UpdateRecommenderConfiguration UpdateSegment UpdateSmsChannel UpdateSmsTemplate UpdateTemplateActiveVersion UpdateVoiceChannel UpdateVoiceTemplate / }
 
 1;
 
@@ -712,6 +737,22 @@ Returns: a L<Paws::Pinpoint::CreatePushTemplateResponse> instance
 
 Creates a message template for messages that are sent through a push
 notification channel.
+
+
+=head2 CreateRecommenderConfiguration
+
+=over
+
+=item CreateRecommenderConfiguration => L<Paws::Pinpoint::CreateRecommenderConfigurationObj>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::CreateRecommenderConfiguration>
+
+Returns: a L<Paws::Pinpoint::CreateRecommenderConfigurationResponse> instance
+
+Creates an Amazon Pinpoint configuration for a recommender model.
 
 
 =head2 CreateSegment
@@ -1030,6 +1071,22 @@ Returns: a L<Paws::Pinpoint::DeletePushTemplateResponse> instance
 
 Deletes a message template for messages that were sent through a push
 notification channel.
+
+
+=head2 DeleteRecommenderConfiguration
+
+=over
+
+=item RecommenderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::DeleteRecommenderConfiguration>
+
+Returns: a L<Paws::Pinpoint::DeleteRecommenderConfigurationResponse> instance
+
+Deletes an Amazon Pinpoint configuration for a recommender model.
 
 
 =head2 DeleteSegment
@@ -1756,6 +1813,42 @@ Retrieves the content and settings of a message template for messages
 that are sent through a push notification channel.
 
 
+=head2 GetRecommenderConfiguration
+
+=over
+
+=item RecommenderId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetRecommenderConfiguration>
+
+Returns: a L<Paws::Pinpoint::GetRecommenderConfigurationResponse> instance
+
+Retrieves information about an Amazon Pinpoint configuration for a
+recommender model.
+
+
+=head2 GetRecommenderConfigurations
+
+=over
+
+=item [PageSize => Str]
+
+=item [Token => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::GetRecommenderConfigurations>
+
+Returns: a L<Paws::Pinpoint::GetRecommenderConfigurationsResponse> instance
+
+Retrieves information about all the recommender model configurations
+that are associated with your Amazon Pinpoint account.
+
+
 =head2 GetSegment
 
 =over
@@ -2014,7 +2107,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::ListTagsForResource>
 Returns: a L<Paws::Pinpoint::ListTagsForResourceResponse> instance
 
 Retrieves all the tags (keys and values) that are associated with an
-application, campaign, journey, message template, or segment.
+application, campaign, message template, or segment.
 
 
 =head2 ListTemplates
@@ -2190,7 +2283,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::TagResource>
 Returns: nothing
 
 Adds one or more tags (keys and values) to an application, campaign,
-journey, message template, or segment.
+message template, or segment.
 
 
 =head2 UntagResource
@@ -2209,7 +2302,7 @@ Each argument is described in detail in: L<Paws::Pinpoint::UntagResource>
 Returns: nothing
 
 Removes one or more tags (keys and values) from an application,
-campaign, journey, message template, or segment.
+campaign, message template, or segment.
 
 
 =head2 UpdateAdmChannel
@@ -2426,8 +2519,9 @@ Returns: a L<Paws::Pinpoint::UpdateEndpointResponse> instance
 
 Creates a new endpoint for an application or updates the settings and
 attributes of an existing endpoint for an application. You can also use
-this operation to define custom attributes (Attributes, Metrics, and
-UserAttributes properties) for an endpoint.
+this operation to define custom attributes for an endpoint. If an
+update includes one or more values for a custom attribute, Amazon
+Pinpoint replaces (overwrites) any existing values with the new values.
 
 
 =head2 UpdateEndpointsBatch
@@ -2448,8 +2542,9 @@ Returns: a L<Paws::Pinpoint::UpdateEndpointsBatchResponse> instance
 Creates a new batch of endpoints for an application or updates the
 settings and attributes of a batch of existing endpoints for an
 application. You can also use this operation to define custom
-attributes (Attributes, Metrics, and UserAttributes properties) for a
-batch of endpoints.
+attributes for a batch of endpoints. If an update includes one or more
+values for a custom attribute, Amazon Pinpoint replaces (overwrites)
+any existing values with the new values.
 
 
 =head2 UpdateGcmChannel
@@ -2532,6 +2627,24 @@ Returns: a L<Paws::Pinpoint::UpdatePushTemplateResponse> instance
 
 Updates an existing message template for messages that are sent through
 a push notification channel.
+
+
+=head2 UpdateRecommenderConfiguration
+
+=over
+
+=item RecommenderId => Str
+
+=item UpdateRecommenderConfiguration => L<Paws::Pinpoint::UpdateRecommenderConfigurationObj>
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Pinpoint::UpdateRecommenderConfiguration>
+
+Returns: a L<Paws::Pinpoint::UpdateRecommenderConfigurationResponse> instance
+
+Updates an Amazon Pinpoint configuration for a recommender model.
 
 
 =head2 UpdateSegment

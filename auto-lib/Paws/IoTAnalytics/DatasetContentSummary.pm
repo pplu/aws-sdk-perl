@@ -37,7 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 
 =head1 DESCRIPTION
 
-Summary information about data set contents.
+Summary information about dataset contents.
 
 =head1 ATTRIBUTES
 
@@ -49,12 +49,12 @@ The time the dataset content status was updated to SUCCEEDED or FAILED.
 
 =head2 CreationTime => Str
 
-The actual time the creation of the data set contents was started.
+The actual time the creation of the dataset contents was started.
 
 
 =head2 ScheduleTime => Str
 
-The time the creation of the data set contents was scheduled to start.
+The time the creation of the dataset contents was scheduled to start.
 
 
 =head2 Status => L<Paws::IoTAnalytics::DatasetContentStatus>
@@ -64,7 +64,7 @@ The status of the data set contents.
 
 =head2 Version => Str
 
-The version of the data set contents.
+The version of the dataset contents.
 
 
 

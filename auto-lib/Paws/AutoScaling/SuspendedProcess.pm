@@ -34,8 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::AutoScaling
 
 =head1 DESCRIPTION
 
-Describes an automatic scaling process that has been suspended. For
-more information, see ProcessType.
+Describes an auto scaling process that has been suspended.
+
+For more information, see Scaling processes
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/as-suspend-resume-processes.html#process-types)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 =head1 ATTRIBUTES
 

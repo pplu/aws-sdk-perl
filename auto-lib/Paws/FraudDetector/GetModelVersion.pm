@@ -30,18 +30,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $frauddetector = Paws->service('FraudDetector');
     my $GetModelVersionResult = $frauddetector->GetModelVersion(
-      ModelId            => 'Myidentifier',
+      ModelId            => 'MymodelIdentifier',
       ModelType          => 'ONLINE_FRAUD_INSIGHTS',
-      ModelVersionNumber => 'MynonEmptyString',
+      ModelVersionNumber => 'MyfloatVersionString',
 
     );
 
     # Results:
-    my $Description        = $GetModelVersionResult->Description;
-    my $ModelId            = $GetModelVersionResult->ModelId;
-    my $ModelType          = $GetModelVersionResult->ModelType;
-    my $ModelVersionNumber = $GetModelVersionResult->ModelVersionNumber;
-    my $Status             = $GetModelVersionResult->Status;
+    my $Arn                  = $GetModelVersionResult->Arn;
+    my $ExternalEventsDetail = $GetModelVersionResult->ExternalEventsDetail;
+    my $ModelId              = $GetModelVersionResult->ModelId;
+    my $ModelType            = $GetModelVersionResult->ModelType;
+    my $ModelVersionNumber   = $GetModelVersionResult->ModelVersionNumber;
+    my $Status               = $GetModelVersionResult->Status;
+    my $TrainingDataSchema   = $GetModelVersionResult->TrainingDataSchema;
+    my $TrainingDataSource   = $GetModelVersionResult->TrainingDataSource;
 
     # Returns a L<Paws::FraudDetector::GetModelVersionResult> object.
 
@@ -65,7 +68,7 @@ Valid values are: C<"ONLINE_FRAUD_INSIGHTS">
 
 =head2 B<REQUIRED> ModelVersionNumber => Str
 
-The model version.
+The model version number.
 
 
 

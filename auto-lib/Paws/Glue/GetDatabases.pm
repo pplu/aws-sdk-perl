@@ -4,6 +4,7 @@ package Paws::Glue::GetDatabases;
   has CatalogId => (is => 'ro', isa => 'Str');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ResourceShareType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,9 +31,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $glue = Paws->service('Glue');
     my $GetDatabasesResponse = $glue->GetDatabases(
-      CatalogId  => 'MyCatalogIdString',    # OPTIONAL
-      MaxResults => 1,                      # OPTIONAL
-      NextToken  => 'MyToken',              # OPTIONAL
+      CatalogId         => 'MyCatalogIdString',    # OPTIONAL
+      MaxResults        => 1,                      # OPTIONAL
+      NextToken         => 'MyToken',              # OPTIONAL
+      ResourceShareType => 'FOREIGN',              # OPTIONAL
     );
 
     # Results:
@@ -50,7 +52,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/glu
 =head2 CatalogId => Str
 
 The ID of the Data Catalog from which to retrieve C<Databases>. If none
-is provided, the AWS account ID is used by default.
+is provided, the Amazon Web Services account ID is used by default.
 
 
 
@@ -65,6 +67,27 @@ The maximum number of databases to return in one response.
 A continuation token, if this is a continuation call.
 
 
+
+=head2 ResourceShareType => Str
+
+Allows you to specify that you want to list the databases shared with
+your account. The allowable values are C<FOREIGN> or C<ALL>.
+
+=over
+
+=item *
+
+If set to C<FOREIGN>, will list the databases shared with your account.
+
+=item *
+
+If set to C<ALL>, will list the databases shared with your account, as
+well as the databases in yor local account.
+
+=back
+
+
+Valid values are: C<"FOREIGN">, C<"ALL">
 
 
 =head1 SEE ALSO

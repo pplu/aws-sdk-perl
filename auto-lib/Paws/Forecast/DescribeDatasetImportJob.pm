@@ -41,12 +41,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeDatasetImportJobResponse->DatasetImportJobArn;
     my $DatasetImportJobName =
       $DescribeDatasetImportJobResponse->DatasetImportJobName;
+    my $EstimatedTimeRemainingInMinutes =
+      $DescribeDatasetImportJobResponse->EstimatedTimeRemainingInMinutes;
     my $FieldStatistics = $DescribeDatasetImportJobResponse->FieldStatistics;
+    my $GeolocationFormat =
+      $DescribeDatasetImportJobResponse->GeolocationFormat;
     my $LastModificationTime =
       $DescribeDatasetImportJobResponse->LastModificationTime;
     my $Message         = $DescribeDatasetImportJobResponse->Message;
     my $Status          = $DescribeDatasetImportJobResponse->Status;
+    my $TimeZone        = $DescribeDatasetImportJobResponse->TimeZone;
     my $TimestampFormat = $DescribeDatasetImportJobResponse->TimestampFormat;
+    my $UseGeolocationForTimeZone =
+      $DescribeDatasetImportJobResponse->UseGeolocationForTimeZone;
 
     # Returns a L<Paws::Forecast::DescribeDatasetImportJobResponse> object.
 

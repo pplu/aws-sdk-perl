@@ -60,7 +60,7 @@ C<StackPolicyBody> or the C<StackPolicyURL> parameter, but not both.
 =head2 StackPolicyURL => Str
 
 Location of a file containing the stack policy. The URL must point to a
-policy (maximum size: 16 KB) located in an S3 bucket in the same region
+policy (maximum size: 16 KB) located in an S3 bucket in the same Region
 as the stack. You can specify either the C<StackPolicyBody> or the
 C<StackPolicyURL> parameter, but not both.
 

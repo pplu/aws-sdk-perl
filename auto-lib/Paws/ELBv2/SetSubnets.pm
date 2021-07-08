@@ -1,6 +1,7 @@
 
 package Paws::ELBv2::SetSubnets;
   use Moose;
+  has IpAddressType => (is => 'ro', isa => 'Str');
   has LoadBalancerArn => (is => 'ro', isa => 'Str', required => 1);
   has SubnetMappings => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::SubnetMapping]');
   has Subnets => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -49,6 +50,16 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
+=head2 IpAddressType => Str
+
+[Network Load Balancers] The type of IP addresses used by the subnets
+for your load balancer. The possible values are C<ipv4> (for IPv4
+addresses) and C<dualstack> (for IPv4 and IPv6 addresses). You
+canE<rsquo>t specify C<dualstack> for a load balancer with a UDP or
+TCP_UDP listener. Internal load balancers must use C<ipv4>.
+
+Valid values are: C<"ipv4">, C<"dualstack">
+
 =head2 B<REQUIRED> LoadBalancerArn => Str
 
 The Amazon Resource Name (ARN) of the load balancer.
@@ -64,19 +75,37 @@ Availability Zone. You must specify either subnets or subnet mappings.
 Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.
 
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
 [Network Load Balancers] You can specify subnets from one or more
-Availability Zones. If you need static IP addresses for your
-internet-facing load balancer, you can specify one Elastic IP address
-per subnet. For internal load balancers, you can specify one private IP
-address per subnet from the IPv4 range of the subnet.
+Availability Zones. You can specify one Elastic IP address per subnet
+if you need static IP addresses for your internet-facing load balancer.
+For internal load balancers, you can specify one private IP address per
+subnet from the IPv4 range of the subnet. For internet-facing load
+balancer, you can specify one IPv6 address per subnet.
 
 
 
 =head2 Subnets => ArrayRef[Str|Undef]
 
-The IDs of the public subnets. You must specify subnets from at least
-two Availability Zones. You can specify only one subnet per
+The IDs of the public subnets. You can specify only one subnet per
 Availability Zone. You must specify either subnets or subnet mappings.
+
+[Application Load Balancers] You must specify subnets from at least two
+Availability Zones.
+
+[Application Load Balancers on Outposts] You must specify one Outpost
+subnet.
+
+[Application Load Balancers on Local Zones] You can specify subnets
+from one or more Local Zones.
+
+[Network Load Balancers] You can specify subnets from one or more
+Availability Zones.
 
 
 

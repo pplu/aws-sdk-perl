@@ -30,9 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $DeleteFleetsResult = $ec2->DeleteFleets(
-      FleetIds           => [ 'MyFleetIdentifier', ... ],
+      FleetIds           => [ 'MyFleetId', ... ],
       TerminateInstances => 1,
-      DryRun             => 1,                              # OPTIONAL
+      DryRun             => 1,                      # OPTIONAL
     );
 
     # Results:
@@ -66,8 +66,15 @@ The IDs of the EC2 Fleets.
 
 =head2 B<REQUIRED> TerminateInstances => Bool
 
-Indicates whether to terminate instances for an EC2 Fleet if it is
-deleted successfully.
+Indicates whether to terminate the instances when the EC2 Fleet is
+deleted. The default is to terminate the instances.
+
+To let the instances continue to run after the EC2 Fleet is deleted,
+specify C<NoTerminateInstances>. Supported only for fleets of type
+C<maintain> and C<request>.
+
+For C<instant> fleets, you cannot specify C<NoTerminateInstances>. A
+deleted C<instant> fleet with running instances is not supported.
 
 
 

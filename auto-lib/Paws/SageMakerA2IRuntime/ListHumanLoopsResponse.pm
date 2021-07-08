@@ -18,12 +18,12 @@ Paws::SageMakerA2IRuntime::ListHumanLoopsResponse
 
 =head2 B<REQUIRED> HumanLoopSummaries => ArrayRef[L<Paws::SageMakerA2IRuntime::HumanLoopSummary>]
 
-An array of objects containing information about the human loops.
+An array of objects that contain information about the human loops.
 
 
 =head2 NextToken => Str
 
-A token to resume pagination.
+A token to display the next page of results.
 
 
 =head2 _request_id => Str

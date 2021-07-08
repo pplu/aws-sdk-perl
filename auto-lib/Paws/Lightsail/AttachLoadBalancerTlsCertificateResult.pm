@@ -16,7 +16,9 @@ Paws::Lightsail::AttachLoadBalancerTlsCertificateResult
 
 =head2 Operations => ArrayRef[L<Paws::Lightsail::Operation>]
 
-An object representing the API operations.
+An array of objects that describe the result of the action, such as the
+status of the request, the timestamp of the request, and the resources
+affected by the request.
 
 These SSL/TLS certificates are only usable by Lightsail load balancers.
 You can't get the certificate and use it for another purpose.

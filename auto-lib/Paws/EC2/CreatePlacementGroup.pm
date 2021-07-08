@@ -5,11 +5,12 @@ package Paws::EC2::CreatePlacementGroup;
   has GroupName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'groupName' );
   has PartitionCount => (is => 'ro', isa => 'Int');
   has Strategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'strategy' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreatePlacementGroup');
-  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::API::Response');
+  class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::EC2::CreatePlacementGroupResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
 1;
 
@@ -32,7 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ec2 = Paws->service('EC2');
     # To create a placement group
     # This example creates a placement group with the specified name.
-    $ec2->CreatePlacementGroup(
+    my $CreatePlacementGroupResult = $ec2->CreatePlacementGroup(
       'GroupName' => 'my-cluster',
       'Strategy'  => 'cluster'
     );
@@ -74,6 +75,12 @@ C<partition>.
 The placement strategy.
 
 Valid values are: C<"cluster">, C<"spread">, C<"partition">
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the new placement group.
+
+
 
 
 =head1 SEE ALSO

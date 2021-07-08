@@ -35,7 +35,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Represents an amount of money in United States dollars/
+Represents an amount of money in United States dollars.
 
 =head1 ATTRIBUTES
 

@@ -93,9 +93,6 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 The category of the custom action, such as a build action or a test
 action.
 
-Although C<Source> and C<Approval> are listed as valid values, they are
-not currently functional. These values are reserved for future use.
-
 Valid values are: C<"Source">, C<"Build">, C<"Deploy">, C<"Test">, C<"Invoke">, C<"Approval">
 
 =head2 ConfigurationProperties => ArrayRef[L<Paws::CodePipeline::ActionConfigurationProperty>]

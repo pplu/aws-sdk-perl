@@ -97,7 +97,7 @@ the results list to DB instances created by that engine.
 
 =back
 
-For example, to invoke this API from the AWS CLI and filter so that
+For example, to invoke this API from the Amazon CLI and filter so that
 only Neptune DB instances are returned, you could use the following
 command:
 

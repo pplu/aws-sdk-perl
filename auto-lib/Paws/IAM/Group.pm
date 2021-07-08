@@ -66,7 +66,7 @@ ListGroups
 
 The Amazon Resource Name (ARN) specifying the group. For more
 information about ARNs and how to use them in policies, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -80,7 +80,7 @@ The date and time, in ISO 8601 date-time format
 =head2 B<REQUIRED> GroupId => Str
 
 The stable and unique string identifying the group. For more
-information about IDs, see IAM Identifiers
+information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -93,7 +93,7 @@ The friendly name that identifies the group.
 =head2 B<REQUIRED> Path => Str
 
 The path to the group. For more information about paths, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

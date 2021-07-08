@@ -30,13 +30,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $codeguru-reviewer = Paws->service('CodeGuruReviewer');
     my $DisassociateRepositoryResponse =
       $codeguru -reviewer->DisassociateRepository(
-      AssociationArn => 'MyArn',
+      AssociationArn => 'MyAssociationArn',
 
       );
 
     # Results:
     my $RepositoryAssociation =
       $DisassociateRepositoryResponse->RepositoryAssociation;
+    my $Tags = $DisassociateRepositoryResponse->Tags;
 
    # Returns a L<Paws::CodeGuruReviewer::DisassociateRepositoryResponse> object.
 
@@ -48,7 +49,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cod
 
 =head2 B<REQUIRED> AssociationArn => Str
 
-The Amazon Resource Name (ARN) identifying the association.
+The Amazon Resource Name (ARN) of the C<RepositoryAssociation>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RepositoryAssociation.html)
+object. You can retrieve this ARN by calling
+C<ListRepositoryAssociations>
+(https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_ListRepositoryAssociations.html).
 
 
 

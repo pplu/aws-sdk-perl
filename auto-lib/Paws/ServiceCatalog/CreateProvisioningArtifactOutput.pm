@@ -18,7 +18,20 @@ Paws::ServiceCatalog::CreateProvisioningArtifactOutput
 
 =head2 Info => L<Paws::ServiceCatalog::ProvisioningArtifactInfo>
 
+Specify the template source with one of the following options, but not
+both. Keys accepted: [ C<LoadTemplateFromURL>, C<ImportFromPhysicalId>
+].
+
 The URL of the CloudFormation template in Amazon S3, in JSON format.
+
+C<LoadTemplateFromURL>
+
+Use the URL of the CloudFormation template in Amazon S3 in JSON format.
+
+C<ImportFromPhysicalId>
+
+Use the physical id of the resource that contains the template;
+currently supports CloudFormation stack ARN.
 
 
 =head2 ProvisioningArtifactDetail => L<Paws::ServiceCatalog::ProvisioningArtifactDetail>

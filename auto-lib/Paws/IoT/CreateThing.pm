@@ -76,6 +76,10 @@ The name of the billing group the thing will be added to.
 
 The name of the thing to create.
 
+You can't change a thing's name after you create it. To change a
+thing's name, you must create a new thing, give it the new name, and
+then delete the old thing.
+
 
 
 =head2 ThingTypeName => Str

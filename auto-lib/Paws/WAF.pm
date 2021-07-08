@@ -93,6 +93,11 @@ package Paws::WAF;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateWebACL', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateWebACLMigrationStack {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::WAF::CreateWebACLMigrationStack', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateXssMatchSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::WAF::CreateXssMatchSet', @_);
@@ -789,7 +794,7 @@ package Paws::WAF;
   }
 
 
-  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListTagsForResource ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy TagResource UntagResource UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
+  sub operations { qw/CreateByteMatchSet CreateGeoMatchSet CreateIPSet CreateRateBasedRule CreateRegexMatchSet CreateRegexPatternSet CreateRule CreateRuleGroup CreateSizeConstraintSet CreateSqlInjectionMatchSet CreateWebACL CreateWebACLMigrationStack CreateXssMatchSet DeleteByteMatchSet DeleteGeoMatchSet DeleteIPSet DeleteLoggingConfiguration DeletePermissionPolicy DeleteRateBasedRule DeleteRegexMatchSet DeleteRegexPatternSet DeleteRule DeleteRuleGroup DeleteSizeConstraintSet DeleteSqlInjectionMatchSet DeleteWebACL DeleteXssMatchSet GetByteMatchSet GetChangeToken GetChangeTokenStatus GetGeoMatchSet GetIPSet GetLoggingConfiguration GetPermissionPolicy GetRateBasedRule GetRateBasedRuleManagedKeys GetRegexMatchSet GetRegexPatternSet GetRule GetRuleGroup GetSampledRequests GetSizeConstraintSet GetSqlInjectionMatchSet GetWebACL GetXssMatchSet ListActivatedRulesInRuleGroup ListByteMatchSets ListGeoMatchSets ListIPSets ListLoggingConfigurations ListRateBasedRules ListRegexMatchSets ListRegexPatternSets ListRuleGroups ListRules ListSizeConstraintSets ListSqlInjectionMatchSets ListSubscribedRuleGroups ListTagsForResource ListWebACLs ListXssMatchSets PutLoggingConfiguration PutPermissionPolicy TagResource UntagResource UpdateByteMatchSet UpdateGeoMatchSet UpdateIPSet UpdateRateBasedRule UpdateRegexMatchSet UpdateRegexPatternSet UpdateRule UpdateRuleGroup UpdateSizeConstraintSet UpdateSqlInjectionMatchSet UpdateWebACL UpdateXssMatchSet / }
 
 1;
 
@@ -817,15 +822,28 @@ Paws::WAF - Perl Interface to AWS AWS WAF
 
 =head1 DESCRIPTION
 
-This is the I<AWS WAF API Reference> for using AWS WAF with Amazon
-CloudFront. The AWS WAF actions and data types listed in the reference
-are available for protecting Amazon CloudFront distributions. You can
-use these actions and data types via the endpoint I<waf.amazonaws.com>.
-This guide is for developers who need detailed information about the
-AWS WAF API actions, data types, and errors. For detailed information
-about AWS WAF features and an overview of how to use the AWS WAF API,
-see the AWS WAF Developer Guide
-(https://docs.aws.amazon.com/waf/latest/developerguide/).
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+This is the I<AWS WAF Classic API Reference> for using AWS WAF Classic
+with Amazon CloudFront. The AWS WAF Classic actions and data types
+listed in the reference are available for protecting Amazon CloudFront
+distributions. You can use these actions and data types via the
+endpoint I<waf.amazonaws.com>. This guide is for developers who need
+detailed information about the AWS WAF Classic API actions, data types,
+and errors. For detailed information about AWS WAF Classic features and
+an overview of how to use the AWS WAF Classic API, see the AWS WAF
+Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf-2015-08-24>
 
@@ -846,6 +864,17 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/waf
 Each argument is described in detail in: L<Paws::WAF::CreateByteMatchSet>
 
 Returns: a L<Paws::WAF::CreateByteMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Creates a C<ByteMatchSet>. You then use UpdateByteMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
@@ -900,6 +929,17 @@ Each argument is described in detail in: L<Paws::WAF::CreateGeoMatchSet>
 
 Returns: a L<Paws::WAF::CreateGeoMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates an GeoMatchSet, which you use to specify which web requests you
 want to allow or block based on the country that the requests originate
 from. For example, if you're receiving a lot of requests from one or
@@ -951,6 +991,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::CreateIPSet>
 
 Returns: a L<Paws::WAF::CreateIPSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Creates an IPSet, which you use to specify which web requests that you
 want to allow or block based on the IP addresses that the requests
@@ -1013,6 +1064,17 @@ Each argument is described in detail in: L<Paws::WAF::CreateRateBasedRule>
 
 Returns: a L<Paws::WAF::CreateRateBasedRuleResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a RateBasedRule. The C<RateBasedRule> contains a C<RateLimit>,
 which specifies the maximum number of requests that AWS WAF allows from
 a specified IP address in a five-minute period. The C<RateBasedRule>
@@ -1022,8 +1084,8 @@ if these requests exceed the C<RateLimit>.
 
 If you add more than one predicate to a C<RateBasedRule>, a request not
 only must exceed the C<RateLimit>, but it also must match all the
-specifications to be counted or blocked. For example, suppose you add
-the following to a C<RateBasedRule>:
+conditions to be counted or blocked. For example, suppose you add the
+following to a C<RateBasedRule>:
 
 =over
 
@@ -1037,16 +1099,16 @@ A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
 
 =back
 
-Further, you specify a C<RateLimit> of 15,000.
+Further, you specify a C<RateLimit> of 1,000.
 
 You then add the C<RateBasedRule> to a C<WebACL> and specify that you
 want to block requests that meet the conditions in the rule. For a
 request to be blocked, it must come from the IP address 192.0.2.44
 I<and> the C<User-Agent> header in the request must contain the value
 C<BadBot>. Further, requests that match these two conditions must be
-received at a rate of more than 15,000 requests every five minutes. If
+received at a rate of more than 1,000 requests every five minutes. If
 both conditions are met and the rate is exceeded, AWS WAF blocks the
-requests. If the rate drops below 15,000 for a five-minute period, AWS
+requests. If the rate drops below 1,000 for a five-minute period, AWS
 WAF no longer blocks the requests.
 
 As a second example, suppose you want to limit requests to a particular
@@ -1069,7 +1131,7 @@ A C<TargetString> of C<login>
 
 =back
 
-Further, you specify a C<RateLimit> of 15,000.
+Further, you specify a C<RateLimit> of 1,000.
 
 By adding this C<RateBasedRule> to a C<WebACL>, you could limit
 requests to your login page without affecting the rest of your site.
@@ -1131,6 +1193,17 @@ Each argument is described in detail in: L<Paws::WAF::CreateRegexMatchSet>
 
 Returns: a L<Paws::WAF::CreateRegexMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a RegexMatchSet. You then use UpdateRegexMatchSet to identify
 the part of a web request that you want AWS WAF to inspect, such as the
 values of the C<User-Agent> header or the query string. For example,
@@ -1187,6 +1260,17 @@ Each argument is described in detail in: L<Paws::WAF::CreateRegexPatternSet>
 
 Returns: a L<Paws::WAF::CreateRegexPatternSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a C<RegexPatternSet>. You then use UpdateRegexPatternSet to
 specify the regular expression (regex) pattern that you want AWS WAF to
 search for, such as C<B[a@]dB[o0]t>. You can then configure AWS WAF to
@@ -1241,6 +1325,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::CreateRule>
 
 Returns: a L<Paws::WAF::CreateRuleResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Creates a C<Rule>, which contains the C<IPSet> objects, C<ByteMatchSet>
 objects, and other predicates that identify the requests that you want
@@ -1325,6 +1420,17 @@ Each argument is described in detail in: L<Paws::WAF::CreateRuleGroup>
 
 Returns: a L<Paws::WAF::CreateRuleGroupResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a C<RuleGroup>. A rule group is a collection of predefined
 rules that you add to a web ACL. You use UpdateRuleGroup to add rules
 to the rule group.
@@ -1367,6 +1473,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::CreateSizeConstraintSet>
 
 Returns: a L<Paws::WAF::CreateSizeConstraintSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Creates a C<SizeConstraintSet>. You then use UpdateSizeConstraintSet to
 identify the part of a web request that you want AWS WAF to check for
@@ -1421,6 +1538,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::CreateSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::CreateSqlInjectionMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Creates a SqlInjectionMatchSet, which you use to allow, block, or count
 requests that contain snippets of SQL code in a specified part of web
@@ -1480,6 +1608,17 @@ Each argument is described in detail in: L<Paws::WAF::CreateWebACL>
 
 Returns: a L<Paws::WAF::CreateWebACLResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Creates a C<WebACL>, which contains the C<Rules> that identify the
 CloudFront web requests that you want to allow, block, or count. AWS
 WAF evaluates C<Rules> in order based on the value of C<Priority> for
@@ -1532,6 +1671,39 @@ Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/).
 
 
+=head2 CreateWebACLMigrationStack
+
+=over
+
+=item IgnoreUnsupportedType => Bool
+
+=item S3BucketName => Str
+
+=item WebACLId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::WAF::CreateWebACLMigrationStack>
+
+Returns: a L<Paws::WAF::CreateWebACLMigrationStackResponse> instance
+
+Creates an AWS CloudFormation WAFV2 template for the specified web ACL
+in the specified Amazon S3 bucket. Then, in CloudFormation, you create
+a stack from the template, to create the web ACL and its resources in
+AWS WAFV2. Use this to migrate your AWS WAF Classic web ACL to the
+latest version of AWS WAF.
+
+This is part of a larger migration procedure for web ACLs from AWS WAF
+Classic to the latest version of AWS WAF. For the full procedure,
+including caveats and manual steps to complete the migration and switch
+over to the new web ACL, see Migrating your AWS WAF Classic resources
+to AWS WAF
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-migrating-from-classic.html)
+in the AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+
+
 =head2 CreateXssMatchSet
 
 =over
@@ -1546,6 +1718,17 @@ Developer Guide
 Each argument is described in detail in: L<Paws::WAF::CreateXssMatchSet>
 
 Returns: a L<Paws::WAF::CreateXssMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Creates an XssMatchSet, which you use to allow, block, or count
 requests that contain cross-site scripting attacks in the specified
@@ -1598,6 +1781,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteByteMatchSet>
 
 Returns: a L<Paws::WAF::DeleteByteMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a ByteMatchSet. You can't delete a C<ByteMatchSet>
 if it's still used in any C<Rules> or if it still includes any
 ByteMatchTuple objects (any filters).
@@ -1641,6 +1835,17 @@ Submit a C<DeleteByteMatchSet> request.
 Each argument is described in detail in: L<Paws::WAF::DeleteGeoMatchSet>
 
 Returns: a L<Paws::WAF::DeleteGeoMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Permanently deletes a GeoMatchSet. You can't delete a C<GeoMatchSet> if
 it's still used in any C<Rules> or if it still includes any countries.
@@ -1686,6 +1891,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteIPSet>
 
 Returns: a L<Paws::WAF::DeleteIPSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes an IPSet. You can't delete an C<IPSet> if it's
 still used in any C<Rules> or if it still includes any IP addresses.
 
@@ -1727,6 +1943,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteLoggingConfiguration
 
 Returns: a L<Paws::WAF::DeleteLoggingConfigurationResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes the LoggingConfiguration from the specified web
 ACL.
 
@@ -1743,6 +1970,17 @@ ACL.
 Each argument is described in detail in: L<Paws::WAF::DeletePermissionPolicy>
 
 Returns: a L<Paws::WAF::DeletePermissionPolicyResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Permanently deletes an IAM policy from the specified RuleGroup.
 
@@ -1763,6 +2001,17 @@ The user making the request must be the owner of the RuleGroup.
 Each argument is described in detail in: L<Paws::WAF::DeleteRateBasedRule>
 
 Returns: a L<Paws::WAF::DeleteRateBasedRuleResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Permanently deletes a RateBasedRule. You can't delete a rule if it's
 still used in any C<WebACL> objects or if it still includes any
@@ -1808,6 +2057,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRegexMatchSet>
 
 Returns: a L<Paws::WAF::DeleteRegexMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a RegexMatchSet. You can't delete a
 C<RegexMatchSet> if it's still used in any C<Rules> or if it still
 includes any C<RegexMatchTuples> objects (any filters).
@@ -1852,6 +2112,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRegexPatternSet>
 
 Returns: a L<Paws::WAF::DeleteRegexPatternSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a RegexPatternSet. You can't delete a
 C<RegexPatternSet> if it's still used in any C<RegexMatchSet> or if the
 C<RegexPatternSet> is not empty.
@@ -1871,6 +2142,17 @@ C<RegexPatternSet> is not empty.
 Each argument is described in detail in: L<Paws::WAF::DeleteRule>
 
 Returns: a L<Paws::WAF::DeleteRuleResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Permanently deletes a Rule. You can't delete a C<Rule> if it's still
 used in any C<WebACL> objects or if it still includes any predicates,
@@ -1917,6 +2199,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteRuleGroup>
 
 Returns: a L<Paws::WAF::DeleteRuleGroupResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a RuleGroup. You can't delete a C<RuleGroup> if
 it's still used in any C<WebACL> objects or if it still includes any
 rules.
@@ -1961,6 +2254,17 @@ Submit a C<DeleteRuleGroup> request.
 Each argument is described in detail in: L<Paws::WAF::DeleteSizeConstraintSet>
 
 Returns: a L<Paws::WAF::DeleteSizeConstraintSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Permanently deletes a SizeConstraintSet. You can't delete a
 C<SizeConstraintSet> if it's still used in any C<Rules> or if it still
@@ -2007,6 +2311,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteSqlInjectionMatchSet
 
 Returns: a L<Paws::WAF::DeleteSqlInjectionMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a SqlInjectionMatchSet. You can't delete a
 C<SqlInjectionMatchSet> if it's still used in any C<Rules> or if it
 still contains any SqlInjectionMatchTuple objects.
@@ -2052,6 +2367,17 @@ Each argument is described in detail in: L<Paws::WAF::DeleteWebACL>
 
 Returns: a L<Paws::WAF::DeleteWebACLResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Permanently deletes a WebACL. You can't delete a C<WebACL> if it still
 contains any C<Rules>.
 
@@ -2091,6 +2417,17 @@ Submit a C<DeleteWebACL> request.
 Each argument is described in detail in: L<Paws::WAF::DeleteXssMatchSet>
 
 Returns: a L<Paws::WAF::DeleteXssMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Permanently deletes an XssMatchSet. You can't delete an C<XssMatchSet>
 if it's still used in any C<Rules> or if it still contains any
@@ -2135,6 +2472,17 @@ Each argument is described in detail in: L<Paws::WAF::GetByteMatchSet>
 
 Returns: a L<Paws::WAF::GetByteMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 
 
@@ -2148,6 +2496,17 @@ Returns the ByteMatchSet specified by C<ByteMatchSetId>.
 Each argument is described in detail in: L<Paws::WAF::GetChangeToken>
 
 Returns: a L<Paws::WAF::GetChangeTokenResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 When you want to create, update, or delete AWS WAF objects, get a
 change token and include the change token in the create, update, or
@@ -2178,6 +2537,17 @@ C<GetChangeTokenStatus> to determine the status of your change token.
 Each argument is described in detail in: L<Paws::WAF::GetChangeTokenStatus>
 
 Returns: a L<Paws::WAF::GetChangeTokenStatusResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the status of a C<ChangeToken> that you got by calling
 GetChangeToken. C<ChangeTokenStatus> is one of the following values:
@@ -2216,6 +2586,17 @@ Each argument is described in detail in: L<Paws::WAF::GetGeoMatchSet>
 
 Returns: a L<Paws::WAF::GetGeoMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the GeoMatchSet that is specified by C<GeoMatchSetId>.
 
 
@@ -2231,6 +2612,17 @@ Returns the GeoMatchSet that is specified by C<GeoMatchSetId>.
 Each argument is described in detail in: L<Paws::WAF::GetIPSet>
 
 Returns: a L<Paws::WAF::GetIPSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the IPSet that is specified by C<IPSetId>.
 
@@ -2248,6 +2640,17 @@ Each argument is described in detail in: L<Paws::WAF::GetLoggingConfiguration>
 
 Returns: a L<Paws::WAF::GetLoggingConfigurationResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the LoggingConfiguration for the specified web ACL.
 
 
@@ -2264,6 +2667,17 @@ Each argument is described in detail in: L<Paws::WAF::GetPermissionPolicy>
 
 Returns: a L<Paws::WAF::GetPermissionPolicyResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the IAM policy attached to the RuleGroup.
 
 
@@ -2279,6 +2693,17 @@ Returns the IAM policy attached to the RuleGroup.
 Each argument is described in detail in: L<Paws::WAF::GetRateBasedRule>
 
 Returns: a L<Paws::WAF::GetRateBasedRuleResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the RateBasedRule that is specified by the C<RuleId> that you
 included in the C<GetRateBasedRule> request.
@@ -2298,6 +2723,17 @@ included in the C<GetRateBasedRule> request.
 Each argument is described in detail in: L<Paws::WAF::GetRateBasedRuleManagedKeys>
 
 Returns: a L<Paws::WAF::GetRateBasedRuleManagedKeysResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of IP addresses currently being blocked by the
 RateBasedRule that is specified by the C<RuleId>. The maximum number of
@@ -2319,6 +2755,17 @@ Each argument is described in detail in: L<Paws::WAF::GetRegexMatchSet>
 
 Returns: a L<Paws::WAF::GetRegexMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the RegexMatchSet specified by C<RegexMatchSetId>.
 
 
@@ -2334,6 +2781,17 @@ Returns the RegexMatchSet specified by C<RegexMatchSetId>.
 Each argument is described in detail in: L<Paws::WAF::GetRegexPatternSet>
 
 Returns: a L<Paws::WAF::GetRegexPatternSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the RegexPatternSet specified by C<RegexPatternSetId>.
 
@@ -2351,6 +2809,17 @@ Each argument is described in detail in: L<Paws::WAF::GetRule>
 
 Returns: a L<Paws::WAF::GetRuleResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the Rule that is specified by the C<RuleId> that you included
 in the C<GetRule> request.
 
@@ -2367,6 +2836,17 @@ in the C<GetRule> request.
 Each argument is described in detail in: L<Paws::WAF::GetRuleGroup>
 
 Returns: a L<Paws::WAF::GetRuleGroupResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the RuleGroup that is specified by the C<RuleGroupId> that you
 included in the C<GetRuleGroup> request.
@@ -2392,6 +2872,17 @@ To view the rules in a rule group, use ListActivatedRulesInRuleGroup.
 Each argument is described in detail in: L<Paws::WAF::GetSampledRequests>
 
 Returns: a L<Paws::WAF::GetSampledRequestsResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Gets detailed information about a specified number of requests--a
 sample--that AWS WAF randomly selects from among the first 5,000
@@ -2420,6 +2911,17 @@ Each argument is described in detail in: L<Paws::WAF::GetSizeConstraintSet>
 
 Returns: a L<Paws::WAF::GetSizeConstraintSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
 
 
@@ -2435,6 +2937,17 @@ Returns the SizeConstraintSet specified by C<SizeConstraintSetId>.
 Each argument is described in detail in: L<Paws::WAF::GetSqlInjectionMatchSet>
 
 Returns: a L<Paws::WAF::GetSqlInjectionMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the SqlInjectionMatchSet that is specified by
 C<SqlInjectionMatchSetId>.
@@ -2453,6 +2966,17 @@ Each argument is described in detail in: L<Paws::WAF::GetWebACL>
 
 Returns: a L<Paws::WAF::GetWebACLResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns the WebACL that is specified by C<WebACLId>.
 
 
@@ -2468,6 +2992,17 @@ Returns the WebACL that is specified by C<WebACLId>.
 Each argument is described in detail in: L<Paws::WAF::GetXssMatchSet>
 
 Returns: a L<Paws::WAF::GetXssMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns the XssMatchSet that is specified by C<XssMatchSetId>.
 
@@ -2489,6 +3024,17 @@ Each argument is described in detail in: L<Paws::WAF::ListActivatedRulesInRuleGr
 
 Returns: a L<Paws::WAF::ListActivatedRulesInRuleGroupResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of ActivatedRule objects.
 
 
@@ -2506,6 +3052,17 @@ Returns an array of ActivatedRule objects.
 Each argument is described in detail in: L<Paws::WAF::ListByteMatchSets>
 
 Returns: a L<Paws::WAF::ListByteMatchSetsResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of ByteMatchSetSummary objects.
 
@@ -2525,6 +3082,17 @@ Each argument is described in detail in: L<Paws::WAF::ListGeoMatchSets>
 
 Returns: a L<Paws::WAF::ListGeoMatchSetsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of GeoMatchSetSummary objects in the response.
 
 
@@ -2542,6 +3110,17 @@ Returns an array of GeoMatchSetSummary objects in the response.
 Each argument is described in detail in: L<Paws::WAF::ListIPSets>
 
 Returns: a L<Paws::WAF::ListIPSetsResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of IPSetSummary objects in the response.
 
@@ -2561,6 +3140,17 @@ Each argument is described in detail in: L<Paws::WAF::ListLoggingConfigurations>
 
 Returns: a L<Paws::WAF::ListLoggingConfigurationsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of LoggingConfiguration objects.
 
 
@@ -2578,6 +3168,17 @@ Returns an array of LoggingConfiguration objects.
 Each argument is described in detail in: L<Paws::WAF::ListRateBasedRules>
 
 Returns: a L<Paws::WAF::ListRateBasedRulesResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of RuleSummary objects.
 
@@ -2597,6 +3198,17 @@ Each argument is described in detail in: L<Paws::WAF::ListRegexMatchSets>
 
 Returns: a L<Paws::WAF::ListRegexMatchSetsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of RegexMatchSetSummary objects.
 
 
@@ -2614,6 +3226,17 @@ Returns an array of RegexMatchSetSummary objects.
 Each argument is described in detail in: L<Paws::WAF::ListRegexPatternSets>
 
 Returns: a L<Paws::WAF::ListRegexPatternSetsResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of RegexPatternSetSummary objects.
 
@@ -2633,6 +3256,17 @@ Each argument is described in detail in: L<Paws::WAF::ListRuleGroups>
 
 Returns: a L<Paws::WAF::ListRuleGroupsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of RuleGroup objects.
 
 
@@ -2650,6 +3284,17 @@ Returns an array of RuleGroup objects.
 Each argument is described in detail in: L<Paws::WAF::ListRules>
 
 Returns: a L<Paws::WAF::ListRulesResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of RuleSummary objects.
 
@@ -2669,6 +3314,17 @@ Each argument is described in detail in: L<Paws::WAF::ListSizeConstraintSets>
 
 Returns: a L<Paws::WAF::ListSizeConstraintSetsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of SizeConstraintSetSummary objects.
 
 
@@ -2687,6 +3343,17 @@ Each argument is described in detail in: L<Paws::WAF::ListSqlInjectionMatchSets>
 
 Returns: a L<Paws::WAF::ListSqlInjectionMatchSetsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of SqlInjectionMatchSet objects.
 
 
@@ -2704,6 +3371,17 @@ Returns an array of SqlInjectionMatchSet objects.
 Each argument is described in detail in: L<Paws::WAF::ListSubscribedRuleGroups>
 
 Returns: a L<Paws::WAF::ListSubscribedRuleGroupsResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of RuleGroup objects that you are subscribed to.
 
@@ -2725,7 +3403,28 @@ Each argument is described in detail in: L<Paws::WAF::ListTagsForResource>
 
 Returns: a L<Paws::WAF::ListTagsForResourceResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
 
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+Retrieves the tags associated with the specified AWS resource. Tags are
+key:value pairs that you can use to categorize and manage your
+resources, for purposes like billing. For example, you might set the
+tag key to "customer" and the value to the customer name or ID. You can
+specify one or more tags to add to each AWS resource, up to 50 tags for
+a resource.
+
+Tagging is only available through the API, SDKs, and CLI. You can't
+manage or view tags through the AWS WAF Classic console. You can tag
+the AWS resources that you manage through AWS WAF Classic: web ACLs,
+rule groups, and rules.
 
 
 =head2 ListWebACLs
@@ -2742,6 +3441,17 @@ Returns: a L<Paws::WAF::ListTagsForResourceResponse> instance
 Each argument is described in detail in: L<Paws::WAF::ListWebACLs>
 
 Returns: a L<Paws::WAF::ListWebACLsResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Returns an array of WebACLSummary objects in the response.
 
@@ -2761,6 +3471,17 @@ Each argument is described in detail in: L<Paws::WAF::ListXssMatchSets>
 
 Returns: a L<Paws::WAF::ListXssMatchSetsResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Returns an array of XssMatchSet objects.
 
 
@@ -2776,6 +3497,17 @@ Returns an array of XssMatchSet objects.
 Each argument is described in detail in: L<Paws::WAF::PutLoggingConfiguration>
 
 Returns: a L<Paws::WAF::PutLoggingConfigurationResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Associates a LoggingConfiguration with a specified web ACL.
 
@@ -2825,8 +3557,19 @@ Each argument is described in detail in: L<Paws::WAF::PutPermissionPolicy>
 
 Returns: a L<Paws::WAF::PutPermissionPolicyResponse> instance
 
-Attaches a IAM policy to the specified resource. The only supported use
-for this action is to share a RuleGroup across accounts.
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+Attaches an IAM policy to the specified resource. The only supported
+use for this action is to share a RuleGroup across accounts.
 
 The C<PutPermissionPolicy> is subject to the following restrictions:
 
@@ -2893,7 +3636,28 @@ Each argument is described in detail in: L<Paws::WAF::TagResource>
 
 Returns: a L<Paws::WAF::TagResourceResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
 
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
+Associates tags with the specified AWS resource. Tags are key:value
+pairs that you can use to categorize and manage your resources, for
+purposes like billing. For example, you might set the tag key to
+"customer" and the value to the customer name or ID. You can specify
+one or more tags to add to each AWS resource, up to 50 tags for a
+resource.
+
+Tagging is only available through the API, SDKs, and CLI. You can't
+manage or view tags through the AWS WAF Classic console. You can use
+this action to tag the AWS resources that you manage through AWS WAF
+Classic: web ACLs, rule groups, and rules.
 
 
 =head2 UntagResource
@@ -2911,7 +3675,16 @@ Each argument is described in detail in: L<Paws::WAF::UntagResource>
 
 Returns: a L<Paws::WAF::UntagResourceResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
 
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 
 =head2 UpdateByteMatchSet
@@ -2930,6 +3703,17 @@ Returns: a L<Paws::WAF::UntagResourceResponse> instance
 Each argument is described in detail in: L<Paws::WAF::UpdateByteMatchSet>
 
 Returns: a L<Paws::WAF::UpdateByteMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Inserts or deletes ByteMatchTuple objects (filters) in a ByteMatchSet.
 For each C<ByteMatchTuple> object, you specify the following values:
@@ -3012,6 +3796,17 @@ Each argument is described in detail in: L<Paws::WAF::UpdateGeoMatchSet>
 
 Returns: a L<Paws::WAF::UpdateGeoMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes GeoMatchConstraint objects in an C<GeoMatchSet>. For
 each C<GeoMatchConstraint> object, you specify the following values:
 
@@ -3080,6 +3875,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::UpdateIPSet>
 
 Returns: a L<Paws::WAF::UpdateIPSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Inserts or deletes IPSetDescriptor objects in an C<IPSet>. For each
 C<IPSetDescriptor> object, you specify the following values:
@@ -3190,6 +3996,17 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRateBasedRule>
 
 Returns: a L<Paws::WAF::UpdateRateBasedRuleResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes Predicate objects in a rule and updates the
 C<RateLimit> in the rule.
 
@@ -3215,14 +4032,14 @@ A C<ByteMatchSet> that matches C<BadBot> in the C<User-Agent> header
 
 =back
 
-Further, you specify a C<RateLimit> of 15,000.
+Further, you specify a C<RateLimit> of 1,000.
 
 You then add the C<RateBasedRule> to a C<WebACL> and specify that you
 want to block requests that satisfy the rule. For a request to be
 blocked, it must come from the IP address 192.0.2.44 I<and> the
 C<User-Agent> header in the request must contain the value C<BadBot>.
 Further, requests that match these two conditions much be received at a
-rate of more than 15,000 every five minutes. If the rate drops below
+rate of more than 1,000 every five minutes. If the rate drops below
 this limit, AWS WAF no longer blocks the requests.
 
 As a second example, suppose you want to limit requests to a particular
@@ -3245,7 +4062,7 @@ A C<TargetString> of C<login>
 
 =back
 
-Further, you specify a C<RateLimit> of 15,000.
+Further, you specify a C<RateLimit> of 1,000.
 
 By adding this C<RateBasedRule> to a C<WebACL>, you could limit
 requests to your login page without affecting the rest of your site.
@@ -3267,6 +4084,17 @@ requests to your login page without affecting the rest of your site.
 Each argument is described in detail in: L<Paws::WAF::UpdateRegexMatchSet>
 
 Returns: a L<Paws::WAF::UpdateRegexMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Inserts or deletes RegexMatchTuple objects (filters) in a
 RegexMatchSet. For each C<RegexMatchSetUpdate> object, you specify the
@@ -3347,6 +4175,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::UpdateRegexPatternSet>
 
 Returns: a L<Paws::WAF::UpdateRegexPatternSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Inserts or deletes C<RegexPatternString> objects in a RegexPatternSet.
 For each C<RegexPatternString> object, you specify the following
@@ -3432,6 +4271,17 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRule>
 
 Returns: a L<Paws::WAF::UpdateRuleResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes Predicate objects in a C<Rule>. Each C<Predicate>
 object identifies a predicate, such as a ByteMatchSet or an IPSet, that
 specifies the web requests that you want to allow, block, or count. If
@@ -3512,6 +4362,17 @@ Each argument is described in detail in: L<Paws::WAF::UpdateRuleGroup>
 
 Returns: a L<Paws::WAF::UpdateRuleGroupResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes ActivatedRule objects in a C<RuleGroup>.
 
 You can only insert C<REGULAR> rules into a rule group.
@@ -3568,6 +4429,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::UpdateSizeConstraintSet>
 
 Returns: a L<Paws::WAF::UpdateSizeConstraintSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Inserts or deletes SizeConstraint objects (filters) in a
 SizeConstraintSet. For each C<SizeConstraint> object, you specify the
@@ -3660,6 +4532,17 @@ Each argument is described in detail in: L<Paws::WAF::UpdateSqlInjectionMatchSet
 
 Returns: a L<Paws::WAF::UpdateSqlInjectionMatchSetResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes SqlInjectionMatchTuple objects (filters) in a
 SqlInjectionMatchSet. For each C<SqlInjectionMatchTuple> object, you
 specify the following values:
@@ -3740,6 +4623,17 @@ Each argument is described in detail in: L<Paws::WAF::UpdateWebACL>
 
 Returns: a L<Paws::WAF::UpdateWebACLResponse> instance
 
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
+
 Inserts or deletes ActivatedRule objects in a C<WebACL>. Each C<Rule>
 identifies web requests that you want to allow, block, or count. When
 you update a C<WebACL>, you specify the following values:
@@ -3809,14 +4703,14 @@ to include in the C<WebACL>, to specify the default action, and to
 associate the C<WebACL> with a CloudFront distribution.
 
 The C<ActivatedRule> can be a rule group. If you specify a rule group
-as your C<ActivatedRule>, you can exclude specific rules from that rule
-group.
+as your C<ActivatedRule> , you can exclude specific rules from that
+rule group.
 
 If you already have a rule group associated with a web ACL and want to
 submit an C<UpdateWebACL> request to exclude certain rules from that
 rule group, you must first remove the rule group from the web ACL, the
 re-insert it again, specifying the excluded rules. For details, see
-ActivatedRule$ExcludedRules.
+ActivatedRule$ExcludedRules .
 
 =back
 
@@ -3846,6 +4740,17 @@ HTTP requests, see the AWS WAF Developer Guide
 Each argument is described in detail in: L<Paws::WAF::UpdateXssMatchSet>
 
 Returns: a L<Paws::WAF::UpdateXssMatchSetResponse> instance
+
+This is B<AWS WAF Classic> documentation. For more information, see AWS
+WAF Classic
+(https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
+in the developer guide.
+
+B<For the latest version of AWS WAF>, use the AWS WAFV2 API and see the
+AWS WAF Developer Guide
+(https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
+With the latest version, AWS WAF has a single set of endpoints for
+regional and global use.
 
 Inserts or deletes XssMatchTuple objects (filters) in an XssMatchSet.
 For each C<XssMatchTuple> object, you specify the following values:

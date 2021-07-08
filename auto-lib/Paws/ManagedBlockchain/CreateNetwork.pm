@@ -8,6 +8,7 @@ package Paws::ManagedBlockchain::CreateNetwork;
   has FrameworkVersion => (is => 'ro', isa => 'Str', required => 1);
   has MemberConfiguration => (is => 'ro', isa => 'Paws::ManagedBlockchain::MemberConfiguration', required => 1);
   has Name => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::ManagedBlockchain::InputTagMap');
   has VotingPolicy => (is => 'ro', isa => 'Paws::ManagedBlockchain::VotingPolicy', required => 1);
 
   use MooseX::ClassAttribute;
@@ -49,6 +50,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         Name        => 'MyNetworkMemberNameString',    # min: 1, max: 64
         Description => 'MyDescriptionString',          # max: 128; OPTIONAL
+        KmsKeyArn   => 'MyArnString',    # min: 1, max: 1011; OPTIONAL
+        LogPublishingConfiguration => {
+          Fabric => {
+            CaLogs => {
+              Cloudwatch => {
+                Enabled => 1,    # OPTIONAL
+              },    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+        },    # OPTIONAL
+        Tags => {
+          'MyTagKey' => 'MyTagValue',   # key: min: 1, max: 128, value: max: 256
+        },    # max: 50; OPTIONAL
       },
       Name         => 'MyNameString',
       VotingPolicy => {
@@ -65,6 +79,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Edition => 'STARTER',    # values: STARTER, STANDARD
 
         },    # OPTIONAL
+      },    # OPTIONAL
+      Tags => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
     );
 
@@ -100,7 +117,7 @@ An optional description for the network.
 
 The blockchain framework that the network uses.
 
-Valid values are: C<"HYPERLEDGER_FABRIC">
+Valid values are: C<"HYPERLEDGER_FABRIC">, C<"ETHEREUM">
 
 =head2 FrameworkConfiguration => L<Paws::ManagedBlockchain::NetworkFrameworkConfiguration>
 
@@ -124,6 +141,24 @@ Configuration properties for the first member within the network.
 =head2 B<REQUIRED> Name => Str
 
 The name of the network.
+
+
+
+=head2 Tags => L<Paws::ManagedBlockchain::InputTagMap>
+
+Tags to assign to the network. Each tag consists of a key and optional
+value.
+
+When specifying tags during creation, you can specify multiple
+key-value pairs in a single request, with an overall maximum of 50 tags
+added to each resource.
+
+For more information about tags, see Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/ethereum-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Ethereum Developer Guide>, or
+Tagging Resources
+(https://docs.aws.amazon.com/managed-blockchain/latest/hyperledger-fabric-dev/tagging-resources.html)
+in the I<Amazon Managed Blockchain Hyperledger Fabric Developer Guide>.
 
 
 

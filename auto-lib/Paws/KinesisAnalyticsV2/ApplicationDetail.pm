@@ -4,10 +4,16 @@ package Paws::KinesisAnalyticsV2::ApplicationDetail;
   has ApplicationARN => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription');
   has ApplicationDescription => (is => 'ro', isa => 'Str');
+  has ApplicationMaintenanceConfigurationDescription => (is => 'ro', isa => 'Paws::KinesisAnalyticsV2::ApplicationMaintenanceConfigurationDescription');
+  has ApplicationMode => (is => 'ro', isa => 'Str');
   has ApplicationName => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationStatus => (is => 'ro', isa => 'Str', required => 1);
   has ApplicationVersionId => (is => 'ro', isa => 'Int', required => 1);
+  has ApplicationVersionRolledBackFrom => (is => 'ro', isa => 'Int');
+  has ApplicationVersionRolledBackTo => (is => 'ro', isa => 'Int');
+  has ApplicationVersionUpdatedFrom => (is => 'ro', isa => 'Int');
   has CloudWatchLoggingOptionDescriptions => (is => 'ro', isa => 'ArrayRef[Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionDescription]');
+  has ConditionalToken => (is => 'ro', isa => 'Str');
   has CreateTimestamp => (is => 'ro', isa => 'Str');
   has LastUpdateTimestamp => (is => 'ro', isa => 'Str');
   has RuntimeEnvironment => (is => 'ro', isa => 'Str', required => 1);
@@ -57,13 +63,25 @@ The ARN of the application.
 
 =head2 ApplicationConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationConfigurationDescription>
 
-Provides details about the application's SQL or Java code and starting
-parameters.
+Describes details about the application code and starting parameters
+for a Kinesis Data Analytics application.
 
 
 =head2 ApplicationDescription => Str
 
 The description of the application.
+
+
+=head2 ApplicationMaintenanceConfigurationDescription => L<Paws::KinesisAnalyticsV2::ApplicationMaintenanceConfigurationDescription>
+
+The details of the maintenance configuration for the application.
+
+
+=head2 ApplicationMode => Str
+
+To create a Kinesis Data Analytics Studio notebook, you must set the
+mode to C<INTERACTIVE>. However, for a Kinesis Data Analytics for
+Apache Flink application, the mode is optional.
 
 
 =head2 B<REQUIRED> ApplicationName => Str
@@ -83,9 +101,32 @@ updates the C<ApplicationVersionId> each time you update the
 application.
 
 
+=head2 ApplicationVersionRolledBackFrom => Int
+
+If you reverted the application using RollbackApplication, the
+application version when C<RollbackApplication> was called.
+
+
+=head2 ApplicationVersionRolledBackTo => Int
+
+The version to which you want to roll back the application.
+
+
+=head2 ApplicationVersionUpdatedFrom => Int
+
+The previous application version before the latest application update.
+RollbackApplication reverts the application to this version.
+
+
 =head2 CloudWatchLoggingOptionDescriptions => ArrayRef[L<Paws::KinesisAnalyticsV2::CloudWatchLoggingOptionDescription>]
 
 Describes the application Amazon CloudWatch logging options.
+
+
+=head2 ConditionalToken => Str
+
+A value you use to implement strong concurrency for application
+updates.
 
 
 =head2 CreateTimestamp => Str
@@ -100,8 +141,8 @@ The current timestamp when the application was last updated.
 
 =head2 B<REQUIRED> RuntimeEnvironment => Str
 
-The runtime environment for the application (C<SQL-1.0> or
-C<FLINK-1_6>).
+The runtime environment for the application (C<SQL-1_0>, C<FLINK-1_6>,
+C<FLINK-1_8>, or C<FLINK-1_11>).
 
 
 =head2 ServiceExecutionRole => Str

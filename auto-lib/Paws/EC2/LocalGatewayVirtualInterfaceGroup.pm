@@ -3,6 +3,7 @@ package Paws::EC2::LocalGatewayVirtualInterfaceGroup;
   has LocalGatewayId => (is => 'ro', isa => 'Str', request_name => 'localGatewayId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceGroupId => (is => 'ro', isa => 'Str', request_name => 'localGatewayVirtualInterfaceGroupId', traits => ['NameInRequest']);
   has LocalGatewayVirtualInterfaceIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'localGatewayVirtualInterfaceIdSet', traits => ['NameInRequest']);
+  has OwnerId => (is => 'ro', isa => 'Str', request_name => 'ownerId', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest']);
 1;
 
@@ -52,6 +53,11 @@ The ID of the virtual interface group.
 =head2 LocalGatewayVirtualInterfaceIds => ArrayRef[Str|Undef]
 
 The IDs of the virtual interfaces.
+
+
+=head2 OwnerId => Str
+
+The AWS account ID that owns the local gateway virtual interface group.
 
 
 =head2 Tags => ArrayRef[L<Paws::EC2::Tag>]

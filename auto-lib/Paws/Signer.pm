@@ -14,6 +14,11 @@ package Paws::Signer;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AddProfilePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::AddProfilePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CancelSigningProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Signer::CancelSigningProfile', @_);
@@ -32,6 +37,11 @@ package Paws::Signer;
   sub GetSigningProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Signer::GetSigningProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListProfilePermissions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::ListProfilePermissions', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListSigningJobs {
@@ -57,6 +67,21 @@ package Paws::Signer;
   sub PutSigningProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Signer::PutSigningProfile', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RemoveProfilePermission {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::RemoveProfilePermission', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RevokeSignature {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::RevokeSignature', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RevokeSigningProfile {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Signer::RevokeSigningProfile', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub StartSigningJob {
@@ -146,7 +171,7 @@ package Paws::Signer;
   }
 
 
-  sub operations { qw/CancelSigningProfile DescribeSigningJob GetSigningPlatform GetSigningProfile ListSigningJobs ListSigningPlatforms ListSigningProfiles ListTagsForResource PutSigningProfile StartSigningJob TagResource UntagResource / }
+  sub operations { qw/AddProfilePermission CancelSigningProfile DescribeSigningJob GetSigningPlatform GetSigningProfile ListProfilePermissions ListSigningJobs ListSigningPlatforms ListSigningProfiles ListTagsForResource PutSigningProfile RemoveProfilePermission RevokeSignature RevokeSigningProfile StartSigningJob TagResource UntagResource / }
 
 1;
 
@@ -174,24 +199,61 @@ Paws::Signer - Perl Interface to AWS AWS Signer
 
 =head1 DESCRIPTION
 
-With code signing for IoT, you can sign code that you create for any
-IoT device that is supported by Amazon Web Services (AWS). Code signing
-is available through Amazon FreeRTOS
+AWS Signer is a fully managed code signing service to help you ensure
+the trust and integrity of your code.
+
+AWS Signer supports the following applications:
+
+With I<code signing for AWS Lambda>, you can sign AWS Lambda deployment
+packages. Integrated support is provided for Amazon S3, Amazon
+CloudWatch, and AWS CloudTrail. In order to sign code, you create a
+signing profile and then use Signer to sign Lambda zip files in S3.
+
+With I<code signing for IoT>, you can sign code for any IoT device that
+is supported by AWS. IoT code signing is available for Amazon FreeRTOS
 (http://docs.aws.amazon.com/freertos/latest/userguide/) and AWS IoT
 Device Management
-(http://docs.aws.amazon.com/iot/latest/developerguide/), and integrated
-with AWS Certificate Manager (ACM)
+(http://docs.aws.amazon.com/iot/latest/developerguide/), and is
+integrated with AWS Certificate Manager (ACM)
 (http://docs.aws.amazon.com/acm/latest/userguide/). In order to sign
-code, you import a third-party code signing certificate with ACM that
-is used to sign updates in Amazon FreeRTOS and AWS IoT Device
-Management. For general information about using code signing, see the
-Code Signing for IoT Developer Guide
+code, you import a third-party code signing certificate using ACM, and
+use that to sign updates in Amazon FreeRTOS and AWS IoT Device
+Management.
+
+For more information about AWS Signer, see the AWS Signer Developer
+Guide
 (http://docs.aws.amazon.com/signer/latest/developerguide/Welcome.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/signer-2017-08-25>
 
 
 =head1 METHODS
+
+=head2 AddProfilePermission
+
+=over
+
+=item Action => Str
+
+=item Principal => Str
+
+=item ProfileName => Str
+
+=item StatementId => Str
+
+=item [ProfileVersion => Str]
+
+=item [RevisionId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::AddProfilePermission>
+
+Returns: a L<Paws::Signer::AddProfilePermissionResponse> instance
+
+Adds cross-account permissions to a signing profile.
+
 
 =head2 CancelSigningProfile
 
@@ -252,6 +314,8 @@ Returns information on a specific signing platform.
 
 =item ProfileName => Str
 
+=item [ProfileOwner => Str]
+
 
 =back
 
@@ -262,9 +326,31 @@ Returns: a L<Paws::Signer::GetSigningProfileResponse> instance
 Returns information on a specific signing profile.
 
 
+=head2 ListProfilePermissions
+
+=over
+
+=item ProfileName => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::ListProfilePermissions>
+
+Returns: a L<Paws::Signer::ListProfilePermissionsResponse> instance
+
+Lists the cross-account permissions associated with a signing profile.
+
+
 =head2 ListSigningJobs
 
 =over
+
+=item [IsRevoked => Bool]
+
+=item [JobInvoker => Str]
 
 =item [MaxResults => Int]
 
@@ -273,6 +359,10 @@ Returns information on a specific signing profile.
 =item [PlatformId => Str]
 
 =item [RequestedBy => Str]
+
+=item [SignatureExpiresAfter => Str]
+
+=item [SignatureExpiresBefore => Str]
 
 =item [Status => Str]
 
@@ -333,6 +423,10 @@ parameter until all of your signing jobs have been returned.
 
 =item [NextToken => Str]
 
+=item [PlatformId => Str]
+
+=item [Statuses => ArrayRef[Str|Undef]]
+
 
 =back
 
@@ -374,9 +468,11 @@ Returns a list of the tags associated with a signing profile resource.
 
 =item ProfileName => Str
 
-=item SigningMaterial => L<Paws::Signer::SigningMaterial>
-
 =item [Overrides => L<Paws::Signer::SigningPlatformOverrides>]
+
+=item [SignatureValidityPeriod => L<Paws::Signer::SignatureValidityPeriod>]
+
+=item [SigningMaterial => L<Paws::Signer::SigningMaterial>]
 
 =item [SigningParameters => L<Paws::Signer::SigningParameters>]
 
@@ -396,6 +492,71 @@ http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
 (http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html)
 
 
+=head2 RemoveProfilePermission
+
+=over
+
+=item ProfileName => Str
+
+=item RevisionId => Str
+
+=item StatementId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::RemoveProfilePermission>
+
+Returns: a L<Paws::Signer::RemoveProfilePermissionResponse> instance
+
+Removes cross-account permissions from a signing profile.
+
+
+=head2 RevokeSignature
+
+=over
+
+=item JobId => Str
+
+=item Reason => Str
+
+=item [JobOwner => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::RevokeSignature>
+
+Returns: nothing
+
+Changes the state of a signing job to REVOKED. This indicates that the
+signature is no longer valid.
+
+
+=head2 RevokeSigningProfile
+
+=over
+
+=item EffectiveTime => Str
+
+=item ProfileName => Str
+
+=item ProfileVersion => Str
+
+=item Reason => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Signer::RevokeSigningProfile>
+
+Returns: nothing
+
+Changes the state of a signing profile to REVOKED. This indicates that
+signatures generated using the signing profile after an effective start
+date are no longer valid.
+
+
 =head2 StartSigningJob
 
 =over
@@ -404,9 +565,11 @@ http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html
 
 =item Destination => L<Paws::Signer::Destination>
 
+=item ProfileName => Str
+
 =item Source => L<Paws::Signer::Source>
 
-=item [ProfileName => Str]
+=item [ProfileOwner => Str]
 
 
 =back
@@ -474,9 +637,8 @@ Returns: a L<Paws::Signer::TagResourceResponse> instance
 
 Adds one or more tags to a signing profile. Tags are labels that you
 can use to identify and organize your AWS resources. Each tag consists
-of a key and an optional value. You specify the signing profile using
-its Amazon Resource Name (ARN). You specify the tag by using a
-key-value pair.
+of a key and an optional value. To specify the signing profile, use its
+Amazon Resource Name (ARN). To specify the tag, use a key-value pair.
 
 
 =head2 UntagResource
@@ -494,8 +656,8 @@ Each argument is described in detail in: L<Paws::Signer::UntagResource>
 
 Returns: a L<Paws::Signer::UntagResourceResponse> instance
 
-Remove one or more tags from a signing profile. Specify a list of tag
-keys to remove the tags.
+Removes one or more tags from a signing profile. To remove the tags,
+specify a list of tag keys.
 
 
 
@@ -504,9 +666,9 @@ keys to remove the tags.
 
 Paginator methods are helpers that repetively call methods that return partial results
 
-=head2 ListAllSigningJobs(sub { },[MaxResults => Int, NextToken => Str, PlatformId => Str, RequestedBy => Str, Status => Str])
+=head2 ListAllSigningJobs(sub { },[IsRevoked => Bool, JobInvoker => Str, MaxResults => Int, NextToken => Str, PlatformId => Str, RequestedBy => Str, SignatureExpiresAfter => Str, SignatureExpiresBefore => Str, Status => Str])
 
-=head2 ListAllSigningJobs([MaxResults => Int, NextToken => Str, PlatformId => Str, RequestedBy => Str, Status => Str])
+=head2 ListAllSigningJobs([IsRevoked => Bool, JobInvoker => Str, MaxResults => Int, NextToken => Str, PlatformId => Str, RequestedBy => Str, SignatureExpiresAfter => Str, SignatureExpiresBefore => Str, Status => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -528,9 +690,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::Signer::ListSigningPlatformsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllSigningProfiles(sub { },[IncludeCanceled => Bool, MaxResults => Int, NextToken => Str])
+=head2 ListAllSigningProfiles(sub { },[IncludeCanceled => Bool, MaxResults => Int, NextToken => Str, PlatformId => Str, Statuses => ArrayRef[Str|Undef]])
 
-=head2 ListAllSigningProfiles([IncludeCanceled => Bool, MaxResults => Int, NextToken => Str])
+=head2 ListAllSigningProfiles([IncludeCanceled => Bool, MaxResults => Int, NextToken => Str, PlatformId => Str, Statuses => ArrayRef[Str|Undef]])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

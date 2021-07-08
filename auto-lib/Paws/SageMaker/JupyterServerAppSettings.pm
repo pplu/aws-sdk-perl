@@ -33,14 +33,15 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Jupyter server's app settings.
+The JupyterServer app settings.
 
 =head1 ATTRIBUTES
 
 
 =head2 DefaultResourceSpec => L<Paws::SageMaker::ResourceSpec>
 
-The instance type and quantity.
+The default instance type and the Amazon Resource Name (ARN) of the
+default SageMaker image used by the JupyterServer app.
 
 
 

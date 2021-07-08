@@ -43,8 +43,8 @@ Data about a queue.
 
 =head2 DeadLetterTargetArn => Str
 
-The Amazon Resource Name (ARN) of the dead-letter queue to which Amazon
-SQS moves messages after the value of C<maxReceiveCount> is exceeded.
+The ARN of the dead-letter queue to which Amazon SQS moves messages
+after the value of C<maxReceiveCount> is exceeded.
 
 
 =head2 KmsDataKeyReusePeriodSeconds => Int
@@ -55,7 +55,7 @@ key to encrypt or decrypt messages before calling AWS KMS again.
 
 =head2 KmsMasterKeyId => Str
 
-The ID of an AWS-managed customer master key (CMK) for Amazon SQS or a
+The ID of an AWS managed customer master key (CMK) for Amazon SQS or a
 custom CMK.
 
 

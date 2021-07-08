@@ -17,15 +17,15 @@ package Paws::API::Builder {
   use v5.10;
 
   use Paws::API::RegionBuilder;
-  use Paws::API::ServiceToClass;
 
-  has api => (is => 'ro', required => 1);
+  has api => (is => 'ro', required => 1, lazy => 1, default => sub {
+    my $self = shift;
+    return sprintf 'Paws::%s', $self->api_ns;
+  });
 
   sub service_name {
     my $self = shift;
-    my $svc = $self->api;
-    $svc =~ s/^.*\:\://;
-    return $svc;
+    $self->api_ns;
   }
 
   has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
@@ -35,13 +35,13 @@ package Paws::API::Builder {
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
   has api_file => (is => 'ro', required => 1);
-
-  has api_ns => (is => 'ro', lazy => 1, default => sub {
+  has api_file_service => (is => 'ro', isa => 'Str', lazy => 1, default => sub {
     my $self = shift;
-    my ($service_dir) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
-    return Paws::API::ServiceToClass::service_to_class($service_dir);
+    my ($service) = ($self->api_file =~ m/data\/(.*?)\/.*?\/service-2.json/);
+    return $service;
   });
 
+  has api_ns => (is => 'ro', required => 1);
   has template_path => (is => 'ro', required => 1);
 
   has service_url_overrides => (is => 'ro', isa => 'HashRef', default => sub { {
@@ -248,6 +248,9 @@ package Paws::API::Builder {
     return 'AdminListAllUserAuthEvents' if ($name eq 'AdminListUserAuthEvents');
     return 'ViewAllBilling' if ($name eq 'ViewBilling');
     return 'ScanAllProvisionedProducts' if ($name eq 'ScanProvisionedProducts');
+    return 'ValidateAllPolicies' if ($name eq 'ValidatePolicy');
+    return 'SelectAllAggregateResourceConfig' if ($name eq 'SelectAggregateResourceConfig');
+    return 'SelectAllResourceConfig' if ($name eq 'SelectResourceConfig');
 
     die "Please help me generate a good name for the paginator $name";
   }
@@ -438,11 +441,13 @@ package Paws::API::Builder {
                                            and not $self->is_output_shape($shape_name)
                                            and not $self->is_input_shape($shape_name)
                                           );
-	# Hack: it results that RedShift uses the ResizeClusterMessage as an internal object and as the input shape
-	# for the ResizeCluster call, so due to the "not is_input_shape", the ResizeClusterMessage object was not being
-	# generated. To not overcomplicate the condition on top, I've made and exception for this shape to get into
+	# Hack: it results that RedShift uses some shapes as an internal object and as the input shape for a method
+	# call (ResizeCluster, PauseCluseter, ResumeCluster), so due to the "not is_input_shape", the objects were not being
+	# generated. To not overcomplicate the condition on top, I've made exceptions for this shape to get into
 	# the _inner_shapes attribute
 	$ret->{ $shape_name } = $shape if ($self->api eq 'Paws::RedShift' and $shape_name eq 'ResizeClusterMessage');
+	$ret->{ $shape_name } = $shape if ($self->api eq 'Paws::RedShift' and $shape_name eq 'ResumeClusterMessage');
+	$ret->{ $shape_name } = $shape if ($self->api eq 'Paws::RedShift' and $shape_name eq 'PauseClusterMessage');
       }
       return $ret;
     },
@@ -957,8 +962,17 @@ package Paws::API::Builder {
     foreach my $shape_name ($self->shapes) {
       $self->shape($shape_name)->{ perl_type } = $self->get_caller_class_type($shape_name);
       $self->shape($shape_name)->{ example_code } = ( $self->get_example_code($shape_name) )[0];
-
     }
+
+    my $shape_conflicts = 0;
+    foreach my $op_name ($self->operations) {
+      if ($self->is_inner_shape($op_name)) {
+        warn "$op_name conflicts with a shape";
+	$shape_conflicts = 1;
+      }
+    }
+
+    die "Stopping generation due to conflicts between method names and shape names" if ($shape_conflicts);
 
     foreach my $op_name ($self->operations) {
       my $op_example = '';
@@ -1143,8 +1157,9 @@ package Paws::API::Builder {
     if ($iclass->{type} eq 'map') {
       my $keys_shape = $self->shape($iclass->{key}->{shape});
       my $values_shape = $self->shape($iclass->{value}->{shape});
-
       if ($keys_shape->{enum}){
+        # Some enums have names like SHA-1, SHA-256, etc that cannot be used as attributes in a Moose class. Sanitize them
+        $keys_shape->{enum} = [ map { $_ =~ s/-//; $_ } @{ $keys_shape->{ enum } }  ];
         $self->process_template('map_enum.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, });
       } elsif ($keys_shape->{type} eq 'string' and $values_shape->{type} eq 'string') {
         $self->process_template('map_str_to_native.tt', { c => $self, iclass => $iclass, inner_class => $inner_class, keys_shape => $keys_shape, values_shape => $values_shape, map_class => 'HashRef[Maybe[Str]]' });

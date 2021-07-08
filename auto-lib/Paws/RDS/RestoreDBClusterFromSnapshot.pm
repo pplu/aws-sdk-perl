@@ -57,6 +57,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'SnapshotIdentifier'  => 'sample-cluster-snapshot1'
     );
 
+    # Results:
+    my $DBCluster = $RestoreDBClusterFromSnapshotResult->DBCluster;
+
+    # Returns a L<Paws::RDS::RestoreDBClusterFromSnapshotResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/RestoreDBClusterFromSnapshot>
@@ -75,6 +79,8 @@ restored DB cluster can be created.
 
 The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
+
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 
 Default: 0
 
@@ -187,7 +193,13 @@ enabled. By default, deletion protection is disabled.
 =head2 Domain => Str
 
 Specify the Active Directory directory ID to restore the DB cluster in.
-The domain must be created prior to this operation.
+The domain must be created prior to this operation. Currently, only
+MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
+created in an Active Directory Domain.
+
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/kerberos-authentication.html)
+in the I<Amazon RDS User Guide>.
 
 
 
@@ -211,9 +223,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
 For more information, see IAM Database Authentication
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
@@ -235,6 +247,9 @@ Constraint: Must be compatible with the engine of the source
 
 The DB engine mode of the DB cluster, either C<provisioned>,
 C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
+
+For more information, see CreateDBCluster
+(https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html).
 
 
 
@@ -276,16 +291,15 @@ Example: C<9.6.3>, C<10.7>
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier to use when restoring an encrypted DB
-cluster from a DB snapshot or DB cluster snapshot.
+The Amazon Web Services KMS key identifier to use when restoring an
+encrypted DB cluster from a DB snapshot or DB cluster snapshot.
 
-The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
-encryption key. If you are restoring a DB cluster with the same AWS
-account that owns the KMS encryption key used to encrypt the new DB
-cluster, then you can use the KMS key alias instead of the ARN for the
-KMS encryption key.
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK). To use a CMK in a different Amazon Web Services
+account, specify the key ARN or alias ARN.
 
-If you don't specify a value for the C<KmsKeyId> parameter, then the
+When you don't specify a value for the C<KmsKeyId> parameter, then the
 following occurs:
 
 =over
@@ -293,8 +307,9 @@ following occurs:
 =item *
 
 If the DB snapshot or DB cluster snapshot in C<SnapshotIdentifier> is
-encrypted, then the restored DB cluster is encrypted using the KMS key
-that was used to encrypt the DB snapshot or DB cluster snapshot.
+encrypted, then the restored DB cluster is encrypted using the Amazon
+Web Services KMS CMK that was used to encrypt the DB snapshot or DB
+cluster snapshot.
 
 =item *
 

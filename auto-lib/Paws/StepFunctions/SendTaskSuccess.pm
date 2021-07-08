@@ -42,7 +42,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sta
 
 =head2 B<REQUIRED> Output => Str
 
-The JSON output of the task.
+The JSON output of the task. Length constraints apply to the payload
+size, and are expressed as bytes in UTF-8 encoding.
 
 
 

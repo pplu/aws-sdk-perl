@@ -10,12 +10,14 @@ package Paws::DocDB::CreateDBCluster;
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Engine => (is => 'ro', isa => 'Str', required => 1);
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has GlobalClusterIdentifier => (is => 'ro', isa => 'Str');
   has KmsKeyId => (is => 'ro', isa => 'Str');
-  has MasterUsername => (is => 'ro', isa => 'Str', required => 1);
-  has MasterUserPassword => (is => 'ro', isa => 'Str', required => 1);
+  has MasterUsername => (is => 'ro', isa => 'Str');
+  has MasterUserPassword => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
   has PreferredMaintenanceWindow => (is => 'ro', isa => 'Str');
+  has PreSignedUrl => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DocDB::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -47,28 +49,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateDBClusterResult = $rds->CreateDBCluster(
       DBClusterIdentifier         => 'MyString',
       Engine                      => 'MyString',
-      MasterUserPassword          => 'MyString',
-      MasterUsername              => 'MyString',
-      AvailabilityZones           => [ 'MyString', ... ],    # OPTIONAL
-      BackupRetentionPeriod       => 1,                      # OPTIONAL
-      DBClusterParameterGroupName => 'MyString',             # OPTIONAL
-      DBSubnetGroupName           => 'MyString',             # OPTIONAL
-      DeletionProtection          => 1,                      # OPTIONAL
-      EnableCloudwatchLogsExports => [ 'MyString', ... ],    # OPTIONAL
-      EngineVersion               => 'MyString',             # OPTIONAL
-      KmsKeyId                    => 'MyString',             # OPTIONAL
-      Port                        => 1,                      # OPTIONAL
-      PreferredBackupWindow       => 'MyString',             # OPTIONAL
-      PreferredMaintenanceWindow  => 'MyString',             # OPTIONAL
-      StorageEncrypted            => 1,                      # OPTIONAL
+      AvailabilityZones           => [ 'MyString', ... ],            # OPTIONAL
+      BackupRetentionPeriod       => 1,                              # OPTIONAL
+      DBClusterParameterGroupName => 'MyString',                     # OPTIONAL
+      DBSubnetGroupName           => 'MyString',                     # OPTIONAL
+      DeletionProtection          => 1,                              # OPTIONAL
+      EnableCloudwatchLogsExports => [ 'MyString', ... ],            # OPTIONAL
+      EngineVersion               => 'MyString',                     # OPTIONAL
+      GlobalClusterIdentifier     => 'MyGlobalClusterIdentifier',    # OPTIONAL
+      KmsKeyId                    => 'MyString',                     # OPTIONAL
+      MasterUserPassword          => 'MyString',                     # OPTIONAL
+      MasterUsername              => 'MyString',                     # OPTIONAL
+      Port                        => 1,                              # OPTIONAL
+      PreSignedUrl                => 'MyString',                     # OPTIONAL
+      PreferredBackupWindow       => 'MyString',                     # OPTIONAL
+      PreferredMaintenanceWindow  => 'MyString',                     # OPTIONAL
+      StorageEncrypted            => 1,                              # OPTIONAL
       Tags                        => [
         {
           Key   => 'MyString',
           Value => 'MyString',
         },
         ...
-      ],                                                     # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],            # OPTIONAL
+      ],                                                             # OPTIONAL
+      VpcSecurityGroupIds => [ 'MyString', ... ],                    # OPTIONAL
     );
 
     # Results:
@@ -164,7 +168,11 @@ clusters from being accidentally deleted.
 =head2 EnableCloudwatchLogsExports => ArrayRef[Str|Undef]
 
 A list of log types that need to be enabled for exporting to Amazon
-CloudWatch Logs.
+CloudWatch Logs. You can enable audit logs or profiler logs. For more
+information, see Auditing Amazon DocumentDB Events
+(https://docs.aws.amazon.com/documentdb/latest/developerguide/event-auditing.html)
+and Profiling Amazon DocumentDB Operations
+(https://docs.aws.amazon.com/documentdb/latest/developerguide/profiling.html).
 
 
 
@@ -178,19 +186,28 @@ Valid values: C<docdb>
 
 =head2 EngineVersion => Str
 
-The version number of the database engine to use.
+The version number of the database engine to use. The
+C<--engine-version> will default to the latest major engine version.
+For production workloads, we recommend explicitly declaring this
+parameter with the intended major engine version.
+
+
+
+=head2 GlobalClusterIdentifier => Str
+
+The cluster identifier of the new global cluster.
 
 
 
 =head2 KmsKeyId => Str
 
-The AWS KMS key identifier for an encrypted cluster.
+The KMS key identifier for an encrypted cluster.
 
-The AWS KMS key identifier is the Amazon Resource Name (ARN) for the
-AWS KMS encryption key. If you are creating a cluster using the same
-AWS account that owns the AWS KMS encryption key that is used to
-encrypt the new cluster, you can use the AWS KMS key alias instead of
-the ARN for the AWS KMS encryption key.
+The KMS key identifier is the Amazon Resource Name (ARN) for the KMS
+encryption key. If you are creating a cluster using the same account
+that owns the KMS encryption key that is used to encrypt the new
+cluster, you can use the KMS key alias instead of the ARN for the KMS
+encryption key.
 
 If an encryption key is not specified in C<KmsKeyId>:
 
@@ -198,29 +215,17 @@ If an encryption key is not specified in C<KmsKeyId>:
 
 =item *
 
-If C<ReplicationSourceIdentifier> identifies an encrypted source, then
-Amazon DocumentDB uses the encryption key that is used to encrypt the
-source. Otherwise, Amazon DocumentDB uses your default encryption key.
-
-=item *
-
-If the C<StorageEncrypted> parameter is C<true> and
-C<ReplicationSourceIdentifier> is not specified, Amazon DocumentDB uses
+If the C<StorageEncrypted> parameter is C<true>, Amazon DocumentDB uses
 your default encryption key.
 
 =back
 
-AWS KMS creates the default encryption key for your AWS account. Your
-AWS account has a different default encryption key for each AWS Region.
-
-If you create a replica of an encrypted cluster in another AWS Region,
-you must set C<KmsKeyId> to a KMS key ID that is valid in the
-destination AWS Region. This key is used to encrypt the replica in that
-AWS Region.
+KMS creates the default encryption key for your account. Your account
+has a different default encryption key for each Regions.
 
 
 
-=head2 B<REQUIRED> MasterUsername => Str
+=head2 MasterUsername => Str
 
 The name of the master user for the cluster.
 
@@ -245,7 +250,7 @@ Cannot be a reserved word for the chosen database engine.
 
 
 
-=head2 B<REQUIRED> MasterUserPassword => Str
+=head2 MasterUserPassword => Str
 
 The password for the master database user. This password can contain
 any printable ASCII character except forward slash (/), double quote
@@ -269,7 +274,7 @@ automated backups are enabled using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region.
+block of time for each Region.
 
 Constraints:
 
@@ -304,12 +309,17 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Region, occurring on a random day of the week.
 
 Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 
 Constraints: Minimum 30-minute window.
+
+
+
+=head2 PreSignedUrl => Str
+
+Not currently supported.
 
 
 

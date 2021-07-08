@@ -94,7 +94,8 @@ Specifies whether the ApiKey can be used by callers.
 =head2 GenerateDistinctId => Bool
 
 Specifies whether (C<true>) or not (C<false>) the key identifier is
-distinct from the created API key value.
+distinct from the created API key value. This parameter is deprecated
+and should not be used.
 
 
 

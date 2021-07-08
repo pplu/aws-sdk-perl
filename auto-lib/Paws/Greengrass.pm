@@ -284,6 +284,11 @@ package Paws::Greengrass;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::GetSubscriptionDefinitionVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetThingRuntimeConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::GetThingRuntimeConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListBulkDeploymentDetailedReports {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::ListBulkDeploymentDetailedReports', @_);
@@ -462,6 +467,11 @@ package Paws::Greengrass;
   sub UpdateSubscriptionDefinition {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateSubscriptionDefinition', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateThingRuntimeConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::Greengrass::UpdateThingRuntimeConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   
@@ -904,7 +914,7 @@ package Paws::Greengrass;
   }
 
 
-  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateConnectorDefinition CreateConnectorDefinitionVersion CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteConnectorDefinition DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetBulkDeploymentStatus GetConnectivityInfo GetConnectorDefinition GetConnectorDefinitionVersion GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion ListBulkDeploymentDetailedReports ListBulkDeployments ListConnectorDefinitions ListConnectorDefinitionVersions ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ListTagsForResource ResetDeployments StartBulkDeployment StopBulkDeployment TagResource UntagResource UpdateConnectivityInfo UpdateConnectorDefinition UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition / }
+  sub operations { qw/AssociateRoleToGroup AssociateServiceRoleToAccount CreateConnectorDefinition CreateConnectorDefinitionVersion CreateCoreDefinition CreateCoreDefinitionVersion CreateDeployment CreateDeviceDefinition CreateDeviceDefinitionVersion CreateFunctionDefinition CreateFunctionDefinitionVersion CreateGroup CreateGroupCertificateAuthority CreateGroupVersion CreateLoggerDefinition CreateLoggerDefinitionVersion CreateResourceDefinition CreateResourceDefinitionVersion CreateSoftwareUpdateJob CreateSubscriptionDefinition CreateSubscriptionDefinitionVersion DeleteConnectorDefinition DeleteCoreDefinition DeleteDeviceDefinition DeleteFunctionDefinition DeleteGroup DeleteLoggerDefinition DeleteResourceDefinition DeleteSubscriptionDefinition DisassociateRoleFromGroup DisassociateServiceRoleFromAccount GetAssociatedRole GetBulkDeploymentStatus GetConnectivityInfo GetConnectorDefinition GetConnectorDefinitionVersion GetCoreDefinition GetCoreDefinitionVersion GetDeploymentStatus GetDeviceDefinition GetDeviceDefinitionVersion GetFunctionDefinition GetFunctionDefinitionVersion GetGroup GetGroupCertificateAuthority GetGroupCertificateConfiguration GetGroupVersion GetLoggerDefinition GetLoggerDefinitionVersion GetResourceDefinition GetResourceDefinitionVersion GetServiceRoleForAccount GetSubscriptionDefinition GetSubscriptionDefinitionVersion GetThingRuntimeConfiguration ListBulkDeploymentDetailedReports ListBulkDeployments ListConnectorDefinitions ListConnectorDefinitionVersions ListCoreDefinitions ListCoreDefinitionVersions ListDeployments ListDeviceDefinitions ListDeviceDefinitionVersions ListFunctionDefinitions ListFunctionDefinitionVersions ListGroupCertificateAuthorities ListGroups ListGroupVersions ListLoggerDefinitions ListLoggerDefinitionVersions ListResourceDefinitions ListResourceDefinitionVersions ListSubscriptionDefinitions ListSubscriptionDefinitionVersions ListTagsForResource ResetDeployments StartBulkDeployment StopBulkDeployment TagResource UntagResource UpdateConnectivityInfo UpdateConnectorDefinition UpdateCoreDefinition UpdateDeviceDefinition UpdateFunctionDefinition UpdateGroup UpdateGroupCertificateConfiguration UpdateLoggerDefinition UpdateResourceDefinition UpdateSubscriptionDefinition UpdateThingRuntimeConfiguration / }
 
 1;
 
@@ -1198,11 +1208,11 @@ defined.
 
 =over
 
+=item Name => Str
+
 =item [AmznClientToken => Str]
 
 =item [InitialVersion => L<Paws::Greengrass::GroupVersion>]
-
-=item [Name => Str]
 
 =item [Tags => L<Paws::Greengrass::Tags>]
 
@@ -2002,6 +2012,22 @@ Returns: a L<Paws::Greengrass::GetSubscriptionDefinitionVersionResponse> instanc
 Retrieves information about a subscription definition version.
 
 
+=head2 GetThingRuntimeConfiguration
+
+=over
+
+=item ThingName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::GetThingRuntimeConfiguration>
+
+Returns: a L<Paws::Greengrass::GetThingRuntimeConfigurationResponse> instance
+
+Get the runtime configuration of a thing.
+
+
 =head2 ListBulkDeploymentDetailedReports
 
 =over
@@ -2686,6 +2712,24 @@ Each argument is described in detail in: L<Paws::Greengrass::UpdateSubscriptionD
 Returns: a L<Paws::Greengrass::UpdateSubscriptionDefinitionResponse> instance
 
 Updates a subscription definition.
+
+
+=head2 UpdateThingRuntimeConfiguration
+
+=over
+
+=item ThingName => Str
+
+=item [TelemetryConfiguration => L<Paws::Greengrass::TelemetryConfigurationUpdate>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::Greengrass::UpdateThingRuntimeConfiguration>
+
+Returns: a L<Paws::Greengrass::UpdateThingRuntimeConfigurationResponse> instance
+
+Updates the runtime configuration of a thing.
 
 
 

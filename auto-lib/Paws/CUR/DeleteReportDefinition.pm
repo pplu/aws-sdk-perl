@@ -44,7 +44,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cur
 
 =head2 ReportName => Str
 
-
+The name of the report that you want to delete. The name must be
+unique, is case sensitive, and can't include spaces.
 
 
 

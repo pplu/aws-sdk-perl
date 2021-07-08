@@ -27,10 +27,10 @@ data available. If not null, more results are available. Pass this
 value for the C<NextMarker> parameter in a subsequent call to
 C<ListAttacks> to retrieve the next set of items.
 
-AWS WAF might return the list of AttackSummary objects in batches
-smaller than the number specified by MaxResults. If there are more
-AttackSummary objects to return, AWS WAF will always also return a
-C<NextToken>.
+Shield Advanced might return the list of AttackSummary objects in
+batches smaller than the number specified by MaxResults. If there are
+more attack summary objects to return, Shield Advanced will always also
+return a C<NextToken>.
 
 
 =head2 _request_id => Str

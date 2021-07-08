@@ -1,11 +1,13 @@
 
 package Paws::MQ::UpdateBroker;
   use Moose;
+  has AuthenticationStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationStrategy');
   has AutoMinorVersionUpgrade => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'autoMinorVersionUpgrade');
   has BrokerId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'broker-id', required => 1);
   has Configuration => (is => 'ro', isa => 'Paws::MQ::ConfigurationId', traits => ['NameInRequest'], request_name => 'configuration');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has HostInstanceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'hostInstanceType');
+  has LdapServerMetadata => (is => 'ro', isa => 'Paws::MQ::LdapServerMetadataInput', traits => ['NameInRequest'], request_name => 'ldapServerMetadata');
   has Logs => (is => 'ro', isa => 'Paws::MQ::Logs', traits => ['NameInRequest'], request_name => 'logs');
   has SecurityGroups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'securityGroups');
 
@@ -36,29 +38,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $mq = Paws->service('MQ');
     my $UpdateBrokerResponse = $mq->UpdateBroker(
       BrokerId                => 'My__string',
+      AuthenticationStrategy  => 'SIMPLE',       # OPTIONAL
       AutoMinorVersionUpgrade => 1,              # OPTIONAL
       Configuration           => {
         Id       => 'My__string',
         Revision => 1,                           # OPTIONAL
       },    # OPTIONAL
-      EngineVersion    => 'My__string',    # OPTIONAL
-      HostInstanceType => 'My__string',    # OPTIONAL
-      Logs             => {
+      EngineVersion      => 'My__string',    # OPTIONAL
+      HostInstanceType   => 'My__string',    # OPTIONAL
+      LdapServerMetadata => {
+        Hosts                  => [ 'My__string', ... ],    # OPTIONAL
+        RoleBase               => 'My__string',
+        RoleName               => 'My__string',
+        RoleSearchMatching     => 'My__string',
+        RoleSearchSubtree      => 1,
+        ServiceAccountPassword => 'My__string',
+        ServiceAccountUsername => 'My__string',
+        UserBase               => 'My__string',
+        UserRoleName           => 'My__string',
+        UserSearchMatching     => 'My__string',
+        UserSearchSubtree      => 1,
+      },    # OPTIONAL
+      Logs => {
         Audit   => 1,
         General => 1,
-      },                                   # OPTIONAL
+      },    # OPTIONAL
       SecurityGroups => [ 'My__string', ... ],    # OPTIONAL
     );
 
     # Results:
+    my $AuthenticationStrategy = $UpdateBrokerResponse->AuthenticationStrategy;
     my $AutoMinorVersionUpgrade =
       $UpdateBrokerResponse->AutoMinorVersionUpgrade;
-    my $BrokerId         = $UpdateBrokerResponse->BrokerId;
-    my $Configuration    = $UpdateBrokerResponse->Configuration;
-    my $EngineVersion    = $UpdateBrokerResponse->EngineVersion;
-    my $HostInstanceType = $UpdateBrokerResponse->HostInstanceType;
-    my $Logs             = $UpdateBrokerResponse->Logs;
-    my $SecurityGroups   = $UpdateBrokerResponse->SecurityGroups;
+    my $BrokerId           = $UpdateBrokerResponse->BrokerId;
+    my $Configuration      = $UpdateBrokerResponse->Configuration;
+    my $EngineVersion      = $UpdateBrokerResponse->EngineVersion;
+    my $HostInstanceType   = $UpdateBrokerResponse->HostInstanceType;
+    my $LdapServerMetadata = $UpdateBrokerResponse->LdapServerMetadata;
+    my $Logs               = $UpdateBrokerResponse->Logs;
+    my $SecurityGroups     = $UpdateBrokerResponse->SecurityGroups;
 
     # Returns a L<Paws::MQ::UpdateBrokerResponse> object.
 
@@ -67,6 +85,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/
 
 =head1 ATTRIBUTES
 
+
+=head2 AuthenticationStrategy => Str
+
+The authentication strategy used to secure the broker.
+
+Valid values are: C<"SIMPLE">, C<"LDAP">
 
 =head2 AutoMinorVersionUpgrade => Bool
 
@@ -78,10 +102,7 @@ maintenance window of the broker or after a manual broker reboot.
 
 =head2 B<REQUIRED> BrokerId => Str
 
-The name of the broker. This value must be unique in your AWS account,
-1-50 characters long, must contain only letters, numbers, dashes, and
-underscores, and must not contain whitespaces, brackets, wildcard
-characters, or special characters.
+The unique ID that Amazon MQ generates for the broker.
 
 
 
@@ -104,6 +125,13 @@ https://docs.aws.amazon.com/amazon-mq/latest/developer-guide/broker-engine.html
 The host instance type of the broker to upgrade to. For a list of
 supported instance types, see
 https://docs.aws.amazon.com/amazon-mq/latest/developer-guide//broker.html#broker-instance-types
+
+
+
+=head2 LdapServerMetadata => L<Paws::MQ::LdapServerMetadataInput>
+
+The metadata of the LDAP server used to authenticate and authorize
+connections to the broker.
 
 
 

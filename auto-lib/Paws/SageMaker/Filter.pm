@@ -36,15 +36,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 =head1 DESCRIPTION
 
 A conditional statement for a search expression that includes a
-resource property, a Boolean operator, and a value.
-
-If you don't specify an C<Operator> and a C<Value>, the filter searches
-for only the specified property. For example, defining a C<Filter> for
-the C<FailureReason> for the C<TrainingJob> C<Resource> searches for
-training job objects that have a value in the C<FailureReason> field.
+resource property, a Boolean operator, and a value. Resources that
+match the statement are returned in the results from the Search API.
 
 If you specify a C<Value>, but not an C<Operator>, Amazon SageMaker
-uses the equals operator as the default.
+uses the equals operator.
 
 In search, there are several property types:
 
@@ -61,7 +57,7 @@ C<{>
 
 C<"Name": "Metrics.accuracy",>
 
-C<"Operator": "GREATER_THAN",>
+C<"Operator": "GreaterThan",>
 
 C<"Value": "0.9">
 
@@ -81,7 +77,7 @@ C<{>
 
 C<"Name": "HyperParameters.learning_rate",>
 
-C<"Operator": "LESS_THAN",>
+C<"Operator": "LessThan",>
 
 C<"Value": "0.5">
 
@@ -90,7 +86,7 @@ C<}>
 =item Tags
 
 To define a tag filter, enter a value with the form
-C<"Tags.E<lt>keyE<gt>">.
+C<Tags.E<lt>keyE<gt>>.
 
 =back
 
@@ -100,9 +96,8 @@ C<"Tags.E<lt>keyE<gt>">.
 
 =head2 B<REQUIRED> Name => Str
 
-A property name. For example, C<TrainingJobName>. For the list of valid
-property names returned in a search result for each supported resource,
-see TrainingJob properties. You must specify a valid property name for
+A resource property name. For example, C<TrainingJobName>. For valid
+property names, see SearchRecord. You must specify a valid property for
 the resource.
 
 
@@ -115,47 +110,114 @@ operator field contains one of the following values:
 
 =item Equals
 
-The specified resource in C<Name> equals the specified C<Value>.
+The value of C<Name> equals C<Value>.
 
 =item NotEquals
 
-The specified resource in C<Name> does not equal the specified
-C<Value>.
+The value of C<Name> doesn't equal C<Value>.
+
+=item Exists
+
+The C<Name> property exists.
+
+=item NotExists
+
+The C<Name> property does not exist.
 
 =item GreaterThan
 
-The specified resource in C<Name> is greater than the specified
-C<Value>. Not supported for text-based properties.
+The value of C<Name> is greater than C<Value>. Not supported for text
+properties.
 
 =item GreaterThanOrEqualTo
 
-The specified resource in C<Name> is greater than or equal to the
-specified C<Value>. Not supported for text-based properties.
+The value of C<Name> is greater than or equal to C<Value>. Not
+supported for text properties.
 
 =item LessThan
 
-The specified resource in C<Name> is less than the specified C<Value>.
-Not supported for text-based properties.
+The value of C<Name> is less than C<Value>. Not supported for text
+properties.
 
 =item LessThanOrEqualTo
 
-The specified resource in C<Name> is less than or equal to the
-specified C<Value>. Not supported for text-based properties.
+The value of C<Name> is less than or equal to C<Value>. Not supported
+for text properties.
+
+=item In
+
+The value of C<Name> is one of the comma delimited strings in C<Value>.
+Only supported for text properties.
 
 =item Contains
 
-Only supported for text-based properties. The word-list of the property
-contains the specified C<Value>. A C<SearchExpression> can include only
-one C<Contains> operator.
+The value of C<Name> contains the string C<Value>. Only supported for
+text properties.
+
+A C<SearchExpression> can include the C<Contains> operator multiple
+times when the value of C<Name> is one of the following:
+
+=over
+
+=item *
+
+C<Experiment.DisplayName>
+
+=item *
+
+C<Experiment.ExperimentName>
+
+=item *
+
+C<Experiment.Tags>
+
+=item *
+
+C<Trial.DisplayName>
+
+=item *
+
+C<Trial.TrialName>
+
+=item *
+
+C<Trial.Tags>
+
+=item *
+
+C<TrialComponent.DisplayName>
+
+=item *
+
+C<TrialComponent.TrialComponentName>
+
+=item *
+
+C<TrialComponent.Tags>
+
+=item *
+
+C<TrialComponent.InputArtifacts>
+
+=item *
+
+C<TrialComponent.OutputArtifacts>
 
 =back
 
-If you have specified a filter C<Value>, the default is C<Equals>.
+A C<SearchExpression> can include only one C<Contains> operator for all
+other values of C<Name>. In these cases, if you include multiple
+C<Contains> operators in the C<SearchExpression>, the result is the
+following error message: "C<'CONTAINS' operator usage limit of 1
+exceeded.>"
+
+=back
+
 
 
 =head2 Value => Str
 
-A value used with C<Resource> and C<Operator> to determine if objects
+A value used with C<Name> and C<Operator> to determine which resources
 satisfy the filter's condition. For numerical properties, C<Value> must
 be an integer or floating-point decimal. For timestamp properties,
 C<Value> must be an ISO 8601 date-time string of the following format:

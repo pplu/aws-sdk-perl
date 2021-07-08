@@ -54,8 +54,9 @@ A timestamp that indicates when the deployment lifecycle event ended.
 
 =head2 LifecycleEventName => Str
 
-The deployment lifecycle event name, such as ApplicationStop,
-BeforeInstall, AfterInstall, ApplicationStart, or ValidateService.
+The deployment lifecycle event name, such as C<ApplicationStop>,
+C<BeforeInstall>, C<AfterInstall>, C<ApplicationStart>, or
+C<ValidateService>.
 
 
 =head2 StartTime => Str

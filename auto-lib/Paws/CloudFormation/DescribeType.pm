@@ -2,6 +2,8 @@
 package Paws::CloudFormation::DescribeType;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
+  has PublicVersionNumber => (is => 'ro', isa => 'Str');
+  has PublisherId => (is => 'ro', isa => 'Str');
   has Type => (is => 'ro', isa => 'Str');
   has TypeName => (is => 'ro', isa => 'Str');
   has VersionId => (is => 'ro', isa => 'Str');
@@ -31,28 +33,43 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $DescribeTypeOutput = $cloudformation->DescribeType(
-      Arn       => 'MyTypeArn',          # OPTIONAL
-      Type      => 'RESOURCE',           # OPTIONAL
-      TypeName  => 'MyTypeName',         # OPTIONAL
-      VersionId => 'MyTypeVersionId',    # OPTIONAL
+      Arn                 => 'MyTypeArn',                # OPTIONAL
+      PublicVersionNumber => 'MyPublicVersionNumber',    # OPTIONAL
+      PublisherId         => 'MyPublisherId',            # OPTIONAL
+      Type                => 'RESOURCE',                 # OPTIONAL
+      TypeName            => 'MyTypeName',               # OPTIONAL
+      VersionId           => 'MyTypeVersionId',          # OPTIONAL
     );
 
     # Results:
-    my $Arn              = $DescribeTypeOutput->Arn;
-    my $DefaultVersionId = $DescribeTypeOutput->DefaultVersionId;
-    my $DeprecatedStatus = $DescribeTypeOutput->DeprecatedStatus;
-    my $Description      = $DescribeTypeOutput->Description;
-    my $DocumentationUrl = $DescribeTypeOutput->DocumentationUrl;
-    my $ExecutionRoleArn = $DescribeTypeOutput->ExecutionRoleArn;
-    my $LastUpdated      = $DescribeTypeOutput->LastUpdated;
-    my $LoggingConfig    = $DescribeTypeOutput->LoggingConfig;
-    my $ProvisioningType = $DescribeTypeOutput->ProvisioningType;
-    my $Schema           = $DescribeTypeOutput->Schema;
-    my $SourceUrl        = $DescribeTypeOutput->SourceUrl;
-    my $TimeCreated      = $DescribeTypeOutput->TimeCreated;
-    my $Type             = $DescribeTypeOutput->Type;
-    my $TypeName         = $DescribeTypeOutput->TypeName;
-    my $Visibility       = $DescribeTypeOutput->Visibility;
+    my $Arn                    = $DescribeTypeOutput->Arn;
+    my $AutoUpdate             = $DescribeTypeOutput->AutoUpdate;
+    my $ConfigurationSchema    = $DescribeTypeOutput->ConfigurationSchema;
+    my $DefaultVersionId       = $DescribeTypeOutput->DefaultVersionId;
+    my $DeprecatedStatus       = $DescribeTypeOutput->DeprecatedStatus;
+    my $Description            = $DescribeTypeOutput->Description;
+    my $DocumentationUrl       = $DescribeTypeOutput->DocumentationUrl;
+    my $ExecutionRoleArn       = $DescribeTypeOutput->ExecutionRoleArn;
+    my $IsActivated            = $DescribeTypeOutput->IsActivated;
+    my $IsDefaultVersion       = $DescribeTypeOutput->IsDefaultVersion;
+    my $LastUpdated            = $DescribeTypeOutput->LastUpdated;
+    my $LatestPublicVersion    = $DescribeTypeOutput->LatestPublicVersion;
+    my $LoggingConfig          = $DescribeTypeOutput->LoggingConfig;
+    my $OriginalTypeArn        = $DescribeTypeOutput->OriginalTypeArn;
+    my $OriginalTypeName       = $DescribeTypeOutput->OriginalTypeName;
+    my $ProvisioningType       = $DescribeTypeOutput->ProvisioningType;
+    my $PublicVersionNumber    = $DescribeTypeOutput->PublicVersionNumber;
+    my $PublisherId            = $DescribeTypeOutput->PublisherId;
+    my $RequiredActivatedTypes = $DescribeTypeOutput->RequiredActivatedTypes;
+    my $Schema                 = $DescribeTypeOutput->Schema;
+    my $SourceUrl              = $DescribeTypeOutput->SourceUrl;
+    my $TimeCreated            = $DescribeTypeOutput->TimeCreated;
+    my $Type                   = $DescribeTypeOutput->Type;
+    my $TypeName               = $DescribeTypeOutput->TypeName;
+    my $TypeTestsStatus        = $DescribeTypeOutput->TypeTestsStatus;
+    my $TypeTestsStatusDescription =
+      $DescribeTypeOutput->TypeTestsStatusDescription;
+    my $Visibility = $DescribeTypeOutput->Visibility;
 
     # Returns a L<Paws::CloudFormation::DescribeTypeOutput> object.
 
@@ -64,27 +81,39 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the type.
+The Amazon Resource Name (ARN) of the extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
+
+
+
+=head2 PublicVersionNumber => Str
+
+The version number of a public third-party extension.
+
+
+
+=head2 PublisherId => Str
+
+The publisher ID of the extension publisher.
+
+Extensions provided by Amazon are not assigned a publisher ID.
 
 
 
 =head2 Type => Str
 
-The kind of type.
-
-Currently the only valid value is C<RESOURCE>.
+The kind of extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
 
-Valid values are: C<"RESOURCE">
+Valid values are: C<"RESOURCE">, C<"MODULE">
 
 =head2 TypeName => Str
 
-The name of the type.
+The name of the extension.
 
 Conditional: You must specify either C<TypeName> and C<Type>, or
 C<Arn>.
@@ -93,13 +122,13 @@ C<Arn>.
 
 =head2 VersionId => Str
 
-The ID of a specific version of the type. The version ID is the value
-at the end of the Amazon Resource Name (ARN) assigned to the type
-version when it is registered.
+The ID of a specific version of the extension. The version ID is the
+value at the end of the Amazon Resource Name (ARN) assigned to the
+extension version when it is registered.
 
 If you specify a C<VersionId>, C<DescribeType> returns information
-about that specific type version. Otherwise, it returns information
-about the default type version.
+about that specific extension version. Otherwise, it returns
+information about the default extension version.
 
 
 

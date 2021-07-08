@@ -51,7 +51,7 @@ The name of pipeline for which data reprocessing is canceled.
 =head2 B<REQUIRED> ReprocessingId => Str
 
 The ID of the reprocessing task (returned by
-"StartPipelineReprocessing").
+C<StartPipelineReprocessing>).
 
 
 

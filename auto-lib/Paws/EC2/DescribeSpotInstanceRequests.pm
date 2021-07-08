@@ -112,9 +112,9 @@ volume, in GiB.
 =item *
 
 C<launch.block-device-mapping.volume-type> - The type of EBS volume:
-C<gp2> for General Purpose SSD, C<io1> for Provisioned IOPS SSD, C<st1>
-for Throughput Optimized HDD, C<sc1>for Cold HDD, or C<standard> for
-Magnetic.
+C<gp2> for General Purpose SSD, C<io1> or C<io2> for Provisioned IOPS
+SSD, C<st1> for Throughput Optimized HDD, C<sc1>for Cold HDD, or
+C<standard> for Magnetic.
 
 =item *
 
@@ -214,7 +214,7 @@ to fulfill the request.
 C<state> - The state of the Spot Instance request (C<open> | C<active>
 | C<closed> | C<cancelled> | C<failed>). Spot request status
 information can help you track your Amazon EC2 Spot Instance requests.
-For more information, see Spot Request Status
+For more information, see Spot request status
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-bid-status.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 

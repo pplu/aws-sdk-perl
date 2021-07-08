@@ -2,6 +2,7 @@
 package Paws::MQ::CreateConfigurationOutput;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', request_name => 'arn', traits => ['NameInRequest']);
+  has AuthenticationStrategy => (is => 'ro', isa => 'Str', request_name => 'authenticationStrategy', traits => ['NameInRequest']);
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest']);
   has LatestRevision => (is => 'ro', isa => 'Paws::MQ::ConfigurationRevision', request_name => 'latestRevision', traits => ['NameInRequest']);
@@ -45,6 +46,11 @@ Returns information about the created configuration.
 =head2 Arn => Str
 
 Required. The Amazon Resource Name (ARN) of the configuration.
+
+
+=head2 AuthenticationStrategy => Str
+
+The authentication strategy associated with the configuration.
 
 
 =head2 Created => Str

@@ -67,7 +67,8 @@ The description of the distribution configuration.
 
 =head2 Distributions => ArrayRef[L<Paws::ImageBuilder::Distribution>]
 
-The distributions of the distribution configuration.
+The distribution objects that apply Region-specific settings for the
+deployment of the image to targeted Regions.
 
 
 =head2 Name => Str

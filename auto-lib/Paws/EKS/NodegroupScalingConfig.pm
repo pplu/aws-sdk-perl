@@ -36,28 +36,32 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::EKS::Nodegr
 =head1 DESCRIPTION
 
 An object representing the scaling configuration details for the Auto
-Scaling group that is associated with your node group.
+Scaling group that is associated with your node group. When creating a
+node group, you must specify all or none of the properties. When
+updating a node group, you can specify any or none of the properties.
 
 =head1 ATTRIBUTES
 
 
 =head2 DesiredSize => Int
 
-The current number of worker nodes that the managed node group should
+The current number of nodes that the managed node group should
 maintain.
 
 
 =head2 MaxSize => Int
 
-The maximum number of worker nodes that the managed node group can
-scale out to. Managed node groups can support up to 100 nodes by
-default.
+The maximum number of nodes that the managed node group can scale out
+to. For information about the maximum number that you can specify, see
+Amazon EKS service quotas
+(https://docs.aws.amazon.com/eks/latest/userguide/service-quotas.html)
+in the I<Amazon EKS User Guide>.
 
 
 =head2 MinSize => Int
 
-The minimum number of worker nodes that the managed node group can
-scale in to. This number must be greater than zero.
+The minimum number of nodes that the managed node group can scale in
+to. This number must be greater than zero.
 
 
 

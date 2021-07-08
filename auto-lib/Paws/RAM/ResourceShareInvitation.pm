@@ -3,6 +3,7 @@ package Paws::RAM::ResourceShareInvitation;
   use Moose;
   has InvitationTimestamp => (is => 'ro', isa => 'Str', request_name => 'invitationTimestamp', traits => ['NameInRequest']);
   has ReceiverAccountId => (is => 'ro', isa => 'Str', request_name => 'receiverAccountId', traits => ['NameInRequest']);
+  has ReceiverArn => (is => 'ro', isa => 'Str', request_name => 'receiverArn', traits => ['NameInRequest']);
   has ResourceShareArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareArn', traits => ['NameInRequest']);
   has ResourceShareAssociations => (is => 'ro', isa => 'ArrayRef[Paws::RAM::ResourceShareAssociation]', request_name => 'resourceShareAssociations', traits => ['NameInRequest']);
   has ResourceShareInvitationArn => (is => 'ro', isa => 'Str', request_name => 'resourceShareInvitationArn', traits => ['NameInRequest']);
@@ -53,6 +54,12 @@ The date and time when the invitation was sent.
 =head2 ReceiverAccountId => Str
 
 The ID of the AWS account that received the invitation.
+
+
+=head2 ReceiverArn => Str
+
+The Amazon Resource Name (ARN) of the IAM user or IAM role that
+received the invitation.
 
 
 =head2 ResourceShareArn => Str

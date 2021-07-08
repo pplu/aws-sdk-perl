@@ -58,7 +58,8 @@ format of the ARN depends on the resource type.
 
 The type of AWS resource; for example, an Amazon Elastic Block Store
 (Amazon EBS) volume or an Amazon Relational Database Service (Amazon
-RDS) database.
+RDS) database. For VSS Windows backups, the only supported resource
+type is Amazon EC2.
 
 
 

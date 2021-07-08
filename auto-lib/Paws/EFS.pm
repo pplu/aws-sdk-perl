@@ -64,6 +64,16 @@ package Paws::EFS;
     my $call_object = $self->new_with_coercions('Paws::EFS::DescribeAccessPoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAccountPreferences {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeAccountPreferences', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeBackupPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::DescribeBackupPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeFileSystemPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::DescribeFileSystemPolicy', @_);
@@ -102,6 +112,16 @@ package Paws::EFS;
   sub ModifyMountTargetSecurityGroups {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EFS::ModifyMountTargetSecurityGroups', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccountPreferences {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::PutAccountPreferences', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutBackupPolicy {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EFS::PutBackupPolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutFileSystemPolicy {
@@ -201,7 +221,7 @@ package Paws::EFS;
   }
 
 
-  sub operations { qw/CreateAccessPoint CreateFileSystem CreateMountTarget CreateTags DeleteAccessPoint DeleteFileSystem DeleteFileSystemPolicy DeleteMountTarget DeleteTags DescribeAccessPoints DescribeFileSystemPolicy DescribeFileSystems DescribeLifecycleConfiguration DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ListTagsForResource ModifyMountTargetSecurityGroups PutFileSystemPolicy PutLifecycleConfiguration TagResource UntagResource UpdateFileSystem / }
+  sub operations { qw/CreateAccessPoint CreateFileSystem CreateMountTarget CreateTags DeleteAccessPoint DeleteFileSystem DeleteFileSystemPolicy DeleteMountTarget DeleteTags DescribeAccessPoints DescribeAccountPreferences DescribeBackupPolicy DescribeFileSystemPolicy DescribeFileSystems DescribeLifecycleConfiguration DescribeMountTargets DescribeMountTargetSecurityGroups DescribeTags ListTagsForResource ModifyMountTargetSecurityGroups PutAccountPreferences PutBackupPolicy PutFileSystemPolicy PutLifecycleConfiguration TagResource UntagResource UpdateFileSystem / }
 
 1;
 
@@ -235,8 +255,11 @@ Amazon Elastic File System (Amazon EFS) provides simple, scalable file
 storage for use with Amazon EC2 instances in the AWS Cloud. With Amazon
 EFS, storage capacity is elastic, growing and shrinking automatically
 as you add and remove files, so your applications have the storage they
-need, when they need it. For more information, see the User Guide
-(https://docs.aws.amazon.com/efs/latest/ug/api-reference.html).
+need, when they need it. For more information, see the Amazon Elastic
+File System API Reference
+(https://docs.aws.amazon.com/efs/latest/ug/api-reference.html) and the
+Amazon Elastic File System User Guide
+(https://docs.aws.amazon.com/efs/latest/ug/whatisefs.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticfilesystem-2015-02-01>
 
@@ -271,7 +294,7 @@ the access point. The operating system user and group override any
 identity information provided by the NFS client. The file system path
 is exposed as the access point's root directory. Applications using the
 access point can only access data in its own directory and below. To
-learn more, see Mounting a File System Using EFS Access Points
+learn more, see Mounting a file system using EFS access points
 (https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 
 This operation requires permissions for the
@@ -283,6 +306,10 @@ C<elasticfilesystem:CreateAccessPoint> action.
 =over
 
 =item CreationToken => Str
+
+=item [AvailabilityZoneName => Str]
+
+=item [Backup => Bool]
 
 =item [Encrypted => Bool]
 
@@ -338,20 +365,27 @@ the same creation token, if the initial call had succeeded in creating
 a file system, the client can learn of its existence from the
 C<FileSystemAlreadyExists> error.
 
+For more information, see Creating a file system
+(https://docs.aws.amazon.com/efs/latest/ug/creating-using-create-fs.html#creating-using-create-fs-part1)
+in the I<Amazon EFS User Guide>.
+
 The C<CreateFileSystem> call returns while the file system's lifecycle
 state is still C<creating>. You can check the file system creation
 status by calling the DescribeFileSystems operation, which among other
 things returns the file system state.
 
-This operation also takes an optional C<PerformanceMode> parameter that
+This operation accepts an optional C<PerformanceMode> parameter that
 you choose for your file system. We recommend C<generalPurpose>
 performance mode for most file systems. File systems using the C<maxIO>
 performance mode can scale to higher levels of aggregate throughput and
 operations per second with a tradeoff of slightly higher latencies for
 most file operations. The performance mode can't be changed after the
-file system has been created. For more information, see Amazon EFS:
-Performance Modes
+file system has been created. For more information, see Amazon EFS
+performance modes
 (https://docs.aws.amazon.com/efs/latest/ug/performance.html#performancemodes.html).
+
+You can set the throughput mode for the file system using the
+C<ThroughputMode> parameter.
 
 After the file system is fully created, Amazon EFS sets its lifecycle
 state to C<available>, at which point you can create one or more mount
@@ -392,31 +426,51 @@ All EC2 instances in a VPC within a given Availability Zone share a
 single mount target for a given file system. If you have multiple
 subnets in an Availability Zone, you create a mount target in one of
 the subnets. EC2 instances do not need to be in the same subnet as the
-mount target in order to access their file system. For more
-information, see Amazon EFS: How it Works
+mount target in order to access their file system.
+
+You can create only one mount target for an EFS file system using One
+Zone storage classes. You must create that mount target in the same
+Availability Zone in which the file system is located. Use the
+C<AvailabilityZoneName> and C<AvailabiltyZoneId> properties in the
+DescribeFileSystems response object to get this information. Use the
+C<subnetId> associated with the file system's Availability Zone when
+creating the mount target.
+
+For more information, see Amazon EFS: How it Works
 (https://docs.aws.amazon.com/efs/latest/ug/how-it-works.html).
 
-In the request, you also specify a file system ID for which you are
-creating the mount target and the file system's lifecycle state must be
-C<available>. For more information, see DescribeFileSystems.
+To create a mount target for a file system, the file system's lifecycle
+state must be C<available>. For more information, see
+DescribeFileSystems.
 
-In the request, you also provide a subnet ID, which determines the
-following:
+In the request, provide the following:
 
 =over
 
 =item *
 
-VPC in which Amazon EFS creates the mount target
+The file system ID for which you are creating the mount target.
 
 =item *
 
-Availability Zone in which Amazon EFS creates the mount target
+A subnet ID, which determines the following:
+
+=over
 
 =item *
 
-IP address range from which Amazon EFS selects the IP address of the
-mount target (if you don't specify an IP address in the request)
+The VPC in which Amazon EFS creates the mount target
+
+=item *
+
+The Availability Zone in which Amazon EFS creates the mount target
+
+=item *
+
+The IP address range from which Amazon EFS selects the IP address of
+the mount target (if you don't specify an IP address in the request)
+
+=back
 
 =back
 
@@ -562,6 +616,9 @@ C<ec2:CreateNetworkInterface>
 Each argument is described in detail in: L<Paws::EFS::CreateTags>
 
 Returns: nothing
+
+DEPRECATED - CreateTags is deprecated and not maintained. Please use
+the API action to create tags for EFS resources.
 
 Creates or overwrites tags associated with a file system. Each tag is a
 key-value pair. If a tag key specified in the request already exists on
@@ -720,6 +777,9 @@ Each argument is described in detail in: L<Paws::EFS::DeleteTags>
 
 Returns: nothing
 
+DEPRECATED - DeleteTags is deprecated and not maintained. Please use
+the API action to remove tags from EFS resources.
+
 Deletes the specified tags from a file system. If the C<DeleteTags>
 request includes a tag key that doesn't exist, Amazon EFS ignores it
 and doesn't cause an error. For more information about tags and related
@@ -758,6 +818,40 @@ but not both.
 
 This operation requires permissions for the
 C<elasticfilesystem:DescribeAccessPoints> action.
+
+
+=head2 DescribeAccountPreferences
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DescribeAccountPreferences>
+
+Returns: a L<Paws::EFS::DescribeAccountPreferencesResponse> instance
+
+
+
+
+=head2 DescribeBackupPolicy
+
+=over
+
+=item FileSystemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::DescribeBackupPolicy>
+
+Returns: a L<Paws::EFS::BackupPolicyDescription> instance
+
+Returns the backup policy for the specified EFS file system.
 
 
 =head2 DescribeFileSystemPolicy
@@ -935,6 +1029,9 @@ Each argument is described in detail in: L<Paws::EFS::DescribeTags>
 
 Returns: a L<Paws::EFS::DescribeTagsResponse> instance
 
+DEPRECATED - The DeleteTags action is deprecated and not maintained.
+Please use the API action to remove tags from EFS resources.
+
 Returns the tags associated with a file system. The order of tags
 returned in the response of one C<DescribeTags> call and the order of
 tags returned across the responses of a multiple-call iteration (when
@@ -1011,6 +1108,41 @@ network interface.
 
 
 
+=head2 PutAccountPreferences
+
+=over
+
+=item ResourceIdType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::PutAccountPreferences>
+
+Returns: a L<Paws::EFS::PutAccountPreferencesResponse> instance
+
+
+
+
+=head2 PutBackupPolicy
+
+=over
+
+=item BackupPolicy => L<Paws::EFS::BackupPolicy>
+
+=item FileSystemId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EFS::PutBackupPolicy>
+
+Returns: a L<Paws::EFS::BackupPolicyDescription> instance
+
+Updates the file system's backup policy. Use this action to start or
+stop automatic backups of the file system.
+
+
 =head2 PutFileSystemPolicy
 
 =over
@@ -1032,10 +1164,13 @@ Applies an Amazon EFS C<FileSystemPolicy> to an Amazon EFS file system.
 A file system policy is an IAM resource-based policy and can contain
 multiple policy statements. A file system always has exactly one file
 system policy, which can be the default policy or an explicit policy
-set or updated using this API operation. When an explicit policy is
-set, it overrides the default policy. For more information about the
-default file system policy, see Using Resource-based Policies with EFS
-(https://docs.aws.amazon.com/efs/latest/ug/res-based-policies-efs.html).
+set or updated using this API operation. EFS file system policies have
+a 20,000 character limit. When an explicit policy is set, it overrides
+the default policy. For more information about the default file system
+policy, see Default EFS File System Policy
+(https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
+
+EFS file system policies have a 20,000 character limit.
 
 This operation requires permissions for the
 C<elasticfilesystem:PutFileSystemPolicy> action.
@@ -1124,7 +1259,7 @@ C<elasticfilesystem:TagResource> action.
 
 =item ResourceId => Str
 
-=item [TagKeys => ArrayRef[Str|Undef]]
+=item TagKeys => ArrayRef[Str|Undef]
 
 
 =back

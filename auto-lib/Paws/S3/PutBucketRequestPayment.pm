@@ -4,6 +4,7 @@ package Paws::S3::PutBucketRequestPayment;
   has Bucket => (is => 'ro', isa => 'Str', uri_name => 'Bucket', traits => ['ParamInURI'], required => 1);
   has ContentLength => (is => 'ro', isa => 'Int', header_name => 'Content-Length', traits => ['ParamInHeader']);
   has ContentMD5 => (is => 'ro', isa => 'Str', header_name => 'Content-MD5', auto => 'MD5', traits => ['AutoInHeader']);
+  has ExpectedBucketOwner => (is => 'ro', isa => 'Str', header_name => 'x-amz-expected-bucket-owner', traits => ['ParamInHeader']);
   has RequestPaymentConfiguration => (is => 'ro', isa => 'Paws::S3::RequestPaymentConfiguration', traits => ['ParamInBody'], required => 1);
 
 
@@ -35,15 +36,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $s3 = Paws->service('S3');
+  # Set request payment configuration on a bucket.
+  # The following example sets request payment configuration on a bucket so that
+  # person requesting the download is charged.
     $s3->PutBucketRequestPayment(
-      Bucket                      => 'MyBucketName',
-      RequestPaymentConfiguration => {
-        Payer => 'Requester',    # values: Requester, BucketOwner
-
-      },
-      ContentLength => 1,                 # OPTIONAL
-      ContentMD5    => 'MyContentMD5',    # OPTIONAL
+      'Bucket'                      => 'examplebucket',
+      'RequestPaymentConfiguration' => {
+        'Payer' => 'Requester'
+      }
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/s3/PutBucketRequestPayment>
@@ -65,10 +67,21 @@ Size of the body in bytes.
 
 =head2 ContentMD5 => Str
 
-E<gt>The base64-encoded 128-bit MD5 digest of the data. You must use
-this header as a message integrity check to verify that the request
-body was not corrupted in transit. For more information, see RFC 1864
+The base64-encoded 128-bit MD5 digest of the data. You must use this
+header as a message integrity check to verify that the request body was
+not corrupted in transit. For more information, see RFC 1864
 (http://www.ietf.org/rfc/rfc1864.txt).
+
+For requests made using the AWS Command Line Interface (CLI) or AWS
+SDKs, this field is calculated automatically.
+
+
+
+=head2 ExpectedBucketOwner => Str
+
+The account ID of the expected bucket owner. If the bucket is owned by
+a different account, the request will fail with an HTTP C<403 (Access
+Denied)> error.
 
 
 

@@ -127,14 +127,15 @@ Paws::Macie - Perl Interface to AWS Amazon Macie
 
 =head1 DESCRIPTION
 
-Amazon Macie
+Amazon Macie Classic
 
-Amazon Macie is a security service that uses machine learning to
-automatically discover, classify, and protect sensitive data in AWS.
-Macie recognizes sensitive data such as personally identifiable
+Amazon Macie Classic is a security service that uses machine learning
+to automatically discover, classify, and protect sensitive data in AWS.
+Macie Classic recognizes sensitive data such as personally identifiable
 information (PII) or intellectual property, and provides you with
 dashboards and alerts that give visibility into how this data is being
-accessed or moved. For more information, see the Macie User Guide
+accessed or moved. For more information, see the Amazon Macie Classic
+User Guide
 (https://docs.aws.amazon.com/macie/latest/userguide/what-is-macie.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/macie-2017-12-19>
@@ -155,8 +156,8 @@ Each argument is described in detail in: L<Paws::Macie::AssociateMemberAccount>
 
 Returns: nothing
 
-Associates a specified AWS account with Amazon Macie as a member
-account.
+Associates a specified AWS account with Amazon Macie Classic as a
+member account.
 
 
 =head2 AssociateS3Resources
@@ -174,11 +175,12 @@ Each argument is described in detail in: L<Paws::Macie::AssociateS3Resources>
 
 Returns: a L<Paws::Macie::AssociateS3ResourcesResult> instance
 
-Associates specified S3 resources with Amazon Macie for monitoring and
-data classification. If memberAccountId isn't specified, the action
-associates specified S3 resources with Macie for the current master
-account. If memberAccountId is specified, the action associates
-specified S3 resources with Macie for the specified member account.
+Associates specified S3 resources with Amazon Macie Classic for
+monitoring and data classification. If memberAccountId isn't specified,
+the action associates specified S3 resources with Macie Classic for the
+current Macie Classic administrator account. If memberAccountId is
+specified, the action associates specified S3 resources with Macie
+Classic for the specified member account.
 
 
 =head2 DisassociateMemberAccount
@@ -194,7 +196,7 @@ Each argument is described in detail in: L<Paws::Macie::DisassociateMemberAccoun
 
 Returns: nothing
 
-Removes the specified member account from Amazon Macie.
+Removes the specified member account from Amazon Macie Classic.
 
 
 =head2 DisassociateS3Resources
@@ -212,11 +214,12 @@ Each argument is described in detail in: L<Paws::Macie::DisassociateS3Resources>
 
 Returns: a L<Paws::Macie::DisassociateS3ResourcesResult> instance
 
-Removes specified S3 resources from being monitored by Amazon Macie. If
-memberAccountId isn't specified, the action removes specified S3
-resources from Macie for the current master account. If memberAccountId
-is specified, the action removes specified S3 resources from Macie for
-the specified member account.
+Removes specified S3 resources from being monitored by Amazon Macie
+Classic. If memberAccountId isn't specified, the action removes
+specified S3 resources from Macie Classic for the current Macie Classic
+administrator account. If memberAccountId is specified, the action
+removes specified S3 resources from Macie Classic for the specified
+member account.
 
 
 =head2 ListMemberAccounts
@@ -234,8 +237,8 @@ Each argument is described in detail in: L<Paws::Macie::ListMemberAccounts>
 
 Returns: a L<Paws::Macie::ListMemberAccountsResult> instance
 
-Lists all Amazon Macie member accounts for the current Amazon Macie
-master account.
+Lists all Amazon Macie Classic member accounts for the current Macie
+Classic administrator account.
 
 
 =head2 ListS3Resources
@@ -255,11 +258,12 @@ Each argument is described in detail in: L<Paws::Macie::ListS3Resources>
 
 Returns: a L<Paws::Macie::ListS3ResourcesResult> instance
 
-Lists all the S3 resources associated with Amazon Macie. If
+Lists all the S3 resources associated with Amazon Macie Classic. If
 memberAccountId isn't specified, the action lists the S3 resources
-associated with Amazon Macie for the current master account. If
-memberAccountId is specified, the action lists the S3 resources
-associated with Amazon Macie for the specified member account.
+associated with Macie Classic for the current Macie Classic
+administrator account. If memberAccountId is specified, the action
+lists the S3 resources associated with Macie Classic for the specified
+member account.
 
 
 =head2 UpdateS3Resources
@@ -279,10 +283,11 @@ Returns: a L<Paws::Macie::UpdateS3ResourcesResult> instance
 
 Updates the classification types for the specified S3 resources. If
 memberAccountId isn't specified, the action updates the classification
-types of the S3 resources associated with Amazon Macie for the current
-master account. If memberAccountId is specified, the action updates the
-classification types of the S3 resources associated with Amazon Macie
-for the specified member account.
+types of the S3 resources associated with Amazon Macie Classic for the
+current Macie Classic administrator account. If memberAccountId is
+specified, the action updates the classification types of the S3
+resources associated with Macie Classic for the specified member
+account.
 
 
 

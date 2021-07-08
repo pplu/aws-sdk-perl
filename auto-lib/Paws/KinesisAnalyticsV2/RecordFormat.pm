@@ -34,9 +34,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, describes
-the record format and relevant mapping information that should be
-applied to schematize the records on the stream.
+For a SQL-based Kinesis Data Analytics application, describes the
+record format and relevant mapping information that should be applied
+to schematize the records on the stream.
 
 =head1 ATTRIBUTES
 

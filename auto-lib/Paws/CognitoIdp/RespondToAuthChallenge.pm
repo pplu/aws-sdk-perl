@@ -76,7 +76,8 @@ C<RespondToAuthChallenge> calls.
 
 =head2 B<REQUIRED> ChallengeName => Str
 
-The challenge name. For more information, see .
+The challenge name. For more information, see InitiateAuth
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_InitiateAuth.html).
 
 C<ADMIN_NO_SRP_AUTH> is not a valid value.
 
@@ -120,6 +121,11 @@ C<SECRET_HASH>).
 
 C<DEVICE_PASSWORD_VERIFIER> requires everything that
 C<PASSWORD_VERIFIER> requires plus C<DEVICE_KEY>.
+
+=item *
+
+C<MFA_SETUP> requires C<USERNAME>, plus you need to use the session
+value returned by C<VerifySoftwareToken> in the C<Session> parameter.
 
 =back
 

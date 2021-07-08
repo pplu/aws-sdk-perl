@@ -34,9 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Marketplace
 
 =head1 DESCRIPTION
 
-A product entity contains data that describes your product, its
-supported features, and how it can be used or launched by your
-customer.
+An entity contains data that describes your product, its supported
+features, and how it can be used or launched by your customer.
 
 =head1 ATTRIBUTES
 

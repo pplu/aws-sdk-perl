@@ -3,6 +3,7 @@ package Paws::ACMPCA::ListCertificateAuthorities;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has ResourceOwner => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -30,8 +31,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $acm-pca = Paws->service('ACMPCA');
     my $ListCertificateAuthoritiesResponse =
       $acm -pca->ListCertificateAuthorities(
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
+      MaxResults    => 1,                # OPTIONAL
+      NextToken     => 'MyNextToken',    # OPTIONAL
+      ResourceOwner => 'SELF',           # OPTIONAL
       );
 
     # Results:
@@ -65,6 +67,13 @@ value of the C<NextToken> parameter from the response you just
 received.
 
 
+
+=head2 ResourceOwner => Str
+
+Use this parameter to filter the returned set of certificate
+authorities based on their owner. The default is SELF.
+
+Valid values are: C<"SELF">, C<"OTHER_ACCOUNTS">
 
 
 =head1 SEE ALSO

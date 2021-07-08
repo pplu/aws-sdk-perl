@@ -72,29 +72,41 @@ in an Application Load Balancer target group.
 
 =head2 ResourceLabel => Str
 
-Identifies the resource associated with the metric type. You can't
-specify a resource label unless the metric type is
-C<ALBRequestCountPerTarget> and there is a target group attached to the
-Auto Scaling group.
+A label that uniquely identifies a specific Application Load Balancer
+target group from which to determine the average request count served
+by your Auto Scaling group. You can't specify a resource label unless
+the target group is attached to the Auto Scaling group.
 
-The format is
-C<app/I<load-balancer-name>/I<load-balancer-id>/targetgroup/I<target-group-name>/I<target-group-id>
->, where
+You create the resource label by appending the final portion of the
+load balancer ARN and the final portion of the target group ARN into a
+single value, separated by a forward slash (/). The format of the
+resource label is:
+
+C<app/my-alb/778d41231b141a0f/targetgroup/my-alb-target-group/943f017f100becff>.
+
+Where:
 
 =over
 
 =item *
 
-C<app/I<load-balancer-name>/I<load-balancer-id> > is the final portion
-of the load balancer ARN, and
+app/E<lt>load-balancer-nameE<gt>/E<lt>load-balancer-idE<gt> is the
+final portion of the load balancer ARN
 
 =item *
 
-C<targetgroup/I<target-group-name>/I<target-group-id> > is the final
-portion of the target group ARN.
+targetgroup/E<lt>target-group-nameE<gt>/E<lt>target-group-idE<gt> is
+the final portion of the target group ARN.
 
 =back
 
+To find the ARN for an Application Load Balancer, use the
+DescribeLoadBalancers
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeLoadBalancers.html)
+API operation. To find the ARN for the target group, use the
+DescribeTargetGroups
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/APIReference/API_DescribeTargetGroups.html)
+API operation.
 
 
 

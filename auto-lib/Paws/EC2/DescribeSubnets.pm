@@ -114,6 +114,10 @@ associated with the subnet.
 
 =item *
 
+C<outpost-arn> - The Amazon Resource Name (ARN) of the Outpost.
+
+=item *
+
 C<owner-id> - The ID of the AWS account that owns the subnet.
 
 =item *

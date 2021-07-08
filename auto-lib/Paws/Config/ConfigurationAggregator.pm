@@ -4,6 +4,7 @@ package Paws::Config::ConfigurationAggregator;
   has AccountAggregationSources => (is => 'ro', isa => 'ArrayRef[Paws::Config::AccountAggregationSource]');
   has ConfigurationAggregatorArn => (is => 'ro', isa => 'Str');
   has ConfigurationAggregatorName => (is => 'ro', isa => 'Str');
+  has CreatedBy => (is => 'ro', isa => 'Str');
   has CreationTime => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has OrganizationAggregationSource => (is => 'ro', isa => 'Paws::Config::OrganizationAggregationSource');
@@ -57,6 +58,11 @@ The Amazon Resource Name (ARN) of the aggregator.
 =head2 ConfigurationAggregatorName => Str
 
 The name of the aggregator.
+
+
+=head2 CreatedBy => Str
+
+AWS service that created the configuration aggregator.
 
 
 =head2 CreationTime => Str

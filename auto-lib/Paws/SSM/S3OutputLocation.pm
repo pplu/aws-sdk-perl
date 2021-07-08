@@ -35,27 +35,26 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SSM::S3Outp
 
 =head1 DESCRIPTION
 
-An Amazon S3 bucket where you want to store the results of this
-request.
+An S3 bucket where you want to store the results of this request.
 
 =head1 ATTRIBUTES
 
 
 =head2 OutputS3BucketName => Str
 
-The name of the Amazon S3 bucket.
+The name of the S3 bucket.
 
 
 =head2 OutputS3KeyPrefix => Str
 
-The Amazon S3 bucket subfolder.
+The S3 bucket subfolder.
 
 
 =head2 OutputS3Region => Str
 
 (Deprecated) You can no longer specify this parameter. The system
 ignores it. Instead, Systems Manager automatically determines the
-Amazon S3 bucket region.
+Region of the S3 bucket.
 
 
 

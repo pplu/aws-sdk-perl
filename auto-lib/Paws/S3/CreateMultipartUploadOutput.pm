@@ -4,6 +4,7 @@ package Paws::S3::CreateMultipartUploadOutput;
   has AbortDate => (is => 'ro', isa => 'Str', header_name => 'x-amz-abort-date', traits => ['ParamInHeader']);
   has AbortRuleId => (is => 'ro', isa => 'Str', header_name => 'x-amz-abort-rule-id', traits => ['ParamInHeader']);
   has Bucket => (is => 'ro', isa => 'Str');
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str');
   has RequestCharged => (is => 'ro', isa => 'Str', header_name => 'x-amz-request-charged', traits => ['ParamInHeader']);
   has ServerSideEncryption => (is => 'ro', isa => 'Str', header_name => 'x-amz-server-side-encryption', traits => ['ParamInHeader']);
@@ -52,16 +53,33 @@ action to abort incomplete multipart uploads.
 
 =head2 Bucket => Str
 
-Name of the bucket to which the multipart upload was initiated.
+The name of the bucket to which the multipart upload was initiated.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the multipart upload uses an S3 Bucket Key for
+server-side encryption with AWS KMS (SSE-KMS).
 
 
 

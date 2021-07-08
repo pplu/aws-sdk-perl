@@ -40,8 +40,7 @@ bucket, and an AWS Identity and Access Management (IAM) role that
 Amazon Forecast can assume to access the file(s). Optionally, includes
 an AWS Key Management Service (KMS) key. This object is part of the
 DataSource object that is submitted in the CreateDatasetImportJob
-request, and part of the DataDestination object that is submitted in
-the CreateForecastExportJob request.
+request, and part of the DataDestination object.
 
 =head1 ATTRIBUTES
 

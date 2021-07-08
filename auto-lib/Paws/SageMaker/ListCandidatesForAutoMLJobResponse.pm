@@ -17,13 +17,13 @@ Paws::SageMaker::ListCandidatesForAutoMLJobResponse
 
 =head2 B<REQUIRED> Candidates => ArrayRef[L<Paws::SageMaker::AutoMLCandidate>]
 
-Summaries about the Candidates.
+Summaries about the C<AutoMLCandidates>.
 
 
 =head2 NextToken => Str
 
-If the previous response was truncated, you will receive this token.
-Use it in your next request to receive the next set of results.
+If the previous response was truncated, you receive this token. Use it
+in your next request to receive the next set of results.
 
 
 =head2 _request_id => Str

@@ -82,7 +82,10 @@ The launch template for the instance.
 =head2 B<REQUIRED> LifecycleState => Str
 
 A description of the current lifecycle state. The C<Quarantined> state
-is not used.
+is not used. For information about lifecycle states, see Instance
+lifecycle
+(https://docs.aws.amazon.com/autoscaling/ec2/userguide/AutoScalingGroupLifecycle.html)
+in the I<Amazon EC2 Auto Scaling User Guide>.
 
 
 =head2 B<REQUIRED> ProtectedFromScaleIn => Bool

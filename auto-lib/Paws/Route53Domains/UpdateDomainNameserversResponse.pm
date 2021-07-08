@@ -16,8 +16,9 @@ Paws::Route53Domains::UpdateDomainNameserversResponse
 
 =head2 B<REQUIRED> OperationId => Str
 
-Identifier for tracking the progress of the request. To use this ID to
-query the operation status, use GetOperationDetail.
+Identifier for tracking the progress of the request. To query the
+operation status, use GetOperationDetail
+(https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_GetOperationDetail.html).
 
 
 =head2 _request_id => Str

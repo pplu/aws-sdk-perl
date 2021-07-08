@@ -41,7 +41,7 @@ A container of a key value name pair.
 
 =head2 B<REQUIRED> Key => Str
 
-Name of the tag.
+Name of the object key.
 
 
 =head2 B<REQUIRED> Value => Str

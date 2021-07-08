@@ -43,8 +43,8 @@ Details about an invitation.
 
 =head2 AccountId => Str
 
-The account ID of the Security Hub master account that the invitation
-was sent from.
+The account ID of the Security Hub administrator account that the
+invitation was sent from.
 
 
 =head2 InvitationId => Str
@@ -59,8 +59,8 @@ The timestamp of when the invitation was sent.
 
 =head2 MemberStatus => Str
 
-The current status of the association between the member and master
-accounts.
+The current status of the association between the member and
+administrator accounts.
 
 
 

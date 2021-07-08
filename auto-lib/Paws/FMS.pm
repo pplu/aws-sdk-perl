@@ -20,6 +20,11 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::AssociateAdminAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteAppsList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::DeleteAppsList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteNotificationChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::DeleteNotificationChannel', @_);
@@ -30,6 +35,11 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::DeletePolicy', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteProtocolsList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::DeleteProtocolsList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateAdminAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::DisassociateAdminAccount', @_);
@@ -38,6 +48,11 @@ package Paws::FMS;
   sub GetAdminAccount {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::GetAdminAccount', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetAppsList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::GetAppsList', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetComplianceDetail {
@@ -60,6 +75,21 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::GetProtectionStatus', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetProtocolsList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::GetProtocolsList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetViolationDetails {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::GetViolationDetails', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListAppsLists {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::ListAppsLists', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListComplianceStatus {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListComplianceStatus', @_);
@@ -75,9 +105,19 @@ package Paws::FMS;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListPolicies', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListProtocolsLists {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::ListProtocolsLists', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ListTagsForResource {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAppsList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::PutAppsList', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub PutNotificationChannel {
@@ -88,6 +128,11 @@ package Paws::FMS;
   sub PutPolicy {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::FMS::PutPolicy', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutProtocolsList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::FMS::PutProtocolsList', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub TagResource {
@@ -172,7 +217,7 @@ package Paws::FMS;
   }
 
 
-  sub operations { qw/AssociateAdminAccount DeleteNotificationChannel DeletePolicy DisassociateAdminAccount GetAdminAccount GetComplianceDetail GetNotificationChannel GetPolicy GetProtectionStatus ListComplianceStatus ListMemberAccounts ListPolicies ListTagsForResource PutNotificationChannel PutPolicy TagResource UntagResource / }
+  sub operations { qw/AssociateAdminAccount DeleteAppsList DeleteNotificationChannel DeletePolicy DeleteProtocolsList DisassociateAdminAccount GetAdminAccount GetAppsList GetComplianceDetail GetNotificationChannel GetPolicy GetProtectionStatus GetProtocolsList GetViolationDetails ListAppsLists ListComplianceStatus ListMemberAccounts ListPolicies ListProtocolsLists ListTagsForResource PutAppsList PutNotificationChannel PutPolicy PutProtocolsList TagResource UntagResource / }
 
 1;
 
@@ -208,6 +253,11 @@ API actions, data types, and errors. For detailed information about AWS
 Firewall Manager features, see the AWS Firewall Manager Developer Guide
 (https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
 
+Some API actions require explicit resource permissions. For
+information, see the developer guide topic Firewall Manager required
+permissions for API actions
+(https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html).
+
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fms-2018-01-01>
 
 
@@ -235,6 +285,22 @@ appropriate permissions for the given member account.
 
 The account that you associate with AWS Firewall Manager is called the
 AWS Firewall Manager administrator account.
+
+
+=head2 DeleteAppsList
+
+=over
+
+=item ListId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::DeleteAppsList>
+
+Returns: nothing
+
+Permanently deletes an AWS Firewall Manager applications list.
 
 
 =head2 DeleteNotificationChannel
@@ -271,6 +337,22 @@ Returns: nothing
 Permanently deletes an AWS Firewall Manager policy.
 
 
+=head2 DeleteProtocolsList
+
+=over
+
+=item ListId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::DeleteProtocolsList>
+
+Returns: nothing
+
+Permanently deletes an AWS Firewall Manager protocols list.
+
+
 =head2 DisassociateAdminAccount
 
 
@@ -302,6 +384,25 @@ Returns the AWS Organizations master account that is associated with
 AWS Firewall Manager as the AWS Firewall Manager administrator.
 
 
+=head2 GetAppsList
+
+=over
+
+=item ListId => Str
+
+=item [DefaultList => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::GetAppsList>
+
+Returns: a L<Paws::FMS::GetAppsListResponse> instance
+
+Returns information about the specified AWS Firewall Manager
+applications list.
+
+
 =head2 GetComplianceDetail
 
 =over
@@ -324,7 +425,12 @@ AWS WAF and Shield Advanced policies if the specified policy has not
 been applied to them. Resources are considered noncompliant for
 security group policies if they are in scope of the policy, they
 violate one or more of the policy rules, and remediation is disabled or
-not possible.
+not possible. Resources are considered noncompliant for Network
+Firewall policies if a firewall is missing in the VPC, if the firewall
+endpoint isn't set up in an expected Availability Zone and subnet, if a
+subnet created by the Firewall Manager doesn't have the expected route
+table, and for modifications to a firewall policy that violate the
+Firewall Manager policy's rules.
 
 
 =head2 GetNotificationChannel
@@ -386,6 +492,68 @@ summary information in the event of a potential DDoS attack. Other
 policy types are currently unsupported.
 
 
+=head2 GetProtocolsList
+
+=over
+
+=item ListId => Str
+
+=item [DefaultList => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::GetProtocolsList>
+
+Returns: a L<Paws::FMS::GetProtocolsListResponse> instance
+
+Returns information about the specified AWS Firewall Manager protocols
+list.
+
+
+=head2 GetViolationDetails
+
+=over
+
+=item MemberAccount => Str
+
+=item PolicyId => Str
+
+=item ResourceId => Str
+
+=item ResourceType => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::GetViolationDetails>
+
+Returns: a L<Paws::FMS::GetViolationDetailsResponse> instance
+
+Retrieves violations for a resource based on the specified AWS Firewall
+Manager policy and AWS account.
+
+
+=head2 ListAppsLists
+
+=over
+
+=item MaxResults => Int
+
+=item [DefaultLists => Bool]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::ListAppsLists>
+
+Returns: a L<Paws::FMS::ListAppsListsResponse> instance
+
+Returns an array of C<AppsListDataSummary> objects.
+
+
 =head2 ListComplianceStatus
 
 =over
@@ -403,9 +571,9 @@ Each argument is described in detail in: L<Paws::FMS::ListComplianceStatus>
 
 Returns: a L<Paws::FMS::ListComplianceStatusResponse> instance
 
-Returns an array of C<PolicyComplianceStatus> objects in the response.
-Use C<PolicyComplianceStatus> to get a summary of which member accounts
-are protected by the specified policy.
+Returns an array of C<PolicyComplianceStatus> objects. Use
+C<PolicyComplianceStatus> to get a summary of which member accounts are
+protected by the specified policy.
 
 
 =head2 ListMemberAccounts
@@ -445,7 +613,27 @@ Each argument is described in detail in: L<Paws::FMS::ListPolicies>
 
 Returns: a L<Paws::FMS::ListPoliciesResponse> instance
 
-Returns an array of C<PolicySummary> objects in the response.
+Returns an array of C<PolicySummary> objects.
+
+
+=head2 ListProtocolsLists
+
+=over
+
+=item MaxResults => Int
+
+=item [DefaultLists => Bool]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::ListProtocolsLists>
+
+Returns: a L<Paws::FMS::ListProtocolsListsResponse> instance
+
+Returns an array of C<ProtocolsListDataSummary> objects.
 
 
 =head2 ListTagsForResource
@@ -462,6 +650,24 @@ Each argument is described in detail in: L<Paws::FMS::ListTagsForResource>
 Returns: a L<Paws::FMS::ListTagsForResourceResponse> instance
 
 Retrieves the list of tags for the specified AWS resource.
+
+
+=head2 PutAppsList
+
+=over
+
+=item AppsList => L<Paws::FMS::AppsListData>
+
+=item [TagList => ArrayRef[L<Paws::FMS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::PutAppsList>
+
+Returns: a L<Paws::FMS::PutAppsListResponse> instance
+
+Creates an AWS Firewall Manager applications list.
 
 
 =head2 PutNotificationChannel
@@ -481,6 +687,13 @@ Returns: nothing
 
 Designates the IAM role and Amazon Simple Notification Service (SNS)
 topic that AWS Firewall Manager uses to record SNS logs.
+
+To perform this action outside of the console, you must configure the
+SNS topic to allow the Firewall Manager role C<AWSServiceRoleForFMS> to
+publish SNS logs. For more information, see Firewall Manager required
+permissions for API actions
+(https://docs.aws.amazon.com/waf/latest/developerguide/fms-api-permissions-ref.html)
+in the I<AWS Firewall Manager Developer Guide>.
 
 
 =head2 PutPolicy
@@ -506,29 +719,57 @@ Firewall Manager provides the following types of policies:
 
 =item *
 
-A Shield Advanced policy, which applies Shield Advanced protection to
-specified accounts and resources
+An AWS WAF policy (type WAFV2), which defines rule groups to run first
+in the corresponding AWS WAF web ACL and rule groups to run last in the
+web ACL.
 
 =item *
 
-An AWS WAF policy, which contains a rule group and defines which
-resources are to be protected by that rule group
+An AWS WAF Classic policy (type WAF), which defines a rule group.
+
+=item *
+
+A Shield Advanced policy, which applies Shield Advanced protection to
+specified accounts and resources.
 
 =item *
 
 A security group policy, which manages VPC security groups across your
 AWS organization.
 
+=item *
+
+An AWS Network Firewall policy, which provides firewall rules to filter
+network traffic in specified Amazon VPCs.
+
 =back
 
-Each policy is specific to one of the three types. If you want to
-enforce more than one policy type across accounts, you can create
-multiple policies. You can create multiple policies for each type.
+Each policy is specific to one of the types. If you want to enforce
+more than one policy type across accounts, create multiple policies.
+You can create multiple policies for each type.
 
 You must be subscribed to Shield Advanced to create a Shield Advanced
 policy. For more information about subscribing to Shield Advanced, see
 CreateSubscription
 (https://docs.aws.amazon.com/waf/latest/DDOSAPIReference/API_CreateSubscription.html).
+
+
+=head2 PutProtocolsList
+
+=over
+
+=item ProtocolsList => L<Paws::FMS::ProtocolsListData>
+
+=item [TagList => ArrayRef[L<Paws::FMS::Tag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::FMS::PutProtocolsList>
+
+Returns: a L<Paws::FMS::PutProtocolsListResponse> instance
+
+Creates an AWS Firewall Manager protocols list.
 
 
 =head2 TagResource

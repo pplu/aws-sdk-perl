@@ -90,6 +90,26 @@ C<DescribeValidDBInstanceModifications>
 
 =back
 
+If you call C<DescribeDBInstances>, C<ProcessorFeature> returns
+non-null values only if the following conditions are met:
+
+=over
+
+=item *
+
+You are accessing an Oracle DB instance.
+
+=item *
+
+Your Oracle DB instance class supports configuring the number of CPU
+cores and threads per core.
+
+=item *
+
+The current number CPU cores and threads is set to a non-default value.
+
+=back
+
 For more information, see Configuring the Processor of the DB Instance
 Class
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html#USER_ConfigureProcessor)

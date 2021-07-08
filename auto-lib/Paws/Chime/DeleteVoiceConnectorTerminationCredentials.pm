@@ -1,7 +1,7 @@
 
 package Paws::Chime::DeleteVoiceConnectorTerminationCredentials;
   use Moose;
-  has Usernames => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Usernames => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has VoiceConnectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'voiceConnectorId', required => 1);
 
   use MooseX::ClassAttribute;
@@ -30,8 +30,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $chime = Paws->service('Chime');
     $chime->DeleteVoiceConnectorTerminationCredentials(
+      Usernames        => [ 'MySensitiveString', ... ],
       VoiceConnectorId => 'MyNonEmptyString',
-      Usernames        => [ 'MySensitiveString', ... ],    # OPTIONAL
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -40,7 +41,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/chi
 =head1 ATTRIBUTES
 
 
-=head2 Usernames => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Usernames => ArrayRef[Str|Undef]
 
 The RFC2617 compliant username associated with the SIP credentials, in
 US-ASCII format.

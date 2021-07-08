@@ -40,13 +40,25 @@ This class has no description
 =head2 ResourceType => Str
 
 The type of resource to tag. Currently, the resource types that support
-tagging on creation are: C<capacity-reservation> |
-C<client-vpn-endpoint> | C<dedicated-host> | C<fleet> | C<fpga-image> |
-C<instance> | C<key-pair> | C<launch-template> | C<placement-group> |
-C<snapshot> | C<traffic-mirror-filter> | C<traffic-mirror-session> |
+tagging on creation are: C<capacity-reservation> | C<carrier-gateway> |
+C<client-vpn-endpoint> | C<customer-gateway> | C<dedicated-host> |
+C<dhcp-options> | C<egress-only-internet-gateway> | C<elastic-ip> |
+C<elastic-gpu> | C<export-image-task> | C<export-instance-task> |
+C<fleet> | C<fpga-image> | C<host-reservation> | C<image>|
+C<import-image-task> | C<import-snapshot-task> | C<instance> |
+C<internet-gateway> | C<ipv4pool-ec2> | C<ipv6pool-ec2> | C<key-pair> |
+C<launch-template> | C<local-gateway-route-table-vpc-association> |
+C<placement-group> | C<prefix-list> | C<natgateway> | C<network-acl> |
+C<network-interface> | C<reserved-instances> |C<route-table> |
+C<security-group>| C<snapshot> | C<spot-fleet-request> |
+C<spot-instances-request> | C<snapshot> | C<subnet> |
+C<traffic-mirror-filter> | C<traffic-mirror-session> |
 C<traffic-mirror-target> | C<transit-gateway> |
-C<transit-gateway-attachment> | C<transit-gateway-route-table> |
-C<volume>.
+C<transit-gateway-attachment> | C<transit-gateway-multicast-domain> |
+C<transit-gateway-route-table> | C<volume> |C<vpc> | C<
+vpc-peering-connection> | C<vpc-endpoint> (for interface and gateway
+endpoints) | C<vpc-endpoint-service> (for AWS PrivateLink) |
+C<vpc-flow-log> | C<vpn-connection> | C<vpn-gateway>.
 
 To tag a resource after it has been created, see CreateTags
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).

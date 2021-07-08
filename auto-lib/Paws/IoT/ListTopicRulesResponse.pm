@@ -18,7 +18,8 @@ Paws::IoT::ListTopicRulesResponse
 
 =head2 NextToken => Str
 
-A token used to retrieve the next value.
+The token to use to get the next set of results, or B<null> if there
+are no additional results.
 
 
 =head2 Rules => ArrayRef[L<Paws::IoT::TopicRuleListItem>]

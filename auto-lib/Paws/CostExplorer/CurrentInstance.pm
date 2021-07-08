@@ -2,6 +2,7 @@
 package Paws::CostExplorer::CurrentInstance;
   use Moose;
   has CurrencyCode => (is => 'ro', isa => 'Str');
+  has InstanceName => (is => 'ro', isa => 'Str');
   has MonthlyCost => (is => 'ro', isa => 'Str');
   has OnDemandHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
   has ReservationCoveredHoursInLookbackPeriod => (is => 'ro', isa => 'Str');
@@ -49,18 +50,24 @@ Context about the current instance.
 
 =head2 CurrencyCode => Str
 
-The currency code that Amazon Web Services used to calculate the costs
-for this instance.
+The currency code that AWS used to calculate the costs for this
+instance.
+
+
+=head2 InstanceName => Str
+
+The name you've given an instance. This field will show as blank if you
+haven't given the instance a name.
 
 
 =head2 MonthlyCost => Str
 
-Current On Demand cost of operating this instance on a monthly basis.
+Current On-Demand cost of operating this instance on a monthly basis.
 
 
 =head2 OnDemandHoursInLookbackPeriod => Str
 
-Number of hours during the lookback period billed at On Demand rates.
+Number of hours during the lookback period billed at On-Demand rates.
 
 
 =head2 ReservationCoveredHoursInLookbackPeriod => Str

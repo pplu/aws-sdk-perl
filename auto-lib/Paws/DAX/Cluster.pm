@@ -4,6 +4,7 @@ package Paws::DAX::Cluster;
   has ActiveNodes => (is => 'ro', isa => 'Int');
   has ClusterArn => (is => 'ro', isa => 'Str');
   has ClusterDiscoveryEndpoint => (is => 'ro', isa => 'Paws::DAX::Endpoint');
+  has ClusterEndpointEncryptionType => (is => 'ro', isa => 'Str');
   has ClusterName => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
   has IamRoleArn => (is => 'ro', isa => 'Str');
@@ -67,11 +68,25 @@ The Amazon Resource Name (ARN) that uniquely identifies the cluster.
 
 =head2 ClusterDiscoveryEndpoint => L<Paws::DAX::Endpoint>
 
-The configuration endpoint for this DAX cluster, consisting of a DNS
-name and a port number. Client applications can specify this endpoint,
-rather than an individual node endpoint, and allow the DAX client
-software to intelligently route requests and responses to nodes in the
-DAX cluster.
+The endpoint for this DAX cluster, consisting of a DNS name, a port
+number, and a URL. Applications should use the URL to configure the DAX
+client to find their cluster.
+
+
+=head2 ClusterEndpointEncryptionType => Str
+
+The type of encryption supported by the cluster's endpoint. Values are:
+
+=over
+
+=item *
+
+C<NONE> for no encryption
+
+C<TLS> for Transport Layer Security
+
+=back
+
 
 
 =head2 ClusterName => Str

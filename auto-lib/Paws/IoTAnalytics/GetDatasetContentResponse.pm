@@ -19,7 +19,7 @@ Paws::IoTAnalytics::GetDatasetContentResponse
 
 =head2 Entries => ArrayRef[L<Paws::IoTAnalytics::DatasetEntry>]
 
-A list of "DatasetEntry" objects.
+A list of C<DatasetEntry> objects.
 
 
 =head2 Status => L<Paws::IoTAnalytics::DatasetContentStatus>

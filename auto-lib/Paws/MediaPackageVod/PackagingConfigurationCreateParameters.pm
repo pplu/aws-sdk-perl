@@ -7,6 +7,7 @@ package Paws::MediaPackageVod::PackagingConfigurationCreateParameters;
   has Id => (is => 'ro', isa => 'Str', request_name => 'id', traits => ['NameInRequest'], required => 1);
   has MssPackage => (is => 'ro', isa => 'Paws::MediaPackageVod::MssPackage', request_name => 'mssPackage', traits => ['NameInRequest']);
   has PackagingGroupId => (is => 'ro', isa => 'Str', request_name => 'packagingGroupId', traits => ['NameInRequest'], required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::MediaPackageVod::Tags', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
 
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::MediaPackageVod::PackagingConfigurationCreateParameters object:
 
-  $service_obj->Method(Att1 => { CmafPackage => $value, ..., PackagingGroupId => $value  });
+  $service_obj->Method(Att1 => { CmafPackage => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -72,6 +73,11 @@ The ID of the PackagingConfiguration.
 =head2 B<REQUIRED> PackagingGroupId => Str
 
 The ID of a PackagingGroup.
+
+
+=head2 Tags => L<Paws::MediaPackageVod::Tags>
+
+
 
 
 

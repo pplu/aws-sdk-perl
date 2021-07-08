@@ -38,39 +38,50 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::FraudDetect
 
 =head1 DESCRIPTION
 
-The variable entry in a list.
+A variable in the list of variables for the batch create variable
+request.
 
 =head1 ATTRIBUTES
 
 
 =head2 DataSource => Str
 
-The data source of the variable entry.
+The data source of the variable.
 
 
 =head2 DataType => Str
 
-The data type of the variable entry.
+The data type of the variable.
 
 
 =head2 DefaultValue => Str
 
-The default value of the variable entry.
+The default value of the variable.
 
 
 =head2 Description => Str
 
-The description of the variable entry.
+The description of the variable.
 
 
 =head2 Name => Str
 
-The name of the variable entry.
+The name of the variable.
 
 
 =head2 VariableType => Str
 
-The type of the variable entry.
+The type of the variable. For more information see Variable types
+(https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
+
+Valid Values: C<AUTH_CODE | AVS | BILLING_ADDRESS_L1 |
+BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME |
+BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL |
+CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
+FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE |
+PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 |
+SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME
+| SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT>
 
 
 

@@ -7,7 +7,7 @@ package Paws::CloudFront::CreateDistribution;
   use MooseX::ClassAttribute;
 
   class_has _api_call => (isa => 'Str', is => 'ro', default => 'CreateDistribution');
-  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2019-03-26/distribution');
+  class_has _api_uri  => (isa => 'Str', is => 'ro', default => '/2020-05-31/distribution');
   class_has _api_method  => (isa => 'Str', is => 'ro', default => 'POST');
   class_has _returns => (isa => 'Str', is => 'ro', default => 'Paws::CloudFront::CreateDistributionResult');
   class_has _result_key => (isa => 'Str', is => 'ro');
@@ -23,11 +23,11 @@ Paws::CloudFront::CreateDistribution - Arguments for method CreateDistribution o
 
 =head1 DESCRIPTION
 
-This class represents the parameters used for calling the method CreateDistribution2019_03_26 on the
+This class represents the parameters used for calling the method CreateDistribution2020_05_31 on the
 L<Amazon CloudFront|Paws::CloudFront> service. Use the attributes of this class
-as arguments to method CreateDistribution2019_03_26.
+as arguments to method CreateDistribution2020_05_31.
 
-You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistribution2019_03_26.
+You shouldn't make instances of this class. Each attribute should be used as a named argument in the call to CreateDistribution2020_05_31.
 
 =head1 SYNOPSIS
 
@@ -37,31 +37,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         CallerReference      => 'Mystring',
         Comment              => 'MyCommentType',
         DefaultCacheBehavior => {
-          ForwardedValues => {
-            Cookies => {
-              Forward          => 'none',    # values: none, whitelist, all
-              WhitelistedNames => {
-                Quantity => 1,
-                Items    => [ 'Mystring', ... ],    # OPTIONAL
-              },    # OPTIONAL
-            },
-            QueryString => 1,
-            Headers     => {
-              Quantity => 1,
-              Items    => [ 'Mystring', ... ],    # OPTIONAL
-            },    # OPTIONAL
-            QueryStringCacheKeys => {
-              Quantity => 1,
-              Items    => [ 'Mystring', ... ],    # OPTIONAL
-            },    # OPTIONAL
-          },
-          MinTTL         => 1,
-          TargetOriginId => 'Mystring',
-          TrustedSigners => {
-            Enabled  => 1,
-            Quantity => 1,
-            Items    => [ 'Mystring', ... ],    # OPTIONAL
-          },
+          TargetOriginId       => 'Mystring',
           ViewerProtocolPolicy =>
             'allow-all',    # values: allow-all, https-only, redirect-to-https
           AllowedMethods => {
@@ -78,9 +54,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
             },    # OPTIONAL
           },    # OPTIONAL
-          Compress                   => 1,
-          DefaultTTL                 => 1,
-          FieldLevelEncryptionId     => 'Mystring',
+          CachePolicyId          => 'Mystring',
+          Compress               => 1,            # OPTIONAL
+          DefaultTTL             => 1,            # OPTIONAL
+          FieldLevelEncryptionId => 'Mystring',
+          ForwardedValues        => {
+            Cookies => {
+              Forward          => 'none',         # values: none, whitelist, all
+              WhitelistedNames => {
+                Quantity => 1,
+                Items    => [ 'Mystring', ... ],    # OPTIONAL
+              },    # OPTIONAL
+            },
+            QueryString => 1,    # OPTIONAL
+            Headers     => {
+              Quantity => 1,
+              Items    => [ 'Mystring', ... ],    # OPTIONAL
+            },    # OPTIONAL
+            QueryStringCacheKeys => {
+              Quantity => 1,
+              Items    => [ 'Mystring', ... ],    # OPTIONAL
+            },    # OPTIONAL
+          },    # OPTIONAL
+          FunctionAssociations => {
+            Quantity => 1,
+            Items    => [
+              {
+                EventType => 'viewer-request'
+                , # values: viewer-request, viewer-response, origin-request, origin-response
+                FunctionARN => 'MyFunctionARN',    # max: 108
+
+              },
+              ...
+            ],    # OPTIONAL
+          },    # OPTIONAL
           LambdaFunctionAssociations => {
             Quantity => 1,
             Items    => [
@@ -88,21 +95,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                 EventType => 'viewer-request'
                 , # values: viewer-request, viewer-response, origin-request, origin-response
                 LambdaFunctionARN => 'MyLambdaFunctionARN',
-                IncludeBody       => 1,
+                IncludeBody       => 1,                       # OPTIONAL
               },
               ...
             ],    # OPTIONAL
           },    # OPTIONAL
-          MaxTTL          => 1,
-          SmoothStreaming => 1,
+          MaxTTL                => 1,            # OPTIONAL
+          MinTTL                => 1,            # OPTIONAL
+          OriginRequestPolicyId => 'Mystring',
+          RealtimeLogConfigArn  => 'Mystring',
+          SmoothStreaming       => 1,            # OPTIONAL
+          TrustedKeyGroups      => {
+            Enabled  => 1,                       # OPTIONAL
+            Quantity => 1,
+            Items    => [ 'Mystring', ... ],     # OPTIONAL
+          },    # OPTIONAL
+          TrustedSigners => {
+            Enabled  => 1,                      # OPTIONAL
+            Quantity => 1,
+            Items    => [ 'Mystring', ... ],    # OPTIONAL
+          },    # OPTIONAL
         },
-        Enabled => 1,
+        Enabled => 1,    # OPTIONAL
         Origins => {
           Items => [
             {
-              DomainName    => 'Mystring',
-              Id            => 'Mystring',
-              CustomHeaders => {
+              DomainName         => 'Mystring',
+              Id                 => 'Mystring',
+              ConnectionAttempts => 1,
+              ConnectionTimeout  => 1,
+              CustomHeaders      => {
                 Quantity => 1,
                 Items    => [
                   {
@@ -128,7 +150,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },    # OPTIONAL
               },    # OPTIONAL
-              OriginPath     => 'Mystring',
+              OriginPath   => 'Mystring',
+              OriginShield => {
+                Enabled            => 1,     # OPTIONAL
+                OriginShieldRegion =>
+                  'MyOriginShieldRegion',    # min: 1, max: 32; OPTIONAL
+              },    # OPTIONAL
               S3OriginConfig => {
                 OriginAccessIdentity => 'Mystring',
 
@@ -147,32 +174,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Quantity => 1,
           Items    => [
             {
-              ForwardedValues => {
-                Cookies => {
-                  Forward          => 'none',    # values: none, whitelist, all
-                  WhitelistedNames => {
-                    Quantity => 1,
-                    Items    => [ 'Mystring', ... ],    # OPTIONAL
-                  },    # OPTIONAL
-                },
-                QueryString => 1,
-                Headers     => {
-                  Quantity => 1,
-                  Items    => [ 'Mystring', ... ],    # OPTIONAL
-                },    # OPTIONAL
-                QueryStringCacheKeys => {
-                  Quantity => 1,
-                  Items    => [ 'Mystring', ... ],    # OPTIONAL
-                },    # OPTIONAL
-              },
-              MinTTL         => 1,
-              PathPattern    => 'Mystring',
-              TargetOriginId => 'Mystring',
-              TrustedSigners => {
-                Enabled  => 1,
-                Quantity => 1,
-                Items    => [ 'Mystring', ... ],    # OPTIONAL
-              },
+              PathPattern          => 'Mystring',
+              TargetOriginId       => 'Mystring',
               ViewerProtocolPolicy =>
                 'allow-all',  # values: allow-all, https-only, redirect-to-https
               AllowedMethods => {
@@ -190,9 +193,40 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
                 },    # OPTIONAL
               },    # OPTIONAL
-              Compress                   => 1,
-              DefaultTTL                 => 1,
-              FieldLevelEncryptionId     => 'Mystring',
+              CachePolicyId          => 'Mystring',
+              Compress               => 1,            # OPTIONAL
+              DefaultTTL             => 1,            # OPTIONAL
+              FieldLevelEncryptionId => 'Mystring',
+              ForwardedValues        => {
+                Cookies => {
+                  Forward          => 'none',    # values: none, whitelist, all
+                  WhitelistedNames => {
+                    Quantity => 1,
+                    Items    => [ 'Mystring', ... ],    # OPTIONAL
+                  },    # OPTIONAL
+                },
+                QueryString => 1,    # OPTIONAL
+                Headers     => {
+                  Quantity => 1,
+                  Items    => [ 'Mystring', ... ],    # OPTIONAL
+                },    # OPTIONAL
+                QueryStringCacheKeys => {
+                  Quantity => 1,
+                  Items    => [ 'Mystring', ... ],    # OPTIONAL
+                },    # OPTIONAL
+              },    # OPTIONAL
+              FunctionAssociations => {
+                Quantity => 1,
+                Items    => [
+                  {
+                    EventType => 'viewer-request'
+                    , # values: viewer-request, viewer-response, origin-request, origin-response
+                    FunctionARN => 'MyFunctionARN',    # max: 108
+
+                  },
+                  ...
+                ],    # OPTIONAL
+              },    # OPTIONAL
               LambdaFunctionAssociations => {
                 Quantity => 1,
                 Items    => [
@@ -200,13 +234,26 @@ You shouldn't make instances of this class. Each attribute should be used as a n
                     EventType => 'viewer-request'
                     , # values: viewer-request, viewer-response, origin-request, origin-response
                     LambdaFunctionARN => 'MyLambdaFunctionARN',
-                    IncludeBody       => 1,
+                    IncludeBody       => 1,                       # OPTIONAL
                   },
                   ...
                 ],    # OPTIONAL
               },    # OPTIONAL
-              MaxTTL          => 1,
-              SmoothStreaming => 1,
+              MaxTTL                => 1,            # OPTIONAL
+              MinTTL                => 1,            # OPTIONAL
+              OriginRequestPolicyId => 'Mystring',
+              RealtimeLogConfigArn  => 'Mystring',
+              SmoothStreaming       => 1,            # OPTIONAL
+              TrustedKeyGroups      => {
+                Enabled  => 1,                       # OPTIONAL
+                Quantity => 1,
+                Items    => [ 'Mystring', ... ],     # OPTIONAL
+              },    # OPTIONAL
+              TrustedSigners => {
+                Enabled  => 1,                      # OPTIONAL
+                Quantity => 1,
+                Items    => [ 'Mystring', ... ],    # OPTIONAL
+              },    # OPTIONAL
             },
             ...
           ],    # OPTIONAL
@@ -216,7 +263,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Items    => [
             {
               ErrorCode          => 1,
-              ErrorCachingMinTTL => 1,
+              ErrorCachingMinTTL => 1,            # OPTIONAL
               ResponseCode       => 'Mystring',
               ResponsePagePath   => 'Mystring',
             },
@@ -225,14 +272,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },    # OPTIONAL
         DefaultRootObject => 'Mystring',
         HttpVersion       => 'http1.1',    # values: http1.1, http2; OPTIONAL
-        IsIPV6Enabled     => 1,
+        IsIPV6Enabled     => 1,            # OPTIONAL
         Logging           => {
           Bucket         => 'Mystring',
-          Enabled        => 1,
-          IncludeCookies => 1,
+          Enabled        => 1,             # OPTIONAL
+          IncludeCookies => 1,             # OPTIONAL
           Prefix         => 'Mystring',
 
-        },                                 # OPTIONAL
+        },    # OPTIONAL
         OriginGroups => {
           Quantity => 1,
           Items    => [
@@ -277,11 +324,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Certificate       => 'Mystring',
           CertificateSource =>
             'cloudfront',    # values: cloudfront, iam, acm; OPTIONAL
-          CloudFrontDefaultCertificate => 1,
+          CloudFrontDefaultCertificate => 1,            # OPTIONAL
           IAMCertificateId             => 'Mystring',
           MinimumProtocolVersion       => 'SSLv3'
-          , # values: SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018; OPTIONAL
-          SSLSupportMethod => 'sni-only',    # values: sni-only, vip; OPTIONAL
+          , # values: SSLv3, TLSv1, TLSv1_2016, TLSv1.1_2016, TLSv1.2_2018, TLSv1.2_2019, TLSv1.2_2021; OPTIONAL
+          SSLSupportMethod =>
+            'sni-only',    # values: sni-only, vip, static-ip; OPTIONAL
         },    # OPTIONAL
         WebACLId => 'Mystring',
       },
@@ -310,7 +358,7 @@ The distribution's configuration information.
 
 =head1 SEE ALSO
 
-This class forms part of L<Paws>, documenting arguments for method CreateDistribution2019_03_26 in L<Paws::CloudFront>
+This class forms part of L<Paws>, documenting arguments for method CreateDistribution2020_05_31 in L<Paws::CloudFront>
 
 =head1 BUGS and CONTRIBUTIONS
 

@@ -13,6 +13,7 @@ package Paws::RDS::ModifyDBCluster;
   has DeletionProtection => (is => 'ro', isa => 'Bool');
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
+  has EnableGlobalWriteForwarding => (is => 'ro', isa => 'Bool');
   has EnableHttpEndpoint => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has EngineVersion => (is => 'ro', isa => 'Str');
@@ -60,6 +61,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'PreferredMaintenanceWindow' => 'Tue:05:00-Tue:05:30'
     );
 
+    # Results:
+    my $DBCluster = $ModifyDBClusterResult->DBCluster;
+
+    # Returns a L<Paws::RDS::ModifyDBClusterResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/ModifyDBCluster>
@@ -102,6 +107,8 @@ By default, this parameter is disabled.
 
 The target backtrack window, in seconds. To disable backtracking, set
 this value to 0.
+
+Currently, Backtrack is only supported for Aurora MySQL DB clusters.
 
 Default: 0
 
@@ -214,12 +221,33 @@ The Active Directory directory ID to move the DB cluster to. Specify
 C<none> to remove the cluster from its current domain. The domain must
 be created prior to this operation.
 
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/kerberos-authentication.html)
+in the I<Amazon Aurora User Guide>.
+
 
 
 =head2 DomainIAMRoleName => Str
 
 Specify the name of the IAM role to be used when making API calls to
 the Directory Service.
+
+
+
+=head2 EnableGlobalWriteForwarding => Bool
+
+A value that indicates whether to enable this DB cluster to forward
+write operations to the primary cluster of an Aurora global database
+(GlobalCluster). By default, write operations are not allowed on Aurora
+DB clusters that are secondary clusters in an Aurora global database.
+
+You can set this value only on Aurora DB clusters that are members of
+an Aurora global database. With this parameter enabled, a secondary
+cluster can forward writes to the current primary cluster and the
+resulting changes are replicated back to this cluster. For the primary
+DB cluster of an Aurora global database, this value is used immediately
+if the primary is demoted by the FailoverGlobalCluster API operation,
+but it does nothing until then.
 
 
 
@@ -242,9 +270,9 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
 For more information, see IAM Database Authentication
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html)
@@ -349,9 +377,9 @@ automated backups are enabled, using the C<BackupRetentionPeriod>
 parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region. To see the time blocks available,
-see Adjusting the Preferred DB Cluster Maintenance Window
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
+block of time for each Amazon Web Services Region. To view the time
+blocks available, see Backup window
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.Backups.BackupWindow)
 in the I<Amazon Aurora User Guide.>
 
 Constraints:
@@ -387,9 +415,9 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week. To see the time blocks available, see Adjusting the Preferred DB
-Cluster Maintenance Window
+block of time for each Amazon Web Services Region, occurring on a
+random day of the week. To see the time blocks available, see Adjusting
+the Preferred DB Cluster Maintenance Window
 (https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora)
 in the I<Amazon Aurora User Guide.>
 

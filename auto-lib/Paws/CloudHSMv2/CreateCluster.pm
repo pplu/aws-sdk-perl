@@ -1,6 +1,7 @@
 
 package Paws::CloudHSMv2::CreateCluster;
   use Moose;
+  has BackupRetentionPolicy => (is => 'ro', isa => 'Paws::CloudHSMv2::BackupRetentionPolicy');
   has HsmType => (is => 'ro', isa => 'Str', required => 1);
   has SourceBackupId => (is => 'ro', isa => 'Str');
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
@@ -31,9 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudhsmv2 = Paws->service('CloudHSMv2');
     my $CreateClusterResponse = $cloudhsmv2->CreateCluster(
-      HsmType        => 'MyHsmType',
-      SubnetIds      => [ 'MySubnetId', ... ],
-      SourceBackupId => 'MyBackupId',            # OPTIONAL
+      HsmType               => 'MyHsmType',
+      SubnetIds             => [ 'MySubnetId', ... ],
+      BackupRetentionPolicy => {
+        Type  => 'DAYS',                      # values: DAYS; OPTIONAL
+        Value => 'MyBackupRetentionValue',    # min: 1, max: 3; OPTIONAL
+      },    # OPTIONAL
+      SourceBackupId => 'MyBackupId',    # OPTIONAL
       TagList        => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -53,6 +58,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/cloudhsmv2/CreateCluster>
 
 =head1 ATTRIBUTES
+
+
+=head2 BackupRetentionPolicy => L<Paws::CloudHSMv2::BackupRetentionPolicy>
+
+A policy that defines how the service retains backups.
+
 
 
 =head2 B<REQUIRED> HsmType => Str
@@ -93,7 +104,7 @@ You can specify only one subnet per Availability Zone.
 
 =head2 TagList => ArrayRef[L<Paws::CloudHSMv2::Tag>]
 
-
+Tags to apply to the CloudHSM cluster during creation.
 
 
 

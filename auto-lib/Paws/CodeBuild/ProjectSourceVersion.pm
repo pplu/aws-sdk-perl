@@ -41,7 +41,9 @@ A source identifier and its corresponding version.
 
 =head2 B<REQUIRED> SourceIdentifier => Str
 
-An identifier for a source in the build project.
+An identifier for a source in the build project. The identifier can
+only contain alphanumeric characters and underscores, and must be less
+than 128 characters in length.
 
 
 =head2 B<REQUIRED> SourceVersion => Str
@@ -53,7 +55,7 @@ specified, must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 
@@ -73,14 +75,14 @@ the default branch's HEAD commit ID is used.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+For Amazon S3: the version ID of the object that represents the build
+input ZIP file to use.
 
 =back
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 

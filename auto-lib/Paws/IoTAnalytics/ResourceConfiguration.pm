@@ -35,22 +35,22 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::IoTAnalytic
 =head1 DESCRIPTION
 
 The configuration of the resource used to execute the
-"containerAction".
+C<containerAction>.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> ComputeType => Str
 
-The type of the compute resource used to execute the "containerAction".
-Possible values are: ACU_1 (vCPU=4, memory=16GiB) or ACU_2 (vCPU=8,
-memory=32GiB).
+The type of the compute resource used to execute the
+C<containerAction>. Possible values are: C<ACU_1> (vCPU=4, memory=16
+GiB) or C<ACU_2> (vCPU=8, memory=32 GiB).
 
 
 =head2 B<REQUIRED> VolumeSizeInGB => Int
 
-The size (in GB) of the persistent storage available to the resource
-instance used to execute the "containerAction" (min: 1, max: 50).
+The size, in GB, of the persistent storage available to the resource
+instance used to execute the C<containerAction> (min: 1, max: 50).
 
 
 

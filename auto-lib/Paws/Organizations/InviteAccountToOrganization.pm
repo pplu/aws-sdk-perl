@@ -2,6 +2,7 @@
 package Paws::Organizations::InviteAccountToOrganization;
   use Moose;
   has Notes => (is => 'ro', isa => 'Str');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::Organizations::Tag]');
   has Target => (is => 'ro', isa => 'Paws::Organizations::HandshakeParty', required => 1);
 
   use MooseX::ClassAttribute;
@@ -28,20 +29,23 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $organizations = Paws->service('Organizations');
-    my $InviteAccountToOrganizationResponse =
-      $organizations->InviteAccountToOrganization(
-      Target => {
-        Id   => 'MyHandshakePartyId',    # min: 1, max: 64
-        Type => 'ACCOUNT',               # values: ACCOUNT, ORGANIZATION, EMAIL
+# To invite an account to join an organization
+# The following example shows the admin of the master account owned by
+# bill@example.com inviting the account owned by juan@example.com to join an
+# organization.
+my $InviteAccountToOrganizationResponse = $organizations->InviteAccountToOrganization(
+'Notes' => 'This is a request for Juan's account to join Bill's organization',
+'Target' => 
+{
+'Id' => 'juan@example.com',
+'Type' => 'EMAIL'
+}
+);
 
-      },
-      Notes => 'MyHandshakeNotes',       # OPTIONAL
-      );
+# Results:
+my $Handshake = $InviteAccountToOrganizationResponse->Handshake;
 
-    # Results:
-    my $Handshake = $InviteAccountToOrganizationResponse->Handshake;
-
- # Returns a L<Paws::Organizations::InviteAccountToOrganizationResponse> object.
+# Returns a L<Paws::Organizations::InviteAccountToOrganizationResponse> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/organizations/InviteAccountToOrganization>
@@ -53,6 +57,31 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/org
 
 Additional information that you want to include in the generated email
 to the recipient account owner.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::Organizations::Tag>]
+
+A list of tags that you want to attach to the account when it becomes a
+member of the organization. For each tag in the list, you must specify
+both a tag key and a value. You can set the value to an empty string,
+but you can't set it to C<null>. For more information about tagging,
+see Tagging AWS Organizations resources
+(https://docs.aws.amazon.com/organizations/latest/userguide/orgs_tagging.html)
+in the AWS Organizations User Guide.
+
+Any tags in the request are checked for compliance with any applicable
+tag policies when the request is made. The request is rejected if the
+tags in the request don't match the requirements of the policy at that
+time. Tag policy compliance is I< B<not> > checked again when the
+invitation is accepted and the tags are actually attached to the
+account. That means that if the tag policy changes between the
+invitation and the acceptance, then that tags could potentially be
+non-compliant.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags for an account, then the entire request fails and invitations
+are not sent.
 
 
 

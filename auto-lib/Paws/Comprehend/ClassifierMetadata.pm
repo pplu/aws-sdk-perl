@@ -55,7 +55,8 @@ The number of labels in the input data.
 =head2 NumberOfTestDocuments => Int
 
 The number of documents in the input data that were used to test the
-classifier. Typically this is 10 to 20 percent of the input documents.
+classifier. Typically this is 10 to 20 percent of the input documents,
+up to 10,000 documents.
 
 
 =head2 NumberOfTrainedDocuments => Int

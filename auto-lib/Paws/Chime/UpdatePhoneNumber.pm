@@ -63,7 +63,7 @@ The phone number ID.
 
 The product type.
 
-Valid values are: C<"BusinessCalling">, C<"VoiceConnector">
+Valid values are: C<"BusinessCalling">, C<"VoiceConnector">, C<"SipMediaApplicationDialIn">
 
 
 =head1 SEE ALSO

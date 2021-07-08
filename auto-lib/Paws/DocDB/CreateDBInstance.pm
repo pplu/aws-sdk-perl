@@ -66,10 +66,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates that minor engine upgrades are applied automatically to the
-instance during the maintenance window.
+This parameter does not apply to Amazon DocumentDB. Amazon DocumentDB
+does not perform minor version upgrades regardless of the value set.
 
-Default: C<true>
+Default: C<false>
 
 
 
@@ -78,13 +78,9 @@ Default: C<true>
 The Amazon EC2 Availability Zone that the instance is created in.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
-AWS Region.
+Region.
 
 Example: C<us-east-1d>
-
-Constraint: The C<AvailabilityZone> parameter can't be specified if the
-C<MultiAZ> parameter is set to C<true>. The specified Availability Zone
-must be in the same AWS Region as the current endpoint.
 
 
 
@@ -144,8 +140,7 @@ Universal Coordinated Time (UTC).
 Format: C<ddd:hh24:mi-ddd:hh24:mi>
 
 The default is a 30-minute window selected at random from an 8-hour
-block of time for each AWS Region, occurring on a random day of the
-week.
+block of time for each Region, occurring on a random day of the week.
 
 Valid days: Mon, Tue, Wed, Thu, Fri, Sat, Sun
 

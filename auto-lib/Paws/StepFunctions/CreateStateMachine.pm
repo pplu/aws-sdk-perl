@@ -6,6 +6,7 @@ package Paws::StepFunctions::CreateStateMachine;
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn' , required => 1);
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::StepFunctions::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
+  has TracingConfiguration => (is => 'ro', isa => 'Paws::StepFunctions::TracingConfiguration', traits => ['NameInRequest'], request_name => 'tracingConfiguration' );
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
 
   use MooseX::ClassAttribute;
@@ -55,6 +56,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      TracingConfiguration => {
+        Enabled => 1,    # OPTIONAL
+      },    # OPTIONAL
       Type => 'STANDARD',    # OPTIONAL
     );
 
@@ -82,6 +86,11 @@ States Language
 
 Defines what execution history events are logged and where they are
 logged.
+
+By default, the C<level> is set to C<OFF>. For more information see Log
+Levels
+(https://docs.aws.amazon.com/step-functions/latest/dg/cloudwatch-log-level.html)
+in the AWS Step Functions User Guide.
 
 
 
@@ -115,6 +124,8 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 =back
 
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and _.
 
 
 
@@ -141,10 +152,17 @@ symbols: C<_ . : / = + - @>.
 
 
 
+=head2 TracingConfiguration => L<Paws::StepFunctions::TracingConfiguration>
+
+Selects whether AWS X-Ray tracing is enabled.
+
+
+
 =head2 Type => Str
 
-Determines whether a Standard or Express state machine is created. If
-not set, Standard is created.
+Determines whether a Standard or Express state machine is created. The
+default is C<STANDARD>. You cannot update the C<type> of a state
+machine once it has been created.
 
 Valid values are: C<"STANDARD">, C<"EXPRESS">
 

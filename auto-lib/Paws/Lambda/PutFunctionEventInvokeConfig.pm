@@ -32,19 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
+    # To configure error handling for asynchronous invocation
+    # The following example sets a maximum event age of one hour and disables
+    # retries for the specified function.
     my $FunctionEventInvokeConfig = $lambda->PutFunctionEventInvokeConfig(
-      FunctionName      => 'MyFunctionName',
-      DestinationConfig => {
-        OnFailure => {
-          Destination => 'MyDestinationArn',    # max: 350; OPTIONAL
-        },    # OPTIONAL
-        OnSuccess => {
-          Destination => 'MyDestinationArn',    # max: 350; OPTIONAL
-        },    # OPTIONAL
-      },    # OPTIONAL
-      MaximumEventAgeInSeconds => 1,                # OPTIONAL
-      MaximumRetryAttempts     => 1,                # OPTIONAL
-      Qualifier                => 'MyQualifier',    # OPTIONAL
+      'FunctionName'             => 'my-function',
+      'MaximumEventAgeInSeconds' => 3600,
+      'MaximumRetryAttempts'     => 0
     );
 
     # Results:

@@ -38,7 +38,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ConfigurationProfileId => 'MyId',
       Description            => 'MyDescription',    # OPTIONAL
       Name                   => 'MyName',           # OPTIONAL
-      RetrievalRoleArn       => 'MyArn',            # OPTIONAL
+      RetrievalRoleArn       => 'MyRoleArn',        # OPTIONAL
       Validators             => [
         {
           Content => 'MyStringWithLengthBetween0And32768',    # max: 32768

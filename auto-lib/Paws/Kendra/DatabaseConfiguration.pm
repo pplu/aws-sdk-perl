@@ -5,6 +5,7 @@ package Paws::Kendra::DatabaseConfiguration;
   has ColumnConfiguration => (is => 'ro', isa => 'Paws::Kendra::ColumnConfiguration', required => 1);
   has ConnectionConfiguration => (is => 'ro', isa => 'Paws::Kendra::ConnectionConfiguration', required => 1);
   has DatabaseEngineType => (is => 'ro', isa => 'Str', required => 1);
+  has SqlConfiguration => (is => 'ro', isa => 'Paws::Kendra::SqlConfiguration');
   has VpcConfiguration => (is => 'ro', isa => 'Paws::Kendra::DataSourceVpcConfiguration');
 
 1;
@@ -62,6 +63,12 @@ The information necessary to connect to a database.
 =head2 B<REQUIRED> DatabaseEngineType => Str
 
 The type of database engine that runs the database.
+
+
+=head2 SqlConfiguration => L<Paws::Kendra::SqlConfiguration>
+
+Provides information about how Amazon Kendra uses quote marks around
+SQL identifiers when querying a database data source.
 
 
 =head2 VpcConfiguration => L<Paws::Kendra::DataSourceVpcConfiguration>

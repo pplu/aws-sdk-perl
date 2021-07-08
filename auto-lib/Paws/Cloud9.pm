@@ -157,21 +157,21 @@ Paws::Cloud9 - Perl Interface to AWS AWS Cloud9
 
 =head1 DESCRIPTION
 
-AWS Cloud9
+Cloud9
 
-AWS Cloud9 is a collection of tools that you can use to code, build,
-run, test, debug, and release software in the cloud.
+Cloud9 is a collection of tools that you can use to code, build, run,
+test, debug, and release software in the cloud.
 
-For more information about AWS Cloud9, see the AWS Cloud9 User Guide
+For more information about Cloud9, see the Cloud9 User Guide
 (https://docs.aws.amazon.com/cloud9/latest/user-guide).
 
-AWS Cloud9 supports these operations:
+Cloud9 supports these operations:
 
 =over
 
 =item *
 
-C<CreateEnvironmentEC2>: Creates an AWS Cloud9 development environment,
+C<CreateEnvironmentEC2>: Creates an Cloud9 development environment,
 launches an Amazon EC2 instance, and then connects from the instance to
 the environment.
 
@@ -249,7 +249,11 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =item [ClientRequestToken => Str]
 
+=item [ConnectionType => Str]
+
 =item [Description => Str]
+
+=item [ImageId => Str]
 
 =item [OwnerArn => Str]
 
@@ -264,8 +268,8 @@ Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentEC2>
 
 Returns: a L<Paws::Cloud9::CreateEnvironmentEC2Result> instance
 
-Creates an AWS Cloud9 development environment, launches an Amazon
-Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
+Creates an Cloud9 development environment, launches an Amazon Elastic
+Compute Cloud (Amazon EC2) instance, and then connects from the
 instance to the environment.
 
 
@@ -286,7 +290,7 @@ Each argument is described in detail in: L<Paws::Cloud9::CreateEnvironmentMember
 
 Returns: a L<Paws::Cloud9::CreateEnvironmentMembershipResult> instance
 
-Adds an environment member to an AWS Cloud9 development environment.
+Adds an environment member to an Cloud9 development environment.
 
 
 =head2 DeleteEnvironment
@@ -302,8 +306,8 @@ Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironment>
 
 Returns: a L<Paws::Cloud9::DeleteEnvironmentResult> instance
 
-Deletes an AWS Cloud9 development environment. If an Amazon EC2
-instance is connected to the environment, also terminates the instance.
+Deletes an Cloud9 development environment. If an Amazon EC2 instance is
+connected to the environment, also terminates the instance.
 
 
 =head2 DeleteEnvironmentMembership
@@ -321,8 +325,7 @@ Each argument is described in detail in: L<Paws::Cloud9::DeleteEnvironmentMember
 
 Returns: a L<Paws::Cloud9::DeleteEnvironmentMembershipResult> instance
 
-Deletes an environment member from an AWS Cloud9 development
-environment.
+Deletes an environment member from an Cloud9 development environment.
 
 
 =head2 DescribeEnvironmentMemberships
@@ -346,8 +349,8 @@ Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironmentMemb
 
 Returns: a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> instance
 
-Gets information about environment members for an AWS Cloud9
-development environment.
+Gets information about environment members for an Cloud9 development
+environment.
 
 
 =head2 DescribeEnvironments
@@ -363,7 +366,7 @@ Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironments>
 
 Returns: a L<Paws::Cloud9::DescribeEnvironmentsResult> instance
 
-Gets information about AWS Cloud9 development environments.
+Gets information about Cloud9 development environments.
 
 
 =head2 DescribeEnvironmentStatus
@@ -379,7 +382,7 @@ Each argument is described in detail in: L<Paws::Cloud9::DescribeEnvironmentStat
 
 Returns: a L<Paws::Cloud9::DescribeEnvironmentStatusResult> instance
 
-Gets status information for an AWS Cloud9 development environment.
+Gets status information for an Cloud9 development environment.
 
 
 =head2 ListEnvironments
@@ -397,7 +400,7 @@ Each argument is described in detail in: L<Paws::Cloud9::ListEnvironments>
 
 Returns: a L<Paws::Cloud9::ListEnvironmentsResult> instance
 
-Gets a list of AWS Cloud9 development environment identifiers.
+Gets a list of Cloud9 development environment identifiers.
 
 
 =head2 ListTagsForResource
@@ -413,7 +416,7 @@ Each argument is described in detail in: L<Paws::Cloud9::ListTagsForResource>
 
 Returns: a L<Paws::Cloud9::ListTagsForResourceResponse> instance
 
-Gets a list of the tags associated with an AWS Cloud9 development
+Gets a list of the tags associated with an Cloud9 development
 environment.
 
 
@@ -432,10 +435,10 @@ Each argument is described in detail in: L<Paws::Cloud9::TagResource>
 
 Returns: a L<Paws::Cloud9::TagResourceResponse> instance
 
-Adds tags to an AWS Cloud9 development environment.
+Adds tags to an Cloud9 development environment.
 
-Tags that you add to an AWS Cloud9 environment by using this method
-will NOT be automatically propagated to underlying resources.
+Tags that you add to an Cloud9 environment by using this method will
+NOT be automatically propagated to underlying resources.
 
 
 =head2 UntagResource
@@ -453,7 +456,7 @@ Each argument is described in detail in: L<Paws::Cloud9::UntagResource>
 
 Returns: a L<Paws::Cloud9::UntagResourceResponse> instance
 
-Removes tags from an AWS Cloud9 development environment.
+Removes tags from an Cloud9 development environment.
 
 
 =head2 UpdateEnvironment
@@ -473,7 +476,7 @@ Each argument is described in detail in: L<Paws::Cloud9::UpdateEnvironment>
 
 Returns: a L<Paws::Cloud9::UpdateEnvironmentResult> instance
 
-Changes the settings of an existing AWS Cloud9 development environment.
+Changes the settings of an existing Cloud9 development environment.
 
 
 =head2 UpdateEnvironmentMembership
@@ -493,8 +496,8 @@ Each argument is described in detail in: L<Paws::Cloud9::UpdateEnvironmentMember
 
 Returns: a L<Paws::Cloud9::UpdateEnvironmentMembershipResult> instance
 
-Changes the settings of an existing environment member for an AWS
-Cloud9 development environment.
+Changes the settings of an existing environment member for an Cloud9
+development environment.
 
 
 

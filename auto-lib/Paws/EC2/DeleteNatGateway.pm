@@ -1,6 +1,7 @@
 
 package Paws::EC2::DeleteNatGateway;
   use Moose;
+  has DryRun => (is => 'ro', isa => 'Bool');
   has NatGatewayId => (is => 'ro', isa => 'Str', required => 1);
 
   use MooseX::ClassAttribute;
@@ -41,6 +42,15 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/DeleteNatGateway>
 
 =head1 ATTRIBUTES
+
+
+=head2 DryRun => Bool
+
+Checks whether you have the required permissions for the action,
+without actually making the request, and provides an error response. If
+you have the required permissions, the error response is
+C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
+
 
 
 =head2 B<REQUIRED> NatGatewayId => Str

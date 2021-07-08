@@ -55,7 +55,11 @@ The Cognito identity pool ID.
 
 =head2 Principal => Str
 
-The principal.
+The principal. Valid principals are CertificateArn
+(arn:aws:iot:I<region>:I<accountId>:cert/I<certificateId>),
+thingGroupArn
+(arn:aws:iot:I<region>:I<accountId>:thinggroup/I<groupName>) and
+CognitoId (I<region>:I<id>).
 
 
 

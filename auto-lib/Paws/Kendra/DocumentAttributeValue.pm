@@ -44,7 +44,12 @@ value for a custom attribute.
 
 =head2 DateValue => Str
 
-A date value expressed as seconds from the Unix epoch.
+A date expressed as an ISO 8601 string.
+
+It is important for the time zone to be included in the ISO 8601
+date-time format. For example, 20120325T123010+01:00 is the ISO 8601
+date-time format for March 25th 2012 at 12:30PM (plus 10 seconds) in
+Central European Time.
 
 
 =head2 LongValue => Int

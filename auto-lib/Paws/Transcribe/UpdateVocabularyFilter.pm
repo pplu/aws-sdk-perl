@@ -69,7 +69,9 @@ parameter.
 
 =head2 B<REQUIRED> VocabularyFilterName => Str
 
-The name of the vocabulary filter to update.
+The name of the vocabulary filter to update. If you try to update a
+vocabulary filter with the same name as another vocabulary filter, you
+get a C<ConflictException> error.
 
 
 

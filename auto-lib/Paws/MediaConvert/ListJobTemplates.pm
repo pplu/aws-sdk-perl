@@ -83,7 +83,7 @@ request the next batch of job templates.
 
 =head2 Order => Str
 
-When you request lists of resources, you can optionally specify whether
+Optional. When you request lists of resources, you can specify whether
 they are sorted in ASCENDING or DESCENDING order. Default varies by
 resource.
 

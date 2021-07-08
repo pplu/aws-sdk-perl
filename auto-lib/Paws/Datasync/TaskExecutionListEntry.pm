@@ -36,8 +36,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::T
 
 Represents a single entry in a list of task executions.
 C<TaskExecutionListEntry> returns an array that contains a list of
-specific invocations of a task when ListTaskExecutions operation is
-called.
+specific invocations of a task when the ListTaskExecutions
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_ListTaskExecutions.html)
+operation is called.
 
 =head1 ATTRIBUTES
 

@@ -2,8 +2,10 @@
 package Paws::ServiceCatalog::DescribeProvisioningArtifact;
   use Moose;
   has AcceptLanguage => (is => 'ro', isa => 'Str');
-  has ProductId => (is => 'ro', isa => 'Str', required => 1);
-  has ProvisioningArtifactId => (is => 'ro', isa => 'Str', required => 1);
+  has ProductId => (is => 'ro', isa => 'Str');
+  has ProductName => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactId => (is => 'ro', isa => 'Str');
+  has ProvisioningArtifactName => (is => 'ro', isa => 'Str');
   has Verbose => (is => 'ro', isa => 'Bool');
 
   use MooseX::ClassAttribute;
@@ -32,10 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $servicecatalog = Paws->service('ServiceCatalog');
     my $DescribeProvisioningArtifactOutput =
       $servicecatalog->DescribeProvisioningArtifact(
-      ProductId              => 'MyId',
-      ProvisioningArtifactId => 'MyId',
-      AcceptLanguage         => 'MyAcceptLanguage',    # OPTIONAL
-      Verbose                => 1,                     # OPTIONAL
+      AcceptLanguage           => 'MyAcceptLanguage',              # OPTIONAL
+      ProductId                => 'MyId',                          # OPTIONAL
+      ProductName              => 'MyProductViewName',             # OPTIONAL
+      ProvisioningArtifactId   => 'MyId',                          # OPTIONAL
+      ProvisioningArtifactName => 'MyProvisioningArtifactName',    # OPTIONAL
+      Verbose                  => 1,                               # OPTIONAL
       );
 
     # Results:
@@ -75,15 +79,27 @@ C<zh> - Chinese
 
 
 
-=head2 B<REQUIRED> ProductId => Str
+=head2 ProductId => Str
 
 The product identifier.
 
 
 
-=head2 B<REQUIRED> ProvisioningArtifactId => Str
+=head2 ProductName => Str
+
+The product name.
+
+
+
+=head2 ProvisioningArtifactId => Str
 
 The identifier of the provisioning artifact.
+
+
+
+=head2 ProvisioningArtifactName => Str
+
+The provisioning artifact name.
 
 
 

@@ -22,7 +22,7 @@ successfully created or modified, this result is empty.
 
 If this result includes only warning messages, then the input was valid
 enough for the dashboard to be created or modified, but some elements
-of the dashboard may not render.
+of the dashboard might not render.
 
 If this result includes error messages, the input was not valid and the
 operation failed.

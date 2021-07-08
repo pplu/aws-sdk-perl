@@ -10,7 +10,9 @@ package Paws::Glue::CreateMLTransform;
   has NumberOfWorkers => (is => 'ro', isa => 'Int');
   has Parameters => (is => 'ro', isa => 'Paws::Glue::TransformParameters', required => 1);
   has Role => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'Paws::Glue::TagsMap');
   has Timeout => (is => 'ro', isa => 'Int');
+  has TransformEncryption => (is => 'ro', isa => 'Paws::Glue::TransformEncryption');
   has WorkerType => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -64,8 +66,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       MaxCapacity     => 1,                        # OPTIONAL
       MaxRetries      => 1,                        # OPTIONAL
       NumberOfWorkers => 1,                        # OPTIONAL
-      Timeout         => 1,                        # OPTIONAL
-      WorkerType      => 'Standard',               # OPTIONAL
+      Tags            => {
+        'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
+      },    # OPTIONAL
+      Timeout             => 1,    # OPTIONAL
+      TransformEncryption => {
+        MlUserDataEncryption => {
+          MlUserDataEncryptionMode => 'DISABLED',    # values: DISABLED, SSE-KMS
+          KmsKeyId                 => 'MyNameString',    # min: 1, max: 255
+        },    # OPTIONAL
+        TaskRunSecurityConfigurationName => 'MyNameString',   # min: 1, max: 255
+      },    # OPTIONAL
+      WorkerType => 'Standard',    # OPTIONAL
     );
 
     # Results:
@@ -88,10 +100,10 @@ The default is an empty string.
 
 =head2 GlueVersion => Str
 
-This value determines which version of AWS Glue this machine learning
+This value determines which version of Glue this machine learning
 transform is compatible with. Glue 1.0 is recommended for most
 customers. If the value is not set, the Glue compatibility defaults to
-Glue 0.9. For more information, see AWS Glue Versions
+Glue 0.9. For more information, see Glue Versions
 (https://docs.aws.amazon.com/glue/latest/dg/release-notes.html#release-notes-versions)
 in the developer guide.
 
@@ -99,17 +111,17 @@ in the developer guide.
 
 =head2 B<REQUIRED> InputRecordTables => ArrayRef[L<Paws::Glue::GlueTable>]
 
-A list of AWS Glue table definitions used by the transform.
+A list of Glue table definitions used by the transform.
 
 
 
 =head2 MaxCapacity => Num
 
-The number of AWS Glue data processing units (DPUs) that are allocated
-to task runs for this transform. You can allocate from 2 to 100 DPUs;
-the default is 10. A DPU is a relative measure of processing power that
+The number of Glue data processing units (DPUs) that are allocated to
+task runs for this transform. You can allocate from 2 to 100 DPUs; the
+default is 10. A DPU is a relative measure of processing power that
 consists of 4 vCPUs of compute capacity and 16 GB of memory. For more
-information, see the AWS Glue pricing page
+information, see the Glue pricing page
 (https://aws.amazon.com/glue/pricing/).
 
 C<MaxCapacity> is a mutually exclusive option with C<NumberOfWorkers>
@@ -179,17 +191,16 @@ used. Conditionally dependent on the transform type.
 =head2 B<REQUIRED> Role => Str
 
 The name or Amazon Resource Name (ARN) of the IAM role with the
-required permissions. The required permissions include both AWS Glue
-service role permissions to AWS Glue resources, and Amazon S3
-permissions required by the transform.
+required permissions. The required permissions include both Glue
+service role permissions to Glue resources, and Amazon S3 permissions
+required by the transform.
 
 =over
 
 =item *
 
-This role needs AWS Glue service role permissions to allow access to
-resources in AWS Glue. See Attach a Policy to IAM Users That Access AWS
-Glue
+This role needs Glue service role permissions to allow access to
+resources in Glue. See Attach a Policy to IAM Users That Access Glue
 (https://docs.aws.amazon.com/glue/latest/dg/attach-policy-iam-user.html).
 
 =item *
@@ -203,12 +214,30 @@ libraries used by the task run for this transform.
 
 
 
+=head2 Tags => L<Paws::Glue::TagsMap>
+
+The tags to use with this machine learning transform. You may use tags
+to limit access to the machine learning transform. For more information
+about tags in Glue, see Amazon Web Services Tags in Glue
+(https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+developer guide.
+
+
+
 =head2 Timeout => Int
 
 The timeout of the task run for this transform in minutes. This is the
 maximum time that a task run for this transform can consume resources
 before it is terminated and enters C<TIMEOUT> status. The default is
 2,880 minutes (48 hours).
+
+
+
+=head2 TransformEncryption => L<Paws::Glue::TransformEncryption>
+
+The encryption-at-rest settings of the transform that apply to
+accessing user data. Machine learning transforms can access user data
+encrypted in Amazon S3 using KMS.
 
 
 

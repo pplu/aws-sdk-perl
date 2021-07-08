@@ -9,6 +9,7 @@ package Paws::Comprehend::DocumentClassifierProperties;
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
   has Mode => (is => 'ro', isa => 'Str');
+  has ModelKmsKeyId => (is => 'ro', isa => 'Str');
   has OutputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::DocumentClassifierOutputDataConfig');
   has Status => (is => 'ro', isa => 'Str');
   has SubmitTime => (is => 'ro', isa => 'Str');
@@ -98,6 +99,27 @@ Indicates the mode in which the specific classifier was trained. This
 also indicates the format of input documents and the format of the
 confusion matrix. Each classifier can only be trained in one mode and
 this cannot be changed once the classifier is trained.
+
+
+=head2 ModelKmsKeyId => Str
+
+ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt trained custom models. The ModelKmsKeyId can be either
+of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
 
 
 =head2 OutputDataConfig => L<Paws::Comprehend::DocumentClassifierOutputDataConfig>

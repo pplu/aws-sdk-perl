@@ -2,6 +2,7 @@
 package Paws::IoT::DescribeSecurityProfileResponse;
   use Moose;
   has AdditionalMetricsToRetain => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetain');
+  has AdditionalMetricsToRetainV2 => (is => 'ro', isa => 'ArrayRef[Paws::IoT::MetricToRetain]', traits => ['NameInRequest'], request_name => 'additionalMetricsToRetainV2');
   has AlertTargets => (is => 'ro', isa => 'Paws::IoT::AlertTargets', traits => ['NameInRequest'], request_name => 'alertTargets');
   has Behaviors => (is => 'ro', isa => 'ArrayRef[Paws::IoT::Behavior]', traits => ['NameInRequest'], request_name => 'behaviors');
   has CreationDate => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'creationDate');
@@ -25,9 +26,19 @@ Paws::IoT::DescribeSecurityProfileResponse
 
 =head2 AdditionalMetricsToRetain => ArrayRef[Str|Undef]
 
+I<Please use
+DescribeSecurityProfileResponse$additionalMetricsToRetainV2 instead.>
+
 A list of metrics whose data is retained (stored). By default, data is
 retained for any metric used in the profile's C<behaviors>, but it is
 also retained for any metric specified here.
+
+
+=head2 AdditionalMetricsToRetainV2 => ArrayRef[L<Paws::IoT::MetricToRetain>]
+
+A list of metrics whose data is retained (stored). By default, data is
+retained for any metric used in the profile's behaviors, but it is also
+retained for any metric specified here.
 
 
 =head2 AlertTargets => L<Paws::IoT::AlertTargets>

@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::QLDBSession
 
 =head1 DESCRIPTION
 
-Specifies a request to start a a new session.
+Specifies a request to start a new session.
 
 =head1 ATTRIBUTES
 

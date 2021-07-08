@@ -40,7 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StartTime  => '1970-01-01T01:00:00',
       StatusList => [
         'AVAILABLE',
-        ... # values: AVAILABLE, AWS_CANCELLED, CANCELLED, CANCELLING, COMPLETED, FAILED, FAILED_TO_SCHEDULE, PASS, POSTPASS, PREPASS, SCHEDULED, SCHEDULING
+        ... # values: AVAILABLE, AWS_CANCELLED, AWS_FAILED, CANCELLED, CANCELLING, COMPLETED, FAILED, FAILED_TO_SCHEDULE, PASS, POSTPASS, PREPASS, SCHEDULED, SCHEDULING
       ],
       GroundStation     => 'MyString',               # OPTIONAL
       MaxResults        => 1,                        # OPTIONAL

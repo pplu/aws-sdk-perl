@@ -29,11 +29,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
-    my $ReplicationGroupMessage = $elasticache->DescribeReplicationGroups(
-      Marker             => 'MyString',    # OPTIONAL
-      MaxRecords         => 1,             # OPTIONAL
-      ReplicationGroupId => 'MyString',    # OPTIONAL
-    );
+    # DescribeReplicationGroups
+    # Returns information about the replication group myreplgroup.
+    my $ReplicationGroupMessage = $elasticache->DescribeReplicationGroups();
 
     # Results:
     my $Marker            = $ReplicationGroupMessage->Marker;

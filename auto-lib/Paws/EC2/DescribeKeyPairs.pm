@@ -63,11 +63,29 @@ The filters.
 
 =item *
 
+C<key-pair-id> - The ID of the key pair.
+
+=item *
+
 C<fingerprint> - The fingerprint of the key pair.
 
 =item *
 
 C<key-name> - The name of the key pair.
+
+=item *
+
+C<tag-key> - The key of a tag assigned to the resource. Use this filter
+to find all resources assigned a tag with a specific key, regardless of
+the tag value.
+
+=item *
+
+C<tag>:E<lt>keyE<gt> - The key/value combination of a tag assigned to
+the resource. Use the tag key in the filter name and the tag value as
+the filter value. For example, to find all resources that have a tag
+with the key C<Owner> and the value C<TeamA>, specify C<tag:Owner> for
+the filter name and C<TeamA> for the filter value.
 
 =back
 

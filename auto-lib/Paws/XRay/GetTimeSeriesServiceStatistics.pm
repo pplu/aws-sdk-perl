@@ -3,6 +3,7 @@ package Paws::XRay::GetTimeSeriesServiceStatistics;
   use Moose;
   has EndTime => (is => 'ro', isa => 'Str', required => 1);
   has EntitySelectorExpression => (is => 'ro', isa => 'Str');
+  has ForecastStatistics => (is => 'ro', isa => 'Bool');
   has GroupARN => (is => 'ro', isa => 'Str');
   has GroupName => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
@@ -39,6 +40,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       EndTime                  => '1970-01-01T01:00:00',
       StartTime                => '1970-01-01T01:00:00',
       EntitySelectorExpression => 'MyEntitySelectorExpression',    # OPTIONAL
+      ForecastStatistics       => 1,                               # OPTIONAL
       GroupARN                 => 'MyGroupARN',                    # OPTIONAL
       GroupName                => 'MyGroupName',                   # OPTIONAL
       NextToken                => 'MyString',                      # OPTIONAL
@@ -74,9 +76,17 @@ expression is specified, edge statistics are returned.
 
 
 
+=head2 ForecastStatistics => Bool
+
+The forecasted high and low fault count values. Forecast enabled
+requests require the EntitySelectorExpression ID be provided.
+
+
+
 =head2 GroupARN => Str
 
-The ARN of the group for which to pull statistics from.
+The Amazon Resource Name (ARN) of the group for which to pull
+statistics from.
 
 
 

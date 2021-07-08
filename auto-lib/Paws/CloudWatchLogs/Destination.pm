@@ -74,7 +74,7 @@ target.
 
 =head2 TargetArn => Str
 
-The Amazon Resource Name (ARN) of the physical target to where the log
+The Amazon Resource Name (ARN) of the physical target where the log
 events are delivered (for example, a Kinesis stream).
 
 

@@ -33,16 +33,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $AuthMode            = $DescribeDomainResponse->AuthMode;
-    my $CreationTime        = $DescribeDomainResponse->CreationTime;
-    my $DefaultUserSettings = $DescribeDomainResponse->DefaultUserSettings;
-    my $DomainArn           = $DescribeDomainResponse->DomainArn;
-    my $DomainId            = $DescribeDomainResponse->DomainId;
-    my $DomainName          = $DescribeDomainResponse->DomainName;
-    my $FailureReason       = $DescribeDomainResponse->FailureReason;
-    my $HomeEfsFileSystemId = $DescribeDomainResponse->HomeEfsFileSystemId;
+    my $AppNetworkAccessType = $DescribeDomainResponse->AppNetworkAccessType;
+    my $AuthMode             = $DescribeDomainResponse->AuthMode;
+    my $CreationTime         = $DescribeDomainResponse->CreationTime;
+    my $DefaultUserSettings  = $DescribeDomainResponse->DefaultUserSettings;
+    my $DomainArn            = $DescribeDomainResponse->DomainArn;
+    my $DomainId             = $DescribeDomainResponse->DomainId;
+    my $DomainName           = $DescribeDomainResponse->DomainName;
+    my $FailureReason        = $DescribeDomainResponse->FailureReason;
+    my $HomeEfsFileSystemId  = $DescribeDomainResponse->HomeEfsFileSystemId;
     my $HomeEfsFileSystemKmsKeyId =
       $DescribeDomainResponse->HomeEfsFileSystemKmsKeyId;
+    my $KmsKeyId         = $DescribeDomainResponse->KmsKeyId;
     my $LastModifiedTime = $DescribeDomainResponse->LastModifiedTime;
     my $SingleSignOnManagedApplicationInstanceId =
       $DescribeDomainResponse->SingleSignOnManagedApplicationInstanceId;

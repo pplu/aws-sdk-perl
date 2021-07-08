@@ -93,7 +93,10 @@ You can configure these options to preserve metadata such as user ID
 and so on.
 
 For each individual task execution, you can override these options by
-specifying the overriding C<OverrideOptions> value to operation.
+specifying the overriding C<OverrideOptions> value to
+StartTaskExecution
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_StartTaskExecution.html)
+operation.
 
 
 =head2 Schedule => L<Paws::Datasync::TaskSchedule>
@@ -118,7 +121,7 @@ Interface) that was created for your subnet.
 The status of the task that was described.
 
 For detailed information about task execution statuses, see
-Understanding Task Statuses in the I<AWS DataSync User Guide.>
+Understanding Task Statuses in the I<AWS DataSync User Guide>.
 
 Valid values are: C<"AVAILABLE">, C<"CREATING">, C<"QUEUED">, C<"RUNNING">, C<"UNAVAILABLE">
 =head2 TaskArn => Str

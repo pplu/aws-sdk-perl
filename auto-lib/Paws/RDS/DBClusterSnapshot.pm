@@ -8,6 +8,7 @@ package Paws::RDS::DBClusterSnapshot;
   has DBClusterSnapshotArn => (is => 'ro', isa => 'Str');
   has DBClusterSnapshotIdentifier => (is => 'ro', isa => 'Str');
   has Engine => (is => 'ro', isa => 'Str');
+  has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
   has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
   has KmsKeyId => (is => 'ro', isa => 'Str');
@@ -20,6 +21,7 @@ package Paws::RDS::DBClusterSnapshot;
   has SourceDBClusterSnapshotArn => (is => 'ro', isa => 'Str');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcId => (is => 'ro', isa => 'Str');
 
 1;
@@ -95,7 +97,13 @@ Specifies the identifier for the DB cluster snapshot.
 
 =head2 Engine => Str
 
-Specifies the name of the database engine.
+Specifies the name of the database engine for this DB cluster snapshot.
+
+
+=head2 EngineMode => Str
+
+Provides the engine mode of the database engine for this DB cluster
+snapshot.
 
 
 =head2 EngineVersion => Str
@@ -106,14 +114,18 @@ snapshot.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-True if mapping of AWS Identity and Access Management (IAM) accounts to
-database accounts is enabled, and otherwise false.
+True if mapping of Amazon Web Services Identity and Access Management
+(IAM) accounts to database accounts is enabled, and otherwise false.
 
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is true, the AWS KMS key identifier for the
-encrypted DB cluster snapshot.
+If C<StorageEncrypted> is true, the Amazon Web Services KMS key
+identifier for the encrypted DB cluster snapshot.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LicenseModel => Str
@@ -123,7 +135,7 @@ Provides the license model information for this DB cluster snapshot.
 
 =head2 MasterUsername => Str
 
-Provides the master username for the DB cluster snapshot.
+Provides the master username for this DB cluster snapshot.
 
 
 =head2 PercentProgress => Int
@@ -164,6 +176,11 @@ Specifies the status of this DB cluster snapshot.
 =head2 StorageEncrypted => Bool
 
 Specifies whether the DB cluster snapshot is encrypted.
+
+
+=head2 TagList => ArrayRef[L<Paws::RDS::Tag>]
+
+
 
 
 =head2 VpcId => Str

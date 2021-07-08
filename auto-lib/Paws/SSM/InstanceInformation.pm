@@ -85,8 +85,14 @@ The fully qualified host name of the managed instance.
 =head2 IamRole => Str
 
 The Amazon Identity and Access Management (IAM) role assigned to the
-on-premises Systems Manager managed instances. This call does not
-return the IAM role for Amazon EC2 instances.
+on-premises Systems Manager managed instance. This call does not return
+the IAM role for EC2 instances. To retrieve the IAM role for an EC2
+instance, use the Amazon EC2 C<DescribeInstances> action. For
+information, see DescribeInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+in the I<Amazon EC2 API Reference> or describe-instances
+(https://docs.aws.amazon.com/cli/latest/ec2/describe-instances.html) in
+the I<AWS CLI Command Reference>.
 
 
 =head2 InstanceId => Str
@@ -115,7 +121,8 @@ The date the association was last run.
 
 =head2 LastPingDateTime => Str
 
-The date and time when agent last pinged Systems Manager service.
+The date and time when the agent last pinged the Systems Manager
+service.
 
 
 =head2 LastSuccessfulAssociationExecutionDate => Str
@@ -125,12 +132,29 @@ The last date the association was successfully run.
 
 =head2 Name => Str
 
-The name of the managed instance.
+The name assigned to an on-premises server or virtual machine (VM) when
+it is activated as a Systems Manager managed instance. The name is
+specified as the C<DefaultInstanceName> property using the
+CreateActivation command. It is applied to the managed instance by
+specifying the Activation Code and Activation ID when you install SSM
+Agent on the instance, as explained in Install SSM Agent for a hybrid
+environment (Linux)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html)
+and Install SSM Agent for a hybrid environment (Windows)
+(https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html).
+To retrieve the Name tag of an EC2 instance, use the Amazon EC2
+C<DescribeInstances> action. For information, see DescribeInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances.html)
+in the I<Amazon EC2 API Reference> or describe-instances
+(https://docs.aws.amazon.com/cli/latest/ec2/describe-instances.html) in
+the I<AWS CLI Command Reference>.
 
 
 =head2 PingStatus => Str
 
 Connection status of SSM Agent.
+
+The status C<Inactive> has been deprecated and is no longer in use.
 
 
 =head2 PlatformName => Str

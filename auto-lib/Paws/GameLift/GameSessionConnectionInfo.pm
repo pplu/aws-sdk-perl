@@ -37,20 +37,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 =head1 DESCRIPTION
 
-Connection information for the new game session that is created with
-matchmaking. (with StartMatchmaking). Once a match is set, the
-FlexMatch engine places the match and creates a new game session for
-it. This information, including the game session endpoint and player
-sessions for each player in the original matchmaking request, is added
-to the MatchmakingTicket, which can be retrieved by calling
-DescribeMatchmaking.
+Connection information for a new game session that is created in
+response to a StartMatchmaking request. Once a match is made, the
+FlexMatch engine creates a new game session for it. This information,
+including the game session endpoint and player sessions for each player
+in the original matchmaking request, is added to the MatchmakingTicket,
+which can be retrieved by calling DescribeMatchmaking.
 
 =head1 ATTRIBUTES
 
 
 =head2 DnsName => Str
 
-DNS identifier assigned to the instance that is running the game
+The DNS identifier assigned to the instance that is running the game
 session. Values have the following format:
 
 =over
@@ -75,16 +74,13 @@ fleet, you must use the DNS name, not the IP address.
 
 =head2 GameSessionArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
-that is assigned to a game session and uniquely identifies it.
+A unique identifier for the game session. Use the game session ID.
 
 
 =head2 IpAddress => Str
 
-IP address of the instance that is running the game session. When
-connecting to a Amazon GameLift game server, a client needs to
-reference an IP address (or DNS name) and port number.
+The IP address of the game session. To connect to a GameLift game
+server, an app needs both the IP address and port number.
 
 
 =head2 MatchedPlayerSessions => ArrayRef[L<Paws::GameLift::MatchedPlayerSession>]
@@ -95,7 +91,7 @@ included in the original matchmaking request.
 
 =head2 Port => Int
 
-Port number for the game session. To connect to a Amazon GameLift game
+The port number for the game session. To connect to a GameLift game
 server, an app needs both the IP address and port number.
 
 

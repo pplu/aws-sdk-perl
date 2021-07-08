@@ -73,7 +73,7 @@ Limits the returned queries to only those that have the specified
 status. Valid values are C<Cancelled>, C<Complete>, C<Failed>,
 C<Running>, and C<Scheduled>.
 
-Valid values are: C<"Scheduled">, C<"Running">, C<"Complete">, C<"Failed">, C<"Cancelled">
+Valid values are: C<"Scheduled">, C<"Running">, C<"Complete">, C<"Failed">, C<"Cancelled">, C<"Timeout">, C<"Unknown">
 
 
 =head1 SEE ALSO

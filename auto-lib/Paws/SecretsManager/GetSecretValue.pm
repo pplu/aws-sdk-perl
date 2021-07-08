@@ -29,17 +29,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+ # To retrieve the encrypted secret value of a secret
+ # The following example shows how to retrieve the secret string value from the
+ # version of the secret that has the AWSPREVIOUS staging label attached. If you
+ # want to retrieve the AWSCURRENT version of the secret, then you can omit the
+ # VersionStage parameter because it defaults to AWSCURRENT.
     my $GetSecretValueResponse = $secretsmanager->GetSecretValue(
-      SecretId     => 'MySecretIdType',
-      VersionId    => 'MySecretVersionIdType',       # OPTIONAL
-      VersionStage => 'MySecretVersionStageType',    # OPTIONAL
+      'SecretId'     => 'MyTestDatabaseSecret',
+      'VersionStage' => 'AWSPREVIOUS'
     );
 
     # Results:
     my $ARN           = $GetSecretValueResponse->ARN;
     my $CreatedDate   = $GetSecretValueResponse->CreatedDate;
     my $Name          = $GetSecretValueResponse->Name;
-    my $SecretBinary  = $GetSecretValueResponse->SecretBinary;
     my $SecretString  = $GetSecretValueResponse->SecretString;
     my $VersionId     = $GetSecretValueResponse->VersionId;
     my $VersionStages = $GetSecretValueResponse->VersionStages;
@@ -69,18 +72,25 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 
 =head2 VersionId => Str
 
 Specifies the unique identifier of the version of the secret that you
-want to retrieve. If you specify this parameter then don't specify
-C<VersionStage>. If you don't specify either a C<VersionStage> or
-C<VersionId> then the default is to perform the operation on the
-version with the C<VersionStage> value of C<AWSCURRENT>.
+want to retrieve. If you specify both this parameter and
+C<VersionStage>, the two parameters must refer to the same secret
+version. If you don't specify either a C<VersionStage> or C<VersionId>
+then the default is to perform the operation on the version with the
+C<VersionStage> value of C<AWSCURRENT>.
 
 This value is typically a UUID-type
 (https://wikipedia.org/wiki/Universally_unique_identifier) value with
@@ -94,10 +104,11 @@ Specifies the secret version that you want to retrieve by the staging
 label attached to the version.
 
 Staging labels are used to keep track of different versions during the
-rotation process. If you use this parameter then don't specify
-C<VersionId>. If you don't specify either a C<VersionStage> or
-C<VersionId>, then the default is to perform the operation on the
-version with the C<VersionStage> value of C<AWSCURRENT>.
+rotation process. If you specify both this parameter and C<VersionId>,
+the two parameters must refer to the same secret version . If you don't
+specify either a C<VersionStage> or C<VersionId>, then the default is
+to perform the operation on the version with the C<VersionStage> value
+of C<AWSCURRENT>.
 
 
 

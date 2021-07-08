@@ -4,7 +4,9 @@ package Paws::IoT::UpdateProvisioningTemplate;
   has DefaultVersionId => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'defaultVersionId');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Enabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enabled');
+  has PreProvisioningHook => (is => 'ro', isa => 'Paws::IoT::ProvisioningHook', traits => ['NameInRequest'], request_name => 'preProvisioningHook');
   has ProvisioningRoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'provisioningRoleArn');
+  has RemovePreProvisioningHook => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'removePreProvisioningHook');
   has TemplateName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'templateName', required => 1);
 
   use MooseX::ClassAttribute;
@@ -37,7 +39,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DefaultVersionId    => 1,                          # OPTIONAL
       Description         => 'MyTemplateDescription',    # OPTIONAL
       Enabled             => 1,                          # OPTIONAL
-      ProvisioningRoleArn => 'MyRoleArn',                # OPTIONAL
+      PreProvisioningHook => {
+        TargetArn      => 'MyTargetArn',         # max: 2048
+        PayloadVersion => 'MyPayloadVersion',    # min: 10, max: 32; OPTIONAL
+      },    # OPTIONAL
+      ProvisioningRoleArn       => 'MyRoleArn',    # OPTIONAL
+      RemovePreProvisioningHook => 1,              # OPTIONAL
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -64,10 +71,22 @@ True to enable the fleet provisioning template, otherwise false.
 
 
 
+=head2 PreProvisioningHook => L<Paws::IoT::ProvisioningHook>
+
+Updates the pre-provisioning hook template.
+
+
+
 =head2 ProvisioningRoleArn => Str
 
 The ARN of the role associated with the provisioning template. This IoT
 role grants permission to provision a device.
+
+
+
+=head2 RemovePreProvisioningHook => Bool
+
+Removes pre-provisioning hook template.
 
 
 

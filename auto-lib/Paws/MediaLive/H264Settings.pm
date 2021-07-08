@@ -9,8 +9,10 @@ package Paws::MediaLive::H264Settings;
   has ColorMetadata => (is => 'ro', isa => 'Str', request_name => 'colorMetadata', traits => ['NameInRequest']);
   has ColorSpaceSettings => (is => 'ro', isa => 'Paws::MediaLive::H264ColorSpaceSettings', request_name => 'colorSpaceSettings', traits => ['NameInRequest']);
   has EntropyEncoding => (is => 'ro', isa => 'Str', request_name => 'entropyEncoding', traits => ['NameInRequest']);
+  has FilterSettings => (is => 'ro', isa => 'Paws::MediaLive::H264FilterSettings', request_name => 'filterSettings', traits => ['NameInRequest']);
   has FixedAfd => (is => 'ro', isa => 'Str', request_name => 'fixedAfd', traits => ['NameInRequest']);
   has FlickerAq => (is => 'ro', isa => 'Str', request_name => 'flickerAq', traits => ['NameInRequest']);
+  has ForceFieldPictures => (is => 'ro', isa => 'Str', request_name => 'forceFieldPictures', traits => ['NameInRequest']);
   has FramerateControl => (is => 'ro', isa => 'Str', request_name => 'framerateControl', traits => ['NameInRequest']);
   has FramerateDenominator => (is => 'ro', isa => 'Int', request_name => 'framerateDenominator', traits => ['NameInRequest']);
   has FramerateNumerator => (is => 'ro', isa => 'Int', request_name => 'framerateNumerator', traits => ['NameInRequest']);
@@ -28,6 +30,7 @@ package Paws::MediaLive::H264Settings;
   has ParDenominator => (is => 'ro', isa => 'Int', request_name => 'parDenominator', traits => ['NameInRequest']);
   has ParNumerator => (is => 'ro', isa => 'Int', request_name => 'parNumerator', traits => ['NameInRequest']);
   has Profile => (is => 'ro', isa => 'Str', request_name => 'profile', traits => ['NameInRequest']);
+  has QualityLevel => (is => 'ro', isa => 'Str', request_name => 'qualityLevel', traits => ['NameInRequest']);
   has QvbrQualityLevel => (is => 'ro', isa => 'Int', request_name => 'qvbrQualityLevel', traits => ['NameInRequest']);
   has RateControlMode => (is => 'ro', isa => 'Str', request_name => 'rateControlMode', traits => ['NameInRequest']);
   has ScanType => (is => 'ro', isa => 'Str', request_name => 'scanType', traits => ['NameInRequest']);
@@ -77,8 +80,15 @@ H264 Settings
 
 =head2 AdaptiveQuantization => Str
 
-Adaptive quantization. Allows intra-frame quantizers to vary to improve
-visual quality.
+Enables or disables adaptive quantization, which is a technique
+MediaLive can apply to video on a frame-by-frame basis to produce more
+compression without losing quality. There are three types of adaptive
+quantization: flicker, spatial, and temporal. Set the field in one of
+these ways: Set to Auto. Recommended. For each type of AQ, MediaLive
+will determine if AQ is needed, and if so, the appropriate strength.
+Set a strength (a value other than Auto or Disable). This strength will
+apply to any of the AQ fields that you choose to enable. Set to
+Disabled to disable all types of adaptive quantization.
 
 
 =head2 AfdSignaling => Str
@@ -125,6 +135,11 @@ Entropy encoding mode. Use cabac (must be in Main or High profile) or
 cavlc.
 
 
+=head2 FilterSettings => L<Paws::MediaLive::H264FilterSettings>
+
+Optional filters that you can apply to an encode.
+
+
 =head2 FixedAfd => Str
 
 Four bit AFD value to write on all frames of video in the output
@@ -133,8 +148,29 @@ stream. Only valid when afdSignaling is set to 'Fixed'.
 
 =head2 FlickerAq => Str
 
-If set to enabled, adjust quantization within each frame to reduce
-flicker or 'pop' on I-frames.
+Flicker AQ makes adjustments within each frame to reduce flicker or
+'pop' on I-frames. The value to enter in this field depends on the
+value in the Adaptive quantization field: If you have set the Adaptive
+quantization field to Auto, MediaLive ignores any value in this field.
+MediaLive will determine if flicker AQ is appropriate and will apply
+the appropriate strength. If you have set the Adaptive quantization
+field to a strength, you can set this field to Enabled or Disabled.
+Enabled: MediaLive will apply flicker AQ using the specified strength.
+Disabled: MediaLive won't apply flicker AQ. If you have set the
+Adaptive quantization to Disabled, MediaLive ignores any value in this
+field and doesn't apply flicker AQ.
+
+
+=head2 ForceFieldPictures => Str
+
+This setting applies only when scan type is "interlaced." It controls
+whether coding is performed on a field basis or on a frame basis. (When
+the video is progressive, the coding is always performed on a frame
+basis.) enabled: Force MediaLive to code on a field basis, so that odd
+and even sets of fields are coded separately. disabled: Code the two
+sets of fields separately (on a field basis) or together (on a frame
+basis using PAFF), depending on what is most appropriate for the
+content.
 
 
 =head2 FramerateControl => Str
@@ -250,14 +286,29 @@ Pixel Aspect Ratio numerator.
 H.264 Profile.
 
 
+=head2 QualityLevel => Str
+
+Leave as STANDARD_QUALITY or choose a different value (which might
+result in additional costs to run the channel). - ENHANCED_QUALITY:
+Produces a slightly better video quality without an increase in the
+bitrate. Has an effect only when the Rate control mode is QVBR or CBR.
+If this channel is in a MediaLive multiplex, the value must be
+ENHANCED_QUALITY. - STANDARD_QUALITY: Valid for any Rate control mode.
+
+
 =head2 QvbrQualityLevel => Int
 
 Controls the target quality for the video encode. Applies only when the
-rate control mode is QVBR. Set values for the QVBR quality level field
-and Max bitrate field that suit your most important viewing devices.
-Recommended values are: - Primary screen: Quality level: 8 to 10. Max
-bitrate: 4M - PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M -
-Smartphone: Quality level: 6. Max bitrate: 1M to 1.5M
+rate control mode is QVBR. You can set a target quality or you can let
+MediaLive determine the best quality. To set a target quality, enter
+values in the QVBR quality level field and the Max bitrate field. Enter
+values that suit your most important viewing devices. Recommended
+values are: - Primary screen: Quality level: 8 to 10. Max bitrate: 4M -
+PC or tablet: Quality level: 7. Max bitrate: 1.5M to 3M - Smartphone:
+Quality level: 6. Max bitrate: 1M to 1.5M To let MediaLive decide,
+leave the QVBR quality level field empty, and in Max bitrate enter the
+maximum rate you want in the video. For more information, see the
+section called "Video - rate control mode" in the MediaLive user guide
 
 
 =head2 RateControlMode => Str
@@ -300,13 +351,23 @@ number of slices based on encode resolution.
 =head2 Softness => Int
 
 Softness. Selects quantizer matrix, larger values reduce high-frequency
-content in the encoded image.
+content in the encoded image. If not set to zero, must be greater than
+15.
 
 
 =head2 SpatialAq => Str
 
-If set to enabled, adjust quantization within each frame based on
-spatial variation of content complexity.
+Spatial AQ makes adjustments within each frame based on spatial
+variation of content complexity. The value to enter in this field
+depends on the value in the Adaptive quantization field: If you have
+set the Adaptive quantization field to Auto, MediaLive ignores any
+value in this field. MediaLive will determine if spatial AQ is
+appropriate and will apply the appropriate strength. If you have set
+the Adaptive quantization field to a strength, you can set this field
+to Enabled or Disabled. Enabled: MediaLive will apply spatial AQ using
+the specified strength. Disabled: MediaLive won't apply spatial AQ. If
+you have set the Adaptive quantization to Disabled, MediaLive ignores
+any value in this field and doesn't apply spatial AQ.
 
 
 =head2 SubgopLength => Str
@@ -323,8 +384,17 @@ Produces a bitstream compliant with SMPTE RP-2027.
 
 =head2 TemporalAq => Str
 
-If set to enabled, adjust quantization within each frame based on
-temporal variation of content complexity.
+Temporal makes adjustments within each frame based on temporal
+variation of content complexity. The value to enter in this field
+depends on the value in the Adaptive quantization field: If you have
+set the Adaptive quantization field to Auto, MediaLive ignores any
+value in this field. MediaLive will determine if temporal AQ is
+appropriate and will apply the appropriate strength. If you have set
+the Adaptive quantization field to a strength, you can set this field
+to Enabled or Disabled. Enabled: MediaLive will apply temporal AQ using
+the specified strength. Disabled: MediaLive won't apply temporal AQ. If
+you have set the Adaptive quantization to Disabled, MediaLive ignores
+any value in this field and doesn't apply temporal AQ.
 
 
 =head2 TimecodeInsertion => Str

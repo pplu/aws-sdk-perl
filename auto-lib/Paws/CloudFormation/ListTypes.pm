@@ -2,9 +2,11 @@
 package Paws::CloudFormation::ListTypes;
   use Moose;
   has DeprecatedStatus => (is => 'ro', isa => 'Str');
+  has Filters => (is => 'ro', isa => 'Paws::CloudFormation::TypeFilters');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
   has ProvisioningType => (is => 'ro', isa => 'Str');
+  has Type => (is => 'ro', isa => 'Str');
   has Visibility => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -32,10 +34,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $cloudformation = Paws->service('CloudFormation');
     my $ListTypesOutput = $cloudformation->ListTypes(
-      DeprecatedStatus => 'LIVE',                 # OPTIONAL
+      DeprecatedStatus => 'LIVE',    # OPTIONAL
+      Filters          => {
+        Category => 'REGISTERED'
+        ,    # values: REGISTERED, ACTIVATED, THIRD_PARTY, AWS_TYPES; OPTIONAL
+        PublisherId    => 'MyPublisherId',       # min: 1, max: 40; OPTIONAL
+        TypeNamePrefix => 'MyTypeNamePrefix',    # min: 1, max: 204; OPTIONAL
+      },    # OPTIONAL
       MaxResults       => 1,                      # OPTIONAL
       NextToken        => 'MyNextToken',          # OPTIONAL
       ProvisioningType => 'NON_PROVISIONABLE',    # OPTIONAL
+      Type             => 'RESOURCE',             # OPTIONAL
       Visibility       => 'PUBLIC',               # OPTIONAL
     );
 
@@ -53,7 +62,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 DeprecatedStatus => Str
 
-The deprecation status of the types that you want to get summary
+The deprecation status of the extension that you want to get summary
 information about.
 
 Valid values include:
@@ -62,17 +71,27 @@ Valid values include:
 
 =item *
 
-C<LIVE>: The type is registered for use in CloudFormation operations.
+C<LIVE>: The extension is registered for use in CloudFormation
+operations.
 
 =item *
 
-C<DEPRECATED>: The type has been deregistered and can no longer be used
-in CloudFormation operations.
+C<DEPRECATED>: The extension has been deregistered and can no longer be
+used in CloudFormation operations.
 
 =back
 
 
 Valid values are: C<"LIVE">, C<"DEPRECATED">
+
+=head2 Filters => L<Paws::CloudFormation::TypeFilters>
+
+Filter criteria to use in determining which extensions to return.
+
+If you specify a filter, CloudFormation ignores any specified
+C<Visibility> value when returning the list of types.
+
+
 
 =head2 MaxResults => Int
 
@@ -96,9 +115,9 @@ C<NextToken> parameter is set to C<null>.
 
 =head2 ProvisioningType => Str
 
-The provisioning behavior of the type. AWS CloudFormation determines
-the provisioning type during registration, based on the types of
-handlers in the schema handler package submitted.
+For resource types, the provisioning behavior of the resource type. AWS
+CloudFormation determines the provisioning type during registration,
+based on the types of handlers in the schema handler package submitted.
 
 Valid values include:
 
@@ -106,29 +125,36 @@ Valid values include:
 
 =item *
 
-C<FULLY_MUTABLE>: The type includes an update handler to process
-updates to the type during stack update operations.
+C<FULLY_MUTABLE>: The resource type includes an update handler to
+process updates to the type during stack update operations.
 
 =item *
 
-C<IMMUTABLE>: The type does not include an update handler, so the type
-cannot be updated and must instead be replaced during stack update
-operations.
+C<IMMUTABLE>: The resource type does not include an update handler, so
+the type cannot be updated and must instead be replaced during stack
+update operations.
 
 =item *
 
-C<NON_PROVISIONABLE>: The type does not include create, read, and
-delete handlers, and therefore cannot actually be provisioned.
+C<NON_PROVISIONABLE>: The resource type does not include create, read,
+and delete handlers, and therefore cannot actually be provisioned.
 
 =back
 
+The default is C<FULLY_MUTABLE>.
 
 Valid values are: C<"NON_PROVISIONABLE">, C<"IMMUTABLE">, C<"FULLY_MUTABLE">
 
+=head2 Type => Str
+
+The type of extension.
+
+Valid values are: C<"RESOURCE">, C<"MODULE">
+
 =head2 Visibility => Str
 
-The scope at which the type is visible and usable in CloudFormation
-operations.
+The scope at which the extensions are visible and usable in
+CloudFormation operations.
 
 Valid values include:
 
@@ -136,14 +162,26 @@ Valid values include:
 
 =item *
 
-C<PRIVATE>: The type is only visible and usable within the account in
-which it is registered. Currently, AWS CloudFormation marks any types
-you create as C<PRIVATE>.
+C<PRIVATE>: Extensions that are visible and usable within this account
+and region. This includes:
+
+=over
 
 =item *
 
-C<PUBLIC>: The type is publically visible and usable within any Amazon
-account.
+Private extensions you have registered in this account and region.
+
+=item *
+
+Public extensions that you have activated in this account and region.
+
+=back
+
+=item *
+
+C<PUBLIC>: Extensions that are publicly visible and available to be
+activated within any Amazon account. This includes extensions from
+Amazon, as well as third-party publishers.
 
 =back
 

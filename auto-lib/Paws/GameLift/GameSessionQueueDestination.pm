@@ -33,30 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::G
 
 =head1 DESCRIPTION
 
-Fleet designated in a game session queue. Requests for new game
-sessions in the queue are fulfilled by starting a new game session on
-any destination that is configured for a queue.
+A fleet or alias designated in a game session queue. Queues fulfill
+requests for new game sessions by placing a new game session on any of
+the queue's destinations.
 
-=over
-
-=item *
-
-CreateGameSessionQueue
-
-=item *
-
-DescribeGameSessionQueues
-
-=item *
-
-UpdateGameSessionQueue
-
-=item *
-
-DeleteGameSessionQueue
-
-=back
-
+Destinations are part of a GameSessionQueue.
 
 =head1 ATTRIBUTES
 

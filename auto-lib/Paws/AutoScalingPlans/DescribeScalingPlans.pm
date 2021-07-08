@@ -97,8 +97,11 @@ sources, you cannot specify scaling plan names.
 
 =head2 ScalingPlanVersion => Int
 
-The version number of the scaling plan. If you specify a scaling plan
-version, you must also specify a scaling plan name.
+The version number of the scaling plan. Currently, the only valid value
+is C<1>.
+
+If you specify a scaling plan version, you must also specify a scaling
+plan name.
 
 
 

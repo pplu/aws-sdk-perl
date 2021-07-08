@@ -77,20 +77,30 @@ Use one of the following variables to filter a list of C<DataSource>:
 
 =over
 
-=item * C<CreatedAt> - Sets the search criteria to C<DataSource>
-creation dates.
+=item *
 
-=item * C<Status> - Sets the search criteria to C<DataSource> statuses.
+C<CreatedAt> - Sets the search criteria to C<DataSource> creation
+dates.
 
-=item * C<Name> - Sets the search criteria to the contents of
-C<DataSource> B< > C<Name>.
+=item *
 
-=item * C<DataUri> - Sets the search criteria to the URI of data files
-used to create the C<DataSource>. The URI can identify either a file or
-an Amazon Simple Storage Service (Amazon S3) bucket or directory.
+C<Status> - Sets the search criteria to C<DataSource> statuses.
 
-=item * C<IAMUser> - Sets the search criteria to the user account that
-invoked the C<DataSource> creation.
+=item *
+
+C<Name> - Sets the search criteria to the contents of C<DataSource>
+C<Name>.
+
+=item *
+
+C<DataUri> - Sets the search criteria to the URI of data files used to
+create the C<DataSource>. The URI can identify either a file or an
+Amazon Simple Storage Service (Amazon S3) bucket or directory.
+
+=item *
+
+C<IAMUser> - Sets the search criteria to the user account that invoked
+the C<DataSource> creation.
 
 =back
 
@@ -184,9 +194,13 @@ list of C<DataSource>.
 
 =over
 
-=item * C<asc> - Arranges the list in ascending order (A-Z, 0-9).
+=item *
 
-=item * C<dsc> - Arranges the list in descending order (Z-A, 9-0).
+C<asc> - Arranges the list in ascending order (A-Z, 0-9).
+
+=item *
+
+C<dsc> - Arranges the list in descending order (Z-A, 9-0).
 
 =back
 

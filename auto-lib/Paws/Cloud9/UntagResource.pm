@@ -44,15 +44,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/clo
 
 =head2 B<REQUIRED> ResourceARN => Str
 
-The Amazon Resource Name (ARN) of the AWS Cloud9 development
-environment to remove tags from.
+The Amazon Resource Name (ARN) of the Cloud9 development environment to
+remove tags from.
 
 
 
 =head2 B<REQUIRED> TagKeys => ArrayRef[Str|Undef]
 
-The tag names of the tags to remove from the given AWS Cloud9
-development environment.
+The tag names of the tags to remove from the given Cloud9 development
+environment.
 
 
 

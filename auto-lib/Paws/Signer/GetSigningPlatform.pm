@@ -34,11 +34,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
-    my $Category    = $GetSigningPlatformResponse->Category;
-    my $DisplayName = $GetSigningPlatformResponse->DisplayName;
-    my $MaxSizeInMB = $GetSigningPlatformResponse->MaxSizeInMB;
-    my $Partner     = $GetSigningPlatformResponse->Partner;
-    my $PlatformId  = $GetSigningPlatformResponse->PlatformId;
+    my $Category            = $GetSigningPlatformResponse->Category;
+    my $DisplayName         = $GetSigningPlatformResponse->DisplayName;
+    my $MaxSizeInMB         = $GetSigningPlatformResponse->MaxSizeInMB;
+    my $Partner             = $GetSigningPlatformResponse->Partner;
+    my $PlatformId          = $GetSigningPlatformResponse->PlatformId;
+    my $RevocationSupported = $GetSigningPlatformResponse->RevocationSupported;
     my $SigningConfiguration =
       $GetSigningPlatformResponse->SigningConfiguration;
     my $SigningImageFormat = $GetSigningPlatformResponse->SigningImageFormat;

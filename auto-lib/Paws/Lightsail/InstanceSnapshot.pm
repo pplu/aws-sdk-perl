@@ -114,6 +114,9 @@ The name of the snapshot.
 
 The progress of the snapshot.
 
+This is populated only for disk snapshots, and is C<null> for instance
+snapshots.
+
 
 =head2 ResourceType => Str
 

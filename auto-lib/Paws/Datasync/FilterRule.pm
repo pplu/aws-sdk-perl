@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::F
 
 =head1 DESCRIPTION
 
-Specifies which files, folders and objects to include or exclude when
+Specifies which files, folders, and objects to include or exclude when
 transferring files from source to destination.
 
 =head1 ATTRIBUTES

@@ -47,7 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sch
 
 =head2 B<REQUIRED> DiscovererId => Str
 
-
+The ID of the discoverer.
 
 
 

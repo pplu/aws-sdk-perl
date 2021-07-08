@@ -45,13 +45,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> ResourceArn => Str
 
-Resource arn used to tag resource.
+The Amazon Resource Name (ARN) to use to tag a resource.
 
 
 
 =head2 B<REQUIRED> Tags => L<Paws::Amplify::TagMap>
 
-Tags used to tag resource.
+The tags used to tag the resource.
 
 
 

@@ -7,6 +7,7 @@ package Paws::IAM::InstanceProfile;
   has InstanceProfileName => (is => 'ro', isa => 'Str', required => 1);
   has Path => (is => 'ro', isa => 'Str', required => 1);
   has Roles => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Role]', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::IAM::Tag]');
 
 1;
 
@@ -27,7 +28,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::IAM::InstanceProfile object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Roles => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., Tags => $value  });
 
 =head3 Results returned from an API call
 
@@ -71,7 +72,7 @@ ListInstanceProfilesForRole
 
 The Amazon Resource Name (ARN) specifying the instance profile. For
 more information about ARNs and how to use them in policies, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -84,7 +85,7 @@ The date when the instance profile was created.
 =head2 B<REQUIRED> InstanceProfileId => Str
 
 The stable and unique string identifying the instance profile. For more
-information about IDs, see IAM Identifiers
+information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -97,7 +98,7 @@ The name identifying the instance profile.
 =head2 B<REQUIRED> Path => Str
 
 The path to the instance profile. For more information about paths, see
-IAM Identifiers
+IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 
@@ -105,6 +106,14 @@ in the I<IAM User Guide>.
 =head2 B<REQUIRED> Roles => ArrayRef[L<Paws::IAM::Role>]
 
 The role associated with the instance profile.
+
+
+=head2 Tags => ArrayRef[L<Paws::IAM::Tag>]
+
+A list of tags that are attached to the instance profile. For more
+information about tagging, see Tagging IAM resources
+(https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html) in the
+I<IAM User Guide>.
 
 
 

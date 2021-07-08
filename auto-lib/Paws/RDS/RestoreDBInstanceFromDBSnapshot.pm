@@ -14,6 +14,7 @@ package Paws::RDS::RestoreDBInstanceFromDBSnapshot;
   has Domain => (is => 'ro', isa => 'Str');
   has DomainIAMRoleName => (is => 'ro', isa => 'Str');
   has EnableCloudwatchLogsExports => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has EnableCustomerOwnedIp => (is => 'ro', isa => 'Bool');
   has EnableIAMDatabaseAuthentication => (is => 'ro', isa => 'Bool');
   has Engine => (is => 'ro', isa => 'Str');
   has Iops => (is => 'ro', isa => 'Int');
@@ -54,48 +55,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $rds = Paws->service('RDS');
+    # To restore a DB instance from a DB snapshot.
+    # The following example restores a DB instance from a DB snapshot.
     my $RestoreDBInstanceFromDBSnapshotResult =
       $rds->RestoreDBInstanceFromDBSnapshot(
-      DBInstanceIdentifier            => 'MyString',
-      DBSnapshotIdentifier            => 'MyString',
-      AutoMinorVersionUpgrade         => 1,                      # OPTIONAL
-      AvailabilityZone                => 'MyString',             # OPTIONAL
-      CopyTagsToSnapshot              => 1,                      # OPTIONAL
-      DBInstanceClass                 => 'MyString',             # OPTIONAL
-      DBName                          => 'MyString',             # OPTIONAL
-      DBParameterGroupName            => 'MyString',             # OPTIONAL
-      DBSubnetGroupName               => 'MyString',             # OPTIONAL
-      DeletionProtection              => 1,                      # OPTIONAL
-      Domain                          => 'MyString',             # OPTIONAL
-      DomainIAMRoleName               => 'MyString',             # OPTIONAL
-      EnableCloudwatchLogsExports     => [ 'MyString', ... ],    # OPTIONAL
-      EnableIAMDatabaseAuthentication => 1,                      # OPTIONAL
-      Engine                          => 'MyString',             # OPTIONAL
-      Iops                            => 1,                      # OPTIONAL
-      LicenseModel                    => 'MyString',             # OPTIONAL
-      MultiAZ                         => 1,                      # OPTIONAL
-      OptionGroupName                 => 'MyString',             # OPTIONAL
-      Port                            => 1,                      # OPTIONAL
-      ProcessorFeatures               => [
-        {
-          Name  => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                         # OPTIONAL
-      PubliclyAccessible => 1,                                   # OPTIONAL
-      StorageType        => 'MyString',                          # OPTIONAL
-      Tags               => [
-        {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                         # OPTIONAL
-      TdeCredentialArn            => 'MyString',                 # OPTIONAL
-      TdeCredentialPassword       => 'MyString',                 # OPTIONAL
-      UseDefaultProcessorFeatures => 1,                          # OPTIONAL
-      VpcSecurityGroupIds         => [ 'MyString', ... ],        # OPTIONAL
+      'DBInstanceIdentifier' => 'mysqldb-restored',
+      'DBSnapshotIdentifier' => 'rds:mysqldb-2014-04-22-08-15'
       );
 
     # Results:
@@ -141,9 +106,9 @@ copied.
 
 The compute and memory capacity of the Amazon RDS DB instance, for
 example, C<db.m4.large>. Not all DB instance classes are available in
-all AWS Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see DB Instance
-Class
+all Amazon Web Services Regions, or for all database engines. For the
+full list of DB instance classes, and availability for your engine, see
+DB Instance Class
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html)
 in the I<Amazon RDS User Guide.>
 
@@ -266,21 +231,11 @@ information, see Deleting a DB Instance
 
 Specify the Active Directory directory ID to restore the DB instance
 in. The domain must be created prior to this operation. Currently, only
-Microsoft SQL Server and Oracle DB instances can be created in an
-Active Directory Domain.
+MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
+created in an Active Directory Domain.
 
-For Microsoft SQL Server DB instances, Amazon RDS can use Windows
-Authentication to authenticate users that connect to the DB instance.
-For more information, see Using Windows Authentication with an Amazon
-RDS DB Instance Running Microsoft SQL Server
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_SQLServerWinAuth.html)
-in the I<Amazon RDS User Guide>.
-
-For Oracle DB instances, Amazon RDS can use Kerberos Authentication to
-authenticate users that connect to the DB instance. For more
-information, see Using Kerberos Authentication with Amazon RDS for
-Oracle
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/oracle-kerberos.html)
+For more information, see Kerberos Authentication
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/kerberos-authentication.html)
 in the I<Amazon RDS User Guide>.
 
 
@@ -298,17 +253,37 @@ The list of logs that the restored DB instance is to export to
 CloudWatch Logs. The values in the list depend on the DB engine being
 used. For more information, see Publishing Database Logs to Amazon
 CloudWatch Logs
-(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
-in the I<Amazon Aurora User Guide>.
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon RDS User Guide>.
+
+
+
+=head2 EnableCustomerOwnedIp => Bool
+
+A value that indicates whether to enable a customer-owned IP address
+(CoIP) for an RDS on Outposts DB instance.
+
+A I<CoIP> provides local or external connectivity to resources in your
+Outpost subnets through your on-premises network. For some use cases, a
+CoIP can provide lower latency for connections to the DB instance from
+outside of its virtual private cloud (VPC) on your local network.
+
+For more information about RDS on Outposts, see Working with Amazon RDS
+on Amazon Web Services Outposts
+(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html)
+in the I<Amazon RDS User Guide>.
+
+For more information about CoIPs, see Customer-owned IP addresses
+(https://docs.aws.amazon.com/outposts/latest/userguide/outposts-networking-components.html#ip-addressing)
+in the I<Amazon Web Services Outposts User Guide>.
 
 
 
 =head2 EnableIAMDatabaseAuthentication => Bool
 
-A value that indicates whether to enable mapping of AWS Identity and
-Access Management (IAM) accounts to database accounts. By default,
-mapping is disabled. For information about the supported DB engines,
-see CreateDBInstance.
+A value that indicates whether to enable mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts. By
+default, mapping is disabled.
 
 For more information about IAM database authentication, see IAM
 Database Authentication for MySQL and PostgreSQL
@@ -345,15 +320,15 @@ C<oracle-ee>
 
 =item *
 
+C<oracle-ee-cdb>
+
+=item *
+
 C<oracle-se2>
 
 =item *
 
-C<oracle-se1>
-
-=item *
-
-C<oracle-se>
+C<oracle-se2-cdb>
 
 =item *
 
@@ -450,11 +425,18 @@ instance class of the DB instance.
 =head2 PubliclyAccessible => Bool
 
 A value that indicates whether the DB instance is publicly accessible.
-When the DB instance is publicly accessible, it is an Internet-facing
-instance with a publicly resolvable DNS name, which resolves to a
-public IP address. When the DB instance isn't publicly accessible, it
-is an internal instance with a DNS name that resolves to a private IP
-address. For more information, see CreateDBInstance.
+
+When the DB instance is publicly accessible, its DNS endpoint resolves
+to the private IP address from within the DB instance's VPC, and to the
+public IP address from outside of the DB instance's VPC. Access to the
+DB instance is ultimately controlled by the security group it uses, and
+that public access is not permitted if the security group assigned to
+the DB instance doesn't permit it.
+
+When the DB instance isn't publicly accessible, it is an internal DB
+instance with a DNS name that resolves to a private IP address.
+
+For more information, see CreateDBInstance.
 
 
 

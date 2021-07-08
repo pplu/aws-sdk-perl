@@ -6,6 +6,7 @@ package Paws::ImageBuilder::DistributionConfigurationSummary;
   has DateUpdated => (is => 'ro', isa => 'Str', request_name => 'dateUpdated', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has Regions => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'regions', traits => ['NameInRequest']);
   has Tags => (is => 'ro', isa => 'Paws::ImageBuilder::TagMap', request_name => 'tags', traits => ['NameInRequest']);
 
 1;
@@ -66,6 +67,11 @@ The description of the distribution configuration.
 =head2 Name => Str
 
 The name of the distribution configuration.
+
+
+=head2 Regions => ArrayRef[Str|Undef]
+
+A list of Regions where the container image is distributed to.
 
 
 =head2 Tags => L<Paws::ImageBuilder::TagMap>

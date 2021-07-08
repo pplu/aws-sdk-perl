@@ -19,6 +19,7 @@ package Paws::CodeDeploy::DeploymentGroupInfo;
   has LoadBalancerInfo => (is => 'ro', isa => 'Paws::CodeDeploy::LoadBalancerInfo', request_name => 'loadBalancerInfo', traits => ['NameInRequest']);
   has OnPremisesInstanceTagFilters => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TagFilter]', request_name => 'onPremisesInstanceTagFilters', traits => ['NameInRequest']);
   has OnPremisesTagSet => (is => 'ro', isa => 'Paws::CodeDeploy::OnPremisesTagSet', request_name => 'onPremisesTagSet', traits => ['NameInRequest']);
+  has OutdatedInstancesStrategy => (is => 'ro', isa => 'Str', request_name => 'outdatedInstancesStrategy', traits => ['NameInRequest']);
   has ServiceRoleArn => (is => 'ro', isa => 'Str', request_name => 'serviceRoleArn', traits => ['NameInRequest']);
   has TargetRevision => (is => 'ro', isa => 'Paws::CodeDeploy::RevisionLocation', request_name => 'targetRevision', traits => ['NameInRequest']);
   has TriggerConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::CodeDeploy::TriggerConfig]', request_name => 'triggerConfigurations', traits => ['NameInRequest']);
@@ -163,6 +164,20 @@ Information about groups of tags applied to an on-premises instance.
 The deployment group includes only on-premises instances identified by
 all the tag groups. Cannot be used in the same call as
 onPremisesInstanceTagFilters.
+
+
+=head2 OutdatedInstancesStrategy => Str
+
+Indicates what happens when new EC2 instances are launched
+mid-deployment and do not receive the deployed application revision.
+
+If this option is set to C<UPDATE> or is unspecified, CodeDeploy
+initiates one or more 'auto-update outdated instances' deployments to
+apply the deployed application revision to the new EC2 instances.
+
+If this option is set to C<IGNORE>, CodeDeploy does not initiate a
+deployment to update the new EC2 instances. This may result in
+instances having different revisions.
 
 
 =head2 ServiceRoleArn => Str

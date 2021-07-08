@@ -65,7 +65,8 @@ The name of the group.
 =head2 Precedence => Int
 
 The new precedence value for the group. For more information about this
-parameter, see .
+parameter, see CreateGroup
+(https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateGroup.html).
 
 
 

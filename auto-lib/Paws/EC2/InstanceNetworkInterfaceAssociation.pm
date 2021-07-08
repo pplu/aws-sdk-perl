@@ -1,5 +1,6 @@
 package Paws::EC2::InstanceNetworkInterfaceAssociation;
   use Moose;
+  has CarrierIp => (is => 'ro', isa => 'Str', request_name => 'carrierIp', traits => ['NameInRequest']);
   has IpOwnerId => (is => 'ro', isa => 'Str', request_name => 'ipOwnerId', traits => ['NameInRequest']);
   has PublicDnsName => (is => 'ro', isa => 'Str', request_name => 'publicDnsName', traits => ['NameInRequest']);
   has PublicIp => (is => 'ro', isa => 'Str', request_name => 'publicIp', traits => ['NameInRequest']);
@@ -22,20 +23,25 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::EC2::InstanceNetworkInterfaceAssociation object:
 
-  $service_obj->Method(Att1 => { IpOwnerId => $value, ..., PublicIp => $value  });
+  $service_obj->Method(Att1 => { CarrierIp => $value, ..., PublicIp => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::EC2::InstanceNetworkInterfaceAssociation object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->IpOwnerId
+  $result->Att1->CarrierIp
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 CarrierIp => Str
+
+The carrier IP address associated with the network interface.
 
 
 =head2 IpOwnerId => Str

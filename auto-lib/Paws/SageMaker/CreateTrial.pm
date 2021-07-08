@@ -3,6 +3,7 @@ package Paws::SageMaker::CreateTrial;
   use Moose;
   has DisplayName => (is => 'ro', isa => 'Str');
   has ExperimentName => (is => 'ro', isa => 'Str', required => 1);
+  has MetadataProperties => (is => 'ro', isa => 'Paws::SageMaker::MetadataProperties');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::Tag]');
   has TrialName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -31,10 +32,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $CreateTrialResponse = $api . sagemaker->CreateTrial(
-      ExperimentName => 'MyExperimentEntityName',
-      TrialName      => 'MyExperimentEntityName',
-      DisplayName    => 'MyExperimentEntityName',    # OPTIONAL
-      Tags           => [
+      ExperimentName     => 'MyExperimentEntityName',
+      TrialName          => 'MyExperimentEntityName',
+      DisplayName        => 'MyExperimentEntityName',    # OPTIONAL
+      MetadataProperties => {
+        CommitId    => 'MyMetadataPropertyValue',        # max: 1024; OPTIONAL
+        GeneratedBy => 'MyMetadataPropertyValue',        # max: 1024; OPTIONAL
+        ProjectId   => 'MyMetadataPropertyValue',        # max: 1024; OPTIONAL
+        Repository  => 'MyMetadataPropertyValue',        # max: 1024; OPTIONAL
+      },    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
           Value => 'MyTagValue',    # max: 256
@@ -68,6 +75,12 @@ The name of the experiment to associate the trial with.
 
 
 
+=head2 MetadataProperties => L<Paws::SageMaker::MetadataProperties>
+
+
+
+
+
 =head2 Tags => ArrayRef[L<Paws::SageMaker::Tag>]
 
 A list of tags to associate with the trial. You can use Search API to
@@ -77,8 +90,8 @@ search on the tags.
 
 =head2 B<REQUIRED> TrialName => Str
 
-The name of the trial. The name must be unique in your AWS account and
-is not case-sensitive.
+The name of the trial. The name must be unique in your Amazon Web
+Services account and is not case-sensitive.
 
 
 

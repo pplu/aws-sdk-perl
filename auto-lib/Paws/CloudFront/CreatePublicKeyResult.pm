@@ -20,21 +20,19 @@ Paws::CloudFront::CreatePublicKeyResult
 
 =head2 ETag => Str
 
-The current version of the public key. For example: C<E2QWRUHAPOMQZL>.
+The identifier for this version of the public key.
 
 
 
 =head2 Location => Str
 
-The fully qualified URI of the new public key resource just created.
-For example:
-C<https://cloudfront.amazonaws.com/2010-11-01/cloudfront-public-key/EDFDVBD632BHDS5>.
+The URL of the public key.
 
 
 
 =head2 PublicKey => L<Paws::CloudFront::PublicKey>
 
-Returned when you add a public key.
+The public key.
 
 
 

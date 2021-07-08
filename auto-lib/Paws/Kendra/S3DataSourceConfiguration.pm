@@ -5,6 +5,7 @@ package Paws::Kendra::S3DataSourceConfiguration;
   has BucketName => (is => 'ro', isa => 'Str', required => 1);
   has DocumentsMetadataConfiguration => (is => 'ro', isa => 'Paws::Kendra::DocumentsMetadataConfiguration');
   has ExclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has InclusionPatterns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has InclusionPrefixes => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
 1;
@@ -46,7 +47,9 @@ in an Amazon S3 bucket.
 =head2 AccessControlListConfiguration => L<Paws::Kendra::AccessControlListConfiguration>
 
 Provides the path to the S3 bucket that contains the user context
-filtering files for the data source.
+filtering files for the data source. For the format of the file, see
+Access control for S3 data sources
+(https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html).
 
 
 =head2 B<REQUIRED> BucketName => Str
@@ -62,11 +65,64 @@ The name of the bucket that contains the documents.
 =head2 ExclusionPatterns => ArrayRef[Str|Undef]
 
 A list of glob patterns for documents that should not be indexed. If a
-document that matches an inclusion prefix also matches an exclusion
+document that matches an inclusion prefix or inclusion pattern also
+matches an exclusion pattern, the document is not indexed.
+
+Some examples
+(https://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters)
+are:
+
+=over
+
+=item *
+
+I<*.png , *.jpg> will exclude all PNG and JPEG image files in a
+directory (files with the extensions .png and .jpg).
+
+=item *
+
+I<*internal*> will exclude all files in a directory that contain
+'internal' in the file name, such as 'internal', 'internal_only',
+'company_internal'.
+
+=item *
+
+I<**/*internal*> will exclude all internal-related files in a directory
+and its subdirectories.
+
+=back
+
+
+
+=head2 InclusionPatterns => ArrayRef[Str|Undef]
+
+A list of glob patterns for documents that should be indexed. If a
+document that matches an inclusion pattern also matches an exclusion
 pattern, the document is not indexed.
 
-For more information about glob patterns, see glob (programming)
-(http://wikipedia.org/wiki/Glob_%28programming%29) in I<Wikipedia>.
+Some examples
+(https://docs.aws.amazon.com/cli/latest/reference/s3/#use-of-exclude-and-include-filters)
+are:
+
+=over
+
+=item *
+
+I<*.txt> will include all text files in a directory (files with the
+extension .txt).
+
+=item *
+
+I<**/*.txt> will include all text files in a directory and its
+subdirectories.
+
+=item *
+
+I<*tax*> will include all files in a directory that contain 'tax' in
+the file name, such as 'tax', 'taxes', 'income_tax'.
+
+=back
+
 
 
 =head2 InclusionPrefixes => ArrayRef[Str|Undef]

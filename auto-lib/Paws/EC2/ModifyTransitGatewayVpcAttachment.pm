@@ -37,8 +37,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       AddSubnetIds               => [ 'MySubnetId', ... ],            # OPTIONAL
       DryRun                     => 1,                                # OPTIONAL
       Options                    => {
-        DnsSupport  => 'enable',    # values: enable, disable; OPTIONAL
-        Ipv6Support => 'enable',    # values: enable, disable; OPTIONAL
+        ApplianceModeSupport => 'enable',    # values: enable, disable; OPTIONAL
+        DnsSupport           => 'enable',    # values: enable, disable; OPTIONAL
+        Ipv6Support          => 'enable',    # values: enable, disable; OPTIONAL
       },    # OPTIONAL
       RemoveSubnetIds => [ 'MySubnetId', ... ],    # OPTIONAL
       );

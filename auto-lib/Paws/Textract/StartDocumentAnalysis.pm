@@ -5,7 +5,9 @@ package Paws::Textract::StartDocumentAnalysis;
   has DocumentLocation => (is => 'ro', isa => 'Paws::Textract::DocumentLocation', required => 1);
   has FeatureTypes => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has JobTag => (is => 'ro', isa => 'Str');
+  has KMSKeyId => (is => 'ro', isa => 'Str');
   has NotificationChannel => (is => 'ro', isa => 'Paws::Textract::NotificationChannel');
+  has OutputConfig => (is => 'ro', isa => 'Paws::Textract::OutputConfig');
 
   use MooseX::ClassAttribute;
 
@@ -44,10 +46,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],
       ClientRequestToken  => 'MyClientRequestToken',    # OPTIONAL
       JobTag              => 'MyJobTag',                # OPTIONAL
+      KMSKeyId            => 'MyKMSKeyId',              # OPTIONAL
       NotificationChannel => {
         RoleArn     => 'MyRoleArn',                     # min: 20, max: 2048
         SNSTopicArn => 'MySNSTopicArn',                 # min: 20, max: 1024
 
+      },    # OPTIONAL
+      OutputConfig => {
+        S3Bucket => 'MyS3Bucket',        # min: 3, max: 255; OPTIONAL
+        S3Prefix => 'MyS3ObjectName',    # min: 1, max: 1024; OPTIONAL
       },    # OPTIONAL
     );
 
@@ -99,10 +106,28 @@ notification corresponds to (such as a tax form or a receipt).
 
 
 
+=head2 KMSKeyId => Str
+
+The KMS key used to encrypt the inference results. This can be in
+either Key ID or Key Alias format. When a KMS key is provided, the KMS
+key will be used for server-side encryption of the objects in the
+customer bucket. When this parameter is not enabled, the result will be
+encrypted server side,using SSE-S3.
+
+
+
 =head2 NotificationChannel => L<Paws::Textract::NotificationChannel>
 
 The Amazon SNS topic ARN that you want Amazon Textract to publish the
 completion status of the operation to.
+
+
+
+=head2 OutputConfig => L<Paws::Textract::OutputConfig>
+
+Sets if the output will go to a customer defined bucket. By default,
+Amazon Textract will save the results internally to be accessed by the
+GetDocumentAnalysis operation.
 
 
 

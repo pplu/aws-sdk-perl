@@ -33,7 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3Control::
 
 =head1 DESCRIPTION
 
-The Virtual Private Cloud (VPC) configuration for an access point.
+The virtual private cloud (VPC) configuration for an access point.
 
 =head1 ATTRIBUTES
 

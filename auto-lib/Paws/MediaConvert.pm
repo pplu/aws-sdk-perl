@@ -340,6 +340,8 @@ it again.
 
 =item [ClientRequestToken => Str]
 
+=item [HopDestinations => ArrayRef[L<Paws::MediaConvert::HopDestination>]]
+
 =item [JobTemplate => Str]
 
 =item [Priority => Int]
@@ -379,6 +381,8 @@ http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html
 =item [Category => Str]
 
 =item [Description => Str]
+
+=item [HopDestinations => ArrayRef[L<Paws::MediaConvert::HopDestination>]]
 
 =item [Priority => Int]
 
@@ -776,6 +780,8 @@ https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html
 =item [Category => Str]
 
 =item [Description => Str]
+
+=item [HopDestinations => ArrayRef[L<Paws::MediaConvert::HopDestination>]]
 
 =item [Priority => Int]
 

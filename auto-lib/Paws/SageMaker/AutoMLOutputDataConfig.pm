@@ -41,7 +41,7 @@ The output data configuration.
 
 =head2 KmsKeyId => Str
 
-The AWS KMS encryption key ID.
+The Amazon Web Services KMS encryption key ID.
 
 
 =head2 B<REQUIRED> S3OutputPath => Str

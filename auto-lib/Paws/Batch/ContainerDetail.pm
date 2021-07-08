@@ -4,19 +4,24 @@ package Paws::Batch::ContainerDetail;
   has Command => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'command', traits => ['NameInRequest']);
   has ContainerInstanceArn => (is => 'ro', isa => 'Str', request_name => 'containerInstanceArn', traits => ['NameInRequest']);
   has Environment => (is => 'ro', isa => 'ArrayRef[Paws::Batch::KeyValuePair]', request_name => 'environment', traits => ['NameInRequest']);
+  has ExecutionRoleArn => (is => 'ro', isa => 'Str', request_name => 'executionRoleArn', traits => ['NameInRequest']);
   has ExitCode => (is => 'ro', isa => 'Int', request_name => 'exitCode', traits => ['NameInRequest']);
+  has FargatePlatformConfiguration => (is => 'ro', isa => 'Paws::Batch::FargatePlatformConfiguration', request_name => 'fargatePlatformConfiguration', traits => ['NameInRequest']);
   has Image => (is => 'ro', isa => 'Str', request_name => 'image', traits => ['NameInRequest']);
   has InstanceType => (is => 'ro', isa => 'Str', request_name => 'instanceType', traits => ['NameInRequest']);
   has JobRoleArn => (is => 'ro', isa => 'Str', request_name => 'jobRoleArn', traits => ['NameInRequest']);
   has LinuxParameters => (is => 'ro', isa => 'Paws::Batch::LinuxParameters', request_name => 'linuxParameters', traits => ['NameInRequest']);
+  has LogConfiguration => (is => 'ro', isa => 'Paws::Batch::LogConfiguration', request_name => 'logConfiguration', traits => ['NameInRequest']);
   has LogStreamName => (is => 'ro', isa => 'Str', request_name => 'logStreamName', traits => ['NameInRequest']);
   has Memory => (is => 'ro', isa => 'Int', request_name => 'memory', traits => ['NameInRequest']);
   has MountPoints => (is => 'ro', isa => 'ArrayRef[Paws::Batch::MountPoint]', request_name => 'mountPoints', traits => ['NameInRequest']);
+  has NetworkConfiguration => (is => 'ro', isa => 'Paws::Batch::NetworkConfiguration', request_name => 'networkConfiguration', traits => ['NameInRequest']);
   has NetworkInterfaces => (is => 'ro', isa => 'ArrayRef[Paws::Batch::NetworkInterface]', request_name => 'networkInterfaces', traits => ['NameInRequest']);
   has Privileged => (is => 'ro', isa => 'Bool', request_name => 'privileged', traits => ['NameInRequest']);
   has ReadonlyRootFilesystem => (is => 'ro', isa => 'Bool', request_name => 'readonlyRootFilesystem', traits => ['NameInRequest']);
   has Reason => (is => 'ro', isa => 'Str', request_name => 'reason', traits => ['NameInRequest']);
   has ResourceRequirements => (is => 'ro', isa => 'ArrayRef[Paws::Batch::ResourceRequirement]', request_name => 'resourceRequirements', traits => ['NameInRequest']);
+  has Secrets => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Secret]', request_name => 'secrets', traits => ['NameInRequest']);
   has TaskArn => (is => 'ro', isa => 'Str', request_name => 'taskArn', traits => ['NameInRequest']);
   has Ulimits => (is => 'ro', isa => 'ArrayRef[Paws::Batch::Ulimit]', request_name => 'ulimits', traits => ['NameInRequest']);
   has User => (is => 'ro', isa => 'Str', request_name => 'user', traits => ['NameInRequest']);
@@ -53,21 +58,20 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Batch::Cont
 
 =head1 DESCRIPTION
 
-An object representing the details of a container that is part of a
-job.
+An object representing the details of a container that's part of a job.
 
 =head1 ATTRIBUTES
 
 
 =head2 Command => ArrayRef[Str|Undef]
 
-The command that is passed to the container.
+The command that's passed to the container.
 
 
 =head2 ContainerInstanceArn => Str
 
-The Amazon Resource Name (ARN) of the container instance on which the
-container is running.
+The Amazon Resource Name (ARN) of the container instance that the
+container is running on.
 
 
 =head2 Environment => ArrayRef[L<Paws::Batch::KeyValuePair>]
@@ -79,9 +83,23 @@ convention is reserved for variables that are set by the AWS Batch
 service.
 
 
+=head2 ExecutionRoleArn => Str
+
+The Amazon Resource Name (ARN) of the execution role that AWS Batch can
+assume. For more information, see AWS Batch execution IAM role
+(https://docs.aws.amazon.com/batch/latest/userguide/execution-IAM-role.html)
+in the I<AWS Batch User Guide>.
+
+
 =head2 ExitCode => Int
 
 The exit code to return upon completion.
+
+
+=head2 FargatePlatformConfiguration => L<Paws::Batch::FargatePlatformConfiguration>
+
+The platform configuration for jobs running on Fargate resources. Jobs
+running on EC2 resources must not specify this parameter.
 
 
 =head2 Image => Str
@@ -93,6 +111,8 @@ The image used to start the container.
 
 The instance type of the underlying host infrastructure of a multi-node
 parallel job.
+
+This parameter isn't applicable to jobs running on Fargate resources.
 
 
 =head2 JobRoleArn => Str
@@ -106,6 +126,46 @@ Linux-specific modifications that are applied to the container, such as
 details for device mappings.
 
 
+=head2 LogConfiguration => L<Paws::Batch::LogConfiguration>
+
+The log configuration specification for the container.
+
+This parameter maps to C<LogConfig> in the Create a container
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
+and the C<--log-driver> option to docker run
+(https://docs.docker.com/engine/reference/run/). By default, containers
+use the same logging driver that the Docker daemon uses. However, the
+container might use a different logging driver than the Docker daemon
+by specifying a log driver with this parameter in the container
+definition. To use a different logging driver for a container, the log
+system must be configured properly on the container instance. Or,
+alternatively, it must be configured on a different log server for
+remote logging options. For more information on the options for
+different supported log drivers, see Configure logging drivers
+(https://docs.docker.com/engine/admin/logging/overview/) in the Docker
+documentation.
+
+AWS Batch currently supports a subset of the logging drivers available
+to the Docker daemon (shown in the LogConfiguration data type).
+Additional log drivers might be available in future releases of the
+Amazon ECS container agent.
+
+This parameter requires version 1.18 of the Docker Remote API or
+greater on your container instance. To check the Docker Remote API
+version on your container instance, log into your container instance
+and run the following command: C<sudo docker version | grep "Server API
+version">
+
+The Amazon ECS container agent running on a container instance must
+register the logging drivers available on that instance with the
+C<ECS_AVAILABLE_LOGGING_DRIVERS> environment variable before containers
+placed on that instance can use these log configuration options. For
+more information, see Amazon ECS Container Agent Configuration
+(https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-config.html)
+in the I<Amazon Elastic Container Service Developer Guide>.
+
+
 =head2 LogStreamName => Str
 
 The name of the CloudWatch Logs log stream associated with the
@@ -116,12 +176,21 @@ C<RUNNING> status.
 
 =head2 Memory => Int
 
-The number of MiB of memory reserved for the job.
+For jobs run on EC2 resources that didn't specify memory requirements
+using C<ResourceRequirement>, the number of MiB of memory reserved for
+the job. For other jobs, including all run on Fargate resources, see
+C<resourceRequirements>.
 
 
 =head2 MountPoints => ArrayRef[L<Paws::Batch::MountPoint>]
 
 The mount points for data volumes in your container.
+
+
+=head2 NetworkConfiguration => L<Paws::Batch::NetworkConfiguration>
+
+The network configuration for jobs running on Fargate resources. Jobs
+running on EC2 resources must not specify this parameter.
 
 
 =head2 NetworkInterfaces => ArrayRef[L<Paws::Batch::NetworkInterface>]
@@ -131,14 +200,23 @@ The network interfaces associated with the job.
 
 =head2 Privileged => Bool
 
-When this parameter is true, the container is given elevated privileges
-on the host container instance (similar to the C<root> user).
+When this parameter is true, the container is given elevated
+permissions on the host container instance (similar to the C<root>
+user). The default value is false.
+
+This parameter isn't applicable to jobs running on Fargate resources
+and shouldn't be provided, or specified as false.
 
 
 =head2 ReadonlyRootFilesystem => Bool
 
 When this parameter is true, the container is given read-only access to
-its root file system.
+its root file system. This parameter maps to C<ReadonlyRootfs> in the
+Create a container
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
+and the C<--read-only> option to C<docker run>
+(https://docs.docker.com/engine/reference/commandline/run/).
 
 
 =head2 Reason => Str
@@ -149,30 +227,65 @@ additional details about a running or stopped container.
 
 =head2 ResourceRequirements => ArrayRef[L<Paws::Batch::ResourceRequirement>]
 
-The type and amount of a resource to assign to a container. Currently,
-the only supported resource is C<GPU>.
+The type and amount of resources to assign to a container. The
+supported resources include C<GPU>, C<MEMORY>, and C<VCPU>.
+
+
+=head2 Secrets => ArrayRef[L<Paws::Batch::Secret>]
+
+The secrets to pass to the container. For more information, see
+Specifying sensitive data
+(https://docs.aws.amazon.com/batch/latest/userguide/specifying-sensitive-data.html)
+in the I<AWS Batch User Guide>.
 
 
 =head2 TaskArn => Str
 
-The Amazon Resource Name (ARN) of the Amazon ECS task that is
-associated with the container job. Each container attempt receives a
-task ARN when they reach the C<STARTING> status.
+The Amazon Resource Name (ARN) of the Amazon ECS task that's associated
+with the container job. Each container attempt receives a task ARN when
+they reach the C<STARTING> status.
 
 
 =head2 Ulimits => ArrayRef[L<Paws::Batch::Ulimit>]
 
-A list of C<ulimit> values to set in the container.
+A list of C<ulimit> values to set in the container. This parameter maps
+to C<Ulimits> in the Create a container
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
+and the C<--ulimit> option to docker run
+(https://docs.docker.com/engine/reference/run/).
+
+This parameter isn't applicable to jobs running on Fargate resources.
 
 
 =head2 User => Str
 
-The user name to use inside the container.
+The user name to use inside the container. This parameter maps to
+C<User> in the Create a container
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
+and the C<--user> option to docker run
+(https://docs.docker.com/engine/reference/run/).
 
 
 =head2 Vcpus => Int
 
-The number of VCPUs allocated for the job.
+The number of vCPUs reserved for the container. For jobs that run on
+EC2 resources, you can specify the vCPU requirement for the job using
+C<resourceRequirements>, but you can't specify the vCPU requirements in
+both the C<vcpus> and C<resourceRequirement> object. This parameter
+maps to C<CpuShares> in the Create a container
+(https://docs.docker.com/engine/api/v1.23/#create-a-container) section
+of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
+and the C<--cpu-shares> option to docker run
+(https://docs.docker.com/engine/reference/run/). Each vCPU is
+equivalent to 1,024 CPU shares. You must specify at least one vCPU.
+This is required but can be specified in several places. It must be
+specified for each node at least once.
+
+This parameter isn't applicable to jobs that run on Fargate resources.
+For jobs that run on Fargate resources, you must specify the vCPU
+requirement for the job using C<resourceRequirements>.
 
 
 =head2 Volumes => ArrayRef[L<Paws::Batch::Volume>]

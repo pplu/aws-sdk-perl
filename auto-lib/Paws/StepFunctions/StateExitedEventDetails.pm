@@ -3,6 +3,7 @@ package Paws::StepFunctions::StateExitedEventDetails;
   use Moose;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest'], required => 1);
   has Output => (is => 'ro', isa => 'Str', request_name => 'output', traits => ['NameInRequest']);
+  has OutputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'outputDetails', traits => ['NameInRequest']);
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::StepFunctions::StateExitedEventDetails object:
 
-  $service_obj->Method(Att1 => { Name => $value, ..., Output => $value  });
+  $service_obj->Method(Att1 => { Name => $value, ..., OutputDetails => $value  });
 
 =head3 Results returned from an API call
 
@@ -69,11 +70,19 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 =back
 
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and _.
 
 
 =head2 Output => Str
 
-The JSON output data of the state.
+The JSON output data of the state. Length constraints apply to the
+payload size, and are expressed as bytes in UTF-8 encoding.
+
+
+=head2 OutputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about the output of an execution history event.
 
 
 

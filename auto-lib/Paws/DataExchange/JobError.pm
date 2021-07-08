@@ -71,7 +71,7 @@ The message related to the job error.
 
 =head2 ResourceId => Str
 
-The unqiue identifier for the resource related to the error.
+The unique identifier for the resource related to the error.
 
 
 =head2 ResourceType => Str

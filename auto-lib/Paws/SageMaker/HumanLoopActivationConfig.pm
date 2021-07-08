@@ -2,7 +2,6 @@
 package Paws::SageMaker::HumanLoopActivationConfig;
   use Moose;
   has HumanLoopActivationConditionsConfig => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopActivationConditionsConfig', required => 1);
-  has HumanLoopRequestSource => (is => 'ro', isa => 'Paws::SageMaker::HumanLoopRequestSource', required => 1);
 
 1;
 
@@ -23,7 +22,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::SageMaker::HumanLoopActivationConfig object:
 
-  $service_obj->Method(Att1 => { HumanLoopActivationConditionsConfig => $value, ..., HumanLoopRequestSource => $value  });
+  $service_obj->Method(Att1 => { HumanLoopActivationConditionsConfig => $value, ..., HumanLoopActivationConditionsConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -45,11 +44,6 @@ then all requests go to humans.
 
 Container structure for defining under what conditions SageMaker
 creates a human loop.
-
-
-=head2 B<REQUIRED> HumanLoopRequestSource => L<Paws::SageMaker::HumanLoopRequestSource>
-
-Container for configuring the source of human task requests.
 
 
 

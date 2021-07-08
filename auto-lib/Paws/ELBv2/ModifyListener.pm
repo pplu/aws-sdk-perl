@@ -1,6 +1,7 @@
 
 package Paws::ELBv2::ModifyListener;
   use Moose;
+  has AlpnPolicy => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Certificates => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Certificate]');
   has DefaultActions => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::Action]');
   has ListenerArn => (is => 'ro', isa => 'Str', required => 1);
@@ -76,38 +77,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ela
 =head1 ATTRIBUTES
 
 
+=head2 AlpnPolicy => ArrayRef[Str|Undef]
+
+[TLS listeners] The name of the Application-Layer Protocol Negotiation
+(ALPN) policy. You can specify one policy name. The following are the
+possible values:
+
+=over
+
+=item *
+
+C<HTTP1Only>
+
+=item *
+
+C<HTTP2Only>
+
+=item *
+
+C<HTTP2Optional>
+
+=item *
+
+C<HTTP2Preferred>
+
+=item *
+
+C<None>
+
+=back
+
+For more information, see ALPN policies
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#alpn-policies)
+in the I<Network Load Balancers Guide>.
+
+
+
 =head2 Certificates => ArrayRef[L<Paws::ELBv2::Certificate>]
 
 [HTTPS and TLS listeners] The default certificate for the listener. You
 must provide exactly one certificate. Set C<CertificateArn> to the
 certificate ARN but do not set C<IsDefault>.
 
-To create a certificate list, use AddListenerCertificates.
-
 
 
 =head2 DefaultActions => ArrayRef[L<Paws::ELBv2::Action>]
 
-The actions for the default rule. The rule must include one forward
-action or one or more fixed-response actions.
-
-If the action type is C<forward>, you specify one or more target
-groups. The protocol of the target group must be HTTP or HTTPS for an
-Application Load Balancer. The protocol of the target group must be
-TCP, TLS, UDP, or TCP_UDP for a Network Load Balancer.
-
-[HTTPS listeners] If the action type is C<authenticate-oidc>, you
-authenticate users through an identity provider that is OpenID Connect
-(OIDC) compliant.
-
-[HTTPS listeners] If the action type is C<authenticate-cognito>, you
-authenticate users through the user pools supported by Amazon Cognito.
-
-[Application Load Balancer] If the action type is C<redirect>, you
-redirect specified client requests from one URL to another.
-
-[Application Load Balancer] If the action type is C<fixed-response>,
-you drop specified client requests and return a custom HTTP response.
+The actions for the default rule.
 
 
 
@@ -119,7 +135,8 @@ The Amazon Resource Name (ARN) of the listener.
 
 =head2 Port => Int
 
-The port for connections from clients to the load balancer.
+The port for connections from clients to the load balancer. You cannot
+specify a port for a Gateway Load Balancer.
 
 
 
@@ -128,17 +145,22 @@ The port for connections from clients to the load balancer.
 The protocol for connections from clients to the load balancer.
 Application Load Balancers support the HTTP and HTTPS protocols.
 Network Load Balancers support the TCP, TLS, UDP, and TCP_UDP
-protocols.
+protocols. You canE<rsquo>t change the protocol to UDP or TCP_UDP if
+dual-stack mode is enabled. You cannot specify a protocol for a Gateway
+Load Balancer.
 
-Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">
+Valid values are: C<"HTTP">, C<"HTTPS">, C<"TCP">, C<"TLS">, C<"UDP">, C<"TCP_UDP">, C<"GENEVE">
 
 =head2 SslPolicy => Str
 
 [HTTPS and TLS listeners] The security policy that defines which
-protocols and ciphers are supported. For more information, see Security
-Policies
+protocols and ciphers are supported.
+
+For more information, see Security policies
 (https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies)
-in the I<Application Load Balancers Guide>.
+in the I<Application Load Balancers Guide> or Security policies
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/create-tls-listener.html#describe-ssl-policies)
+in the I<Network Load Balancers Guide>.
 
 
 

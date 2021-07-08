@@ -56,8 +56,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],    # OPTIONAL
       StartTime => '1970-01-01T01:00:00',    # OPTIONAL
-      TagKeys   => [ 'MyString', ... ],      # OPTIONAL
-      TagValues => [ 'MyString', ... ],      # OPTIONAL
+      TagKeys   => [
+        'MyString', ...                      # max: 2147483647
+      ],    # OPTIONAL
+      TagValues => [
+        'MyString', ...    # max: 2147483647
+      ],    # OPTIONAL
     );
 
     # Results:

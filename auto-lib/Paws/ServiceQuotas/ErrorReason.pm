@@ -34,32 +34,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-Returns an error that explains why the action did not succeed.
+An error that explains why an action did not succeed.
 
 =head1 ATTRIBUTES
 
 
 =head2 ErrorCode => Str
 
-Service Quotas returns the following error values.
+Service Quotas returns the following error values:
 
-C<DEPENDENCY_ACCESS_DENIED_ERROR> is returned when the caller does not
-have permission to call the service or service quota. To resolve the
-error, you need permission to access the service or service quota.
+=over
 
-C<DEPENDENCY_THROTTLING_ERROR> is returned when the service being
-called is throttling Service Quotas.
+=item *
 
-C<DEPENDENCY_SERVICE_ERROR> is returned when the service being called
-has availability issues.
+C<DEPENDENCY_ACCESS_DENIED_ERROR> - The caller does not have the
+required permissions to complete the action. To resolve the error, you
+must have permission to access the service or quota.
 
-C<SERVICE_QUOTA_NOT_AVAILABLE_ERROR> is returned when there was an
-error in Service Quotas.
+=item *
+
+C<DEPENDENCY_THROTTLING_ERROR> - The service is throttling Service
+Quotas.
+
+=item *
+
+C<DEPENDENCY_SERVICE_ERROR> - The service is not available.
+
+=item *
+
+C<SERVICE_QUOTA_NOT_AVAILABLE_ERROR> - There was an error in Service
+Quotas.
+
+=back
+
 
 
 =head2 ErrorMessage => Str
 
-The error message that provides more detail.
+The error message.
 
 
 

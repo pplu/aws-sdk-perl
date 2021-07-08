@@ -30,8 +30,8 @@ Provides the current application version.
 =head2 InputId => Str
 
 The input ID that is associated with the application input. This is the
-ID that Amazon Kinesis Data Analytics assigns to each input
-configuration that you add to your application.
+ID that Kinesis Data Analytics assigns to each input configuration that
+you add to your application.
 
 
 =head2 InputProcessingConfigurationDescription => L<Paws::KinesisAnalyticsV2::InputProcessingConfigurationDescription>

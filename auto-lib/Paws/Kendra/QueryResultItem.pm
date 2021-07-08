@@ -7,7 +7,9 @@ package Paws::Kendra::QueryResultItem;
   has DocumentId => (is => 'ro', isa => 'Str');
   has DocumentTitle => (is => 'ro', isa => 'Paws::Kendra::TextWithHighlights');
   has DocumentURI => (is => 'ro', isa => 'Str');
+  has FeedbackToken => (is => 'ro', isa => 'Str');
   has Id => (is => 'ro', isa => 'Str');
+  has ScoreAttributes => (is => 'ro', isa => 'Paws::Kendra::ScoreAttributes');
   has Type => (is => 'ro', isa => 'Str');
 
 1;
@@ -52,7 +54,7 @@ document that satisfies the query.
 
 =head2 AdditionalAttributes => ArrayRef[L<Paws::Kendra::AdditionalResultAttribute>]
 
-
+One or more additional attributes associated with the query result.
 
 
 =head2 DocumentAttributes => ArrayRef[L<Paws::Kendra::DocumentAttribute>]
@@ -84,9 +86,30 @@ information for highlighting the relevant terms in the title.
 The URI of the original location of the document.
 
 
+=head2 FeedbackToken => Str
+
+A token that identifies a particular result from a particular query.
+Use this token to provide click-through feedback for the result. For
+more information, see Submitting feedback
+(https://docs.aws.amazon.com/kendra/latest/dg/submitting-feedback.html).
+
+
 =head2 Id => Str
 
 The unique identifier for the query result.
+
+
+=head2 ScoreAttributes => L<Paws::Kendra::ScoreAttributes>
+
+Indicates the confidence that Amazon Kendra has that a result matches
+the query that you provided. Each result is placed into a bin that
+indicates the confidence, C<VERY_HIGH>, C<HIGH>, C<MEDIUM> and C<LOW>.
+You can use the score to determine if a response meets the confidence
+needed for your application.
+
+The field is only set to C<LOW> when the C<Type> field is set to
+C<DOCUMENT> and Amazon Kendra is not confident that the result matches
+the query.
 
 
 =head2 Type => Str

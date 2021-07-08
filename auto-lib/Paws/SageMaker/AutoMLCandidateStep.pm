@@ -35,25 +35,25 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SageMaker::
 
 =head1 DESCRIPTION
 
-Information about the steps for a Candidate, and what step it is
-working on.
+Information about the steps for a candidate and what step it is working
+on.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> CandidateStepArn => Str
 
-The ARN for the Candidate's step.
+The ARN for the candidate's step.
 
 
 =head2 B<REQUIRED> CandidateStepName => Str
 
-The name for the Candidate's step.
+The name for the candidate's step.
 
 
 =head2 B<REQUIRED> CandidateStepType => Str
 
-Whether the Candidate is at the transform, training, or processing
+Whether the candidate is at the transform, training, or processing
 step.
 
 

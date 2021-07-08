@@ -2,6 +2,7 @@
 package Paws::LexRuntime::PutSession;
   use Moose;
   has Accept => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'Accept');
+  has ActiveContexts => (is => 'ro', isa => 'ArrayRef[Paws::LexRuntime::ActiveContext]', traits => ['NameInRequest'], request_name => 'activeContexts');
   has BotAlias => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botAlias', required => 1);
   has BotName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'botName', required => 1);
   has DialogAction => (is => 'ro', isa => 'Paws::LexRuntime::DialogAction', traits => ['NameInRequest'], request_name => 'dialogAction');
@@ -35,17 +36,32 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $runtime.lex = Paws->service('LexRuntime');
     my $PutSessionResponse = $runtime . lex->PutSession(
-      BotAlias     => 'MyBotAlias',
-      BotName      => 'MyBotName',
-      UserId       => 'MyUserId',
-      Accept       => 'MyAccept',     # OPTIONAL
+      BotAlias       => 'MyBotAlias',
+      BotName        => 'MyBotName',
+      UserId         => 'MyUserId',
+      Accept         => 'MyAccept',     # OPTIONAL
+      ActiveContexts => [
+        {
+          Name       => 'MyActiveContextName',    # min: 1, max: 100
+          Parameters => {
+            'MyParameterName' =>
+              'MyText',    # key: min: 1, max: 100, value: min: 1, max: 1024
+          },    # max: 10
+          TimeToLive => {
+            TimeToLiveInSeconds => 1,    # min: 5, max: 86400; OPTIONAL
+            TurnsToLive         => 1,    # min: 1, max: 20; OPTIONAL
+          },
+
+        },
+        ...
+      ],    # OPTIONAL
       DialogAction => {
         Type => 'ElicitIntent'
         ,    # values: ElicitIntent, ConfirmIntent, ElicitSlot, Close, Delegate
         FulfillmentState => 'Fulfilled'
         ,    # values: Fulfilled, Failed, ReadyForFulfillment; OPTIONAL
         IntentName    => 'MyIntentName',    # OPTIONAL
-        Message       => 'MyText',          # min: 1, max: 1024; OPTIONAL
+        Message       => 'MyText',          # min: 1, max: 1024
         MessageFormat => 'PlainText'
         ,    # values: PlainText, CustomPayload, SSML, Composite; OPTIONAL
         SlotToElicit => 'MyString',    # OPTIONAL
@@ -77,9 +93,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     );
 
     # Results:
+    my $ActiveContexts    = $PutSessionResponse->ActiveContexts;
     my $AudioStream       = $PutSessionResponse->AudioStream;
     my $ContentType       = $PutSessionResponse->ContentType;
     my $DialogState       = $PutSessionResponse->DialogState;
+    my $EncodedMessage    = $PutSessionResponse->EncodedMessage;
     my $IntentName        = $PutSessionResponse->IntentName;
     my $Message           = $PutSessionResponse->Message;
     my $MessageFormat     = $PutSessionResponse->MessageFormat;
@@ -151,6 +169,18 @@ C<text/plain; charset=utf-8>
 
 =back
 
+
+
+
+=head2 ActiveContexts => ArrayRef[L<Paws::LexRuntime::ActiveContext>]
+
+A list of contexts active for the request. A context can be activated
+when a previous intent is fulfilled, or by including the context in the
+request,
+
+If you don't specify a list of contexts, Amazon Lex will use the
+current list of contexts for the session. If you specify an empty list,
+all contexts for the session are cleared.
 
 
 

@@ -88,7 +88,70 @@ describing the records.
 
 =head2 FailureReason => Str
 
-The reason for the SSL/TLS certificate validation failure.
+The validation failure reason, if any, of the certificate.
+
+The following failure reasons are possible:
+
+=over
+
+=item *
+
+B<C<NO_AVAILABLE_CONTACTS> > - This failure applies to email
+validation, which is not available for Lightsail certificates.
+
+=item *
+
+B<C<ADDITIONAL_VERIFICATION_REQUIRED> > - Lightsail requires additional
+information to process this certificate request. This can happen as a
+fraud-protection measure, such as when the domain ranks within the
+Alexa top 1000 websites. To provide the required information, use the
+AWS Support Center (https://console.aws.amazon.com/support/home) to
+contact AWS Support.
+
+You cannot request a certificate for Amazon-owned domain names such as
+those ending in amazonaws.com, cloudfront.net, or elasticbeanstalk.com.
+
+=item *
+
+B<C<DOMAIN_NOT_ALLOWED> > - One or more of the domain names in the
+certificate request was reported as an unsafe domain by VirusTotal
+(https://www.virustotal.com/gui/home/url). To correct the problem,
+search for your domain name on the VirusTotal
+(https://www.virustotal.com/gui/home/url) website. If your domain is
+reported as suspicious, see Google Help for Hacked Websites
+(https://developers.google.com/web/fundamentals/security/hacked) to
+learn what you can do.
+
+If you believe that the result is a false positive, notify the
+organization that is reporting the domain. VirusTotal is an aggregate
+of several antivirus and URL scanners and cannot remove your domain
+from a block list itself. After you correct the problem and the
+VirusTotal registry has been updated, request a new certificate.
+
+If you see this error and your domain is not included in the VirusTotal
+list, visit the AWS Support Center
+(https://console.aws.amazon.com/support/home) and create a case.
+
+=item *
+
+B<C<INVALID_PUBLIC_DOMAIN> > - One or more of the domain names in the
+certificate request is not valid. Typically, this is because a domain
+name in the request is not a valid top-level domain. Try to request a
+certificate again, correcting any spelling errors or typos that were in
+the failed request, and ensure that all domain names in the request are
+for valid top-level domains. For example, you cannot request a
+certificate for C<example.invalidpublicdomain> because
+C<invalidpublicdomain> is not a valid top-level domain.
+
+=item *
+
+B<C<OTHER> > - Typically, this failure occurs when there is a
+typographical error in one or more of the domain names in the
+certificate request. Try to request a certificate again, correcting any
+spelling errors or typos that were in the failed request.
+
+=back
+
 
 
 =head2 IsAttached => Bool
@@ -109,8 +172,8 @@ The issuer of the certificate.
 
 =head2 KeyAlgorithm => Str
 
-The algorithm that was used to generate the key pair (the public and
-private key).
+The algorithm used to generate the key pair (the public and private
+key).
 
 
 =head2 LoadBalancerName => Str
@@ -141,8 +204,8 @@ The timestamp when the SSL/TLS certificate is first valid.
 
 =head2 RenewalSummary => L<Paws::Lightsail::LoadBalancerTlsCertificateRenewalSummary>
 
-An object containing information about the status of Lightsail's
-managed renewal for the certificate.
+An object that describes the status of the certificate renewal managed
+by Lightsail.
 
 
 =head2 ResourceType => Str
@@ -198,12 +261,14 @@ B<C<DiskSnapshot> > - A block storage disk snapshot
 
 =head2 RevocationReason => Str
 
-The reason the certificate was revoked. Valid values are below.
+The reason the certificate was revoked. This value is present only when
+the certificate status is C<REVOKED>.
 
 
 =head2 RevokedAt => Str
 
-The timestamp when the SSL/TLS certificate was revoked.
+The timestamp when the certificate was revoked. This value is present
+only when the certificate status is C<REVOKED>.
 
 
 =head2 Serial => Str
@@ -218,7 +283,8 @@ The algorithm that was used to sign the certificate.
 
 =head2 Status => Str
 
-The status of the SSL/TLS certificate. Valid values are below.
+The validation status of the SSL/TLS certificate. Valid values are
+below.
 
 
 =head2 Subject => Str
@@ -229,12 +295,9 @@ in the certificate.
 
 =head2 SubjectAlternativeNames => ArrayRef[Str|Undef]
 
-One or more domains or subdomains included in the certificate. This
-list contains the domain names that are bound to the public key that is
-contained in the certificate. The subject alternative names include the
-canonical domain name (CNAME) of the certificate and additional domain
-names that can be used to connect to the website, such as
-C<example.com>, C<www.example.com>, or C<m.example.com>.
+An array of strings that specify the alternate domains (e.g.,
+C<example2.com>) and subdomains (e.g., C<blog.example.com>) for the
+certificate.
 
 
 =head2 SupportCode => Str

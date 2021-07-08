@@ -8,6 +8,7 @@ package Paws::SageMaker::DescribeTrialComponentResponse;
   has InputArtifacts => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentArtifacts');
   has LastModifiedBy => (is => 'ro', isa => 'Paws::SageMaker::UserContext');
   has LastModifiedTime => (is => 'ro', isa => 'Str');
+  has MetadataProperties => (is => 'ro', isa => 'Paws::SageMaker::MetadataProperties');
   has Metrics => (is => 'ro', isa => 'ArrayRef[Paws::SageMaker::TrialComponentMetricSummary]');
   has OutputArtifacts => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentArtifacts');
   has Parameters => (is => 'ro', isa => 'Paws::SageMaker::TrialComponentParameters');
@@ -62,6 +63,11 @@ Who last modified the component.
 =head2 LastModifiedTime => Str
 
 When the component was last modified.
+
+
+=head2 MetadataProperties => L<Paws::SageMaker::MetadataProperties>
+
+
 
 
 =head2 Metrics => ArrayRef[L<Paws::SageMaker::TrialComponentMetricSummary>]

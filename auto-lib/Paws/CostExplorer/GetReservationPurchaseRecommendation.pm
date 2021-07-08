@@ -3,6 +3,7 @@ package Paws::CostExplorer::GetReservationPurchaseRecommendation;
   use Moose;
   has AccountId => (is => 'ro', isa => 'Str');
   has AccountScope => (is => 'ro', isa => 'Str');
+  has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has LookbackPeriodInDays => (is => 'ro', isa => 'Str');
   has NextPageToken => (is => 'ro', isa => 'Str');
   has PageSize => (is => 'ro', isa => 'Int');
@@ -37,9 +38,45 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ce = Paws->service('CostExplorer');
     my $GetReservationPurchaseRecommendationResponse =
       $ce->GetReservationPurchaseRecommendation(
-      Service              => 'MyGenericString',
-      AccountId            => 'MyGenericString',    # OPTIONAL
-      AccountScope         => 'PAYER',              # OPTIONAL
+      Service      => 'MyGenericString',
+      AccountId    => 'MyGenericString',    # OPTIONAL
+      AccountScope => 'PAYER',              # OPTIONAL
+      Filter       => {
+        And            => [ <Expression>, ... ],    # OPTIONAL
+        CostCategories => {
+          Key          => 'MyCostCategoryName',     # min: 1, max: 50; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
+        },    # OPTIONAL
+        Dimensions => {
+          Key => 'AZ'
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
+        },    # OPTIONAL
+        Not  => <Expression>,
+        Or   => [ <Expression>, ... ],    # OPTIONAL
+        Tags => {
+          Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
+        },    # OPTIONAL
+      },    # OPTIONAL
       LookbackPeriodInDays => 'SEVEN_DAYS',         # OPTIONAL
       NextPageToken        => 'MyNextPageToken',    # OPTIONAL
       PageSize             => 1,                    # OPTIONAL
@@ -75,14 +112,19 @@ The account ID that is associated with the recommendation.
 
 =head2 AccountScope => Str
 
-The account scope that you want recommendations for. C<PAYER> means
-that AWS includes the master account and any member accounts when it
-calculates its recommendations. C<LINKED> means that AWS includes only
-member accounts when it calculates its recommendations.
-
-Valid values are C<PAYER> and C<LINKED>.
+The account scope that you want your recommendations for. Amazon Web
+Services calculates recommendations including the management account
+and member accounts if the value is set to C<PAYER>. If the value is
+C<LINKED>, recommendations are calculated for individual member
+accounts only.
 
 Valid values are: C<"PAYER">, C<"LINKED">
+
+=head2 Filter => L<Paws::CostExplorer::Expression>
+
+
+
+
 
 =head2 LookbackPeriodInDays => Str
 

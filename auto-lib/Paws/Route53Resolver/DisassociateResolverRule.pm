@@ -49,14 +49,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 
 =head2 B<REQUIRED> ResolverRuleId => Str
 
-The ID of the resolver rule that you want to disassociate from the
+The ID of the Resolver rule that you want to disassociate from the
 specified VPC.
 
 
 
 =head2 B<REQUIRED> VPCId => Str
 
-The ID of the VPC that you want to disassociate the resolver rule from.
+The ID of the VPC that you want to disassociate the Resolver rule from.
 
 
 

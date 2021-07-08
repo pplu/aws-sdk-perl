@@ -43,21 +43,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sms
 
 =head2 AppId => Str
 
-ID of the application to delete.
+The ID of the application.
 
 
 
 =head2 ForceStopAppReplication => Bool
 
-While deleting the application, stop all replication jobs corresponding
-to the servers in the application.
+Indicates whether to stop all replication jobs corresponding to the
+servers in the application while deleting the application.
 
 
 
 =head2 ForceTerminateApp => Bool
 
-While deleting the application, terminate the stack corresponding to
-the application.
+Indicates whether to terminate the stack corresponding to the
+application while deleting the application.
 
 
 

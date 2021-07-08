@@ -62,7 +62,7 @@ The name of the entity (user or role).
 =head2 Path => Str
 
 The path to the entity (user or role). For more information about
-paths, see IAM Identifiers
+paths, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

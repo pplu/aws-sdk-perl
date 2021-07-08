@@ -34,7 +34,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Firehose::O
 =head1 DESCRIPTION
 
 Specifies the serializer that you want Kinesis Data Firehose to use to
-convert the format of your data before it writes it to Amazon S3.
+convert the format of your data before it writes it to Amazon S3. This
+parameter is required if C<Enabled> is set to true.
 
 =head1 ATTRIBUTES
 

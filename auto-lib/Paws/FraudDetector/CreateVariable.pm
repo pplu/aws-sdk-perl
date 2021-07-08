@@ -6,6 +6,7 @@ package Paws::FraudDetector::CreateVariable;
   has DefaultValue => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'defaultValue' , required => 1);
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' , required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::FraudDetector::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
   has VariableType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'variableType' );
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       DefaultValue => 'Mystring',
       Name         => 'Mystring',
       Description  => 'Mystring',    # OPTIONAL
+      Tags         => [
+        {
+          Key   => 'MytagKey',      # min: 1, max: 128
+          Value => 'MytagValue',    # max: 256
+
+        },
+        ...
+      ],    # OPTIONAL
       VariableType => 'Mystring',    # OPTIONAL
     );
 
@@ -77,9 +86,25 @@ The name of the variable.
 
 
 
+=head2 Tags => ArrayRef[L<Paws::FraudDetector::Tag>]
+
+A collection of key and value pairs.
+
+
+
 =head2 VariableType => Str
 
-The variable type.
+The variable type. For more information see Variable types
+(https://docs.aws.amazon.com/frauddetector/latest/ug/create-a-variable.html#variable-types).
+
+Valid Values: C<AUTH_CODE | AVS | BILLING_ADDRESS_L1 |
+BILLING_ADDRESS_L2 | BILLING_CITY | BILLING_COUNTRY | BILLING_NAME |
+BILLING_PHONE | BILLING_STATE | BILLING_ZIP | CARD_BIN | CATEGORICAL |
+CURRENCY_CODE | EMAIL_ADDRESS | FINGERPRINT | FRAUD_LABEL |
+FREE_FORM_TEXT | IP_ADDRESS | NUMERIC | ORDER_ID | PAYMENT_TYPE |
+PHONE_NUMBER | PRICE | PRODUCT_CATEGORY | SHIPPING_ADDRESS_L1 |
+SHIPPING_ADDRESS_L2 | SHIPPING_CITY | SHIPPING_COUNTRY | SHIPPING_NAME
+| SHIPPING_PHONE | SHIPPING_STATE | SHIPPING_ZIP | USERAGENT>
 
 
 

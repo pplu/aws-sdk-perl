@@ -27,7 +27,7 @@ C<NextToken> is set to C<null>.
 
 =head2 RegistrationTokenList => ArrayRef[Str|Undef]
 
-A list of type registration tokens.
+A list of extension registration tokens.
 
 Use C< DescribeTypeRegistration > to return detailed information about
 a type registration request.

@@ -64,7 +64,7 @@ evaluated the journey and updated the data for the metric.
 A JSON object that contains the results of the query. For information
 about the structure and contents of the results, see the Amazon
 Pinpoint Developer Guide
-(https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+(https://docs.aws.amazon.com//pinpoint/latest/developerguide/analytics-standard-metrics.html).
 
 
 

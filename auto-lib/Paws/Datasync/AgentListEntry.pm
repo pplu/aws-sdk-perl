@@ -37,6 +37,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::A
 
 Represents a single entry in a list of agents. C<AgentListEntry>
 returns an array that contains a list of agents when the ListAgents
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_ListAgents.html)
 operation is called.
 
 =head1 ATTRIBUTES

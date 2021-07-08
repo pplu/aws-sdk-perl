@@ -52,25 +52,25 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/amp
 
 =head2 B<REQUIRED> AppId => Str
 
-Unique Id for an Amplify App.
+The unique ID for an Amplify app.
 
 
 
 =head2 DeploymentArtifacts => Str
 
-Name of deployment artifacts.
+The name of deployment artifacts.
 
 
 
 =head2 B<REQUIRED> EnvironmentName => Str
 
-Name for the backend environment.
+The name for the backend environment.
 
 
 
 =head2 StackName => Str
 
-CloudFormation stack name of backend environment.
+The AWS CloudFormation stack name of a backend environment.
 
 
 

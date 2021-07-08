@@ -33,22 +33,33 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To invoke a Lambda function
-    # This operation invokes a Lambda function
+  # To invoke a Lambda function
+  # The following example invokes version 1 of a function named my-function with
+  # an empty event payload.
     my $InvocationResponse = $lambda->Invoke(
-      'ClientContext'  => 'MyApp',
-      'FunctionName'   => 'MyFunction',
+      'FunctionName' => 'my-function',
+      'Payload'      => '{}',
+      'Qualifier'    => 1
+    );
+
+    # Results:
+    my $Payload    = $InvocationResponse->Payload;
+    my $StatusCode = $InvocationResponse->StatusCode;
+
+    # Returns a L<Paws::Lambda::InvocationResponse> object.
+    # To invoke a Lambda function asynchronously
+    # The following example invokes version 1 of a function named my-function
+    # asynchronously.
+    my $InvocationResponse = $lambda->Invoke(
+      'FunctionName'   => 'my-function',
       'InvocationType' => 'Event',
-      'LogType'        => 'Tail',
-      'Payload'        => 'fileb://file-path/input.json',
+      'Payload'        => '{}',
       'Qualifier'      => 1
     );
 
     # Results:
-    my $FunctionError = $InvocationResponse->FunctionError;
-    my $LogResult     = $InvocationResponse->LogResult;
-    my $Payload       = $InvocationResponse->Payload;
-    my $StatusCode    = $InvocationResponse->StatusCode;
+    my $Payload    = $InvocationResponse->Payload;
+    my $StatusCode = $InvocationResponse->StatusCode;
 
     # Returns a L<Paws::Lambda::InvocationResponse> object.
 

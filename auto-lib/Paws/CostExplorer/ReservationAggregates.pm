@@ -7,10 +7,13 @@ package Paws::CostExplorer::ReservationAggregates;
   has OnDemandCostOfRIHoursUsed => (is => 'ro', isa => 'Str');
   has PurchasedHours => (is => 'ro', isa => 'Str');
   has PurchasedUnits => (is => 'ro', isa => 'Str');
+  has RealizedSavings => (is => 'ro', isa => 'Str');
+  has RICostForUnusedHours => (is => 'ro', isa => 'Str');
   has TotalActualHours => (is => 'ro', isa => 'Str');
   has TotalActualUnits => (is => 'ro', isa => 'Str');
   has TotalAmortizedFee => (is => 'ro', isa => 'Str');
   has TotalPotentialRISavings => (is => 'ro', isa => 'Str');
+  has UnrealizedSavings => (is => 'ro', isa => 'Str');
   has UnusedHours => (is => 'ro', isa => 'Str');
   has UnusedUnits => (is => 'ro', isa => 'Str');
   has UtilizationPercentage => (is => 'ro', isa => 'Str');
@@ -87,6 +90,16 @@ normalized units. Normalized units are available only for Amazon EC2
 usage after November 11, 2017.
 
 
+=head2 RealizedSavings => Str
+
+The realized savings due to purchasing and using a reservation.
+
+
+=head2 RICostForUnusedHours => Str
+
+The cost of unused hours for your reservation.
+
+
 =head2 TotalActualHours => Str
 
 The total number of reservation hours that you used.
@@ -108,6 +121,11 @@ period.
 =head2 TotalPotentialRISavings => Str
 
 How much you could save if you use your entire reservation.
+
+
+=head2 UnrealizedSavings => Str
+
+The unrealized savings due to purchasing and using a reservation.
 
 
 =head2 UnusedHours => Str

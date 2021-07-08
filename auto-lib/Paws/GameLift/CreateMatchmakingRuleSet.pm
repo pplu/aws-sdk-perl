@@ -55,7 +55,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 B<REQUIRED> Name => Str
 
-A unique identifier for a matchmaking rule set. A matchmaking
+A unique identifier for the matchmaking rule set. A matchmaking
 configuration identifies the rule set it uses by this name value. Note
 that the rule set name is different from the optional C<name> field in
 the rule set body.

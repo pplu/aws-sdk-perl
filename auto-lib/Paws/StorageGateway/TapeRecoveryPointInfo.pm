@@ -51,7 +51,7 @@ The Amazon Resource Name (ARN) of the virtual tape.
 The time when the point-in-time view of the virtual tape was replicated
 for later recovery.
 
-The default time stamp format of the tape recovery point time is in the
+The default timestamp format of the tape recovery point time is in the
 ISO8601 extended YYYY-MM-DD'T'HH:MM:SS'Z' format.
 
 

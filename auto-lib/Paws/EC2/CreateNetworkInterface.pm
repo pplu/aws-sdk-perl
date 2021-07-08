@@ -1,6 +1,7 @@
 
 package Paws::EC2::CreateNetworkInterface;
   use Moose;
+  has ClientToken => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has Groups => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'SecurityGroupId' );
@@ -11,6 +12,7 @@ package Paws::EC2::CreateNetworkInterface;
   has PrivateIpAddresses => (is => 'ro', isa => 'ArrayRef[Paws::EC2::PrivateIpAddressSpecification]', traits => ['NameInRequest'], request_name => 'privateIpAddresses' );
   has SecondaryPrivateIpAddressCount => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'secondaryPrivateIpAddressCount' );
   has SubnetId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'subnetId' , required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
 
   use MooseX::ClassAttribute;
 
@@ -56,6 +58,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 =head1 ATTRIBUTES
 
 
+=head2 ClientToken => Str
+
+Unique, case-sensitive identifier that you provide to ensure the
+idempotency of the request. For more information, see Ensuring
+Idempotency
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html).
+
+
+
 =head2 Description => Str
 
 A description for the network interface.
@@ -82,9 +93,13 @@ The IDs of one or more security groups.
 Indicates the type of network interface. To create an Elastic Fabric
 Adapter (EFA), specify C<efa>. For more information, see Elastic Fabric
 Adapter (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/efa.html)
+in the I<Amazon Elastic Compute Cloud User Guide>. To create a trunk
+network interface, specify C<efa>. For more information, see Network
+interface trunking
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/eni-trunking.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-Valid values are: C<"efa">
+Valid values are: C<"efa">, C<"branch">, C<"trunk">
 
 =head2 Ipv6AddressCount => Int
 
@@ -139,6 +154,12 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 =head2 B<REQUIRED> SubnetId => Str
 
 The ID of the subnet to associate with the network interface.
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to apply to the new network interface.
 
 
 

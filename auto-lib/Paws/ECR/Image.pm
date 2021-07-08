@@ -3,6 +3,7 @@ package Paws::ECR::Image;
   use Moose;
   has ImageId => (is => 'ro', isa => 'Paws::ECR::ImageIdentifier', request_name => 'imageId', traits => ['NameInRequest']);
   has ImageManifest => (is => 'ro', isa => 'Str', request_name => 'imageManifest', traits => ['NameInRequest']);
+  has ImageManifestMediaType => (is => 'ro', isa => 'Str', request_name => 'imageManifestMediaType', traits => ['NameInRequest']);
   has RegistryId => (is => 'ro', isa => 'Str', request_name => 'registryId', traits => ['NameInRequest']);
   has RepositoryName => (is => 'ro', isa => 'Str', request_name => 'repositoryName', traits => ['NameInRequest']);
 
@@ -50,6 +51,11 @@ image.
 =head2 ImageManifest => Str
 
 The image manifest associated with the image.
+
+
+=head2 ImageManifestMediaType => Str
+
+The manifest media type of the image.
 
 
 =head2 RegistryId => Str

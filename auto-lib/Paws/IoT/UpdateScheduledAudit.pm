@@ -53,28 +53,28 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 
 =head2 DayOfMonth => Str
 
-The day of the month on which the scheduled audit takes place. Can be
-"1" through "31" or "LAST". This field is required if the "frequency"
-parameter is set to "MONTHLY". If days 29-31 are specified, and the
-month does not have that many days, the audit takes place on the "LAST"
-day of the month.
+The day of the month on which the scheduled audit takes place. This can
+be C<1> through C<31> or C<LAST>. This field is required if the
+C<frequency> parameter is set to C<MONTHLY>. If days 29-31 are
+specified, and the month does not have that many days, the audit takes
+place on the "LAST" day of the month.
 
 
 
 =head2 DayOfWeek => Str
 
-The day of the week on which the scheduled audit takes place. Can be
-one of "SUN", "MON", "TUE", "WED", "THU", "FRI", or "SAT". This field
-is required if the "frequency" parameter is set to "WEEKLY" or
-"BIWEEKLY".
+The day of the week on which the scheduled audit takes place. This can
+be one of C<SUN>, C<MON>, C<TUE>, C<WED>, C<THU>, C<FRI>, or C<SAT>.
+This field is required if the "frequency" parameter is set to C<WEEKLY>
+or C<BIWEEKLY>.
 
 Valid values are: C<"SUN">, C<"MON">, C<"TUE">, C<"WED">, C<"THU">, C<"FRI">, C<"SAT">
 
 =head2 Frequency => Str
 
-How often the scheduled audit takes place. Can be one of "DAILY",
-"WEEKLY", "BIWEEKLY", or "MONTHLY". The start time of each audit is
-determined by the system.
+How often the scheduled audit takes place, either C<DAILY>, C<WEEKLY>,
+C<BIWEEKLY>, or C<MONTHLY>. The start time of each audit is determined
+by the system.
 
 Valid values are: C<"DAILY">, C<"WEEKLY">, C<"BIWEEKLY">, C<"MONTHLY">
 

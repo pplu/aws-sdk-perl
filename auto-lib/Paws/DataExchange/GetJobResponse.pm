@@ -56,7 +56,7 @@ Valid values are: C<"WAITING">, C<"IN_PROGRESS">, C<"ERROR">, C<"COMPLETED">, C<
 
 The job type.
 
-Valid values are: C<"IMPORT_ASSETS_FROM_S3">, C<"IMPORT_ASSET_FROM_SIGNED_URL">, C<"EXPORT_ASSETS_TO_S3">, C<"EXPORT_ASSET_TO_SIGNED_URL">
+Valid values are: C<"IMPORT_ASSETS_FROM_S3">, C<"IMPORT_ASSET_FROM_SIGNED_URL">, C<"EXPORT_ASSETS_TO_S3">, C<"EXPORT_ASSET_TO_SIGNED_URL">, C<"EXPORT_REVISIONS_TO_S3">
 =head2 UpdatedAt => Str
 
 The date and time that the job was last updated, in ISO 8601 format.

@@ -55,9 +55,40 @@ The ID of the resource to add a tag to.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::Organizations::Tag>]
 
-The tag to add to the specified resource. Specifying the tag key is
-required. You can set the value of a tag to an empty string, but you
-can't set the value of a tag to null.
+A list of tags to add to the specified resource.
+
+You can specify any of the following taggable resources.
+
+=over
+
+=item *
+
+AWS account E<ndash> specify the account ID number.
+
+=item *
+
+Organizational unit E<ndash> specify the OU ID that begins with C<ou->
+and looks similar to: C<ou-I<1a2b-34uvwxyz>>
+
+=item *
+
+Root E<ndash> specify the root ID that begins with C<r-> and looks
+similar to: C<r-I<1a2b>>
+
+=item *
+
+Policy E<ndash> specify the policy ID that begins with C<p-> andlooks
+similar to: C<p-I<12abcdefg3>>
+
+=back
+
+For each tag in the list, you must specify both a tag key and a value.
+You can set the value to an empty string, but you can't set it to
+C<null>.
+
+If any one of the tags is invalid or if you exceed the allowed number
+of tags for an account user, then the entire request fails and the
+account is not created.
 
 
 

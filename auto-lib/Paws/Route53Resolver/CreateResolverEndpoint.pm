@@ -50,8 +50,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Name => 'MyName',                # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],    # OPTIONAL
@@ -71,9 +72,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rou
 =head2 B<REQUIRED> CreatorRequestId => Str
 
 A unique string that identifies the request and that allows failed
-requests to be retried without the risk of executing the operation
-twice. C<CreatorRequestId> can be any unique string, for example, a
-date/time stamp.
+requests to be retried without the risk of running the operation twice.
+C<CreatorRequestId> can be any unique string, for example, a date/time
+stamp.
 
 
 
@@ -86,12 +87,12 @@ Specify the applicable value:
 =item *
 
 C<INBOUND>: Resolver forwards DNS queries to the DNS service for a VPC
-from your network or another VPC
+from your network
 
 =item *
 
 C<OUTBOUND>: Resolver forwards DNS queries from the DNS service for a
-VPC to your network or another VPC
+VPC to your network
 
 =back
 
@@ -100,10 +101,9 @@ Valid values are: C<"INBOUND">, C<"OUTBOUND">
 
 =head2 B<REQUIRED> IpAddresses => ArrayRef[L<Paws::Route53Resolver::IpAddressRequest>]
 
-The subnets and IP addresses in your VPC that you want DNS queries to
-pass through on the way from your VPCs to your network (for outbound
-endpoints) or on the way from your network to your VPCs (for inbound
-resolver endpoints).
+The subnets and IP addresses in your VPC that DNS queries originate
+from (for outbound endpoints) or that you forward DNS queries to (for
+inbound endpoints). The subnet ID uniquely identifies a VPC.
 
 
 
@@ -118,8 +118,11 @@ Resolver dashboard in the Route 53 console.
 
 The ID of one or more security groups that you want to use to control
 access to this VPC. The security group that you specify must include
-one or more inbound rules (for inbound resolver endpoints) or outbound
-rules (for outbound resolver endpoints).
+one or more inbound rules (for inbound Resolver endpoints) or outbound
+rules (for outbound Resolver endpoints). Inbound and outbound rules
+must allow TCP and UDP access. For inbound access, open port 53. For
+outbound access, open the port that you're using for DNS queries on
+your network.
 
 
 

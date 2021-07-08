@@ -4,6 +4,7 @@ package Paws::MediaLive::MultiplexProgram;
   has ChannelId => (is => 'ro', isa => 'Str', request_name => 'channelId', traits => ['NameInRequest']);
   has MultiplexProgramSettings => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramSettings', request_name => 'multiplexProgramSettings', traits => ['NameInRequest']);
   has PacketIdentifiersMap => (is => 'ro', isa => 'Paws::MediaLive::MultiplexProgramPacketIdentifiersMap', request_name => 'packetIdentifiersMap', traits => ['NameInRequest']);
+  has PipelineDetails => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::MultiplexProgramPipelineDetail]', request_name => 'pipelineDetails', traits => ['NameInRequest']);
   has ProgramName => (is => 'ro', isa => 'Str', request_name => 'programName', traits => ['NameInRequest']);
 
 1;
@@ -54,6 +55,15 @@ The settings for this multiplex program.
 =head2 PacketIdentifiersMap => L<Paws::MediaLive::MultiplexProgramPacketIdentifiersMap>
 
 The packet identifier map for this multiplex program.
+
+
+=head2 PipelineDetails => ArrayRef[L<Paws::MediaLive::MultiplexProgramPipelineDetail>]
+
+Contains information about the current sources for the specified
+program in the specified multiplex. Keep in mind that each multiplex
+pipeline connects to both pipelines in a given source channel (the
+channel identified by the program). But only one of those channel
+pipelines is ever active at one time.
 
 
 =head2 ProgramName => Str

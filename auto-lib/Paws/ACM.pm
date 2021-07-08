@@ -35,6 +35,11 @@ package Paws::ACM;
     my $call_object = $self->new_with_coercions('Paws::ACM::ExportCertificate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAccountConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::GetAccountConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACM::GetCertificate', @_);
@@ -53,6 +58,11 @@ package Paws::ACM;
   sub ListTagsForCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::ACM::ListTagsForCertificate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutAccountConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::ACM::PutAccountConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RemoveTagsFromCertificate {
@@ -106,7 +116,7 @@ package Paws::ACM;
   }
 
 
-  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate ExportCertificate GetCertificate ImportCertificate ListCertificates ListTagsForCertificate RemoveTagsFromCertificate RenewCertificate RequestCertificate ResendValidationEmail UpdateCertificateOptions / }
+  sub operations { qw/AddTagsToCertificate DeleteCertificate DescribeCertificate ExportCertificate GetAccountConfiguration GetCertificate ImportCertificate ListCertificates ListTagsForCertificate PutAccountConfiguration RemoveTagsFromCertificate RenewCertificate RequestCertificate ResendValidationEmail UpdateCertificateOptions / }
 
 1;
 
@@ -136,11 +146,9 @@ Paws::ACM - Perl Interface to AWS AWS Certificate Manager
 
 AWS Certificate Manager
 
-Welcome to the AWS Certificate Manager (ACM) API documentation.
-
-You can use ACM to manage SSL/TLS certificates for your AWS-based
-websites and applications. For general information about using ACM, see
-the I<AWS Certificate Manager User Guide>
+You can use AWS Certificate Manager (ACM) to manage SSL/TLS
+certificates for your AWS-based websites and applications. For more
+information about using ACM, see the AWS Certificate Manager User Guide
 (https://docs.aws.amazon.com/acm/latest/userguide/).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/acm-2015-12-08>
@@ -252,6 +260,23 @@ ACM console or CLI, see Export a Private Certificate
 (https://docs.aws.amazon.com/acm/latest/userguide/gs-acm-export-private.html).
 
 
+=head2 GetAccountConfiguration
+
+=over
+
+=item  => 
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACM::GetAccountConfiguration>
+
+Returns: a L<Paws::ACM::GetAccountConfigurationResponse> instance
+
+Returns the account configuration options associated with an AWS
+account.
+
+
 =head2 GetCertificate
 
 =over
@@ -265,12 +290,12 @@ Each argument is described in detail in: L<Paws::ACM::GetCertificate>
 
 Returns: a L<Paws::ACM::GetCertificateResponse> instance
 
-Retrieves a certificate specified by an ARN and its certificate chain .
-The chain is an ordered list of certificates that contains the end
-entity certificate, intermediate certificates of subordinate CAs, and
-the root certificate in that order. The certificate and certificate
-chain are base64 encoded. If you want to decode the certificate to see
-the individual fields, you can use OpenSSL.
+Retrieves an Amazon-issued certificate and its certificate chain. The
+chain consists of the certificate of the issuing CA and the
+intermediate certificates of any other subordinate CAs. All of the
+certificates are base64 encoded. You can use OpenSSL
+(https://wiki.openssl.org/index.php/Command_Line_Utilities) to decode
+the certificates and inspect individual fields.
 
 
 =head2 ImportCertificate
@@ -326,6 +351,10 @@ that is protected by a password or a passphrase.
 
 =item *
 
+The private key must be no larger than 5 KB (5,120 bytes).
+
+=item *
+
 If the certificate you are importing is not self-signed, you must enter
 its certificate chain.
 
@@ -356,15 +385,15 @@ The OCSP authority URL, if present, must not exceed 1000 characters.
 
 To import a new certificate, omit the C<CertificateArn> argument.
 Include this argument only when you want to replace a previously
-imported certifica
+imported certificate.
 
 =item *
 
 When you import a certificate by using the CLI, you must specify the
 certificate, the certificate chain, and the private key by their file
-names preceded by C<file://>. For example, you can specify a
+names preceded by C<fileb://>. For example, you can specify a
 certificate saved in the C<C:\temp> folder as
-C<file://C:\temp\certificate_to_import.pem>. If you are making an HTTP
+C<fileb://C:\temp\certificate_to_import.pem>. If you are making an HTTP
 or HTTPS Query request, include these arguments as BLOBs.
 
 =item *
@@ -431,6 +460,30 @@ add a tag to an ACM certificate, use the AddTagsToCertificate action.
 To delete a tag, use the RemoveTagsFromCertificate action.
 
 
+=head2 PutAccountConfiguration
+
+=over
+
+=item IdempotencyToken => Str
+
+=item [ExpiryEvents => L<Paws::ACM::ExpiryEventsConfiguration>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::ACM::PutAccountConfiguration>
+
+Returns: nothing
+
+Adds or modifies account-level configurations in ACM.
+
+The supported configuration option is C<DaysBeforeExpiry>. This option
+specifies the number of days prior to certificate expiration when ACM
+starts generating C<EventBridge> events. ACM sends one event per day
+per certificate until the certificate expires. By default, accounts
+receive events starting 45 days before certificate expiration.
+
+
 =head2 RemoveTagsFromCertificate
 
 =over
@@ -470,7 +523,7 @@ Each argument is described in detail in: L<Paws::ACM::RenewCertificate>
 
 Returns: nothing
 
-Renews an eligable ACM certificate. At this time, only exported private
+Renews an eligible ACM certificate. At this time, only exported private
 certificates can be renewed with this operation. In order to renew your
 ACM PCA certificates with ACM, you must first grant the ACM service
 principal permission to do so

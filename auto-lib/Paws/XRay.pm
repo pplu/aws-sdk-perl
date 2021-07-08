@@ -54,6 +54,26 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetInsight {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetInsight', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetInsightEvents {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetInsightEvents', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetInsightImpactGraph {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetInsightImpactGraph', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetInsightSummaries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::GetInsightSummaries', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetSamplingRules {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetSamplingRules', @_);
@@ -89,6 +109,11 @@ package Paws::XRay;
     my $call_object = $self->new_with_coercions('Paws::XRay::GetTraceSummaries', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ListTagsForResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::ListTagsForResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub PutEncryptionConfig {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::PutEncryptionConfig', @_);
@@ -102,6 +127,16 @@ package Paws::XRay;
   sub PutTraceSegments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::XRay::PutTraceSegments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub TagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::TagResource', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UntagResource {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::XRay::UntagResource', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateGroup {
@@ -301,7 +336,7 @@ package Paws::XRay;
   }
 
 
-  sub operations { qw/BatchGetTraces CreateGroup CreateSamplingRule DeleteGroup DeleteSamplingRule GetEncryptionConfig GetGroup GetGroups GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTimeSeriesServiceStatistics GetTraceGraph GetTraceSummaries PutEncryptionConfig PutTelemetryRecords PutTraceSegments UpdateGroup UpdateSamplingRule / }
+  sub operations { qw/BatchGetTraces CreateGroup CreateSamplingRule DeleteGroup DeleteSamplingRule GetEncryptionConfig GetGroup GetGroups GetInsight GetInsightEvents GetInsightImpactGraph GetInsightSummaries GetSamplingRules GetSamplingStatisticSummaries GetSamplingTargets GetServiceGraph GetTimeSeriesServiceStatistics GetTraceGraph GetTraceSummaries ListTagsForResource PutEncryptionConfig PutTelemetryRecords PutTraceSegments TagResource UntagResource UpdateGroup UpdateSamplingRule / }
 
 1;
 
@@ -365,6 +400,10 @@ C<GetTraceSummaries> to get a list of trace IDs.
 
 =item [FilterExpression => Str]
 
+=item [InsightsConfiguration => L<Paws::XRay::InsightsConfiguration>]
+
+=item [Tags => ArrayRef[L<Paws::XRay::Tag>]]
+
 
 =back
 
@@ -380,6 +419,8 @@ Creates a group resource with a name and a filter expression.
 =over
 
 =item SamplingRule => L<Paws::XRay::SamplingRule>
+
+=item [Tags => ArrayRef[L<Paws::XRay::Tag>]]
 
 
 =back
@@ -482,6 +523,101 @@ Returns: a L<Paws::XRay::GetGroupsResult> instance
 Retrieves all active group details.
 
 
+=head2 GetInsight
+
+=over
+
+=item InsightId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetInsight>
+
+Returns: a L<Paws::XRay::GetInsightResult> instance
+
+Retrieves the summary information of an insight. This includes impact
+to clients and root cause services, the top anomalous services, the
+category, the state of the insight, and the start and end time of the
+insight.
+
+
+=head2 GetInsightEvents
+
+=over
+
+=item InsightId => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetInsightEvents>
+
+Returns: a L<Paws::XRay::GetInsightEventsResult> instance
+
+X-Ray reevaluates insights periodically until they're resolved, and
+records each intermediate state as an event. You can review an
+insight's events in the Impact Timeline on the Inspect page in the
+X-Ray console.
+
+
+=head2 GetInsightImpactGraph
+
+=over
+
+=item EndTime => Str
+
+=item InsightId => Str
+
+=item StartTime => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetInsightImpactGraph>
+
+Returns: a L<Paws::XRay::GetInsightImpactGraphResult> instance
+
+Retrieves a service graph structure filtered by the specified insight.
+The service graph is limited to only structural information. For a
+complete service graph, use this API with the GetServiceGraph API.
+
+
+=head2 GetInsightSummaries
+
+=over
+
+=item EndTime => Str
+
+=item StartTime => Str
+
+=item [GroupARN => Str]
+
+=item [GroupName => Str]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [States => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::GetInsightSummaries>
+
+Returns: a L<Paws::XRay::GetInsightSummariesResult> instance
+
+Retrieves the summaries of all insights in the specified group matching
+the provided filter values.
+
+
 =head2 GetSamplingRules
 
 =over
@@ -571,6 +707,8 @@ be other applications, AWS resources, HTTP web APIs, or SQL databases.
 
 =item [EntitySelectorExpression => Str]
 
+=item [ForecastStatistics => Bool]
+
 =item [GroupARN => Str]
 
 =item [GroupName => Str]
@@ -655,6 +793,25 @@ filter expressions, see Using Filter Expressions
 in the I<AWS X-Ray Developer Guide>.
 
 
+=head2 ListTagsForResource
+
+=over
+
+=item ResourceARN => Str
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::ListTagsForResource>
+
+Returns: a L<Paws::XRay::ListTagsForResourceResponse> instance
+
+Returns a list of tags that are applied to the specified AWS X-Ray
+group or sampling rule.
+
+
 =head2 PutEncryptionConfig
 
 =over
@@ -719,7 +876,7 @@ document schema, see AWS X-Ray Segment Documents
 (https://docs.aws.amazon.com/xray/latest/devguide/xray-api-segmentdocuments.html)
 in the I<AWS X-Ray Developer Guide>.
 
-B<Required Segment Document Fields>
+B<Required segment document fields>
 
 =over
 
@@ -752,11 +909,11 @@ or C<in_progress>.
 =item *
 
 C<in_progress> - Set to C<true> instead of specifying an C<end_time> to
-record that a segment has been started, but is not complete. Send an in
-progress segment when your application receives a request that will
-take a long time to serve, to trace the fact that the request was
-received. When the response is sent, send the complete segment to
-overwrite the in-progress segment.
+record that a segment has been started, but is not complete. Send an
+in-progress segment when your application receives a request that will
+take a long time to serve, to trace that the request was received. When
+the response is sent, send the complete segment to overwrite the
+in-progress segment.
 
 =back
 
@@ -769,7 +926,7 @@ B<Trace ID Format>
 
 =item *
 
-The version number, i.e. C<1>.
+The version number, for instance, C<1>.
 
 =item *
 
@@ -786,6 +943,43 @@ digits.
 
 
 
+=head2 TagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item Tags => ArrayRef[L<Paws::XRay::Tag>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::TagResource>
+
+Returns: a L<Paws::XRay::TagResourceResponse> instance
+
+Applies tags to an existing AWS X-Ray group or sampling rule.
+
+
+=head2 UntagResource
+
+=over
+
+=item ResourceARN => Str
+
+=item TagKeys => ArrayRef[Str|Undef]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::XRay::UntagResource>
+
+Returns: a L<Paws::XRay::UntagResourceResponse> instance
+
+Removes tags from an AWS X-Ray group or sampling rule. You cannot edit
+or delete system tags (those with an C<aws:> prefix).
+
+
 =head2 UpdateGroup
 
 =over
@@ -795,6 +989,8 @@ digits.
 =item [GroupARN => Str]
 
 =item [GroupName => Str]
+
+=item [InsightsConfiguration => L<Paws::XRay::InsightsConfiguration>]
 
 
 =back
@@ -888,9 +1084,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::XRay::GetServiceGraphResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 GetAllTimeSeriesServiceStatistics(sub { },EndTime => Str, StartTime => Str, [EntitySelectorExpression => Str, GroupARN => Str, GroupName => Str, NextToken => Str, Period => Int])
+=head2 GetAllTimeSeriesServiceStatistics(sub { },EndTime => Str, StartTime => Str, [EntitySelectorExpression => Str, ForecastStatistics => Bool, GroupARN => Str, GroupName => Str, NextToken => Str, Period => Int])
 
-=head2 GetAllTimeSeriesServiceStatistics(EndTime => Str, StartTime => Str, [EntitySelectorExpression => Str, GroupARN => Str, GroupName => Str, NextToken => Str, Period => Int])
+=head2 GetAllTimeSeriesServiceStatistics(EndTime => Str, StartTime => Str, [EntitySelectorExpression => Str, ForecastStatistics => Bool, GroupARN => Str, GroupName => Str, NextToken => Str, Period => Int])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

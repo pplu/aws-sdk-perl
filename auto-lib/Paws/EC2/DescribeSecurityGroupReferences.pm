@@ -28,11 +28,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To describe security group references
+    # This example describes the security group references for the specified
+    # security group.
     my $DescribeSecurityGroupReferencesResult =
-      $ec2->DescribeSecurityGroupReferences(
-      GroupId => [ 'MySecurityGroupId', ... ],
-      DryRun  => 1,                              # OPTIONAL
-      );
+      $ec2->DescribeSecurityGroupReferences( 'GroupId' => ['sg-903004f8'] );
 
     # Results:
     my $SecurityGroupReferenceSet =

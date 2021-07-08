@@ -38,53 +38,85 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFront:
 
 =head1 DESCRIPTION
 
-A custom origin or an Amazon S3 bucket configured as a website
-endpoint.
+A custom origin. A custom origin is any origin that is I<not> an Amazon
+S3 bucket, with one exception. An Amazon S3 bucket that is configured
+with static website hosting
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html)
+I<is> a custom origin.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> HTTPPort => Int
 
-The HTTP port the custom origin listens on.
+The HTTP port that CloudFront uses to connect to the origin. Specify
+the HTTP port that the origin listens on.
 
 
 =head2 B<REQUIRED> HTTPSPort => Int
 
-The HTTPS port the custom origin listens on.
+The HTTPS port that CloudFront uses to connect to the origin. Specify
+the HTTPS port that the origin listens on.
 
 
 =head2 OriginKeepaliveTimeout => Int
 
-You can create a custom keep-alive timeout. All timeout units are in
-seconds. The default keep-alive timeout is 5 seconds, but you can
-configure custom timeout lengths using the CloudFront API. The minimum
-timeout length is 1 second; the maximum is 60 seconds.
+Specifies how long, in seconds, CloudFront persists its connection to
+the origin. The minimum timeout is 1 second, the maximum is 60 seconds,
+and the default (if you donE<rsquo>t specify otherwise) is 5 seconds.
 
-If you need to increase the maximum time limit, contact the AWS Support
-Center (https://console.aws.amazon.com/support/home#/).
+For more information, see Origin Keep-alive Timeout
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginKeepaliveTimeout)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 B<REQUIRED> OriginProtocolPolicy => Str
 
-The origin protocol policy to apply to your origin.
+Specifies the protocol (HTTP or HTTPS) that CloudFront uses to connect
+to the origin. Valid values are:
+
+=over
+
+=item *
+
+C<http-only> E<ndash> CloudFront always uses HTTP to connect to the
+origin.
+
+=item *
+
+C<match-viewer> E<ndash> CloudFront connects to the origin using the
+same protocol that the viewer used to connect to CloudFront.
+
+=item *
+
+C<https-only> E<ndash> CloudFront always uses HTTPS to connect to the
+origin.
+
+=back
+
 
 
 =head2 OriginReadTimeout => Int
 
-You can create a custom origin read timeout. All timeout units are in
-seconds. The default origin read timeout is 30 seconds, but you can
-configure custom timeout lengths using the CloudFront API. The minimum
-timeout length is 4 seconds; the maximum is 60 seconds.
+Specifies how long, in seconds, CloudFront waits for a response from
+the origin. This is also known as the I<origin response timeout>. The
+minimum timeout is 1 second, the maximum is 60 seconds, and the default
+(if you donE<rsquo>t specify otherwise) is 30 seconds.
 
-If you need to increase the maximum time limit, contact the AWS Support
-Center (https://console.aws.amazon.com/support/home#/).
+For more information, see Origin Response Timeout
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginResponseTimeout)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 =head2 OriginSslProtocols => L<Paws::CloudFront::OriginSslProtocols>
 
-The SSL/TLS protocols that you want CloudFront to use when
-communicating with your origin over HTTPS.
+Specifies the minimum SSL/TLS protocol that CloudFront uses when
+connecting to your origin over HTTPS. Valid values include C<SSLv3>,
+C<TLSv1>, C<TLSv1.1>, and C<TLSv1.2>.
+
+For more information, see Minimum Origin SSL Protocol
+(https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols)
+in the I<Amazon CloudFront Developer Guide>.
 
 
 

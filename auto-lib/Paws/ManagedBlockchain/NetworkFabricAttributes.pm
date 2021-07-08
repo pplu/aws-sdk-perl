@@ -43,7 +43,7 @@ Attributes of Hyperledger Fabric for a network.
 
 The edition of Amazon Managed Blockchain that Hyperledger Fabric uses.
 For more information, see Amazon Managed Blockchain Pricing
-(https://aws.amazon.com/managed-blockchain/pricing/).
+(http://aws.amazon.com/managed-blockchain/pricing/).
 
 
 =head2 OrderingServiceEndpoint => Str

@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Acceler
 Configures the transfer acceleration state for an Amazon S3 bucket. For
 more information, see Amazon S3 Transfer Acceleration
 (https://docs.aws.amazon.com/AmazonS3/latest/dev/transfer-acceleration.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 

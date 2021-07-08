@@ -12,6 +12,7 @@ package Paws::ELBv2::TargetGroup;
   has Matcher => (is => 'ro', isa => 'Paws::ELBv2::Matcher');
   has Port => (is => 'ro', isa => 'Int');
   has Protocol => (is => 'ro', isa => 'Str');
+  has ProtocolVersion => (is => 'ro', isa => 'Str');
   has TargetGroupArn => (is => 'ro', isa => 'Str');
   has TargetGroupName => (is => 'ro', isa => 'Str');
   has TargetType => (is => 'ro', isa => 'Str');
@@ -66,7 +67,7 @@ individual target.
 
 =head2 HealthCheckPath => Str
 
-The destination for the health check request.
+The destination for health checks on the targets.
 
 
 =head2 HealthCheckPort => Str
@@ -76,7 +77,8 @@ The port to use to connect with the target.
 
 =head2 HealthCheckProtocol => Str
 
-The protocol to use to connect with the target.
+The protocol to use to connect with the target. The GENEVE, TLS, UDP,
+and TCP_UDP protocols are not supported for health checks.
 
 
 =head2 HealthCheckTimeoutSeconds => Int
@@ -99,8 +101,8 @@ traffic to this target group.
 
 =head2 Matcher => L<Paws::ELBv2::Matcher>
 
-The HTTP codes to use when checking for a successful response from a
-target.
+The HTTP or gRPC codes to use when checking for a successful response
+from a target.
 
 
 =head2 Port => Int
@@ -112,6 +114,12 @@ a Lambda function.
 =head2 Protocol => Str
 
 The protocol to use for routing traffic to the targets.
+
+
+=head2 ProtocolVersion => Str
+
+[HTTP/HTTPS protocol] The protocol version. The possible values are
+C<GRPC>, C<HTTP1>, and C<HTTP2>.
 
 
 =head2 TargetGroupArn => Str
@@ -127,9 +135,9 @@ The name of the target group.
 =head2 TargetType => Str
 
 The type of target that you must specify when registering targets with
-this target group. The possible values are C<instance> (targets are
-specified by instance ID) or C<ip> (targets are specified by IP
-address).
+this target group. The possible values are C<instance> (register
+targets by instance ID), C<ip> (register targets by IP address), or
+C<lambda> (register a single Lambda function as a target).
 
 
 =head2 UnhealthyThresholdCount => Int

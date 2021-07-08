@@ -33,8 +33,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes the execution properties for a Java-based Amazon Kinesis Data
-Analytics application.
+Describes the execution properties for an Apache Flink runtime.
 
 =head1 ATTRIBUTES
 

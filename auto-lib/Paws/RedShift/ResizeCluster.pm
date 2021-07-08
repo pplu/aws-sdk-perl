@@ -5,7 +5,7 @@ package Paws::RedShift::ResizeCluster;
   has ClusterIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ClusterType => (is => 'ro', isa => 'Str');
   has NodeType => (is => 'ro', isa => 'Str');
-  has NumberOfNodes => (is => 'ro', isa => 'Int', required => 1);
+  has NumberOfNodes => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
 
@@ -33,10 +33,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $redshift = Paws->service('RedShift');
     my $ResizeClusterResult = $redshift->ResizeCluster(
       ClusterIdentifier => 'MyString',
-      NumberOfNodes     => 1,
       Classic           => 1,             # OPTIONAL
       ClusterType       => 'MyString',    # OPTIONAL
       NodeType          => 'MyString',    # OPTIONAL
+      NumberOfNodes     => 1,             # OPTIONAL
     );
 
     # Results:
@@ -77,9 +77,10 @@ cluster's current node type is used.
 
 
 
-=head2 B<REQUIRED> NumberOfNodes => Int
+=head2 NumberOfNodes => Int
 
-The new number of nodes for the cluster.
+The new number of nodes for the cluster. If not specified, the
+cluster's current number of nodes is used.
 
 
 

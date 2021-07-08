@@ -132,6 +132,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/fir
 
 =item [ExtendedS3DestinationConfiguration => L<Paws::Firehose::ExtendedS3DestinationConfiguration>]
 
+=item [HttpEndpointDestinationConfiguration => L<Paws::Firehose::HttpEndpointDestinationConfiguration>]
+
 =item [KinesisStreamSourceConfiguration => L<Paws::Firehose::KinesisStreamSourceConfiguration>]
 
 =item [RedshiftDestinationConfiguration => L<Paws::Firehose::RedshiftDestinationConfiguration>]
@@ -427,12 +429,8 @@ single records. To write single data records into a delivery stream,
 use PutRecord. Applications using these operations are referred to as
 producers.
 
-By default, each delivery stream can take in up to 2,000 transactions
-per second, 5,000 records per second, or 5 MB per second. If you use
-PutRecord and PutRecordBatch, the limits are an aggregate across these
-two operations for each delivery stream. For more information about
-limits, see Amazon Kinesis Data Firehose Limits
-(https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
+For information about service quota, see Amazon Kinesis Data Firehose
+Quota (https://docs.aws.amazon.com/firehose/latest/dev/limits.html).
 
 Each PutRecordBatch request supports up to 500 records. Each record in
 the request can be as large as 1,000 KB (before 64-bit encoding), up to
@@ -529,10 +527,12 @@ DescribeDeliveryStream.
 
 Even if encryption is currently enabled for a delivery stream, you can
 still invoke this operation on it to change the ARN of the CMK or both
-its type and ARN. In this case, Kinesis Data Firehose schedules the
-grant it had on the old CMK for retirement and creates a grant that
-enables it to use the new CMK to encrypt and decrypt data and to manage
-the grant.
+its type and ARN. If you invoke this method to change the CMK, and the
+old CMK is of type C<CUSTOMER_MANAGED_CMK>, Kinesis Data Firehose
+schedules the grant it had on the old CMK for retirement. If the new
+CMK is of type C<CUSTOMER_MANAGED_CMK>, Kinesis Data Firehose creates a
+grant that enables it to use the new CMK to encrypt and decrypt data
+and to manage the grant.
 
 If a delivery stream already has encryption enabled and then you invoke
 this operation to change the ARN of the CMK or both its type and ARN
@@ -541,10 +541,12 @@ change the CMK failed. In this case, encryption remains enabled with
 the old CMK.
 
 If the encryption status of your delivery stream is C<ENABLING_FAILED>,
-you can invoke this operation again.
+you can invoke this operation again with a valid CMK. The CMK must be
+enabled and the key policy mustn't explicitly deny the permission for
+Kinesis Data Firehose to invoke KMS encrypt and decrypt operations.
 
-You can only enable SSE for a delivery stream that uses C<DirectPut> as
-its source.
+You can enable SSE for a delivery stream only if it's a delivery stream
+that uses C<DirectPut> as its source.
 
 The C<StartDeliveryStreamEncryption> and
 C<StopDeliveryStreamEncryption> operations have a combined limit of 25
@@ -663,6 +665,8 @@ This operation has a limit of five transactions per second per account.
 =item [ElasticsearchDestinationUpdate => L<Paws::Firehose::ElasticsearchDestinationUpdate>]
 
 =item [ExtendedS3DestinationUpdate => L<Paws::Firehose::ExtendedS3DestinationUpdate>]
+
+=item [HttpEndpointDestinationUpdate => L<Paws::Firehose::HttpEndpointDestinationUpdate>]
 
 =item [RedshiftDestinationUpdate => L<Paws::Firehose::RedshiftDestinationUpdate>]
 

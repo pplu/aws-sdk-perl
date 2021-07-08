@@ -53,8 +53,8 @@ attached. You use a string similar to a URL but without the http:// in
 front. For example: C<elasticbeanstalk.amazonaws.com>.
 
 Service principals are unique and case-sensitive. To find the exact
-service principal for your service-linked role, see AWS Services That
-Work with IAM
+service principal for your service-linked role, see AWS services that
+work with IAM
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-services-that-work-with-iam.html)
 in the I<IAM User Guide>. Look for the services that have B<Yes >in the
 B<Service-Linked Role> column. Choose the B<Yes> link to view the

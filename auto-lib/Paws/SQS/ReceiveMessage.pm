@@ -66,22 +66,22 @@ These attributes include:
 
 =item *
 
-C<All> - Returns all values.
+C<All> E<ndash> Returns all values.
 
 =item *
 
-C<ApproximateFirstReceiveTimestamp> - Returns the time the message was
-first received from the queue (epoch time
+C<ApproximateFirstReceiveTimestamp> E<ndash> Returns the time the
+message was first received from the queue (epoch time
 (http://en.wikipedia.org/wiki/Unix_time) in milliseconds).
 
 =item *
 
-C<ApproximateReceiveCount> - Returns the number of times a message has
-been received from the queue but not deleted.
+C<ApproximateReceiveCount> E<ndash> Returns the number of times a
+message has been received across all queues but not deleted.
 
 =item *
 
-C<AWSTraceHeader> - Returns the AWS X-Ray trace header string.
+C<AWSTraceHeader> E<ndash> Returns the X-Ray trace header string.
 
 =item *
 
@@ -103,23 +103,24 @@ C<ABCDE1F2GH3I4JK5LMNOP:i-a123b456>.
 
 =item *
 
-C<SentTimestamp> - Returns the time the message was sent to the queue
-(epoch time (http://en.wikipedia.org/wiki/Unix_time) in milliseconds).
+C<SentTimestamp> E<ndash> Returns the time the message was sent to the
+queue (epoch time (http://en.wikipedia.org/wiki/Unix_time) in
+milliseconds).
 
 =item *
 
-C<MessageDeduplicationId> - Returns the value provided by the producer
-that calls the C< SendMessage > action.
+C<MessageDeduplicationId> E<ndash> Returns the value provided by the
+producer that calls the C< SendMessage > action.
 
 =item *
 
-C<MessageGroupId> - Returns the value provided by the producer that
-calls the C< SendMessage > action. Messages with the same
+C<MessageGroupId> E<ndash> Returns the value provided by the producer
+that calls the C< SendMessage > action. Messages with the same
 C<MessageGroupId> are returned in sequence.
 
 =item *
 
-C<SequenceNumber> - Returns the value provided by Amazon SQS.
+C<SequenceNumber> E<ndash> Returns the value provided by Amazon SQS.
 
 =back
 
@@ -187,9 +188,9 @@ This parameter applies only to FIFO (first-in-first-out) queues.
 
 The token used for deduplication of C<ReceiveMessage> calls. If a
 networking issue occurs after a C<ReceiveMessage> action, and instead
-of a response you receive a generic error, you can retry the same
-action with an identical C<ReceiveRequestAttemptId> to retrieve the
-same set of messages, even if their visibility timeout has not yet
+of a response you receive a generic error, it is possible to retry the
+same action with an identical C<ReceiveRequestAttemptId> to retrieve
+the same set of messages, even if their visibility timeout has not yet
 expired.
 
 =over
@@ -212,7 +213,7 @@ C<ReceiveRequestAttemptId>.
 
 =item *
 
-You can retry the C<ReceiveMessage> action with the same
+It is possible to retry the C<ReceiveMessage> action with the same
 C<ReceiveRequestAttemptId> if none of the messages have been modified
 (deleted or had their visibility changes).
 
@@ -223,7 +224,7 @@ C<ReceiveRequestAttemptId> return the same messages and receipt
 handles. If a retry occurs within the deduplication interval, it resets
 the visibility timeout. For more information, see Visibility Timeout
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 If a caller of the C<ReceiveMessage> action still processes messages
 when the visibility timeout expires and messages become visible,
@@ -252,7 +253,7 @@ messages in the queue remain in a strict order.
 
 =back
 
-The length of C<ReceiveRequestAttemptId> is 128 characters.
+The maximum length of C<ReceiveRequestAttemptId> is 128 characters.
 C<ReceiveRequestAttemptId> can contain alphanumeric characters (C<a-z>,
 C<A-Z>, C<0-9>) and punctuation
 (C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
@@ -260,7 +261,7 @@ C<A-Z>, C<0-9>) and punctuation
 For best practices of using C<ReceiveRequestAttemptId>, see Using the
 ReceiveRequestAttemptId Request Parameter
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-receiverequestattemptid-request-parameter.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 
@@ -279,6 +280,15 @@ arrive in the queue before returning. If a message is available, the
 call returns sooner than C<WaitTimeSeconds>. If no messages are
 available and the wait time expires, the call returns successfully with
 an empty list of messages.
+
+To avoid HTTP errors, ensure that the HTTP response timeout for
+C<ReceiveMessage> requests is longer than the C<WaitTimeSeconds>
+parameter. For example, with the Java SDK, you can set HTTP transport
+settings using the NettyNioAsyncHttpClient
+(https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/nio/netty/NettyNioAsyncHttpClient.html)
+for asynchronous clients, or the ApacheHttpClient
+(https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/http/apache/ApacheHttpClient.html)
+for synchronous clients.
 
 
 

@@ -35,24 +35,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Add
 
 =head1 DESCRIPTION
 
-This class has no description
+An attribute returned from an index query.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Key => Str
 
-
+The key that identifies the attribute.
 
 
 =head2 B<REQUIRED> Value => L<Paws::Kendra::AdditionalResultAttributeValue>
 
-
+An object that contains the attribute value.
 
 
 =head2 B<REQUIRED> ValueType => Str
 
-
+The data type of the C<Value> property.
 
 
 

@@ -59,7 +59,8 @@ Information about the requester transit gateway.
 
 =head2 State => Str
 
-The state of the transit gateway peering attachment.
+The state of the transit gateway peering attachment. Note that the
+C<initiating> state has been deprecated.
 
 
 =head2 Status => L<Paws::EC2::PeeringAttachmentStatus>

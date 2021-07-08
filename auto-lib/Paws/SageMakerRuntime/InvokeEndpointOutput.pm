@@ -24,7 +24,7 @@ Paws::SageMakerRuntime::InvokeEndpointOutput
 Includes the inference provided by the model.
 
 For information about the format of the response body, see Common Data
-FormatsE<mdash>Inference
+Formats-Inference
 (https://docs.aws.amazon.com/sagemaker/latest/dg/cdf-inference.html).
 
 
@@ -47,6 +47,12 @@ no more than 1024 visible US-ASCII characters as specified in Section
 Transfer Protocol (HTTP/1.1). If the customer wants the custom
 attribute returned, the model must set the custom attribute to be
 included on the way back.
+
+The code in your model is responsible for setting or updating any
+custom attributes in the response. If your code does not set this value
+in the response, an empty value is returned. For example, if a custom
+attribute represents the trace ID, your model can prepend the custom
+attribute with C<Trace ID:> in your post-processing function.
 
 This feature is currently supported in the AWS SDKs but not in the
 Amazon SageMaker Python SDK.

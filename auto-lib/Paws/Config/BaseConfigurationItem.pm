@@ -83,7 +83,37 @@ The time when the configuration recording was initiated.
 
 =head2 ConfigurationItemStatus => Str
 
-The configuration item status.
+The configuration item status. The valid values are:
+
+=over
+
+=item *
+
+OK E<ndash> The resource configuration has been updated
+
+=item *
+
+ResourceDiscovered E<ndash> The resource was newly discovered
+
+=item *
+
+ResourceNotRecorded E<ndash> The resource was discovered but its
+configuration was not recorded since the recorder excludes the
+recording of resources of this type
+
+=item *
+
+ResourceDeleted E<ndash> The resource was deleted
+
+=item *
+
+ResourceDeletedNotRecorded E<ndash> The resource was deleted but its
+configuration was not recorded since the recorder excludes the
+recording of resources of this type
+
+=back
+
+The CIs do not incur any cost.
 
 
 =head2 ConfigurationStateId => Str

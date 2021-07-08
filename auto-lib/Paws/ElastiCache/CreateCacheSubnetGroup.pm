@@ -4,6 +4,7 @@ package Paws::ElastiCache::CreateCacheSubnetGroup;
   has CacheSubnetGroupDescription => (is => 'ro', isa => 'Str', required => 1);
   has CacheSubnetGroupName => (is => 'ro', isa => 'Str', required => 1);
   has SubnetIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -29,11 +30,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # CreateCacheSubnet
+    # Creates a new cache subnet group.
     my $CreateCacheSubnetGroupResult = $elasticache->CreateCacheSubnetGroup(
-      CacheSubnetGroupDescription => 'MyString',
-      CacheSubnetGroupName        => 'MyString',
-      SubnetIds                   => [ 'MyString', ... ],
-
+      'CacheSubnetGroupDescription' => 'Sample subnet group',
+      'CacheSubnetGroupName'        => 'my-sn-grp2',
+      'SubnetIds'                   =>
+        [ 'subnet-6f28c982', 'subnet-bcd382f3', 'subnet-845b3e7c0' ]
     );
 
     # Results:
@@ -68,6 +71,14 @@ Example: C<mysubnetgroup>
 =head2 B<REQUIRED> SubnetIds => ArrayRef[Str|Undef]
 
 A list of VPC subnet IDs for the cache subnet group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 

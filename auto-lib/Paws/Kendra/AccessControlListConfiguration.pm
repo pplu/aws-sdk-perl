@@ -33,7 +33,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kendra::Acc
 
 =head1 DESCRIPTION
 
-Access Control List files for the documents in a data source.
+Access Control List files for the documents in a data source. For the
+format of the file, see Access control for S3 data sources
+(https://docs.aws.amazon.com/kendra/latest/dg/s3-acl.html).
 
 =head1 ATTRIBUTES
 

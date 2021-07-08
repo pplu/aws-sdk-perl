@@ -138,7 +138,7 @@ ways, such as by purpose, owner, environment, or other criteria.
 
 =head2 OpenIdConnectProviderARNs => ArrayRef[Str|Undef]
 
-A list of OpendID Connect provider ARNs.
+The Amazon Resource Names (ARN) of the OpenID Connect providers.
 
 
 

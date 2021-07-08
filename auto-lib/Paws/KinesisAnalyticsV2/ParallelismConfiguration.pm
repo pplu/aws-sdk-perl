@@ -36,12 +36,12 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-Describes parameters for how a Java-based Amazon Kinesis Data Analytics
+Describes parameters for how a Flink-based Kinesis Data Analytics
 application executes multiple tasks simultaneously. For more
 information about parallelism, see Parallel Execution
-(https://ci.apache.org/projects/flink/flink-docs-stable/dev/parallel.html)
+(https://ci.apache.org/projects/flink/flink-docs-release-1.8/dev/parallel.html)
 in the Apache Flink Documentation
-(https://ci.apache.org/projects/flink/flink-docs-release-1.6/).
+(https://ci.apache.org/projects/flink/flink-docs-release-1.8/).
 
 =head1 ATTRIBUTES
 
@@ -62,7 +62,7 @@ C<Parallelism>, or C<ParallelismPerKPU> properties.
 
 =head2 Parallelism => Int
 
-Describes the initial number of parallel tasks that a Java-based
+Describes the initial number of parallel tasks that a Flink-based
 Kinesis Data Analytics application can perform. If
 C<AutoScalingEnabled> is set to True, Kinesis Data Analytics increases
 the C<CurrentParallelism> value in response to application load. The
@@ -76,7 +76,7 @@ down to the C<Parallelism> setting.
 
 =head2 ParallelismPerKPU => Int
 
-Describes the number of parallel tasks that a Java-based Kinesis Data
+Describes the number of parallel tasks that a Flink-based Kinesis Data
 Analytics application can perform per Kinesis Processing Unit (KPU)
 used by the application. For more information about KPUs, see Amazon
 Kinesis Data Analytics Pricing

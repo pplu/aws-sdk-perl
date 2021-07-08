@@ -82,7 +82,7 @@ To let Amazon choose the IPv6 CIDR block for you, omit this parameter.
 =head2 Ipv6CidrBlockNetworkBorderGroup => Str
 
 The name of the location from which we advertise the IPV6 CIDR block.
-Use this parameter to limit the CiDR block to this location.
+Use this parameter to limit the CIDR block to this location.
 
 You must set C<AmazonProvidedIpv6CidrBlock> to C<true> to use this
 parameter.

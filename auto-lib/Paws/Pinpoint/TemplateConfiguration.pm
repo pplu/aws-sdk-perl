@@ -59,7 +59,8 @@ The SMS template to use for the message.
 
 =head2 VoiceTemplate => L<Paws::Pinpoint::Template>
 
-The voice template to use for the message.
+The voice template to use for the message. This object isn't supported
+for campaigns.
 
 
 

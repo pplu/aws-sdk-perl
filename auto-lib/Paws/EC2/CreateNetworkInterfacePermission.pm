@@ -54,13 +54,13 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 AwsAccountId => Str
 
-The AWS account ID.
+The account ID.
 
 
 
 =head2 AwsService => Str
 
-The AWS service. Currently not supported.
+The Amazon Web Service. Currently not supported.
 
 
 

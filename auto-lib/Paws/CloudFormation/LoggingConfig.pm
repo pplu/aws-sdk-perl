@@ -34,7 +34,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CloudFormat
 
 =head1 DESCRIPTION
 
-Contains logging configuration information for a type.
+Contains logging configuration information for an extension.
 
 =head1 ATTRIBUTES
 
@@ -42,7 +42,7 @@ Contains logging configuration information for a type.
 =head2 B<REQUIRED> LogGroupName => Str
 
 The Amazon CloudWatch log group to which CloudFormation sends error
-logging information when invoking the type's handlers.
+logging information when invoking the extension's handlers.
 
 
 =head2 B<REQUIRED> LogRoleArn => Str

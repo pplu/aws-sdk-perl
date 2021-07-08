@@ -52,19 +52,19 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ser
 
 =head2 B<REQUIRED> AwsRegion => Str
 
-Specifies the AWS Region for the quota that you want to use.
+The AWS Region.
 
 
 
 =head2 B<REQUIRED> QuotaCode => Str
 
-Specifies the quota you want.
+The quota identifier.
 
 
 
 =head2 B<REQUIRED> ServiceCode => Str
 
-Specifies the service that you want to use.
+The service identifier.
 
 
 

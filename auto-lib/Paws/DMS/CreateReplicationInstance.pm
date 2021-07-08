@@ -13,6 +13,7 @@ package Paws::DMS::CreateReplicationInstance;
   has ReplicationInstanceClass => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationInstanceIdentifier => (is => 'ro', isa => 'Str', required => 1);
   has ReplicationSubnetGroupIdentifier => (is => 'ro', isa => 'Str');
+  has ResourceIdentifier => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DMS::Tag]');
   has VpcSecurityGroupIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
 
@@ -40,27 +41,30 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Create replication instance
+    # Creates the replication instance using the specified parameters.
     my $CreateReplicationInstanceResponse = $dms->CreateReplicationInstance(
-      ReplicationInstanceClass         => 'MyString',
-      ReplicationInstanceIdentifier    => 'MyString',
-      AllocatedStorage                 => 1,             # OPTIONAL
-      AutoMinorVersionUpgrade          => 1,             # OPTIONAL
-      AvailabilityZone                 => 'MyString',    # OPTIONAL
-      DnsNameServers                   => 'MyString',    # OPTIONAL
-      EngineVersion                    => 'MyString',    # OPTIONAL
-      KmsKeyId                         => 'MyString',    # OPTIONAL
-      MultiAZ                          => 1,             # OPTIONAL
-      PreferredMaintenanceWindow       => 'MyString',    # OPTIONAL
-      PubliclyAccessible               => 1,             # OPTIONAL
-      ReplicationSubnetGroupIdentifier => 'MyString',    # OPTIONAL
-      Tags                             => [
+      'AllocatedStorage'                 => 123,
+      'AutoMinorVersionUpgrade'          => 1,
+      'AvailabilityZone'                 => '',
+      'EngineVersion'                    => '',
+      'KmsKeyId'                         => '',
+      'MultiAZ'                          => 1,
+      'PreferredMaintenanceWindow'       => '',
+      'PubliclyAccessible'               => 1,
+      'ReplicationInstanceClass'         => '',
+      'ReplicationInstanceIdentifier'    => '',
+      'ReplicationSubnetGroupIdentifier' => '',
+      'Tags'                             => [
+
         {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                 # OPTIONAL
-      VpcSecurityGroupIds => [ 'MyString', ... ],        # OPTIONAL
+          'Key'   => 'string',
+          'Value' => 'string'
+        }
+      ],
+      'VpcSecurityGroupIds' => [
+
+      ]
     );
 
     # Results:
@@ -84,9 +88,9 @@ replication instance.
 
 =head2 AutoMinorVersionUpgrade => Bool
 
-Indicates whether minor engine upgrades will be applied automatically
-to the replication instance during the maintenance window. This
-parameter defaults to C<true>.
+A value that indicates whether minor engine upgrades are applied
+automatically to the replication instance during the maintenance
+window. This parameter defaults to C<true>.
 
 Default: C<true>
 
@@ -94,21 +98,30 @@ Default: C<true>
 
 =head2 AvailabilityZone => Str
 
-The AWS Availability Zone where the replication instance will be
-created. The default value is a random, system-chosen Availability Zone
-in the endpoint's AWS Region, for example: C<us-east-1d>
+The Availability Zone where the replication instance will be created.
+The default value is a random, system-chosen Availability Zone in the
+endpoint's AWS Region, for example: C<us-east-1d>
 
 
 
 =head2 DnsNameServers => Str
 
-A list of DNS name servers supported for the replication instance.
+A list of custom DNS name servers supported for the replication
+instance to access your on-premise source or target database. This list
+overrides the default name servers supported by the replication
+instance. You can specify a comma-separated list of internet addresses
+for up to four on-premise DNS name servers. For example:
+C<"1.1.1.1,2.2.2.2,3.3.3.3,4.4.4.4">
 
 
 
 =head2 EngineVersion => Str
 
 The engine version number of the replication instance.
+
+If an engine version number is not specified when a replication
+instance is created, the default is the latest engine version
+available.
 
 
 
@@ -128,7 +141,7 @@ AWS account has a different default encryption key for each AWS Region.
 =head2 MultiAZ => Bool
 
 Specifies whether the replication instance is a Multi-AZ deployment.
-You cannot set the C<AvailabilityZone> parameter if the Multi-AZ
+You can't set the C<AvailabilityZone> parameter if the Multi-AZ
 parameter is set to C<true>.
 
 
@@ -160,12 +173,15 @@ default value is C<true>.
 
 =head2 B<REQUIRED> ReplicationInstanceClass => Str
 
-The compute and memory capacity of the replication instance as
-specified by the replication instance class.
+The compute and memory capacity of the replication instance as defined
+for the specified replication instance class. For example to specify
+the instance class dms.c4.large, set this parameter to
+C<"dms.c4.large">.
 
-Valid Values: C<dms.t2.micro | dms.t2.small | dms.t2.medium |
-dms.t2.large | dms.c4.large | dms.c4.xlarge | dms.c4.2xlarge |
-dms.c4.4xlarge>
+For more information on the settings and capacities for the available
+replication instance classes, see Selecting the right AWS DMS
+replication instance for your migration
+(https://docs.aws.amazon.com/dms/latest/userguide/CHAP_ReplicationInstance.html#CHAP_ReplicationInstance.InDepth).
 
 
 
@@ -180,7 +196,7 @@ Constraints:
 
 =item *
 
-Must contain from 1 to 63 alphanumeric characters or hyphens.
+Must contain 1-63 alphanumeric characters or hyphens.
 
 =item *
 
@@ -188,7 +204,7 @@ First character must be a letter.
 
 =item *
 
-Cannot end with a hyphen or contain two consecutive hyphens.
+Can't end with a hyphen or contain two consecutive hyphens.
 
 =back
 
@@ -199,6 +215,21 @@ Example: C<myrepinstance>
 =head2 ReplicationSubnetGroupIdentifier => Str
 
 A subnet group to associate with the replication instance.
+
+
+
+=head2 ResourceIdentifier => Str
+
+A friendly name for the resource identifier at the end of the
+C<EndpointArn> response parameter that is returned in the created
+C<Endpoint> object. The value for this parameter can have up to 31
+characters. It can contain only ASCII letters, digits, and hyphen
+('-'). Also, it can't end with a hyphen or contain two consecutive
+hyphens, and can only begin with a letter, such as C<Example-App-ARN1>.
+For example, this value might result in the C<EndpointArn> value
+C<arn:aws:dms:eu-west-1:012345678901:rep:Example-App-ARN1>. If you
+don't specify a C<ResourceIdentifier> value, AWS DMS generates a
+default identifier value for the end of C<EndpointArn>.
 
 
 

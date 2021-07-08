@@ -1,6 +1,8 @@
 
 package Paws::Personalize::CreateBatchInferenceJob;
   use Moose;
+  has BatchInferenceJobConfig => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobConfig', traits => ['NameInRequest'], request_name => 'batchInferenceJobConfig' );
+  has FilterArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'filterArn' );
   has JobInput => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobInput', traits => ['NameInRequest'], request_name => 'jobInput' , required => 1);
   has JobName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'jobName' , required => 1);
   has JobOutput => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobOutput', traits => ['NameInRequest'], request_name => 'jobOutput' , required => 1);
@@ -48,9 +50,16 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
 
       },
-      RoleArn            => 'MyRoleArn',
-      SolutionVersionArn => 'MyArn',
-      NumResults         => 1,             # OPTIONAL
+      RoleArn                 => 'MyRoleArn',
+      SolutionVersionArn      => 'MyArn',
+      BatchInferenceJobConfig => {
+        ItemExplorationConfig => {
+          'MyParameterName' =>
+            'MyParameterValue',           # key: max: 256, value: max: 1000
+        },    # max: 100; OPTIONAL
+      },    # OPTIONAL
+      FilterArn  => 'MyArn',    # OPTIONAL
+      NumResults => 1,          # OPTIONAL
     );
 
     # Results:
@@ -63,6 +72,20 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/personalize/CreateBatchInferenceJob>
 
 =head1 ATTRIBUTES
+
+
+=head2 BatchInferenceJobConfig => L<Paws::Personalize::BatchInferenceJobConfig>
+
+The configuration details of a batch inference job.
+
+
+
+=head2 FilterArn => Str
+
+The ARN of the filter to apply to the batch inference job. For more
+information on using filters, see Filtering Batch Recommendations
+(https://docs.aws.amazon.com/personalize/latest/dg/filter-batch.html)..
+
 
 
 =head2 B<REQUIRED> JobInput => L<Paws::Personalize::BatchInferenceJobInput>
@@ -93,8 +116,8 @@ The number of recommendations to retreive.
 =head2 B<REQUIRED> RoleArn => Str
 
 The ARN of the Amazon Identity and Access Management role that has
-permissions to read and write to your input and out Amazon S3 buckets
-respectively.
+permissions to read and write to your input and output Amazon S3
+buckets respectively.
 
 
 

@@ -1,7 +1,7 @@
 
 package Paws::SecurityHub::DisassociateMembers;
   use Moose;
-  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has AccountIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
 
   use MooseX::ClassAttribute;
 
@@ -29,7 +29,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $securityhub = Paws->service('SecurityHub');
     my $DisassociateMembersResponse = $securityhub->DisassociateMembers(
-      AccountIds => [ 'MyNonEmptyString', ... ],    # OPTIONAL
+      AccountIds => [ 'MyNonEmptyString', ... ],
+
     );
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
@@ -38,10 +39,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
-=head2 AccountIds => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> AccountIds => ArrayRef[Str|Undef]
 
-The account IDs of the member accounts to disassociate from the master
-account.
+The account IDs of the member accounts to disassociate from the
+administrator account.
 
 
 

@@ -40,8 +40,8 @@ to.
 This data type is used as a response element in the
 ListEntitiesForPolicy operation.
 
-For more information about managed policies, refer to Managed Policies
-and Inline Policies
+For more information about managed policies, refer to Managed policies
+and inline policies
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/policies-managed-vs-inline.html)
 in the I<IAM User Guide>.
 
@@ -51,7 +51,7 @@ in the I<IAM User Guide>.
 =head2 GroupId => Str
 
 The stable and unique string identifying the group. For more
-information about IDs, see IAM Identifiers
+information about IDs, see IAM identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
 in the I<IAM User Guide>.
 

@@ -31,20 +31,39 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $cloud9 = Paws->service('Cloud9');
+   # DescribeEnvironmentMemberships1
+   # The following example gets information about all of the environment members
+   # for the specified AWS Cloud9 development environment.
     my $DescribeEnvironmentMembershipsResult =
       $cloud9->DescribeEnvironmentMemberships(
-      EnvironmentId => 'MyEnvironmentId',    # OPTIONAL
-      MaxResults    => 1,                    # OPTIONAL
-      NextToken     => 'MyString',           # OPTIONAL
-      Permissions   => [
-        'owner', ...    # values: owner, read-write, read-only
-      ],    # OPTIONAL
-      UserArn => 'MyUserArn',    # OPTIONAL
+      'EnvironmentId' => '8d9967e2f0624182b74e7690ad69ebEX' );
+
+    # Results:
+    my $memberships = $DescribeEnvironmentMembershipsResult->memberships;
+
+   # Returns a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> object.
+   # DescribeEnvironmentMemberships2
+   # The following example gets information about the owner of the specified AWS
+   # Cloud9 development environment.
+    my $DescribeEnvironmentMembershipsResult =
+      $cloud9->DescribeEnvironmentMemberships(
+      'EnvironmentId' => '8d9967e2f0624182b74e7690ad69ebEX',
+      'Permissions'   => ['owner']
       );
 
     # Results:
-    my $Memberships = $DescribeEnvironmentMembershipsResult->Memberships;
-    my $NextToken   = $DescribeEnvironmentMembershipsResult->NextToken;
+    my $memberships = $DescribeEnvironmentMembershipsResult->memberships;
+
+    # Returns a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> object.
+    # DescribeEnvironmentMemberships3
+    # The following example gets AWS Cloud9 development environment membership
+    # information for the specified user.
+    my $DescribeEnvironmentMembershipsResult =
+      $cloud9->DescribeEnvironmentMemberships(
+      'UserArn' => 'arn:aws:iam::123456789012:user/MyDemoUser' );
+
+    # Results:
+    my $memberships = $DescribeEnvironmentMembershipsResult->memberships;
 
     # Returns a L<Paws::Cloud9::DescribeEnvironmentMembershipsResult> object.
 

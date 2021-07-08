@@ -6,6 +6,7 @@ package Paws::EC2::TransitGatewayMulticastGroup;
   has MemberType => (is => 'ro', isa => 'Str', request_name => 'memberType', traits => ['NameInRequest']);
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', request_name => 'networkInterfaceId', traits => ['NameInRequest']);
   has ResourceId => (is => 'ro', isa => 'Str', request_name => 'resourceId', traits => ['NameInRequest']);
+  has ResourceOwnerId => (is => 'ro', isa => 'Str', request_name => 'resourceOwnerId', traits => ['NameInRequest']);
   has ResourceType => (is => 'ro', isa => 'Str', request_name => 'resourceType', traits => ['NameInRequest']);
   has SourceType => (is => 'ro', isa => 'Str', request_name => 'sourceType', traits => ['NameInRequest']);
   has SubnetId => (is => 'ro', isa => 'Str', request_name => 'subnetId', traits => ['NameInRequest']);
@@ -75,6 +76,12 @@ The ID of the transit gateway attachment.
 =head2 ResourceId => Str
 
 The ID of the resource.
+
+
+=head2 ResourceOwnerId => Str
+
+The ID of the AWS account that owns the transit gateway multicast
+domain group resource.
 
 
 =head2 ResourceType => Str

@@ -29,17 +29,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # DescribeCacheParameterGroups
+    # Returns a list of cache parameter group descriptions. If a cache parameter
+    # group name is specified, the list contains only the descriptions for that
+    # group.
     my $CacheParameterGroupsMessage =
       $elasticache->DescribeCacheParameterGroups(
-      CacheParameterGroupName => 'MyString',    # OPTIONAL
-      Marker                  => 'MyString',    # OPTIONAL
-      MaxRecords              => 1,             # OPTIONAL
-      );
+      'CacheParameterGroupName' => 'custom-mem1-4' );
 
     # Results:
     my $CacheParameterGroups =
       $CacheParameterGroupsMessage->CacheParameterGroups;
-    my $Marker = $CacheParameterGroupsMessage->Marker;
 
     # Returns a L<Paws::ElastiCache::CacheParameterGroupsMessage> object.
 

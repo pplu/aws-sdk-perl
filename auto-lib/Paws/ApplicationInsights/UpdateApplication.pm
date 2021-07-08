@@ -1,6 +1,7 @@
 
 package Paws::ApplicationInsights::UpdateApplication;
   use Moose;
+  has CWEMonitorEnabled => (is => 'ro', isa => 'Bool');
   has OpsCenterEnabled => (is => 'ro', isa => 'Bool');
   has OpsItemSNSTopicArn => (is => 'ro', isa => 'Str');
   has RemoveSNSTopic => (is => 'ro', isa => 'Bool');
@@ -32,6 +33,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $applicationinsights = Paws->service('ApplicationInsights');
     my $UpdateApplicationResponse = $applicationinsights->UpdateApplication(
       ResourceGroupName  => 'MyResourceGroupName',
+      CWEMonitorEnabled  => 1,                         # OPTIONAL
       OpsCenterEnabled   => 1,                         # OPTIONAL
       OpsItemSNSTopicArn => 'MyOpsItemSNSTopicArn',    # OPTIONAL
       RemoveSNSTopic     => 1,                         # OPTIONAL
@@ -46,6 +48,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/applicationinsights/UpdateApplication>
 
 =head1 ATTRIBUTES
+
+
+=head2 CWEMonitorEnabled => Bool
+
+Indicates whether Application Insights can listen to CloudWatch events
+for the application resources, such as C<instance terminated>, C<failed
+deployment>, and others.
+
 
 
 =head2 OpsCenterEnabled => Bool

@@ -36,9 +36,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Health::Org
 
 =head1 DESCRIPTION
 
-Detailed information about an event. A combination of an Event object,
-an EventDescription object, and additional metadata about the event.
-Returned by the DescribeEventDetailsForOrganization operation.
+Detailed information about an event. A combination of an Event
+(https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html)
+object, an EventDescription
+(https://docs.aws.amazon.com/health/latest/APIReference/API_EventDescription.html)
+object, and additional metadata about the event. Returned by the
+DescribeEventDetailsForOrganization
+(https://docs.aws.amazon.com/health/latest/APIReference/API_DescribeEventDetailsForOrganization.html)
+operation.
 
 =head1 ATTRIBUTES
 

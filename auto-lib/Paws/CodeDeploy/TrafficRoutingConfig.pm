@@ -37,7 +37,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::CodeDeploy:
 
 The configuration that specifies how traffic is shifted from one
 version of a Lambda function to another version during an AWS Lambda
-deployment.
+deployment, or from one Amazon ECS task set to another during an Amazon
+ECS deployment.
 
 =head1 ATTRIBUTES
 
@@ -45,22 +46,24 @@ deployment.
 =head2 TimeBasedCanary => L<Paws::CodeDeploy::TimeBasedCanary>
 
 A configuration that shifts traffic from one version of a Lambda
-function to another in two increments. The original and target Lambda
-function versions are specified in the deployment's AppSpec file.
+function or ECS task set to another in two increments. The original and
+target Lambda function versions or ECS task sets are specified in the
+deployment's AppSpec file.
 
 
 =head2 TimeBasedLinear => L<Paws::CodeDeploy::TimeBasedLinear>
 
 A configuration that shifts traffic from one version of a Lambda
-function to another in equal increments, with an equal number of
-minutes between each increment. The original and target Lambda function
-versions are specified in the deployment's AppSpec file.
+function or ECS task set to another in equal increments, with an equal
+number of minutes between each increment. The original and target
+Lambda function versions or ECS task sets are specified in the
+deployment's AppSpec file.
 
 
 =head2 Type => Str
 
 The type of traffic shifting (C<TimeBasedCanary> or C<TimeBasedLinear>)
-used by a deployment configuration .
+used by a deployment configuration.
 
 
 

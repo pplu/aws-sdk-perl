@@ -29,7 +29,7 @@ The model type.
 Valid values are: C<"ONLINE_FRAUD_INSIGHTS">
 =head2 ModelVersionNumber => Str
 
-The version of the model.
+The model version number of the model version created.
 
 
 =head2 Status => Str

@@ -27,11 +27,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To disassociate an IAM instance profile
+    # This example disassociates the specified IAM instance profile from an
+    # instance.
     my $DisassociateIamInstanceProfileResult =
       $ec2->DisassociateIamInstanceProfile(
-      AssociationId => 'MyIamInstanceProfileAssociationId',
-
-      );
+      'AssociationId' => 'iip-assoc-05020b59952902f5f' );
 
     # Results:
     my $IamInstanceProfileAssociation =

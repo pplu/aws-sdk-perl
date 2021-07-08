@@ -41,6 +41,11 @@ package Paws::DynamoDB;
   });
 
   
+  sub BatchExecuteStatement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::BatchExecuteStatement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchGetItem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::BatchGetItem', @_);
@@ -101,6 +106,11 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeEndpoints', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeExport {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeExport', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeGlobalTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTable', @_);
@@ -109,6 +119,11 @@ package Paws::DynamoDB;
   sub DescribeGlobalTableSettings {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeGlobalTableSettings', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeKinesisStreamingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeKinesisStreamingDestination', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeLimits {
@@ -131,6 +146,31 @@ package Paws::DynamoDB;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::DescribeTimeToLive', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableKinesisStreamingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::DisableKinesisStreamingDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableKinesisStreamingDestination {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::EnableKinesisStreamingDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExecuteStatement {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::ExecuteStatement', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExecuteTransaction {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::ExecuteTransaction', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ExportTableToPointInTime {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::ExportTableToPointInTime', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetItem {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::GetItem', @_);
@@ -144,6 +184,11 @@ package Paws::DynamoDB;
   sub ListContributorInsights {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::DynamoDB::ListContributorInsights', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListExports {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::DynamoDB::ListExports', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListGlobalTables {
@@ -376,7 +421,7 @@ package Paws::DynamoDB;
   }
 
 
-  sub operations { qw/BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeContributorInsights DescribeEndpoints DescribeGlobalTable DescribeGlobalTableSettings DescribeLimits DescribeTable DescribeTableReplicaAutoScaling DescribeTimeToLive GetItem ListBackups ListContributorInsights ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource TransactGetItems TransactWriteItems UntagResource UpdateContinuousBackups UpdateContributorInsights UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTableReplicaAutoScaling UpdateTimeToLive / }
+  sub operations { qw/BatchExecuteStatement BatchGetItem BatchWriteItem CreateBackup CreateGlobalTable CreateTable DeleteBackup DeleteItem DeleteTable DescribeBackup DescribeContinuousBackups DescribeContributorInsights DescribeEndpoints DescribeExport DescribeGlobalTable DescribeGlobalTableSettings DescribeKinesisStreamingDestination DescribeLimits DescribeTable DescribeTableReplicaAutoScaling DescribeTimeToLive DisableKinesisStreamingDestination EnableKinesisStreamingDestination ExecuteStatement ExecuteTransaction ExportTableToPointInTime GetItem ListBackups ListContributorInsights ListExports ListGlobalTables ListTables ListTagsOfResource PutItem Query RestoreTableFromBackup RestoreTableToPointInTime Scan TagResource TransactGetItems TransactWriteItems UntagResource UpdateContinuousBackups UpdateContributorInsights UpdateGlobalTable UpdateGlobalTableSettings UpdateItem UpdateTable UpdateTableReplicaAutoScaling UpdateTimeToLive / }
 
 1;
 
@@ -430,6 +475,23 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dyn
 
 
 =head1 METHODS
+
+=head2 BatchExecuteStatement
+
+=over
+
+=item Statements => ArrayRef[L<Paws::DynamoDB::BatchStatementRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::BatchExecuteStatement>
+
+Returns: a L<Paws::DynamoDB::BatchExecuteStatementOutput> instance
+
+This operation allows you to perform batch reads and writes on data
+stored in DynamoDB, using PartiQL.
+
 
 =head2 BatchGetItem
 
@@ -707,7 +769,7 @@ Creates a global table from an existing table. A global table creates a
 replication relationship between two or more DynamoDB tables with the
 same table name in the provided Regions.
 
-This method only applies to Version 2017.11.29
+This operation only applies to Version 2017.11.29
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 of global tables.
 
@@ -747,6 +809,22 @@ The global secondary indexes must have the same name.
 =item *
 
 The global secondary indexes must have the same hash key and sort key
+(if present).
+
+=back
+
+If local secondary indexes are specified, then the following conditions
+must also be met:
+
+=over
+
+=item *
+
+The local secondary indexes must have the same name.
+
+=item *
+
+The local secondary indexes must have the same hash key and sort key
 (if present).
 
 =back
@@ -996,6 +1074,22 @@ Returns: a L<Paws::DynamoDB::DescribeEndpointsResponse> instance
 Returns the regional endpoint information.
 
 
+=head2 DescribeExport
+
+=over
+
+=item ExportArn => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeExport>
+
+Returns: a L<Paws::DynamoDB::DescribeExportOutput> instance
+
+Describes an existing table export.
+
+
 =head2 DescribeGlobalTable
 
 =over
@@ -1011,9 +1105,13 @@ Returns: a L<Paws::DynamoDB::DescribeGlobalTableOutput> instance
 
 Returns information about the specified global table.
 
-This method only applies to Version 2017.11.29
+This operation only applies to Version 2017.11.29
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
-of global tables.
+of global tables. If you are using global tables Version 2019.11.21
+(https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
+you can use DescribeTable
+(https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_DescribeTable.html)
+instead.
 
 
 =head2 DescribeGlobalTableSettings
@@ -1031,9 +1129,25 @@ Returns: a L<Paws::DynamoDB::DescribeGlobalTableSettingsOutput> instance
 
 Describes Region-specific settings for a global table.
 
-This method only applies to Version 2017.11.29
+This operation only applies to Version 2017.11.29
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 of global tables.
+
+
+=head2 DescribeKinesisStreamingDestination
+
+=over
+
+=item TableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::DescribeKinesisStreamingDestination>
+
+Returns: a L<Paws::DynamoDB::DescribeKinesisStreamingDestinationOutput> instance
+
+Returns information about the status of Kinesis streaming.
 
 
 =head2 DescribeLimits
@@ -1047,24 +1161,24 @@ Each argument is described in detail in: L<Paws::DynamoDB::DescribeLimits>
 
 Returns: a L<Paws::DynamoDB::DescribeLimitsOutput> instance
 
-Returns the current provisioned-capacity limits for your AWS account in
+Returns the current provisioned-capacity quotas for your AWS account in
 a Region, both for the Region as a whole and for any one DynamoDB table
 that you create there.
 
-When you establish an AWS account, the account has initial limits on
+When you establish an AWS account, the account has initial quotas on
 the maximum read capacity units and write capacity units that you can
 provision across all of your DynamoDB tables in a given Region. Also,
-there are per-table limits that apply when you create a table there.
-For more information, see Limits
+there are per-table quotas that apply when you create a table there.
+For more information, see Service, Account, and Table Quotas
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 page in the I<Amazon DynamoDB Developer Guide>.
 
-Although you can increase these limits by filing a case at AWS Support
+Although you can increase these quotas by filing a case at AWS Support
 Center (https://console.aws.amazon.com/support/home#/), obtaining the
 increase is not instantaneous. The C<DescribeLimits> action lets you
 write code to compare the capacity you are currently using to those
-limits imposed by your account so that you have enough time to apply
-for an increase before you hit a limit.
+quotas imposed by your account so that you have enough time to apply
+for an increase before you hit a quota.
 
 For example, you could use one of the AWS SDKs to do the following:
 
@@ -1073,7 +1187,7 @@ For example, you could use one of the AWS SDKs to do the following:
 =item 1.
 
 Call C<DescribeLimits> for a particular Region to obtain your current
-account limits on provisioned capacity there.
+account quotas on provisioned capacity there.
 
 =item 2.
 
@@ -1111,23 +1225,23 @@ as well.
 
 =item 5.
 
-Report the account limits for that Region returned by
+Report the account quotas for that Region returned by
 C<DescribeLimits>, along with the total current provisioned capacity
 levels you have calculated.
 
 =back
 
 This will let you see whether you are getting close to your
-account-level limits.
+account-level quotas.
 
-The per-table limits apply only when you are creating a new table. They
+The per-table quotas apply only when you are creating a new table. They
 restrict the sum of the provisioned capacity of the new table itself
 and all its global secondary indexes.
 
 For existing tables and their GSIs, DynamoDB doesn't let you increase
-provisioned capacity extremely rapidly. But the only upper limit that
-applies is that the aggregate provisioned capacity over all your tables
-and GSIs cannot exceed either of the per-account limits.
+provisioned capacity extremely rapidly, but the only quota that applies
+is that the aggregate provisioned capacity over all your tables and
+GSIs cannot exceed either of the per-account quotas.
 
 C<DescribeLimits> should only be called periodically. You can expect
 throttling errors if you call it more than once in a minute.
@@ -1176,7 +1290,7 @@ Returns: a L<Paws::DynamoDB::DescribeTableReplicaAutoScalingOutput> instance
 Describes auto scaling settings across replicas of the global table at
 once.
 
-This method only applies to Version 2019.11.21
+This operation only applies to Version 2019.11.21
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 of global tables.
 
@@ -1196,6 +1310,122 @@ Returns: a L<Paws::DynamoDB::DescribeTimeToLiveOutput> instance
 
 Gives a description of the Time to Live (TTL) status on the specified
 table.
+
+
+=head2 DisableKinesisStreamingDestination
+
+=over
+
+=item StreamArn => Str
+
+=item TableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::DisableKinesisStreamingDestination>
+
+Returns: a L<Paws::DynamoDB::KinesisStreamingDestinationOutput> instance
+
+Stops replication from the DynamoDB table to the Kinesis data stream.
+This is done without deleting either of the resources.
+
+
+=head2 EnableKinesisStreamingDestination
+
+=over
+
+=item StreamArn => Str
+
+=item TableName => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::EnableKinesisStreamingDestination>
+
+Returns: a L<Paws::DynamoDB::KinesisStreamingDestinationOutput> instance
+
+Starts table data replication to the specified Kinesis data stream at a
+timestamp chosen during the enable workflow. If this operation doesn't
+return results immediately, use DescribeKinesisStreamingDestination to
+check if streaming to the Kinesis data stream is ACTIVE.
+
+
+=head2 ExecuteStatement
+
+=over
+
+=item Statement => Str
+
+=item [ConsistentRead => Bool]
+
+=item [NextToken => Str]
+
+=item [Parameters => ArrayRef[L<Paws::DynamoDB::AttributeValue>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::ExecuteStatement>
+
+Returns: a L<Paws::DynamoDB::ExecuteStatementOutput> instance
+
+This operation allows you to perform reads and singleton writes on data
+stored in DynamoDB, using PartiQL.
+
+
+=head2 ExecuteTransaction
+
+=over
+
+=item TransactStatements => ArrayRef[L<Paws::DynamoDB::ParameterizedStatement>]
+
+=item [ClientRequestToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::ExecuteTransaction>
+
+Returns: a L<Paws::DynamoDB::ExecuteTransactionOutput> instance
+
+This operation allows you to perform transactional reads or writes on
+data stored in DynamoDB, using PartiQL.
+
+
+=head2 ExportTableToPointInTime
+
+=over
+
+=item S3Bucket => Str
+
+=item TableArn => Str
+
+=item [ClientToken => Str]
+
+=item [ExportFormat => Str]
+
+=item [ExportTime => Str]
+
+=item [S3BucketOwner => Str]
+
+=item [S3Prefix => Str]
+
+=item [S3SseAlgorithm => Str]
+
+=item [S3SseKmsKeyId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::ExportTableToPointInTime>
+
+Returns: a L<Paws::DynamoDB::ExportTableToPointInTimeOutput> instance
+
+Exports table data to an S3 bucket. The table must have point in time
+recovery enabled, and you can export data from any time within the
+point in time recovery window.
 
 
 =head2 GetItem
@@ -1261,12 +1491,11 @@ Returns: a L<Paws::DynamoDB::ListBackupsOutput> instance
 List backups associated with an AWS account. To list backups for a
 given table, specify C<TableName>. C<ListBackups> returns a paginated
 list of results with at most 1 MB worth of items in a page. You can
-also specify a limit for the maximum number of entries to be returned
-in a page.
+also specify a maximum number of entries to be returned in a page.
 
 In the request, start time is inclusive, but end time is exclusive.
-Note that these limits are for the time at which the original backup
-was requested.
+Note that these boundaries are for the time at which the original
+backup was requested.
 
 You can call C<ListBackups> a maximum of five times per second.
 
@@ -1292,6 +1521,26 @@ Returns a list of ContributorInsightsSummary for a table and all its
 global secondary indexes.
 
 
+=head2 ListExports
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TableArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::DynamoDB::ListExports>
+
+Returns: a L<Paws::DynamoDB::ListExportsOutput> instance
+
+Lists completed exports within the past 90 days.
+
+
 =head2 ListGlobalTables
 
 =over
@@ -1311,7 +1560,7 @@ Returns: a L<Paws::DynamoDB::ListGlobalTablesOutput> instance
 
 Lists all global tables that have a replica in the specified Region.
 
-This method only applies to Version 2017.11.29
+This operation only applies to Version 2017.11.29
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V1.html)
 of global tables.
 
@@ -1453,9 +1702,14 @@ PutItem in the AWS SDK for Ruby V2
 =back
 
 When you add an item, the primary key attributes are the only required
-attributes. Attribute values cannot be null. String and Binary type
-attributes must have lengths greater than zero. Set type attributes
-cannot be empty. Requests with empty values will be rejected with a
+attributes. Attribute values cannot be null.
+
+Empty String and Binary attribute values are allowed. Attribute values
+of type String and Binary must have a length greater than zero if the
+attribute is used as a key attribute for a table or index. Set type
+attributes cannot be empty.
+
+Invalid Requests with empty values will be rejected with a
 C<ValidationException> exception.
 
 To prevent a new item from replacing an existing item, use a
@@ -2275,7 +2529,7 @@ Returns: a L<Paws::DynamoDB::UpdateTableReplicaAutoScalingOutput> instance
 
 Updates auto scaling settings on your global tables at once.
 
-This method only applies to Version 2019.11.21
+This operation only applies to Version 2019.11.21
 (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/globaltables.V2.html)
 of global tables.
 

@@ -2,9 +2,9 @@
 package Paws::CostExplorer::GetCostAndUsage;
   use Moose;
   has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
-  has Granularity => (is => 'ro', isa => 'Str');
+  has Granularity => (is => 'ro', isa => 'Str', required => 1);
   has GroupBy => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
-  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
+  has Metrics => (is => 'ro', isa => 'ArrayRef[Str|Undef]', required => 1);
   has NextPageToken => (is => 'ro', isa => 'Str');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
@@ -33,42 +33,64 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ce = Paws->service('CostExplorer');
     my $GetCostAndUsageResponse = $ce->GetCostAndUsage(
+      Granularity => 'DAILY',
+      Metrics     => [
+        'MyMetricName', ...    # max: 1024
+      ],
       TimePeriod => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',    # max: 40
+        Start => 'MyYearMonthDay',    # max: 40
 
       },
       Filter => {
         And            => [ <Expression>, ... ],    # OPTIONAL
         CostCategories => {
-          Key    => 'MyCostCategoryName',           # min: 1, max: 255; OPTIONAL
-          Values => [ 'MyValue', ... ],             # OPTIONAL
+          Key          => 'MyCostCategoryName',     # min: 1, max: 50; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
         },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key    => 'MyTagKey',            # OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
-      Granularity => 'DAILY',    # OPTIONAL
-      GroupBy     => [
+      GroupBy => [
         {
-          Key  => 'MyGroupDefinitionKey',    # OPTIONAL
+          Key  => 'MyGroupDefinitionKey',    # max: 1024; OPTIONAL
           Type => 'DIMENSION', # values: DIMENSION, TAG, COST_CATEGORY; OPTIONAL
         },
         ...
       ],    # OPTIONAL
-      Metrics       => [ 'MyMetricName', ... ],    # OPTIONAL
-      NextPageToken => 'MyNextPageToken',          # OPTIONAL
+      NextPageToken => 'MyNextPageToken',    # OPTIONAL
     );
 
     # Results:
+    my $DimensionValueAttributes =
+      $GetCostAndUsageResponse->DimensionValueAttributes;
     my $GroupDefinitions = $GetCostAndUsageResponse->GroupDefinitions;
     my $NextPageToken    = $GetCostAndUsageResponse->NextPageToken;
     my $ResultsByTime    = $GetCostAndUsageResponse->ResultsByTime;
@@ -88,11 +110,11 @@ C<SERVICE> and C<LINKED_ACCOUNT> and get the costs that are associated
 with that account's usage of that service. You can nest C<Expression>
 objects to define any combination of dimension filters. For more
 information, see Expression
-(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html).
 
 
 
-=head2 Granularity => Str
+=head2 B<REQUIRED> Granularity => Str
 
 Sets the AWS cost granularity to C<MONTHLY> or C<DAILY>, or C<HOURLY>.
 If C<Granularity> isn't set, the response object doesn't include the
@@ -103,7 +125,7 @@ Valid values are: C<"DAILY">, C<"MONTHLY">, C<"HOURLY">
 =head2 GroupBy => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]
 
 You can group AWS costs using up to two different groups, either
-dimensions, tag keys, or both.
+dimensions, tag keys, cost categories, or any two group by types.
 
 When you group by tag key, you get all tag values, including empty
 strings.
@@ -114,12 +136,12 @@ C<SERVICE>, C<TAGS>, C<TENANCY>, C<RECORD_TYPE>, and C<USAGE_TYPE>.
 
 
 
-=head2 Metrics => ArrayRef[Str|Undef]
+=head2 B<REQUIRED> Metrics => ArrayRef[Str|Undef]
 
 Which metrics are returned in the query. For more information about
 blended and unblended rates, see Why does the "blended" annotation
 appear on some line items in my bill?
-(https://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
+(http://aws.amazon.com/premiumsupport/knowledge-center/blended-rates-intro/).
 
 Valid values are C<AmortizedCost>, C<BlendedCost>, C<NetAmortizedCost>,
 C<NetUnblendedCost>, C<NormalizedUsageAmount>, C<UnblendedCost>, and

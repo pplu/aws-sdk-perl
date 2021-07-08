@@ -2,6 +2,7 @@
 package Paws::ELBv2::AvailabilityZone;
   use Moose;
   has LoadBalancerAddresses => (is => 'ro', isa => 'ArrayRef[Paws::ELBv2::LoadBalancerAddress]');
+  has OutpostId => (is => 'ro', isa => 'Str');
   has SubnetId => (is => 'ro', isa => 'Str');
   has ZoneName => (is => 'ro', isa => 'Str');
 
@@ -47,6 +48,11 @@ balancer, you can specify one Elastic IP address per Availability Zone
 when you create an internal-facing load balancer. For internal load
 balancers, you can specify a private IP address from the IPv4 range of
 the subnet.
+
+
+=head2 OutpostId => Str
+
+[Application Load Balancers on Outposts] The ID of the Outpost.
 
 
 =head2 SubnetId => Str

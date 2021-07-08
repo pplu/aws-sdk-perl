@@ -3,6 +3,7 @@ package Paws::Rekognition::TrainingDataResult;
   use Moose;
   has Input => (is => 'ro', isa => 'Paws::Rekognition::TrainingData');
   has Output => (is => 'ro', isa => 'Paws::Rekognition::TrainingData');
+  has Validation => (is => 'ro', isa => 'Paws::Rekognition::ValidationData');
 
 1;
 
@@ -23,7 +24,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Rekognition::TrainingDataResult object:
 
-  $service_obj->Method(Att1 => { Input => $value, ..., Output => $value  });
+  $service_obj->Method(Att1 => { Input => $value, ..., Validation => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,8 +35,8 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Rekognition
 
 =head1 DESCRIPTION
 
-A Sagemaker Groundtruth format manifest file that represents the
-dataset used for training.
+Sagemaker Groundtruth format manifest files for the input, output and
+validation datasets that are used and created during testing.
 
 =head1 ATTRIBUTES
 
@@ -49,6 +50,12 @@ The training assets that you supplied for training.
 
 The images (assets) that were actually trained by Amazon Rekognition
 Custom Labels.
+
+
+=head2 Validation => L<Paws::Rekognition::ValidationData>
+
+The location of the data validation manifest. The data validation
+manifest is created for the training dataset during model training.
 
 
 

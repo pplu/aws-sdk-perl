@@ -35,45 +35,31 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $models.lex = Paws->service('LexModels');
+    # To Create a Slot Type
+    # This example shows how to create a slot type that describes pizza sauces.
     my $PutSlotTypeResponse = $models . lex->PutSlotType(
-      Name              => 'MySlotTypeName',
-      Checksum          => 'MyString',         # OPTIONAL
-      CreateVersion     => 1,                  # OPTIONAL
-      Description       => 'MyDescription',    # OPTIONAL
-      EnumerationValues => [
-        {
-          Value    => 'MyValue',               # min: 1, max: 140
-          Synonyms => [
-            'MyValue', ...                     # min: 1, max: 140
-          ],    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      ParentSlotTypeSignature => 'MyCustomOrBuiltinSlotTypeName',    # OPTIONAL
-      SlotTypeConfigurations  => [
-        {
-          RegexConfiguration => {
-            Pattern => 'MyRegexPattern',    # min: 1, max: 100
+      'Description'       => 'Available pizza sauces',
+      'EnumerationValues' => [
 
-          },    # OPTIONAL
+        {
+          'Value' => 'red'
         },
-        ...
-      ],    # OPTIONAL
-      ValueSelectionStrategy => 'ORIGINAL_VALUE',    # OPTIONAL
+
+        {
+          'Value' => 'white'
+        }
+      ],
+      'Name' => 'PizzaSauceType'
     );
 
     # Results:
-    my $Checksum                = $PutSlotTypeResponse->Checksum;
-    my $CreateVersion           = $PutSlotTypeResponse->CreateVersion;
-    my $CreatedDate             = $PutSlotTypeResponse->CreatedDate;
-    my $Description             = $PutSlotTypeResponse->Description;
-    my $EnumerationValues       = $PutSlotTypeResponse->EnumerationValues;
-    my $LastUpdatedDate         = $PutSlotTypeResponse->LastUpdatedDate;
-    my $Name                    = $PutSlotTypeResponse->Name;
-    my $ParentSlotTypeSignature = $PutSlotTypeResponse->ParentSlotTypeSignature;
-    my $SlotTypeConfigurations  = $PutSlotTypeResponse->SlotTypeConfigurations;
-    my $ValueSelectionStrategy  = $PutSlotTypeResponse->ValueSelectionStrategy;
-    my $Version                 = $PutSlotTypeResponse->Version;
+    my $checksum          = $PutSlotTypeResponse->checksum;
+    my $createdDate       = $PutSlotTypeResponse->createdDate;
+    my $description       = $PutSlotTypeResponse->description;
+    my $enumerationValues = $PutSlotTypeResponse->enumerationValues;
+    my $lastUpdatedDate   = $PutSlotTypeResponse->lastUpdatedDate;
+    my $name              = $PutSlotTypeResponse->name;
+    my $version           = $PutSlotTypeResponse->version;
 
     # Returns a L<Paws::LexModels::PutSlotTypeResponse> object.
 
@@ -118,6 +104,9 @@ A list of C<EnumerationValue> objects that defines the values that the
 slot type can take. Each value can have a list of C<synonyms>, which
 are additional values that help train the machine learning model about
 the values that it resolves for a slot.
+
+A regular expression slot type doesn't require enumeration values. All
+other slot types require a list of enumeration values.
 
 When Amazon Lex resolves a slot value, it generates a resolution list
 that contains up to five possible values for the slot. If you are using

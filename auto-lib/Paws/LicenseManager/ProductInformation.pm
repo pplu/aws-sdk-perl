@@ -41,8 +41,18 @@ Describes product information for a license configuration.
 
 =head2 B<REQUIRED> ProductInformationFilterList => ArrayRef[L<Paws::LicenseManager::ProductInformationFilter>]
 
-Product information filters. The following filters and logical
-operators are supported:
+A Product information filter consists of a
+C<ProductInformationFilterComparator> which is a logical operator, a
+C<ProductInformationFilterName> which specifies the type of filter
+being declared, and a C<ProductInformationFilterValue> that specifies
+the value to filter on.
+
+Accepted values for C<ProductInformationFilterName> are listed here
+along with descriptions and valid options for
+C<ProductInformationFilterComparator>.
+
+The following filters and are supported when the resource type is
+C<SSM_MANAGED>:
 
 =over
 
@@ -72,10 +82,42 @@ C<Platform Type> - The platform type. Logical operator is C<EQUALS>.
 
 =item *
 
+C<Tag:key> - The key of a tag attached to an AWS resource you wish to
+exclude from automated discovery. Logical operator is C<NOT_EQUALS>.
+The key for your tag must be appended to C<Tag:> following the example:
+C<Tag:name-of-your-key>. C<ProductInformationFilterValue> is optional
+if you are not using values for the key.
+
+=item *
+
+C<AccountId> - The 12-digit ID of an AWS account you wish to exclude
+from automated discovery. Logical operator is C<NOT_EQUALS>.
+
+=item *
+
 C<License Included> - The type of license included. Logical operators
-are C<EQUALS> and C<NOT_EQUALS>. Possible values are
+are C<EQUALS> and C<NOT_EQUALS>. Possible values are:
 C<sql-server-enterprise> | C<sql-server-standard> | C<sql-server-web> |
 C<windows-server-datacenter>.
+
+=back
+
+The following filters and logical operators are supported when the
+resource type is C<RDS>:
+
+=over
+
+=item *
+
+C<Engine Edition> - The edition of the database engine. Logical
+operator is C<EQUALS>. Possible values are: C<oracle-ee> | C<oracle-se>
+| C<oracle-se1> | C<oracle-se2>.
+
+=item *
+
+C<License Pack> - The license pack. Logical operator is C<EQUALS>.
+Possible values are: C<data guard> | C<diagnostic pack sqlt> | C<tuning
+pack sqlt> | C<ols> | C<olap>.
 
 =back
 
@@ -83,7 +125,7 @@ C<windows-server-datacenter>.
 
 =head2 B<REQUIRED> ResourceType => Str
 
-Resource type. The value is C<SSM_MANAGED>.
+Resource type. The possible values are C<SSM_MANAGED> | C<RDS>.
 
 
 

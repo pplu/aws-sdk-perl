@@ -56,7 +56,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/app
 =head2 ApplicationId => Str
 
 The name of the application to launch after the session starts. This is
-the name that you specified as B<Name> in the Image Assistant.
+the name that you specified as B<Name> in the Image Assistant. If your
+fleet is enabled for the B<Desktop> stream view, you can also choose to
+launch directly to the operating system desktop. To do so, specify
+B<Desktop>.
 
 
 

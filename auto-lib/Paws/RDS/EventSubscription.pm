@@ -50,8 +50,8 @@ C<DescribeEventSubscriptions> action.
 
 =head2 CustomerAwsId => Str
 
-The AWS customer account associated with the RDS event notification
-subscription.
+The Amazon Web Services customer account associated with the RDS event
+notification subscription.
 
 
 =head2 CustSubscriptionId => Str

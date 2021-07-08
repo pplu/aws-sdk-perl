@@ -1,6 +1,7 @@
 
 package Paws::CostExplorer::GetCostAndUsageWithResourcesResponse;
   use Moose;
+  has DimensionValueAttributes => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::DimensionValuesWithAttributes]');
   has GroupDefinitions => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::GroupDefinition]');
   has NextPageToken => (is => 'ro', isa => 'Str');
   has ResultsByTime => (is => 'ro', isa => 'ArrayRef[Paws::CostExplorer::ResultByTime]');
@@ -14,6 +15,12 @@ package Paws::CostExplorer::GetCostAndUsageWithResourcesResponse;
 Paws::CostExplorer::GetCostAndUsageWithResourcesResponse
 
 =head1 ATTRIBUTES
+
+
+=head2 DimensionValueAttributes => ArrayRef[L<Paws::CostExplorer::DimensionValuesWithAttributes>]
+
+The attributes that apply to a specific dimension value. For example,
+if the value is a linked account, the attribute is that account name.
 
 
 =head2 GroupDefinitions => ArrayRef[L<Paws::CostExplorer::GroupDefinition>]

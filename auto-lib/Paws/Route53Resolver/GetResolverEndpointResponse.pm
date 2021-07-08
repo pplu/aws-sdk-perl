@@ -16,7 +16,7 @@ Paws::Route53Resolver::GetResolverEndpointResponse
 
 =head2 ResolverEndpoint => L<Paws::Route53Resolver::ResolverEndpoint>
 
-Information about the resolver endpoint that you specified in a
+Information about the Resolver endpoint that you specified in a
 C<GetResolverEndpoint> request.
 
 

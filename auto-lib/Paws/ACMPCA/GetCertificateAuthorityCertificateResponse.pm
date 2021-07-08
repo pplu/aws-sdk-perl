@@ -23,10 +23,9 @@ Base64-encoded certificate authority (CA) certificate.
 =head2 CertificateChain => Str
 
 Base64-encoded certificate chain that includes any intermediate
-certificates and chains up to root on-premises certificate that you
-used to sign your private CA certificate. The chain does not include
-your private CA certificate. If this is a root CA, the value will be
-null.
+certificates and chains up to root certificate that you used to sign
+your private CA certificate. The chain does not include your private CA
+certificate. If this is a root CA, the value will be null.
 
 
 =head2 _request_id => Str

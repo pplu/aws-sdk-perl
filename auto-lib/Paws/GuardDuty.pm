@@ -99,9 +99,19 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DeleteThreatIntelSet', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeOrganizationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::DescribeOrganizationConfiguration', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribePublishingDestination {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DescribePublishingDestination', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisableOrganizationAdminAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::DisableOrganizationAdminAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DisassociateFromMasterAccount {
@@ -112,6 +122,11 @@ package Paws::GuardDuty;
   sub DisassociateMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::DisassociateMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableOrganizationAdminAccount {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::EnableOrganizationAdminAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetDetector {
@@ -149,6 +164,11 @@ package Paws::GuardDuty;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetMasterAccount', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetMemberDetectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetMemberDetectors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetMembers', @_);
@@ -157,6 +177,11 @@ package Paws::GuardDuty;
   sub GetThreatIntelSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetThreatIntelSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetUsageStatistics {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::GetUsageStatistics', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub InviteMembers {
@@ -192,6 +217,11 @@ package Paws::GuardDuty;
   sub ListMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListMembers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListOrganizationAdminAccounts {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::ListOrganizationAdminAccounts', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListPublishingDestinations {
@@ -252,6 +282,16 @@ package Paws::GuardDuty;
   sub UpdateIPSet {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateIPSet', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateMemberDetectors {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateMemberDetectors', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateOrganizationConfiguration {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::GuardDuty::UpdateOrganizationConfiguration', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdatePublishingDestination {
@@ -403,6 +443,29 @@ package Paws::GuardDuty;
 
     return undef
   }
+  sub ListAllOrganizationAdminAccounts {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListOrganizationAdminAccounts(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListOrganizationAdminAccounts(@_, NextToken => $next_result->NextToken);
+        push @{ $result->AdminAccounts }, @{ $next_result->AdminAccounts };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'AdminAccounts') foreach (@{ $result->AdminAccounts });
+        $result = $self->ListOrganizationAdminAccounts(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'AdminAccounts') foreach (@{ $result->AdminAccounts });
+    }
+
+    return undef
+  }
   sub ListAllThreatIntelSets {
     my $self = shift;
 
@@ -428,7 +491,7 @@ package Paws::GuardDuty;
   }
 
 
-  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreatePublishingDestination CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeletePublishingDestination DeleteThreatIntelSet DescribePublishingDestination DisassociateFromMasterAccount DisassociateMembers GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMembers GetThreatIntelSet InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListPublishingDestinations ListTagsForResource ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers TagResource UnarchiveFindings UntagResource UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdatePublishingDestination UpdateThreatIntelSet / }
+  sub operations { qw/AcceptInvitation ArchiveFindings CreateDetector CreateFilter CreateIPSet CreateMembers CreatePublishingDestination CreateSampleFindings CreateThreatIntelSet DeclineInvitations DeleteDetector DeleteFilter DeleteInvitations DeleteIPSet DeleteMembers DeletePublishingDestination DeleteThreatIntelSet DescribeOrganizationConfiguration DescribePublishingDestination DisableOrganizationAdminAccount DisassociateFromMasterAccount DisassociateMembers EnableOrganizationAdminAccount GetDetector GetFilter GetFindings GetFindingsStatistics GetInvitationsCount GetIPSet GetMasterAccount GetMemberDetectors GetMembers GetThreatIntelSet GetUsageStatistics InviteMembers ListDetectors ListFilters ListFindings ListInvitations ListIPSets ListMembers ListOrganizationAdminAccounts ListPublishingDestinations ListTagsForResource ListThreatIntelSets StartMonitoringMembers StopMonitoringMembers TagResource UnarchiveFindings UntagResource UpdateDetector UpdateFilter UpdateFindingsFeedback UpdateIPSet UpdateMemberDetectors UpdateOrganizationConfiguration UpdatePublishingDestination UpdateThreatIntelSet / }
 
 1;
 
@@ -458,21 +521,26 @@ Paws::GuardDuty - Perl Interface to AWS Amazon GuardDuty
 
 Amazon GuardDuty is a continuous security monitoring service that
 analyzes and processes the following data sources: VPC Flow Logs, AWS
-CloudTrail event logs, and DNS logs. It uses threat intelligence feeds,
-such as lists of malicious IPs and domains, and machine learning to
-identify unexpected and potentially unauthorized and malicious activity
+CloudTrail event logs, and DNS logs. It uses threat intelligence feeds
+(such as lists of malicious IPs and domains) and machine learning to
+identify unexpected, potentially unauthorized, and malicious activity
 within your AWS environment. This can include issues like escalations
 of privileges, uses of exposed credentials, or communication with
 malicious IPs, URLs, or domains. For example, GuardDuty can detect
-compromised EC2 instances serving malware or mining bitcoin. It also
-monitors AWS account access behavior for signs of compromise, such as
-unauthorized infrastructure deployments, like instances deployed in a
-region that has never been used, or unusual API calls, like a password
-policy change to reduce password strength. GuardDuty informs you of the
-status of your AWS environment by producing security findings that you
-can view in the GuardDuty console or through Amazon CloudWatch events.
-For more information, see Amazon GuardDuty User Guide
-(https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html).
+compromised EC2 instances that serve malware or mine bitcoin.
+
+GuardDuty also monitors AWS account access behavior for signs of
+compromise. Some examples of this are unauthorized infrastructure
+deployments such as EC2 instances deployed in a Region that has never
+been used, or unusual API calls like a password policy change to reduce
+password strength.
+
+GuardDuty informs you of the status of your AWS environment by
+producing security findings that you can view in the GuardDuty console
+or through Amazon CloudWatch events. For more information, see the I<
+Amazon GuardDuty User Guide
+(https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html)
+>.
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty-2017-11-28>
 
@@ -496,7 +564,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::AcceptInvitation>
 
 Returns: a L<Paws::GuardDuty::AcceptInvitationResponse> instance
 
-Accepts the invitation to be monitored by a master GuardDuty account.
+Accepts the invitation to be monitored by a GuardDuty administrator
+account.
 
 
 =head2 ArchiveFindings
@@ -514,10 +583,11 @@ Each argument is described in detail in: L<Paws::GuardDuty::ArchiveFindings>
 
 Returns: a L<Paws::GuardDuty::ArchiveFindingsResponse> instance
 
-Archives GuardDuty findings specified by the list of finding IDs.
+Archives GuardDuty findings that are specified by the list of finding
+IDs.
 
-Only the master account can archive findings. Member accounts do not
-have permission to archive findings from their accounts.
+Only the administrator account can archive findings. Member accounts
+don't have permission to archive findings from their accounts.
 
 
 =head2 CreateDetector
@@ -527,6 +597,8 @@ have permission to archive findings from their accounts.
 =item Enable => Bool
 
 =item [ClientToken => Str]
+
+=item [DataSources => L<Paws::GuardDuty::DataSourceConfigurations>]
 
 =item [FindingPublishingFrequency => Str]
 
@@ -541,8 +613,9 @@ Returns: a L<Paws::GuardDuty::CreateDetectorResponse> instance
 
 Creates a single Amazon GuardDuty detector. A detector is a resource
 that represents the GuardDuty service. To start using GuardDuty, you
-must create a detector in each region that you enable the service. You
-can have only one detector per account per region.
+must create a detector in each Region where you enable the service. You
+can have only one detector per account per Region. All data sources are
+enabled in a new detector by default.
 
 
 =head2 CreateFilter
@@ -600,11 +673,12 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreateIPSet>
 
 Returns: a L<Paws::GuardDuty::CreateIPSetResponse> instance
 
-Creates a new IPSet, called Trusted IP list in the consoler user
-interface. An IPSet is a list IP addresses trusted for secure
-communication with AWS infrastructure and applications. GuardDuty does
-not generate findings for IP addresses included in IPSets. Only users
-from the master account can use this operation.
+Creates a new IPSet, which is called a trusted IP list in the console
+user interface. An IPSet is a list of IP addresses that are trusted for
+secure communication with AWS infrastructure and applications.
+GuardDuty doesn't generate findings for IP addresses that are included
+in IPSets. Only users from the administrator account can use this
+operation.
 
 
 =head2 CreateMembers
@@ -623,8 +697,20 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreateMembers>
 Returns: a L<Paws::GuardDuty::CreateMembersResponse> instance
 
 Creates member accounts of the current AWS account by specifying a list
-of AWS account IDs. The current AWS account can then invite these
-members to manage GuardDuty in their accounts.
+of AWS account IDs. This step is a prerequisite for managing the
+associated member accounts either by invitation or through an
+organization.
+
+When using C<Create Members> as an organizations delegated
+administrator this action will enable GuardDuty in the added member
+accounts, with the exception of the organization delegated
+administrator account, which must enable GuardDuty prior to being added
+as a member.
+
+If you are adding accounts by invitation use this action after
+GuardDuty has been enabled in potential member accounts and before
+using C<Invite Members>
+(https://docs.aws.amazon.com/guardduty/latest/APIReference/API_InviteMembers.html).
 
 
 =head2 CreatePublishingDestination
@@ -646,8 +732,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreatePublishingDest
 
 Returns: a L<Paws::GuardDuty::CreatePublishingDestinationResponse> instance
 
-Creates a publishing destination to send findings to. The resource to
-send findings to must exist before you use this operation.
+Creates a publishing destination to export findings to. The resource to
+export findings to must exist before you use this operation.
 
 
 =head2 CreateSampleFindings
@@ -695,9 +781,10 @@ Each argument is described in detail in: L<Paws::GuardDuty::CreateThreatIntelSet
 
 Returns: a L<Paws::GuardDuty::CreateThreatIntelSetResponse> instance
 
-Create a new ThreatIntelSet. ThreatIntelSets consist of known malicious
-IP addresses. GuardDuty generates findings based on ThreatIntelSets.
-Only users of the master account can use this operation.
+Creates a new ThreatIntelSet. ThreatIntelSets consist of known
+malicious IP addresses. GuardDuty generates findings based on
+ThreatIntelSets. Only users of the administrator account can use this
+operation.
 
 
 =head2 DeclineInvitations
@@ -713,7 +800,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeclineInvitations>
 
 Returns: a L<Paws::GuardDuty::DeclineInvitationsResponse> instance
 
-Declines invitations sent to the current member account by AWS account
+Declines invitations sent to the current member account by AWS accounts
 specified by their account IDs.
 
 
@@ -730,7 +817,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeleteDetector>
 
 Returns: a L<Paws::GuardDuty::DeleteDetectorResponse> instance
 
-Deletes a Amazon GuardDuty detector specified by the detector ID.
+Deletes an Amazon GuardDuty detector that is specified by the detector
+ID.
 
 
 =head2 DeleteFilter
@@ -784,7 +872,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeleteIPSet>
 Returns: a L<Paws::GuardDuty::DeleteIPSetResponse> instance
 
 Deletes the IPSet specified by the C<ipSetId>. IPSets are called
-Trusted IP lists in the console user interface.
+trusted IP lists in the console user interface.
 
 
 =head2 DeleteMembers
@@ -802,8 +890,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeleteMembers>
 
 Returns: a L<Paws::GuardDuty::DeleteMembersResponse> instance
 
-Deletes GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs.
+Deletes GuardDuty member accounts (to the current GuardDuty
+administrator account) specified by the account IDs.
 
 
 =head2 DeletePublishingDestination
@@ -839,7 +927,24 @@ Each argument is described in detail in: L<Paws::GuardDuty::DeleteThreatIntelSet
 
 Returns: a L<Paws::GuardDuty::DeleteThreatIntelSetResponse> instance
 
-Deletes ThreatIntelSet specified by the ThreatIntelSet ID.
+Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.
+
+
+=head2 DescribeOrganizationConfiguration
+
+=over
+
+=item DetectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::DescribeOrganizationConfiguration>
+
+Returns: a L<Paws::GuardDuty::DescribeOrganizationConfigurationResponse> instance
+
+Returns information about the account selected as the delegated
+administrator for GuardDuty.
 
 
 =head2 DescribePublishingDestination
@@ -861,6 +966,23 @@ Returns information about the publishing destination specified by the
 provided C<destinationId>.
 
 
+=head2 DisableOrganizationAdminAccount
+
+=over
+
+=item AdminAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::DisableOrganizationAdminAccount>
+
+Returns: a L<Paws::GuardDuty::DisableOrganizationAdminAccountResponse> instance
+
+Disables an AWS account within the Organization as the GuardDuty
+delegated administrator.
+
+
 =head2 DisassociateFromMasterAccount
 
 =over
@@ -874,8 +996,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::DisassociateFromMast
 
 Returns: a L<Paws::GuardDuty::DisassociateFromMasterAccountResponse> instance
 
-Disassociates the current GuardDuty member account from its master
-account.
+Disassociates the current GuardDuty member account from its
+administrator account.
 
 
 =head2 DisassociateMembers
@@ -894,7 +1016,24 @@ Each argument is described in detail in: L<Paws::GuardDuty::DisassociateMembers>
 Returns: a L<Paws::GuardDuty::DisassociateMembersResponse> instance
 
 Disassociates GuardDuty member accounts (to the current GuardDuty
-master account) specified by the account IDs.
+administrator account) specified by the account IDs.
+
+
+=head2 EnableOrganizationAdminAccount
+
+=over
+
+=item AdminAccountId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::EnableOrganizationAdminAccount>
+
+Returns: a L<Paws::GuardDuty::EnableOrganizationAdminAccountResponse> instance
+
+Enables an AWS account within the organization as the GuardDuty
+delegated administrator.
 
 
 =head2 GetDetector
@@ -968,7 +1107,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::GetFindingsStatistic
 
 Returns: a L<Paws::GuardDuty::GetFindingsStatisticsResponse> instance
 
-Lists Amazon GuardDuty findings' statistics for the specified detector
+Lists Amazon GuardDuty findings statistics for the specified detector
 ID.
 
 
@@ -1019,8 +1158,27 @@ Each argument is described in detail in: L<Paws::GuardDuty::GetMasterAccount>
 
 Returns: a L<Paws::GuardDuty::GetMasterAccountResponse> instance
 
-Provides the details for the GuardDuty master account associated with
-the current GuardDuty member account.
+Provides the details for the GuardDuty administrator account associated
+with the current GuardDuty member account.
+
+
+=head2 GetMemberDetectors
+
+=over
+
+=item AccountIds => ArrayRef[Str|Undef]
+
+=item DetectorId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::GetMemberDetectors>
+
+Returns: a L<Paws::GuardDuty::GetMemberDetectorsResponse> instance
+
+Describes which data sources are enabled for the member account's
+detector.
 
 
 =head2 GetMembers
@@ -1038,8 +1196,8 @@ Each argument is described in detail in: L<Paws::GuardDuty::GetMembers>
 
 Returns: a L<Paws::GuardDuty::GetMembersResponse> instance
 
-Retrieves GuardDuty member accounts (to the current GuardDuty master
-account) specified by the account IDs.
+Retrieves GuardDuty member accounts (of the current GuardDuty
+administrator account) specified by the account IDs.
 
 
 =head2 GetThreatIntelSet
@@ -1059,6 +1217,38 @@ Returns: a L<Paws::GuardDuty::GetThreatIntelSetResponse> instance
 
 Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
 ID.
+
+
+=head2 GetUsageStatistics
+
+=over
+
+=item DetectorId => Str
+
+=item UsageCriteria => L<Paws::GuardDuty::UsageCriteria>
+
+=item UsageStatisticType => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [Unit => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::GetUsageStatistics>
+
+Returns: a L<Paws::GuardDuty::GetUsageStatisticsResponse> instance
+
+Lists Amazon GuardDuty usage statistics over the last 30 days for the
+specified detector ID. For newly enabled detectors or data sources the
+cost returned will include only the usage so far under 30 days, this
+may differ from the cost metrics in the console, which projects usage
+over 30 days to provide a monthly cost estimate. For more information
+see Understanding How Usage Costs are Calculated
+(https://docs.aws.amazon.com/guardduty/latest/ug/monitoring_costs.html#usage-calculations).
 
 
 =head2 InviteMembers
@@ -1081,9 +1271,9 @@ Each argument is described in detail in: L<Paws::GuardDuty::InviteMembers>
 Returns: a L<Paws::GuardDuty::InviteMembersResponse> instance
 
 Invites other AWS accounts (created as members of the current AWS
-account by CreateMembers) to enable GuardDuty and allow the current AWS
-account to view and manage these accounts' GuardDuty findings on their
-behalf as the master account.
+account by CreateMembers) to enable GuardDuty, and allow the current
+AWS account to view and manage these accounts' findings on their behalf
+as the GuardDuty administrator account.
 
 
 =head2 ListDetectors
@@ -1187,7 +1377,7 @@ Returns: a L<Paws::GuardDuty::ListIPSetsResponse> instance
 
 Lists the IPSets of the GuardDuty service specified by the detector ID.
 If you use this operation from a member account, the IPSets returned
-are the IPSets from the associated master account.
+are the IPSets from the associated administrator account.
 
 
 =head2 ListMembers
@@ -1210,7 +1400,25 @@ Each argument is described in detail in: L<Paws::GuardDuty::ListMembers>
 Returns: a L<Paws::GuardDuty::ListMembersResponse> instance
 
 Lists details about all member accounts for the current GuardDuty
-master account.
+administrator account.
+
+
+=head2 ListOrganizationAdminAccounts
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::ListOrganizationAdminAccounts>
+
+Returns: a L<Paws::GuardDuty::ListOrganizationAdminAccountsResponse> instance
+
+Lists the accounts configured as GuardDuty delegated administrators.
 
 
 =head2 ListPublishingDestinations
@@ -1248,9 +1456,9 @@ Each argument is described in detail in: L<Paws::GuardDuty::ListTagsForResource>
 Returns: a L<Paws::GuardDuty::ListTagsForResourceResponse> instance
 
 Lists tags for a resource. Tagging is currently supported for
-detectors, finding filters, IP sets, and Threat Intel sets, with a
+detectors, finding filters, IP sets, and threat intel sets, with a
 limit of 50 tags per resource. When invoked, this operation returns all
-assigned tags for a given resource..
+assigned tags for a given resource.
 
 
 =head2 ListThreatIntelSets
@@ -1272,7 +1480,7 @@ Returns: a L<Paws::GuardDuty::ListThreatIntelSetsResponse> instance
 
 Lists the ThreatIntelSets of the GuardDuty service specified by the
 detector ID. If you use this operation from a member account, the
-ThreatIntelSets associated with the master account are returned.
+ThreatIntelSets associated with the administrator account are returned.
 
 
 =head2 StartMonitoringMembers
@@ -1310,8 +1518,9 @@ Each argument is described in detail in: L<Paws::GuardDuty::StopMonitoringMember
 
 Returns: a L<Paws::GuardDuty::StopMonitoringMembersResponse> instance
 
-Stops GuardDuty monitoring for the specified member accounnts. Use the
-C<StartMonitoringMembers> to restart monitoring for those accounts.
+Stops GuardDuty monitoring for the specified member accounts. Use the
+C<StartMonitoringMembers> operation to restart monitoring for those
+accounts.
 
 
 =head2 TagResource
@@ -1373,6 +1582,8 @@ Removes tags from a resource.
 =over
 
 =item DetectorId => Str
+
+=item [DataSources => L<Paws::GuardDuty::DataSourceConfigurations>]
 
 =item [Enable => Bool]
 
@@ -1460,6 +1671,46 @@ Returns: a L<Paws::GuardDuty::UpdateIPSetResponse> instance
 Updates the IPSet specified by the IPSet ID.
 
 
+=head2 UpdateMemberDetectors
+
+=over
+
+=item AccountIds => ArrayRef[Str|Undef]
+
+=item DetectorId => Str
+
+=item [DataSources => L<Paws::GuardDuty::DataSourceConfigurations>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::UpdateMemberDetectors>
+
+Returns: a L<Paws::GuardDuty::UpdateMemberDetectorsResponse> instance
+
+Contains information on member accounts to be updated.
+
+
+=head2 UpdateOrganizationConfiguration
+
+=over
+
+=item AutoEnable => Bool
+
+=item DetectorId => Str
+
+=item [DataSources => L<Paws::GuardDuty::OrganizationDataSourceConfigurations>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::GuardDuty::UpdateOrganizationConfiguration>
+
+Returns: a L<Paws::GuardDuty::UpdateOrganizationConfigurationResponse> instance
+
+Updates the delegated administrator account with the values provided.
+
+
 =head2 UpdatePublishingDestination
 
 =over
@@ -1502,7 +1753,7 @@ Each argument is described in detail in: L<Paws::GuardDuty::UpdateThreatIntelSet
 
 Returns: a L<Paws::GuardDuty::UpdateThreatIntelSetResponse> instance
 
-Updates the ThreatIntelSet specified by ThreatIntelSet ID.
+Updates the ThreatIntelSet specified by the ThreatIntelSet ID.
 
 
 
@@ -1581,6 +1832,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Members, passing the object as the first parameter, and the string 'Members' as the second parameter 
 
 If not, it will return a a L<Paws::GuardDuty::ListMembersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllOrganizationAdminAccounts(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllOrganizationAdminAccounts([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - AdminAccounts, passing the object as the first parameter, and the string 'AdminAccounts' as the second parameter 
+
+If not, it will return a a L<Paws::GuardDuty::ListOrganizationAdminAccountsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllThreatIntelSets(sub { },DetectorId => Str, [MaxResults => Int, NextToken => Str])

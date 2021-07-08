@@ -49,6 +49,9 @@ The ID of the pipeline execution associated with the stage.
 The status of the stage, or for a completed stage, the last status of
 the stage.
 
+A status of cancelled means that the pipelineE<rsquo>s definition was
+updated before the stage execution could be completed.
+
 
 
 =head1 SEE ALSO

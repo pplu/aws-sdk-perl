@@ -50,7 +50,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sto
 
 =head2 GatewayARN => Str
 
-The Amazon resource Name (ARN) of the gateway whose file shares you
+The Amazon Resource Name (ARN) of the gateway whose file shares you
 want to list. If this field is not present, all file shares under your
 account are listed.
 

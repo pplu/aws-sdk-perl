@@ -86,23 +86,23 @@ associated metric and consists of two or more terms, which are
 comprised of lowercase alphanumeric characters, separated by a hyphen.
 Examples are email-open-rate and successful-delivery-rate. For a list
 of valid values, see the Amazon Pinpoint Developer Guide
-(https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
+(https://docs.aws.amazon.com/pinpoint/latest/developerguide/analytics-standard-metrics.html).
 
 
 
 =head2 NextToken => Str
 
 The string that specifies which page of results to return in a
-paginated response. This parameter is currently not supported for
-application, campaign, and journey metrics.
+paginated response. This parameter is not supported for application,
+campaign, and journey metrics.
 
 
 
 =head2 PageSize => Str
 
 The maximum number of items to include in each page of a paginated
-response. This parameter is currently not supported for application,
-campaign, and journey metrics.
+response. This parameter is not supported for application, campaign,
+and journey metrics.
 
 
 

@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about the product code for the Ec2 instance.
+Contains information about the product code for the EC2 instance.
 
 =head1 ATTRIBUTES
 
 
 =head2 Code => Str
 
-Product code information.
+The product code information.
 
 
 =head2 ProductType => Str
 
-Product code type.
+The product code type.
 
 
 

@@ -51,7 +51,7 @@ The ID of the detector associated with the findings to unarchive.
 
 =head2 B<REQUIRED> FindingIds => ArrayRef[Str|Undef]
 
-IDs of the findings to unarchive.
+The IDs of the findings to unarchive.
 
 
 

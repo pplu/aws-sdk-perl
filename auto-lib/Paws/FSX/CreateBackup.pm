@@ -34,8 +34,9 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ClientRequestToken => 'MyClientRequestToken',    # OPTIONAL
       Tags               => [
         {
-          Key   => 'MyTagKey',      # min: 1, max: 128; OPTIONAL
-          Value => 'MyTagValue',    # max: 256; OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # max: 256
+
         },
         ...
       ],    # OPTIONAL
@@ -69,8 +70,11 @@ The ID of the file system to back up.
 
 =head2 Tags => ArrayRef[L<Paws::FSX::Tag>]
 
-The tags to apply to the backup at backup creation. The key value of
-the C<Name> tag appears in the console as the backup name.
+(Optional) The tags to apply to the backup at backup creation. The key
+value of the C<Name> tag appears in the console as the backup name. If
+you have set C<CopyTagsToBackups> to true, and you specify one or more
+tags using the C<CreateBackup> action, no existing file system tags are
+copied from the file system to the backup.
 
 
 

@@ -2,6 +2,8 @@
 package Paws::ImageBuilder::Distribution;
   use Moose;
   has AmiDistributionConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::AmiDistributionConfiguration', request_name => 'amiDistributionConfiguration', traits => ['NameInRequest']);
+  has ContainerDistributionConfiguration => (is => 'ro', isa => 'Paws::ImageBuilder::ContainerDistributionConfiguration', request_name => 'containerDistributionConfiguration', traits => ['NameInRequest']);
+  has LaunchTemplateConfigurations => (is => 'ro', isa => 'ArrayRef[Paws::ImageBuilder::LaunchTemplateConfiguration]', request_name => 'launchTemplateConfigurations', traits => ['NameInRequest']);
   has LicenseConfigurationArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'licenseConfigurationArns', traits => ['NameInRequest']);
   has Region => (is => 'ro', isa => 'Str', request_name => 'region', traits => ['NameInRequest'], required => 1);
 
@@ -42,7 +44,19 @@ Defines the settings for a specific Region.
 
 =head2 AmiDistributionConfiguration => L<Paws::ImageBuilder::AmiDistributionConfiguration>
 
-The specific AMI settings (for example, launch permissions, AMI tags).
+The specific AMI settings; for example, launch permissions or AMI tags.
+
+
+=head2 ContainerDistributionConfiguration => L<Paws::ImageBuilder::ContainerDistributionConfiguration>
+
+Container distribution settings for encryption, licensing, and sharing
+in a specific Region.
+
+
+=head2 LaunchTemplateConfigurations => ArrayRef[L<Paws::ImageBuilder::LaunchTemplateConfiguration>]
+
+A group of launchTemplateConfiguration settings that apply to image
+distribution for specified accounts.
 
 
 =head2 LicenseConfigurationArns => ArrayRef[Str|Undef]

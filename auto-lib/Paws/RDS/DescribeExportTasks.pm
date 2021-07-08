@@ -4,7 +4,7 @@ package Paws::RDS::DescribeExportTasks;
   has ExportTaskIdentifier => (is => 'ro', isa => 'Str');
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Filter]');
   has Marker => (is => 'ro', isa => 'Str');
-  has MaxRecords => (is => 'ro', isa => 'Str');
+  has MaxRecords => (is => 'ro', isa => 'Int');
   has SourceArn => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -42,7 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ...
       ],                                     # OPTIONAL
       Marker     => 'MyString',              # OPTIONAL
-      MaxRecords => 'MyString',              # OPTIONAL
+      MaxRecords => 1,                       # OPTIONAL
       SourceArn  => 'MyString',              # OPTIONAL
     );
 
@@ -68,7 +68,7 @@ The identifier of the snapshot export task to be described.
 
 Filters specify one or more snapshot exports to describe. The filters
 are specified as name-value pairs that define what to include in the
-output.
+output. Filter names and values are case-sensitive.
 
 Supported filters include the following:
 
@@ -89,7 +89,8 @@ to Amazon S3
 
 =item *
 
-C<status> - The status of the export task.
+C<status> - The status of the export task. Must be lowercase, for
+example, C<complete>.
 
 =back
 
@@ -105,7 +106,7 @@ specified by the C<MaxRecords> parameter.
 
 
 
-=head2 MaxRecords => Str
+=head2 MaxRecords => Int
 
 The maximum number of records to include in the response. If more
 records exist than the specified value, a pagination token called a

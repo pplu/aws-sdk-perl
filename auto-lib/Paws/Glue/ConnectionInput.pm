@@ -50,8 +50,44 @@ These key-value pairs define parameters for the connection.
 
 =head2 B<REQUIRED> ConnectionType => Str
 
-The type of the connection. Currently, only JDBC is supported; SFTP is
-not supported.
+The type of the connection. Currently, these types are supported:
+
+=over
+
+=item *
+
+C<JDBC> - Designates a connection to a database through Java Database
+Connectivity (JDBC).
+
+=item *
+
+C<KAFKA> - Designates a connection to an Apache Kafka streaming
+platform.
+
+=item *
+
+C<MONGODB> - Designates a connection to a MongoDB document database.
+
+=item *
+
+C<NETWORK> - Designates a network connection to a data source within an
+Amazon Virtual Private Cloud environment (Amazon VPC).
+
+=item *
+
+C<MARKETPLACE> - Uses configuration settings contained in a connector
+purchased from Marketplace to read from and write to data stores that
+are not natively supported by Glue.
+
+=item *
+
+C<CUSTOM> - Uses configuration settings contained in a custom connector
+to read from and write to data stores that are not natively supported
+by Glue.
+
+=back
+
+SFTP is not supported.
 
 
 =head2 Description => Str

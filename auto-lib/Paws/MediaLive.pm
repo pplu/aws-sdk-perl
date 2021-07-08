@@ -14,9 +14,34 @@ package Paws::MediaLive;
   with 'Paws::API::Caller', 'Paws::API::EndpointResolver', 'Paws::Net::V4Signature', 'Paws::Net::RestJsonCaller';
 
   
+  sub AcceptInputDeviceTransfer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::AcceptInputDeviceTransfer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchDelete {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::BatchDelete', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchStart {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::BatchStart', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub BatchStop {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::BatchStop', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub BatchUpdateSchedule {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::BatchUpdateSchedule', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CancelInputDeviceTransfer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::CancelInputDeviceTransfer', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateChannel {
@@ -42,6 +67,11 @@ package Paws::MediaLive;
   sub CreateMultiplexProgram {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::CreateMultiplexProgram', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreatePartnerInput {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::CreatePartnerInput', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateTags {
@@ -99,6 +129,16 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeInput', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInputDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeInputDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeInputDeviceThumbnail {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeInputDeviceThumbnail', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInputSecurityGroup {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::DescribeInputSecurityGroup', @_);
@@ -132,6 +172,16 @@ package Paws::MediaLive;
   sub ListChannels {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::ListChannels', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListInputDevices {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListInputDevices', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ListInputDeviceTransfers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::ListInputDeviceTransfers', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ListInputs {
@@ -174,6 +224,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::PurchaseOffering', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RejectInputDeviceTransfer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::RejectInputDeviceTransfer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::StartChannel', @_);
@@ -194,6 +249,11 @@ package Paws::MediaLive;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::StopMultiplex', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub TransferInputDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::TransferInputDevice', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub UpdateChannel {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateChannel', @_);
@@ -207,6 +267,11 @@ package Paws::MediaLive;
   sub UpdateInput {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateInput', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub UpdateInputDevice {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::MediaLive::UpdateInputDevice', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub UpdateInputSecurityGroup {
@@ -272,6 +337,52 @@ package Paws::MediaLive;
         $result = $self->ListChannels(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'Channels') foreach (@{ $result->Channels });
+    }
+
+    return undef
+  }
+  sub ListAllInputDevices {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInputDevices(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListInputDevices(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InputDevices }, @{ $next_result->InputDevices };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InputDevices') foreach (@{ $result->InputDevices });
+        $result = $self->ListInputDevices(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InputDevices') foreach (@{ $result->InputDevices });
+    }
+
+    return undef
+  }
+  sub ListAllInputDeviceTransfers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->ListInputDeviceTransfers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->ListInputDeviceTransfers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InputDeviceTransfers }, @{ $next_result->InputDeviceTransfers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InputDeviceTransfers') foreach (@{ $result->InputDeviceTransfers });
+        $result = $self->ListInputDeviceTransfers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InputDeviceTransfers') foreach (@{ $result->InputDeviceTransfers });
     }
 
     return undef
@@ -416,7 +527,7 @@ package Paws::MediaLive;
   }
 
 
-  sub operations { qw/BatchUpdateSchedule CreateChannel CreateInput CreateInputSecurityGroup CreateMultiplex CreateMultiplexProgram CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteMultiplex DeleteMultiplexProgram DeleteReservation DeleteSchedule DeleteTags DescribeChannel DescribeInput DescribeInputSecurityGroup DescribeMultiplex DescribeMultiplexProgram DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputs ListInputSecurityGroups ListMultiplexes ListMultiplexPrograms ListOfferings ListReservations ListTagsForResource PurchaseOffering StartChannel StartMultiplex StopChannel StopMultiplex UpdateChannel UpdateChannelClass UpdateInput UpdateInputSecurityGroup UpdateMultiplex UpdateMultiplexProgram UpdateReservation / }
+  sub operations { qw/AcceptInputDeviceTransfer BatchDelete BatchStart BatchStop BatchUpdateSchedule CancelInputDeviceTransfer CreateChannel CreateInput CreateInputSecurityGroup CreateMultiplex CreateMultiplexProgram CreatePartnerInput CreateTags DeleteChannel DeleteInput DeleteInputSecurityGroup DeleteMultiplex DeleteMultiplexProgram DeleteReservation DeleteSchedule DeleteTags DescribeChannel DescribeInput DescribeInputDevice DescribeInputDeviceThumbnail DescribeInputSecurityGroup DescribeMultiplex DescribeMultiplexProgram DescribeOffering DescribeReservation DescribeSchedule ListChannels ListInputDevices ListInputDeviceTransfers ListInputs ListInputSecurityGroups ListMultiplexes ListMultiplexPrograms ListOfferings ListReservations ListTagsForResource PurchaseOffering RejectInputDeviceTransfer StartChannel StartMultiplex StopChannel StopMultiplex TransferInputDevice UpdateChannel UpdateChannelClass UpdateInput UpdateInputDevice UpdateInputSecurityGroup UpdateMultiplex UpdateMultiplexProgram UpdateReservation / }
 
 1;
 
@@ -451,6 +562,81 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/med
 
 =head1 METHODS
 
+=head2 AcceptInputDeviceTransfer
+
+=over
+
+=item InputDeviceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::AcceptInputDeviceTransfer>
+
+Returns: a L<Paws::MediaLive::AcceptInputDeviceTransferResponse> instance
+
+Accept an incoming input device transfer. The ownership of the device
+will transfer to your AWS account.
+
+
+=head2 BatchDelete
+
+=over
+
+=item [ChannelIds => ArrayRef[Str|Undef]]
+
+=item [InputIds => ArrayRef[Str|Undef]]
+
+=item [InputSecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [MultiplexIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::BatchDelete>
+
+Returns: a L<Paws::MediaLive::BatchDeleteResponse> instance
+
+Starts delete of resources.
+
+
+=head2 BatchStart
+
+=over
+
+=item [ChannelIds => ArrayRef[Str|Undef]]
+
+=item [MultiplexIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::BatchStart>
+
+Returns: a L<Paws::MediaLive::BatchStartResponse> instance
+
+Starts existing resources
+
+
+=head2 BatchStop
+
+=over
+
+=item [ChannelIds => ArrayRef[Str|Undef]]
+
+=item [MultiplexIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::BatchStop>
+
+Returns: a L<Paws::MediaLive::BatchStopResponse> instance
+
+Stops running resources
+
+
 =head2 BatchUpdateSchedule
 
 =over
@@ -471,9 +657,27 @@ Returns: a L<Paws::MediaLive::BatchUpdateScheduleResponse> instance
 Update a channel schedule
 
 
+=head2 CancelInputDeviceTransfer
+
+=over
+
+=item InputDeviceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::CancelInputDeviceTransfer>
+
+Returns: a L<Paws::MediaLive::CancelInputDeviceTransferResponse> instance
+
+Cancel an input device transfer that you have requested.
+
+
 =head2 CreateChannel
 
 =over
+
+=item [CdiInputSpecification => L<Paws::MediaLive::CdiInputSpecification>]
 
 =item [ChannelClass => Str]
 
@@ -497,6 +701,8 @@ Update a channel schedule
 
 =item [Tags => L<Paws::MediaLive::Tags>]
 
+=item [Vpc => L<Paws::MediaLive::VpcOutputSettings>]
+
 
 =back
 
@@ -512,6 +718,8 @@ Creates a new channel
 =over
 
 =item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
+
+=item [InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceSettings>]]
 
 =item [InputSecurityGroups => ArrayRef[Str|Undef]]
 
@@ -601,6 +809,26 @@ Each argument is described in detail in: L<Paws::MediaLive::CreateMultiplexProgr
 Returns: a L<Paws::MediaLive::CreateMultiplexProgramResponse> instance
 
 Create a new program in the multiplex.
+
+
+=head2 CreatePartnerInput
+
+=over
+
+=item InputId => Str
+
+=item [RequestId => Str]
+
+=item [Tags => L<Paws::MediaLive::Tags>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::CreatePartnerInput>
+
+Returns: a L<Paws::MediaLive::CreatePartnerInputResponse> instance
+
+Create a partner input
 
 
 =head2 CreateTags
@@ -785,6 +1013,40 @@ Returns: a L<Paws::MediaLive::DescribeInputResponse> instance
 Produces details about an input
 
 
+=head2 DescribeInputDevice
+
+=over
+
+=item InputDeviceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeInputDevice>
+
+Returns: a L<Paws::MediaLive::DescribeInputDeviceResponse> instance
+
+Gets the details for the input device
+
+
+=head2 DescribeInputDeviceThumbnail
+
+=over
+
+=item Accept => Str
+
+=item InputDeviceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::DescribeInputDeviceThumbnail>
+
+Returns: a L<Paws::MediaLive::DescribeInputDeviceThumbnailResponse> instance
+
+Get the latest thumbnail data for the input device.
+
+
 =head2 DescribeInputSecurityGroup
 
 =over
@@ -903,6 +1165,46 @@ Each argument is described in detail in: L<Paws::MediaLive::ListChannels>
 Returns: a L<Paws::MediaLive::ListChannelsResponse> instance
 
 Produces list of channels that have been created
+
+
+=head2 ListInputDevices
+
+=over
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListInputDevices>
+
+Returns: a L<Paws::MediaLive::ListInputDevicesResponse> instance
+
+List input devices
+
+
+=head2 ListInputDeviceTransfers
+
+=over
+
+=item TransferType => Str
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::ListInputDeviceTransfers>
+
+Returns: a L<Paws::MediaLive::ListInputDeviceTransfersResponse> instance
+
+List input devices that are currently being transferred. List input
+devices that you are transferring from your AWS account or input
+devices that another AWS account is transferring to you.
 
 
 =head2 ListInputs
@@ -1091,6 +1393,22 @@ Returns: a L<Paws::MediaLive::PurchaseOfferingResponse> instance
 Purchase an offering and create a reservation.
 
 
+=head2 RejectInputDeviceTransfer
+
+=over
+
+=item InputDeviceId => Str
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::RejectInputDeviceTransfer>
+
+Returns: a L<Paws::MediaLive::RejectInputDeviceTransferResponse> instance
+
+Reject the transfer of the specified input device to your AWS account.
+
+
 =head2 StartChannel
 
 =over
@@ -1157,11 +1475,36 @@ Stops a running multiplex. If the multiplex isn't running, this action
 has no effect.
 
 
+=head2 TransferInputDevice
+
+=over
+
+=item InputDeviceId => Str
+
+=item [TargetCustomerId => Str]
+
+=item [TargetRegion => Str]
+
+=item [TransferMessage => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::TransferInputDevice>
+
+Returns: a L<Paws::MediaLive::TransferInputDeviceResponse> instance
+
+Start an input device transfer to another AWS account. After you make
+the request, the other account must accept or reject the transfer.
+
+
 =head2 UpdateChannel
 
 =over
 
 =item ChannelId => Str
+
+=item [CdiInputSpecification => L<Paws::MediaLive::CdiInputSpecification>]
 
 =item [Destinations => ArrayRef[L<Paws::MediaLive::OutputDestination>]]
 
@@ -1213,6 +1556,8 @@ Changes the class of the channel.
 
 =item [Destinations => ArrayRef[L<Paws::MediaLive::InputDestinationRequest>]]
 
+=item [InputDevices => ArrayRef[L<Paws::MediaLive::InputDeviceRequest>]]
+
 =item [InputSecurityGroups => ArrayRef[Str|Undef]]
 
 =item [MediaConnectFlows => ArrayRef[L<Paws::MediaLive::MediaConnectFlowRequest>]]
@@ -1231,6 +1576,28 @@ Each argument is described in detail in: L<Paws::MediaLive::UpdateInput>
 Returns: a L<Paws::MediaLive::UpdateInputResponse> instance
 
 Updates an input.
+
+
+=head2 UpdateInputDevice
+
+=over
+
+=item InputDeviceId => Str
+
+=item [HdDeviceSettings => L<Paws::MediaLive::InputDeviceConfigurableSettings>]
+
+=item [Name => Str]
+
+=item [UhdDeviceSettings => L<Paws::MediaLive::InputDeviceConfigurableSettings>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::MediaLive::UpdateInputDevice>
+
+Returns: a L<Paws::MediaLive::UpdateInputDeviceResponse> instance
+
+Updates the parameters for the input device.
 
 
 =head2 UpdateInputSecurityGroup
@@ -1333,6 +1700,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - Channels, passing the object as the first parameter, and the string 'Channels' as the second parameter 
 
 If not, it will return a a L<Paws::MediaLive::ListChannelsResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInputDevices(sub { },[MaxResults => Int, NextToken => Str])
+
+=head2 ListAllInputDevices([MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InputDevices, passing the object as the first parameter, and the string 'InputDevices' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::ListInputDevicesResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 ListAllInputDeviceTransfers(sub { },TransferType => Str, [MaxResults => Int, NextToken => Str])
+
+=head2 ListAllInputDeviceTransfers(TransferType => Str, [MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InputDeviceTransfers, passing the object as the first parameter, and the string 'InputDeviceTransfers' as the second parameter 
+
+If not, it will return a a L<Paws::MediaLive::ListInputDeviceTransfersResponse> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 ListAllInputs(sub { },[MaxResults => Int, NextToken => Str])

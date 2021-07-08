@@ -47,8 +47,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 
 =head2 B<REQUIRED> Arn => Str
 
-The ARN of the resource group for which you want a list of tags. The
-resource must exist within the account you are using.
+The ARN of the resource group whose tags you want to retrieve.
 
 
 

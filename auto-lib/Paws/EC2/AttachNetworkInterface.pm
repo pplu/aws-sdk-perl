@@ -4,6 +4,7 @@ package Paws::EC2::AttachNetworkInterface;
   has DeviceIndex => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'deviceIndex' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has InstanceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'instanceId' , required => 1);
+  has NetworkCardIndex => (is => 'ro', isa => 'Int');
   has NetworkInterfaceId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'networkInterfaceId' , required => 1);
 
   use MooseX::ClassAttribute;
@@ -68,6 +69,14 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 =head2 B<REQUIRED> InstanceId => Str
 
 The ID of the instance.
+
+
+
+=head2 NetworkCardIndex => Int
+
+The index of the network card. Some instance types support multiple
+network cards. The primary network interface must be assigned to
+network card index 0. The default is network card index 0.
 
 
 

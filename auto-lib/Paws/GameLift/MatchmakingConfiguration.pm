@@ -9,6 +9,7 @@ package Paws::GameLift::MatchmakingConfiguration;
   has CreationTime => (is => 'ro', isa => 'Str');
   has CustomEventData => (is => 'ro', isa => 'Str');
   has Description => (is => 'ro', isa => 'Str');
+  has FlexMatchMode => (is => 'ro', isa => 'Str');
   has GameProperties => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::GameProperty]');
   has GameSessionData => (is => 'ro', isa => 'Str');
   has GameSessionQueueArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
@@ -58,23 +59,26 @@ matchmaking requests must specify a matchmaking configuration.
 
 A flag that indicates whether a match that was created with this
 configuration must be accepted by the matched players. To require
-acceptance, set to TRUE.
+acceptance, set to TRUE. When this option is enabled, matchmaking
+tickets use the status C<REQUIRES_ACCEPTANCE> to indicate when a
+completed potential match is waiting for player acceptance.
 
 
 =head2 AcceptanceTimeoutSeconds => Int
 
 The length of time (in seconds) to wait for players to accept a
-proposed match. If any player rejects the match or fails to accept
-before the timeout, the ticket continues to look for an acceptable
-match.
+proposed match, if acceptance is required. If any player rejects the
+match or fails to accept before the timeout, the ticket continues to
+look for an acceptable match.
 
 
 =head2 AdditionalPlayerCount => Int
 
 The number of player slots in a match to keep open for future players.
-For example, assume that the configuration's rule set specifies a match
-for a single 12-person team. If the additional player count is set to
-2, only 10 players are initially selected for the match.
+For example, if the configuration's rule set specifies a match for a
+single 12-person team, and the additional player count is set to 2,
+only 10 players are selected for the match. This parameter is not used
+when C<FlexMatchMode> is set to C<STANDALONE>.
 
 
 =head2 BackfillMode => Str
@@ -84,24 +88,28 @@ configuration. MANUAL indicates that the game makes backfill requests
 or does not use the match backfill feature. AUTOMATIC indicates that
 GameLift creates StartMatchBackfill requests whenever a game session
 has one or more open slots. Learn more about manual and automatic
-backfill in Backfill Existing Games with FlexMatch
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-backfill.html).
+backfill in Backfill existing games with FlexMatch
+(https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html).
+Automatic backfill is not available when C<FlexMatchMode> is set to
+C<STANDALONE>.
 
 
 =head2 ConfigurationArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a GameLift matchmaking configuration resource and
-uniquely identifies it. ARNs are unique across all Regions. In a
-GameLift configuration ARN, the resource ID matches the I<Name> value.
+uniquely identifies it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::matchmakingconfiguration/E<lt>matchmaking
+configuration nameE<gt>>. In a GameLift configuration ARN, the resource
+ID matches the I<Name> value.
 
 
 =head2 CreationTime => Str
 
-The time stamp indicating when this data object was created. The format
-is a number expressed in Unix time as milliseconds (for example
-"1469498468.057").
+A time stamp indicating when this data object was created. Format is a
+number expressed in Unix time as milliseconds (for example
+C<"1469498468.057">).
 
 
 =head2 CustomEventData => Str
@@ -115,15 +123,39 @@ configuration.
 A descriptive label that is associated with matchmaking configuration.
 
 
+=head2 FlexMatchMode => Str
+
+Indicates whether this matchmaking configuration is being used with
+GameLift hosting or as a standalone matchmaking solution.
+
+=over
+
+=item *
+
+B<STANDALONE> - FlexMatch forms matches and returns match information,
+including players and team assignments, in a MatchmakingSucceeded
+(https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-events.html#match-events-matchmakingsucceeded)
+event.
+
+=item *
+
+B<WITH_QUEUE> - FlexMatch forms matches and uses the specified GameLift
+queue to start a game session for the match.
+
+=back
+
+
+
 =head2 GameProperties => ArrayRef[L<Paws::GameLift::GameProperty>]
 
-A set of custom properties for a game session, formatted as key-value
+A set of custom properties for a game session, formatted as key:value
 pairs. These properties are passed to a game server process in the
 GameSession object with a request to start a new game session (see
 Start a Game Session
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
-for a successful match.
+for a successful match. This parameter is not used when
+C<FlexMatchMode> is set to C<STANDALONE>.
 
 
 =head2 GameSessionData => Str
@@ -134,25 +166,28 @@ object with a request to start a new game session (see Start a Game
 Session
 (https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-sdk-server-api.html#gamelift-sdk-server-startsession)).
 This information is added to the new GameSession object that is created
-for a successful match.
+for a successful match. This parameter is not used when
+C<FlexMatchMode> is set to C<STANDALONE>.
 
 
 =head2 GameSessionQueueArns => ArrayRef[Str|Undef]
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+The Amazon Resource Name (ARN
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 that is assigned to a GameLift game session queue resource and uniquely
-identifies it. ARNs are unique across all Regions. GameLift uses the
-listed queues when placing game sessions for matches that are created
-with this matchmaking configuration. Queues can be located in any
-Region.
+identifies it. ARNs are unique across all Regions. Format is
+C<arn:aws:gamelift:E<lt>regionE<gt>::gamesessionqueue/E<lt>queue
+nameE<gt>>. Queues can be located in any Region. Queues are used to
+start new GameLift-hosted game sessions for matches that are created
+with this matchmaking configuration. This property is not set when
+C<FlexMatchMode> is set to C<STANDALONE>.
 
 
 =head2 Name => Str
 
-A unique identifier for a matchmaking configuration. This name is used
-to identify the configuration associated with a matchmaking request or
-ticket.
+A unique identifier for the matchmaking configuration. This name is
+used to identify the configuration associated with a matchmaking
+request or ticket.
 
 
 =head2 NotificationTarget => Str
@@ -170,14 +205,14 @@ be resubmitted as needed.
 =head2 RuleSetArn => Str
 
 The Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/s3-arn-format.html))
 associated with the GameLift matchmaking rule set resource that this
 configuration uses.
 
 
 =head2 RuleSetName => Str
 
-A unique identifier for a matchmaking rule set to use with this
+A unique identifier for the matchmaking rule set to use with this
 configuration. A matchmaking configuration can only use rule sets that
 are defined in the same Region.
 

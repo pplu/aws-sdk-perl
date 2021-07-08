@@ -1,9 +1,10 @@
 
 package Paws::ResourceGroups::CreateGroup;
   use Moose;
+  has Configuration => (is => 'ro', isa => 'ArrayRef[Paws::ResourceGroups::GroupConfigurationItem]');
   has Description => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
-  has ResourceQuery => (is => 'ro', isa => 'Paws::ResourceGroups::ResourceQuery', required => 1);
+  has ResourceQuery => (is => 'ro', isa => 'Paws::ResourceGroups::ResourceQuery');
   has Tags => (is => 'ro', isa => 'Paws::ResourceGroups::Tags');
 
   use MooseX::ClassAttribute;
@@ -33,22 +34,38 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $resource-groups = Paws->service('ResourceGroups');
     my $CreateGroupOutput = $resource -groups->CreateGroup(
       Name          => 'MyGroupName',
+      Configuration => [
+        {
+          Type       => 'MyGroupConfigurationType',    # max: 40
+          Parameters => [
+            {
+              Name   => 'MyGroupConfigurationParameterName',   # min: 1, max: 80
+              Values => [
+                'MyGroupConfigurationParameterValue', ...    # min: 1, max: 256
+              ],    # OPTIONAL
+            },
+            ...
+          ],    # OPTIONAL
+        },
+        ...
+      ],    # OPTIONAL
+      Description   => 'MyDescription',    # OPTIONAL
       ResourceQuery => {
-        Query => 'MyQuery',          # max: 4096
+        Query => 'MyQuery',                # max: 4096
         Type  => 'TAG_FILTERS_1_0'
         ,    # values: TAG_FILTERS_1_0, CLOUDFORMATION_STACK_1_0min: 1, max: 128
 
-      },
-      Description => 'MyGroupDescription',    # OPTIONAL
-      Tags        => {
+      },    # OPTIONAL
+      Tags => {
         'MyTagKey' => 'MyTagValue',    # key: min: 1, max: 128, value: max: 256
       },    # OPTIONAL
     );
 
     # Results:
-    my $Group         = $CreateGroupOutput->Group;
-    my $ResourceQuery = $CreateGroupOutput->ResourceQuery;
-    my $Tags          = $CreateGroupOutput->Tags;
+    my $Group              = $CreateGroupOutput->Group;
+    my $GroupConfiguration = $CreateGroupOutput->GroupConfiguration;
+    my $ResourceQuery      = $CreateGroupOutput->ResourceQuery;
+    my $Tags               = $CreateGroupOutput->Tags;
 
     # Returns a L<Paws::ResourceGroups::CreateGroupOutput> object.
 
@@ -58,37 +75,53 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/res
 =head1 ATTRIBUTES
 
 
+=head2 Configuration => ArrayRef[L<Paws::ResourceGroups::GroupConfigurationItem>]
+
+A configuration associates the resource group with an AWS service and
+specifies how the service can interact with the resources in the group.
+A configuration is an array of GroupConfigurationItem elements. For
+details about the syntax of service configurations, see Service
+configurations for resource groups
+(https://docs.aws.amazon.com/ARG/latest/APIReference/about-slg.html).
+
+A resource group can contain either a C<Configuration> or a
+C<ResourceQuery>, but not both.
+
+
+
 =head2 Description => Str
 
-The description of the resource group. Descriptions can have a maximum
-of 511 characters, including letters, numbers, hyphens, underscores,
-punctuation, and spaces.
+The description of the resource group. Descriptions can consist of
+letters, numbers, hyphens, underscores, periods, and spaces.
 
 
 
 =head2 B<REQUIRED> Name => Str
 
 The name of the group, which is the identifier of the group in other
-operations. A resource group name cannot be updated after it is
-created. A resource group name can have a maximum of 128 characters,
-including letters, numbers, hyphens, dots, and underscores. The name
-cannot start with C<AWS> or C<aws>; these are reserved. A resource
-group name must be unique within your account.
+operations. You can't change the name of a resource group after you
+create it. A resource group name can consist of letters, numbers,
+hyphens, periods, and underscores. The name cannot start with C<AWS> or
+C<aws>; these are reserved. A resource group name must be unique within
+each AWS Region in your AWS account.
 
 
 
-=head2 B<REQUIRED> ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
+=head2 ResourceQuery => L<Paws::ResourceGroups::ResourceQuery>
 
 The resource query that determines which AWS resources are members of
-this group.
+this group. For more information about resource queries, see Create a
+tag-based group in Resource Groups
+(https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
+
+A resource group can contain either a C<ResourceQuery> or a
+C<Configuration>, but not both.
 
 
 
 =head2 Tags => L<Paws::ResourceGroups::Tags>
 
-The tags to add to the group. A tag is a string-to-string map of
-key-value pairs. Tag keys can have a maximum character length of 128
-characters, and tag values can have a maximum length of 256 characters.
+The tags to add to the group. A tag is key-value pair string.
 
 
 

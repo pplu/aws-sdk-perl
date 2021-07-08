@@ -2,17 +2,21 @@
 package Paws::Lambda::CreateFunction;
   use Moose;
   has Code => (is => 'ro', isa => 'Paws::Lambda::FunctionCode', required => 1);
+  has CodeSigningConfigArn => (is => 'ro', isa => 'Str');
   has DeadLetterConfig => (is => 'ro', isa => 'Paws::Lambda::DeadLetterConfig');
   has Description => (is => 'ro', isa => 'Str');
   has Environment => (is => 'ro', isa => 'Paws::Lambda::Environment');
+  has FileSystemConfigs => (is => 'ro', isa => 'ArrayRef[Paws::Lambda::FileSystemConfig]');
   has FunctionName => (is => 'ro', isa => 'Str', required => 1);
-  has Handler => (is => 'ro', isa => 'Str', required => 1);
+  has Handler => (is => 'ro', isa => 'Str');
+  has ImageConfig => (is => 'ro', isa => 'Paws::Lambda::ImageConfig');
   has KMSKeyArn => (is => 'ro', isa => 'Str');
   has Layers => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has MemorySize => (is => 'ro', isa => 'Int');
+  has PackageType => (is => 'ro', isa => 'Str');
   has Publish => (is => 'ro', isa => 'Bool');
   has Role => (is => 'ro', isa => 'Str', required => 1);
-  has Runtime => (is => 'ro', isa => 'Str', required => 1);
+  has Runtime => (is => 'ro', isa => 'Str');
   has Tags => (is => 'ro', isa => 'Paws::Lambda::Tags');
   has Timeout => (is => 'ro', isa => 'Int');
   has TracingConfig => (is => 'ro', isa => 'Paws::Lambda::TracingConfig');
@@ -43,39 +47,57 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # create-function
-    # This example creates a Lambda function.
+  # To create a function
+  # The following example creates a function with a deployment package in Amazon
+  # S3 and enables X-Ray tracing and environment variable encryption.
     my $FunctionConfiguration = $lambda->CreateFunction(
       'Code' => {
-
+        'S3Bucket' => 'my-bucket-1xpuxmplzrlbh',
+        'S3Key'    => 'function.zip'
       },
-      'Description'  => '',
-      'FunctionName' => 'MyFunction',
-      'Handler'      => 'souce_file.handler_name',
-      'MemorySize'   => 128,
-      'Publish'      => 1,
-      'Role'         => 'arn:aws:iam::123456789012:role/service-role/role-name',
-      'Runtime'      => 'nodejs4.3',
-      'Timeout'      => 15,
-      'VpcConfig'    => {
-
+      'Description' => 'Process image objects from Amazon S3.',
+      'Environment' => {
+        'Variables' => {
+          'BUCKET' => 'my-bucket-1xpuxmplzrlbh',
+          'PREFIX' => 'inbound'
+        }
+      },
+      'FunctionName' => 'my-function',
+      'Handler'      => 'index.handler',
+      'KMSKeyArn'    =>
+'arn:aws:kms:us-west-2:123456789012:key/b0844d6c-xmpl-4463-97a4-d49f50839966',
+      'MemorySize' => 256,
+      'Publish'    => 1,
+      'Role'       => 'arn:aws:iam::123456789012:role/lambda-role',
+      'Runtime'    => 'nodejs12.x',
+      'Tags'       => {
+        'DEPARTMENT' => 'Assets'
+      },
+      'Timeout'       => 15,
+      'TracingConfig' => {
+        'Mode' => 'Active'
       }
     );
 
     # Results:
-    my $CodeSha256   = $FunctionConfiguration->CodeSha256;
-    my $CodeSize     = $FunctionConfiguration->CodeSize;
-    my $Description  = $FunctionConfiguration->Description;
-    my $FunctionArn  = $FunctionConfiguration->FunctionArn;
-    my $FunctionName = $FunctionConfiguration->FunctionName;
-    my $Handler      = $FunctionConfiguration->Handler;
-    my $LastModified = $FunctionConfiguration->LastModified;
-    my $MemorySize   = $FunctionConfiguration->MemorySize;
-    my $Role         = $FunctionConfiguration->Role;
-    my $Runtime      = $FunctionConfiguration->Runtime;
-    my $Timeout      = $FunctionConfiguration->Timeout;
-    my $Version      = $FunctionConfiguration->Version;
-    my $VpcConfig    = $FunctionConfiguration->VpcConfig;
+    my $CodeSha256       = $FunctionConfiguration->CodeSha256;
+    my $CodeSize         = $FunctionConfiguration->CodeSize;
+    my $Description      = $FunctionConfiguration->Description;
+    my $Environment      = $FunctionConfiguration->Environment;
+    my $FunctionArn      = $FunctionConfiguration->FunctionArn;
+    my $FunctionName     = $FunctionConfiguration->FunctionName;
+    my $Handler          = $FunctionConfiguration->Handler;
+    my $KMSKeyArn        = $FunctionConfiguration->KMSKeyArn;
+    my $LastModified     = $FunctionConfiguration->LastModified;
+    my $LastUpdateStatus = $FunctionConfiguration->LastUpdateStatus;
+    my $MemorySize       = $FunctionConfiguration->MemorySize;
+    my $RevisionId       = $FunctionConfiguration->RevisionId;
+    my $Role             = $FunctionConfiguration->Role;
+    my $Runtime          = $FunctionConfiguration->Runtime;
+    my $State            = $FunctionConfiguration->State;
+    my $Timeout          = $FunctionConfiguration->Timeout;
+    my $TracingConfig    = $FunctionConfiguration->TracingConfig;
+    my $Version          = $FunctionConfiguration->Version;
 
     # Returns a L<Paws::Lambda::FunctionConfiguration> object.
 
@@ -88,6 +110,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/lam
 =head2 B<REQUIRED> Code => L<Paws::Lambda::FunctionCode>
 
 The code for the function.
+
+
+
+=head2 CodeSigningConfigArn => Str
+
+To enable code signing for this function, specify the ARN of a
+code-signing configuration. A code-signing configuration includes a set
+of signing profiles, which define the trusted publishers for this
+function.
 
 
 
@@ -110,6 +141,12 @@ A description of the function.
 
 Environment variables that are accessible from function code during
 execution.
+
+
+
+=head2 FileSystemConfigs => ArrayRef[L<Paws::Lambda::FileSystemConfig>]
+
+Connection settings for an Amazon EFS file system.
 
 
 
@@ -141,7 +178,7 @@ the function name, it is limited to 64 characters in length.
 
 
 
-=head2 B<REQUIRED> Handler => Str
+=head2 Handler => Str
 
 The name of the method within your code that Lambda calls to execute
 your function. The format includes the file name. It can also include
@@ -151,11 +188,19 @@ information, see Programming Model
 
 
 
+=head2 ImageConfig => L<Paws::Lambda::ImageConfig>
+
+Container image configuration values
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-images.html#configuration-images-settings)
+that override the values in the container image Dockerfile.
+
+
+
 =head2 KMSKeyArn => Str
 
-The ARN of the AWS Key Management Service (AWS KMS) key that's used to
-encrypt your function's environment variables. If it's not provided,
-AWS Lambda uses a default service key.
+The ARN of the Amazon Web Services Key Management Service (KMS) key
+that's used to encrypt your function's environment variables. If it's
+not provided, Lambda uses a default service key.
 
 
 
@@ -170,11 +215,20 @@ its ARN, including the version.
 
 =head2 MemorySize => Int
 
-The amount of memory that your function has access to. Increasing the
-function's memory also increases its CPU allocation. The default value
-is 128 MB. The value must be a multiple of 64 MB.
+The amount of memory available to the function
+(https://docs.aws.amazon.com/lambda/latest/dg/configuration-memory.html)
+at runtime. Increasing the function memory also increases its CPU
+allocation. The default value is 128 MB. The value can be any multiple
+of 1 MB.
 
 
+
+=head2 PackageType => Str
+
+The type of deployment package. Set to C<Image> for container image and
+set C<Zip> for ZIP archive.
+
+Valid values are: C<"Zip">, C<"Image">
 
 =head2 Publish => Bool
 
@@ -189,12 +243,12 @@ The Amazon Resource Name (ARN) of the function's execution role.
 
 
 
-=head2 B<REQUIRED> Runtime => Str
+=head2 Runtime => Str
 
 The identifier of the function's runtime
 (https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html).
 
-Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"java8">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">
+Valid values are: C<"nodejs">, C<"nodejs4.3">, C<"nodejs6.10">, C<"nodejs8.10">, C<"nodejs10.x">, C<"nodejs12.x">, C<"nodejs14.x">, C<"java8">, C<"java8.al2">, C<"java11">, C<"python2.7">, C<"python3.6">, C<"python3.7">, C<"python3.8">, C<"dotnetcore1.0">, C<"dotnetcore2.0">, C<"dotnetcore2.1">, C<"dotnetcore3.1">, C<"nodejs4.3-edge">, C<"go1.x">, C<"ruby2.5">, C<"ruby2.7">, C<"provided">, C<"provided.al2">
 
 =head2 Tags => L<Paws::Lambda::Tags>
 
@@ -208,22 +262,25 @@ the function.
 
 The amount of time that Lambda allows a function to run before stopping
 it. The default is 3 seconds. The maximum allowed value is 900 seconds.
+For additional information, see Lambda execution environment
+(https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html).
 
 
 
 =head2 TracingConfig => L<Paws::Lambda::TracingConfig>
 
 Set C<Mode> to C<Active> to sample and trace a subset of incoming
-requests with AWS X-Ray.
+requests with X-Ray
+(https://docs.aws.amazon.com/lambda/latest/dg/services-xray.html).
 
 
 
 =head2 VpcConfig => L<Paws::Lambda::VpcConfig>
 
-For network connectivity to AWS resources in a VPC, specify a list of
-security groups and subnets in the VPC. When you connect a function to
-a VPC, it can only access resources and the internet through that VPC.
-For more information, see VPC Settings
+For network connectivity to Amazon Web Services resources in a VPC,
+specify a list of security groups and subnets in the VPC. When you
+connect a function to a VPC, it can only access resources and the
+internet through that VPC. For more information, see VPC Settings
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-vpc.html).
 
 

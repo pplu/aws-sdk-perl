@@ -70,15 +70,14 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ssm
 =head2 Details => Bool
 
 (Optional) If set this returns the response of the command executions
-and any command output. By default this is set to False.
+and any command output. The default value is 'false'.
 
 
 
 =head2 Filters => ArrayRef[L<Paws::SSM::CommandFilter>]
 
 (Optional) One or more filters. Use a filter to return a more specific
-list of results. Note that the C<DocumentName> filter is not supported
-for ListCommandInvocations.
+list of results.
 
 
 

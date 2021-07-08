@@ -4,6 +4,8 @@ package Paws::MediaConnect::Transport;
   has CidrAllowList => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'cidrAllowList', traits => ['NameInRequest']);
   has MaxBitrate => (is => 'ro', isa => 'Int', request_name => 'maxBitrate', traits => ['NameInRequest']);
   has MaxLatency => (is => 'ro', isa => 'Int', request_name => 'maxLatency', traits => ['NameInRequest']);
+  has MaxSyncBuffer => (is => 'ro', isa => 'Int', request_name => 'maxSyncBuffer', traits => ['NameInRequest']);
+  has MinLatency => (is => 'ro', isa => 'Int', request_name => 'minLatency', traits => ['NameInRequest']);
   has Protocol => (is => 'ro', isa => 'Str', request_name => 'protocol', traits => ['NameInRequest'], required => 1);
   has RemoteId => (is => 'ro', isa => 'Str', request_name => 'remoteId', traits => ['NameInRequest']);
   has SmoothingLatency => (is => 'ro', isa => 'Int', request_name => 'smoothingLatency', traits => ['NameInRequest']);
@@ -61,6 +63,22 @@ The smoothing max bitrate for RIST, RTP, and RTP-FEC streams.
 
 The maximum latency in milliseconds. This parameter applies only to
 RIST-based and Zixi-based streams.
+
+
+=head2 MaxSyncBuffer => Int
+
+The size of the buffer (in milliseconds) to use to sync incoming source
+data.
+
+
+=head2 MinLatency => Int
+
+The minimum latency in milliseconds for SRT-based streams. In streams
+that use the SRT protocol, this value that you set on your MediaConnect
+source or output represents the minimal potential latency of that
+connection. The latency of the stream is set to the highest number
+between the senderE<rsquo>s minimum latency and the receiverE<rsquo>s
+minimum latency.
 
 
 =head2 B<REQUIRED> Protocol => Str

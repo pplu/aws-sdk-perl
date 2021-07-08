@@ -7,6 +7,7 @@ package Paws::LexModels::StartImportResponse;
   has MergeStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'mergeStrategy');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
   has ResourceType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'resourceType');
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::LexModels::Tag]', traits => ['NameInRequest'], request_name => 'tags');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -51,6 +52,11 @@ The name given to the import job.
 The type of resource to import.
 
 Valid values are: C<"BOT">, C<"INTENT">, C<"SLOT_TYPE">
+=head2 Tags => ArrayRef[L<Paws::LexModels::Tag>]
+
+A list of tags added to the imported bot.
+
+
 =head2 _request_id => Str
 
 

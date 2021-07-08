@@ -35,7 +35,28 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ResourceGro
 
 =head1 DESCRIPTION
 
-A resource group.
+A resource group that contains AWS resources. You can assign resources
+to the group by associating either of the following elements with the
+group:
+
+=over
+
+=item *
+
+ResourceQuery - Use a resource query to specify a set of tag keys and
+values. All resources in the same AWS Region and AWS account that have
+those keys with the same values are included in the group. You can add
+a resource query when you create the group, or later by using the
+PutGroupConfiguration operation.
+
+=item *
+
+GroupConfiguration - Use a service configuration to associate the group
+with an AWS service. The configuration specifies which resource types
+can be included in the group.
+
+=back
+
 
 =head1 ATTRIBUTES
 
@@ -47,12 +68,12 @@ The description of the resource group.
 
 =head2 B<REQUIRED> GroupArn => Str
 
-The ARN of a resource group.
+The ARN of the resource group.
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of a resource group.
+The name of the resource group.
 
 
 

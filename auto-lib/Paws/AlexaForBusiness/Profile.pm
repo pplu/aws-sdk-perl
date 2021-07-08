@@ -3,6 +3,7 @@ package Paws::AlexaForBusiness::Profile;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
   has AddressBookArn => (is => 'ro', isa => 'Str');
+  has DataRetentionOptIn => (is => 'ro', isa => 'Bool');
   has DistanceUnit => (is => 'ro', isa => 'Str');
   has IsDefault => (is => 'ro', isa => 'Bool');
   has Locale => (is => 'ro', isa => 'Str');
@@ -59,6 +60,11 @@ The address of a room profile.
 =head2 AddressBookArn => Str
 
 The ARN of the address book.
+
+
+=head2 DataRetentionOptIn => Bool
+
+Whether data retention of the profile is enabled.
 
 
 =head2 DistanceUnit => Str

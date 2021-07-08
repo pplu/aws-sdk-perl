@@ -34,19 +34,24 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Filter
 
 =head1 DESCRIPTION
 
-This class has no description
+Identifies the name and value of a filter object. This filter is used
+to limit the number and type of AWS DMS objects that are returned for a
+particular C<Describe*> call or similar operation. Filters are used as
+an optional parameter for certain API operations.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> Name => Str
 
-The name of the filter.
+The name of the filter as specified for a C<Describe*> or similar
+operation.
 
 
 =head2 B<REQUIRED> Values => ArrayRef[Str|Undef]
 
-The filter value.
+The filter value, which can specify one or more values used to narrow
+the returned results.
 
 
 

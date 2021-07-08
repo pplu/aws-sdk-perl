@@ -35,7 +35,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Subnet
 
 =head1 DESCRIPTION
 
-This class has no description
+In response to a request by the C<DescribeReplicationSubnetGroups>
+operation, this object identifies a subnet by its given Availability
+Zone, subnet identifier, and status.
 
 =head1 ATTRIBUTES
 

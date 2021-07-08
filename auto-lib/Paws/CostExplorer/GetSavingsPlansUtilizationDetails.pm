@@ -1,9 +1,11 @@
 
 package Paws::CostExplorer::GetSavingsPlansUtilizationDetails;
   use Moose;
+  has DataType => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Filter => (is => 'ro', isa => 'Paws::CostExplorer::Expression');
   has MaxResults => (is => 'ro', isa => 'Int');
   has NextToken => (is => 'ro', isa => 'Str');
+  has SortBy => (is => 'ro', isa => 'Paws::CostExplorer::SortDefinition');
   has TimePeriod => (is => 'ro', isa => 'Paws::CostExplorer::DateInterval', required => 1);
 
   use MooseX::ClassAttribute;
@@ -33,30 +35,56 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $GetSavingsPlansUtilizationDetailsResponse =
       $ce->GetSavingsPlansUtilizationDetails(
       TimePeriod => {
-        End   => 'MyYearMonthDay',
-        Start => 'MyYearMonthDay',
+        End   => 'MyYearMonthDay',    # max: 40
+        Start => 'MyYearMonthDay',    # max: 40
 
       },
+      DataType => [
+        'ATTRIBUTES',
+        ...    # values: ATTRIBUTES, UTILIZATION, AMORTIZED_COMMITMENT, SAVINGS
+      ],    # OPTIONAL
       Filter => {
         And            => [ <Expression>, ... ],    # OPTIONAL
         CostCategories => {
-          Key    => 'MyCostCategoryName',           # min: 1, max: 255; OPTIONAL
-          Values => [ 'MyValue', ... ],             # OPTIONAL
+          Key          => 'MyCostCategoryName',     # min: 1, max: 50; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
         },    # OPTIONAL
         Dimensions => {
           Key => 'AZ'
-          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, OPERATION, PURCHASE_TYPE, REGION, SERVICE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION; OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          , # values: AZ, INSTANCE_TYPE, LINKED_ACCOUNT, LINKED_ACCOUNT_NAME, OPERATION, PURCHASE_TYPE, REGION, SERVICE, SERVICE_CODE, USAGE_TYPE, USAGE_TYPE_GROUP, RECORD_TYPE, OPERATING_SYSTEM, TENANCY, SCOPE, PLATFORM, SUBSCRIPTION_ID, LEGAL_ENTITY_NAME, DEPLOYMENT_OPTION, DATABASE_ENGINE, CACHE_ENGINE, INSTANCE_TYPE_FAMILY, BILLING_ENTITY, RESERVATION_ID, RESOURCE_ID, RIGHTSIZING_TYPE, SAVINGS_PLANS_TYPE, SAVINGS_PLAN_ARN, PAYMENT_OPTION, AGREEMENT_END_DATE_TIME_AFTER, AGREEMENT_END_DATE_TIME_BEFORE; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
         },    # OPTIONAL
         Not  => <Expression>,
         Or   => [ <Expression>, ... ],    # OPTIONAL
         Tags => {
-          Key    => 'MyTagKey',            # OPTIONAL
-          Values => [ 'MyValue', ... ],    # OPTIONAL
+          Key          => 'MyTagKey',     # max: 1024; OPTIONAL
+          MatchOptions => [
+            'EQUALS',
+            ... # values: EQUALS, ABSENT, STARTS_WITH, ENDS_WITH, CONTAINS, CASE_SENSITIVE, CASE_INSENSITIVE
+          ],    # OPTIONAL
+          Values => [
+            'MyValue', ...    # max: 1024
+          ],    # OPTIONAL
         },    # OPTIONAL
       },    # OPTIONAL
       MaxResults => 1,                    # OPTIONAL
       NextToken  => 'MyNextPageToken',    # OPTIONAL
+      SortBy     => {
+        Key       => 'MySortDefinitionKey',    # max: 1024
+        SortOrder => 'ASCENDING',    # values: ASCENDING, DESCENDING; OPTIONAL
+      },    # OPTIONAL
       );
 
     # Results:
@@ -73,6 +101,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ce/GetSavingsPlansUtilizationDetails>
 
 =head1 ATTRIBUTES
+
+
+=head2 DataType => ArrayRef[Str|Undef]
+
+The data type.
+
 
 
 =head2 Filter => L<Paws::CostExplorer::Expression>
@@ -105,7 +139,7 @@ C<INSTANCE_TYPE_FAMILY>
 =back
 
 C<GetSavingsPlansUtilizationDetails> uses the same Expression
-(http://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
+(https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Expression.html)
 object as the other operations, but only C<AND> is supported among each
 dimension.
 
@@ -123,6 +157,48 @@ with a minimum value of C<1>.
 The token to retrieve the next set of results. Amazon Web Services
 provides the token when the response from a previous call has more
 results than the maximum page size.
+
+
+
+=head2 SortBy => L<Paws::CostExplorer::SortDefinition>
+
+The value by which you want to sort the data.
+
+The following values are supported for C<Key>:
+
+=over
+
+=item *
+
+C<UtilizationPercentage>
+
+=item *
+
+C<TotalCommitment>
+
+=item *
+
+C<UsedCommitment>
+
+=item *
+
+C<UnusedCommitment>
+
+=item *
+
+C<NetSavings>
+
+=item *
+
+C<AmortizedRecurringCommitment>
+
+=item *
+
+C<AmortizedUpfrontCommitment>
+
+=back
+
+Supported values for C<SortOrder> are C<ASCENDING> or C<DESCENDING>.
 
 
 

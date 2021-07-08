@@ -2,6 +2,7 @@
 package Paws::CodeBuild::CreateWebhook;
   use Moose;
   has BranchFilter => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'branchFilter' );
+  has BuildType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'buildType' );
   has FilterGroups => (is => 'ro', isa => 'ArrayRef[ArrayRef[Paws::CodeBuild::WebhookFilter]]', traits => ['NameInRequest'], request_name => 'filterGroups' );
   has ProjectName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'projectName' , required => 1);
 
@@ -32,12 +33,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $CreateWebhookOutput = $codebuild->CreateWebhook(
       ProjectName  => 'MyProjectName',
       BranchFilter => 'MyString',        # OPTIONAL
+      BuildType    => 'BUILD',           # OPTIONAL
       FilterGroups => [
         [
           {
             Pattern => 'MyString',
             Type    => 'EVENT'
-            ,   # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH
+            , # values: EVENT, BASE_REF, HEAD_REF, ACTOR_ACCOUNT_ID, FILE_PATH, COMMIT_MESSAGE
             ExcludeMatchedPattern => 1,    # OPTIONAL
           },
           ...
@@ -69,6 +71,12 @@ C<branchFilter>.
 
 
 
+=head2 BuildType => Str
+
+Specifies the type of build this webhook will trigger.
+
+Valid values are: C<"BUILD">, C<"BUILD_BATCH">
+
 =head2 FilterGroups => ArrayRef[L<ArrayRef[Paws::CodeBuild::WebhookFilter]>]
 
 An array of arrays of C<WebhookFilter> objects used to determine which
@@ -83,7 +91,7 @@ its filters must pass.
 
 =head2 B<REQUIRED> ProjectName => Str
 
-The name of the AWS CodeBuild project.
+The name of the CodeBuild project.
 
 
 

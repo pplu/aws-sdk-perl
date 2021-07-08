@@ -68,12 +68,12 @@ response.
 =head2 OnlyAssociated => Bool
 
 Specifies which member accounts to include in the response based on
-their relationship status with the master account. The default value is
-C<TRUE>.
+their relationship status with the administrator account. The default
+value is C<TRUE>.
 
 If C<OnlyAssociated> is set to C<TRUE>, the response includes member
-accounts whose relationship status with the master is set to C<ENABLED>
-or C<DISABLED>.
+accounts whose relationship status with the administrator account is
+set to C<ENABLED>.
 
 If C<OnlyAssociated> is set to C<FALSE>, the response includes all
 existing member accounts.

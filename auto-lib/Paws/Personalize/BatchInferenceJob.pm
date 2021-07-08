@@ -2,8 +2,10 @@
 package Paws::Personalize::BatchInferenceJob;
   use Moose;
   has BatchInferenceJobArn => (is => 'ro', isa => 'Str', request_name => 'batchInferenceJobArn', traits => ['NameInRequest']);
+  has BatchInferenceJobConfig => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobConfig', request_name => 'batchInferenceJobConfig', traits => ['NameInRequest']);
   has CreationDateTime => (is => 'ro', isa => 'Str', request_name => 'creationDateTime', traits => ['NameInRequest']);
   has FailureReason => (is => 'ro', isa => 'Str', request_name => 'failureReason', traits => ['NameInRequest']);
+  has FilterArn => (is => 'ro', isa => 'Str', request_name => 'filterArn', traits => ['NameInRequest']);
   has JobInput => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobInput', request_name => 'jobInput', traits => ['NameInRequest']);
   has JobName => (is => 'ro', isa => 'Str', request_name => 'jobName', traits => ['NameInRequest']);
   has JobOutput => (is => 'ro', isa => 'Paws::Personalize::BatchInferenceJobOutput', request_name => 'jobOutput', traits => ['NameInRequest']);
@@ -53,6 +55,12 @@ Contains information on a batch inference job.
 The Amazon Resource Name (ARN) of the batch inference job.
 
 
+=head2 BatchInferenceJobConfig => L<Paws::Personalize::BatchInferenceJobConfig>
+
+A string to string map of the configuration details of a batch
+inference job.
+
+
 =head2 CreationDateTime => Str
 
 The time at which the batch inference job was created.
@@ -61,6 +69,11 @@ The time at which the batch inference job was created.
 =head2 FailureReason => Str
 
 If the batch inference job failed, the reason for the failure.
+
+
+=head2 FilterArn => Str
+
+The ARN of the filter used on the batch inference job.
 
 
 =head2 JobInput => L<Paws::Personalize::BatchInferenceJobInput>

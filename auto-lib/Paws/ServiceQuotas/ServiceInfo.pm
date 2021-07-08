@@ -34,21 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceQuot
 
 =head1 DESCRIPTION
 
-A structure that contains the C<ServiceName> and C<ServiceCode>. It
-does not include all details of the service quota. To get those values,
-use the ListServiceQuotas operation.
+Information about a service.
 
 =head1 ATTRIBUTES
 
 
 =head2 ServiceCode => Str
 
-Specifies the service that you want to use.
+The service identifier.
 
 
 =head2 ServiceName => Str
 
-The name of the AWS service specified in the increase request.
+The service name.
 
 
 

@@ -1,7 +1,9 @@
 
 package Paws::IoT::ListViolationEvents;
   use Moose;
+  has BehaviorCriteriaType => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'behaviorCriteriaType');
   has EndTime => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'endTime', required => 1);
+  has ListSuppressedAlerts => (is => 'ro', isa => 'Bool', traits => ['ParamInQuery'], query_name => 'listSuppressedAlerts');
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has SecurityProfileName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'securityProfileName');
@@ -34,12 +36,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListViolationEventsResponse = $iot->ListViolationEvents(
-      EndTime             => '1970-01-01T01:00:00',
-      StartTime           => '1970-01-01T01:00:00',
-      MaxResults          => 1,                              # OPTIONAL
-      NextToken           => 'MyNextToken',                  # OPTIONAL
-      SecurityProfileName => 'MySecurityProfileName',        # OPTIONAL
-      ThingName           => 'MyDeviceDefenderThingName',    # OPTIONAL
+      EndTime              => '1970-01-01T01:00:00',
+      StartTime            => '1970-01-01T01:00:00',
+      BehaviorCriteriaType => 'STATIC',                       # OPTIONAL
+      ListSuppressedAlerts => 1,                              # OPTIONAL
+      MaxResults           => 1,                              # OPTIONAL
+      NextToken            => 'MyNextToken',                  # OPTIONAL
+      SecurityProfileName  => 'MySecurityProfileName',        # OPTIONAL
+      ThingName            => 'MyDeviceDefenderThingName',    # OPTIONAL
     );
 
     # Results:
@@ -54,9 +58,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head1 ATTRIBUTES
 
 
+=head2 BehaviorCriteriaType => Str
+
+The criteria for a behavior.
+
+Valid values are: C<"STATIC">, C<"STATISTICAL">, C<"MACHINE_LEARNING">
+
 =head2 B<REQUIRED> EndTime => Str
 
 The end time for the alerts to be listed.
+
+
+
+=head2 ListSuppressedAlerts => Bool
+
+A list of all suppressed alerts.
 
 
 

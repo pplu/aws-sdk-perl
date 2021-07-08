@@ -3,7 +3,9 @@ package Paws::AppMesh::HttpRouteMatch;
   use Moose;
   has Headers => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::HttpRouteHeader]', request_name => 'headers', traits => ['NameInRequest']);
   has Method => (is => 'ro', isa => 'Str', request_name => 'method', traits => ['NameInRequest']);
-  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest'], required => 1);
+  has Path => (is => 'ro', isa => 'Paws::AppMesh::HttpPathMatch', request_name => 'path', traits => ['NameInRequest']);
+  has Prefix => (is => 'ro', isa => 'Str', request_name => 'prefix', traits => ['NameInRequest']);
+  has QueryParameters => (is => 'ro', isa => 'ArrayRef[Paws::AppMesh::HttpQueryParameter]', request_name => 'queryParameters', traits => ['NameInRequest']);
   has Scheme => (is => 'ro', isa => 'Str', request_name => 'scheme', traits => ['NameInRequest']);
 
 1;
@@ -44,7 +46,7 @@ requests for a virtual router.
 
 =head2 Headers => ArrayRef[L<Paws::AppMesh::HttpRouteHeader>]
 
-An object that represents the client request headers to match on.
+The client request headers to match on.
 
 
 =head2 Method => Str
@@ -52,7 +54,12 @@ An object that represents the client request headers to match on.
 The client request method to match on. Specify only one.
 
 
-=head2 B<REQUIRED> Prefix => Str
+=head2 Path => L<Paws::AppMesh::HttpPathMatch>
+
+The client request path to match on.
+
+
+=head2 Prefix => Str
 
 Specifies the path to match requests with. This parameter must always
 start with C</>, which by itself matches all requests to the virtual
@@ -62,9 +69,15 @@ you want the route to match requests to C<my-service.local/metrics>,
 your prefix should be C</metrics>.
 
 
+=head2 QueryParameters => ArrayRef[L<Paws::AppMesh::HttpQueryParameter>]
+
+The client request query parameters to match on.
+
+
 =head2 Scheme => Str
 
-The client request scheme to match on. Specify only one.
+The client request scheme to match on. Specify only one. Applicable
+only for HTTP2 routes.
 
 
 

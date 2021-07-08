@@ -41,7 +41,7 @@ An AWS Lambda layer.
 
 =head2 Arn => Str
 
-The Amazon Resource Name (ARN) of the function layer.
+The ARN of the function layer.
 
 
 =head2 CodeSize => Int

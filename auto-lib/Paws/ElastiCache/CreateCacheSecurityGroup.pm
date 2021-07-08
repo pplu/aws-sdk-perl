@@ -3,6 +3,7 @@ package Paws::ElastiCache::CreateCacheSecurityGroup;
   use Moose;
   has CacheSecurityGroupName => (is => 'ro', isa => 'Str', required => 1);
   has Description => (is => 'ro', isa => 'Str', required => 1);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::ElastiCache::Tag]');
 
   use MooseX::ClassAttribute;
 
@@ -28,17 +29,14 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+   # CreateCacheSecurityGroup
+   # Creates an ElastiCache security group. ElastiCache security groups are only
+   # for clusters not running in an AWS VPC.
     my $CreateCacheSecurityGroupResult = $elasticache->CreateCacheSecurityGroup(
-      CacheSecurityGroupName => 'MyString',
-      Description            => 'MyString',
-
+      'CacheSecurityGroupName' => 'my-cache-sec-grp',
+      'Description'            => 'Example ElastiCache security group.'
     );
 
-    # Results:
-    my $CacheSecurityGroup =
-      $CreateCacheSecurityGroupResult->CacheSecurityGroup;
-
-    # Returns a L<Paws::ElastiCache::CreateCacheSecurityGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/elasticache/CreateCacheSecurityGroup>
@@ -61,6 +59,14 @@ Example: C<mysecuritygroup>
 =head2 B<REQUIRED> Description => Str
 
 A description for the cache security group.
+
+
+
+=head2 Tags => ArrayRef[L<Paws::ElastiCache::Tag>]
+
+A list of tags to be added to this resource. A tag is a key-value pair.
+A tag key must be accompanied by a tag value, although null is
+accepted.
 
 
 

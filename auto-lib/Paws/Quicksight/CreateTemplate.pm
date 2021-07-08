@@ -112,10 +112,19 @@ A list of resource permissions to be set on the template.
 
 =head2 B<REQUIRED> SourceEntity => L<Paws::Quicksight::TemplateSourceEntity>
 
-The Amazon Resource Name (ARN) of the source entity from which this
-template is being created. Currently, you can create a template from an
-analysis or another template. If the ARN is for an analysis, include
-its dataset references.
+The entity that you are using as a source when you create the template.
+In C<SourceEntity>, you specify the type of object you're using as
+source: C<SourceTemplate> for a template or C<SourceAnalysis> for an
+analysis. Both of these require an Amazon Resource Name (ARN). For
+C<SourceTemplate>, specify the ARN of the source template. For
+C<SourceAnalysis>, specify the ARN of the source analysis. The
+C<SourceTemplate> ARN can contain any AWS Account and any
+QuickSight-supported AWS Region.
+
+Use the C<DataSetReferences> entity within C<SourceTemplate> or
+C<SourceAnalysis> to list the replacement datasets for the placeholders
+listed in the original. The schema in each dataset must match its
+placeholder.
 
 
 

@@ -78,6 +78,12 @@ IDs are pairs of Amazon ECS clusters and services specified using the
 format C<E<lt>clusternameE<gt>:E<lt>servicenameE<gt>>. Their target
 type is C<ecsTarget>.
 
+=item *
+
+For deployments that are deployed with AWS CloudFormation, the target
+IDs are CloudFormation stack IDs. Their target type is
+C<cloudFormationTarget>.
+
 =back
 
 

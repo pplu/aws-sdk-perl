@@ -3,6 +3,8 @@ package Paws::Lambda::Layer;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has CodeSize => (is => 'ro', isa => 'Int');
+  has SigningJobArn => (is => 'ro', isa => 'Str');
+  has SigningProfileVersionArn => (is => 'ro', isa => 'Str');
 
 1;
 
@@ -23,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Lambda::Layer object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., CodeSize => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., SigningProfileVersionArn => $value  });
 
 =head3 Results returned from an API call
 
@@ -34,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Lambda::Lay
 
 =head1 DESCRIPTION
 
-An AWS Lambda layer
+An Lambda layer
 (https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html).
 
 =head1 ATTRIBUTES
@@ -48,6 +50,16 @@ The Amazon Resource Name (ARN) of the function layer.
 =head2 CodeSize => Int
 
 The size of the layer archive in bytes.
+
+
+=head2 SigningJobArn => Str
+
+The Amazon Resource Name (ARN) of a signing job.
+
+
+=head2 SigningProfileVersionArn => Str
+
+The Amazon Resource Name (ARN) for a signing profile version.
 
 
 

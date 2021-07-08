@@ -8,6 +8,7 @@ package Paws::EMR::JobFlowDetail;
   has Instances => (is => 'ro', isa => 'Paws::EMR::JobFlowInstancesDetail', required => 1);
   has JobFlowId => (is => 'ro', isa => 'Str', required => 1);
   has JobFlowRole => (is => 'ro', isa => 'Str');
+  has LogEncryptionKmsKeyId => (is => 'ro', isa => 'Str');
   has LogUri => (is => 'ro', isa => 'Str');
   has Name => (is => 'ro', isa => 'Str', required => 1);
   has ScaleDownBehavior => (is => 'ro', isa => 'Str');
@@ -92,6 +93,13 @@ The IAM role that was specified when the job flow was launched. The EC2
 instances of the job flow assume this role.
 
 
+=head2 LogEncryptionKmsKeyId => Str
+
+The AWS KMS customer master key (CMK) used for encrypting log files.
+This attribute is only available with EMR version 5.30.0 and later,
+excluding EMR 6.0.0.
+
+
 =head2 LogUri => Str
 
 The location in Amazon S3 where log files for the job are stored.
@@ -111,19 +119,19 @@ nodes at the instance-hour boundary, regardless of when the request to
 terminate the instance was submitted. This option is only available
 with Amazon EMR 5.1.0 and later and is the default for clusters created
 using that version. C<TERMINATE_AT_TASK_COMPLETION> indicates that
-Amazon EMR blacklists and drains tasks from nodes before terminating
-the Amazon EC2 instances, regardless of the instance-hour boundary.
-With either behavior, Amazon EMR removes the least active nodes first
-and blocks instance termination if it could lead to HDFS corruption.
-C<TERMINATE_AT_TASK_COMPLETION> available only in Amazon EMR version
-4.1.0 and later, and is the default for versions of Amazon EMR earlier
-than 5.1.0.
+Amazon EMR adds nodes to a deny list and drains tasks from nodes before
+terminating the Amazon EC2 instances, regardless of the instance-hour
+boundary. With either behavior, Amazon EMR removes the least active
+nodes first and blocks instance termination if it could lead to HDFS
+corruption. C<TERMINATE_AT_TASK_COMPLETION> available only in Amazon
+EMR version 4.1.0 and later, and is the default for versions of Amazon
+EMR earlier than 5.1.0.
 
 
 =head2 ServiceRole => Str
 
-The IAM role that will be assumed by the Amazon EMR service to access
-AWS resources on your behalf.
+The IAM role that is assumed by the Amazon EMR service to access AWS
+resources on your behalf.
 
 
 =head2 Steps => ArrayRef[L<Paws::EMR::StepDetail>]
@@ -133,9 +141,9 @@ A list of steps run by the job flow.
 
 =head2 SupportedProducts => ArrayRef[Str|Undef]
 
-A list of strings set by third party software when the job flow is
-launched. If you are not using third party software to manage the job
-flow this value is empty.
+A list of strings set by third-party software when the job flow is
+launched. If you are not using third-party software to manage the job
+flow, this value is empty.
 
 
 =head2 VisibleToAllUsers => Bool

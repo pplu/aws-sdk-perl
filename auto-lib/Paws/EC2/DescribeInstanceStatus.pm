@@ -32,26 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $DescribeInstanceStatusResult = $ec2->DescribeInstanceStatus(
-      DryRun  => 1,    # OPTIONAL
-      Filters => [
-        {
-          Name   => 'MyString',    # OPTIONAL
-          Values => [
-            'MyString', ...        # OPTIONAL
-          ],    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      IncludeAllInstances => 1,                          # OPTIONAL
-      InstanceIds         => [ 'MyInstanceId', ... ],    # OPTIONAL
-      MaxResults          => 1,                          # OPTIONAL
-      NextToken           => 'MyString',                 # OPTIONAL
-    );
+    # To describe the status of an instance
+    # This example describes the current status of the specified instance.
+    my $DescribeInstanceStatusResult =
+      $ec2->DescribeInstanceStatus( 'InstanceIds' => ['i-1234567890abcdef0'] );
 
     # Results:
     my $InstanceStatuses = $DescribeInstanceStatusResult->InstanceStatuses;
-    my $NextToken        = $DescribeInstanceStatusResult->NextToken;
 
     # Returns a L<Paws::EC2::DescribeInstanceStatusResult> object.
 

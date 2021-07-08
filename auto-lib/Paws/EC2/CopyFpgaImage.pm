@@ -33,12 +33,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $ec2 = Paws->service('EC2');
     my $CopyFpgaImageResult = $ec2->CopyFpgaImage(
-      SourceFpgaImageId => 'MyFpgaImageId',
+      SourceFpgaImageId => 'MyString',
       SourceRegion      => 'MyString',
-      ClientToken       => 'MyString',        # OPTIONAL
-      Description       => 'MyString',        # OPTIONAL
-      DryRun            => 1,                 # OPTIONAL
-      Name              => 'MyString',        # OPTIONAL
+      ClientToken       => 'MyString',    # OPTIONAL
+      Description       => 'MyString',    # OPTIONAL
+      DryRun            => 1,             # OPTIONAL
+      Name              => 'MyString',    # OPTIONAL
     );
 
     # Results:

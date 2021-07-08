@@ -2,6 +2,7 @@
 package Paws::IoT::ListJobExecutionsForThing;
   use Moose;
   has MaxResults => (is => 'ro', isa => 'Int', traits => ['ParamInQuery'], query_name => 'maxResults');
+  has NamespaceId => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'namespaceId');
   has NextToken => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nextToken');
   has Status => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'status');
   has ThingName => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'thingName', required => 1);
@@ -32,10 +33,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $iot = Paws->service('IoT');
     my $ListJobExecutionsForThingResponse = $iot->ListJobExecutionsForThing(
-      ThingName  => 'MyThingName',
-      MaxResults => 1,                # OPTIONAL
-      NextToken  => 'MyNextToken',    # OPTIONAL
-      Status     => 'QUEUED',         # OPTIONAL
+      ThingName   => 'MyThingName',
+      MaxResults  => 1,                  # OPTIONAL
+      NamespaceId => 'MyNamespaceId',    # OPTIONAL
+      NextToken   => 'MyNextToken',      # OPTIONAL
+      Status      => 'QUEUED',           # OPTIONAL
     );
 
     # Results:
@@ -54,6 +56,20 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/iot
 =head2 MaxResults => Int
 
 The maximum number of results to be returned per request.
+
+
+
+=head2 NamespaceId => Str
+
+The namespace used to indicate that a job is a customer-managed job.
+
+When you specify a value for this parameter, AWS IoT Core sends jobs
+notifications to MQTT topics that contain the value in the following
+format.
+
+C<$aws/things/I<THING_NAME>/jobs/I<JOB_ID>/notify-namespace-I<NAMESPACE_ID>/>
+
+The C<namespaceId> feature is in public preview.
 
 
 

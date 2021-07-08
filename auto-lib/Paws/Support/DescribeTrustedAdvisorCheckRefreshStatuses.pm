@@ -47,9 +47,10 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sup
 
 =head2 B<REQUIRED> CheckIds => ArrayRef[Str|Undef]
 
-The IDs of the Trusted Advisor checks to get the status of. B<Note:>
-Specifying the check ID of a check that is automatically refreshed
-causes an C<InvalidParameterValue> error.
+The IDs of the Trusted Advisor checks to get the status.
+
+If you specify the check ID of a check that is automatically refreshed,
+you might see an C<InvalidParameterValue> error.
 
 
 

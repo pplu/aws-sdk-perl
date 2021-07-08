@@ -79,7 +79,7 @@ value if applicable.
 
 =head2 Name => Str
 
-The resource name you want to list the account settings for.
+The name of the account setting you want to list the settings for.
 
 Valid values are: C<"serviceLongArnFormat">, C<"taskLongArnFormat">, C<"containerInstanceLongArnFormat">, C<"awsvpcTrunking">, C<"containerInsights">
 
@@ -101,6 +101,9 @@ purposes.
 The ARN of the principal, which can be an IAM user, IAM role, or the
 root user. If this field is omitted, the account settings are listed
 only for the authenticated user.
+
+Federated users assume the account setting of the root user and can't
+have explicit account settings set for them.
 
 
 

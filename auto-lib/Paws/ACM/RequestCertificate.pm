@@ -141,9 +141,9 @@ extension of the ACM certificate. For example, add the name
 www.example.net to a certificate for which the C<DomainName> field is
 www.example.com if users can reach your site by using either name. The
 maximum number of domain names that you can add to an ACM certificate
-is 100. However, the initial limit is 10 domain names. If you need more
-than 10 names, you must request a limit increase. For more information,
-see Limits
+is 100. However, the initial quota is 10 domain names. If you need more
+than 10 names, you must request a quota increase. For more information,
+see Quotas
 (https://docs.aws.amazon.com/acm/latest/userguide/acm-limits.html).
 
 The maximum length of a SAN DNS name is 253 octets. The name is made up

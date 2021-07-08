@@ -77,33 +77,49 @@ Use one of the following variables to filter a list of C<MLModel>:
 
 =over
 
-=item * C<CreatedAt> - Sets the search criteria to C<MLModel> creation
-date.
+=item *
 
-=item * C<Status> - Sets the search criteria to C<MLModel> status.
+C<CreatedAt> - Sets the search criteria to C<MLModel> creation date.
 
-=item * C<Name> - Sets the search criteria to the contents of
-C<MLModel>B< > C<Name>.
+=item *
 
-=item * C<IAMUser> - Sets the search criteria to the user account that
-invoked the C<MLModel> creation.
+C<Status> - Sets the search criteria to C<MLModel> status.
 
-=item * C<TrainingDataSourceId> - Sets the search criteria to the
-C<DataSource> used to train one or more C<MLModel>.
+=item *
 
-=item * C<RealtimeEndpointStatus> - Sets the search criteria to the
-C<MLModel> real-time endpoint status.
+C<Name> - Sets the search criteria to the contents of C<MLModel> B< >
+C<Name>.
 
-=item * C<MLModelType> - Sets the search criteria to C<MLModel> type:
-binary, regression, or multi-class.
+=item *
 
-=item * C<Algorithm> - Sets the search criteria to the algorithm that
-the C<MLModel> uses.
+C<IAMUser> - Sets the search criteria to the user account that invoked
+the C<MLModel> creation.
 
-=item * C<TrainingDataURI> - Sets the search criteria to the data
-file(s) used in training a C<MLModel>. The URL can identify either a
-file or an Amazon Simple Storage Service (Amazon S3) bucket or
-directory.
+=item *
+
+C<TrainingDataSourceId> - Sets the search criteria to the C<DataSource>
+used to train one or more C<MLModel>.
+
+=item *
+
+C<RealtimeEndpointStatus> - Sets the search criteria to the C<MLModel>
+real-time endpoint status.
+
+=item *
+
+C<MLModelType> - Sets the search criteria to C<MLModel> type: binary,
+regression, or multi-class.
+
+=item *
+
+C<Algorithm> - Sets the search criteria to the algorithm that the
+C<MLModel> uses.
+
+=item *
+
+C<TrainingDataURI> - Sets the search criteria to the data file(s) used
+in training a C<MLModel>. The URL can identify either a file or an
+Amazon Simple Storage Service (Amazon S3) bucket or directory.
 
 =back
 
@@ -199,9 +215,13 @@ list of C<MLModel>.
 
 =over
 
-=item * C<asc> - Arranges the list in ascending order (A-Z, 0-9).
+=item *
 
-=item * C<dsc> - Arranges the list in descending order (Z-A, 9-0).
+C<asc> - Arranges the list in ascending order (A-Z, 0-9).
+
+=item *
+
+C<dsc> - Arranges the list in descending order (Z-A, 9-0).
 
 =back
 

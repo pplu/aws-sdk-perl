@@ -212,7 +212,7 @@ The role (DataPipelineDefaultResourceRole) assumed by an Amazon Elastic
 Compute Cloud (Amazon EC2) instance to carry out the copy operation
 from Amazon RDS to an Amazon S3 task. For more information, see Role
 templates
-(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+(https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
 for data pipelines.
 
 
@@ -242,7 +242,7 @@ C<DataSource>.
 The role (DataPipelineDefaultRole) assumed by AWS Data Pipeline service
 to monitor the progress of the copy task from Amazon RDS to Amazon S3.
 For more information, see Role templates
-(http://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
+(https://docs.aws.amazon.com/datapipeline/latest/DeveloperGuide/dp-iam-roles.html)
 for data pipelines.
 
 

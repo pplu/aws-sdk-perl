@@ -4,6 +4,7 @@ package Paws::EC2::CreateSecurityGroup;
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'GroupDescription' , required => 1);
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
   has GroupName => (is => 'ro', isa => 'Str', required => 1);
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has VpcId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
@@ -30,11 +31,12 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To create a security group for a VPC
+    # This example creates a security group for the specified VPC.
     my $CreateSecurityGroupResult = $ec2->CreateSecurityGroup(
-      Description => 'MyString',
-      GroupName   => 'MyString',
-      DryRun      => 1,            # OPTIONAL
-      VpcId       => 'MyVpcId',    # OPTIONAL
+      'Description' => 'My security group',
+      'GroupName'   => 'my-security-group',
+      'VpcId'       => 'vpc-1a2b3c4d'
     );
 
     # Results:
@@ -80,6 +82,12 @@ Constraints for EC2-Classic: ASCII characters
 
 Constraints for EC2-VPC: a-z, A-Z, 0-9, spaces, and
 ._-:/()#,@[]+=&;{}!$*
+
+
+
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The tags to assign to the security group.
 
 
 

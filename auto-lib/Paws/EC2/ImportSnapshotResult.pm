@@ -4,6 +4,7 @@ package Paws::EC2::ImportSnapshotResult;
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest',]);
   has ImportTaskId => (is => 'ro', isa => 'Str', request_name => 'importTaskId', traits => ['NameInRequest',]);
   has SnapshotTaskDetail => (is => 'ro', isa => 'Paws::EC2::SnapshotTaskDetail', request_name => 'snapshotTaskDetail', traits => ['NameInRequest',]);
+  has Tags => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Tag]', request_name => 'tagSet', traits => ['NameInRequest',]);
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -30,6 +31,11 @@ The ID of the import snapshot task.
 =head2 SnapshotTaskDetail => L<Paws::EC2::SnapshotTaskDetail>
 
 Information about the import snapshot task.
+
+
+=head2 Tags => ArrayRef[L<Paws::EC2::Tag>]
+
+Any tags assigned to the import snapshot task.
 
 
 =head2 _request_id => Str

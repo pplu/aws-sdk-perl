@@ -41,11 +41,13 @@ policy and account system defaults.
 =item *
 
 C<FilterPolicy> E<ndash> The filter policy JSON that is assigned to the
-subscription.
+subscription. For more information, see Amazon SNS Message Filtering
+(https://docs.aws.amazon.com/sns/latest/dg/sns-message-filtering.html)
+in the I<Amazon SNS Developer Guide>.
 
 =item *
 
-C<Owner> E<ndash> The AWS account ID of the subscription's owner.
+C<Owner> E<ndash> The account ID of the subscription's owner.
 
 =item *
 
@@ -76,6 +78,36 @@ C<SubscriptionArn> E<ndash> The subscription's ARN.
 
 C<TopicArn> E<ndash> The topic ARN that the subscription is associated
 with.
+
+=back
+
+The following attribute applies only to Amazon Kinesis Data Firehose
+delivery stream subscriptions:
+
+=over
+
+=item *
+
+C<SubscriptionRoleArn> E<ndash> The ARN of the IAM role that has the
+following:
+
+=over
+
+=item *
+
+Permission to write to the Kinesis Data Firehose delivery stream
+
+=item *
+
+Amazon SNS listed as a trusted entity
+
+=back
+
+Specifying a valid ARN for this attribute is required for Kinesis Data
+Firehose delivery stream subscriptions. For more information, see
+Fanout to Kinesis Data Firehose delivery streams
+(https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
+in the I<Amazon SNS Developer Guide>.
 
 =back
 

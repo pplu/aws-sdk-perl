@@ -17,7 +17,7 @@ Paws::Amplify::GetWebhookResult
 
 =head2 B<REQUIRED> Webhook => L<Paws::Amplify::Webhook>
 
-Webhook structure.
+Describes the structure of a webhook.
 
 
 =head2 _request_id => Str

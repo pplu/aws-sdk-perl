@@ -7,6 +7,7 @@ package Paws::Comprehend::EntityRecognizerProperties;
   has InputDataConfig => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerInputDataConfig');
   has LanguageCode => (is => 'ro', isa => 'Str');
   has Message => (is => 'ro', isa => 'Str');
+  has ModelKmsKeyId => (is => 'ro', isa => 'Str');
   has RecognizerMetadata => (is => 'ro', isa => 'Paws::Comprehend::EntityRecognizerMetadata');
   has Status => (is => 'ro', isa => 'Str');
   has SubmitTime => (is => 'ro', isa => 'Str');
@@ -80,6 +81,27 @@ language. Only English ("en") is currently supported.
 =head2 Message => Str
 
 A description of the status of the recognizer.
+
+
+=head2 ModelKmsKeyId => Str
+
+ID for the AWS Key Management Service (KMS) key that Amazon Comprehend
+uses to encrypt trained custom models. The ModelKmsKeyId can be either
+of the following formats:
+
+=over
+
+=item *
+
+KMS Key ID: C<"1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=item *
+
+Amazon Resource Name (ARN) of a KMS Key:
+C<"arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab">
+
+=back
+
 
 
 =head2 RecognizerMetadata => L<Paws::Comprehend::EntityRecognizerMetadata>

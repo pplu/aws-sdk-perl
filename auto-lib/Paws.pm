@@ -329,6 +329,8 @@ L<Paws::AlexaForBusiness>
 
 L<Paws::Amplify>
 
+L<Paws::AmplifyBackend>
+
 L<Paws::ApiGateway>
 
 L<Paws::ApiGatewayManagement>
@@ -337,17 +339,29 @@ L<Paws::ApiGatewayV2>
 
 L<Paws::AppConfig>
 
+L<Paws::Appflow>
+
+L<Paws::AppIntegrations>
+
 L<Paws::ApplicationAutoScaling>
+
+L<Paws::ApplicationCostProfiler>
 
 L<Paws::ApplicationInsights>
 
+L<Paws::ApplicationMigration>
+
 L<Paws::AppMesh>
+
+L<Paws::AppRunner>
 
 L<Paws::AppStream>
 
 L<Paws::AppSync>
 
 L<Paws::Athena>
+
+L<Paws::AuditManager>
 
 L<Paws::AutoScaling>
 
@@ -356,6 +370,8 @@ L<Paws::AutoScalingPlans>
 L<Paws::Backup>
 
 L<Paws::Batch>
+
+L<Paws::Braket>
 
 L<Paws::Budgets>
 
@@ -381,11 +397,11 @@ L<Paws::CloudTrail>
 
 L<Paws::CloudWatch>
 
-L<Paws::CloudWatch>
-
 L<Paws::CloudWatchEvents>
 
 L<Paws::CloudWatchLogs>
+
+L<Paws::CodeArtifact>
 
 L<Paws::CodeBuild>
 
@@ -421,11 +437,15 @@ L<Paws::Config>
 
 L<Paws::Connect>
 
+L<Paws::ConnectContactLens>
+
 L<Paws::ConnectParticipant>
 
 L<Paws::CostExplorer>
 
 L<Paws::CUR>
+
+L<Paws::CustomerProfiles>
 
 L<Paws::DataExchange>
 
@@ -438,6 +458,8 @@ L<Paws::DAX>
 L<Paws::Detective>
 
 L<Paws::DeviceFarm>
+
+L<Paws::DevOpsGuru>
 
 L<Paws::DirectConnect>
 
@@ -463,9 +485,9 @@ L<Paws::EC2InstanceConnect>
 
 L<Paws::ECR>
 
-L<Paws::ECS>
+L<Paws::ECRPublic>
 
-L<Paws::EFS>
+L<Paws::ECS>
 
 L<Paws::EFS>
 
@@ -481,17 +503,21 @@ L<Paws::ElasticTranscoder>
 
 L<Paws::ELB>
 
-L<Paws::ELB>
-
 L<Paws::ELBv2>
 
 L<Paws::EMR>
 
-L<Paws::EMR>
+L<Paws::EMRContainers>
 
 L<Paws::ES>
 
+L<Paws::Finspace>
+
+L<Paws::FinspaceData>
+
 L<Paws::Firehose>
+
+L<Paws::FIS>
 
 L<Paws::FMS>
 
@@ -511,13 +537,21 @@ L<Paws::GlobalAccelerator>
 
 L<Paws::Glue>
 
+L<Paws::GlueDataBrew>
+
 L<Paws::Greengrass>
+
+L<Paws::GreengrassV2>
 
 L<Paws::GroundStation>
 
 L<Paws::GuardDuty>
 
 L<Paws::Health>
+
+L<Paws::HealthLake>
+
+L<Paws::Honeycode>
 
 L<Paws::IAM>
 
@@ -537,15 +571,25 @@ L<Paws::IoTAnalytics>
 
 L<Paws::IoTData>
 
+L<Paws::IoTDeviceAdvisor>
+
 L<Paws::IoTEvents>
 
 L<Paws::IoTEventsData>
+
+L<Paws::IoTFleetHub>
 
 L<Paws::IoTJobsData>
 
 L<Paws::IoTSecureTunneling>
 
+L<Paws::IoTSiteWise>
+
 L<Paws::IoTThingsGraph>
+
+L<Paws::IoTWireless>
+
+L<Paws::IVS>
 
 L<Paws::Kafka>
 
@@ -573,15 +617,29 @@ L<Paws::Lambda>
 
 L<Paws::LexModels>
 
+L<Paws::LexModelsV2>
+
 L<Paws::LexRuntime>
+
+L<Paws::LexRuntimeV2>
 
 L<Paws::LicenseManager>
 
 L<Paws::Lightsail>
 
+L<Paws::LocationService>
+
+L<Paws::LookoutEquipment>
+
+L<Paws::LookoutMetrics>
+
+L<Paws::LookoutVision>
+
 L<Paws::MachineLearning>
 
 L<Paws::Macie>
+
+L<Paws::Macie2>
 
 L<Paws::ManagedBlockchain>
 
@@ -619,9 +677,15 @@ L<Paws::MQ>
 
 L<Paws::MTurk>
 
+L<Paws::MWAA>
+
 L<Paws::Neptune>
 
+L<Paws::NetworkFirewall>
+
 L<Paws::NetworkManager>
+
+L<Paws::NimbleStudio>
 
 L<Paws::OpsWorks>
 
@@ -651,6 +715,10 @@ L<Paws::Polly>
 
 L<Paws::Pricing>
 
+L<Paws::Prometheus>
+
+L<Paws::Proton>
+
 L<Paws::QLDB>
 
 L<Paws::QLDBSession>
@@ -664,6 +732,8 @@ L<Paws::RDS>
 L<Paws::RDSData>
 
 L<Paws::RedShift>
+
+L<Paws::RedshiftData>
 
 L<Paws::Rekognition>
 
@@ -683,9 +753,15 @@ L<Paws::S3>
 
 L<Paws::S3Control>
 
+L<Paws::S3Outposts>
+
 L<Paws::SageMaker>
 
 L<Paws::SageMakerA2IRuntime>
+
+L<Paws::SageMakerEdge>
+
+L<Paws::SageMakerFeatureStoreRuntime>
 
 L<Paws::SageMakerRuntime>
 
@@ -703,11 +779,11 @@ L<Paws::ServerlessRepo>
 
 L<Paws::ServiceCatalog>
 
+L<Paws::ServiceCatalogAppRegistry>
+
 L<Paws::ServiceDiscovery>
 
 L<Paws::ServiceQuotas>
-
-L<Paws::SES>
 
 L<Paws::SES>
 
@@ -716,10 +792,6 @@ L<Paws::SESv2>
 L<Paws::Shield>
 
 L<Paws::Signer>
-
-L<Paws::Signin>
-
-L<Paws::SimpleDB>
 
 L<Paws::SimpleWorkflow>
 
@@ -733,7 +805,15 @@ L<Paws::SQS>
 
 L<Paws::SSM>
 
+L<Paws::SSMContacts>
+
+L<Paws::SSMIncidents>
+
 L<Paws::SSO>
+
+L<Paws::SSOAdmin>
+
+L<Paws::SSOIdentityStore>
 
 L<Paws::SSOOidc>
 
@@ -745,7 +825,13 @@ L<Paws::STS>
 
 L<Paws::Support>
 
+L<Paws::Synthetics>
+
 L<Paws::Textract>
+
+L<Paws::TimestreamQuery>
+
+L<Paws::TimestreamWrite>
 
 L<Paws::Transcribe>
 
@@ -757,7 +843,9 @@ L<Paws::WAF>
 
 L<Paws::WAFRegional>
 
-L<Paws::WAFv2>
+L<Paws::WAFV2>
+
+L<Paws::WellArchitected>
 
 L<Paws::WorkDocs>
 

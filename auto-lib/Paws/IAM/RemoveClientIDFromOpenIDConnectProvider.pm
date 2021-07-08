@@ -54,8 +54,7 @@ The Amazon Resource Name (ARN) of the IAM OIDC provider resource to
 remove the client ID from. You can get a list of OIDC provider ARNs by
 using the ListOpenIDConnectProviders operation.
 
-For more information about ARNs, see Amazon Resource Names (ARNs) and
-AWS Service Namespaces
+For more information about ARNs, see Amazon Resource Names (ARNs)
 (https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)
 in the I<AWS General Reference>.
 

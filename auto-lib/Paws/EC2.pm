@@ -21,6 +21,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptReservedInstancesExchangeQuote', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AcceptTransitGatewayMulticastDomainAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AcceptTransitGatewayMulticastDomainAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AcceptTransitGatewayPeeringAttachment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AcceptTransitGatewayPeeringAttachment', @_);
@@ -86,6 +91,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateDhcpOptions', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub AssociateEnclaveCertificateIamRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateEnclaveCertificateIamRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub AssociateIamInstanceProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateIamInstanceProfile', @_);
@@ -109,6 +119,11 @@ package Paws::EC2;
   sub AssociateTransitGatewayRouteTable {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::AssociateTransitGatewayRouteTable', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub AssociateTrunkInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::AssociateTrunkInterface', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub AssociateVpcCidrBlock {
@@ -226,6 +241,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateCapacityReservation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateCarrierGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateCarrierGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateClientVpnEndpoint {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateClientVpnEndpoint', @_);
@@ -316,6 +336,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateLocalGatewayRouteTableVpcAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateManagedPrefixList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateManagedPrefixList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateNatGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateNatGateway', @_);
@@ -329,6 +354,11 @@ package Paws::EC2;
   sub CreateNetworkAclEntry {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkAclEntry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateNetworkInsightsPath {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateNetworkInsightsPath', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateNetworkInterface {
@@ -346,9 +376,19 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreatePlacementGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateReplaceRootVolumeTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateReplaceRootVolumeTask', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateReservedInstancesListing {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateReservedInstancesListing', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateRestoreImageTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateRestoreImageTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateRoute {
@@ -379,6 +419,11 @@ package Paws::EC2;
   sub CreateSpotDatafeedSubscription {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateSpotDatafeedSubscription', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateStoreImageTask {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateStoreImageTask', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateSubnet {
@@ -416,6 +461,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub CreateTransitGatewayConnect {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayConnect', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayConnectPeer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayConnectPeer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub CreateTransitGatewayMulticastDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayMulticastDomain', @_);
@@ -424,6 +479,11 @@ package Paws::EC2;
   sub CreateTransitGatewayPeeringAttachment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayPeeringAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub CreateTransitGatewayPrefixListReference {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::CreateTransitGatewayPrefixListReference', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub CreateTransitGatewayRoute {
@@ -484,6 +544,11 @@ package Paws::EC2;
   sub CreateVpnGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::CreateVpnGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteCarrierGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteCarrierGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteClientVpnEndpoint {
@@ -556,6 +621,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteLocalGatewayRouteTableVpcAssociation', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteManagedPrefixList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteManagedPrefixList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteNatGateway {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNatGateway', @_);
@@ -569,6 +639,16 @@ package Paws::EC2;
   sub DeleteNetworkAclEntry {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkAclEntry', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteNetworkInsightsAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkInsightsAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteNetworkInsightsPath {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteNetworkInsightsPath', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteNetworkInterface {
@@ -651,6 +731,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGateway', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteTransitGatewayConnect {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayConnect', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGatewayConnectPeer {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayConnectPeer', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeleteTransitGatewayMulticastDomain {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayMulticastDomain', @_);
@@ -659,6 +749,11 @@ package Paws::EC2;
   sub DeleteTransitGatewayPeeringAttachment {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayPeeringAttachment', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DeleteTransitGatewayPrefixListReference {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeleteTransitGatewayPrefixListReference', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DeleteTransitGatewayRoute {
@@ -731,6 +826,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeregisterInstanceEventNotificationAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterInstanceEventNotificationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterTransitGatewayMulticastGroupMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DeregisterTransitGatewayMulticastGroupMembers', @_);
@@ -749,6 +849,11 @@ package Paws::EC2;
   sub DescribeAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAddresses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeAddressesAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeAddressesAttribute', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeAggregateIdFormat {
@@ -774,6 +879,11 @@ package Paws::EC2;
   sub DescribeCapacityReservations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeCapacityReservations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeCarrierGateways {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeCarrierGateways', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeClassicLinkInstances {
@@ -941,6 +1051,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceCreditSpecifications', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeInstanceEventNotificationAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstanceEventNotificationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeInstances {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeInstances', @_);
@@ -1016,6 +1131,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeLocalGatewayVirtualInterfaces', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeManagedPrefixLists {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeManagedPrefixLists', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeMovingAddresses {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeMovingAddresses', @_);
@@ -1029,6 +1149,16 @@ package Paws::EC2;
   sub DescribeNetworkAcls {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkAcls', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeNetworkInsightsAnalyses {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkInsightsAnalyses', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeNetworkInsightsPaths {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeNetworkInsightsPaths', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeNetworkInterfaceAttribute {
@@ -1069,6 +1199,11 @@ package Paws::EC2;
   sub DescribeRegions {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeRegions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeReplaceRootVolumeTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeReplaceRootVolumeTasks', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeReservedInstances {
@@ -1161,6 +1296,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeStaleSecurityGroups', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeStoreImageTasks {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeStoreImageTasks', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeSubnets {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeSubnets', @_);
@@ -1191,6 +1331,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayAttachments', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeTransitGatewayConnectPeers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayConnectPeers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTransitGatewayConnects {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayConnects', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DescribeTransitGatewayMulticastDomains {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayMulticastDomains', @_);
@@ -1214,6 +1364,11 @@ package Paws::EC2;
   sub DescribeTransitGatewayVpcAttachments {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTransitGatewayVpcAttachments', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DescribeTrunkInterfaceAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DescribeTrunkInterfaceAssociations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub DescribeVolumeAttribute {
@@ -1336,6 +1491,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableFastSnapshotRestores', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisableImageDeprecation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableImageDeprecation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub DisableSerialConsoleAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisableSerialConsoleAccess', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisableTransitGatewayRouteTablePropagation {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisableTransitGatewayRouteTablePropagation', @_);
@@ -1366,6 +1531,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateClientVpnTargetNetwork', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateEnclaveCertificateIamRole {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateEnclaveCertificateIamRole', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateIamInstanceProfile {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateIamInstanceProfile', @_);
@@ -1391,6 +1561,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTransitGatewayRouteTable', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DisassociateTrunkInterface {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateTrunkInterface', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DisassociateVpcCidrBlock {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::DisassociateVpcCidrBlock', @_);
@@ -1404,6 +1579,16 @@ package Paws::EC2;
   sub EnableFastSnapshotRestores {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::EnableFastSnapshotRestores', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableImageDeprecation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableImageDeprecation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub EnableSerialConsoleAccess {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::EnableSerialConsoleAccess', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub EnableTransitGatewayRouteTablePropagation {
@@ -1451,6 +1636,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ExportTransitGatewayRoutes', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetAssociatedEnclaveCertificateIamRoles {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetAssociatedEnclaveCertificateIamRoles', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetAssociatedIpv6PoolCidrs {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetAssociatedIpv6PoolCidrs', @_);
@@ -1491,6 +1681,16 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetEbsEncryptionByDefault', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetFlowLogsIntegrationTemplate {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetFlowLogsIntegrationTemplate', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetGroupsForCapacityReservation {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetGroupsForCapacityReservation', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetHostReservationPurchasePreview {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetHostReservationPurchasePreview', @_);
@@ -1499,6 +1699,16 @@ package Paws::EC2;
   sub GetLaunchTemplateData {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetLaunchTemplateData', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetManagedPrefixListAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetManagedPrefixListAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetManagedPrefixListEntries {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetManagedPrefixListEntries', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetPasswordData {
@@ -1511,6 +1721,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetReservedInstancesExchangeQuote', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub GetSerialConsoleAccessStatus {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetSerialConsoleAccessStatus', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub GetTransitGatewayAttachmentPropagations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayAttachmentPropagations', @_);
@@ -1519,6 +1734,11 @@ package Paws::EC2;
   sub GetTransitGatewayMulticastDomainAssociations {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayMulticastDomainAssociations', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub GetTransitGatewayPrefixListReferences {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::GetTransitGatewayPrefixListReferences', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub GetTransitGatewayRouteTableAssociations {
@@ -1559,6 +1779,16 @@ package Paws::EC2;
   sub ImportVolume {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ImportVolume', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyAddressAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyAddressAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyAvailabilityZoneGroup {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyAvailabilityZoneGroup', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyCapacityReservation {
@@ -1646,6 +1876,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyLaunchTemplate', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyManagedPrefixList {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyManagedPrefixList', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyNetworkInterfaceAttribute {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyNetworkInterfaceAttribute', @_);
@@ -1684,6 +1919,16 @@ package Paws::EC2;
   sub ModifyTrafficMirrorSession {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTrafficMirrorSession', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyTransitGateway {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTransitGateway', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub ModifyTransitGatewayPrefixListReference {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyTransitGatewayPrefixListReference', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub ModifyTransitGatewayVpcAttachment {
@@ -1741,6 +1986,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnConnection', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ModifyVpnConnectionOptions {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnConnectionOptions', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ModifyVpnTunnelCertificate {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ModifyVpnTunnelCertificate', @_);
@@ -1791,6 +2041,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::RegisterImage', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub RegisterInstanceEventNotificationAttributes {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RegisterInstanceEventNotificationAttributes', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub RegisterTransitGatewayMulticastGroupMembers {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RegisterTransitGatewayMulticastGroupMembers', @_);
@@ -1799,6 +2054,11 @@ package Paws::EC2;
   sub RegisterTransitGatewayMulticastGroupSources {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RegisterTransitGatewayMulticastGroupSources', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RejectTransitGatewayMulticastDomainAssociations {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RejectTransitGatewayMulticastDomainAssociations', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RejectTransitGatewayPeeringAttachment {
@@ -1876,6 +2136,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::RequestSpotInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub ResetAddressAttribute {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::ResetAddressAttribute', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub ResetEbsDefaultKmsKeyId {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::ResetEbsDefaultKmsKeyId', @_);
@@ -1909,6 +2174,11 @@ package Paws::EC2;
   sub RestoreAddressToClassic {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::RestoreAddressToClassic', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub RestoreManagedPrefixListVersion {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::RestoreManagedPrefixListVersion', @_);
     return $self->caller->do_call($self, $call_object);
   }
   sub RevokeClientVpnIngress {
@@ -1961,6 +2231,11 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::StartInstances', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub StartNetworkInsightsAnalysis {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::EC2::StartNetworkInsightsAnalysis', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub StartVpcEndpointServicePrivateDnsVerification {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::EC2::StartVpcEndpointServicePrivateDnsVerification', @_);
@@ -2011,6 +2286,29 @@ package Paws::EC2;
     my $call_object = $self->new_with_coercions('Paws::EC2::WithdrawByoipCidr', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DescribeAllAddressesAttribute {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeAddressesAttribute(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeAddressesAttribute(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Addresses }, @{ $next_result->Addresses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
+        $result = $self->DescribeAddressesAttribute(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Addresses') foreach (@{ $result->Addresses });
+    }
+
+    return undef
+  }
   sub DescribeAllByoipCidrs {
     my $self = shift;
 
@@ -2053,6 +2351,29 @@ package Paws::EC2;
         $result = $self->DescribeCapacityReservations(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'CapacityReservations') foreach (@{ $result->CapacityReservations });
+    }
+
+    return undef
+  }
+  sub DescribeAllCarrierGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCarrierGateways(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeCarrierGateways(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CarrierGateways }, @{ $next_result->CarrierGateways };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CarrierGateways') foreach (@{ $result->CarrierGateways });
+        $result = $self->DescribeCarrierGateways(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CarrierGateways') foreach (@{ $result->CarrierGateways });
     }
 
     return undef
@@ -2191,6 +2512,29 @@ package Paws::EC2;
         $result = $self->DescribeClientVpnTargetNetworks(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'ClientVpnTargetNetworks') foreach (@{ $result->ClientVpnTargetNetworks });
+    }
+
+    return undef
+  }
+  sub DescribeAllCoipPools {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeCoipPools(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeCoipPools(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CoipPools }, @{ $next_result->CoipPools };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CoipPools') foreach (@{ $result->CoipPools });
+        $result = $self->DescribeCoipPools(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CoipPools') foreach (@{ $result->CoipPools });
     }
 
     return undef
@@ -2563,6 +2907,52 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllInstanceTypeOfferings {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstanceTypeOfferings(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstanceTypeOfferings(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceTypeOfferings }, @{ $next_result->InstanceTypeOfferings };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InstanceTypeOfferings') foreach (@{ $result->InstanceTypeOfferings });
+        $result = $self->DescribeInstanceTypeOfferings(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InstanceTypeOfferings') foreach (@{ $result->InstanceTypeOfferings });
+    }
+
+    return undef
+  }
+  sub DescribeAllInstanceTypes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeInstanceTypes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeInstanceTypes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->InstanceTypes }, @{ $next_result->InstanceTypes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'InstanceTypes') foreach (@{ $result->InstanceTypes });
+        $result = $self->DescribeInstanceTypes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'InstanceTypes') foreach (@{ $result->InstanceTypes });
+    }
+
+    return undef
+  }
   sub DescribeAllInternetGateways {
     my $self = shift;
 
@@ -2655,6 +3045,167 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllLocalGatewayRouteTables {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLocalGatewayRouteTables(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLocalGatewayRouteTables(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LocalGatewayRouteTables }, @{ $next_result->LocalGatewayRouteTables };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LocalGatewayRouteTables') foreach (@{ $result->LocalGatewayRouteTables });
+        $result = $self->DescribeLocalGatewayRouteTables(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LocalGatewayRouteTables') foreach (@{ $result->LocalGatewayRouteTables });
+    }
+
+    return undef
+  }
+  sub DescribeAllLocalGatewayRouteTableVirtualInterfaceGroupAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LocalGatewayRouteTableVirtualInterfaceGroupAssociations }, @{ $next_result->LocalGatewayRouteTableVirtualInterfaceGroupAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LocalGatewayRouteTableVirtualInterfaceGroupAssociations') foreach (@{ $result->LocalGatewayRouteTableVirtualInterfaceGroupAssociations });
+        $result = $self->DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LocalGatewayRouteTableVirtualInterfaceGroupAssociations') foreach (@{ $result->LocalGatewayRouteTableVirtualInterfaceGroupAssociations });
+    }
+
+    return undef
+  }
+  sub DescribeAllLocalGatewayRouteTableVpcAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLocalGatewayRouteTableVpcAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLocalGatewayRouteTableVpcAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LocalGatewayRouteTableVpcAssociations }, @{ $next_result->LocalGatewayRouteTableVpcAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LocalGatewayRouteTableVpcAssociations') foreach (@{ $result->LocalGatewayRouteTableVpcAssociations });
+        $result = $self->DescribeLocalGatewayRouteTableVpcAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LocalGatewayRouteTableVpcAssociations') foreach (@{ $result->LocalGatewayRouteTableVpcAssociations });
+    }
+
+    return undef
+  }
+  sub DescribeAllLocalGateways {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLocalGateways(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLocalGateways(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LocalGateways }, @{ $next_result->LocalGateways };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LocalGateways') foreach (@{ $result->LocalGateways });
+        $result = $self->DescribeLocalGateways(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LocalGateways') foreach (@{ $result->LocalGateways });
+    }
+
+    return undef
+  }
+  sub DescribeAllLocalGatewayVirtualInterfaceGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLocalGatewayVirtualInterfaceGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLocalGatewayVirtualInterfaceGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LocalGatewayVirtualInterfaceGroups }, @{ $next_result->LocalGatewayVirtualInterfaceGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LocalGatewayVirtualInterfaceGroups') foreach (@{ $result->LocalGatewayVirtualInterfaceGroups });
+        $result = $self->DescribeLocalGatewayVirtualInterfaceGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LocalGatewayVirtualInterfaceGroups') foreach (@{ $result->LocalGatewayVirtualInterfaceGroups });
+    }
+
+    return undef
+  }
+  sub DescribeAllLocalGatewayVirtualInterfaces {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeLocalGatewayVirtualInterfaces(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeLocalGatewayVirtualInterfaces(@_, NextToken => $next_result->NextToken);
+        push @{ $result->LocalGatewayVirtualInterfaces }, @{ $next_result->LocalGatewayVirtualInterfaces };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'LocalGatewayVirtualInterfaces') foreach (@{ $result->LocalGatewayVirtualInterfaces });
+        $result = $self->DescribeLocalGatewayVirtualInterfaces(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'LocalGatewayVirtualInterfaces') foreach (@{ $result->LocalGatewayVirtualInterfaces });
+    }
+
+    return undef
+  }
+  sub DescribeAllManagedPrefixLists {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeManagedPrefixLists(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeManagedPrefixLists(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PrefixLists }, @{ $next_result->PrefixLists };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PrefixLists') foreach (@{ $result->PrefixLists });
+        $result = $self->DescribeManagedPrefixLists(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PrefixLists') foreach (@{ $result->PrefixLists });
+    }
+
+    return undef
+  }
   sub DescribeAllMovingAddresses {
     my $self = shift;
 
@@ -2720,6 +3271,52 @@ package Paws::EC2;
         $result = $self->DescribeNetworkAcls(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'NetworkAcls') foreach (@{ $result->NetworkAcls });
+    }
+
+    return undef
+  }
+  sub DescribeAllNetworkInsightsAnalyses {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNetworkInsightsAnalyses(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNetworkInsightsAnalyses(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NetworkInsightsAnalyses }, @{ $next_result->NetworkInsightsAnalyses };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NetworkInsightsAnalyses') foreach (@{ $result->NetworkInsightsAnalyses });
+        $result = $self->DescribeNetworkInsightsAnalyses(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NetworkInsightsAnalyses') foreach (@{ $result->NetworkInsightsAnalyses });
+    }
+
+    return undef
+  }
+  sub DescribeAllNetworkInsightsPaths {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeNetworkInsightsPaths(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeNetworkInsightsPaths(@_, NextToken => $next_result->NextToken);
+        push @{ $result->NetworkInsightsPaths }, @{ $next_result->NetworkInsightsPaths };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'NetworkInsightsPaths') foreach (@{ $result->NetworkInsightsPaths });
+        $result = $self->DescribeNetworkInsightsPaths(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'NetworkInsightsPaths') foreach (@{ $result->NetworkInsightsPaths });
     }
 
     return undef
@@ -2835,6 +3432,29 @@ package Paws::EC2;
         $result = $self->DescribePublicIpv4Pools(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'PublicIpv4Pools') foreach (@{ $result->PublicIpv4Pools });
+    }
+
+    return undef
+  }
+  sub DescribeAllReplaceRootVolumeTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeReplaceRootVolumeTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeReplaceRootVolumeTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->ReplaceRootVolumeTasks }, @{ $next_result->ReplaceRootVolumeTasks };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'ReplaceRootVolumeTasks') foreach (@{ $result->ReplaceRootVolumeTasks });
+        $result = $self->DescribeReplaceRootVolumeTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'ReplaceRootVolumeTasks') foreach (@{ $result->ReplaceRootVolumeTasks });
     }
 
     return undef
@@ -3115,6 +3735,29 @@ package Paws::EC2;
 
     return undef
   }
+  sub DescribeAllStoreImageTasks {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeStoreImageTasks(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeStoreImageTasks(@_, NextToken => $next_result->NextToken);
+        push @{ $result->StoreImageTaskResults }, @{ $next_result->StoreImageTaskResults };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'StoreImageTaskResults') foreach (@{ $result->StoreImageTaskResults });
+        $result = $self->DescribeStoreImageTasks(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'StoreImageTaskResults') foreach (@{ $result->StoreImageTaskResults });
+    }
+
+    return undef
+  }
   sub DescribeAllSubnets {
     my $self = shift;
 
@@ -3249,6 +3892,98 @@ package Paws::EC2;
         $result = $self->DescribeTransitGatewayAttachments(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'TransitGatewayAttachments') foreach (@{ $result->TransitGatewayAttachments });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayConnectPeers {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayConnectPeers(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayConnectPeers(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayConnectPeers }, @{ $next_result->TransitGatewayConnectPeers };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayConnectPeers') foreach (@{ $result->TransitGatewayConnectPeers });
+        $result = $self->DescribeTransitGatewayConnectPeers(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayConnectPeers') foreach (@{ $result->TransitGatewayConnectPeers });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayConnects {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayConnects(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayConnects(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayConnects }, @{ $next_result->TransitGatewayConnects };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayConnects') foreach (@{ $result->TransitGatewayConnects });
+        $result = $self->DescribeTransitGatewayConnects(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayConnects') foreach (@{ $result->TransitGatewayConnects });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayMulticastDomains {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayMulticastDomains(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayMulticastDomains(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayMulticastDomains }, @{ $next_result->TransitGatewayMulticastDomains };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayMulticastDomains') foreach (@{ $result->TransitGatewayMulticastDomains });
+        $result = $self->DescribeTransitGatewayMulticastDomains(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayMulticastDomains') foreach (@{ $result->TransitGatewayMulticastDomains });
+    }
+
+    return undef
+  }
+  sub DescribeAllTransitGatewayPeeringAttachments {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->DescribeTransitGatewayPeeringAttachments(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->DescribeTransitGatewayPeeringAttachments(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayPeeringAttachments }, @{ $next_result->TransitGatewayPeeringAttachments };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayPeeringAttachments') foreach (@{ $result->TransitGatewayPeeringAttachments });
+        $result = $self->DescribeTransitGatewayPeeringAttachments(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayPeeringAttachments') foreach (@{ $result->TransitGatewayPeeringAttachments });
     }
 
     return undef
@@ -3624,6 +4359,75 @@ package Paws::EC2;
 
     return undef
   }
+  sub GetAllGroupsForCapacityReservation {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetGroupsForCapacityReservation(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetGroupsForCapacityReservation(@_, NextToken => $next_result->NextToken);
+        push @{ $result->CapacityReservationGroups }, @{ $next_result->CapacityReservationGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'CapacityReservationGroups') foreach (@{ $result->CapacityReservationGroups });
+        $result = $self->GetGroupsForCapacityReservation(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'CapacityReservationGroups') foreach (@{ $result->CapacityReservationGroups });
+    }
+
+    return undef
+  }
+  sub GetAllManagedPrefixListAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetManagedPrefixListAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetManagedPrefixListAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->PrefixListAssociations }, @{ $next_result->PrefixListAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'PrefixListAssociations') foreach (@{ $result->PrefixListAssociations });
+        $result = $self->GetManagedPrefixListAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'PrefixListAssociations') foreach (@{ $result->PrefixListAssociations });
+    }
+
+    return undef
+  }
+  sub GetAllManagedPrefixListEntries {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetManagedPrefixListEntries(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetManagedPrefixListEntries(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Entries }, @{ $next_result->Entries };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Entries') foreach (@{ $result->Entries });
+        $result = $self->GetManagedPrefixListEntries(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Entries') foreach (@{ $result->Entries });
+    }
+
+    return undef
+  }
   sub GetAllTransitGatewayAttachmentPropagations {
     my $self = shift;
 
@@ -3643,6 +4447,52 @@ package Paws::EC2;
         $result = $self->GetTransitGatewayAttachmentPropagations(@_, NextToken => $result->NextToken);
       }
       $callback->($_ => 'TransitGatewayAttachmentPropagations') foreach (@{ $result->TransitGatewayAttachmentPropagations });
+    }
+
+    return undef
+  }
+  sub GetAllTransitGatewayMulticastDomainAssociations {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTransitGatewayMulticastDomainAssociations(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTransitGatewayMulticastDomainAssociations(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MulticastDomainAssociations }, @{ $next_result->MulticastDomainAssociations };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MulticastDomainAssociations') foreach (@{ $result->MulticastDomainAssociations });
+        $result = $self->GetTransitGatewayMulticastDomainAssociations(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MulticastDomainAssociations') foreach (@{ $result->MulticastDomainAssociations });
+    }
+
+    return undef
+  }
+  sub GetAllTransitGatewayPrefixListReferences {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->GetTransitGatewayPrefixListReferences(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->GetTransitGatewayPrefixListReferences(@_, NextToken => $next_result->NextToken);
+        push @{ $result->TransitGatewayPrefixListReferences }, @{ $next_result->TransitGatewayPrefixListReferences };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'TransitGatewayPrefixListReferences') foreach (@{ $result->TransitGatewayPrefixListReferences });
+        $result = $self->GetTransitGatewayPrefixListReferences(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'TransitGatewayPrefixListReferences') foreach (@{ $result->TransitGatewayPrefixListReferences });
     }
 
     return undef
@@ -3693,9 +4543,55 @@ package Paws::EC2;
 
     return undef
   }
+  sub SearchAllLocalGatewayRoutes {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchLocalGatewayRoutes(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchLocalGatewayRoutes(@_, NextToken => $next_result->NextToken);
+        push @{ $result->Routes }, @{ $next_result->Routes };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'Routes') foreach (@{ $result->Routes });
+        $result = $self->SearchLocalGatewayRoutes(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'Routes') foreach (@{ $result->Routes });
+    }
+
+    return undef
+  }
+  sub SearchAllTransitGatewayMulticastGroups {
+    my $self = shift;
+
+    my $callback = shift @_ if (ref($_[0]) eq 'CODE');
+    my $result = $self->SearchTransitGatewayMulticastGroups(@_);
+    my $next_result = $result;
+
+    if (not defined $callback) {
+      while ($next_result->NextToken) {
+        $next_result = $self->SearchTransitGatewayMulticastGroups(@_, NextToken => $next_result->NextToken);
+        push @{ $result->MulticastGroups }, @{ $next_result->MulticastGroups };
+      }
+      return $result;
+    } else {
+      while ($result->NextToken) {
+        $callback->($_ => 'MulticastGroups') foreach (@{ $result->MulticastGroups });
+        $result = $self->SearchTransitGatewayMulticastGroups(@_, NextToken => $result->NextToken);
+      }
+      $callback->($_ => 'MulticastGroups') foreach (@{ $result->MulticastGroups });
+    }
+
+    return undef
+  }
 
 
-  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayPeeringAttachment AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayMulticastDomain AssociateTransitGatewayRouteTable AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateLocalGatewayRoute CreateLocalGatewayRouteTableVpcAssociation CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReservedInstancesListing CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayMulticastDomain CreateTransitGatewayPeeringAttachment CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteLocalGatewayRoute DeleteLocalGatewayRouteTableVpcAssociation DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayMulticastDomain DeleteTransitGatewayPeeringAttachment DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DeregisterTransitGatewayMulticastGroupMembers DeregisterTransitGatewayMulticastGroupSources DescribeAccountAttributes DescribeAddresses DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeCoipPools DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFastSnapshotRestores DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstances DescribeInstanceStatus DescribeInstanceTypeOfferings DescribeInstanceTypes DescribeInternetGateways DescribeIpv6Pools DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeLocalGatewayRouteTables DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations DescribeLocalGatewayRouteTableVpcAssociations DescribeLocalGateways DescribeLocalGatewayVirtualInterfaceGroups DescribeLocalGatewayVirtualInterfaces DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayMulticastDomains DescribeTransitGatewayPeeringAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableFastSnapshotRestores DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayMulticastDomain DisassociateTransitGatewayRouteTable DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableFastSnapshotRestores EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetAssociatedIpv6PoolCidrs GetCapacityReservationUsage GetCoipPoolUsage GetConsoleOutput GetConsoleScreenshot GetDefaultCreditSpecification GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetHostReservationPurchasePreview GetLaunchTemplateData GetPasswordData GetReservedInstancesExchangeQuote GetTransitGatewayAttachmentPropagations GetTransitGatewayMulticastDomainAssociations GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyCapacityReservation ModifyClientVpnEndpoint ModifyDefaultCreditSpecification ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstanceMetadataOptions ModifyInstancePlacement ModifyLaunchTemplate ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RegisterTransitGatewayMulticastGroupMembers RegisterTransitGatewayMulticastGroupSources RejectTransitGatewayPeeringAttachment RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchLocalGatewayRoutes SearchTransitGatewayMulticastGroups SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StartVpcEndpointServicePrivateDnsVerification StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
+  sub operations { qw/AcceptReservedInstancesExchangeQuote AcceptTransitGatewayMulticastDomainAssociations AcceptTransitGatewayPeeringAttachment AcceptTransitGatewayVpcAttachment AcceptVpcEndpointConnections AcceptVpcPeeringConnection AdvertiseByoipCidr AllocateAddress AllocateHosts ApplySecurityGroupsToClientVpnTargetNetwork AssignIpv6Addresses AssignPrivateIpAddresses AssociateAddress AssociateClientVpnTargetNetwork AssociateDhcpOptions AssociateEnclaveCertificateIamRole AssociateIamInstanceProfile AssociateRouteTable AssociateSubnetCidrBlock AssociateTransitGatewayMulticastDomain AssociateTransitGatewayRouteTable AssociateTrunkInterface AssociateVpcCidrBlock AttachClassicLinkVpc AttachInternetGateway AttachNetworkInterface AttachVolume AttachVpnGateway AuthorizeClientVpnIngress AuthorizeSecurityGroupEgress AuthorizeSecurityGroupIngress BundleInstance CancelBundleTask CancelCapacityReservation CancelConversionTask CancelExportTask CancelImportTask CancelReservedInstancesListing CancelSpotFleetRequests CancelSpotInstanceRequests ConfirmProductInstance CopyFpgaImage CopyImage CopySnapshot CreateCapacityReservation CreateCarrierGateway CreateClientVpnEndpoint CreateClientVpnRoute CreateCustomerGateway CreateDefaultSubnet CreateDefaultVpc CreateDhcpOptions CreateEgressOnlyInternetGateway CreateFleet CreateFlowLogs CreateFpgaImage CreateImage CreateInstanceExportTask CreateInternetGateway CreateKeyPair CreateLaunchTemplate CreateLaunchTemplateVersion CreateLocalGatewayRoute CreateLocalGatewayRouteTableVpcAssociation CreateManagedPrefixList CreateNatGateway CreateNetworkAcl CreateNetworkAclEntry CreateNetworkInsightsPath CreateNetworkInterface CreateNetworkInterfacePermission CreatePlacementGroup CreateReplaceRootVolumeTask CreateReservedInstancesListing CreateRestoreImageTask CreateRoute CreateRouteTable CreateSecurityGroup CreateSnapshot CreateSnapshots CreateSpotDatafeedSubscription CreateStoreImageTask CreateSubnet CreateTags CreateTrafficMirrorFilter CreateTrafficMirrorFilterRule CreateTrafficMirrorSession CreateTrafficMirrorTarget CreateTransitGateway CreateTransitGatewayConnect CreateTransitGatewayConnectPeer CreateTransitGatewayMulticastDomain CreateTransitGatewayPeeringAttachment CreateTransitGatewayPrefixListReference CreateTransitGatewayRoute CreateTransitGatewayRouteTable CreateTransitGatewayVpcAttachment CreateVolume CreateVpc CreateVpcEndpoint CreateVpcEndpointConnectionNotification CreateVpcEndpointServiceConfiguration CreateVpcPeeringConnection CreateVpnConnection CreateVpnConnectionRoute CreateVpnGateway DeleteCarrierGateway DeleteClientVpnEndpoint DeleteClientVpnRoute DeleteCustomerGateway DeleteDhcpOptions DeleteEgressOnlyInternetGateway DeleteFleets DeleteFlowLogs DeleteFpgaImage DeleteInternetGateway DeleteKeyPair DeleteLaunchTemplate DeleteLaunchTemplateVersions DeleteLocalGatewayRoute DeleteLocalGatewayRouteTableVpcAssociation DeleteManagedPrefixList DeleteNatGateway DeleteNetworkAcl DeleteNetworkAclEntry DeleteNetworkInsightsAnalysis DeleteNetworkInsightsPath DeleteNetworkInterface DeleteNetworkInterfacePermission DeletePlacementGroup DeleteQueuedReservedInstances DeleteRoute DeleteRouteTable DeleteSecurityGroup DeleteSnapshot DeleteSpotDatafeedSubscription DeleteSubnet DeleteTags DeleteTrafficMirrorFilter DeleteTrafficMirrorFilterRule DeleteTrafficMirrorSession DeleteTrafficMirrorTarget DeleteTransitGateway DeleteTransitGatewayConnect DeleteTransitGatewayConnectPeer DeleteTransitGatewayMulticastDomain DeleteTransitGatewayPeeringAttachment DeleteTransitGatewayPrefixListReference DeleteTransitGatewayRoute DeleteTransitGatewayRouteTable DeleteTransitGatewayVpcAttachment DeleteVolume DeleteVpc DeleteVpcEndpointConnectionNotifications DeleteVpcEndpoints DeleteVpcEndpointServiceConfigurations DeleteVpcPeeringConnection DeleteVpnConnection DeleteVpnConnectionRoute DeleteVpnGateway DeprovisionByoipCidr DeregisterImage DeregisterInstanceEventNotificationAttributes DeregisterTransitGatewayMulticastGroupMembers DeregisterTransitGatewayMulticastGroupSources DescribeAccountAttributes DescribeAddresses DescribeAddressesAttribute DescribeAggregateIdFormat DescribeAvailabilityZones DescribeBundleTasks DescribeByoipCidrs DescribeCapacityReservations DescribeCarrierGateways DescribeClassicLinkInstances DescribeClientVpnAuthorizationRules DescribeClientVpnConnections DescribeClientVpnEndpoints DescribeClientVpnRoutes DescribeClientVpnTargetNetworks DescribeCoipPools DescribeConversionTasks DescribeCustomerGateways DescribeDhcpOptions DescribeEgressOnlyInternetGateways DescribeElasticGpus DescribeExportImageTasks DescribeExportTasks DescribeFastSnapshotRestores DescribeFleetHistory DescribeFleetInstances DescribeFleets DescribeFlowLogs DescribeFpgaImageAttribute DescribeFpgaImages DescribeHostReservationOfferings DescribeHostReservations DescribeHosts DescribeIamInstanceProfileAssociations DescribeIdentityIdFormat DescribeIdFormat DescribeImageAttribute DescribeImages DescribeImportImageTasks DescribeImportSnapshotTasks DescribeInstanceAttribute DescribeInstanceCreditSpecifications DescribeInstanceEventNotificationAttributes DescribeInstances DescribeInstanceStatus DescribeInstanceTypeOfferings DescribeInstanceTypes DescribeInternetGateways DescribeIpv6Pools DescribeKeyPairs DescribeLaunchTemplates DescribeLaunchTemplateVersions DescribeLocalGatewayRouteTables DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociations DescribeLocalGatewayRouteTableVpcAssociations DescribeLocalGateways DescribeLocalGatewayVirtualInterfaceGroups DescribeLocalGatewayVirtualInterfaces DescribeManagedPrefixLists DescribeMovingAddresses DescribeNatGateways DescribeNetworkAcls DescribeNetworkInsightsAnalyses DescribeNetworkInsightsPaths DescribeNetworkInterfaceAttribute DescribeNetworkInterfacePermissions DescribeNetworkInterfaces DescribePlacementGroups DescribePrefixLists DescribePrincipalIdFormat DescribePublicIpv4Pools DescribeRegions DescribeReplaceRootVolumeTasks DescribeReservedInstances DescribeReservedInstancesListings DescribeReservedInstancesModifications DescribeReservedInstancesOfferings DescribeRouteTables DescribeScheduledInstanceAvailability DescribeScheduledInstances DescribeSecurityGroupReferences DescribeSecurityGroups DescribeSnapshotAttribute DescribeSnapshots DescribeSpotDatafeedSubscription DescribeSpotFleetInstances DescribeSpotFleetRequestHistory DescribeSpotFleetRequests DescribeSpotInstanceRequests DescribeSpotPriceHistory DescribeStaleSecurityGroups DescribeStoreImageTasks DescribeSubnets DescribeTags DescribeTrafficMirrorFilters DescribeTrafficMirrorSessions DescribeTrafficMirrorTargets DescribeTransitGatewayAttachments DescribeTransitGatewayConnectPeers DescribeTransitGatewayConnects DescribeTransitGatewayMulticastDomains DescribeTransitGatewayPeeringAttachments DescribeTransitGatewayRouteTables DescribeTransitGateways DescribeTransitGatewayVpcAttachments DescribeTrunkInterfaceAssociations DescribeVolumeAttribute DescribeVolumes DescribeVolumesModifications DescribeVolumeStatus DescribeVpcAttribute DescribeVpcClassicLink DescribeVpcClassicLinkDnsSupport DescribeVpcEndpointConnectionNotifications DescribeVpcEndpointConnections DescribeVpcEndpoints DescribeVpcEndpointServiceConfigurations DescribeVpcEndpointServicePermissions DescribeVpcEndpointServices DescribeVpcPeeringConnections DescribeVpcs DescribeVpnConnections DescribeVpnGateways DetachClassicLinkVpc DetachInternetGateway DetachNetworkInterface DetachVolume DetachVpnGateway DisableEbsEncryptionByDefault DisableFastSnapshotRestores DisableImageDeprecation DisableSerialConsoleAccess DisableTransitGatewayRouteTablePropagation DisableVgwRoutePropagation DisableVpcClassicLink DisableVpcClassicLinkDnsSupport DisassociateAddress DisassociateClientVpnTargetNetwork DisassociateEnclaveCertificateIamRole DisassociateIamInstanceProfile DisassociateRouteTable DisassociateSubnetCidrBlock DisassociateTransitGatewayMulticastDomain DisassociateTransitGatewayRouteTable DisassociateTrunkInterface DisassociateVpcCidrBlock EnableEbsEncryptionByDefault EnableFastSnapshotRestores EnableImageDeprecation EnableSerialConsoleAccess EnableTransitGatewayRouteTablePropagation EnableVgwRoutePropagation EnableVolumeIO EnableVpcClassicLink EnableVpcClassicLinkDnsSupport ExportClientVpnClientCertificateRevocationList ExportClientVpnClientConfiguration ExportImage ExportTransitGatewayRoutes GetAssociatedEnclaveCertificateIamRoles GetAssociatedIpv6PoolCidrs GetCapacityReservationUsage GetCoipPoolUsage GetConsoleOutput GetConsoleScreenshot GetDefaultCreditSpecification GetEbsDefaultKmsKeyId GetEbsEncryptionByDefault GetFlowLogsIntegrationTemplate GetGroupsForCapacityReservation GetHostReservationPurchasePreview GetLaunchTemplateData GetManagedPrefixListAssociations GetManagedPrefixListEntries GetPasswordData GetReservedInstancesExchangeQuote GetSerialConsoleAccessStatus GetTransitGatewayAttachmentPropagations GetTransitGatewayMulticastDomainAssociations GetTransitGatewayPrefixListReferences GetTransitGatewayRouteTableAssociations GetTransitGatewayRouteTablePropagations ImportClientVpnClientCertificateRevocationList ImportImage ImportInstance ImportKeyPair ImportSnapshot ImportVolume ModifyAddressAttribute ModifyAvailabilityZoneGroup ModifyCapacityReservation ModifyClientVpnEndpoint ModifyDefaultCreditSpecification ModifyEbsDefaultKmsKeyId ModifyFleet ModifyFpgaImageAttribute ModifyHosts ModifyIdentityIdFormat ModifyIdFormat ModifyImageAttribute ModifyInstanceAttribute ModifyInstanceCapacityReservationAttributes ModifyInstanceCreditSpecification ModifyInstanceEventStartTime ModifyInstanceMetadataOptions ModifyInstancePlacement ModifyLaunchTemplate ModifyManagedPrefixList ModifyNetworkInterfaceAttribute ModifyReservedInstances ModifySnapshotAttribute ModifySpotFleetRequest ModifySubnetAttribute ModifyTrafficMirrorFilterNetworkServices ModifyTrafficMirrorFilterRule ModifyTrafficMirrorSession ModifyTransitGateway ModifyTransitGatewayPrefixListReference ModifyTransitGatewayVpcAttachment ModifyVolume ModifyVolumeAttribute ModifyVpcAttribute ModifyVpcEndpoint ModifyVpcEndpointConnectionNotification ModifyVpcEndpointServiceConfiguration ModifyVpcEndpointServicePermissions ModifyVpcPeeringConnectionOptions ModifyVpcTenancy ModifyVpnConnection ModifyVpnConnectionOptions ModifyVpnTunnelCertificate ModifyVpnTunnelOptions MonitorInstances MoveAddressToVpc ProvisionByoipCidr PurchaseHostReservation PurchaseReservedInstancesOffering PurchaseScheduledInstances RebootInstances RegisterImage RegisterInstanceEventNotificationAttributes RegisterTransitGatewayMulticastGroupMembers RegisterTransitGatewayMulticastGroupSources RejectTransitGatewayMulticastDomainAssociations RejectTransitGatewayPeeringAttachment RejectTransitGatewayVpcAttachment RejectVpcEndpointConnections RejectVpcPeeringConnection ReleaseAddress ReleaseHosts ReplaceIamInstanceProfileAssociation ReplaceNetworkAclAssociation ReplaceNetworkAclEntry ReplaceRoute ReplaceRouteTableAssociation ReplaceTransitGatewayRoute ReportInstanceStatus RequestSpotFleet RequestSpotInstances ResetAddressAttribute ResetEbsDefaultKmsKeyId ResetFpgaImageAttribute ResetImageAttribute ResetInstanceAttribute ResetNetworkInterfaceAttribute ResetSnapshotAttribute RestoreAddressToClassic RestoreManagedPrefixListVersion RevokeClientVpnIngress RevokeSecurityGroupEgress RevokeSecurityGroupIngress RunInstances RunScheduledInstances SearchLocalGatewayRoutes SearchTransitGatewayMulticastGroups SearchTransitGatewayRoutes SendDiagnosticInterrupt StartInstances StartNetworkInsightsAnalysis StartVpcEndpointServicePrivateDnsVerification StopInstances TerminateClientVpnConnections TerminateInstances UnassignIpv6Addresses UnassignPrivateIpAddresses UnmonitorInstances UpdateSecurityGroupRuleDescriptionsEgress UpdateSecurityGroupRuleDescriptionsIngress WithdrawByoipCidr / }
 
 1;
 
@@ -3726,9 +4622,15 @@ Paws::EC2 - Perl Interface to AWS Amazon Elastic Compute Cloud
 Amazon Elastic Compute Cloud
 
 Amazon Elastic Compute Cloud (Amazon EC2) provides secure and resizable
-computing capacity in the AWS cloud. Using Amazon EC2 eliminates the
+computing capacity in the AWS Cloud. Using Amazon EC2 eliminates the
 need to invest in hardware up front, so you can develop and deploy
-applications faster.
+applications faster. Amazon Virtual Private Cloud (Amazon VPC) enables
+you to provision a logically isolated section of the AWS Cloud where
+you can launch AWS resources in a virtual network that you've defined.
+Amazon Elastic Block Store (Amazon EBS) provides block level storage
+volumes for use with EC2 instances. EBS volumes are highly available
+and reliable storage volumes that can be attached to any running
+instance and used like a hard drive.
 
 To learn more, see the following resources:
 
@@ -3742,8 +4644,7 @@ EC2 documentation (http://aws.amazon.com/documentation/ec2)
 =item *
 
 Amazon EBS: Amazon EBS product page (http://aws.amazon.com/ebs), Amazon
-EBS documentation
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
+EBS documentation (http://aws.amazon.com/documentation/ebs)
 
 =item *
 
@@ -3782,6 +4683,29 @@ Returns: a L<Paws::EC2::AcceptReservedInstancesExchangeQuoteResult> instance
 
 Accepts the Convertible Reserved Instance exchange quote described in
 the GetReservedInstancesExchangeQuote call.
+
+
+=head2 AcceptTransitGatewayMulticastDomainAssociations
+
+=over
+
+=item [DryRun => Bool]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayAttachmentId => Str]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AcceptTransitGatewayMulticastDomainAssociations>
+
+Returns: a L<Paws::EC2::AcceptTransitGatewayMulticastDomainAssociationsResult> instance
+
+Accepts a request to associate subnets with a transit gateway multicast
+domain.
 
 
 =head2 AcceptTransitGatewayPeeringAttachment
@@ -3887,19 +4811,22 @@ Each argument is described in detail in: L<Paws::EC2::AdvertiseByoipCidr>
 Returns: a L<Paws::EC2::AdvertiseByoipCidrResult> instance
 
 Advertises an IPv4 or IPv6 address range that is provisioned for use
-with your AWS resources through bring your own IP addresses (BYOIP).
+with your Amazon Web Services resources through bring your own IP
+addresses (BYOIP).
 
 You can perform this operation at most once every 10 seconds, even if
 you specify different address ranges each time.
 
 We recommend that you stop advertising the BYOIP CIDR from other
-locations when you advertise it from AWS. To minimize down time, you
-can configure your AWS resources to use an address from a BYOIP CIDR
-before it is advertised, and then simultaneously stop advertising it
-from the current location and start advertising it through AWS.
+locations when you advertise it from Amazon Web Services. To minimize
+down time, you can configure your Amazon Web Services resources to use
+an address from a BYOIP CIDR before it is advertised, and then
+simultaneously stop advertising it from the current location and start
+advertising it through Amazon Web Services.
 
 It can take a few minutes before traffic to the specified addresses
-starts routing to AWS because of BGP propagation delays.
+starts routing to Amazon Web Services because of BGP propagation
+delays.
 
 To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
 
@@ -3920,6 +4847,8 @@ To stop advertising the BYOIP CIDR, use WithdrawByoipCidr.
 
 =item [PublicIpv4Pool => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -3927,24 +4856,24 @@ Each argument is described in detail in: L<Paws::EC2::AllocateAddress>
 
 Returns: a L<Paws::EC2::AllocateAddressResult> instance
 
-Allocates an Elastic IP address to your AWS account. After you allocate
-the Elastic IP address you can associate it with an instance or network
+Allocates an Elastic IP address to your account. After you allocate the
+Elastic IP address you can associate it with an instance or network
 interface. After you release an Elastic IP address, it is released to
-the IP address pool and can be allocated to a different AWS account.
+the IP address pool and can be allocated to a different account.
 
 You can allocate an Elastic IP address from an address pool owned by
-AWS or from an address pool created from a public IPv4 address range
-that you have brought to AWS for use with your AWS resources using
-bring your own IP addresses (BYOIP). For more information, see Bring
-Your Own IP Addresses (BYOIP)
+Amazon Web Services or from an address pool created from a public IPv4
+address range that you have brought to Amazon Web Services for use with
+your Amazon Web Services resources using bring your own IP addresses
+(BYOIP). For more information, see Bring Your Own IP Addresses (BYOIP)
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
 [EC2-VPC] If you release an Elastic IP address, you might be able to
 recover it. You cannot recover an Elastic IP address that you released
-after it is allocated to another AWS account. You cannot recover an
-Elastic IP address for EC2-Classic. To attempt to recover an Elastic IP
-address that you released, specify it in this operation.
+after it is allocated to another account. You cannot recover an Elastic
+IP address for EC2-Classic. To attempt to recover an Elastic IP address
+that you released, specify it in this operation.
 
 An Elastic IP address is for use either in the EC2-Classic platform or
 in a VPC. By default, you can allocate 5 Elastic IP addresses for
@@ -3954,6 +4883,10 @@ Region.
 For more information, see Elastic IP Addresses
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+You can allocate a carrier IP address which is a public IP address from
+a telecommunication carrier, to a network interface which resides in a
+subnet in a Wavelength Zone (for example an EC2 instance).
 
 
 =head2 AllocateHosts
@@ -4114,7 +5047,8 @@ Each argument is described in detail in: L<Paws::EC2::AssociateAddress>
 
 Returns: a L<Paws::EC2::AssociateAddressResult> instance
 
-Associates an Elastic IP address with an instance or a network
+Associates an Elastic IP address, or carrier IP address (for instances
+that are in subnets in Wavelength Zones) with an instance or a network
 interface. Before you can use an Elastic IP address, you must allocate
 it to your account.
 
@@ -4136,6 +5070,9 @@ address. If the Elastic IP address is already associated with a
 different instance or a network interface, you get an error unless you
 allow reassociation. You cannot associate an Elastic IP address with an
 instance or network interface that has an existing Elastic IP address.
+
+[Subnets in Wavelength Zones] You can associate an IP address from the
+telecommunication carrier to the instance or network interface.
 
 You cannot associate an Elastic IP address with an interface in a
 different network border group.
@@ -4172,6 +5109,12 @@ the same VPC with a Client VPN endpoint. You can associate only one
 subnet in each Availability Zone. We recommend that you associate at
 least two subnets to provide Availability Zone redundancy.
 
+If you specified a VPC when you created the Client VPN endpoint or if
+you have previous subnet associations, the specified subnet must be in
+the same VPC. To specify a subnet that's in a different VPC, you must
+first modify the Client VPN endpoint (ModifyClientVpnEndpoint) and
+change the VPC that's associated with it.
+
 
 =head2 AssociateDhcpOptions
 
@@ -4203,6 +5146,47 @@ using the operating system on the instance.
 For more information, see DHCP Options Sets
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_DHCP_Options.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 AssociateEnclaveCertificateIamRole
+
+=over
+
+=item [CertificateArn => Str]
+
+=item [DryRun => Bool]
+
+=item [RoleArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AssociateEnclaveCertificateIamRole>
+
+Returns: a L<Paws::EC2::AssociateEnclaveCertificateIamRoleResult> instance
+
+Associates an AWS Identity and Access Management (IAM) role with an AWS
+Certificate Manager (ACM) certificate. This enables the certificate to
+be used by the ACM for Nitro Enclaves application inside an enclave.
+For more information, see AWS Certificate Manager for Nitro Enclaves
+(https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html)
+in the I<AWS Nitro Enclaves User Guide>.
+
+When the IAM role is associated with the ACM certificate, the
+certificate, certificate chain, and encrypted private key are placed in
+an Amazon S3 bucket that only the associated IAM role can access. The
+private key of the certificate is encrypted with an AWS-managed KMS
+customer master (CMK) that has an attached attestation-based CMK
+policy.
+
+To enable the IAM role to access the Amazon S3 object, you must grant
+it permission to call C<s3:GetObject> on the Amazon S3 bucket returned
+by the command. To enable the IAM role to access the AWS KMS CMK, you
+must grant it permission to call C<kms:Decrypt> on the AWS KMS CMK
+returned by the command. For more information, see Grant the role
+permission to access the certificate and encryption key
+(https://docs.aws.amazon.com/enclaves/latest/user/nitro-enclave-refapp.html#add-policy)
+in the I<AWS Nitro Enclaves User Guide>.
 
 
 =head2 AssociateIamInstanceProfile
@@ -4325,6 +5309,42 @@ Associates the specified attachment with the specified transit gateway
 route table. You can associate only one route table with an attachment.
 
 
+=head2 AssociateTrunkInterface
+
+=over
+
+=item BranchInterfaceId => Str
+
+=item TrunkInterfaceId => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [GreKey => Int]
+
+=item [VlanId => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::AssociateTrunkInterface>
+
+Returns: a L<Paws::EC2::AssociateTrunkInterfaceResult> instance
+
+Associates a branch network interface with a trunk network interface.
+
+Before you create the association, run the create-network-interface
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateNetworkInterface.html)
+command and set C<--interface-type> to C<trunk>. You must also create a
+network interface for each branch network interface that you want to
+associate with the trunk network interface.
+
+For more information, see Network interface trunking
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/eni-trunking.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
 =head2 AssociateVpcCidrBlock
 
 =over
@@ -4434,6 +5454,8 @@ Private Cloud User Guide
 
 =item [DryRun => Bool]
 
+=item [NetworkCardIndex => Int]
+
 
 =back
 
@@ -4467,12 +5489,12 @@ Attaches an EBS volume to a running or stopped instance and exposes it
 to the instance with the specified device name.
 
 Encrypted EBS volumes must be attached to instances that support Amazon
-EBS encryption. For more information, see Amazon EBS Encryption
+EBS encryption. For more information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 After you attach an EBS volume, you must make it available. For more
-information, see Making an EBS Volume Available For Use
+information, see Making an EBS volume available for use
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-using-volumes.html).
 
 If a volume has an AWS Marketplace product code:
@@ -4500,7 +5522,7 @@ and attach it to a Linux instance.
 
 =back
 
-For more information, see Attaching Amazon EBS Volumes
+For more information, see Attaching Amazon EBS volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-attaching-volume.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -4817,7 +5839,7 @@ Instance Marketplace.
 
 For more information, see Reserved Instance Marketplace
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 CancelSpotFleetRequests
@@ -4932,6 +5954,8 @@ Copies the specified Amazon FPGA Image (AFI) to the current Region.
 
 =item [Description => Str]
 
+=item [DestinationOutpostArn => Str]
+
 =item [DryRun => Bool]
 
 =item [Encrypted => Bool]
@@ -4945,14 +5969,28 @@ Each argument is described in detail in: L<Paws::EC2::CopyImage>
 
 Returns: a L<Paws::EC2::CopyImageResult> instance
 
-Initiates the copy of an AMI from the specified source Region to the
-current Region. You specify the destination Region by using its
-endpoint when making the request.
+Initiates the copy of an AMI. You can copy an AMI from one Region to
+another, or from a Region to an AWS Outpost. You can't copy an AMI from
+an Outpost to a Region, from one Outpost to another, or within the same
+Outpost. To copy an AMI to another partition, see CreateStoreImageTask
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html).
 
-Copies of encrypted backing snapshots for the AMI are encrypted. Copies
-of unencrypted backing snapshots remain unencrypted, unless you set
-C<Encrypted> during the copy operation. You cannot create an
-unencrypted copy of an encrypted backing snapshot.
+To copy an AMI from one Region to another, specify the source Region
+using the B<SourceRegion> parameter, and specify the destination Region
+using its endpoint. Copies of encrypted backing snapshots for the AMI
+are encrypted. Copies of unencrypted backing snapshots remain
+unencrypted, unless you set C<Encrypted> during the copy operation. You
+cannot create an unencrypted copy of an encrypted backing snapshot.
+
+To copy an AMI from a Region to an Outpost, specify the source Region
+using the B<SourceRegion> parameter, and specify the ARN of the
+destination Outpost using B<DestinationOutpostArn>. Backing snapshots
+copied to an Outpost are encrypted by default using the default
+encryption key for the Region, or a different key that you specify in
+the request using B<KmsKeyId>. Outposts do not support unencrypted
+snapshots. For more information, Amazon EBS local snapshots on Outposts
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information about the prerequisites and limits when copying an
 AMI, see Copying an AMI
@@ -4969,6 +6007,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item SourceSnapshotId => Str
 
 =item [Description => Str]
+
+=item [DestinationOutpostArn => Str]
 
 =item [DestinationRegion => Str]
 
@@ -4990,24 +6030,35 @@ Each argument is described in detail in: L<Paws::EC2::CopySnapshot>
 Returns: a L<Paws::EC2::CopySnapshotResult> instance
 
 Copies a point-in-time snapshot of an EBS volume and stores it in
-Amazon S3. You can copy the snapshot within the same Region or from one
-Region to another. You can use the snapshot to create EBS volumes or
-Amazon Machine Images (AMIs).
+Amazon S3. You can copy a snapshot within the same Region, from one
+Region to another, or from a Region to an Outpost. You can't copy a
+snapshot from an Outpost to a Region, from one Outpost to another, or
+within the same Outpost.
 
-Copies of encrypted EBS snapshots remain encrypted. Copies of
-unencrypted snapshots remain unencrypted, unless you enable encryption
-for the snapshot copy operation. By default, encrypted snapshot copies
-use the default AWS Key Management Service (AWS KMS) customer master
-key (CMK); however, you can specify a different CMK.
+You can use the snapshot to create EBS volumes or Amazon Machine Images
+(AMIs).
 
-To copy an encrypted snapshot that has been shared from another
-account, you must have permissions for the CMK used to encrypt the
-snapshot.
+When copying snapshots to a Region, copies of encrypted EBS snapshots
+remain encrypted. Copies of unencrypted snapshots remain unencrypted,
+unless you enable encryption for the snapshot copy operation. By
+default, encrypted snapshot copies use the default AWS Key Management
+Service (AWS KMS) customer master key (CMK); however, you can specify a
+different CMK. To copy an encrypted snapshot that has been shared from
+another account, you must have permissions for the CMK used to encrypt
+the snapshot.
+
+Snapshots copied to an Outpost are encrypted by default using the
+default encryption key for the Region, or a different key that you
+specify in the request using B<KmsKeyId>. Outposts do not support
+unencrypted snapshots. For more information, Amazon EBS local snapshots
+on Outposts
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshots-outposts.html#ami)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 Snapshots created by copying another snapshot have an arbitrary volume
 ID that should not be used for any purpose.
 
-For more information, see Copying an Amazon EBS Snapshot
+For more information, see Copying an Amazon EBS snapshot
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-copy-snapshot.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -5040,6 +6091,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [InstanceMatchCriteria => Str]
 
+=item [OutpostArn => Str]
+
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 =item [Tenancy => Str]
@@ -5061,7 +6114,7 @@ Capacity Reservations, you ensure that you always have access to Amazon
 EC2 capacity when you need it, for as long as you need it. For more
 information, see Capacity Reservations
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-capacity-reservations.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 Your request to create a Capacity Reservation could fail if Amazon EC2
 does not have sufficient capacity to fulfill the request. If your
@@ -5076,9 +6129,34 @@ On-Demand Instance limit for the selected instance type. If your
 request fails due to limit constraints, increase your On-Demand
 Instance limit for the required instance type and try again. For more
 information about increasing your instance limits, see Amazon EC2
-Service Limits
+Service Quotas
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
+
+
+=head2 CreateCarrierGateway
+
+=over
+
+=item VpcId => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateCarrierGateway>
+
+Returns: a L<Paws::EC2::CreateCarrierGatewayResult> instance
+
+Creates a carrier gateway. For more information about carrier gateways,
+see Carrier gateways
+(https://docs.aws.amazon.com/wavelength/latest/developerguide/how-wavelengths-work.html#wavelength-carrier-gateway)
+in the I<AWS Wavelength Developer Guide>.
 
 
 =head2 CreateClientVpnEndpoint
@@ -5093,6 +6171,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item ServerCertificateArn => Str
 
+=item [ClientConnectOptions => L<Paws::EC2::ClientConnectOptions>]
+
 =item [ClientToken => Str]
 
 =item [Description => Str]
@@ -5101,11 +6181,17 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SelfServicePortal => Str]
+
 =item [SplitTunnel => Bool]
 
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 =item [TransportProtocol => Str]
+
+=item [VpcId => Str]
 
 =item [VpnPort => Int]
 
@@ -5167,6 +6253,8 @@ trac to specic resources or networks.
 
 =item [PublicIp => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -5177,7 +6265,7 @@ Returns: a L<Paws::EC2::CreateCustomerGatewayResult> instance
 Provides information to AWS about your VPN customer gateway device. The
 customer gateway is the appliance at your end of the VPN connection.
 (The device on the AWS side of the VPN connection is the virtual
-private gateway.) You must provide the Internet-routable IP address of
+private gateway.) You must provide the internet-routable IP address of
 the customer gateway's external interface. The IP address must be
 static and can be behind a device performing network address
 translation (NAT).
@@ -5187,9 +6275,28 @@ provide the device's BGP Autonomous System Number (ASN). You can use an
 existing ASN assigned to your network. If you don't have an ASN
 already, you can use a private ASN (in the 64512 - 65534 range).
 
-Amazon EC2 supports all 2-byte ASN numbers in the range of 1 - 65534,
-with the exception of 7224, which is reserved in the C<us-east-1>
-Region, and 9059, which is reserved in the C<eu-west-1> Region.
+Amazon EC2 supports all 4-byte ASN numbers in the range of 1 -
+2147483647, with the exception of the following:
+
+=over
+
+=item *
+
+7224 - reserved in the C<us-east-1> Region
+
+=item *
+
+9059 - reserved in the C<eu-west-1> Region
+
+=item *
+
+17943 - reserved in the C<ap-southeast-1> Region
+
+=item *
+
+10124 - reserved in the C<ap-northeast-1> Region
+
+=back
 
 For more information, see AWS Site-to-Site VPN
 (https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the
@@ -5262,6 +6369,8 @@ Default VPCs FAQ (http://aws.amazon.com/vpc/faqs/#Default_VPCs).
 
 =item [DryRun => Bool]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -5294,7 +6403,7 @@ C<domain-name> - If you're using AmazonProvidedDNS in C<us-east-1>,
 specify C<ec2.internal>. If you're using AmazonProvidedDNS in another
 Region, specify C<region.compute.internal> (for example,
 C<ap-northeast-1.compute.internal>). Otherwise, specify a domain name
-(for example, C<MyCompany.com>). This value is used to complete
+(for example, C<ExampleCompany.com>). This value is used to complete
 unqualified DNS hostnames. B<Important>: Some Linux operating systems
 accept multiple domain names separated by spaces. However, Windows and
 other Linux operating systems treat the value as a single domain, which
@@ -5341,6 +6450,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =item [DryRun => Bool]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -5364,6 +6475,8 @@ instance.
 =item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
 
 =item [ClientToken => Str]
+
+=item [Context => Str]
 
 =item [DryRun => Bool]
 
@@ -5400,7 +6513,7 @@ subnet.
 
 For more information, see Launching an EC2 Fleet
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html) in
-the I<Amazon Elastic Compute Cloud User Guide>.
+the I<Amazon EC2 User Guide>.
 
 
 =head2 CreateFlowLogs
@@ -5428,6 +6541,8 @@ the I<Amazon Elastic Compute Cloud User Guide>.
 =item [LogGroupName => Str]
 
 =item [MaxAggregationInterval => Int]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5509,6 +6624,8 @@ Kit (https://github.com/aws/aws-fpga/).
 
 =item [NoReboot => Bool]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -5534,13 +6651,15 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =over
 
+=item ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>
+
 =item InstanceId => Str
+
+=item TargetEnvironment => Str
 
 =item [Description => Str]
 
-=item [ExportToS3Task => L<Paws::EC2::ExportToS3TaskSpecification>]
-
-=item [TargetEnvironment => Str]
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5549,11 +6668,11 @@ Each argument is described in detail in: L<Paws::EC2::CreateInstanceExportTask>
 
 Returns: a L<Paws::EC2::CreateInstanceExportTaskResult> instance
 
-Exports a running or stopped instance to an S3 bucket.
+Exports a running or stopped instance to an Amazon S3 bucket.
 
 For information about the supported operating systems, image formats,
 and known limitations for the types of instances you can export, see
-Exporting an Instance as a VM Using VM Import/Export
+Exporting an instance as a VM Using VM Import/Export
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)
 in the I<VM Import/Export User Guide>.
 
@@ -5563,6 +6682,8 @@ in the I<VM Import/Export User Guide>.
 =over
 
 =item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5586,6 +6707,8 @@ Amazon Virtual Private Cloud User Guide
 =item KeyName => Str
 
 =item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5637,7 +6760,10 @@ Returns: a L<Paws::EC2::CreateLaunchTemplateResult> instance
 Creates a launch template. A launch template contains the parameters to
 launch an instance. When you launch an instance using RunInstances, you
 can specify a launch template instead of providing the launch
-parameters in the request.
+parameters in the request. For more information, see Launching an
+instance from a launch template
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)in
+the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateLaunchTemplateVersion
@@ -5672,6 +6798,10 @@ Launch template versions are numbered in the order in which they are
 created. You cannot specify, change, or replace the numbering of launch
 template versions.
 
+For more information, see Managing launch template versions
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html#manage-launch-template-versions)in
+the I<Amazon Elastic Compute Cloud User Guide>.
+
 
 =head2 CreateLocalGatewayRoute
 
@@ -5705,6 +6835,8 @@ Creates a static route for the specified local gateway route table.
 
 =item [DryRun => Bool]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -5716,15 +6848,54 @@ Associates the specified VPC with the specified local gateway route
 table.
 
 
+=head2 CreateManagedPrefixList
+
+=over
+
+=item AddressFamily => Str
+
+=item MaxEntries => Int
+
+=item PrefixListName => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [Entries => ArrayRef[L<Paws::EC2::AddPrefixListEntry>]]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateManagedPrefixList>
+
+Returns: a L<Paws::EC2::CreateManagedPrefixListResult> instance
+
+Creates a managed prefix list. You can specify one or more entries for
+the prefix list. Each entry consists of a CIDR block and an optional
+description.
+
+You must specify the maximum number of entries for the prefix list. The
+maximum number of entries cannot be changed later.
+
+
 =head2 CreateNatGateway
 
 =over
 
-=item AllocationId => Str
-
 =item SubnetId => Str
 
+=item [AllocationId => Str]
+
 =item [ClientToken => Str]
+
+=item [ConnectivityType => Str]
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5733,11 +6904,21 @@ Each argument is described in detail in: L<Paws::EC2::CreateNatGateway>
 
 Returns: a L<Paws::EC2::CreateNatGatewayResult> instance
 
-Creates a NAT gateway in the specified public subnet. This action
-creates a network interface in the specified subnet with a private IP
-address from the IP address range of the subnet. Internet-bound traffic
-from a private subnet can be routed to the NAT gateway, therefore
-enabling instances in the private subnet to connect to the internet.
+Creates a NAT gateway in the specified subnet. This action creates a
+network interface in the specified subnet with a private IP address
+from the IP address range of the subnet. You can create either a public
+NAT gateway or a private NAT gateway.
+
+With a public NAT gateway, internet-bound traffic from a private subnet
+can be routed to the NAT gateway, so that instances in a private subnet
+can connect to the internet.
+
+With a private NAT gateway, private communication is routed across VPCs
+and on-premises networks through a transit gateway or virtual private
+gateway. Common use cases include running large workloads behind a
+small pool of allowlisted IPv4 addresses, preserving private IPv4
+addresses, and communicating between overlapping networks.
+
 For more information, see NAT Gateways
 (https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
@@ -5750,6 +6931,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 =item VpcId => Str
 
 =item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5819,11 +7002,50 @@ For more information about network ACLs, see Network ACLs
 I<Amazon Virtual Private Cloud User Guide>.
 
 
+=head2 CreateNetworkInsightsPath
+
+=over
+
+=item ClientToken => Str
+
+=item Destination => Str
+
+=item Protocol => Str
+
+=item Source => Str
+
+=item [DestinationIp => Str]
+
+=item [DestinationPort => Int]
+
+=item [DryRun => Bool]
+
+=item [SourceIp => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateNetworkInsightsPath>
+
+Returns: a L<Paws::EC2::CreateNetworkInsightsPathResult> instance
+
+Creates a path to analyze for reachability.
+
+Reachability Analyzer enables you to analyze and debug network
+reachability between two resources in your virtual private cloud (VPC).
+For more information, see What is Reachability Analyzer
+(https://docs.aws.amazon.com/vpc/latest/reachability/).
+
+
 =head2 CreateNetworkInterface
 
 =over
 
 =item SubnetId => Str
+
+=item [ClientToken => Str]
 
 =item [Description => Str]
 
@@ -5842,6 +7064,8 @@ I<Amazon Virtual Private Cloud User Guide>.
 =item [PrivateIpAddresses => ArrayRef[L<Paws::EC2::PrivateIpAddressSpecification>]]
 
 =item [SecondaryPrivateIpAddressCount => Int]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -5879,11 +7103,11 @@ Each argument is described in detail in: L<Paws::EC2::CreateNetworkInterfacePerm
 
 Returns: a L<Paws::EC2::CreateNetworkInterfacePermissionResult> instance
 
-Grants an AWS-authorized account permission to attach the specified
-network interface to an instance in their account.
+Grants an Amazon Web Services-authorized account permission to attach
+the specified network interface to an instance in their account.
 
-You can grant permission to a single AWS account only, and only one
-account at a time.
+You can grant permission to a single account only, and only one account
+at a time.
 
 
 =head2 CreatePlacementGroup
@@ -5898,12 +7122,14 @@ account at a time.
 
 =item [Strategy => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
 Each argument is described in detail in: L<Paws::EC2::CreatePlacementGroup>
 
-Returns: nothing
+Returns: a L<Paws::EC2::CreatePlacementGroupResult> instance
 
 Creates a placement group in which to launch instances. The strategy of
 the placement group determines how the instances are organized within
@@ -5916,9 +7142,39 @@ distinct hardware. A C<partition> placement group places groups of
 instances in different partitions, where instances in one partition do
 not share the same hardware with instances in another partition.
 
-For more information, see Placement Groups
+For more information, see Placement groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
+
+
+=head2 CreateReplaceRootVolumeTask
+
+=over
+
+=item InstanceId => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+=item [SnapshotId => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateReplaceRootVolumeTask>
+
+Returns: a L<Paws::EC2::CreateReplaceRootVolumeTaskResult> instance
+
+Creates a root volume replacement task for an Amazon EC2 instance. The
+root volume can either be restored to its initial launch state, or it
+can be restored using a specific snapshot.
+
+For more information, see Replace a root volume
+(https://docs.aws.amazon.com/) in the I<Amazon Elastic Compute Cloud
+User Guide>.
 
 
 =head2 CreateReservedInstancesListing
@@ -5966,6 +7222,41 @@ DescribeReservedInstancesListings operation.
 
 For more information, see Reserved Instance Marketplace
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
+in the I<Amazon EC2 User Guide>.
+
+
+=head2 CreateRestoreImageTask
+
+=over
+
+=item Bucket => Str
+
+=item ObjectKey => Str
+
+=item [DryRun => Bool]
+
+=item [Name => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateRestoreImageTask>
+
+Returns: a L<Paws::EC2::CreateRestoreImageTaskResult> instance
+
+Starts a task that restores an AMI from an S3 object that was
+previously created by using CreateStoreImageTask
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateStoreImageTask.html).
+
+To use this API, you must have the required permissions. For more
+information, see Permissions for storing and restoring AMIs using S3
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+For more information, see Store and restore an AMI using S3
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
@@ -5975,9 +7266,13 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item RouteTableId => Str
 
+=item [CarrierGatewayId => Str]
+
 =item [DestinationCidrBlock => Str]
 
 =item [DestinationIpv6CidrBlock => Str]
+
+=item [DestinationPrefixListId => Str]
 
 =item [DryRun => Bool]
 
@@ -5994,6 +7289,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [NetworkInterfaceId => Str]
 
 =item [TransitGatewayId => Str]
+
+=item [VpcEndpointId => Str]
 
 =item [VpcPeeringConnectionId => Str]
 
@@ -6046,6 +7343,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 
 =item [DryRun => Bool]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -6070,6 +7369,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 =item GroupName => Str
 
 =item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 =item [VpcId => Str]
 
@@ -6123,6 +7424,8 @@ Limits
 
 =item [DryRun => Bool]
 
+=item [OutpostArn => Str]
+
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
@@ -6136,19 +7439,25 @@ Creates a snapshot of an EBS volume and stores it in Amazon S3. You can
 use snapshots for backups, to make copies of EBS volumes, and to save
 data before shutting down an instance.
 
+You can create snapshots of volumes in a Region and volumes on an
+Outpost. If you create a snapshot of a volume in a Region, the snapshot
+must be stored in the same Region as the volume. If you create a
+snapshot of a volume on an Outpost, the snapshot can be stored on the
+same Outpost as the volume, or in the Region for that Outpost.
+
 When a snapshot is created, any AWS Marketplace product codes that are
 associated with the source volume are propagated to the snapshot.
 
 You can take a snapshot of an attached volume that is in use. However,
 snapshots only capture data that has been written to your EBS volume at
-the time the snapshot command is issued; this may exclude any data that
-has been cached by any applications or the operating system. If you can
-pause any file systems on the volume long enough to take a snapshot,
-your snapshot should be complete. However, if you cannot pause all file
-writes to the volume, you should unmount the volume from within the
-instance, issue the snapshot command, and then remount the volume to
-ensure a consistent and complete snapshot. You may remount and use your
-volume while the snapshot status is C<pending>.
+the time the snapshot command is issued; this might exclude any data
+that has been cached by any applications or the operating system. If
+you can pause any file systems on the volume long enough to take a
+snapshot, your snapshot should be complete. However, if you cannot
+pause all file writes to the volume, you should unmount the volume from
+within the instance, issue the snapshot command, and then remount the
+volume to ensure a consistent and complete snapshot. You may remount
+and use your volume while the snapshot status is C<pending>.
 
 To create a snapshot for EBS volumes that serve as root devices, you
 should stop the instance before taking the snapshot.
@@ -6159,13 +7468,13 @@ automatically encrypted. Your encrypted volumes and any associated
 snapshots always remain protected.
 
 You can tag your snapshots during creation. For more information, see
-Tagging Your Amazon EC2 Resources
+Tagging your Amazon EC2 resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 For more information, see Amazon Elastic Block Store
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AmazonEBS.html)
-and Amazon EBS Encryption
+and Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -6182,6 +7491,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [DryRun => Bool]
 
+=item [OutpostArn => Str]
+
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
@@ -6196,6 +7507,13 @@ the data in S3. Volumes are chosen by specifying an instance. Any
 attached volumes will produce one snapshot each that is
 crash-consistent across the instance. Boot volumes can be excluded by
 changing the parameters.
+
+You can create multi-volume snapshots of instances in a Region and
+instances on an Outpost. If you create snapshots from an instance in a
+Region, the snapshots must be stored in the same Region as the
+instance. If you create snapshots from an instance on an Outpost, the
+snapshots can be stored on the same Outpost as the instance, or in the
+Region for that Outpost.
 
 
 =head2 CreateSpotDatafeedSubscription
@@ -6216,10 +7534,41 @@ Each argument is described in detail in: L<Paws::EC2::CreateSpotDatafeedSubscrip
 Returns: a L<Paws::EC2::CreateSpotDatafeedSubscriptionResult> instance
 
 Creates a data feed for Spot Instances, enabling you to view Spot
-Instance usage logs. You can create one data feed per AWS account. For
-more information, see Spot Instance Data Feed
+Instance usage logs. You can create one data feed per account. For more
+information, see Spot Instance data feed
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
+
+
+=head2 CreateStoreImageTask
+
+=over
+
+=item Bucket => Str
+
+=item ImageId => Str
+
+=item [DryRun => Bool]
+
+=item [S3ObjectTags => ArrayRef[L<Paws::EC2::S3ObjectTag>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateStoreImageTask>
+
+Returns: a L<Paws::EC2::CreateStoreImageTaskResult> instance
+
+Stores an AMI as a single object in an S3 bucket.
+
+To use this API, you must have the required permissions. For more
+information, see Permissions for storing and restoring AMIs using S3
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+For more information, see Store and restore an AMI using S3
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 CreateSubnet
@@ -6240,6 +7589,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item [OutpostArn => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -6247,16 +7598,13 @@ Each argument is described in detail in: L<Paws::EC2::CreateSubnet>
 
 Returns: a L<Paws::EC2::CreateSubnetResult> instance
 
-Creates a subnet in an existing VPC.
+Creates a subnet in a specified VPC.
 
-When you create each subnet, you provide the VPC ID and IPv4 CIDR block
-for the subnet. After you create a subnet, you can't change its CIDR
-block. The size of the subnet's IPv4 CIDR block can be the same as a
-VPC's IPv4 CIDR block, or a subset of a VPC's IPv4 CIDR block. If you
-create more than one subnet in a VPC, the subnets' CIDR blocks must not
-overlap. The smallest IPv4 subnet (and VPC) you can create uses a /28
-netmask (16 IPv4 addresses), and the largest uses a /16 netmask (65,536
-IPv4 addresses).
+You must specify an IPv4 CIDR block for the subnet. After you create a
+subnet, you can't change its CIDR block. The allowed block size is
+between a /16 netmask (65,536 IP addresses) and /28 netmask (16 IP
+addresses). The CIDR block must not overlap with the CIDR block of an
+existing subnet in the VPC.
 
 If you've associated an IPv6 CIDR block with your VPC, you can create a
 subnet with an IPv6 CIDR block that uses a /64 prefix length.
@@ -6267,11 +7615,9 @@ subnet's CIDR block. They're not available for use.
 If you add more than one subnet to a VPC, they're set up in a star
 topology with a logical router in the middle.
 
-If you launch an instance in a VPC using an Amazon EBS-backed AMI, the
-IP address doesn't change if you stop and restart the instance (unlike
-a similar instance launched outside a VPC, which gets a new IP address
-when restarted). It's therefore possible to have a subnet with no
-running instances (they're all stopped), but no remaining IP addresses
+When you stop an instance in a subnet, it retains its private IPv4
+address. It's therefore possible to have a subnet with no running
+instances (they're all stopped), but no remaining IP addresses
 available.
 
 For more information about subnets, see Your VPC and Subnets
@@ -6296,10 +7642,11 @@ Each argument is described in detail in: L<Paws::EC2::CreateTags>
 
 Returns: nothing
 
-Adds or overwrites the specified tags for the specified Amazon EC2
-resource or resources. Each resource can have a maximum of 50 tags.
-Each tag consists of a key and optional value. Tag keys must be unique
-per resource.
+Adds or overwrites only the specified tags for the specified Amazon EC2
+resource or resources. When you specify an existing tag key, the value
+is overwritten with the new value. Each resource can have a maximum of
+50 tags. Each tag consists of a key and optional value. Tag keys must
+be unique per resource.
 
 For more information about tags, see Tagging Your Resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
@@ -6517,6 +7864,70 @@ automatic associations, you can use AssociateTransitGatewayRouteTable
 to associate a resource attachment with a transit gateway route table.
 
 
+=head2 CreateTransitGatewayConnect
+
+=over
+
+=item Options => L<Paws::EC2::CreateTransitGatewayConnectRequestOptions>
+
+=item TransportTransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayConnect>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayConnectResult> instance
+
+Creates a Connect attachment from a specified transit gateway
+attachment. A Connect attachment is a GRE-based tunnel attachment that
+you can use to establish a connection between a transit gateway and an
+appliance.
+
+A Connect attachment uses an existing VPC or AWS Direct Connect
+attachment as the underlying transport mechanism.
+
+
+=head2 CreateTransitGatewayConnectPeer
+
+=over
+
+=item InsideCidrBlocks => ArrayRef[Str|Undef]
+
+=item PeerAddress => Str
+
+=item TransitGatewayAttachmentId => Str
+
+=item [BgpOptions => L<Paws::EC2::TransitGatewayConnectRequestBgpOptions>]
+
+=item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+=item [TransitGatewayAddress => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayConnectPeer>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayConnectPeerResult> instance
+
+Creates a Connect peer for a specified transit gateway Connect
+attachment between a transit gateway and an appliance.
+
+The peer address and transit gateway address must be the same IP
+address family (IPv4 or IPv6).
+
+For more information, see Connect peers
+(https://docs.aws.amazon.com/vpc/latest/tgw/tgw-connect.html#tgw-connect-peer)
+in the I<Transit Gateways Guide>.
+
+
 =head2 CreateTransitGatewayMulticastDomain
 
 =over
@@ -6524,6 +7935,8 @@ to associate a resource attachment with a transit gateway route table.
 =item TransitGatewayId => Str
 
 =item [DryRun => Bool]
+
+=item [Options => L<Paws::EC2::CreateTransitGatewayMulticastDomainRequestOptions>]
 
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
@@ -6572,6 +7985,31 @@ can be in your account or a different AWS account.
 
 After you create the peering attachment, the owner of the accepter
 transit gateway must accept the attachment request.
+
+
+=head2 CreateTransitGatewayPrefixListReference
+
+=over
+
+=item PrefixListId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [Blackhole => Bool]
+
+=item [DryRun => Bool]
+
+=item [TransitGatewayAttachmentId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::CreateTransitGatewayPrefixListReference>
+
+Returns: a L<Paws::EC2::CreateTransitGatewayPrefixListReferenceResult> instance
+
+Creates a reference (route) to a prefix list in a specified transit
+gateway route table.
 
 
 =head2 CreateTransitGatewayRoute
@@ -6675,6 +8113,8 @@ VPC route table using CreateRoute.
 
 =item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
+=item [Throughput => Int]
+
 =item [VolumeType => Str]
 
 
@@ -6685,9 +8125,7 @@ Each argument is described in detail in: L<Paws::EC2::CreateVolume>
 Returns: a L<Paws::EC2::Volume> instance
 
 Creates an EBS volume that can be attached to an instance in the same
-Availability Zone. The volume is created in the regional endpoint that
-you send the HTTP request to. For more information see Regions and
-Endpoints (https://docs.aws.amazon.com/general/latest/gr/rande.html).
+Availability Zone.
 
 You can create a new empty volume or restore a volume from an EBS
 snapshot. Any AWS Marketplace product codes from the snapshot are
@@ -6696,16 +8134,16 @@ propagated to the volume.
 You can create encrypted volumes. Encrypted volumes must be attached to
 instances that support Amazon EBS encryption. Volumes that are created
 from encrypted snapshots are also automatically encrypted. For more
-information, see Amazon EBS Encryption
+information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 You can tag your volumes during creation. For more information, see
-Tagging Your Amazon EC2 Resources
+Tagging your Amazon EC2 resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-For more information, see Creating an Amazon EBS Volume
+For more information, see Creating an Amazon EBS volume
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-creating-volume.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -6727,6 +8165,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [Ipv6CidrBlockNetworkBorderGroup => Str]
 
 =item [Ipv6Pool => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -6812,6 +8252,10 @@ serves as an endpoint for communicating with the specified service. You
 can specify the subnets in which to create an endpoint, and the
 security groups to associate with the endpoint network interface.
 
+A C<GatewayLoadBalancer> endpoint is a network interface in your subnet
+that serves an endpoint for communicating with a Gateway Load Balancer
+that you've configured as a VPC endpoint service.
+
 Use DescribeVpcEndpointServices to get a list of supported services.
 
 
@@ -6852,13 +8296,15 @@ You can create a connection notification for interface endpoints only.
 
 =over
 
-=item NetworkLoadBalancerArns => ArrayRef[Str|Undef]
-
 =item [AcceptanceRequired => Bool]
 
 =item [ClientToken => Str]
 
 =item [DryRun => Bool]
+
+=item [GatewayLoadBalancerArns => ArrayRef[Str|Undef]]
+
+=item [NetworkLoadBalancerArns => ArrayRef[Str|Undef]]
 
 =item [PrivateDnsName => Str]
 
@@ -6872,12 +8318,29 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpcEndpointServiceCo
 Returns: a L<Paws::EC2::CreateVpcEndpointServiceConfigurationResult> instance
 
 Creates a VPC endpoint service configuration to which service consumers
-(AWS accounts, IAM users, and IAM roles) can connect. Service consumers
-can create an interface VPC endpoint to connect to your service.
+(AWS accounts, IAM users, and IAM roles) can connect.
 
-To create an endpoint service configuration, you must first create a
-Network Load Balancer for your service. For more information, see VPC
-Endpoint Services
+To create an endpoint service configuration, you must first create one
+of the following for your service:
+
+=over
+
+=item *
+
+A Network Load Balancer
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/network/introduction.html).
+Service consumers connect to your service using an interface endpoint.
+
+=item *
+
+A Gateway Load Balancer
+(https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/introduction.html).
+Service consumers connect to your service using a Gateway Load Balancer
+endpoint.
+
+=back
+
+For more information, see VPC Endpoint Services
 (https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -6899,6 +8362,8 @@ in the I<Amazon Virtual Private Cloud User Guide>.
 =item [PeerRegion => Str]
 
 =item [PeerVpcId => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 =item [VpcId => Str]
 
@@ -6941,6 +8406,8 @@ C<failed>.
 
 =item [Options => L<Paws::EC2::VpnConnectionOptionsSpecification>]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 =item [TransitGatewayId => Str]
 
 =item [VpnGatewayId => Str]
@@ -6952,16 +8419,16 @@ Each argument is described in detail in: L<Paws::EC2::CreateVpnConnection>
 
 Returns: a L<Paws::EC2::CreateVpnConnectionResult> instance
 
-Creates a VPN connection between an existing virtual private gateway
-and a VPN customer gateway. The supported connection type is
-C<ipsec.1>.
+Creates a VPN connection between an existing virtual private gateway or
+transit gateway and a customer gateway. The supported connection type
+is C<ipsec.1>.
 
 The response includes information that you need to give to your network
 administrator to configure your customer gateway.
 
 We strongly recommend that you use HTTPS when calling this operation
 because the response contains sensitive cryptographic information for
-configuring your customer gateway.
+configuring your customer gateway device.
 
 If you decide to shut down your VPN connection for any reason and later
 create a new VPN connection, you must reconfigure your customer gateway
@@ -7012,6 +8479,8 @@ I<AWS Site-to-Site VPN User Guide>.
 
 =item [DryRun => Bool]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -7026,6 +8495,29 @@ virtual private gateway before creating the VPC itself.
 For more information, see AWS Site-to-Site VPN
 (https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html) in the
 I<AWS Site-to-Site VPN User Guide>.
+
+
+=head2 DeleteCarrierGateway
+
+=over
+
+=item CarrierGatewayId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteCarrierGateway>
+
+Returns: a L<Paws::EC2::DeleteCarrierGatewayResult> instance
+
+Deletes a carrier gateway.
+
+If you do not delete the route that contains the carrier gateway as the
+Target, the route is a blackhole route. For information about how to
+delete a route, see DeleteRoute
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DeleteRoute.html).
 
 
 =head2 DeleteClientVpnEndpoint
@@ -7150,12 +8642,39 @@ Returns: a L<Paws::EC2::DeleteFleetsResult> instance
 
 Deletes the specified EC2 Fleet.
 
-After you delete an EC2 Fleet, it launches no new instances. You must
-specify whether an EC2 Fleet should also terminate its instances. If
-you terminate the instances, the EC2 Fleet enters the
-C<deleted_terminating> state. Otherwise, the EC2 Fleet enters the
-C<deleted_running> state, and the instances continue to run until they
-are interrupted or you terminate them manually.
+After you delete an EC2 Fleet, it launches no new instances.
+
+You must specify whether a deleted EC2 Fleet should also terminate its
+instances. If you choose to terminate the instances, the EC2 Fleet
+enters the C<deleted_terminating> state. Otherwise, the EC2 Fleet
+enters the C<deleted_running> state, and the instances continue to run
+until they are interrupted or you terminate them manually.
+
+For C<instant> fleets, EC2 Fleet must terminate the instances when the
+fleet is deleted. A deleted C<instant> fleet with running instances is
+not supported.
+
+B<Restrictions>
+
+=over
+
+=item *
+
+You can delete up to 25 C<instant> fleets in a single request. If you
+exceed this number, no C<instant> fleets are deleted and an error is
+returned. There is no restriction on the number of fleets of type
+C<maintain> or C<request> that can be deleted in a single request.
+
+=item *
+
+Up to 1000 instances can be terminated in a single request to delete
+C<instant> fleets.
+
+=back
+
+For more information, see Deleting an EC2 Fleet
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/manage-ec2-fleet.html#delete-fleet)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DeleteFlowLogs
@@ -7217,9 +8736,11 @@ gateway from the VPC before you can delete it.
 
 =over
 
-=item KeyName => Str
-
 =item [DryRun => Bool]
+
+=item [KeyName => Str]
+
+=item [KeyPairId => Str]
 
 
 =back
@@ -7319,11 +8840,32 @@ Deletes the specified association between a VPC and local gateway route
 table.
 
 
+=head2 DeleteManagedPrefixList
+
+=over
+
+=item PrefixListId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteManagedPrefixList>
+
+Returns: a L<Paws::EC2::DeleteManagedPrefixListResult> instance
+
+Deletes the specified managed prefix list. You must first remove all
+references to the prefix list in your resources.
+
+
 =head2 DeleteNatGateway
 
 =over
 
 =item NatGatewayId => Str
+
+=item [DryRun => Bool]
 
 
 =back
@@ -7332,10 +8874,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteNatGateway>
 
 Returns: a L<Paws::EC2::DeleteNatGatewayResult> instance
 
-Deletes the specified NAT gateway. Deleting a NAT gateway disassociates
-its Elastic IP address, but does not release the address from your
-account. Deleting a NAT gateway does not delete any NAT gateway routes
-in your route tables.
+Deletes the specified NAT gateway. Deleting a public NAT gateway
+disassociates its Elastic IP address, but does not release the address
+from your account. Deleting a NAT gateway does not delete any NAT
+gateway routes in your route tables.
 
 
 =head2 DeleteNetworkAcl
@@ -7378,6 +8920,42 @@ Returns: nothing
 
 Deletes the specified ingress or egress entry (rule) from the specified
 network ACL.
+
+
+=head2 DeleteNetworkInsightsAnalysis
+
+=over
+
+=item NetworkInsightsAnalysisId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteNetworkInsightsAnalysis>
+
+Returns: a L<Paws::EC2::DeleteNetworkInsightsAnalysisResult> instance
+
+Deletes the specified network insights analysis.
+
+
+=head2 DeleteNetworkInsightsPath
+
+=over
+
+=item NetworkInsightsPathId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteNetworkInsightsPath>
+
+Returns: a L<Paws::EC2::DeleteNetworkInsightsPathResult> instance
+
+Deletes the specified path.
 
 
 =head2 DeleteNetworkInterface
@@ -7439,9 +9017,9 @@ Returns: nothing
 
 Deletes the specified placement group. You must terminate all instances
 in the placement group before you can delete the placement group. For
-more information, see Placement Groups
+more information, see Placement groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DeleteQueuedReservedInstances
@@ -7471,6 +9049,8 @@ Deletes the queued purchases for the specified Reserved Instances.
 =item [DestinationCidrBlock => Str]
 
 =item [DestinationIpv6CidrBlock => Str]
+
+=item [DestinationPrefixListId => Str]
 
 =item [DryRun => Bool]
 
@@ -7558,7 +9138,7 @@ You cannot delete a snapshot of the root device of an EBS volume used
 by a registered AMI. You must first de-register the AMI before you can
 delete the snapshot.
 
-For more information, see Deleting an Amazon EBS Snapshot
+For more information, see Deleting an Amazon EBS snapshot
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-snapshot.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -7719,6 +9299,43 @@ Returns: a L<Paws::EC2::DeleteTransitGatewayResult> instance
 Deletes the specified transit gateway.
 
 
+=head2 DeleteTransitGatewayConnect
+
+=over
+
+=item TransitGatewayAttachmentId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayConnect>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayConnectResult> instance
+
+Deletes the specified Connect attachment. You must first delete any
+Connect peers for the attachment.
+
+
+=head2 DeleteTransitGatewayConnectPeer
+
+=over
+
+=item TransitGatewayConnectPeerId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayConnectPeer>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayConnectPeerResult> instance
+
+Deletes the specified Connect peer.
+
+
 =head2 DeleteTransitGatewayMulticastDomain
 
 =over
@@ -7753,6 +9370,27 @@ Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayPeerin
 Returns: a L<Paws::EC2::DeleteTransitGatewayPeeringAttachmentResult> instance
 
 Deletes a transit gateway peering attachment.
+
+
+=head2 DeleteTransitGatewayPrefixListReference
+
+=over
+
+=item PrefixListId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeleteTransitGatewayPrefixListReference>
+
+Returns: a L<Paws::EC2::DeleteTransitGatewayPrefixListReferenceResult> instance
+
+Deletes a reference (route) to a prefix list in a specified transit
+gateway route table.
 
 
 =head2 DeleteTransitGatewayRoute
@@ -7834,7 +9472,7 @@ C<available> state (not attached to an instance).
 
 The volume can remain in the C<deleting> state for several minutes.
 
-For more information, see Deleting an Amazon EBS Volume
+For more information, see Deleting an Amazon EBS volume
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-deleting-volume.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -7895,10 +9533,49 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpcEndpoints>
 
 Returns: a L<Paws::EC2::DeleteVpcEndpointsResult> instance
 
-Deletes one or more specified VPC endpoints. Deleting a gateway
-endpoint also deletes the endpoint routes in the route tables that were
-associated with the endpoint. Deleting an interface endpoint deletes
-the endpoint network interfaces.
+Deletes one or more specified VPC endpoints. You can delete any of the
+following types of VPC endpoints.
+
+=over
+
+=item *
+
+Gateway endpoint,
+
+=item *
+
+Gateway Load Balancer endpoint,
+
+=item *
+
+Interface endpoint
+
+=back
+
+The following rules apply when you delete a VPC endpoint:
+
+=over
+
+=item *
+
+When you delete a gateway endpoint, we delete the endpoint routes in
+the route tables that are associated with the endpoint.
+
+=item *
+
+When you delete a Gateway Load Balancer endpoint, we delete the
+endpoint network interfaces.
+
+You can only delete Gateway Load Balancer endpoints when the routes
+that are associated with the endpoint are deleted.
+
+=item *
+
+When you delete an interface endpoint, we delete the endpoint network
+interfaces.
+
+=back
+
 
 
 =head2 DeleteVpcEndpointServiceConfigurations
@@ -7968,8 +9645,12 @@ credentials for your VPN connection have been compromised, you can
 delete the VPN connection and create a new one that has new keys,
 without needing to delete the VPC or virtual private gateway. If you
 create a new VPN connection, you must reconfigure the customer gateway
-using the new configuration information returned with the new VPN
-connection ID.
+device using the new configuration information returned with the new
+VPN connection ID.
+
+For certificate-based authentication, delete all AWS Certificate
+Manager (ACM) private certificates used for the AWS-side tunnel
+endpoints for the VPN connection before deleting the VPN connection.
 
 
 =head2 DeleteVpnConnectionRoute
@@ -8008,11 +9689,10 @@ Each argument is described in detail in: L<Paws::EC2::DeleteVpnGateway>
 
 Returns: nothing
 
-Deletes the specified virtual private gateway. We recommend that before
-you delete a virtual private gateway, you detach it from the VPC and
-delete the VPN connection. Note that you don't need to delete the
-virtual private gateway if you plan to delete and recreate the VPN
-connection between your VPC and your network.
+Deletes the specified virtual private gateway. You must first detach
+the virtual private gateway from the VPC. Note that you don't need to
+delete the virtual private gateway if you plan to delete and recreate
+the VPN connection between your VPC and your network.
 
 
 =head2 DeprovisionByoipCidr
@@ -8031,8 +9711,8 @@ Each argument is described in detail in: L<Paws::EC2::DeprovisionByoipCidr>
 Returns: a L<Paws::EC2::DeprovisionByoipCidrResult> instance
 
 Releases the specified address range that you provisioned for use with
-your AWS resources through bring your own IP addresses (BYOIP) and
-deletes the corresponding address pool.
+your Amazon Web Services resources through bring your own IP addresses
+(BYOIP) and deletes the corresponding address pool.
 
 Before you can release an address range, you must stop advertising it
 using WithdrawByoipCidr and you must not have any IP addresses
@@ -8064,6 +9744,26 @@ snapshot that was created for the root volume of the instance during
 the AMI creation process. When you deregister an instance store-backed
 AMI, it doesn't affect the files that you uploaded to Amazon S3 when
 you created the AMI.
+
+
+=head2 DeregisterInstanceEventNotificationAttributes
+
+=over
+
+=item [DryRun => Bool]
+
+=item [InstanceTagAttribute => L<Paws::EC2::DeregisterInstanceTagAttributeRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DeregisterInstanceEventNotificationAttributes>
+
+Returns: a L<Paws::EC2::DeregisterInstanceEventNotificationAttributesResult> instance
+
+Deregisters tag keys to prevent tags that have the specified tag keys
+from being included in scheduled event notifications for resources in
+the Region.
 
 
 =head2 DeregisterTransitGatewayMulticastGroupMembers
@@ -8196,6 +9896,32 @@ in a VPC. For more information, see Elastic IP Addresses
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
+=head2 DescribeAddressesAttribute
+
+=over
+
+=item [AllocationIds => ArrayRef[Str|Undef]]
+
+=item [Attribute => Str]
+
+=item [DryRun => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeAddressesAttribute>
+
+Returns: a L<Paws::EC2::DescribeAddressesAttributeResult> instance
+
+Describes the attributes of the specified Elastic IP addresses. For
+requirements, see Using reverse DNS for email applications
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS).
+
+
 =head2 DescribeAggregateIdFormat
 
 =over
@@ -8251,13 +9977,13 @@ Each argument is described in detail in: L<Paws::EC2::DescribeAvailabilityZones>
 
 Returns: a L<Paws::EC2::DescribeAvailabilityZonesResult> instance
 
-Describes the Availability Zones and Local Zones that are available to
-you. If there is an event impacting an Availability Zone or Local Zone,
-you can use this request to view the state and any provided messages
-for that Availability Zone or Local Zone.
+Describes the Availability Zones, Local Zones, and Wavelength Zones
+that are available to you. If there is an event impacting a zone, you
+can use this request to view the state and any provided messages for
+that zone.
 
-For more information about Availability Zones and Local Zones, see
-Regions and Availability Zones
+For more information about Availability Zones, Local Zones, and
+Wavelength Zones, see Regions, Zones and Outposts
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -8333,8 +10059,32 @@ Each argument is described in detail in: L<Paws::EC2::DescribeCapacityReservatio
 Returns: a L<Paws::EC2::DescribeCapacityReservationsResult> instance
 
 Describes one or more of your Capacity Reservations. The results
-describe only the Capacity Reservations in the AWS Region that you're
+describe only the Capacity Reservations in the Region that you're
 currently using.
+
+
+=head2 DescribeCarrierGateways
+
+=over
+
+=item [CarrierGatewayIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeCarrierGateways>
+
+Returns: a L<Paws::EC2::DescribeCarrierGatewaysResult> instance
+
+Describes one or more of your carrier gateways.
 
 
 =head2 DescribeClassicLinkInstances
@@ -8662,7 +10412,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportImageTasks>
 
 Returns: a L<Paws::EC2::DescribeExportImageTasksResult> instance
 
-Describes the specified export image tasks or all your export image
+Describes the specified export image tasks or all of your export image
 tasks.
 
 
@@ -8681,7 +10431,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeExportTasks>
 
 Returns: a L<Paws::EC2::DescribeExportTasksResult> instance
 
-Describes the specified export instance tasks or all your export
+Describes the specified export instance tasks or all of your export
 instance tasks.
 
 
@@ -8738,6 +10488,10 @@ described. This ensures that you can query by the last evaluated time
 and not miss a recorded event. EC2 Fleet events are available for 48
 hours.
 
+For more information, see Monitoring your EC2 Fleet
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html#monitor-ec2-fleet)
+in the I<Amazon EC2 User Guide>.
+
 
 =head2 DescribeFleetInstances
 
@@ -8762,6 +10516,10 @@ Returns: a L<Paws::EC2::DescribeFleetInstancesResult> instance
 
 Describes the running instances for the specified EC2 Fleet.
 
+For more information, see Monitoring your EC2 Fleet
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html#monitor-ec2-fleet)
+in the I<Amazon EC2 User Guide>.
+
 
 =head2 DescribeFleets
 
@@ -8785,6 +10543,10 @@ Each argument is described in detail in: L<Paws::EC2::DescribeFleets>
 Returns: a L<Paws::EC2::DescribeFleetsResult> instance
 
 Describes the specified EC2 Fleets or all of your EC2 Fleets.
+
+For more information, see Monitoring your EC2 Fleet
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-fleet.html#monitor-ec2-fleet)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribeFlowLogs
@@ -8893,9 +10655,9 @@ including offerings that might not match the instance family and Region
 of your Dedicated Hosts. When purchasing an offering, ensure that the
 instance family and Region of the offering matches that of the
 Dedicated Hosts with which it is to be associated. For more information
-about supported instance types, see Dedicated Hosts Overview
+about supported instance types, see Dedicated Hosts
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-overview.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribeHostReservations
@@ -9083,6 +10845,8 @@ only one attribute at a time.
 
 =item [ImageIds => ArrayRef[Str|Undef]]
 
+=item [IncludeDeprecated => Bool]
+
 =item [Owners => ArrayRef[Str|Undef]]
 
 
@@ -9102,7 +10866,8 @@ have explicit launch permissions.
 Recently deregistered images appear in the returned results for a short
 interval and then return empty results. After all instances that
 reference a deregistered AMI are terminated, specifying the ID of the
-image results in an error indicating that the AMI ID cannot be found.
+image will eventually return an error indicating that the AMI ID cannot
+be found.
 
 
 =head2 DescribeImportImageTasks
@@ -9224,9 +10989,26 @@ specify instance IDs in the affected zone, or do not specify any
 instance IDs at all, the call fails. If you specify only instance IDs
 in an unaffected zone, the call works normally.
 
-For more information, see Burstable Performance Instances
+For more information, see Burstable performance instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
+
+
+=head2 DescribeInstanceEventNotificationAttributes
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeInstanceEventNotificationAttributes>
+
+Returns: a L<Paws::EC2::DescribeInstanceEventNotificationAttributesResult> instance
+
+Describes the tag keys that are registered to appear in scheduled event
+notifications for resources in the current Region.
 
 
 =head2 DescribeInstances
@@ -9250,14 +11032,19 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstances>
 
 Returns: a L<Paws::EC2::DescribeInstancesResult> instance
 
-Describes the specified instances or all of AWS account's instances.
+Describes the specified instances or all instances.
 
-If you specify one or more instance IDs, Amazon EC2 returns information
-for those instances. If you do not specify instance IDs, Amazon EC2
-returns information for all relevant instances. If you specify an
-instance ID that is not valid, an error is returned. If you specify an
-instance that you do not own, it is not included in the returned
-results.
+If you specify instance IDs, the output includes information for only
+the specified instances. If you specify filters, the output includes
+information for only those instances that meet the filter criteria. If
+you do not specify instance IDs or filters, the output includes
+information for all instances, which can affect performance. We
+recommend that you use pagination to ensure that the operation returns
+quickly and successfully.
+
+If you specify an instance ID that is not valid, an error is returned.
+If you specify an instance that you do not own, it is not included in
+the output.
 
 Recently terminated instances might appear in the returned results.
 This interval is usually less than one hour.
@@ -9304,28 +11091,28 @@ Instance status includes the following components:
 
 B<Status checks> - Amazon EC2 performs status checks on running EC2
 instances to identify hardware and software issues. For more
-information, see Status Checks for Your Instances
+information, see Status checks for your instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-system-instance-status-check.html)
-and Troubleshooting Instances with Failed Status Checks
+and Troubleshooting instances with failed status checks
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 =item *
 
 B<Scheduled events> - Amazon EC2 can schedule events (such as reboot,
 stop, or terminate) for your instances related to hardware issues,
 software updates, or system maintenance. For more information, see
-Scheduled Events for Your Instances
+Scheduled events for your instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-instances-status-check_sched.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 =item *
 
 B<Instance state> - You can manage your instances from the moment you
 launch them through their termination. For more information, see
-Instance Lifecycle
+Instance lifecycle
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 =back
 
@@ -9379,8 +11166,8 @@ Each argument is described in detail in: L<Paws::EC2::DescribeInstanceTypes>
 
 Returns: a L<Paws::EC2::DescribeInstanceTypesResult> instance
 
-Returns a list of all instance types offered in your current AWS
-Region. The results can be filtered by the attributes of the instance
+Describes the details of the instance types that are offered in a
+location. The results can be filtered by the attributes of the instance
 types.
 
 
@@ -9514,7 +11301,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribeLaunchTemplateVers
 Returns: a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> instance
 
 Describes one or more versions of a specified launch template. You can
-describe all versions, individual versions, or a range of versions.
+describe all versions, individual versions, or a range of versions. You
+can also describe all the latest versions or all the default versions
+of all the launch templates in your account.
 
 
 =head2 DescribeLocalGatewayRouteTables
@@ -9666,6 +11455,34 @@ Returns: a L<Paws::EC2::DescribeLocalGatewayVirtualInterfacesResult> instance
 Describes the specified local gateway virtual interfaces.
 
 
+=head2 DescribeManagedPrefixLists
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [PrefixListIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeManagedPrefixLists>
+
+Returns: a L<Paws::EC2::DescribeManagedPrefixListsResult> instance
+
+Describes your managed prefix lists and any Amazon Web Services-managed
+prefix lists.
+
+To view the entries for your prefix list, use
+GetManagedPrefixListEntries.
+
+
 =head2 DescribeMovingAddresses
 
 =over
@@ -9696,6 +11513,8 @@ addresses in your account.
 =head2 DescribeNatGateways
 
 =over
+
+=item [DryRun => Bool]
 
 =item [Filter => ArrayRef[L<Paws::EC2::Filter>]]
 
@@ -9741,6 +11560,60 @@ Describes one or more of your network ACLs.
 For more information, see Network ACLs
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_ACLs.html) in the
 I<Amazon Virtual Private Cloud User Guide>.
+
+
+=head2 DescribeNetworkInsightsAnalyses
+
+=over
+
+=item [AnalysisEndTime => Str]
+
+=item [AnalysisStartTime => Str]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NetworkInsightsAnalysisIds => ArrayRef[Str|Undef]]
+
+=item [NetworkInsightsPathId => Str]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInsightsAnalyses>
+
+Returns: a L<Paws::EC2::DescribeNetworkInsightsAnalysesResult> instance
+
+Describes one or more of your network insights analyses.
+
+
+=head2 DescribeNetworkInsightsPaths
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NetworkInsightsPathIds => ArrayRef[Str|Undef]]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeNetworkInsightsPaths>
+
+Returns: a L<Paws::EC2::DescribeNetworkInsightsPathsResult> instance
+
+Describes one or more of your paths.
 
 
 =head2 DescribeNetworkInterfaceAttribute
@@ -9830,9 +11703,9 @@ Each argument is described in detail in: L<Paws::EC2::DescribePlacementGroups>
 Returns: a L<Paws::EC2::DescribePlacementGroupsResult> instance
 
 Describes the specified placement groups or all of your placement
-groups. For more information, see Placement Groups
+groups. For more information, see Placement groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribePrefixLists
@@ -9856,12 +11729,11 @@ Each argument is described in detail in: L<Paws::EC2::DescribePrefixLists>
 
 Returns: a L<Paws::EC2::DescribePrefixListsResult> instance
 
-Describes available AWS services in a prefix list format, which
-includes the prefix list name and prefix list ID of the service and the
-IP address range for the service. A prefix list ID is required for
-creating an outbound security group rule that allows traffic from a VPC
-to access an AWS service through a gateway VPC endpoint. Currently, the
-services that support this action are Amazon S3 and Amazon DynamoDB.
+Describes available Amazon Web Services services in a prefix list
+format, which includes the prefix list name and prefix list ID of the
+service and the IP address range for the service.
+
+We recommend that you use DescribeManagedPrefixLists instead.
 
 
 =head2 DescribePrincipalIdFormat
@@ -9959,6 +11831,32 @@ see Managing AWS Regions
 the I<AWS General Reference>.
 
 
+=head2 DescribeReplaceRootVolumeTasks
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [ReplaceRootVolumeTaskIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeReplaceRootVolumeTasks>
+
+Returns: a L<Paws::EC2::DescribeReplaceRootVolumeTasksResult> instance
+
+Describes a root volume replacement task. For more information, see
+Replace a root volume (https://docs.aws.amazon.com/) in the I<Amazon
+Elastic Compute Cloud User Guide>.
+
+
 =head2 DescribeReservedInstances
 
 =over
@@ -9984,7 +11882,7 @@ Describes one or more of the Reserved Instances that you purchased.
 
 For more information about Reserved Instances, see Reserved Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribeReservedInstancesListings
@@ -10027,7 +11925,7 @@ based on the total price of all of the listings that you purchase.
 
 For more information, see Reserved Instance Marketplace
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribeReservedInstancesModifications
@@ -10054,7 +11952,7 @@ only information about the specific modification is returned.
 
 For more information, see Modifying Reserved Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html)
-in the Amazon Elastic Compute Cloud User Guide.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribeReservedInstancesOfferings
@@ -10110,7 +12008,7 @@ to ensure that you do not purchase your own Reserved Instances.
 
 For more information, see Reserved Instance Marketplace
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DescribeRouteTables
@@ -10288,7 +12186,7 @@ Returns: a L<Paws::EC2::DescribeSnapshotAttributeResult> instance
 Describes the specified attribute of the specified snapshot. You can
 specify only one attribute at a time.
 
-For more information about EBS snapshots, see Amazon EBS Snapshots
+For more information about EBS snapshots, see Amazon EBS snapshots
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -10368,18 +12266,18 @@ snapshot permissions for those users are returned. You can specify AWS
 account IDs (if you own the snapshots), C<self> for snapshots for which
 you own or have explicit permissions, or C<all> for public snapshots.
 
-If you are describing a long list of snapshots, you can paginate the
-output to make the list more manageable. The C<MaxResults> parameter
-sets the maximum number of results returned in a single page. If the
-list of results exceeds your C<MaxResults> value, then that number of
-results is returned along with a C<NextToken> value that can be passed
-to a subsequent C<DescribeSnapshots> request to retrieve the remaining
-results.
+If you are describing a long list of snapshots, we recommend that you
+paginate the output to make the list more manageable. The C<MaxResults>
+parameter sets the maximum number of results returned in a single page.
+If the list of results exceeds your C<MaxResults> value, then that
+number of results is returned along with a C<NextToken> value that can
+be passed to a subsequent C<DescribeSnapshots> request to retrieve the
+remaining results.
 
 To get the state of fast snapshot restores for a snapshot, use
 DescribeFastSnapshotRestores.
 
-For more information about EBS snapshots, see Amazon EBS Snapshots
+For more information about EBS snapshots, see Amazon EBS snapshots
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSSnapshots.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -10398,7 +12296,7 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotDatafeedSubscr
 Returns: a L<Paws::EC2::DescribeSpotDatafeedSubscriptionResult> instance
 
 Describes the data feed for Spot Instances. For more information, see
-Spot Instance Data Feed
+Spot Instance data feed
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -10509,8 +12407,10 @@ You can use C<DescribeSpotInstanceRequests> to find a running Spot
 Instance by examining the response. If the status of the Spot Instance
 is C<fulfilled>, the instance ID appears in the response and contains
 the identifier of the instance. Alternatively, you can use
-DescribeInstances with a filter to look for instances where the
-instance lifecycle is C<spot>.
+DescribeInstances
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstances)
+with a filter to look for instances where the instance lifecycle is
+C<spot>.
 
 We recommend that you set C<MaxResults> to a value between 5 and 1000
 to limit the number of results returned. This paginates the output,
@@ -10554,15 +12454,14 @@ Each argument is described in detail in: L<Paws::EC2::DescribeSpotPriceHistory>
 Returns: a L<Paws::EC2::DescribeSpotPriceHistoryResult> instance
 
 Describes the Spot price history. For more information, see Spot
-Instance Pricing History
+Instance pricing history
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-spot-instances-history.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
-When you specify a start and end time, this operation returns the
-prices of the instance types within the time range that you specified
-and the time when the price changed. The price is valid within the time
-period that you specified; the response merely indicates the last time
-that the price changed.
+When you specify a start and end time, the operation returns the prices
+of the instance types within that time range. It also returns the last
+price change before the start time, which is the effective price as of
+the start time.
 
 
 =head2 DescribeStaleSecurityGroups
@@ -10588,6 +12487,48 @@ Returns: a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance
 in a specified VPC. Rules are stale when they reference a deleted
 security group in a peer VPC, or a security group in a peer VPC for
 which the VPC peering connection has been deleted.
+
+
+=head2 DescribeStoreImageTasks
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [ImageIds => ArrayRef[Str|Undef]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeStoreImageTasks>
+
+Returns: a L<Paws::EC2::DescribeStoreImageTasksResult> instance
+
+Describes the progress of the AMI store tasks. You can describe the
+store tasks for specified AMIs. If you don't specify the AMIs, you get
+a paginated list of store tasks from the last 31 days.
+
+For each AMI task, the response indicates if the task is C<InProgress>,
+C<Completed>, or C<Failed>. For tasks C<InProgress>, the response shows
+the estimated progress as a percentage.
+
+Tasks are listed in reverse chronological order. Currently, only tasks
+from the past 31 days can be viewed.
+
+To use this API, you must have the required permissions. For more
+information, see Permissions for storing and restoring AMIs using S3
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#ami-s3-permissions)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+For more information, see Store and restore an AMI using S3
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
 
 
 =head2 DescribeSubnets
@@ -10745,6 +12686,54 @@ can filter the results by attachment ID, attachment state, resource ID,
 or resource owner.
 
 
+=head2 DescribeTransitGatewayConnectPeers
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayConnectPeerIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayConnectPeers>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayConnectPeersResult> instance
+
+Describes one or more Connect peers.
+
+
+=head2 DescribeTransitGatewayConnects
+
+=over
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TransitGatewayAttachmentIds => ArrayRef[Str|Undef]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTransitGatewayConnects>
+
+Returns: a L<Paws::EC2::DescribeTransitGatewayConnectsResult> instance
+
+Describes one or more Connect attachments.
+
+
 =head2 DescribeTransitGatewayMulticastDomains
 
 =over
@@ -10869,6 +12858,30 @@ Describes one or more VPC attachments. By default, all VPC attachments
 are described. Alternatively, you can filter the results.
 
 
+=head2 DescribeTrunkInterfaceAssociations
+
+=over
+
+=item [AssociationIds => ArrayRef[Str|Undef]]
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DescribeTrunkInterfaceAssociations>
+
+Returns: a L<Paws::EC2::DescribeTrunkInterfaceAssociationsResult> instance
+
+Describes one or more network interface trunk associations.
+
+
 =head2 DescribeVolumeAttribute
 
 =over
@@ -10889,7 +12902,7 @@ Returns: a L<Paws::EC2::DescribeVolumeAttributeResult> instance
 Describes the specified attribute of the specified volume. You can
 specify only one attribute at a time.
 
-For more information about EBS volumes, see Amazon EBS Volumes
+For more information about EBS volumes, see Amazon EBS volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -10917,15 +12930,15 @@ Returns: a L<Paws::EC2::DescribeVolumesResult> instance
 
 Describes the specified EBS volumes or all of your EBS volumes.
 
-If you are describing a long list of volumes, you can paginate the
-output to make the list more manageable. The C<MaxResults> parameter
-sets the maximum number of results returned in a single page. If the
-list of results exceeds your C<MaxResults> value, then that number of
-results is returned along with a C<NextToken> value that can be passed
-to a subsequent C<DescribeVolumes> request to retrieve the remaining
-results.
+If you are describing a long list of volumes, we recommend that you
+paginate the output to make the list more manageable. The C<MaxResults>
+parameter sets the maximum number of results returned in a single page.
+If the list of results exceeds your C<MaxResults> value, then that
+number of results is returned along with a C<NextToken> value that can
+be passed to a subsequent C<DescribeVolumes> request to retrieve the
+remaining results.
 
-For more information about EBS volumes, see Amazon EBS Volumes
+For more information about EBS volumes, see Amazon EBS volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumes.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -10951,21 +12964,18 @@ Each argument is described in detail in: L<Paws::EC2::DescribeVolumesModificatio
 
 Returns: a L<Paws::EC2::DescribeVolumesModificationsResult> instance
 
-Reports the current modification status of EBS volumes.
+Describes the most recent volume modification request for the specified
+EBS volumes.
 
-Current-generation EBS volumes support modification of attributes
-including type, size, and (for C<io1> volumes) IOPS provisioning while
-either attached to or detached from an instance. Following an action
-from the API or the console to modify a volume, the status of the
-modification may be C<modifying>, C<optimizing>, C<completed>, or
-C<failed>. If a volume has never been modified, then certain elements
-of the returned C<VolumeModification> objects are null.
+If a volume has never been modified, some information in the output
+will be null. If a volume has been modified more than once, the output
+includes only the most recent modification request.
 
 You can also use CloudWatch Events to check the status of a
 modification to an EBS volume. For information about CloudWatch Events,
 see the Amazon CloudWatch Events User Guide
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). For more
-information, see Monitoring Volume Modifications"
+information, see Monitoring volume modifications
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -11008,23 +13018,23 @@ I<Status>: Reflects the current status of the volume. The possible
 values are C<ok>, C<impaired> , C<warning>, or C<insufficient-data>. If
 all checks pass, the overall status of the volume is C<ok>. If the
 check fails, the overall status is C<impaired>. If the status is
-C<insufficient-data>, then the checks may still be taking place on your
-volume at the time. We recommend that you retry the request. For more
-information about volume status, see Monitoring the Status of Your
-Volumes
+C<insufficient-data>, then the checks might still be taking place on
+your volume at the time. We recommend that you retry the request. For
+more information about volume status, see Monitoring the status of your
+volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-volume-status.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-I<Events>: Reflect the cause of a volume status and may require you to
-take action. For example, if your volume returns an C<impaired> status,
-then the volume event might be C<potential-data-inconsistency>. This
-means that your volume has been affected by an issue with the
-underlying host, has all I/O operations disabled, and may have
+I<Events>: Reflect the cause of a volume status and might require you
+to take action. For example, if your volume returns an C<impaired>
+status, then the volume event might be C<potential-data-inconsistency>.
+This means that your volume has been affected by an issue with the
+underlying host, has all I/O operations disabled, and might have
 inconsistent data.
 
-I<Actions>: Reflect the actions you may have to take in response to an
-event. For example, if the status of the volume is C<impaired> and the
-volume event shows C<potential-data-inconsistency>, then the action
+I<Actions>: Reflect the actions you might have to take in response to
+an event. For example, if the status of the volume is C<impaired> and
+the volume event shows C<potential-data-inconsistency>, then the action
 shows C<enable-volume-io>. This means that you may want to enable the
 I/O operations for the volume by calling the EnableVolumeIO action and
 then check the volume for data consistency.
@@ -11248,6 +13258,14 @@ Returns: a L<Paws::EC2::DescribeVpcEndpointServicesResult> instance
 
 Describes available services to which you can create a VPC endpoint.
 
+When the service provider and the consumer have different accounts in
+multiple Availability Zones, and the consumer views the VPC endpoint
+service information, the response only includes the common Availability
+Zones. For example, when the service provider account uses
+C<us-east-1a> and C<us-east-1c> and the consumer uses C<us-east-1a> and
+C<us-east-1b>, the response includes the VPC endpoint services in the
+common Availability Zone, C<us-east-1a>.
+
 
 =head2 DescribeVpcPeeringConnections
 
@@ -11443,7 +13461,7 @@ detach the root volume, stop the instance first.
 When a volume with an AWS Marketplace product code is detached from an
 instance, the product code is no longer associated with the instance.
 
-For more information, see Detaching an Amazon EBS Volume
+For more information, see Detaching an Amazon EBS volume
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-detaching-volume.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -11498,7 +13516,7 @@ volumes by enabling encryption when you create each volume.
 Disabling encryption by default does not change the encryption status
 of your existing volumes.
 
-For more information, see Amazon EBS Encryption
+For more information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -11522,6 +13540,49 @@ Returns: a L<Paws::EC2::DisableFastSnapshotRestoresResult> instance
 
 Disables fast snapshot restores for the specified snapshots in the
 specified Availability Zones.
+
+
+=head2 DisableImageDeprecation
+
+=over
+
+=item ImageId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisableImageDeprecation>
+
+Returns: a L<Paws::EC2::DisableImageDeprecationResult> instance
+
+Cancels the deprecation of the specified AMI.
+
+For more information, see Deprecate an AMI
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 DisableSerialConsoleAccess
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisableSerialConsoleAccess>
+
+Returns: a L<Paws::EC2::DisableSerialConsoleAccessResult> instance
+
+Disables access to the EC2 serial console of all instances for your
+account. By default, access to the EC2 serial console is disabled for
+your account. For more information, see Manage account access to the
+EC2 serial console
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 DisableTransitGatewayRouteTablePropagation
@@ -11605,6 +13666,8 @@ more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
+You must specify a VPC ID in the request.
+
 
 =head2 DisassociateAddress
 
@@ -11678,6 +13741,32 @@ The Client VPN endpoint's status changes to C<pending-associate>
 
 
 
+=head2 DisassociateEnclaveCertificateIamRole
+
+=over
+
+=item [CertificateArn => Str]
+
+=item [DryRun => Bool]
+
+=item [RoleArn => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateEnclaveCertificateIamRole>
+
+Returns: a L<Paws::EC2::DisassociateEnclaveCertificateIamRoleResult> instance
+
+Disassociates an IAM role from an AWS Certificate Manager (ACM)
+certificate. Disassociating an IAM role from an ACM certificate removes
+the Amazon S3 object that contains the certificate, certificate chain,
+and encrypted private key from the Amazon S3 bucket. It also revokes
+the IAM role's permission to use the AWS Key Management Service (KMS)
+customer master key (CMK) used to encrypt the private key. This
+effectively revokes the role's permission to use the certificate.
+
+
 =head2 DisassociateIamInstanceProfile
 
 =over
@@ -11712,7 +13801,7 @@ Each argument is described in detail in: L<Paws::EC2::DisassociateRouteTable>
 
 Returns: nothing
 
-Disassociates a subnet from a route table.
+Disassociates a subnet or gateway from a route table.
 
 After you perform this action, the subnet no longer uses the routes in
 the route table. Instead, it uses the routes in the VPC's main route
@@ -11783,6 +13872,27 @@ Returns: a L<Paws::EC2::DisassociateTransitGatewayRouteTableResult> instance
 Disassociates a resource attachment from a transit gateway route table.
 
 
+=head2 DisassociateTrunkInterface
+
+=over
+
+=item AssociationId => Str
+
+=item [ClientToken => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::DisassociateTrunkInterface>
+
+Returns: a L<Paws::EC2::DisassociateTrunkInterfaceResult> instance
+
+Removes an association between a branch network interface with a trunk
+network interface.
+
+
 =head2 DisassociateVpcCidrBlock
 
 =over
@@ -11823,9 +13933,9 @@ Enables EBS encryption by default for your account in the current
 Region.
 
 After you enable encryption by default, the EBS volumes that you create
-are are always encrypted, either using the default CMK or the CMK that
-you specified when you created each volume. For more information, see
-Amazon EBS Encryption
+are always encrypted, either using the default CMK or the CMK that you
+specified when you created each volume. For more information, see
+Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -11837,7 +13947,7 @@ of your existing volumes.
 
 After you enable encryption by default, you can no longer launch
 instances using instance types that do not support encryption. For more
-information, see Supported Instance Types
+information, see Supported instance types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html#EBSEncryption_supported_instances).
 
 
@@ -11866,9 +13976,55 @@ C<enabled> state. To get the current state of fast snapshot restores,
 use DescribeFastSnapshotRestores. To disable fast snapshot restores,
 use DisableFastSnapshotRestores.
 
-For more information, see Amazon EBS Fast Snapshot Restore
+For more information, see Amazon EBS fast snapshot restore
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-fast-snapshot-restore.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 EnableImageDeprecation
+
+=over
+
+=item DeprecateAt => Str
+
+=item ImageId => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::EnableImageDeprecation>
+
+Returns: a L<Paws::EC2::EnableImageDeprecationResult> instance
+
+Enables deprecation of the specified AMI at the specified date and
+time.
+
+For more information, see Deprecate an AMI
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-deprecate.html)
+in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 EnableSerialConsoleAccess
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::EnableSerialConsoleAccess>
+
+Returns: a L<Paws::EC2::EnableSerialConsoleAccessResult> instance
+
+Enables access to the EC2 serial console of all instances for your
+account. By default, access to the EC2 serial console is disabled for
+your account. For more information, see Manage account access to the
+EC2 serial console
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 EnableTransitGatewayRouteTablePropagation
@@ -11980,6 +14136,8 @@ EC2-Classic instance. For more information, see ClassicLink
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
+You must specify a VPC ID in the request.
+
 
 =head2 ExportClientVpnClientCertificateRevocationList
 
@@ -12040,6 +14198,8 @@ endpoint.
 
 =item [RoleName => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -12048,7 +14208,7 @@ Each argument is described in detail in: L<Paws::EC2::ExportImage>
 Returns: a L<Paws::EC2::ExportImageResult> instance
 
 Exports an Amazon Machine Image (AMI) to a VM file. For more
-information, see Exporting a VM Directory from an Amazon Machine Image
+information, see Exporting a VM directly from an Amazon Machine Image
 (AMI)
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html)
 in the I<VM Import/Export User Guide>.
@@ -12076,6 +14236,34 @@ Returns: a L<Paws::EC2::ExportTransitGatewayRoutesResult> instance
 Exports routes from the specified transit gateway route table to the
 specified S3 bucket. By default, all routes are exported.
 Alternatively, you can filter by CIDR range.
+
+The routes are saved to the specified bucket in a JSON file. For more
+information, see Export Route Tables to Amazon S3
+(https://docs.aws.amazon.com/vpc/latest/tgw/tgw-route-tables.html#tgw-export-route-tables)
+in I<Transit Gateways>.
+
+
+=head2 GetAssociatedEnclaveCertificateIamRoles
+
+=over
+
+=item [CertificateArn => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetAssociatedEnclaveCertificateIamRoles>
+
+Returns: a L<Paws::EC2::GetAssociatedEnclaveCertificateIamRolesResult> instance
+
+Returns the IAM roles that are associated with the specified AWS
+Certificate Manager (ACM) certificate. It also returns the name of the
+Amazon S3 bucket and the Amazon S3 object key where the certificate,
+certificate chain, and encrypted private key bundle are stored, and the
+ARN of the AWS Key Management Service (KMS) customer master key (CMK)
+that's used to encrypt the private key.
 
 
 =head2 GetAssociatedIpv6PoolCidrs
@@ -12122,9 +14310,9 @@ Returns: a L<Paws::EC2::GetCapacityReservationUsageResult> instance
 
 Gets usage information about a Capacity Reservation. If the Capacity
 Reservation is shared, it shows usage information for the Capacity
-Reservation owner and each AWS account that is currently using the
-shared capacity. If the Capacity Reservation is not shared, it shows
-only the Capacity Reservation owner's usage.
+Reservation owner and each account that is currently using the shared
+capacity. If the Capacity Reservation is not shared, it shows only the
+Capacity Reservation owner's usage.
 
 
 =head2 GetCoipPoolUsage
@@ -12185,9 +14373,9 @@ You can optionally retrieve the latest serial console output at any
 time during the instance lifecycle. This option is supported on
 instance types that use the Nitro hypervisor.
 
-For more information, see Instance Console Output
+For more information, see Instance console output
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html#instance-console-console-output)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 GetConsoleScreenshot
@@ -12231,9 +14419,9 @@ Returns: a L<Paws::EC2::GetDefaultCreditSpecificationResult> instance
 Describes the default credit option for CPU usage of a burstable
 performance instance family.
 
-For more information, see Burstable Performance Instances
+For more information, see Burstable performance instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 GetEbsDefaultKmsKeyId
@@ -12254,7 +14442,7 @@ default for your account in this Region. You can change the default CMK
 for encryption by default using ModifyEbsDefaultKmsKeyId or
 ResetEbsDefaultKmsKeyId.
 
-For more information, see Amazon EBS Encryption
+For more information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -12275,9 +14463,81 @@ Returns: a L<Paws::EC2::GetEbsEncryptionByDefaultResult> instance
 Describes whether EBS encryption by default is enabled for your account
 in the current Region.
 
-For more information, see Amazon EBS Encryption
+For more information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
+
+
+=head2 GetFlowLogsIntegrationTemplate
+
+=over
+
+=item ConfigDeliveryS3DestinationArn => Str
+
+=item FlowLogId => Str
+
+=item IntegrateServices => L<Paws::EC2::IntegrateServices>
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetFlowLogsIntegrationTemplate>
+
+Returns: a L<Paws::EC2::GetFlowLogsIntegrationTemplateResult> instance
+
+Generates a CloudFormation template that streamlines and automates the
+integration of VPC flow logs with Amazon Athena. This make it easier
+for you to query and gain insights from VPC flow logs data. Based on
+the information that you provide, we configure resources in the
+template to do the following:
+
+=over
+
+=item *
+
+Create a table in Athena that maps fields to a custom log format
+
+=item *
+
+Create a Lambda function that updates the table with new partitions on
+a daily, weekly, or monthly basis
+
+=item *
+
+Create a table partitioned between two timestamps in the past
+
+=item *
+
+Create a set of named queries in Athena that you can use to get started
+quickly
+
+=back
+
+
+
+=head2 GetGroupsForCapacityReservation
+
+=over
+
+=item CapacityReservationId => Str
+
+=item [DryRun => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetGroupsForCapacityReservation>
+
+Returns: a L<Paws::EC2::GetGroupsForCapacityReservationResult> instance
+
+Lists the resource groups to which a Capacity Reservation has been
+added.
 
 
 =head2 GetHostReservationPurchasePreview
@@ -12321,6 +14581,60 @@ Returns: a L<Paws::EC2::GetLaunchTemplateDataResult> instance
 Retrieves the configuration data of the specified instance. You can use
 this data to create a launch template.
 
+This action calls on other describe actions to get instance
+information. Depending on your instance configuration, you may need to
+allow the following actions in your IAM policy:
+DescribeSpotInstanceRequests, DescribeInstanceCreditSpecifications,
+DescribeVolumes, DescribeInstanceAttribute, and DescribeElasticGpus.
+Or, you can allow C<describe*> depending on your instance requirements.
+
+
+=head2 GetManagedPrefixListAssociations
+
+=over
+
+=item PrefixListId => Str
+
+=item [DryRun => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetManagedPrefixListAssociations>
+
+Returns: a L<Paws::EC2::GetManagedPrefixListAssociationsResult> instance
+
+Gets information about the resources that are associated with the
+specified managed prefix list.
+
+
+=head2 GetManagedPrefixListEntries
+
+=over
+
+=item PrefixListId => Str
+
+=item [DryRun => Bool]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+=item [TargetVersion => Int]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetManagedPrefixListEntries>
+
+Returns: a L<Paws::EC2::GetManagedPrefixListEntriesResult> instance
+
+Gets information about the entries for a specified managed prefix list.
+
 
 =head2 GetPasswordData
 
@@ -12347,7 +14661,7 @@ information, see EC2Config
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/UsingConfig_WinAMI.html)
 and EC2Launch
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2launch.html)
-in the Amazon Elastic Compute Cloud User Guide.
+in the I<Amazon EC2 User Guide>.
 
 For the C<EC2Config> service, the password is not generated for
 rebundled AMIs unless C<Ec2SetPassword> is enabled before bundling.
@@ -12385,6 +14699,27 @@ specified Convertible Reserved Instances for a new Convertible Reserved
 Instance. If the exchange cannot be performed, the reason is returned
 in the response. Use AcceptReservedInstancesExchangeQuote to perform
 the exchange.
+
+
+=head2 GetSerialConsoleAccessStatus
+
+=over
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetSerialConsoleAccessStatus>
+
+Returns: a L<Paws::EC2::GetSerialConsoleAccessStatusResult> instance
+
+Retrieves the access status of your account to the EC2 serial console
+of all instances. By default, access to the EC2 serial console is
+disabled for your account. For more information, see Manage account
+access to the EC2 serial console
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 GetTransitGatewayAttachmentPropagations
@@ -12435,6 +14770,31 @@ Returns: a L<Paws::EC2::GetTransitGatewayMulticastDomainAssociationsResult> inst
 
 Gets information about the associations for the transit gateway
 multicast domain.
+
+
+=head2 GetTransitGatewayPrefixListReferences
+
+=over
+
+=item TransitGatewayRouteTableId => Str
+
+=item [DryRun => Bool]
+
+=item [Filters => ArrayRef[L<Paws::EC2::Filter>]]
+
+=item [MaxResults => Int]
+
+=item [NextToken => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::GetTransitGatewayPrefixListReferences>
+
+Returns: a L<Paws::EC2::GetTransitGatewayPrefixListReferencesResult> instance
+
+Gets information about the prefix list references in a specified
+transit gateway route table.
 
 
 =head2 GetTransitGatewayRouteTableAssociations
@@ -12542,6 +14902,8 @@ connections.
 
 =item [RoleName => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -12550,8 +14912,10 @@ Each argument is described in detail in: L<Paws::EC2::ImportImage>
 Returns: a L<Paws::EC2::ImportImageResult> instance
 
 Import single or multi-volume disk images or EBS snapshots into an
-Amazon Machine Image (AMI). For more information, see Importing a VM as
-an Image Using VM Import/Export
+Amazon Machine Image (AMI).
+
+For more information, see Importing a VM as an image using VM
+Import/Export
 (https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html)
 in the I<VM Import/Export User Guide>.
 
@@ -12578,10 +14942,16 @@ Each argument is described in detail in: L<Paws::EC2::ImportInstance>
 Returns: a L<Paws::EC2::ImportInstanceResult> instance
 
 Creates an import instance task using metadata from the specified disk
-image. C<ImportInstance> only supports single-volume VMs. To import
-multi-volume VMs, use ImportImage. For more information, see Importing
-a Virtual Machine Using the Amazon EC2 CLI
-(https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-vmimport-export.html).
+image.
+
+This API action supports only single-volume VMs. To import multi-volume
+VMs, use ImportImage instead.
+
+This API action is not supported by the AWS Command Line Interface (AWS
+CLI). For information about using the Amazon EC2 CLI, which is
+deprecated, see Importing a VM to Amazon EC2
+(https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#UsingVirtualMachinesinAmazonEC2)
+in the I<Amazon EC2 CLI Reference> PDF file.
 
 For information about the import manifest referenced by this API
 action, see VM Import Manifest
@@ -12597,6 +14967,8 @@ action, see VM Import Manifest
 =item PublicKeyMaterial => Str
 
 =item [DryRun => Bool]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -12636,6 +15008,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item [RoleName => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 
 =back
 
@@ -12644,6 +15018,11 @@ Each argument is described in detail in: L<Paws::EC2::ImportSnapshot>
 Returns: a L<Paws::EC2::ImportSnapshotResult> instance
 
 Imports a disk into an EBS snapshot.
+
+For more information, see Importing a disk as a snapshot using VM
+Import/Export
+(https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-import-snapshot.html)
+in the I<VM Import/Export User Guide>.
 
 
 =head2 ImportVolume
@@ -12668,12 +15047,68 @@ Each argument is described in detail in: L<Paws::EC2::ImportVolume>
 Returns: a L<Paws::EC2::ImportVolumeResult> instance
 
 Creates an import volume task using metadata from the specified disk
-image.For more information, see Importing Disks to Amazon EBS
-(https://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/importing-your-volumes-into-amazon-ebs.html).
+image.
+
+This API action supports only single-volume VMs. To import multi-volume
+VMs, use ImportImage instead. To import a disk to a snapshot, use
+ImportSnapshot instead.
+
+This API action is not supported by the AWS Command Line Interface (AWS
+CLI). For information about using the Amazon EC2 CLI, which is
+deprecated, see Importing Disks to Amazon EBS
+(https://awsdocs.s3.amazonaws.com/EC2/ec2-clt.pdf#importing-your-volumes-into-amazon-ebs)
+in the I<Amazon EC2 CLI Reference> PDF file.
 
 For information about the import manifest referenced by this API
 action, see VM Import Manifest
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/manifest.html).
+
+
+=head2 ModifyAddressAttribute
+
+=over
+
+=item AllocationId => Str
+
+=item [DomainName => Str]
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyAddressAttribute>
+
+Returns: a L<Paws::EC2::ModifyAddressAttributeResult> instance
+
+Modifies an attribute of the specified Elastic IP address. For
+requirements, see Using reverse DNS for email applications
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS).
+
+
+=head2 ModifyAvailabilityZoneGroup
+
+=over
+
+=item GroupName => Str
+
+=item OptInStatus => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyAvailabilityZoneGroup>
+
+Returns: a L<Paws::EC2::ModifyAvailabilityZoneGroupResult> instance
+
+Changes the opt-in status of the Local Zone and Wavelength Zone group
+for your account.
+
+Use DescribeAvailabilityZones
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeAvailabilityZones.html)
+to view the value for C<GroupName>.
 
 
 =head2 ModifyCapacityReservation
@@ -12681,6 +15116,8 @@ action, see VM Import Manifest
 =over
 
 =item CapacityReservationId => Str
+
+=item [Accept => Bool]
 
 =item [DryRun => Bool]
 
@@ -12711,6 +15148,8 @@ Reservation, and then create a new one with the required attributes.
 
 =item ClientVpnEndpointId => Str
 
+=item [ClientConnectOptions => L<Paws::EC2::ClientConnectOptions>]
+
 =item [ConnectionLogOptions => L<Paws::EC2::ConnectionLogOptions>]
 
 =item [Description => Str]
@@ -12719,9 +15158,15 @@ Reservation, and then create a new one with the required attributes.
 
 =item [DryRun => Bool]
 
+=item [SecurityGroupIds => ArrayRef[Str|Undef]]
+
+=item [SelfServicePortal => Str]
+
 =item [ServerCertificateArn => Str]
 
 =item [SplitTunnel => Bool]
+
+=item [VpcId => Str]
 
 =item [VpnPort => Int]
 
@@ -12732,9 +15177,7 @@ Each argument is described in detail in: L<Paws::EC2::ModifyClientVpnEndpoint>
 
 Returns: a L<Paws::EC2::ModifyClientVpnEndpointResult> instance
 
-Modifies the specified Client VPN endpoint. You can only modify an
-endpoint's server certificate information, client connection logging
-information, DNS server, and description. Modifying the DNS server
+Modifies the specified Client VPN endpoint. Modifying the DNS server
 resets existing client connections.
 
 
@@ -12757,12 +15200,12 @@ Returns: a L<Paws::EC2::ModifyDefaultCreditSpecificationResult> instance
 
 Modifies the default credit option for CPU usage of burstable
 performance instances. The default credit option is set at the account
-level per AWS Region, and is specified per instance family. All new
+level per Region, and is specified per instance family. All new
 burstable performance instances in the account launch using the default
 credit option.
 
 C<ModifyDefaultCreditSpecification> is an asynchronous operation, which
-works at an AWS Region level and modifies the credit option for each
+works at an Region level and modifies the credit option for each
 Availability Zone. All zones in a Region are updated within five
 minutes. But if instances are launched during this operation, they
 might not get the new credit option until the zone is updated. To
@@ -12770,9 +15213,9 @@ verify whether the update has occurred, you can call
 C<GetDefaultCreditSpecification> and check
 C<DefaultCreditSpecification> for updates.
 
-For more information, see Burstable Performance Instances
+For more information, see Burstable performance instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 ModifyEbsDefaultKmsKeyId
@@ -12802,7 +15245,7 @@ ResetEbsDefaultKmsKeyId. Amazon EBS does not support asymmetric CMKs.
 If you delete or disable the customer managed CMK that you specified
 for use with encryption by default, your instances will fail to launch.
 
-For more information, see Amazon EBS Encryption
+For more information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -12813,11 +15256,15 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item FleetId => Str
 
-=item TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>
+=item [Context => Str]
 
 =item [DryRun => Bool]
 
 =item [ExcessCapacityTerminationPolicy => Str]
+
+=item [LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::FleetLaunchTemplateConfigRequest>]]
+
+=item [TargetCapacitySpecification => L<Paws::EC2::TargetCapacitySpecificationRequest>]
 
 
 =back
@@ -13122,9 +15569,9 @@ instance that has multiple ENIs, we recommend that you use the
 ModifyNetworkInterfaceAttribute action.
 
 To modify some attributes, the instance must be stopped. For more
-information, see Modifying Attributes of a Stopped Instance
+information, see Modifying attributes of a stopped instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_ChangingAttributesWhileInstanceStopped.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 ModifyInstanceCapacityReservationAttributes
@@ -13171,9 +15618,9 @@ Modifies the credit option for CPU usage on a running or stopped
 burstable performance instance. The credit options are C<standard> and
 C<unlimited>.
 
-For more information, see Burstable Performance Instances
+For more information, see Burstable performance instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 ModifyInstanceEventStartTime
@@ -13227,8 +15674,9 @@ E<ldquo>pendingE<rdquo>. After the parameter modifications are
 successfully applied to the instance, the state of the modifications
 changes from E<ldquo>pendingE<rdquo> to E<ldquo>appliedE<rdquo> in
 subsequent describe-instances API calls. For more information, see
-Instance Metadata and User Data
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html).
+Instance metadata and user data
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html)
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 ModifyInstancePlacement
@@ -13321,6 +15769,39 @@ default version applies when a launch template version is not
 specified.
 
 
+=head2 ModifyManagedPrefixList
+
+=over
+
+=item PrefixListId => Str
+
+=item [AddEntries => ArrayRef[L<Paws::EC2::AddPrefixListEntry>]]
+
+=item [CurrentVersion => Int]
+
+=item [DryRun => Bool]
+
+=item [PrefixListName => Str]
+
+=item [RemoveEntries => ArrayRef[L<Paws::EC2::RemovePrefixListEntry>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyManagedPrefixList>
+
+Returns: a L<Paws::EC2::ModifyManagedPrefixListResult> instance
+
+Modifies the specified managed prefix list.
+
+Adding or removing entries in a prefix list creates a new version of
+the prefix list. Changing the name of the prefix list does not affect
+the version.
+
+If you specify a current version number that does not match the true
+current version number, the request fails.
+
+
 =head2 ModifyNetworkInterfaceAttribute
 
 =over
@@ -13373,7 +15854,7 @@ Availability Zone, network platform, and instance type.
 
 For more information, see Modifying Reserved Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-modifying.html)
-in the Amazon Elastic Compute Cloud User Guide.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 ModifySnapshotAttribute
@@ -13413,7 +15894,7 @@ cannot be made public. Snapshots encrypted with your default CMK cannot
 be shared with other accounts.
 
 For more information about modifying snapshot permissions, see Sharing
-Snapshots
+snapshots
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -13424,7 +15905,11 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 
 =item SpotFleetRequestId => Str
 
+=item [Context => Str]
+
 =item [ExcessCapacityTerminationPolicy => Str]
+
+=item [LaunchTemplateConfigs => ArrayRef[L<Paws::EC2::LaunchTemplateConfig>]]
 
 =item [OnDemandTargetCapacity => Int]
 
@@ -13480,6 +15965,10 @@ later, you can set the target capacity to 0.
 =item SubnetId => Str
 
 =item [AssignIpv6AddressOnCreation => L<Paws::EC2::AttributeBooleanValue>]
+
+=item [CustomerOwnedIpv4Pool => Str]
+
+=item [MapCustomerOwnedIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>]
 
 =item [MapPublicIpOnLaunch => L<Paws::EC2::AttributeBooleanValue>]
 
@@ -13601,6 +16090,56 @@ Returns: a L<Paws::EC2::ModifyTrafficMirrorSessionResult> instance
 Modifies a Traffic Mirror session.
 
 
+=head2 ModifyTransitGateway
+
+=over
+
+=item TransitGatewayId => Str
+
+=item [Description => Str]
+
+=item [DryRun => Bool]
+
+=item [Options => L<Paws::EC2::ModifyTransitGatewayOptions>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyTransitGateway>
+
+Returns: a L<Paws::EC2::ModifyTransitGatewayResult> instance
+
+Modifies the specified transit gateway. When you modify a transit
+gateway, the modified options are applied to new transit gateway
+attachments only. Your existing transit gateway attachments are not
+modified.
+
+
+=head2 ModifyTransitGatewayPrefixListReference
+
+=over
+
+=item PrefixListId => Str
+
+=item TransitGatewayRouteTableId => Str
+
+=item [Blackhole => Bool]
+
+=item [DryRun => Bool]
+
+=item [TransitGatewayAttachmentId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyTransitGatewayPrefixListReference>
+
+Returns: a L<Paws::EC2::ModifyTransitGatewayPrefixListReferenceResult> instance
+
+Modifies a reference (route) to a prefix list in a specified transit
+gateway route table.
+
+
 =head2 ModifyTransitGatewayVpcAttachment
 
 =over
@@ -13635,7 +16174,11 @@ Modifies the specified VPC attachment.
 
 =item [Iops => Int]
 
+=item [MultiAttachEnabled => Bool]
+
 =item [Size => Int]
+
+=item [Throughput => Int]
 
 =item [VolumeType => Str]
 
@@ -13648,23 +16191,23 @@ Returns: a L<Paws::EC2::ModifyVolumeResult> instance
 
 You can modify several parameters of an existing EBS volume, including
 volume size, volume type, and IOPS capacity. If your EBS volume is
-attached to a current-generation EC2 instance type, you may be able to
-apply these changes without stopping the instance or detaching the
+attached to a current-generation EC2 instance type, you might be able
+to apply these changes without stopping the instance or detaching the
 volume from it. For more information about modifying an EBS volume
-running Linux, see Modifying the Size, IOPS, or Type of an EBS Volume
+running Linux, see Modifying the size, IOPS, or type of an EBS volume
 on Linux
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html).
 For more information about modifying an EBS volume running Windows, see
-Modifying the Size, IOPS, or Type of an EBS Volume on Windows
+Modifying the size, IOPS, or type of an EBS volume on Windows
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
 
 When you complete a resize operation on your volume, you need to extend
 the volume's file-system size to take advantage of the new storage
 capacity. For information about extending a Linux file system, see
-Extending a Linux File System
+Extending a Linux file system
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#recognize-expanded-volume-linux).
 For information about extending a Windows file system, see Extending a
-Windows File System
+Windows file system
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html#recognize-expanded-volume-windows).
 
 You can use CloudWatch Events to check the status of a modification to
@@ -13673,16 +16216,16 @@ CloudWatch Events User Guide
 (https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/). You can
 also track the status of a modification using
 DescribeVolumesModifications. For information about tracking status
-changes using either method, see Monitoring Volume Modifications
+changes using either method, see Monitoring volume modifications
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html#monitoring_mods).
 
-With previous-generation instance types, resizing an EBS volume may
+With previous-generation instance types, resizing an EBS volume might
 require detaching and reattaching the volume or stopping and restarting
-the instance. For more information, see Modifying the Size, IOPS, or
-Type of an EBS Volume on Linux
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-expand-volume.html)
-and Modifying the Size, IOPS, or Type of an EBS Volume on Windows
-(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-expand-volume.html).
+the instance. For more information, see Amazon EBS Elastic Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html)
+(Linux) or Amazon EBS Elastic Volumes
+(https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html)
+(Windows).
 
 If you reach the maximum volume modification rate per volume limit, you
 will need to wait at least six hours before applying further
@@ -13773,8 +16316,8 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpoint>
 Returns: a L<Paws::EC2::ModifyVpcEndpointResult> instance
 
 Modifies attributes of a specified VPC endpoint. The attributes that
-you can modify depend on the type of VPC endpoint (interface or
-gateway). For more information, see VPC Endpoints
+you can modify depend on the type of VPC endpoint (interface, gateway,
+or Gateway Load Balancer). For more information, see VPC Endpoints
 (https://docs.aws.amazon.com/vpc/latest/userguide/vpc-endpoints.html)
 in the I<Amazon Virtual Private Cloud User Guide>.
 
@@ -13811,11 +16354,15 @@ events for which to be notified.
 
 =item [AcceptanceRequired => Bool]
 
+=item [AddGatewayLoadBalancerArns => ArrayRef[Str|Undef]]
+
 =item [AddNetworkLoadBalancerArns => ArrayRef[Str|Undef]]
 
 =item [DryRun => Bool]
 
 =item [PrivateDnsName => Str]
+
+=item [RemoveGatewayLoadBalancerArns => ArrayRef[Str|Undef]]
 
 =item [RemoveNetworkLoadBalancerArns => ArrayRef[Str|Undef]]
 
@@ -13829,9 +16376,10 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpcEndpointServiceCo
 Returns: a L<Paws::EC2::ModifyVpcEndpointServiceConfigurationResult> instance
 
 Modifies the attributes of your VPC endpoint service configuration. You
-can change the Network Load Balancers for your service, and you can
-specify whether acceptance is required for requests to connect to your
-endpoint service through an interface VPC endpoint.
+can change the Network Load Balancers or Gateway Load Balancers for
+your service, and you can specify whether acceptance is required for
+requests to connect to your endpoint service through an interface VPC
+endpoint.
 
 If you set or modify the private DNS name, you must prove that you own
 the private DNS domain name. For more information, see VPC Endpoint
@@ -13979,7 +16527,8 @@ Each argument is described in detail in: L<Paws::EC2::ModifyVpnConnection>
 
 Returns: a L<Paws::EC2::ModifyVpnConnectionResult> instance
 
-Modifies the target gateway of an AWS Site-to-Site VPN connection. The
+Modifies the customer gateway or the target gateway of an AWS
+Site-to-Site VPN connection. To modify the target gateway, the
 following migration options are available:
 
 =over
@@ -14031,9 +16580,40 @@ If you deleted VPN static routes, you must add the static routes to the
 transit gateway route table.
 
 After you perform this operation, the AWS VPN endpoint's IP addresses
-on the AWS side and the tunnel options remain intact. Your s2slong;
-connection will be temporarily unavailable for approximately 10 minutes
-while we provision the new endpoints
+on the AWS side and the tunnel options remain intact. Your AWS
+Site-to-Site VPN connection will be temporarily unavailable for a brief
+period while we provision the new endpoints.
+
+
+=head2 ModifyVpnConnectionOptions
+
+=over
+
+=item VpnConnectionId => Str
+
+=item [DryRun => Bool]
+
+=item [LocalIpv4NetworkCidr => Str]
+
+=item [LocalIpv6NetworkCidr => Str]
+
+=item [RemoteIpv4NetworkCidr => Str]
+
+=item [RemoteIpv6NetworkCidr => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ModifyVpnConnectionOptions>
+
+Returns: a L<Paws::EC2::ModifyVpnConnectionOptionsResult> instance
+
+Modifies the connection options for your Site-to-Site VPN connection.
+
+When you modify the VPN connection options, the VPN endpoint IP
+addresses on the AWS side do not change, and the tunnel options do not
+change. Your VPN connection will be temporarily unavailable for a brief
+period while the VPN connection is updated.
 
 
 =head2 ModifyVpnTunnelCertificate
@@ -14100,10 +16680,10 @@ Each argument is described in detail in: L<Paws::EC2::MonitorInstances>
 Returns: a L<Paws::EC2::MonitorInstancesResult> instance
 
 Enables detailed monitoring for a running instance. Otherwise, basic
-monitoring is enabled. For more information, see Monitoring Your
-Instances and Volumes
+monitoring is enabled. For more information, see Monitoring your
+instances and volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 To disable detailed monitoring, see .
 
@@ -14145,6 +16725,10 @@ platform to the EC2-Classic platform.
 
 =item [DryRun => Bool]
 
+=item [MultiRegion => Bool]
+
+=item [PoolTagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 =item [PubliclyAdvertisable => Bool]
 
 
@@ -14154,16 +16738,16 @@ Each argument is described in detail in: L<Paws::EC2::ProvisionByoipCidr>
 
 Returns: a L<Paws::EC2::ProvisionByoipCidrResult> instance
 
-Provisions an IPv4 or IPv6 address range for use with your AWS
-resources through bring your own IP addresses (BYOIP) and creates a
-corresponding address pool. After the address range is provisioned, it
-is ready to be advertised using AdvertiseByoipCidr.
+Provisions an IPv4 or IPv6 address range for use with your Amazon Web
+Services resources through bring your own IP addresses (BYOIP) and
+creates a corresponding address pool. After the address range is
+provisioned, it is ready to be advertised using AdvertiseByoipCidr.
 
-AWS verifies that you own the address range and are authorized to
-advertise it. You must ensure that the address range is registered to
-you and that you created an RPKI ROA to authorize Amazon ASNs 16509 and
-14618 to advertise the address range. For more information, see Bring
-Your Own IP Addresses (BYOIP)
+Amazon Web Services verifies that you own the address range and are
+authorized to advertise it. You must ensure that the address range is
+registered to you and that you created an RPKI ROA to authorize Amazon
+ASNs 16509 and 14618 to advertise the address range. For more
+information, see Bring your own IP addresses (BYOIP)
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-byoip.html) in
 the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -14189,6 +16773,8 @@ or the ID of the address pool.
 =item [CurrencyCode => Str]
 
 =item [LimitPrice => Str]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
 
 
 =back
@@ -14241,7 +16827,7 @@ For more information, see Reserved Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts-on-demand-reserved-instances.html)
 and Reserved Instance Marketplace
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ri-market-general.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 PurchaseScheduledInstances
@@ -14294,13 +16880,13 @@ asynchronous; it only queues a request to reboot the specified
 instances. The operation succeeds if the instances are valid and belong
 to you. Requests to reboot terminated instances are ignored.
 
-If an instance does not cleanly shut down within four minutes, Amazon
+If an instance does not cleanly shut down within a few minutes, Amazon
 EC2 performs a hard reboot.
 
-For more information about troubleshooting, see Getting Console Output
-and Rebooting Instances
+For more information about troubleshooting, see Getting console output
+and rebooting instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-console.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 RegisterImage
@@ -14314,6 +16900,8 @@ in the I<Amazon Elastic Compute Cloud User Guide>.
 =item [BillingProducts => ArrayRef[Str|Undef]]
 
 =item [BlockDeviceMappings => ArrayRef[L<Paws::EC2::BlockDeviceMapping>]]
+
+=item [BootMode => Str]
 
 =item [Description => Str]
 
@@ -14342,7 +16930,7 @@ Returns: a L<Paws::EC2::RegisterImageResult> instance
 
 Registers an AMI. When you're creating an AMI, this is the final step
 you must complete before you can launch an instance from the AMI. For
-more information about creating AMIs, see Creating Your Own AMIs
+more information about creating AMIs, see Creating your own AMIs
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -14350,15 +16938,30 @@ For Amazon EBS-backed instances, CreateImage creates and registers the
 AMI in a single request, so you don't have to register the AMI
 yourself.
 
-You can also use C<RegisterImage> to create an Amazon EBS-backed Linux
-AMI from a snapshot of a root device volume. You specify the snapshot
-using the block device mapping. For more information, see Launching a
-Linux Instance from a Backup
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-launch-snapshot.html)
+If needed, you can deregister an AMI at any time. Any modifications you
+make to an AMI backed by an instance store volume invalidates its
+registration. If you make changes to an image, deregister the previous
+image and register the new image.
+
+B<Register a snapshot of a root device volume>
+
+You can use C<RegisterImage> to create an Amazon EBS-backed Linux AMI
+from a snapshot of a root device volume. You specify the snapshot using
+a block device mapping. You can't set the encryption state of the
+volume using the block device mapping. If the snapshot is encrypted, or
+encryption by default is enabled, the root volume of an instance
+launched from the AMI is encrypted.
+
+For more information, see Create a Linux AMI from a snapshot
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html#creating-launching-ami-from-snapshot)
+and Use encryption with EBS-backed AMIs
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-You can't register an image where a secondary (non-root) snapshot has
-AWS Marketplace product codes.
+B<AWS Marketplace product codes>
+
+If any snapshots have AWS Marketplace product codes, they are copied to
+the new AMI.
 
 Windows and some Linux distributions, such as Red Hat Enterprise Linux
 (RHEL) and SUSE Linux Enterprise Server (SLES), use the EC2 billing
@@ -14389,14 +16992,30 @@ that the Reserved Instance has the matching billing product code. If
 you purchase a Reserved Instance without the matching billing product
 code, the Reserved Instance will not be applied to the On-Demand
 Instance. For information about how to obtain the platform details and
-billing information of an AMI, see Obtaining Billing Information
+billing information of an AMI, see Obtaining billing information
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-billing-info.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
-If needed, you can deregister an AMI at any time. Any modifications you
-make to an AMI backed by an instance store volume invalidates its
-registration. If you make changes to an image, deregister the previous
-image and register the new image.
+
+=head2 RegisterInstanceEventNotificationAttributes
+
+=over
+
+=item [DryRun => Bool]
+
+=item [InstanceTagAttribute => L<Paws::EC2::RegisterInstanceTagAttributeRequest>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RegisterInstanceEventNotificationAttributes>
+
+Returns: a L<Paws::EC2::RegisterInstanceEventNotificationAttributesResult> instance
+
+Registers a set of tag keys to include in scheduled event notifications
+for your resources.
+
+To remove tags, use .
 
 
 =head2 RegisterTransitGatewayMulticastGroupMembers
@@ -14462,6 +17081,29 @@ in I<Amazon VPC Transit Gateways>.
 After you add the source, use SearchTransitGatewayMulticastGroups
 (https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_SearchTransitGatewayMulticastGroups.html)
 to verify that the source was added to the multicast group.
+
+
+=head2 RejectTransitGatewayMulticastDomainAssociations
+
+=over
+
+=item [DryRun => Bool]
+
+=item [SubnetIds => ArrayRef[Str|Undef]]
+
+=item [TransitGatewayAttachmentId => Str]
+
+=item [TransitGatewayMulticastDomainId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RejectTransitGatewayMulticastDomainAssociations>
+
+Returns: a L<Paws::EC2::RejectTransitGatewayMulticastDomainAssociationsResult> instance
+
+Rejects a request to associate cross-account subnets with a transit
+gateway multicast domain.
 
 
 =head2 RejectTransitGatewayPeeringAttachment
@@ -14583,7 +17225,7 @@ After releasing an Elastic IP address, it is released to the IP address
 pool. Be sure to update your DNS records and any servers or devices
 that communicate with the address. If you attempt to release an Elastic
 IP address that you already released, you'll get an C<AuthFailure>
-error if the address is already allocated to another AWS account.
+error if the address is already allocated to another account.
 
 [EC2-VPC] After you release an Elastic IP address for use in a VPC, you
 might be able to recover it. For more information, see AllocateAddress.
@@ -14709,9 +17351,13 @@ I<Amazon Virtual Private Cloud User Guide>.
 
 =item RouteTableId => Str
 
+=item [CarrierGatewayId => Str]
+
 =item [DestinationCidrBlock => Str]
 
 =item [DestinationIpv6CidrBlock => Str]
+
+=item [DestinationPrefixListId => Str]
 
 =item [DryRun => Bool]
 
@@ -14730,6 +17376,8 @@ I<Amazon Virtual Private Cloud User Guide>.
 =item [NetworkInterfaceId => Str]
 
 =item [TransitGatewayId => Str]
+
+=item [VpcEndpointId => Str]
 
 =item [VpcPeeringConnectionId => Str]
 
@@ -14877,11 +17525,12 @@ specifications. By ensuring that the Spot Instances in your Spot Fleet
 are in different Spot pools, you can improve the availability of your
 fleet.
 
-You can specify tags for the Spot Fleet and Spot Instances. You cannot
-tag other resource types in a Spot Fleet request because only the
-C<spot-fleet-request> and C<instance> resource types are supported.
+You can specify tags for the Spot Fleet request and instances launched
+by the fleet. You cannot tag other resource types in a Spot Fleet
+request because only the C<spot-fleet-request> and C<instance> resource
+types are supported.
 
-For more information, see Spot Fleet Requests
+For more information, see Spot Fleet requests
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-fleet-requests.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
 
@@ -14908,6 +17557,8 @@ in the I<Amazon EC2 User Guide for Linux Instances>.
 
 =item [SpotPrice => Str]
 
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
 =item [Type => Str]
 
 =item [ValidFrom => Str]
@@ -14923,9 +17574,31 @@ Returns: a L<Paws::EC2::RequestSpotInstancesResult> instance
 
 Creates a Spot Instance request.
 
-For more information, see Spot Instance Requests
+For more information, see Spot Instance requests
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-requests.html)
 in the I<Amazon EC2 User Guide for Linux Instances>.
+
+
+=head2 ResetAddressAttribute
+
+=over
+
+=item AllocationId => Str
+
+=item Attribute => Str
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::ResetAddressAttribute>
+
+Returns: a L<Paws::EC2::ResetAddressAttributeResult> instance
+
+Resets the attribute of the specified IP address. For requirements, see
+Using reverse DNS for email applications
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html#Using_Elastic_Addressing_Reverse_DNS).
 
 
 =head2 ResetEbsDefaultKmsKeyId
@@ -14946,7 +17619,7 @@ your account in this Region to the AWS managed CMK for EBS.
 
 After resetting the default CMK to the AWS managed CMK, you can
 continue to encrypt by a customer managed CMK by specifying it when you
-create the volume. For more information, see Amazon EBS Encryption
+create the volume. For more information, see Amazon EBS encryption
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSEncryption.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -15021,7 +17694,7 @@ checking is enabled. The default value is C<true>, which means checking
 is enabled. This value must be C<false> for a NAT instance to perform
 NAT. For more information, see NAT Instances
 (https://docs.aws.amazon.com/AmazonVPC/latest/UserGuide/VPC_NAT_Instance.html)
-in the I<Amazon Virtual Private Cloud User Guide>.
+in the I<Amazon VPC User Guide>.
 
 
 =head2 ResetNetworkInterfaceAttribute
@@ -15065,7 +17738,7 @@ Returns: nothing
 Resets permission settings for the specified snapshot.
 
 For more information about modifying snapshot permissions, see Sharing
-Snapshots
+snapshots
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modifying-snapshot-permissions.html)
 in the I<Amazon Elastic Compute Cloud User Guide>.
 
@@ -15090,6 +17763,29 @@ platform back to the EC2-Classic platform. You cannot move an Elastic
 IP address that was originally allocated for use in EC2-VPC. The
 Elastic IP address must not be associated with an instance or network
 interface.
+
+
+=head2 RestoreManagedPrefixListVersion
+
+=over
+
+=item CurrentVersion => Int
+
+=item PrefixListId => Str
+
+=item PreviousVersion => Int
+
+=item [DryRun => Bool]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::RestoreManagedPrefixListVersion>
+
+Returns: a L<Paws::EC2::RestoreManagedPrefixListVersionResult> instance
+
+Restores the entries from a previous version of a managed prefix list
+to a new version of the prefix list.
 
 
 =head2 RevokeClientVpnIngress
@@ -15143,12 +17839,19 @@ Removes an ingress authorization rule from a Client VPN endpoint.
 
 Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupEgress>
 
-Returns: nothing
+Returns: a L<Paws::EC2::RevokeSecurityGroupEgressResult> instance
 
 [VPC only] Removes the specified egress rules from a security group for
-EC2-VPC. This action doesn't apply to security groups for use in
+EC2-VPC. This action does not apply to security groups for use in
 EC2-Classic. To remove a rule, the values that you specify (for
 example, ports) must match the existing rule's values exactly.
+
+[Default VPC] If the values you specify do not match the existing
+rule's values, no error is returned, and the output describes the
+security group rules that were not revoked.
+
+AWS recommends that you use DescribeSecurityGroups to verify that the
+rule has been removed.
 
 Each rule consists of the protocol and the IPv4 or IPv6 CIDR range or
 source security group. For the TCP and UDP protocols, you must also
@@ -15190,15 +17893,18 @@ quickly as possible. However, a small delay might occur.
 
 Each argument is described in detail in: L<Paws::EC2::RevokeSecurityGroupIngress>
 
-Returns: nothing
+Returns: a L<Paws::EC2::RevokeSecurityGroupIngressResult> instance
 
 Removes the specified ingress rules from a security group. To remove a
 rule, the values that you specify (for example, ports) must match the
 existing rule's values exactly.
 
-[EC2-Classic only] If the values you specify do not match the existing
-rule's values, no error is returned. Use DescribeSecurityGroups to
-verify that the rule has been removed.
+[EC2-Classic , default VPC] If the values you specify do not match the
+existing rule's values, no error is returned, and the output describes
+the security group rules that were not revoked.
+
+AWS recommends that you use DescribeSecurityGroups to verify that the
+rule has been removed.
 
 Each rule consists of the protocol and the CIDR range or source
 security group. For the TCP and UDP protocols, you must also specify
@@ -15240,6 +17946,8 @@ quickly as possible. However, a small delay might occur.
 =item [ElasticGpuSpecification => ArrayRef[L<Paws::EC2::ElasticGpuSpecification>]]
 
 =item [ElasticInferenceAccelerators => ArrayRef[L<Paws::EC2::ElasticInferenceAccelerator>]]
+
+=item [EnclaveOptions => L<Paws::EC2::EnclaveOptionsRequest>]
 
 =item [HibernationOptions => L<Paws::EC2::HibernationOptionsRequest>]
 
@@ -15317,7 +18025,7 @@ you.
 
 Some instance types must be launched into a VPC. If you do not have a
 default VPC, or if you do not specify a subnet ID, the request fails.
-For more information, see Instance Types Available Only in a VPC
+For more information, see Instance types available only in a VPC
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-vpc.html#vpc-only-instance-types).
 
 =item *
@@ -15329,13 +18037,13 @@ IPv4 range of your subnet.
 =item *
 
 Not all instance types support IPv6 addresses. For more information,
-see Instance Types
+see Instance types
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
 
 =item *
 
 If you don't specify a security group ID, we use the default security
-group. For more information, see Security Groups
+group. For more information, see Security groups
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html).
 
 =item *
@@ -15358,23 +18066,21 @@ smaller batches. For example, create five separate launch requests for
 An instance is ready for you to use when it's in the C<running> state.
 You can check the state of your instance using DescribeInstances. You
 can tag instances and EBS volumes during launch, after launch, or both.
-For more information, see CreateTags and Tagging Your Amazon EC2
-Resources
+For more information, see CreateTags and Tagging your Amazon EC2
+resources
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html).
 
 Linux instances have access to the public key of the key pair at boot.
 You can use this key to provide secure access to the instance. Amazon
 EC2 public images use this feature to provide secure access without
-passwords. For more information, see Key Pairs
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+passwords. For more information, see Key pairs
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html).
 
-For troubleshooting, see What To Do If An Instance Immediately
-Terminates
+For troubleshooting, see What to do if an instance immediately
+terminates
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_InstanceStraightToTerminated.html),
-and Troubleshooting Connecting to Your Instance
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+and Troubleshooting connecting to your instance
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesConnecting.html).
 
 
 =head2 RunScheduledInstances
@@ -15409,7 +18115,7 @@ as needed. If you terminate a Scheduled Instance before the current
 scheduled time period ends, you can launch it again after a few
 minutes. For more information, see Scheduled Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-scheduled-instances.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 SearchLocalGatewayRoutes
@@ -15515,7 +18221,7 @@ tasks.
 
 For more information about configuring your operating system to
 generate a crash dump when a kernel panic or stop error occurs, see
-Send a Diagnostic Interrupt
+Send a diagnostic interrupt
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/diagnostic-interrupt.html)
 (Linux instances) or Send a Diagnostic Interrupt
 (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/diagnostic-interrupt.html)
@@ -15547,13 +18253,8 @@ resources are released and you are not billed for instance usage.
 However, your root partition Amazon EBS volume remains and continues to
 persist your data, and you are charged for Amazon EBS volume usage. You
 can restart your instance at any time. Every time you start your
-Windows instance, Amazon EC2 charges you for a full instance hour. If
-you stop and restart your Windows instance, a new instance hour begins
-and Amazon EC2 charges you for another full instance hour even if you
-are still within the same 60-minute period when it was stopped. Every
-time you start your Linux instance, Amazon EC2 charges a one-minute
-minimum for instance usage, and thereafter charges per second for
-instance usage.
+instance, Amazon EC2 charges a one-minute minimum for instance usage,
+and thereafter charges per second for instance usage.
 
 Before stopping an instance, make sure it is in a state from which it
 can be restarted. Stopping an instance does not preserve data stored in
@@ -15562,9 +18263,34 @@ RAM.
 Performing this operation on an instance that uses an instance store as
 its root device returns an error.
 
-For more information, see Stopping Instances
+For more information, see Stopping instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Stop_Start.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
+
+
+=head2 StartNetworkInsightsAnalysis
+
+=over
+
+=item ClientToken => Str
+
+=item NetworkInsightsPathId => Str
+
+=item [DryRun => Bool]
+
+=item [FilterInArns => ArrayRef[Str|Undef]]
+
+=item [TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::EC2::StartNetworkInsightsAnalysis>
+
+Returns: a L<Paws::EC2::StartNetworkInsightsAnalysisResult> instance
+
+Starts analyzing the specified path. If the path is reachable, the
+operation returns the shortest feasible path.
 
 
 =head2 StartVpcEndpointServicePrivateDnsVerification
@@ -15591,7 +18317,7 @@ the consumer can use the name to access the service.
 Before the service provider runs this command, they must add a record
 to the DNS server. For more information, see Adding a TXT Record to
 Your Domain's DNS Server
-(https://docs.aws.amazon.com/vpc/latest/userguide/ndpoint-services-dns-validation.html#add-dns-txt-record)
+(https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-services-dns-validation.html#add-dns-txt-record)
 in the I<Amazon VPC User Guide>.
 
 
@@ -15621,27 +18347,24 @@ enabled for hibernation
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#enabling-hibernation)
 and it meets the hibernation prerequisites
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html#hibernating-prerequisites).
-For more information, see Hibernate Your Instance
+For more information, see Hibernate your instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html) in
-the I<Amazon Elastic Compute Cloud User Guide>.
+the I<Amazon EC2 User Guide>.
 
 We don't charge usage for a stopped instance, or data transfer fees;
 however, your root partition Amazon EBS volume remains and continues to
 persist your data, and you are charged for Amazon EBS volume usage.
-Every time you start your Windows instance, Amazon EC2 charges you for
-a full instance hour. If you stop and restart your Windows instance, a
-new instance hour begins and Amazon EC2 charges you for another full
-instance hour even if you are still within the same 60-minute period
-when it was stopped. Every time you start your Linux instance, Amazon
-EC2 charges a one-minute minimum for instance usage, and thereafter
-charges per second for instance usage.
+Every time you start your instance, Amazon EC2 charges a one-minute
+minimum for instance usage, and thereafter charges per second for
+instance usage.
 
-You can't hibernate Spot Instances, and you can't stop or hibernate
-instance store-backed instances. For information about using
-hibernation for Spot Instances, see Hibernating Interrupted Spot
+You can't stop or hibernate instance store-backed instances. You can't
+use the Stop action to hibernate Spot Instances, but you can specify
+that Amazon EC2 should hibernate Spot Instances when they are
+interrupted. For more information, see Hibernating interrupted Spot
 Instances
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-interruptions.html#hibernate-spot-instances)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 When you stop or hibernate an instance, we shut it down. You can
 restart your instance at any time. Before stopping or hibernating an
@@ -15656,17 +18379,17 @@ the root device and any other devices attached to the instance persist.
 When you terminate an instance, the root device and any other devices
 attached during the instance launch are automatically deleted. For more
 information about the differences between rebooting, stopping,
-hibernating, and terminating instances, see Instance Lifecycle
+hibernating, and terminating instances, see Instance lifecycle
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 When you stop an instance, we attempt to shut it down forcibly after a
 short while. If your instance appears stuck in the stopping state after
 a period of time, there may be an issue with the underlying host
-computer. For more information, see Troubleshooting Stopping Your
-Instance
+computer. For more information, see Troubleshooting stopping your
+instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesStopping.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 TerminateClientVpnConnections
@@ -15715,6 +18438,66 @@ If you specify multiple instances and the request fails (for example,
 because of a single incorrect instance ID), none of the instances are
 terminated.
 
+If you terminate multiple instances across multiple Availability Zones,
+and one or more of the specified instances are enabled for termination
+protection, the request fails with the following results:
+
+=over
+
+=item *
+
+The specified instances that are in the same Availability Zone as the
+protected instance are not terminated.
+
+=item *
+
+The specified instances that are in different Availability Zones, where
+no other specified instances are protected, are successfully
+terminated.
+
+=back
+
+For example, say you have the following instances:
+
+=over
+
+=item *
+
+Instance A: C<us-east-1a>; Not protected
+
+=item *
+
+Instance B: C<us-east-1a>; Not protected
+
+=item *
+
+Instance C: C<us-east-1b>; Protected
+
+=item *
+
+Instance D: C<us-east-1b>; not protected
+
+=back
+
+If you attempt to terminate all of these instances in the same request,
+the request reports failure with the following results:
+
+=over
+
+=item *
+
+Instance A and Instance B are successfully terminated because none of
+the specified instances in C<us-east-1a> are enabled for termination
+protection.
+
+=item *
+
+Instance C and Instance D fail to terminate because at least one of the
+specified instances in C<us-east-1b> (Instance C) is enabled for
+termination protection.
+
+=back
+
 Terminated instances remain visible after termination (for
 approximately one hour).
 
@@ -15730,14 +18513,14 @@ instance persist. When you terminate an instance, any attached EBS
 volumes with the C<DeleteOnTermination> block device mapping parameter
 set to C<true> are automatically deleted. For more information about
 the differences between stopping and terminating instances, see
-Instance Lifecycle
+Instance lifecycle
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 For more information about troubleshooting, see Troubleshooting
-Terminating Your Instance
+terminating your instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/TroubleshootingInstancesShuttingDown.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 UnassignIpv6Addresses
@@ -15793,9 +18576,9 @@ Each argument is described in detail in: L<Paws::EC2::UnmonitorInstances>
 Returns: a L<Paws::EC2::UnmonitorInstancesResult> instance
 
 Disables detailed monitoring for a running instance. For more
-information, see Monitoring Your Instances and Volumes
+information, see Monitoring your instances and volumes
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-cloudwatch.html)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 =head2 UpdateSecurityGroupRuleDescriptionsEgress
@@ -15876,7 +18659,7 @@ You can perform this operation at most once every 10 seconds, even if
 you specify different address ranges each time.
 
 It can take a few minutes before traffic to the specified addresses
-stops routing to AWS because of BGP propagation delays.
+stops routing to Amazon Web Services because of BGP propagation delays.
 
 
 
@@ -15884,6 +18667,18 @@ stops routing to AWS because of BGP propagation delays.
 =head1 PAGINATORS
 
 Paginator methods are helpers that repetively call methods that return partial results
+
+=head2 DescribeAllAddressesAttribute(sub { },[AllocationIds => ArrayRef[Str|Undef], Attribute => Str, DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllAddressesAttribute([AllocationIds => ArrayRef[Str|Undef], Attribute => Str, DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Addresses, passing the object as the first parameter, and the string 'Addresses' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeAddressesAttributeResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
 
 =head2 DescribeAllByoipCidrs(sub { },MaxResults => Int, [DryRun => Bool, NextToken => Str])
 
@@ -15907,6 +18702,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - CapacityReservations, passing the object as the first parameter, and the string 'CapacityReservations' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeCapacityReservationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCarrierGateways(sub { },[CarrierGatewayIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllCarrierGateways([CarrierGatewayIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CarrierGateways, passing the object as the first parameter, and the string 'CarrierGateways' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeCarrierGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllClassicLinkInstances(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -15979,6 +18786,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - ClientVpnTargetNetworks, passing the object as the first parameter, and the string 'ClientVpnTargetNetworks' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeClientVpnTargetNetworksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllCoipPools(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PoolIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllCoipPools([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PoolIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CoipPools, passing the object as the first parameter, and the string 'CoipPools' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeCoipPoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllDhcpOptions(sub { },[DhcpOptionsIds => ArrayRef[Str|Undef], DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -16173,6 +18992,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeInstanceStatusResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllInstanceTypeOfferings(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocationType => Str, MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstanceTypeOfferings([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocationType => Str, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceTypeOfferings, passing the object as the first parameter, and the string 'InstanceTypeOfferings' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeInstanceTypeOfferingsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllInstanceTypes(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllInstanceTypes([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InstanceTypes => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - InstanceTypes, passing the object as the first parameter, and the string 'InstanceTypes' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeInstanceTypesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllInternetGateways(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
 
 =head2 DescribeAllInternetGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], InternetGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
@@ -16221,6 +19064,90 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeLaunchTemplateVersionsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllLocalGatewayRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLocalGatewayRouteTables([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LocalGatewayRouteTables, passing the object as the first parameter, and the string 'LocalGatewayRouteTables' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLocalGatewayRouteTablesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLocalGatewayRouteTableVirtualInterfaceGroupAssociations(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLocalGatewayRouteTableVirtualInterfaceGroupAssociations([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableVirtualInterfaceGroupAssociationIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LocalGatewayRouteTableVirtualInterfaceGroupAssociations, passing the object as the first parameter, and the string 'LocalGatewayRouteTableVirtualInterfaceGroupAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLocalGatewayRouteTableVpcAssociations(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableVpcAssociationIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLocalGatewayRouteTableVpcAssociations([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableVpcAssociationIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LocalGatewayRouteTableVpcAssociations, passing the object as the first parameter, and the string 'LocalGatewayRouteTableVpcAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLocalGatewayRouteTableVpcAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLocalGateways(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLocalGateways([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LocalGateways, passing the object as the first parameter, and the string 'LocalGateways' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLocalGatewaysResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLocalGatewayVirtualInterfaceGroups(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayVirtualInterfaceGroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLocalGatewayVirtualInterfaceGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayVirtualInterfaceGroupIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LocalGatewayVirtualInterfaceGroups, passing the object as the first parameter, and the string 'LocalGatewayVirtualInterfaceGroups' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLocalGatewayVirtualInterfaceGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllLocalGatewayVirtualInterfaces(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayVirtualInterfaceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllLocalGatewayVirtualInterfaces([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayVirtualInterfaceIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - LocalGatewayVirtualInterfaces, passing the object as the first parameter, and the string 'LocalGatewayVirtualInterfaces' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeLocalGatewayVirtualInterfacesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllManagedPrefixLists(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllManagedPrefixLists([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PrefixListIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PrefixLists, passing the object as the first parameter, and the string 'PrefixLists' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeManagedPrefixListsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllMovingAddresses(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllMovingAddresses([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, PublicIps => ArrayRef[Str|Undef]])
@@ -16233,9 +19160,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeMovingAddressesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 DescribeAllNatGateways(sub { },[Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNatGateways(sub { },[DryRun => Bool, Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 DescribeAllNatGateways([Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
+=head2 DescribeAllNatGateways([DryRun => Bool, Filter => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NatGatewayIds => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :
@@ -16255,6 +19182,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - NetworkAcls, passing the object as the first parameter, and the string 'NetworkAcls' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeNetworkAclsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNetworkInsightsAnalyses(sub { },[AnalysisEndTime => Str, AnalysisStartTime => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInsightsAnalysisIds => ArrayRef[Str|Undef], NetworkInsightsPathId => Str, NextToken => Str])
+
+=head2 DescribeAllNetworkInsightsAnalyses([AnalysisEndTime => Str, AnalysisStartTime => Str, DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInsightsAnalysisIds => ArrayRef[Str|Undef], NetworkInsightsPathId => Str, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NetworkInsightsAnalyses, passing the object as the first parameter, and the string 'NetworkInsightsAnalyses' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeNetworkInsightsAnalysesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllNetworkInsightsPaths(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInsightsPathIds => ArrayRef[Str|Undef], NextToken => Str])
+
+=head2 DescribeAllNetworkInsightsPaths([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInsightsPathIds => ArrayRef[Str|Undef], NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - NetworkInsightsPaths, passing the object as the first parameter, and the string 'NetworkInsightsPaths' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeNetworkInsightsPathsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllNetworkInterfacePermissions(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NetworkInterfacePermissionIds => ArrayRef[Str|Undef], NextToken => Str])
@@ -16315,6 +19266,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - PublicIpv4Pools, passing the object as the first parameter, and the string 'PublicIpv4Pools' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribePublicIpv4PoolsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllReplaceRootVolumeTasks(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ReplaceRootVolumeTaskIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllReplaceRootVolumeTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, ReplaceRootVolumeTaskIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - ReplaceRootVolumeTasks, passing the object as the first parameter, and the string 'ReplaceRootVolumeTasks' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeReplaceRootVolumeTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllReservedInstancesModifications(sub { },[Filters => ArrayRef[L<Paws::EC2::Filter>], NextToken => Str, ReservedInstancesModificationIds => ArrayRef[Str|Undef]])
@@ -16461,6 +19424,18 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::DescribeStaleSecurityGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 DescribeAllStoreImageTasks(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+=head2 DescribeAllStoreImageTasks([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], ImageIds => ArrayRef[Str|Undef], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - StoreImageTaskResults, passing the object as the first parameter, and the string 'StoreImageTaskResults' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeStoreImageTasksResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 DescribeAllSubnets(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
 
 =head2 DescribeAllSubnets([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, SubnetIds => ArrayRef[Str|Undef]])
@@ -16531,6 +19506,54 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TransitGatewayAttachments, passing the object as the first parameter, and the string 'TransitGatewayAttachments' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::DescribeTransitGatewayAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayConnectPeers(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayConnectPeerIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayConnectPeers([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayConnectPeerIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayConnectPeers, passing the object as the first parameter, and the string 'TransitGatewayConnectPeers' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayConnectPeersResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayConnects(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayConnects([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayConnects, passing the object as the first parameter, and the string 'TransitGatewayConnects' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayConnectsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayMulticastDomains(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayMulticastDomainIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayMulticastDomains([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayMulticastDomainIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayMulticastDomains, passing the object as the first parameter, and the string 'TransitGatewayMulticastDomains' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayMulticastDomainsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 DescribeAllTransitGatewayPeeringAttachments(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+=head2 DescribeAllTransitGatewayPeeringAttachments([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayAttachmentIds => ArrayRef[Str|Undef]])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayPeeringAttachments, passing the object as the first parameter, and the string 'TransitGatewayPeeringAttachments' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::DescribeTransitGatewayPeeringAttachmentsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 DescribeAllTransitGatewayRouteTables(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayRouteTableIds => ArrayRef[Str|Undef]])
@@ -16727,6 +19750,42 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::EC2::GetAssociatedIpv6PoolCidrsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
+=head2 GetAllGroupsForCapacityReservation(sub { },CapacityReservationId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllGroupsForCapacityReservation(CapacityReservationId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - CapacityReservationGroups, passing the object as the first parameter, and the string 'CapacityReservationGroups' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetGroupsForCapacityReservationResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllManagedPrefixListAssociations(sub { },PrefixListId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 GetAllManagedPrefixListAssociations(PrefixListId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - PrefixListAssociations, passing the object as the first parameter, and the string 'PrefixListAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetManagedPrefixListAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllManagedPrefixListEntries(sub { },PrefixListId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str, TargetVersion => Int])
+
+=head2 GetAllManagedPrefixListEntries(PrefixListId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str, TargetVersion => Int])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Entries, passing the object as the first parameter, and the string 'Entries' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetManagedPrefixListEntriesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
 =head2 GetAllTransitGatewayAttachmentPropagations(sub { },TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
 
 =head2 GetAllTransitGatewayAttachmentPropagations(TransitGatewayAttachmentId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -16737,6 +19796,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TransitGatewayAttachmentPropagations, passing the object as the first parameter, and the string 'TransitGatewayAttachmentPropagations' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::GetTransitGatewayAttachmentPropagationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTransitGatewayMulticastDomainAssociations(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayMulticastDomainId => Str])
+
+=head2 GetAllTransitGatewayMulticastDomainAssociations([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayMulticastDomainId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MulticastDomainAssociations, passing the object as the first parameter, and the string 'MulticastDomainAssociations' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetTransitGatewayMulticastDomainAssociationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 GetAllTransitGatewayPrefixListReferences(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+=head2 GetAllTransitGatewayPrefixListReferences(TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - TransitGatewayPrefixListReferences, passing the object as the first parameter, and the string 'TransitGatewayPrefixListReferences' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::GetTransitGatewayPrefixListReferencesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 =head2 GetAllTransitGatewayRouteTableAssociations(sub { },TransitGatewayRouteTableId => Str, [DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str])
@@ -16761,6 +19844,30 @@ If passed a sub as first parameter, it will call the sub for each element found 
  - TransitGatewayRouteTablePropagations, passing the object as the first parameter, and the string 'TransitGatewayRouteTablePropagations' as the second parameter 
 
 If not, it will return a a L<Paws::EC2::GetTransitGatewayRouteTablePropagationsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllLocalGatewayRoutes(sub { },Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+=head2 SearchAllLocalGatewayRoutes(Filters => ArrayRef[L<Paws::EC2::Filter>], LocalGatewayRouteTableId => Str, [DryRun => Bool, MaxResults => Int, NextToken => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - Routes, passing the object as the first parameter, and the string 'Routes' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::SearchLocalGatewayRoutesResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
+
+
+=head2 SearchAllTransitGatewayMulticastGroups(sub { },[DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayMulticastDomainId => Str])
+
+=head2 SearchAllTransitGatewayMulticastGroups([DryRun => Bool, Filters => ArrayRef[L<Paws::EC2::Filter>], MaxResults => Int, NextToken => Str, TransitGatewayMulticastDomainId => Str])
+
+
+If passed a sub as first parameter, it will call the sub for each element found in :
+
+ - MulticastGroups, passing the object as the first parameter, and the string 'MulticastGroups' as the second parameter 
+
+If not, it will return a a L<Paws::EC2::SearchTransitGatewayMulticastGroupsResult> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
 

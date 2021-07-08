@@ -2,6 +2,7 @@
 package Paws::StepFunctions::LambdaFunctionScheduledEventDetails;
   use Moose;
   has Input => (is => 'ro', isa => 'Str', request_name => 'input', traits => ['NameInRequest']);
+  has InputDetails => (is => 'ro', isa => 'Paws::StepFunctions::HistoryEventExecutionDataDetails', request_name => 'inputDetails', traits => ['NameInRequest']);
   has Resource => (is => 'ro', isa => 'Str', request_name => 'resource', traits => ['NameInRequest'], required => 1);
   has TimeoutInSeconds => (is => 'ro', isa => 'Int', request_name => 'timeoutInSeconds', traits => ['NameInRequest']);
 
@@ -42,7 +43,13 @@ Contains details about a lambda function scheduled during an execution.
 
 =head2 Input => Str
 
-The JSON data input to the lambda function.
+The JSON data input to the lambda function. Length constraints apply to
+the payload size, and are expressed as bytes in UTF-8 encoding.
+
+
+=head2 InputDetails => L<Paws::StepFunctions::HistoryEventExecutionDataDetails>
+
+Contains details about input for an execution history event.
 
 
 =head2 B<REQUIRED> Resource => Str

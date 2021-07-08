@@ -43,7 +43,9 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::DMS::Replic
 
 =head1 DESCRIPTION
 
-This class has no description
+In response to a request by the C<DescribeReplicationTasks> operation,
+this object provides a collection of statistics about a replication
+task.
 
 =head1 ATTRIBUTES
 
@@ -71,7 +73,7 @@ The percent complete for the full load migration task.
 
 =head2 FullLoadStartDate => Str
 
-The date the the replication task full load was started.
+The date the replication task full load was started.
 
 
 =head2 StartDate => Str

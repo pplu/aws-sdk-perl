@@ -38,6 +38,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'TargetOptionGroupIdentifier'  => 'mymysqloptiongroup-copy'
     );
 
+    # Results:
+    my $OptionGroup = $CopyOptionGroupResult->OptionGroup;
+
+    # Returns a L<Paws::RDS::CopyOptionGroupResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/CopyOptionGroup>
@@ -47,10 +51,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds
 
 =head2 B<REQUIRED> SourceOptionGroupIdentifier => Str
 
-The identifier or ARN for the source option group. For information
-about creating an ARN, see Constructing an ARN for Amazon RDS
-(https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing)
-in the I<Amazon RDS User Guide>.
+The identifier for the source option group.
 
 Constraints:
 
@@ -59,18 +60,6 @@ Constraints:
 =item *
 
 Must specify a valid option group.
-
-=item *
-
-If the source option group is in the same AWS Region as the copy,
-specify a valid option group identifier, for example
-C<my-option-group>, or a valid ARN.
-
-=item *
-
-If the source option group is in a different AWS Region than the copy,
-specify a valid option group ARN, for example
-C<arn:aws:rds:us-west-2:123456789012:og:special-options>.
 
 =back
 

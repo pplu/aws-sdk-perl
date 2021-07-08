@@ -1,6 +1,7 @@
 
 package Paws::WorkSpaces::ImportWorkspaceImage;
   use Moose;
+  has Applications => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has Ec2ImageId => (is => 'ro', isa => 'Str', required => 1);
   has ImageDescription => (is => 'ro', isa => 'Str', required => 1);
   has ImageName => (is => 'ro', isa => 'Str', required => 1);
@@ -36,7 +37,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ImageDescription => 'MyWorkspaceImageDescription',
       ImageName        => 'MyWorkspaceImageName',
       IngestionProcess => 'BYOL_REGULAR',
-      Tags             => [
+      Applications     => [
+        'Microsoft_Office_2016',
+        ...    # values: Microsoft_Office_2016, Microsoft_Office_2019
+      ],    # OPTIONAL
+      Tags => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 127
           Value => 'MyTagValue',    # max: 255; OPTIONAL
@@ -54,6 +59,18 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/workspaces/ImportWorkspaceImage>
 
 =head1 ATTRIBUTES
+
+
+=head2 Applications => ArrayRef[Str|Undef]
+
+If specified, the version of Microsoft Office to subscribe to. Valid
+only for Windows 10 BYOL images. For more information about subscribing
+to Office for BYOL images, see Bring Your Own Windows Desktop Licenses
+(https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
+
+Although this parameter is an array, only one item is allowed at this
+time.
+
 
 
 =head2 B<REQUIRED> Ec2ImageId => Str
@@ -76,9 +93,17 @@ The name of the WorkSpace image.
 
 =head2 B<REQUIRED> IngestionProcess => Str
 
-The ingestion process to be used when importing the image.
+The ingestion process to be used when importing the image, depending on
+which protocol you want to use for your BYOL Workspace image, either
+PCoIP or WorkSpaces Streaming Protocol (WSP). To use WSP, specify a
+value that ends in C<_WSP>. To use PCoIP, specify a value that does not
+end in C<_WSP>.
 
-Valid values are: C<"BYOL_REGULAR">, C<"BYOL_GRAPHICS">, C<"BYOL_GRAPHICSPRO">
+For non-GPU-enabled bundles (bundles other than Graphics or
+GraphicsPro), specify C<BYOL_REGULAR> or C<BYOL_REGULAR_WSP>, depending
+on the protocol.
+
+Valid values are: C<"BYOL_REGULAR">, C<"BYOL_GRAPHICS">, C<"BYOL_GRAPHICSPRO">, C<"BYOL_REGULAR_WSP">
 
 =head2 Tags => ArrayRef[L<Paws::WorkSpaces::Tag>]
 

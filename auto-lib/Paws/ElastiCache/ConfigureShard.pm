@@ -4,6 +4,7 @@ package Paws::ElastiCache::ConfigureShard;
   has NewReplicaCount => (is => 'ro', isa => 'Int', required => 1);
   has NodeGroupId => (is => 'ro', isa => 'Str', required => 1);
   has PreferredAvailabilityZones => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PreferredAvailabilityZone', traits => ['NameInRequest']);
+  has PreferredOutpostArns => (is => 'ro', isa => 'ArrayRef[Str|Undef]', request_name => 'PreferredOutpostArn', traits => ['NameInRequest']);
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ElastiCache::ConfigureShard object:
 
-  $service_obj->Method(Att1 => { NewReplicaCount => $value, ..., PreferredAvailabilityZones => $value  });
+  $service_obj->Method(Att1 => { NewReplicaCount => $value, ..., PreferredOutpostArns => $value  });
 
 =head3 Results returned from an API call
 
@@ -61,11 +62,11 @@ Redis (cluster mode disabled)
 
 =item *
 
-If Multi-AZ with Automatic Failover is enabled: 1
+If Multi-AZ: 1
 
 =item *
 
-If Multi-AZ with Automatic Failover is not enable: 0
+If Multi-AZ: 0
 
 =back
 
@@ -95,6 +96,11 @@ nummber of C<PreferredAvailabilityZone> values must equal the value of
 C<NewReplicaCount> plus 1 to account for the primary node. If this
 member of C<ReplicaConfiguration> is omitted, ElastiCache for Redis
 selects the availability zone for each of the replicas.
+
+
+=head2 PreferredOutpostArns => ArrayRef[Str|Undef]
+
+The outpost ARNs in which the cache cluster is created.
 
 
 

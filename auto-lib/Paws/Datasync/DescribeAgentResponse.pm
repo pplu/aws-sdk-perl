@@ -35,12 +35,12 @@ account).
 
 The type of endpoint that your agent is connected to. If the endpoint
 is a VPC endpoint, the agent is not accessible over the public
-Internet.
+internet.
 
 Valid values are: C<"PUBLIC">, C<"PRIVATE_LINK">, C<"FIPS">
 =head2 LastConnectionTime => Str
 
-The time that the agent last connected to DataSyc.
+The time that the agent last connected to DataSync.
 
 
 =head2 Name => Str

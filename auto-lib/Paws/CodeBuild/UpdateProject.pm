@@ -3,7 +3,9 @@ package Paws::CodeBuild::UpdateProject;
   use Moose;
   has Artifacts => (is => 'ro', isa => 'Paws::CodeBuild::ProjectArtifacts', traits => ['NameInRequest'], request_name => 'artifacts' );
   has BadgeEnabled => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'badgeEnabled' );
+  has BuildBatchConfig => (is => 'ro', isa => 'Paws::CodeBuild::ProjectBuildBatchConfig', traits => ['NameInRequest'], request_name => 'buildBatchConfig' );
   has Cache => (is => 'ro', isa => 'Paws::CodeBuild::ProjectCache', traits => ['NameInRequest'], request_name => 'cache' );
+  has ConcurrentBuildLimit => (is => 'ro', isa => 'Int', traits => ['NameInRequest'], request_name => 'concurrentBuildLimit' );
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description' );
   has EncryptionKey => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'encryptionKey' );
   has Environment => (is => 'ro', isa => 'Paws::CodeBuild::ProjectEnvironment', traits => ['NameInRequest'], request_name => 'environment' );
@@ -58,8 +60,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         Packaging            => 'NONE',       # values: NONE, ZIP; OPTIONAL
         Path                 => 'MyString',   # OPTIONAL
       },    # OPTIONAL
-      BadgeEnabled => 1,    # OPTIONAL
-      Cache        => {
+      BadgeEnabled     => 1,    # OPTIONAL
+      BuildBatchConfig => {
+        CombineArtifacts => 1,    # OPTIONAL
+        Restrictions     => {
+          ComputeTypesAllowed => [
+            'MyNonEmptyString', ...    # min: 1
+          ],    # OPTIONAL
+          MaximumBuildsAllowed => 1,    # OPTIONAL
+        },    # OPTIONAL
+        ServiceRole   => 'MyNonEmptyString',    # min: 1
+        TimeoutInMins => 1,                     # OPTIONAL
+      },    # OPTIONAL
+      Cache => {
         Type     => 'NO_CACHE',    # values: NO_CACHE, S3, LOCAL
         Location => 'MyString',    # OPTIONAL
         Modes    => [
@@ -67,14 +80,15 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           ... # values: LOCAL_DOCKER_LAYER_CACHE, LOCAL_SOURCE_CACHE, LOCAL_CUSTOM_CACHE
         ],    # OPTIONAL
       },    # OPTIONAL
-      Description   => 'MyProjectDescription',    # OPTIONAL
-      EncryptionKey => 'MyNonEmptyString',        # OPTIONAL
-      Environment   => {
+      ConcurrentBuildLimit => 1,                         # OPTIONAL
+      Description          => 'MyProjectDescription',    # OPTIONAL
+      EncryptionKey        => 'MyNonEmptyString',        # OPTIONAL
+      Environment          => {
         ComputeType => 'BUILD_GENERAL1_SMALL'
         , # values: BUILD_GENERAL1_SMALL, BUILD_GENERAL1_MEDIUM, BUILD_GENERAL1_LARGE, BUILD_GENERAL1_2XLARGE
         Image => 'MyNonEmptyString',    # min: 1
         Type  => 'WINDOWS_CONTAINER'
-        , # values: WINDOWS_CONTAINER, LINUX_CONTAINER, LINUX_GPU_CONTAINER, ARM_CONTAINER
+        , # values: WINDOWS_CONTAINER, LINUX_CONTAINER, LINUX_GPU_CONTAINER, ARM_CONTAINER, WINDOWS_SERVER_2019_CONTAINER
         Certificate          => 'MyString',    # OPTIONAL
         EnvironmentVariables => [
           {
@@ -147,6 +161,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             Type     => 'OAUTH',       # values: OAUTH
             Resource => 'MyString',    # OPTIONAL
           },    # OPTIONAL
+          BuildStatusConfig => {
+            Context   => 'MyString',    # OPTIONAL
+            TargetUrl => 'MyString',    # OPTIONAL
+          },    # OPTIONAL
           Buildspec           => 'MyString',    # OPTIONAL
           GitCloneDepth       => 1,             # OPTIONAL
           GitSubmodulesConfig => {
@@ -168,6 +186,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
           Type     => 'OAUTH',       # values: OAUTH
           Resource => 'MyString',    # OPTIONAL
         },    # OPTIONAL
+        BuildStatusConfig => {
+          Context   => 'MyString',    # OPTIONAL
+          TargetUrl => 'MyString',    # OPTIONAL
+        },    # OPTIONAL
         Buildspec           => 'MyString',    # OPTIONAL
         GitCloneDepth       => 1,             # OPTIONAL
         GitSubmodulesConfig => {
@@ -183,7 +205,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Tags          => [
         {
           Key   => 'MyKeyInput',      # min: 1, max: 127; OPTIONAL
-          Value => 'MyValueInput',    # min: 1, max: 255; OPTIONAL
+          Value => 'MyValueInput',    # max: 255; OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -224,10 +246,29 @@ project's build badge.
 
 
 
+=head2 BuildBatchConfig => L<Paws::CodeBuild::ProjectBuildBatchConfig>
+
+
+
+
+
 =head2 Cache => L<Paws::CodeBuild::ProjectCache>
 
 Stores recently used information so that it can be quickly accessed at
 a later time.
+
+
+
+=head2 ConcurrentBuildLimit => Int
+
+The maximum number of concurrent builds that are allowed for this
+project.
+
+New builds are only started if the current number of builds is less
+than or equal to this limit. If the current build count meets this
+limit, new builds are throttled and are not run.
+
+To remove this limit, set this value to -1.
 
 
 
@@ -239,14 +280,15 @@ A new or replacement description of the build project.
 
 =head2 EncryptionKey => Str
 
-The AWS Key Management Service (AWS KMS) customer master key (CMK) to
-be used for encrypting the build output artifacts.
+The Key Management Service customer master key (CMK) to be used for
+encrypting the build output artifacts.
 
 You can use a cross-account KMS key to encrypt the build output
 artifacts if your service role has permission to that key.
 
 You can specify either the Amazon Resource Name (ARN) of the CMK or, if
-available, the CMK's alias (using the format C<alias/I<alias-name> >).
+available, the CMK's alias (using the format
+C<alias/E<lt>alias-nameE<gt>>).
 
 
 
@@ -269,7 +311,7 @@ of a file system created using Amazon Elastic File System.
 =head2 LogsConfig => L<Paws::CodeBuild::LogsConfig>
 
 Information about logs for the build project. A project can create logs
-in Amazon CloudWatch Logs, logs in an S3 bucket, or both.
+in CloudWatch Logs, logs in an S3 bucket, or both.
 
 
 
@@ -310,9 +352,9 @@ take over these C<secondarySourceVersions> (at the project level).
 
 =head2 ServiceRole => Str
 
-The replacement ARN of the AWS Identity and Access Management (IAM)
-role that enables AWS CodeBuild to interact with dependent AWS services
-on behalf of the AWS account.
+The replacement ARN of the Identity and Access Management role that
+enables CodeBuild to interact with dependent Amazon Web Services
+services on behalf of the Amazon Web Services account.
 
 
 
@@ -332,7 +374,7 @@ specified, the latest version is used. If specified, it must be one of:
 
 =item *
 
-For AWS CodeCommit: the commit ID, branch, or Git tag to use.
+For CodeCommit: the commit ID, branch, or Git tag to use.
 
 =item *
 
@@ -352,8 +394,8 @@ the default branch's HEAD commit ID is used.
 
 =item *
 
-For Amazon Simple Storage Service (Amazon S3): the version ID of the
-object that represents the build input ZIP file to use.
+For Amazon S3: the version ID of the object that represents the build
+input ZIP file to use.
 
 =back
 
@@ -362,22 +404,23 @@ takes precedence over this C<sourceVersion> (at the project level).
 
 For more information, see Source Version Sample with CodeBuild
 (https://docs.aws.amazon.com/codebuild/latest/userguide/sample-source-version.html)
-in the I<AWS CodeBuild User Guide>.
+in the I<CodeBuild User Guide>.
 
 
 
 =head2 Tags => ArrayRef[L<Paws::CodeBuild::Tag>]
 
-The replacement set of tags for this build project.
+An updated list of tag key and value pairs associated with this build
+project.
 
-These tags are available for use by AWS services that support AWS
-CodeBuild build project tags.
+These tags are available for use by Amazon Web Services services that
+support CodeBuild build project tags.
 
 
 
 =head2 TimeoutInMinutes => Int
 
-The replacement value in minutes, from 5 to 480 (8 hours), for AWS
+The replacement value in minutes, from 5 to 480 (8 hours), for
 CodeBuild to wait before timing out any related build that did not get
 marked as completed.
 
@@ -385,7 +428,7 @@ marked as completed.
 
 =head2 VpcConfig => L<Paws::CodeBuild::VpcConfig>
 
-VpcConfig enables AWS CodeBuild to access resources in an Amazon VPC.
+VpcConfig enables CodeBuild to access resources in an Amazon VPC.
 
 
 

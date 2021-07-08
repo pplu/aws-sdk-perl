@@ -104,7 +104,7 @@ C<INSTANCE_ID> - The instance ID to use.
 
 =item *
 
-C<JDBC_CONNECTION_URL> - The URL for the JDBC connection.
+C<JDBC_CONNECTION_URL> - The URL for connecting to a JDBC data source.
 
 =item *
 
@@ -115,19 +115,19 @@ JDBC connection on the client. The default is false.
 =item *
 
 C<CUSTOM_JDBC_CERT> - An Amazon S3 location specifying the customer's
-root certificate. AWS Glue uses this root certificate to validate the
+root certificate. Glue uses this root certificate to validate the
 customerE<rsquo>s certificate when connecting to the customer database.
-AWS Glue only handles X.509 certificates. The certificate provided must
-be DER-encoded and supplied in Base64 encoding PEM format.
+Glue only handles X.509 certificates. The certificate provided must be
+DER-encoded and supplied in Base64 encoding PEM format.
 
 =item *
 
-C<SKIP_CUSTOM_JDBC_CERT_VALIDATION> - By default, this is C<false>. AWS
+C<SKIP_CUSTOM_JDBC_CERT_VALIDATION> - By default, this is C<false>.
 Glue validates the Signature algorithm and Subject Public Key Algorithm
 for the customer certificate. The only permitted algorithms for the
 Signature algorithm are SHA256withRSA, SHA384withRSA or SHA512withRSA.
 For the Subject Public Key Algorithm, the key length must be at least
-2048. You can set the value of this property to C<true> to skip AWS
+2048. You can set the value of this property to C<true> to skip
 GlueE<rsquo>s validation of the customer certificate.
 
 =item *
@@ -138,14 +138,89 @@ man-in-the-middle attack. In Oracle database, this is used as the
 C<SSL_SERVER_CERT_DN>; in Microsoft SQL Server, this is used as the
 C<hostNameInCertificate>.
 
+=item *
+
+C<CONNECTION_URL> - The URL for connecting to a general (non-JDBC) data
+source.
+
+=item *
+
+C<KAFKA_BOOTSTRAP_SERVERS> - A comma-separated list of host and port
+pairs that are the addresses of the Apache Kafka brokers in a Kafka
+cluster to which a Kafka client will connect to and bootstrap itself.
+
+=item *
+
+C<KAFKA_SSL_ENABLED> - Whether to enable or disable SSL on an Apache
+Kafka connection. Default value is "true".
+
+=item *
+
+C<KAFKA_CUSTOM_CERT> - The Amazon S3 URL for the private CA cert file
+(.pem format). The default is an empty string.
+
+=item *
+
+C<KAFKA_SKIP_CUSTOM_CERT_VALIDATION> - Whether to skip the validation
+of the CA cert file or not. Glue validates for three algorithms:
+SHA256withRSA, SHA384withRSA and SHA512withRSA. Default value is
+"false".
+
+=item *
+
+C<SECRET_ID> - The secret ID used for the secret manager of
+credentials.
+
+=item *
+
+C<CONNECTOR_URL> - The connector URL for a MARKETPLACE or CUSTOM
+connection.
+
+=item *
+
+C<CONNECTOR_TYPE> - The connector type for a MARKETPLACE or CUSTOM
+connection.
+
+=item *
+
+C<CONNECTOR_CLASS_NAME> - The connector class name for a MARKETPLACE or
+CUSTOM connection.
+
+=item *
+
+C<KAFKA_CLIENT_KEYSTORE> - The Amazon S3 location of the client
+keystore file for Kafka client side authentication (Optional).
+
+=item *
+
+C<KAFKA_CLIENT_KEYSTORE_PASSWORD> - The password to access the provided
+keystore (Optional).
+
+=item *
+
+C<KAFKA_CLIENT_KEY_PASSWORD> - A keystore can consist of multiple keys,
+so this is the password to access the client key to be used with the
+Kafka server side key (Optional).
+
+=item *
+
+C<ENCRYPTED_KAFKA_CLIENT_KEYSTORE_PASSWORD> - The encrypted version of
+the Kafka client keystore password (if the user has the Glue encrypt
+passwords setting selected).
+
+=item *
+
+C<ENCRYPTED_KAFKA_CLIENT_KEY_PASSWORD> - The encrypted version of the
+Kafka client key password (if the user has the Glue encrypt passwords
+setting selected).
+
 =back
 
 
 
 =head2 ConnectionType => Str
 
-The type of the connection. Currently, only JDBC is supported; SFTP is
-not supported.
+The type of the connection. Currently, SFTP is not supported.
 
 
 =head2 CreationTime => Str

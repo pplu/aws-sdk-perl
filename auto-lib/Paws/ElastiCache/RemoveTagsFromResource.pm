@@ -28,10 +28,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $elasticache = Paws->service('ElastiCache');
+    # RemoveTagsFromResource
+    # Removes tags identified by a list of tag keys from the list of tags on the
+    # specified resource.
     my $TagListMessage = $elasticache->RemoveTagsFromResource(
-      ResourceName => 'MyString',
-      TagKeys      => [ 'MyString', ... ],
-
+      'ResourceName' =>
+        'arn:aws:elasticache:us-east-1:1234567890:cluster:my-mem-cluster',
+      'TagKeys' => [ 'A', 'C', 'E' ]
     );
 
     # Results:

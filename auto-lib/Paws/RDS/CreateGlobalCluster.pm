@@ -71,8 +71,7 @@ database can't be deleted when deletion protection is enabled.
 
 =head2 Engine => Str
 
-Provides the name of the database engine to be used for this DB
-cluster.
+The name of the database engine to be used for this DB cluster.
 
 
 

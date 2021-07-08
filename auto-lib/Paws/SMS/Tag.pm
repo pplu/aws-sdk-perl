@@ -34,19 +34,19 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::SMS::Tag ob
 
 =head1 DESCRIPTION
 
-A label that can be assigned to an application.
+Key/value pair that can be assigned to an application.
 
 =head1 ATTRIBUTES
 
 
 =head2 Key => Str
 
-Tag key.
+The tag key.
 
 
 =head2 Value => Str
 
-Tag value.
+The tag value.
 
 
 

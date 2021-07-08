@@ -3,7 +3,7 @@ package Paws::Greengrass::CreateGroup;
   use Moose;
   has AmznClientToken => (is => 'ro', isa => 'Str', traits => ['ParamInHeader'], header_name => 'X-Amzn-Client-Token');
   has InitialVersion => (is => 'ro', isa => 'Paws::Greengrass::GroupVersion');
-  has Name => (is => 'ro', isa => 'Str');
+  has Name => (is => 'ro', isa => 'Str', required => 1);
   has Tags => (is => 'ro', isa => 'Paws::Greengrass::Tags', traits => ['NameInRequest'], request_name => 'tags');
 
   use MooseX::ClassAttribute;
@@ -32,6 +32,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $greengrass = Paws->service('Greengrass');
     my $CreateGroupResponse = $greengrass->CreateGroup(
+      Name            => 'My__string',
       AmznClientToken => 'My__string',    # OPTIONAL
       InitialVersion  => {
         ConnectorDefinitionVersionArn    => 'My__string',
@@ -42,7 +43,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ResourceDefinitionVersionArn     => 'My__string',
         SubscriptionDefinitionVersionArn => 'My__string',
       },                                  # OPTIONAL
-      Name => 'My__string',                         # OPTIONAL
       Tags => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
@@ -75,7 +75,7 @@ Information about the initial version of the group.
 
 
 
-=head2 Name => Str
+=head2 B<REQUIRED> Name => Str
 
 The name of the group.
 

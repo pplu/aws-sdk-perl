@@ -102,9 +102,7 @@ supernet-of-match as 10.0.1.0/30, then the result returns 10.0.1.0/29.
 
 =item *
 
-C<state> - The state of the attachment (C<available> | C<deleted> |
-C<deleting> | C<failed> | C<modifying> | C<pendingAcceptance> |
-C<pending> | C<rollingBack> | C<rejected> | C<rejecting>).
+C<state> - The state of the route (C<active> | C<blackhole>).
 
 =item *
 
@@ -112,7 +110,7 @@ C<transit-gateway-route-destination-cidr-block> - The CIDR range.
 
 =item *
 
-C<type> - The type of route (C<active> | C<blackhole>).
+C<type> - The type of route (C<propagated> | C<static>).
 
 =back
 

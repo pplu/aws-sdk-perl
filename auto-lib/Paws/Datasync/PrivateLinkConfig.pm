@@ -36,7 +36,7 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Datasync::P
 
 =head1 DESCRIPTION
 
-The VPC endpoint, subnet and security group that an agent uses to
+The VPC endpoint, subnet, and security group that an agent uses to
 access IP addresses in a VPC (Virtual Private Cloud).
 
 =head1 ATTRIBUTES
@@ -48,7 +48,7 @@ The private endpoint that is configured for an agent that has access to
 IP addresses in a PrivateLink
 (https://docs.aws.amazon.com/vpc/latest/userguide/endpoint-service.html).
 An agent that is configured with this endpoint will not be accessible
-over the public Internet.
+over the public internet.
 
 
 =head2 SecurityGroupArns => ArrayRef[Str|Undef]
@@ -69,7 +69,7 @@ endpoint.
 
 The ID of the VPC endpoint that is configured for an agent. An agent
 that is configured with a VPC endpoint will not be accessible over the
-public Internet.
+public internet.
 
 
 

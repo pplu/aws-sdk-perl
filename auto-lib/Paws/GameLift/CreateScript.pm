@@ -99,9 +99,9 @@ General Reference for actual tagging limits.
 
 =head2 Version => Str
 
-The version that is associated with a build or script. Version strings
-do not need to be unique. You can use UpdateScript to change this value
-later.
+Version information that is associated with a build or script. Version
+strings do not need to be unique. You can use UpdateScript to change
+this value later.
 
 
 

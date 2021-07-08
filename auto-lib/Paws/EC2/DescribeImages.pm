@@ -5,6 +5,7 @@ package Paws::EC2::DescribeImages;
   has ExecutableUsers => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ExecutableBy' );
   has Filters => (is => 'ro', isa => 'ArrayRef[Paws::EC2::Filter]', traits => ['NameInRequest'], request_name => 'Filter' );
   has ImageIds => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'ImageId' );
+  has IncludeDeprecated => (is => 'ro', isa => 'Bool');
   has Owners => (is => 'ro', isa => 'ArrayRef[Str|Undef]', traits => ['NameInRequest'], request_name => 'Owner' );
 
   use MooseX::ClassAttribute;
@@ -31,19 +32,10 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
-    my $DescribeImagesResult = $ec2->DescribeImages(
-      DryRun          => 1,                      # OPTIONAL
-      ExecutableUsers => [ 'MyString', ... ],    # OPTIONAL
-      Filters         => [
-        {
-          Name   => 'MyString',
-          Values => [ 'MyString', ... ],         # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      ImageIds => [ 'MyImageId', ... ],    # OPTIONAL
-      Owners   => [ 'MyString',  ... ],    # OPTIONAL
-    );
+    # To describe an AMI
+    # This example describes the specified AMI.
+    my $DescribeImagesResult =
+      $ec2->DescribeImages( 'ImageIds' => ['ami-5731123e'] );
 
     # Results:
     my $Images = $DescribeImagesResult->Images;
@@ -108,7 +100,7 @@ volume, in GiB.
 =item *
 
 C<block-device-mapping.volume-type> - The volume type of the EBS volume
-(C<gp2> | C<io1> | C<st1 >| C<sc1> | C<standard>).
+(C<gp2> | C<io1> | C<io2> | C<st1 >| C<sc1> | C<standard>).
 
 =item *
 
@@ -155,14 +147,15 @@ C<name> - The name of the AMI (provided during image creation).
 
 =item *
 
-C<owner-alias> - String value from an Amazon-maintained list (C<amazon>
-| C<aws-marketplace> | C<microsoft>) of snapshot owners. Not to be
-confused with the user-configured AWS account alias, which is set from
-the IAM console.
+C<owner-alias> - The owner alias (C<amazon> | C<aws-marketplace>). The
+valid aliases are defined in an Amazon-maintained list. This is not the
+AWS account alias that can be set using the IAM console. We recommend
+that you use the B<Owner> request parameter instead of this filter.
 
 =item *
 
-C<owner-id> - The AWS account ID of the image owner.
+C<owner-id> - The AWS account ID of the owner. We recommend that you
+use the B<Owner> request parameter instead of this filter.
 
 =item *
 
@@ -242,13 +235,24 @@ Default: Describes all images available to you.
 
 
 
+=head2 IncludeDeprecated => Bool
+
+If C<true>, all deprecated AMIs are included in the response. If
+C<false>, no deprecated AMIs are included in the response. If no value
+is specified, the default value is C<false>.
+
+If you are the AMI owner, all deprecated AMIs appear in the response
+regardless of the value (C<true> or C<false>) that you set for this
+parameter.
+
+
+
 =head2 Owners => ArrayRef[Str|Undef]
 
-Filters the images by the owner. Specify an AWS account ID, C<self>
-(owner is the sender of the request), or an AWS owner alias (valid
-values are C<amazon> | C<aws-marketplace> | C<microsoft>). Omitting
-this option returns all images for which you have launch permissions,
-regardless of ownership.
+Scopes the results to images with the specified owners. You can specify
+a combination of AWS account IDs, C<self>, C<amazon>, and
+C<aws-marketplace>. If you omit this parameter, the results include all
+images for which you have launch permissions, regardless of ownership.
 
 
 

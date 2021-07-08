@@ -4,6 +4,7 @@ package Paws::CognitoIdentity::GetOpenIdTokenForDeveloperIdentity;
   has IdentityId => (is => 'ro', isa => 'Str');
   has IdentityPoolId => (is => 'ro', isa => 'Str', required => 1);
   has Logins => (is => 'ro', isa => 'Paws::CognitoIdentity::LoginsMap', required => 1);
+  has PrincipalTags => (is => 'ro', isa => 'Paws::CognitoIdentity::PrincipalTags');
   has TokenDuration => (is => 'ro', isa => 'Int');
 
   use MooseX::ClassAttribute;
@@ -38,7 +39,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ,    # key: min: 1, max: 128, value: min: 1, max: 50000
       },
       IdentityId    => 'MyIdentityId',    # OPTIONAL
-      TokenDuration => 1,                 # OPTIONAL
+      PrincipalTags => {
+        'MyPrincipalTagID' => 'MyPrincipalTagValue'
+        ,    # key: min: 1, max: 128, value: min: 1, max: 256
+      },    # OPTIONAL
+      TokenDuration => 1,    # OPTIONAL
       );
 
     # Results:
@@ -76,6 +81,13 @@ which Cognito will refer to your users; you provided this domain while
 creating/updating the identity pool. The developer user identifier is
 an identifier from your backend that uniquely identifies a user. When
 you create an identity pool, you can specify the supported logins.
+
+
+
+=head2 PrincipalTags => L<Paws::CognitoIdentity::PrincipalTags>
+
+Use this operation to configure attribute mappings for custom
+providers.
 
 
 

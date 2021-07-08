@@ -35,6 +35,8 @@ package Paws::RDS::DBCluster;
   has Engine => (is => 'ro', isa => 'Str');
   has EngineMode => (is => 'ro', isa => 'Str');
   has EngineVersion => (is => 'ro', isa => 'Str');
+  has GlobalWriteForwardingRequested => (is => 'ro', isa => 'Bool');
+  has GlobalWriteForwardingStatus => (is => 'ro', isa => 'Str');
   has HostedZoneId => (is => 'ro', isa => 'Str');
   has HttpEndpointEnabled => (is => 'ro', isa => 'Bool');
   has IAMDatabaseAuthenticationEnabled => (is => 'ro', isa => 'Bool');
@@ -42,6 +44,7 @@ package Paws::RDS::DBCluster;
   has LatestRestorableTime => (is => 'ro', isa => 'Str');
   has MasterUsername => (is => 'ro', isa => 'Str');
   has MultiAZ => (is => 'ro', isa => 'Bool');
+  has PendingModifiedValues => (is => 'ro', isa => 'Paws::RDS::ClusterPendingModifiedValues');
   has PercentProgress => (is => 'ro', isa => 'Str');
   has Port => (is => 'ro', isa => 'Int');
   has PreferredBackupWindow => (is => 'ro', isa => 'Str');
@@ -52,6 +55,7 @@ package Paws::RDS::DBCluster;
   has ScalingConfigurationInfo => (is => 'ro', isa => 'Paws::RDS::ScalingConfigurationInfo');
   has Status => (is => 'ro', isa => 'Str');
   has StorageEncrypted => (is => 'ro', isa => 'Bool');
+  has TagList => (is => 'ro', isa => 'ArrayRef[Paws::RDS::Tag]', request_name => 'Tag', traits => ['NameInRequest']);
   has VpcSecurityGroups => (is => 'ro', isa => 'ArrayRef[Paws::RDS::VpcSecurityGroupMembership]', request_name => 'VpcSecurityGroupMembership', traits => ['NameInRequest']);
 
 1;
@@ -100,8 +104,12 @@ activity stream.
 
 =head2 ActivityStreamKmsKeyId => Str
 
-The AWS KMS key identifier used for encrypting messages in the database
-activity stream.
+The Amazon Web Services KMS key identifier used for encrypting messages
+in the database activity stream.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 ActivityStreamMode => Str
@@ -126,10 +134,10 @@ size isn't fixed, but instead automatically adjusts as needed.
 
 =head2 AssociatedRoles => ArrayRef[L<Paws::RDS::DBClusterRole>]
 
-Provides a list of the AWS Identity and Access Management (IAM) roles
-that are associated with the DB cluster. IAM roles that are associated
-with a DB cluster grant permission for the DB cluster to access other
-AWS services on your behalf.
+Provides a list of the Amazon Web Services Identity and Access
+Management (IAM) roles that are associated with the DB cluster. IAM
+roles that are associated with a DB cluster grant permission for the DB
+cluster to access other Amazon Web Services on your behalf.
 
 
 =head2 AvailabilityZones => ArrayRef[Str|Undef]
@@ -193,7 +201,7 @@ the DB cluster.
 =head2 CrossAccountClone => Bool
 
 Specifies whether the DB cluster is a clone of a DB cluster owned by a
-different AWS account.
+different Amazon Web Services account.
 
 
 =head2 CustomEndpoints => ArrayRef[Str|Undef]
@@ -237,9 +245,10 @@ cluster.
 
 =head2 DbClusterResourceId => Str
 
-The AWS Region-unique, immutable identifier for the DB cluster. This
-identifier is found in AWS CloudTrail log entries whenever the AWS KMS
-key for the DB cluster is accessed.
+The Amazon Web Services Region-unique, immutable identifier for the DB
+cluster. This identifier is found in Amazon Web Services CloudTrail log
+entries whenever the Amazon Web Services KMS CMK for the DB cluster is
+accessed.
 
 
 =head2 DBSubnetGroup => Str
@@ -291,8 +300,7 @@ cluster.
 
 =head2 Engine => Str
 
-Provides the name of the database engine to be used for this DB
-cluster.
+The name of the database engine to be used for this DB cluster.
 
 
 =head2 EngineMode => Str
@@ -300,10 +308,29 @@ cluster.
 The DB engine mode of the DB cluster, either C<provisioned>,
 C<serverless>, C<parallelquery>, C<global>, or C<multimaster>.
 
+For more information, see CreateDBCluster
+(https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html).
+
 
 =head2 EngineVersion => Str
 
 Indicates the database engine version.
+
+
+=head2 GlobalWriteForwardingRequested => Bool
+
+Specifies whether you have requested to enable write forwarding for a
+secondary cluster in an Aurora global database. Because write
+forwarding takes time to enable, check the value of
+C<GlobalWriteForwardingStatus> to confirm that the request has
+completed before using the write forwarding feature for this cluster.
+
+
+=head2 GlobalWriteForwardingStatus => Str
+
+Specifies whether a secondary cluster in an Aurora global database has
+write forwarding enabled, not enabled, or is in the process of enabling
+it.
 
 
 =head2 HostedZoneId => Str
@@ -329,14 +356,19 @@ in the I<Amazon Aurora User Guide>.
 
 =head2 IAMDatabaseAuthenticationEnabled => Bool
 
-A value that indicates whether the mapping of AWS Identity and Access
-Management (IAM) accounts to database accounts is enabled.
+A value that indicates whether the mapping of Amazon Web Services
+Identity and Access Management (IAM) accounts to database accounts is
+enabled.
 
 
 =head2 KmsKeyId => Str
 
-If C<StorageEncrypted> is enabled, the AWS KMS key identifier for the
-encrypted DB cluster.
+If C<StorageEncrypted> is enabled, the Amazon Web Services KMS key
+identifier for the encrypted DB cluster.
+
+The Amazon Web Services KMS key identifier is the key ARN, key ID,
+alias ARN, or alias name for the Amazon Web Services KMS customer
+master key (CMK).
 
 
 =head2 LatestRestorableTime => Str
@@ -354,6 +386,13 @@ Contains the master username for the DB cluster.
 
 Specifies whether the DB cluster has instances in multiple Availability
 Zones.
+
+
+=head2 PendingModifiedValues => L<Paws::RDS::ClusterPendingModifiedValues>
+
+A value that specifies that changes to the DB cluster are pending. This
+element is only included when changes are pending. Specific changes are
+identified by subelements.
 
 
 =head2 PercentProgress => Str
@@ -396,14 +435,14 @@ cluster, you can then reconnect to the reader endpoint.
 
 =head2 ReadReplicaIdentifiers => ArrayRef[Str|Undef]
 
-Contains one or more identifiers of the Read Replicas associated with
+Contains one or more identifiers of the read replicas associated with
 this DB cluster.
 
 
 =head2 ReplicationSourceIdentifier => Str
 
 Contains the identifier of the source DB cluster if this DB cluster is
-a Read Replica.
+a read replica.
 
 
 =head2 ScalingConfigurationInfo => L<Paws::RDS::ScalingConfigurationInfo>
@@ -419,6 +458,11 @@ Specifies the current state of this DB cluster.
 =head2 StorageEncrypted => Bool
 
 Specifies whether the DB cluster is encrypted.
+
+
+=head2 TagList => ArrayRef[L<Paws::RDS::Tag>]
+
+
 
 
 =head2 VpcSecurityGroups => ArrayRef[L<Paws::RDS::VpcSecurityGroupMembership>]

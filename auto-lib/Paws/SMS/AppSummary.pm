@@ -4,12 +4,15 @@ package Paws::SMS::AppSummary;
   has AppId => (is => 'ro', isa => 'Str', request_name => 'appId', traits => ['NameInRequest']);
   has CreationTime => (is => 'ro', isa => 'Str', request_name => 'creationTime', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
+  has ImportedAppId => (is => 'ro', isa => 'Str', request_name => 'importedAppId', traits => ['NameInRequest']);
   has LastModified => (is => 'ro', isa => 'Str', request_name => 'lastModified', traits => ['NameInRequest']);
   has LatestReplicationTime => (is => 'ro', isa => 'Str', request_name => 'latestReplicationTime', traits => ['NameInRequest']);
+  has LaunchConfigurationStatus => (is => 'ro', isa => 'Str', request_name => 'launchConfigurationStatus', traits => ['NameInRequest']);
   has LaunchDetails => (is => 'ro', isa => 'Paws::SMS::LaunchDetails', request_name => 'launchDetails', traits => ['NameInRequest']);
   has LaunchStatus => (is => 'ro', isa => 'Str', request_name => 'launchStatus', traits => ['NameInRequest']);
   has LaunchStatusMessage => (is => 'ro', isa => 'Str', request_name => 'launchStatusMessage', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has ReplicationConfigurationStatus => (is => 'ro', isa => 'Str', request_name => 'replicationConfigurationStatus', traits => ['NameInRequest']);
   has ReplicationStatus => (is => 'ro', isa => 'Str', request_name => 'replicationStatus', traits => ['NameInRequest']);
   has ReplicationStatusMessage => (is => 'ro', isa => 'Str', request_name => 'replicationStatusMessage', traits => ['NameInRequest']);
   has RoleName => (is => 'ro', isa => 'Str', request_name => 'roleName', traits => ['NameInRequest']);
@@ -55,27 +58,37 @@ Information about the application.
 
 =head2 AppId => Str
 
-Unique ID of the application.
+The unique ID of the application.
 
 
 =head2 CreationTime => Str
 
-Time of creation of this application.
+The creation time of the application.
 
 
 =head2 Description => Str
 
-Description of the application.
+The description of the application.
+
+
+=head2 ImportedAppId => Str
+
+The ID of the application.
 
 
 =head2 LastModified => Str
 
-Timestamp of the application's creation.
+The last modified time of the application.
 
 
 =head2 LatestReplicationTime => Str
 
-Timestamp of the application's most recent successful replication.
+The timestamp of the application's most recent successful replication.
+
+
+=head2 LaunchConfigurationStatus => Str
+
+Status of the launch configuration.
 
 
 =head2 LaunchDetails => L<Paws::SMS::LaunchDetails>
@@ -85,7 +98,7 @@ Details about the latest launch of the application.
 
 =head2 LaunchStatus => Str
 
-Launch status of the application.
+The launch status of the application.
 
 
 =head2 LaunchStatusMessage => Str
@@ -95,12 +108,17 @@ A message related to the launch status of the application.
 
 =head2 Name => Str
 
-Name of the application.
+The name of the application.
+
+
+=head2 ReplicationConfigurationStatus => Str
+
+Status of the replication configuration.
 
 
 =head2 ReplicationStatus => Str
 
-Replication status of the application.
+The replication status of the application.
 
 
 =head2 ReplicationStatusMessage => Str
@@ -110,7 +128,7 @@ A message related to the replication status of the application.
 
 =head2 RoleName => Str
 
-Name of the service role in the customer's account used by AWS SMS.
+The name of the service role in the customer's account used by AWS SMS.
 
 
 =head2 Status => Str
@@ -125,12 +143,12 @@ A message related to the status of the application
 
 =head2 TotalServerGroups => Int
 
-Number of server groups present in the application.
+The number of server groups present in the application.
 
 
 =head2 TotalServers => Int
 
-Number of servers present in the application.
+The number of servers present in the application.
 
 
 

@@ -2,6 +2,7 @@
 package Paws::S3::ServerSideEncryptionRule;
   use Moose;
   has ApplyServerSideEncryptionByDefault => (is => 'ro', isa => 'Paws::S3::ServerSideEncryptionByDefault');
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -22,7 +23,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::S3::ServerSideEncryptionRule object:
 
-  $service_obj->Method(Att1 => { ApplyServerSideEncryptionByDefault => $value, ..., ApplyServerSideEncryptionByDefault => $value  });
+  $service_obj->Method(Att1 => { ApplyServerSideEncryptionByDefault => $value, ..., BucketKeyEnabled => $value  });
 
 =head3 Results returned from an API call
 
@@ -43,6 +44,19 @@ Specifies the default server-side encryption configuration.
 Specifies the default server-side encryption to apply to new objects in
 the bucket. If a PUT Object request doesn't specify any server-side
 encryption, this default encryption will be applied.
+
+
+=head2 BucketKeyEnabled => Bool
+
+Specifies whether Amazon S3 should use an S3 Bucket Key with
+server-side encryption using KMS (SSE-KMS) for new objects in the
+bucket. Existing objects are not affected. Setting the
+C<BucketKeyEnabled> element to C<true> causes Amazon S3 to use an S3
+Bucket Key. By default, S3 Bucket Key is not enabled.
+
+For more information, see Amazon S3 Bucket Keys
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) in
+the I<Amazon S3 User Guide>.
 
 
 

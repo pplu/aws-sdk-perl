@@ -1,6 +1,7 @@
 
 package Paws::SageMaker::UpdateWorkforce;
   use Moose;
+  has OidcConfig => (is => 'ro', isa => 'Paws::SageMaker::OidcConfig');
   has SourceIpConfig => (is => 'ro', isa => 'Paws::SageMaker::SourceIpConfig');
   has WorkforceName => (is => 'ro', isa => 'Str', required => 1);
 
@@ -29,7 +30,18 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $api.sagemaker = Paws->service('SageMaker');
     my $UpdateWorkforceResponse = $api . sagemaker->UpdateWorkforce(
-      WorkforceName  => 'MyWorkforceName',
+      WorkforceName => 'MyWorkforceName',
+      OidcConfig    => {
+        AuthorizationEndpoint => 'MyOidcEndpoint',    # max: 500
+        ClientId              => 'MyClientId',        # min: 1, max: 1024
+        ClientSecret          => 'MyClientSecret',    # min: 1, max: 1024
+        Issuer                => 'MyOidcEndpoint',    # max: 500
+        JwksUri               => 'MyOidcEndpoint',    # max: 500
+        LogoutEndpoint        => 'MyOidcEndpoint',    # max: 500
+        TokenEndpoint         => 'MyOidcEndpoint',    # max: 500
+        UserInfoEndpoint      => 'MyOidcEndpoint',    # max: 500
+
+      },    # OPTIONAL
       SourceIpConfig => {
         Cidrs => [
           'MyCidr', ...    # min: 4, max: 64
@@ -49,21 +61,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/api
 =head1 ATTRIBUTES
 
 
+=head2 OidcConfig => L<Paws::SageMaker::OidcConfig>
+
+Use this parameter to update your OIDC Identity Provider (IdP)
+configuration for a workforce made using your own IdP.
+
+
+
 =head2 SourceIpConfig => L<Paws::SageMaker::SourceIpConfig>
 
-A list of one to four worker IP address ranges (CIDRs
+A list of one to ten worker IP address ranges (CIDRs
 (https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Subnets.html))
 that can be used to access tasks assigned to this workforce.
 
-Maximum: 4 CIDR values
+Maximum: Ten CIDR values
 
 
 
 =head2 B<REQUIRED> WorkforceName => Str
 
-The name of the private workforce whose access you want to restrict.
-C<WorkforceName> is automatically set to C<"default"> when a workforce
-is created and cannot be modified.
+The name of the private workforce that you want to update. You can find
+your workforce name by using the operation.
 
 
 

@@ -39,12 +39,20 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Schedule            => 'MyString',
       ScheduledActionName => 'MyString',
       TargetAction        => {
+        PauseCluster => {
+          ClusterIdentifier => 'MyString',    # max: 2147483647
+
+        },    # OPTIONAL
         ResizeCluster => {
-          ClusterIdentifier => 'MyString',
-          NumberOfNodes     => 1,
-          Classic           => 1,            # OPTIONAL
-          ClusterType       => 'MyString',
-          NodeType          => 'MyString',
+          ClusterIdentifier => 'MyString',    # max: 2147483647
+          Classic           => 1,             # OPTIONAL
+          ClusterType       => 'MyString',    # max: 2147483647
+          NodeType          => 'MyString',    # max: 2147483647
+          NumberOfNodes     => 1,             # OPTIONAL
+        },    # OPTIONAL
+        ResumeCluster => {
+          ClusterIdentifier => 'MyString',    # max: 2147483647
+
         },    # OPTIONAL
       },
       Enable                     => 1,                        # OPTIONAL

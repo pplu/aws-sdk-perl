@@ -2,6 +2,7 @@
 package Paws::AlexaForBusiness::UpdateProfile;
   use Moose;
   has Address => (is => 'ro', isa => 'Str');
+  has DataRetentionOptIn => (is => 'ro', isa => 'Bool');
   has DistanceUnit => (is => 'ro', isa => 'Str');
   has IsDefault => (is => 'ro', isa => 'Bool');
   has Locale => (is => 'ro', isa => 'Str');
@@ -41,6 +42,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $a4b = Paws->service('AlexaForBusiness');
     my $UpdateProfileResponse = $a4b->UpdateProfile(
       Address                  => 'MyAddress',         # OPTIONAL
+      DataRetentionOptIn       => 1,                   # OPTIONAL
       DistanceUnit             => 'METRIC',            # OPTIONAL
       IsDefault                => 1,                   # OPTIONAL
       Locale                   => 'MyDeviceLocale',    # OPTIONAL
@@ -80,6 +82,12 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/a4b
 =head2 Address => Str
 
 The updated address for the room profile.
+
+
+
+=head2 DataRetentionOptIn => Bool
+
+Whether data retention of the profile is enabled.
 
 
 

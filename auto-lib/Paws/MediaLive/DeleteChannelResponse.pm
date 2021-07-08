@@ -2,6 +2,7 @@
 package Paws::MediaLive::DeleteChannelResponse;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'arn');
+  has CdiInputSpecification => (is => 'ro', isa => 'Paws::MediaLive::CdiInputSpecification', traits => ['NameInRequest'], request_name => 'cdiInputSpecification');
   has ChannelClass => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'channelClass');
   has Destinations => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::OutputDestination]', traits => ['NameInRequest'], request_name => 'destinations');
   has EgressEndpoints => (is => 'ro', isa => 'ArrayRef[Paws::MediaLive::ChannelEgressEndpoint]', traits => ['NameInRequest'], request_name => 'egressEndpoints');
@@ -16,6 +17,7 @@ package Paws::MediaLive::DeleteChannelResponse;
   has RoleArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'roleArn');
   has State => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'state');
   has Tags => (is => 'ro', isa => 'Paws::MediaLive::Tags', traits => ['NameInRequest'], request_name => 'tags');
+  has Vpc => (is => 'ro', isa => 'Paws::MediaLive::VpcOutputSettingsDescription', traits => ['NameInRequest'], request_name => 'vpc');
 
   has _request_id => (is => 'ro', isa => 'Str');
 1;
@@ -32,6 +34,11 @@ Paws::MediaLive::DeleteChannelResponse
 =head2 Arn => Str
 
 The unique arn of the channel.
+
+
+=head2 CdiInputSpecification => L<Paws::MediaLive::CdiInputSpecification>
+
+Specification of CDI inputs for this channel
 
 
 =head2 ChannelClass => Str
@@ -69,7 +76,7 @@ List of input attachments for channel.
 
 =head2 InputSpecification => L<Paws::MediaLive::InputSpecification>
 
-
+Specification of network and file inputs for this channel
 
 
 =head2 LogLevel => Str
@@ -106,6 +113,11 @@ Valid values are: C<"CREATING">, C<"CREATE_FAILED">, C<"IDLE">, C<"STARTING">, C
 =head2 Tags => L<Paws::MediaLive::Tags>
 
 A collection of key-value pairs.
+
+
+=head2 Vpc => L<Paws::MediaLive::VpcOutputSettingsDescription>
+
+Settings for VPC output
 
 
 =head2 _request_id => Str

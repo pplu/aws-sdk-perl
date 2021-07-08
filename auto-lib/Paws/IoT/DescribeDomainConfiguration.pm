@@ -44,6 +44,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       $DescribeDomainConfigurationResponse->DomainConfigurationStatus;
     my $DomainName = $DescribeDomainConfigurationResponse->DomainName;
     my $DomainType = $DescribeDomainConfigurationResponse->DomainType;
+    my $LastStatusChangeDate =
+      $DescribeDomainConfigurationResponse->LastStatusChangeDate;
     my $ServerCertificates =
       $DescribeDomainConfigurationResponse->ServerCertificates;
     my $ServiceType = $DescribeDomainConfigurationResponse->ServiceType;

@@ -31,12 +31,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $lambda = Paws->service('Lambda');
-    # To remove a Lambda function's permissions
-    # This operation removes a Lambda function's permissions
+ # To remove a Lambda function's permissions
+ # The following example removes a permissions statement named xaccount from the
+ # PROD alias of a function named my-function.
     $lambda->RemovePermission(
-      'FunctionName' => 'myFunction',
-      'Qualifier'    => 1,
-      'StatementId'  => 'role-statement-id'
+      'FunctionName' => 'my-function',
+      'Qualifier'    => 'PROD',
+      'StatementId'  => 'xaccount'
     );
 
 

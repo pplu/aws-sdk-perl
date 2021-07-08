@@ -5,6 +5,7 @@ package Paws::DeviceFarm::TestGridProject;
   has Created => (is => 'ro', isa => 'Str', request_name => 'created', traits => ['NameInRequest']);
   has Description => (is => 'ro', isa => 'Str', request_name => 'description', traits => ['NameInRequest']);
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
+  has VpcConfig => (is => 'ro', isa => 'Paws::DeviceFarm::TestGridVpcConfig', request_name => 'vpcConfig', traits => ['NameInRequest']);
 
 1;
 
@@ -25,7 +26,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::DeviceFarm::TestGridProject object:
 
-  $service_obj->Method(Att1 => { Arn => $value, ..., Name => $value  });
+  $service_obj->Method(Att1 => { Arn => $value, ..., VpcConfig => $value  });
 
 =head3 Results returned from an API call
 
@@ -60,6 +61,11 @@ A human-readable description for the project.
 =head2 Name => Str
 
 A human-readable name for the project.
+
+
+=head2 VpcConfig => L<Paws::DeviceFarm::TestGridVpcConfig>
+
+The VPC security groups and subnets that are attached to a project.
 
 
 

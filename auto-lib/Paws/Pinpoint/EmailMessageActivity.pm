@@ -44,7 +44,8 @@ activity sends an email message to participants.
 
 =head2 MessageConfig => L<Paws::Pinpoint::JourneyEmailMessage>
 
-The "From" address to use for the message.
+Specifies the sender address for an email message that's sent to
+participants in the journey.
 
 
 =head2 NextActivity => Str
@@ -55,7 +56,9 @@ message is sent.
 
 =head2 TemplateName => Str
 
-The name of the email template to use for the message.
+The name of the email message template to use for the message. If
+specified, this value must match the name of an existing message
+template.
 
 
 =head2 TemplateVersion => Str
@@ -68,7 +71,7 @@ identifiers for a template, use the
 Template Versions resource.
 
 If you don't specify a value for this property, Amazon Pinpoint uses
-the I<active> version of the template. The I<active> version is
+the I<active version> of the template. The I<active version> is
 typically the version of a template that's been most recently reviewed
 and approved for use, depending on your workflow. It isn't necessarily
 the latest version of a template.

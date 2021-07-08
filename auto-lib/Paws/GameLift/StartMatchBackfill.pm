@@ -2,7 +2,7 @@
 package Paws::GameLift::StartMatchBackfill;
   use Moose;
   has ConfigurationName => (is => 'ro', isa => 'Str', required => 1);
-  has GameSessionArn => (is => 'ro', isa => 'Str', required => 1);
+  has GameSessionArn => (is => 'ro', isa => 'Str');
   has Players => (is => 'ro', isa => 'ArrayRef[Paws::GameLift::Player]', required => 1);
   has TicketId => (is => 'ro', isa => 'Str');
 
@@ -32,7 +32,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $gamelift = Paws->service('GameLift');
     my $StartMatchBackfillOutput = $gamelift->StartMatchBackfill(
       ConfigurationName => 'MyMatchmakingConfigurationName',
-      GameSessionArn    => 'MyArnStringModel',
       Players           => [
         {
           LatencyInMs => {
@@ -56,7 +55,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],
-      TicketId => 'MyMatchmakingIdStringModel',    # OPTIONAL
+      GameSessionArn => 'MyArnStringModel',              # OPTIONAL
+      TicketId       => 'MyMatchmakingIdStringModel',    # OPTIONAL
     );
 
     # Results:
@@ -79,12 +79,11 @@ object, C<MatchmakerData> property.
 
 
 
-=head2 B<REQUIRED> GameSessionArn => Str
+=head2 GameSessionArn => Str
 
-Amazon Resource Name (ARN
-(https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html))
-that is assigned to a game session and uniquely identifies it. This is
-the same as the game session ID.
+A unique identifier for the game session. Use the game session ID. When
+using FlexMatch as a standalone matchmaking solution, this parameter is
+not needed.
 
 
 
@@ -98,16 +97,16 @@ players and add them to the existing game.
 
 =item *
 
-PlayerID, PlayerAttributes, Team -\\- This information is maintained in
+PlayerID, PlayerAttributes, Team -- This information is maintained in
 the GameSession object, C<MatchmakerData> property, for all players who
 are currently assigned to the game session. The matchmaker data is in
 JSON syntax, formatted as a string. For more details, see Match Data
-(https://docs.aws.amazon.com/gamelift/latest/developerguide/match-server.html#match-server-data).
+(https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-server.html#match-server-data).
 
 =item *
 
-LatencyInMs -\\- If the matchmaker uses player latency, include a
-latency value, in milliseconds, for the Region that the game session is
+LatencyInMs -- If the matchmaker uses player latency, include a latency
+value, in milliseconds, for the Region that the game session is
 currently in. Do not include latency values for any other Region.
 
 =back

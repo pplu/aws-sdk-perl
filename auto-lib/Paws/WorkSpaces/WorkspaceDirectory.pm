@@ -110,7 +110,14 @@ The default self-service permissions for WorkSpaces in the directory.
 
 =head2 State => Str
 
-The state of the directory's registration with Amazon WorkSpaces.
+The state of the directory's registration with Amazon WorkSpaces. After
+a directory is deregistered, the C<DEREGISTERED> state is returned very
+briefly before the directory metadata is cleaned up, so this state is
+rarely returned. To confirm that a directory is deregistered, check for
+the directory ID by using DescribeWorkspaceDirectories
+(https://docs.aws.amazon.com/workspaces/latest/api/API_DescribeWorkspaceDirectories.html).
+If the directory ID isn't returned, then the directory has been
+successfully deregistered.
 
 
 =head2 SubnetIds => ArrayRef[Str|Undef]

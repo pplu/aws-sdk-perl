@@ -51,6 +51,8 @@ volume and detach the volume. The default is C<false>. If this value is
 set to C<false>, you must manually disconnect the iSCSI connection from
 the target volume.
 
+Valid Values: C<true> | C<false>
+
 
 
 =head2 B<REQUIRED> VolumeARN => Str

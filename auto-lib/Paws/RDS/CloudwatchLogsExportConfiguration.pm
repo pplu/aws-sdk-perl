@@ -39,10 +39,17 @@ CloudWatch Logs for a specific DB instance or DB cluster.
 
 The C<EnableLogTypes> and C<DisableLogTypes> arrays determine which
 logs will be exported (or not exported) to CloudWatch Logs. The values
-within these arrays depend on the DB engine being used. For more
-information, see Publishing Database Logs to Amazon CloudWatch Logs
+within these arrays depend on the DB engine being used.
+
+For more information about exporting CloudWatch Logs for Amazon RDS DB
+instances, see Publishing Database Logs to Amazon CloudWatch Logs
 (https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
 in the I<Amazon RDS User Guide>.
+
+For more information about exporting CloudWatch Logs for Amazon Aurora
+DB clusters, see Publishing Database Logs to Amazon CloudWatch Logs
+(https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch)
+in the I<Amazon Aurora User Guide>.
 
 =head1 ATTRIBUTES
 

@@ -16,7 +16,7 @@ Paws::Route53Resolver::GetResolverRulePolicyResponse
 
 =head2 ResolverRulePolicy => Str
 
-Information about the resolver rule policy that you specified in a
+The Resolver rule policy for the rule that you specified in a
 C<GetResolverRulePolicy> request.
 
 

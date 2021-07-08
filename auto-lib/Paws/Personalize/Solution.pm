@@ -70,7 +70,9 @@ training data.
 =head2 EventType => Str
 
 The event type (for example, 'click' or 'like') that is used for
-training the model.
+training the model. If no C<eventType> is provided, Amazon Personalize
+uses all interactions for training with equal weight regardless of
+type.
 
 
 =head2 LastUpdatedDateTime => Str

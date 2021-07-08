@@ -2,7 +2,7 @@
 package Paws::Config::PutOrganizationConformancePack;
   use Moose;
   has ConformancePackInputParameters => (is => 'ro', isa => 'ArrayRef[Paws::Config::ConformancePackInputParameter]');
-  has DeliveryS3Bucket => (is => 'ro', isa => 'Str', required => 1);
+  has DeliveryS3Bucket => (is => 'ro', isa => 'Str');
   has DeliveryS3KeyPrefix => (is => 'ro', isa => 'Str');
   has ExcludedAccounts => (is => 'ro', isa => 'ArrayRef[Str|Undef]');
   has OrganizationConformancePackName => (is => 'ro', isa => 'Str', required => 1);
@@ -35,7 +35,6 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $config = Paws->service('Config');
     my $PutOrganizationConformancePackResponse =
       $config->PutOrganizationConformancePack(
-      DeliveryS3Bucket                => 'MyDeliveryS3Bucket',
       OrganizationConformancePackName => 'MyOrganizationConformancePackName',
       ConformancePackInputParameters  => [
         {
@@ -45,6 +44,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },
         ...
       ],    # OPTIONAL
+      DeliveryS3Bucket    => 'MyDeliveryS3Bucket',       # OPTIONAL
       DeliveryS3KeyPrefix => 'MyDeliveryS3KeyPrefix',    # OPTIONAL
       ExcludedAccounts    => [ 'MyAccountId', ... ],     # OPTIONAL
       TemplateBody        => 'MyTemplateBody',           # OPTIONAL
@@ -69,22 +69,20 @@ A list of C<ConformancePackInputParameter> objects.
 
 
 
-=head2 B<REQUIRED> DeliveryS3Bucket => Str
+=head2 DeliveryS3Bucket => Str
 
-Location of an Amazon S3 bucket where AWS Config can deliver evaluation
-results. AWS Config stores intermediate files while processing
-conformance pack template.
+Amazon S3 bucket where AWS Config stores conformance pack templates.
 
-The delivery bucket name should start with awsconfigconforms. For
-example: "Resource": "arn:aws:s3:::your_bucket_name/*". For more
-information, see Permissions for cross account bucket access
-(https://docs.aws.amazon.com/config/latest/developerguide/conformance-pack-organization-apis.html).
+This field is optional. If used, it must be prefixed with
+C<awsconfigconforms>.
 
 
 
 =head2 DeliveryS3KeyPrefix => Str
 
 The prefix for the Amazon S3 bucket.
+
+This field is optional.
 
 
 

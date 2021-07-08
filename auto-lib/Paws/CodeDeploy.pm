@@ -100,6 +100,11 @@ package Paws::CodeDeploy;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteGitHubAccountToken', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub DeleteResourcesByExternalId {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeleteResourcesByExternalId', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   sub DeregisterOnPremisesInstance {
     my $self = shift;
     my $call_object = $self->new_with_coercions('Paws::CodeDeploy::DeregisterOnPremisesInstance', @_);
@@ -455,7 +460,7 @@ package Paws::CodeDeploy;
   }
 
 
-  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetDeploymentTargets BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetDeploymentTarget GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListDeploymentTargets ListGitHubAccountTokenNames ListOnPremisesInstances ListTagsForResource PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment TagResource UntagResource UpdateApplication UpdateDeploymentGroup / }
+  sub operations { qw/AddTagsToOnPremisesInstances BatchGetApplicationRevisions BatchGetApplications BatchGetDeploymentGroups BatchGetDeploymentInstances BatchGetDeployments BatchGetDeploymentTargets BatchGetOnPremisesInstances ContinueDeployment CreateApplication CreateDeployment CreateDeploymentConfig CreateDeploymentGroup DeleteApplication DeleteDeploymentConfig DeleteDeploymentGroup DeleteGitHubAccountToken DeleteResourcesByExternalId DeregisterOnPremisesInstance GetApplication GetApplicationRevision GetDeployment GetDeploymentConfig GetDeploymentGroup GetDeploymentInstance GetDeploymentTarget GetOnPremisesInstance ListApplicationRevisions ListApplications ListDeploymentConfigs ListDeploymentGroups ListDeploymentInstances ListDeployments ListDeploymentTargets ListGitHubAccountTokenNames ListOnPremisesInstances ListTagsForResource PutLifecycleEventHookExecutionStatus RegisterApplicationRevision RegisterOnPremisesInstance RemoveTagsFromOnPremisesInstances SkipWaitTimeForInstanceTermination StopDeployment TagResource UntagResource UpdateApplication UpdateDeploymentGroup / }
 
 1;
 
@@ -647,7 +652,7 @@ Each argument is described in detail in: L<Paws::CodeDeploy::BatchGetApplication
 Returns: a L<Paws::CodeDeploy::BatchGetApplicationsOutput> instance
 
 Gets information about one or more applications. The maximum number of
-applications that can be returned is 25.
+applications that can be returned is 100.
 
 
 =head2 BatchGetDeploymentGroups
@@ -731,7 +736,7 @@ the deprecated C<BatchGetDeploymentInstances>. The maximum number of
 targets that can be returned is 25.
 
 The type of targets returned depends on the deployment's compute
-platform:
+platform or deployment method:
 
 =over
 
@@ -746,6 +751,11 @@ B<AWS Lambda>: Information about Lambda functions targets.
 =item *
 
 B<Amazon ECS>: Information about Amazon ECS service targets.
+
+=item *
+
+B<CloudFormation>: Information about targets of blue/green deployments
+initiated by a CloudFormation stack update.
 
 =back
 
@@ -901,6 +911,8 @@ Creates a deployment configuration.
 
 =item [OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>]
 
+=item [OutdatedInstancesStrategy => Str]
+
 =item [Tags => ArrayRef[L<Paws::CodeDeploy::Tag>]]
 
 =item [TriggerConfigurations => ArrayRef[L<Paws::CodeDeploy::TriggerConfig>]]
@@ -982,6 +994,22 @@ Each argument is described in detail in: L<Paws::CodeDeploy::DeleteGitHubAccount
 Returns: a L<Paws::CodeDeploy::DeleteGitHubAccountTokenOutput> instance
 
 Deletes a GitHub account connection.
+
+
+=head2 DeleteResourcesByExternalId
+
+=over
+
+=item [ExternalId => Str]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::CodeDeploy::DeleteResourcesByExternalId>
+
+Returns: a L<Paws::CodeDeploy::DeleteResourcesByExternalIdOutput> instance
+
+Deletes resources linked to an external ID.
 
 
 =head2 DeregisterOnPremisesInstance
@@ -1239,8 +1267,8 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListDeploymentInsta
 
 Returns: a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance
 
-The newer BatchGetDeploymentTargets should be used instead because it
-works with all compute types. C<ListDeploymentInstances> throws an
+The newer C<BatchGetDeploymentTargets> should be used instead because
+it works with all compute types. C<ListDeploymentInstances> throws an
 exception if it is used with a compute platform other than
 EC2/On-premises or AWS Lambda.
 
@@ -1257,6 +1285,8 @@ account.
 =item [CreateTimeRange => L<Paws::CodeDeploy::TimeRange>]
 
 =item [DeploymentGroupName => Str]
+
+=item [ExternalId => Str]
 
 =item [IncludeOnlyStatuses => ArrayRef[Str|Undef]]
 
@@ -1349,8 +1379,9 @@ Each argument is described in detail in: L<Paws::CodeDeploy::ListTagsForResource
 
 Returns: a L<Paws::CodeDeploy::ListTagsForResourceOutput> instance
 
-Returns a list of tags for the resource identified by a specified ARN.
-Tags are used to organize and categorize your CodeDeploy resources.
+Returns a list of tags for the resource identified by a specified
+Amazon Resource Name (ARN). Tags are used to organize and categorize
+your CodeDeploy resources.
 
 
 =head2 PutLifecycleEventHookExecutionStatus
@@ -1371,8 +1402,17 @@ Each argument is described in detail in: L<Paws::CodeDeploy::PutLifecycleEventHo
 Returns: a L<Paws::CodeDeploy::PutLifecycleEventHookExecutionStatusOutput> instance
 
 Sets the result of a Lambda validation function. The function validates
-one or both lifecycle events (C<BeforeAllowTraffic> and
-C<AfterAllowTraffic>) and returns C<Succeeded> or C<Failed>.
+lifecycle hooks during a deployment that uses the AWS Lambda or Amazon
+ECS compute platform. For AWS Lambda deployments, the available
+lifecycle hooks are C<BeforeAllowTraffic> and C<AfterAllowTraffic>. For
+Amazon ECS deployments, the available lifecycle hooks are
+C<BeforeInstall>, C<AfterInstall>, C<AfterAllowTestTraffic>,
+C<BeforeAllowTraffic>, and C<AfterAllowTraffic>. Lambda validation
+functions return C<Succeeded> or C<Failed>. For more information, see
+AppSpec 'hooks' Section for an AWS Lambda Deployment
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-lambda)
+and AppSpec 'hooks' Section for an Amazon ECS Deployment
+(https://docs.aws.amazon.com/codedeploy/latest/userguide/reference-appspec-file-structure-hooks.html#appspec-hooks-ecs).
 
 
 =head2 RegisterApplicationRevision
@@ -1508,7 +1548,7 @@ Returns: a L<Paws::CodeDeploy::UntagResourceOutput> instance
 
 Disassociates a resource from a list of tags. The resource is
 identified by the C<ResourceArn> input parameter. The tags are
-identfied by the list of keys in the C<TagKeys> input parameter.
+identified by the list of keys in the C<TagKeys> input parameter.
 
 
 =head2 UpdateApplication
@@ -1562,6 +1602,8 @@ Changes the name of an application.
 =item [OnPremisesInstanceTagFilters => ArrayRef[L<Paws::CodeDeploy::TagFilter>]]
 
 =item [OnPremisesTagSet => L<Paws::CodeDeploy::OnPremisesTagSet>]
+
+=item [OutdatedInstancesStrategy => Str]
 
 =item [ServiceRoleArn => Str]
 
@@ -1643,9 +1685,9 @@ If passed a sub as first parameter, it will call the sub for each element found 
 If not, it will return a a L<Paws::CodeDeploy::ListDeploymentInstancesOutput> instance with all the C<param>s;  from all the responses. Please take into account that this mode can potentially consume vasts ammounts of memory.
 
 
-=head2 ListAllDeployments(sub { },[ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
+=head2 ListAllDeployments(sub { },[ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, ExternalId => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
 
-=head2 ListAllDeployments([ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
+=head2 ListAllDeployments([ApplicationName => Str, CreateTimeRange => L<Paws::CodeDeploy::TimeRange>, DeploymentGroupName => Str, ExternalId => Str, IncludeOnlyStatuses => ArrayRef[Str|Undef], NextToken => Str])
 
 
 If passed a sub as first parameter, it will call the sub for each element found in :

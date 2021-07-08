@@ -33,10 +33,10 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::KinesisAnal
 
 =head1 DESCRIPTION
 
-For an SQL-based Amazon Kinesis Data Analytics application, when
-configuring application output, identifies a Kinesis Data Firehose
-delivery stream as the destination. You provide the stream Amazon
-Resource Name (ARN) of the delivery stream.
+For a SQL-based Kinesis Data Analytics application, when configuring
+application output, identifies a Kinesis Data Firehose delivery stream
+as the destination. You provide the stream Amazon Resource Name (ARN)
+of the delivery stream.
 
 =head1 ATTRIBUTES
 

@@ -6,18 +6,23 @@ package Paws::Snowball::JobMetadata;
   has CreationDate => (is => 'ro', isa => 'Str');
   has DataTransferProgress => (is => 'ro', isa => 'Paws::Snowball::DataTransfer');
   has Description => (is => 'ro', isa => 'Str');
+  has DeviceConfiguration => (is => 'ro', isa => 'Paws::Snowball::DeviceConfiguration');
   has ForwardingAddressId => (is => 'ro', isa => 'Str');
   has JobId => (is => 'ro', isa => 'Str');
   has JobLogInfo => (is => 'ro', isa => 'Paws::Snowball::JobLogs');
   has JobState => (is => 'ro', isa => 'Str');
   has JobType => (is => 'ro', isa => 'Str');
   has KmsKeyARN => (is => 'ro', isa => 'Str');
+  has LongTermPricingId => (is => 'ro', isa => 'Str');
   has Notification => (is => 'ro', isa => 'Paws::Snowball::Notification');
+  has OnDeviceServiceConfiguration => (is => 'ro', isa => 'Paws::Snowball::OnDeviceServiceConfiguration');
+  has RemoteManagement => (is => 'ro', isa => 'Str');
   has Resources => (is => 'ro', isa => 'Paws::Snowball::JobResource');
   has RoleARN => (is => 'ro', isa => 'Str');
   has ShippingDetails => (is => 'ro', isa => 'Paws::Snowball::ShippingDetails');
   has SnowballCapacityPreference => (is => 'ro', isa => 'Str');
   has SnowballType => (is => 'ro', isa => 'Str');
+  has TaxDocuments => (is => 'ro', isa => 'Paws::Snowball::TaxDocuments');
 
 1;
 
@@ -38,7 +43,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Snowball::JobMetadata object:
 
-  $service_obj->Method(Att1 => { AddressId => $value, ..., SnowballType => $value  });
+  $service_obj->Method(Att1 => { AddressId => $value, ..., TaxDocuments => $value  });
 
 =head3 Results returned from an API call
 
@@ -59,7 +64,7 @@ action.
 
 =head2 AddressId => Str
 
-The ID for the address that you want the Snowball shipped to.
+The ID for the address that you want the Snow device shipped to.
 
 
 =head2 ClusterId => Str
@@ -75,14 +80,20 @@ The creation date for this job.
 
 =head2 DataTransferProgress => L<Paws::Snowball::DataTransfer>
 
-A value that defines the real-time status of a Snowball's data transfer
-while the device is at AWS. This data is only available while a job has
-a C<JobState> value of C<InProgress>, for both import and export jobs.
+A value that defines the real-time status of a Snow device's data
+transfer while the device is at AWS. This data is only available while
+a job has a C<JobState> value of C<InProgress>, for both import and
+export jobs.
 
 
 =head2 Description => Str
 
 The description of the job, provided at job creation.
+
+
+=head2 DeviceConfiguration => L<Paws::Snowball::DeviceConfiguration>
+
+
 
 
 =head2 ForwardingAddressId => Str
@@ -103,7 +114,7 @@ C<JID123e4567-e89b-12d3-a456-426655440000>.
 Links to Amazon S3 presigned URLs for the job report and logs. For
 import jobs, the PDF job report becomes available at the end of the
 import process. For export jobs, your job report typically becomes
-available while the Snowball for your job part is being delivered to
+available while the Snow device for your job part is being delivered to
 you.
 
 
@@ -126,12 +137,32 @@ CreateKey
 API action in AWS KMS.
 
 
+=head2 LongTermPricingId => Str
+
+The ID of the long-term pricing type for the device.
+
+
 =head2 Notification => L<Paws::Snowball::Notification>
 
 The Amazon Simple Notification Service (Amazon SNS) notification
 settings associated with a specific job. The C<Notification> object is
 returned as a part of the response syntax of the C<DescribeJob> action
 in the C<JobMetadata> data type.
+
+
+=head2 OnDeviceServiceConfiguration => L<Paws::Snowball::OnDeviceServiceConfiguration>
+
+Represents metadata and configuration settings for services on an AWS
+Snow Family device.
+
+
+=head2 RemoteManagement => Str
+
+Allows you to securely operate and manage Snowcone devices remotely
+from outside of your internal network. When set to
+C<INSTALLED_AUTOSTART>, remote management will automatically be
+available when the device arrives at your location. Otherwise, you need
+to use the Snowball Client to manage the device.
 
 
 =head2 Resources => L<Paws::Snowball::JobResource>
@@ -157,14 +188,26 @@ numbers and shipping speed options.
 
 =head2 SnowballCapacityPreference => Str
 
-The Snowball capacity preference for this job, specified at job
+The Snow device capacity preference for this job, specified at job
 creation. In US regions, you can choose between 50 TB and 80 TB
 Snowballs. All other regions use 80 TB capacity Snowballs.
+
+For more information, see
+"https://docs.aws.amazon.com/snowball/latest/snowcone-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide> or
+"https://docs.aws.amazon.com/snowball/latest/developer-guide/snow-device-types.html"
+(Snow Family Devices and Capacity) in the I<Snowcone User Guide>.
 
 
 =head2 SnowballType => Str
 
 The type of device used with this job.
+
+
+=head2 TaxDocuments => L<Paws::Snowball::TaxDocuments>
+
+The metadata associated with the tax documents required in your AWS
+Region.
 
 
 

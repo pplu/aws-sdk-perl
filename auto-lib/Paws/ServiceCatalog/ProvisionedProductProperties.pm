@@ -6,6 +6,7 @@ package Paws::ServiceCatalog::ProvisionedProductProperties;
   class_has xml_keys =>(is => 'ro', default => 'key');
   class_has xml_values =>(is => 'ro', default => 'value');
 
+  has LAUNCH_ROLE => (is => 'ro', isa => 'Str');
   has OWNER => (is => 'ro', isa => 'Str');
 1;
 
@@ -26,20 +27,23 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::ServiceCatalog::ProvisionedProductProperties object:
 
-  $service_obj->Method(Att1 => { OWNER => $value, ..., OWNER => $value  });
+  $service_obj->Method(Att1 => { LAUNCH_ROLE => $value, ..., OWNER => $value  });
 
 =head3 Results returned from an API call
 
 Use accessors for each attribute. If Att1 is expected to be an Paws::ServiceCatalog::ProvisionedProductProperties object:
 
   $result = $service_obj->Method(...);
-  $result->Att1->OWNER
+  $result->Att1->LAUNCH_ROLE
 
 =head1 DESCRIPTION
 
 This class has no description
 
 =head1 ATTRIBUTES
+
+
+=head2 LAUNCH_ROLE => Str
 
 
 =head2 OWNER => Str

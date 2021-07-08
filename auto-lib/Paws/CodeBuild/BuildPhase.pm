@@ -66,34 +66,34 @@ The current status of the build phase. Valid values include:
 
 =over
 
-=item *
+=item FAILED
 
-C<FAILED>: The build phase failed.
+The build phase failed.
 
-=item *
+=item FAULT
 
-C<FAULT>: The build phase faulted.
+The build phase faulted.
 
-=item *
+=item IN_PROGRESS
 
-C<IN_PROGRESS>: The build phase is still in progress.
+The build phase is still in progress.
 
-=item *
+=item QUEUED
 
-C<QUEUED>: The build has been submitted and is queued behind other
-submitted builds.
+The build has been submitted and is queued behind other submitted
+builds.
 
-=item *
+=item STOPPED
 
-C<STOPPED>: The build phase stopped.
+The build phase stopped.
 
-=item *
+=item SUCCEEDED
 
-C<SUCCEEDED>: The build phase succeeded.
+The build phase succeeded.
 
-=item *
+=item TIMED_OUT
 
-C<TIMED_OUT>: The build phase timed out.
+The build phase timed out.
 
 =back
 

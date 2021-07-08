@@ -18,7 +18,8 @@ Paws::Detective::ListGraphsResponse
 
 =head2 GraphList => ArrayRef[L<Paws::Detective::Graph>]
 
-A list of behavior graphs that the account is a master for.
+A list of behavior graphs that the account is an administrator account
+for.
 
 
 =head2 NextToken => Str

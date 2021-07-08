@@ -55,7 +55,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         },                                  # OPTIONAL
         MatchingEventTypes => [
           'SEND',
-          ... # values: SEND, REJECT, BOUNCE, COMPLAINT, DELIVERY, OPEN, CLICK, RENDERING_FAILURE
+          ... # values: SEND, REJECT, BOUNCE, COMPLAINT, DELIVERY, OPEN, CLICK, RENDERING_FAILURE, DELIVERY_DELAY, SUBSCRIPTION
         ],    # OPTIONAL
         PinpointDestination => { ApplicationArn => 'MyAmazonResourceName', }
         ,     # OPTIONAL

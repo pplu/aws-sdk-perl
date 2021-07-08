@@ -2,6 +2,7 @@
 package Paws::ServiceCatalog::DescribeProductOutput;
   use Moose;
   has Budgets => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::BudgetDetail]');
+  has LaunchPaths => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::LaunchPath]');
   has ProductViewSummary => (is => 'ro', isa => 'Paws::ServiceCatalog::ProductViewSummary');
   has ProvisioningArtifacts => (is => 'ro', isa => 'ArrayRef[Paws::ServiceCatalog::ProvisioningArtifact]');
 
@@ -19,6 +20,11 @@ Paws::ServiceCatalog::DescribeProductOutput
 =head2 Budgets => ArrayRef[L<Paws::ServiceCatalog::BudgetDetail>]
 
 Information about the associated budgets.
+
+
+=head2 LaunchPaths => ArrayRef[L<Paws::ServiceCatalog::LaunchPath>]
+
+Information about the associated launch paths.
 
 
 =head2 ProductViewSummary => L<Paws::ServiceCatalog::ProductViewSummary>

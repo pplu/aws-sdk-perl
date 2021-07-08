@@ -1,6 +1,7 @@
 
 package Paws::EKS::DescribeUpdate;
   use Moose;
+  has AddonName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'addonName');
   has Name => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'name', required => 1);
   has NodegroupName => (is => 'ro', isa => 'Str', traits => ['ParamInQuery'], query_name => 'nodegroupName');
   has UpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'updateId', required => 1);
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $DescribeUpdateResponse = $eks->DescribeUpdate(
       Name          => 'MyString',
       UpdateId      => 'MyString',
+      AddonName     => 'MyString',    # OPTIONAL
       NodegroupName => 'MyString',    # OPTIONAL
     );
 
@@ -45,6 +47,14 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/eks/DescribeUpdate>
 
 =head1 ATTRIBUTES
+
+
+=head2 AddonName => Str
+
+The name of the add-on. The name must match one of the names returned
+by C<ListAddons>
+(https://docs.aws.amazon.com/eks/latest/APIReference/API_ListAddons.html).
+
 
 
 =head2 B<REQUIRED> Name => Str

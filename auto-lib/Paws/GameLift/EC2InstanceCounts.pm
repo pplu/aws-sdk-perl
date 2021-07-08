@@ -39,91 +39,53 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GameLift::E
 
 =head1 DESCRIPTION
 
-Current status of fleet capacity. The number of active instances should
-match or be in the process of matching the number of desired instances.
-Pending and terminating counts are non-zero only if fleet capacity is
-adjusting to an UpdateFleetCapacity request, or if access to resources
-is temporarily affected.
+Resource capacity settings. Fleet capacity is measured in EC2
+instances. Pending and terminating counts are non-zero when the fleet
+capacity is adjusting to a scaling event or if access to resources is
+temporarily affected.
 
-=over
-
-=item *
-
-CreateFleet
-
-=item *
-
-ListFleets
-
-=item *
-
-DeleteFleet
-
-=item *
-
-DescribeFleetAttributes
-
-=item *
-
-UpdateFleetAttributes
-
-=item *
-
-Manage fleet actions:
-
-=over
-
-=item *
-
-StartFleetActions
-
-=item *
-
-StopFleetActions
-
-=back
-
-=back
-
+EC2 instance counts are part of FleetCapacity.
 
 =head1 ATTRIBUTES
 
 
 =head2 ACTIVE => Int
 
-Actual number of active instances in the fleet.
+Actual number of instances that are ready to host game sessions.
 
 
 =head2 DESIRED => Int
 
-Ideal number of active instances in the fleet.
+Ideal number of active instances. GameLift will always try to maintain
+the desired number of instances. Capacity is scaled up or down by
+changing the desired instances.
 
 
 =head2 IDLE => Int
 
-Number of active instances in the fleet that are not currently hosting
-a game session.
+Number of active instances that are not currently hosting a game
+session.
 
 
 =head2 MAXIMUM => Int
 
-The maximum value allowed for the fleet's instance count.
+The maximum instance count value allowed.
 
 
 =head2 MINIMUM => Int
 
-The minimum value allowed for the fleet's instance count.
+The minimum instance count value allowed.
 
 
 =head2 PENDING => Int
 
-Number of instances in the fleet that are starting but not yet active.
+Number of instances that are starting but not yet active.
 
 
 =head2 TERMINATING => Int
 
-Number of instances in the fleet that are no longer active but haven't
-yet been terminated.
+Number of instances that are no longer active but haven't yet been
+terminated.
 
 
 

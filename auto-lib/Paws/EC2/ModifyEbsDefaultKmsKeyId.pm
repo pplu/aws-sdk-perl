@@ -66,7 +66,7 @@ You can specify the CMK using any of the following:
 
 =item *
 
-Key ID. For example, key/1234abcd-12ab-34cd-56ef-1234567890ab.
+Key ID. For example, 1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
@@ -75,12 +75,12 @@ Key alias. For example, alias/ExampleAlias.
 =item *
 
 Key ARN. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:key/I<abcd1234-a123-456a-a12b-a123b4cd56ef>.
+arn:aws:kms:us-east-1:012345678910:key/1234abcd-12ab-34cd-56ef-1234567890ab.
 
 =item *
 
 Alias ARN. For example,
-arn:aws:kms:I<us-east-1>:I<012345678910>:alias/I<ExampleAlias>.
+arn:aws:kms:us-east-1:012345678910:alias/ExampleAlias.
 
 =back
 

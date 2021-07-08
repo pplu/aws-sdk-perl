@@ -59,7 +59,8 @@ targets again.
 
 =head2 ReservoirQuota => Int
 
-The number of requests per second that X-Ray allocated this service.
+The number of requests per second that X-Ray allocated for this
+service.
 
 
 =head2 ReservoirQuotaTTL => Str

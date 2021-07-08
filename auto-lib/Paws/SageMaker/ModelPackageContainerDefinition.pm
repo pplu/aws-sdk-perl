@@ -2,6 +2,7 @@
 package Paws::SageMaker::ModelPackageContainerDefinition;
   use Moose;
   has ContainerHostname => (is => 'ro', isa => 'Str');
+  has Environment => (is => 'ro', isa => 'Paws::SageMaker::EnvironmentMap');
   has Image => (is => 'ro', isa => 'Str', required => 1);
   has ImageDigest => (is => 'ro', isa => 'Str');
   has ModelDataUrl => (is => 'ro', isa => 'Str');
@@ -47,6 +48,13 @@ Describes the Docker container for the model package.
 The DNS host name for the Docker container.
 
 
+=head2 Environment => L<Paws::SageMaker::EnvironmentMap>
+
+The environment variables to set in the Docker container. Each key and
+value in the C<Environment> string to string map can have length of up
+to 1024. We support up to 16 entries in the map.
+
+
 =head2 B<REQUIRED> Image => Str
 
 The Amazon EC2 Container Registry (Amazon ECR) path where inference
@@ -73,10 +81,13 @@ The Amazon S3 path where the model artifacts, which result from model
 training, are stored. This path must point to a single C<gzip>
 compressed tar archive (C<.tar.gz> suffix).
 
+The model artifacts must be in an S3 bucket that is in the same region
+as the model package.
+
 
 =head2 ProductId => Str
 
-The AWS Marketplace product ID of the model package.
+The Amazon Web Services Marketplace product ID of the model package.
 
 
 

@@ -45,7 +45,9 @@ Location for Amazon S3 in the I<AWS DataSync User Guide>.
 =head2 B<REQUIRED> BucketAccessRoleArn => Str
 
 The Amazon S3 bucket to access. This bucket is used as a parameter in
-the CreateLocationS3 operation.
+the CreateLocationS3
+(https://docs.aws.amazon.com/datasync/latest/userguide/API_CreateLocationS3.html)
+operation.
 
 
 

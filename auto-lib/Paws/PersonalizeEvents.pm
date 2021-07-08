@@ -19,10 +19,20 @@ package Paws::PersonalizeEvents;
     my $call_object = $self->new_with_coercions('Paws::PersonalizeEvents::PutEvents', @_);
     return $self->caller->do_call($self, $call_object);
   }
+  sub PutItems {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PersonalizeEvents::PutItems', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
+  sub PutUsers {
+    my $self = shift;
+    my $call_object = $self->new_with_coercions('Paws::PersonalizeEvents::PutUsers', @_);
+    return $self->caller->do_call($self, $call_object);
+  }
   
 
 
-  sub operations { qw/PutEvents / }
+  sub operations { qw/PutEvents PutItems PutUsers / }
 
 1;
 
@@ -50,7 +60,11 @@ Paws::PersonalizeEvents - Perl Interface to AWS Amazon Personalize Events
 
 =head1 DESCRIPTION
 
-
+Amazon Personalize can consume real-time user event data, such as
+I<stream> or I<click> data, and use it for model training either alone
+or combined with historical data. For more information see Recording
+Events
+(https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
 
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/personalize-events-2018-03-22>
 
@@ -76,7 +90,49 @@ Each argument is described in detail in: L<Paws::PersonalizeEvents::PutEvents>
 
 Returns: nothing
 
-Records user interaction event data.
+Records user interaction event data. For more information see Recording
+Events
+(https://docs.aws.amazon.com/personalize/latest/dg/recording-events.html).
+
+
+=head2 PutItems
+
+=over
+
+=item DatasetArn => Str
+
+=item Items => ArrayRef[L<Paws::PersonalizeEvents::Item>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PersonalizeEvents::PutItems>
+
+Returns: nothing
+
+Adds one or more items to an Items dataset. For more information see
+Importing Items Incrementally
+(https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html).
+
+
+=head2 PutUsers
+
+=over
+
+=item DatasetArn => Str
+
+=item Users => ArrayRef[L<Paws::PersonalizeEvents::User>]
+
+
+=back
+
+Each argument is described in detail in: L<Paws::PersonalizeEvents::PutUsers>
+
+Returns: nothing
+
+Adds one or more users to a Users dataset. For more information see
+Importing Users Incrementally
+(https://docs.aws.amazon.com/personalize/latest/dg/importing-users.html).
 
 
 

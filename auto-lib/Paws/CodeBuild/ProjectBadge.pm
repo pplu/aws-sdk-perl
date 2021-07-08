@@ -50,9 +50,6 @@ project's build badge.
 The publicly-accessible URL through which you can access the build
 badge for your project.
 
-The publicly accessible URL through which you can access the build
-badge for your project.
-
 
 
 =head1 SEE ALSO

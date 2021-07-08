@@ -84,7 +84,7 @@ I<Code:> AccountProblem
 =item *
 
 I<Description:> There is a problem with your AWS account that prevents
-the operation from completing successfully. Contact AWS Support for
+the action from completing successfully. Contact AWS Support for
 further assistance.
 
 =item *
@@ -679,7 +679,7 @@ I<Code:> InvalidObjectState
 
 =item *
 
-I<Description:> The operation is not valid for the current state of the
+I<Description:> The action is not valid for the current state of the
 object.
 
 =item *
@@ -1656,7 +1656,7 @@ I<Code:> OperationAborted
 
 =item *
 
-I<Description:> A conflicting conditional operation is currently in
+I<Description:> A conflicting conditional action is currently in
 progress against this resource. Try again.
 
 =item *

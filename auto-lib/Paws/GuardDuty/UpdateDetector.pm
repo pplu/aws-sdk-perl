@@ -1,6 +1,7 @@
 
 package Paws::GuardDuty::UpdateDetector;
   use Moose;
+  has DataSources => (is => 'ro', isa => 'Paws::GuardDuty::DataSourceConfigurations', traits => ['NameInRequest'], request_name => 'dataSources');
   has DetectorId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'detectorId', required => 1);
   has Enable => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'enable');
   has FindingPublishingFrequency => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'findingPublishingFrequency');
@@ -31,7 +32,13 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $guardduty = Paws->service('GuardDuty');
     my $UpdateDetectorResponse = $guardduty->UpdateDetector(
-      DetectorId                 => 'MyDetectorId',
+      DetectorId  => 'MyDetectorId',
+      DataSources => {
+        S3Logs => {
+          Enable => 1,
+
+        },    # OPTIONAL
+      },    # OPTIONAL
       Enable                     => 1,                    # OPTIONAL
       FindingPublishingFrequency => 'FIFTEEN_MINUTES',    # OPTIONAL
     );
@@ -40,6 +47,12 @@ Values for attributes that are native types (Int, String, Float, etc) can passed
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/guardduty/UpdateDetector>
 
 =head1 ATTRIBUTES
+
+
+=head2 DataSources => L<Paws::GuardDuty::DataSourceConfigurations>
+
+Describes which data sources will be updated.
+
 
 
 =head2 B<REQUIRED> DetectorId => Str
@@ -56,7 +69,7 @@ Specifies whether the detector is enabled or not enabled.
 
 =head2 FindingPublishingFrequency => Str
 
-A enum value that specifies how frequently findings are exported, such
+An enum value that specifies how frequently findings are exported, such
 as to CloudWatch Events.
 
 Valid values are: C<"FIFTEEN_MINUTES">, C<"ONE_HOUR">, C<"SIX_HOURS">

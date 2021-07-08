@@ -75,7 +75,7 @@ The token for the next set of results.
 
 A filter to limit results to those data set contents whose creation is
 scheduled before the given time. See the field C<triggers.schedule> in
-the CreateDataset request. (timestamp)
+the C<CreateDataset> request. (timestamp)
 
 
 
@@ -83,7 +83,7 @@ the CreateDataset request. (timestamp)
 
 A filter to limit results to those data set contents whose creation is
 scheduled on or after the given time. See the field
-C<triggers.schedule> in the CreateDataset request. (timestamp)
+C<triggers.schedule> in the C<CreateDataset> request. (timestamp)
 
 
 

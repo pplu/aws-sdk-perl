@@ -5,6 +5,7 @@ package Paws::Config::DeliveryChannel;
   has Name => (is => 'ro', isa => 'Str', request_name => 'name', traits => ['NameInRequest']);
   has S3BucketName => (is => 'ro', isa => 'Str', request_name => 's3BucketName', traits => ['NameInRequest']);
   has S3KeyPrefix => (is => 'ro', isa => 'Str', request_name => 's3KeyPrefix', traits => ['NameInRequest']);
+  has S3KmsKeyArn => (is => 'ro', isa => 'Str', request_name => 's3KmsKeyArn', traits => ['NameInRequest']);
   has SnsTopicARN => (is => 'ro', isa => 'Str', request_name => 'snsTopicARN', traits => ['NameInRequest']);
 
 1;
@@ -74,6 +75,13 @@ in the AWS Config Developer Guide.
 =head2 S3KeyPrefix => Str
 
 The prefix for the specified Amazon S3 bucket.
+
+
+=head2 S3KmsKeyArn => Str
+
+The Amazon Resource Name (ARN) of the AWS Key Management Service (KMS)
+customer managed key (CMK) used to encrypt objects delivered by AWS
+Config. Must belong to the same Region as the destination S3 bucket.
 
 
 =head2 SnsTopicARN => Str

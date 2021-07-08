@@ -55,9 +55,9 @@ The ML compute instance type.
 
 =head2 VolumeKmsKeyId => Str
 
-The AWS KMS key that Amazon SageMaker uses to encrypt data on the
-storage volume attached to the ML compute instance(s) that run the
-training job.
+The Amazon Web Services KMS key that Amazon SageMaker uses to encrypt
+data on the storage volume attached to the ML compute instance(s) that
+run the training job.
 
 Certain Nitro-based instances include local storage, dependent on the
 instance type. Local storage volumes are encrypted using a hardware

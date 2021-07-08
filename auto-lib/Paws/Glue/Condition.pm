@@ -65,8 +65,10 @@ A logical operator.
 
 =head2 State => Str
 
-The condition state. Currently, the values supported are C<SUCCEEDED>,
-C<STOPPED>, C<TIMEOUT>, and C<FAILED>.
+The condition state. Currently, the only job states that a trigger can
+listen for are C<SUCCEEDED>, C<STOPPED>, C<FAILED>, and C<TIMEOUT>. The
+only crawler states that a trigger can listen for are C<SUCCEEDED>,
+C<FAILED>, and C<CANCELLED>.
 
 
 

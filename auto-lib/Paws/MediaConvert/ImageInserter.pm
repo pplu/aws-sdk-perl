@@ -33,9 +33,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::MediaConver
 
 =head1 DESCRIPTION
 
-Enable the image inserter feature to include a graphic overlay on your
+Use the image inserter feature to include a graphic overlay on your
 video. Enable or disable this feature for each input or output
-individually. This setting is disabled by default.
+individually. For more information, see
+https://docs.aws.amazon.com/mediaconvert/latest/ug/graphic-overlay.html.
+This setting is disabled by default.
 
 =head1 ATTRIBUTES
 

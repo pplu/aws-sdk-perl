@@ -2,7 +2,8 @@
 package Paws::EC2::DeleteKeyPair;
   use Moose;
   has DryRun => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'dryRun' );
-  has KeyName => (is => 'ro', isa => 'Str', required => 1);
+  has KeyName => (is => 'ro', isa => 'Str');
+  has KeyPairId => (is => 'ro', isa => 'Str');
 
   use MooseX::ClassAttribute;
 
@@ -48,9 +49,15 @@ C<DryRunOperation>. Otherwise, it is C<UnauthorizedOperation>.
 
 
 
-=head2 B<REQUIRED> KeyName => Str
+=head2 KeyName => Str
 
 The name of the key pair.
+
+
+
+=head2 KeyPairId => Str
+
+The ID of the key pair.
 
 
 

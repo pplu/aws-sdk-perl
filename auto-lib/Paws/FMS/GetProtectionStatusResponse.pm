@@ -73,7 +73,7 @@ C<NextToken> using your own processes.
 The service type that is protected by the policy. Currently, this is
 always C<SHIELD_ADVANCED>.
 
-Valid values are: C<"WAF">, C<"SHIELD_ADVANCED">, C<"SECURITY_GROUPS_COMMON">, C<"SECURITY_GROUPS_CONTENT_AUDIT">, C<"SECURITY_GROUPS_USAGE_AUDIT">
+Valid values are: C<"WAF">, C<"WAFV2">, C<"SHIELD_ADVANCED">, C<"SECURITY_GROUPS_COMMON">, C<"SECURITY_GROUPS_CONTENT_AUDIT">, C<"SECURITY_GROUPS_USAGE_AUDIT">, C<"NETWORK_FIREWALL">, C<"DNS_FIREWALL">
 =head2 _request_id => Str
 
 

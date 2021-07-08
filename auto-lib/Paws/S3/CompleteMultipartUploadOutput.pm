@@ -2,6 +2,7 @@
 package Paws::S3::CompleteMultipartUploadOutput;
   use Moose;
   has Bucket => (is => 'ro', isa => 'Str');
+  has BucketKeyEnabled => (is => 'ro', isa => 'Bool', header_name => 'x-amz-server-side-encryption-bucket-key-enabled', traits => ['ParamInHeader']);
   has ETag => (is => 'ro', isa => 'Str');
   has Expiration => (is => 'ro', isa => 'Str', header_name => 'x-amz-expiration', traits => ['ParamInHeader']);
   has Key => (is => 'ro', isa => 'Str');
@@ -27,6 +28,32 @@ Paws::S3::CompleteMultipartUploadOutput
 =head2 Bucket => Str
 
 The name of the bucket that contains the newly created object.
+
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
+I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
+
+
+
+=head2 BucketKeyEnabled => Bool
+
+Indicates whether the multipart upload uses an S3 Bucket Key for
+server-side encryption with AWS KMS (SSE-KMS).
 
 
 

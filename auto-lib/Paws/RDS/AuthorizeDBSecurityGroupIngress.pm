@@ -40,6 +40,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       'DBSecurityGroupName' => 'mydbsecuritygroup'
       );
 
+    # Results:
+    my $DBSecurityGroup =
+      $AuthorizeDBSecurityGroupIngressResult->DBSecurityGroup;
+
+    # Returns a L<Paws::RDS::AuthorizeDBSecurityGroupIngressResult> object.
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/rds/AuthorizeDBSecurityGroupIngress>
@@ -79,11 +84,12 @@ C<EC2SecurityGroupId> must be provided.
 
 =head2 EC2SecurityGroupOwnerId => Str
 
-AWS account number of the owner of the EC2 security group specified in
-the C<EC2SecurityGroupName> parameter. The AWS access key ID isn't an
-acceptable value. For VPC DB security groups, C<EC2SecurityGroupId>
-must be provided. Otherwise, C<EC2SecurityGroupOwnerId> and either
-C<EC2SecurityGroupName> or C<EC2SecurityGroupId> must be provided.
+Amazon Web Services account number of the owner of the EC2 security
+group specified in the C<EC2SecurityGroupName> parameter. The Amazon
+Web Services access key ID isn't an acceptable value. For VPC DB
+security groups, C<EC2SecurityGroupId> must be provided. Otherwise,
+C<EC2SecurityGroupOwnerId> and either C<EC2SecurityGroupName> or
+C<EC2SecurityGroupId> must be provided.
 
 
 

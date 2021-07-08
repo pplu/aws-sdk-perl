@@ -1,6 +1,7 @@
 
 package Paws::MQ::CreateConfiguration;
   use Moose;
+  has AuthenticationStrategy => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'authenticationStrategy');
   has EngineType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineType');
   has EngineVersion => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'engineVersion');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name');
@@ -32,14 +33,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $mq = Paws->service('MQ');
     my $CreateConfigurationResponse = $mq->CreateConfiguration(
-      EngineType    => 'ACTIVEMQ',                           # OPTIONAL
-      EngineVersion => 'My__string',                         # OPTIONAL
-      Name          => 'My__string',                         # OPTIONAL
-      Tags          => { 'My__string' => 'My__string', },    # OPTIONAL
+      AuthenticationStrategy => 'SIMPLE',                             # OPTIONAL
+      EngineType             => 'ACTIVEMQ',                           # OPTIONAL
+      EngineVersion          => 'My__string',                         # OPTIONAL
+      Name                   => 'My__string',                         # OPTIONAL
+      Tags                   => { 'My__string' => 'My__string', },    # OPTIONAL
     );
 
     # Results:
-    my $Arn            = $CreateConfigurationResponse->Arn;
+    my $Arn = $CreateConfigurationResponse->Arn;
+    my $AuthenticationStrategy =
+      $CreateConfigurationResponse->AuthenticationStrategy;
     my $Created        = $CreateConfigurationResponse->Created;
     my $Id             = $CreateConfigurationResponse->Id;
     my $LatestRevision = $CreateConfigurationResponse->LatestRevision;
@@ -53,12 +57,18 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mq/
 =head1 ATTRIBUTES
 
 
+=head2 AuthenticationStrategy => Str
+
+The authentication strategy associated with the configuration.
+
+Valid values are: C<"SIMPLE">, C<"LDAP">
+
 =head2 EngineType => Str
 
 Required. The type of broker engine. Note: Currently, Amazon MQ
-supports only ACTIVEMQ.
+supports ACTIVEMQ and RABBITMQ.
 
-Valid values are: C<"ACTIVEMQ">
+Valid values are: C<"ACTIVEMQ">, C<"RABBITMQ">
 
 =head2 EngineVersion => Str
 

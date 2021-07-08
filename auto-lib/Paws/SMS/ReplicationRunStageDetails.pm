@@ -41,13 +41,12 @@ Details of the current stage of a replication run.
 
 =head2 Stage => Str
 
-String describing the current stage of a replication run.
+The current stage of a replication run.
 
 
 =head2 StageProgress => Str
 
-String describing the progress of the current stage of a replication
-run.
+The progress of the current stage of a replication run.
 
 
 

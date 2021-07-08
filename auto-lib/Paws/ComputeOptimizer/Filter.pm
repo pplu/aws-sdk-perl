@@ -35,7 +35,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::ComputeOpti
 =head1 DESCRIPTION
 
 Describes a filter that returns a more specific list of
-recommendations.
+recommendations. Use this filter with the
+C<GetAutoScalingGroupRecommendations> and
+C<GetEC2InstanceRecommendations> actions.
+
+You can use C<EBSFilter> with the C<GetEBSVolumeRecommendations>
+action, C<LambdaFunctionRecommendationFilter> with the
+C<GetLambdaFunctionRecommendations> action, and C<JobFilter> with the
+C<DescribeRecommendationExportJobs> action.
 
 =head1 ATTRIBUTES
 
@@ -44,28 +51,160 @@ recommendations.
 
 The name of the filter.
 
-Specify C<Finding> to filter the results to a specific findings
-classification.
+Specify C<Finding> to return recommendations with a specific finding
+classification (e.g., C<Underprovisioned>).
 
-Specify C<RecommendationSourceType> to filter the results to a specific
-resource type.
+Specify C<RecommendationSourceType> to return recommendations of a
+specific resource type (e.g., C<Ec2Instance>).
+
+Specify C<FindingReasonCodes> to return recommendations with a specific
+finding reason code (e.g., C<CPUUnderprovisioned>).
 
 
 =head2 Values => ArrayRef[Str|Undef]
 
 The value of the filter.
 
-If you specify the C<name> parameter as C<Finding>, and you're
-recommendations for an I<instance>, then the valid values are
-C<Underprovisioned>, C<Overprovisioned>, C<NotOptimized>, or
-C<Optimized>.
+The valid values for this parameter are as follows, depending on what
+you specify for the C<name> parameter and the resource type that you
+wish to filter results for:
 
-If you specify the C<name> parameter as C<Finding>, and you're
-recommendations for an I<Auto Scaling group>, then the valid values are
-C<Optimized>, or C<NotOptimized>.
+=over
 
-If you specify the C<name> parameter as C<RecommendationSourceType>,
-then the valid values are C<EC2Instance>, or C<AutoScalingGroup>.
+=item *
+
+Specify C<Optimized> or C<NotOptimized> if you specify the C<name>
+parameter as C<Finding> and you want to filter results for Auto Scaling
+groups.
+
+=item *
+
+Specify C<Underprovisioned>, C<Overprovisioned>, or C<Optimized> if you
+specify the C<name> parameter as C<Finding> and you want to filter
+results for EC2 instances.
+
+=item *
+
+Specify C<Ec2Instance> or C<AutoScalingGroup> if you specify the
+C<name> parameter as C<RecommendationSourceType>.
+
+=item *
+
+Specify one of the following options if you specify the C<name>
+parameter as C<FindingReasonCodes>:
+
+=over
+
+=item *
+
+B<C<CPUOverprovisioned> > E<mdash> The instanceE<rsquo>s CPU
+configuration can be sized down while still meeting the performance
+requirements of your workload.
+
+=item *
+
+B<C<CPUUnderprovisioned> > E<mdash> The instanceE<rsquo>s CPU
+configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+CPU performance.
+
+=item *
+
+B<C<MemoryOverprovisioned> > E<mdash> The instanceE<rsquo>s memory
+configuration can be sized down while still meeting the performance
+requirements of your workload.
+
+=item *
+
+B<C<MemoryUnderprovisioned> > E<mdash> The instanceE<rsquo>s memory
+configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+memory performance.
+
+=item *
+
+B<C<EBSThroughputOverprovisioned> > E<mdash> The instanceE<rsquo>s EBS
+throughput configuration can be sized down while still meeting the
+performance requirements of your workload.
+
+=item *
+
+B<C<EBSThroughputUnderprovisioned> > E<mdash> The instanceE<rsquo>s EBS
+throughput configuration doesn't meet the performance requirements of
+your workload and there is an alternative instance type that provides
+better EBS throughput performance.
+
+=item *
+
+B<C<EBSIOPSOverprovisioned> > E<mdash> The instanceE<rsquo>s EBS IOPS
+configuration can be sized down while still meeting the performance
+requirements of your workload.
+
+=item *
+
+B<C<EBSIOPSUnderprovisioned> > E<mdash> The instanceE<rsquo>s EBS IOPS
+configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+EBS IOPS performance.
+
+=item *
+
+B<C<NetworkBandwidthOverprovisioned> > E<mdash> The instanceE<rsquo>s
+network bandwidth configuration can be sized down while still meeting
+the performance requirements of your workload.
+
+=item *
+
+B<C<NetworkBandwidthUnderprovisioned> > E<mdash> The instanceE<rsquo>s
+network bandwidth configuration doesn't meet the performance
+requirements of your workload and there is an alternative instance type
+that provides better network bandwidth performance. This finding reason
+happens when the C<NetworkIn> or C<NetworkOut> performance of an
+instance is impacted.
+
+=item *
+
+B<C<NetworkPPSOverprovisioned> > E<mdash> The instanceE<rsquo>s network
+PPS (packets per second) configuration can be sized down while still
+meeting the performance requirements of your workload.
+
+=item *
+
+B<C<NetworkPPSUnderprovisioned> > E<mdash> The instanceE<rsquo>s
+network PPS (packets per second) configuration doesn't meet the
+performance requirements of your workload and there is an alternative
+instance type that provides better network PPS performance.
+
+=item *
+
+B<C<DiskIOPSOverprovisioned> > E<mdash> The instanceE<rsquo>s disk IOPS
+configuration can be sized down while still meeting the performance
+requirements of your workload.
+
+=item *
+
+B<C<DiskIOPSUnderprovisioned> > E<mdash> The instanceE<rsquo>s disk
+IOPS configuration doesn't meet the performance requirements of your
+workload and there is an alternative instance type that provides better
+disk IOPS performance.
+
+=item *
+
+B<C<DiskThroughputOverprovisioned> > E<mdash> The instanceE<rsquo>s
+disk throughput configuration can be sized down while still meeting the
+performance requirements of your workload.
+
+=item *
+
+B<C<DiskThroughputUnderprovisioned> > E<mdash> The instanceE<rsquo>s
+disk throughput configuration doesn't meet the performance requirements
+of your workload and there is an alternative instance type that
+provides better disk throughput performance.
+
+=back
+
+=back
+
 
 
 

@@ -2,8 +2,10 @@
 package Paws::IoT::CreateOTAUpdate;
   use Moose;
   has AdditionalParameters => (is => 'ro', isa => 'Paws::IoT::AdditionalParameterMap', traits => ['NameInRequest'], request_name => 'additionalParameters');
+  has AwsJobAbortConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobAbortConfig', traits => ['NameInRequest'], request_name => 'awsJobAbortConfig');
   has AwsJobExecutionsRolloutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobExecutionsRolloutConfig', traits => ['NameInRequest'], request_name => 'awsJobExecutionsRolloutConfig');
   has AwsJobPresignedUrlConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobPresignedUrlConfig', traits => ['NameInRequest'], request_name => 'awsJobPresignedUrlConfig');
+  has AwsJobTimeoutConfig => (is => 'ro', isa => 'Paws::IoT::AwsJobTimeoutConfig', traits => ['NameInRequest'], request_name => 'awsJobTimeoutConfig');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
   has Files => (is => 'ro', isa => 'ArrayRef[Paws::IoT::OTAUpdateFile]', traits => ['NameInRequest'], request_name => 'files', required => 1);
   has OtaUpdateId => (is => 'ro', isa => 'Str', traits => ['ParamInURI'], uri_name => 'otaUpdateId', required => 1);
@@ -83,6 +85,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
             },    # OPTIONAL
           },    # OPTIONAL
           FileName    => 'MyFileName',                # OPTIONAL
+          FileType    => 1,                           # max: 255; OPTIONAL
           FileVersion => 'MyOTAUpdateFileVersion',    # OPTIONAL
         },
         ...
@@ -91,11 +94,36 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       RoleArn              => 'MyRoleArn',
       Targets              => [ 'MyTarget', ... ],
       AdditionalParameters => { 'MyAttributeKey' => 'MyValue', },    # OPTIONAL
+      AwsJobAbortConfig    => {
+        AbortCriteriaList => [
+          {
+            Action      => 'CANCEL',  # values: CANCEL
+            FailureType => 'FAILED',  # values: FAILED, REJECTED, TIMED_OUT, ALL
+            MinNumberOfExecutedThings => 1,    # min: 1
+            ThresholdPercentage       => 1,    # max: 100
+
+          },
+          ...
+        ],    # min: 1
+
+      },    # OPTIONAL
       AwsJobExecutionsRolloutConfig => {
+        ExponentialRate => {
+          BaseRatePerMinute    => 1,    # min: 1, max: 1000
+          IncrementFactor      => 1,
+          RateIncreaseCriteria => {
+            NumberOfNotifiedThings  => 1,    # min: 1; OPTIONAL
+            NumberOfSucceededThings => 1,    # min: 1; OPTIONAL
+          },
+
+        },    # OPTIONAL
         MaximumPerMinute => 1,    # min: 1, max: 1000; OPTIONAL
       },    # OPTIONAL
       AwsJobPresignedUrlConfig => {
         ExpiresInSec => 1,    # OPTIONAL
+      },    # OPTIONAL
+      AwsJobTimeoutConfig => {
+        InProgressTimeoutInMinutes => 1,    # OPTIONAL
       },    # OPTIONAL
       Description => 'MyOTAUpdateDescription',    # OPTIONAL
       Protocols   => [
@@ -103,8 +131,8 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       ],    # OPTIONAL
       Tags => [
         {
-          Key   => 'MyTagKey',      # OPTIONAL
-          Value => 'MyTagValue',    # OPTIONAL
+          Key   => 'MyTagKey',      # min: 1, max: 128
+          Value => 'MyTagValue',    # min: 1, max: 256; OPTIONAL
         },
         ...
       ],    # OPTIONAL
@@ -132,6 +160,12 @@ A list of additional OTA update parameters which are name-value pairs.
 
 
 
+=head2 AwsJobAbortConfig => L<Paws::IoT::AwsJobAbortConfig>
+
+The criteria that determine when and how a job abort takes place.
+
+
+
 =head2 AwsJobExecutionsRolloutConfig => L<Paws::IoT::AwsJobExecutionsRolloutConfig>
 
 Configuration for the rollout of OTA updates.
@@ -141,6 +175,16 @@ Configuration for the rollout of OTA updates.
 =head2 AwsJobPresignedUrlConfig => L<Paws::IoT::AwsJobPresignedUrlConfig>
 
 Configuration information for pre-signed URLs.
+
+
+
+=head2 AwsJobTimeoutConfig => L<Paws::IoT::AwsJobTimeoutConfig>
+
+Specifies the amount of time each device has to finish its execution of
+the job. A timer is started when the job execution status is set to
+C<IN_PROGRESS>. If the job execution status is not set to another
+terminal state before the timer expires, it will be automatically set
+to C<TIMED_OUT>.
 
 
 
@@ -172,7 +216,8 @@ the target device can choose the protocol.
 
 =head2 B<REQUIRED> RoleArn => Str
 
-The IAM role that allows access to the AWS IoT Jobs service.
+The IAM role that grants AWS IoT access to the Amazon S3, AWS IoT jobs
+and AWS Code Signing resources to create an OTA update job.
 
 
 
@@ -184,7 +229,7 @@ Metadata which can be used to manage updates.
 
 =head2 B<REQUIRED> Targets => ArrayRef[Str|Undef]
 
-The targeted devices to receive OTA updates.
+The devices targeted to receive OTA updates.
 
 
 

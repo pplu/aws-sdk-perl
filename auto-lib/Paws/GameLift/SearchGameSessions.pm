@@ -5,6 +5,7 @@ package Paws::GameLift::SearchGameSessions;
   has FilterExpression => (is => 'ro', isa => 'Str');
   has FleetId => (is => 'ro', isa => 'Str');
   has Limit => (is => 'ro', isa => 'Int');
+  has Location => (is => 'ro', isa => 'Str');
   has NextToken => (is => 'ro', isa => 'Str');
   has SortExpression => (is => 'ro', isa => 'Str');
 
@@ -33,10 +34,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 
     my $gamelift = Paws->service('GameLift');
     my $SearchGameSessionsOutput = $gamelift->SearchGameSessions(
-      AliasId          => 'MyAliasId',                # OPTIONAL
+      AliasId          => 'MyAliasIdOrArn',           # OPTIONAL
       FilterExpression => 'MyNonZeroAndMaxString',    # OPTIONAL
-      FleetId          => 'MyFleetId',                # OPTIONAL
+      FleetId          => 'MyFleetIdOrArn',           # OPTIONAL
       Limit            => 1,                          # OPTIONAL
+      Location         => 'MyLocationStringModel',    # OPTIONAL
       NextToken        => 'MyNonZeroAndMaxString',    # OPTIONAL
       SortExpression   => 'MyNonZeroAndMaxString',    # OPTIONAL
     );
@@ -55,7 +57,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/gam
 
 =head2 AliasId => Str
 
-A unique identifier for an alias associated with the fleet to search
+A unique identifier for the alias associated with the fleet to search
 for active game sessions. You can use either the alias ID or ARN value.
 Each request must reference either a fleet ID or alias ID, but not
 both.
@@ -136,9 +138,9 @@ C<"maximumSessionsE<gt>=10 AND hasAvailablePlayerSessions=true">.
 
 =head2 FleetId => Str
 
-A unique identifier for a fleet to search for active game sessions. You
-can use either the fleet ID or ARN value. Each request must reference
-either a fleet ID or alias ID, but not both.
+A unique identifier for the fleet to search for active game sessions.
+You can use either the fleet ID or ARN value. Each request must
+reference either a fleet ID or alias ID, but not both.
 
 
 
@@ -151,11 +153,20 @@ set higher than 20.
 
 
 
+=head2 Location => Str
+
+A fleet location to search for game sessions. You can specify a fleet's
+home Region or a remote location. Use the AWS Region code format, such
+as C<us-west-2>.
+
+
+
 =head2 NextToken => Str
 
-Token that indicates the start of the next sequential page of results.
-Use the token that is returned with a previous call to this action. To
-start at the beginning of the result set, do not specify a value.
+A token that indicates the start of the next sequential page of
+results. Use the token that is returned with a previous call to this
+operation. To start at the beginning of the result set, do not specify
+a value.
 
 
 

@@ -28,18 +28,19 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $kms = Paws->service('KMS');
+    # To tag a customer master key (CMK)
+    # The following example tags a CMK.
     $kms->TagResource(
-      KeyId => 'MyKeyIdType',
-      Tags  => [
+      'KeyId' => '1234abcd-12ab-34cd-56ef-1234567890ab',
+      'Tags'  => [
+
         {
-          TagKey   => 'MyTagKeyType',      # min: 1, max: 128
-          TagValue => 'MyTagValueType',    # max: 256
-
-        },
-        ...
-      ],
-
+          'TagKey'   => 'Purpose',
+          'TagValue' => 'Test'
+        }
+      ]
     );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms/TagResource>
@@ -49,9 +50,9 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/kms
 
 =head2 B<REQUIRED> KeyId => Str
 
-A unique identifier for the CMK you are tagging.
+Identifies a customer managed CMK in the account and Region.
 
-Specify the key ID or the Amazon Resource Name (ARN) of the CMK.
+Specify the key ID or key ARN of the CMK.
 
 For example:
 
@@ -74,7 +75,14 @@ To get the key ID and key ARN for a CMK, use ListKeys or DescribeKey.
 
 =head2 B<REQUIRED> Tags => ArrayRef[L<Paws::KMS::Tag>]
 
-One or more tags. Each tag consists of a tag key and a tag value.
+One or more tags.
+
+Each tag consists of a tag key and a tag value. The tag value can be an
+empty (null) string.
+
+You cannot have more than one tag on a CMK with the same tag key. If
+you specify an existing tag key with a different tag value, AWS KMS
+replaces the current tag value with the specified one.
 
 
 

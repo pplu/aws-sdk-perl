@@ -8,6 +8,7 @@ package Paws::MediaLive::InputSettings;
   has FilterStrength => (is => 'ro', isa => 'Int', request_name => 'filterStrength', traits => ['NameInRequest']);
   has InputFilter => (is => 'ro', isa => 'Str', request_name => 'inputFilter', traits => ['NameInRequest']);
   has NetworkInputSettings => (is => 'ro', isa => 'Paws::MediaLive::NetworkInputSettings', request_name => 'networkInputSettings', traits => ['NameInRequest']);
+  has Smpte2038DataPreference => (is => 'ro', isa => 'Str', request_name => 'smpte2038DataPreference', traits => ['NameInRequest']);
   has SourceEndBehavior => (is => 'ro', isa => 'Str', request_name => 'sourceEndBehavior', traits => ['NameInRequest']);
   has VideoSelector => (is => 'ro', isa => 'Paws::MediaLive::VideoSelector', request_name => 'videoSelector', traits => ['NameInRequest']);
 
@@ -86,6 +87,15 @@ of input type
 =head2 NetworkInputSettings => L<Paws::MediaLive::NetworkInputSettings>
 
 Input settings.
+
+
+=head2 Smpte2038DataPreference => Str
+
+Specifies whether to extract applicable ancillary data from a
+SMPTE-2038 source in this input. Applicable data types are captions,
+timecode, AFD, and SCTE-104 messages. - PREFER: Extract from SMPTE-2038
+if present in this input, otherwise extract from another source (if
+any). - IGNORE: Never extract any ancillary data from SMPTE-2038.
 
 
 =head2 SourceEndBehavior => Str

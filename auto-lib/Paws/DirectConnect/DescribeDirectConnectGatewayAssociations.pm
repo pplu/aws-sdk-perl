@@ -93,7 +93,7 @@ The token provided in the previous call to retrieve the next page.
 
 =head2 VirtualGatewayId => Str
 
-The ID of the virtual private gateway.
+The ID of the virtual private gateway or transit gateway.
 
 
 

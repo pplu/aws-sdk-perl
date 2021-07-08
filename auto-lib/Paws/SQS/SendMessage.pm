@@ -91,15 +91,16 @@ You can set this parameter only on a queue level.
 =head2 MessageAttributes => L<Paws::SQS::MessageBodyAttributeMap>
 
 Each message attribute consists of a C<Name>, C<Type>, and C<Value>.
-For more information, see Amazon SQS Message Attributes
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-attributes.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+For more information, see Amazon SQS message attributes
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
+in the I<Amazon SQS Developer Guide>.
 
 
 
 =head2 B<REQUIRED> MessageBody => Str
 
-The message to send. The maximum string size is 256 KB.
+The message to send. The minimum size is one character. The maximum
+size is 256 KB.
 
 A message can include only XML, JSON, and unformatted text. The
 following Unicode characters are allowed:
@@ -121,9 +122,9 @@ The token used for deduplication of sent messages. If a message with a
 particular C<MessageDeduplicationId> is sent successfully, any messages
 sent with the same C<MessageDeduplicationId> are accepted successfully
 but aren't delivered during the 5-minute deduplication interval. For
-more information, see Exactly-Once Processing
-(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html#FIFO-queues-exactly-once-processing)
-in the I<Amazon Simple Queue Service Developer Guide>.
+more information, see Exactly-once processing
+(https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html)
+in the I<Amazon SQS Developer Guide>.
 
 =over
 
@@ -182,7 +183,7 @@ deduplication interval, Amazon SQS can't detect duplicate messages.
 Amazon SQS continues to keep track of the message deduplication ID even
 after the message is received and deleted.
 
-The length of C<MessageDeduplicationId> is 128 characters.
+The maximum length of C<MessageDeduplicationId> is 128 characters.
 C<MessageDeduplicationId> can contain alphanumeric characters (C<a-z>,
 C<A-Z>, C<0-9>) and punctuation
 (C<!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~>).
@@ -190,7 +191,7 @@ C<A-Z>, C<0-9>) and punctuation
 For best practices of using C<MessageDeduplicationId>, see Using the
 MessageDeduplicationId Property
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagededuplicationid-property.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 
 
@@ -229,7 +230,7 @@ C<(!"#$%&'()*+,-./:;E<lt>=E<gt>?@[\]^_`{|}~)>.
 For best practices of using C<MessageGroupId>, see Using the
 MessageGroupId Property
 (https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/using-messagegroupid-property.html)
-in the I<Amazon Simple Queue Service Developer Guide>.
+in the I<Amazon SQS Developer Guide>.
 
 C<MessageGroupId> is required for FIFO queues. You can't use it for
 Standard queues.
@@ -247,7 +248,7 @@ consists of a C<Name>, C<Type>, and C<Value>.
 
 Currently, the only supported message system attribute is
 C<AWSTraceHeader>. Its type must be C<String> and its value must be a
-correctly formatted AWS X-Ray trace string.
+correctly formatted X-Ray trace header string.
 
 =item *
 

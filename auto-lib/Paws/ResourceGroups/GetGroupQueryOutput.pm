@@ -17,7 +17,10 @@ Paws::ResourceGroups::GetGroupQueryOutput
 
 =head2 GroupQuery => L<Paws::ResourceGroups::GroupQuery>
 
-The resource query associated with the specified group.
+The resource query associated with the specified group. For more
+information about resource queries, see Create a tag-based group in
+Resource Groups
+(https://docs.aws.amazon.com/ARG/latest/userguide/gettingstarted-query.html#gettingstarted-query-cli-tag).
 
 
 =head2 _request_id => Str

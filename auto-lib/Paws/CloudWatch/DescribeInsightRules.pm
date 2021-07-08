@@ -47,14 +47,15 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/mon
 
 =head2 MaxResults => Int
 
-This parameter is not currently used. Reserved for future use. If it is
-used in the future, the maximum value may be different.
+The maximum number of results to return in one operation. If you omit
+this parameter, the default of 500 is used.
 
 
 
 =head2 NextToken => Str
 
-Reserved for future use.
+Include this value, if it was returned by the previous operation, to
+get the next set of rules.
 
 
 

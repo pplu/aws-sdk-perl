@@ -5,6 +5,7 @@ package Paws::ApiGatewayV2::CreateApi;
   has CorsConfiguration => (is => 'ro', isa => 'Paws::ApiGatewayV2::Cors', traits => ['NameInRequest'], request_name => 'corsConfiguration');
   has CredentialsArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'credentialsArn');
   has Description => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'description');
+  has DisableExecuteApiEndpoint => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableExecuteApiEndpoint');
   has DisableSchemaValidation => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'disableSchemaValidation');
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name', required => 1);
   has ProtocolType => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'protocolType', required => 1);
@@ -51,25 +52,29 @@ You shouldn't make instances of this class. Each attribute should be used as a n
         ExposeHeaders => [ 'My__string',                      ... ],  # OPTIONAL
         MaxAge        => 1,    # min: -1, max: 86400; OPTIONAL
       },    # OPTIONAL
-      CredentialsArn          => 'MyArn',                             # OPTIONAL
-      Description             => 'MyStringWithLengthBetween0And1024', # OPTIONAL
-      DisableSchemaValidation => 1,                                   # OPTIONAL
-      RouteKey                => 'MySelectionKey',                    # OPTIONAL
-      RouteSelectionExpression => 'MySelectionExpression',            # OPTIONAL
+      CredentialsArn => 'MyArn',                                # OPTIONAL
+      Description    => 'MyStringWithLengthBetween0And1024',    # OPTIONAL
+      DisableExecuteApiEndpoint => 1,                           # OPTIONAL
+      DisableSchemaValidation   => 1,                           # OPTIONAL
+      RouteKey                  => 'MySelectionKey',            # OPTIONAL
+      RouteSelectionExpression  => 'MySelectionExpression',     # OPTIONAL
       Tags => { 'My__string' => 'MyStringWithLengthBetween1And1600', }
-      ,                                                               # OPTIONAL
-      Target  => 'MyUriWithLengthBetween1And2048',                    # OPTIONAL
-      Version => 'MyStringWithLengthBetween1And64',                   # OPTIONAL
+      ,                                                         # OPTIONAL
+      Target  => 'MyUriWithLengthBetween1And2048',              # OPTIONAL
+      Version => 'MyStringWithLengthBetween1And64',             # OPTIONAL
     );
 
     # Results:
-    my $ApiEndpoint = $CreateApiResponse->ApiEndpoint;
-    my $ApiId       = $CreateApiResponse->ApiId;
+    my $ApiEndpoint       = $CreateApiResponse->ApiEndpoint;
+    my $ApiGatewayManaged = $CreateApiResponse->ApiGatewayManaged;
+    my $ApiId             = $CreateApiResponse->ApiId;
     my $ApiKeySelectionExpression =
       $CreateApiResponse->ApiKeySelectionExpression;
-    my $CorsConfiguration        = $CreateApiResponse->CorsConfiguration;
-    my $CreatedDate              = $CreateApiResponse->CreatedDate;
-    my $Description              = $CreateApiResponse->Description;
+    my $CorsConfiguration = $CreateApiResponse->CorsConfiguration;
+    my $CreatedDate       = $CreateApiResponse->CreatedDate;
+    my $Description       = $CreateApiResponse->Description;
+    my $DisableExecuteApiEndpoint =
+      $CreateApiResponse->DisableExecuteApiEndpoint;
     my $DisableSchemaValidation  = $CreateApiResponse->DisableSchemaValidation;
     my $ImportInfo               = $CreateApiResponse->ImportInfo;
     my $Name                     = $CreateApiResponse->Name;
@@ -120,6 +125,16 @@ HTTP integrations. Supported only for HTTP APIs.
 =head2 Description => Str
 
 The description of the API.
+
+
+
+=head2 DisableExecuteApiEndpoint => Bool
+
+Specifies whether clients can invoke your API by using the default
+execute-api endpoint. By default, clients can invoke your API with the
+default https://{api_id}.execute-api.{region}.amazonaws.com endpoint.
+To require that clients use a custom domain name to invoke your API,
+disable the default endpoint.
 
 
 

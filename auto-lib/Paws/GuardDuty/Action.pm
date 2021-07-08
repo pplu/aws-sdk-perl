@@ -37,14 +37,14 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::GuardDuty::
 
 =head1 DESCRIPTION
 
-Contains information about action.
+Contains information about actions.
 
 =head1 ATTRIBUTES
 
 
 =head2 ActionType => Str
 
-GuardDuty Finding activity type.
+The GuardDuty finding activity type.
 
 
 =head2 AwsApiCallAction => L<Paws::GuardDuty::AwsApiCallAction>

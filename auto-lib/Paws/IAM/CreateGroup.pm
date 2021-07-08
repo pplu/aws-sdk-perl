@@ -56,7 +56,7 @@ create resources named both "MyResource" and "myresource".
 =head2 Path => Str
 
 The path to the group. For more information about paths, see IAM
-Identifiers
+identifiers
 (https://docs.aws.amazon.com/IAM/latest/UserGuide/Using_Identifiers.html)
 in the I<IAM User Guide>.
 

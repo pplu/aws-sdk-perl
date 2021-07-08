@@ -41,7 +41,8 @@ A structure containing the alert target ARN and the role ARN.
 
 =head2 B<REQUIRED> AlertTargetArn => Str
 
-The ARN of the notification target to which alerts are sent.
+The Amazon Resource Name (ARN) of the notification target to which
+alerts are sent.
 
 
 =head2 B<REQUIRED> RoleArn => Str

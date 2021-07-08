@@ -42,14 +42,17 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Kinesis::Su
 
 =head1 DESCRIPTION
 
-This class has no description
+This is a tagged union for all of the types of events an enhanced
+fan-out consumer can receive over HTTP/2 after a call to
+SubscribeToShard.
 
 =head1 ATTRIBUTES
 
 
 =head2 InternalFailureException => L<Paws::Kinesis::InternalFailureException>
 
-
+The processing of the request failed because of an unknown error,
+exception, or failure.
 
 
 =head2 KMSAccessDeniedException => L<Paws::Kinesis::KMSAccessDeniedException>
@@ -94,7 +97,9 @@ This class has no description
 
 =head2 B<REQUIRED> SubscribeToShardEvent => L<Paws::Kinesis::SubscribeToShardEvent>
 
-
+After you call SubscribeToShard, Kinesis Data Streams sends events of
+this type to your consumer. For an example of how to handle these
+events, see Enhanced Fan-Out Using the Kinesis Data Streams API.
 
 
 

@@ -29,8 +29,8 @@ Paws::S3::ListObjectsV2Output
 
 =head2 CommonPrefixes => ArrayRef[L<Paws::S3::CommonPrefix>]
 
-All of the keys rolled up into a common prefix count as a single return
-when calculating the number of returns.
+All of the keys (up to 1,000) rolled up into a common prefix count as a
+single return when calculating the number of returns.
 
 A response can contain C<CommonPrefixes> only if you specify a
 delimiter.
@@ -96,30 +96,41 @@ specified by MaxKeys, all of the results might not be returned.
 =head2 KeyCount => Int
 
 KeyCount is the number of keys returned with this request. KeyCount
-will always be less than equals to MaxKeys field. Say you ask for 50
+will always be less than or equals to MaxKeys field. Say you ask for 50
 keys, your result will include less than equals 50 keys
 
 
 
 =head2 MaxKeys => Int
 
-Sets the maximum number of keys returned in the response. The response
-might contain fewer keys but will never contain more.
+Sets the maximum number of keys returned in the response. By default
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more.
 
 
 
 =head2 Name => Str
 
-Bucket name.
+The bucket name.
 
-When using this API with an access point, you must direct requests to
-the access point hostname. The access point hostname takes the form
+When using this action with an access point, you must direct requests
+to the access point hostname. The access point hostname takes the form
 I<AccessPointName>-I<AccountId>.s3-accesspoint.I<Region>.amazonaws.com.
-When using this operation using an access point through the AWS SDKs,
-you provide the access point ARN in place of the bucket name. For more
-information about access point ARNs, see Using Access Points
-(https://docs.aws.amazon.com/AmazonS3/latest/dev/using-access-points.html)
-in the I<Amazon Simple Storage Service Developer Guide>.
+When using this action with an access point through the AWS SDKs, you
+provide the access point ARN in place of the bucket name. For more
+information about access point ARNs, see Using access points
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-access-points.html)
+in the I<Amazon S3 User Guide>.
+
+When using this action with Amazon S3 on Outposts, you must direct
+requests to the S3 on Outposts hostname. The S3 on Outposts hostname
+takes the form
+I<AccessPointName>-I<AccountId>.I<outpostID>.s3-outposts.I<Region>.amazonaws.com.
+When using this action using S3 on Outposts through the AWS SDKs, you
+provide the Outposts bucket ARN in place of the bucket name. For more
+information about S3 on Outposts ARNs, see Using S3 on Outposts
+(https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+in the I<Amazon S3 User Guide>.
 
 
 

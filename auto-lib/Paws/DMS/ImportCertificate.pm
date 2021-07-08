@@ -30,17 +30,11 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $dms = Paws->service('DMS');
+    # Import certificate
+    # Uploads the specified certificate.
     my $ImportCertificateResponse = $dms->ImportCertificate(
-      CertificateIdentifier => 'MyString',
-      CertificatePem        => 'MyString',                 # OPTIONAL
-      CertificateWallet     => 'BlobCertificateWallet',    # OPTIONAL
-      Tags                  => [
-        {
-          Key   => 'MyString',
-          Value => 'MyString',
-        },
-        ...
-      ],                                                   # OPTIONAL
+      'CertificateIdentifier' => '',
+      'CertificatePem'        => ''
     );
 
     # Results:
@@ -57,8 +51,8 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/dms
 =head2 B<REQUIRED> CertificateIdentifier => Str
 
 A customer-assigned name for the certificate. Identifiers must begin
-with a letter; must contain only ASCII letters, digits, and hyphens;
-and must not end with a hyphen or contain two consecutive hyphens.
+with a letter and must contain only ASCII letters, digits, and hyphens.
+They can't end with a hyphen or contain two consecutive hyphens.
 
 
 

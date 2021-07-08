@@ -1,6 +1,7 @@
 
 package Paws::SecretsManager::PutResourcePolicy;
   use Moose;
+  has BlockPublicPolicy => (is => 'ro', isa => 'Bool');
   has ResourcePolicy => (is => 'ro', isa => 'Str', required => 1);
   has SecretId => (is => 'ro', isa => 'Str', required => 1);
 
@@ -28,10 +29,21 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $secretsmanager = Paws->service('SecretsManager');
+   # To add a resource-based policy to a secret
+   # The following example shows how to add a resource-based policy to a secret.
     my $PutResourcePolicyResponse = $secretsmanager->PutResourcePolicy(
-      ResourcePolicy => 'MyNonEmptyResourcePolicyType',
-      SecretId       => 'MySecretIdType',
-
+      'ResourcePolicy' => '{
+"Version":"2012-10-17",
+"Statement":[{
+"Effect":"Allow",
+"Principal":{
+"AWS":"arn:aws:iam::123456789012:root"
+},
+"Action":"secretsmanager:GetSecretValue",
+"Resource":"*"
+}]
+}',
+      'SecretId' => 'MyTestDatabaseSecret'
     );
 
     # Results:
@@ -46,13 +58,21 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/sec
 =head1 ATTRIBUTES
 
 
+=head2 BlockPublicPolicy => Bool
+
+(Optional) If you set the parameter, C<BlockPublicPolicy> to true, then
+you block resource-based policies that allow broad access to the
+secret.
+
+
+
 =head2 B<REQUIRED> ResourcePolicy => Str
 
-A JSON-formatted string that's constructed according to the grammar and
-syntax for an AWS resource-based policy. The policy in the string
-identifies who can access or manage this secret and its versions. For
-information on how to format a JSON parameter for the various command
-line tool environments, see Using JSON for Parameters
+A JSON-formatted string constructed according to the grammar and syntax
+for an AWS resource-based policy. The policy in the string identifies
+who can access or manage this secret and its versions. For information
+on how to format a JSON parameter for the various command line tool
+environments, see Using JSON for Parameters
 (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 in the I<AWS CLI User Guide>.
 
@@ -60,8 +80,8 @@ in the I<AWS CLI User Guide>.
 
 =head2 B<REQUIRED> SecretId => Str
 
-Specifies the secret that you want to attach the resource-based policy
-to. You can specify either the ARN or the friendly name of the secret.
+Specifies the secret that you want to attach the resource-based policy.
+You can specify either the ARN or the friendly name of the secret.
 
 If you specify an ARN, we generally recommend that you specify a
 complete ARN. You can specify a partial ARN tooE<mdash>for example, if
@@ -74,8 +94,14 @@ hyphen and six characters to the ARN) and you try to use that as a
 partial ARN, then those characters cause Secrets Manager to assume that
 youE<rsquo>re specifying a complete ARN. This confusion can cause
 unexpected results. To avoid this situation, we recommend that you
-donE<rsquo>t create secret names that end with a hyphen followed by six
+donE<rsquo>t create secret names ending with a hyphen followed by six
 characters.
+
+If you specify an incomplete ARN without the random suffix, and instead
+provide the 'friendly name', you I<must> not include the random suffix.
+If you do include the random suffix added by Secrets Manager, you
+receive either a I<ResourceNotFoundException> or an
+I<AccessDeniedException> error, depending on your permissions.
 
 
 

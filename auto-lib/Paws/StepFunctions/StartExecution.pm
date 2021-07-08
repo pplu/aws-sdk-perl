@@ -4,6 +4,7 @@ package Paws::StepFunctions::StartExecution;
   has Input => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'input' );
   has Name => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'name' );
   has StateMachineArn => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'stateMachineArn' , required => 1);
+  has TraceHeader => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'traceHeader' );
 
   use MooseX::ClassAttribute;
 
@@ -33,6 +34,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       StateMachineArn => 'MyArn',
       Input           => 'MySensitiveData',    # OPTIONAL
       Name            => 'MyName',             # OPTIONAL
+      TraceHeader     => 'MyTraceHeader',      # OPTIONAL
     );
 
     # Results:
@@ -56,6 +58,9 @@ C<"input": "{\"first_name\" : \"test\"}">
 
 If you don't include any JSON input data, you still must include the
 two braces, for example: C<"input": "{}">
+
+Length constraints apply to the payload size, and are expressed as
+bytes in UTF-8 encoding.
 
 
 
@@ -93,12 +98,21 @@ control characters (C<U+0000-001F>, C<U+007F-009F>)
 
 =back
 
+To enable logging with CloudWatch Logs, the name should only contain
+0-9, A-Z, a-z, - and _.
 
 
 
 =head2 B<REQUIRED> StateMachineArn => Str
 
 The Amazon Resource Name (ARN) of the state machine to execute.
+
+
+
+=head2 TraceHeader => Str
+
+Passes the AWS X-Ray trace header. The trace header can also be passed
+in the request payload.
 
 
 

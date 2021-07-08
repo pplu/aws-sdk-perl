@@ -6,6 +6,7 @@ package Paws::DirectConnect::CreateConnection;
   has LagId => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'lagId' );
   has Location => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'location' , required => 1);
   has ProviderName => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'providerName' );
+  has RequestMACSec => (is => 'ro', isa => 'Bool', traits => ['NameInRequest'], request_name => 'requestMACSec' );
   has Tags => (is => 'ro', isa => 'ArrayRef[Paws::DirectConnect::Tag]', traits => ['NameInRequest'], request_name => 'tags' );
 
   use MooseX::ClassAttribute;
@@ -38,6 +39,7 @@ You shouldn't make instances of this class. Each attribute should be used as a n
       Location       => 'MyLocationCode',
       LagId          => 'MyLagId',            # OPTIONAL
       ProviderName   => 'MyProviderName',     # OPTIONAL
+      RequestMACSec  => 1,                    # OPTIONAL
       Tags           => [
         {
           Key   => 'MyTagKey',      # min: 1, max: 128
@@ -54,13 +56,17 @@ You shouldn't make instances of this class. Each attribute should be used as a n
     my $ConnectionId         = $Connection->ConnectionId;
     my $ConnectionName       = $Connection->ConnectionName;
     my $ConnectionState      = $Connection->ConnectionState;
+    my $EncryptionMode       = $Connection->EncryptionMode;
     my $HasLogicalRedundancy = $Connection->HasLogicalRedundancy;
     my $JumboFrameCapable    = $Connection->JumboFrameCapable;
     my $LagId                = $Connection->LagId;
     my $LoaIssueTime         = $Connection->LoaIssueTime;
     my $Location             = $Connection->Location;
+    my $MacSecCapable        = $Connection->MacSecCapable;
+    my $MacSecKeys           = $Connection->MacSecKeys;
     my $OwnerAccount         = $Connection->OwnerAccount;
     my $PartnerName          = $Connection->PartnerName;
+    my $PortEncryptionStatus = $Connection->PortEncryptionStatus;
     my $ProviderName         = $Connection->ProviderName;
     my $Region               = $Connection->Region;
     my $Tags                 = $Connection->Tags;
@@ -102,6 +108,19 @@ The location of the connection.
 
 The name of the service provider associated with the requested
 connection.
+
+
+
+=head2 RequestMACSec => Bool
+
+Indicates whether you want the connection to support MAC Security
+(MACsec).
+
+MAC Security (MACsec) is only available on dedicated connections. For
+information about MAC Security (MACsec) prerequisties, see MACsec
+prerequisties
+(https://docs.aws.amazon.com/directconnect/latest/UserGuide/direct-connect-mac-sec-getting-started.html#mac-sec-prerequisites)
+in the I<AWS Direct Connect User Guide>.
 
 
 

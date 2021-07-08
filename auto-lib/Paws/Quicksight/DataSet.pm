@@ -3,9 +3,11 @@ package Paws::Quicksight::DataSet;
   use Moose;
   has Arn => (is => 'ro', isa => 'Str');
   has ColumnGroups => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnGroup]');
+  has ColumnLevelPermissionRules => (is => 'ro', isa => 'ArrayRef[Paws::Quicksight::ColumnLevelPermissionRule]');
   has ConsumedSpiceCapacityInBytes => (is => 'ro', isa => 'Int');
   has CreatedTime => (is => 'ro', isa => 'Str');
   has DataSetId => (is => 'ro', isa => 'Str');
+  has FieldFolders => (is => 'ro', isa => 'Paws::Quicksight::FieldFolderMap');
   has ImportMode => (is => 'ro', isa => 'Str');
   has LastUpdatedTime => (is => 'ro', isa => 'Str');
   has LogicalTableMap => (is => 'ro', isa => 'Paws::Quicksight::LogicalTableMap');
@@ -60,6 +62,11 @@ Groupings of columns that work together in certain Amazon QuickSight
 features. Currently, only geospatial hierarchy is supported.
 
 
+=head2 ColumnLevelPermissionRules => ArrayRef[L<Paws::Quicksight::ColumnLevelPermissionRule>]
+
+A set of one or more definitions of a C< ColumnLevelPermissionRule >.
+
+
 =head2 ConsumedSpiceCapacityInBytes => Int
 
 The amount of SPICE capacity used by this dataset. This is 0 if the
@@ -76,9 +83,14 @@ The time that this dataset was created.
 The ID of the dataset.
 
 
+=head2 FieldFolders => L<Paws::Quicksight::FieldFolderMap>
+
+The folder that contains fields and nested subfolders for your dataset.
+
+
 =head2 ImportMode => Str
 
-Indicates whether you want to import the data into SPICE.
+A value that indicates whether you want to import the data into SPICE.
 
 
 =head2 LastUpdatedTime => Str

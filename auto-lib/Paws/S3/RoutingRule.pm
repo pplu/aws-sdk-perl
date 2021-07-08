@@ -34,7 +34,11 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::S3::Routing
 
 =head1 DESCRIPTION
 
-Specifies the redirect behavior and when a redirect is applied.
+Specifies the redirect behavior and when a redirect is applied. For
+more information about routing rules, see Configuring advanced
+conditional redirects
+(https://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html#advanced-conditional-redirects)
+in the I<Amazon S3 User Guide>.
 
 =head1 ATTRIBUTES
 

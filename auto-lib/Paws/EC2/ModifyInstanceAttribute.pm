@@ -42,57 +42,24 @@ You shouldn't make instances of this class. Each attribute should be used as a n
 =head1 SYNOPSIS
 
     my $ec2 = Paws->service('EC2');
+    # To modify the instance type
+    # This example modifies the instance type of the specified stopped instance.
     $ec2->ModifyInstanceAttribute(
-      InstanceId          => 'MyInstanceId',
-      Attribute           => 'instanceType',    # OPTIONAL
-      BlockDeviceMappings => [
-        {
-          DeviceName => 'MyString',             # OPTIONAL
-          Ebs        => {
-            DeleteOnTermination => 1,               # OPTIONAL
-            VolumeId            => 'MyVolumeId',    # OPTIONAL
-          },    # OPTIONAL
-          NoDevice    => 'MyString',    # OPTIONAL
-          VirtualName => 'MyString',    # OPTIONAL
-        },
-        ...
-      ],    # OPTIONAL
-      DisableApiTermination => {
-        Value => 1,    # OPTIONAL
-      },    # OPTIONAL
-      DryRun       => 1,    # OPTIONAL
-      EbsOptimized => {
-        Value => 1,         # OPTIONAL
-      },    # OPTIONAL
-      EnaSupport => {
-        Value => 1,    # OPTIONAL
-      },    # OPTIONAL
-      Groups => [
-        'MyString', ...    # OPTIONAL
-      ],    # OPTIONAL
-      InstanceInitiatedShutdownBehavior => {
-        Value => 'MyString',    # OPTIONAL
-      },    # OPTIONAL
-      InstanceType => {
-        Value => 'MyString',    # OPTIONAL
-      },    # OPTIONAL
-      Kernel => {
-        Value => 'MyString',    # OPTIONAL
-      },    # OPTIONAL
-      Ramdisk => {
-        Value => 'MyString',    # OPTIONAL
-      },    # OPTIONAL
-      SourceDestCheck => {
-        Value => 1,    # OPTIONAL
-      },    # OPTIONAL
-      SriovNetSupport => {
-        Value => 'MyString',    # OPTIONAL
-      },    # OPTIONAL
-      UserData => {
-        Value => 'BlobBlob',    # OPTIONAL
-      },    # OPTIONAL
-      Value => 'MyString',    # OPTIONAL
+      'InstanceId'   => 'i-1234567890abcdef0',
+      'InstanceType' => {
+        'Value' => 'm5.large'
+      }
     );
+
+  # To enable enhanced networking
+  # This example enables enhanced networking for the specified stopped instance.
+    $ec2->ModifyInstanceAttribute(
+      'EnaSupport' => {
+        'Value' => 1
+      },
+      'InstanceId' => 'i-1234567890abcdef0'
+    );
+
 
 Values for attributes that are native types (Int, String, Float, etc) can passed as-is (scalar values). Values for complex Types (objects) can be passed as a HashRef. The keys and values of the hashref will be used to instance the underlying object.
 For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2/ModifyInstanceAttribute>
@@ -104,7 +71,7 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 The name of the attribute.
 
-Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">, C<"enaSupport">
+Valid values are: C<"instanceType">, C<"kernel">, C<"ramdisk">, C<"userData">, C<"disableApiTermination">, C<"instanceInitiatedShutdownBehavior">, C<"rootDeviceName">, C<"blockDeviceMapping">, C<"productCodes">, C<"sourceDestCheck">, C<"groupSet">, C<"ebsOptimized">, C<"sriovNetSupport">, C<"enaSupport">, C<"enclaveOptions">
 
 =head2 BlockDeviceMappings => ArrayRef[L<Paws::EC2::InstanceBlockDeviceMappingSpecification>]
 
@@ -115,9 +82,9 @@ volume is deleted when the instance is terminated.
 
 To add instance store volumes to an Amazon EBS-backed instance, you
 must add them when you launch the instance. For more information, see
-Updating the Block Device Mapping when Launching an Instance
+Updating the block device mapping when launching an instance
 (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/block-device-mapping-concepts.html#Using_OverridingAMIBDM)
-in the I<Amazon Elastic Compute Cloud User Guide>.
+in the I<Amazon EC2 User Guide>.
 
 
 
@@ -159,10 +126,10 @@ with a PV instance can make it unreachable.
 
 =head2 Groups => ArrayRef[Str|Undef]
 
-[EC2-VPC] Changes the security groups of the instance. You must specify
-at least one security group, even if it's just the default security
-group for the VPC. You must specify the security group ID, not the
-security group name.
+[EC2-VPC] Replaces the security groups of the instance with the
+specified security groups. You must specify at least one security
+group, even if it's just the default security group for the VPC. You
+must specify the security group ID, not the security group name.
 
 
 
@@ -183,10 +150,10 @@ system shutdown).
 =head2 InstanceType => L<Paws::EC2::AttributeValue>
 
 Changes the instance type to the specified value. For more information,
-see Instance Types
-(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html).
-If the instance type is not valid, the error returned is
-C<InvalidInstanceAttributeValue>.
+see Instance types
+(https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-types.html)
+in the I<Amazon EC2 User Guide>. If the instance type is not valid, the
+error returned is C<InvalidInstanceAttributeValue>.
 
 
 
@@ -210,10 +177,12 @@ information, see PV-GRUB
 
 =head2 SourceDestCheck => L<Paws::EC2::AttributeBooleanValue>
 
-Specifies whether source/destination checking is enabled. A value of
-C<true> means that checking is enabled, and C<false> means that
-checking is disabled. This value must be C<false> for a NAT instance to
-perform NAT.
+Enable or disable source/destination checks, which ensure that the
+instance is either the source or the destination of any traffic that it
+receives. If the value is C<true>, source/destination checks are
+enabled; otherwise, they are disabled. The default value is C<true>.
+You must disable source/destination checks if the instance runs
+services such as network address translation, routing, or firewalls.
 
 
 
@@ -233,9 +202,9 @@ with a PV instance can make it unreachable.
 =head2 UserData => L<Paws::EC2::BlobAttributeValue>
 
 Changes the instance's user data to the specified value. If you are
-using an AWS SDK or command line tool, base64-encoding is performed for
-you, and you can load the text from a file. Otherwise, you must provide
-base64-encoded text.
+using an Amazon Web Services SDK or command line tool, base64-encoding
+is performed for you, and you can load the text from a file. Otherwise,
+you must provide base64-encoded text.
 
 
 

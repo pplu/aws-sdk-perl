@@ -39,44 +39,44 @@ Use accessors for each attribute. If Att1 is expected to be an Paws::Amplify::We
 
 =head1 DESCRIPTION
 
-Structure for webhook, which associates a webhook with an Amplify App.
+Describes a webhook that connects repository events to an Amplify app.
 
 =head1 ATTRIBUTES
 
 
 =head2 B<REQUIRED> BranchName => Str
 
-Name for a branch, part of an Amplify App.
+The name for a branch that is part of an Amplify app.
 
 
 =head2 B<REQUIRED> CreateTime => Str
 
-Create date / time for a webhook.
+The create date and time for a webhook.
 
 
 =head2 B<REQUIRED> Description => Str
 
-Description for a webhook.
+The description for a webhook.
 
 
 =head2 B<REQUIRED> UpdateTime => Str
 
-Update date / time for a webhook.
+Updates the date and time for a webhook.
 
 
 =head2 B<REQUIRED> WebhookArn => Str
 
-ARN for the webhook.
+The Amazon Resource Name (ARN) for the webhook.
 
 
 =head2 B<REQUIRED> WebhookId => Str
 
-Id of the webhook.
+The ID of the webhook.
 
 
 =head2 B<REQUIRED> WebhookUrl => Str
 
-Url of the webhook.
+The URL of the webhook.
 
 
 

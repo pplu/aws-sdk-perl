@@ -101,10 +101,9 @@ Specify a symmetric or asymmetric CMK with a C<KeyUsage> value of
 C<ENCRYPT_DECRYPT>. To find the C<KeyUsage> value of a CMK, use the
 DescribeKey operation.
 
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">. To specify a CMK in a different AWS account, you must use
-the key ARN or alias ARN.
+To specify a CMK, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with C<"alias/">. To specify a CMK
+in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 
@@ -138,7 +137,9 @@ To get the alias name and alias ARN, use ListAliases.
 
 A list of grant tokens.
 
-For more information, see Grant Tokens
+Use a grant token when your permission to call this operation comes
+from a new grant that has not yet achieved I<eventual consistency>. For
+more information, see Grant token
 (https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#grant_token)
 in the I<AWS Key Management Service Developer Guide>.
 
@@ -179,23 +180,19 @@ in the I<AWS Key Management Service Developer Guide>.
 
 =head2 SourceKeyId => Str
 
-A unique identifier for the CMK that is used to decrypt the ciphertext
-before it reencrypts it using the destination CMK.
+Specifies the customer master key (CMK) that AWS KMS will use to
+decrypt the ciphertext before it is re-encrypted. Enter a key ID of the
+CMK that was used to encrypt the ciphertext.
 
 This parameter is required only when the ciphertext was encrypted under
-an asymmetric CMK. Otherwise, AWS KMS uses the metadata that it adds to
-the ciphertext blob to determine which CMK was used to encrypt the
-ciphertext. However, you can use this parameter to ensure that a
-particular CMK (of any kind) is used to decrypt the ciphertext before
-it is reencrypted.
+an asymmetric CMK. If you used a symmetric CMK, AWS KMS can get the CMK
+from metadata that it adds to the symmetric ciphertext blob. However,
+it is always recommended as a best practice. This practice ensures that
+you use the CMK that you intend.
 
-If you specify a C<KeyId> value, the decrypt part of the C<ReEncrypt>
-operation succeeds only if the specified CMK was used to encrypt the
-ciphertext.
-
-To specify a CMK, use its key ID, Amazon Resource Name (ARN), alias
-name, or alias ARN. When using an alias name, prefix it with
-C<"alias/">.
+To specify a CMK, use its key ID, key ARN, alias name, or alias ARN.
+When using an alias name, prefix it with C<"alias/">. To specify a CMK
+in a different AWS account, you must use the key ARN or alias ARN.
 
 For example:
 

@@ -52,27 +52,27 @@ For the AWS API documentation, see L<https://docs.aws.amazon.com/goto/WebAPI/ec2
 
 =head2 B<REQUIRED> AvailabilityZone => Str
 
-The availability zone the EC2 instance was launched in.
+The Availability Zone in which the EC2 instance was launched.
 
 
 
 =head2 B<REQUIRED> InstanceId => Str
 
-The EC2 instance you wish to publish the SSH key to.
+The ID of the EC2 instance.
 
 
 
 =head2 B<REQUIRED> InstanceOSUser => Str
 
-The OS user on the EC2 instance whom the key may be used to
-authenticate as.
+The OS user on the EC2 instance for whom the key can be used to
+authenticate.
 
 
 
 =head2 B<REQUIRED> SSHPublicKey => Str
 
-The public key to be published to the instance. To use it after
-publication you must have the matching private key.
+The public key material. To use the public key, you must have the
+matching private key.
 
 
 

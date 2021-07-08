@@ -10,6 +10,7 @@ package Paws::EC2::RequestSpotInstances;
   has LaunchGroup => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'launchGroup' );
   has LaunchSpecification => (is => 'ro', isa => 'Paws::EC2::RequestSpotLaunchSpecification');
   has SpotPrice => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'spotPrice' );
+  has TagSpecifications => (is => 'ro', isa => 'ArrayRef[Paws::EC2::TagSpecification]', traits => ['NameInRequest'], request_name => 'TagSpecification' );
   has Type => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'type' );
   has ValidFrom => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validFrom' );
   has ValidUntil => (is => 'ro', isa => 'Str', traits => ['NameInRequest'], request_name => 'validUntil' );
@@ -117,18 +118,7 @@ Default: Instances are launched in any available Availability Zone.
 
 =head2 BlockDurationMinutes => Int
 
-The required duration for the Spot Instances (also known as Spot
-blocks), in minutes. This value must be a multiple of 60 (60, 120, 180,
-240, 300, or 360).
-
-The duration period starts as soon as your Spot Instance receives its
-instance ID. At the end of the duration period, Amazon EC2 marks the
-Spot Instance for termination and provides a Spot Instance termination
-notice, which gives the instance a two-minute warning before it
-terminates.
-
-You can't specify an Availability Zone group or a launch group if you
-specify a duration.
+Deprecated.
 
 
 
@@ -188,6 +178,16 @@ Instance. The default is the On-Demand price.
 
 
 
+=head2 TagSpecifications => ArrayRef[L<Paws::EC2::TagSpecification>]
+
+The key-value pair for tagging the Spot Instance request on creation.
+The value for C<ResourceType> must be C<spot-instances-request>,
+otherwise the Spot Instance request fails. To tag the Spot Instance
+request after it has been created, see CreateTags
+(https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateTags.html).
+
+
+
 =head2 Type => Str
 
 The Spot Instance request type.
@@ -212,11 +212,26 @@ current date and time.
 
 =head2 ValidUntil => Str
 
-The end date of the request. If this is a one-time request, the request
-remains active until all instances launch, the request is canceled, or
-this date is reached. If the request is persistent, it remains active
-until it is canceled or this date is reached. The default end date is 7
-days from the current date.
+The end date of the request, in UTC format
+(I<YYYY>-I<MM>-I<DD>TI<HH>:I<MM>:I<SS>Z).
+
+=over
+
+=item *
+
+For a persistent request, the request remains active until the
+C<ValidUntil> date and time is reached. Otherwise, the request remains
+active until you cancel it.
+
+=item *
+
+For a one-time request, the request remains active until all instances
+launch, the request is canceled, or the C<ValidUntil> date and time is
+reached. By default, the request is valid for 7 days from the date the
+request was created.
+
+=back
+
 
 
 

@@ -4,6 +4,7 @@ package Paws::Kendra::Search;
   has Displayable => (is => 'ro', isa => 'Bool');
   has Facetable => (is => 'ro', isa => 'Bool');
   has Searchable => (is => 'ro', isa => 'Bool');
+  has Sortable => (is => 'ro', isa => 'Bool');
 
 1;
 
@@ -24,7 +25,7 @@ Each attribute should be used as a named argument in the calls that expect this 
 
 As an example, if Att1 is expected to be a Paws::Kendra::Search object:
 
-  $service_obj->Method(Att1 => { Displayable => $value, ..., Searchable => $value  });
+  $service_obj->Method(Att1 => { Displayable => $value, ..., Sortable => $value  });
 
 =head3 Results returned from an API call
 
@@ -60,6 +61,14 @@ C<Searchable> field is C<true>, you can use relevance tuning to
 manually tune how Amazon Kendra weights the field in the search. The
 default is C<true> for string fields and C<false> for number and date
 fields.
+
+
+=head2 Sortable => Bool
+
+Determines whether the field can be used to sort the results of a
+query. If you specify sorting on a field that does not have C<Sortable>
+set to C<true>, Amazon Kendra returns an exception. The default is
+C<false>.
 
 
 
