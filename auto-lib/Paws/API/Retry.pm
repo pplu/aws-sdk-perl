@@ -1,22 +1,32 @@
 package Paws::API::Retry;
   use Moose;
   use MooseX::ClassAttribute;
-  use Paws::Exception;  
+  use Paws::Exception;
 
   class_has default_rules => (is => 'ro', isa => 'ArrayRef', default => sub { [
-    #general_socket_errors
-    sub { $_[0]->code eq 'ConnectionError' },
-    #general_server_error
+    # bad_gateway
+    sub { defined $_[0]->http_status and $_[0]->http_status == 502 },
+    # gateway_timeout
+    sub { defined $_[0]->http_status and $_[0]->http_status == 504 },
+    # general_server_error
     sub { defined $_[0]->http_status and $_[0]->http_status == 500 },
-    #service_unavailable
-    sub { defined $_[0]->http_status and $_[0]->http_status == 503 },
-    #limit_exceeded"
+    # general_socket_errors
+    sub { $_[0]->code eq 'ConnectionError' },
+    # limit_exceeded
     sub { defined $_[0]->http_status and $_[0]->http_status == 509 },
-    #throttling_exception
-    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'ThrottlingException' },
-    #throttling
-    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq 'Throttling' },
-    #too_many_requests
+    # request_throttled_exception
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq "RequestThrottledException" },
+    # service_unavailable
+    sub { defined $_[0]->http_status and $_[0]->http_status == 503 },
+    # throttled_exception
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq "ThrottledException" },
+    # throttling
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq "Throttling" },
+    # throttling_exception
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq "ThrottlingException" },
+    # throughput_exceeded
+    sub { defined $_[0]->http_status and $_[0]->http_status == 400 and $_[0]->code eq "ProvisionedThroughputExceededException" },
+    # too_many_requests
     sub { defined $_[0]->http_status and $_[0]->http_status == 429 },
   ] });
 
@@ -75,13 +85,13 @@ package Paws::API::Retry;
     return 1 if (ref($self->operation_result) eq 'Paws::Exception'); # Exceptions
     return 0;                                                        # Rest of objects
   }
-  
+
   sub one_more_try {
     my $self = shift;
     $self->tries($self->tries + 1);
   }
-  
-  sub sleep_time { 
+
+  sub sleep_time {
     my $self = shift;
     return $self->generator->($self);
   }
@@ -90,13 +100,13 @@ package Paws::API::Retry;
     my $self = shift;
     $self->tries < $self->max_tries;
   }
-  
+
   sub _is_retriable {
     my $self = shift;
     # TODO: evaluate if the error is retriable depending on class definition
     return 1;
   }
-  
+
   __PACKAGE__->meta->make_immutable;
-  
+
 1;

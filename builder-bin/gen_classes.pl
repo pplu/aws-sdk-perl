@@ -13,6 +13,7 @@ use Parallel::ForkManager;
 use lib 'builder-lib';
 
 use Paws::API::Builder::Paws;
+use Paws::API::Builder::Retry;
 
 my $gen_paws_pm    = 0;
 my $gen_classes    = 0;
@@ -56,6 +57,21 @@ if ($gen_paws_pm) {
       eval {
         my $p = Paws::API::Builder::Paws->new(
           template_path => [ getcwd() . "/templates" ]
+        );
+        $p->process;
+      };
+      my $ret = $@ ? ["$@"] : undef;
+      return $ret;
+    }
+  );
+  $pm->start_child(
+    "Paws/API/Retry.pm",
+    sub {
+      print "Processing Paws/API/Retry.pm\n";
+      eval {
+        my $p = Paws::API::Builder::Retry->new(
+          template_path => [ getcwd() . "/templates" ],
+          retry_definitions_file => "botocore/botocore/data/_retry.json",
         );
         $p->process;
       };
