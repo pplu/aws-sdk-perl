@@ -1243,5 +1243,11 @@ Jess Robinson and shadowcat.co.uk for:
 shogo82148 for migrating our Travis pipelines to GitHub Actions (and 
 improving them)
 
+aeruder for contributing
+ - Fixing DynamoDB retry fixes
+ - Completing speedups and benchmarking code
+ - Substituting Config::INI for Config::AWS 
+ - Parrallelizing and fixing generation inconsistencies of the SDK
+
 
 =cut
