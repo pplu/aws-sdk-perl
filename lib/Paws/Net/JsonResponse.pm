@@ -3,6 +3,7 @@ package Paws::Net::JsonResponse;
   use JSON::MaybeXS;
   use Carp qw(croak);
   use Paws::Exception;
+  use feature 'state';
 
   sub process {
     my ($self, $call_object, $response) = @_;
@@ -119,17 +120,17 @@ package Paws::Net::JsonResponse;
   sub new_from_result_struct {
     my ($self, $class, $result) = @_;
     my %args;
-    
-    if ($class->does('Paws::API::StrToObjMapParser')) {
+
+    if (do { state %d; $d{$class} //= $class->does('Paws::API::StrToObjMapParser')}) {
       return $self->handle_response_strtoobjmap($class, $result);
-    } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+    } elsif (do { state %d; $d{$class} //= $class->does('Paws::API::StrToNativeMapParser')}) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
-    foreach my $att ($class->meta->get_attribute_list) {
-      next if (not my $meta = $class->meta->get_attribute($att));
+    foreach my $att (do { state %d; @{$d{$class} //= [$class->meta->get_attribute_list]}}) {
+      next if (not my $meta = do { state %d; exists $d{$class}{$att} ? $d{$class}{$att} : $d{$class}{$att} = $class->meta->get_attribute($att)});
 
-      my $key = $meta->does('NameInRequest') ? $meta->request_name :
-                $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
+      my $key = do { state %d; $d{$class}{$att} //= $meta->does('NameInRequest') } ? $meta->request_name :
+                do { state %d; $d{$class}{$att} //= $meta->does('ParamInHeader') } ? lc($meta->header_name) : $att;
 
       my $att_type = $meta->type_constraint;
 
@@ -154,11 +155,11 @@ package Paws::Net::JsonResponse;
             } else {
               my $att_class = $att_type->class;
 
-              if ($att_class->does('Paws::API::StrToObjMapParser')) {
+              if (do { state %d; $d{$att_class} //= $att_class->does('Paws::API::StrToObjMapParser')}) {
                 $args{ $att } = $self->handle_response_strtoobjmap($att_class, $value);
-              } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
+              } elsif (do { state %d; $d{$att_class} //= $att_class->does('Paws::API::StrToNativeMapParser')}) {
                 $args{ $att } = $self->handle_response_strtonativemap($att_class, $value);
-              } elsif ($att_class->does('Paws::API::MapParser')) {
+              } elsif (do { state %d; $d{$att_class} //= $att_class->does('Paws::API::MapParser')}) {
                 my $xml_keys = $att_class->xml_keys;
                 my $xml_values = $att_class->xml_values;
 
@@ -193,11 +194,11 @@ package Paws::Net::JsonResponse;
         if ($type =~ m/\:\:/) {
           Paws->load_class($type);
 
-          if ($type->does('Paws::API::StrToObjMapParser')) {
+          if (do { state %d; $d{$type} //= $type->does('Paws::API::StrToObjMapParser')}) {
             $args{ $att } = [ map { $self->handle_response_strtoobjmap($type, $_) } @$value ];
-          } elsif ($type->does('Paws::API::StrToNativeMapParser')) {
+          } elsif (do { state %d; $d{$type} //= $type->does('Paws::API::StrToNativeMapParser')}) {
             $args{ $att } = [ map { $self->handle_response_strtonativemap($type, $_) } @$value ];
-          } elsif ($type->does('Paws::API::MapParser')) {
+          } elsif (do { state %d; $d{$type} //= $type->does('Paws::API::MapParser')}) {
             die "MapParser Type in an Array. Please implement me";
           } else {
             $args{ $att } = [ map { $self->new_from_result_struct($type, $_) } @$value ];

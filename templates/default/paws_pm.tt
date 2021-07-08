@@ -4,6 +4,7 @@ use Moose;
 use Moose::Util::TypeConstraints;
 use Paws::Net::CallerRole;
 use Paws::Credential;
+use feature 'state';
 
 coerce 'Paws::Net::CallerRole',
   from 'Str',
@@ -89,8 +90,10 @@ class_has default_config => (is => 'rw', isa => 'Paws::SDK::Config', default => 
 
 sub load_class {
   my (undef, @classes) = @_;
-  foreach my $class (@classes) {
+  state %loaded;
+  foreach my $class (grep !$loaded{$_}, @classes) {
     Module::Runtime::require_module($class);
+    $loaded{$class} = 1;
     # immutability is a global setting that will affect all instances
     $class->meta->make_immutable if (Paws->default_config->immutable);
   }
@@ -103,14 +106,14 @@ sub new_with_coercions {
   Paws->load_class($class);
   my %p;
 
-  if ($class->does('Paws::API::StrToObjMapParser')) {
+  if (do { state %d; $d{$class} //= $class->does('Paws::API::StrToObjMapParser') }) {
     my ($subtype) = ($class->meta->find_attribute_by_name('Map')->type_constraint =~ m/^HashRef\[(.*?)\]$/);
     if (my ($array_of) = ($subtype =~ m/^ArrayRef\[(.*?)\]$/)){
       $p{ Map } = { map { $_ => [ map { Paws->new_with_coercions("$array_of", %$_) } @{ $params{ $_ } } ] } keys %params };
     } else {
       $p{ Map } = { map { $_ => Paws->new_with_coercions("$subtype", %{ $params{ $_ } }) } keys %params };
     }
-  } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
+  } elsif (do { state %d; $d{$class} //= $class->does('Paws::API::StrToNativeMapParser') }) {
     $p{ Map } = { %params };
   } else {
     foreach my $att (keys %params){

@@ -1,0 +1,23 @@
+#!/usr/bin/env perl
+
+use Benchmark qw(:all);
+use Benchmark ':hireswallclock';
+use FindBin qw($Bin);
+
+$ENV{PERL5LIB} = join(":", @INC);
+my $SCRIPT = "$Bin/util/dynamodb-decode.pl";
+
+timethese(10, {
+  'immutable on'  => 'run_test(immutable => 1)',
+  'immutable off' => 'run_test(immutable => 0)',
+});
+
+sub run_test {
+  my %opts = (@_);
+  defined(my $pid = fork) or die "fork failed: $!";
+  if ($pid) {
+    waitpid $pid, 0;
+  } else {
+    exec($^X, $SCRIPT, qw(--count 1 --iter 1), $opts{immutable} ? qw(--immutable) : ());
+  }
+}

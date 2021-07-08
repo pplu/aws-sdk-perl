@@ -1,0 +1,5 @@
+#!/usr/bin/env perl
+
+use FindBin qw($Bin);
+$ENV{PERL5LIB} = join(":", @INC);
+exec($^X, "$Bin/util/dynamodb-decode.pl", qw(--profile nytprof.out --count 1000 --immutable --iter 1));
