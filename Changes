@@ -1,5 +1,10 @@
 0.44
  - Added GitHub Actions as CI (thanks shogo82148)
+ - Automatic naming of new APIs from botocore definition files
+ - Parallel and consistent generation of SDK (thanks aeruder PR #408 and #409)
+ - Massive speed improvement decoding JSON apis (thanks aeruder and castaway PR #410)
+ - Fix DynamoDB retries (thanks aeruder PR #411)
+ - Use Config::AWS instead of Config::INI to support older Perls (PR #413)
  - New API: AmplifyBackend
  - New API: AppIntegrations
  - New API: AppRunner
