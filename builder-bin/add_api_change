@@ -1,0 +1,11 @@
+#!/bin/bash
+
+API=$1
+
+if [ -z "$API" ]; then
+  echo "Usage $0 api"
+  exit 255
+fi
+
+git add auto-lib/Paws/$API.pm auto-lib/Paws/$API/*
+git commit -m "$API API update"
