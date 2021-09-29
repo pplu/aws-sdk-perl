@@ -6,13 +6,13 @@ package Test04::StubUAForMetadata;
   use DateTime::Format::ISO8601;
 
   sub get {
-    my ($self, $url) = @_;
+    my ($self, $url, $args) = @_;
 
-    if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/'){
+    if ( $url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/' && $args->{headers}->{'X-aws-ec2-metadata-token'} eq 'token' ){
       return { success => 1, content => "MyRole" };
     }
 
-    if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/MyRole') {
+    if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/MyRole' && $args->{headers}->{'X-aws-ec2-metadata-token'} eq 'token' ) {
       $self->increment_calls;
       if ($self->calls == 1){
         return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK1","SecretAccessKey" : "SK1","Token" : "TK1","Expiration" : "' . DateTime->now->add(seconds => 241)->iso8601 .'Z"}' };
@@ -27,6 +27,15 @@ package Test04::StubUAForMetadata;
       } else {
         die "Died on Stub call " . $self->calls;
       }
+    }
+    die "Unknown URL in StubUA $url";
+  }
+
+  sub put {
+    my ($self, $url, $args) = @_;
+
+    if ( $url eq 'http://169.254.169.254/latest/api/token' && exists $args->{headers}->{'X-aws-ec2-metadata-token-ttl-seconds'} ) {
+      return { success => 1, content => 'token' };
     }
     die "Unknown URL in StubUA $url";
   }

@@ -10,6 +10,12 @@ package Paws::Credential::InstanceProfile;
     default => 'http://169.254.169.254/latest/meta-data/iam/security-credentials/'
   );
 
+  has token_url => (
+    is => 'ro',
+    isa => 'Str',
+    default => 'http://169.254.169.254/latest/api/token'
+  );
+
   has timeout => (is => 'ro', isa => 'Int', default => 1);
 
   has ua => (
@@ -58,11 +64,18 @@ package Paws::Credential::InstanceProfile;
     return if $self->expiration - 240 >= time;
 
     my $ua = $self->ua;
-    my $r = $ua->get($self->metadata_url);
+    my $r = $ua->put( $self->token_url, { headers => { 'X-aws-ec2-metadata-token-ttl-seconds' => '21600' } } );
     return unless $r->{success};
     return unless $r->{content};
 
-    $r = $ua->get($self->metadata_url . $r->{content});
+    my $token = $r->{content};
+    my $options = { headers => { 'X-aws-ec2-metadata-token' => $token } };
+
+    $r = $ua->get( $self->metadata_url, $options );
+    return unless $r->{success};
+    return unless $r->{content};
+
+    $r = $ua->get( $self->metadata_url . $r->{content}, $options );
     return unless $r->{success};
 
     my $json = eval { decode_json($r->{content}) };
@@ -103,6 +116,10 @@ can retrieve short-term credentials (and refresh them when needed) from the AWS 
 =head2 metadata_url: Str
 
 The section in the ini file where credentials will be looked up:
+
+=head2 metadata_url: Str
+
+URL for client to fetch token from
 
 =head2 timetout: Int
 
