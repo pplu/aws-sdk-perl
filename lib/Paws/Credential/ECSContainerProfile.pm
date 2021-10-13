@@ -77,7 +77,7 @@ package Paws::Credential::ECSContainerProfile;
   sub _refresh {
     my $self = shift;
 
-    return if $self->expiration >= time;
+    return if $self->expiration - 240 >= time;
     return if ! $self->metadata_url;
 
     my $ua = $self->ua;
