@@ -3,16 +3,19 @@ package Test04::StubUAForMetadata;
 
   has calls => (is => 'rw', isa => 'Int', default => 0, traits => ['Counter'],
                 handles => { increment_calls => 'inc' });
+
+  has check_headers => (is => 'ro', isa => 'Bool', default => 0);
   use DateTime::Format::ISO8601;
 
   sub get {
     my ($self, $url, $args) = @_;
 
-    if ( $url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/' && $args->{headers}->{'X-aws-ec2-metadata-token'} eq 'token' ){
+    my $valid_headers = ( $self->check_headers() ) ? $args->{headers}->{'X-aws-ec2-metadata-token'} eq 'token' : 1;
+    if ( $url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/' && $valid_headers ){
       return { success => 1, content => "MyRole" };
     }
 
-    if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/MyRole' && $args->{headers}->{'X-aws-ec2-metadata-token'} eq 'token' ) {
+    if ($url eq 'http://169.254.169.254/latest/meta-data/iam/security-credentials/MyRole' && $valid_headers ) {
       $self->increment_calls;
       if ($self->calls == 1){
         return { success => 1, content => '{"Code" : "Success","LastUpdated" : "2012-04-26T16:39:16Z","Type" : "AWS-HMAC","AccessKeyId" : "AK1","SecretAccessKey" : "SK1","Token" : "TK1","Expiration" : "' . DateTime->now->add(seconds => 241)->iso8601 .'Z"}' };
