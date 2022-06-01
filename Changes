@@ -1,4 +1,10 @@
-0.44
+0.45 1 Jun 2022
+ - Drop support for Perl 5.10, since Getopt-Long-Descriptive, a dependency of one of our dependencies, 
+   is supporting Perl >= 5.12.
+ - Account for ContainerProfile security token expiration (dheffx)
+ - Added support for Support AWS Instance Metadata Service V2 (IMDSv2) (thanks 0leksii)
+
+0.44 14 Jul 2021
  - Added GitHub Actions as CI (thanks shogo82148)
  - Automatic naming of new APIs from botocore definition files
  - Parallel and consistent generation of SDK (thanks aeruder PR #408 and #409)

@@ -8,7 +8,9 @@ package Paws::Credential::ProviderChain;
       [ 'Paws::Credential::Environment', 
         'Paws::Credential::File', 
         'Paws::Credential::ECSContainerProfile',
-        'Paws::Credential::InstanceProfile' ]
+        'Paws::Credential::InstanceProfile',
+        'Paws::Credential::InstanceProfileV2',
+      ]
     },
   );
 
@@ -62,6 +64,6 @@ It is the default provider for Paws
 
 =head2 providers: ArrayRef[Str]
 
-Defaults to C<[ 'Paws::Credential::Environment', 'Paws::Credential::File', 'Paws::Credential::InstanceProfile' ]>
+Defaults to C<[ 'Paws::Credential::Environment', 'Paws::Credential::File', 'Paws::Credential::InstanceProfile', 'Paws::Credential::InstanceProfileV2' ]>
 
 =cut

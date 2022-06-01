@@ -1,4 +1,4 @@
-requires 'perl' => '5.010001';
+requires 'perl' => '5.012001';
 requires 'Moose';
 requires 'MooseX::ClassAttribute';
 requires 'HTTP::Tiny';

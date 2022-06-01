@@ -7,6 +7,7 @@ use Paws;
 use Paws::Credential::Explicit;
 use Paws::Credential::Environment;
 use Paws::Credential::InstanceProfile;
+use Paws::Credential::InstanceProfileV2;
 use Paws::Credential::ECSContainerProfile;
 use Paws::Credential::ProviderChain;
 use Paws::Credential::File;
@@ -84,9 +85,32 @@ delete @ENV{qw(
 }
 
 {
+  my $creds = Paws::Credential::InstanceProfileV2->new(ua => Test04::StubUAForMetadata->new(check_header => 1));
+  cmp_ok($creds->access_key, 'eq', 'AK1', 'Access Key 1 (IMDSv2)');
+  cmp_ok($creds->secret_key, 'eq', 'SK1', 'Secret Key 1 (IMDSv2)');
+  cmp_ok($creds->session_token, 'eq', 'TK1', 'Token 1 (IMDSv2)');
+
+  sleep 2;
+
+  cmp_ok($creds->access_key, 'eq', 'AK2', 'Access Key 2 (IMDSv2)');
+  cmp_ok($creds->secret_key, 'eq', 'SK2', 'Secret Key 2 (IMDSv2)');
+  cmp_ok($creds->session_token, 'eq', 'TK2', 'Token 2 (IMDSv2)');
+
+  sleep 2;
+
+  dies_ok { $creds->access_key } 'Exception thrown when garbage arrives (IMDSv2)';
+}
+
+{
   my $creds = Paws::Credential::InstanceProfile->new(ua => Test04::StubUANoMetadata->new);
 
   ok(not($creds->are_set), 'No Creds for no Role');
+}
+
+{
+  my $creds = Paws::Credential::InstanceProfileV2->new(ua => Test04::StubUANoMetadata->new);
+
+  ok(not($creds->are_set), 'No Creds for no Role (IMDSv2)');
 }
 
 {
@@ -99,8 +123,8 @@ delete @ENV{qw(
   cmp_ok($creds->metadata_url, 'eq', "http://169.254.170.2/metadata");  
 
   cmp_ok($creds->access_key, 'eq', 'AK1', 'ECS Access Key 1');
-  cmp_ok($creds->secret_key, 'eq', 'SK1', 'EC2 Secret Key 1');
-  cmp_ok($creds->session_token, 'eq', 'TK1', 'EC2 Token 1');
+  cmp_ok($creds->secret_key, 'eq', 'SK1', 'ECS Secret Key 1');
+  cmp_ok($creds->session_token, 'eq', 'TK1', 'ECS Token 1');
 
   sleep 2;
 

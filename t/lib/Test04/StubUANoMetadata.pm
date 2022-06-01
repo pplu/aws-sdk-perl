@@ -8,4 +8,13 @@ package Test04::StubUANoMetadata;
       return { success => 1, content => "" };
     }
   }
+
+  sub put {
+    my ($self, $url, $args) = @_;
+
+    if ( $url eq 'http://169.254.169.254/latest/api/token' && exists $args->{headers}->{'X-aws-ec2-metadata-token-ttl-seconds'} ) {
+      return { success => 1, content => 'token' };
+    }
+    die "Unknown URL in StubUA $url";
+  }
 1;

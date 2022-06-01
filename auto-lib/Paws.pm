@@ -58,7 +58,7 @@ __PACKAGE__->meta->make_immutable;
 
 package Paws;
 
-our $VERSION = '0.44';
+our $VERSION = '0.45';
 
 use Carp;
 
@@ -927,6 +927,8 @@ L<Paws::Credential::File> - Gets credentials from AWS SDK config files
 
 L<Paws::Credential::InstanceProfile> - Gets credentials from the InstanceProfile (Role) of the running instance
 
+L<Paws::Credential::InstanceProfileV2> - Gets credentials from the InstanceProfile (Role) of the running instance using IMDSv2 approach
+
 L<Paws::Credential::STS> - Gets temporary credentials from the Secure Token Service
 
 L<Paws::Credential::AssumeRole> - Gets temporary credentials with AssumeRole
@@ -1248,6 +1250,10 @@ aeruder for contributing
  - Completing speedups and benchmarking code
  - Substituting Config::INI for Config::AWS 
  - Parrallelizing and fixing generation inconsistencies of the SDK
+
+dheffx for making ContainerProfile credential provider more robust
+
+0leksii for building support for Instance Metadata Service v2 (IMDSv2)
 
 
 =cut
