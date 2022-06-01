@@ -1,4 +1,6 @@
 0.45 1 Jun 2022
+ - Drop support for Perl 5.10, since Getopt-Long-Descriptive, a dependency of one of our dependencies, 
+   is supporting Perl >= 5.12.
  - Account for ContainerProfile security token expiration (dheffx)
  - Added support for Support AWS Instance Metadata Service V2 (IMDSv2) (thanks 0leksii)
 

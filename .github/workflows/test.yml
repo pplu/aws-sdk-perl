@@ -25,7 +25,6 @@ jobs:
           - "5.16"
           - "5.14"
           - "5.12"
-          - "5.10"
         # on macos-latest, only test with latest version of perl.
         # because concurrency of builds on macos-latest is limit and it takes long time.
         include:
