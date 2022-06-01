@@ -927,7 +927,7 @@ L<Paws::Credential::File> - Gets credentials from AWS SDK config files
 
 L<Paws::Credential::InstanceProfile> - Gets credentials from the InstanceProfile (Role) of the running instance
 
-L<Paws::Credential::InstanceProfile> - Gets credentials from the InstanceProfile (Role) of the running instance using IMDSv2 approach
+L<Paws::Credential::InstanceProfileV2> - Gets credentials from the InstanceProfile (Role) of the running instance using IMDSv2 approach
 
 L<Paws::Credential::STS> - Gets temporary credentials from the Secure Token Service
 
