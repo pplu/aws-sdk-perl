@@ -1251,5 +1251,9 @@ aeruder for contributing
  - Substituting Config::INI for Config::AWS 
  - Parrallelizing and fixing generation inconsistencies of the SDK
 
+dheffx for making ContainerProfile credential provider more robust
+
+0leksii for building support for Instance Metadata Service v2 (IMDSv2)
+
 
 =cut
