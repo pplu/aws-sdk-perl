@@ -13,7 +13,7 @@ package Paws::API::Builder::Paws {
   use Moose;
 
   sub version {
-    '0.45';
+    '0.46';
   }
 
   has boto_service_files => (is => 'ro', isa => 'ArrayRef[Str]', lazy => 1, default => sub {

@@ -1,3 +1,6 @@
+0.46 
+ - 
+
 0.45 1 Jun 2022
  - Drop support for Perl 5.10, since Getopt-Long-Descriptive, a dependency of one of our dependencies, 
    is supporting Perl >= 5.12.
