@@ -35,6 +35,7 @@ package Paws::Credential::ECSContainerProfile;
       my $self = shift;
       use HTTP::Tiny;
       HTTP::Tiny->new(
+        verify_SSL => 1,
         agent => 'AWS Perl SDK',
         timeout => $self->timeout,
       );
