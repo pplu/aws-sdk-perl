@@ -14,7 +14,7 @@ my @services = @ARGV > 0 ? @ARGV : sort $paws->available_services;
 
 foreach my $service (@services){
   Paws->preload_service($service);
-  ok(1,"Loaded service $service");
+  pass("Loaded service $service");
   unload($paws->_class_prefix . $service);
 }
 

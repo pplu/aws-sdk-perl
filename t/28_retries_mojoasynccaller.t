@@ -12,13 +12,9 @@ use lib 't/lib';
 
 use Test::CustomCredentials;
 
-# Do a Volkswagen if we are in Travis. Timeout tests are very instable (since
-# when running in Travis)
-if ($ENV{TRAVIS} or not defined $ENV{AUTHOR_TESTS}) {
-  ok(1, 'Travis CI detected. Skipping timeout tests');
-  done_testing;
-  exit
-}
+# Timeout tests are very unstable on CI, probbaly due to high loads.
+plan skip_all => 'CI detected. Skipping timeout tests' if $ENV{CI};
+plan skip_all => 'Author testing only' unless $ENV{AUTHOR_TESTING};
 
 my $mojo = eval {
   Paws->new(config => {
