@@ -108,7 +108,7 @@ sub test_file {
     } "Call " . $test->service . '->' . $test->method . " from $file";
 
     if (not $passed or $TODO) {
-      ok(0, "Can't test method access because something went horribly wrong in the call to $call_method");
+      fail("Can't test method access because something went horribly wrong in the call to $call_method");
       next;
     }
 
@@ -124,14 +124,14 @@ sub test_file {
         if ($@) {
           my $message = $@;
           chomp $message;
-          ok(0, "Exception accessing $t->{path}: $message");
+          fail("Exception accessing $t->{path}: $message");
         }
       } else {
         die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
       }
 
       if (not defined $got and not defined $t->{expected}){
-        ok(1, "Got undef on $path from result");
+        pass("Got undef on $path from result");
       } else {
         cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
       }

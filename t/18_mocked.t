@@ -62,12 +62,12 @@ sub test_file {
     my $passed;
     if ($@) {
       if ($test->exception) {
-        ok(1, 'Got an exception, and I was expecting it');
+        pass('Got an exception, and I was expecting it');
         isa_ok($@, 'Paws::Exception');
         $passed = 1;
         $ret = $@;
       } else {
-        ok(0, 'Got an unexpected exceptions');
+        fail('Got an unexpected exceptions');
         $passed = 0;
       }
     }
@@ -88,14 +88,14 @@ sub test_file {
         if ($@) {
           my $message = $@;
           chomp $message;
-          ok(0, "Exception accessing $t->{path}: $message");
+          fail("Exception accessing $t->{path}: $message");
         }
       } else {
         die "Didn't know how to get a result to compare to. Check that test has path or dpath entry";
       }
 
       if (not defined $got and not defined $t->{expected}){
-        ok(1, "Got undef on $path from result");
+        pass("Got undef on $path from result");
       } else {
         cmp_ok($got, $t->{op}, $t->{expected}, "Got $path $t->{op} $t->{expected} from result");
       }
