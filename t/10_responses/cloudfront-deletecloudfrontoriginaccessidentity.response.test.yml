@@ -1,0 +1,7 @@
+---
+call: DeleteCloudFrontOriginAccessIdentity
+service: CloudFront
+tests:
+  - expected: ff8462e0-82eb-4e58-8cd5-95276eb535d2
+    op: eq
+    path: _request_id

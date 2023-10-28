@@ -1,0 +1,12 @@
+---
+call: DeleteBucket
+service: S3
+tests:
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: /oneoffpaws 
+    path: uri
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws
+    path: url

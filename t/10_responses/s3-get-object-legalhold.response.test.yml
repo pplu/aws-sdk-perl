@@ -1,0 +1,10 @@
+---
+call: GetObjectLegalHold
+service: S3
+tests:
+  - expected: ON
+    op: eq
+    path: LegalHold.Status
+  - expected: 913E7AF31729005D
+    op: eq
+    path: _request_id

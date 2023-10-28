@@ -1,0 +1,7 @@
+---
+Bucket: oneoffpaws
+Key: lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+RestoreRequest:
+  Days: 2
+  GlacierJobParameters:
+    Tier: Standard

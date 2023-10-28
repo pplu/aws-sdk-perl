@@ -1,0 +1,16 @@
+---
+content: '{"Item":[{ "Id": "962c226d1c9b497f939d036f1b5e5a2d","ApplicationId": "35ec2088193b4f56986cec0fc59d9ca4","CampaignId": "a229e2976552419fa7a61a3fea89069e","TreatmentId": "f484f921960b4e11a417c926f3146229","State": "PENDING","Result": "SUCCESS","ScheduledStart": "2019-07-11T12:32:01.431Z", "Start": "2019-07-11T12:32:04.231Z","End": "2019-07-12T12:32:01.431Z","SuccessfulEndpointCount": 1,"TotalEndpointCount": 2,"TimezonesTotalCount": 3,"TimezonesCompletedCount": 4}],"NextToken": "eyJDcmVhdGlvbkRhdGUiOiIyMDE5LTAxLTA3VDE4OjAxOjU3LjE5M1oiLCJBY2NvdW50SWQiOiI5ODUxNzMyMDU1NjEiLCJBcHBJZCI6ImMwMGQxYTE1YTk5ZTRjYmVhYWFiMzllM2RjY2Q2NmUxIn0", "_request_id":"ea60770b-a3d6-11e9-9969-d35857166335"}'
+headers:
+  'x-amz-cf-id': 'XG5X957EvNuv48ptSK68G4Sc4XfClYerQ7o0ScYEFIWr-_4yuAGyyg=='
+  'access-control-allow-origin': '*'
+  'x-amz-cf-pop': 'ORD52-C2'
+  'date': 'Thu, 11 Jul 2019 12:32:01 GMT'
+  'via': '1.1 bb8a4e32b7413c1fbb32dbaa86a9a575.cloudfront.net (CloudFront)'
+  'x-cache': 'Miss from cloudfront'
+  'connection': 'keep-alive'
+  'x-amz-apigw-id': 'cqPaRH5YoAMFWMw='
+  'content-length': '11'
+  'x-amzn-trace-id': 'Root=1-5d272c41-06aab36a1360e4d1ef46a03b'
+  'x-amzn-requestid': 'e20d7676-a3d7-11e9-915f-b76e879c245d'
+  'content-type': 'application/json'
+status: 200

@@ -1,0 +1,25 @@
+---
+Bucket: oneoffpaws
+ReplicationConfiguration:
+  Role: arn:aws:iam::1234567890:role/Idera
+  Rules:
+    - Destination:
+        Bucket: arn:aws:s3:oneoffpaws
+        StorageClass: STANDARD
+      Priority: 1
+      ID: rule1
+      Filter:
+        Prefix: documents
+      Status: Disabled
+      DeleteMarkerReplication:
+        Status: Disabled
+    - Destination:
+        Bucket: arn:aws:s3:oneoffpaws
+        StorageClass: STANDARD
+      Priority: 2
+      ID: rule2
+      Filter:
+        Prefix: documents
+      Status: Disabled
+      DeleteMarkerReplication:
+        Status: Disabled

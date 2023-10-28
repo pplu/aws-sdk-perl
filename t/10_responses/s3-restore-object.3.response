@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0" encoding="UTF-8"?>
+   <Error>
+      <Code>RestoreAlreadyInProgress</Code>
+      <Message>Object restore is already in progress</Message>
+      <RequestId>AC65B3BF8AC3AA34</RequestId>
+      <HostId>1Wlw6Edlx3uplC85VIcAwe12xfU8BgcaFHXTlyNBhilk4Xv2sbOJs80FjvAvW9weQkwtKJXcnJg=</HostId>
+  </Error>
+headers:
+  connection: close
+  content-type: application/xml
+  date: 'Wed, 25 Sep 2019 21:04:17 GMT'
+  server: AmazonS3
+  transfer-encoding: chunked
+  x-amz-id-2: 1Wlw6Edlx3uplC85VIcAwe12xfU8BgcaFHXTlyNBhilk4Xv2sbOJs80FjvAvW9weQkwtKJXcnJg=
+  x-amz-request-id: C65B3BF8AC3AA34
+status: 409

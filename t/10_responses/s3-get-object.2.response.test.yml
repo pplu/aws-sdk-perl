@@ -7,7 +7,10 @@ tests:
     expected: E4845140F3F4C4AB
   - path: message
     op: eq
-    expected: Not Found
+    expected: The specified key does not exist.
   - path: code
+    op: eq
+    expected: NoSuchKey
+  - path: http_status
     op: eq
     expected: 404

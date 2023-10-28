@@ -1,0 +1,43 @@
+---
+call: PutPublicAccessBlock
+service: S3
+tests:
+  - expected: <PublicAccessBlockConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><BlockPublicAcls>1</BlockPublicAcls><BlockPublicPolicy>0</BlockPublicPolicy><IgnorePublicAcls>0</IgnorePublicAcls><RestrictPublicBuckets>1</RestrictPublicBuckets></PublicAccessBlockConfiguration>
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: 0
+    op: eq
+    path: parameters
+    key: PublicAccessBlockConfiguration.IgnorePublicAcls 
+  - expected: 0
+    op: eq
+    path: parameters
+    key: PublicAccessBlockConfiguration.BlockPublicPolicy
+  - expected: oneoffpaws
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: 1
+    op: eq
+    path: parameters
+    key: PublicAccessBlockConfiguration.BlockPublicAcls
+  - expected: 1
+    op: eq
+    path: parameters
+    key: PublicAccessBlockConfiguration.RestrictPublicBuckets
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: publicAccessBlock
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: publicAccessBlock
+    path: uri
+

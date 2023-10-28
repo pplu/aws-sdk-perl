@@ -1,0 +1,3 @@
+---
+Bucket: oneoffpaws
+Policy: '{"Id": "Policy1572795613217","Version": "2012-10-17","Statement": [{"Sid": "Stmt1234567890","Action": ["*"],"Effect": "Allow","Resource": "arn:aws:s3:::oneoffpaws", "Principal": { "AWS": ["arn:aws:iam::1234567890:user/ghehoiso"]}}]}'

@@ -1,0 +1,51 @@
+---
+call: CreateInvalidation
+service: CloudFront
+tests:
+  - expected: '<InvalidationBatch xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><CallerReference>2020-01010-001</CallerReference><Paths><Items><Path>/images/*.bmp</Path></Items><Quantity>1</Quantity></Paths></InvalidationBatch>'
+    op: eq
+    path: content
+  - expected: POST
+    op: eq
+    path: method
+  - expected: jBG0nqQxZrkgBc0wMtxG6w==
+    key: content-md5
+    op: eq
+    path: headers
+  - expected: application/xml
+    key: content-type
+    op: eq
+    path: headers
+  - expected: cloudfront.amazonaws.com
+    key: host
+    op: eq
+    path: headers
+  - expected: a658200865b6ac804dacb14b67af4a722b5b61339c01908a459545f6c9f2426a
+    key: x-amz-content-sha256
+    op: eq
+    path: headers
+  - expected: E2F696NMEQJ5SH
+    key: DistributionId
+    op: eq
+    path: parameters
+  - expected: 2020-01010-001
+    key: InvalidationBatch.CallerReference
+    op: eq
+    path: parameters
+  - expected: /images/*.bmp
+    key: InvalidationBatch.Paths.Items.member.1
+    op: eq
+    path: parameters
+  - expected: 1
+    key: InvalidationBatch.Paths.Quantity
+    op: eq
+    path: parameters
+  - expected: https://cloudfront.amazonaws.com/2019-03-26/distribution/E2F696NMEQJ5SH/invalidation
+    op: eq
+    path: url
+  - expected: /2019-03-26/distribution/E2F696NMEQJ5SH/invalidation
+    op: eq
+    path: url
+  - expected: /2019-03-26/distribution/E2F696NMEQJ5SH/invalidation
+    op: eq
+    path: uri

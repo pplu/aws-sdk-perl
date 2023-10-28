@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <ErrorResponse xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Error><Type>Sender</Type><Code>StreamingDistributionAlreadyExists</Code><Message>The caller reference that you are using to create a streaming distribution is associated with another streaming distribution. Already exists: E17937UBVFIW2L</Message></Error><RequestId>0bf14849-30d7-4a43-b907-b82da3e19bc9</RequestId></ErrorResponse>
+headers:
+  client-date: 'Sat, 11 Jan 2020 18:36:20 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 424
+  content-type: text/xml
+  date: 'Sat, 11 Jan 2020 18:36:19 GMT'
+  x-amzn-requestid: 0bf14849-30d7-4a43-b907-b82da3e19bc9
+status: 409

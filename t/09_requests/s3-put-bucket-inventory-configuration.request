@@ -1,0 +1,13 @@
+---
+Bucket: oneoffpaws
+InventoryConfiguration:
+  Destination:
+    S3BucketDestination:
+      Bucket: arn:aws:s3:oneoffpaws
+      Format: CSV
+  IsEnabled: 0
+  Id: Test_Inventory
+  IncludedObjectVersions: Current
+  Schedule:
+    Frequency: Weekly
+Id: Test_Inventory

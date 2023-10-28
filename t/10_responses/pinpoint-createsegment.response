@@ -1,0 +1,16 @@
+---
+content: '{"Name" : "Test segment","Dimensions" : {"Demographic" : {"Platform" : {"DimensionType" : "INCLUSIVE","Values" : [ "ios" ]},"AppVersion" : {"DimensionType" : "INCLUSIVE","Values" : [ "1.0" ]},"Make" : {"DimensionType" : "INCLUSIVE","Values" : [ "apple" ] },"Model" : {"DimensionType" : "INCLUSIVE","Values" : [ "iPhone" ]}},"Location" : {"Country" : {"DimensionType" : "INCLUSIVE","Values" : [ "US" ]}},"Behavior" : {"Recency":{"Duration":"123","RecencyType":"ACTIVE"} },"Attributes" : {"interests" : {"AttributeType" : "INCLUSIVE","Values" : [ "technology", "music", "travel" ]}},"Metrics" : {"interests":{"ComparisonOperator": "GREATER_THAN_OR_EQUAL","Value":"102"}},"UserAttributes" : {"interests" : {"AttributeType" : "INCLUSIVE","Values" : [ "technology", "music", "travel" ]} }},"Id" : "a229e2976552419fa7a61a3fea89069e","ApplicationId" : "fd89d30f64104bfcb4809eacbcc261af","CreationDate" : "2019-07-11T12:32:01.063Z","LastModifiedDate" : "2019-07-11T12:32:01.063Z","Version" : 1,"SegmentType" : "DIMENSIONAL","Arn" : "arn:aws:mobiletargeting:us-east-1:985173205561:apps/fd89d30f64104bfcb4809eacbcc261af/segments/a229e2976552419fa7a61a3fea89069e","tags" : {"key1":"value1","key2":"value2"}}'
+headers:
+  'x-amz-apigw-id': 'cqPaKFJ-IAMFbXQ='
+  'connection': 'keep-alive'
+  'via': '1.1 bb8a4e32b7413c1fbb32dbaa86a9a575.cloudfront.net (CloudFront)'
+  'x-cache': 'Miss from cloudfront'
+  'x-amz-cf-id': '20Rb6bSRsR2NpnEcv--MUUoJvJTKrO7M4HKYqsuFl2304InIZAXuEg=='
+  'access-control-allow-origin': '*'
+  'x-amz-cf-pop': 'ORD52-C2'
+  'date': 'Thu, 11 Jul 2019 12:32:01 GMT'
+  'content-type': 'application/json'
+  'x-amzn-trace-id': 'Root=1-5d272c41-1b3a46fc43a71760727c93e4'
+  'x-amzn-requestid': 'e1a7fe92-a3d7-11e9-b38f-19e7483bc844'
+  'content-length': '1221'
+status: 201

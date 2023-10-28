@@ -1,0 +1,18 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <FieldLevelEncryptionList xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><MaxItems>4</MaxItems><Quantity>1</Quantity><Items><FieldLevelEncryptionSummary><Id>C1PAI9EKFLCYTY</Id><LastModifiedTime>2020-01-09T21:27:58.848Z</LastModifiedTime><Comment>Please Rick. I can take care of myself!</Comment><QueryArgProfileConfig><ForwardWhenQueryArgProfileIsUnknown>true</ForwardWhenQueryArgProfileIsUnknown><QueryArgProfiles><Quantity>1</Quantity><Items><QueryArgProfile><QueryArg>no_conig</QueryArg><ProfileId>P14TNUMMKLEPXX</ProfileId></QueryArgProfile></Items></QueryArgProfiles></QueryArgProfileConfig><ContentTypeProfileConfig><ForwardWhenContentTypeIsUnknown>true</ForwardWhenContentTypeIsUnknown><ContentTypeProfiles><Quantity>1</Quantity><Items><ContentTypeProfile><Format>URLEncoded</Format><ProfileId>P14TNUMMKLEPXX</ProfileId><ContentType>application/x-www-form-urlencoded</ContentType></ContentTypeProfile></Items></ContentTypeProfiles></ContentTypeProfileConfig></FieldLevelEncryptionSummary></Items></FieldLevelEncryptionList>
+headers:
+  client-date: 'Thu, 09 Jan 2020 21:34:45 GMT'
+  client-peer: 54.239.29.51:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 1061
+  content-type: text/xml
+  date: 'Thu, 09 Jan 2020 21:34:44 GMT'
+  x-amzn-requestid: ccf5f556-877c-474f-8dd3-3513e43d28c3
+status: 200

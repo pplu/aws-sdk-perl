@@ -1,0 +1,16 @@
+---
+call: RestoreObject
+service: S3
+tests:
+  - path: request_id
+    op: eq
+    expected: AC65B3BF8AC3AA34 
+  - path: message
+    op: eq
+    expected: Object restore is already in progress
+  - path: code
+    op: eq
+    expected: RestoreAlreadyInProgress
+  - path: http_status
+    op: eq
+    expected: 409

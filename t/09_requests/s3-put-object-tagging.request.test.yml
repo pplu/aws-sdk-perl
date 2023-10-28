@@ -1,0 +1,46 @@
+---
+call: PutObjectTagging 
+service: S3
+tests:
+  - expected: <Tagging xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><TagSet><Tag><Key>Akey</Key><Value>a value</Value></Tag><Tag><Key>bkey</Key><Value>b value</Value></Tag></TagSet></Tagging>
+    op: eq
+    path: content
+  - expected: oneoffpaws
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg
+    op: eq
+    path: parameters
+    key: Key
+  - expected: a value
+    op: eq
+    path: parameters
+    key: Tagging.TagSet.Tag.1.Value
+  - expected: Akey
+    op: eq
+    path: parameters
+    key: Tagging.TagSet.Tag.1.Key
+  - expected: b value
+    op: eq
+    path: parameters
+    key: Tagging.TagSet.Tag.2.Value
+  - expected: bkey
+    op: eq
+    path: parameters
+    key: Tagging.TagSet.Tag.2.Key
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws/lhf/insp/attachments/assigned/condition_1_1033233_275731_69069.jpg?
+    path: url
+    op: eq
+  - expected: tagging
+    path: url
+    op: eq
+  - expected: /oneoffpaws/
+    path: uri
+    op: eq
+  - expected: tagging
+    path: uri
+    op: eq

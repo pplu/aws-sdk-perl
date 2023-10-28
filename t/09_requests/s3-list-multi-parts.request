@@ -1,0 +1,8 @@
+---
+Bucket: oneoffpaws 
+Delimiter: MyDelimiter
+EncodingType: url
+KeyMarker: MyKeyMarker
+MaxUploads: 1
+Prefix: MyPrefix
+UploadIdMarker: MyUploadIdMarker

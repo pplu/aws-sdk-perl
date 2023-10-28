@@ -1,0 +1,22 @@
+---
+call: UpdateCloudFrontOriginAccessIdentity
+service: CloudFront
+tests:
+  - expected: some test here
+    op: eq
+    path: CloudFrontOriginAccessIdentity.CloudFrontOriginAccessIdentityConfig.CallerReference
+  - expected: Mr Pooppy buthole did this
+    op: eq
+    path: CloudFrontOriginAccessIdentity.CloudFrontOriginAccessIdentityConfig.Comment
+  - expected: E3D5Y5RWA05QO1
+    op: eq
+    path: CloudFrontOriginAccessIdentity.Id
+  - expected: 84f47125a87a26ea5ba42f3be65fbefebdb7440d82e7d27907c52c969ac4f6c05ef03046db8cd6f74dab632e70ffcd71
+    op: eq
+    path: CloudFrontOriginAccessIdentity.S3CanonicalUserId
+  - expected: E3QNA45YLLRKK2
+    op: eq
+    path: ETag
+  - expected: 638657c1-d71c-4435-b89c-81597d652e79
+    op: eq
+    path: _request_id

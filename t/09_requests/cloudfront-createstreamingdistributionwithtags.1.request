@@ -1,0 +1,17 @@
+---
+StreamingDistributionConfigWithTags:
+  StreamingDistributionConfig:
+    CallerReference: 2020:010101
+    Comment: 'I squanch, your Squanch, Squance'
+    Enabled: 0
+    PriceClass: PriceClass_100
+    S3Origin:
+      DomainName: oneoffpaws.s3.amazonaws.com
+      OriginAccessIdentity: origin-access-identity/cloudfront/E3D5Y5RWA05QO1
+    TrustedSigners:
+      Enabled: 0
+      Quantity: 0
+  Tags:
+    Items:
+      - Key: MyTagKey1
+        Value: MyTagValue1

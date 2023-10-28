@@ -1,0 +1,22 @@
+---
+call: GetEndpoint 
+service: Pinpoint
+tests:
+  - expected: SMS
+    op: eq
+    path: ChannelType
+  - expected: 1-939-555-3226
+    op: eq
+    path: Address
+  - expected: ACTIVE
+    op: eq
+    path: EndpointStatus
+  - expected: NONE
+    op: eq
+    path: OptOut
+  - expected: 8483fb44-a4a2-11e9-9b4a-eb68e20dc15c
+    op: eq
+    path: RequestId
+  - expected: 2019-07-12T12:42:31.256Z
+    op: eq
+    path: EffectiveDate

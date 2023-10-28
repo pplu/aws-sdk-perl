@@ -5,40 +5,42 @@ package Paws::Net::RestXMLResponse;
   use Carp qw(croak);
   use HTTP::Status;
   use Paws::Exception;
-
+  use Data::Dumper;
   sub unserialize_response {
-    my ($self, $response) = @_;
 
-    my $data = $response->content;
-    return Paws::Exception->new(
-        message => $@,
-        code => 'InvalidContent',
-        request_id => '', #$request_id,
-        http_status => $response->status,
-      ) if (not defined $data or $data eq '');
+#    my ($self, $response) = @_;
+#    my $data = $response->content;
+#    return Paws::Exception->new(
+#        message => $@,
+#        code => 'InvalidContent',
+#        request_id => '', #$request_id,
+#        http_status => $response->status,
+#      ) if (not defined $data or $data eq '');
+    my ($self, $data,$keep_root) = @_;
+    return {} if (not defined $data or $data eq '');
     
     my $xml = XML::Simple->new(
       ForceArray    => qr/^(?:^item$|Errors)/i,
       KeyAttr       => '',
       SuppressEmpty => undef,
     );
-    my $struct = eval { $xml->parse_string($data) };
-    if ($@){
-      return Paws::Exception->new(
-        message => $@,
-        code => 'InvalidContent',
-        request_id => '', #$request_id,
-        http_status => $response->status,
-      );
-    }
+#   my $struct = eval { $xml->parse_string($data) };
+#    if ($@){
+#      return Paws::Exception->new(
+#        message => $@,
+#        code => 'InvalidContent',
+#        request_id => '', #$request_id,
+#        http_status => $response->status,
+#      );
+#    }
 
-    return $struct;
+#    return $struct;
+    return $xml->parse_string($data);
   }
 
   sub process {
     my ($self, $call_object, $response) = @_;
-
-    if ( $response->status >= 300 ) {
+	if ( $response->status >= 300 ) {
         return $self->error_to_exception($call_object, $response);
     } else {
         return $self->response_to_object($call_object, $response);
@@ -48,12 +50,20 @@ package Paws::Net::RestXMLResponse;
   sub error_to_exception {
     my ($self, $call_object, $response) = @_;
 
-    my $struct = eval { $self->unserialize_response( $response ) };
+#   my $struct = eval { $self->unserialize_response( $response ) };
+    my $struct = eval { $self->unserialize_response( $response->content ) };
+	if ($@){
+      return Paws::Exception->new(
+        message => $@,
+        code => exists($struct->{Code})?$struct->{Code}:'InvalidContent',
+        request_id => '', #$request_id,
+        http_status => $response->status,
+      );
+    }
 
-    my ($message, $code, $request_id, $host_id);
-
-    $message = status_message($response->status);
-    $code = $response->status;
+  my ($message, $code, $request_id, $host_id);
+	$message = exists($struct->{Message})? $struct->{Message}: status_message($response->status);
+	$code    = exists($struct->{Code})   ? $struct->{Code}   : $response->status;
 
     if (exists $struct->{RequestId}) {
       $request_id = $struct->{RequestId};
@@ -136,30 +146,38 @@ package Paws::Net::RestXMLResponse;
   sub new_from_result_struct {
     my ($self, $class, $result) = @_;
     my %args;
-    
+
     if ($class->does('Paws::API::StrToObjMapParser')) {
       return $self->handle_response_strtoobjmap($class, $result);
     } elsif ($class->does('Paws::API::StrToNativeMapParser')) {
       return $self->handle_response_strtonativemap($class, $result);
     } else {
-    foreach my $att ($class->meta->get_attribute_list) {
+
+	foreach my $att (sort($class->meta->get_attribute_list)) { #sort them so we ge consitant errors and tests results
       next if (not my $meta = $class->meta->get_attribute($att));
-
-      my $key = $meta->does('NameInRequest') ? $meta->request_name :
+	  my $key = $meta->does('NameInRequest') ? $meta->request_name :
                 $meta->does('ParamInHeader') ? lc($meta->header_name) : $att;
-
       my $att_type = $meta->type_constraint;
       my $att_is_required = $meta->is_required;
-
-    #  use Data::Dumper;
-    #  print STDERR "USING KEY:  $key\n";
-    #  print STDERR "$att IS A '$att_type' TYPE\n";
-    #  print STDERR "VALUE: " . Dumper($result);
-    #  my $extracted_val = $result->{ $key };
-    #  print STDERR "RESULT >>> $extracted_val\n";
+#      print STDERR "USING KEY:  $key\n";
+#      print STDERR "$att IS A '$att_type' TYPE\n";
+#      print STDERR "VALUE: " . Dumper($result);
+#      my $extracted_val = $result->{ $key };
+#      print STDERR "RESULT >>> $extracted_val\n";
 
       # Free-form paramaters passed in the HTTP headers
-      if ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
+	  #
+	  #
+      if ($meta->does("ListNameInRequest") and $meta->{list_request_name} eq 'Items'){
+		  $result->{$meta->{list_request_name}}= $result->{$meta->{list_request_name}}->[0]->{$meta->request_name};
+      }
+      if ($meta->does("XMLAtribute")){
+          $args{ $key } =  $result->{$meta->xml_attribute_name()};
+      }
+      elsif ( $meta->does('ParamInStatus')){
+		  $key = $meta->response_name;
+          $args{ $meta->name } = $result->{$key};
+	  } elsif ($meta->does('Paws::API::Attribute::Trait::ParamInHeaders')) { 
         Paws->load_class("$att_type");
         my $att_class        = $att_type->class;
         my $header_prefix    = $meta->header_prefix;
@@ -179,7 +197,6 @@ package Paws::Net::RestXMLResponse;
               $args{ $att } = $value;
             } else {
               my $att_class = $att_type->class;
-
               if ($att_class->does('Paws::API::StrToObjMapParser')) {
                 $args{ $att } = $self->handle_response_strtoobjmap($att_class, $value);
               } elsif ($att_class->does('Paws::API::StrToNativeMapParser')) {
@@ -202,8 +219,6 @@ package Paws::Net::RestXMLResponse;
                   }
                   $value_ref = ref($value);
                 }
-
-
                 $args{ $att } = $att_class->new(map { ($_->{ $xml_keys } => $_->{ $xml_values }) } @$value);
               } else {
                 $args{ $att } = $self->new_from_result_struct($att_class, $value);
@@ -215,7 +230,7 @@ package Paws::Net::RestXMLResponse;
               # the root node is removed from the response when unserialising (see KeepRoot => 1 for 
               # XML::Simple) but is required to create the Paws object. This is mostly due to the 
               # implementation of the new_from_result_struct sub 
-              my $att_class = $att_type->class;
+			  my $att_class = $att_type->class;
               eval {
                 $args{ $att } = $self->new_from_result_struct($att_class, $result);
                 1;
@@ -236,20 +251,34 @@ package Paws::Net::RestXMLResponse;
             } else {
               $args{ $att } = $value;
             }
+		  }
+		  elsif ($att_is_required){ #sometimes there is a required field that is not reqturned by AWS. Fill in empty
+			  $args{ $att } = "";
+			  $args{ $att } = 0
+			    if ($att_type eq 'Bool' or $att_type eq 'Int');
           }
+		  elsif (!$class->does('_payload') and exists($result->{content}) and $result->{content}){
+			  ######
+			  # Run into the same root node removed by XML::Simple again here
+			  # In this case any is is a string type so not an object and in this case 
+			  # the result of the parse is found on the 'content' key of the $result  hash-ref
+			  # so far only seend this with 1 AWs action 'GetBucketLocationOutput'
+             $args{ $att } = $result->{content};			 
+		  }
         }
       } elsif (my ($type) = ($att_type =~ m/^ArrayRef\[(.*)\]$/)) {
         my $value = $result->{ $att };
         $value = $result->{ $key } if (not defined $value and $key ne $att);
         my $value_ref = ref($value);
-
-        if ($value_ref eq 'HASH') {
+		if ($value_ref eq 'HASH') {
           if (exists $value->{ member }) {
             $value = $value->{ member };
           } elsif (exists $value->{ entry }) {
             $value = $value->{ entry  };
           } elsif (keys %$value == 1) {
-            $value = $value->{ (keys %$value)[0] };
+            my @keys = keys(%{$value});
+			$value = $value->{$keys[0]}
+			  if (ref($value->{$keys[0]}));
           } else {
             #die "Can't detect the item that has the array in the response hash";
           }
@@ -258,7 +287,6 @@ package Paws::Net::RestXMLResponse;
  
         if ($type =~ m/\:\:/) {
           Paws->load_class($type);
-
           my $val;
           if (not defined $value) {
             $val = [ ];
@@ -294,5 +322,75 @@ package Paws::Net::RestXMLResponse;
     }
   }
 
+  sub response_to_object {
+    my ($self, $call_object, $response) = @_;
+    my ($http_status, $content, $headers) = ($response->status, $response->content, $response->headers);;
+
+    $call_object = $call_object->meta->name;
+
+    my $returns = (defined $call_object->_returns) && ($call_object->_returns ne 'Paws::API::Response');
+    my $ret_class = $returns ? $call_object->_returns : 'Paws::API::Response';
+
+    Paws->load_class($ret_class);
+ 
+    my $unserialized_struct;
+
+    if ($ret_class->can('_stream_param')) {
+      $unserialized_struct = {}
+    } else {
+      if (not defined $content or $content eq '') {
+        $unserialized_struct = {};
+      } elsif (exists($headers->{'content-type'})
+		       and $headers->{'content-type'} eq 'application/json'
+	           and $ret_class->can('_payload')){
+        $unserialized_struct->{$ret_class->_payload} = $content;
+	  } else {
+		if ( $ret_class->can('_payload')){
+           $unserialized_struct->{$ret_class->_payload}= eval { $self->unserialize_response( $content ) };
+	    }
+		else {
+           $unserialized_struct = eval { $self->unserialize_response( $content ) };
+	    }
+		if ($@){
+          return Paws::Exception->new(
+            message => $@,
+            code => 'InvalidContent',
+            request_id => '', #$request_id,
+            http_status => $http_status,
+          );
+        }
+      }
+    }
+    my $request_id = $headers->{'x-amz-request-id'} 
+                      || $headers->{'x-amzn-requestid'}
+                      || $unserialized_struct->{'requestId'} 
+                      || $unserialized_struct->{'RequestId'} 
+                      || $unserialized_struct->{'RequestID'}
+                      || $unserialized_struct->{ ResponseMetadata }->{ RequestId };
+
+    if ($call_object->_result_key){
+      $unserialized_struct = $unserialized_struct->{ $call_object->_result_key };
+    }
+
+    $unserialized_struct->{ _request_id } = $request_id;
+	$unserialized_struct->{ status } = $http_status; 
+      
+    if ($returns){
+      if ($ret_class->can('_stream_param')) {
+        $unserialized_struct->{ $ret_class->_stream_param } = $content
+      }
+ 
+      foreach my $key (keys %$headers){
+        $unserialized_struct->{lc $key} = $headers->{$key};
+      }
+
+      my $o_result = $self->new_from_result_struct($call_object->_returns, $unserialized_struct);
+	  return $o_result;
+    } else {
+      return Paws::API::Response->new(
+        _request_id => $request_id,
+      );
+    }
+  }
 
 1;

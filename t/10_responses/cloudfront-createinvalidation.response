@@ -1,11 +1,19 @@
 ---
 content: |-
   <?xml version="1.0"?>
-  <Invalidation xmlns="http://cloudfront.amazonaws.com/doc/2016-09-07/"><Id>I3U0TWG6JMVDSP</Id><Status>InProgress</Status><CreateTime>2016-10-19T21:30:20.148Z</CreateTime><InvalidationBatch><Paths><Quantity>2</Quantity><Items><Path>/object1</Path><Path>/object2</Path></Items></Paths><CallerReference>YYY</CallerReference></InvalidationBatch></Invalidation>
+  <Invalidation xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Id>I2ICM4994YF3KQ</Id><Status>InProgress</Status><CreateTime>2020-01-09T22:42:47.577Z</CreateTime><InvalidationBatch><Paths><Quantity>1</Quantity><Items><Path>/images/*.bmp</Path></Items></Paths><CallerReference>2020-01010-001</CallerReference></InvalidationBatch></Invalidation>
 headers:
-  content-length: 377
+  client-date: 'Thu, 09 Jan 2020 22:42:47 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 372
   content-type: text/xml
-  date: 'Wed, 19 Oct 2016 21:30:20 GMT'
-  location: https://cloudfront.amazonaws.com/2016-09-07/distribution/ECFFL7U0PVO9A/invalidation/I3U0TWG6JMVDSP
-  x-amzn-requestid: 3c56dea9-9643-11e6-9a4a-b9668da83fc7
+  date: 'Thu, 09 Jan 2020 22:42:47 GMT'
+  location: https://cloudfront.amazonaws.com/2019-03-26/distribution/E2F696NMEQJ5SH/invalidation/I2ICM4994YF3KQ
+  x-amzn-requestid: cb28adf9-96e0-4ee0-adb0-14744f860026
 status: 201

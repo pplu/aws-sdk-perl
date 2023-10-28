@@ -1,0 +1,18 @@
+---
+FieldLevelEncryptionProfileConfig:
+  CallerReference: 2020-01-01-20:21
+  Comment: Ha Rick. Mr. Poopy Buthole was here
+  EncryptionEntities:
+    Items:
+      - FieldPatterns:
+          Items:
+            - three*
+            - one*
+            - Two*
+          Quantity: 3
+        ProviderId: OpenSSL
+        PublicKeyId: K3ODSO6SYTI4ZG
+    Quantity: 1
+  Name: PawsCloudConfigTwo
+Id: P11YIB8QUZ31DB
+IfMatch: EONZE0AI4NWCH

@@ -1,0 +1,16 @@
+---
+content: '{ "NextToken" : "eyJDcmVhdGlvbkRhdGUiOiIyMDE5LTAxLTA3VDE4OjAxOjU3LjE5M1oiLCJBY2NvdW50SWQiOiI5ODUxNzMyMDU1NjEiLCJBcHBJZCI6ImMwMGQxYTE1YTk5ZTRjYmVhYWFiMzllM2RjY2Q2NmUxIn0","Item" : [ {"Name" : "Test","Id" : "8108c09a0cc54e88aac855e657e80204","Arn" : "arn:aws:mobiletargeting:us-east-1:999999999991:apps/8108c09a0cc54e88aac855e657e80204","tags" : {"key1":"value1","key2":"value2" }}, {"Name" : "CGT","Id" : "c00d1a15a99e4cbeaaab39e3dccd66e1","Arn" : "arn:aws:mobiletargeting:us-east-1:999999999991:apps/c00d1a15a99e4cbeaaab39e3dccd66e1", "tags" : {"key3":"value3","key4":"value4" }  } ]}'
+headers:
+  "via": "1.1 bb8a4e32b7413c1fbb32dbaa86a9a575.cloudfront.net (CloudFront)"
+  "x-cache": "Miss from cloudfront"
+  "x-amz-cf-id": "wwJP38R3qT7GROb9mFRbinVm9ryLHiyfRNNcIamqRU_SKcyEUcZKEQ=="
+  "x-amz-cf-pop": "ORD52-C2"
+  "access-control-allow-origin": "*"
+  "date": "Thu, 11 Jul 2019 12:32:00 GMT"
+  "x-amz-apigw-id": "cqPaGFi-IAMFuRQ="
+  "connection": "keep-alive"
+  "x-amzn-trace-id": "Root=1-5d272c40-10211adce219744743fd08a7"
+  "x-amzn-requestid": "e160e3a2-a3d7-11e9-8b8b-77b04d63b9f1"
+  "content-length": "582"
+  "content-type": "application/json"
+status: 200

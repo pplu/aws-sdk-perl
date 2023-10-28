@@ -1,0 +1,19 @@
+---
+content: |-
+  <?xml version="1.0"?>
+  <CloudFrontOriginAccessIdentity xmlns="http://cloudfront.amazonaws.com/doc/2019-03-26/"><Id>E3D5Y5RWA05QO1</Id><S3CanonicalUserId>84f47125a87a26ea5ba42f3be65fbefebdb7440d82e7d27907c52c969ac4f6c05ef03046db8cd6f74dab632e70ffcd71</S3CanonicalUserId><CloudFrontOriginAccessIdentityConfig><CallerReference>some test here</CallerReference><Comment>Mr Pooppy buthole did this</Comment></CloudFrontOriginAccessIdentityConfig></CloudFrontOriginAccessIdentity>
+headers:
+  client-date: 'Wed, 08 Jan 2020 21:02:43 GMT'
+  client-peer: 54.239.29.26:443
+  client-response-num: 1
+  client-ssl-cert-issuer: /C=US/O=Amazon/OU=Server CA 1B/CN=Amazon
+  client-ssl-cert-subject: /CN=cloudfront.amazonaws.com
+  client-ssl-cipher: ECDHE-RSA-AES128-SHA
+  client-ssl-socket-class: IO::Socket::SSL
+  connection: close
+  content-length: 472
+  content-type: text/xml
+  date: 'Wed, 08 Jan 2020 21:02:43 GMT'
+  etag: E3QNA45YLLRKK2
+  x-amzn-requestid: 638657c1-d71c-4435-b89c-81597d652e79
+status: 200

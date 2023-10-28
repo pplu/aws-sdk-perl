@@ -1,0 +1,31 @@
+---
+call: GetBucketCors
+service: S3
+tests:
+  - expected: '*'
+    op: eq
+    path: CORSRules.0.AllowedHeaders.0
+  - expected: PUT
+    op: eq
+    path: CORSRules.0.AllowedMethods.0
+  - expected: POST
+    op: eq
+    path: CORSRules.0.AllowedMethods.1
+  - expected: DELETE
+    op: eq
+    path: CORSRules.0.AllowedMethods.2
+  - expected: http://www.example.com
+    op: eq
+    path: CORSRules.0.AllowedOrigins.0
+  - expected: '*'
+    op: eq
+    path: CORSRules.1.AllowedHeaders.0
+  - expected: PUT
+    op: eq
+    path: CORSRules.1.AllowedMethods.0
+  - expected: POST
+    op: eq
+    path: CORSRules.1.AllowedMethods.1
+  - expected: http://www.aws.com
+    op: eq
+    path: CORSRules.1.AllowedOrigins.0

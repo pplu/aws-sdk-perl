@@ -1,0 +1,26 @@
+---
+call: PutBucketPolicy 
+service: S3
+tests:
+  - expected: '' 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: '{"Id": "Policy1572795613217","Version": "2012-10-17","Statement": [{"Sid": "Stmt1234567890","Action": ["*"],"Effect": "Allow","Resource": "arn:aws:s3:::oneoffpaws", "Principal": { "AWS": ["arn:aws:iam::1234567890:user/ghehoiso"]}}]}'
+    op: eq
+    path: parameters
+    key: Policy
+  - expected: PUT
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws?
+    path: url
+  - expected: policy
+    path: url
+  - expected: /oneoffpaws?
+    path: uri
+  - expected: policy
+    path: uri

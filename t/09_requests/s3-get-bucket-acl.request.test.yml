@@ -1,0 +1,18 @@
+---
+call: GetBucketAcl 
+service: S3
+tests:
+  - expected: '' 
+    op: eq
+    path: content
+  - expected: oneoffpaws 
+    op: eq
+    path: parameters
+    key: Bucket
+  - expected: GET 
+    op: eq
+    path: method
+  - expected: https://s3.fake_region.amazonaws.com/oneoffpaws
+    path: url
+  - expected: /oneoffpaws
+    path: uri
