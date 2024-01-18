@@ -12,6 +12,11 @@ use Test::CustomCredentials;
 
 my $match_message_tests = $ENV{CI};
 
+# proxies can interfere with this test, because the connection will
+# succeed (to the proxy), the proxy may return some error page, so
+# we're getting InvalidContent instead of ConnectionError
+delete local @ENV{qw(http_proxy https_proxy HTTP_PROXY HTTPS_PROXY)};
+
 my $closed_server_endpoint = 'http://localhost:65511';
 
 my $p = Paws->new(config => { credentials => 'Test::CustomCredentials' });
