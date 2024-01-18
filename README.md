@@ -202,7 +202,7 @@ Commit everything up till now and push
 git push origin release/X.XX
 ```
 
-Take a look at Travis pipelines to see if the branch you're going to release is green: https://travis-ci.org/pplu/aws-sdk-perl/branches
+Take a look at Github Actions to see if the branch you're going to release is green: https://github.com/pplu/aws-sdk-perl/actions/
 
 We don't want to ship Paws when it's failing it's tests.
 
