@@ -1,3 +1,5 @@
+0.47
+  -
 0.46 20 January 2024
  - Fix issue with failing tests when proxy environment vars are set
  - Mostly a re-lease of 0.45 as that failed to index on pause
