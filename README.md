@@ -416,7 +416,9 @@ Grinzz
  - many bugs, suggestions and fixes
  - Installation speedup with Module::Builder::Tiny
 
-Dakkar for solving issues with parameter passing
+Dakkar
+  - solving issues with parameter passing
+  - fixing dns and other tests when a proxy is in use
 
 Arthur Axel fREW Schmidt for speeding up credential refreshing
 

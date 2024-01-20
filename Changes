@@ -1,5 +1,6 @@
-0.46 
- - 
+0.46 20 January 2024
+ - Fix issue with failing tests when proxy environment vars are set
+ - Mostly a re-lease of 0.45 as that failed to index on pause
 
 0.45 1 Jun 2022
  - Drop support for Perl 5.10, since Getopt-Long-Descriptive, a dependency of one of our dependencies, 
