@@ -31,6 +31,13 @@ package Paws::API::Builder {
   has service_full_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ serviceFullName } });
   has service => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ endpointPrefix } });
   has signing_name => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ signingName } // $_[0]->api_struct->{metadata}->{ endpointPrefix } });
+  has service_short => (is => 'ro', lazy => 1, default => sub { 
+      my $service = $_[0]->service;
+      if ( index($service, '.') != -1 ) {
+          return (split(/\./, $service))[1];
+      }
+      return $service;
+  });
   has version => (is => 'ro', lazy => 1, default => sub { $_[0]->api_struct->{metadata}->{ apiVersion } });
   has endpoint_role => (is => 'ro', lazy => 1, default => 'Paws::API::EndpointResolver' );
 
@@ -637,10 +644,10 @@ package Paws::API::Builder {
     my $inputs = $self->input_for_operation($op_name);
 
     my $example_str = '';
-    if ($out_shape) {
+    if ($out_shape) {      
       $example_str .= "my \$${out_shape} = ";
     }
-    $example_str .= "\$" . $self->service . "->" . $op_name . "(";
+    $example_str .= "\$" . $self->service_short . "->" . $op_name . "(";
 
     my @args = ();
     my $shape_cache = {};
